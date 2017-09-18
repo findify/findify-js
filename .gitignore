@@ -1,0 +1,9 @@
+npm-debug.log
+lerna-debug.log
+package.json.lerna_backup
+node_modules
+dist
+lib
+types
+typings
+.released-packages

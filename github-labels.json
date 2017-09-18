@@ -1,0 +1,39 @@
+[
+  { "name": "tag: new feature", "color": "#159818" },
+  { "name": "tag: breaking change", "color": "#e11d21" },
+  { "name": "tag: bug fix", "color": "#fbca04" },
+  { "name": "tag: enhancement", "color": "#84b6eb" },
+  { "name": "tag: documentation", "color": "#cc317c" },
+  { "name": "tag: internal", "color": "#cccccc" },
+
+  { "name": "bug", "color": "#fc2929" },
+  { "name": "duplicate", "color": "#cccccc" },
+  { "name": "enhancement", "color": "#84b6eb" },
+  { "name": "help wanted", "color": "#159818" },
+  { "name": "invalid", "color": "#e6e6e6" },
+  { "name": "question", "color": "#cc317c" },
+  { "name": "wontfix", "color": "#ffffff" },
+
+  { "name": "mjs", "color": "#cc317c" },
+  { "name": "merchant-dashboard", "color": "#006b75" },
+  { "name": "sdk", "color": "#159818" },
+  { "name": "ui-components", "color": "#84b6eb" },
+  { "name": "analytics", "color": "#fbca04" },
+  { "name": "helpers-js", "color": "#eb6420" },
+
+  { "name": "priority: low", "color": "#009800" },
+  { "name": "priority: medium", "color": "#fbca04" },
+  { "name": "priority: high", "color": "#eb6420" },
+  { "name": "priority: critical", "color": "#e11d21" },
+
+  { "name": "status: abandoned", "color": "#000000" },
+  { "name": "status: accepted", "color": "#009800" },
+  { "name": "status: available", "color": "#bfe5bf" },
+  { "name": "status: blocked", "color": "#e11d21" },
+  { "name": "status: completed", "color": "#006b75" },
+  { "name": "status: in progress", "color": "#cccccc" },
+  { "name": "status: on hold", "color": "#e11d21" },
+  { "name": "status: pending", "color": "#fef2c0" },
+  { "name": "status: review needed", "color": "#fbca04" },
+  { "name": "status: revision needed", "color": "#e11d21" }
+]

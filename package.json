@@ -1,0 +1,58 @@
+{
+  "private": true,
+  "devDependencies": {
+    "@types/jest": "^20.0.8",
+    "commitizen": "^2.9.6",
+    "cz-lerna-changelog": "^1.2.1",
+    "del-cli": "^1.1.0",
+    "enzyme": "^2.9.1",
+    "enzyme-to-json": "^1.5.1",
+    "husky": "^0.14.3",
+    "jest": "^21.1.0",
+    "lerna": "^2.1.2",
+    "lerna-changelog": "^0.6.0",
+    "lerna-semantic-release": "^9.1.0",
+    "lint-staged": "^4.1.3",
+    "npm-check-updates": "^2.12.1",
+    "npm-run-all": "^4.1.1",
+    "prettier": "^1.6.1",
+    "stylelint": "^8.1.1",
+    "stylelint-config-standard": "^17.0.0",
+    "ts-jest": "^21.0.0",
+    "tslint": "^5.7.0",
+    "tslint-config-airbnb": "^5.3.0",
+    "typescript": "^2.5.2"
+  },
+  "dependencies": {
+    "react": "^15.6.1"
+  },
+  "scripts": {
+    "postinstall": "npm-run-all bootstrap build",
+    "bootstrap": "lerna bootstrap --hoist",
+    "upgrade": "npm-run-all --parallel upgrade:root upgrade:pkgs --serial bootstrap",
+    "upgrade:root": "ncu -u",
+    "upgrade:pkgs": "lerna exec -- ./node_modules/.bin/ncu -u",
+    "clean": "lerna run clean --parallel",
+    "build": "lerna run build",
+    "build:test": "lerna run build:test --parallel",
+    "build:test:watch": "lerna run build:test:watch --parallel",
+    "rebuild": "npm-run-all clean build",
+    "pretest": "lerna run pretest",
+    "test": "npm-run-all --parallel build:test:watch test:watch",
+    "test:watch": "jest --watch",
+    "test:once": "jest",
+    "c": "git cz",
+    "precommit": "lint-staged",
+    "lint": "lerna run lint",
+    "release": "npm-run-all release:pre release:perform release:post",
+    "release:pre": "lerna-semantic-release pre",
+    "release:post": "lerna-semantic-release post",
+    "release:perform": "lerna-semantic-release perform",
+    "changelog": "lerna-changelog"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-lerna-changelog"
+    }
+  }
+}
