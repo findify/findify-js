@@ -7,3 +7,4 @@ lib
 types
 typings
 .released-packages
+.npmrc
