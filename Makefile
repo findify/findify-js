@@ -1,7 +1,9 @@
-test:
+tdd:
 	npm t
-clear:
-	npm run clear
+test:
+	npm run test:once
+clean:
+	npm run clean
 build:
 	npm run build
 rebuild:
@@ -11,4 +13,5 @@ commit:
 release:
 	npm run release
 
-.PHONY: test clear build commit release
+.PHONY: tdd test clean build commit release
+

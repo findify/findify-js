@@ -6,16 +6,7 @@
   { "name": "tag: documentation", "color": "#cc317c" },
   { "name": "tag: internal", "color": "#cccccc" },
 
-  { "name": "bug", "color": "#fc2929" },
-  { "name": "duplicate", "color": "#cccccc" },
-  { "name": "enhancement", "color": "#84b6eb" },
-  { "name": "help wanted", "color": "#159818" },
-  { "name": "invalid", "color": "#e6e6e6" },
-  { "name": "question", "color": "#cc317c" },
-  { "name": "wontfix", "color": "#ffffff" },
-
   { "name": "mjs", "color": "#cc317c" },
-  { "name": "merchant-dashboard", "color": "#006b75" },
   { "name": "sdk", "color": "#159818" },
   { "name": "ui-components", "color": "#84b6eb" },
   { "name": "analytics", "color": "#fbca04" },

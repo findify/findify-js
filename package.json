@@ -2,11 +2,13 @@
   "private": true,
   "devDependencies": {
     "@types/jest": "^20.0.8",
+    "bower": "^1.8.2",
     "commitizen": "^2.9.6",
     "cz-lerna-changelog": "^1.2.1",
     "del-cli": "^1.1.0",
     "enzyme": "^2.9.1",
-    "enzyme-to-json": "^1.5.1",
+    "enzyme-to-json": "^2.0.0",
+    "fork-ts-checker-webpack-plugin": "^0.2.8",
     "husky": "^0.14.3",
     "jest": "^21.1.0",
     "lerna": "^2.1.2",
@@ -21,34 +23,36 @@
     "ts-jest": "^21.0.0",
     "tslint": "^5.7.0",
     "tslint-config-airbnb": "^5.3.0",
-    "typescript": "^2.5.2"
+    "typescript": "^2.5.2",
+    "webpack": "^3.6.0"
   },
   "dependencies": {
     "react": "^15.6.1"
   },
   "scripts": {
-    "postinstall": "npm-run-all bootstrap build",
-    "bootstrap": "lerna bootstrap --hoist",
+    "postinstall": "npm-run-all bootstrap",
+    "bootstrap": "lerna bootstrap",
     "upgrade": "npm-run-all --parallel upgrade:root upgrade:pkgs --serial bootstrap",
     "upgrade:root": "ncu -u",
     "upgrade:pkgs": "lerna exec -- ./node_modules/.bin/ncu -u",
     "clean": "lerna run clean --parallel",
     "build": "lerna run build",
-    "build:test": "lerna run build:test --parallel",
+    "build:tdd": "run-s build:test build:test:watch",
+    "build:test": "lerna run build:test",
     "build:test:watch": "lerna run build:test:watch --parallel",
-    "rebuild": "npm-run-all clean build",
+    "rebuild": "run-s clean build",
+    "test:once": "run-s build:test jest",
+    "test": "run-p jest:watch",
     "pretest": "lerna run pretest",
-    "test": "npm-run-all --parallel build:test:watch test:watch",
-    "test:watch": "jest --watch",
-    "test:once": "jest",
+    "jest": "jest",
+    "jest:watch": "jest --watch",
     "c": "git cz",
     "precommit": "lint-staged",
     "lint": "lerna run lint",
-    "release": "npm-run-all release:pre release:perform release:post",
+    "release": "run-s release:pre release:perform release:post",
     "release:pre": "lerna-semantic-release pre",
     "release:post": "lerna-semantic-release post",
-    "release:perform": "lerna-semantic-release perform",
-    "changelog": "lerna-changelog"
+    "release:perform": "lerna-semantic-release perform"
   },
   "config": {
     "commitizen": {
