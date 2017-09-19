@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "outDir": "lib",
+    "noImplicitAny": false,
+    "module": "commonjs",
+    "target": "es5"
+  },
+  "files": [
+    "./modules.d.ts",
+    "./src/index.ts"
+  ]
+}

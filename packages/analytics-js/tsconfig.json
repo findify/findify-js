@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "outDir": "./lib",
+    "module": "commonjs",
+    "target": "es5",
+    "lib": ["es6", "es2017", "dom"],
+    "moduleResolution": "node",
+    "noImplicitAny": false,
+    "skipLibCheck": true
+  },
+  "files": [
+    "./modules.d.ts",
+    "./src/index.ts"
+  ]
+}
