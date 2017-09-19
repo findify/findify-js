@@ -1,0 +1,26 @@
+{
+  "name": "@findify/quux",
+  "version": "2.1.1",
+  "description": "",
+  "main": "lib/index.js",
+  "types": "types/index.d.ts",
+  "scripts": {
+    "clean": "del lib types",
+    "build": "tsc --listEmittedFiles",
+    "build:test": "tsc --module commonjs",
+    "build:test:watch": "npm run build:test --watch",
+    "lint": "tslint src"
+  },
+  "config": {
+    "access": "public"
+  },
+  "author": "Findify <yourfriends@findify.io>",
+  "license": "WTFPL",
+  "dependencies": {
+    "@findify/corge": "^0.1.0"
+  },
+  "devDependencies": {
+    "del-cli": "^1.1.0",
+    "npm-check-updates": "^2.12.1"
+  }
+}

@@ -31,7 +31,7 @@
   },
   "scripts": {
     "postinstall": "npm-run-all bootstrap",
-    "bootstrap": "lerna bootstrap",
+    "bootstrap": "lerna bootstrap --hoist",
     "upgrade": "npm-run-all --parallel upgrade:root upgrade:pkgs --serial bootstrap",
     "upgrade:root": "ncu -u",
     "upgrade:pkgs": "lerna exec -- ./node_modules/.bin/ncu -u",

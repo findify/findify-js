@@ -1,0 +1,23 @@
+{
+  "name": "@findify/corge",
+  "version": "0.1.0",
+  "main": "lib/js/src/index.js",
+  "scripts": {
+    "build": "bsb -make-world",
+    "build:test": "npm run build",
+    "build:test:watch": "bsb -make-world -w",
+    "clean": "bsb -clean-world"
+  },
+  "config": {
+    "access": "public"
+  },
+  "author": "Findify <yourfriends@findify.io>",
+  "keywords": [
+    "BuckleScript"
+  ],
+  "license": "WTFPL",
+  "devDependencies": {
+    "npm-check-updates": "^2.12.1",
+    "bs-platform": "1.9.2"
+  }
+}
