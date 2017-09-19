@@ -1,0 +1,35 @@
+{
+  "name": "@findify/sdk",
+  "version": "1.3.9",
+  "description": "Findify search API client",
+  "main": "lib/index.js",
+  "types": "types/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/findify/findify-js.git"
+  },
+  "keywords": [
+    "findify"
+  ],
+  "config": {
+    "access": "public"
+  },
+  "author": "Vasiliy Yorkin <vasiliy.yorkin@gmail.com> (https://github.com/vyorkin)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/findify/findify-js/issues"
+  },
+  "homepage": "https://github.com/findify/findify-js",
+  "scripts": {
+    "clean": "del lib types",
+    "build": "tsc --listEmittedFiles",
+    "build:test": "tsc --module commonjs",
+    "build:test:watch": "npm run build:test --watch",
+    "lint": "tslint src"
+  },
+  "devDependencies": {
+    "del-cli": "^1.1.0",
+    "npm-check-updates": "^2.12.1"
+  }
+}
+
