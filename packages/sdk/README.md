@@ -106,7 +106,7 @@ will be major releases (1.0.1 -> 2.0.0).
 We use the GitHub issues for tracking bugs and feature requests.
 
  * Ask a question on [StackOverflow](https://stackoverflow.com/) and tag it with `findify-sdk`
- * Come join the Findify JavaScript community on [gitter](https://gitter.im/findify/findify-js?source=orgpage)
+ * Come join the Findify JavaScript community on [gitter](https://gitter.im/findify-js?source=orgpage)
  * If it turns out that you may have found a bug, please [open an issue](https://github.com/findify/findify-js/issues/new)
 
 ## Opening Issues
@@ -119,7 +119,7 @@ case when appropriate, too.
 
 The GitHub issues are intended for bug reports and feature requests. For help
 and questions with using the Findify SDK for JavaScript please make use of the
-resources listed in the [Getting Help](https://github.com/findify/packages/findify-sdk#getting-help)
+resources listed in the [Getting help](https://github.com/findify/findify-js/tree/master/packages/sdk#getting-help)
 section.
 
 ## Contributing
