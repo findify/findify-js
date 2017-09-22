@@ -3,6 +3,8 @@ lerna-debug.log
 package.json.lerna_backup
 node_modules
 dist
+coverage
+doc
 lib
 types
 typings
