@@ -6,5 +6,5 @@
 * analytics-js
 * findify-mjs
 * helpers-js
-* javascript-sdk
+* sdk
 * ui-components
