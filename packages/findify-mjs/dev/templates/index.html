@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>MJS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g="
+      crossorigin="anonymous"></script>
+    <script
+      src="https://cdn.judge.me/assets/shopify-1a3ba9feba69a291ec669aac35e0162299b113d4b59a90e44d2b560820920b00.js"
+      crossorigin="anonymous"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/history/4.7.2/history.js"
+      crossorigin="anonymous"></script>
+    <style>
+      .wrpa{
+        width: 100%;
+        position: relative;
+        margin: 0 auto;
+        box-sizing: border-boxl
+        padding: 0 20px;
+      }
+      .ipsum{
+        font-size: 20px;
+      }
+      .input-wrap{
+        text-align: right;
+        margin: 30px 0;
+      }
+      input{
+        padding: 10px 30px;
+        text-indent: 20px;
+        display: inline-block;
+        border-radius: 0;
+        font-size: 16px;
+        outline: none;
+        text-align: left;
+        -webkit-appearance: inherit;
+        border: 1px solid #777;
+      }
+    </style>
+    <script type="text/javascript">
+      // window.findifyApiRegistry = [{
+      //   hook: '*.item',
+      //   mapProps: function(props, funcs, config, sendEvent) {
+      //     console.log(config)
+      //     return;
+      //   }
+      // }]
+    </script>
+  </head>
+  <body>
+    <!-- <div id="home-findify-rec-3"></div>
+    <div data-findify-filter="category" data-findify-filter-value='[{"value": ["Cat", "Food"]}]'></div>
+    <div data-findify-filter="brand" data-findify-filter-value='[{"value": "Adidas"}, {"value": "asdad"}]'></div> -->
+
+    <div class="wrpa">
+    <div id="root"></div>
+    <div class="ipsum">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eleifend congue ex non varius. Cras nisi dui, molestie pellentesque dapibus vitae, placerat quis est. Praesent venenatis tempus odio in sollicitudin. In tincidunt, nulla non volutpat elementum, augue turpis elementum sapien, quis tincidunt diam sem et metus. Fusce maximus eu libero ut tincidunt. Phasellus et malesuada nisl. Fusce nec porta velit. Aenean mauris arcu, bibendum quis interdum vel, ullamcorper et tortor. Sed felis elit, malesuada in tortor quis, semper commodo nisi.
+
+      Nulla molestie purus ligula. Phasellus et justo id nunc scelerisque auctor ut et ante. Cras et posuere quam, id tincidunt odio. Maecenas magna dui, imperdiet et volutpat non, dapibus non urna. Nam tellus elit, posuere in finibus nec, volutpat ut arcu. Nunc tellus elit, commodo at posuere congue, tincidunt sed nunc. Interdum et malesuada fames ac ante ipsum primis in faucibus. Ut sem ex, aliquet sed feugiat quis, gravida eget eros. Duis egestas mollis purus eu accumsan. Etiam facilisis venenatis facilisis. Maecenas vel facilisis magna. Nam varius mi sit amet mauris blandit rhoncus.
+
+      Aliquam erat volutpat. Quisque gravida eleifend diam, sit amet luctus orci placerat sit amet. Donec quis vestibulum leo, et hendrerit ex. Pellentesque a magna maximus, scelerisque ipsum sed, blandit sapien. Phasellus volutpat lacinia lorem, semper varius dui mollis et. Mauris volutpat quam mi, nec blandit odio cursus vitae. Fusce nec ullamcorper velit. Nam imperdiet lorem et varius maximus. Mauris congue rhoncus eleifend. Quisque in purus rutrum, sagittis justo sed, tristique est. Ut id pharetra lorem, eget dapibus tortor. Mauris in lorem tempus, tristique mauris eget, pretium velit. Etiam tincidunt, nulla non ultricies ornare, massa erat vestibulum leo, at porta enim neque ac mi. Nunc elementum mauris ut eros tempus, quis vulputate lacus interdum. Phasellus eu ipsum id tortor lacinia hendrerit.
+
+      Mauris porttitor arcu elit, sit amet blandit neque pharetra in. Duis gravida velit at arcu bibendum consectetur. Sed id semper lectus. Quisque et sagittis felis, vel congue nunc. Nulla fringilla sed dui id tempor. Donec suscipit dolor eget blandit posuere. Integer accumsan viverra mauris id lacinia. Duis iaculis, nibh non rhoncus sagittis, nisl odio sodales massa, non laoreet augue odio eu felis. Proin gravida rhoncus ante et pulvinar. Mauris vel fermentum nunc. Interdum et malesuada fames ac ante ipsum primis in faucibus. Sed pharetra suscipit faucibus. Cras porta maximus aliquam. Donec elementum eros id dui auctor imperdiet.
+
+      Fusce mollis neque vehicula turpis interdum accumsan. Vivamus non ultricies velit. Duis non interdum tortor. Mauris magna ipsum, viverra eget tincidunt vel, consectetur nec nisl. Praesent tortor est, ultrices quis tristique quis, hendrerit nec turpis. Aenean pretium elementum felis, in suscipit felis semper vitae. Etiam iaculis urna ac aliquam pellentesque. Fusce a euismod urna. Fusce vehicula magna non quam tristique, sit amet cursus elit eleifend. Donec feugiat ex nec quam mattis, at cursus nibh semper.
+    </div>
+    <div class="input-wrap">
+      <form onSubmit='console.log("here")'>
+        <input class='input' type='search' placeholder="Search" name='q' />
+      </form>
+    </div>
+    <style>
+      .findify-component-spinner {
+        margin: 60px auto 0 auto !important;
+        position: relative;
+        -webkit-transform: translateZ(0);
+        -ms-transform: translateZ(0);
+        transform: translateZ(0);
+        -webkit-animation: findify-component-spinner-animation 0.7s infinite cubic-bezier(0.67, 0.35, 0.7, 0.8);
+        animation: findify-component-spinner-animation 0.7s infinite cubic-bezier(0.67, 0.35, 0.7, 0.8);
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        -ms-transform-origin: 50% 50%;
+        -webkit-transform-origin: 50% 50%;
+        transform-origin: 50% 50%; }
+        .findify-component-spinner:after {
+          border-radius: 50%;
+          width: 60px;
+          height: 60px; }
+
+      @-webkit-keyframes findify-component-spinner-animation {
+        0% {
+          -webkit-transform: rotate(90deg);
+          transform: rotate(90deg); }
+        100% {
+          -webkit-transform: rotate(450deg);
+          transform: rotate(450deg); } }
+
+      @keyframes findify-component-spinner-animation {
+        0% {
+          -webkit-transform: rotate(90deg);
+          transform: rotate(90deg); }
+        100% {
+          -webkit-transform: rotate(450deg);
+          transform: rotate(450deg); } }
+
+      .findify-component-spinner {
+        border-top: 3px solid #eaeaea;
+        border-right: 3px solid #eaeaea;
+        border-bottom: 3px solid #eaeaea;
+        border-left: 3px solid #c6c6c6;
+      }
+    }
+    </style>
+    <div data-findify-event='add-to-catd'>awfawfawf</div>
+    <div id="findify_results" style="min-height: 400px;">
+      <div class="findify-component-spinner"></div>
+    </div>
+    <div class="ipsum">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eleifend congue ex non varius. Cras nisi dui, molestie pellentesque dapibus vitae, placerat quis est. Praesent venenatis tempus odio in sollicitudin. In tincidunt, nulla non volutpat elementum, augue turpis elementum sapien, quis tincidunt diam sem et metus. Fusce maximus eu libero ut tincidunt. Phasellus et malesuada nisl. Fusce nec porta velit. Aenean mauris arcu, bibendum quis interdum vel, ullamcorper et tortor. Sed felis elit, malesuada in tortor quis, semper commodo nisi.
+
+      Nulla molestie purus ligula. Phasellus et justo id nunc scelerisque auctor ut et ante. Cras et posuere quam, id tincidunt odio. Maecenas magna dui, imperdiet et volutpat non, dapibus non urna. Nam tellus elit, posuere in finibus nec, volutpat ut arcu. Nunc tellus elit, commodo at posuere congue, tincidunt sed nunc. Interdum et malesuada fames ac ante ipsum primis in faucibus. Ut sem ex, aliquet sed feugiat quis, gravida eget eros. Duis egestas mollis purus eu accumsan. Etiam facilisis venenatis facilisis. Maecenas vel facilisis magna. Nam varius mi sit amet mauris blandit rhoncus.
+
+      Aliquam erat volutpat. Quisque gravida eleifend diam, sit amet luctus orci placerat sit amet. Donec quis vestibulum leo, et hendrerit ex. Pellentesque a magna maximus, scelerisque ipsum sed, blandit sapien. Phasellus volutpat lacinia lorem, semper varius dui mollis et. Mauris volutpat quam mi, nec blandit odio cursus vitae. Fusce nec ullamcorper velit. Nam imperdiet lorem et varius maximus. Mauris congue rhoncus eleifend. Quisque in purus rutrum, sagittis justo sed, tristique est. Ut id pharetra lorem, eget dapibus tortor. Mauris in lorem tempus, tristique mauris eget, pretium velit. Etiam tincidunt, nulla non ultricies ornare, massa erat vestibulum leo, at porta enim neque ac mi. Nunc elementum mauris ut eros tempus, quis vulputate lacus interdum. Phasellus eu ipsum id tortor lacinia hendrerit.
+
+      Mauris porttitor arcu elit, sit amet blandit neque pharetra in. Duis gravida velit at arcu bibendum consectetur. Sed id semper lectus. Quisque et sagittis felis, vel congue nunc. Nulla fringilla sed dui id tempor. Donec suscipit dolor eget blandit posuere. Integer accumsan viverra mauris id lacinia. Duis iaculis, nibh non rhoncus sagittis, nisl odio sodales massa, non laoreet augue odio eu felis. Proin gravida rhoncus ante et pulvinar. Mauris vel fermentum nunc. Interdum et malesuada fames ac ante ipsum primis in faucibus. Sed pharetra suscipit faucibus. Cras porta maximus aliquam. Donec elementum eros id dui auctor imperdiet.
+
+      Fusce mollis neque vehicula turpis interdum accumsan. Vivamus non ultricies velit. Duis non interdum tortor. Mauris magna ipsum, viverra eget tincidunt vel, consectetur nec nisl. Praesent tortor est, ultrices quis tristique quis, hendrerit nec turpis. Aenean pretium elementum felis, in suscipit felis semper vitae. Etiam iaculis urna ac aliquam pellentesque. Fusce a euismod urna. Fusce vehicula magna non quam tristique, sit amet cursus elit eleifend. Donec feugiat ex nec quam mattis, at cursus nibh semper.
+    </div>
+    <div id="home-findify-rec-1"></div>
+    </div>
+  </body>
+</html>
