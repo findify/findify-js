@@ -1,0 +1,2195 @@
+[
+  {
+    "type": "range",
+    "name": "range",
+    "min": 1,
+    "max": 20,
+    "values": [  
+      {
+        "count":83,
+        "selected":false,
+        "from": 10,
+        "to": 20
+      },
+      {
+        "count":75,
+        "selected":false,
+        "from": 30
+      },
+      {
+        "count":73,
+        "selected":false,
+        "to": 10
+      }
+    ]
+  },
+  {
+    "name": "colors",
+    "type": "color",
+    "values": [  
+      {  
+        "key":"Blue",
+        "count":83,
+        "selected":false
+      },
+      {  
+        "key":"Red",
+        "count":75,
+        "selected":false
+      },
+      {  
+        "key":"Multicolor",
+        "count":73,
+        "selected":false
+      },
+      {  
+        "key":"Yellow",
+        "count":261,
+        "selected":false
+      }
+    ]
+  },
+  {
+    "name": "category",
+    "type": "category",
+    "values": [
+      {
+        "type": "category",
+        "selected": false,
+        "count": 2872,
+        "hasChildren": true,
+        "key": "Hund",
+        "name": "category1"
+      },
+      {
+        "type": "category",
+        "selected": false,
+        "count": 1585,
+        "hasChildren": true,
+        "key": "Katt",
+        "name": "category1"
+      },
+      {
+        "type": "category",
+        "selected": false,
+        "count": 605,
+        "hasChildren": true,
+        "key": "Veterinärfoder",
+        "name": "category1"
+      },
+      {
+        "type": "category",
+        "selected": false,
+        "count": 499,
+        "hasChildren": true,
+        "key": "Smådjur",
+        "name": "category1"
+      },
+      {
+        "type": "category",
+        "selected": false,
+        "count": 190,
+        "hasChildren": true,
+        "key": "Fågel",
+        "name": "category1"
+      },
+      {
+        "type": "category",
+        "selected": false,
+        "count": 180,
+        "hasChildren": true,
+        "key": "Fisk",
+        "name": "category1"
+      },
+      {
+        "type": "category",
+        "selected": false,
+        "count": 82,
+        "hasChildren": true,
+        "key": "Reptil",
+        "name": "category1"
+      }
+    ]
+  },
+  {
+    "name": "custom_fields.manufacturer",
+    "values": [
+      {
+        "key": "#1 All Systems",
+        "count": 18,
+        "selected": false
+      },
+      {
+        "key": "1st Choice",
+        "count": 26,
+        "selected": false
+      },
+      {
+        "key": "2pets",
+        "count": 4,
+        "selected": false
+      },
+      {
+        "key": "8in1",
+        "count": 4,
+        "selected": false
+      },
+      {
+        "key": "AFP",
+        "count": 11,
+        "selected": false
+      },
+      {
+        "key": "AKTIV",
+        "count": 1,
+        "selected": false
+      },
+      {
+        "key": "ANF",
+        "count": 7,
+        "selected": false
+      },
+      {
+        "key": "AVIx",
+        "count": 2,
+        "selected": false
+      },
+      {
+        "key": "Acana",
+        "count": 54,
+        "selected": false
+      },
+      {
+        "key": "Acme",
+        "count": 2,
+        "selected": false
+      },
+      {
+        "key": "Adaptil",
+        "count": 5,
+        "selected": false
+      },
+      {
+        "key": "Agility Snack",
+        "count": 3,
+        "selected": false
+      },
+      {
+        "key": "Akita",
+        "count": 7,
+        "selected": false
+      },
+      {
+        "key": "Alac",
+        "count": 6,
+        "selected": false
+      },
+      {
+        "key": "Albedo100",
+        "count": 4,
+        "selected": false
+      },
+      {
+        "key": "AlgGutten",
+        "count": 6,
+        "selected": false
+      },
+      {
+        "key": "All for paws",
+        "count": 2,
+        "selected": false
+      },
+      {
+        "key": "Allergenius",
+        "count": 4,
+        "selected": false
+      },
+      {
+        "key": "Alpha Spirit",
+        "count": 16,
+        "selected": false
+      },
+      {
+        "key": "Antec",
+        "count": 2,
+        "selected": false
+      },
+      {
+        "key": "Antos",
+        "count": 2,
+        "selected": false
+      },
+      {
+        "key": "Appetitt",
+        "count": 16,
+        "selected": false
+      },
+      {
+        "key": "Applaws",
+        "count": 51,
+        "selected": false
+      },
+      {
+        "key": "Aptus",
+        "count": 25,
+        "selected": false
+      },
+      {
+        "key": "Arcadia",
+        "count": 3,
+        "selected": false
+      },
+      {
+        "key": "Arion",
+        "count": 36,
+        "selected": false
+      },
+      {
+        "key": "Avivir",
+        "count": 7,
+        "selected": false
+      },
+      {
+        "key": "Axess",
+        "count": 4,
+        "selected": false
+      },
+      {
+        "key": "Back on Track",
+        "count": 15,
+        "selected": false
+      },
+      {
+        "key": "Baltic",
+        "count": 2,
+        "selected": false
+      },
+      {
+        "key": "Basic",
+        "count": 2,
+        "selected": false
+      },
+      {
+        "key": "Beaphar",
+        "count": 20,
+        "selected": false
+      },
+      {
+        "key": "Beeztees",
+        "count": 5,
+        "selected": false
+      },
+      {
+        "key": "Bello",
+        "count": 32,
+        "selected": false
+      },
+      {
+        "key": "Best Friend Group",
+        "count": 2,
+        "selected": false
+      },
+      {
+        "key": "Bio-Groom",
+        "count": 19,
+        "selected": false
+      },
+      {
+        "key": "BioSalma",
+        "count": 1,
+        "selected": false
+      },
+      {
+        "key": "Biodistra",
+        "count": 5,
+        "selected": false
+      },
+      {
+        "key": "Bionic",
+        "count": 4,
+        "selected": false
+      },
+      {
+        "key": "Biopet",
+        "count": 1,
+        "selected": false
+      },
+      {
+        "key": "Bird's World",
+        "count": 1,
+        "selected": false
+      },
+      {
+        "key": "Bistos",
+        "count": 20,
+        "selected": false
+      },
+      {
+        "key": "Boinks",
+        "count": 2,
+        "selected": false
+      },
+      {
+        "key": "Bomica",
+        "count": 1,
+        "selected": false
+      },
+      {
+        "key": "Bozita",
+        "count": 64,
+        "selected": false
+      },
+      {
+        "key": "Bravo",
+        "count": 33,
+        "selected": false
+      },
+      {
+        "key": "Brit",
+        "count": 40,
+        "selected": false
+      },
+      {
+        "key": "Brit Animals",
+        "count": 15,
+        "selected": false
+      },
+      {
+        "key": "Brit Boutiques Gourmandes",
+        "count": 10,
+        "selected": false
+      },
+      {
+        "key": "Brit Care",
+        "count": 50,
+        "selected": false
+      },
+      {
+        "key": "Brit Premium",
+        "count": 45,
+        "selected": false
+      },
+      {
+        "key": "Bseen",
+        "count": 2,
+        "selected": false
+      },
+      {
+        "key": "Buster",
+        "count": 17,
+        "selected": false
+      },
+      {
+        "key": "Bästis",
+        "count": 6,
+        "selected": false
+      },
+      {
+        "key": "Canada Litter",
+        "count": 4,
+        "selected": false
+      },
+      {
+        "key": "Canami",
+        "count": 7,
+        "selected": false
+      },
+      {
+        "key": "Canikur",
+        "count": 2,
+        "selected": false
+      },
+      {
+        "key": "Cardinal",
+        "count": 1,
+        "selected": false
+      },
+      {
+        "key": "CareFresh",
+        "count": 12,
+        "selected": false
+      },
+      {
+        "key": "Carnia",
+        "count": 6,
+        "selected": false
+      },
+      {
+        "key": "Carnilove",
+        "count": 13,
+        "selected": false
+      },
+      {
+        "key": "Carrier",
+        "count": 16,
+        "selected": false
+      },
+      {
+        "key": "Cat It",
+        "count": 22,
+        "selected": false
+      },
+      {
+        "key": "Cat-Gato",
+        "count": 1,
+        "selected": false
+      },
+      {
+        "key": "Catrine",
+        "count": 5,
+        "selected": false
+      },
+      {
+        "key": "Cats Best",
+        "count": 3,
+        "selected": false
+      },
+      {
+        "key": "Chipsi",
+        "count": 1,
+        "selected": false
+      },
+      {
+        "key": "Classic",
+        "count": 10,
+        "selected": false
+      },
+      {
+        "key": "Coachies",
+        "count": 2,
+        "selected": false
+      },
+      {
+        "key": "Coat King",
+        "count": 3,
+        "selected": false
+      },
+      {
+        "key": "Cosmic Catnip",
+        "count": 4,
+        "selected": false
+      },
+      {
+        "key": "Da Bird",
+        "count": 5,
+        "selected": false
+      },
+      {
+        "key": "Danish Design",
+        "count": 1,
+        "selected": false
+      },
+      {
+        "key": "Dechra",
+        "count": 21,
+        "selected": false
+      },
+      {
+        "key": "Deli Snacks",
+        "count": 7,
+        "selected": false
+      },
+      {
+        "key": "Denta Fun",
+        "count": 2,
+        "selected": false
+      },
+      {
+        "key": "Diafarm",
+        "count": 8,
+        "selected": false
+      },
+      {
+        "key": "Die Futtersosse",
+        "count": 4,
+        "selected": false
+      },
+      {
+        "key": "Dog It",
+        "count": 1,
+        "selected": false
+      },
+      {
+        "key": "DogActivity",
+        "count": 1,
+        "selected": false
+      },
+      {
+        "key": "Doggy",
+        "count": 9,
+        "selected": false
+      },
+      {
+        "key": "Doggyman",
+        "count": 2,
+        "selected": false
+      },
+      {
+        "key": "Dogman",
+        "count": 93,
+        "selected": false
+      },
+      {
+        "key": "Dogman Professional",
+        "count": 22,
+        "selected": false
+      },
+      {
+        "key": "Dreamies",
+        "count": 8,
+        "selected": false
+      },
+      {
+        "key": "Drinkwell",
+        "count": 7,
+        "selected": false
+      },
+      {
+        "key": "Drymate",
+        "count": 8,
+        "selected": false
+      },
+      {
+        "key": "Earth Rated",
+        "count": 2,
+        "selected": false
+      },
+      {
+        "key": "Earthborn Holistic",
+        "count": 18,
+        "selected": false
+      },
+      {
+        "key": "Easy Care",
+        "count": 4,
+        "selected": false
+      },
+      {
+        "key": "Easy Walk",
+        "count": 1,
+        "selected": false
+      },
+      {
+        "key": "Easylife",
+        "count": 4,
+        "selected": false
+      },
+      {
+        "key": "Ekholms PROB",
+        "count": 18,
+        "selected": false
+      },
+      {
+        "key": "Ektozon",
+        "count": 1,
+        "selected": false
+      },
+      {
+        "key": "Eldorado",
+        "count": 3,
+        "selected": false
+      },
+      {
+        "key": "Espree",
+        "count": 87,
+        "selected": false
+      },
+      {
+        "key": "Eukanuba",
+        "count": 82,
+        "selected": false
+      },
+      {
+        "key": "Ever Clean",
+        "count": 9,
+        "selected": false
+      },
+      {
+        "key": "Exo Terra",
+        "count": 16,
+        "selected": false
+      },
+      {
+        "key": "Exoterra",
+        "count": 23,
+        "selected": false
+      },
+      {
+        "key": "Exotic Life",
+        "count": 9,
+        "selected": false
+      },
+      {
+        "key": "Extreme Classic",
+        "count": 7,
+        "selected": false
+      },
+      {
+        "key": "Eye Care",
+        "count": 1,
+        "selected": false
+      },
+      {
+        "key": "Farm Food",
+        "count": 13,
+        "selected": false
+      },
+      {
+        "key": "Fat Cat",
+        "count": 4,
+        "selected": false
+      },
+      {
+        "key": "Feliway",
+        "count": 5,
+        "selected": false
+      },
+      {
+        "key": "Ferplast",
+        "count": 7,
+        "selected": false
+      },
+      {
+        "key": "Fish4Dogs",
+        "count": 2,
+        "selected": false
+      },
+      {
+        "key": "Fixodida",
+        "count": 2,
+        "selected": false
+      },
+      {
+        "key": "Flamingo",
+        "count": 11,
+        "selected": false
+      },
+      {
+        "key": "Flexi",
+        "count": 14,
+        "selected": false
+      },
+      {
+        "key": "Fluval",
+        "count": 4,
+        "selected": false
+      },
+      {
+        "key": "Fooey",
+        "count": 1,
+        "selected": false
+      },
+      {
+        "key": "Foolee",
+        "count": 2,
+        "selected": false
+      },
+      {
+        "key": "Four Friends",
+        "count": 90,
+        "selected": false
+      },
+      {
+        "key": "Four Paws",
+        "count": 1,
+        "selected": false
+      },
+      {
+        "key": "Frank´s Pro Gold",
+        "count": 10,
+        "selected": false
+      },
+      {
+        "key": "Fresh & Tidy",
+        "count": 2,
+        "selected": false
+      },
+      {
+        "key": "Frolic",
+        "count": 9,
+        "selected": false
+      },
+      {
+        "key": "Frolicat",
+        "count": 3,
+        "selected": false
+      },
+      {
+        "key": "Funkitty",
+        "count": 1,
+        "selected": false
+      },
+      {
+        "key": "Furminator",
+        "count": 27,
+        "selected": false
+      },
+      {
+        "key": "Fyra Ess",
+        "count": 4,
+        "selected": false
+      },
+      {
+        "key": "GD",
+        "count": 1,
+        "selected": false
+      },
+      {
+        "key": "Gappay",
+        "count": 2,
+        "selected": false
+      },
+      {
+        "key": "Get Off",
+        "count": 1,
+        "selected": false
+      },
+      {
+        "key": "Gibbon",
+        "count": 16,
+        "selected": false
+      },
+      {
+        "key": "Good Boy",
+        "count": 2,
+        "selected": false
+      },
+      {
+        "key": "Grizzly",
+        "count": 1,
+        "selected": false
+      },
+      {
+        "key": "HEALx",
+        "count": 2,
+        "selected": false
+      },
+      {
+        "key": "Halla Foder",
+        "count": 10,
+        "selected": false
+      },
+      {
+        "key": "Halti",
+        "count": 2,
+        "selected": false
+      },
+      {
+        "key": "Happy Cat",
+        "count": 13,
+        "selected": false
+      },
+      {
+        "key": "Happy Dog",
+        "count": 28,
+        "selected": false
+      },
+      {
+        "key": "Happy Pet",
+        "count": 3,
+        "selected": false
+      },
+      {
+        "key": "Happy-life",
+        "count": 4,
+        "selected": false
+      },
+      {
+        "key": "Harrison's Bird Foods",
+        "count": 15,
+        "selected": false
+      },
+      {
+        "key": "Healthy Paws",
+        "count": 13,
+        "selected": false
+      },
+      {
+        "key": "High-Energy",
+        "count": 4,
+        "selected": false
+      },
+      {
+        "key": "Hikari",
+        "count": 6,
+        "selected": false
+      },
+      {
+        "key": "Hill´s",
+        "count": 291,
+        "selected": false
+      },
+      {
+        "key": "Hobby",
+        "count": 2,
+        "selected": false
+      },
+      {
+        "key": "Hunter",
+        "count": 86,
+        "selected": false
+      },
+      {
+        "key": "Hurtta",
+        "count": 73,
+        "selected": false
+      },
+      {
+        "key": "Hurtta Lifeguard",
+        "count": 32,
+        "selected": false
+      },
+      {
+        "key": "Hurtta Outdoor",
+        "count": 20,
+        "selected": false
+      },
+      {
+        "key": "IPTS",
+        "count": 2,
+        "selected": false
+      },
+      {
+        "key": "Iams",
+        "count": 51,
+        "selected": false
+      },
+      {
+        "key": "Imac",
+        "count": 9,
+        "selected": false
+      },
+      {
+        "key": "Intersand",
+        "count": 4,
+        "selected": false
+      },
+      {
+        "key": "Ion Silver",
+        "count": 2,
+        "selected": false
+      },
+      {
+        "key": "JBL",
+        "count": 9,
+        "selected": false
+      },
+      {
+        "key": "JR Farm",
+        "count": 11,
+        "selected": false
+      },
+      {
+        "key": "JW",
+        "count": 11,
+        "selected": false
+      },
+      {
+        "key": "James Wellbeloved",
+        "count": 13,
+        "selected": false
+      },
+      {
+        "key": "Jokke",
+        "count": 29,
+        "selected": false
+      },
+      {
+        "key": "Jolly och Company",
+        "count": 6,
+        "selected": false
+      },
+      {
+        "key": "Jouet",
+        "count": 2,
+        "selected": false
+      },
+      {
+        "key": "Julius K9",
+        "count": 23,
+        "selected": false
+      },
+      {
+        "key": "Juwel",
+        "count": 4,
+        "selected": false
+      },
+      {
+        "key": "K9 Competition",
+        "count": 16,
+        "selected": false
+      },
+      {
+        "key": "Karlie",
+        "count": 42,
+        "selected": false
+      },
+      {
+        "key": "Kennel",
+        "count": 2,
+        "selected": false
+      },
+      {
+        "key": "Kennel Equip",
+        "count": 1,
+        "selected": false
+      },
+      {
+        "key": "Kingsmoor",
+        "count": 27,
+        "selected": false
+      },
+      {
+        "key": "Kitekat",
+        "count": 1,
+        "selected": false
+      },
+      {
+        "key": "Kompis",
+        "count": 1,
+        "selected": false
+      },
+      {
+        "key": "Kong",
+        "count": 68,
+        "selected": false
+      },
+      {
+        "key": "Kruuse",
+        "count": 10,
+        "selected": false
+      },
+      {
+        "key": "Kurgo",
+        "count": 4,
+        "selected": false
+      },
+      {
+        "key": "Lamina",
+        "count": 2,
+        "selected": false
+      },
+      {
+        "key": "Leuchtie",
+        "count": 4,
+        "selected": false
+      },
+      {
+        "key": "Lexi",
+        "count": 1,
+        "selected": false
+      },
+      {
+        "key": "Lifemate",
+        "count": 1,
+        "selected": false
+      },
+      {
+        "key": "Limex",
+        "count": 7,
+        "selected": false
+      },
+      {
+        "key": "Litter Kwitter",
+        "count": 1,
+        "selected": false
+      },
+      {
+        "key": "Litterlocker",
+        "count": 2,
+        "selected": false
+      },
+      {
+        "key": "Living World",
+        "count": 27,
+        "selected": false
+      },
+      {
+        "key": "Loc8tor",
+        "count": 1,
+        "selected": false
+      },
+      {
+        "key": "Lolo Pets",
+        "count": 7,
+        "selected": false
+      },
+      {
+        "key": "Lone Star",
+        "count": 7,
+        "selected": false
+      },
+      {
+        "key": "Lucky Reptile",
+        "count": 2,
+        "selected": false
+      },
+      {
+        "key": "Lupus",
+        "count": 11,
+        "selected": false
+      },
+      {
+        "key": "M&C",
+        "count": 3,
+        "selected": false
+      },
+      {
+        "key": "Magnusson",
+        "count": 14,
+        "selected": false
+      },
+      {
+        "key": "Majstor",
+        "count": 17,
+        "selected": false
+      },
+      {
+        "key": "Marina",
+        "count": 8,
+        "selected": false
+      },
+      {
+        "key": "Masterpet",
+        "count": 21,
+        "selected": false
+      },
+      {
+        "key": "Maxipin",
+        "count": 1,
+        "selected": false
+      },
+      {
+        "key": "Mera Cat",
+        "count": 2,
+        "selected": false
+      },
+      {
+        "key": "Mera Dog High-Premium",
+        "count": 7,
+        "selected": false
+      },
+      {
+        "key": "Mera Dog Premium",
+        "count": 7,
+        "selected": false
+      },
+      {
+        "key": "Mera Dog Pure",
+        "count": 7,
+        "selected": false
+      },
+      {
+        "key": "MiM",
+        "count": 2,
+        "selected": false
+      },
+      {
+        "key": "Mikki",
+        "count": 3,
+        "selected": false
+      },
+      {
+        "key": "Millers",
+        "count": 3,
+        "selected": false
+      },
+      {
+        "key": "Mjau",
+        "count": 19,
+        "selected": false
+      },
+      {
+        "key": "ModKat",
+        "count": 1,
+        "selected": false
+      },
+      {
+        "key": "Monster",
+        "count": 4,
+        "selected": false
+      },
+      {
+        "key": "Munster",
+        "count": 3,
+        "selected": false
+      },
+      {
+        "key": "Mästerkatten",
+        "count": 1,
+        "selected": false
+      },
+      {
+        "key": "Mästers",
+        "count": 6,
+        "selected": false
+      },
+      {
+        "key": "Natural Living",
+        "count": 23,
+        "selected": false
+      },
+      {
+        "key": "Natural Snack",
+        "count": 3,
+        "selected": false
+      },
+      {
+        "key": "Nature's Peak",
+        "count": 6,
+        "selected": false
+      },
+      {
+        "key": "Naturea",
+        "count": 9,
+        "selected": false
+      },
+      {
+        "key": "Naturediet",
+        "count": 8,
+        "selected": false
+      },
+      {
+        "key": "Naturligt Hundtugg",
+        "count": 29,
+        "selected": false
+      },
+      {
+        "key": "Nekton",
+        "count": 1,
+        "selected": false
+      },
+      {
+        "key": "Nina Ottosson",
+        "count": 35,
+        "selected": false
+      },
+      {
+        "key": "Nite Ize",
+        "count": 5,
+        "selected": false
+      },
+      {
+        "key": "Nobby",
+        "count": 85,
+        "selected": false
+      },
+      {
+        "key": "Northmate",
+        "count": 1,
+        "selected": false
+      },
+      {
+        "key": "Nova",
+        "count": 1,
+        "selected": false
+      },
+      {
+        "key": "NovaDog",
+        "count": 4,
+        "selected": false
+      },
+      {
+        "key": "Numax",
+        "count": 2,
+        "selected": false
+      },
+      {
+        "key": "Nutra Gold",
+        "count": 6,
+        "selected": false
+      },
+      {
+        "key": "Nutra Nuggets",
+        "count": 12,
+        "selected": false
+      },
+      {
+        "key": "Nutram",
+        "count": 12,
+        "selected": false
+      },
+      {
+        "key": "NutriOne",
+        "count": 8,
+        "selected": false
+      },
+      {
+        "key": "O'Tom",
+        "count": 1,
+        "selected": false
+      },
+      {
+        "key": "OZami",
+        "count": 6,
+        "selected": false
+      },
+      {
+        "key": "Olewo",
+        "count": 1,
+        "selected": false
+      },
+      {
+        "key": "Orbiloc",
+        "count": 10,
+        "selected": false
+      },
+      {
+        "key": "Orijen",
+        "count": 38,
+        "selected": false
+      },
+      {
+        "key": "Oster",
+        "count": 10,
+        "selected": false
+      },
+      {
+        "key": "Oxbow",
+        "count": 36,
+        "selected": false
+      },
+      {
+        "key": "Ozami",
+        "count": 6,
+        "selected": false
+      },
+      {
+        "key": "PCL",
+        "count": 10,
+        "selected": false
+      },
+      {
+        "key": "Party Pets",
+        "count": 3,
+        "selected": false
+      },
+      {
+        "key": "Pawz",
+        "count": 1,
+        "selected": false
+      },
+      {
+        "key": "Pedigree",
+        "count": 16,
+        "selected": false
+      },
+      {
+        "key": "Peewee",
+        "count": 13,
+        "selected": false
+      },
+      {
+        "key": "Penn Plax",
+        "count": 41,
+        "selected": false
+      },
+      {
+        "key": "Pennplax",
+        "count": 4,
+        "selected": false
+      },
+      {
+        "key": "Pet Head",
+        "count": 20,
+        "selected": false
+      },
+      {
+        "key": "Pet Inn",
+        "count": 6,
+        "selected": false
+      },
+      {
+        "key": "Pet Towel",
+        "count": 1,
+        "selected": false
+      },
+      {
+        "key": "Pet-Food",
+        "count": 13,
+        "selected": false
+      },
+      {
+        "key": "PetAg",
+        "count": 8,
+        "selected": false
+      },
+      {
+        "key": "PetDiner",
+        "count": 3,
+        "selected": false
+      },
+      {
+        "key": "PetalCleanse",
+        "count": 2,
+        "selected": false
+      },
+      {
+        "key": "Petcare",
+        "count": 9,
+        "selected": false
+      },
+      {
+        "key": "Petfood",
+        "count": 9,
+        "selected": false
+      },
+      {
+        "key": "Petmate",
+        "count": 4,
+        "selected": false
+      },
+      {
+        "key": "Petosan",
+        "count": 9,
+        "selected": false
+      },
+      {
+        "key": "Petproject",
+        "count": 2,
+        "selected": false
+      },
+      {
+        "key": "Petstages",
+        "count": 24,
+        "selected": false
+      },
+      {
+        "key": "Pettorway",
+        "count": 2,
+        "selected": false
+      },
+      {
+        "key": "Petwise",
+        "count": 3,
+        "selected": false
+      },
+      {
+        "key": "Pioneer Pet",
+        "count": 1,
+        "selected": false
+      },
+      {
+        "key": "Piss Off",
+        "count": 4,
+        "selected": false
+      },
+      {
+        "key": "Planet Pet",
+        "count": 14,
+        "selected": false
+      },
+      {
+        "key": "Play 'N Treat",
+        "count": 1,
+        "selected": false
+      },
+      {
+        "key": "Play-N-Squeak",
+        "count": 6,
+        "selected": false
+      },
+      {
+        "key": "Pommy's",
+        "count": 3,
+        "selected": false
+      },
+      {
+        "key": "Porta 21",
+        "count": 17,
+        "selected": false
+      },
+      {
+        "key": "Precept",
+        "count": 9,
+        "selected": false
+      },
+      {
+        "key": "Premier",
+        "count": 3,
+        "selected": false
+      },
+      {
+        "key": "Prestige Premium",
+        "count": 1,
+        "selected": false
+      },
+      {
+        "key": "Prima Hundtugg",
+        "count": 9,
+        "selected": false
+      },
+      {
+        "key": "Prime Hide",
+        "count": 7,
+        "selected": false
+      },
+      {
+        "key": "Pritax",
+        "count": 46,
+        "selected": false
+      },
+      {
+        "key": "Pro Plan",
+        "count": 67,
+        "selected": false
+      },
+      {
+        "key": "Pro Plan Veterinary Diets",
+        "count": 35,
+        "selected": false
+      },
+      {
+        "key": "Pronature Holistic",
+        "count": 17,
+        "selected": false
+      },
+      {
+        "key": "Provit",
+        "count": 1,
+        "selected": false
+      },
+      {
+        "key": "Puppia",
+        "count": 2,
+        "selected": false
+      },
+      {
+        "key": "Purina",
+        "count": 3,
+        "selected": false
+      },
+      {
+        "key": "Purina Dog Chow",
+        "count": 8,
+        "selected": false
+      },
+      {
+        "key": "Purina Gourmet",
+        "count": 16,
+        "selected": false
+      },
+      {
+        "key": "Pussi",
+        "count": 5,
+        "selected": false
+      },
+      {
+        "key": "ROK",
+        "count": 2,
+        "selected": false
+      },
+      {
+        "key": "Racinel",
+        "count": 6,
+        "selected": false
+      },
+      {
+        "key": "Rauh!",
+        "count": 11,
+        "selected": false
+      },
+      {
+        "key": "Renske",
+        "count": 3,
+        "selected": false
+      },
+      {
+        "key": "Rep-Cal",
+        "count": 1,
+        "selected": false
+      },
+      {
+        "key": "Request",
+        "count": 10,
+        "selected": false
+      },
+      {
+        "key": "Robur",
+        "count": 14,
+        "selected": false
+      },
+      {
+        "key": "Rogz",
+        "count": 7,
+        "selected": false
+      },
+      {
+        "key": "Rosewood",
+        "count": 67,
+        "selected": false
+      },
+      {
+        "key": "Royal Canin",
+        "count": 279,
+        "selected": false
+      },
+      {
+        "key": "Royal Canin Veterinary Diets",
+        "count": 164,
+        "selected": false
+      },
+      {
+        "key": "Salmopet",
+        "count": 1,
+        "selected": false
+      },
+      {
+        "key": "Sanal",
+        "count": 7,
+        "selected": false
+      },
+      {
+        "key": "Savic",
+        "count": 11,
+        "selected": false
+      },
+      {
+        "key": "Sera",
+        "count": 18,
+        "selected": false
+      },
+      {
+        "key": "Seraquin",
+        "count": 2,
+        "selected": false
+      },
+      {
+        "key": "Sheba",
+        "count": 15,
+        "selected": false
+      },
+      {
+        "key": "Sherpa Bag",
+        "count": 3,
+        "selected": false
+      },
+      {
+        "key": "Skinneeez",
+        "count": 1,
+        "selected": false
+      },
+      {
+        "key": "Skudo",
+        "count": 1,
+        "selected": false
+      },
+      {
+        "key": "SmartPets",
+        "count": 6,
+        "selected": false
+      },
+      {
+        "key": "Specific",
+        "count": 91,
+        "selected": false
+      },
+      {
+        "key": "Spot",
+        "count": 17,
+        "selected": false
+      },
+      {
+        "key": "Standardt",
+        "count": 27,
+        "selected": false
+      },
+      {
+        "key": "Starmark",
+        "count": 8,
+        "selected": false
+      },
+      {
+        "key": "Starsnack",
+        "count": 4,
+        "selected": false
+      },
+      {
+        "key": "Staywell",
+        "count": 10,
+        "selected": false
+      },
+      {
+        "key": "Stomax",
+        "count": 1,
+        "selected": false
+      },
+      {
+        "key": "Strandbodarnas Farm",
+        "count": 1,
+        "selected": false
+      },
+      {
+        "key": "Super Clump",
+        "count": 1,
+        "selected": false
+      },
+      {
+        "key": "Supreme",
+        "count": 9,
+        "selected": false
+      },
+      {
+        "key": "Supreme Petfoods",
+        "count": 7,
+        "selected": false
+      },
+      {
+        "key": "SureFeed",
+        "count": 10,
+        "selected": false
+      },
+      {
+        "key": "SureFlap",
+        "count": 10,
+        "selected": false
+      },
+      {
+        "key": "Svenska DjurApoteket",
+        "count": 20,
+        "selected": false
+      },
+      {
+        "key": "Tassarnas",
+        "count": 9,
+        "selected": false
+      },
+      {
+        "key": "Taste of the Wild",
+        "count": 20,
+        "selected": false
+      },
+      {
+        "key": "Tello",
+        "count": 7,
+        "selected": false
+      },
+      {
+        "key": "Tetra",
+        "count": 39,
+        "selected": false
+      },
+      {
+        "key": "Tetratec",
+        "count": 3,
+        "selected": false
+      },
+      {
+        "key": "The Company of Animals",
+        "count": 12,
+        "selected": false
+      },
+      {
+        "key": "Thunderworks",
+        "count": 3,
+        "selected": false
+      },
+      {
+        "key": "TickLess",
+        "count": 2,
+        "selected": false
+      },
+      {
+        "key": "Tidy Cats",
+        "count": 3,
+        "selected": false
+      },
+      {
+        "key": "Toalätt",
+        "count": 1,
+        "selected": false
+      },
+      {
+        "key": "Treateaters",
+        "count": 2,
+        "selected": false
+      },
+      {
+        "key": "Trikem",
+        "count": 17,
+        "selected": false
+      },
+      {
+        "key": "Trixie",
+        "count": 408,
+        "selected": false
+      },
+      {
+        "key": "TropiClean",
+        "count": 2,
+        "selected": false
+      },
+      {
+        "key": "Tropical",
+        "count": 2,
+        "selected": false
+      },
+      {
+        "key": "Tubidog",
+        "count": 2,
+        "selected": false
+      },
+      {
+        "key": "Tyrol",
+        "count": 1,
+        "selected": false
+      },
+      {
+        "key": "Urine Off",
+        "count": 9,
+        "selected": false
+      },
+      {
+        "key": "VEE Enterprises",
+        "count": 2,
+        "selected": false
+      },
+      {
+        "key": "Valentino",
+        "count": 1,
+        "selected": false
+      },
+      {
+        "key": "Van Ness",
+        "count": 4,
+        "selected": false
+      },
+      {
+        "key": "Versele-Laga",
+        "count": 71,
+        "selected": false
+      },
+      {
+        "key": "Vetbed",
+        "count": 6,
+        "selected": false
+      },
+      {
+        "key": "Vetiq",
+        "count": 1,
+        "selected": false
+      },
+      {
+        "key": "Vetoquinol",
+        "count": 11,
+        "selected": false
+      },
+      {
+        "key": "Viacutan",
+        "count": 2,
+        "selected": false
+      },
+      {
+        "key": "Vibromouse",
+        "count": 1,
+        "selected": false
+      },
+      {
+        "key": "Virbac",
+        "count": 15,
+        "selected": false
+      },
+      {
+        "key": "VitaBe",
+        "count": 2,
+        "selected": false
+      },
+      {
+        "key": "Vitakraft",
+        "count": 103,
+        "selected": false
+      },
+      {
+        "key": "Vitapol",
+        "count": 1,
+        "selected": false
+      },
+      {
+        "key": "Vom",
+        "count": 17,
+        "selected": false
+      },
+      {
+        "key": "Wafcol",
+        "count": 1,
+        "selected": false
+      },
+      {
+        "key": "Waterlife",
+        "count": 4,
+        "selected": false
+      },
+      {
+        "key": "Whimzees",
+        "count": 10,
+        "selected": false
+      },
+      {
+        "key": "Whiskas",
+        "count": 10,
+        "selected": false
+      },
+      {
+        "key": "Wonderboo",
+        "count": 19,
+        "selected": false
+      },
+      {
+        "key": "World Stickers",
+        "count": 2,
+        "selected": false
+      },
+      {
+        "key": "World´s Best Cat Litter",
+        "count": 3,
+        "selected": false
+      },
+      {
+        "key": "Yarrah",
+        "count": 30,
+        "selected": false
+      },
+      {
+        "key": "Yeowww!",
+        "count": 11,
+        "selected": false
+      },
+      {
+        "key": "Yummeez",
+        "count": 3,
+        "selected": false
+      },
+      {
+        "key": "Ziwi Peak",
+        "count": 20,
+        "selected": false
+      },
+      {
+        "key": "Zolux",
+        "count": 5,
+        "selected": false
+      },
+      {
+        "key": "Zoo Med",
+        "count": 20,
+        "selected": false
+      },
+      {
+        "key": "ZooLac",
+        "count": 1,
+        "selected": false
+      },
+      {
+        "key": "ZooZoo",
+        "count": 11,
+        "selected": false
+      },
+      {
+        "key": "ZooZoo Premium",
+        "count": 1,
+        "selected": false
+      },
+      {
+        "key": "Zoostuff",
+        "count": 25,
+        "selected": false
+      },
+      {
+        "key": "Ägna",
+        "count": 3,
+        "selected": false
+      }
+    ],
+    "type": "terms"
+  },
+  {
+    "name": "price",
+    "values": [
+      {
+        "key": "_50",
+        "count": 930,
+        "to": 50,
+        "selected": false
+      },
+      {
+        "key": "50_150",
+        "count": 1503,
+        "from": 50,
+        "to": 150,
+        "selected": false
+      },
+      {
+        "key": "150_350",
+        "count": 1652,
+        "from": 150,
+        "to": 350,
+        "selected": false
+      },
+      {
+        "key": "350_",
+        "count": 1435,
+        "from": 350,
+        "selected": false
+      }
+    ],
+    "type": "range",
+    "min": 8,
+    "max": 2995
+  },
+  {
+    "name": "custom_fields.hundkategori",
+    "values": [
+      {
+        "key": "Aktiv",
+        "count": 83,
+        "selected": false
+      },
+      {
+        "key": "Light & Steriliserad",
+        "count": 75,
+        "selected": false
+      },
+      {
+        "key": "Mature & Senior",
+        "count": 73,
+        "selected": false
+      },
+      {
+        "key": "Valp & Junior",
+        "count": 264,
+        "selected": false
+      },
+      {
+        "key": "Vuxen",
+        "count": 558,
+        "selected": false
+      }
+    ],
+    "type": "terms"
+  },
+  {
+    "name": "custom_fields.livsstadium",
+    "values": [
+      {
+        "key": "Kattunge",
+        "count": 108,
+        "selected": false
+      },
+      {
+        "key": "Light & Steriliserad",
+        "count": 86,
+        "selected": false
+      },
+      {
+        "key": "Mature & Senior",
+        "count": 48,
+        "selected": false
+      },
+      {
+        "key": "Vuxen",
+        "count": 421,
+        "selected": false
+      }
+    ],
+    "type": "terms"
+  },
+  {
+    "name": "custom_fields.rasstorlekarflerval",
+    "values": [
+      {
+        "key": "Large",
+        "count": 103,
+        "selected": false
+      },
+      {
+        "key": "Medium",
+        "count": 77,
+        "selected": false
+      },
+      {
+        "key": "Small",
+        "count": 531,
+        "selected": false
+      },
+      {
+        "key": "Specifikt",
+        "count": 52,
+        "selected": false
+      }
+    ],
+    "type": "terms"
+  },
+  {
+    "name": "custom_fields.koppelbredd1",
+    "values": [
+      {
+        "key": "0.6",
+        "count": 6,
+        "selected": false
+      },
+      {
+        "key": "0.8",
+        "count": 4,
+        "selected": false
+      },
+      {
+        "key": "1",
+        "count": 19,
+        "selected": false
+      },
+      {
+        "key": "1,1",
+        "count": 1,
+        "selected": false
+      },
+      {
+        "key": "1.1",
+        "count": 1,
+        "selected": false
+      },
+      {
+        "key": "1.3",
+        "count": 1,
+        "selected": false
+      },
+      {
+        "key": "1.9",
+        "count": 2,
+        "selected": false
+      },
+      {
+        "key": "10",
+        "count": 1,
+        "selected": false
+      },
+      {
+        "key": "15",
+        "count": 1,
+        "selected": false
+      },
+      {
+        "key": "2",
+        "count": 7,
+        "selected": false
+      },
+      {
+        "key": "2,2",
+        "count": 3,
+        "selected": false
+      },
+      {
+        "key": "2,8",
+        "count": 3,
+        "selected": false
+      },
+      {
+        "key": "3,5",
+        "count": 1,
+        "selected": false
+      },
+      {
+        "key": "3.5",
+        "count": 1,
+        "selected": false
+      }
+    ],
+    "type": "terms"
+  },
+  {
+    "name": "custom_fields.koppelbrostomfang",
+    "values": [
+      {
+        "key": "100 cm",
+        "count": 10,
+        "selected": false
+      },
+      {
+        "key": "35 cm",
+        "count": 3,
+        "selected": false
+      },
+      {
+        "key": "39 cm",
+        "count": 1,
+        "selected": false
+      },
+      {
+        "key": "40 cm",
+        "count": 3,
+        "selected": false
+      },
+      {
+        "key": "48 cm",
+        "count": 3,
+        "selected": false
+      },
+      {
+        "key": "58 cm",
+        "count": 3,
+        "selected": false
+      },
+      {
+        "key": "68 cm",
+        "count": 3,
+        "selected": false
+      },
+      {
+        "key": "78 cm",
+        "count": 3,
+        "selected": false
+      },
+      {
+        "key": "88 cm",
+        "count": 3,
+        "selected": false
+      }
+    ],
+    "type": "terms"
+  },
+  {
+    "name": "custom_fields.koppelhalsmatt",
+    "values": [
+      {
+        "key": "18 cm",
+        "count": 3,
+        "selected": false
+      },
+      {
+        "key": "20 cm",
+        "count": 7,
+        "selected": false
+      },
+      {
+        "key": "22 cm",
+        "count": 6,
+        "selected": false
+      },
+      {
+        "key": "23 cm",
+        "count": 2,
+        "selected": false
+      },
+      {
+        "key": "27 cm",
+        "count": 3,
+        "selected": false
+      },
+      {
+        "key": "28 cm",
+        "count": 1,
+        "selected": false
+      },
+      {
+        "key": "35 cm",
+        "count": 1,
+        "selected": false
+      },
+      {
+        "key": "41 cm",
+        "count": 1,
+        "selected": false
+      }
+    ],
+    "type": "terms"
+  }
+]

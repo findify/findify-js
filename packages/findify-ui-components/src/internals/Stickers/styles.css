@@ -1,0 +1,12 @@
+.root{
+  position: absolute;
+  clear: fix;
+  width: 100%;
+}
+
+.sticker{
+  text-align: center;
+  position: relative;
+  padding: 5px;
+  line-height: 1;
+}

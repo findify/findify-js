@@ -1,0 +1,82 @@
+{
+  "meta": {
+    "q": "k",
+    "suggestion_limit": 5,
+    "item_limit": 3,
+    "rid": "a-b89d0a7b-ea0c-4cb1-b998-d53b7f148092"
+  },
+  "suggestions": [
+    {
+      "value": "koppel"
+    },
+    {
+      "value": "kattsand"
+    },
+    {
+      "value": "katt"
+    },
+    {
+      "value": "kong"
+    },
+    {
+      "value": "kg"
+    }
+  ],
+  "items": [
+    {
+      "product_url": "https://animail.se/skyddskrage.html",
+      "price": [
+        29,
+        29,
+        39,
+        49,
+        59,
+        79,
+        99,
+        119
+      ],
+      "id": "15532",
+      "title": "Skyddskrage",
+      "thumbnail_url": "http://d2btg9txypwkc4.cloudfront.net/media/catalog/product/1/9/19480-19486.jpg",
+      "compare_at": -1,
+      "stickers": {
+        "in-stock": false,
+        "out-of-stock": false,
+        "discount": false,
+        "free-shipping": false
+      }
+    },
+    {
+      "product_url": "https://animail.se/kattleksak-fiskben.html",
+      "price": [
+        25
+      ],
+      "id": "14402",
+      "title": "Kattleksak Fiskben",
+      "thumbnail_url": "http://d2btg9txypwkc4.cloudfront.net/media/catalog/product/7/3/7312133311728.jpg",
+      "compare_at": -1,
+      "stickers": {
+        "in-stock": false,
+        "out-of-stock": false,
+        "discount": false,
+        "free-shipping": false
+      }
+    },
+    {
+      "product_url": "https://animail.se/keramikskal-katt-enkel-12cm.html",
+      "price": [
+        79
+      ],
+      "id": "11759",
+      "title": "Keramikskål Katt Enkel 12cm",
+      "thumbnail_url": "http://d2btg9txypwkc4.cloudfront.net/media/catalog/product/7/8/785.0660_1.jpeg",
+      "compare_at": -1,
+      "stickers": {
+        "in-stock": false,
+        "out-of-stock": false,
+        "discount": false,
+        "free-shipping": false
+      }
+    }
+  ]
+}
