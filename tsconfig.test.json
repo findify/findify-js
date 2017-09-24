@@ -2,8 +2,7 @@
   "extends": "./tsconfig.base.json",
   "compilerOptions": {
     "module": "commonjs",
-    "target": "es5",
-    "allowJs": false
+    "target": "es5"
   },
   "include": [
     "**/*.test.*",
