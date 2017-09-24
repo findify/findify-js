@@ -45,7 +45,7 @@
   "main": "lib/index.js",
   "scripts": {
     "build": "npm run build:commonjs && npm run build:umd && npm run build:umd:min",
-    "build:commonjs": "tsc --project . && cpx './src/env/*.js' ./lib/env",
+    "build:commonjs": "cpx './src/env/*.js' ./lib/env",
     "build:umd": "cross-env NODE_ENV=development webpack src/index.ts dist/findify-sdk.js",
     "build:umd:min": "cross-env NODE_ENV=production webpack src/index.ts dist/findify-sdk.min.js",
     "check": "npm run test && npm run build && npm run lint && npm run clean",
