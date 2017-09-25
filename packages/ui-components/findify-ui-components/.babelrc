@@ -1,0 +1,12 @@
+{
+  "presets": [
+    "es2015",
+    "stage-0",
+    "react"
+  ],
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "ignore": ["node_modules"]
+}

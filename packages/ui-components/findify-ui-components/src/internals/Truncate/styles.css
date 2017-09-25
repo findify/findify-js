@@ -1,0 +1,10 @@
+.root{
+  overflow: hidden;
+  display: inline-block;
+  line-height: 1.3;
+  display: -webkit-box;
+  position: relative;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  text-overflow: -o-ellipsis-lastline;
+}
