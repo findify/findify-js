@@ -1,0 +1,46 @@
+.breadcrumbs{
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+.sort{
+  margin-left: auto;
+  margin-bottom: 20px;
+}
+
+.mobileSort{
+  width: 100%;
+}
+
+.mobileFacetsButton{
+  width: 100%;
+}
+
+.paddingLeft{
+  padding-left: 10px;
+}
+.paddingRight{
+  padding-right: 10px;
+}
+
+.filters{
+  padding-right: 10px;
+}
+
+.products{}
+
+.productsWithPadding{
+  padding-left: 15px;
+}
+
+.facets{
+  padding-right: 30px;
+  border-right: 1px solid #eee;
+}
+
+.pagination{
+  padding-top: 15px;
+  margin-top: 15px;
+  border-top: 1px solid #eee;
+}

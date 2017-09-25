@@ -1,0 +1,61 @@
+{
+  "name": "findify-helpers",
+  "version": "0.1.41",
+  "author": "1ven",
+  "dependencies": {
+    "findify-sdk": "^1.3.9",
+    "lodash": "^4.17.4",
+    "redux": "^3.7.2",
+    "redux-saga": "^0.15.4"
+  },
+  "devDependencies": {
+    "@types/deep-freeze": "^0.1.1",
+    "@types/expect": "^1.20.1",
+    "@types/lodash": "^4.14.68",
+    "@types/mocha": "^2.2.41",
+    "@types/redux-logger": "^3.0.0",
+    "@types/redux-mock-store": "^0.0.9",
+    "@types/redux-saga": "^0.10.5",
+    "@types/rewire": "^2.5.28",
+    "babel-cli": "^6.24.1",
+    "babel-core": "^6.25.0",
+    "babel-loader": "^7.1.1",
+    "babel-plugin-transform-regenerator": "^6.24.1",
+    "babel-preset-es2015": "^6.24.1",
+    "cross-env": "^5.0.1",
+    "deep-freeze": "^0.0.1",
+    "expect": "^1.20.2",
+    "faux-jax": "^5.0.6",
+    "mocha": "^3.4.2",
+    "redux-mock-store": "^1.2.3",
+    "rewire": "^2.5.2",
+    "rimraf": "^2.6.1",
+    "ts-loader": "^2.2.2",
+    "ts-node": "^3.2.0",
+    "tslint": "^5.5.0",
+    "typescript": "^2.4.1",
+    "webpack": "3.2.0",
+    "webpack-node-externals": "^1.6.0"
+  },
+  "files": [
+    "dist",
+    "lib",
+    "index.d.ts"
+  ],
+  "license": "ISC",
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "npm run build:commonjs && npm run build:umd && npm run build:umd:min",
+    "build:commonjs": "tsc --project . && babel ./__lib-es6__ --out-dir ./lib && rimraf ./__lib-es6__",
+    "build:umd": "cross-env NODE_ENV=development webpack src/index.ts dist/findify-helpers.js",
+    "build:umd:min": "cross-env NODE_ENV=production webpack src/index.ts dist/findify-helpers.min.js",
+    "check": "npm run test && npm run build && npm run clean",
+    "clean": "rimraf ./lib ./dist",
+    "lint": "tslint --project .",
+    "prepublish": "npm run build",
+    "postpublish": "npm run clean",
+    "postversion": "git push && git push --tags && git checkout develop && git merge master && git push && npm publish",
+    "preversion": "npm run check && git checkout master && git merge develop",
+    "test": "mocha --compilers ts:ts-node/register --recursive -R min  ./__tests__"
+  }
+}
