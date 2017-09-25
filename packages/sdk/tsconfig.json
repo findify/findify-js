@@ -1,17 +1,13 @@
 {
-  "extends": "../../tsconfig.lib.json",
   "compilerOptions": {
-    "declarationDir": "./types",
-    "outDir": "./lib",
-    "baseUrl": "./src",
-    "rootDirs": ["./src"]
+    "allowJs": true,
+    "outDir": "lib",
+    "noImplicitAny": false,
+    "module": "commonjs",
+    "target": "es5"
   },
-  "include": [
-    "src/**/*"
-  ],
-  "exclude": [
-    "node_modules",
-    "**/*.test.*",
-    "**/*.mock.*"
+  "files": [
+    "./modules.d.ts",
+    "./src/index.ts"
   ]
 }
