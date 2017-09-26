@@ -1,5 +1,6 @@
 {
   "name": "@findify/analytics",
+  "description": "Findify analytics",
   "version": "3.0.0",
   "main": "lib/index.js",
   "tags": [
