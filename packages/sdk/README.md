@@ -1,11 +1,11 @@
 # Getting started
 ## Installation
 ```
-npm install findify-sdk --save
+npm install @findify/sdk --save
 ```
 or
 ```
-yarn add findify-sdk
+yarn add @findify/sdk
 ```
 Alternatively, you can use UMD builds, by requiring them to the page using `<script>` tag:
 ```
@@ -18,7 +18,7 @@ https://findify-assets-2bveeb6u8ag.netdna-ssl.com/js-sdk/findify-sdk.1.3.6.js
 
 ## Usage example
 ```javascript
-var FindifySDK = require('findify-sdk');
+var FindifySDK = require('@findify/sdk');
 
 // First, you need to initialize library:
 var client = FindifySDK.init({

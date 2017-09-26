@@ -1,6 +1,6 @@
 import * as Promise from 'bluebird';
 
-declare module 'findify-sdk' {
+declare module '@findify/sdk' {
   type Client = {
     autocomplete(request: AutocompleteRequest): Promise<AutocompleteResponse>;
     search(request: SearchRequest): Promise<SearchResponse>;
