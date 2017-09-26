@@ -24,7 +24,7 @@ var FindifySDK = require('@findify/sdk');
 var client = FindifySDK.init({
   key: 'your_api_key',
   // If you are using this library on a frontend, it will be convenient for you to provide user once on initialization.
-  // You can get user object, using `findify-analytics` library, or by manually getting data from cookies:
+  // You can get user object, using `@findify/analytics` library, or by manually getting data from cookies:
   user: {
     uid: 'user_id',
     sid: 'session_id'
