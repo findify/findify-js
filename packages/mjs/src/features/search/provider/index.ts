@@ -1,4 +1,4 @@
-import { createSearch, createCollection } from 'findify-helpers';
+import { createSearch, createCollection } from '@findify/helpers';
 import { defer, isArray, isEqual, mapValues, isEmpty, filter } from 'lodash';
 import { RESPONSE_SUCCESS, RESPONSE_FAILURE, REQUEST } from 'helpers/constants';
 import {

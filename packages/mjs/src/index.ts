@@ -16,10 +16,10 @@ const prepareConfig = config => {
     frameDisabled,
     css: [
       ...((frameDisabled && [
-        require('!!file-loader?name=styles.css!findify-ui-components/dist/wrapped.css'),
+        require('!!file-loader?name=styles.css!@findify/ui-components/dist/wrapped.css'),
       ]) || [
           'https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css',
-          require('!!raw-loader!findify-ui-components/dist/styles.css'),
+          require('!!raw-loader!@findify/ui-components/dist/styles.css'),
         ]),
       ...config.css,
     ],
@@ -51,7 +51,7 @@ export const init = (cfg, analytics) => {
 
 if (__DEVELOPMENT__) {
   const config = require('../dev/config').default;
-  const analytics = require('findify-analytics/lib/index').default;
+  const analytics = require('@findify/analytics/lib/index').default;
   const client = analytics({
     key: config.api.key,
     platform: { bigcommerce: true },

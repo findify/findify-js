@@ -1,4 +1,4 @@
-import * as helpers from 'findify-helpers';
+import * as helpers from '@findify/helpers';
 import {
   compose,
   setDisplayName,
@@ -64,7 +64,7 @@ const connectHelpers = (Provider: IProvider) => BaseComponent => {
 };
 
 /**
- * Connect findify-helpers to feature. Provider should have [subscribe] function,
+ * Connect @findify/helpers to feature. Provider should have [subscribe] function,
  * which will be called on component mounting.
  * All other function will be available via prop.provider.*
  * @param Provider 

@@ -1,4 +1,4 @@
-import { createAutocomplete } from 'findify-helpers';
+import { createAutocomplete } from '@findify/helpers';
 import { throttle } from 'lodash';
 import { RESPONSE_SUCCESS } from '../../helpers/constants';
 

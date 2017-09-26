@@ -3,7 +3,7 @@ import { createEagerFactory } from 'recompose';
 
 export default item => {
   let component;
-  const promise = import('findify-ui-components' /* webpackChunkName: "components" */);
+  const promise = import('@findify/ui-components' /* webpackChunkName: "components" */);
 
   return class LoadComponent extends Component<any, any> {
     state = {

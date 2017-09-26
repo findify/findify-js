@@ -1,4 +1,4 @@
-import { createRecommendation } from 'findify-helpers';
+import { createRecommendation } from '@findify/helpers';
 import { defer } from 'lodash';
 import { RESPONSE_SUCCESS } from '../../helpers/constants';
 

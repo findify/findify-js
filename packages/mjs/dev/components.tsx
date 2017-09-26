@@ -3,7 +3,7 @@ import { render } from 'react-dom';
 import { compose, withState } from 'recompose';
 
 import { Autocomplete, Search, Recommendations } from '../src/components';
-import '!!style-loader!css-loader!findify-ui-components/dist/styles.css';
+import '!!style-loader!css-loader!@findify/ui-components/dist/styles.css';
 
 const RecommendationsConfig = {
   api: {
