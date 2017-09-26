@@ -1,4 +1,4 @@
-import * as FindifySDK from 'findify-sdk';
+import * as FindifySDK from '@findify/sdk';
 
 type InputEvent = {
   name: 'input';

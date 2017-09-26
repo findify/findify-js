@@ -1,4 +1,4 @@
-import * as FindifySDK from 'findify-sdk';
+import * as FindifySDK from '@findify/sdk';
 import has = require('lodash/has');
 
 import { Event } from './types';

@@ -1,4 +1,4 @@
-import * as FindifySDK from 'findify-sdk';
+import * as FindifySDK from '@findify/sdk';
 import * as Redux from 'redux';
 
 type Store<EE, SE, SN, SR> = {

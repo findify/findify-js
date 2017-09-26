@@ -1,4 +1,4 @@
-import * as FindifySDK from 'findify-sdk';
+import * as FindifySDK from '@findify/sdk';
 import { isExists } from '../utils/isExists';
 import { configureReduxStore } from '../helpers/configureReduxStore';
 

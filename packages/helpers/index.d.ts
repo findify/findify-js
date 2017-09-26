@@ -1,6 +1,6 @@
-import * as FindifySDK from 'findify-sdk';
+import * as FindifySDK from '@findify/sdk';
 
-declare module 'findify-helpers' {
+declare module '@findify/helpers' {
   type Config = FindifySDK.Config;
   type Unsubscribe = () => void;
   type User = FindifySDK.User;

@@ -1,4 +1,4 @@
-import * as FindifySDK from 'findify-sdk';
+import * as FindifySDK from '@findify/sdk';
 import assign = require('lodash/assign');
 import { combineReducers as combine } from 'redux';
 
