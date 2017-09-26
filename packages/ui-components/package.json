@@ -98,7 +98,7 @@
   "peerDependencies": {
     "react": ">=15.0.0"
   },
-  "repository": "https://github.com/findify/findify-ui-components.git",
+  "repository": "https://github.com/findify/findify-js/tree/master/packages/ui-components",
   "scripts": {
     "build": "npm run build:umd && npm run build:umd:min && node .bin/wrapCss.js",
     "build-storybook": "build-storybook  -c .storybook -o docs",

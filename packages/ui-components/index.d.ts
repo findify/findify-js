@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-declare module '@findify/findify-ui-components' {
+declare module '@findify/ui-components' {
   type AutocompleteWidgetProps = {
     query: string;
     searchSuggestions: string[];

@@ -1,11 +1,11 @@
 # Getting started
 ## Installation
 ```
-npm install findify-ui-components --save
+npm install @findify/ui-components --save
 ```
 or
 ```
-yarn add findify-ui-components
+yarn add @findify/ui-components
 ```
 
 ## Usage example
