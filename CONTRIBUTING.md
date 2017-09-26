@@ -39,6 +39,8 @@ a top-level change or a "chore" related to the monorepo setup.
 
 All other commit types will trigger no new release.
 
+Commits that have [ci skip] or [skip ci] anywhere in the commit messages are ignored by Travis CI.
+
 ### Git branch naming conventions:
 
 * master
