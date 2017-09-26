@@ -14,11 +14,11 @@ brew install cairo
 
 ## Installation
 ```
-npm install findify-analytics --save
+npm install @findify/analytics --save
 ```
 or
 ```
-yarn add findify-analytics
+yarn add @findify/analytics
 ```
 Alternatively, you can use UMD builds, by requiring them to the page using `<script>` tag:
 ```
@@ -31,7 +31,7 @@ https://findify-assets-2bveeb6u8ag.netdna-ssl.com/analytics-js/findify-analytics
 
 ## Usage example
 ```javascript
-var FindifyAnalytics = require('findify-analytics');
+var FindifyAnalytics = require('@findify/analytics');
 
 // First, you need to initialize library:
 var client = FindifyAnalytics.init({
@@ -44,7 +44,7 @@ client.sendEvent('click-suggestion', {
   suggestion: 'Black t-shirt'
 });
 
-// Also, you can get `user` instance, which can be used further in `findify-sdk` library:
+// Also, you can get `user` instance, which can be used further in `@findify/sdk` library:
 var user = client.getUser();
 ```
 
