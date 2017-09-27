@@ -42,11 +42,11 @@
     "lib",
     "index.d.ts"
   ],
-  "license": "ISC",
+  "license": "MIT",
   "main": "lib/index.js",
   "scripts": {
     "build": "npm run build:commonjs && npm run build:umd && npm run build:umd:min",
-    "build:commonjs": "babel ./__lib-es6__ --out-dir ./lib && rimraf ./__lib-es6__",
+    "build:commonjs": "tsc --project . && babel ./__lib-es6__ --out-dir ./lib && rimraf ./__lib-es6__",
     "build:umd": "cross-env NODE_ENV=development webpack src/index.ts dist/findify-helpers.js",
     "build:umd:min": "cross-env NODE_ENV=production webpack src/index.ts dist/findify-helpers.min.js",
     "check": "npm run test && npm run build && npm run clean",
