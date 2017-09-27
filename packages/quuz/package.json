@@ -1,6 +1,6 @@
 {
   "name": "@findify/quuz",
-  "version": "2.0.3",
+  "version": "2.1.0",
   "description": "",
   "main": "lib/index.js",
   "types": "types/index.d.ts",
