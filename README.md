@@ -3,8 +3,11 @@
 
 # Findify monorepo
 
-* analytics-js
-* findify-mjs
-* helpers-js
-* sdk
-* ui-components
+```
+▾ packages/
+  ▸ analytics/
+  ▸ helpers/
+  ▸ mjs/
+  ▸ sdk/
+  ▸ ui-components/
+```
