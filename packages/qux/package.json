@@ -22,6 +22,8 @@
   },
   "devDependencies": {
     "del-cli": "^1.1.0",
+    "typescript": "^2.5.3",
+    "tslint": "^5.7.0",
     "npm-check-updates": "^2.12.1"
   }
 }

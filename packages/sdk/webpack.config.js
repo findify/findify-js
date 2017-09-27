@@ -5,11 +5,14 @@ var nodeExternals = require('webpack-node-externals');
 
 var env = process.env.NODE_ENV;
 var config = {
+  resolve: {
+    extensions: ['', '.ts', '.js'],
+  },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.ts$/,
-        loader: 'babel-loader!ts-loader',
+        use: ['babel-loader', 'ts-loader'],
       },
     ],
   },
@@ -24,9 +27,6 @@ var config = {
       'process.env.FINDIFY_ENV': JSON.stringify('production'),
     }),
   ],
-  resolve: {
-    extensions: ['', '.ts', '.js'],
-  },
 };
 
 if (env === 'production') {
