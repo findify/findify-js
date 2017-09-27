@@ -6,7 +6,7 @@ export const kek = y => multBy2(y) - subtract3(y + 5);
 export const blah = z => z - 2;
 
 function eight(): number {
-  return 1;
+  return 2 - 1;
 }
 
 export default eight;
