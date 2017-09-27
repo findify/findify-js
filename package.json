@@ -1,5 +1,6 @@
 {
   "private": true,
+  "author": "Findify <yourfriends@findify.io>",
   "devDependencies": {
     "@types/jest": "^20.0.8",
     "bower": "^1.8.2",
