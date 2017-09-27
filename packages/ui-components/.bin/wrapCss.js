@@ -16,7 +16,7 @@ new Promise(resolve => {
     .then(result => {
       fs.writeFileSync(
         path.resolve(process.cwd(), 'dist/wrapped.css'),
-        result.css,
+        result.css
       );
       resolve();
     });

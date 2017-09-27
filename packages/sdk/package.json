@@ -56,7 +56,6 @@
     "lint": "tslint --project .",
     "postpublish": "npm run clean",
     "postversion": "git push && git push --tags && git checkout develop && git merge master && git push",
-    "prepublish": "npm run build",
     "preversion": "npm run check && git checkout master && git merge develop",
     "test": "cross-env mocha --compilers ts:ts-node/register --recursive -R min  ./__tests__"
   },
