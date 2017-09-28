@@ -42,6 +42,10 @@
       }
     </style>
     <script type="text/javascript">
+      $(document).on('keydown', 'input', (e) => {
+        console.log('ololo')
+        e.stopPropagation()
+      })
       // window.findifyApiRegistry = [{
       //   hook: '*.item',
       //   mapProps: function(props, funcs, config, sendEvent) {
