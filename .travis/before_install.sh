@@ -6,7 +6,7 @@ sudo apt-get -qq update
 sudo apt-get install libgif-dev
 
 if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
-  echo "We are in a pull request, not setting up release"
+  echo "It is a pull request, not setting up release"
   exit 0
 fi
 

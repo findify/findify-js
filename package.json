@@ -51,6 +51,7 @@
     "precommit": "lint-staged",
     "lint": "lerna run lint",
     "release": "run-s release:pre release:perform release:post",
+    "release:dry": "run-s release:pre release:post",
     "release:pre": "lerna-semantic-release pre",
     "release:post": "lerna-semantic-release post",
     "release:perform": "lerna-semantic-release perform"
