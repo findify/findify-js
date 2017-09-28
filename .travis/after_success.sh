@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/local/bin/bash
 set -e
 
 # TODO: should be set from outside
@@ -11,36 +11,31 @@ S3_BUCKET_PATH=findify-assets
 # mapping from pkg name to the relative file path of
 # the corresponding dir that should be published to S3_BUCKET_PATH
 typeset -A SRC_MAP
+SRC_MAP=(
+  [analytics]=dist/prod
+  [corge]=lib/js/src
+  [grault]=lib
+  [helpers]=dist
+  [mjs]=dist
+  [quux]=lib
+  [quuz]=lib
+  [qux]=lib
+  [sdk]=lib
+)
 
 # mapping from pkg name to the directory path on S3
 typeset -A DST_MAP
-
-SRC_MAP[analytics]=dist/prod
-DST_MAP[analytics]=analytics-js/$S3_ENV
-
-SRC_MAP[corge]=lib/js/src
-DST_MAP[corge]=corge/$S3_ENV
-
-SRC_MAP[grault]=lib
-DST_MAP[grault]=grault/$S3_ENV
-
-SRC_MAP[helpers]=dist
-DST_MAP[helpers]=helpers-js/$S3_ENV
-
-SRC_MAP[mjs]=dist
-DST_MAP[mjs]=mjs/$S3_ENV
-
-SRC_MAP[quux]=lib
-DST_MAP[quux]=quux/$S3_ENV
-
-SRC_MAP[quuz]=lib
-DST_MAP[quuz]=quuz/$S3_ENV
-
-SRC_MAP[qux]=lib
-DST_MAP[qux]=qux/$S3_ENV
-
-SRC_MAP[sdk]=lib
-DST_MAP[sdk]=js-sdk/$S3_ENV
+DST_MAP=(
+  [analytics]=analytics-js/$S3_ENV
+  [corge]=corge/$S3_ENV
+  [grault]=grault/$S3_ENV
+  [helpers]=helpers-js/$S3_ENV
+  [mjs]=mjs/$S3_ENV
+  [quux]=quux/$S3_ENV
+  [quuz]=quuz/$S3_ENV
+  [qux]=qux/$S3_ENV
+  [sdk]=js-sdk/$S3_ENV
+)
 
 # AWS CLI reads config from ~/.aws/config or ~/.aws/credentials
 # for travis CI default vars see: https://docs.travis-ci.com/user/environment-variables/#Default-Environment-Variables
@@ -52,7 +47,6 @@ aws_secret_access_key = ${AWS_S3_SECRET_KEY}
 EOL
 
 function deploy_to_s3() {
-  echo $1
   if [[ $1 =~ ^@findify\/(.+)\@([0-9]+\.[0-9]+\.[0-9]+) ]]; then
     local GIT_TAG=${BASH_REMATCH[0]}    # the whole thing
     local PKG_NAME=${BASH_REMATCH[1]}   # pkg name
@@ -64,8 +58,8 @@ function deploy_to_s3() {
     local SRC_BUNDLE_PATH=packages/$PKG_NAME/$PKG_BUNDLE_DIR
     local DST_BUNDLE_PATH=$S3_BUCKET_PATH/$DST_BUNDLE_DIR
 
-    echo "deploying (actually, not yet) $SRC_BUNDLE_PATH to s3://$DST_BUNDLE_PATH"
-    # aws s3 cp --recursive $SRC_FILE_PATH s3://$DST_FILE_PATH
+    echo "deploying $SRC_BUNDLE_PATH to s3://$DST_BUNDLE_PATH"
+    aws s3 cp --recursive $SRC_BUNDLE_PATH s3://$DST_BUNDLE_PATH
   fi
 }
 
@@ -75,18 +69,18 @@ if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
 fi
 
 if [[ $TRAVIS_BRANCH == 'master' ]]; then
-  npm run release
+  # echo "publishing new versions to npm"
+  # npm run release
+  # new tags are created by lerna-semantic-release
 
-  echo "changelogs"
+  # echo "changelogs"
+  # find packages -maxdepth 2 -name 'CHANGELOG.md' -print0 | xargs -0 -I % sh -c 'echo %; cat %'
 
-  find packages -maxdepth 2 -name 'CHANGELOG.md' -print0 | xargs -0 -I % sh -c 'echo %; cat %'
-
-  echo "getting latest tags, deploying to AWS S3"
-
-  PKGS=$(ls packages)
-  for i in $PKGS
+  echo "deploying to AWS S3"
+  PKGS=(analytics helpers mjs)
+  for i in ${PKGS[@]}
   do
-    LATEST_GIT_TAGS=$(git show-ref --tags | awk -F '/' '{print $3 "/" $4}')
-    deploy_to_s3 $LATEST_GIT_TAGS
+    LATEST_GIT_TAG=$(git describe --always --tags --match "@findify/${i}@*" --abbrev=0)
+    deploy_to_s3 $LATEST_GIT_TAG
   done
 fi
