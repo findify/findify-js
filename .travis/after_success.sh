@@ -70,12 +70,12 @@ if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
 fi
 
 if [[ $TRAVIS_BRANCH == 'master' ]]; then
-  # echo "publishing new versions to npm"
-  # npm run release
+  echo "publishing new versions to npm"
+  npm run release
   # new tags are created by lerna-semantic-release
 
-  # echo "changelogs"
-  # find packages -maxdepth 2 -name 'CHANGELOG.md' -print0 | xargs -0 -I % sh -c 'echo %; cat %'
+  echo "changelogs"
+  find packages -maxdepth 2 -name 'CHANGELOG.md' -print0 | xargs -0 -I % sh -c 'echo %; cat %'
 
   echo "deploying to AWS S3"
   PKGS=(analytics helpers mjs)
