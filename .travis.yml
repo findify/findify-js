@@ -35,4 +35,3 @@ install:
 script:
 - npm run test:once
 after_success: ./.travis/after_success.sh
-
