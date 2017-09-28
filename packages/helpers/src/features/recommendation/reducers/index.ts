@@ -1,4 +1,4 @@
-import * as FindifySDK from '@findify/sdk';
+import * as FindifySDK from 'findify-sdk';
 import assign = require('lodash/assign');
 import { combineReducers as combine } from 'redux';
 
@@ -8,7 +8,7 @@ import { makeObjectSafe } from '../../../generic/utils/makeObjectSafe';
 
 function requestDataReducer(
   state: RequestDataState = initialRequestDataState,
-  action,
+  action
 ) {
   switch (action.type) {
     case actionTypes.REQUEST:
@@ -19,7 +19,7 @@ function requestDataReducer(
           user: () => action.payload.user,
           type: action.payload.type,
           request: action.payload.request,
-        }),
+        })
       );
     case actionTypes.SET_REQUEST_BODY:
       return assign({}, state, {
@@ -32,7 +32,7 @@ function requestDataReducer(
 
 function responseDataReducer(
   state: ResponseDataState = initialResponseDataState,
-  action,
+  action
 ) {
   switch (action.type) {
     case actionTypes.RESPONSE_SUCCESS:
@@ -44,7 +44,7 @@ function responseDataReducer(
 
 function responseMetaReducer(
   state: ResponseMeta = initialResponseMetaState,
-  action,
+  action
 ) {
   switch (action.type) {
     case actionTypes.REQUEST:

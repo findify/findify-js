@@ -6,7 +6,8 @@
     "build": "bsb -make-world",
     "build:test": "npm run build",
     "build:test:watch": "bsb -make-world -w",
-    "clean": "bsb -clean-world"
+    "clean": "bsb -clean-world",
+    "test": "# noop"
   },
   "config": {
     "access": "public"

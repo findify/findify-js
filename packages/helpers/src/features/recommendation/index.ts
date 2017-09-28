@@ -1,4 +1,4 @@
-import * as FindifySDK from '@findify/sdk';
+import * as FindifySDK from 'findify-sdk';
 import get = require('lodash/get');
 
 import { RequestEvent } from './types';
@@ -59,8 +59,8 @@ function create(type: FindifySDK.RecommendationsType, config: Config) {
                     user: get(event, 'payload.user') as any,
                     type,
                   },
-                  sdk,
-                ),
+                  sdk
+                )
               );
               break;
           }
@@ -74,7 +74,7 @@ function create(type: FindifySDK.RecommendationsType, config: Config) {
             switch (action.type) {
               case actionTypes.SET_REQUEST_BODY:
                 listener(
-                  createEvent(eventsNames.setRequestBody, action.payload),
+                  createEvent(eventsNames.setRequestBody, action.payload)
                 );
                 break;
               case actionTypes.REQUEST:
@@ -102,7 +102,7 @@ function create(type: FindifySDK.RecommendationsType, config: Config) {
           }
         },
       };
-    },
+    }
   );
 }
 

@@ -1,4 +1,4 @@
-import * as FindifySDK from '@findify/sdk';
+import * as FindifySDK from 'findify-sdk';
 
 declare module '@findify/helpers' {
   type Config = FindifySDK.Config;
@@ -42,7 +42,7 @@ declare module '@findify/helpers' {
     | ResponseSuccessEvent
     | ResponseFailureEvent;
   type AutocompleteSubscribeListener = (
-    event: AutocompleteSubscribeEvent,
+    event: AutocompleteSubscribeEvent
   ) => void;
   type AutocompleteStore = {
     emit: (event: AutocompleteEmitEvent) => AutocompleteStore;
@@ -250,7 +250,7 @@ declare module '@findify/helpers' {
   type RecommendationsType = FindifySDK.RecommendationsType;
 
   type RecommendationSubscribeListener = (
-    event: RecommendationSubscribeEvent,
+    event: RecommendationSubscribeEvent
   ) => void;
   type RecommendationStore = {
     emit(event: RecommendationEmitEvent): RecommendationStore;
@@ -261,6 +261,6 @@ declare module '@findify/helpers' {
 
   function createRecommendation(
     type: RecommendationsType,
-    config: Config,
+    config: Config
   ): RecommendationStore;
 }

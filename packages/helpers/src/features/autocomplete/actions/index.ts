@@ -1,4 +1,4 @@
-import * as FindifySDK from '@findify/sdk';
+import * as FindifySDK from 'findify-sdk';
 
 import { actionTypes } from '../constants/actionTypes';
 
@@ -19,7 +19,7 @@ function setRequestBody(payload: SetRequestBodyPayload): SetRequestBodyAction {
 
 function request(
   payload: RequestPayload,
-  sdk: FindifySDK.Client,
+  sdk: FindifySDK.Client
 ): RequestAction {
   return {
     type: actionTypes.REQUEST,
@@ -31,7 +31,7 @@ function request(
 }
 
 function requestTimeUpdate(
-  payload: RequestTimeUpdatePayload,
+  payload: RequestTimeUpdatePayload
 ): RequestTimeUpdateAction {
   return {
     type: actionTypes.REQUEST_TIME_UPDATE,
@@ -40,7 +40,7 @@ function requestTimeUpdate(
 }
 
 function responseSuccess(
-  payload: ResponseSuccessPayload,
+  payload: ResponseSuccessPayload
 ): ResponseSuccessAction {
   return {
     type: actionTypes.RESPONSE_SUCCESS,
@@ -49,7 +49,7 @@ function responseSuccess(
 }
 
 function responseFailure(
-  payload: ResponseFailurePayload,
+  payload: ResponseFailurePayload
 ): ResponseFailureAction {
   return {
     type: actionTypes.RESPONSE_FAILURE,

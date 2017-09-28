@@ -1,4 +1,4 @@
-import * as FindifySDK from '@findify/sdk';
+import * as FindifySDK from 'findify-sdk';
 import assign = require('lodash/assign');
 import { combineReducers as combine } from 'redux';
 
@@ -20,7 +20,7 @@ function responseDataReducer(state: ResponseDataState = {}, action) {
 
 function responseMetaReducer(
   state: ResponseMetaState = initialResponseMetaState,
-  action,
+  action
 ) {
   switch (action.type) {
     case actionTypes.REQUEST:

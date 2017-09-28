@@ -1,4 +1,4 @@
-import * as FindifySDK from '@findify/sdk';
+import * as FindifySDK from 'findify-sdk';
 import { isExists } from '../utils/isExists';
 import { configureReduxStore } from '../helpers/configureReduxStore';
 
@@ -40,7 +40,7 @@ function createStore(c, makeStore) {
         (!isExists(event.payload) || !isExists(event.payload.user))
       ) {
         throw new Error(
-          '`user` param should be provided either at request or at library config',
+          '`user` param should be provided either at request or at library config'
         );
       }
 

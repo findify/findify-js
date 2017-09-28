@@ -29,7 +29,10 @@
     "lib",
     "index.d.ts"
   ],
-  "repository": "https://github.com/findify/analytics-js.git",
+  "repository": "https://github.com/findify/findify-js/tree/master/packages/analytics",
+  "config": {
+    "access": "public"
+  },
   "dependencies": {
     "change-emitter": "^0.1.6",
     "humps": "^2.0.1",
@@ -39,11 +42,9 @@
     "store": "^2.0.12"
   },
   "devDependencies": {
-    "@types/es6-shim": "^0.31.35",
     "@types/expect": "^1.20.2",
     "@types/js-cookie": "^2.1.0",
     "@types/lodash": "^4.14.76",
-    "@types/mocha": "^2.2.43",
     "@types/node": "^8.0.28",
     "@types/qs": "^6.5.0",
     "canvas": "^1.6.7",

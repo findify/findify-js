@@ -98,6 +98,6 @@
     "prepublish": "npm run build && webpack --env.library",
     "preversion": "npm i && npm run check && git checkout master && git merge develop",
     "start": "webpack-dashboard -- webpack-dev-server --env.development",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "# noop"
   }
 }

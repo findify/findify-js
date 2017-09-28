@@ -18,9 +18,9 @@
     "baseUrl": "./src"
   },
   "exclude": [
+    "node_modules",
     "tmp",
-    "dist",
-    "node_modules"
+    "dist"
   ],
   "compileOnSave": false,
   "buildOnSave": false
