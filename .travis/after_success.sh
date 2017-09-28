@@ -77,11 +77,16 @@ if [[ $TRAVIS_BRANCH == 'master' ]]; then
   echo "changelogs"
   find packages -maxdepth 2 -name 'CHANGELOG.md' -print0 | xargs -0 -I % sh -c 'echo %; cat %'
 
+  echo "building"
+  npm run build
+
   echo "deploying to AWS S3"
   PKGS=(analytics helpers mjs)
-  for i in ${PKGS[@]}
+  for pkg in ${PKGS[@]}
   do
-    LATEST_GIT_TAG=$(git describe --always --tags --match "@findify/${i}@*" --abbrev=0)
+    echo "pkg: $pkg"
+    LATEST_GIT_TAG=$(git describe --always --tags --match "@findify/${pkg}@*" --abbrev=0)
+    echo "tag: $LATEST_GIT_TAG"
     deploy_to_s3 $LATEST_GIT_TAG
   done
 fi
