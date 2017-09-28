@@ -33,5 +33,5 @@ install:
 - npm install -g bs-platform
 - npm install
 script:
-- npm run test:once
+- npm t
 after_success: ./.travis/after_success.sh
