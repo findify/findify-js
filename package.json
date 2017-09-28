@@ -30,7 +30,8 @@
     "react": "^15.6.1"
   },
   "scripts": {
-    "postinstall": "npm-run-all bootstrap",
+    "postinstall": "run-s bootstrap postinstall:pkgs",
+    "postinstall:pkgs": "lerna run postinstall --parallel",
     "bootstrap": "lerna bootstrap --hoist",
     "upgrade": "npm-run-all --parallel upgrade:root upgrade:pkgs --serial bootstrap",
     "upgrade:root": "ncu -u",

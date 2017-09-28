@@ -104,6 +104,7 @@
     "build-storybook": "build-storybook  -c .storybook -o docs",
     "build:umd": "./node_modules/.bin/webpack --env.production --env.externals --output-path='./dist' --output-filename='findify-ui-components.js'",
     "build:umd:min": "./node_modules/.bin/webpack --env.production --optimize-minimize --output-path='./dist' --output-filename='findify-ui-components.min.js'",
+    "build:test": "npm run build",
     "check": "npm run build && npm run clean",
     "clean": "rimraf ./lib ./dist",
     "lint": "tslint --project .",

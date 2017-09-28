@@ -90,6 +90,7 @@
   },
   "scripts": {
     "build": "npm run clean && webpack --env.production",
+    "build:test": "npm run build",
     "check": "npm run build && npm run clean",
     "clean": "rimraf ./dist ./lib",
     "lint": "tslint --project .",

@@ -7,7 +7,7 @@
     "access": "public"
   },
   "scripts": {
-    "postinstall": "bower install --production",
+    "postinstall": "bower install",
     "clean": "del lib output",
     "build": "pulp browserify --standalone --skip-entry-point -m Grault -O -t lib/index.js",
     "build:test": "npm run build",
