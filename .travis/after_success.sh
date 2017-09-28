@@ -1,4 +1,5 @@
-#!/usr/local/bin/bash
+#!/bin/bash
+
 set -e
 
 # TODO: should be set from outside
