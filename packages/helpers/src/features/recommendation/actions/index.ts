@@ -2,14 +2,14 @@ import * as FindifySDK from 'findify-sdk';
 
 import { actionTypes } from '../constants/actionTypes';
 
-function setRequestBody(payload: SetRequestBodyPayload) {
+export function setRequestBody(payload: SetRequestBodyPayload) {
   return {
     type: actionTypes.SET_REQUEST_BODY,
     payload,
   };
 }
 
-function request(payload: RequestPayload, sdk: FindifySDK.Client) {
+export function request(payload: RequestPayload, sdk: FindifySDK.Client) {
   return {
     type: actionTypes.REQUEST,
     payload,
@@ -19,35 +19,33 @@ function request(payload: RequestPayload, sdk: FindifySDK.Client) {
   };
 }
 
-function responseSuccess(payload: ResponseSuccessPayload) {
+export function responseSuccess(payload: ResponseSuccessPayload) {
   return {
     type: actionTypes.RESPONSE_SUCCESS,
     payload,
   };
 }
 
-function responseFailure(payload: ResponseFailurePayload) {
+export function responseFailure(payload: ResponseFailurePayload) {
   return {
     type: actionTypes.RESPONSE_FAILURE,
     payload,
   };
 }
 
-type SetRequestBodyPayload = FindifySDK.RecommendationsRequest;
+export type SetRequestBodyPayload = FindifySDK.RecommendationsRequest;
 
-type RequestPayload = {
+export type RequestPayload = {
   request: FindifySDK.RecommendationsRequest;
   type: FindifySDK.RecommendationsType;
   user?: FindifySDK.User;
 };
 
-type ResponseSuccessPayload = {
+export type ResponseSuccessPayload = {
   response: FindifySDK.AutocompleteResponse;
   receivedAt: number;
 };
 
-type ResponseFailurePayload = {
+export type ResponseFailurePayload = {
   message: string;
 };
-
-export { setRequestBody, request, responseSuccess, responseFailure };

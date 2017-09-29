@@ -1,10 +1,11 @@
 {
+  "extends": "../../tsconfig.lib.json",
   "compilerOptions": {
-    "outDir": "./__lib-es6__/",
-    "noImplicitAny": false,
+    "baseUrl": "src",
+    "outDir": "lib",
+    "declaration": false,
     "module": "commonjs",
-    "target": "es6",
-    "skipLibCheck": true
+    "target": "es5"
   },
   "files": [
     "./src/index.ts"

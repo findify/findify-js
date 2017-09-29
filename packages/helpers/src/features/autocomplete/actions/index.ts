@@ -3,21 +3,23 @@ import * as FindifySDK from 'findify-sdk';
 import { actionTypes } from '../constants/actionTypes';
 
 // make arguments as objects and declare types for actons?
-function input(payload: InputPayload): InputAction {
+export function input(payload: InputPayload): InputAction {
   return {
     type: actionTypes.INPUT,
     payload,
   };
 }
 
-function setRequestBody(payload: SetRequestBodyPayload): SetRequestBodyAction {
+export function setRequestBody(
+  payload: SetRequestBodyPayload
+): SetRequestBodyAction {
   return {
     type: actionTypes.SET_REQUEST_BODY,
     payload,
   };
 }
 
-function request(
+export function request(
   payload: RequestPayload,
   sdk: FindifySDK.Client
 ): RequestAction {
@@ -30,7 +32,7 @@ function request(
   };
 }
 
-function requestTimeUpdate(
+export function requestTimeUpdate(
   payload: RequestTimeUpdatePayload
 ): RequestTimeUpdateAction {
   return {
@@ -39,7 +41,7 @@ function requestTimeUpdate(
   };
 }
 
-function responseSuccess(
+export function responseSuccess(
   payload: ResponseSuccessPayload
 ): ResponseSuccessAction {
   return {
@@ -48,7 +50,7 @@ function responseSuccess(
   };
 }
 
-function responseFailure(
+export function responseFailure(
   payload: ResponseFailurePayload
 ): ResponseFailureAction {
   return {
@@ -57,17 +59,17 @@ function responseFailure(
   };
 }
 
-type InputAction = {
+export type InputAction = {
   type: string;
   payload: InputPayload;
 };
 
-type SetRequestBodyAction = {
+export type SetRequestBodyAction = {
   type: string;
   payload: SetRequestBodyPayload;
 };
 
-type RequestAction = {
+export type RequestAction = {
   type: string;
   payload: RequestPayload;
   service: {
@@ -75,66 +77,50 @@ type RequestAction = {
   };
 };
 
-type RequestTimeUpdateAction = {
+export type RequestTimeUpdateAction = {
   type: string;
   payload: RequestTimeUpdatePayload;
 };
 
-type ResponseSuccessAction = {
+export type ResponseSuccessAction = {
   type: string;
   payload: ResponseSuccessPayload;
 };
 
-type ResponseFailureAction = {
+export type ResponseFailureAction = {
   type: string;
   payload: ResponseFailurePayload;
 };
 
-type InputPayload = {
+export type InputPayload = {
   query: string;
 };
 
-type SetRequestBodyPayload = FindifySDK.AutocompleteRequest;
+export type SetRequestBodyPayload = FindifySDK.AutocompleteRequest;
 
-type RequestPayload = {
+export type RequestPayload = {
   item_limit?: number;
   suggestion_limit?: number;
   user?: FindifySDK.User;
 };
 
-type RequestTimeUpdatePayload = {
+export type RequestTimeUpdatePayload = {
   time: number;
 };
 
-type ResponseSuccessPayload = {
+export type ResponseSuccessPayload = {
   response: FindifySDK.AutocompleteResponse;
   receivedAt: number;
 };
 
-type ResponseFailurePayload = {
+export type ResponseFailurePayload = {
   message: string;
 };
 
-type Action =
+export type Action =
   | InputAction
   | SetRequestBodyAction
   | RequestAction
   | RequestTimeUpdateAction
   | ResponseSuccessAction
   | ResponseFailureAction;
-
-export {
-  input,
-  setRequestBody,
-  request,
-  requestTimeUpdate,
-  responseSuccess,
-  responseFailure,
-  Action,
-  InputAction,
-  SetRequestBodyAction,
-  RequestAction,
-  RequestTimeUpdateAction,
-  ResponseSuccessAction,
-  ResponseFailureAction,
-};

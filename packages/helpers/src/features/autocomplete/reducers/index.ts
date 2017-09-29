@@ -83,12 +83,12 @@ const initialResponseMetaState = {
 };
 const initialLastActionState = {} as any;
 
-const getRequestData = (state: State) => state.request.data;
-const getResponseData = (state: State) => state.response.data;
-const getResponseMeta = (state: State) => state.response.meta;
-const getLastAction = (state: State) => state.lastAction;
+export const getRequestData = (state: State) => state.request.data;
+export const getResponseData = (state: State) => state.response.data;
+export const getResponseMeta = (state: State) => state.response.meta;
+export const getLastAction = (state: State) => state.lastAction;
 
-const rootReducer = combine<State>({
+export const rootReducer = combine<State>({
   request: combine({
     data: requestDataReducer,
   }),
@@ -97,13 +97,13 @@ const rootReducer = combine<State>({
     meta: responseMetaReducer,
   }),
   lastAction: lastActionReducer,
-});
+}) as any;
 
-type RequestDataState = FindifySDK.AutocompleteRequest;
-type ResponseDataState = FindifySDK.AutocompleteResponse;
-type ResponseMetaState = ResponseMeta;
+export type RequestDataState = FindifySDK.AutocompleteRequest;
+export type ResponseDataState = FindifySDK.AutocompleteResponse;
+export type ResponseMetaState = ResponseMeta;
 
-type State = {
+export type State = {
   request: {
     data?: RequestDataState;
   };
@@ -112,13 +112,4 @@ type State = {
     data?: ResponseDataState;
   };
   lastAction: Action;
-};
-
-export {
-  State,
-  rootReducer,
-  getRequestData,
-  getResponseData,
-  getResponseMeta,
-  getLastAction,
 };
