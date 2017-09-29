@@ -3,7 +3,7 @@
   "compilerOptions": {
     "baseUrl": "src",
     "outDir": "lib",
-    "declarationDir": "types",
+    "declaration": false,
     "module": "commonjs",
     "target": "es5"
   },
