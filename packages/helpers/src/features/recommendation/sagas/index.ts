@@ -22,14 +22,12 @@ function* requestSaga() {
         cleanObject({
           ...requestData.request,
           user: get(requestData, 'user'),
-        }),
-      ),
+        })
+      )
     );
   });
 }
 
-function* rootSaga() {
+export function* rootSaga(): any {
   yield [requestSaga()];
 }
-
-export { rootSaga };

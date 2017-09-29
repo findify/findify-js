@@ -1,4 +1,4 @@
-function runSafe(func: InputFunction) {
+export function runSafe(func: InputFunction) {
   try {
     return func();
   } catch (err) {
@@ -6,6 +6,4 @@ function runSafe(func: InputFunction) {
   }
 }
 
-type InputFunction = () => any;
-
-export { runSafe, InputFunction };
+export type InputFunction = () => any;
