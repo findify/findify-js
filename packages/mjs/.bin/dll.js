@@ -9,8 +9,8 @@ const ignore = [
   'postcss-font-magician',
   'postcss-nested',
   'autoprefixer',
-  'findify-ui-components',
-  'findify-analytics',
+  '@findify/ui-components',
+  '@findify/analytics',
   '@types/ramda',
 ];
 
@@ -36,7 +36,7 @@ export default () => ({
       path: path.join(
         process.cwd(),
         'node_modules/dll',
-        '[name]-manifest.json',
+        '[name]-manifest.json'
       ),
       name: '[name]_[hash]',
     }),

@@ -144,7 +144,7 @@ const defaultConfig = environment => ({
           ...acc,
           [`__${key.toUpperCase()}__`]: environments[key],
         }),
-        {},
+        {}
       ),
       'process.env': {
         NODE_ENV: JSON.stringify(environment),

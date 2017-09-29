@@ -31,7 +31,7 @@ export default () => ({
       path: path.join(
         process.cwd(),
         'node_modules/dll',
-        '[name]-manifest.json',
+        '[name]-manifest.json'
       ),
       name: '[name]_[hash]',
     }),
