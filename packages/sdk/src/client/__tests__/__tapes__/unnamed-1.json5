@@ -1,0 +1,61 @@
+{
+    meta: {
+        createdAt: "2017-09-30T13:34:06.126Z",
+        host: "https://search-staging.findify.io/v3",
+        reqHumanReadable: true
+    },
+    req: {
+        url: "/autocomplete",
+        method: "OPTIONS",
+        headers: {
+            accept: "application/json, text/plain, */*",
+            "content-type": "application/json",
+            "x-key": "0d2f3aad-8702-46ad-a786-ae9fe2670294",
+            referer: "about:blank",
+            "user-agent": "Node.js (darwin; U; rv:v6.11.2) AppleWebKit/537.36 (KHTML, like Gecko)",
+            "accept-language": "en",
+            origin: "null",
+            "access-control-request-method": "POST",
+            "access-control-request-headers": "x-key",
+            "content-length": "0",
+            connection: "keep-alive"
+        },
+        body: ""
+    },
+    res: {
+        status: 200,
+        headers: {
+            "access-control-allow-headers": [
+                "Content-type,Accept,x-key"
+            ],
+            "access-control-allow-methods": [
+                "GET,POST,OPTIONS"
+            ],
+            "access-control-allow-origin": [
+                "*"
+            ],
+            "cache-control": [
+                "no-cache, no-store, must-revalidate"
+            ],
+            date: [
+                "Sat, 30 Sep 2017 13:34:06 GMT"
+            ],
+            expires: [
+                "0"
+            ],
+            pragma: [
+                "no-cache"
+            ],
+            server: [
+                "nginx/1.12.1"
+            ],
+            "content-length": [
+                "0"
+            ],
+            connection: [
+                "keep-alive"
+            ]
+        },
+        body: ""
+    }
+}

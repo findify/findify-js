@@ -1,13 +1,21 @@
 # General instructions
 
+### Setting Up a Local Copy
+
+1. Clone the repo with `git clone https://github.com/findify/findify-js`
+2. Run `cp packages/sdk/env.example packages/sdk/.env` (required) and change the environment variables there (optional)
+3. Run `npm install` in the root `findify-js` folder.
+
+Once it is done, you can start working on the project.
+
 ### TDD
 
 First, run `npm run build:tdd`, it will watch and rebuild packages for test env.
-Wait until its finished and then run `npm t` that will watch and run tests.
+Wait until its finished and then run `npm t` in parallel that will watch and run tests.
 
 ## Workflow
 
-- Create a topic branch from where you want to base your work. This is usually master.
+- Create a topic branch from where you want to base your work. This is usually `develop`.
 - Make commits of logical units.
 - Write good commit messages (see below).
 - Push your changes to a topic branch in your fork of the repository.
@@ -48,3 +56,5 @@ Commits that have [ci skip] or [skip ci] anywhere in the commit messages are ign
 * feature/something
 * bugfix/something
 * hotfix/something
+* chore/something
+* refactoring/something
