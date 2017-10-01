@@ -1,0 +1,77 @@
+[
+    {
+        "scope": "https://search-staging.findify.io:443",
+        "method": "post",
+        "path": "/v3/autocomplete",
+        "body": {
+            "user": {
+                "lang": [
+                    "en-GB"
+                ],
+                "uid": "test1",
+                "sid": "ssid",
+                "email": "test@test.com",
+                "ip": "192.168.0.1",
+                "ua": "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36"
+            },
+            "t_client": 1506858183770,
+            "key": "0d2f3aad-8702-46ad-a786-ae9fe2670294",
+            "q": "test",
+            "item_limit": 5,
+            "suggestion_limit": 5
+        },
+        "status": 200,
+        "response": {
+            "meta": {
+                "q": "test",
+                "suggestion_limit": 5,
+                "item_limit": 5,
+                "rid": "a-1a53500b-9bd5-42f0-baf2-91b694b4d8d4"
+            },
+            "suggestions": [
+                {
+                    "value": "taster"
+                },
+                {
+                    "value": "t strain"
+                },
+                {
+                    "value": "t strain run"
+                },
+                {
+                    "value": "t stack inline"
+                },
+                {
+                    "value": "t stack"
+                }
+            ],
+            "items": []
+        },
+        "rawHeaders": [
+            "Access-Control-Allow-Headers",
+            "Content-type,Accept,x-key",
+            "Access-Control-Allow-Methods",
+            "GET,POST,OPTIONS",
+            "Access-Control-Allow-Origin",
+            "*",
+            "Cache-Control",
+            "no-cache, no-store, must-revalidate",
+            "Content-Type",
+            "application/json; charset=utf-8",
+            "Date",
+            "Sun, 01 Oct 2017 11:43:04 GMT",
+            "ETag",
+            "W/\"f3-NLAmGGzEuheA0uCBQkCPT9Ilkoo\"",
+            "Expires",
+            "0",
+            "Pragma",
+            "no-cache",
+            "Server",
+            "nginx/1.12.1",
+            "Content-Length",
+            "243",
+            "Connection",
+            "Close"
+        ]
+    }
+]
