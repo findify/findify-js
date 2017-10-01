@@ -7,7 +7,7 @@ describe('validation', () => {
     const validate = (cfg: any, browser: boolean = true) => () =>
       V.validateConfig(cfg, browser);
 
-    test('throws an error if "key" is missing or invalid', () => {
+    it('throws an error if "key" is missing or invalid', () => {
       expect(validate({} as any)).toThrowErrorMatchingSnapshot();
       expect(validate({ key: 123 } as any)).toThrowErrorMatchingSnapshot();
       expect(validate({ key: true } as any)).toThrowErrorMatchingSnapshot();
@@ -15,25 +15,25 @@ describe('validation', () => {
       expect(validate({ key: '   ' })).toThrowErrorMatchingSnapshot();
     });
 
-    test('throws an error if "method" is invalid', () => {
+    it('throws an error if "method" is invalid', () => {
       expect(
         validate({ key: 'ab3213', method: 'unsupported' })
       ).toThrowErrorMatchingSnapshot();
     });
 
-    test('throws an error if "log" is invalid', () => {
+    it('throws an error if "log" is invalid', () => {
       [null, 321, 'string'].forEach(log =>
         expect(validate({ key: 'somekey', log })).toThrowErrorMatchingSnapshot()
       );
     });
 
-    test('throws and error if trying to use jsonp when not in browser', () => {
+    it('throws and error if trying to use jsonp when not in browser', () => {
       expect(
         validate({ key: 'key', method: R.Method.JSONP }, false)
       ).toThrowErrorMatchingSnapshot();
     });
 
-    test('does not throw an error if config is correct', () => {
+    it('does not throw an error if config is correct', () => {
       expect(validate({ key: 'key1' })).not.toThrow();
       expect(validate({ key: 'key2', method: R.Method.JSONP })).not.toThrow();
       expect(validate({ key: 'good', method: R.Method.POST })).not.toThrow();
@@ -43,14 +43,14 @@ describe('validation', () => {
   });
 
   describe('validateAutocomlete', () => {
-    test('throws error if "q" is missing or invalid', () => {
+    it('throws error if "q" is missing or invalid', () => {
       const allowedQueries = ['bar', 32, false, true];
       testValidatePresence(V.validateAutocomplete, 'q', allowedQueries);
     });
   });
 
   describe('validateSearch', () => {
-    test('throws error if request parameters is invalid', () => {
+    it('throws error if request parameters is invalid', () => {
       const allowedQueries = ['foo', 123, true, false];
       testValidatePresence(V.validateSearch, 'q', allowedQueries);
       testValidateList(V.validateSearch, { q: 'asics' });
@@ -58,7 +58,7 @@ describe('validation', () => {
   });
 
   describe('validateSmartCollection', () => {
-    test('throws error if request parameters is invalid', () => {
+    it('throws error if request parameters is invalid', () => {
       const allowedSlots = ['bar', 456, false, true];
       testValidatePresence(V.validateSmartCollection, 'slot', allowedSlots);
       testValidateList(V.validateSmartCollection, { slot: 'slot-handle' });
@@ -66,7 +66,7 @@ describe('validation', () => {
   });
 
   describe('validateRecommendations', () => {
-    test('throws error if recommendations type is missing', () => {
+    it('throws error if recommendations type is missing', () => {
       const invalidTypes = [{}, { type: null }, { type: '' }, { type: '  ' }];
       invalidTypes.forEach(req =>
         expect(() =>
@@ -75,14 +75,14 @@ describe('validation', () => {
       );
     });
 
-    test('throws error if recommendation type is invalid', () => {
+    it('throws error if recommendation type is invalid', () => {
       expect(() =>
         V.validateRecommendations({ type: 'unsupported' } as any)
       ).toThrowErrorMatchingSnapshot();
     });
 
     describe('slot', () => {
-      test('throws error if "slot" is missing or invalid', () => {
+      it('throws error if "slot" is missing or invalid', () => {
         const allowedSlots = ['bar', 'baz-qux', 456];
         testValidatePresence(V.validateRecommendations, 'slot', allowedSlots, {
           type: R.Recommendations.Type.Slot,
@@ -91,7 +91,7 @@ describe('validation', () => {
     });
 
     describe('also viewed / bought', () => {
-      test('throws error if "item_id" is missing or invalid', () => {
+      it('throws error if "item_id" is missing or invalid', () => {
         const types = [
           R.Recommendations.Type.AlsoViewed,
           R.Recommendations.Type.AlsoBought,
@@ -109,7 +109,7 @@ describe('validation', () => {
     });
 
     describe('frequently purchased together', () => {
-      test('throws error if "item_ids" is missing or empty', () => {
+      it('throws error if "item_ids" is missing or empty', () => {
         const type = R.Recommendations.Type.FrequentlyPurchasedTogether;
         const allowedItemIds = [['bar'], [123, 'baz-qux'], [456, 111]];
         testValidatePresence(
@@ -124,7 +124,7 @@ describe('validation', () => {
 
   describe('validateFeedback', () => {
     describe('click suggestion, redirect', () => {
-      test('throws error if required params is missing or invalid', () => {
+      it('throws error if required params is missing or invalid', () => {
         const allowed = ['bar', 32];
         const events = [
           R.Feedback.Event.ClickSuggestion,
@@ -144,7 +144,7 @@ describe('validation', () => {
     });
 
     describe('click item, add to cart', () => {
-      test('throws error if required params is missing or invalid', () => {
+      it('throws error if required params is missing or invalid', () => {
         const allowed = ['bar', 32];
         const events = [R.Feedback.Event.ClickItem, R.Feedback.Event.AddToCart];
         events.forEach(event => {

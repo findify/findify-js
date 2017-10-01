@@ -17,20 +17,6 @@ interface Endpoint {
   params?: string[];
 }
 
-/** Request body */
-export type Body = CommonBody & Req.Body;
-
-/**
- * Common request body parameters.
- */
-export interface CommonBody {
-  /** A timestamp from the client side of the user */
-  t_client: number;
-  user: User;
-  key: string;
-  log?: boolean;
-}
-
 /*
  * The SDK client.
  * Wrapper of the low-level Findify JSON API.
@@ -43,16 +29,16 @@ export class Client {
   /**
    * Make a request.
    */
-  public send(req: Req.Request, opts: API.Options = {}): Promise<object> {
+  public send(req: Req.Request, opts: API.Options = {}): Promise<Res.Body> {
     const request = this.buildRequest(req, opts);
     debug('sdk:client:request')(request);
-    return API.send(request);
+    return API.send(request) as Promise<Res.Body>;
   }
 
   private buildRequest(req: Req.Request, opts: API.Options): API.Request {
     const endpoint = this.getEndpoint(req);
     const url = this.getUrl(endpoint);
-    const body = this.getBody(req, endpoint);
+    const body = this.getRequestBody(req, endpoint);
     const method = this.config.method!;
     const retryCount = this.config.retryCount!;
     const options = this.getOptions(req, opts);
@@ -129,18 +115,18 @@ export class Client {
   /**
    * Get a request body.
    */
-  private getBody(req: Req.Request, endpoint: Endpoint): Body {
-    const common = this.getCommonBody(req);
-    const request = this.getRequestBody(req, endpoint);
-    return { ...common, ...request };
+  private getRequestBody(req: Req.Request, endpoint: Endpoint): Req.Body {
+    const common = this.getCommonParams(req);
+    const specific = this.getSpecificParams(req, endpoint);
+    return { ...common, ...specific };
   }
 
   /**
-   * Get common request parameters.
+   * Get common reques parameters.
    * @see {@link https://findify.readme.io/v3/reference#getting-started|getting started} for more information.
    */
-  private getCommonBody(req: Req.Request): CommonBody {
-    const user = this.config.user || req.params.user;
+  private getCommonParams(req: Req.Request): Req.CommonParams {
+    const user = req.params.user || this.config.user;
     validateUser(user);
     return {
       user: user!,
@@ -150,7 +136,10 @@ export class Client {
     };
   }
 
-  private getRequestBody(req: Req.Request, endpoint: Endpoint): Req.Body {
+  private getSpecificParams(
+    req: Req.Request,
+    endpoint: Endpoint
+  ): Req.SpecificParams {
     // remove from request body:
     // - params that are supplied through path
     // - typescript "discriminant"

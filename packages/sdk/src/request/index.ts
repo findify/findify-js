@@ -1,3 +1,4 @@
+import { User } from '../common';
 import * as Autocomplete from './Autocomplete';
 import * as Search from './Search';
 import * as SmartCollection from './SmartCollection';
@@ -23,10 +24,24 @@ export type Request =
   | Recommendations.Request
   | Feedback.Request;
 
+/** Request body */
+export type Body = CommonParams & SpecificParams;
+
 /**
- * Represents a request body.
+ * Common request body parameters.
  */
-export type Body =
+export interface CommonParams {
+  /** A timestamp from the client side of the user */
+  t_client: number;
+  user: User;
+  key: string;
+  log?: boolean;
+}
+
+/**
+ * Request body parameters depending on the request type.
+ */
+export type SpecificParams =
   | Autocomplete.Params
   | Search.Params
   | SmartCollection.Params

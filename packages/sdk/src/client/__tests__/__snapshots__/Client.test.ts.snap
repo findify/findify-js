@@ -1,0 +1,255 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Client autocomplete respects request parameters 1`] = `
+Object {
+  "items": Array [
+    Object {
+      "availability": true,
+      "compare_at": 300,
+      "custom_fields": Object {},
+      "hash": "AV11VmrACQkVMwqrFH4Y",
+      "id": "373056192",
+      "price": Array [
+        270,
+        285,
+      ],
+      "product_url": "https://smoke-cartel.myshopify.com/products/nexus-glass-tesla-dual-arm-recycler",
+      "reviews": Object {
+        "average_score": 3.33,
+        "total_reviews": 3,
+      },
+      "stickers": Object {
+        "availability": true,
+        "discount": Array [
+          10,
+          5,
+        ],
+        "free-shipping": false,
+        "in-stock": true,
+        "out-of-stock": false,
+      },
+      "thumbnail_url": "https://cdn.shopify.com/s/files/1/0350/8253/products/NEXUS-NEW-TESLA_1_small.jpg?v=1427383897",
+      "title": "Nexus Glass \\"Tesla\\" Double Arm Recycler",
+    },
+  ],
+  "meta": Object {
+    "item_limit": 2,
+    "q": "tesl",
+    "rid": "<stripped>",
+    "suggestion_limit": 3,
+  },
+  "suggestions": Array [
+    Object {
+      "value": "tesla double",
+    },
+    Object {
+      "value": "tesla double arm",
+    },
+    Object {
+      "value": "tesla",
+    },
+  ],
+}
+`;
+
+exports[`Client autocomplete respects request parameters 2`] = `
+Object {
+  "items": Array [
+    Object {
+      "availability": true,
+      "compare_at": -1,
+      "custom_fields": Object {},
+      "hash": "AV11VmrKCQkVMwqrFIDg",
+      "id": "8017104712",
+      "price": Array [
+        30,
+        30,
+      ],
+      "product_url": "https://smoke-cartel.myshopify.com/products/smoke-cartel-centipede-shenanigans",
+      "reviews": Object {
+        "average_score": 4.5,
+        "total_reviews": 2,
+      },
+      "stickers": Object {
+        "availability": true,
+        "discount": false,
+        "free-shipping": false,
+        "in-stock": true,
+        "out-of-stock": false,
+      },
+      "thumbnail_url": "https://cdn.shopify.com/s/files/1/0350/8253/products/SCHP-SA017-0_small.jpg?v=1476890474",
+      "title": "Smoke Cartel \\"Caterpillar\\" Sherlock",
+    },
+    Object {
+      "availability": true,
+      "compare_at": -1,
+      "custom_fields": Object {},
+      "hash": "AV11VniCCQkVMwqrFIHn",
+      "id": "9260965640",
+      "price": Array [
+        29,
+        29,
+        29,
+        29,
+        29,
+      ],
+      "product_url": "https://smoke-cartel.myshopify.com/products/smoke-cartel-crew-shirts",
+      "reviews": Object {
+        "average_score": 0,
+        "total_reviews": 0,
+      },
+      "stickers": Object {
+        "availability": true,
+        "discount": false,
+        "free-shipping": false,
+        "in-stock": true,
+        "out-of-stock": false,
+      },
+      "thumbnail_url": "https://cdn.shopify.com/s/files/1/0350/8253/products/SMOKE-CARTEL-CREW-SHIRTS_SC-T-SHIRTS-WHT-2_small.jpg?v=1492034537",
+      "title": "Smoke Cartel Crew Shirts",
+    },
+    Object {
+      "availability": true,
+      "compare_at": -1,
+      "custom_fields": Object {},
+      "hash": "AV11Vmq7CQkVMwqrFH0q",
+      "id": "10246101192",
+      "price": Array [
+        60,
+      ],
+      "product_url": "https://smoke-cartel.myshopify.com/products/smoke-cartel-backpack",
+      "reviews": Object {
+        "average_score": 0,
+        "total_reviews": 0,
+      },
+      "stickers": Object {
+        "availability": true,
+        "discount": false,
+        "free-shipping": false,
+        "in-stock": true,
+        "out-of-stock": false,
+      },
+      "thumbnail_url": "https://cdn.shopify.com/s/files/1/0350/8253/products/SMOKE-CARTEL-BACKPACK_SC-BACKPACK-BK-5_small.jpg?v=1500673539",
+      "title": "Smoke Cartel Odor-Resistiant Backpack",
+    },
+  ],
+  "meta": Object {
+    "item_limit": 3,
+    "q": "smok",
+    "rid": "<stripped>",
+    "suggestion_limit": 5,
+  },
+  "suggestions": Array [
+    Object {
+      "value": "smoke",
+    },
+    Object {
+      "value": "smoke cartel",
+    },
+    Object {
+      "value": "smoky",
+    },
+    Object {
+      "value": "smoky mountain",
+    },
+    Object {
+      "value": "smoky mountain glass",
+    },
+  ],
+}
+`;
+
+exports[`Client autocomplete respects request parameters 3`] = `
+Object {
+  "items": Array [
+    Object {
+      "availability": true,
+      "compare_at": -1,
+      "custom_fields": Object {},
+      "hash": "AV11VmrFCQkVMwqrFH9w",
+      "id": "4595632644",
+      "price": Array [
+        31,
+      ],
+      "product_url": "https://smoke-cartel.myshopify.com/products/5-rasta-frit-pipe",
+      "reviews": Object {
+        "average_score": 5,
+        "total_reviews": 3,
+      },
+      "stickers": Object {
+        "availability": true,
+        "discount": false,
+        "free-shipping": false,
+        "in-stock": true,
+        "out-of-stock": false,
+      },
+      "thumbnail_url": "https://cdn.shopify.com/s/files/1/0350/8253/products/HP62-1-0_small.jpg?v=1459019662",
+      "title": "Rasta-fire-ian Pipe",
+    },
+    Object {
+      "availability": true,
+      "compare_at": 36,
+      "custom_fields": Object {},
+      "hash": "AV11VmrFCQkVMwqrFH9x",
+      "id": "4595632836",
+      "price": Array [
+        27,
+      ],
+      "product_url": "https://smoke-cartel.myshopify.com/products/3-75-rasta-frit-pipe",
+      "reviews": Object {
+        "average_score": 4.83,
+        "total_reviews": 6,
+      },
+      "stickers": Object {
+        "availability": true,
+        "discount": Array [
+          25,
+        ],
+        "free-shipping": false,
+        "in-stock": true,
+        "out-of-stock": false,
+      },
+      "thumbnail_url": "https://cdn.shopify.com/s/files/1/0350/8253/products/HP61-1-0_small.jpg?v=1459021436",
+      "title": "Rasta-fire-ian Jr.",
+    },
+  ],
+  "meta": Object {
+    "item_limit": 2,
+    "q": "fir",
+    "rid": "<stripped>",
+    "suggestion_limit": 10,
+  },
+  "suggestions": Array [
+    Object {
+      "value": "fire",
+    },
+    Object {
+      "value": "fire ian",
+    },
+    Object {
+      "value": "fire cut",
+    },
+    Object {
+      "value": "fire cut downstem",
+    },
+    Object {
+      "value": "fire rasta",
+    },
+    Object {
+      "value": "fire ian jr",
+    },
+    Object {
+      "value": "fire 14.5mm",
+    },
+    Object {
+      "value": "fire 18mm",
+    },
+    Object {
+      "value": "fire 14.5mm 18.8mm",
+    },
+    Object {
+      "value": "fire 18mm 18mm",
+    },
+  ],
+}
+`;
