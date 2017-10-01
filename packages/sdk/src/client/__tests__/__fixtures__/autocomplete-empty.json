@@ -1,0 +1,116 @@
+[
+    {
+        "scope": "https://search-staging.findify.io:443",
+        "method": "post",
+        "path": "/v3/autocomplete",
+        "body": {
+            "user": {
+                "lang": [
+                    "en-GB"
+                ],
+                "uid": "test1",
+                "sid": "ssid1",
+                "email": "test2@test.com",
+                "ip": "192.168.0.1",
+                "ua": "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36"
+            },
+            "t_client": 1506898982196,
+            "key": "0d2f3aad-8702-46ad-a786-ae9fe2670294",
+            "q": "",
+            "item_limit": 1,
+            "suggestion_limit": 1
+        },
+        "status": 400,
+        "response": {
+            "error": {
+                "message": "\"q\" is not allowed to be empty"
+            },
+            "meta": {
+                "rid": "<stripped>"
+            }
+        },
+        "rawHeaders": [
+            "Access-Control-Allow-Headers",
+            "Content-type,Accept,x-key",
+            "Access-Control-Allow-Methods",
+            "GET,POST,OPTIONS",
+            "Access-Control-Allow-Origin",
+            "*",
+            "Cache-Control",
+            "no-cache, no-store, must-revalidate",
+            "Content-Type",
+            "application/json; charset=utf-8",
+            "Date",
+            "Sun, 01 Oct 2017 23:03:02 GMT",
+            "ETag",
+            "W/\"38-XXgEuKzf/YGyzoa4ASonr91k+Mk\"",
+            "Expires",
+            "0",
+            "Pragma",
+            "no-cache",
+            "Server",
+            "nginx/1.12.1",
+            "Content-Length",
+            "56",
+            "Connection",
+            "Close"
+        ]
+    },
+    {
+        "scope": "https://search-staging.findify.io:443",
+        "method": "post",
+        "path": "/v3/autocomplete",
+        "body": {
+            "user": {
+                "lang": [
+                    "en-GB"
+                ],
+                "uid": "test1",
+                "sid": "ssid1",
+                "email": "test2@test.com",
+                "ip": "192.168.0.1",
+                "ua": "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36"
+            },
+            "t_client": 1506898982196,
+            "key": "0d2f3aad-8702-46ad-a786-ae9fe2670294",
+            "q": "",
+            "item_limit": 1,
+            "suggestion_limit": 1
+        },
+        "status": 400,
+        "response": {
+            "error": {
+                "message": "\"q\" is not allowed to be empty"
+            },
+            "meta": {
+                "rid": "<stripped>"
+            }
+        },
+        "rawHeaders": [
+            "Access-Control-Allow-Headers",
+            "Content-type,Accept,x-key",
+            "Access-Control-Allow-Methods",
+            "GET,POST,OPTIONS",
+            "Access-Control-Allow-Origin",
+            "*",
+            "Cache-Control",
+            "no-cache, no-store, must-revalidate",
+            "Content-Type",
+            "application/json; charset=utf-8",
+            "Date",
+            "Sun, 01 Oct 2017 23:03:02 GMT",
+            "ETag",
+            "W/\"38-XXgEuKzf/YGyzoa4ASonr91k+Mk\"",
+            "Expires",
+            "0",
+            "Pragma",
+            "no-cache",
+            "Server",
+            "nginx/1.12.1",
+            "Content-Length",
+            "56",
+            "Connection",
+            "Close"
+        ]
+    }
+]

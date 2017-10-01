@@ -4,8 +4,7 @@ import axios, { AxiosRequestConfig as AxiosOptions } from 'axios';
 import * as qs from 'qs';
 
 import { retryTimes } from './utils';
-import { Method } from './request';
-import { Body } from './Client';
+import { Method, Body } from './request';
 
 /**
  * JSON API request parameters.
@@ -38,6 +37,8 @@ const sendJSONP = (req: Request) => {
   const query = qs.stringify(req.body, { addQueryPrefix: true });
   const url = `${req.url}${query}`;
   return new Promise((resolve, reject) => {
+    debug('sdk:api:jsonp')('url: ', url);
+    debug('sdk:api:jsonp')('options: ', req.options);
     jsonp(url, req.options, (err: Error | null, data: any) => {
       if (err) {
         reject(err);
@@ -50,17 +51,18 @@ const sendJSONP = (req: Request) => {
   });
 };
 
-const sendPOST = (req: Request) =>
-  new Promise((resolve, reject) => {
-    const headers = {
-      'x-key': req.body.key,
-      'Content-type': 'application/json',
-    };
-    return axios
-      .post(req.url, req.body, { headers })
-      .then(({ data }) => resolve(data))
-      .catch(reject);
-  });
+const sendPOST = async (req: Request) => {
+  const headers = {
+    'x-key': req.body.key,
+    'Content-type': 'application/json',
+  };
+  debug('sdk:api:post')('url: ', req.url);
+  debug('sdk:api:post')('body: ', req.body);
+  debug('sdk:api:post')('headers: ', headers);
+  const response = await axios.post(req.url, req.body, { headers });
+  debug('sdk:api:post')('response: ', response);
+  return response.data;
+};
 
 /**
  * Send a request to Findify JSON API.

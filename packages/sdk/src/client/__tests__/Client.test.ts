@@ -1,6 +1,6 @@
 import 'dotenv/config';
 import debug from 'debug';
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 import * as nock from 'nock';
 import { Scope as NockScope, NockBackOptions, NockDefinition } from 'nock';
 import httpAdapter = require('axios/lib/adapters/http');
@@ -58,7 +58,9 @@ describe('Client', () => {
     nock.back.fixtures = __dirname + '/__fixtures__';
   });
 
-  afterEach(() => nock.cleanAll());
+  afterEach(() => {
+    nock.cleanAll();
+  });
 
   const config: Config = {
     url: process.env.TEST_API_HOST,
@@ -102,40 +104,64 @@ describe('Client', () => {
         },
       ];
 
+      expect.assertions(requests.length);
       for (let req of requests) {
-        const { nockDone, context } = await nock.back(
-          'autocomplete.json',
-          nockBackOpts
-        );
+        const fixture = `autocomplete-${req.params.q}.json`;
+        const { nockDone, context } = (await nock.back(
+          fixture,
+          nockBackOpts as any
+        )) as any;
         const response = await client.send(req);
         context.assertScopesFinished();
         expect(sanitizeResponseBody(response)).toMatchSnapshot();
         nockDone();
+        nock.cleanAll();
       }
     });
   });
 
   it('throws an error on empty query', async () => {
-    const queries = ['', '    '];
-    const requests: Req.Autocomplete.Request[] = queries.map((q: string) => ({
+    expect.assertions(2);
+    const request: Req.Autocomplete.Request = {
       type: Req.Type.Autocomplete,
-      params: {
-        q,
-        item_limit: 1,
-        suggestion_limit: 1,
-      },
-    }));
-
-    for (let req of requests) {
-      const scope = nock('https://search-staging.findify.io:443')
-        .post('/v3/autocomplete', _ => true)
-        .reply(400, { error: { message: '"q" is not allowed to be empty' } });
-      const response = await client.send(req);
-      scope.done();
+      params: { q: '', item_limit: 1, suggestion_limit: 1 },
+    };
+    const fixture = 'autocomplete-empty.json';
+    const { nockDone, context } = (await nock.back(
+      fixture,
+      nockBackOpts as any
+    )) as any;
+    try {
+      const response = await client.send(request);
+    } catch (err) {
+      const error: AxiosError = err;
+      expect(error.response.status).toBe(400);
+      expect(error.response.data).toMatchSnapshot();
     }
+    context.assertScopesFinished();
+    nockDone();
   });
 
-  describe('search', () => {});
+  describe('search', async () => {
+    it('respects request parameters', async () => {
+      const request: Req.Search.Request = {
+        type: Req.Type.Search,
+        params: {
+          q: 'dra',
+          offset: 2,
+          limit: 5,
+        },
+      };
+      const { nockDone, context } = await nock.back(
+        'search.json',
+        nockBackOpts
+      );
+      const response = await client.send(request);
+      context.assertScopesFinished();
+      expect(sanitizeResponseBody(response)).toMatchSnapshot();
+      nockDone();
+    });
+  });
 
   describe('smart collection', () => {});
 
