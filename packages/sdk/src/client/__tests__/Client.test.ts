@@ -177,14 +177,30 @@ describe('Client', () => {
         );
         for (let request of requests) {
           const params = request.params as Req.Recommendations.Slot;
-          const fixture = `search-${params.slot}-${params.offset || 0}.json`;
+          const fixture = `recommendations-${params.slot}-${params.offset ||
+            0}.json`;
           await verifyRequest({ client, request, fixture });
         }
       });
     });
 
     describe(Req.Recommendations.Type.Newest, () => {
-      it.skip('respects request parameters', async () => {});
+      it.skip('respects request parameters', async () => {
+        const parameters: Req.Recommendations.Newest[] = [
+          {},
+          { limit: 5 },
+          { limit: 3, offset: 8 },
+        ];
+        expect.assertions(parameters.length);
+        const requests: Req.Recommendations.Request[] = parameters.map(
+          params => ({ type: Req.Recommendations.Type.Newest, params })
+        );
+        for (let request of requests) {
+          const params = request.params as Req.Recommendations.Newest;
+          const fixture = `search-${params.offset || 0}.json`;
+          await verifyRequest({ client, request, fixture });
+        }
+      });
     });
 
     describe(Req.Recommendations.Type.Trending, () => {
