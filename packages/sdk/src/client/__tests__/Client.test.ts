@@ -6,48 +6,21 @@ import { Scope as NockScope, NockBackOptions, NockDefinition } from 'nock';
 import httpAdapter = require('axios/lib/adapters/http');
 
 import { Client, Config } from '..';
-import { User } from '../../common';
+import { User, SortingOrder } from '../../common';
 import * as Req from '../../request';
 import * as Res from '../../response';
 
-import { sanitizeRequestBody, sanitizeResponseBody } from './support';
+import {
+  sanitizeRequestBody,
+  sanitizeResponseBody,
+  nockBackOptions,
+  verifyRequest,
+  users,
+} from './support';
 
 debug('sdk:tests:client')('TEST_API_HOST: ', process.env.TEST_API_HOST);
 debug('sdk:tests:client')('TEST_API_KEY: ', process.env.TEST_API_KEY);
 debug('sdk:tests:client')('NOCK_BACK_MODE: ', process.env.NOCK_BACK_MODE);
-
-const user1: User = {
-  lang: ['en-GB'],
-  uid: 'test1',
-  sid: 'ssid1',
-  email: 'test2@test.com',
-  ip: '192.168.0.1',
-  ua:
-    'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36',
-};
-
-const user2: User = {
-  lang: ['en-GB'],
-  uid: 'test2',
-  sid: 'ssid2',
-  email: 'test2@test.com',
-  ip: '192.168.0.2',
-  ua:
-    'Mozilla/5.0 (Windows NT 6.2; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/32.0.1667.0 Safari/537.36',
-};
-
-function nockBackBeforeHook(scope: NockScope) {
-  scope.filteringRequestBody = sanitizeRequestBody as any;
-}
-
-const nockBackOpts: NockBackOptions = {
-  before: nockBackBeforeHook as any,
-  afterRecord: (defs: NockDefinition[]) =>
-    defs.map((def: NockDefinition) => ({
-      ...def,
-      response: sanitizeResponseBody(def.response),
-    })),
-};
 
 describe('Client', () => {
   beforeAll(async () => {
@@ -69,53 +42,26 @@ describe('Client', () => {
     timeout: 5000,
     jsonpCallback: 'findifyCallback',
     retryCount: 1,
-    user: user1,
+    user: users.user1,
   };
 
   const client = new Client(config);
 
   describe('autocomplete', () => {
     it('respects request parameters', async () => {
-      const requests: Req.Autocomplete.Request[] = [
-        {
-          type: Req.Type.Autocomplete,
-          params: {
-            q: 'tesl',
-            item_limit: 2,
-            suggestion_limit: 3,
-          },
-        },
-        {
-          type: Req.Type.Autocomplete,
-          params: {
-            q: 'smok',
-            item_limit: 3,
-            suggestion_limit: 5,
-            user: user2,
-          },
-        },
-        {
-          type: Req.Type.Autocomplete,
-          params: {
-            q: 'fir',
-            item_limit: 2,
-            suggestion_limit: 10,
-          },
-        },
+      const parameters: Req.Autocomplete.Params[] = [
+        { q: 'tesl', item_limit: 2, suggestion_limit: 3 },
+        { q: 'smok', item_limit: 3, suggestion_limit: 5, user: users.user2 },
+        { q: 'fir', item_limit: 2, suggestion_limit: 10 },
       ];
-
+      const requests: Req.Autocomplete.Request[] = parameters.map(params => ({
+        type: Req.Type.Autocomplete,
+        params,
+      }));
       expect.assertions(requests.length);
-      for (let req of requests) {
-        const fixture = `autocomplete-${req.params.q}.json`;
-        const { nockDone, context } = (await nock.back(
-          fixture,
-          nockBackOpts as any
-        )) as any;
-        const response = await client.send(req);
-        context.assertScopesFinished();
-        expect(sanitizeResponseBody(response)).toMatchSnapshot();
-        nockDone();
-        nock.cleanAll();
+      for (let request of requests) {
+        const fixture = `autocomplete-${request.params.q}.json`;
+        await verifyRequest({ client, request, fixture });
       }
     });
   });
@@ -129,7 +75,7 @@ describe('Client', () => {
     const fixture = 'autocomplete-empty.json';
     const { nockDone, context } = (await nock.back(
       fixture,
-      nockBackOpts as any
+      nockBackOptions as any
     )) as any;
     try {
       const response = await client.send(request);
@@ -144,28 +90,127 @@ describe('Client', () => {
 
   describe('search', async () => {
     it('respects request parameters', async () => {
-      const request: Req.Search.Request = {
-        type: Req.Type.Search,
-        params: {
-          q: 'dra',
-          offset: 2,
-          limit: 5,
+      const parameters: Req.Search.Params[] = [
+        { q: 'dra', offset: 2, limit: 5 },
+        { q: 'bla', offset: 0, limit: 2 },
+        { q: 'spa' },
+        {
+          q: 'gal',
+          filters: [
+            {
+              type: 'category',
+              name: 'category1',
+              values: [{ value: 'Katt' }],
+            },
+          ],
+          sort: [
+            {
+              field: 'price',
+              order: SortingOrder.Desc,
+            },
+          ],
         },
-      };
-      const { nockDone, context } = await nock.back(
-        'search.json',
-        nockBackOpts
-      );
-      const response = await client.send(request);
-      context.assertScopesFinished();
-      expect(sanitizeResponseBody(response)).toMatchSnapshot();
-      nockDone();
+      ];
+      expect.assertions(parameters.length);
+      const requests: Req.Search.Request[] = parameters.map(params => ({
+        type: Req.Type.Search,
+        params,
+      }));
+      for (let request of requests) {
+        const fixture = `search-${request.params.q}.json`;
+        await verifyRequest({ client, request, fixture });
+      }
     });
   });
 
-  describe('smart collection', () => {});
+  describe('smart collection', () => {
+    it.skip('respects request parameters', async () => {
+      const params = {
+        slot: 'idk',
+        offset: 20,
+        limit: 15,
+        filters: [
+          {
+            name: 'category1',
+            type: 'category',
+            values: [{ value: 'T-Shirts' }],
+          },
+        ],
+        sort: [
+          {
+            field: 'price',
+            order: 'asc',
+          },
+        ],
+      };
+      const request: Req.SmartCollection.Request = {
+        type: Req.Type.SmartCollection,
+        params,
+      };
+      const fixture = `smart-collection-${params.slot}`;
+      await verifyRequest({ client, request, fixture });
+    });
+  });
 
-  describe('recommendations', () => {});
+  describe('recommendations', () => {
+    describe(Req.Recommendations.Type.Slot, () => {
+      it.skip('respects request parameters', async () => {
+        const parameters: Req.Recommendations.Slot[] = [
+          {
+            slot: 'recommendations-test-slot-1',
+            item_ids: ['xxx'],
+          },
+          {
+            slot: 'recommendations-test-slot-1',
+            item_ids: ['321', '543'],
+            offset: 4,
+          },
+          {
+            slot: 'recommendations-test-slot-2',
+            item_ids: ['xxx', 'yyy', 'zzz'],
+            offset: 12,
+          },
+        ];
+        expect.assertions(parameters.length);
+        const requests: Req.Recommendations.Request[] = parameters.map(
+          params => ({ type: Req.Recommendations.Type.Slot, params })
+        );
+        for (let request of requests) {
+          const params = request.params as Req.Recommendations.Slot;
+          const fixture = `search-${params.slot}-${params.offset || 0}.json`;
+          await verifyRequest({ client, request, fixture });
+        }
+      });
+    });
+
+    describe(Req.Recommendations.Type.Newest, () => {
+      it.skip('respects request parameters', async () => {});
+    });
+
+    describe(Req.Recommendations.Type.Trending, () => {
+      it.skip('respects request parameters', async () => {});
+    });
+
+    describe(Req.Recommendations.Type.RecentlyViewed, () => {
+      it.skip('respects request parameters', async () => {});
+    });
+
+    describe(Req.Recommendations.Type.AlsoViewed, () => {
+      it.skip('respects request parameters', async () => {});
+    });
+
+    describe(Req.Recommendations.Type.AlsoBought, () => {
+      it.skip('respects request parameters', async () => {});
+    });
+
+    describe(Req.Recommendations.Type.FrequentlyPurchasedTogether, () => {
+      it.skip('respects request parameters', async () => {});
+    });
+
+    describe(Req.Recommendations.Type.Featured, () => {
+      it.skip('respects request parameters', async () => {});
+    });
+  });
 
   describe('feedback', () => {});
 });

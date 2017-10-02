@@ -48,37 +48,38 @@ export enum Type {
   Featured = 'featured',
 }
 
-/** Common recommendations request parameters */
-export interface Common extends Base, Pagination {}
-
 /** Slot recommendations request parameters */
-export interface Slot extends Common {
+export interface Slot extends Base {
   /** Recommendations type */
   type: Type.Slot;
   /** Collection handle */
   slot: string;
+  /** Array of product item IDs */
+  item_ids: string[];
+  /**  Offset of products items. Used in pagination */
+  offset?: number;
 }
 
 /** Newest recommendations request parameters. */
-export interface Newest extends Common {
+export interface Newest extends Base, Pagination {
   /** Recommendations type */
   type: Type.Newest;
 }
 
 /** Treding recommendations request parameters. */
-export interface Trending extends Common {
+export interface Trending extends Base, Pagination {
   /** Recommendations type */
   type: Type.Trending;
 }
 
 /** Recently viewed recommendations request parameters. */
-export interface RecentlyViewed extends Common {
+export interface RecentlyViewed extends Base, Pagination {
   /** Recommendations type */
   type: Type.RecentlyViewed;
 }
 
 /** Also-viwed recommendations request parameters. */
-export interface AlsoViewed extends Common {
+export interface AlsoViewed extends Base, Pagination {
   /** Recommendations type */
   type: Type.AlsoViewed;
   /** Product item ID */
@@ -86,7 +87,7 @@ export interface AlsoViewed extends Common {
 }
 
 /** Also-bought recommendations request parameters. */
-export interface AlsoBought extends Common {
+export interface AlsoBought extends Base, Pagination {
   /** Recommendations type */
   type: Type.AlsoBought;
   /** Product item ID */
@@ -94,7 +95,7 @@ export interface AlsoBought extends Common {
 }
 
 /** Frequently purchased together recommendations request parameters. */
-export interface FrequentlyPurchasedTogether extends Common {
+export interface FrequentlyPurchasedTogether extends Base, Pagination {
   /** Recommendations type */
   type: Type.FrequentlyPurchasedTogether;
   /** Array of product item IDs */
@@ -102,7 +103,7 @@ export interface FrequentlyPurchasedTogether extends Common {
 }
 
 /** Featured recommendations request parameters. */
-export interface Featured extends Common {
+export interface Featured extends Base, Pagination {
   /** Recommendations type */
   type: Type.Featured;
 }

@@ -14,7 +14,7 @@
                 "ip": "192.168.0.1",
                 "ua": "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36"
             },
-            "t_client": 1506898982980,
+            "t_client": 1506937475540,
             "key": "0d2f3aad-8702-46ad-a786-ae9fe2670294",
             "q": "dra",
             "offset": 2,
@@ -2324,6 +2324,40 @@
                     ],
                     "type": "text",
                     "sort_type": "count"
+                },
+                {
+                    "name": "discount",
+                    "values": [
+                        {
+                            "name": "discount",
+                            "count": 5,
+                            "value": "_10",
+                            "has_children": false,
+                            "to": 10,
+                            "selected": false
+                        },
+                        {
+                            "name": "discount",
+                            "count": 55,
+                            "value": "10_30",
+                            "has_children": false,
+                            "from": 10,
+                            "to": 30,
+                            "selected": false
+                        },
+                        {
+                            "name": "discount",
+                            "count": 38,
+                            "value": "30_",
+                            "has_children": false,
+                            "from": 30,
+                            "selected": false
+                        }
+                    ],
+                    "type": "range",
+                    "min": 7,
+                    "max": 90,
+                    "sort_type": "value"
                 }
             ],
             "items": [
@@ -2619,9 +2653,9 @@
             "Content-Type",
             "application/json; charset=utf-8",
             "Date",
-            "Sun, 01 Oct 2017 23:03:03 GMT",
+            "Mon, 02 Oct 2017 09:44:35 GMT",
             "ETag",
-            "W/\"8bda-Ha5hGkERRM03GOESUlhTqppfiSE\"",
+            "W/\"8d4b-PeHXlYDLiFwBuwMPl0fdningpLQ\"",
             "Expires",
             "0",
             "Pragma",
@@ -2629,7 +2663,7 @@
             "Server",
             "nginx/1.12.1",
             "Content-Length",
-            "35802",
+            "36171",
             "Connection",
             "Close"
         ]
