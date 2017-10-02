@@ -2,8 +2,17 @@
 
 set -e
 
-# TODO: should be set from outside
-S3_ENV=staging
+if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
+  echo "Pull requests are not released to NPM."
+  exit 0
+fi
+
+case "$TRAVIS_BRANCH" in
+ develop) S3_ENV='staging' ;;
+ master) S3_ENV='prod' ;;
+ *) S3_ENV='tmp' ;;
+esac
+
 # root bucket path for package assets
 S3_BUCKET_PATH=findify-assets
 
@@ -27,15 +36,15 @@ SRC_MAP=(
 # mapping from pkg name to the directory path on S3
 typeset -A DST_MAP
 DST_MAP=(
-  [analytics]=analytics-js/$S3_ENV
-  [corge]=corge/$S3_ENV
-  [grault]=grault/$S3_ENV
-  [helpers]=helpers-js/$S3_ENV
-  [mjs]=mjs/$S3_ENV
-  [quux]=quux/$S3_ENV
-  [quuz]=quuz/$S3_ENV
-  [qux]=qux/$S3_ENV
-  [sdk]=js-sdk/$S3_ENV
+  [analytics]=analytics-js
+  [corge]=corge
+  [grault]=grault
+  [helpers]=helpers-js
+  [mjs]=mjs
+  [quux]=quux
+  [quuz]=quuz
+  [qux]=qux
+  [sdk]=js-sdk
 )
 
 # AWS CLI reads config from ~/.aws/config or ~/.aws/credentials
@@ -54,7 +63,7 @@ function deploy_to_s3() {
     local PKG_SEMVER=${BASH_REMATCH[2]} # pkg semver
 
     local PKG_BUNDLE_DIR=${SRC_MAP[$PKG_NAME]}
-    local DST_BUNDLE_DIR=${DST_MAP[$PKG_NAME]}/$PKG_SEMVER
+    local DST_BUNDLE_DIR=${DST_MAP[$PKG_NAME]}/$S3_ENV/$PKG_SEMVER
 
     local SRC_BUNDLE_PATH=packages/$PKG_NAME/$PKG_BUNDLE_DIR
     local DST_BUNDLE_PATH=$S3_BUCKET_PATH/$DST_BUNDLE_DIR
@@ -64,11 +73,6 @@ function deploy_to_s3() {
   fi
 }
 
-if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
-  echo "Pull requests are not released to NPM."
-  exit 0
-fi
-
 if [[ $TRAVIS_BRANCH == 'master' ]]; then
   echo "publishing new versions to npm"
   npm run release
@@ -76,12 +80,15 @@ if [[ $TRAVIS_BRANCH == 'master' ]]; then
 
   echo "changelogs"
   find packages -maxdepth 2 -name 'CHANGELOG.md' -print0 | xargs -0 -I % sh -c 'echo %; cat %'
+fi
 
+PKGS=(analytics helpers mjs)
+
+if [[ $TRAVIS_BRANCH == 'master' || $TRAVIS_BRANCH == 'develop' ]]; then
   echo "building"
   npm run build
 
   echo "deploying to AWS S3"
-  PKGS=(analytics helpers mjs)
   for pkg in ${PKGS[@]}
   do
     echo "pkg: $pkg"
@@ -89,4 +96,6 @@ if [[ $TRAVIS_BRANCH == 'master' ]]; then
     echo "tag: $LATEST_GIT_TAG"
     deploy_to_s3 $LATEST_GIT_TAG
   done
+else
+  echo "branch is neither master nor develop, skipping"
 fi
