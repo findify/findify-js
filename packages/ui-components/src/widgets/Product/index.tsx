@@ -58,7 +58,7 @@ const Price: any = withProps(({ discount, oldPrice, price }) => ({
           className={cx(
             styles.price,
             customStyles.productPriceRegular,
-            (hasDiscount || hasCompare) && customStyles.productPriceSale,
+            (hasDiscount || hasCompare) && customStyles.productPriceSale
           )}
         >
           {getPrice(price, currency)}
@@ -69,7 +69,7 @@ const Price: any = withProps(({ discount, oldPrice, price }) => ({
           </span>
         )}
       </div>
-    ),
+    )
 );
 
 export const HOC = compose(
@@ -108,12 +108,12 @@ export const HOC = compose(
       if (onProductClick) {
         if (e && e.isDefaultPrevented && e.isDefaultPrevented()) return;
         e.preventDefault();
-        return onProductClick(rest);
+        return onProductClick(rest, e.ctrlKey || e.metaKey);
       }
     },
   }),
   withHooks('product'), // Deprecated hook
-  withHooks('item'),
+  withHooks('item')
 );
 
 export const Component = ({
@@ -139,19 +139,19 @@ export const Component = ({
     className={cx(
       styles.root,
       customStyles.product,
-      config.simple && styles.simple,
+      config.simple && styles.simple
     )}
   >
     <div className={styles.imageWrap}>
       {(html.image && (
         <div dangerouslySetInnerHTML={{ __html: html.image }} />
       )) || (
-          <Image
-            className={styles.image}
-            src={image_url || thumbnail_url}
-            alt={title}
-          />
-        )}
+        <Image
+          className={styles.image}
+          src={image_url || thumbnail_url}
+          alt={title}
+        />
+      )}
       <Stickers config={config.stickers} stickers={stickers} />
     </div>
     <div className={styles.content}>

@@ -37,8 +37,8 @@ const component = compose(
   branch(
     ({ config }) => config.template === 'grid',
     renderComponent(load('ProductsList')),
-    renderComponent(load('ProductsCarousel')),
-  ),
+    renderComponent(load('ProductsCarousel'))
+  )
 )(null);
 
 export default createFeature({
@@ -47,16 +47,22 @@ export default createFeature({
   component,
 })(
   withHandlers({
-    onProductClick: ({ location, trackEvent, response }) => product => {
-      trackEvent('click-item', { item_id: product.id }, true);
-      return location.navigate(product.product_url);
+    onProductClick: ({ location, trackEvent, response }) => (
+      product,
+      openInNewWindow
+    ) => {
+      trackEvent('click-item', { item_id: product.id }, !openInNewWindow);
+      return location.navigate(
+        product.product_url,
+        openInNewWindow ? '_blank' : '_self'
+      );
     },
   }),
   watchNode({ position: null }),
   branch(
     ({ response, config }) =>
       response && response.items.length < config.minResultsToShow,
-    renderNothing,
+    renderNothing
   ),
-  withFrame(stylesMapper),
+  withFrame(stylesMapper)
 );
