@@ -18,8 +18,6 @@ function* requestSaga() {
   });
 }
 
-function* rootSaga() {
+export function* rootSaga(): any {
   yield [requestSaga()];
 }
-
-export { rootSaga };

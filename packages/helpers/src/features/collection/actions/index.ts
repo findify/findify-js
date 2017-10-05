@@ -2,20 +2,20 @@ import * as FindifySDK from 'findify-sdk';
 
 import { actionTypes } from '../constants/actionTypes';
 
-function clearAllFilters() {
+export function clearAllFilters() {
   return {
     type: actionTypes.CLEAR_ALL_FILTERS,
   };
 }
 
-function setRequestBody(payload: SetRequestBodyPayload) {
+export function setRequestBody(payload: SetRequestBodyPayload) {
   return {
     type: actionTypes.SET_REQUEST_BODY,
     payload,
   };
 }
 
-function request(payload: RequestPayload, sdk: FindifySDK.Client) {
+export function request(payload: RequestPayload, sdk: FindifySDK.Client) {
   return {
     type: actionTypes.REQUEST,
     payload,
@@ -25,152 +25,133 @@ function request(payload: RequestPayload, sdk: FindifySDK.Client) {
   };
 }
 
-function nextPage() {
+export function nextPage() {
   return {
     type: actionTypes.NEXT_PAGE,
   };
 }
 
-function prevPage() {
+export function prevPage() {
   return {
     type: actionTypes.PREV_PAGE,
   };
 }
 
-function setPage(payload: SetPagePayload) {
+export function setPage(payload: SetPagePayload) {
   return {
     type: actionTypes.SET_PAGE,
     payload,
   };
 }
 
-function setSorting(payload: SetSortingPayload) {
+export function setSorting(payload: SetSortingPayload) {
   return {
     type: actionTypes.SET_SORTING,
     payload,
   };
 }
 
-function unsetSorting(payload: UnsetSortingPayload) {
+export function unsetSorting(payload: UnsetSortingPayload) {
   return {
     type: actionTypes.UNSET_SORTING,
     payload,
   };
 }
 
-function setNestedListFacet(payload: GenericFacetPayload) {
+export function setNestedListFacet(payload: GenericFacetPayload) {
   return {
     type: actionTypes.SET_NESTED_LIST_FACET,
     payload,
   };
 }
 
-function unsetNestedListFacet(payload: GenericFacetPayload) {
+export function unsetNestedListFacet(payload: GenericFacetPayload) {
   return {
     type: actionTypes.UNSET_NESTED_LIST_FACET,
     payload,
   };
 }
 
-function setTextFacet(payload: GenericFacetPayload) {
+export function setTextFacet(payload: GenericFacetPayload) {
   return {
     type: actionTypes.SET_TEXT_FACET,
     payload,
   };
 }
 
-function unsetTextFacet(payload: GenericFacetPayload) {
+export function unsetTextFacet(payload: GenericFacetPayload) {
   return {
     type: actionTypes.UNSET_TEXT_FACET,
     payload,
   };
 }
 
-function setRangeFacet(payload: RangeFacetPayload) {
+export function setRangeFacet(payload: RangeFacetPayload) {
   return {
     type: actionTypes.SET_RANGE_FACET,
     payload,
   };
 }
 
-function unsetRangeFacet(payload: RangeFacetPayload) {
+export function unsetRangeFacet(payload: RangeFacetPayload) {
   return {
     type: actionTypes.UNSET_RANGE_FACET,
     payload,
   };
 }
 
-function responseSuccess(payload: ResponseSuccessPayload) {
+export function responseSuccess(payload: ResponseSuccessPayload) {
   return {
     type: actionTypes.RESPONSE_SUCCESS,
     payload,
   };
 }
 
-function responseFailure(payload: ResponseFailurePayload) {
+export function responseFailure(payload: ResponseFailurePayload) {
   return {
     type: actionTypes.RESPONSE_FAILURE,
     payload,
   };
 }
 
-type SetRequestBodyPayload = FindifySDK.CollectionRequest;
+export type SetRequestBodyPayload = FindifySDK.CollectionRequest;
 
-type SearchPayload = {
+export type SearchPayload = {
   query: string;
 };
 
-type RequestPayload = {
+export type RequestPayload = {
   limit?: number;
 };
 
-type SetPagePayload = {
+export type SetPagePayload = {
   page: number;
 };
 
-type SetSortingPayload = {
+export type SetSortingPayload = {
   field: string;
   order: string;
 };
 
-type UnsetSortingPayload = {
+export type UnsetSortingPayload = {
   field: string;
 };
 
-type GenericFacetPayload = {
+export type GenericFacetPayload = {
   name: string;
   value: string;
 };
 
-type RangeFacetPayload = {
+export type RangeFacetPayload = {
   from?: number;
   to?: number;
 };
 
-type ResponseSuccessPayload = {
+export type ResponseSuccessPayload = {
   response: FindifySDK.SearchResponse;
   receivedAt: number;
 };
 
-type ResponseFailurePayload = {
+export type ResponseFailurePayload = {
   message: string;
-};
-
-export {
-  clearAllFilters,
-  setRequestBody,
-  request,
-  nextPage,
-  prevPage,
-  setPage,
-  setSorting,
-  unsetSorting,
-  setNestedListFacet,
-  unsetNestedListFacet,
-  setTextFacet,
-  unsetTextFacet,
-  setRangeFacet,
-  unsetRangeFacet,
-  responseSuccess,
-  responseFailure,
 };

@@ -54,8 +54,8 @@ const component = compose(
   branch(
     ({ type }) => type === 'collection',
     provideHooks('collection'),
-    provideHooks('search'),
-  ),
+    provideHooks('search')
+  )
 )(load('ResultsLayout'));
 
 const mobileFacetsComponent = compose(
@@ -63,7 +63,7 @@ const mobileFacetsComponent = compose(
   onlyUpdateForKeys(['response', 'isMobile', 'mobileFacetsOpen', 'config']),
   withWrapper(mobileFacetsWrapper),
   withFrame(stylesMapper.mobile),
-  provideHooks('mobile'),
+  provideHooks('mobile')
 )(load('FacetsLayout'));
 
 const noResultsComponent = compose(
@@ -84,7 +84,7 @@ const noResultsComponent = compose(
   withFrame(stylesMapper.desktop),
   flattenProp('response'),
   withProps(props => ({ query: props.location.state.q })),
-  provideHooks('search'),
+  provideHooks('search')
 )(load('NoResultsLayout'));
 
 export default createFeature({
@@ -110,9 +110,15 @@ export default createFeature({
       props.isMobile
         ? props.provider.onFacetsChange(data)
         : props.provider.onFacetChange(data),
-    onProductClick: ({ location, trackEvent, response }) => product => {
-      trackEvent('click-item', { item_id: product.id }, true);
-      return location.navigate(product.product_url);
+    onProductClick: ({ location, trackEvent, response }) => (
+      product,
+      openInNewWindow
+    ) => {
+      trackEvent('click-item', { item_id: product.id }, !openInNewWindow);
+      return location.navigate(
+        product.product_url,
+        openInNewWindow ? '_blank' : '_self'
+      );
     },
   }),
   branch(({ location, node, inline, provider }) => {
@@ -124,11 +130,11 @@ export default createFeature({
   branch(({ response }) => !response, renderComponent(initialHTML('html'))),
   branch(
     ({ response }) => response && !response.items.length,
-    renderComponent(noResultsComponent),
+    renderComponent(noResultsComponent)
   ),
   branch(
     ({ isMobile, ...rest }) => isMobile,
-    withPortal(mobileFacetsComponent),
+    withPortal(mobileFacetsComponent)
   ),
-  withFrame(stylesMapper.desktop),
+  withFrame(stylesMapper.desktop)
 );

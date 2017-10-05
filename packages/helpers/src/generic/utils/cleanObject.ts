@@ -1,7 +1,7 @@
 import reduce = require('lodash/reduce');
 import assign = require('lodash/assign');
 
-function cleanObject(obj: InputObject) {
+export function cleanObject(obj: InputObject) {
   return reduce(
     obj,
     (acc: InputObject, value: any, key: string) =>
@@ -10,12 +10,10 @@ function cleanObject(obj: InputObject) {
         : assign({}, acc, {
             [key]: value,
           }),
-    {},
+    {}
   );
 }
 
-type InputObject = {
+export type InputObject = {
   [key: string]: any;
 };
-
-export { cleanObject };

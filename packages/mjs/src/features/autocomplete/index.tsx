@@ -33,7 +33,7 @@ const component = compose(
   branch(
     ({ isMobile, response, config }) =>
       (!isMobile || config.isMobileSimple) && !response,
-    renderNothing,
+    renderNothing
   ),
   withPropsOnChange(
     ['config', 'styles'],
@@ -44,7 +44,7 @@ const component = compose(
       if (config.position === 'right' || offset < window.innerWidth)
         return empty;
       return { config: { ...config, position: 'right' } };
-    },
+    }
   ),
   onlyUpdateForKeys([
     'value',
@@ -54,7 +54,7 @@ const component = compose(
     'config',
   ]),
   flattenProp('response'),
-  provideHooks('autocomplete'),
+  provideHooks('autocomplete')
 )(load('Autocomplete'));
 
 export default createFeature({
@@ -90,15 +90,21 @@ export default createFeature({
       return location.searchFor(value);
     },
 
-    onProductClick: ({ location, trackEvent, response }) => product => {
-      trackEvent('click-item', { item_id: product.id });
-      return location.navigate(product.product_url);
+    onProductClick: ({ location, trackEvent, response }) => (
+      product,
+      openInNewWindow
+    ) => {
+      trackEvent('click-item', { item_id: product.id }, !openInNewWindow);
+      return location.navigate(
+        product.product_url,
+        openInNewWindow ? '_blank' : '_self'
+      );
     },
   }),
   branch(
     ({ isMobile, config, visible }) => isMobile && !config.isMobileSimple,
     mobileComponent,
-    desktopComponent,
+    desktopComponent
   ),
-  withFrame(stylesMapper),
+  withFrame(stylesMapper)
 );

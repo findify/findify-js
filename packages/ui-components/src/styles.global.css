@@ -1,4 +1,4 @@
-.frame-content{
+.frame-content {
   font-family: 'Source Sans Pro', sans-serif; /* 1 */
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
@@ -6,7 +6,7 @@
   text-rendering: optimizeLegibility;
 }
 
-.findify-root{
+.findify-root {
   font-family: 'Source Sans Pro', sans-serif; /* 1 */
   line-height: 1.15; /* 2 */
   -ms-text-size-adjust: 100%; /* 3 */
@@ -39,7 +39,6 @@
   small {
     font-size: 80%;
   }
-
 
   img {
     border-style: none;
@@ -169,6 +168,6 @@
   }
 }
 
-.multiply-gradient{
+.multiply-gradient {
   background: linear-gradient(125deg,red,yellow,green,blue,violet);
 }

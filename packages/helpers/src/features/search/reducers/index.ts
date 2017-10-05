@@ -50,12 +50,12 @@ const initialResponseMetaState = {
   isFetching: false,
 };
 
-const getRequestData = (state: State) => state.request.data;
-const getResponseData = (state: State) => state.response.data;
-const getResponseMeta = (state: State) => state.response.meta;
-const getLastAction = (state: State) => state.lastAction;
+export const getRequestData = (state: State) => state.request.data;
+export const getResponseData = (state: State) => state.response.data;
+export const getResponseMeta = (state: State) => state.response.meta;
+export const getLastAction = (state: State) => state.lastAction;
 
-const rootReducer = combine<State>({
+export const rootReducer = combine<State>({
   request: combine({
     data: requestDataReducer,
   }),
@@ -64,12 +64,12 @@ const rootReducer = combine<State>({
     meta: responseMetaReducer,
   }),
   lastAction: lastActionReducer,
-});
+}) as any;
 
-type ResponseDataState = any;
-type ResponseMetaState = ResponseMeta;
+export type ResponseDataState = any;
+export type ResponseMetaState = ResponseMeta;
 
-type State = {
+export type State = {
   request: {
     data?: RequestDataState;
   };
@@ -78,13 +78,4 @@ type State = {
     data?: ResponseDataState;
   };
   lastAction: any;
-};
-
-export {
-  State,
-  rootReducer,
-  getRequestData,
-  getResponseData,
-  getResponseMeta,
-  getLastAction,
 };

@@ -13,7 +13,7 @@ var config = {
     rules: [
       {
         test: /\.ts$/,
-        use: ['babel-loader', 'ts-loader'],
+        use: ['ts-loader'],
       },
     ],
   },
@@ -31,7 +31,6 @@ var config = {
 
 if (env === 'production') {
   config.plugins.push(new webpack.optimize.UglifyJsPlugin());
-
   config.externals = [nodeExternals()];
 }
 

@@ -10,3 +10,4 @@ types
 typings
 .released-packages
 .npmrc
+.env

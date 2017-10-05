@@ -1,5 +1,5 @@
 const path = require('path');
-const { getLocalIdent } = require('../.bin/helpers/cssIndent.js');
+const { getLocalIdent } = require('../scripts/helpers/cssIndent.js');
 
 module.exports = function(storybookBaseConfig, configType) {
   storybookBaseConfig.module.loaders.push({

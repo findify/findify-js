@@ -37,7 +37,7 @@ const createComponentHandler = eventsList =>
 const nodeEventListenerCreator = action => (
   events,
   handler,
-  selector = identity,
+  selector = identity
 ) => getProps => {
   const props = getProps();
   const node = selector(props.node.instance);
@@ -75,7 +75,7 @@ const tracker = {
   },
 
   onFormSubmit(callback: any = identity, eventsList) {
-    const event = ['submit'];
+    const event = ['submit', 'mjs:submit'];
     const selector = findClosest('form');
 
     const handler = getProps => e => callback(getProps(), e);
@@ -97,7 +97,7 @@ const tracker = {
       const changedNode = props.node.computePosition();
       props.updateNode(
         (changedNode || props.node).set('hasFocus', state),
-        callback(props, state),
+        callback(props, state)
       );
       if (state && !didFired)
         return setTimeout(handler(state, true)(getProps), 400);
@@ -124,7 +124,7 @@ const tracker = {
       const value = e.target.value && e.target.value.trim();
       return props.updateNode(
         props.node.set('value', value),
-        callback(props, value),
+        callback(props, value)
       );
     };
 
@@ -159,7 +159,7 @@ const watchNode = (tracks: INodeTracks) => {
   const eventsList = [];
   return compose(
     ...createTracks(tracks, eventsList),
-    createComponentHandler(eventsList),
+    createComponentHandler(eventsList)
   );
 };
 
