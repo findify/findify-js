@@ -62,8 +62,13 @@ function deploy_to_s3() {
     local PKG_NAME=${BASH_REMATCH[1]}   # pkg name
     local PKG_SEMVER=${BASH_REMATCH[2]} # pkg semver
 
+    local VER_PREFIX=
+    if [[ "mjs" == $PKG_NAME ]]; then
+      VER_PREFIX=v
+    fi
+
     local PKG_BUNDLE_DIR=${SRC_MAP[$PKG_NAME]}
-    local DST_BUNDLE_DIR=${DST_MAP[$PKG_NAME]}/$S3_ENV/$PKG_SEMVER
+    local DST_BUNDLE_DIR=${DST_MAP[$PKG_NAME]}/$S3_ENV/$VER_PREFIX$PKG_SEMVER
 
     local SRC_BUNDLE_PATH=packages/$PKG_NAME/$PKG_BUNDLE_DIR
     local DST_BUNDLE_PATH=$S3_BUCKET_PATH/$DST_BUNDLE_DIR
@@ -83,6 +88,28 @@ if [[ $TRAVIS_BRANCH == 'master' ]]; then
 fi
 
 PKGS=(analytics helpers mjs)
+export GIT_SHA=$(git rev-parse HEAD)
+
+ASSET_HOST="https://findify-assets-2bveeb6u8ag.netdna-ssl.com"
+LAST_MJS_TAG=$(git describe --always --tags --match "@findify/mjs@*" --abbrev=0)
+LAST_MJS_VER=0.0.0-invalid
+
+if [[ $LAST_MJS_TAG =~ ^@findify\/(.+)\@([0-9]+\.[0-9]+\.[0-9]+) ]]; then
+  # mjs package version (e.g. 4.1.0)
+  LAST_MJS_VER=${BASH_REMATCH[2]}
+fi
+
+if [[ $TRAVIS_BRANCH == 'master' ]]; then
+  export PUBLIC_PATH="$ASSET_HOST/mjs/prod/v${LAST_MJS_VER}/"
+  export PROJECT_NAME='mjs-production'
+  echo "$PROJECT_NAME : $PUBLIC_PATH"
+fi
+
+if [[ $TRAVIS_BRANCH == 'develop' ]]; then
+  export PUBLIC_PATH="$ASSET_HOST/mjs/staging/v${LAST_MJS_VER}/"
+  export PROJECT_NAME='mjs-staging'
+  echo "$PROJECT_NAME : $PUBLIC_PATH"
+fi
 
 if [[ $TRAVIS_BRANCH == 'master' || $TRAVIS_BRANCH == 'develop' ]]; then
   echo "building"
