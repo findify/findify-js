@@ -89,7 +89,6 @@
     "url": "git+https://github.com/findify/findify-mjs.git"
   },
   "scripts": {
-    "postinstall": "npm run build:dll:staging",
     "build": "npm run clean && webpack --env.production",
     "build:test": "npm run build",
     "build:dll:staging": "FINDIFY_ENV=staging npm run build:dll",
