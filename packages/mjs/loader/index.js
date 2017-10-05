@@ -22,6 +22,14 @@
     return;
   }
 
+  (function() {
+    try {
+      __MJS_API_SCRIPT_STRING__;
+    } catch (e) {
+      console.warn('Error in Findify MJS Script injection:', e);
+    }
+  })();
+
   var config = __CONFIG__;
   var mainFile =
     config.useSimpleLoader || (config.platform && config.platform.magento)
@@ -37,7 +45,7 @@
     basePath + '/mjs/__ENV__/' + config.mjs_version + '/' + mainFile;
   var ravenPath = 'https://cdn.ravenjs.com/3.14.2/raven.min.js';
   var sentryKey = 'https://9fa0e9f3937c4758b446daad96b004be@sentry.io/158607';
-  var analyticsIsNew = !!~config.analyticsjs_version.includes('2.0');
+  var analyticsIsNew = !!~config.analyticsjs_version.indexOf('2.0');
   var libs = [mjsPath, analyticsPath];
 
   win.__isMJSLoaded = win.__isMJSLoaded || false;
