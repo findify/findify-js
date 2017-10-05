@@ -38,6 +38,7 @@ export default {
   },
   features: {
     autocomplete: {
+      disableFormSubmit: true,
       isMobileSimple: false,
       position: 'left',
       meta: {
