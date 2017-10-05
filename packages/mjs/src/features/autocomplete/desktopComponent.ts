@@ -14,14 +14,14 @@ export default compose(
     'setSelectedSuggestion',
     void 0,
     'response',
-    returnUndefined,
+    returnUndefined
   ),
   watchNode({
     position: null,
 
     focus: (
       { setVisible, visible, response, provider, node, location: { state } },
-      hasFocus,
+      hasFocus
     ) => () => {
       if (hasFocus && !response && state.q)
         provider.request(node.value || state.q);
@@ -35,9 +35,10 @@ export default compose(
     },
 
     onFormSubmit: (
-      { location, response, node, selectedSuggestion, setVisible },
-      e,
+      { location, response, node, selectedSuggestion, setVisible, config },
+      e
     ) => {
+      if (config.disableFormSubmit && e.type !== 'mjs:submit') return;
       if (e) e.preventDefault();
       if (
         !response ||
@@ -62,7 +63,7 @@ export default compose(
         setVisible,
       },
       key,
-      e,
+      e
     ) => {
       const hasResponse = !!(response && response.suggestions.length);
       const isSuggestionSelected = selectedSuggestion !== void 0;
@@ -94,7 +95,6 @@ export default compose(
     },
   }),
   watchClickOutside(
-    ({ node, setVisible }, e) =>
-      e.target !== node.instance && setVisible(false),
-  ),
+    ({ node, setVisible }, e) => e.target !== node.instance && setVisible(false)
+  )
 );
