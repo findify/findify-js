@@ -97,10 +97,6 @@
     "check": "npm run build && npm run clean",
     "clean": "rimraf ./dist ./lib",
     "lint": "tslint --project .",
-    "postpublish": "npm run clean",
-    "postversion": "git push && git push --tags && git checkout develop && git merge master && git push",
-    "prepublish": "npm run build && webpack --env.library",
-    "preversion": "npm i && npm run check && git checkout master && git merge develop",
     "start": "webpack-dashboard -- webpack-dev-server --env.development",
     "start:simple": "webpack-dev-server --env.development",
     "test": "# noop"
