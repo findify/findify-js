@@ -1,0 +1,6 @@
+.sticky {
+  height: auto;
+  position: sticky;
+  align-self: flex-end; 
+  bottom: 0;
+}

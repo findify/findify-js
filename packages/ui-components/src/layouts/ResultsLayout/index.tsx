@@ -10,6 +10,7 @@ import { ProductsList } from 'lists/ProductsList';
 import { FacetsLayout } from '../FacetsLayout';
 import { Button } from 'internals/Button';
 import { Banner } from 'internals/Banner';
+import { Sticky } from 'internals/Sticky';
 import { PoweredBy } from 'internals/PoweredBy';
 import { LoadNext, LoadPrev } from 'internals/InfiniteLoader';
 import withHooks from 'helpers/withHooks';
@@ -22,6 +23,7 @@ export const ResultsLayout = compose(
     view: {
       pagination: true,
       infinite: false,
+      stickyFacets: true,
     },
   }),
   defaultProps({
@@ -36,7 +38,7 @@ export const ResultsLayout = compose(
     showFacets: !isMobile,
     showBreadcrumbs: !isMobile,
   })),
-  withHooks('results'),
+  withHooks('results')
 )(
   ({
     onFacetsChange,
@@ -66,7 +68,7 @@ export const ResultsLayout = compose(
       {showBreadcrumbs && (
         <BreadCrumbs
           {...response.meta}
-          className={styles.breadcrumbs}
+          className={cx(styles.breadcrumbs)}
           onChange={onBreadCrumbRemove}
           displayQuery={type !== 'collection'}
           config={{
@@ -78,7 +80,7 @@ export const ResultsLayout = compose(
       )}
       {!showMobileHeader && (
         <Sorting
-          className={styles.sort}
+          className={cx(styles.sort)}
           value={!!response.meta.sort.length && response.meta.sort[0]}
           onChange={onSortChange}
           options={config.sorting.options}
@@ -116,6 +118,7 @@ export const ResultsLayout = compose(
         {showFacets && (
           <FacetsLayout
             {...{
+              columnElement: config.view.stickyFacets && Sticky,
               isMobile,
               config,
               response,
@@ -129,7 +132,7 @@ export const ResultsLayout = compose(
         <div
           className={cx(
             styles.products,
-            !isMobile && styles.productsWithPadding,
+            !isMobile && styles.productsWithPadding
           )}
         >
           {response.banner &&
@@ -189,5 +192,5 @@ export const ResultsLayout = compose(
         </div>
       </Grid>
     </div>
-  ),
+  )
 );
