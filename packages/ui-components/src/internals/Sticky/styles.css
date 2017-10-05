@@ -1,11 +1,6 @@
 .sticky {
   height: auto;
-}
-
-.sticky.top,
-.sticky.bottom {
   position: sticky;
+  align-self: flex-end; 
+  bottom: 0;
 }
-
-.top { align-self: flex-start; }
-.bottom { align-self: flex-end; }
