@@ -15,12 +15,15 @@ import {
 const history = createHistory();
 const emptyObject = {};
 
+const isValidNumber = s =>
+  s.length > 1 &&
+  (s[0] === '0' || (s.includes('.') && s[s.length - 1] === '0'));
 const toString = state => stringify(state, { encode: encodeURIComponent });
 const fromString = str =>
   parse(str, {
     decoder: str => {
       const value: any = decodeURIComponent(str);
-      return isNaN(value) || !value || (value.length > 1 && value[0] === '0')
+      return isNaN(value) || !value || isValidNumber(value)
         ? value
         : parseFloat(value);
     },
@@ -87,7 +90,7 @@ class Location {
     const prefix = this.prefix + '_';
     return reduceState(
       state,
-      key => key.includes(prefix) && key.replace(prefix, ''),
+      key => key.includes(prefix) && key.replace(prefix, '')
     );
   }
 
@@ -112,7 +115,7 @@ class Location {
         .replace(/^\/|\/$/g, '')
         .toLowerCase();
       this.collection = config.collections.find(
-        path => normalizedPath === path,
+        path => normalizedPath === path
       );
     }
 
