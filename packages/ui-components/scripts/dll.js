@@ -12,6 +12,7 @@ const vendor = [
   'react-numeric-input',
   'react-dropdown',
   'currency-formatter',
+  'stickyfilljs',
   'react-slick',
   // ... Write here any libs you want to exclude from main bundle
 ];

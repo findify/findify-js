@@ -89,7 +89,6 @@
     "url": "git+https://github.com/findify/findify-mjs.git"
   },
   "scripts": {
-    "postinstall": "npm run build:dll:staging",
     "build": "npm run clean && webpack --env.production",
     "build:test": "npm run build",
     "build:dll:staging": "FINDIFY_ENV=staging npm run build:dll",
@@ -98,10 +97,6 @@
     "check": "npm run build && npm run clean",
     "clean": "rimraf ./dist ./lib",
     "lint": "tslint --project .",
-    "postpublish": "npm run clean",
-    "postversion": "git push && git push --tags && git checkout develop && git merge master && git push",
-    "prepublish": "npm run build && webpack --env.library",
-    "preversion": "npm i && npm run check && git checkout master && git merge develop",
     "start": "webpack-dashboard -- webpack-dev-server --env.development",
     "start:simple": "webpack-dev-server --env.development",
     "test": "# noop"
