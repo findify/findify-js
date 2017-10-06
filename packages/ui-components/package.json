@@ -10,7 +10,7 @@
     "fontfaceobserver": "^2.0.13",
     "humps": "^2.0.1",
     "immutable": "^3.8.1",
-    "match-media": "^0.2.0",
+    "matchmedia-polyfill": "^0.3.0",
     "normalize.css": "^7.0.0",
     "prop-types": "^15.5.10",
     "qs": "^6.5.1",

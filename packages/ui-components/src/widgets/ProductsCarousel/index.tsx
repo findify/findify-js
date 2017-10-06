@@ -19,7 +19,7 @@ import sizeMe from 'react-sizeme';
 import Slider from 'react-slick';
 import Icon from 'internals/Icon';
 
-import 'match-media'; // Polyfill for slick-slider
+import 'matchmedia-polyfill'; // Polyfill for IE9 (matchMedia)
 import './slider.global.css';
 import './slider-theme.global.css';
 
@@ -44,7 +44,7 @@ const Arrow = withHandlers({
       name={`chevron-${dir}`}
       className={cx(styles.arrow, className)}
     />
-  ),
+  )
 );
 
 const countProductsToShow = width => {
@@ -87,7 +87,7 @@ export const HOC = compose(
       nextArrow: <Arrow dir="right" defaultOnClick={scrollToFirst} />,
       prevArrow: <Arrow dir="left" defaultOnClick={scrollToLast} />,
     },
-  })),
+  }))
 );
 
 export const Component = ({
@@ -121,7 +121,7 @@ export const Component = ({
             }}
           />
         </div>
-      )),
+      ))
     )}
   </div>
 );
