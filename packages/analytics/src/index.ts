@@ -31,7 +31,9 @@ import env = require('./env');
 
 import elementDataset from 'element-dataset';
 
-elementDataset();
+if (typeof document !== 'undefined') {
+  elementDataset();
+}
 
 const emitter = createChangeEmitter();
 const state: any = {};

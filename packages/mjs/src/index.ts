@@ -11,7 +11,9 @@ import isBot from './helpers/isBot';
 
 import elementDataset from 'element-dataset';
 
-elementDataset();
+if (typeof document !== 'undefined') {
+  elementDataset();
+}
 
 const prepareConfig = config => {
   const frameDisabled = config.frameDisabled || isBot;
