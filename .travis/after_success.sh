@@ -63,10 +63,6 @@ function deploy_to_s3() {
     local PKG_SEMVER=${BASH_REMATCH[2]} # pkg semver
 
     local VER_PREFIX=
-    if [[ "mjs" == $PKG_NAME ]]; then
-      VER_PREFIX=v
-    fi
-
     local PKG_BUNDLE_DIR=${SRC_MAP[$PKG_NAME]}
     local DST_BUNDLE_DIR=${DST_MAP[$PKG_NAME]}/$S3_ENV/$VER_PREFIX$PKG_SEMVER
 
@@ -100,13 +96,13 @@ if [[ $LAST_MJS_TAG =~ ^@findify\/(.+)\@([0-9]+\.[0-9]+\.[0-9]+) ]]; then
 fi
 
 if [[ $TRAVIS_BRANCH == 'master' ]]; then
-  export PUBLIC_PATH="$ASSET_HOST/mjs/prod/v${LAST_MJS_VER}/"
+  export PUBLIC_PATH="$ASSET_HOST/mjs/prod/${LAST_MJS_VER}/"
   export PROJECT_NAME='mjs-production'
   echo "$PROJECT_NAME : $PUBLIC_PATH"
 fi
 
 if [[ $TRAVIS_BRANCH == 'develop' ]]; then
-  export PUBLIC_PATH="$ASSET_HOST/mjs/staging/v${LAST_MJS_VER}/"
+  export PUBLIC_PATH="$ASSET_HOST/mjs/staging/${LAST_MJS_VER}/"
   export PROJECT_NAME='mjs-staging'
   echo "$PROJECT_NAME : $PUBLIC_PATH"
 fi
