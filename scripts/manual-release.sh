@@ -14,7 +14,7 @@ VERSION_TYPE=$2
 [ -z $VERSION_TYPE ] && echo "need to set VERSION_TYPE" && exit 1
 
 git fetch
-git pull
+git pull origin develop
 
 pushd $RELATIVE_PKG
 npm version $VERSION_TYPE --no-git-tag-version
