@@ -21,7 +21,7 @@ npm version $VERSION_TYPE --no-git-tag-version
 VERSION=$(node -e "console.log(require('./package.json').version)")
 popd
 
-git commit -am"chore(release): manual bump for release of $PKG@$VERSION\n\naffects: $PKG@$VERSION"
+git commit -am"chore(release): manual bump for release of $PKG@$VERSION, affects: $PKG@$VERSION"
 git tag @findify/$PKG@$VERSION
 
 $LERNA exec -- ln -sf ../../.git .git
