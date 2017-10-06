@@ -22,7 +22,7 @@ VERSION=$(node -e "console.log(require('./package.json').version)")
 popd
 
 git commit -am"chore(release): manual bump for release of $PKG@$VERSION\n\naffects: $PKG@$VERSION"
-git tag $PKG@$VERSION
+git tag @findify/$PKG@$VERSION
 
 $LERNA exec -- ln -sf ../../.git .git
 npm publish packages/$PKG
