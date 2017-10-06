@@ -14,15 +14,15 @@ VERSION_TYPE=$2
 [ -z $VERSION_TYPE ] && echo "need to set VERSION_TYPE" && exit 1
 
 git fetch
-git pull
+git pull origin develop
 
 pushd $RELATIVE_PKG
 npm version $VERSION_TYPE --no-git-tag-version
 VERSION=$(node -e "console.log(require('./package.json').version)")
 popd
 
-git commit -am"chore(release): manual bump for release of $PKG@$VERSION\n\naffects: $PKG@$VERSION"
-git tag $PKG@$VERSION
+git commit -am"chore(release): manual bump for release of $PKG@$VERSION, affects: $PKG@$VERSION"
+git tag @findify/$PKG@$VERSION
 
 $LERNA exec -- ln -sf ../../.git .git
 npm publish packages/$PKG

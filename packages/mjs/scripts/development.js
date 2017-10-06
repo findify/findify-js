@@ -81,12 +81,12 @@ export default (env, { module, plugins, ...config }) => ({
       context: path.join(process.cwd()),
       manifest: require(path.join(
         process.cwd(),
-        'node_modules/dll/vendor-manifest.json',
+        'node_modules/dll/vendor-manifest.json'
       )),
     }),
     new AddAssetHtmlPlugin({
       filepath: require.resolve(
-        path.join(process.cwd(), 'node_modules/dll/vendor.dll.js'),
+        path.join(process.cwd(), 'node_modules/dll/vendor.dll.js')
       ),
     }),
     new HtmlWebpackPlugin({

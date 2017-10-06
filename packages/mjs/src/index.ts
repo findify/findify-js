@@ -9,6 +9,12 @@ import injectFeature from './helpers/injectFeature';
 import { injectTags } from './helpers/createHTML';
 import isBot from './helpers/isBot';
 
+import elementDataset from 'element-dataset';
+
+if (typeof document !== 'undefined') {
+  elementDataset();
+}
+
 const prepareConfig = config => {
   const frameDisabled = config.frameDisabled || isBot;
   return {

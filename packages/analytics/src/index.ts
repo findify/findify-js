@@ -29,6 +29,12 @@ import {
 
 import env = require('./env');
 
+import elementDataset from 'element-dataset';
+
+if (typeof document !== 'undefined') {
+  elementDataset();
+}
+
 const emitter = createChangeEmitter();
 const state: any = {};
 
@@ -43,7 +49,7 @@ const sendEventCreator = ({ events, key }) => (
   event: string,
   request: any = {},
   useCookie?: boolean,
-  endpoint?: string,
+  endpoint?: string
 ) => {
   if (useCookie) return storage.memoize(event, request);
 
@@ -64,7 +70,7 @@ const sendEventCreator = ({ events, key }) => (
 };
 
 const initializeCreator = (root, sendEvent, { platform, events }) => (
-  context = root,
+  context = root
 ) => {
   state.events = {
     ...getDeprecatedEvents(context),
