@@ -32,6 +32,7 @@
     "access": "public"
   },
   "dependencies": {
+    "element-dataset": "^2.2.6",
     "change-emitter": "^0.1.6",
     "humps": "^2.0.1",
     "js-cookie": "^2.1.4",
