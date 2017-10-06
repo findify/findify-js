@@ -31,21 +31,28 @@
   })();
 
   var config = __CONFIG__;
+  var analyticsIsNew =
+    !!~config.analyticsjs_version.indexOf('2.0') ||
+    !!~config.analyticsjs_version.indexOf('3.');
+
   var mainFile =
     config.useSimpleLoader || (config.platform && config.platform.magento)
       ? 'pure.js'
       : 'extended.js';
+
   var basePath = 'https://findify-assets-2bveeb6u8ag.netdna-ssl.com';
+
   var analyticsPath =
     basePath +
-    '/analytics-js/__ENV__/findify-analytics.' +
-    config.analyticsjs_version +
-    '.min.js';
+    '/analytics-js/__ENV__/' +
+    (!!~config.analyticsjs_version.indexOf('3.')
+      ? config.analyticsjs_version + '/findify-analytics.min.js'
+      : 'findify-analytics.' + config.analyticsjs_version + '.min.js');
+
   var mjsPath =
     basePath + '/mjs/__ENV__/' + config.mjs_version + '/' + mainFile;
   var ravenPath = 'https://cdn.ravenjs.com/3.14.2/raven.min.js';
   var sentryKey = 'https://9fa0e9f3937c4758b446daad96b004be@sentry.io/158607';
-  var analyticsIsNew = !!~config.analyticsjs_version.indexOf('2.0');
   var libs = [mjsPath, analyticsPath];
 
   win.__isMJSLoaded = win.__isMJSLoaded || false;
@@ -73,8 +80,8 @@
 
     var client = analytics({
       key: config.api.key,
-      platform: config.platform,
-      events: config.analytics,
+      platform: config.platform || {},
+      events: config.analytics || {},
     });
 
     config.api.user = analyticsIsNew ? client.user : client.getUser();
