@@ -37,40 +37,51 @@ const StaticList = ({
         item,
         key: item.value,
         title: item.label || item.value,
-      }),
+      })
     )}
   </div>
 );
 
 const VirtualizedList = compose(
+  withHandlers({
+    setAutoSizerRef: () => r => {
+      if (!!r) {
+        r._parentNode = r._autoSizer.parentNode;
+        r._onResize();
+      }
+    },
+  }),
   defaultProps({
     cache: new CellMeasurerCache({
       fixedWidth: true,
       minHeight: 20,
     }),
   }),
-  withProps(({ items, itemComponent = Item, cache, ...rest }) => ({
-    rowRenderer: ({ index, key, parent, style }) => (
-      <CellMeasurer
-        cache={cache}
-        columnIndex={0}
-        key={key}
-        rowIndex={index}
-        parent={parent}
-      >
-        {({ measure }) =>
-          createEagerElement(itemComponent, {
-            ...rest,
-            item: items[index],
-            title: items[index].label || items[index].value,
-            key,
-            style,
-          })}
-      </CellMeasurer>
-    ),
-  })),
-)(({ isMobile, items, rowRenderer, config, cache }: any) => (
-  <AutoSizer disableHeight={!isMobile}>
+  withPropsOnChange(
+    ['items'],
+    ({ items, itemComponent = Item, cache, ...rest }) => ({
+      rowRenderer: ({ index, key, parent, style }) => (
+        <CellMeasurer
+          cache={cache}
+          columnIndex={0}
+          key={key}
+          rowIndex={index}
+          parent={parent}
+        >
+          {({ measure }) =>
+            createEagerElement(itemComponent, {
+              ...rest,
+              item: items[index],
+              title: items[index].label || items[index].value,
+              key,
+              style,
+            })}
+        </CellMeasurer>
+      ),
+    })
+  )
+)(({ isMobile, items, rowRenderer, config, cache, setAutoSizerRef }: any) => (
+  <AutoSizer disableHeight={!isMobile} ref={setAutoSizerRef}>
     {({ width, height }) => (
       <List
         width={width}
@@ -92,6 +103,6 @@ export const ListRenderer: any = compose(
   branch(
     ({ isStatic }: any) => isStatic,
     renderComponent(StaticList),
-    renderComponent(VirtualizedList),
-  ),
+    renderComponent(VirtualizedList)
+  )
 )(renderNothing);
