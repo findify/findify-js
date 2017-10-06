@@ -3,12 +3,5 @@
   "compilerOptions": {
     "module": "commonjs",
     "target": "es5"
-  },
-  "include": [
-    "**/*.test.*",
-    "**/*.mock.*"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+  }
 }

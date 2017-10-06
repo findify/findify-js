@@ -1,0 +1,327 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[` 1`] = `"\\"revenue\\" param is required"`;
+
+exports[` 2`] = `"\\"revenue\\" param is required"`;
+
+exports[` 3`] = `"\\"revenue\\" param can not be an empty or only-whitespace string"`;
+
+exports[` 4`] = `"\\"revenue\\" param can not be an empty or only-whitespace string"`;
+
+exports[` 5`] = `"\\"revenue\\" param can not be empty"`;
+
+exports[` 6`] = `"\\"currency\\" param is required"`;
+
+exports[` 7`] = `"\\"currency\\" param is required"`;
+
+exports[` 8`] = `"\\"currency\\" param can not be an empty or only-whitespace string"`;
+
+exports[` 9`] = `"\\"currency\\" param can not be an empty or only-whitespace string"`;
+
+exports[` 10`] = `"\\"currency\\" param can not be empty"`;
+
+exports[` 11`] = `"\\"order_id\\" param is required"`;
+
+exports[` 12`] = `"\\"order_id\\" param is required"`;
+
+exports[` 13`] = `"\\"order_id\\" param can not be an empty or only-whitespace string"`;
+
+exports[` 14`] = `"\\"order_id\\" param can not be an empty or only-whitespace string"`;
+
+exports[` 15`] = `"\\"order_id\\" param can not be empty"`;
+
+exports[` 16`] = `"\\"line_items[].item_id\\" param is required"`;
+
+exports[` 17`] = `"\\"line_items[].unit_price\\" param is required"`;
+
+exports[` 18`] = `"\\"line_items[].quantity\\" param is required"`;
+
+exports[` 19`] = `"\\"line_items[].quantity\\" param is required"`;
+
+exports[` 20`] = `"\\"line_items[].quantity\\" param can not be an empty or only-whitespace string"`;
+
+exports[` 21`] = `"\\"line_items[].quantity\\" param can not be an empty or only-whitespace string"`;
+
+exports[` 22`] = `"\\"line_items[].quantity\\" param can not be empty"`;
+
+exports[` 23`] = `"\\"line_items[].unit_price\\" param is required"`;
+
+exports[` 24`] = `"\\"line_items[].unit_price\\" param is required"`;
+
+exports[` 25`] = `"\\"line_items[].unit_price\\" param can not be an empty or only-whitespace string"`;
+
+exports[` 26`] = `"\\"line_items[].unit_price\\" param can not be an empty or only-whitespace string"`;
+
+exports[` 27`] = `"\\"line_items[].unit_price\\" param can not be empty"`;
+
+exports[` 28`] = `"\\"line_items[].item_id\\" param is required"`;
+
+exports[` 29`] = `"\\"line_items[].item_id\\" param is required"`;
+
+exports[` 30`] = `"\\"line_items[].item_id\\" param can not be an empty or only-whitespace string"`;
+
+exports[` 31`] = `"\\"line_items[].item_id\\" param can not be an empty or only-whitespace string"`;
+
+exports[` 32`] = `"\\"line_items[].item_id\\" param can not be empty"`;
+
+exports[` 33`] = `"\\"line_items[].item_id\\" param is required"`;
+
+exports[` 34`] = `"\\"line_items[].unit_price\\" param is required"`;
+
+exports[` 35`] = `"\\"line_items[].quantity\\" param is required"`;
+
+exports[` 36`] = `"\\"line_items[].quantity\\" param is required"`;
+
+exports[` 37`] = `"\\"line_items[].quantity\\" param can not be an empty or only-whitespace string"`;
+
+exports[` 38`] = `"\\"line_items[].quantity\\" param can not be an empty or only-whitespace string"`;
+
+exports[` 39`] = `"\\"line_items[].quantity\\" param can not be empty"`;
+
+exports[` 40`] = `"\\"line_items[].unit_price\\" param is required"`;
+
+exports[` 41`] = `"\\"line_items[].unit_price\\" param is required"`;
+
+exports[` 42`] = `"\\"line_items[].unit_price\\" param can not be an empty or only-whitespace string"`;
+
+exports[` 43`] = `"\\"line_items[].unit_price\\" param can not be an empty or only-whitespace string"`;
+
+exports[` 44`] = `"\\"line_items[].unit_price\\" param can not be empty"`;
+
+exports[` 45`] = `"\\"line_items[].item_id\\" param is required"`;
+
+exports[` 46`] = `"\\"line_items[].item_id\\" param is required"`;
+
+exports[` 47`] = `"\\"line_items[].item_id\\" param can not be an empty or only-whitespace string"`;
+
+exports[` 48`] = `"\\"line_items[].item_id\\" param can not be an empty or only-whitespace string"`;
+
+exports[` 49`] = `"\\"line_items[].item_id\\" param can not be empty"`;
+
+exports[` 50`] = `"\\"height\\" param is required"`;
+
+exports[` 51`] = `"\\"height\\" param is required"`;
+
+exports[` 52`] = `"\\"height\\" param can not be an empty or only-whitespace string"`;
+
+exports[` 53`] = `"\\"height\\" param can not be an empty or only-whitespace string"`;
+
+exports[` 54`] = `"\\"height\\" param can not be empty"`;
+
+exports[` 55`] = `"\\"width\\" param is required"`;
+
+exports[` 56`] = `"\\"width\\" param is required"`;
+
+exports[` 57`] = `"\\"width\\" param can not be an empty or only-whitespace string"`;
+
+exports[` 58`] = `"\\"width\\" param can not be an empty or only-whitespace string"`;
+
+exports[` 59`] = `"\\"width\\" param can not be empty"`;
+
+exports[` 60`] = `"\\"ref\\" param is required"`;
+
+exports[` 61`] = `"\\"ref\\" param is required"`;
+
+exports[` 62`] = `"\\"ref\\" param can not be an empty or only-whitespace string"`;
+
+exports[` 63`] = `"\\"ref\\" param can not be an empty or only-whitespace string"`;
+
+exports[` 64`] = `"\\"ref\\" param can not be empty"`;
+
+exports[` 65`] = `"\\"url\\" param is required"`;
+
+exports[` 66`] = `"\\"url\\" param is required"`;
+
+exports[` 67`] = `"\\"url\\" param can not be an empty or only-whitespace string"`;
+
+exports[` 68`] = `"\\"url\\" param can not be an empty or only-whitespace string"`;
+
+exports[` 69`] = `"\\"url\\" param can not be empty"`;
+
+exports[`validation validateAutocomlete throws error if "q" is missing or invalid 1`] = `"\\"q\\" param is required"`;
+
+exports[`validation validateAutocomlete throws error if "q" is missing or invalid 2`] = `"\\"q\\" param is required"`;
+
+exports[`validation validateAutocomlete throws error if "q" is missing or invalid 3`] = `"\\"q\\" param can not be an empty or only-whitespace string"`;
+
+exports[`validation validateAutocomlete throws error if "q" is missing or invalid 4`] = `"\\"q\\" param can not be an empty or only-whitespace string"`;
+
+exports[`validation validateAutocomlete throws error if "q" is missing or invalid 5`] = `"\\"q\\" param can not be empty"`;
+
+exports[`validation validateConfig throws an error if "key" is missing or invalid 1`] = `"\\"key\\" param is missing. To get a Merchant API key you need to register with Findify and finish the onboarding process."`;
+
+exports[`validation validateConfig throws an error if "key" is missing or invalid 2`] = `"\\"key\\" param should be a string. To get a Merchant API key you need to register with Findify and finish the onboarding process."`;
+
+exports[`validation validateConfig throws an error if "key" is missing or invalid 3`] = `"\\"key\\" param should be a string. To get a Merchant API key you need to register with Findify and finish the onboarding process."`;
+
+exports[`validation validateConfig throws an error if "key" is missing or invalid 4`] = `"\\"key\\" param can not be an empty or only-whitespace string. To get a Merchant API key you need to register with Findify and finish the onboarding process."`;
+
+exports[`validation validateConfig throws an error if "key" is missing or invalid 5`] = `"\\"key\\" param can not be an empty or only-whitespace string. To get a Merchant API key you need to register with Findify and finish the onboarding process."`;
+
+exports[`validation validateConfig throws an error if "log" is invalid 1`] = `"\\"log\\" param should be \\"boolean\\" type"`;
+
+exports[`validation validateConfig throws an error if "log" is invalid 2`] = `"\\"log\\" param should be \\"boolean\\" type"`;
+
+exports[`validation validateConfig throws an error if "log" is invalid 3`] = `"\\"log\\" param should be \\"boolean\\" type"`;
+
+exports[`validation validateConfig throws an error if "method" is invalid 1`] = `"\\"method\\" param should be either \\"post\\" or \\"jsonp\\""`;
+
+exports[`validation validateConfig throws and error if trying to use jsonp when not in browser 1`] = `"jsonp method is not allowed in node environment"`;
+
+exports[`validation validateFeedback click item, add to cart throws error if required params is missing or invalid 1`] = `"\\"item_id\\" param is required"`;
+
+exports[`validation validateFeedback click item, add to cart throws error if required params is missing or invalid 2`] = `"\\"item_id\\" param is required"`;
+
+exports[`validation validateFeedback click item, add to cart throws error if required params is missing or invalid 3`] = `"\\"item_id\\" param can not be an empty or only-whitespace string"`;
+
+exports[`validation validateFeedback click item, add to cart throws error if required params is missing or invalid 4`] = `"\\"item_id\\" param can not be an empty or only-whitespace string"`;
+
+exports[`validation validateFeedback click item, add to cart throws error if required params is missing or invalid 5`] = `"\\"item_id\\" param can not be empty"`;
+
+exports[`validation validateFeedback click item, add to cart throws error if required params is missing or invalid 6`] = `"\\"item_id\\" param is required"`;
+
+exports[`validation validateFeedback click item, add to cart throws error if required params is missing or invalid 7`] = `"\\"item_id\\" param is required"`;
+
+exports[`validation validateFeedback click item, add to cart throws error if required params is missing or invalid 8`] = `"\\"item_id\\" param can not be an empty or only-whitespace string"`;
+
+exports[`validation validateFeedback click item, add to cart throws error if required params is missing or invalid 9`] = `"\\"item_id\\" param can not be an empty or only-whitespace string"`;
+
+exports[`validation validateFeedback click item, add to cart throws error if required params is missing or invalid 10`] = `"\\"item_id\\" param can not be empty"`;
+
+exports[`validation validateFeedback click suggestion, redirect throws error if required params is missing or invalid 1`] = `"\\"rid\\" param is required"`;
+
+exports[`validation validateFeedback click suggestion, redirect throws error if required params is missing or invalid 2`] = `"\\"rid\\" param is required"`;
+
+exports[`validation validateFeedback click suggestion, redirect throws error if required params is missing or invalid 3`] = `"\\"rid\\" param can not be an empty or only-whitespace string"`;
+
+exports[`validation validateFeedback click suggestion, redirect throws error if required params is missing or invalid 4`] = `"\\"rid\\" param can not be an empty or only-whitespace string"`;
+
+exports[`validation validateFeedback click suggestion, redirect throws error if required params is missing or invalid 5`] = `"\\"rid\\" param can not be empty"`;
+
+exports[`validation validateFeedback click suggestion, redirect throws error if required params is missing or invalid 6`] = `"\\"suggestion\\" param is required"`;
+
+exports[`validation validateFeedback click suggestion, redirect throws error if required params is missing or invalid 7`] = `"\\"suggestion\\" param is required"`;
+
+exports[`validation validateFeedback click suggestion, redirect throws error if required params is missing or invalid 8`] = `"\\"suggestion\\" param can not be an empty or only-whitespace string"`;
+
+exports[`validation validateFeedback click suggestion, redirect throws error if required params is missing or invalid 9`] = `"\\"suggestion\\" param can not be an empty or only-whitespace string"`;
+
+exports[`validation validateFeedback click suggestion, redirect throws error if required params is missing or invalid 10`] = `"\\"suggestion\\" param can not be empty"`;
+
+exports[`validation validateFeedback click suggestion, redirect throws error if required params is missing or invalid 11`] = `"\\"rid\\" param is required"`;
+
+exports[`validation validateFeedback click suggestion, redirect throws error if required params is missing or invalid 12`] = `"\\"rid\\" param is required"`;
+
+exports[`validation validateFeedback click suggestion, redirect throws error if required params is missing or invalid 13`] = `"\\"rid\\" param can not be an empty or only-whitespace string"`;
+
+exports[`validation validateFeedback click suggestion, redirect throws error if required params is missing or invalid 14`] = `"\\"rid\\" param can not be an empty or only-whitespace string"`;
+
+exports[`validation validateFeedback click suggestion, redirect throws error if required params is missing or invalid 15`] = `"\\"rid\\" param can not be empty"`;
+
+exports[`validation validateFeedback click suggestion, redirect throws error if required params is missing or invalid 16`] = `"\\"suggestion\\" param is required"`;
+
+exports[`validation validateFeedback click suggestion, redirect throws error if required params is missing or invalid 17`] = `"\\"suggestion\\" param is required"`;
+
+exports[`validation validateFeedback click suggestion, redirect throws error if required params is missing or invalid 18`] = `"\\"suggestion\\" param can not be an empty or only-whitespace string"`;
+
+exports[`validation validateFeedback click suggestion, redirect throws error if required params is missing or invalid 19`] = `"\\"suggestion\\" param can not be an empty or only-whitespace string"`;
+
+exports[`validation validateFeedback click suggestion, redirect throws error if required params is missing or invalid 20`] = `"\\"suggestion\\" param can not be empty"`;
+
+exports[`validation validateRecommendations also viewed / bought throws error if "item_id" is missing or invalid 1`] = `"\\"item_id\\" param is required"`;
+
+exports[`validation validateRecommendations also viewed / bought throws error if "item_id" is missing or invalid 2`] = `"\\"item_id\\" param is required"`;
+
+exports[`validation validateRecommendations also viewed / bought throws error if "item_id" is missing or invalid 3`] = `"\\"item_id\\" param can not be an empty or only-whitespace string"`;
+
+exports[`validation validateRecommendations also viewed / bought throws error if "item_id" is missing or invalid 4`] = `"\\"item_id\\" param can not be an empty or only-whitespace string"`;
+
+exports[`validation validateRecommendations also viewed / bought throws error if "item_id" is missing or invalid 5`] = `"\\"item_id\\" param can not be empty"`;
+
+exports[`validation validateRecommendations also viewed / bought throws error if "item_id" is missing or invalid 6`] = `"\\"item_id\\" param is required"`;
+
+exports[`validation validateRecommendations also viewed / bought throws error if "item_id" is missing or invalid 7`] = `"\\"item_id\\" param is required"`;
+
+exports[`validation validateRecommendations also viewed / bought throws error if "item_id" is missing or invalid 8`] = `"\\"item_id\\" param can not be an empty or only-whitespace string"`;
+
+exports[`validation validateRecommendations also viewed / bought throws error if "item_id" is missing or invalid 9`] = `"\\"item_id\\" param can not be an empty or only-whitespace string"`;
+
+exports[`validation validateRecommendations also viewed / bought throws error if "item_id" is missing or invalid 10`] = `"\\"item_id\\" param can not be empty"`;
+
+exports[`validation validateRecommendations frequently purchased together throws error if "item_ids" is missing or empty 1`] = `"\\"item_ids\\" param is required"`;
+
+exports[`validation validateRecommendations frequently purchased together throws error if "item_ids" is missing or empty 2`] = `"\\"item_ids\\" param is required"`;
+
+exports[`validation validateRecommendations frequently purchased together throws error if "item_ids" is missing or empty 3`] = `"\\"item_ids\\" param can not be an empty or only-whitespace string"`;
+
+exports[`validation validateRecommendations frequently purchased together throws error if "item_ids" is missing or empty 4`] = `"\\"item_ids\\" param can not be an empty or only-whitespace string"`;
+
+exports[`validation validateRecommendations frequently purchased together throws error if "item_ids" is missing or empty 5`] = `"\\"item_ids\\" param can not be empty"`;
+
+exports[`validation validateRecommendations slot throws error if "slot" is missing or invalid 1`] = `"\\"slot\\" param is required"`;
+
+exports[`validation validateRecommendations slot throws error if "slot" is missing or invalid 2`] = `"\\"slot\\" param is required"`;
+
+exports[`validation validateRecommendations slot throws error if "slot" is missing or invalid 3`] = `"\\"slot\\" param can not be an empty or only-whitespace string"`;
+
+exports[`validation validateRecommendations slot throws error if "slot" is missing or invalid 4`] = `"\\"slot\\" param can not be an empty or only-whitespace string"`;
+
+exports[`validation validateRecommendations slot throws error if "slot" is missing or invalid 5`] = `"\\"slot\\" param can not be empty"`;
+
+exports[`validation validateRecommendations throws error if recommendation type is invalid 1`] = `"Invalid \\"recommendation\\" type"`;
+
+exports[`validation validateRecommendations throws error if recommendations type is missing 1`] = `"\\"type\\" param is required"`;
+
+exports[`validation validateRecommendations throws error if recommendations type is missing 2`] = `"\\"type\\" param is required"`;
+
+exports[`validation validateRecommendations throws error if recommendations type is missing 3`] = `"\\"type\\" param can not be an empty or only-whitespace string"`;
+
+exports[`validation validateRecommendations throws error if recommendations type is missing 4`] = `"\\"type\\" param can not be an empty or only-whitespace string"`;
+
+exports[`validation validateSearch throws error if request parameters is invalid 1`] = `"\\"q\\" param is required"`;
+
+exports[`validation validateSearch throws error if request parameters is invalid 2`] = `"\\"q\\" param is required"`;
+
+exports[`validation validateSearch throws error if request parameters is invalid 3`] = `"\\"q\\" param can not be an empty or only-whitespace string"`;
+
+exports[`validation validateSearch throws error if request parameters is invalid 4`] = `"\\"q\\" param can not be an empty or only-whitespace string"`;
+
+exports[`validation validateSearch throws error if request parameters is invalid 5`] = `"\\"q\\" param can not be empty"`;
+
+exports[`validation validateSearch throws error if request parameters is invalid 6`] = `"\\"filter.type\\" param is required"`;
+
+exports[`validation validateSearch throws error if request parameters is invalid 7`] = `"\\"filter.name\\" param is required"`;
+
+exports[`validation validateSearch throws error if request parameters is invalid 8`] = `"\\"filter.name\\" param is required"`;
+
+exports[`validation validateSearch throws error if request parameters is invalid 9`] = `"\\"sort.order\\" param is required"`;
+
+exports[`validation validateSearch throws error if request parameters is invalid 10`] = `"\\"sort.field\\" param is required"`;
+
+exports[`validation validateSearch throws error if request parameters is invalid 11`] = `"\\"sort.order\\" param should be either \\"asc\\" or \\"desc\\""`;
+
+exports[`validation validateSearch throws error if request parameters is invalid 12`] = `"\\"filter.name\\" param is required"`;
+
+exports[`validation validateSmartCollection throws error if request parameters is invalid 1`] = `"\\"slot\\" param is required"`;
+
+exports[`validation validateSmartCollection throws error if request parameters is invalid 2`] = `"\\"slot\\" param is required"`;
+
+exports[`validation validateSmartCollection throws error if request parameters is invalid 3`] = `"\\"slot\\" param can not be an empty or only-whitespace string"`;
+
+exports[`validation validateSmartCollection throws error if request parameters is invalid 4`] = `"\\"slot\\" param can not be an empty or only-whitespace string"`;
+
+exports[`validation validateSmartCollection throws error if request parameters is invalid 5`] = `"\\"slot\\" param can not be empty"`;
+
+exports[`validation validateSmartCollection throws error if request parameters is invalid 6`] = `"\\"filter.type\\" param is required"`;
+
+exports[`validation validateSmartCollection throws error if request parameters is invalid 7`] = `"\\"filter.name\\" param is required"`;
+
+exports[`validation validateSmartCollection throws error if request parameters is invalid 8`] = `"\\"filter.name\\" param is required"`;
+
+exports[`validation validateSmartCollection throws error if request parameters is invalid 9`] = `"\\"sort.order\\" param is required"`;
+
+exports[`validation validateSmartCollection throws error if request parameters is invalid 10`] = `"\\"sort.field\\" param is required"`;
+
+exports[`validation validateSmartCollection throws error if request parameters is invalid 11`] = `"\\"sort.order\\" param should be either \\"asc\\" or \\"desc\\""`;
+
+exports[`validation validateSmartCollection throws error if request parameters is invalid 12`] = `"\\"filter.name\\" param is required"`;
