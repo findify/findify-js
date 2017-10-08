@@ -60,7 +60,7 @@ describe('Client', () => {
       }));
       expect.assertions(requests.length);
       for (let request of requests) {
-        const fixture = `autocomplete-${request.params.q}.json`;
+        const fixture = `autocomplete/${request.params.q}.json`;
         await verifyRequest({ client, request, fixture });
       }
     });
@@ -72,7 +72,7 @@ describe('Client', () => {
       type: Req.Type.Autocomplete,
       params: { q: '', item_limit: 1, suggestion_limit: 1 },
     };
-    const fixture = 'autocomplete-empty.json';
+    const fixture = 'autocomplete/empty.json';
     const { nockDone, context } = (await nock.back(
       fixture,
       nockBackOptions as any
@@ -117,38 +117,65 @@ describe('Client', () => {
         params,
       }));
       for (let request of requests) {
-        const fixture = `search-${request.params.q}.json`;
+        const fixture = `search/${request.params.q}.json`;
         await verifyRequest({ client, request, fixture });
       }
     });
   });
 
   describe('smart collection', () => {
-    it.skip('respects request parameters', async () => {
-      const params = {
-        slot: 'idk',
-        offset: 20,
-        limit: 15,
-        filters: [
-          {
-            name: 'category1',
-            type: 'category',
-            values: [{ value: 'T-Shirts' }],
-          },
-        ],
-        sort: [
-          {
-            field: 'price',
-            order: 'asc',
-          },
-        ],
-      };
-      const request: Req.SmartCollection.Request = {
-        type: Req.Type.SmartCollection,
-        params,
-      };
-      const fixture = `smart-collection-${params.slot}`;
-      await verifyRequest({ client, request, fixture });
+    it('respects request parameters', async () => {
+      const parameters: Req.SmartCollection.Params[] = [
+        { slot: 'collections/sdk-test-1', limit: 2 },
+        { slot: 'collections/sdk-test-1', offset: 2, limit: 2 },
+        {
+          slot: 'collections/sdk-test-1',
+          limit: 2,
+          sort: [
+            {
+              field: 'price',
+              order: 'asc',
+            },
+          ],
+        },
+        {
+          slot: 'collections/sdk-test-1',
+          limit: 2,
+          sort: [
+            {
+              field: 'price',
+              order: 'desc',
+            },
+          ],
+        },
+        {
+          slot: 'collections/sdk-test-1',
+          filters: [
+            {
+              type: 'text',
+              name: 'custom_fields.height',
+              values: [
+                {
+                  value: '10 Inches',
+                },
+              ],
+            },
+          ],
+        },
+      ];
+      const requests: Req.SmartCollection.Request[] = parameters.map(
+        params => ({
+          type: Req.Type.SmartCollection,
+          params,
+        })
+      );
+      expect.assertions(requests.length);
+      let index = 0;
+      for (let request of requests) {
+        const fixture = `smart-collection/${request.params.slot}-${index}.json`;
+        await verifyRequest({ client, request, fixture });
+        index++;
+      }
     });
   });
 
@@ -157,58 +184,108 @@ describe('Client', () => {
       it.skip('respects request parameters', async () => {
         const parameters: Req.Recommendations.Slot[] = [
           {
-            slot: 'recommendations-test-slot-1',
+            slot: 'recommendations/sdk-test-1',
             item_ids: ['xxx'],
           },
           {
-            slot: 'recommendations-test-slot-1',
+            slot: 'recommendations/sdk-test-1',
             item_ids: ['321', '543'],
             offset: 4,
           },
           {
-            slot: 'recommendations-test-slot-2',
+            slot: 'recommendations/sdk-test-2',
             item_ids: ['xxx', 'yyy', 'zzz'],
             offset: 12,
           },
         ];
         expect.assertions(parameters.length);
         const requests: Req.Recommendations.Request[] = parameters.map(
-          params => ({ type: Req.Recommendations.Type.Slot, params })
+          params => ({ type: Req.Type.Recommendations, params })
         );
+        let index = 0;
         for (let request of requests) {
           const params = request.params as Req.Recommendations.Slot;
-          const fixture = `recommendations-${params.slot}-${params.offset ||
-            0}.json`;
+          const fixture = `recommendations/${params.slot}-${index}.json`;
           await verifyRequest({ client, request, fixture });
+          index++;
         }
       });
     });
 
     describe(Req.Recommendations.Type.Newest, () => {
-      it.skip('respects request parameters', async () => {
+      it('respects request parameters', async () => {
         const parameters: Req.Recommendations.Newest[] = [
           {},
-          { limit: 5 },
+          { limit: 2 },
           { limit: 3, offset: 8 },
         ];
         expect.assertions(parameters.length);
         const requests: Req.Recommendations.Request[] = parameters.map(
-          params => ({ type: Req.Recommendations.Type.Newest, params })
+          params => ({
+            type: Req.Type.Recommendations,
+            params: { type: Req.Recommendations.Type.Newest, ...params },
+          })
         );
+        let index = 0;
         for (let request of requests) {
           const params = request.params as Req.Recommendations.Newest;
-          const fixture = `search-${params.offset || 0}.json`;
+          const fixture = `recommendations/${params.type}-${index}.json`;
           await verifyRequest({ client, request, fixture });
+          index++;
         }
       });
     });
 
     describe(Req.Recommendations.Type.Trending, () => {
-      it.skip('respects request parameters', async () => {});
+      it('respects request parameters', async () => {
+        const parameters: Req.Recommendations.Trending[] = [
+          {},
+          { limit: 2, offset: 2 },
+          { limit: 2, offset: 3 },
+        ];
+        expect.assertions(parameters.length);
+        const requests: Req.Recommendations.Request[] = parameters.map(
+          params => ({
+            type: Req.Type.Recommendations,
+            params: { type: Req.Recommendations.Type.Trending, ...params },
+          })
+        );
+        let index = 0;
+        for (let request of requests) {
+          const params = request.params as Req.Recommendations.Trending;
+          const fixture = `recommendations/${params.type}-${index}.json`;
+          await verifyRequest({ client, request, fixture });
+          index++;
+        }
+      });
     });
 
     describe(Req.Recommendations.Type.RecentlyViewed, () => {
-      it.skip('respects request parameters', async () => {});
+      it('respects request parameters', async () => {
+        const parameters: Req.Recommendations.RecentlyViewed[] = [
+          {},
+          { limit: 1 },
+          // TODO: doesn't work (?)
+          // { limit: 1, offset: 1 },
+        ];
+        expect.assertions(parameters.length);
+        const requests: Req.Recommendations.Request[] = parameters.map(
+          params => ({
+            type: Req.Type.Recommendations,
+            params: {
+              type: Req.Recommendations.Type.RecentlyViewed,
+              ...params,
+            },
+          })
+        );
+        let index = 0;
+        for (let request of requests) {
+          const params = request.params as Req.Recommendations.RecentlyViewed;
+          const fixture = `recommendations/${params.type}-${index}.json`;
+          await verifyRequest({ client, request, fixture });
+          index++;
+        }
+      });
     });
 
     describe(Req.Recommendations.Type.AlsoViewed, () => {

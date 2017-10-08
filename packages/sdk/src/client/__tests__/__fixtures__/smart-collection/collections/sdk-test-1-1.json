@@ -1,0 +1,397 @@
+[
+    {
+        "scope": "https://search-staging.findify.io:443",
+        "method": "post",
+        "path": "/v3/smart-collection/collections/sdk-test-1",
+        "body": {
+            "user": {
+                "lang": [
+                    "en-GB"
+                ],
+                "uid": "test1",
+                "sid": "ssid1",
+                "email": "test2@test.com",
+                "ip": "192.168.0.1",
+                "ua": "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36"
+            },
+            "t_client": 1507491209594,
+            "key": "0d2f3aad-8702-46ad-a786-ae9fe2670294",
+            "slot": "collections/sdk-test-1",
+            "offset": 2,
+            "limit": 2
+        },
+        "status": 200,
+        "response": {
+            "meta": {
+                "q": "fire",
+                "offset": 2,
+                "limit": 2,
+                "total": 4,
+                "filters": [],
+                "sort": [],
+                "rid": "<stripped>",
+                "query_type": "and"
+            },
+            "facets": [
+                {
+                    "name": "brand",
+                    "values": [
+                        {
+                            "count": 2,
+                            "has_children": false,
+                            "name": "brand",
+                            "value": "Empire Glassworks",
+                            "selected": false
+                        },
+                        {
+                            "count": 1,
+                            "has_children": false,
+                            "name": "brand",
+                            "value": "Mia Shea Glass",
+                            "selected": false
+                        },
+                        {
+                            "count": 1,
+                            "has_children": false,
+                            "name": "brand",
+                            "value": "UPC",
+                            "selected": false
+                        }
+                    ],
+                    "type": "text",
+                    "sort_type": "count"
+                },
+                {
+                    "name": "color",
+                    "values": [
+                        {
+                            "count": 1,
+                            "has_children": false,
+                            "name": "color",
+                            "value": "Earth",
+                            "selected": false
+                        },
+                        {
+                            "count": 1,
+                            "has_children": false,
+                            "name": "color",
+                            "value": "Fire",
+                            "selected": false
+                        }
+                    ],
+                    "type": "text",
+                    "sort_type": "count"
+                },
+                {
+                    "name": "price",
+                    "values": [
+                        {
+                            "name": "price",
+                            "count": 1,
+                            "value": "100_200",
+                            "has_children": false,
+                            "from": 100,
+                            "to": 200,
+                            "selected": false
+                        },
+                        {
+                            "name": "price",
+                            "count": 3,
+                            "value": "200_",
+                            "has_children": false,
+                            "from": 200,
+                            "selected": false
+                        }
+                    ],
+                    "type": "range",
+                    "min": 12,
+                    "max": 1400,
+                    "sort_type": "value"
+                },
+                {
+                    "name": "custom_fields.height",
+                    "values": [
+                        {
+                            "count": 1,
+                            "has_children": false,
+                            "name": "custom_fields.height",
+                            "value": "10 Inches",
+                            "selected": false
+                        },
+                        {
+                            "count": 1,
+                            "has_children": false,
+                            "name": "custom_fields.height",
+                            "value": "18 Inches",
+                            "selected": false
+                        },
+                        {
+                            "count": 1,
+                            "has_children": false,
+                            "name": "custom_fields.height",
+                            "value": "5.5 Inches",
+                            "selected": false
+                        },
+                        {
+                            "count": 1,
+                            "has_children": false,
+                            "name": "custom_fields.height",
+                            "value": "6 Inches",
+                            "selected": false
+                        }
+                    ],
+                    "type": "text",
+                    "sort_type": "count"
+                },
+                {
+                    "name": "custom_fields.joint_gender",
+                    "values": [
+                        {
+                            "count": 3,
+                            "has_children": false,
+                            "name": "custom_fields.joint_gender",
+                            "value": "Female Joint",
+                            "selected": false
+                        },
+                        {
+                            "count": 1,
+                            "has_children": false,
+                            "name": "custom_fields.joint_gender",
+                            "value": "Male Joint",
+                            "selected": false
+                        }
+                    ],
+                    "type": "text",
+                    "sort_type": "count"
+                },
+                {
+                    "name": "custom_fields.use_case",
+                    "values": [
+                        {
+                            "count": 2,
+                            "has_children": false,
+                            "name": "custom_fields.use_case",
+                            "value": "Made For Dry Herbs",
+                            "selected": false
+                        },
+                        {
+                            "count": 1,
+                            "has_children": false,
+                            "name": "custom_fields.use_case",
+                            "value": "Made For Concentrates",
+                            "selected": false
+                        },
+                        {
+                            "count": 1,
+                            "has_children": false,
+                            "name": "custom_fields.use_case",
+                            "value": "Made For Thin Oils",
+                            "selected": false
+                        },
+                        {
+                            "count": 1,
+                            "has_children": false,
+                            "name": "custom_fields.use_case",
+                            "value": "Made For Waxy Oils",
+                            "selected": false
+                        }
+                    ],
+                    "type": "text",
+                    "sort_type": "count"
+                },
+                {
+                    "name": "custom_fields.joint_size",
+                    "values": [
+                        {
+                            "count": 3,
+                            "has_children": false,
+                            "name": "custom_fields.joint_size",
+                            "value": "14.5mm",
+                            "selected": false
+                        },
+                        {
+                            "count": 1,
+                            "has_children": false,
+                            "name": "custom_fields.joint_size",
+                            "value": "10mm",
+                            "selected": false
+                        }
+                    ],
+                    "type": "text",
+                    "sort_type": "count"
+                },
+                {
+                    "name": "discount",
+                    "values": [
+                        {
+                            "name": "discount",
+                            "count": 1,
+                            "value": "10_30",
+                            "has_children": false,
+                            "from": 10,
+                            "to": 30,
+                            "selected": false
+                        }
+                    ],
+                    "type": "range",
+                    "min": 11,
+                    "max": 34,
+                    "sort_type": "value"
+                }
+            ],
+            "items": [
+                {
+                    "seller": "",
+                    "quantity": 4,
+                    "color": [],
+                    "color_variants": 1,
+                    "image_2_url": "https://cdn.shopify.com/s/files/1/0350/8253/products/EMPIRE-1838-QM-4_medium.jpg?v=1493060648",
+                    "custom_fields": {
+                        "use_case": [
+                            "Made For Thin Oils",
+                            "Made For Waxy Oils",
+                            "Made For Concentrates"
+                        ],
+                        "joint_size": [
+                            "14.5mm"
+                        ],
+                        "joint_gender": [
+                            "Male Joint"
+                        ],
+                        "barcode": [
+                            ""
+                        ],
+                        "height": [
+                            "6 Inches"
+                        ]
+                    },
+                    "description": "Fire Away!\n\n \nThis rig is bad ass! This is a tiered piece so the mouthpiece, which is made of a beautifully worked glass gun ship, separates from the main body. This allows for an easy clean for such a complex piece. This rig also comes with a quartz banger and carb cap. If you're looking for a truly unique piece to add to your collection, this is the rig for you!",
+                    "discount": [],
+                    "availability": true,
+                    "title": "Empire Glassworks \"Gun Ship\" Tiered Rig",
+                    "reviews": {
+                        "total_reviews": 0,
+                        "average_score": 0
+                    },
+                    "material": [],
+                    "size": [],
+                    "price": [
+                        400
+                    ],
+                    "stickers": {
+                        "availability": true,
+                        "in-stock": true,
+                        "out-of-stock": false,
+                        "discount": false,
+                        "free-shipping": false
+                    },
+                    "id": "4953344260",
+                    "sku": [
+                        "EMPIRE-1838-QM"
+                    ],
+                    "category": [
+                        {
+                            "category2": "",
+                            "category3": "",
+                            "category4": "",
+                            "category1": "Water Pipe"
+                        }
+                    ],
+                    "brand": "Empire Glassworks",
+                    "hash": "AV11VmrHCQkVMwqrFIAA",
+                    "compare_at": -1
+                },
+                {
+                    "seller": "",
+                    "quantity": 1,
+                    "color": [],
+                    "color_variants": 1,
+                    "image_2_url": "https://cdn.shopify.com/s/files/1/0350/8253/products/MIA-YOGI-1_medium.jpeg?v=1453759561",
+                    "custom_fields": {
+                        "use_case": [
+                            "Made For Dry Herbs"
+                        ],
+                        "joint_size": [
+                            "10mm"
+                        ],
+                        "joint_gender": [
+                            "Female Joint"
+                        ],
+                        "barcode": [
+                            ""
+                        ],
+                        "height": [
+                            "10 Inches"
+                        ]
+                    },
+                    "description": "A gorgeous heady piece that captures an entire lifestyle.\n\n \nMia Shea is a glassblower originally from Asheville, NC known for her masterful use of the female form in all of her glass products.  In this \"Be Here Now\" heady rig, a woman strikes a Warrior Pose on a surfboard beneath a palm tree.  For all meditative and yogi smokers alike, this piece is great for getting you in the right headspace for your next sesh.  Known by a few as a \"Fire Fairy,\" Shea really shows off her powers with the flame on the texture of the palm tree, which bends and curves in just the right way to catch the light against its amber hues.  The piece's 10mm female joint comes with a matching flower bowl that uses the same earthy tones as the rest of the rig.  Pick up this piece if you're a fan of Mia Shea, or if you're a fan of island living in general.",
+                    "discount": [
+                        11
+                    ],
+                    "availability": true,
+                    "title": "Mia Shea Glass \"Be Here Now\" Heady Rig",
+                    "reviews": {
+                        "total_reviews": 0,
+                        "average_score": 0
+                    },
+                    "material": [],
+                    "size": [],
+                    "price": [
+                        890
+                    ],
+                    "stickers": {
+                        "free-shipping": true,
+                        "discount": [
+                            11
+                        ],
+                        "availability": true,
+                        "in-stock": true,
+                        "out-of-stock": false
+                    },
+                    "id": "4256833860",
+                    "sku": [
+                        "MIASHEA-BE-HERE-NOW"
+                    ],
+                    "category": [
+                        {
+                            "category2": "",
+                            "category3": "",
+                            "category4": "",
+                            "category1": "Water Pipe"
+                        }
+                    ],
+                    "brand": "Mia Shea Glass",
+                    "hash": "AV11VmrDCQkVMwqrFH7P",
+                    "compare_at": 1000
+                }
+            ],
+            "banner": {}
+        },
+        "rawHeaders": [
+            "Access-Control-Allow-Headers",
+            "Content-type,Accept,x-key",
+            "Access-Control-Allow-Methods",
+            "GET,POST,OPTIONS",
+            "Access-Control-Allow-Origin",
+            "*",
+            "Cache-Control",
+            "no-cache, no-store, must-revalidate",
+            "Content-Type",
+            "application/json; charset=utf-8",
+            "Date",
+            "Sun, 08 Oct 2017 19:33:29 GMT",
+            "ETag",
+            "W/\"1614-wPMwQqhDXJsDv2SnHj7pi+Mcz4o\"",
+            "Expires",
+            "0",
+            "Pragma",
+            "no-cache",
+            "Server",
+            "nginx/1.12.1",
+            "Content-Length",
+            "5652",
+            "Connection",
+            "Close"
+        ]
+    }
+]

@@ -1,0 +1,223 @@
+[
+    {
+        "scope": "https://search-staging.findify.io:443",
+        "method": "post",
+        "path": "/v3/recommend/items/newest",
+        "body": {
+            "user": {
+                "lang": [
+                    "en-GB"
+                ],
+                "uid": "test1",
+                "sid": "ssid1",
+                "email": "test2@test.com",
+                "ip": "192.168.0.1",
+                "ua": "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36"
+            },
+            "t_client": 1507485121553,
+            "key": "0d2f3aad-8702-46ad-a786-ae9fe2670294",
+            "limit": 3,
+            "offset": 8
+        },
+        "status": 200,
+        "response": {
+            "meta": {
+                "limit": 3,
+                "offset": 8,
+                "user_id": "test1",
+                "total": 1395,
+                "rid": "<stripped>"
+            },
+            "items": [
+                {
+                    "seller": "",
+                    "quantity": 1,
+                    "color": [],
+                    "color_variants": 1,
+                    "image_2_url": "https://cdn.shopify.com/s/files/1/0350/8253/products/GRAV-LABS-STAX-GLYCERIN-COIL_GRAV-X4-GC-0_medium.jpg?v=1500501228",
+                    "custom_fields": {
+                        "barcode": [
+                            ""
+                        ],
+                        "height": [
+                            "8.5 Inches"
+                        ]
+                    },
+                    "description": "And you thought your modular bong couldn't get cooler\n\n \n \nThe STAX collection from Grav Labs is the first modular water pipe series available on the market. That means you can tailor your pipe yourself, for a personal fit. Add percolation, dial in airflow, and build your bong as tall as you want. All with the same quality glass you expect from Grav Labs. \n\n \nGlycerin coils are great add-on to any pipe. Add one to your STAX build for a guaranteed cool draw. Place your coil in the freezer for an hour and you're ready to take a very chill smoke break. Stays cold for about two hours. Don't rush to inhale, take it easy and the the coil do its job. Glycerin coils are best for use with flowers. Vapor will condense in cold temperature and gunk up the coil. ",
+                    "discount": [],
+                    "availability": true,
+                    "title": "Grav Labs STAX Glycerin Coil",
+                    "reviews": {
+                        "total_reviews": 0,
+                        "average_score": 0
+                    },
+                    "material": [],
+                    "size": [],
+                    "price": [
+                        130
+                    ],
+                    "stickers": {
+                        "availability": true,
+                        "in-stock": true,
+                        "out-of-stock": false,
+                        "discount": false,
+                        "free-shipping": false
+                    },
+                    "id": "10222581256",
+                    "sku": [
+                        "GRAV-X4.GC"
+                    ],
+                    "category": [
+                        {
+                            "category2": "",
+                            "category3": "",
+                            "category4": "",
+                            "category1": "Part"
+                        }
+                    ],
+                    "brand": "Grav Labs STAX",
+                    "hash": "AV11Vmq7CQkVMwqrFH0f",
+                    "compare_at": -1
+                },
+                {
+                    "seller": "",
+                    "quantity": 1,
+                    "color": [],
+                    "color_variants": 1,
+                    "image_2_url": "https://cdn.shopify.com/s/files/1/0350/8253/products/GRAV-LABS-FLARE-FOOT-BASE_GRAV-X4-FL-3_medium.jpg?v=1500500799",
+                    "custom_fields": {
+                        "joint_size": [
+                            "14.5mm"
+                        ],
+                        "joint_gender": [
+                            "Female Joint"
+                        ],
+                        "barcode": [
+                            ""
+                        ],
+                        "height": [
+                            "8 Inches"
+                        ]
+                    },
+                    "description": "Tradition is key with this straight base and downstem\n\n \nThe STAX collection from Grav Labs is the first modular water pipe series available on the market. That means you can tailor your pipe yourself, for a personal fit. Add percolation, dial in airflow, and build your bong as tall as you want. All with the same quality glass you expect from Grav Labs. \n\n \nThis base is your classic flare foot with an extra wide 5.25\" base. Smoke is diffused by a removable 18.8mm to 14.5mm downstem. Included with your base is one 14.5mm male flower bowl, one plastic keck clip, and one metal keck clip. ",
+                    "discount": [],
+                    "availability": true,
+                    "title": "Grav Labs STAX Flare Foot Base",
+                    "reviews": {
+                        "total_reviews": 0,
+                        "average_score": 0
+                    },
+                    "material": [],
+                    "size": [],
+                    "price": [
+                        100
+                    ],
+                    "stickers": {
+                        "availability": true,
+                        "in-stock": true,
+                        "out-of-stock": false,
+                        "discount": false,
+                        "free-shipping": false
+                    },
+                    "id": "10220789000",
+                    "sku": [
+                        "GRAV-X4.FL"
+                    ],
+                    "category": [
+                        {
+                            "category2": "",
+                            "category3": "",
+                            "category4": "",
+                            "category1": "Part"
+                        }
+                    ],
+                    "brand": "Grav Labs STAX",
+                    "hash": "AV11Vmq6CQkVMwqrFH0U",
+                    "compare_at": -1
+                },
+                {
+                    "seller": "",
+                    "quantity": 1,
+                    "color": [],
+                    "color_variants": 1,
+                    "image_2_url": "https://cdn.shopify.com/s/files/1/0350/8253/products/GRAV-LABS-STAX-FLARE-BASE-WITH-COIL-SHOWERHEAD-PERC_GRAV-X4-CSH-5_medium.jpg?v=1500501133",
+                    "custom_fields": {
+                        "joint_size": [
+                            "14.5mm"
+                        ],
+                        "joint_gender": [
+                            "Female Joint"
+                        ],
+                        "barcode": [
+                            ""
+                        ],
+                        "height": [
+                            "7 Inches"
+                        ]
+                    },
+                    "description": "Modular Base with internal cooling power.\n\n \nThe STAX collection from Grav Labs is the first modular water pipe series available on the market. That means you can tailor your pipe yourself, for a personal fit. Add percolation, dial in airflow, and build your bong as tall as you want. All with the same quality glass you expect from Grav Labs. \n\n \nThis straight base is features an internal coil design. A reinforced 90° joint transforms into a coil with a showerhead diffuser attached. The extra distance created by the coil gives time for the smoke to cool naturally. But smoke is also cooled by the water rushing around the coil too. Included with this base is a 14.5mm male flower bowl, one plastic keck clip, and one metal keck clip. ",
+                    "discount": [],
+                    "availability": true,
+                    "title": "Grav Labs STAX Flare Base with Coil Showerhead Perc",
+                    "reviews": {
+                        "total_reviews": 0,
+                        "average_score": 0
+                    },
+                    "material": [],
+                    "size": [],
+                    "price": [
+                        160
+                    ],
+                    "stickers": {
+                        "availability": true,
+                        "in-stock": true,
+                        "out-of-stock": false,
+                        "discount": false,
+                        "free-shipping": false
+                    },
+                    "id": "10220958792",
+                    "sku": [
+                        "GRAV-X4.CSH"
+                    ],
+                    "category": [
+                        {
+                            "category2": "",
+                            "category3": "",
+                            "category4": "",
+                            "category1": "Part"
+                        }
+                    ],
+                    "brand": "Grav Labs STAX",
+                    "hash": "AV11Vmq6CQkVMwqrFH0W",
+                    "compare_at": -1
+                }
+            ]
+        },
+        "rawHeaders": [
+            "Access-Control-Allow-Headers",
+            "Content-type,Accept,x-key",
+            "Access-Control-Allow-Methods",
+            "GET,POST,OPTIONS",
+            "Access-Control-Allow-Origin",
+            "*",
+            "Cache-Control",
+            "no-cache, no-store, must-revalidate",
+            "Content-Type",
+            "application/json; charset=utf-8",
+            "Date",
+            "Sun, 08 Oct 2017 17:52:01 GMT",
+            "ETag",
+            "W/\"11d6-c+9j1Cfri+xQ/dCIgnqgtIaFkK8\"",
+            "Expires",
+            "0",
+            "Pragma",
+            "no-cache",
+            "Server",
+            "nginx/1.12.1",
+            "Content-Length",
+            "4566",
+            "Connection",
+            "Close"
+        ]
+    }
+]

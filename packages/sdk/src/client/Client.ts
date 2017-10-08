@@ -81,7 +81,7 @@ export class Client {
       case Req.Recommendations.Type.Trending:
         return { path: `/recommend/items/trending` };
       case Req.Recommendations.Type.RecentlyViewed:
-        return { path: `/recommend/items/latest` };
+        return { path: `/recommend/items/viewed/latest` };
       case Req.Recommendations.Type.Slot:
         return { path: `/recommend/${params.slot}`, params: ['slot'] };
       case Req.Recommendations.Type.AlsoViewed:

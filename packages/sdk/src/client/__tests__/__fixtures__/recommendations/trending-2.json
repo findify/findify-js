@@ -1,0 +1,180 @@
+[
+    {
+        "scope": "https://search-staging.findify.io:443",
+        "method": "post",
+        "path": "/v3/recommend/items/trending",
+        "body": {
+            "user": {
+                "lang": [
+                    "en-GB"
+                ],
+                "uid": "test1",
+                "sid": "ssid1",
+                "email": "test2@test.com",
+                "ip": "192.168.0.1",
+                "ua": "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36"
+            },
+            "t_client": 1507486270480,
+            "key": "0d2f3aad-8702-46ad-a786-ae9fe2670294",
+            "limit": 2,
+            "offset": 3
+        },
+        "status": 200,
+        "response": {
+            "meta": {
+                "limit": 2,
+                "offset": 3,
+                "user_id": "test1",
+                "total": 1395,
+                "rid": "<stripped>"
+            },
+            "items": [
+                {
+                    "seller": "",
+                    "quantity": 6,
+                    "color": [],
+                    "color_variants": 1,
+                    "image_2_url": "",
+                    "custom_fields": {
+                        "barcode": [
+                            ""
+                        ]
+                    },
+                    "description": "Represent Smoke Cartel with everyone's favorite color, red.\n\n \n \n\n \nNothing says \"I'm a chill smoker who buys badass glass\" better than the color red.  Combine that with the Smoke Cartel logo, and you've got yourself a recipe for some sweet threads.  These Canvas-brand t-shirts are made with 52% cotton and 48% polyester for a soft and comfy fit.  And, you'll look like the coolest smoker on the block.",
+                    "discount": [],
+                    "availability": true,
+                    "title": "Smoke Cartel Red Unisex T-Shirt",
+                    "reviews": {
+                        "total_reviews": 1,
+                        "average_score": 5
+                    },
+                    "material": [],
+                    "size": [
+                        "X-Small",
+                        "Small",
+                        "Medium",
+                        "Large",
+                        "X-Large"
+                    ],
+                    "price": [
+                        29,
+                        29,
+                        29,
+                        29,
+                        29
+                    ],
+                    "stickers": {
+                        "availability": true,
+                        "in-stock": true,
+                        "out-of-stock": false,
+                        "discount": false,
+                        "free-shipping": false
+                    },
+                    "id": "4203329860",
+                    "sku": [
+                        "RED-UNISEX-TSHIRT-1",
+                        "RED-UNISEX-TSHIRT-2",
+                        "RED-UNISEX-TSHIRT-3",
+                        "RED-UNISEX-TSHIRT-4",
+                        "RED-UNISEX-TSHIRT-5"
+                    ],
+                    "category": [
+                        {
+                            "category2": "",
+                            "category3": "",
+                            "category4": "",
+                            "category1": "Apparel"
+                        }
+                    ],
+                    "brand": "Smoke Cartel",
+                    "hash": "AV11VmrDCQkVMwqrFH7C",
+                    "compare_at": -1
+                },
+                {
+                    "seller": "",
+                    "quantity": 3,
+                    "color": [],
+                    "color_variants": 1,
+                    "image_2_url": "",
+                    "custom_fields": {
+                        "barcode": [
+                            ""
+                        ]
+                    },
+                    "description": "Wear your pride for the Girl Scouts of America.\n\n \nWe all love Girl Scout Cookies, from Thin Mints to Premium Cookies.  Why not show off your pride with this Tultex-brand mustard yellow t-shirt!  You'll be sporting the tastiest threads on the block, and with 100% cotton you'll be sure to get a soft and comfy fit.  Wear your pride, young smoker, and eat some Cookies!",
+                    "discount": [],
+                    "availability": true,
+                    "title": "'Girl Scout Cookies' Limited Run Strain T-Shirt",
+                    "reviews": {
+                        "total_reviews": 4,
+                        "average_score": 5
+                    },
+                    "material": [],
+                    "size": [
+                        "Small",
+                        "Medium",
+                        "Large",
+                        "X-Large"
+                    ],
+                    "price": [
+                        29,
+                        29,
+                        29,
+                        29
+                    ],
+                    "stickers": {
+                        "availability": true,
+                        "in-stock": true,
+                        "out-of-stock": false,
+                        "discount": false,
+                        "free-shipping": false
+                    },
+                    "id": "4203428932",
+                    "sku": [
+                        "GIRL-SCOUT-COOKIES-TSHIRT-SM",
+                        "GIRL-SCOUT-COOKIES-TSHIRT-MD",
+                        "GIRL-SCOUT-COOKIES-TSHIRT-LG",
+                        "GIRL-SCOUT-COOKIES-TSHIRT-XL"
+                    ],
+                    "category": [
+                        {
+                            "category2": "",
+                            "category3": "",
+                            "category4": "",
+                            "category1": "Apparel"
+                        }
+                    ],
+                    "brand": "Smoke Cartel",
+                    "hash": "AV11VmrDCQkVMwqrFH7E",
+                    "compare_at": -1
+                }
+            ]
+        },
+        "rawHeaders": [
+            "Access-Control-Allow-Headers",
+            "Content-type,Accept,x-key",
+            "Access-Control-Allow-Methods",
+            "GET,POST,OPTIONS",
+            "Access-Control-Allow-Origin",
+            "*",
+            "Cache-Control",
+            "no-cache, no-store, must-revalidate",
+            "Content-Type",
+            "application/json; charset=utf-8",
+            "Date",
+            "Sun, 08 Oct 2017 18:11:10 GMT",
+            "ETag",
+            "W/\"95f-UUQYU6ALztHW9uMn22GUVVX0CSY\"",
+            "Expires",
+            "0",
+            "Pragma",
+            "no-cache",
+            "Server",
+            "nginx/1.12.1",
+            "Content-Length",
+            "2399",
+            "Connection",
+            "Close"
+        ]
+    }
+]
