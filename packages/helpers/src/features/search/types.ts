@@ -1,72 +1,75 @@
 import * as FindifySDK from 'findify-sdk';
 
-type SearchEvent = {
+export type SearchEvent = {
   name: 'search';
   payload: {
     query: string;
   };
 };
-type RequestEvent = {
-  name: 'request';
-  payload?: {
-    limit?: number;
-    user?: FindifySDK.User;
-  };
-};
-type NextPageEvent = {
+
+export type NextPageEvent = {
   name: 'nextPage';
 };
-type PrevPageEvent = {
+
+export type PrevPageEvent = {
   name: 'prevPage';
 };
-type SetPageEvent = {
+
+export type SetPageEvent = {
   name: 'setPage';
   payload: {
     page: number;
   };
 };
-type SetSortingEvent = {
+
+export type SetSortingEvent = {
   name: 'setSorting';
   payload: {
     field: string;
     order: string;
   };
 };
-type UnsetSortingEvent = {
+
+export type UnsetSortingEvent = {
   name: 'unsetSorting';
   payload: {
     field: string;
   };
 };
-type SetNestedListFacetEvent = {
+
+export type SetNestedListFacetEvent = {
   name: 'setNestedListFacet';
   payload: {
     name: string;
     value: string;
   };
 };
-type UnsetNestedListFacetEvent = {
+
+export type UnsetNestedListFacetEvent = {
   name: 'unsetNestedListFacet';
   payload: {
     name: string;
     value: string;
   };
 };
-type SetTextFacetEvent = {
+
+export type SetTextFacetEvent = {
   name: 'setTextFacetEvent';
   payload: {
     name: string;
     value: string;
   };
 };
-type UnsetTextFacetEvent = {
+
+export type UnsetTextFacetEvent = {
   name: 'unsetTextFacetEvent';
   payload: {
     name: string;
     value: string;
   };
 };
-type SetRangeFacetEvent = {
+
+export type SetRangeFacetEvent = {
   name: 'setRangeFacetEvent';
   payload: {
     name: string;
@@ -74,7 +77,8 @@ type SetRangeFacetEvent = {
     to?: number;
   };
 };
-type UnsetRangeFacetEvent = {
+
+export type UnsetRangeFacetEvent = {
   name: 'unsetRangeFacetEvent';
   payload: {
     name: string;
@@ -82,26 +86,11 @@ type UnsetRangeFacetEvent = {
     to?: number;
   };
 };
-type RequestEvent = {
+
+export type RequestEvent = {
   name: 'request';
   payload?: {
     limit?: number;
-    user?: User;
+    user?: FindifySDK.User;
   };
-};
-
-export {
-  NextPageEvent,
-  PrevPageEvent,
-  SetPageEvent,
-  SetSortingEvent,
-  UnsetSortingEvent,
-  SetNestedListFacetEvent,
-  UnsetNestedListFacetEvent,
-  SetTextFacetEvent,
-  UnsetTextFacetEvent,
-  SetRangeFacetEvent,
-  UnsetRangeFacetEvent,
-  RequestEvent,
-  SearchEvent,
 };
