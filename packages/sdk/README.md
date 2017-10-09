@@ -1,4 +1,4 @@
-# Findify JavaScript SDK
+# Findify JavaScript SDK [![npm (scoped)](https://img.shields.io/npm/v/@findify/sdk.svg)](https://www.npmjs.com/package/@findify/sdk)
 
 The Findify JavaScript SDK is a lightweight, promise based interface to
 to [Findify v3 search API](https://findify.readme.io/v3/reference#search-api) that works
@@ -40,10 +40,13 @@ if you want unminified version:
 ### In Node.js
 
 Install the SDK using [npm](http://npmjs.org):
+
 ```console
 $ npm install --save @findify/sdk
 ```
+
 or [yarn](https://yarnpkg.com/lang/en/)
+
 ```console
 $ yard add @findify/sdk
 ```
