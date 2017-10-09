@@ -26,7 +26,7 @@ export const Rating = ({ value, count }: Props) => (
         />
       ))}
     </div>
-    {!count && <span className={styles.count}>({count})</span>}
+    {!!count && <span className={styles.count}>({count})</span>}
   </div>
 );
 
