@@ -22,7 +22,7 @@ export default (env, { module, plugins, output, ...config }) => {
       ...output,
       library: 'findifyMJS',
       libraryTarget: 'window',
-      publicPath: env.publicPath || '',
+      publicPath: env.publicPath || '/',
     },
 
     module: {
