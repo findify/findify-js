@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Button /> renders correctly 1`] = `
+<button
+  class="root"
+/>
+`;
+
+exports[`<Button /> renders correctly 2`] = `
+<button
+  class="root foo"
+/>
+`;
+
+exports[`<Button /> renders correctly 3`] = `
+<button
+  class="root bar"
+>
+  <div>
+    children div
+  </div>
+</button>
+`;

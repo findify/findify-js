@@ -6,9 +6,10 @@ module.exports = Object.assign({}, config, {
   },
   transformIgnorePatterns: ['<rootDir>/node_modules/(?!@findify)'],
   roots: ['<rootDir>/src'],
+  moduleDirectories: ['node_modules', 'src'],
+  setupFiles: ['./jest/setup.js'],
   globals: Object.assign({}, config.globals, {
     'ts-jest': Object.assign({}, config.globals['ts-jest'], {
-      skipBabel: false,
       tsConfigFile: './tsconfig.test.json',
     }),
   }),

@@ -6,27 +6,32 @@ import Icon from 'internals/Icon';
 
 const styles = require('./styles.css');
 
-const itemsArray = [...Array(5).keys()];
+const itemsArray = Array.from(Array(5).keys());
 
-const Start: any = mapProps(({ diff }: any) => ({
-  iconClass: diff === 0.5 ? 'half' : diff < 0 ? 'full' : 'empty',
-}))(({ iconClass }: any) => (
-  <Icon name={`star-${iconClass}`} className={cx(styles.star)} />
-));
+const getIconClass = (diff: number) => {
+  if (diff === 0.5) {
+    return 'half';
+  }
+  return diff < 0 ? 'full' : 'empty';
+};
 
 export const Rating = ({ value, count }: Props) => (
   <div className={styles.wrap}>
     <div className={styles.stars}>
-      {itemsArray.map((item: number) => (
-        <Start key={item} diff={item - value} />
+      {itemsArray.map((idx: number) => (
+        <Icon
+          key={idx}
+          name={`star-${getIconClass(idx - value)}`}
+          className={cx(styles.star)}
+        />
       ))}
     </div>
-    {!!count && <span className={styles.count}>({count})</span>}
+    {!count && <span className={styles.count}>({count})</span>}
   </div>
 );
 
-type Props = {
+interface Props {
   value: number;
   // value: 1 | 1.5 | 2 | 2.5 | 3 | 3.5 | 4 | 4.5 | 5,
   count?: number;
-};
+}

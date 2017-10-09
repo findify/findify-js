@@ -5,8 +5,14 @@ module.exports = {
   testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$',
   testPathIgnorePatterns: ['(/__tests__/support/).*$'],
   transformIgnorePatterns: ['<rootDir>/packages/.+/node_modules/(?!@findify)'],
-  roots: ['<rootDir>/packages'],
+  roots: ['<rootDir>', '<rootDir>/packages'],
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json'],
+  moduleNameMapper: {
+    '^.+\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':
+      './jest/__mocks__/fileMock.js',
+    '^.+\\.(css|svg)$': 'identity-obj-proxy',
+  },
+  snapshotSerializers: ['enzyme-to-json/serializer'],
   globals: {
     'ts-jest': {
       skipBabel: true,
