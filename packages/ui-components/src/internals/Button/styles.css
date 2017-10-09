@@ -1,4 +1,4 @@
-.root{
+.root {
   text-align: center;
   font-size: 14px;
   background: #f7f7f7;
@@ -8,12 +8,12 @@
   cursor: pointer;
   transition: opacity;
   opacity: 1;
-  &:hover{
+  &:hover {
     background: #ececec;
   }
 }
 
-.loading{
+.loading {
   pointer-events: none;
   opacity: 0.3;
 }
