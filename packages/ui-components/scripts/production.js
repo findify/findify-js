@@ -15,10 +15,10 @@ export default (env, { module, plugins, output, ...config }) => ({
   output: {
     ...output,
     library: 'FindifyUIComponents',
-    libraryTarget: 'umd',
+    libraryTarget: 'commonjs2',
   },
 
-  externals: env.externals ? [nodeExternals()] : [],
+  externals: [nodeExternals()],
 
   module: {
     ...module,
