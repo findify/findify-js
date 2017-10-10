@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { shallow, render } from 'enzyme';
 import Button, { Props } from '..';
 
 describe('<Button />', () => {
