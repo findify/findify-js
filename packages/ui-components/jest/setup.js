@@ -1,7 +1,7 @@
 const Enzyme = require('enzyme');
-const Adapter = require('enzyme-adapter-react-15');
+const Adapter = require('enzyme-adapter-react-16');
 
-// React 15 Enzyme adapter
+// React 16 Enzyme adapter
 Enzyme.configure({ adapter: new Adapter() });
 
 // make Enzyme functions available in all test files without importing
