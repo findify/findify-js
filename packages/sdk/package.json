@@ -22,7 +22,7 @@
   "homepage": "https://github.com/findify/findify-js",
   "scripts": {
     "clean": "del lib types",
-    "build": "tsc",
+    "build": "# tsc",
     "build:test": "tsc --module commonjs",
     "build:test:watch": "npm run buid:test --watch",
     "test": "# jest",
