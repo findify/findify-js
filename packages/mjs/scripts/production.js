@@ -66,13 +66,11 @@ export default (env, { module, plugins, output, ...config }) => {
 
     plugins: [
       ...plugins,
-
       new HtmlWebpackPlugin({
         title: pkg.description,
         inject: 'head',
         template: path.resolve(process.cwd(), 'dev/templates/index.html'),
       }),
-
       new UglifyJSPlugin({
         sourceMap: false,
         minimize: true,
@@ -98,14 +96,11 @@ export default (env, { module, plugins, output, ...config }) => {
           drop_console: true,
         },
       }),
-
       new webpack.LoaderOptionsPlugin({
         debug: false,
         minimize: true,
       }),
-
       new CompressionPlugin(),
-
       ...(process.env.SENTRY_API_KEY
         ? [
             new SentryPlugin({
