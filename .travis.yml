@@ -9,28 +9,18 @@ git:
   depth: 1
 notifications:
   email: false
+  slack:
+    secure: RNGK3ewt4LIkSoQU/scf7A/YjgXDaKbP9p1XFrHea+HH1S8N73xVlvl/qQFTvfyTGtLvEx9RU9y19AmAkcDRx+iB15LIJyXWbb9JDqWqoQAhykB0ZHcvHv70P/rMJ8BcxIYGc/YumSf+ia7F6L5+wgHCEBSdWI9YrYkNceKJ7+zBx4lDsLNRMZSOyEZsu+sQYwV0CMNYYMOCjiDFxfGzbttZMsqgnRNzHay9cIyKHOb7SjRi2+8sDdRSxy2sR97VkJrgmxG9S1qPV6hydGwjWamUiG/Y1hxj17ppmKKc+HIld7EE5lcGqSuxr+9tsDggyUk6msX5MDTKGAN1jwaSYsr9VjdP+Rg7WoTrIWSSqpfoy3MxmKxhULXFckbh7U/x87ERSGIYtLbTT5SdjEnbNbAEzCTqnD3Xy7vQzukDcwU8JyHxEi9r/nuyyLSn2Mh6dSRhKOzH47D7vsY6gnoTGSVkJKi8f58SgrhqogK7yTbsBQsmW+te69rSXPG77UmcignQbIdFkXWKFlN2b7aJj0IMJuuDjYhCW7Qafw3SObMJ9bN5tXFeYUEf9LNcYNDT619YpzHFUeka54bE1vUerWioVAKon96x3oXbGUtkXmIx9u+lUpffAhUpxG1PeVmtsjZ0n87dxi0alnIMt65CumO+/aAkZlWHFXdBDwSHh38=
 cache:
   directories:
   - node_modules
-  - packages/corge/node_modules
-  - packages/grault/node_modules
-  - packages/quux/node_modules
-  - packages/quuz/node_modules
-  - packages/qux/node_modules
   - packages/sdk/node_modules
   - packages/analytics/node_modules
   - packages/helpers/node_modules
   - packages/mjs/node_modules
-  - packages/sdk/node_modules
   - packages/ui-components/node_modules
 before_install: ./.travis/before_install.sh
 install:
-- TAG=$(wget -q -O - https://github.com/purescript/purescript/releases/latest --server-response
-  --max-redirect 0 2>&1 | sed -n -e 's/.*Location:.*tag\///p')
-- wget -O $HOME/purescript.tar.gz https://github.com/purescript/purescript/releases/download/$TAG/linux64.tar.gz
-- tar -xvf $HOME/purescript.tar.gz -C $HOME/
-- chmod a+x $HOME/purescript
-- npm install -g bs-platform
 - npm install
 script:
 - npm t

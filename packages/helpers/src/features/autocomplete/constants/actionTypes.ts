@@ -1,4 +1,4 @@
-const actionTypes = {
+export const actionTypes = {
   INPUT: 'autocomplete/INPUT',
   SET_REQUEST_BODY: 'autocomplete/SET_REQUEST_BODY',
   REQUEST: 'autocomplete/REQUEST',
@@ -6,5 +6,3 @@ const actionTypes = {
   RESPONSE_SUCCESS: 'autocomplete/RESPONSE_SUCCESS',
   RESPONSE_FAILURE: 'autocomplete/RESPONSE_FAILURE',
 };
-
-export { actionTypes };

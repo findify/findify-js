@@ -1,6 +1,7 @@
 'use strict';
 
 var webpack = require('webpack');
+var CompressionPlugin = require('compression-webpack-plugin');
 
 var env = process.env.NODE_ENV;
 var config = {
@@ -32,6 +33,7 @@ var config = {
 
 if (env === 'production') {
   config.plugins.push(new webpack.optimize.UglifyJsPlugin());
+  config.plugins.push(new CompressionPlugin());
 }
 
 module.exports = config;

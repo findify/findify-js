@@ -34,7 +34,6 @@ const defaultConfig = environment => ({
   },
 
   module: {
-    noParse: /\.min\.js/,
     rules: {
       globalCSS: {
         test: /\.css?$/,

@@ -1,4 +1,4 @@
-const actionTypes = {
+export const actionTypes = {
   CLEAR_ALL_FILTERS: 'results/CLEAR_ALL_FILTERS',
   SET_REQUEST_BODY: 'results/SET_REQUEST_BODY',
   SEARCH: 'results/SEARCH',
@@ -17,5 +17,3 @@ const actionTypes = {
   RESPONSE_SUCCESS: 'results/RESPONSE_SUCCESS',
   RESPONSE_FAILURE: 'results/RESPONSE_FAILURE',
 };
-
-export { actionTypes };

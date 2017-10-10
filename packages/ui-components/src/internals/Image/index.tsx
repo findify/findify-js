@@ -13,16 +13,35 @@ import { defer } from 'lodash';
 
 const styles = require('./styles.css');
 
-const ImageComponent: any = compose(
+export interface OwnProps {
+  src: string;
+  alt?: string;
+  className?: string;
+  onClick?: React.MouseEventHandler<HTMLImageElement>;
+}
+
+export interface State {
+  isMounted: boolean;
+  isLoading: boolean;
+  setIsMounted: (isMounted: boolean) => void;
+  setIsLoading: (isLoading: boolean) => void;
+}
+
+export type MappedProps = OwnProps & { src?: string };
+export type Props = MappedProps & State;
+
+const ImageComponent = compose<OwnProps, Props>(
   pure,
   withState('isLoading', 'setIsLoading', true),
   withState('isMounted', 'setIsMounted', true),
-  lifecycle({
+  lifecycle<OwnProps & State, OwnProps & State>({
     componentWillMount() {
       const img = new Image();
-      img.onload = defer(
-        () => this.props.isMounted && this.props.setIsLoading(false),
-      );
+      img.onload = function(ev: Event) {
+        if (this.props.isMounted) {
+          this.props.setIsLoading(false);
+        }
+      }.bind(null);
       img.src = this.props.src;
     },
     componentWillUnmount() {
@@ -30,23 +49,14 @@ const ImageComponent: any = compose(
     },
   }),
   mapProps(
-    ({
-      isLoading,
-      className,
-      src,
-      alt,
-      placeholder,
-      setIsLoading,
-      onClick,
-      ...rest,
-    }: any) => ({
+    ({ isLoading, className, src, alt, setIsLoading, onClick }: Props) => ({
       alt,
       onClick,
-      src: isLoading ? void 0 : src,
+      src: isLoading ? undefined : src,
       className: cx(className, (isLoading && styles.loading) || styles.loaded),
-    }),
+    })
   ),
-  onlyUpdateForKeys(['src']),
+  onlyUpdateForKeys(['src'])
 )(props => <img {...props} />);
 
 export default ImageComponent;

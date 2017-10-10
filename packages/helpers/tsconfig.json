@@ -1,13 +1,32 @@
 {
-  "extends": "../../tsconfig.lib.json",
   "compilerOptions": {
-    "baseUrl": "src",
-    "outDir": "lib",
-    "declaration": false,
+    "moduleResolution": "node",
     "module": "commonjs",
-    "target": "es5"
+    "target": "es5",
+    "lib": ["es6", "es2017", "dom"],
+    "declaration": true,
+    "declarationDir": "types",
+    "outDir": "lib",
+    "sourceMap": true,
+    "jsx": "react",
+    "allowSyntheticDefaultImports": true,
+    "removeComments": true,
+    "noImplicitAny": false,
+    "noEmitOnError": false,
+    "strictNullChecks": true,
+    "pretty": true,
+    "baseUrl": "src",
+    "rootDirs": ["src"],
+    "allowJs": false
   },
-  "files": [
-    "./src/index.ts"
+  "compileOnSave": false,
+  "buildOnSave": false,
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "**/*.test.*",
+    "**/*.mock.*"
   ]
 }

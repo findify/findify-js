@@ -1,16 +1,18 @@
 import * as FindifySDK from 'findify-sdk';
 
-type InputEvent = {
+export type InputEvent = {
   name: 'input';
   payload: {
     query: string;
   };
 };
-type SetRequestBodyEvent = {
+
+export type SetRequestBodyEvent = {
   name: 'setRequestBody';
   payload: FindifySDK.AutocompleteRequest;
 };
-type RequestEvent = {
+
+export type RequestEvent = {
   name: 'request';
   payload: {
     item_limit?: number;
@@ -18,5 +20,3 @@ type RequestEvent = {
     user?: FindifySDK.User;
   };
 };
-
-export { InputEvent, RequestEvent, SetRequestBodyEvent };
