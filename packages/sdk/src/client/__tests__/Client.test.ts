@@ -16,7 +16,7 @@ import {
   nockBackOptions,
   verifyRequest,
   users,
-} from './support';
+} from './__support__';
 
 debug('sdk:tests:client')('TEST_API_HOST: ', process.env.TEST_API_HOST);
 debug('sdk:tests:client')('TEST_API_KEY: ', process.env.TEST_API_KEY);
