@@ -14,9 +14,8 @@
     "normalize.css": "^7.0.0",
     "prop-types": "^15.5.10",
     "qs": "^6.5.1",
-    "react": "^15.6.1",
-    "react-addons-shallow-compare": "^15.6.0",
-    "react-dom": "^15.6.1",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
     "react-dom-factories": "^1.0.1",
     "react-dropdown": "1.3.0",
     "react-numeric-input": "^2.2.0",
@@ -109,7 +108,7 @@
   "license": "MIT",
   "main": "./dist/findify-ui-components.js",
   "peerDependencies": {
-    "react": ">=15.0.0"
+    "react": ">=16.0.0"
   },
   "repository": "https://github.com/findify/findify-js/tree/master/packages/ui-components",
   "scripts": {

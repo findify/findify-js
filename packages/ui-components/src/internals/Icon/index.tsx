@@ -5,6 +5,9 @@ export interface OwnProps {
   name: string;
   width?: number;
   height?: number;
+  className?: string;
+  onClick?: () => void;
+  style?: any;
 }
 
 export type MappedProps = {
@@ -14,8 +17,8 @@ export type MappedProps = {
 
 export type Props = OwnProps & MappedProps;
 
-const svgLoader = '!!babel-loader!react-svg-loader!./icons/';
-const getIcon = (name: string) => require(`${svgLoader}${name}.svg`).default;
+const getIcon = (name: string) =>
+  require(`!!babel-loader!react-svg-loader!./icons/${name}.svg`).default;
 
 const Icon = compose<OwnProps, Props>(
   defaultProps<MappedProps>({
@@ -23,9 +26,12 @@ const Icon = compose<OwnProps, Props>(
     height: 16,
   }),
   mapProps<OwnProps, Props>((props: Props) => ({
+    onClick: props.onClick,
+    style: props.styles,
+    className: props.className,
     width: props.width,
     height: props.height,
-    component: getIcon(props),
+    component: getIcon(props.name),
   }))
 )(componentFromProp('component'));
 

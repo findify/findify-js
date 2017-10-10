@@ -1,5 +1,4 @@
 import { render } from 'react-dom';
-import * as React from 'react';
 import { delay } from 'lodash';
 
 import findClosest from './findClosestElement';
@@ -51,6 +50,7 @@ export default analytics => ({ node, type, config, initialHTML }) => {
       analytics,
       initialHTML,
     });
+
     componentDOMRoot = componentDOMRoot || mutateDom(node, appendTo);
     render(Component, componentDOMRoot);
   });

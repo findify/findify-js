@@ -22,7 +22,7 @@ export default (env, { module, plugins, output, ...config }) => {
       ...output,
       library: 'findifyMJS',
       libraryTarget: 'window',
-      publicPath: env.publicPath || '',
+      publicPath: env.publicPath || '/',
     },
 
     module: {
@@ -103,6 +103,8 @@ export default (env, { module, plugins, output, ...config }) => {
         debug: false,
         minimize: true,
       }),
+
+      new CompressionPlugin(),
 
       ...(process.env.SENTRY_API_KEY
         ? [

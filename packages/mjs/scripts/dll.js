@@ -40,5 +40,10 @@ export default () => ({
       ),
       name: '[name]_[hash]',
     }),
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify('development'),
+      },
+    }),
   ],
 });
