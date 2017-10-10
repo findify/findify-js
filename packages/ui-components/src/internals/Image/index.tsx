@@ -37,8 +37,11 @@ const ImageComponent = compose<OwnProps, Props>(
   lifecycle<OwnProps & State, OwnProps & State>({
     componentWillMount() {
       const img = new Image();
-      img.onload = (ev: Event) =>
-        this.props.isMounted && this.props.setIsLoading(false);
+      img.onload = function(ev: Event) {
+        if (this.props.isMounted) {
+          this.props.setIsLoading(false);
+        }
+      }.bind(null);
       img.src = this.props.src;
     },
     componentWillUnmount() {

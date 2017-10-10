@@ -7,7 +7,10 @@ module.exports = Object.assign({}, config, {
   transformIgnorePatterns: ['<rootDir>/node_modules/(?!@findify)'],
   roots: ['<rootDir>/src'],
   moduleDirectories: ['node_modules', 'src'],
-  setupFiles: ['./jest/shims.js', './jest/setup.js'],
+  setupFiles: ['../../jest/setup.js'],
+  setupTestFrameworkScriptFile: '../../node_modules/jest-enzyme/lib/index.js',
+  // old versions of jest set the unmocks
+  unmockedModulePathPatterns: ['react', 'enzyme', 'jest-enzyme'],
   globals: Object.assign({}, config.globals, {
     'ts-jest': Object.assign({}, config.globals['ts-jest'], {
       tsConfigFile: './tsconfig.test.json',
