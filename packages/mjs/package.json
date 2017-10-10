@@ -91,7 +91,8 @@
     "url": "git+https://github.com/findify/findify-mjs.git"
   },
   "scripts": {
-    "build": "run-s clean build:production",
+    "build": "run-s clean build:library build:production",
+    "build:library": "NODE_ENV=production webpack --env.production --env.publicPath=$PUBLIC_PATH",
     "build:production": "NODE_ENV=production webpack --env.production --env.publicPath=$PUBLIC_PATH",
     "build:test": "npm run build",
     "build:dll:staging": "FINDIFY_ENV=staging npm run build:dll",
