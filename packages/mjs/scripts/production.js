@@ -104,6 +104,8 @@ export default (env, { module, plugins, output, ...config }) => {
         minimize: true,
       }),
 
+      new CompressionPlugin(),
+
       ...(process.env.SENTRY_API_KEY
         ? [
             new SentryPlugin({
