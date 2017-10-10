@@ -1,5 +1,15 @@
-<a name="1.1.1"></a>
-## 1.1.1 (2017-10-10)
+<a name="1.1.2"></a>
+## 1.1.2 (2017-10-10)
+
+
+
+<a name="1.1.2"></a>
+## 1.1.2 (2017-10-10)
+
+
+### Bug Fixes
+
+* **ui-components:** fix Image component ([65d8f3a](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/65d8f3a))
 
 
 
