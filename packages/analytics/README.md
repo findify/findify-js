@@ -40,13 +40,13 @@ Alternatively, you can use UMD builds, by requiring them to the page using `<scr
 To use the analytics in the browser, simply add the following script tag to your HTML pages:
 
 ```
-<script src="https://findify-assets-2bveeb6u8ag.netdna-ssl.com/analytics-js/prod/findify-analytics.2.0.14.min.js"></script>
+<script src="https://findify-assets-2bveeb6u8ag.netdna-ssl.com/analytics-js/prod/3.0.2/findify-analytics.min.js"></script>
 ```
 
 if you want unminified version:
 
 ```
-<script src="https://findify-assets-2bveeb6u8ag.netdna-ssl.com/analytics-js/prod/findify-analytics.2.0.14.js"></script>
+<script src="https://findify-assets-2bveeb6u8ag.netdna-ssl.com/analytics-js/prod/3.0.2/findify-analytics.js"></script>
 ```
 
 ## :boom: Upgrading from v1.1.x to v2.0.14
@@ -185,7 +185,7 @@ client.sendEvent('click-suggestion', {
   suggestion: 'Black t-shirt'
 });
 
-// You can get `user` instance, which can be used further in `@findify/sdk` library:
+// You can get `user` instance, which can be used further in `findify-sdk` library:
 var user = client.user;
 
 // To access events on the page you can use `client.state`,
