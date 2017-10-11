@@ -57,7 +57,7 @@ So you would need to make changes accordingly.
 
 The goal of this rewrite was to address a lot of the major issues that have plagued analytics since its initial release. We have done our best to make analytics v2 as API compatible with v1.x as possible, however there are a handful of breaking changes that we decided we needed to make, intentionally, in order to support this new architecture and also improve the usability of the library long-term.
 
-In this guide, we will go over a couple of the most common breakages that we ran into, and how to fix them. Hopefully this will make your upgrade path that much easier. If during your upgrade you find a breakage that doesn't seem to make sense to you, feel free to [file an issue](https://github.com/findify/analytics-js/issues/new) or [contact us directly](mailto:support@findify.io).
+In this guide, we will go over a couple of the most common breakages that we ran into, and how to fix them. Hopefully this will make your upgrade path that much easier. If during your upgrade you find a breakage that doesn't seem to make sense to you, feel free to [file an issue](https://github.com/findify/findify-js/issues/new) or [contact us directly](mailto:support@findify.io).
 
 If you're using version from CDN, then just update the bundle version from `1.1.x` to `2.0.14`.
 
