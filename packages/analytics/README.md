@@ -2,8 +2,8 @@
 
 ## Overview
 
-Findify analytics helps you integrate our Feedback API on the website and
-gather all the user behavior analytics that our ML and personalization require.
+Findify Analytics helps you integrate our Feedback API on the website and
+gather all the user behavior analytics that our ML and personalization platform require.
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
@@ -51,13 +51,13 @@ if you want unminified version:
 
 ## :boom: Upgrading from v1.1.x to v2.0.14
 
-The change from `v1.1.x` to `v2.0.x` introduces *breaking changes*,
+Upgrading to `v2.0.x` introduces *breaking changes*,
 due to the fact that the internal implementation of analytics has been almost completely rewritten.
 So you would need to make changes accordingly.
 
-The goal of this rewrite was to address a lot of the major issues that have plagued analytics since its initial release. We have done our best to make analytics v2 as API compatible with v1.x as possible, however there are a handful of breaking changes that we decided we needed to make, intentionally, in order to support this new architecture and also improve the usability of the library long-term.
+The goal of this rewrite was to address a lot of issues that have plagued analytics since its initial release. We have done our best to make analytics v2 as API compatible with v1.x as possible, however there are some breaking changes that we decided we needed to make, intentionally, in order to support the new architecture and also improve the usability of the library long-term.
 
-In this guide, we will go over a couple of the most common breakages that we ran into, and how to fix them. Hopefully this will make your upgrade path that much easier. If during your upgrade you find a breakage that doesn't seem to make sense to you, feel free to [file an issue](https://github.com/findify/findify-js/issues/new) or [contact us directly](mailto:support@findify.io).
+In this guide, we will go over the braking changes and how to upgrade your code to address them. Hopefully this will make your upgrade path that much easier. If during the upgrade you run into any issues, feel free to [file an issue](https://github.com/findify/findify-js/issues/new) or [contact us directly](mailto:yourfriends@findify.io).
 
 If you're using version from CDN, then just update the bundle version from `1.1.x` to `2.0.14`.
 
@@ -137,8 +137,8 @@ Usually, you want to do this on "document ready" event to collect all the data f
   client.initialize();
 ```
 
-Where `key` is your Merchant API key.
-Now the `client` instance is ready to be used for sending feedback requests to the server.
+Where `key` is your Merchant API key that can be found in your Merchant Dashboard.
+Now the `client` instance is ready to be used for sending requests to Findify.
 
 2) Start sending events.
 
@@ -162,7 +162,7 @@ Here is the full list of event types:
 * `add-to-cart`
 * `view-page`
 
-For more info see the [usage example](#usage-example) and
+For more information take a look at the [usage example](#usage-example) and
 [documentation](#documentation).
 
 ## Usage example
@@ -170,16 +170,17 @@ For more info see the [usage example](#usage-example) and
 ```javascript
 var findifyAnalytics = require('@findify/analytics');
 
-// First, you need to initialize library:
+// Firts, initialize the library
 var client = findifyAnalytics({
   key: 'your_api_key',
 });
 
-// Then, you should initialize client instance.
+// Then initialize the client instance.
 // Usually you want to do this on document ready event to collect all data from HTML tags.
 client.initialize();
 
-// After library initialized, we can send event requests to server with `client` instance. Let's perform click-suggestion request:
+// After library iis nitialized, you can start sending event requests to server with `client` instance. 
+// Let's perform click-suggestion request:
 client.sendEvent('click-suggestion', {
   rid: 'request_id',
   suggestion: 'Black t-shirt'
@@ -188,11 +189,7 @@ client.sendEvent('click-suggestion', {
 // You can get `user` instance, which can be used further in `findify-sdk` library:
 var user = client.user;
 
-// To access events on the page you can use `client.state`,
-// Analytics state represents all events that was defined on the page
-// before findify
-
-// You can listen for events with `listen` function
+// You can listen for events that are sent through our analytics with `listen` function
 var unsubscribe = client.listen(function(event, payload) {
   console.log(event); // outputs event name
   console.log(payload); // outputs event payload
@@ -213,15 +210,15 @@ We use the GitHub issues for tracking bugs and feature requests.
 
  * Ask a question on [StackOverflow](https://stackoverflow.com/) and tag it with `findify-analytics`
  * If it turns out that you may have found a bug, please [open an issue](https://github.com/findify/findify-js/issues/new)
+ * For general questions about Findify, send us a message to [yourfriends@findify.io](mailto:yourfriends@findify.io)
 
 ## Opening issues
 
 If you encounter a bug with the Findify analytics package we would like to hear
 about it. Search the [existing issues](https://github.com/findify/findify-js/issues)
 and try to make sure your problem doesn’t already exist before opening a new
-issue. It’s helpful if you include the version of the analytics package, Node.js or browser
-environment and OS you’re using. Please include a stack trace and reduced repro
-case when appropriate, too.
+issue. When creating an issue, please include the version of the analytics package, Node.js or browser
+environment and OS you’re using. Please include a stack trace and steps to reproducethe error, if applicable.
 
 The GitHub issues are intended for bug reports and feature requests. For help
 and questions with using the Findify analytics package please make use of the
