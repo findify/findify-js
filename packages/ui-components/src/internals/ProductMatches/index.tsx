@@ -11,13 +11,11 @@ import { Rating } from 'widgets/Rating';
 import { getPrice } from 'helpers/getPrice';
 import { format as currencyFormat } from 'currency-formatter';
 import { ProductsList } from 'lists/ProductsList';
-import Link from 'internals/Link';
-import Image from 'internals/Image';
 import withHooks from 'helpers/withHooks';
 const styles = require('./styles.css');
 
 export const ProductMatches = compose(
-  branch(({ items }) => !items || !items.length, renderNothing),
+  branch(({ items }) => !items || !items.length, renderNothing)
 )(({ items, title, config, onProductClick }: Props) => (
   <div className={styles.wrap}>
     {title && (

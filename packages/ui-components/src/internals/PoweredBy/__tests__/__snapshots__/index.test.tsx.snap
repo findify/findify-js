@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<PoweredBy /> attaches and calls onClick event handler 1`] = `
+<Component
+  onClick={[Function]}
+/>
+`;
+
+exports[`<PoweredBy /> renders correctly 1`] = `
+<div
+  class="root"
+>
+  Search powered by Findify
+</div>
+`;

@@ -5,9 +5,21 @@ import Icon from 'internals/Icon';
 
 const styles = require('./styles.css');
 
-export const SearchInput = withHandlers({
-  onChange: ({ onChange }: any) => e => onChange(e.target.value),
-})(({ onChange, value, placeholder }: any) => (
+export interface OwnProps {
+  value: string;
+  placeholder: string;
+  onChange?: (value: string) => void;
+}
+
+export interface Handlers {
+  onChange(event: React.FormEvent<HTMLInputElement>): void;
+}
+
+export type Props = OwnProps & Handlers;
+
+export const SearchInput = withHandlers<Props, Handlers>({
+  onChange: ({ onChange }: OwnProps) => e => onChange(e.target.value),
+})(({ onChange, value, placeholder }: Props) => (
   <div className={styles.wrap}>
     <Icon name="search" className={styles.icon} />
     <input

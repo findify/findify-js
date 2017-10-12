@@ -13,26 +13,39 @@ import {
 import * as cx from 'classnames';
 import withHooks from 'helpers/withHooks';
 import Icon from 'internals/Icon';
+
+import { Raw } from './Raw';
+
 const styles = require('./styles.css');
 const customStyles = require('customStyles');
 
-export const Raw = ({ children, ...rest }) => (
-  <div className={cx(styles.content, rest.isMobile && styles.mobile)}>
-    {React.Children.map(children, (child: any) =>
-      React.cloneElement(child, rest),
-    )}
-  </div>
-);
+export interface OwnProps {
+  label: string;
+}
+
+export interface State {
+  isOpen: boolean;
+  toggleFacet(on: boolean): void;
+}
+
+export interface Handlers {
+  toggleOpen(): void;
+}
+
+export type Props = OwnProps & State & Handlers;
 
 export const Wrapper = Content =>
   compose(
-    defaultProps({
-      isOpen: true,
-    }),
-    withState('isOpen', 'toggleFacet', props => props.isOpen),
+    defaultProps({ isOpen: true }),
+    withState(
+      'isOpen',
+      'toggleFacet',
+      (props: OwnProps & State) => props.isOpen
+    ),
     withHandlers({
-      toggleOpen: ({ isOpen, toggleFacet }: any) => () => toggleFacet(!isOpen),
-    }),
+      toggleOpen: ({ isOpen, toggleFacet }: Props) => () =>
+        toggleFacet(!isOpen),
+    })
   )(({ isOpen, toggleOpen, label, ...rest }: any) => (
     <div
       className={cx(styles.wrap, customStyles.facet, !isOpen && styles.hidden)}
@@ -67,8 +80,8 @@ export const HOC = (Content, WrappedContent) =>
       // Return raw content for Mobile wrapper
       ({ isMobile }: any) => isMobile,
       renderComponent(Content),
-      renderComponent(WrappedContent(Content)),
-    ),
-  )(null);
+      renderComponent(WrappedContent(Content))
+    )
+  )(null as any);
 
 export const GenericFacet: any = HOC(Raw, Wrapper);

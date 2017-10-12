@@ -10,7 +10,12 @@ import {
   mapProps,
 } from 'recompose';
 
-const Link: any = compose(
+export interface Props {
+  component?: string;
+  onClick: Function;
+}
+
+const Link = compose(
   setDisplayName('Link'),
   defaultProps({ component: 'a' }),
   getContext({ location: PropTypes.object }),
@@ -22,7 +27,7 @@ const Link: any = compose(
       }
     },
   }),
-  mapProps(({ location, ...props }) => props),
+  mapProps(({ location, ...props }) => props)
 )(componentFromProp('component'));
 
 export default Link;
