@@ -1,5 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`<Button /> attaches and calls onClick event handler 1`] = `
+<button
+  className="root"
+  onClick={[Function]}
+/>
+`;
+
 exports[`<Button /> renders correctly 1`] = `
 <button
   class="root"

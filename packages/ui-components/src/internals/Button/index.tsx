@@ -3,7 +3,7 @@ import * as cx from 'classnames';
 const styles = require('./styles.css');
 
 export interface Props {
-  onClick?: Function;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
   children?: React.ReactChild;
   className?: string;
   isLoading: boolean;
