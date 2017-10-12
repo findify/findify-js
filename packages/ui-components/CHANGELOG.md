@@ -1,5 +1,15 @@
-<a name="1.1.2"></a>
-## 1.1.2 (2017-10-10)
+<a name="1.1.3"></a>
+## 1.1.3 (2017-10-12)
+
+
+
+<a name="1.1.3"></a>
+## 1.1.3 (2017-10-12)
+
+
+### Bug Fixes
+
+* **ui-components:** add a quick fix for facet list rendering performance ([a6be38b](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/a6be38b))
 
 
 
