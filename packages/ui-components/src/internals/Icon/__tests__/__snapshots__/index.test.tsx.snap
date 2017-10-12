@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Icon /> attaches and calls onClick event handler 1`] = `
+<mapProps(componentFromProp(component))
+  height={18}
+  name="cross"
+  onClick={[Function]}
+  width={15}
+/>
+`;
+
+exports[`<Icon /> renders correctly 1`] = `
+<mapProps(componentFromProp(component))
+  height={16}
+  name="cross"
+  width={16}
+/>
+`;
+
+exports[`<Icon /> renders correctly 2`] = `
+<mapProps(componentFromProp(component))
+  height={40}
+  name="arrow"
+  width={32}
+/>
+`;
+
+exports[`<Icon /> renders correctly 3`] = `
+<mapProps(componentFromProp(component))
+  height={20}
+  name="check"
+  style={
+    Object {
+      "padding": 4,
+    }
+  }
+  width={12}
+/>
+`;
+
+exports[`<Icon /> renders correctly 4`] = `
+<mapProps(componentFromProp(component))
+  className="foo"
+  height={16}
+  name="cross"
+  width={16}
+/>
+`;
+
+exports[`<Icon /> renders correctly 5`] = `
+<mapProps(componentFromProp(component))
+  className="foo"
+  height={16}
+  name="cross"
+  style={
+    Object {
+      "display": "none",
+    }
+  }
+  width={16}
+/>
+`;

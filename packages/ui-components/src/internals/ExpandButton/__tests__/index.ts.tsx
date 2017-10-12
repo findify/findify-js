@@ -1,25 +1,23 @@
 import * as React from 'react';
-import Button, { Props } from '..';
+import { ExpandButton, Props } from '..';
 
-describe('<Button />', () => {
+describe('<ExpandedButton />', () => {
   it('renders correctly', () => {
     const properties: Props[] = [
-      {},
-      { className: 'foo' },
-      {
-        className: 'bar',
-        children: <div>children div</div>,
-      },
+      { label: 'foo', expanded: true },
+      { label: 'bar', expanded: false },
     ];
     properties.forEach((props: Props) => {
-      const component = render(<Button {...props} />);
+      const component = render(<ExpandButton {...props} />);
       expect(component).toMatchSnapshot();
     });
   });
 
   it('attaches and calls onClick event handler', () => {
     const onClick = jest.fn();
-    const wrapper = shallow(<Button onClick={onClick} />);
+    const wrapper = shallow(
+      <ExpandButton expanded label="foo" onClick={onClick} />
+    );
     expect(wrapper).toMatchSnapshot();
     wrapper.simulate('click');
     expect(onClick.mock.calls.length).toBe(1);
