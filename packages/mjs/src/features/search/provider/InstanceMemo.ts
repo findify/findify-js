@@ -3,23 +3,17 @@ const unique = (items, cache) =>
 
 class InstanceMemo {
   items: any[] = [];
-  memorize = false;
+  memorized = false;
   instance = void 0;
   direction: number = 0;
 
-  set(items, dir = 0) {
+  memorize(dir = 0) {
     this.direction = dir;
-    this.memorize = true;
-    this.items = !!~dir ? [...this.items, ...items] : [...items, ...this.items];
+    this.memorized = true;
   }
 
   get() {
     return this.items;
-  }
-
-  reset() {
-    if (!this.memorize) this.items = [];
-    this.memorize = false;
   }
 
   merge(response) {
@@ -38,6 +32,8 @@ class InstanceMemo {
     } else {
       res.items = [...this.items, ...items];
     }
+
+    this.items = res.items;
 
     return res;
   }
