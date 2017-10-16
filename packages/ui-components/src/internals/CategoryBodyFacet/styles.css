@@ -14,6 +14,7 @@
   font-size: 14px;
   cursor: pointer;
   margin-bottom: 4px;
+  width: 100%;
 }
 
 .nested-item {
@@ -25,7 +26,6 @@
 
 .title {
   display: table-cell;
-  width: 100%;
   cursor: pointer;
   .selected & {
     font-weight: 600;
@@ -38,6 +38,7 @@
 .count {
   color: #b2b2b2;
   display: table-cell;
+  width: 1px;
   white-space: nowrap;
   cursor: pointer;
 }

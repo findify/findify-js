@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as cx from 'classnames';
 import { compose, defaultProps, withPropsOnChange } from 'recompose';
-
+import sizeMe from 'react-sizeme';
 import { Grid } from 'widgets/Grid';
 import { BreadCrumbs } from 'widgets/BreadCrumbs';
 import { Sorting } from 'widgets/Sorting';
@@ -14,6 +14,7 @@ import { PoweredBy } from 'internals/PoweredBy';
 import { LoadNext, LoadPrev } from 'internals/InfiniteLoader';
 import withHooks from 'helpers/withHooks';
 import withConfig from 'helpers/withConfig';
+import { calculateLayoutColumns } from 'helpers/columnsSize';
 
 const styles = require('./styles.css');
 
@@ -26,17 +27,13 @@ export const ResultsLayout = compose(
   }),
   defaultProps({
     showFacets: true,
-    columns: {
-      facets: 3,
-      products: 9,
-    },
   }),
   withPropsOnChange(['isMobile'], ({ isMobile }) => ({
     showMobileHeader: !!isMobile,
     showFacets: !isMobile,
     showBreadcrumbs: !isMobile,
   })),
-  withHooks('results'),
+  withHooks('results')
 )(
   ({
     onFacetsChange,
@@ -53,7 +50,6 @@ export const ResultsLayout = compose(
 
     config,
     isMobile,
-    columns,
     showMobileHeader,
     showFacets,
     showBreadcrumbs,
@@ -62,7 +58,7 @@ export const ResultsLayout = compose(
 
     response,
   }: any) => (
-    <div>
+    <div className={styles.root}>
       {showBreadcrumbs && (
         <BreadCrumbs
           {...response.meta}
@@ -76,6 +72,7 @@ export const ResultsLayout = compose(
           }}
         />
       )}
+
       {!showMobileHeader && (
         <Sorting
           className={styles.sort}
@@ -85,6 +82,7 @@ export const ResultsLayout = compose(
           config={config.sorting}
         />
       )}
+
       {showMobileHeader && (
         <Grid columns="6|6">
           <Button
@@ -110,9 +108,7 @@ export const ResultsLayout = compose(
         </Grid>
       )}
 
-      <Grid
-        columns={showFacets ? `${columns.facets}|${columns.products}` : '12'}
-      >
+      <div className={styles.content}>
         {showFacets && (
           <FacetsLayout
             {...{
@@ -121,21 +117,17 @@ export const ResultsLayout = compose(
               response,
               onFacetsChange,
               onClearAll,
-              columnClass: styles.facets,
+              className: styles.facets,
             }}
           />
         )}
 
-        <div
-          className={cx(
-            styles.products,
-            !isMobile && styles.productsWithPadding,
-          )}
-        >
+        <div className={styles.products}>
           {response.banner &&
             response.banner.products && (
               <Banner {...response.banner.products} onClick={onBannerClick} />
             )}
+
           {!!config.view.infinite && (
             <LoadPrev
               config={config.loadMore}
@@ -187,7 +179,7 @@ export const ResultsLayout = compose(
             <PoweredBy onClick={onPoweredByClick} />
           )}
         </div>
-      </Grid>
+      </div>
     </div>
-  ),
+  )
 );

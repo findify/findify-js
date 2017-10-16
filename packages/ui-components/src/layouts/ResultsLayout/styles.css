@@ -24,15 +24,39 @@
   padding-right: 10px;
 }
 
+.content{
+  display: table;
+}
+
 .filters{
   padding-right: 10px;
+  display: table-cell;
 }
 
-.products{}
-
-.productsWithPadding{
+.products{
+  display: table-cell;
+  width: 100%;
   padding-left: 15px;
+  &:first-child{
+    padding-left: 0;
+  }
 }
+
+@supports(display: flex) {
+  .content{
+    display: flex;
+    flex-direction: row;
+    align-items: top;
+  }
+  .filters{
+    display: block;
+  }
+  .products{
+    display: block;
+    flex: 1;
+  }
+}
+
 
 .facets{
   padding-right: 30px;

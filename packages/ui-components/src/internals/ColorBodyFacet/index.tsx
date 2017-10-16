@@ -9,6 +9,7 @@ import {
 import * as cx from 'classnames';
 import * as color from 'tinycolor2';
 import Icon from 'internals/Icon';
+import sizeMe from 'react-sizeme';
 
 const styles = require('./styles.css');
 
@@ -23,7 +24,7 @@ const Item = compose(
       if (e) e.preventDefault();
       return onChange({ ...item, selected: !item.selected });
     },
-  }),
+  })
 )(({ title, background, item, onClick, checkMarkStyles }: any) => (
   <div className={styles.item}>
     <button
@@ -43,15 +44,15 @@ const Item = compose(
   </div>
 ));
 
-export const ColorBodyFacet = ({ values, ...rest }: any) => (
-  <div className={styles.root}>
+export const ColorBodyFacet = sizeMe()(({ values, size, ...rest }: any) => (
+  <div className={styles.root} style={{ width: size.width }}>
     {values.map(item =>
       createEagerElement(Item, {
         ...rest,
         key: item.value,
         title: item.value,
         item,
-      }),
+      })
     )}
   </div>
-);
+));
