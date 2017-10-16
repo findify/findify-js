@@ -16,7 +16,7 @@ const styles = require('./styles.css');
 const Item = compose(
   pure,
   withPropsOnChange(['title'], ({ title, config: { mapping } }: any) => ({
-    background: title !== 'Multicolor' && mapping[title],
+    background: title !== 'Multicolor' && mapping[title.toLowerCase()],
     checkMarkStyles: { fill: color(title).isDark() ? '#fff' : '#333' },
   })),
   withHandlers({
@@ -45,7 +45,12 @@ const Item = compose(
 ));
 
 export const ColorBodyFacet = compose(
-  sizeMe({ refreshRate: 50, refreshMode: 'debounce' })
+  sizeMe({ refreshRate: 50, refreshMode: 'debounce' }),
+  withPropsOnChange(['values'], ({ values, config: { mapping } }) => ({
+    values: values.filter(
+      ({ value }) => value === 'Multicolor' || !!mapping[value]
+    ),
+  }))
 )(({ values, size, ...rest }: any) => (
   <div className={styles.root} style={{ width: size.width }}>
     {values.map(item =>
