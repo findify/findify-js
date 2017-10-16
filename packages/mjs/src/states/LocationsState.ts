@@ -64,12 +64,13 @@ const parseOldQuery = string => {
 if (!!global.ga || !!global._gaq) {
   const sendEventToGoogle = () => {
     const url = document.location.href;
-    if (isFunction(global.ga)) return global.ga('send', 'pageview', url);
+    if (isFunction(global.ga))
+      return global.ga('send', 'findify::page-view', url);
     if (isFunction(global._gaq))
       return global._gaq.push(['_trackPageview', url]);
   };
 
-  history.listen(() => sendEventToGoogle);
+  history.listen(sendEventToGoogle);
 }
 
 class Location {
