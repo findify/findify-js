@@ -1,4 +1,4 @@
-# Findify JavaScript SDK [![npm (scoped)](https://img.shields.io/npm/v/@findify/sdk.svg)](https://www.npmjs.com/package/@findify/sdk)
+# Findify JavaScript SDK [![npm (scoped)](https://img.shields.io/npm/v/@findify/sdk.svg)](https://www.npmjs.com/package/@findify/sdk) [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 
 The Findify JavaScript SDK is a lightweight, promise based interface to
 to [Findify v3 search API](https://findify.readme.io/v3/reference#search-api) that works
@@ -109,7 +109,6 @@ will be major releases (1.0.1 -> 2.0.0).
 We use the GitHub issues for tracking bugs and feature requests.
 
  * Ask a question on [StackOverflow](https://stackoverflow.com/) and tag it with `findify-sdk`
- * Come join the Findify JavaScript community on [gitter](https://gitter.im/findify-js?source=orgpage)
  * If it turns out that you may have found a bug, please [open an issue](https://github.com/findify/findify-js/issues/new)
 
 ## Opening Issues

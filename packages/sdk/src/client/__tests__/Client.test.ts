@@ -36,8 +36,8 @@ describe('Client', () => {
   });
 
   const config: Config = {
-    url: process.env.TEST_API_HOST,
-    key: process.env.TEST_API_KEY,
+    url: process.env.TEST_API_HOST!,
+    key: process.env.TEST_API_KEY!,
     method: Req.Method.POST,
     timeout: 5000,
     jsonpCallback: 'findifyCallback',
@@ -54,25 +54,27 @@ describe('Client', () => {
         { q: 'smok', item_limit: 3, suggestion_limit: 5, user: users.user2 },
         { q: 'fir', item_limit: 2, suggestion_limit: 10 },
       ];
-      const requests: Req.Autocomplete.Request[] = parameters.map(params => ({
-        type: Req.Type.Autocomplete,
-        params,
-      }));
+      const requests: Req.Autocomplete.Request[] = parameters.map(params => {
+        const req: Req.Autocomplete.Request = {
+          type: Req.Type.Autocomplete,
+          params,
+        };
+        return req;
+      });
       expect.assertions(requests.length);
       for (let request of requests) {
-        const fixture = `autocomplete/${request.params.q}.json`;
+        const fixture = `autocomplete-${request.params.q}.json`;
         await verifyRequest({ client, request, fixture });
       }
     });
   });
 
   it('throws an error on empty query', async () => {
-    expect.assertions(2);
     const request: Req.Autocomplete.Request = {
       type: Req.Type.Autocomplete,
       params: { q: '', item_limit: 1, suggestion_limit: 1 },
     };
-    const fixture = 'autocomplete/empty.json';
+    const fixture = 'autocomplete-empty.json';
     const { nockDone, context } = (await nock.back(
       fixture,
       nockBackOptions as any
@@ -81,8 +83,9 @@ describe('Client', () => {
       const response = await client.send(request);
     } catch (err) {
       const error: AxiosError = err;
-      expect(error.response.status).toBe(400);
-      expect(error.response.data).toMatchSnapshot();
+      expect(error.response).toBeDefined();
+      expect(error.response!.status).toBe(400);
+      expect(error.response!.data).toMatchSnapshot();
     }
     context.assertScopesFinished();
     nockDone();
@@ -111,71 +114,44 @@ describe('Client', () => {
           ],
         },
       ];
-      expect.assertions(parameters.length);
-      const requests: Req.Search.Request[] = parameters.map(params => ({
-        type: Req.Type.Search,
-        params,
-      }));
+      const requests: Req.Search.Request[] = parameters.map(params => {
+        const req: Req.Search.Request = { type: Req.Type.Search, params };
+        return req;
+      });
+      expect.assertions(requests.length);
       for (let request of requests) {
-        const fixture = `search/${request.params.q}.json`;
+        const fixture = `search-${request.params.q}.json`;
         await verifyRequest({ client, request, fixture });
       }
     });
   });
 
   describe('smart collection', () => {
-    it('respects request parameters', async () => {
-      const parameters: Req.SmartCollection.Params[] = [
-        { slot: 'collections/sdk-test-1', limit: 2 },
-        { slot: 'collections/sdk-test-1', offset: 2, limit: 2 },
-        {
-          slot: 'collections/sdk-test-1',
-          limit: 2,
-          sort: [
-            {
-              field: 'price',
-              order: 'asc',
-            },
-          ],
-        },
-        {
-          slot: 'collections/sdk-test-1',
-          limit: 2,
-          sort: [
-            {
-              field: 'price',
-              order: 'desc',
-            },
-          ],
-        },
-        {
-          slot: 'collections/sdk-test-1',
-          filters: [
-            {
-              type: 'text',
-              name: 'custom_fields.height',
-              values: [
-                {
-                  value: '10 Inches',
-                },
-              ],
-            },
-          ],
-        },
-      ];
-      const requests: Req.SmartCollection.Request[] = parameters.map(
-        params => ({
-          type: Req.Type.SmartCollection,
-          params,
-        })
-      );
-      expect.assertions(requests.length);
-      let index = 0;
-      for (let request of requests) {
-        const fixture = `smart-collection/${request.params.slot}-${index}.json`;
-        await verifyRequest({ client, request, fixture });
-        index++;
-      }
+    it.skip('respects request parameters', async () => {
+      const params = {
+        slot: 'idk',
+        offset: 20,
+        limit: 15,
+        filters: [
+          {
+            name: 'category1',
+            type: 'category',
+            values: [{ value: 'T-Shirts' }],
+          },
+        ],
+        sort: [
+          {
+            field: 'price',
+            order: SortingOrder.Asc,
+          },
+        ],
+      };
+      const request: Req.SmartCollection.Request = {
+        type: Req.Type.SmartCollection,
+        params,
+      };
+      const fixture = `smart-collection-${params.slot}`;
+      await verifyRequest({ client, request, fixture });
     });
   });
 
@@ -184,108 +160,71 @@ describe('Client', () => {
       it.skip('respects request parameters', async () => {
         const parameters: Req.Recommendations.Slot[] = [
           {
-            slot: 'recommendations/sdk-test-1',
+            type: Req.Recommendations.Type.Slot,
+            slot: 'recommendations-test-slot-1',
             item_ids: ['xxx'],
           },
           {
-            slot: 'recommendations/sdk-test-1',
+            type: Req.Recommendations.Type.Slot,
+            slot: 'recommendations-test-slot-1',
             item_ids: ['321', '543'],
             offset: 4,
           },
           {
-            slot: 'recommendations/sdk-test-2',
+            type: Req.Recommendations.Type.Slot,
+            slot: 'recommendations-test-slot-2',
             item_ids: ['xxx', 'yyy', 'zzz'],
             offset: 12,
           },
         ];
         expect.assertions(parameters.length);
         const requests: Req.Recommendations.Request[] = parameters.map(
-          params => ({ type: Req.Type.Recommendations, params })
+          params => {
+            const req: Req.Recommendations.Request = {
+              type: Req.Type.Recommendations,
+              params,
+            };
+            return req;
+          }
         );
-        let index = 0;
         for (let request of requests) {
           const params = request.params as Req.Recommendations.Slot;
-          const fixture = `recommendations/${params.slot}-${index}.json`;
+          const fixture = `recommendations-${params.slot}-${params.offset ||
+            0}.json`;
           await verifyRequest({ client, request, fixture });
-          index++;
         }
       });
     });
 
     describe(Req.Recommendations.Type.Newest, () => {
-      it('respects request parameters', async () => {
+      it.skip('respects request parameters', async () => {
         const parameters: Req.Recommendations.Newest[] = [
-          {},
-          { limit: 2 },
-          { limit: 3, offset: 8 },
+          { type: Req.Recommendations.Type.Newest },
+          { type: Req.Recommendations.Type.Newest, limit: 5 },
+          { type: Req.Recommendations.Type.Newest, limit: 3, offset: 8 },
         ];
-        expect.assertions(parameters.length);
         const requests: Req.Recommendations.Request[] = parameters.map(
-          params => ({
-            type: Req.Type.Recommendations,
-            params: { type: Req.Recommendations.Type.Newest, ...params },
-          })
+          params =>
+            ({
+              type: Req.Type.Recommendations,
+              params,
+            } as Req.Recommendations.Request)
         );
-        let index = 0;
+        expect.assertions(requests.length);
         for (let request of requests) {
           const params = request.params as Req.Recommendations.Newest;
-          const fixture = `recommendations/${params.type}-${index}.json`;
+          const fixture = `search-${params.offset || 0}.json`;
           await verifyRequest({ client, request, fixture });
-          index++;
         }
       });
     });
 
     describe(Req.Recommendations.Type.Trending, () => {
-      it('respects request parameters', async () => {
-        const parameters: Req.Recommendations.Trending[] = [
-          {},
-          { limit: 2, offset: 2 },
-          { limit: 2, offset: 3 },
-        ];
-        expect.assertions(parameters.length);
-        const requests: Req.Recommendations.Request[] = parameters.map(
-          params => ({
-            type: Req.Type.Recommendations,
-            params: { type: Req.Recommendations.Type.Trending, ...params },
-          })
-        );
-        let index = 0;
-        for (let request of requests) {
-          const params = request.params as Req.Recommendations.Trending;
-          const fixture = `recommendations/${params.type}-${index}.json`;
-          await verifyRequest({ client, request, fixture });
-          index++;
-        }
-      });
+      it.skip('respects request parameters', async () => {});
     });
 
     describe(Req.Recommendations.Type.RecentlyViewed, () => {
-      it('respects request parameters', async () => {
-        const parameters: Req.Recommendations.RecentlyViewed[] = [
-          {},
-          { limit: 1 },
-          // TODO: doesn't work (?)
-          // { limit: 1, offset: 1 },
-        ];
-        expect.assertions(parameters.length);
-        const requests: Req.Recommendations.Request[] = parameters.map(
-          params => ({
-            type: Req.Type.Recommendations,
-            params: {
-              type: Req.Recommendations.Type.RecentlyViewed,
-              ...params,
-            },
-          })
-        );
-        let index = 0;
-        for (let request of requests) {
-          const params = request.params as Req.Recommendations.RecentlyViewed;
-          const fixture = `recommendations/${params.type}-${index}.json`;
-          await verifyRequest({ client, request, fixture });
-          index++;
-        }
-      });
+      it.skip('respects request parameters', async () => {});
     });
 
     describe(Req.Recommendations.Type.AlsoViewed, () => {
