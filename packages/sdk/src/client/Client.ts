@@ -81,7 +81,7 @@ export class Client {
       case Req.Recommendations.Type.Trending:
         return { path: `/recommend/items/trending` };
       case Req.Recommendations.Type.RecentlyViewed:
-        return { path: `/recommend/items/latest` };
+        return { path: `/recommend/items/viewed/latest` };
       case Req.Recommendations.Type.Slot:
         return { path: `/recommend/${params.slot}`, params: ['slot'] };
       case Req.Recommendations.Type.AlsoViewed:
@@ -107,7 +107,7 @@ export class Client {
 
   private getUrl(endpoint: Endpoint) {
     // - we can't safely rely on URL spec: https://url.spec.whatwg.org/
-    // - we need support old browsers: https://caniuse.com/#search=URL
+    // - we need to support old browsers: https://caniuse.com/#search=URL
     // - 45 kb just to concat url segments: https://github.com/medialize/URI.js/issues/172#issuecomment-273685906
     return `${this.config.url}${endpoint.path}`;
   }
@@ -126,7 +126,7 @@ export class Client {
    * @see {@link https://findify.readme.io/v3/reference#getting-started|getting started} for more information.
    */
   private getCommonParams(req: Req.Request): Req.CommonParams {
-    const user = req.params.user || this.config.user;
+    const user = req.params.user || this.config.user; // tslint:disable-line
     validateUser(user);
     return {
       user: user!,
@@ -145,7 +145,7 @@ export class Client {
     // - typescript "discriminant"
     //   see: https://www.typescriptlang.org/docs/handbook/advanced-types.html
 
-    const pathParams = endpoint.params || [];
+    const pathParams = endpoint.params || []; // tslint:disable-line
     const omitParams = <T>(ks: string[]) =>
       omit(pathParams.concat(ks), req.params) as T;
 

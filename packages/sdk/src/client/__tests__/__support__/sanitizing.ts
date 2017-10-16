@@ -1,4 +1,5 @@
-import { RequestBody, ResponseBody } from '../..';
+import * as Req from '../../../request';
+import * as Res from '../../../response';
 
 /**
  * Set random and time-dependent data to be the same as in recorded body.
@@ -6,9 +7,9 @@ import { RequestBody, ResponseBody } from '../..';
  */
 export function sanitizeRequestBody(
   body: string,
-  recordedBody: RequestBody
+  recordedBody: Req.Body
 ): string {
-  const currentBody: RequestBody = JSON.parse(body);
+  const currentBody: Req.Body = JSON.parse(body);
   // we don't want our tests fail on timestamp mismatch
   currentBody.t_client = recordedBody.t_client;
   return JSON.stringify(currentBody);
@@ -17,7 +18,7 @@ export function sanitizeRequestBody(
 /**
  * Exclude sensitive data from response body.
  */
-export const sanitizeResponseBody = (body: ResponseBody) => ({
+export const sanitizeResponseBody = (body: Res.Body) => ({
   ...body,
   meta: {
     ...body.meta,

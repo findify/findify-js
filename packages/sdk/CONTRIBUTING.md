@@ -17,6 +17,7 @@ Usually you don't need to change it, so please stick to `lockdown` whenever poss
 If you want to regenerate fixtures:
 
 * stop test runner
+* do not remove `recommendations/recently-viewed-{i}.json` files or make sure they will contain adequate results, e.g. make several calls to `/feedback` with `view-page` event type (see [httpie/requests](./httpie/requests.sh))
 * [manually remove](https://github.com/node-nock/nock/issues/417#issuecomment-333385945) fixture files that you want to regenerate
 * run tests and verify that snapshots match your expectations
 * update the spanshots or fix code / tests

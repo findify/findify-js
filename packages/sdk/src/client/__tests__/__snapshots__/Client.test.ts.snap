@@ -265,6 +265,1445 @@ Object {
 }
 `;
 
+exports[`Client recommendations newest respects request parameters 1`] = `
+Object {
+  "items": Array [
+    Object {
+      "availability": true,
+      "brand": "Smoke Cartel",
+      "category": Array [
+        Object {
+          "category1": "Spoon",
+          "category2": "",
+          "category3": "",
+          "category4": "",
+        },
+      ],
+      "color": Array [],
+      "color_variants": 1,
+      "compare_at": -1,
+      "custom_fields": Object {
+        "barcode": Array [
+          "",
+        ],
+        "height": Array [
+          "4.5 Inches",
+        ],
+      },
+      "description": "Pipe with a Dark Side
+
+ 
+Cute and cuddly pipes are not for everyone. The \\"Nightmare\\" spoon is perfect device for your candle lit dungeon smoke breaks. Forged from black glass, an earthy hue of dichro color, and green horn add-ons. The bottom of the bowl head is flattened to prevent rolling. This is a seriously cool pipe. Load a bowl if you dare. ",
+      "discount": Array [],
+      "hash": "AV11Vmq7CQkVMwqrFH0o",
+      "id": "10245746056",
+      "image_2_url": "https://cdn.shopify.com/s/files/1/0350/8253/products/SMOKE-CARTEL-QUOT-NIGHTMARE-QUOT-WORKED-SPOON_GHHP16-5_medium.jpg?v=1500670614",
+      "material": Array [],
+      "price": Array [
+        60,
+      ],
+      "quantity": 1,
+      "reviews": Object {
+        "average_score": 0,
+        "total_reviews": 0,
+      },
+      "seller": "",
+      "size": Array [],
+      "sku": Array [
+        "GHHP16",
+      ],
+      "stickers": Object {
+        "availability": true,
+        "discount": false,
+        "free-shipping": false,
+        "in-stock": true,
+        "out-of-stock": false,
+      },
+      "title": "Smoke Cartel \\"Nightmare\\" Worked Spoon",
+    },
+    Object {
+      "availability": true,
+      "brand": "Smoke Cartel",
+      "category": Array [
+        Object {
+          "category1": "Spoon",
+          "category2": "",
+          "category3": "",
+          "category4": "",
+        },
+      ],
+      "color": Array [],
+      "color_variants": 1,
+      "compare_at": -1,
+      "custom_fields": Object {
+        "barcode": Array [
+          "",
+        ],
+        "height": Array [
+          "4.5 Inches",
+        ],
+      },
+      "description": "Keep your eye on the prize
+
+ 
+The \\"Cyanclops\\" spoon is a classic hand pipe with worked details for more personality. The translucent blue body is decorated with light blue add-ons. While the head of this pipe is features an off-center worked eye. The bottom of the head is also flattened so it will roll and spill your \\"smokeables.\\"  A great pipe for any smoker. ",
+      "discount": Array [],
+      "hash": "AV11Vmq7CQkVMwqrFH0p",
+      "id": "10246079880",
+      "image_2_url": "https://cdn.shopify.com/s/files/1/0350/8253/products/SMOKE-CARTEL-QUOT-GERRY-QUOT-WORKED-SPOON_GHHP15-5_medium.jpg?v=1500671835",
+      "material": Array [],
+      "price": Array [
+        65,
+      ],
+      "quantity": 1,
+      "reviews": Object {
+        "average_score": 0,
+        "total_reviews": 0,
+      },
+      "seller": "",
+      "size": Array [],
+      "sku": Array [
+        "GHHP15",
+      ],
+      "stickers": Object {
+        "availability": true,
+        "discount": false,
+        "free-shipping": false,
+        "in-stock": true,
+        "out-of-stock": false,
+      },
+      "title": "Smoke Cartel \\"Cyanclops\\" Worked Spoon",
+    },
+    Object {
+      "availability": true,
+      "brand": "Smoke Cartel",
+      "category": Array [
+        Object {
+          "category1": "Apparel",
+          "category2": "",
+          "category3": "",
+          "category4": "",
+        },
+      ],
+      "color": Array [],
+      "color_variants": 1,
+      "compare_at": -1,
+      "custom_fields": Object {
+        "barcode": Array [
+          "",
+        ],
+        "height": Array [
+          "19 Inches",
+        ],
+      },
+      "description": "A smell-proof tote for every toker. 
+
+ 
+Tired of smelling like the dankest person in the room? Keep your odors locked in with the official Smoke Cartel Backpack. These quality backpacks carry books, pipes, wipes, water bottles, munchies, or anything else you might need to lug around town. Lined with odor-resistant materials you will never have to worry about your backpack smelling like your stash when you go from a camping trip to grandma's house.
+
+ 
+Good to Know
+
+ 
+Height: 19\\"  Width: 11\\"  Depth:5\\"
+
+ 
+Quilted Padded Backing
+
+ 
+Adjustable Straps
+
+ 
+Water Resistant",
+      "discount": Array [],
+      "hash": "AV11Vmq7CQkVMwqrFH0q",
+      "id": "10246101192",
+      "image_2_url": "https://cdn.shopify.com/s/files/1/0350/8253/products/SMOKE-CARTEL-BACKPACK_SC-BACKPACK-BK-0_medium.jpg?v=1500673539",
+      "material": Array [],
+      "price": Array [
+        60,
+      ],
+      "quantity": 84,
+      "reviews": Object {
+        "average_score": 0,
+        "total_reviews": 0,
+      },
+      "seller": "",
+      "size": Array [],
+      "sku": Array [
+        "SC-BACKPACK-BK",
+      ],
+      "stickers": Object {
+        "availability": true,
+        "discount": false,
+        "free-shipping": false,
+        "in-stock": true,
+        "out-of-stock": false,
+      },
+      "title": "Smoke Cartel Odor-Resistiant Backpack",
+    },
+    Object {
+      "availability": true,
+      "brand": "Smoke Cartel",
+      "category": Array [
+        Object {
+          "category1": "Apparel",
+          "category2": "",
+          "category3": "",
+          "category4": "",
+        },
+      ],
+      "color": Array [],
+      "color_variants": 1,
+      "compare_at": -1,
+      "custom_fields": Object {
+        "barcode": Array [
+          "",
+        ],
+        "height": Array [
+          "24 Inches",
+        ],
+      },
+      "description": "Carry all your 'stuffel' in the duffel
+
+ 
+Whether you're at the gym or on the grind--stay fresh with the official Smoke Cartel Duffel Bag. A large capacity carry-all with odor resistant lining and roomy interior. Main compartment zips along the center and covered by a velcro closure.  The perfect bag for long weekends and good times.
+
+ 
+Good to Know
+
+ 
+Height: 15\\" Length: 24\\"  Width: 13\\"
+
+ 
+Sturdy Straps
+
+ 
+Embroidered Smoke Cartel Logo",
+      "discount": Array [],
+      "hash": "AV11Vmq7CQkVMwqrFH0r",
+      "id": "10246155528",
+      "image_2_url": "https://cdn.shopify.com/s/files/1/0350/8253/products/SMOKE-CARTEL-ODOR-RESISTANT-DUFFLE-BAG_SC-DUFFLE-1_medium.jpg?v=1500673490",
+      "material": Array [],
+      "price": Array [
+        120,
+      ],
+      "quantity": 87,
+      "reviews": Object {
+        "average_score": 0,
+        "total_reviews": 0,
+      },
+      "seller": "",
+      "size": Array [],
+      "sku": Array [
+        "SC-DUFFLE",
+      ],
+      "stickers": Object {
+        "availability": true,
+        "discount": false,
+        "free-shipping": false,
+        "in-stock": true,
+        "out-of-stock": false,
+      },
+      "title": "Smoke Cartel Odor-Resistant Duffle Bag",
+    },
+    Object {
+      "availability": true,
+      "brand": "Grav Labs",
+      "category": Array [
+        Object {
+          "category1": "Spoon",
+          "category2": "",
+          "category3": "",
+          "category4": "",
+        },
+      ],
+      "color": Array [],
+      "color_variants": 1,
+      "compare_at": -1,
+      "custom_fields": Object {
+        "barcode": Array [
+          "",
+        ],
+        "height": Array [
+          "4 Inches",
+        ],
+      },
+      "description": "Colorful spoon, quality materials. 
+
+ 
+These spoons are made by Grav Labs, known for their craftsmanship and quality smoking devices. The Wig Wag series of spoons are a colorful collection designed so you can have a great smoking experience. You don't even have to worry about inhaling ash, because Wig Wags feature inward conical mouthpiece.  Deep flower bowl for longer sessions and flattened bottom to prevent rolling. All covered head to tail in colorful reversal work. Grab one of these spoons guaranteed to bring a smile to your face. Colors will vary.",
+      "discount": Array [],
+      "hash": "AV11Vmq7CQkVMwqrFH0n",
+      "id": "10245644168",
+      "image_2_url": "https://cdn.shopify.com/s/files/1/0350/8253/products/GRAV-LABS-WIG-WAG-SPOON-IN-ASSORTED-COLOR_GRAV-SP-27-3_medium.jpg?v=1500669963",
+      "material": Array [],
+      "price": Array [
+        36,
+      ],
+      "quantity": 5,
+      "reviews": Object {
+        "average_score": 0,
+        "total_reviews": 0,
+      },
+      "seller": "",
+      "size": Array [],
+      "sku": Array [
+        "GRAV-SP.27",
+      ],
+      "stickers": Object {
+        "availability": true,
+        "discount": false,
+        "free-shipping": false,
+        "in-stock": true,
+        "out-of-stock": false,
+      },
+      "title": "Grav Labs Wig Wag Spoon in Assorted Color",
+    },
+  ],
+  "meta": Object {
+    "limit": 5,
+    "offset": 0,
+    "rid": "<stripped>",
+    "total": 1395,
+    "user_id": "test1",
+  },
+}
+`;
+
+exports[`Client recommendations newest respects request parameters 2`] = `
+Object {
+  "items": Array [
+    Object {
+      "availability": true,
+      "brand": "Smoke Cartel",
+      "category": Array [
+        Object {
+          "category1": "Spoon",
+          "category2": "",
+          "category3": "",
+          "category4": "",
+        },
+      ],
+      "color": Array [],
+      "color_variants": 1,
+      "compare_at": -1,
+      "custom_fields": Object {
+        "barcode": Array [
+          "",
+        ],
+        "height": Array [
+          "4.5 Inches",
+        ],
+      },
+      "description": "Pipe with a Dark Side
+
+ 
+Cute and cuddly pipes are not for everyone. The \\"Nightmare\\" spoon is perfect device for your candle lit dungeon smoke breaks. Forged from black glass, an earthy hue of dichro color, and green horn add-ons. The bottom of the bowl head is flattened to prevent rolling. This is a seriously cool pipe. Load a bowl if you dare. ",
+      "discount": Array [],
+      "hash": "AV11Vmq7CQkVMwqrFH0o",
+      "id": "10245746056",
+      "image_2_url": "https://cdn.shopify.com/s/files/1/0350/8253/products/SMOKE-CARTEL-QUOT-NIGHTMARE-QUOT-WORKED-SPOON_GHHP16-5_medium.jpg?v=1500670614",
+      "material": Array [],
+      "price": Array [
+        60,
+      ],
+      "quantity": 1,
+      "reviews": Object {
+        "average_score": 0,
+        "total_reviews": 0,
+      },
+      "seller": "",
+      "size": Array [],
+      "sku": Array [
+        "GHHP16",
+      ],
+      "stickers": Object {
+        "availability": true,
+        "discount": false,
+        "free-shipping": false,
+        "in-stock": true,
+        "out-of-stock": false,
+      },
+      "title": "Smoke Cartel \\"Nightmare\\" Worked Spoon",
+    },
+    Object {
+      "availability": true,
+      "brand": "Smoke Cartel",
+      "category": Array [
+        Object {
+          "category1": "Spoon",
+          "category2": "",
+          "category3": "",
+          "category4": "",
+        },
+      ],
+      "color": Array [],
+      "color_variants": 1,
+      "compare_at": -1,
+      "custom_fields": Object {
+        "barcode": Array [
+          "",
+        ],
+        "height": Array [
+          "4.5 Inches",
+        ],
+      },
+      "description": "Keep your eye on the prize
+
+ 
+The \\"Cyanclops\\" spoon is a classic hand pipe with worked details for more personality. The translucent blue body is decorated with light blue add-ons. While the head of this pipe is features an off-center worked eye. The bottom of the head is also flattened so it will roll and spill your \\"smokeables.\\"  A great pipe for any smoker. ",
+      "discount": Array [],
+      "hash": "AV11Vmq7CQkVMwqrFH0p",
+      "id": "10246079880",
+      "image_2_url": "https://cdn.shopify.com/s/files/1/0350/8253/products/SMOKE-CARTEL-QUOT-GERRY-QUOT-WORKED-SPOON_GHHP15-5_medium.jpg?v=1500671835",
+      "material": Array [],
+      "price": Array [
+        65,
+      ],
+      "quantity": 1,
+      "reviews": Object {
+        "average_score": 0,
+        "total_reviews": 0,
+      },
+      "seller": "",
+      "size": Array [],
+      "sku": Array [
+        "GHHP15",
+      ],
+      "stickers": Object {
+        "availability": true,
+        "discount": false,
+        "free-shipping": false,
+        "in-stock": true,
+        "out-of-stock": false,
+      },
+      "title": "Smoke Cartel \\"Cyanclops\\" Worked Spoon",
+    },
+  ],
+  "meta": Object {
+    "limit": 2,
+    "offset": 0,
+    "rid": "<stripped>",
+    "total": 1395,
+    "user_id": "test1",
+  },
+}
+`;
+
+exports[`Client recommendations newest respects request parameters 3`] = `
+Object {
+  "items": Array [
+    Object {
+      "availability": true,
+      "brand": "Grav Labs STAX",
+      "category": Array [
+        Object {
+          "category1": "Part",
+          "category2": "",
+          "category3": "",
+          "category4": "",
+        },
+      ],
+      "color": Array [],
+      "color_variants": 1,
+      "compare_at": -1,
+      "custom_fields": Object {
+        "barcode": Array [
+          "",
+        ],
+        "height": Array [
+          "8.5 Inches",
+        ],
+      },
+      "description": "And you thought your modular bong couldn't get cooler
+
+ 
+ 
+The STAX collection from Grav Labs is the first modular water pipe series available on the market. That means you can tailor your pipe yourself, for a personal fit. Add percolation, dial in airflow, and build your bong as tall as you want. All with the same quality glass you expect from Grav Labs. 
+
+ 
+Glycerin coils are great add-on to any pipe. Add one to your STAX build for a guaranteed cool draw. Place your coil in the freezer for an hour and you're ready to take a very chill smoke break. Stays cold for about two hours. Don't rush to inhale, take it easy and the the coil do its job. Glycerin coils are best for use with flowers. Vapor will condense in cold temperature and gunk up the coil. ",
+      "discount": Array [],
+      "hash": "AV11Vmq7CQkVMwqrFH0f",
+      "id": "10222581256",
+      "image_2_url": "https://cdn.shopify.com/s/files/1/0350/8253/products/GRAV-LABS-STAX-GLYCERIN-COIL_GRAV-X4-GC-0_medium.jpg?v=1500501228",
+      "material": Array [],
+      "price": Array [
+        130,
+      ],
+      "quantity": 1,
+      "reviews": Object {
+        "average_score": 0,
+        "total_reviews": 0,
+      },
+      "seller": "",
+      "size": Array [],
+      "sku": Array [
+        "GRAV-X4.GC",
+      ],
+      "stickers": Object {
+        "availability": true,
+        "discount": false,
+        "free-shipping": false,
+        "in-stock": true,
+        "out-of-stock": false,
+      },
+      "title": "Grav Labs STAX Glycerin Coil",
+    },
+    Object {
+      "availability": true,
+      "brand": "Grav Labs STAX",
+      "category": Array [
+        Object {
+          "category1": "Part",
+          "category2": "",
+          "category3": "",
+          "category4": "",
+        },
+      ],
+      "color": Array [],
+      "color_variants": 1,
+      "compare_at": -1,
+      "custom_fields": Object {
+        "barcode": Array [
+          "",
+        ],
+        "height": Array [
+          "8 Inches",
+        ],
+        "joint_gender": Array [
+          "Female Joint",
+        ],
+        "joint_size": Array [
+          "14.5mm",
+        ],
+      },
+      "description": "Tradition is key with this straight base and downstem
+
+ 
+The STAX collection from Grav Labs is the first modular water pipe series available on the market. That means you can tailor your pipe yourself, for a personal fit. Add percolation, dial in airflow, and build your bong as tall as you want. All with the same quality glass you expect from Grav Labs. 
+
+ 
+This base is your classic flare foot with an extra wide 5.25\\" base. Smoke is diffused by a removable 18.8mm to 14.5mm downstem. Included with your base is one 14.5mm male flower bowl, one plastic keck clip, and one metal keck clip. ",
+      "discount": Array [],
+      "hash": "AV11Vmq6CQkVMwqrFH0U",
+      "id": "10220789000",
+      "image_2_url": "https://cdn.shopify.com/s/files/1/0350/8253/products/GRAV-LABS-FLARE-FOOT-BASE_GRAV-X4-FL-3_medium.jpg?v=1500500799",
+      "material": Array [],
+      "price": Array [
+        100,
+      ],
+      "quantity": 1,
+      "reviews": Object {
+        "average_score": 0,
+        "total_reviews": 0,
+      },
+      "seller": "",
+      "size": Array [],
+      "sku": Array [
+        "GRAV-X4.FL",
+      ],
+      "stickers": Object {
+        "availability": true,
+        "discount": false,
+        "free-shipping": false,
+        "in-stock": true,
+        "out-of-stock": false,
+      },
+      "title": "Grav Labs STAX Flare Foot Base",
+    },
+    Object {
+      "availability": true,
+      "brand": "Grav Labs STAX",
+      "category": Array [
+        Object {
+          "category1": "Part",
+          "category2": "",
+          "category3": "",
+          "category4": "",
+        },
+      ],
+      "color": Array [],
+      "color_variants": 1,
+      "compare_at": -1,
+      "custom_fields": Object {
+        "barcode": Array [
+          "",
+        ],
+        "height": Array [
+          "7 Inches",
+        ],
+        "joint_gender": Array [
+          "Female Joint",
+        ],
+        "joint_size": Array [
+          "14.5mm",
+        ],
+      },
+      "description": "Modular Base with internal cooling power.
+
+ 
+The STAX collection from Grav Labs is the first modular water pipe series available on the market. That means you can tailor your pipe yourself, for a personal fit. Add percolation, dial in airflow, and build your bong as tall as you want. All with the same quality glass you expect from Grav Labs. 
+
+ 
+This straight base is features an internal coil design. A reinforced 90° joint transforms into a coil with a showerhead diffuser attached. The extra distance created by the coil gives time for the smoke to cool naturally. But smoke is also cooled by the water rushing around the coil too. Included with this base is a 14.5mm male flower bowl, one plastic keck clip, and one metal keck clip. ",
+      "discount": Array [],
+      "hash": "AV11Vmq6CQkVMwqrFH0W",
+      "id": "10220958792",
+      "image_2_url": "https://cdn.shopify.com/s/files/1/0350/8253/products/GRAV-LABS-STAX-FLARE-BASE-WITH-COIL-SHOWERHEAD-PERC_GRAV-X4-CSH-5_medium.jpg?v=1500501133",
+      "material": Array [],
+      "price": Array [
+        160,
+      ],
+      "quantity": 1,
+      "reviews": Object {
+        "average_score": 0,
+        "total_reviews": 0,
+      },
+      "seller": "",
+      "size": Array [],
+      "sku": Array [
+        "GRAV-X4.CSH",
+      ],
+      "stickers": Object {
+        "availability": true,
+        "discount": false,
+        "free-shipping": false,
+        "in-stock": true,
+        "out-of-stock": false,
+      },
+      "title": "Grav Labs STAX Flare Base with Coil Showerhead Perc",
+    },
+  ],
+  "meta": Object {
+    "limit": 3,
+    "offset": 8,
+    "rid": "<stripped>",
+    "total": 1395,
+    "user_id": "test1",
+  },
+}
+`;
+
+exports[`Client recommendations recently-viewed respects request parameters 1`] = `
+Object {
+  "items": Array [
+    Object {
+      "availability": true,
+      "brand": "Glassheads",
+      "category": Array [
+        Object {
+          "category1": "Spoon",
+          "category2": "",
+          "category3": "",
+          "category4": "",
+        },
+      ],
+      "color": Array [],
+      "color_variants": 1,
+      "compare_at": 36,
+      "custom_fields": Object {
+        "barcode": Array [
+          "",
+        ],
+        "use_case": Array [
+          "Made For Dry Herbs",
+        ],
+      },
+      "description": "Yeah Mon! The smaller, slimmer son of the Rasta-fire-ian sports the same Jamaican colors spiraling around a dark black base, yet sports an even more portable physique. Grab one now and take your sesh to go!",
+      "discount": Array [
+        25,
+      ],
+      "hash": "AV11VmrFCQkVMwqrFH9x",
+      "id": "4595632836",
+      "image_2_url": "https://cdn.shopify.com/s/files/1/0350/8253/products/HP61-2-0_medium.jpg?v=1459021438",
+      "material": Array [],
+      "price": Array [
+        27,
+      ],
+      "quantity": 133,
+      "reviews": Object {
+        "average_score": 4.83,
+        "total_reviews": 6,
+      },
+      "seller": "",
+      "size": Array [],
+      "sku": Array [
+        "HMX62",
+      ],
+      "stickers": Object {
+        "availability": true,
+        "discount": Array [
+          25,
+        ],
+        "free-shipping": false,
+        "in-stock": true,
+        "out-of-stock": false,
+      },
+      "title": "Rasta-fire-ian Jr.",
+    },
+    Object {
+      "availability": true,
+      "brand": "Glassheads",
+      "category": Array [
+        Object {
+          "category1": "Spoon",
+          "category2": "",
+          "category3": "",
+          "category4": "",
+        },
+      ],
+      "color": Array [],
+      "color_variants": 1,
+      "compare_at": -1,
+      "custom_fields": Object {
+        "barcode": Array [
+          "",
+        ],
+        "use_case": Array [
+          "Made For Dry Herbs",
+        ],
+      },
+      "description": "Yeah Mon! The colors of Jamaica spiral around this deep black pipe, which is the perfect addition to any smoker's collection. At home or on-the-go, the Rasta-fire-ian is sure to support your sesh!",
+      "discount": Array [],
+      "hash": "AV11VmrFCQkVMwqrFH9w",
+      "id": "4595632644",
+      "image_2_url": "https://cdn.shopify.com/s/files/1/0350/8253/products/HP62-2-0_medium.jpg?v=1459019663",
+      "material": Array [],
+      "price": Array [
+        31,
+      ],
+      "quantity": 75,
+      "reviews": Object {
+        "average_score": 5,
+        "total_reviews": 3,
+      },
+      "seller": "",
+      "size": Array [],
+      "sku": Array [
+        "HMX63",
+      ],
+      "stickers": Object {
+        "availability": true,
+        "discount": false,
+        "free-shipping": false,
+        "in-stock": true,
+        "out-of-stock": false,
+      },
+      "title": "Rasta-fire-ian Pipe",
+    },
+  ],
+  "meta": Object {
+    "limit": 5,
+    "offset": 0,
+    "rid": "<stripped>",
+    "total": 3,
+    "user_id": "test1",
+  },
+}
+`;
+
+exports[`Client recommendations recently-viewed respects request parameters 2`] = `
+Object {
+  "items": Array [
+    Object {
+      "availability": true,
+      "brand": "Glassheads",
+      "category": Array [
+        Object {
+          "category1": "Spoon",
+          "category2": "",
+          "category3": "",
+          "category4": "",
+        },
+      ],
+      "color": Array [],
+      "color_variants": 1,
+      "compare_at": 36,
+      "custom_fields": Object {
+        "barcode": Array [
+          "",
+        ],
+        "use_case": Array [
+          "Made For Dry Herbs",
+        ],
+      },
+      "description": "Yeah Mon! The smaller, slimmer son of the Rasta-fire-ian sports the same Jamaican colors spiraling around a dark black base, yet sports an even more portable physique. Grab one now and take your sesh to go!",
+      "discount": Array [
+        25,
+      ],
+      "hash": "AV11VmrFCQkVMwqrFH9x",
+      "id": "4595632836",
+      "image_2_url": "https://cdn.shopify.com/s/files/1/0350/8253/products/HP61-2-0_medium.jpg?v=1459021438",
+      "material": Array [],
+      "price": Array [
+        27,
+      ],
+      "quantity": 133,
+      "reviews": Object {
+        "average_score": 4.83,
+        "total_reviews": 6,
+      },
+      "seller": "",
+      "size": Array [],
+      "sku": Array [
+        "HMX62",
+      ],
+      "stickers": Object {
+        "availability": true,
+        "discount": Array [
+          25,
+        ],
+        "free-shipping": false,
+        "in-stock": true,
+        "out-of-stock": false,
+      },
+      "title": "Rasta-fire-ian Jr.",
+    },
+  ],
+  "meta": Object {
+    "limit": 1,
+    "offset": 0,
+    "rid": "<stripped>",
+    "total": 1,
+    "user_id": "test1",
+  },
+}
+`;
+
+exports[`Client recommendations trending respects request parameters 1`] = `
+Object {
+  "items": Array [
+    Object {
+      "availability": true,
+      "brand": "DabWorthy",
+      "category": Array [
+        Object {
+          "category1": "Titanium Nail",
+          "category2": "",
+          "category3": "",
+          "category4": "",
+        },
+      ],
+      "color": Array [],
+      "color_variants": 1,
+      "compare_at": 120,
+      "custom_fields": Object {
+        "barcode": Array [
+          "",
+        ],
+        "joint_gender": Array [
+          "Male Joint",
+          "Female Joint",
+        ],
+        "joint_size": Array [
+          "14.5mm",
+          "18.8mm",
+        ],
+      },
+      "description": "This sidearm style titanium nail from DabWorthy is a innovative design that allows heat to concentrate on one part of the nail.  The sidearm distributes the heat so it doesn't damage the joint while also providing a quicker heat time.  This nail fits 14.5mm and 18.8mm female joints.",
+      "discount": Array [
+        50,
+      ],
+      "hash": "AV11VmrDCQkVMwqrFH6-",
+      "id": "414667516",
+      "image_2_url": "https://cdn.shopify.com/s/files/1/0350/8253/products/DABWORTHY-TI-SIDECAR-UNIVERSAL-NAIL-2_medium.jpg?v=1461617794",
+      "material": Array [],
+      "price": Array [
+        60,
+      ],
+      "quantity": 43,
+      "reviews": Object {
+        "average_score": 4.5,
+        "total_reviews": 6,
+      },
+      "seller": "",
+      "size": Array [],
+      "sku": Array [
+        "NLDLBM-1418",
+      ],
+      "stickers": Object {
+        "availability": true,
+        "discount": Array [
+          50,
+        ],
+        "free-shipping": false,
+        "in-stock": true,
+        "out-of-stock": false,
+      },
+      "title": "DabWorthy Sidearm Male Universal Domeless Titanium Nail for 18.8mm and 14.5mm Joints",
+    },
+    Object {
+      "availability": true,
+      "brand": "UPC",
+      "category": Array [
+        Object {
+          "category1": "Water Pipe",
+          "category2": "",
+          "category3": "",
+          "category4": "",
+        },
+      ],
+      "color": Array [],
+      "color_variants": 1,
+      "compare_at": 89,
+      "custom_fields": Object {
+        "barcode": Array [
+          "",
+        ],
+        "height": Array [
+          "8 Inches",
+        ],
+        "joint_gender": Array [
+          "Female Joint",
+        ],
+        "joint_size": Array [
+          "14.5mm",
+        ],
+      },
+      "description": "This awesome buoy base water pipe from UPC features a 45 degree angled 18.8mm to 14.5mm downstem, and a female joint. This piece also has an ice pinch to help cool down your smoke and a buoy base, which when filled with water, provides ideal stability due to the weight at the bottom of the piece.
+
+ 
+ 
+For the most suitable downstem and flower bowl options for the \\"Simply Guy,\\" check out the Sleek and Simple 14.5 to 14.5mm Downstem in 3.5 inches and the Round Glass Bowl in 14.5mm.  Don't forget to double check to make sure the sizing is correct on your order, otherwise it may not properly fit your pipe!  For more information on sizing, check out our Knowledge Base guides on Downstem Sizing and Joint Sizes.",
+      "discount": Array [
+        56,
+      ],
+      "hash": "AV11VmrDCQkVMwqrFH7A",
+      "id": "420105236",
+      "image_2_url": "https://cdn.shopify.com/s/files/1/0350/8253/products/WHM3-9_medium.jpg?v=1496071284",
+      "material": Array [],
+      "price": Array [
+        39,
+      ],
+      "quantity": 55,
+      "reviews": Object {
+        "average_score": 4.56,
+        "total_reviews": 25,
+      },
+      "seller": "",
+      "size": Array [],
+      "sku": Array [
+        "WHM3",
+      ],
+      "stickers": Object {
+        "availability": true,
+        "discount": Array [
+          56,
+        ],
+        "free-shipping": false,
+        "in-stock": true,
+        "out-of-stock": false,
+      },
+      "title": "UPC “Simply Guy” Buoy Base Water Pipe",
+    },
+    Object {
+      "availability": true,
+      "brand": "Sesh Supply",
+      "category": Array [
+        Object {
+          "category1": "Water Pipe",
+          "category2": "",
+          "category3": "",
+          "category4": "",
+        },
+      ],
+      "color": Array [],
+      "color_variants": 1,
+      "compare_at": 199,
+      "custom_fields": Object {
+        "barcode": Array [
+          "",
+        ],
+        "height": Array [
+          "9.5 Inches",
+        ],
+        "joint_gender": Array [
+          "Female Joint",
+        ],
+        "joint_size": Array [
+          "14.5mm",
+        ],
+      },
+      "description": "A small and smooth rig with a geometric flare.
+
+ 
+In Greek mythology, Pandora is the first woman created by the gods, who accidentally opened a box or jar that contained all of the evil in the world.  This mini beaker from Sesh Supply contains within it a similar box: a cube perc, perfect for allowing your smoke and water to curdle against the four walls, creating a massively smooth hit.  
+
+ 
+With a 14.5mm female flower bowl, your dry herbs will be taken on the ride of their life - down through the fused downstem, where they will filter through the central cube perc before traveling up through the mind-warping 'inception style' swiss cube body.  
+
+ 
+They may even get a chance to see all of the evils in the world before rising up to meet you and your lungs...  
+
+ 
+Or something like that.",
+      "discount": Array [
+        35,
+      ],
+      "hash": "AV11VmrDCQkVMwqrFH7B",
+      "id": "4203259012",
+      "image_2_url": "https://cdn.shopify.com/s/files/1/0350/8253/products/pandora-1_medium.jpg?v=1453146858",
+      "material": Array [],
+      "price": Array [
+        129,
+      ],
+      "quantity": 3,
+      "reviews": Object {
+        "average_score": 5,
+        "total_reviews": 13,
+      },
+      "seller": "",
+      "size": Array [],
+      "sku": Array [
+        "SS-PANDORA",
+      ],
+      "stickers": Object {
+        "availability": true,
+        "discount": Array [
+          35,
+        ],
+        "free-shipping": false,
+        "in-stock": true,
+        "out-of-stock": false,
+      },
+      "title": "Sesh Supply \\"Pandora\\" Cube Perc Mini Beaker with Inception-Style Swiss Cube Body",
+    },
+    Object {
+      "availability": true,
+      "brand": "Smoke Cartel",
+      "category": Array [
+        Object {
+          "category1": "Apparel",
+          "category2": "",
+          "category3": "",
+          "category4": "",
+        },
+      ],
+      "color": Array [],
+      "color_variants": 1,
+      "compare_at": -1,
+      "custom_fields": Object {
+        "barcode": Array [
+          "",
+        ],
+      },
+      "description": "Represent Smoke Cartel with everyone's favorite color, red.
+
+ 
+ 
+
+ 
+Nothing says \\"I'm a chill smoker who buys badass glass\\" better than the color red.  Combine that with the Smoke Cartel logo, and you've got yourself a recipe for some sweet threads.  These Canvas-brand t-shirts are made with 52% cotton and 48% polyester for a soft and comfy fit.  And, you'll look like the coolest smoker on the block.",
+      "discount": Array [],
+      "hash": "AV11VmrDCQkVMwqrFH7C",
+      "id": "4203329860",
+      "image_2_url": "",
+      "material": Array [],
+      "price": Array [
+        29,
+        29,
+        29,
+        29,
+        29,
+      ],
+      "quantity": 6,
+      "reviews": Object {
+        "average_score": 5,
+        "total_reviews": 1,
+      },
+      "seller": "",
+      "size": Array [
+        "X-Small",
+        "Small",
+        "Medium",
+        "Large",
+        "X-Large",
+      ],
+      "sku": Array [
+        "RED-UNISEX-TSHIRT-1",
+        "RED-UNISEX-TSHIRT-2",
+        "RED-UNISEX-TSHIRT-3",
+        "RED-UNISEX-TSHIRT-4",
+        "RED-UNISEX-TSHIRT-5",
+      ],
+      "stickers": Object {
+        "availability": true,
+        "discount": false,
+        "free-shipping": false,
+        "in-stock": true,
+        "out-of-stock": false,
+      },
+      "title": "Smoke Cartel Red Unisex T-Shirt",
+    },
+    Object {
+      "availability": true,
+      "brand": "Smoke Cartel",
+      "category": Array [
+        Object {
+          "category1": "Apparel",
+          "category2": "",
+          "category3": "",
+          "category4": "",
+        },
+      ],
+      "color": Array [],
+      "color_variants": 1,
+      "compare_at": -1,
+      "custom_fields": Object {
+        "barcode": Array [
+          "",
+        ],
+      },
+      "description": "Wear your pride for the Girl Scouts of America.
+
+ 
+We all love Girl Scout Cookies, from Thin Mints to Premium Cookies.  Why not show off your pride with this Tultex-brand mustard yellow t-shirt!  You'll be sporting the tastiest threads on the block, and with 100% cotton you'll be sure to get a soft and comfy fit.  Wear your pride, young smoker, and eat some Cookies!",
+      "discount": Array [],
+      "hash": "AV11VmrDCQkVMwqrFH7E",
+      "id": "4203428932",
+      "image_2_url": "",
+      "material": Array [],
+      "price": Array [
+        29,
+        29,
+        29,
+        29,
+      ],
+      "quantity": 3,
+      "reviews": Object {
+        "average_score": 5,
+        "total_reviews": 4,
+      },
+      "seller": "",
+      "size": Array [
+        "Small",
+        "Medium",
+        "Large",
+        "X-Large",
+      ],
+      "sku": Array [
+        "GIRL-SCOUT-COOKIES-TSHIRT-SM",
+        "GIRL-SCOUT-COOKIES-TSHIRT-MD",
+        "GIRL-SCOUT-COOKIES-TSHIRT-LG",
+        "GIRL-SCOUT-COOKIES-TSHIRT-XL",
+      ],
+      "stickers": Object {
+        "availability": true,
+        "discount": false,
+        "free-shipping": false,
+        "in-stock": true,
+        "out-of-stock": false,
+      },
+      "title": "'Girl Scout Cookies' Limited Run Strain T-Shirt",
+    },
+  ],
+  "meta": Object {
+    "limit": 5,
+    "offset": 0,
+    "rid": "<stripped>",
+    "total": 1395,
+    "user_id": "test1",
+  },
+}
+`;
+
+exports[`Client recommendations trending respects request parameters 2`] = `
+Object {
+  "items": Array [
+    Object {
+      "availability": true,
+      "brand": "Sesh Supply",
+      "category": Array [
+        Object {
+          "category1": "Water Pipe",
+          "category2": "",
+          "category3": "",
+          "category4": "",
+        },
+      ],
+      "color": Array [],
+      "color_variants": 1,
+      "compare_at": 199,
+      "custom_fields": Object {
+        "barcode": Array [
+          "",
+        ],
+        "height": Array [
+          "9.5 Inches",
+        ],
+        "joint_gender": Array [
+          "Female Joint",
+        ],
+        "joint_size": Array [
+          "14.5mm",
+        ],
+      },
+      "description": "A small and smooth rig with a geometric flare.
+
+ 
+In Greek mythology, Pandora is the first woman created by the gods, who accidentally opened a box or jar that contained all of the evil in the world.  This mini beaker from Sesh Supply contains within it a similar box: a cube perc, perfect for allowing your smoke and water to curdle against the four walls, creating a massively smooth hit.  
+
+ 
+With a 14.5mm female flower bowl, your dry herbs will be taken on the ride of their life - down through the fused downstem, where they will filter through the central cube perc before traveling up through the mind-warping 'inception style' swiss cube body.  
+
+ 
+They may even get a chance to see all of the evils in the world before rising up to meet you and your lungs...  
+
+ 
+Or something like that.",
+      "discount": Array [
+        35,
+      ],
+      "hash": "AV11VmrDCQkVMwqrFH7B",
+      "id": "4203259012",
+      "image_2_url": "https://cdn.shopify.com/s/files/1/0350/8253/products/pandora-1_medium.jpg?v=1453146858",
+      "material": Array [],
+      "price": Array [
+        129,
+      ],
+      "quantity": 3,
+      "reviews": Object {
+        "average_score": 5,
+        "total_reviews": 13,
+      },
+      "seller": "",
+      "size": Array [],
+      "sku": Array [
+        "SS-PANDORA",
+      ],
+      "stickers": Object {
+        "availability": true,
+        "discount": Array [
+          35,
+        ],
+        "free-shipping": false,
+        "in-stock": true,
+        "out-of-stock": false,
+      },
+      "title": "Sesh Supply \\"Pandora\\" Cube Perc Mini Beaker with Inception-Style Swiss Cube Body",
+    },
+    Object {
+      "availability": true,
+      "brand": "Smoke Cartel",
+      "category": Array [
+        Object {
+          "category1": "Apparel",
+          "category2": "",
+          "category3": "",
+          "category4": "",
+        },
+      ],
+      "color": Array [],
+      "color_variants": 1,
+      "compare_at": -1,
+      "custom_fields": Object {
+        "barcode": Array [
+          "",
+        ],
+      },
+      "description": "Represent Smoke Cartel with everyone's favorite color, red.
+
+ 
+ 
+
+ 
+Nothing says \\"I'm a chill smoker who buys badass glass\\" better than the color red.  Combine that with the Smoke Cartel logo, and you've got yourself a recipe for some sweet threads.  These Canvas-brand t-shirts are made with 52% cotton and 48% polyester for a soft and comfy fit.  And, you'll look like the coolest smoker on the block.",
+      "discount": Array [],
+      "hash": "AV11VmrDCQkVMwqrFH7C",
+      "id": "4203329860",
+      "image_2_url": "",
+      "material": Array [],
+      "price": Array [
+        29,
+        29,
+        29,
+        29,
+        29,
+      ],
+      "quantity": 6,
+      "reviews": Object {
+        "average_score": 5,
+        "total_reviews": 1,
+      },
+      "seller": "",
+      "size": Array [
+        "X-Small",
+        "Small",
+        "Medium",
+        "Large",
+        "X-Large",
+      ],
+      "sku": Array [
+        "RED-UNISEX-TSHIRT-1",
+        "RED-UNISEX-TSHIRT-2",
+        "RED-UNISEX-TSHIRT-3",
+        "RED-UNISEX-TSHIRT-4",
+        "RED-UNISEX-TSHIRT-5",
+      ],
+      "stickers": Object {
+        "availability": true,
+        "discount": false,
+        "free-shipping": false,
+        "in-stock": true,
+        "out-of-stock": false,
+      },
+      "title": "Smoke Cartel Red Unisex T-Shirt",
+    },
+  ],
+  "meta": Object {
+    "limit": 2,
+    "offset": 2,
+    "rid": "<stripped>",
+    "total": 1395,
+    "user_id": "test1",
+  },
+}
+`;
+
+exports[`Client recommendations trending respects request parameters 3`] = `
+Object {
+  "items": Array [
+    Object {
+      "availability": true,
+      "brand": "Smoke Cartel",
+      "category": Array [
+        Object {
+          "category1": "Apparel",
+          "category2": "",
+          "category3": "",
+          "category4": "",
+        },
+      ],
+      "color": Array [],
+      "color_variants": 1,
+      "compare_at": -1,
+      "custom_fields": Object {
+        "barcode": Array [
+          "",
+        ],
+      },
+      "description": "Represent Smoke Cartel with everyone's favorite color, red.
+
+ 
+ 
+
+ 
+Nothing says \\"I'm a chill smoker who buys badass glass\\" better than the color red.  Combine that with the Smoke Cartel logo, and you've got yourself a recipe for some sweet threads.  These Canvas-brand t-shirts are made with 52% cotton and 48% polyester for a soft and comfy fit.  And, you'll look like the coolest smoker on the block.",
+      "discount": Array [],
+      "hash": "AV11VmrDCQkVMwqrFH7C",
+      "id": "4203329860",
+      "image_2_url": "",
+      "material": Array [],
+      "price": Array [
+        29,
+        29,
+        29,
+        29,
+        29,
+      ],
+      "quantity": 6,
+      "reviews": Object {
+        "average_score": 5,
+        "total_reviews": 1,
+      },
+      "seller": "",
+      "size": Array [
+        "X-Small",
+        "Small",
+        "Medium",
+        "Large",
+        "X-Large",
+      ],
+      "sku": Array [
+        "RED-UNISEX-TSHIRT-1",
+        "RED-UNISEX-TSHIRT-2",
+        "RED-UNISEX-TSHIRT-3",
+        "RED-UNISEX-TSHIRT-4",
+        "RED-UNISEX-TSHIRT-5",
+      ],
+      "stickers": Object {
+        "availability": true,
+        "discount": false,
+        "free-shipping": false,
+        "in-stock": true,
+        "out-of-stock": false,
+      },
+      "title": "Smoke Cartel Red Unisex T-Shirt",
+    },
+    Object {
+      "availability": true,
+      "brand": "Smoke Cartel",
+      "category": Array [
+        Object {
+          "category1": "Apparel",
+          "category2": "",
+          "category3": "",
+          "category4": "",
+        },
+      ],
+      "color": Array [],
+      "color_variants": 1,
+      "compare_at": -1,
+      "custom_fields": Object {
+        "barcode": Array [
+          "",
+        ],
+      },
+      "description": "Wear your pride for the Girl Scouts of America.
+
+ 
+We all love Girl Scout Cookies, from Thin Mints to Premium Cookies.  Why not show off your pride with this Tultex-brand mustard yellow t-shirt!  You'll be sporting the tastiest threads on the block, and with 100% cotton you'll be sure to get a soft and comfy fit.  Wear your pride, young smoker, and eat some Cookies!",
+      "discount": Array [],
+      "hash": "AV11VmrDCQkVMwqrFH7E",
+      "id": "4203428932",
+      "image_2_url": "",
+      "material": Array [],
+      "price": Array [
+        29,
+        29,
+        29,
+        29,
+      ],
+      "quantity": 3,
+      "reviews": Object {
+        "average_score": 5,
+        "total_reviews": 4,
+      },
+      "seller": "",
+      "size": Array [
+        "Small",
+        "Medium",
+        "Large",
+        "X-Large",
+      ],
+      "sku": Array [
+        "GIRL-SCOUT-COOKIES-TSHIRT-SM",
+        "GIRL-SCOUT-COOKIES-TSHIRT-MD",
+        "GIRL-SCOUT-COOKIES-TSHIRT-LG",
+        "GIRL-SCOUT-COOKIES-TSHIRT-XL",
+      ],
+      "stickers": Object {
+        "availability": true,
+        "discount": false,
+        "free-shipping": false,
+        "in-stock": true,
+        "out-of-stock": false,
+      },
+      "title": "'Girl Scout Cookies' Limited Run Strain T-Shirt",
+    },
+  ],
+  "meta": Object {
+    "limit": 2,
+    "offset": 3,
+    "rid": "<stripped>",
+    "total": 1395,
+    "user_id": "test1",
+  },
+}
+`;
+
 exports[`Client search respects request parameters 1`] = `
 Object {
   "banner": Object {},
@@ -6490,6 +7929,1678 @@ Object {
       },
     ],
     "total": 0,
+  },
+}
+`;
+
+exports[`Client smart collection respects request parameters 1`] = `
+Object {
+  "banner": Object {},
+  "facets": Array [
+    Object {
+      "name": "brand",
+      "sort_type": "count",
+      "type": "text",
+      "values": Array [
+        Object {
+          "count": 2,
+          "has_children": false,
+          "name": "brand",
+          "selected": false,
+          "value": "Empire Glassworks",
+        },
+        Object {
+          "count": 1,
+          "has_children": false,
+          "name": "brand",
+          "selected": false,
+          "value": "Mia Shea Glass",
+        },
+        Object {
+          "count": 1,
+          "has_children": false,
+          "name": "brand",
+          "selected": false,
+          "value": "UPC",
+        },
+      ],
+    },
+    Object {
+      "name": "color",
+      "sort_type": "count",
+      "type": "text",
+      "values": Array [
+        Object {
+          "count": 1,
+          "has_children": false,
+          "name": "color",
+          "selected": false,
+          "value": "Earth",
+        },
+        Object {
+          "count": 1,
+          "has_children": false,
+          "name": "color",
+          "selected": false,
+          "value": "Fire",
+        },
+      ],
+    },
+    Object {
+      "max": 1400,
+      "min": 12,
+      "name": "price",
+      "sort_type": "value",
+      "type": "range",
+      "values": Array [
+        Object {
+          "count": 1,
+          "from": 100,
+          "has_children": false,
+          "name": "price",
+          "selected": false,
+          "to": 200,
+          "value": "100_200",
+        },
+        Object {
+          "count": 3,
+          "from": 200,
+          "has_children": false,
+          "name": "price",
+          "selected": false,
+          "value": "200_",
+        },
+      ],
+    },
+    Object {
+      "name": "custom_fields.height",
+      "sort_type": "count",
+      "type": "text",
+      "values": Array [
+        Object {
+          "count": 1,
+          "has_children": false,
+          "name": "custom_fields.height",
+          "selected": false,
+          "value": "10 Inches",
+        },
+        Object {
+          "count": 1,
+          "has_children": false,
+          "name": "custom_fields.height",
+          "selected": false,
+          "value": "18 Inches",
+        },
+        Object {
+          "count": 1,
+          "has_children": false,
+          "name": "custom_fields.height",
+          "selected": false,
+          "value": "5.5 Inches",
+        },
+        Object {
+          "count": 1,
+          "has_children": false,
+          "name": "custom_fields.height",
+          "selected": false,
+          "value": "6 Inches",
+        },
+      ],
+    },
+    Object {
+      "name": "custom_fields.joint_gender",
+      "sort_type": "count",
+      "type": "text",
+      "values": Array [
+        Object {
+          "count": 3,
+          "has_children": false,
+          "name": "custom_fields.joint_gender",
+          "selected": false,
+          "value": "Female Joint",
+        },
+        Object {
+          "count": 1,
+          "has_children": false,
+          "name": "custom_fields.joint_gender",
+          "selected": false,
+          "value": "Male Joint",
+        },
+      ],
+    },
+    Object {
+      "name": "custom_fields.use_case",
+      "sort_type": "count",
+      "type": "text",
+      "values": Array [
+        Object {
+          "count": 2,
+          "has_children": false,
+          "name": "custom_fields.use_case",
+          "selected": false,
+          "value": "Made For Dry Herbs",
+        },
+        Object {
+          "count": 1,
+          "has_children": false,
+          "name": "custom_fields.use_case",
+          "selected": false,
+          "value": "Made For Concentrates",
+        },
+        Object {
+          "count": 1,
+          "has_children": false,
+          "name": "custom_fields.use_case",
+          "selected": false,
+          "value": "Made For Thin Oils",
+        },
+        Object {
+          "count": 1,
+          "has_children": false,
+          "name": "custom_fields.use_case",
+          "selected": false,
+          "value": "Made For Waxy Oils",
+        },
+      ],
+    },
+    Object {
+      "name": "custom_fields.joint_size",
+      "sort_type": "count",
+      "type": "text",
+      "values": Array [
+        Object {
+          "count": 3,
+          "has_children": false,
+          "name": "custom_fields.joint_size",
+          "selected": false,
+          "value": "14.5mm",
+        },
+        Object {
+          "count": 1,
+          "has_children": false,
+          "name": "custom_fields.joint_size",
+          "selected": false,
+          "value": "10mm",
+        },
+      ],
+    },
+    Object {
+      "max": 34,
+      "min": 11,
+      "name": "discount",
+      "sort_type": "value",
+      "type": "range",
+      "values": Array [
+        Object {
+          "count": 1,
+          "from": 10,
+          "has_children": false,
+          "name": "discount",
+          "selected": false,
+          "to": 30,
+          "value": "10_30",
+        },
+      ],
+    },
+  ],
+  "items": Array [
+    Object {
+      "availability": true,
+      "brand": "Empire Glassworks",
+      "category": Array [
+        Object {
+          "category1": "Water Pipe",
+          "category2": "",
+          "category3": "",
+          "category4": "",
+        },
+      ],
+      "color": Array [
+        "Fire",
+        "Earth",
+      ],
+      "color_variants": 2,
+      "compare_at": -1,
+      "custom_fields": Object {
+        "barcode": Array [
+          "",
+        ],
+        "height": Array [
+          "5.5 Inches",
+        ],
+        "joint_gender": Array [
+          "Female Joint",
+        ],
+        "joint_size": Array [
+          "14.5mm",
+        ],
+        "variant_image_url": Array [
+          "https://cdn.shopify.com/s/files/1/0350/8253/products/EMPIRE-GLASSWORKS-QUOT-GREAT-GOURD-QUOT-FUMED-MINI-RIG_EMPIRE-1710-1.jpg?v=1493847484",
+          "https://cdn.shopify.com/s/files/1/0350/8253/products/EMPIRE-GLASSWORKS-QUOT-GREAT-GOURD-QUOT-FUMED-MINI-RIG_EMPIRE-1710-8.jpg?v=1493846472",
+        ],
+      },
+      "description": "Banger Hanger with Easter Flair
+
+ 
+These delightful rigs feature a worked round body, three hole diffuser, and 90°banger hanger. The top chamber is smaller than the bottom, reducing splash back for a better cleaner smoking experience. Finished off with a worked ribbon and Yin&Yang symbol. This piece adds style and beauty to any collection!",
+      "discount": Array [],
+      "hash": "AV11VniCCQkVMwqrFIIQ",
+      "id": "9521700680",
+      "image_2_url": "https://cdn.shopify.com/s/files/1/0350/8253/products/EMPIRE-GLASSWORKS-QUOT-GREAT-GOURD-QUOT-FUMED-MINI-RIG_EMPIRE-1710-2_medium.jpg?v=1493846442",
+      "material": Array [],
+      "price": Array [
+        220,
+        220,
+      ],
+      "quantity": 11,
+      "reviews": Object {
+        "average_score": 0,
+        "total_reviews": 0,
+      },
+      "seller": "",
+      "size": Array [],
+      "sku": Array [
+        "EMPIRE-1710",
+        "EMPIRE-1711",
+      ],
+      "stickers": Object {
+        "availability": true,
+        "discount": false,
+        "free-shipping": false,
+        "in-stock": true,
+        "out-of-stock": false,
+      },
+      "title": "Empire Glassworks \\"Great Gourd\\" Fumed Mini Rig",
+    },
+    Object {
+      "availability": true,
+      "brand": "UPC",
+      "category": Array [
+        Object {
+          "category1": "Water Pipe",
+          "category2": "",
+          "category3": "",
+          "category4": "",
+        },
+      ],
+      "color": Array [],
+      "color_variants": 1,
+      "compare_at": -1,
+      "custom_fields": Object {
+        "barcode": Array [
+          "",
+        ],
+        "height": Array [
+          "18 Inches",
+        ],
+        "joint_gender": Array [
+          "Female Joint",
+        ],
+        "joint_size": Array [
+          "14.5mm",
+        ],
+        "use_case": Array [
+          "Made For Dry Herbs",
+        ],
+        "variant_image_url": Array [
+          "https://cdn.shopify.com/s/files/1/0350/8253/products/GT16-5.jpg?v=1461601485",
+          "https://cdn.shopify.com/s/files/1/0350/8253/products/GT16-0.jpg?v=1461601473",
+          "https://cdn.shopify.com/s/files/1/0350/8253/products/GT16-4.jpg?v=1461601482",
+        ],
+      },
+      "description": "A tall beaker with the works. 
+ 
+Take a above average sized beaker.  Add in a tree perc.  Add in a fire-cut diffused downstem.  Throw in a splash guard.  Now we're talking.  It's not wonder why this beaker bong from UPC is a crowd favorite; it's got everything you need. 
+ 
+Smoke in style with this crowd-pleasure.",
+      "discount": Array [],
+      "hash": "AV11VmrECQkVMwqrFH8a",
+      "id": "4501187588",
+      "image_2_url": "https://cdn.shopify.com/s/files/1/0350/8253/products/GT16-1_medium.jpg?v=1461601475",
+      "material": Array [],
+      "price": Array [
+        152,
+        152,
+        152,
+      ],
+      "quantity": 14,
+      "reviews": Object {
+        "average_score": 4.44,
+        "total_reviews": 9,
+      },
+      "seller": "",
+      "size": Array [],
+      "sku": Array [
+        "GT16-GR",
+        "GT16-CL",
+        "GT16-BL",
+      ],
+      "stickers": Object {
+        "availability": true,
+        "discount": false,
+        "free-shipping": false,
+        "in-stock": true,
+        "out-of-stock": false,
+      },
+      "title": "UPC 18\\" Tall Beaker with Tree Arm Perc and Splash Guard",
+    },
+  ],
+  "meta": Object {
+    "filters": Array [],
+    "limit": 2,
+    "offset": 0,
+    "q": "fire",
+    "query_type": "and",
+    "rid": "<stripped>",
+    "sort": Array [],
+    "total": 4,
+  },
+}
+`;
+
+exports[`Client smart collection respects request parameters 2`] = `
+Object {
+  "banner": Object {},
+  "facets": Array [
+    Object {
+      "name": "brand",
+      "sort_type": "count",
+      "type": "text",
+      "values": Array [
+        Object {
+          "count": 2,
+          "has_children": false,
+          "name": "brand",
+          "selected": false,
+          "value": "Empire Glassworks",
+        },
+        Object {
+          "count": 1,
+          "has_children": false,
+          "name": "brand",
+          "selected": false,
+          "value": "Mia Shea Glass",
+        },
+        Object {
+          "count": 1,
+          "has_children": false,
+          "name": "brand",
+          "selected": false,
+          "value": "UPC",
+        },
+      ],
+    },
+    Object {
+      "name": "color",
+      "sort_type": "count",
+      "type": "text",
+      "values": Array [
+        Object {
+          "count": 1,
+          "has_children": false,
+          "name": "color",
+          "selected": false,
+          "value": "Earth",
+        },
+        Object {
+          "count": 1,
+          "has_children": false,
+          "name": "color",
+          "selected": false,
+          "value": "Fire",
+        },
+      ],
+    },
+    Object {
+      "max": 1400,
+      "min": 12,
+      "name": "price",
+      "sort_type": "value",
+      "type": "range",
+      "values": Array [
+        Object {
+          "count": 1,
+          "from": 100,
+          "has_children": false,
+          "name": "price",
+          "selected": false,
+          "to": 200,
+          "value": "100_200",
+        },
+        Object {
+          "count": 3,
+          "from": 200,
+          "has_children": false,
+          "name": "price",
+          "selected": false,
+          "value": "200_",
+        },
+      ],
+    },
+    Object {
+      "name": "custom_fields.height",
+      "sort_type": "count",
+      "type": "text",
+      "values": Array [
+        Object {
+          "count": 1,
+          "has_children": false,
+          "name": "custom_fields.height",
+          "selected": false,
+          "value": "10 Inches",
+        },
+        Object {
+          "count": 1,
+          "has_children": false,
+          "name": "custom_fields.height",
+          "selected": false,
+          "value": "18 Inches",
+        },
+        Object {
+          "count": 1,
+          "has_children": false,
+          "name": "custom_fields.height",
+          "selected": false,
+          "value": "5.5 Inches",
+        },
+        Object {
+          "count": 1,
+          "has_children": false,
+          "name": "custom_fields.height",
+          "selected": false,
+          "value": "6 Inches",
+        },
+      ],
+    },
+    Object {
+      "name": "custom_fields.joint_gender",
+      "sort_type": "count",
+      "type": "text",
+      "values": Array [
+        Object {
+          "count": 3,
+          "has_children": false,
+          "name": "custom_fields.joint_gender",
+          "selected": false,
+          "value": "Female Joint",
+        },
+        Object {
+          "count": 1,
+          "has_children": false,
+          "name": "custom_fields.joint_gender",
+          "selected": false,
+          "value": "Male Joint",
+        },
+      ],
+    },
+    Object {
+      "name": "custom_fields.use_case",
+      "sort_type": "count",
+      "type": "text",
+      "values": Array [
+        Object {
+          "count": 2,
+          "has_children": false,
+          "name": "custom_fields.use_case",
+          "selected": false,
+          "value": "Made For Dry Herbs",
+        },
+        Object {
+          "count": 1,
+          "has_children": false,
+          "name": "custom_fields.use_case",
+          "selected": false,
+          "value": "Made For Concentrates",
+        },
+        Object {
+          "count": 1,
+          "has_children": false,
+          "name": "custom_fields.use_case",
+          "selected": false,
+          "value": "Made For Thin Oils",
+        },
+        Object {
+          "count": 1,
+          "has_children": false,
+          "name": "custom_fields.use_case",
+          "selected": false,
+          "value": "Made For Waxy Oils",
+        },
+      ],
+    },
+    Object {
+      "name": "custom_fields.joint_size",
+      "sort_type": "count",
+      "type": "text",
+      "values": Array [
+        Object {
+          "count": 3,
+          "has_children": false,
+          "name": "custom_fields.joint_size",
+          "selected": false,
+          "value": "14.5mm",
+        },
+        Object {
+          "count": 1,
+          "has_children": false,
+          "name": "custom_fields.joint_size",
+          "selected": false,
+          "value": "10mm",
+        },
+      ],
+    },
+    Object {
+      "max": 34,
+      "min": 11,
+      "name": "discount",
+      "sort_type": "value",
+      "type": "range",
+      "values": Array [
+        Object {
+          "count": 1,
+          "from": 10,
+          "has_children": false,
+          "name": "discount",
+          "selected": false,
+          "to": 30,
+          "value": "10_30",
+        },
+      ],
+    },
+  ],
+  "items": Array [
+    Object {
+      "availability": true,
+      "brand": "Empire Glassworks",
+      "category": Array [
+        Object {
+          "category1": "Water Pipe",
+          "category2": "",
+          "category3": "",
+          "category4": "",
+        },
+      ],
+      "color": Array [],
+      "color_variants": 1,
+      "compare_at": -1,
+      "custom_fields": Object {
+        "barcode": Array [
+          "",
+        ],
+        "height": Array [
+          "6 Inches",
+        ],
+        "joint_gender": Array [
+          "Male Joint",
+        ],
+        "joint_size": Array [
+          "14.5mm",
+        ],
+        "use_case": Array [
+          "Made For Thin Oils",
+          "Made For Waxy Oils",
+          "Made For Concentrates",
+        ],
+      },
+      "description": "Fire Away!
+
+ 
+This rig is bad ass! This is a tiered piece so the mouthpiece, which is made of a beautifully worked glass gun ship, separates from the main body. This allows for an easy clean for such a complex piece. This rig also comes with a quartz banger and carb cap. If you're looking for a truly unique piece to add to your collection, this is the rig for you!",
+      "discount": Array [],
+      "hash": "AV11VmrHCQkVMwqrFIAA",
+      "id": "4953344260",
+      "image_2_url": "https://cdn.shopify.com/s/files/1/0350/8253/products/EMPIRE-1838-QM-4_medium.jpg?v=1493060648",
+      "material": Array [],
+      "price": Array [
+        400,
+      ],
+      "quantity": 4,
+      "reviews": Object {
+        "average_score": 0,
+        "total_reviews": 0,
+      },
+      "seller": "",
+      "size": Array [],
+      "sku": Array [
+        "EMPIRE-1838-QM",
+      ],
+      "stickers": Object {
+        "availability": true,
+        "discount": false,
+        "free-shipping": false,
+        "in-stock": true,
+        "out-of-stock": false,
+      },
+      "title": "Empire Glassworks \\"Gun Ship\\" Tiered Rig",
+    },
+    Object {
+      "availability": true,
+      "brand": "Mia Shea Glass",
+      "category": Array [
+        Object {
+          "category1": "Water Pipe",
+          "category2": "",
+          "category3": "",
+          "category4": "",
+        },
+      ],
+      "color": Array [],
+      "color_variants": 1,
+      "compare_at": 1000,
+      "custom_fields": Object {
+        "barcode": Array [
+          "",
+        ],
+        "height": Array [
+          "10 Inches",
+        ],
+        "joint_gender": Array [
+          "Female Joint",
+        ],
+        "joint_size": Array [
+          "10mm",
+        ],
+        "use_case": Array [
+          "Made For Dry Herbs",
+        ],
+      },
+      "description": "A gorgeous heady piece that captures an entire lifestyle.
+
+ 
+Mia Shea is a glassblower originally from Asheville, NC known for her masterful use of the female form in all of her glass products.  In this \\"Be Here Now\\" heady rig, a woman strikes a Warrior Pose on a surfboard beneath a palm tree.  For all meditative and yogi smokers alike, this piece is great for getting you in the right headspace for your next sesh.  Known by a few as a \\"Fire Fairy,\\" Shea really shows off her powers with the flame on the texture of the palm tree, which bends and curves in just the right way to catch the light against its amber hues.  The piece's 10mm female joint comes with a matching flower bowl that uses the same earthy tones as the rest of the rig.  Pick up this piece if you're a fan of Mia Shea, or if you're a fan of island living in general.",
+      "discount": Array [
+        11,
+      ],
+      "hash": "AV11VmrDCQkVMwqrFH7P",
+      "id": "4256833860",
+      "image_2_url": "https://cdn.shopify.com/s/files/1/0350/8253/products/MIA-YOGI-1_medium.jpeg?v=1453759561",
+      "material": Array [],
+      "price": Array [
+        890,
+      ],
+      "quantity": 1,
+      "reviews": Object {
+        "average_score": 0,
+        "total_reviews": 0,
+      },
+      "seller": "",
+      "size": Array [],
+      "sku": Array [
+        "MIASHEA-BE-HERE-NOW",
+      ],
+      "stickers": Object {
+        "availability": true,
+        "discount": Array [
+          11,
+        ],
+        "free-shipping": true,
+        "in-stock": true,
+        "out-of-stock": false,
+      },
+      "title": "Mia Shea Glass \\"Be Here Now\\" Heady Rig",
+    },
+  ],
+  "meta": Object {
+    "filters": Array [],
+    "limit": 2,
+    "offset": 2,
+    "q": "fire",
+    "query_type": "and",
+    "rid": "<stripped>",
+    "sort": Array [],
+    "total": 4,
+  },
+}
+`;
+
+exports[`Client smart collection respects request parameters 3`] = `
+Object {
+  "banner": Object {},
+  "facets": Array [
+    Object {
+      "name": "brand",
+      "sort_type": "count",
+      "type": "text",
+      "values": Array [
+        Object {
+          "count": 2,
+          "has_children": false,
+          "name": "brand",
+          "selected": false,
+          "value": "Empire Glassworks",
+        },
+        Object {
+          "count": 1,
+          "has_children": false,
+          "name": "brand",
+          "selected": false,
+          "value": "Mia Shea Glass",
+        },
+        Object {
+          "count": 1,
+          "has_children": false,
+          "name": "brand",
+          "selected": false,
+          "value": "UPC",
+        },
+      ],
+    },
+    Object {
+      "name": "color",
+      "sort_type": "count",
+      "type": "text",
+      "values": Array [
+        Object {
+          "count": 1,
+          "has_children": false,
+          "name": "color",
+          "selected": false,
+          "value": "Earth",
+        },
+        Object {
+          "count": 1,
+          "has_children": false,
+          "name": "color",
+          "selected": false,
+          "value": "Fire",
+        },
+      ],
+    },
+    Object {
+      "max": 1400,
+      "min": 12,
+      "name": "price",
+      "sort_type": "value",
+      "type": "range",
+      "values": Array [
+        Object {
+          "count": 1,
+          "from": 100,
+          "has_children": false,
+          "name": "price",
+          "selected": false,
+          "to": 200,
+          "value": "100_200",
+        },
+        Object {
+          "count": 3,
+          "from": 200,
+          "has_children": false,
+          "name": "price",
+          "selected": false,
+          "value": "200_",
+        },
+      ],
+    },
+    Object {
+      "name": "custom_fields.height",
+      "sort_type": "count",
+      "type": "text",
+      "values": Array [
+        Object {
+          "count": 1,
+          "has_children": false,
+          "name": "custom_fields.height",
+          "selected": false,
+          "value": "10 Inches",
+        },
+        Object {
+          "count": 1,
+          "has_children": false,
+          "name": "custom_fields.height",
+          "selected": false,
+          "value": "18 Inches",
+        },
+        Object {
+          "count": 1,
+          "has_children": false,
+          "name": "custom_fields.height",
+          "selected": false,
+          "value": "5.5 Inches",
+        },
+        Object {
+          "count": 1,
+          "has_children": false,
+          "name": "custom_fields.height",
+          "selected": false,
+          "value": "6 Inches",
+        },
+      ],
+    },
+    Object {
+      "name": "custom_fields.joint_gender",
+      "sort_type": "count",
+      "type": "text",
+      "values": Array [
+        Object {
+          "count": 3,
+          "has_children": false,
+          "name": "custom_fields.joint_gender",
+          "selected": false,
+          "value": "Female Joint",
+        },
+        Object {
+          "count": 1,
+          "has_children": false,
+          "name": "custom_fields.joint_gender",
+          "selected": false,
+          "value": "Male Joint",
+        },
+      ],
+    },
+    Object {
+      "name": "custom_fields.use_case",
+      "sort_type": "count",
+      "type": "text",
+      "values": Array [
+        Object {
+          "count": 2,
+          "has_children": false,
+          "name": "custom_fields.use_case",
+          "selected": false,
+          "value": "Made For Dry Herbs",
+        },
+        Object {
+          "count": 1,
+          "has_children": false,
+          "name": "custom_fields.use_case",
+          "selected": false,
+          "value": "Made For Concentrates",
+        },
+        Object {
+          "count": 1,
+          "has_children": false,
+          "name": "custom_fields.use_case",
+          "selected": false,
+          "value": "Made For Thin Oils",
+        },
+        Object {
+          "count": 1,
+          "has_children": false,
+          "name": "custom_fields.use_case",
+          "selected": false,
+          "value": "Made For Waxy Oils",
+        },
+      ],
+    },
+    Object {
+      "name": "custom_fields.joint_size",
+      "sort_type": "count",
+      "type": "text",
+      "values": Array [
+        Object {
+          "count": 3,
+          "has_children": false,
+          "name": "custom_fields.joint_size",
+          "selected": false,
+          "value": "14.5mm",
+        },
+        Object {
+          "count": 1,
+          "has_children": false,
+          "name": "custom_fields.joint_size",
+          "selected": false,
+          "value": "10mm",
+        },
+      ],
+    },
+    Object {
+      "max": 34,
+      "min": 11,
+      "name": "discount",
+      "sort_type": "value",
+      "type": "range",
+      "values": Array [
+        Object {
+          "count": 1,
+          "from": 10,
+          "has_children": false,
+          "name": "discount",
+          "selected": false,
+          "to": 30,
+          "value": "10_30",
+        },
+      ],
+    },
+  ],
+  "items": Array [
+    Object {
+      "availability": true,
+      "brand": "UPC",
+      "category": Array [
+        Object {
+          "category1": "Water Pipe",
+          "category2": "",
+          "category3": "",
+          "category4": "",
+        },
+      ],
+      "color": Array [],
+      "color_variants": 1,
+      "compare_at": -1,
+      "custom_fields": Object {
+        "barcode": Array [
+          "",
+        ],
+        "height": Array [
+          "18 Inches",
+        ],
+        "joint_gender": Array [
+          "Female Joint",
+        ],
+        "joint_size": Array [
+          "14.5mm",
+        ],
+        "use_case": Array [
+          "Made For Dry Herbs",
+        ],
+        "variant_image_url": Array [
+          "https://cdn.shopify.com/s/files/1/0350/8253/products/GT16-5.jpg?v=1461601485",
+          "https://cdn.shopify.com/s/files/1/0350/8253/products/GT16-0.jpg?v=1461601473",
+          "https://cdn.shopify.com/s/files/1/0350/8253/products/GT16-4.jpg?v=1461601482",
+        ],
+      },
+      "description": "A tall beaker with the works. 
+ 
+Take a above average sized beaker.  Add in a tree perc.  Add in a fire-cut diffused downstem.  Throw in a splash guard.  Now we're talking.  It's not wonder why this beaker bong from UPC is a crowd favorite; it's got everything you need. 
+ 
+Smoke in style with this crowd-pleasure.",
+      "discount": Array [],
+      "hash": "AV11VmrECQkVMwqrFH8a",
+      "id": "4501187588",
+      "image_2_url": "https://cdn.shopify.com/s/files/1/0350/8253/products/GT16-1_medium.jpg?v=1461601475",
+      "material": Array [],
+      "price": Array [
+        152,
+        152,
+        152,
+      ],
+      "quantity": 14,
+      "reviews": Object {
+        "average_score": 4.44,
+        "total_reviews": 9,
+      },
+      "seller": "",
+      "size": Array [],
+      "sku": Array [
+        "GT16-GR",
+        "GT16-CL",
+        "GT16-BL",
+      ],
+      "stickers": Object {
+        "availability": true,
+        "discount": false,
+        "free-shipping": false,
+        "in-stock": true,
+        "out-of-stock": false,
+      },
+      "title": "UPC 18\\" Tall Beaker with Tree Arm Perc and Splash Guard",
+    },
+    Object {
+      "availability": true,
+      "brand": "Empire Glassworks",
+      "category": Array [
+        Object {
+          "category1": "Water Pipe",
+          "category2": "",
+          "category3": "",
+          "category4": "",
+        },
+      ],
+      "color": Array [
+        "Fire",
+        "Earth",
+      ],
+      "color_variants": 2,
+      "compare_at": -1,
+      "custom_fields": Object {
+        "barcode": Array [
+          "",
+        ],
+        "height": Array [
+          "5.5 Inches",
+        ],
+        "joint_gender": Array [
+          "Female Joint",
+        ],
+        "joint_size": Array [
+          "14.5mm",
+        ],
+        "variant_image_url": Array [
+          "https://cdn.shopify.com/s/files/1/0350/8253/products/EMPIRE-GLASSWORKS-QUOT-GREAT-GOURD-QUOT-FUMED-MINI-RIG_EMPIRE-1710-1.jpg?v=1493847484",
+          "https://cdn.shopify.com/s/files/1/0350/8253/products/EMPIRE-GLASSWORKS-QUOT-GREAT-GOURD-QUOT-FUMED-MINI-RIG_EMPIRE-1710-8.jpg?v=1493846472",
+        ],
+      },
+      "description": "Banger Hanger with Easter Flair
+
+ 
+These delightful rigs feature a worked round body, three hole diffuser, and 90°banger hanger. The top chamber is smaller than the bottom, reducing splash back for a better cleaner smoking experience. Finished off with a worked ribbon and Yin&Yang symbol. This piece adds style and beauty to any collection!",
+      "discount": Array [],
+      "hash": "AV11VniCCQkVMwqrFIIQ",
+      "id": "9521700680",
+      "image_2_url": "https://cdn.shopify.com/s/files/1/0350/8253/products/EMPIRE-GLASSWORKS-QUOT-GREAT-GOURD-QUOT-FUMED-MINI-RIG_EMPIRE-1710-2_medium.jpg?v=1493846442",
+      "material": Array [],
+      "price": Array [
+        220,
+        220,
+      ],
+      "quantity": 11,
+      "reviews": Object {
+        "average_score": 0,
+        "total_reviews": 0,
+      },
+      "seller": "",
+      "size": Array [],
+      "sku": Array [
+        "EMPIRE-1710",
+        "EMPIRE-1711",
+      ],
+      "stickers": Object {
+        "availability": true,
+        "discount": false,
+        "free-shipping": false,
+        "in-stock": true,
+        "out-of-stock": false,
+      },
+      "title": "Empire Glassworks \\"Great Gourd\\" Fumed Mini Rig",
+    },
+  ],
+  "meta": Object {
+    "filters": Array [],
+    "limit": 2,
+    "offset": 0,
+    "q": "fire",
+    "query_type": "and",
+    "rid": "<stripped>",
+    "sort": Array [
+      Object {
+        "field": "price",
+        "order": "asc",
+      },
+    ],
+    "total": 4,
+  },
+}
+`;
+
+exports[`Client smart collection respects request parameters 4`] = `
+Object {
+  "banner": Object {},
+  "facets": Array [
+    Object {
+      "name": "brand",
+      "sort_type": "count",
+      "type": "text",
+      "values": Array [
+        Object {
+          "count": 2,
+          "has_children": false,
+          "name": "brand",
+          "selected": false,
+          "value": "Empire Glassworks",
+        },
+        Object {
+          "count": 1,
+          "has_children": false,
+          "name": "brand",
+          "selected": false,
+          "value": "Mia Shea Glass",
+        },
+        Object {
+          "count": 1,
+          "has_children": false,
+          "name": "brand",
+          "selected": false,
+          "value": "UPC",
+        },
+      ],
+    },
+    Object {
+      "name": "color",
+      "sort_type": "count",
+      "type": "text",
+      "values": Array [
+        Object {
+          "count": 1,
+          "has_children": false,
+          "name": "color",
+          "selected": false,
+          "value": "Earth",
+        },
+        Object {
+          "count": 1,
+          "has_children": false,
+          "name": "color",
+          "selected": false,
+          "value": "Fire",
+        },
+      ],
+    },
+    Object {
+      "max": 1400,
+      "min": 12,
+      "name": "price",
+      "sort_type": "value",
+      "type": "range",
+      "values": Array [
+        Object {
+          "count": 1,
+          "from": 100,
+          "has_children": false,
+          "name": "price",
+          "selected": false,
+          "to": 200,
+          "value": "100_200",
+        },
+        Object {
+          "count": 3,
+          "from": 200,
+          "has_children": false,
+          "name": "price",
+          "selected": false,
+          "value": "200_",
+        },
+      ],
+    },
+    Object {
+      "name": "custom_fields.height",
+      "sort_type": "count",
+      "type": "text",
+      "values": Array [
+        Object {
+          "count": 1,
+          "has_children": false,
+          "name": "custom_fields.height",
+          "selected": false,
+          "value": "10 Inches",
+        },
+        Object {
+          "count": 1,
+          "has_children": false,
+          "name": "custom_fields.height",
+          "selected": false,
+          "value": "18 Inches",
+        },
+        Object {
+          "count": 1,
+          "has_children": false,
+          "name": "custom_fields.height",
+          "selected": false,
+          "value": "5.5 Inches",
+        },
+        Object {
+          "count": 1,
+          "has_children": false,
+          "name": "custom_fields.height",
+          "selected": false,
+          "value": "6 Inches",
+        },
+      ],
+    },
+    Object {
+      "name": "custom_fields.joint_gender",
+      "sort_type": "count",
+      "type": "text",
+      "values": Array [
+        Object {
+          "count": 3,
+          "has_children": false,
+          "name": "custom_fields.joint_gender",
+          "selected": false,
+          "value": "Female Joint",
+        },
+        Object {
+          "count": 1,
+          "has_children": false,
+          "name": "custom_fields.joint_gender",
+          "selected": false,
+          "value": "Male Joint",
+        },
+      ],
+    },
+    Object {
+      "name": "custom_fields.use_case",
+      "sort_type": "count",
+      "type": "text",
+      "values": Array [
+        Object {
+          "count": 2,
+          "has_children": false,
+          "name": "custom_fields.use_case",
+          "selected": false,
+          "value": "Made For Dry Herbs",
+        },
+        Object {
+          "count": 1,
+          "has_children": false,
+          "name": "custom_fields.use_case",
+          "selected": false,
+          "value": "Made For Concentrates",
+        },
+        Object {
+          "count": 1,
+          "has_children": false,
+          "name": "custom_fields.use_case",
+          "selected": false,
+          "value": "Made For Thin Oils",
+        },
+        Object {
+          "count": 1,
+          "has_children": false,
+          "name": "custom_fields.use_case",
+          "selected": false,
+          "value": "Made For Waxy Oils",
+        },
+      ],
+    },
+    Object {
+      "name": "custom_fields.joint_size",
+      "sort_type": "count",
+      "type": "text",
+      "values": Array [
+        Object {
+          "count": 3,
+          "has_children": false,
+          "name": "custom_fields.joint_size",
+          "selected": false,
+          "value": "14.5mm",
+        },
+        Object {
+          "count": 1,
+          "has_children": false,
+          "name": "custom_fields.joint_size",
+          "selected": false,
+          "value": "10mm",
+        },
+      ],
+    },
+    Object {
+      "max": 34,
+      "min": 11,
+      "name": "discount",
+      "sort_type": "value",
+      "type": "range",
+      "values": Array [
+        Object {
+          "count": 1,
+          "from": 10,
+          "has_children": false,
+          "name": "discount",
+          "selected": false,
+          "to": 30,
+          "value": "10_30",
+        },
+      ],
+    },
+  ],
+  "items": Array [
+    Object {
+      "availability": true,
+      "brand": "Mia Shea Glass",
+      "category": Array [
+        Object {
+          "category1": "Water Pipe",
+          "category2": "",
+          "category3": "",
+          "category4": "",
+        },
+      ],
+      "color": Array [],
+      "color_variants": 1,
+      "compare_at": 1000,
+      "custom_fields": Object {
+        "barcode": Array [
+          "",
+        ],
+        "height": Array [
+          "10 Inches",
+        ],
+        "joint_gender": Array [
+          "Female Joint",
+        ],
+        "joint_size": Array [
+          "10mm",
+        ],
+        "use_case": Array [
+          "Made For Dry Herbs",
+        ],
+      },
+      "description": "A gorgeous heady piece that captures an entire lifestyle.
+
+ 
+Mia Shea is a glassblower originally from Asheville, NC known for her masterful use of the female form in all of her glass products.  In this \\"Be Here Now\\" heady rig, a woman strikes a Warrior Pose on a surfboard beneath a palm tree.  For all meditative and yogi smokers alike, this piece is great for getting you in the right headspace for your next sesh.  Known by a few as a \\"Fire Fairy,\\" Shea really shows off her powers with the flame on the texture of the palm tree, which bends and curves in just the right way to catch the light against its amber hues.  The piece's 10mm female joint comes with a matching flower bowl that uses the same earthy tones as the rest of the rig.  Pick up this piece if you're a fan of Mia Shea, or if you're a fan of island living in general.",
+      "discount": Array [
+        11,
+      ],
+      "hash": "AV11VmrDCQkVMwqrFH7P",
+      "id": "4256833860",
+      "image_2_url": "https://cdn.shopify.com/s/files/1/0350/8253/products/MIA-YOGI-1_medium.jpeg?v=1453759561",
+      "material": Array [],
+      "price": Array [
+        890,
+      ],
+      "quantity": 1,
+      "reviews": Object {
+        "average_score": 0,
+        "total_reviews": 0,
+      },
+      "seller": "",
+      "size": Array [],
+      "sku": Array [
+        "MIASHEA-BE-HERE-NOW",
+      ],
+      "stickers": Object {
+        "availability": true,
+        "discount": Array [
+          11,
+        ],
+        "free-shipping": true,
+        "in-stock": true,
+        "out-of-stock": false,
+      },
+      "title": "Mia Shea Glass \\"Be Here Now\\" Heady Rig",
+    },
+    Object {
+      "availability": true,
+      "brand": "Empire Glassworks",
+      "category": Array [
+        Object {
+          "category1": "Water Pipe",
+          "category2": "",
+          "category3": "",
+          "category4": "",
+        },
+      ],
+      "color": Array [],
+      "color_variants": 1,
+      "compare_at": -1,
+      "custom_fields": Object {
+        "barcode": Array [
+          "",
+        ],
+        "height": Array [
+          "6 Inches",
+        ],
+        "joint_gender": Array [
+          "Male Joint",
+        ],
+        "joint_size": Array [
+          "14.5mm",
+        ],
+        "use_case": Array [
+          "Made For Thin Oils",
+          "Made For Waxy Oils",
+          "Made For Concentrates",
+        ],
+      },
+      "description": "Fire Away!
+
+ 
+This rig is bad ass! This is a tiered piece so the mouthpiece, which is made of a beautifully worked glass gun ship, separates from the main body. This allows for an easy clean for such a complex piece. This rig also comes with a quartz banger and carb cap. If you're looking for a truly unique piece to add to your collection, this is the rig for you!",
+      "discount": Array [],
+      "hash": "AV11VmrHCQkVMwqrFIAA",
+      "id": "4953344260",
+      "image_2_url": "https://cdn.shopify.com/s/files/1/0350/8253/products/EMPIRE-1838-QM-4_medium.jpg?v=1493060648",
+      "material": Array [],
+      "price": Array [
+        400,
+      ],
+      "quantity": 4,
+      "reviews": Object {
+        "average_score": 0,
+        "total_reviews": 0,
+      },
+      "seller": "",
+      "size": Array [],
+      "sku": Array [
+        "EMPIRE-1838-QM",
+      ],
+      "stickers": Object {
+        "availability": true,
+        "discount": false,
+        "free-shipping": false,
+        "in-stock": true,
+        "out-of-stock": false,
+      },
+      "title": "Empire Glassworks \\"Gun Ship\\" Tiered Rig",
+    },
+  ],
+  "meta": Object {
+    "filters": Array [],
+    "limit": 2,
+    "offset": 0,
+    "q": "fire",
+    "query_type": "and",
+    "rid": "<stripped>",
+    "sort": Array [
+      Object {
+        "field": "price",
+        "order": "desc",
+      },
+    ],
+    "total": 4,
+  },
+}
+`;
+
+exports[`Client smart collection respects request parameters 5`] = `
+Object {
+  "banner": Object {},
+  "facets": Array [
+    Object {
+      "name": "brand",
+      "sort_type": "count",
+      "type": "text",
+      "values": Array [
+        Object {
+          "count": 1,
+          "has_children": false,
+          "name": "brand",
+          "selected": false,
+          "value": "Mia Shea Glass",
+        },
+      ],
+    },
+    Object {
+      "max": 1400,
+      "min": 12,
+      "name": "price",
+      "sort_type": "value",
+      "type": "range",
+      "values": Array [
+        Object {
+          "count": 1,
+          "from": 200,
+          "has_children": false,
+          "name": "price",
+          "selected": false,
+          "value": "200_",
+        },
+      ],
+    },
+    Object {
+      "name": "custom_fields.height",
+      "sort_type": "count",
+      "type": "text",
+      "values": Array [
+        Object {
+          "count": 1,
+          "has_children": false,
+          "name": "custom_fields.height",
+          "selected": true,
+          "value": "10 Inches",
+        },
+        Object {
+          "count": 1,
+          "has_children": false,
+          "name": "custom_fields.height",
+          "selected": false,
+          "value": "18 Inches",
+        },
+        Object {
+          "count": 1,
+          "has_children": false,
+          "name": "custom_fields.height",
+          "selected": false,
+          "value": "5.5 Inches",
+        },
+        Object {
+          "count": 1,
+          "has_children": false,
+          "name": "custom_fields.height",
+          "selected": false,
+          "value": "6 Inches",
+        },
+      ],
+    },
+    Object {
+      "name": "custom_fields.joint_gender",
+      "sort_type": "count",
+      "type": "text",
+      "values": Array [
+        Object {
+          "count": 1,
+          "has_children": false,
+          "name": "custom_fields.joint_gender",
+          "selected": false,
+          "value": "Female Joint",
+        },
+      ],
+    },
+    Object {
+      "name": "custom_fields.use_case",
+      "sort_type": "count",
+      "type": "text",
+      "values": Array [
+        Object {
+          "count": 1,
+          "has_children": false,
+          "name": "custom_fields.use_case",
+          "selected": false,
+          "value": "Made For Dry Herbs",
+        },
+      ],
+    },
+    Object {
+      "name": "custom_fields.joint_size",
+      "sort_type": "count",
+      "type": "text",
+      "values": Array [
+        Object {
+          "count": 1,
+          "has_children": false,
+          "name": "custom_fields.joint_size",
+          "selected": false,
+          "value": "10mm",
+        },
+      ],
+    },
+    Object {
+      "max": 34,
+      "min": 11,
+      "name": "discount",
+      "sort_type": "value",
+      "type": "range",
+      "values": Array [
+        Object {
+          "count": 1,
+          "from": 10,
+          "has_children": false,
+          "name": "discount",
+          "selected": false,
+          "to": 30,
+          "value": "10_30",
+        },
+      ],
+    },
+  ],
+  "items": Array [
+    Object {
+      "availability": true,
+      "brand": "Mia Shea Glass",
+      "category": Array [
+        Object {
+          "category1": "Water Pipe",
+          "category2": "",
+          "category3": "",
+          "category4": "",
+        },
+      ],
+      "color": Array [],
+      "color_variants": 1,
+      "compare_at": 1000,
+      "custom_fields": Object {
+        "barcode": Array [
+          "",
+        ],
+        "height": Array [
+          "10 Inches",
+        ],
+        "joint_gender": Array [
+          "Female Joint",
+        ],
+        "joint_size": Array [
+          "10mm",
+        ],
+        "use_case": Array [
+          "Made For Dry Herbs",
+        ],
+      },
+      "description": "A gorgeous heady piece that captures an entire lifestyle.
+
+ 
+Mia Shea is a glassblower originally from Asheville, NC known for her masterful use of the female form in all of her glass products.  In this \\"Be Here Now\\" heady rig, a woman strikes a Warrior Pose on a surfboard beneath a palm tree.  For all meditative and yogi smokers alike, this piece is great for getting you in the right headspace for your next sesh.  Known by a few as a \\"Fire Fairy,\\" Shea really shows off her powers with the flame on the texture of the palm tree, which bends and curves in just the right way to catch the light against its amber hues.  The piece's 10mm female joint comes with a matching flower bowl that uses the same earthy tones as the rest of the rig.  Pick up this piece if you're a fan of Mia Shea, or if you're a fan of island living in general.",
+      "discount": Array [
+        11,
+      ],
+      "hash": "AV11VmrDCQkVMwqrFH7P",
+      "id": "4256833860",
+      "image_2_url": "https://cdn.shopify.com/s/files/1/0350/8253/products/MIA-YOGI-1_medium.jpeg?v=1453759561",
+      "material": Array [],
+      "price": Array [
+        890,
+      ],
+      "quantity": 1,
+      "reviews": Object {
+        "average_score": 0,
+        "total_reviews": 0,
+      },
+      "seller": "",
+      "size": Array [],
+      "sku": Array [
+        "MIASHEA-BE-HERE-NOW",
+      ],
+      "stickers": Object {
+        "availability": true,
+        "discount": Array [
+          11,
+        ],
+        "free-shipping": true,
+        "in-stock": true,
+        "out-of-stock": false,
+      },
+      "title": "Mia Shea Glass \\"Be Here Now\\" Heady Rig",
+    },
+  ],
+  "meta": Object {
+    "filters": Array [
+      Object {
+        "name": "custom_fields.height",
+        "type": "text",
+        "values": Array [
+          Object {
+            "value": "10 Inches",
+          },
+        ],
+      },
+    ],
+    "limit": 24,
+    "offset": 0,
+    "q": "fire",
+    "query_type": "and",
+    "rid": "<stripped>",
+    "sort": Array [],
+    "total": 1,
   },
 }
 `;

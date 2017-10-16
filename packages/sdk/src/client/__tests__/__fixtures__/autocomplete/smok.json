@@ -1,0 +1,158 @@
+[
+    {
+        "scope": "https://search-staging.findify.io:443",
+        "method": "post",
+        "path": "/v3/autocomplete",
+        "body": {
+            "user": {
+                "lang": [
+                    "en-GB"
+                ],
+                "uid": "test2",
+                "sid": "ssid2",
+                "email": "test2@test.com",
+                "ip": "192.168.0.2",
+                "ua": "Mozilla/5.0 (Windows NT 6.2; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/32.0.1667.0 Safari/537.36"
+            },
+            "t_client": 1507485113503,
+            "key": "0d2f3aad-8702-46ad-a786-ae9fe2670294",
+            "q": "smok",
+            "item_limit": 3,
+            "suggestion_limit": 5
+        },
+        "status": 200,
+        "response": {
+            "meta": {
+                "q": "smok",
+                "suggestion_limit": 5,
+                "item_limit": 3,
+                "rid": "<stripped>"
+            },
+            "suggestions": [
+                {
+                    "value": "smoke"
+                },
+                {
+                    "value": "smoke cartel"
+                },
+                {
+                    "value": "smoky"
+                },
+                {
+                    "value": "smoky mountain"
+                },
+                {
+                    "value": "smoky mountain glass"
+                }
+            ],
+            "items": [
+                {
+                    "product_url": "https://smoke-cartel.myshopify.com/products/smoke-cartel-centipede-shenanigans",
+                    "reviews": {
+                        "total_reviews": 2,
+                        "average_score": 4.5
+                    },
+                    "price": [
+                        30,
+                        30
+                    ],
+                    "discount": [],
+                    "stickers": {
+                        "availability": true,
+                        "in-stock": true,
+                        "out-of-stock": false,
+                        "discount": false,
+                        "free-shipping": false
+                    },
+                    "availability": true,
+                    "id": "8017104712",
+                    "title": "Smoke Cartel \"Caterpillar\" Sherlock",
+                    "thumbnail_url": "https://cdn.shopify.com/s/files/1/0350/8253/products/SCHP-SA017-0_small.jpg?v=1476890474",
+                    "hash": "AV11VmrKCQkVMwqrFIDg",
+                    "custom_fields": {},
+                    "compare_at": -1
+                },
+                {
+                    "product_url": "https://smoke-cartel.myshopify.com/products/smoke-cartel-crew-shirts",
+                    "reviews": {
+                        "total_reviews": 0,
+                        "average_score": 0
+                    },
+                    "price": [
+                        29,
+                        29,
+                        29,
+                        29,
+                        29
+                    ],
+                    "discount": [],
+                    "stickers": {
+                        "availability": true,
+                        "in-stock": true,
+                        "out-of-stock": false,
+                        "discount": false,
+                        "free-shipping": false
+                    },
+                    "availability": true,
+                    "id": "9260965640",
+                    "title": "Smoke Cartel Crew Shirts",
+                    "thumbnail_url": "https://cdn.shopify.com/s/files/1/0350/8253/products/SMOKE-CARTEL-CREW-SHIRTS_SC-T-SHIRTS-WHT-2_small.jpg?v=1492034537",
+                    "hash": "AV11VniCCQkVMwqrFIHn",
+                    "custom_fields": {},
+                    "compare_at": -1
+                },
+                {
+                    "product_url": "https://smoke-cartel.myshopify.com/products/smoke-cartel-backpack",
+                    "reviews": {
+                        "total_reviews": 0,
+                        "average_score": 0
+                    },
+                    "price": [
+                        60
+                    ],
+                    "discount": [],
+                    "stickers": {
+                        "availability": true,
+                        "in-stock": true,
+                        "out-of-stock": false,
+                        "discount": false,
+                        "free-shipping": false
+                    },
+                    "availability": true,
+                    "id": "10246101192",
+                    "title": "Smoke Cartel Odor-Resistiant Backpack",
+                    "thumbnail_url": "https://cdn.shopify.com/s/files/1/0350/8253/products/SMOKE-CARTEL-BACKPACK_SC-BACKPACK-BK-5_small.jpg?v=1500673539",
+                    "hash": "AV11Vmq7CQkVMwqrFH0q",
+                    "custom_fields": {},
+                    "compare_at": -1
+                }
+            ]
+        },
+        "rawHeaders": [
+            "Access-Control-Allow-Headers",
+            "Content-type,Accept,x-key",
+            "Access-Control-Allow-Methods",
+            "GET,POST,OPTIONS",
+            "Access-Control-Allow-Origin",
+            "*",
+            "Cache-Control",
+            "no-cache, no-store, must-revalidate",
+            "Content-Type",
+            "application/json; charset=utf-8",
+            "Date",
+            "Sun, 08 Oct 2017 17:51:53 GMT",
+            "ETag",
+            "W/\"772-G+f0AqGBTd5dqWu592urSbhlOmU\"",
+            "Expires",
+            "0",
+            "Pragma",
+            "no-cache",
+            "Server",
+            "nginx/1.12.1",
+            "Content-Length",
+            "1906",
+            "Connection",
+            "Close"
+        ]
+    }
+]

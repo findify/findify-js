@@ -1,0 +1,357 @@
+[
+    {
+        "scope": "https://search-staging.findify.io:443",
+        "method": "post",
+        "path": "/v3/recommend/items/trending",
+        "body": {
+            "user": {
+                "lang": [
+                    "en-GB"
+                ],
+                "uid": "test1",
+                "sid": "ssid1",
+                "email": "test2@test.com",
+                "ip": "192.168.0.1",
+                "ua": "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36"
+            },
+            "t_client": 1507486269259,
+            "key": "0d2f3aad-8702-46ad-a786-ae9fe2670294"
+        },
+        "status": 200,
+        "response": {
+            "meta": {
+                "limit": 5,
+                "offset": 0,
+                "user_id": "test1",
+                "total": 1395,
+                "rid": "<stripped>"
+            },
+            "items": [
+                {
+                    "seller": "",
+                    "quantity": 43,
+                    "color": [],
+                    "color_variants": 1,
+                    "image_2_url": "https://cdn.shopify.com/s/files/1/0350/8253/products/DABWORTHY-TI-SIDECAR-UNIVERSAL-NAIL-2_medium.jpg?v=1461617794",
+                    "custom_fields": {
+                        "joint_size": [
+                            "14.5mm",
+                            "18.8mm"
+                        ],
+                        "joint_gender": [
+                            "Male Joint",
+                            "Female Joint"
+                        ],
+                        "barcode": [
+                            ""
+                        ]
+                    },
+                    "description": "This sidearm style titanium nail from DabWorthy is a innovative design that allows heat to concentrate on one part of the nail.  The sidearm distributes the heat so it doesn't damage the joint while also providing a quicker heat time.  This nail fits 14.5mm and 18.8mm female joints.",
+                    "discount": [
+                        50
+                    ],
+                    "availability": true,
+                    "title": "DabWorthy Sidearm Male Universal Domeless Titanium Nail for 18.8mm and 14.5mm Joints",
+                    "reviews": {
+                        "total_reviews": 6,
+                        "average_score": 4.5
+                    },
+                    "material": [],
+                    "size": [],
+                    "price": [
+                        60
+                    ],
+                    "stickers": {
+                        "discount": [
+                            50
+                        ],
+                        "availability": true,
+                        "in-stock": true,
+                        "out-of-stock": false,
+                        "free-shipping": false
+                    },
+                    "id": "414667516",
+                    "sku": [
+                        "NLDLBM-1418"
+                    ],
+                    "category": [
+                        {
+                            "category2": "",
+                            "category3": "",
+                            "category4": "",
+                            "category1": "Titanium Nail"
+                        }
+                    ],
+                    "brand": "DabWorthy",
+                    "hash": "AV11VmrDCQkVMwqrFH6-",
+                    "compare_at": 120
+                },
+                {
+                    "seller": "",
+                    "quantity": 55,
+                    "color": [],
+                    "color_variants": 1,
+                    "image_2_url": "https://cdn.shopify.com/s/files/1/0350/8253/products/WHM3-9_medium.jpg?v=1496071284",
+                    "custom_fields": {
+                        "joint_size": [
+                            "14.5mm"
+                        ],
+                        "joint_gender": [
+                            "Female Joint"
+                        ],
+                        "barcode": [
+                            ""
+                        ],
+                        "height": [
+                            "8 Inches"
+                        ]
+                    },
+                    "description": "This awesome buoy base water pipe from UPC features a 45 degree angled 18.8mm to 14.5mm downstem, and a female joint. This piece also has an ice pinch to help cool down your smoke and a buoy base, which when filled with water, provides ideal stability due to the weight at the bottom of the piece.\n\n \n \nFor the most suitable downstem and flower bowl options for the \"Simply Guy,\" check out the Sleek and Simple 14.5 to 14.5mm Downstem in 3.5 inches and the Round Glass Bowl in 14.5mm.  Don't forget to double check to make sure the sizing is correct on your order, otherwise it may not properly fit your pipe!  For more information on sizing, check out our Knowledge Base guides on Downstem Sizing and Joint Sizes.",
+                    "discount": [
+                        56
+                    ],
+                    "availability": true,
+                    "title": "UPC “Simply Guy” Buoy Base Water Pipe",
+                    "reviews": {
+                        "total_reviews": 25,
+                        "average_score": 4.56
+                    },
+                    "material": [],
+                    "size": [],
+                    "price": [
+                        39
+                    ],
+                    "stickers": {
+                        "discount": [
+                            56
+                        ],
+                        "availability": true,
+                        "in-stock": true,
+                        "out-of-stock": false,
+                        "free-shipping": false
+                    },
+                    "id": "420105236",
+                    "sku": [
+                        "WHM3"
+                    ],
+                    "category": [
+                        {
+                            "category2": "",
+                            "category3": "",
+                            "category4": "",
+                            "category1": "Water Pipe"
+                        }
+                    ],
+                    "brand": "UPC",
+                    "hash": "AV11VmrDCQkVMwqrFH7A",
+                    "compare_at": 89
+                },
+                {
+                    "seller": "",
+                    "quantity": 3,
+                    "color": [],
+                    "color_variants": 1,
+                    "image_2_url": "https://cdn.shopify.com/s/files/1/0350/8253/products/pandora-1_medium.jpg?v=1453146858",
+                    "custom_fields": {
+                        "joint_size": [
+                            "14.5mm"
+                        ],
+                        "joint_gender": [
+                            "Female Joint"
+                        ],
+                        "barcode": [
+                            ""
+                        ],
+                        "height": [
+                            "9.5 Inches"
+                        ]
+                    },
+                    "description": "A small and smooth rig with a geometric flare.\n\n \nIn Greek mythology, Pandora is the first woman created by the gods, who accidentally opened a box or jar that contained all of the evil in the world.  This mini beaker from Sesh Supply contains within it a similar box: a cube perc, perfect for allowing your smoke and water to curdle against the four walls, creating a massively smooth hit.  \n\n \nWith a 14.5mm female flower bowl, your dry herbs will be taken on the ride of their life - down through the fused downstem, where they will filter through the central cube perc before traveling up through the mind-warping 'inception style' swiss cube body.  \n\n \nThey may even get a chance to see all of the evils in the world before rising up to meet you and your lungs...  \n\n \nOr something like that.",
+                    "discount": [
+                        35
+                    ],
+                    "availability": true,
+                    "title": "Sesh Supply \"Pandora\" Cube Perc Mini Beaker with Inception-Style Swiss Cube Body",
+                    "reviews": {
+                        "total_reviews": 13,
+                        "average_score": 5
+                    },
+                    "material": [],
+                    "size": [],
+                    "price": [
+                        129
+                    ],
+                    "stickers": {
+                        "discount": [
+                            35
+                        ],
+                        "availability": true,
+                        "in-stock": true,
+                        "out-of-stock": false,
+                        "free-shipping": false
+                    },
+                    "id": "4203259012",
+                    "sku": [
+                        "SS-PANDORA"
+                    ],
+                    "category": [
+                        {
+                            "category2": "",
+                            "category3": "",
+                            "category4": "",
+                            "category1": "Water Pipe"
+                        }
+                    ],
+                    "brand": "Sesh Supply",
+                    "hash": "AV11VmrDCQkVMwqrFH7B",
+                    "compare_at": 199
+                },
+                {
+                    "seller": "",
+                    "quantity": 6,
+                    "color": [],
+                    "color_variants": 1,
+                    "image_2_url": "",
+                    "custom_fields": {
+                        "barcode": [
+                            ""
+                        ]
+                    },
+                    "description": "Represent Smoke Cartel with everyone's favorite color, red.\n\n \n \n\n \nNothing says \"I'm a chill smoker who buys badass glass\" better than the color red.  Combine that with the Smoke Cartel logo, and you've got yourself a recipe for some sweet threads.  These Canvas-brand t-shirts are made with 52% cotton and 48% polyester for a soft and comfy fit.  And, you'll look like the coolest smoker on the block.",
+                    "discount": [],
+                    "availability": true,
+                    "title": "Smoke Cartel Red Unisex T-Shirt",
+                    "reviews": {
+                        "total_reviews": 1,
+                        "average_score": 5
+                    },
+                    "material": [],
+                    "size": [
+                        "X-Small",
+                        "Small",
+                        "Medium",
+                        "Large",
+                        "X-Large"
+                    ],
+                    "price": [
+                        29,
+                        29,
+                        29,
+                        29,
+                        29
+                    ],
+                    "stickers": {
+                        "availability": true,
+                        "in-stock": true,
+                        "out-of-stock": false,
+                        "discount": false,
+                        "free-shipping": false
+                    },
+                    "id": "4203329860",
+                    "sku": [
+                        "RED-UNISEX-TSHIRT-1",
+                        "RED-UNISEX-TSHIRT-2",
+                        "RED-UNISEX-TSHIRT-3",
+                        "RED-UNISEX-TSHIRT-4",
+                        "RED-UNISEX-TSHIRT-5"
+                    ],
+                    "category": [
+                        {
+                            "category2": "",
+                            "category3": "",
+                            "category4": "",
+                            "category1": "Apparel"
+                        }
+                    ],
+                    "brand": "Smoke Cartel",
+                    "hash": "AV11VmrDCQkVMwqrFH7C",
+                    "compare_at": -1
+                },
+                {
+                    "seller": "",
+                    "quantity": 3,
+                    "color": [],
+                    "color_variants": 1,
+                    "image_2_url": "",
+                    "custom_fields": {
+                        "barcode": [
+                            ""
+                        ]
+                    },
+                    "description": "Wear your pride for the Girl Scouts of America.\n\n \nWe all love Girl Scout Cookies, from Thin Mints to Premium Cookies.  Why not show off your pride with this Tultex-brand mustard yellow t-shirt!  You'll be sporting the tastiest threads on the block, and with 100% cotton you'll be sure to get a soft and comfy fit.  Wear your pride, young smoker, and eat some Cookies!",
+                    "discount": [],
+                    "availability": true,
+                    "title": "'Girl Scout Cookies' Limited Run Strain T-Shirt",
+                    "reviews": {
+                        "total_reviews": 4,
+                        "average_score": 5
+                    },
+                    "material": [],
+                    "size": [
+                        "Small",
+                        "Medium",
+                        "Large",
+                        "X-Large"
+                    ],
+                    "price": [
+                        29,
+                        29,
+                        29,
+                        29
+                    ],
+                    "stickers": {
+                        "availability": true,
+                        "in-stock": true,
+                        "out-of-stock": false,
+                        "discount": false,
+                        "free-shipping": false
+                    },
+                    "id": "4203428932",
+                    "sku": [
+                        "GIRL-SCOUT-COOKIES-TSHIRT-SM",
+                        "GIRL-SCOUT-COOKIES-TSHIRT-MD",
+                        "GIRL-SCOUT-COOKIES-TSHIRT-LG",
+                        "GIRL-SCOUT-COOKIES-TSHIRT-XL"
+                    ],
+                    "category": [
+                        {
+                            "category2": "",
+                            "category3": "",
+                            "category4": "",
+                            "category1": "Apparel"
+                        }
+                    ],
+                    "brand": "Smoke Cartel",
+                    "hash": "AV11VmrDCQkVMwqrFH7E",
+                    "compare_at": -1
+                }
+            ]
+        },
+        "rawHeaders": [
+            "Access-Control-Allow-Headers",
+            "Content-type,Accept,x-key",
+            "Access-Control-Allow-Methods",
+            "GET,POST,OPTIONS",
+            "Access-Control-Allow-Origin",
+            "*",
+            "Cache-Control",
+            "no-cache, no-store, must-revalidate",
+            "Content-Type",
+            "application/json; charset=utf-8",
+            "Date",
+            "Sun, 08 Oct 2017 18:11:09 GMT",
+            "ETag",
+            "W/\"19db-4U2Opa3M76hvK+oxVAqRBYsYXM4\"",
+            "Expires",
+            "0",
+            "Pragma",
+            "no-cache",
+            "Server",
+            "nginx/1.12.1",
+            "Content-Length",
+            "6619",
+            "Connection",
+            "Close"
+        ]
+    }
+]

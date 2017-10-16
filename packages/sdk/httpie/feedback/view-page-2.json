@@ -1,0 +1,22 @@
+{
+  "user": {
+    "lang": [
+      "en-GB"
+    ],
+    "uid": "test1",
+    "sid": "ssid",
+    "email": "test@test.com",
+    "ip": "192.168.0.1",
+    "ua": "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36"
+  },
+  "t_client": 1484742065791,
+  "event": "view-page",
+  "properties": {
+    "url": "https://smoke-cartel.myshopify.com/products/3-75-rasta-frit-pipe",
+    "ref": "https://smoke-cartel.myshopify.com/collections/staff-picks-vaporizers?sort_by=best-selling",
+    "width": 1680,
+    "height": 1028,
+    "item_id": "4595632836"
+  },
+  "log": false
+}
