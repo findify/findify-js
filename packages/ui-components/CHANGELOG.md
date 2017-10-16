@@ -1,5 +1,35 @@
-<a name="1.1.3"></a>
-## 1.1.3 (2017-10-16)
+<a name="2.1.0"></a>
+# 2.1.0 (2017-10-16)
+
+
+
+<a name="2.1.0"></a>
+# 2.1.0 (2017-10-16)
+
+
+### Features
+
+* **ui-components:** hide not mapped color balls and compare lower case color names with config ([5eede31](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/5eede31))
+
+
+
+<a name="2.0.0"></a>
+# 2.0.0 (2017-10-16)
+
+
+### Bug Fixes
+
+* **ui-components:** fix width of star rating and nested category facets ([f0e5f39](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/f0e5f39))
+
+
+### Features
+
+* **ui-components:** use facets dynamic width ([54c4ad0](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/54c4ad0))
+
+
+### BREAKING CHANGES
+
+* **ui-components:** Columns prop was removed from ResultsLayout
 
 
 
