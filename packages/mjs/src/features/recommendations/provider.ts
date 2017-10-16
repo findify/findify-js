@@ -11,7 +11,7 @@ import { RESPONSE_SUCCESS } from '../../helpers/constants';
  */
 const getPayload = (type, slot, { item_id, item_ids }, multipleIds) => {
   if (['bought', 'viewed'].includes(type)) {
-    return { slot, item_id };
+    return { slot, item_ids: [item_id] };
   }
   if (type === 'purchasedTogether') {
     if (!multipleIds) return { slot, item_ids: [item_id] };
@@ -21,9 +21,9 @@ const getPayload = (type, slot, { item_id, item_ids }, multipleIds) => {
 };
 
 const getIdsFromEvents = events => ({
-  item_id: get(events, ['page-view', 'item_id']),
-  item_ids: get(events, ['purchase', 'line_items'], []).map(
-    i => i.item_id || i.product_id,
+  item_id: get(events, ['view-page', 'item_id']),
+  item_ids: get(events, ['update-cart', 'line_items'], []).map(
+    i => i.item_id || i.product_id
   ),
 });
 
@@ -48,7 +48,7 @@ export default ({
           ...getPayload(type, slot, ids, multipleIds),
           filters,
         },
-      }),
+      })
     );
 
   return {
