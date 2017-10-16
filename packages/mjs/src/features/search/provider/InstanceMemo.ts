@@ -16,6 +16,10 @@ class InstanceMemo {
     return this.items;
   }
 
+  reset() {
+    this.items = [];
+  }
+
   merge(response) {
     const dir = this.direction;
     const items = response.items.map((item, i) => ({

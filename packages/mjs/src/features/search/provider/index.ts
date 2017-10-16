@@ -1,5 +1,13 @@
 import { createSearch, createCollection } from '@findify/helpers';
-import { defer, isArray, isEqual, mapValues, isEmpty, filter } from 'lodash';
+import {
+  pick,
+  defer,
+  isArray,
+  isEqual,
+  mapValues,
+  isEmpty,
+  filter,
+} from 'lodash';
 import { RESPONSE_SUCCESS, RESPONSE_FAILURE, REQUEST } from 'helpers/constants';
 import {
   createMetaNormalizer,
@@ -9,6 +17,18 @@ import {
 import InstanceMemo from './InstanceMemo';
 
 import jump from 'jump.js';
+
+function resetMemoIfNeeded(memo, ctx) {
+  const { response, view, location } = ctx;
+  if (!view.infinite) return;
+
+  const s1 = pick(response.meta, ['filters', 'sort', 'q']);
+  const s2 = pick({ filters: [], ...location.state }, ['filters', 'sort', 'q']);
+
+  if (!isEqual(s1, s2)) {
+    memo.reset();
+  }
+}
 
 export default ({
   analytics,
@@ -56,6 +76,8 @@ export default ({
       request,
       normalizeMeta(slot ? { slot } : location.state)
     );
+
+    resetMemoIfNeeded(memo, { response, view, location });
 
     if (response.redirect) {
       await analytics.sendEvent('redirect', {
