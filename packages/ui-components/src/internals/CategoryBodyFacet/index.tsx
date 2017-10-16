@@ -4,6 +4,7 @@ import * as cx from 'classnames';
 import { compact, get } from 'lodash';
 import { ExpandButton } from 'internals/ExpandButton';
 import { List } from 'immutable';
+import sizeMe from 'react-sizeme';
 
 const styles = require('./styles.css');
 
@@ -12,7 +13,7 @@ import { Tree } from './Tree';
 
 const mapArrayToFacetsCreator = (children, selected) => (
   array,
-  forceUnselect?,
+  forceUnselect?
 ) =>
   array.map((position, index) => {
     const selector = array
@@ -48,7 +49,7 @@ export const CategoryBodyFacet = compose(
   withState(
     'isExpanded',
     'setExpanded',
-    ({ config, isMobile }) => isMobile || !!config.initiallyExpanded,
+    ({ config, isMobile }) => isMobile || !!config.initiallyExpanded
   ),
   withHandlers({
     toggleExpander: ({ isExpanded, setExpanded }) => e => {
@@ -63,12 +64,13 @@ export const CategoryBodyFacet = compose(
         mapArray(cursor, true)
           .concat(mapArray(allTracks))
           .filter(v => !!v)
-          .toArray(),
+          .toArray()
       );
     },
   }),
-)((props: any) => (
-  <div>
+  sizeMe({ refreshRate: 50, refreshMode: 'debounce' })
+)(({ size, ...props }: any) => (
+  <div style={{ width: size.width }}>
     <Tree className={styles.wrap} {...props} isRoot selected has_children />
     {!props.isMobile &&
       props.childrenCount > props.config.maxItemsCount && (

@@ -65,7 +65,6 @@
 
 @supports(display: flex) {
   .root{
-    width: 100%;
     display: flex;
     align-items: center;
     flex-wrap: wrap;

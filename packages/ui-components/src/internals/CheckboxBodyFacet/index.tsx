@@ -11,6 +11,7 @@ import {
 } from 'recompose';
 import * as cx from 'classnames';
 
+import sizeMe from 'react-sizeme';
 import { ExpandButton } from 'internals/ExpandButton';
 import { SearchInput } from 'internals/SearchInput';
 import { ListRenderer } from './ListRenderer';
@@ -28,11 +29,13 @@ export const CheckboxBodyFacet: any = compose(
   withState(
     'expanded',
     'setExpanded',
-    ({ config }) => !!config.initiallyExpanded,
+    ({ config }) => !!config.initiallyExpanded
   ),
+
   withPropsOnChange(['values'], ({ values }) => ({
     selectedItems: values.filter(item => item.selected),
   })),
+
   withPropsOnChange(
     ['values', 'search'],
     ({ values, search, showExpander }) => {
@@ -44,12 +47,12 @@ export const CheckboxBodyFacet: any = compose(
       const regexp = new RegExp(search, 'ig');
       return {
         notSelectedItems: values.filter(
-          item => !item.selected && item.value.match(regexp),
+          item => !item.selected && item.value.match(regexp)
         ),
       };
-    },
+    }
   ),
-  withProps((props: any) => ({
+  withPropsOnChange(['notSelectedItems', 'selectedItems'], (props: any) => ({
     hasSelected: !!props.selectedItems.length,
     hasNotSelected: !!props.notSelectedItems.length,
     showMoreButton:
@@ -68,45 +71,63 @@ export const CheckboxBodyFacet: any = compose(
     },
     onSearchChange: ({ setSearch }) => query => setSearch(query),
   }),
-)(({ selectedItems, notSelectedItems, search, expanded, isMobile,
-  onChange, toggleExpand, onSearchChange,
-  disableSlice, showSearch, hasSelected, hasNotSelected, showStaticContent, showMoreButton, ...rest }: any) => (
-  <div className={styles.wrap}>
-    {showSearch && (
-      <SearchInput
-        value={search}
-        onChange={onSearchChange}
-        placeholder={rest.config.i18n.search}
-      />
-    )}
-    {hasSelected && (
-      <ListRenderer
-        {...rest}
-        items={selectedItems}
-        onChange={onChange}
-        className={styles.selectedItems}
-        isStatic
-      />
-    )}
-    {hasNotSelected && (
-      <ListRenderer
-        {...rest}
-        items={notSelectedItems}
-        onChange={onChange}
-        slice={
-          !isMobile && !disableSlice && !expanded && rest.config.maxItemsCount
-        }
-        isMobile={isMobile}
-        isStatic={!isMobile && showStaticContent}
-      />
-    )}
-    {!isMobile &&
-      showMoreButton && (
-        <ExpandButton
-          expanded={expanded}
-          onClick={toggleExpand}
-          label={expanded ? rest.config.i18n.less : rest.config.i18n.more}
+  sizeMe({ refreshRate: 50, refreshMode: 'debounce' })
+)(
+  ({
+    selectedItems,
+    notSelectedItems,
+    search,
+    expanded,
+    isMobile,
+    onChange,
+    toggleExpand,
+    onSearchChange,
+    disableSlice,
+    showSearch,
+    hasSelected,
+    hasNotSelected,
+    showStaticContent,
+    showMoreButton,
+    size,
+    ...rest,
+  }: any) => (
+    <div className={styles.wrap} style={{ width: size.width }}>
+      {showSearch && (
+        <SearchInput
+          value={search}
+          onChange={onSearchChange}
+          placeholder={rest.config.i18n.search}
         />
       )}
-  </div>
-));
+      {hasSelected && (
+        <ListRenderer
+          {...rest}
+          items={selectedItems}
+          onChange={onChange}
+          className={styles.selectedItems}
+          isStatic
+        />
+      )}
+      {hasNotSelected && (
+        <ListRenderer
+          {...rest}
+          items={notSelectedItems}
+          onChange={onChange}
+          slice={
+            !isMobile && !disableSlice && !expanded && rest.config.maxItemsCount
+          }
+          isMobile={isMobile}
+          isStatic={!isMobile && showStaticContent}
+        />
+      )}
+      {!isMobile &&
+        showMoreButton && (
+          <ExpandButton
+            expanded={expanded}
+            onClick={toggleExpand}
+            label={expanded ? rest.config.i18n.less : rest.config.i18n.more}
+          />
+        )}
+    </div>
+  )
+);

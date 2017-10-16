@@ -21,6 +21,7 @@ const getProductKey = product =>
     : product.hash || product.id;
 
 const countColumns = width => {
+  if (width > 1900) return 8;
   if (width > 1100) return 6;
   if (width > 700) return 4;
   if (width > 400) return 3;
@@ -29,12 +30,12 @@ const countColumns = width => {
 
 const HOC = compose(
   setDisplayName('ProductsList'),
-  sizeMe(),
+  sizeMe({ refreshRate: 100, refreshMode: 'debounce' }),
   withPropsOnChange(['size'], ({ size }) => ({
     columns: countColumns(size.width),
   })),
   withHooks('products'),
-  withHooks('grid'),
+  withHooks('grid')
 );
 
 export const Component = ({
@@ -60,7 +61,7 @@ export const Component = ({
           },
           columnClass: columnClass,
           onProductClick,
-        }),
+        })
       )}
     </Grid>
   </div>
