@@ -1,5 +1,16 @@
-<a name="4.3.0"></a>
-# 4.3.0 (2017-10-12)
+<a name="4.3.1"></a>
+## 4.3.1 (2017-10-16)
+
+
+
+<a name="4.3.1"></a>
+## 4.3.1 (2017-10-16)
+
+
+### Bug Fixes
+
+* **mjs:** fix duplicate results in mjs infinite scroll ([5b14648](https://github.com/findify/findify-mjs/commit/5b14648))
+* **mjs:** fix GA page view tracking ([b41f74e](https://github.com/findify/findify-mjs/commit/b41f74e))
 
 
 
