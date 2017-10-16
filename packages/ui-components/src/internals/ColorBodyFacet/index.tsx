@@ -44,7 +44,9 @@ const Item = compose(
   </div>
 ));
 
-export const ColorBodyFacet = sizeMe()(({ values, size, ...rest }: any) => (
+export const ColorBodyFacet = compose(
+  sizeMe({ refreshRate: 50, refreshMode: 'debounce' })
+)(({ values, size, ...rest }: any) => (
   <div className={styles.root} style={{ width: size.width }}>
     {values.map(item =>
       createEagerElement(Item, {

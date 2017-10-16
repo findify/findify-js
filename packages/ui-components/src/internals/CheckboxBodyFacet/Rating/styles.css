@@ -11,12 +11,14 @@
   margin: 0;
   display: table;
   cursor: pointer;
+  position: relative;
+  width: 100%;
 }
 
 .title {
-  width: 100%;
   display: table-cell;
   white-space: nowrap;
+  padding-left: 1em;
   .selected-items &{
     font-weight: 600;
   }
@@ -29,10 +31,15 @@
   color: #b2b2b2;
   display: table-cell;
   white-space: nowrap;
+  width: 1px;
 }
 
 .checkbox {
-  display: table-cell;
-  padding-right: 5px;
-  font-size: .7em;
+  position: absolute;
+  top: 6px;
+  left: 0;
+  width: .7em;
+  height: .7em;
+  fill: #404040;
+  box-sizing: content-box!important;
 }
