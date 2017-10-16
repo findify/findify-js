@@ -46,9 +46,6 @@ export default ({
       if (!view.infinite && !disableScroll) {
         return jump(node.instance, { offset: scrollOffset });
       }
-      if (view.infinite) {
-        return memo.reset();
-      }
     }
 
     if (name !== RESPONSE_SUCCESS) return;
@@ -57,7 +54,7 @@ export default ({
 
     const isStatesEqual = isEqual(
       request,
-      normalizeMeta(slot ? { slot } : location.state),
+      normalizeMeta(slot ? { slot } : location.state)
     );
 
     if (response.redirect) {
@@ -121,7 +118,7 @@ export default ({
       const req = instance.get('request');
       const { meta, items } = instance.get('response');
       if (meta.total < meta.offset + meta.limit) return;
-      memo.set(items, 1);
+      memo.memorize(1);
       const offset = memo.items[memo.items.length - 1].position + 1;
 
       return request({ ...req, offset });
@@ -131,7 +128,7 @@ export default ({
       const req = instance.get('request');
       const res = instance.get('response');
       const { meta, items } = instance.get('response');
-      memo.set(items, -1);
+      memo.memorize(-1);
       const offset = memo.items[0].position - meta.limit;
       return request({ ...req, offset });
     },
@@ -143,7 +140,7 @@ export default ({
       instance
         .get('response')
         .meta.sort.forEach(s =>
-          instance.emit({ name: 'unsetSorting', payload: s }),
+          instance.emit({ name: 'unsetSorting', payload: s })
         );
       if (order) {
         instance.emit({ name: 'setSorting', payload: { order, field } });

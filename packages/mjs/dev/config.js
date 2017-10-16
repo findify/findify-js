@@ -63,7 +63,7 @@ export default {
       disableScroll: false,
       scrollOffset: 0,
       meta: {
-        limit: '24',
+        limit: 24,
       },
       product: {
         title: {
