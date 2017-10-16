@@ -40,6 +40,8 @@
     "@types/jsonp": "^0.2.0",
     "axios": "^0.16.2",
     "jsonp": "^0.2.1",
+    "debug": "^3.1.0",
+    "core-js": "^2.5.1",
     "qs": "^6.5.1"
   },
   "devDependencies": {
@@ -49,8 +51,6 @@
     "@types/node": "^8.0.34",
     "@types/webpack": "^3.0.13",
     "ts-node": "^3.3.0",
-    "core-js": "^2.5.1",
-    "debug": "^3.1.0",
     "npm-run-all": "^4.1.1",
     "del-cli": "^1.1.0",
     "dotenv": "^4.0.0",

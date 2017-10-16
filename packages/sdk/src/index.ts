@@ -37,10 +37,7 @@ export function init(config: Config) {
 }
 
 const setDefaults = (cfg: Config, isBrowserEnv: boolean) => ({
+  method: isBrowserEnv ? R.Method.JSONP : R.Method.POST,
+  ...defaults,
   ...cfg,
-  url: cfg.url || defaults.url,
-  timeout: cfg.timeout || defaults.timeout,
-  retryCount: cfg.retryCount || defaults.retryCount,
-  jsonpCallback: cfg.jsonpCallback || defaults.jsonpCallback,
-  method: cfg.method || isBrowserEnv ? R.Method.JSONP : R.Method.POST,
 });

@@ -29,7 +29,7 @@ export default (env: WebpackEnvArgs) => {
     },
     devtool: 'source-map',
     bail: true,
-    resolve: { extensions: ['.ts'] },
+    resolve: { extensions: ['.ts', '.js'] },
     module: {
       rules: [
         {
@@ -37,8 +37,9 @@ export default (env: WebpackEnvArgs) => {
           loader: 'ts-loader',
           include: path.resolve(__dirname, 'src'),
           options: {
-            configFile: path.resolve(__dirname, 'tsconfig.lib.json'),
             silent: true,
+            configFile: path.resolve(__dirname, 'tsconfig.lib.json'),
+            compilerOptions: { target: 'es5' },
           },
         },
       ],
