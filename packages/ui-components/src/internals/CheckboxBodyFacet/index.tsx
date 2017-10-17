@@ -74,7 +74,7 @@ export const CheckboxBodyFacet: any = compose(
     },
     onSearchChange: ({ setSearch }) => query => setSearch(query),
   }),
-  sizeMe({ refreshRate: 50, refreshMode: 'debounce' })
+  sizeMe({ refreshRate: 50, noPlaceholder: true })
 )(
   ({
     selectedItems,
