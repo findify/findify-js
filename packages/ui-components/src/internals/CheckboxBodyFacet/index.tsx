@@ -52,18 +52,21 @@ export const CheckboxBodyFacet: any = compose(
       };
     }
   ),
-  withPropsOnChange(['notSelectedItems', 'selectedItems'], (props: any) => ({
-    hasSelected: !!props.selectedItems.length,
-    hasNotSelected: !!props.notSelectedItems.length,
-    showMoreButton:
-      props.showExpander &&
-      props.notSelectedItems.length > props.config.maxItemsCount,
-    showSearch: props.showExpander && props.expanded,
-    showStaticContent:
-      (props.showExpander &&
-        props.notSelectedItems.length < props.config.maxItemsCount) ||
-      !props.expanded,
-  })),
+  withPropsOnChange(
+    ['notSelectedItems', 'selectedItems', 'showExpander', 'expanded'],
+    (props: any) => ({
+      hasSelected: !!props.selectedItems.length,
+      hasNotSelected: !!props.notSelectedItems.length,
+      showMoreButton:
+        props.showExpander &&
+        props.notSelectedItems.length > props.config.maxItemsCount,
+      showSearch: props.showExpander && props.expanded,
+      showStaticContent:
+        (props.showExpander &&
+          props.notSelectedItems.length < props.config.maxItemsCount) ||
+        !props.expanded,
+    })
+  ),
   withHandlers({
     toggleExpand: ({ expanded, setExpanded }) => e => {
       if (e) e.preventDefault();

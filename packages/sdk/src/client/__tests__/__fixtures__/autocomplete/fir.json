@@ -1,0 +1,147 @@
+[
+    {
+        "scope": "https://search-staging.findify.io:443",
+        "method": "post",
+        "path": "/v3/autocomplete",
+        "body": {
+            "user": {
+                "lang": [
+                    "en-GB"
+                ],
+                "uid": "test1",
+                "sid": "ssid1",
+                "email": "test2@test.com",
+                "ip": "192.168.0.1",
+                "ua": "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36"
+            },
+            "t_client": 1507485113960,
+            "key": "0d2f3aad-8702-46ad-a786-ae9fe2670294",
+            "q": "fir",
+            "item_limit": 2,
+            "suggestion_limit": 10
+        },
+        "status": 200,
+        "response": {
+            "meta": {
+                "q": "fir",
+                "suggestion_limit": 10,
+                "item_limit": 2,
+                "rid": "<stripped>"
+            },
+            "suggestions": [
+                {
+                    "value": "fire"
+                },
+                {
+                    "value": "fire ian"
+                },
+                {
+                    "value": "fire cut"
+                },
+                {
+                    "value": "fire cut downstem"
+                },
+                {
+                    "value": "fire rasta"
+                },
+                {
+                    "value": "fire ian jr"
+                },
+                {
+                    "value": "fire 14.5mm"
+                },
+                {
+                    "value": "fire 18mm"
+                },
+                {
+                    "value": "fire 14.5mm 18.8mm"
+                },
+                {
+                    "value": "fire 18mm 18mm"
+                }
+            ],
+            "items": [
+                {
+                    "product_url": "https://smoke-cartel.myshopify.com/products/5-rasta-frit-pipe",
+                    "reviews": {
+                        "total_reviews": 3,
+                        "average_score": 5
+                    },
+                    "price": [
+                        31
+                    ],
+                    "discount": [],
+                    "stickers": {
+                        "availability": true,
+                        "in-stock": true,
+                        "out-of-stock": false,
+                        "discount": false,
+                        "free-shipping": false
+                    },
+                    "availability": true,
+                    "id": "4595632644",
+                    "title": "Rasta-fire-ian Pipe",
+                    "thumbnail_url": "https://cdn.shopify.com/s/files/1/0350/8253/products/HP62-1-0_small.jpg?v=1459019662",
+                    "hash": "AV11VmrFCQkVMwqrFH9w",
+                    "custom_fields": {},
+                    "compare_at": -1
+                },
+                {
+                    "product_url": "https://smoke-cartel.myshopify.com/products/3-75-rasta-frit-pipe",
+                    "reviews": {
+                        "total_reviews": 6,
+                        "average_score": 4.83
+                    },
+                    "price": [
+                        27
+                    ],
+                    "discount": [
+                        25
+                    ],
+                    "stickers": {
+                        "discount": [
+                            25
+                        ],
+                        "availability": true,
+                        "in-stock": true,
+                        "out-of-stock": false,
+                        "free-shipping": false
+                    },
+                    "availability": true,
+                    "id": "4595632836",
+                    "title": "Rasta-fire-ian Jr.",
+                    "thumbnail_url": "https://cdn.shopify.com/s/files/1/0350/8253/products/HP61-1-0_small.jpg?v=1459021436",
+                    "hash": "AV11VmrFCQkVMwqrFH9x",
+                    "custom_fields": {},
+                    "compare_at": 36
+                }
+            ]
+        },
+        "rawHeaders": [
+            "Access-Control-Allow-Headers",
+            "Content-type,Accept,x-key",
+            "Access-Control-Allow-Methods",
+            "GET,POST,OPTIONS",
+            "Access-Control-Allow-Origin",
+            "*",
+            "Cache-Control",
+            "no-cache, no-store, must-revalidate",
+            "Content-Type",
+            "application/json; charset=utf-8",
+            "Date",
+            "Sun, 08 Oct 2017 17:51:54 GMT",
+            "ETag",
+            "W/\"560-i/Apqqw1uZNZ32iYjMWLI/FACGA\"",
+            "Expires",
+            "0",
+            "Pragma",
+            "no-cache",
+            "Server",
+            "nginx/1.12.1",
+            "Content-Length",
+            "1376",
+            "Connection",
+            "Close"
+        ]
+    }
+]

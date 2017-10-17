@@ -1,0 +1,114 @@
+[
+    {
+        "scope": "https://search-staging.findify.io:443",
+        "method": "post",
+        "path": "/v3/recommend/items/viewed/latest",
+        "body": {
+            "user": {
+                "lang": [
+                    "en-GB"
+                ],
+                "uid": "test1",
+                "sid": "ssid1",
+                "email": "test2@test.com",
+                "ip": "192.168.0.1",
+                "ua": "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36"
+            },
+            "t_client": 1507495976843,
+            "key": "0d2f3aad-8702-46ad-a786-ae9fe2670294",
+            "limit": 1
+        },
+        "status": 200,
+        "response": {
+            "meta": {
+                "offset": 0,
+                "limit": 1,
+                "total": 1,
+                "user_id": "test1",
+                "rid": "<stripped>"
+            },
+            "items": [
+                {
+                    "seller": "",
+                    "quantity": 133,
+                    "color": [],
+                    "color_variants": 1,
+                    "image_2_url": "https://cdn.shopify.com/s/files/1/0350/8253/products/HP61-2-0_medium.jpg?v=1459021438",
+                    "custom_fields": {
+                        "use_case": [
+                            "Made For Dry Herbs"
+                        ],
+                        "barcode": [
+                            ""
+                        ]
+                    },
+                    "description": "Yeah Mon! The smaller, slimmer son of the Rasta-fire-ian sports the same Jamaican colors spiraling around a dark black base, yet sports an even more portable physique. Grab one now and take your sesh to go!",
+                    "discount": [
+                        25
+                    ],
+                    "availability": true,
+                    "title": "Rasta-fire-ian Jr.",
+                    "reviews": {
+                        "total_reviews": 6,
+                        "average_score": 4.83
+                    },
+                    "material": [],
+                    "size": [],
+                    "price": [
+                        27
+                    ],
+                    "stickers": {
+                        "discount": [
+                            25
+                        ],
+                        "availability": true,
+                        "in-stock": true,
+                        "out-of-stock": false,
+                        "free-shipping": false
+                    },
+                    "id": "4595632836",
+                    "sku": [
+                        "HMX62"
+                    ],
+                    "category": [
+                        {
+                            "category2": "",
+                            "category3": "",
+                            "category4": "",
+                            "category1": "Spoon"
+                        }
+                    ],
+                    "brand": "Glassheads",
+                    "hash": "AV11VmrFCQkVMwqrFH9x",
+                    "compare_at": 36
+                }
+            ]
+        },
+        "rawHeaders": [
+            "Access-Control-Allow-Headers",
+            "Content-type,Accept,x-key",
+            "Access-Control-Allow-Methods",
+            "GET,POST,OPTIONS",
+            "Access-Control-Allow-Origin",
+            "*",
+            "Cache-Control",
+            "no-cache, no-store, must-revalidate",
+            "Content-Type",
+            "application/json; charset=utf-8",
+            "Date",
+            "Sun, 08 Oct 2017 20:52:57 GMT",
+            "ETag",
+            "W/\"3f1-04FKq/UoMsv5O9R8ZhSJjggk2SA\"",
+            "Expires",
+            "0",
+            "Pragma",
+            "no-cache",
+            "Server",
+            "nginx/1.12.1",
+            "Content-Length",
+            "1009",
+            "Connection",
+            "Close"
+        ]
+    }
+]

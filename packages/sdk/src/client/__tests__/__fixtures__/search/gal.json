@@ -1,0 +1,111 @@
+[
+    {
+        "scope": "https://search-staging.findify.io:443",
+        "method": "post",
+        "path": "/v3/search",
+        "body": {
+            "user": {
+                "lang": [
+                    "en-GB"
+                ],
+                "uid": "test1",
+                "sid": "ssid1",
+                "email": "test2@test.com",
+                "ip": "192.168.0.1",
+                "ua": "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36"
+            },
+            "t_client": 1507485117787,
+            "key": "0d2f3aad-8702-46ad-a786-ae9fe2670294",
+            "q": "gal",
+            "filters": [
+                {
+                    "type": "category",
+                    "name": "category1",
+                    "values": [
+                        {
+                            "value": "Katt"
+                        }
+                    ]
+                }
+            ],
+            "sort": [
+                {
+                    "field": "price",
+                    "order": "desc"
+                }
+            ]
+        },
+        "status": 200,
+        "response": {
+            "meta": {
+                "query_type": "or",
+                "q": "gal",
+                "offset": 0,
+                "limit": 24,
+                "total": 0,
+                "filters": [
+                    {
+                        "type": "category",
+                        "name": "category1",
+                        "values": [
+                            {
+                                "value": "Katt"
+                            }
+                        ]
+                    }
+                ],
+                "sort": [
+                    {
+                        "field": "price",
+                        "order": "desc"
+                    }
+                ],
+                "rid": "<stripped>"
+            },
+            "facets": [
+                {
+                    "name": "category",
+                    "type": "category",
+                    "values": [
+                        {
+                            "selected": false,
+                            "count": 2,
+                            "has_children": false,
+                            "value": "Water Pipe",
+                            "name": "category1"
+                        }
+                    ],
+                    "sort_type": "count"
+                }
+            ],
+            "items": [],
+            "banner": {}
+        },
+        "rawHeaders": [
+            "Access-Control-Allow-Headers",
+            "Content-type,Accept,x-key",
+            "Access-Control-Allow-Methods",
+            "GET,POST,OPTIONS",
+            "Access-Control-Allow-Origin",
+            "*",
+            "Cache-Control",
+            "no-cache, no-store, must-revalidate",
+            "Content-Type",
+            "application/json; charset=utf-8",
+            "Date",
+            "Sun, 08 Oct 2017 17:51:58 GMT",
+            "ETag",
+            "W/\"1af-AAsSmEfveY5BHo3YV/0GxnYiAig\"",
+            "Expires",
+            "0",
+            "Pragma",
+            "no-cache",
+            "Server",
+            "nginx/1.12.1",
+            "Content-Length",
+            "431",
+            "Connection",
+            "Close"
+        ]
+    }
+]

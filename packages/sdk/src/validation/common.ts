@@ -10,7 +10,7 @@ export function validatePresence<T>(name: string, value: T | T[]) {
   if (value == null) {
     throw new Error(`"${name}" param is required`);
   }
-  if (Array.isArray(value) && !value.length) {
+  if (Array.isArray(value) && value.length === 0) {
     throw new Error(`"${name}" param can not be empty`);
   }
   if (String(value).trim().length < 1) {
@@ -25,8 +25,8 @@ export function validatePresence<T>(name: string, value: T | T[]) {
  * @param req Common parameters used in list requests.
  */
 export function validateList({ filters, sort }: Request.Params.List) {
-  if (filters) validateFilters(filters);
-  if (sort) validateSortings(sort);
+  if (Boolean(filters)) validateFilters(filters!);
+  if (Boolean(sort)) validateSortings(sort!);
 }
 
 export function validateFilters(filters: Filter[]) {

@@ -1,0 +1,309 @@
+[
+    {
+        "scope": "https://search-staging.findify.io:443",
+        "method": "post",
+        "path": "/v3/recommend/items/newest",
+        "body": {
+            "user": {
+                "lang": [
+                    "en-GB"
+                ],
+                "uid": "test1",
+                "sid": "ssid1",
+                "email": "test2@test.com",
+                "ip": "192.168.0.1",
+                "ua": "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36"
+            },
+            "t_client": 1507485120640,
+            "key": "0d2f3aad-8702-46ad-a786-ae9fe2670294"
+        },
+        "status": 200,
+        "response": {
+            "meta": {
+                "limit": 5,
+                "offset": 0,
+                "user_id": "test1",
+                "total": 1395,
+                "rid": "<stripped>"
+            },
+            "items": [
+                {
+                    "seller": "",
+                    "quantity": 1,
+                    "color": [],
+                    "color_variants": 1,
+                    "image_2_url": "https://cdn.shopify.com/s/files/1/0350/8253/products/SMOKE-CARTEL-QUOT-NIGHTMARE-QUOT-WORKED-SPOON_GHHP16-5_medium.jpg?v=1500670614",
+                    "custom_fields": {
+                        "barcode": [
+                            ""
+                        ],
+                        "height": [
+                            "4.5 Inches"
+                        ]
+                    },
+                    "description": "Pipe with a Dark Side\n\n \nCute and cuddly pipes are not for everyone. The \"Nightmare\" spoon is perfect device for your candle lit dungeon smoke breaks. Forged from black glass, an earthy hue of dichro color, and green horn add-ons. The bottom of the bowl head is flattened to prevent rolling. This is a seriously cool pipe. Load a bowl if you dare. ",
+                    "discount": [],
+                    "availability": true,
+                    "title": "Smoke Cartel \"Nightmare\" Worked Spoon",
+                    "reviews": {
+                        "total_reviews": 0,
+                        "average_score": 0
+                    },
+                    "material": [],
+                    "size": [],
+                    "price": [
+                        60
+                    ],
+                    "stickers": {
+                        "availability": true,
+                        "in-stock": true,
+                        "out-of-stock": false,
+                        "discount": false,
+                        "free-shipping": false
+                    },
+                    "id": "10245746056",
+                    "sku": [
+                        "GHHP16"
+                    ],
+                    "category": [
+                        {
+                            "category2": "",
+                            "category3": "",
+                            "category4": "",
+                            "category1": "Spoon"
+                        }
+                    ],
+                    "brand": "Smoke Cartel",
+                    "hash": "AV11Vmq7CQkVMwqrFH0o",
+                    "compare_at": -1
+                },
+                {
+                    "seller": "",
+                    "quantity": 1,
+                    "color": [],
+                    "color_variants": 1,
+                    "image_2_url": "https://cdn.shopify.com/s/files/1/0350/8253/products/SMOKE-CARTEL-QUOT-GERRY-QUOT-WORKED-SPOON_GHHP15-5_medium.jpg?v=1500671835",
+                    "custom_fields": {
+                        "barcode": [
+                            ""
+                        ],
+                        "height": [
+                            "4.5 Inches"
+                        ]
+                    },
+                    "description": "Keep your eye on the prize\n\n \nThe \"Cyanclops\" spoon is a classic hand pipe with worked details for more personality. The translucent blue body is decorated with light blue add-ons. While the head of this pipe is features an off-center worked eye. The bottom of the head is also flattened so it will roll and spill your \"smokeables.\"  A great pipe for any smoker. ",
+                    "discount": [],
+                    "availability": true,
+                    "title": "Smoke Cartel \"Cyanclops\" Worked Spoon",
+                    "reviews": {
+                        "total_reviews": 0,
+                        "average_score": 0
+                    },
+                    "material": [],
+                    "size": [],
+                    "price": [
+                        65
+                    ],
+                    "stickers": {
+                        "availability": true,
+                        "in-stock": true,
+                        "out-of-stock": false,
+                        "discount": false,
+                        "free-shipping": false
+                    },
+                    "id": "10246079880",
+                    "sku": [
+                        "GHHP15"
+                    ],
+                    "category": [
+                        {
+                            "category2": "",
+                            "category3": "",
+                            "category4": "",
+                            "category1": "Spoon"
+                        }
+                    ],
+                    "brand": "Smoke Cartel",
+                    "hash": "AV11Vmq7CQkVMwqrFH0p",
+                    "compare_at": -1
+                },
+                {
+                    "seller": "",
+                    "quantity": 84,
+                    "color": [],
+                    "color_variants": 1,
+                    "image_2_url": "https://cdn.shopify.com/s/files/1/0350/8253/products/SMOKE-CARTEL-BACKPACK_SC-BACKPACK-BK-0_medium.jpg?v=1500673539",
+                    "custom_fields": {
+                        "barcode": [
+                            ""
+                        ],
+                        "height": [
+                            "19 Inches"
+                        ]
+                    },
+                    "description": "A smell-proof tote for every toker. \n\n \nTired of smelling like the dankest person in the room? Keep your odors locked in with the official Smoke Cartel Backpack. These quality backpacks carry books, pipes, wipes, water bottles, munchies, or anything else you might need to lug around town. Lined with odor-resistant materials you will never have to worry about your backpack smelling like your stash when you go from a camping trip to grandma's house.\n\n \nGood to Know\n\n \nHeight: 19\"  Width: 11\"  Depth:5\"\n\n \nQuilted Padded Backing\n\n \nAdjustable Straps\n\n \nWater Resistant",
+                    "discount": [],
+                    "availability": true,
+                    "title": "Smoke Cartel Odor-Resistiant Backpack",
+                    "reviews": {
+                        "total_reviews": 0,
+                        "average_score": 0
+                    },
+                    "material": [],
+                    "size": [],
+                    "price": [
+                        60
+                    ],
+                    "stickers": {
+                        "availability": true,
+                        "in-stock": true,
+                        "out-of-stock": false,
+                        "discount": false,
+                        "free-shipping": false
+                    },
+                    "id": "10246101192",
+                    "sku": [
+                        "SC-BACKPACK-BK"
+                    ],
+                    "category": [
+                        {
+                            "category2": "",
+                            "category3": "",
+                            "category4": "",
+                            "category1": "Apparel"
+                        }
+                    ],
+                    "brand": "Smoke Cartel",
+                    "hash": "AV11Vmq7CQkVMwqrFH0q",
+                    "compare_at": -1
+                },
+                {
+                    "seller": "",
+                    "quantity": 87,
+                    "color": [],
+                    "color_variants": 1,
+                    "image_2_url": "https://cdn.shopify.com/s/files/1/0350/8253/products/SMOKE-CARTEL-ODOR-RESISTANT-DUFFLE-BAG_SC-DUFFLE-1_medium.jpg?v=1500673490",
+                    "custom_fields": {
+                        "barcode": [
+                            ""
+                        ],
+                        "height": [
+                            "24 Inches"
+                        ]
+                    },
+                    "description": "Carry all your 'stuffel' in the duffel\n\n \nWhether you're at the gym or on the grind--stay fresh with the official Smoke Cartel Duffel Bag. A large capacity carry-all with odor resistant lining and roomy interior. Main compartment zips along the center and covered by a velcro closure.  The perfect bag for long weekends and good times.\n\n \nGood to Know\n\n \nHeight: 15\" Length: 24\"  Width: 13\"\n\n \nSturdy Straps\n\n \nEmbroidered Smoke Cartel Logo",
+                    "discount": [],
+                    "availability": true,
+                    "title": "Smoke Cartel Odor-Resistant Duffle Bag",
+                    "reviews": {
+                        "total_reviews": 0,
+                        "average_score": 0
+                    },
+                    "material": [],
+                    "size": [],
+                    "price": [
+                        120
+                    ],
+                    "stickers": {
+                        "availability": true,
+                        "in-stock": true,
+                        "out-of-stock": false,
+                        "discount": false,
+                        "free-shipping": false
+                    },
+                    "id": "10246155528",
+                    "sku": [
+                        "SC-DUFFLE"
+                    ],
+                    "category": [
+                        {
+                            "category2": "",
+                            "category3": "",
+                            "category4": "",
+                            "category1": "Apparel"
+                        }
+                    ],
+                    "brand": "Smoke Cartel",
+                    "hash": "AV11Vmq7CQkVMwqrFH0r",
+                    "compare_at": -1
+                },
+                {
+                    "seller": "",
+                    "quantity": 5,
+                    "color": [],
+                    "color_variants": 1,
+                    "image_2_url": "https://cdn.shopify.com/s/files/1/0350/8253/products/GRAV-LABS-WIG-WAG-SPOON-IN-ASSORTED-COLOR_GRAV-SP-27-3_medium.jpg?v=1500669963",
+                    "custom_fields": {
+                        "barcode": [
+                            ""
+                        ],
+                        "height": [
+                            "4 Inches"
+                        ]
+                    },
+                    "description": "Colorful spoon, quality materials. \n\n \nThese spoons are made by Grav Labs, known for their craftsmanship and quality smoking devices. The Wig Wag series of spoons are a colorful collection designed so you can have a great smoking experience. You don't even have to worry about inhaling ash, because Wig Wags feature inward conical mouthpiece.  Deep flower bowl for longer sessions and flattened bottom to prevent rolling. All covered head to tail in colorful reversal work. Grab one of these spoons guaranteed to bring a smile to your face. Colors will vary.",
+                    "discount": [],
+                    "availability": true,
+                    "title": "Grav Labs Wig Wag Spoon in Assorted Color",
+                    "reviews": {
+                        "total_reviews": 0,
+                        "average_score": 0
+                    },
+                    "material": [],
+                    "size": [],
+                    "price": [
+                        36
+                    ],
+                    "stickers": {
+                        "availability": true,
+                        "in-stock": true,
+                        "out-of-stock": false,
+                        "discount": false,
+                        "free-shipping": false
+                    },
+                    "id": "10245644168",
+                    "sku": [
+                        "GRAV-SP.27"
+                    ],
+                    "category": [
+                        {
+                            "category2": "",
+                            "category3": "",
+                            "category4": "",
+                            "category1": "Spoon"
+                        }
+                    ],
+                    "brand": "Grav Labs",
+                    "hash": "AV11Vmq7CQkVMwqrFH0n",
+                    "compare_at": -1
+                }
+            ]
+        },
+        "rawHeaders": [
+            "Access-Control-Allow-Headers",
+            "Content-type,Accept,x-key",
+            "Access-Control-Allow-Methods",
+            "GET,POST,OPTIONS",
+            "Access-Control-Allow-Origin",
+            "*",
+            "Cache-Control",
+            "no-cache, no-store, must-revalidate",
+            "Content-Type",
+            "application/json; charset=utf-8",
+            "Date",
+            "Sun, 08 Oct 2017 17:52:01 GMT",
+            "ETag",
+            "W/\"1813-DPp9Mm2PvwunnA0/fiNqamBLmFU\"",
+            "Expires",
+            "0",
+            "Pragma",
+            "no-cache",
+            "Server",
+            "nginx/1.12.1",
+            "Content-Length",
+            "6163",
+            "Connection",
+            "Close"
+        ]
+    }
+]

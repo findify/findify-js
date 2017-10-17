@@ -45,7 +45,7 @@
     "@types/expect": "^1.20.2",
     "@types/js-cookie": "^2.1.0",
     "@types/lodash": "^4.14.76",
-    "@types/node": "^8.0.28",
+    "@types/node": "^8.0.34",
     "@types/qs": "^6.5.0",
     "canvas": "^1.6.7",
     "compression-webpack-plugin": "^1.0.1",
