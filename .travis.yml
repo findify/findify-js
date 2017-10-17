@@ -3,10 +3,6 @@ dist: trusty
 sudo: required
 node_js:
 - 6
-env:
-- PATH=$HOME/purescript:$PATH
-git:
-  depth: 1
 notifications:
   email: false
   slack:
