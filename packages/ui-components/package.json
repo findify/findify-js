@@ -113,7 +113,7 @@
   },
   "repository": "https://github.com/findify/findify-js/tree/master/packages/ui-components",
   "scripts": {
-    "build": "run-s clean build:umd build:umd:min wrap-css",
+    "build": "run-s build:umd build:umd:min wrap-css",
     "build:watch": "npm run build:umd -- --watch",
     "build:storybook": "build-storybook  -c .storybook -o docs",
     "build:umd": "webpack --env.production --env.externals --output-path='./dist' --output-filename='findify-ui-components.js'",
