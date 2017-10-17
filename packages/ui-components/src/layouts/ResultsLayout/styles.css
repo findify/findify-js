@@ -59,8 +59,10 @@
 
 
 .facets{
+  min-width: 230px;
   padding-right: 30px;
   border-right: 1px solid #eee;
+  box-sizing: border-box;
 }
 
 .pagination{
