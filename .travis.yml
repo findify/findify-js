@@ -3,8 +3,6 @@ dist: trusty
 sudo: required
 node_js:
 - 6
-git:
-  depth: 3
 notifications:
   email: false
   slack:
