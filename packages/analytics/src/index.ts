@@ -85,7 +85,7 @@ const initializeCreator = (root, sendEvent, { platform, events }) => (
   }
 
   root.addEventListener('click', e => {
-    if (!e.target.dataset.findifyEvent) return;
+    if (!e.target.dataset || !e.target.dataset.findifyEvent) return;
     const { event, ...rest } = getEventData(e.target);
     sendEvent(event, rest, true);
   });
