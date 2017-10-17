@@ -1,5 +1,20 @@
-<a name="2.1.2"></a>
-## 2.1.2 (2017-10-17)
+<a name="2.1.3"></a>
+## 2.1.3 (2017-10-17)
+
+
+### Bug Fixes
+
+* **mjs:** remove placeholder from size-me in checkboxes ([ed0180f](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/ed0180f))
+
+
+
+<a name="2.1.3"></a>
+## 2.1.3 (2017-10-17)
+
+
+### Bug Fixes
+
+* **ui-components:** trigger checkbox update on expand button click ([04213ab](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/04213ab))
 
 
 
