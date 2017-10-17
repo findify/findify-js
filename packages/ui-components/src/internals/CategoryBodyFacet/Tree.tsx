@@ -15,7 +15,6 @@ import { NestedTree } from './NestedTree';
 import { SingleItem } from './SingleItem';
 
 export const Tree = compose(
-  pure,
   withProps(({ cursor, track, index, value }) => ({
     track: index === void 0 ? track : track.push(index),
   })),
@@ -26,13 +25,13 @@ export const Tree = compose(
         ...rest,
         ...children[cursor.first()],
         cursor: cursor.shift(),
-      }),
-    ),
+      })
+    )
   ),
   branch(
     ({ hasSelectedSiblings, selected }: any) =>
       hasSelectedSiblings && !selected,
-    renderNothing,
+    renderNothing
   ),
   withPropsOnChange(['children'], ({ children }) => ({
     hasSelectedSiblings: !!(
@@ -46,8 +45,8 @@ export const Tree = compose(
   branch(
     ({ has_children, cursor, track }: any) => has_children,
     renderComponent(props =>
-      createEagerElement(NestedTree, { ...props, Nested: Tree }),
+      createEagerElement(NestedTree, { ...props, Nested: Tree })
     ),
-    renderComponent(SingleItem),
-  ),
+    renderComponent(SingleItem)
+  )
 )(renderNothing);

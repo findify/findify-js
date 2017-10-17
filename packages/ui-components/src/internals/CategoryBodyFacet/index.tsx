@@ -67,8 +67,7 @@ export const CategoryBodyFacet = compose(
           .toArray()
       );
     },
-  }),
-  sizeMe({ refreshRate: 50, refreshMode: 'debounce' })
+  })
 )(({ size, ...props }: any) => (
   <div style={{ width: size.width }}>
     <Tree className={styles.wrap} {...props} isRoot selected has_children />
