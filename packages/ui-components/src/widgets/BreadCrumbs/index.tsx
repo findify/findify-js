@@ -31,12 +31,12 @@ const getTitle = ({
   if (!q && !filters.length) return i18n.noQuery;
   if (!!corrected_q) {
     return `${tpl(total)} <strong>"${escape(
-      corrected_q,
+      corrected_q
     )}"</strong>. ${i18n.zeroResultsFor} ${q}.`;
   }
   if (query_type === 'or') {
     return `${i18n.zeroResultsFor} <strong>"${escape(
-      q,
+      q
     )}"</strong>. ${i18n.partialMatch}`;
   }
   return tpl(total) + (q ? ` <strong>"${escape(q)}"</strong>:` : ':');
@@ -56,7 +56,7 @@ const filtersMapping = {
     return (
       <span
         className={cx(...classNames)}
-        style={{ background: !isMulticolor && mapping[value] }}
+        style={{ background: !isMulticolor && mapping[value.toLowerCase()] }}
       />
     );
   },
@@ -72,7 +72,7 @@ const Filter: any = compose(
       if (e) e.preventDefault();
       return onChange(rest);
     },
-  }),
+  })
 )(({ config, children, onRemove }: any) => (
   <div className={styles.filter}>
     <span className={styles.filterTitle}>{children}</span>
@@ -94,7 +94,7 @@ export const HOC = compose(
   })),
   withPropsOnChange(['total', 'q', 'corrected_q'], (props: any) => ({
     title: getTitle(props),
-  })),
+  }))
 );
 
 export const Component = ({
@@ -125,7 +125,7 @@ export const Component = ({
             currency: config.currency,
           },
         });
-      }),
+      })
     )}
   </div>
 );
