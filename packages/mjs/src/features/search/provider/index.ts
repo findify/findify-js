@@ -23,7 +23,11 @@ function resetMemoIfNeeded(memo, ctx) {
   if (!view.infinite) return;
 
   const s1 = pick(response.meta, ['filters', 'sort', 'q']);
-  const s2 = pick({ filters: [], ...location.state }, ['filters', 'sort', 'q']);
+  const s2 = pick({ filters: [], sort: [], ...location.state }, [
+    'filters',
+    'sort',
+    'q',
+  ]);
 
   if (!isEqual(s1, s2)) {
     memo.reset();
