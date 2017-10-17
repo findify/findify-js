@@ -1,5 +1,20 @@
-<a name="5.2.3"></a>
-## 5.2.3 (2017-10-17)
+<a name="5.2.4"></a>
+## 5.2.4 (2017-10-17)
+
+
+### Bug Fixes
+
+* **mjs:** remove placeholder from size-me in checkboxes ([ed0180f](https://github.com/findify/findify-mjs/commit/ed0180f))
+
+
+
+<a name="5.2.4"></a>
+## 5.2.4 (2017-10-17)
+
+
+### Bug Fixes
+
+* **mjs:** add hack for infinite scroll on collections page ([6580828](https://github.com/findify/findify-mjs/commit/6580828))
 
 
 
