@@ -6,7 +6,7 @@ import { RESPONSE_SUCCESS } from '../../helpers/constants';
 /**
  * @param type Recommendation type
  * @param slot Recommendation slot
- * @param product id || ids from integration tags 
+ * @param product id || ids from integration tags
  * @param multipleIds should we show multiple ids or single if we on product page
  */
 const getPayload = (type, slot, { item_id, item_ids }, multipleIds) => {

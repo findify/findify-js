@@ -7,7 +7,7 @@ const nodeToArray = node => Array.prototype.slice.call(node);
 
 const normalizeKeys = (obj = {}): any =>
   mapKeys(obj, (_, key) =>
-    decamelize(key, { separator: '_' }).replace('findify_', ''),
+    decamelize(key, { separator: '_' }).replace('findify_', '')
   );
 
 const normalizeClass = memoize(
@@ -16,7 +16,7 @@ const normalizeClass = memoize(
       product_id: 'item_id',
       price_currency_code: 'currency',
       order_number: 'order_id',
-    }[name] || name),
+    }[name] || name)
 );
 
 const getPropsFromChildren = nodeList =>
@@ -27,12 +27,12 @@ const getPropsFromChildren = nodeList =>
       ...(!!element.className && {
         [normalizeClass(element.className)]: (!element.children.length &&
           element.innerText) || [
-            ...(acc[normalizeClass(element.className)] || []),
-            getPropsFromChildren(element.children),
-          ],
+          ...(acc[normalizeClass(element.className)] || []),
+          getPropsFromChildren(element.children),
+        ],
       }),
     }),
-    {},
+    {}
   );
 
 export const getEventData = node => {
@@ -60,9 +60,9 @@ export const getDeprecatedEvents = root => {
   const purchaseNode = root.querySelector('.findify_purchase_order');
 
   if (!!pageViewNode) {
-    events['page-view'] = {
-      item_id: pageViewNode.innerHTML,
-    };
+    const pageViewContent = { item_id: pageViewNode.innerHTML };
+    events['page-view'] = pageViewContent;
+    events['view-page'] = pageViewContent;
   }
 
   if (!!purchaseNode) {
@@ -75,7 +75,7 @@ export const getDeprecatedEvents = root => {
         line_item.length &&
         line_item.reduce(
           (amount, { unit_price }) => amount + parseFloat(unit_price),
-          0,
+          0
         ),
     };
   }
