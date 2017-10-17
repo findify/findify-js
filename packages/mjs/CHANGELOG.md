@@ -1,5 +1,15 @@
-<a name="5.2.2"></a>
-## 5.2.2 (2017-10-17)
+<a name="5.2.3"></a>
+## 5.2.3 (2017-10-17)
+
+
+
+<a name="5.2.3"></a>
+## 5.2.3 (2017-10-17)
+
+
+### Bug Fixes
+
+* **mjs:** fix lazyload states compare ([9295548](https://github.com/findify/findify-mjs/commit/9295548))
 
 
 
