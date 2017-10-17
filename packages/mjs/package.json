@@ -1,7 +1,7 @@
 {
   "name": "@findify/mjs",
   "description": "Findify widgets",
-  "version": "5.2.6",
+  "version": "5.2.7",
   "author": "Findify <yourfriends@findify.io>",
   "bugs": {
     "url": "https://github.com/findify/findify-mjs/issues"
