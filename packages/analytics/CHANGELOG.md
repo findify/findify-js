@@ -1,5 +1,15 @@
-<a name="3.0.2"></a>
-## 3.0.2 (2017-10-16)
+<a name="3.0.3"></a>
+## 3.0.3 (2017-10-17)
+
+
+
+<a name="3.0.3"></a>
+## 3.0.3 (2017-10-17)
+
+
+### Bug Fixes
+
+* **analytics:** do not track events without data-attributes ([24f4830](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/24f4830))
 
 
 

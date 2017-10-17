@@ -48,7 +48,7 @@ export const ColorBodyFacet = compose(
   sizeMe({ refreshRate: 50, refreshMode: 'debounce' }),
   withPropsOnChange(['values'], ({ values, config: { mapping } }) => ({
     values: values.filter(
-      ({ value }) => value === 'Multicolor' || !!mapping[value]
+      ({ value }) => value === 'Multicolor' || !!mapping[value.toLowerCase()]
     ),
   }))
 )(({ values, size, ...rest }: any) => (
