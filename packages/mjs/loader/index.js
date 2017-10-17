@@ -87,5 +87,6 @@
     config.api.user = analyticsIsNew ? client.user : client.getUser();
 
     win.findifyMJS.init(config, client);
+    win.findifyAnalyticsInstance = client;
   });
 })(window, document);
