@@ -1,5 +1,30 @@
-<a name="5.2.4"></a>
-## 5.2.4 (2017-10-17)
+<a name="5.2.7"></a>
+## 5.2.7 (2017-10-17)
+
+
+
+<a name="5.2.7"></a>
+## 5.2.7 (2017-10-17)
+
+
+### Bug Fixes
+
+* **mjs:** move facets size detector to top GenericFacet ([9a150eb](https://github.com/findify/findify-mjs/commit/9a150eb))
+
+
+
+<a name="5.2.6"></a>
+## 5.2.6 (2017-10-17)
+
+
+### Bug Fixes
+
+* **analytics:** add a fallback for old analytics view page event ([89ae270](https://github.com/findify/findify-mjs/commit/89ae270))
+
+
+
+<a name="5.2.5"></a>
+## 5.2.5 (2017-10-17)
 
 
 ### Bug Fixes
