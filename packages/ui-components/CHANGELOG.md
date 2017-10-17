@@ -1,5 +1,25 @@
-<a name="2.1.0"></a>
-# 2.1.0 (2017-10-16)
+<a name="2.1.2"></a>
+## 2.1.2 (2017-10-17)
+
+
+
+<a name="2.1.2"></a>
+## 2.1.2 (2017-10-17)
+
+
+### Bug Fixes
+
+* **mjs:** lowercase colors in facet and breadcrumbs ([8c11e5d](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/8c11e5d))
+
+
+
+<a name="2.1.1"></a>
+## 2.1.1 (2017-10-17)
+
+
+### Bug Fixes
+
+* **mjs:** set minimal width for facets ([1f83623](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/1f83623))
 
 
 
