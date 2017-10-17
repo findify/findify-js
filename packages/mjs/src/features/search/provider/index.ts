@@ -18,15 +18,21 @@ import InstanceMemo from './InstanceMemo';
 
 import jump from 'jump.js';
 
+let numOfResetChecks = 0;
 function resetMemoIfNeeded(memo, ctx) {
-  const { response, view, location } = ctx;
+  const { response, slot, view, location } = ctx;
   if (!view.infinite) return;
 
+  const defaults = { filters: [], sort: [], q: '' };
   const s1 = pick(response.meta, ['filters', 'sort', 'q']);
-  const s2 = pick({ filters: [], ...location.state }, ['filters', 'sort', 'q']);
+  const s2 = pick({ ...defaults, ...location.state }, ['filters', 'sort', 'q']);
 
-  if (!isEqual(s1, s2)) {
+  const shouldReset = !slot || (!!slot && numOfResetChecks > 1);
+  if (shouldReset && !isEqual(s1, s2)) {
     memo.reset();
+  }
+  if (!!slot) {
+    numOfResetChecks++;
   }
 }
 
@@ -77,7 +83,7 @@ export default ({
       normalizeMeta(slot ? { slot } : location.state)
     );
 
-    resetMemoIfNeeded(memo, { response, view, location });
+    resetMemoIfNeeded(memo, { slot, response, view, location });
 
     if (response.redirect) {
       await analytics.sendEvent('redirect', {
