@@ -20,12 +20,14 @@ const styles = require('./styles.css');
 
 export const CheckboxBodyFacet: any = compose(
   setDisplayName('CheckboxBodyFacet'),
-  pure,
+
   defaultProps({
     showExpander: false,
     disableSlice: false,
   }),
+
   withState('search', 'setSearch', ''),
+
   withState(
     'expanded',
     'setExpanded',
@@ -73,8 +75,7 @@ export const CheckboxBodyFacet: any = compose(
       return setExpanded(!expanded);
     },
     onSearchChange: ({ setSearch }) => query => setSearch(query),
-  }),
-  sizeMe({ refreshRate: 50, noPlaceholder: true })
+  })
 )(
   ({
     selectedItems,

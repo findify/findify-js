@@ -13,6 +13,7 @@ import {
 import * as cx from 'classnames';
 import withHooks from 'helpers/withHooks';
 import Icon from 'internals/Icon';
+import sizeMe from 'react-sizeme';
 
 import { Raw } from './Raw';
 
@@ -74,6 +75,7 @@ export const HOC = (Content, WrappedContent) =>
         onChange({ type, name, changes });
       },
     }),
+    sizeMe({ refreshRate: 50 }),
     withState('state', 'setState', {}),
     withHooks('facet'),
     branch(
