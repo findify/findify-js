@@ -67,15 +67,15 @@ const getShopifyUrl = (
 };
 
 const ImageComponent = compose<OwnProps, Props>(
-  sizeMe({ refreshRate: 50 }),
+  // sizeMe({ refreshRate: 50 }),
   withPropsOnChange(['src'], ({ src, size }) => {
-    if (src.includes('.shopify')) {
-      return {
-        src: void 0,
-        original: getShopifyUrl(src, false, size),
-        thumbnail: getShopifyUrl(src, true, size),
-      };
-    }
+    // if (src.includes('.shopify')) {
+    //   return {
+    //     src: void 0,
+    //     original: getShopifyUrl(src, false, size),
+    //     thumbnail: getShopifyUrl(src, true, size),
+    //   };
+    // }
     return { src: void 0, original: src };
   }),
   withStateHandlers(
