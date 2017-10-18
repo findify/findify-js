@@ -13,6 +13,7 @@ import { format as currencyFormat } from 'currency-formatter';
 import * as cx from 'classnames';
 import { isEmpty } from 'lodash';
 
+import sizeMe from 'react-sizeme';
 import Truncate from 'internals/Truncate';
 import { Rating } from 'widgets/Rating';
 import Image from 'internals/Image';
@@ -112,6 +113,7 @@ export const HOC = compose(
       }
     },
   }),
+  sizeMe({ refreshRate: 100 }),
   withHooks('product'), // Deprecated hook
   withHooks('item')
 );
@@ -131,6 +133,7 @@ export const Component = ({
   onClick,
   config,
   stickers,
+  size,
   html = {},
 }: any) => (
   <a
@@ -147,6 +150,7 @@ export const Component = ({
         <div dangerouslySetInnerHTML={{ __html: html.image }} />
       )) || (
         <Image
+          width={size.width}
           className={styles.image}
           src={image_url || thumbnail_url}
           alt={title}

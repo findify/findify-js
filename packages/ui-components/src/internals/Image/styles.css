@@ -1,12 +1,15 @@
-.image{
-  width: 100%;
-  transform: filter .2s ease-in;
+.root{
+  will-change: filter, opacity, height;
+  transform: filter .3s linear, opacity .3s linear, height .1s linear;
 }
 
 .thumbnail{
+  height: 150px;
+  opacity: .5;
   filter: blur(10px);
 }
 
 .original{
+  opacity: 1;
   filter: blur(0);
 }

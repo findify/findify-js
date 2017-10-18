@@ -14,6 +14,19 @@ import { defer } from 'lodash';
 
 const styles = require('./styles.css');
 
+// const isHDPI = (() =>
+//   ((window.matchMedia && (window.matchMedia('only screen and (min-resolution: 124dpi), only screen and (min-resolution: 1.3dppx), only screen and (min-resolution: 48.8dpcm)').matches || window.matchMedia('only screen and (-webkit-min-device-pixel-ratio: 1.3), only screen and (-o-min-device-pixel-ratio: 2.6/2), only screen and (min--moz-device-pixel-ratio: 1.3), only screen and (min-device-pixel-ratio: 1.3)').matches)) || (window.devicePixelRatio && window.devicePixelRatio > 1.3))
+// )();
+
+function round(value, exp) {
+  value = +value;
+  exp = +exp;
+  value = value.toString().split('e');
+  value = Math.ceil(+(value[0] + 'e' + (value[1] ? +value[1] - exp : -exp)));
+  value = value.toString().split('e');
+  return +(value[0] + 'e' + (value[1] ? +value[1] + exp : exp));
+}
+
 export interface OwnProps {
   src: string;
   alt?: string;
@@ -29,7 +42,7 @@ export interface OwnProps {
 */
 export interface State {
   src: string;
-  stage: bumber;
+  stage: number;
   setSrc: (isMounted: boolean) => void;
   setThumbnail: (isLoading: boolean) => void;
 }
@@ -50,7 +63,7 @@ const getShopifyUrl = (
   width?: number,
   height?: number
 ) => {
-  const size = isThumb ? '10x' : !!width ? `${width}x` : 'medium';
+  const size = isThumb ? '19x' : !!width ? `${round(width, 1)}x` : 'medium';
   return src.replace(/_(medium|large)./g, `_${size}.`);
 };
 
@@ -88,8 +101,8 @@ const ImageComponent = compose<OwnProps, Props>(
     onClick,
     src,
     className: cx(
+      styles.root,
       className,
-      styles.image,
       stage === 0 && styles.loading,
       stage === 1 && styles.thumbnail,
       stage === 2 && styles.original
