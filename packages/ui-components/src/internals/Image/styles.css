@@ -1,8 +1,12 @@
-.loading{
-  opacity: .1;
+.image{
+  width: 100%;
+  transform: filter .2s ease-in;
 }
 
-.loaded{
-  opacity: 1;
-  transition: opacity .2s;
+.thumbnail{
+  filter: blur(10px);
+}
+
+.original{
+  filter: blur(0);
 }
