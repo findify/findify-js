@@ -1,5 +1,25 @@
-<a name="2.1.5"></a>
-## 2.1.5 (2017-10-17)
+<a name="2.1.7"></a>
+## 2.1.7 (2017-10-18)
+
+
+
+<a name="2.1.7"></a>
+## 2.1.7 (2017-10-18)
+
+
+### Bug Fixes
+
+* **mjs:** set max width to facets list | remove doubling class names ([9acfb73](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/9acfb73))
+
+
+
+<a name="2.1.6"></a>
+## 2.1.6 (2017-10-18)
+
+
+### Bug Fixes
+
+* **mjs:** set size of facet to generic wrapper ([d42b39b](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/d42b39b))
 
 
 
