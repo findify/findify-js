@@ -1,13 +1,5 @@
 import { createSearch, createCollection } from '@findify/helpers';
-import {
-  pick,
-  defer,
-  isArray,
-  isEqual,
-  mapValues,
-  isEmpty,
-  filter,
-} from 'lodash';
+import { defer, isArray, isEqual, mapValues, isEmpty, filter } from 'lodash';
 import { RESPONSE_SUCCESS, RESPONSE_FAILURE, REQUEST } from 'helpers/constants';
 import {
   createMetaNormalizer,
@@ -17,27 +9,6 @@ import {
 import InstanceMemo from './InstanceMemo';
 
 import jump from 'jump.js';
-
-let numOfResetChecks = 0;
-function resetMemoIfNeeded(memo, ctx) {
-  const { response, slot, view, location } = ctx;
-  if (!view.infinite) return;
-
-  const defaults = { filters: [], sort: [], q: '' };
-  const s1 = pick(response.meta, ['filters', 'sort', 'q']);
-  const s2 = pick({ ...defaults, ...location.state }, ['filters', 'sort', 'q']);
-  const { filters, sort } = response.meta;
-
-  const shouldReset =
-    !slot ||
-    (!!slot && (numOfResetChecks > 1 || filters.length || sort.length));
-  if (shouldReset && !isEqual(s1, s2)) {
-    memo.reset();
-  }
-  if (!!slot) {
-    numOfResetChecks++;
-  }
-}
 
 export default ({
   analytics,
@@ -75,6 +46,9 @@ export default ({
       if (!view.infinite && !disableScroll) {
         return jump(node.instance, { offset: scrollOffset });
       }
+      if (view.infinite) {
+        return memo.reset();
+      }
     }
 
     if (name !== RESPONSE_SUCCESS) return;
@@ -85,8 +59,6 @@ export default ({
       request,
       normalizeMeta(slot ? { slot } : location.state)
     );
-
-    resetMemoIfNeeded(memo, { slot, response, view, location });
 
     if (response.redirect) {
       await analytics.sendEvent('redirect', {
@@ -149,7 +121,7 @@ export default ({
       const req = instance.get('request');
       const { meta, items } = instance.get('response');
       if (meta.total < meta.offset + meta.limit) return;
-      memo.memorize(1);
+      memo.set(items, 1);
       const offset = memo.items[memo.items.length - 1].position + 1;
 
       return request({ ...req, offset });
@@ -159,7 +131,7 @@ export default ({
       const req = instance.get('request');
       const res = instance.get('response');
       const { meta, items } = instance.get('response');
-      memo.memorize(-1);
+      memo.set(items, -1);
       const offset = memo.items[0].position - meta.limit;
       return request({ ...req, offset });
     },

@@ -1,15 +1,13 @@
-const unique = (items, cache) =>
-  items.filter(i => !cache.find(c => c.hash === i.hash));
-
 class InstanceMemo {
   items: any[] = [];
-  memorized = false;
+  memorize = false;
   instance = void 0;
   direction: number = 0;
 
-  memorize(dir = 0) {
+  set(items, dir = 0) {
     this.direction = dir;
-    this.memorized = true;
+    this.memorize = true;
+    this.items = !!~dir ? [...this.items, ...items] : [...items, ...this.items];
   }
 
   get() {
@@ -17,7 +15,8 @@ class InstanceMemo {
   }
 
   reset() {
-    this.items = [];
+    if (!this.memorize) this.items = [];
+    this.memorize = false;
   }
 
   merge(response) {
@@ -36,8 +35,6 @@ class InstanceMemo {
     } else {
       res.items = [...this.items, ...items];
     }
-
-    this.items = res.items;
 
     return res;
   }
