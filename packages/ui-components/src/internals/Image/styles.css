@@ -1,8 +1,15 @@
-.loading{
-  opacity: .1;
+.root{
+  will-change: filter, opacity, height;
+  transform: filter .3s linear, opacity .3s linear, height .1s linear;
 }
 
-.loaded{
+.thumbnail{
+  height: 150px;
+  opacity: .5;
+  filter: blur(10px);
+}
+
+.original{
   opacity: 1;
-  transition: opacity .2s;
+  filter: blur(0);
 }
