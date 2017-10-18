@@ -68,8 +68,8 @@ export const CategoryBodyFacet = compose(
       );
     },
   })
-)(({ size, ...props }: any) => (
-  <div style={{ width: size.width }}>
+)((props: any) => (
+  <div>
     <Tree className={styles.wrap} {...props} isRoot selected has_children />
     {!props.isMobile &&
       props.childrenCount > props.config.maxItemsCount && (

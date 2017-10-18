@@ -11,7 +11,6 @@ import {
 } from 'recompose';
 import * as cx from 'classnames';
 
-import sizeMe from 'react-sizeme';
 import { ExpandButton } from 'internals/ExpandButton';
 import { SearchInput } from 'internals/SearchInput';
 import { ListRenderer } from './ListRenderer';
@@ -92,10 +91,9 @@ export const CheckboxBodyFacet: any = compose(
     hasNotSelected,
     showStaticContent,
     showMoreButton,
-    size,
     ...rest,
   }: any) => (
-    <div className={styles.wrap} style={{ width: size.width }}>
+    <div className={styles.wrap}>
       {showSearch && (
         <SearchInput
           value={search}

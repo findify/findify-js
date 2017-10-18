@@ -47,7 +47,7 @@ export const Wrapper = Content =>
       toggleOpen: ({ isOpen, toggleFacet }: Props) => () =>
         toggleFacet(!isOpen),
     })
-  )(({ isOpen, toggleOpen, label, ...rest }: any) => (
+  )(({ isOpen, toggleOpen, label, size, ...rest }: any) => (
     <div
       className={cx(styles.wrap, customStyles.facet, !isOpen && styles.hidden)}
     >
@@ -59,7 +59,9 @@ export const Wrapper = Content =>
           onClick={toggleOpen}
         />
       </div>
-      <div className={styles.content}>{isOpen && <Content {...rest} />}</div>
+      <div className={styles.content} style={{ width: size.width }}>
+        {isOpen && <Content {...rest} />}
+      </div>
     </div>
   ));
 

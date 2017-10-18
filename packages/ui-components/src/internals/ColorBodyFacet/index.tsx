@@ -50,8 +50,8 @@ export const ColorBodyFacet = compose(
       ({ value }) => value === 'Multicolor' || !!mapping[value.toLowerCase()]
     ),
   }))
-)(({ values, size, ...rest }: any) => (
-  <div className={styles.root} style={{ width: size.width }}>
+)(({ values, ...rest }: any) => (
+  <div className={styles.root}>
     {values.map(item =>
       createEagerElement(Item, {
         ...rest,
