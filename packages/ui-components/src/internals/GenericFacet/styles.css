@@ -2,7 +2,9 @@
   margin-bottom: 15px;
 }
 
-.content {}
+.content {
+  box-sizing: border-box;
+}
 
 .title {
   color: #404040;
