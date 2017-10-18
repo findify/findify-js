@@ -26,8 +26,11 @@ function resetMemoIfNeeded(memo, ctx) {
   const defaults = { filters: [], sort: [], q: '' };
   const s1 = pick(response.meta, ['filters', 'sort', 'q']);
   const s2 = pick({ ...defaults, ...location.state }, ['filters', 'sort', 'q']);
+  const { filters, sort } = response.meta;
 
-  const shouldReset = !slot || (!!slot && numOfResetChecks > 1);
+  const shouldReset =
+    !slot ||
+    (!!slot && (numOfResetChecks > 1 || filters.length || sort.length));
   if (shouldReset && !isEqual(s1, s2)) {
     memo.reset();
   }
