@@ -34,7 +34,7 @@ const prepareConfig = config => {
   return {
     ...config,
     frameDisabled,
-    css: [css, ...config.css],
+    css: [...css, ...config.css],
   };
 };
 
