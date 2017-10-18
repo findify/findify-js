@@ -1,15 +1,15 @@
 import { pick, memoize, isArray } from 'lodash';
 
-export const createMetaNormalizer = meta => state => ({
-  limit: 24,
-  offset: 0,
+export const createMetaNormalizer = ({ limit, offset, ...meta }) => state => ({
+  limit: (limit && Number(limit)) || 24,
+  offset: (offset && Number(offset)) || 0,
   filters: [],
   ...meta,
   ...state,
 });
 
 export const pickRequestFromMeta = memoize(props =>
-  pick(props, ['filters', 'limit', 'offset']),
+  pick(props, ['filters', 'limit', 'offset'])
 );
 
 export const createFacetsUpdater = instance => ({
