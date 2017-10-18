@@ -1,5 +1,86 @@
-<a name="5.2.4"></a>
-## 5.2.4 (2017-10-17)
+<a name="5.2.13"></a>
+## 5.2.13 (2017-10-18)
+
+
+
+<a name="5.2.13"></a>
+## 5.2.13 (2017-10-18)
+
+
+
+<a name="5.2.12"></a>
+## 5.2.12 (2017-10-18)
+
+
+### Bug Fixes
+
+* **mjs:** revert infinite scroll fixes ([2dfe13a](https://github.com/findify/findify-mjs/commit/2dfe13a))
+* **mjs:** set max width to facets list | remove doubling class names ([9acfb73](https://github.com/findify/findify-mjs/commit/9acfb73))
+
+
+
+<a name="5.2.11"></a>
+## 5.2.11 (2017-10-18)
+
+
+### Bug Fixes
+
+* **mjs:** fix anlytics events disabling | Fix custom css injection ([dd640ec](https://github.com/findify/findify-mjs/commit/dd640ec))
+
+
+
+<a name="5.2.10"></a>
+## 5.2.10 (2017-10-18)
+
+
+### Bug Fixes
+
+* **mjs:** send correnct data to shopify ([10e4a10](https://github.com/findify/findify-mjs/commit/10e4a10))
+
+
+
+<a name="5.2.9"></a>
+## 5.2.9 (2017-10-18)
+
+
+### Bug Fixes
+
+* **mjs:** fix collection lazy loading ([b14aa9d](https://github.com/findify/findify-mjs/commit/b14aa9d))
+
+
+
+<a name="5.2.8"></a>
+## 5.2.8 (2017-10-18)
+
+
+### Bug Fixes
+
+* **mjs:** set size of facet to generic wrapper ([d42b39b](https://github.com/findify/findify-mjs/commit/d42b39b))
+
+
+
+<a name="5.2.7"></a>
+## 5.2.7 (2017-10-17)
+
+
+### Bug Fixes
+
+* **mjs:** move facets size detector to top GenericFacet ([9a150eb](https://github.com/findify/findify-mjs/commit/9a150eb))
+
+
+
+<a name="5.2.6"></a>
+## 5.2.6 (2017-10-17)
+
+
+### Bug Fixes
+
+* **analytics:** add a fallback for old analytics view page event ([89ae270](https://github.com/findify/findify-mjs/commit/89ae270))
+
+
+
+<a name="5.2.5"></a>
+## 5.2.5 (2017-10-17)
 
 
 ### Bug Fixes

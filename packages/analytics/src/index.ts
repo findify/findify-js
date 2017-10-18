@@ -80,7 +80,7 @@ const initializeCreator = (root, sendEvent, { platform, events }) => (
 
   state.filters = getFiltersOnPage(context);
 
-  if (!state.events['view-page']) {
+  if (!state.events['view-page'] && events['view-page'] !== false) {
     sendEvent('view-page', {});
   }
 

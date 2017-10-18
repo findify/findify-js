@@ -1,5 +1,25 @@
-<a name="3.0.3"></a>
-## 3.0.3 (2017-10-17)
+<a name="3.0.5"></a>
+## 3.0.5 (2017-10-18)
+
+
+
+<a name="3.0.5"></a>
+## 3.0.5 (2017-10-18)
+
+
+### Bug Fixes
+
+* **mjs:** fix anlytics events disabling | Fix custom css injection ([dd640ec](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/dd640ec))
+
+
+
+<a name="3.0.4"></a>
+## 3.0.4 (2017-10-17)
+
+
+### Bug Fixes
+
+* **analytics:** add a fallback for old analytics view page event ([89ae270](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/89ae270))
 
 
 

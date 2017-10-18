@@ -61,7 +61,7 @@ const withoutButton = compose(
     componentWillUnmount() {
       window.removeEventListener('scroll', this.props.onScroll, false);
     },
-  }),
+  })
 )(({ target, setTarget }: any) => (
   <div className={styles.root} ref={r => !target && !!r && setTarget(r)} />
 ));
@@ -73,15 +73,16 @@ export const LoadNext = compose(
   branch(({ disabled }) => disabled, renderNothing),
   branch(({ isLoading }) => isLoading, renderComponent(Spinner)),
   branch(
-    ({ isMobile, meta }) => isMobile || meta.offset >= meta.limit * 2,
+    ({ isMobile, meta, config }) =>
+      isMobile || meta.offset >= meta.limit * (config.lazyLoadCount || 2),
     renderComponent(withButton),
-    renderComponent(withoutButton),
-  ),
+    renderComponent(withoutButton)
+  )
 )(renderNothing);
 
 export const LoadPrev = compose(
   branch(shouldNotDisplayPrevButton, renderNothing),
-  branch(({ isLoading }) => isLoading, renderComponent(Spinner)),
+  branch(({ isLoading }) => isLoading, renderComponent(Spinner))
 )(
   ({
     onClick,
@@ -97,5 +98,5 @@ export const LoadPrev = compose(
         {config.i18n.loadPrev}
       </button>
     </div>
-  ),
+  )
 );

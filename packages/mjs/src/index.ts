@@ -1,5 +1,6 @@
 if (__DEVELOPMENT__) {
   require('regenerator-runtime/runtime');
+  require('!!style-loader!css-loader!@findify/ui-components/dist/wrapped.css');
 }
 
 import getComponentNodes from './helpers/getComponentNodes';
@@ -11,24 +12,29 @@ import isBot from './helpers/isBot';
 
 import elementDataset from 'element-dataset';
 
-if (typeof document !== 'undefined') {
-  elementDataset();
-}
+if (typeof document !== 'undefined') elementDataset();
 
 const prepareConfig = config => {
   const frameDisabled = config.frameDisabled || isBot;
+  const css = [];
+
+  if (!__DEVELOPMENT__) {
+    if (frameDisabled) {
+      css.push(
+        require('!!file-loader?name=styles.css!@findify/ui-components/dist/wrapped.css')
+      );
+    } else {
+      css.push(
+        'https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css'
+      );
+      css.push(require('!!raw-loader!@findify/ui-components/dist/styles.css'));
+    }
+  }
+
   return {
     ...config,
     frameDisabled,
-    css: [
-      ...((frameDisabled && [
-        require('!!file-loader?name=styles.css!@findify/ui-components/dist/wrapped.css'),
-      ]) || [
-        'https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css',
-        require('!!raw-loader!@findify/ui-components/dist/styles.css'),
-      ]),
-      ...config.css,
-    ],
+    css: [...css, ...config.css],
   };
 };
 

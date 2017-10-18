@@ -13,6 +13,7 @@ import {
 import * as cx from 'classnames';
 import withHooks from 'helpers/withHooks';
 import Icon from 'internals/Icon';
+import sizeMe from 'react-sizeme';
 
 import { Raw } from './Raw';
 
@@ -46,7 +47,7 @@ export const Wrapper = Content =>
       toggleOpen: ({ isOpen, toggleFacet }: Props) => () =>
         toggleFacet(!isOpen),
     })
-  )(({ isOpen, toggleOpen, label, ...rest }: any) => (
+  )(({ isOpen, toggleOpen, label, size, ...rest }: any) => (
     <div
       className={cx(styles.wrap, customStyles.facet, !isOpen && styles.hidden)}
     >
@@ -58,7 +59,7 @@ export const Wrapper = Content =>
           onClick={toggleOpen}
         />
       </div>
-      <div className={styles.content}>{isOpen && <Content {...rest} />}</div>
+      <div style={{ width: size.width }}>{isOpen && <Content {...rest} />}</div>
     </div>
   ));
 
@@ -74,6 +75,7 @@ export const HOC = (Content, WrappedContent) =>
         onChange({ type, name, changes });
       },
     }),
+    sizeMe({ refreshRate: 50 }),
     withState('state', 'setState', {}),
     withHooks('facet'),
     branch(

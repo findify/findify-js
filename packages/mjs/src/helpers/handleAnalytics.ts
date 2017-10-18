@@ -5,9 +5,9 @@ const processShopify = (analytics, removeFindifyID = false) => {
   console.log(user);
 
   if (!user.persist) {
-    const res = JSON.stringify(
-      removeFindifyID ? '' : { uniq_id: user.uid, visit_id: user.sid },
-    );
+    const res = removeFindifyID
+      ? ''
+      : JSON.stringify({ uniq_id: user.uid, visit_id: user.sid });
     axios.post('/cart/update.js', `attributes[_findify_id]=${res}`);
   }
 };

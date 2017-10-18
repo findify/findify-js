@@ -45,14 +45,13 @@ const Item = compose(
 ));
 
 export const ColorBodyFacet = compose(
-  sizeMe({ refreshRate: 50, refreshMode: 'debounce' }),
   withPropsOnChange(['values'], ({ values, config: { mapping } }) => ({
     values: values.filter(
       ({ value }) => value === 'Multicolor' || !!mapping[value.toLowerCase()]
     ),
   }))
-)(({ values, size, ...rest }: any) => (
-  <div className={styles.root} style={{ width: size.width }}>
+)(({ values, ...rest }: any) => (
+  <div className={styles.root}>
     {values.map(item =>
       createEagerElement(Item, {
         ...rest,

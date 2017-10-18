@@ -1,17 +1,17 @@
 export default {
   api: {
-    key: '8a2c6a1e-1aac-4047-8514-f284203c4b59',
+    key: '439105be-ae95-4149-9e1f-ea36867d79cd',
   },
   sentryDisabled: false,
   platform: {
     shopify: true,
   },
-  mjs_version: 'v3.2.83',
-  analyticsjs_version: '1.1.43',
+  mjs_version: '5.2.8',
+  analyticsjs_version: '3.0.4',
   status: 'live',
   mobileBreakpoint: 767,
   css: [
-    '.collection-title {\n  width: 100%;\n}\n\n@media only screen and (min-width: 768px) {\n.collections-findify .findify--results .findify-layouts--results-layout__sort {\n  float: right !important;\n}\n.findify-root .findify--results .findify-layouts--results-layout__sort{\n    margin: 17px 17px 10px auto!important;\n}}\n\n.findify-root .findify-widget--count__dropdown-root{\n    display: table-cell;\n}\n.findify-root .findify-widget--count__dropdown-select{\n    -webkit-appearance: none;\n    appearance: none;\n    padding: 6px;\n    padding-right: 24px;\n}\n.findify-root .findify-widget--count__dropdown-select::-ms-expand {\n    display: none;\n}',
+    '.collection-title {\n  width: 100%;\n}\n\n.findify-layouts--results-layout__mobileSort {\n  display: none !important;\n}\n\n@media only screen and (min-width: 768px) {\n.collections-findify .findify--results .findify-layouts--results-layout__sort {\n  float: right !important;\n}\n.findify-root .findify--results .findify-layouts--results-layout__sort{\n    margin: 17px 17px 10px auto!important;\n}}\n\n.findify-root .findify-widget--count__dropdown-root{\n    display: table-cell;\n}\n.findify-root .findify-widget--count__dropdown-select{\n    -webkit-appearance: none;\n    appearance: none;\n    padding: 6px;\n    padding-right: 24px;\n}\n.findify-root .findify-widget--count__dropdown-select::-ms-expand {\n    display: none;\n}\n\n.findify-root .findify-block--infinite-loader__load-next {\n  margin-bottom: 10px;\n}\n\n.findify-root .findify-block--infinite-loader__load-prev{\n  margin-top: 10px;\n}\n\n.findify-root .findify-block--infinite-loader__load-next .findify-block--infinite-loader__button,\n.findiry-root .findify-block--infinite-loader__load-prev .findify-block--infinite-loader__button{\n  padding: 10px 35px;\n}\n\n.findify-root .js-findify-results-limit {\n  display: none;\n}\n.findify-root .findify--results .findify-block--generic-facet__content>.findify-block--generic-facet__content{\n  box-sizing: border-box;\n}',
   ],
   location: {
     searchUrl: '/search',
@@ -34,12 +34,13 @@ export default {
   poweredByFindify: false,
   view: {
     pagination: false,
+    lazyLoadCount: 4,
     infinite: true,
   },
   features: {
     autocomplete: {
-      disableFormSubmit: false,
       isMobileSimple: false,
+      disableFormSubmit: false,
       position: 'left',
       meta: {
         item_limit: 4,
@@ -63,7 +64,7 @@ export default {
       disableScroll: false,
       scrollOffset: 0,
       meta: {
-        limit: 24,
+        limit: '12',
       },
       product: {
         title: {
@@ -143,6 +144,8 @@ export default {
           'custom_fields.cf_material': 'Material',
           'custom_fields.wiring': 'Wiring',
           'custom_fields.collection': 'Collection',
+          seller: 'seller',
+          condition: 'condition',
           material: 'Old material',
           size: 'Size',
           'custom_fields.barcode': 'Barcode',
@@ -160,6 +163,8 @@ export default {
           'custom_fields.features': 'Features',
           'custom_fields.pouch_type': 'Pouch Type',
           'custom_fields.style_2': 'Style 2',
+          sale_price: 'sale_price',
+          sku: 'sku',
           category: 'Category',
           'custom_fields.coverage': 'Coverage',
           'custom_fields.rise': 'Rise',
@@ -176,7 +181,22 @@ export default {
           'custom_fields.status': 'Status',
           'custom_fields.variant_image_url': 'Variant Image Url',
           'custom_fields.neckline': 'Neckline',
+          availability: 'availability',
+          compare_at: 'compare_at',
           'custom_fields.satus': 'Satus',
+          discount: 'discount',
+          id: 'id',
+          'category.category1': 'category.category1',
+          title: 'title',
+          description: 'description',
+          'category.category2': 'category.category2',
+          variants_ids: 'variants_ids',
+          image_url: 'image_url',
+          product_url: 'product_url',
+          'category.category3': 'category.category3',
+          'category.category4': 'category.category4',
+          thumbnail_url: 'thumbnail_url',
+          category_str: 'category_str',
           short_description: 'short description',
         },
         category: {
@@ -270,6 +290,7 @@ export default {
         product: {
           title: {
             display: true,
+            lines: 3,
           },
           rating: {
             display: false,
@@ -306,6 +327,7 @@ export default {
         product: {
           title: {
             display: true,
+            lines: 3,
           },
           rating: {
             display: false,
@@ -342,6 +364,7 @@ export default {
         product: {
           title: {
             display: true,
+            lines: 3,
           },
           rating: {
             display: false,
@@ -378,6 +401,7 @@ export default {
         product: {
           title: {
             display: true,
+            lines: 3,
           },
           rating: {
             display: false,
@@ -414,6 +438,7 @@ export default {
         product: {
           title: {
             display: true,
+            lines: 3,
           },
           rating: {
             display: false,
@@ -450,6 +475,7 @@ export default {
         product: {
           title: {
             display: true,
+            lines: 3,
           },
           rating: {
             display: false,
@@ -486,6 +512,7 @@ export default {
         product: {
           title: {
             display: true,
+            lines: 3,
           },
           rating: {
             display: false,
@@ -521,7 +548,6 @@ export default {
   useSimpleLoader: false,
   collections: [
     'collections/mens-sale-high-to-low',
-    'collections/mens-2-for-29',
     'collections/mens-socks',
     'collections/mens-underwear-deal',
     'collections/womens-vanity-fair-clearance',
@@ -530,7 +556,6 @@ export default {
     'collections/womens-body-wrap-shapewear',
     'collections/womens-spanx',
     'collections/womens-bras-wire-style-underwire',
-    'collections/womens-calvin-klein',
     'collections/womens-naked',
     'collections/mens-underwear-pouch-style-anatomical-pouch',
     'collections/women-bras-sport-medium-impact',
@@ -556,7 +581,6 @@ export default {
     'collections/bra-accessories',
     'collections/womens-on-sale',
     'collections/womens-panties-clearance',
-    'collections/mens-underwear',
     'collections/mens-activewear-tanks',
     'collections/mens-shapewear-shaping-effect-back',
     'collections/womens-panties-on-sale',
@@ -590,7 +614,6 @@ export default {
     'collections/spanx-assets-red-hot-40-off',
     'collections/mens-petit-q',
     'collections/all',
-    'collections/womens-rene-rofe',
     'collections/womens-chantelle',
     'collections/mens-sculptees',
     'collections/womens-cheeky',
@@ -697,7 +720,6 @@ export default {
     'collections/mens-tommy-john-clearance',
     'collections/womens-hanes',
     'collections/womens-bras-unlined',
-    'collections/womens-glamorise',
     'collections/mens-underwear-rise-style-low-rise',
     'collections/mens-pistol-pete',
     'collections/womens-panties',
@@ -729,7 +751,6 @@ export default {
     'collections/womens-glamorise-bras-on-sale',
     'collections/womens-bras-sports-bra-closure-style-back-closure',
     'collections/mens-tommy-hilfiger',
-    'collections/womens-sleepwear-bodysuit',
     'collections/womens-panties-garter-belt',
     'collections/womens-heidi-klum-intimates',
     'collections/womens-bali-shapewear',
@@ -800,7 +821,6 @@ export default {
     'collections/womens-freya-bras',
     'collections/mens-calvin-klein-underwear-boxer-brief',
     'collections/womens-bras',
-    'collections/women-bras-sexy',
     'collections/mens-fruit-of-the-loom-underwear',
     'collections/mens-gregg-homme-underwear-features-style-revealing',
     'collections/womens-bras-sports-bra-size-34ddd',
@@ -903,7 +923,6 @@ export default {
     'collections/mens-naked',
     'collections/mens-t-shirts-features-style-multi-pack',
     'collections/mens-jockey-stay-new-underwear',
-    'collections/mens-2xist',
     'collections/womens-freya-bras-clearance',
     'collections/womens-curvy-kate',
     'collections/womens-playtex-bras-on-sale',
@@ -940,7 +959,6 @@ export default {
     'collections/womens-trueshapers-shapewear',
     'collections/mens-magic-silk',
     'collections/womens-rago-shapewear',
-    'collections/mens-2xist-t-shirts',
     'collections/womens-bras-sports-bra-size-36ddd',
     'collections/mens-underwear-jockstrap',
     'collections/womens-commando-panties',
@@ -963,10 +981,10 @@ export default {
     'collections/womens-bali',
     'collections/mens-addicted-underwear',
     'collections/womens-lunaire',
-    'collections/mens-pikante',
     'collections/mens-bike-underwear',
     'collections/mens-diesel',
     'collections/mens-c-in2-t-shirts',
+    'collections/mens-pikante',
     'collections/mens-calvin-klein-100-cotton-underwear',
     'collections/mens-sleepwear-on-sale',
     'collections/womens-bras-sports-bra-size-38d',
@@ -983,13 +1001,13 @@ export default {
     'collections/womens-sleepwear-chemises',
     'collections/mens-polo-ralph-lauren-underwear',
     'collections/womens-bras-sports-bra-size-32ddd',
-    'collections/mens-candyman',
     'collections/womens-bali-panties',
     'collections/womens-bras-wire-style-wirefree',
     'collections/mens-underwear-rise-style-extreme-low-rise',
     'collections/womens-bras-size-42b',
     'collections/mens-t-shirts-muscle-shirt',
     'collections/womens-bras-features-style-racerback',
+    'collections/mens-candyman',
     'collections/womens-panties-boyshort',
     'collections/womens-panties-hipster',
     'collections/womens-shapewear-camisoles',
@@ -1010,12 +1028,12 @@ export default {
     'collections/mens-calvin-klein-underwear',
     'collections/mens-tommy-hilfiger-underwear-boxer-short',
     'collections/mens-hanes-underwear',
-    'collections/mens-calvin-klein',
-    'collections/mens-ppu',
     'collections/womens-bras-features-style-longline',
     'collections/mens-shapewear',
     'collections/womens-olga-bras',
     'collections/womens-shapewear',
+    'collections/mens-calvin-klein',
+    'collections/mens-ppu',
     'collections/womens-maidenform-hosiery',
     'collections/mens-underwear-fabric-style-silk',
     'collections/womens-bras-size-36g',
@@ -1076,7 +1094,6 @@ export default {
     'collections/3-for-19-panties',
     'collections/hanes-sale',
     'collections/womens-playtex-bras',
-    'collections/mens-ginch-gonch',
     'collections/womens-mapale',
     'collections/womens-leading-lady',
     'collections/womens-munki-munki',
@@ -1084,5 +1101,33 @@ export default {
     'collections/womens-playtex',
     'collections/uk-brands-up-to-40-off',
     'collections/mens-brands-frigo-gigo-petit-q-20-off',
+    'collections/mens-2xist',
+    'collections/womens-bogo-50-off',
+    'collections/womens-calvin-klein',
+    'collections/mens-ginch-gonch',
+    'collections/womens-ginch-gonch',
+    'collections/mens-champion-t-shirt',
+    'collections/womens-rene-rofe',
+    'collections/womens-bodysuit-sexy',
+    'collections/womens-panties-sexy',
+    'collections/womens-shapewear-sexy',
+    'collections/womens-sleepwear-sexy',
+    'collections/women-bras-sexy',
+    'collections/mens-rounderbum-t-shirts',
+    'collections/mens-2xist-t-shirts',
+    'collections/womens-bras-2-for-49',
+    'collections/womens-psd',
+    'collections/mens-2-for-29',
+    'collections/just-sexy',
+    'collections/womens-jack-adams',
+    'collections/mens-psd',
+    'collections/womens-just-sexy',
+    'collections/$28',
+    'collections/bali-4-pack-deal',
+    'collections/womens-exquisite',
+    'collections/mens-underwear',
+    'collections/wacoal-sale-plus-clearance',
+    'collections/womens-glamorise',
+    'collections/womens-sleepwear-bodysuit',
   ],
 };

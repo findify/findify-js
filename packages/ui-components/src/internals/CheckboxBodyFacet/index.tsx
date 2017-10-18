@@ -11,7 +11,6 @@ import {
 } from 'recompose';
 import * as cx from 'classnames';
 
-import sizeMe from 'react-sizeme';
 import { ExpandButton } from 'internals/ExpandButton';
 import { SearchInput } from 'internals/SearchInput';
 import { ListRenderer } from './ListRenderer';
@@ -20,12 +19,14 @@ const styles = require('./styles.css');
 
 export const CheckboxBodyFacet: any = compose(
   setDisplayName('CheckboxBodyFacet'),
-  pure,
+
   defaultProps({
     showExpander: false,
     disableSlice: false,
   }),
+
   withState('search', 'setSearch', ''),
+
   withState(
     'expanded',
     'setExpanded',
@@ -73,8 +74,7 @@ export const CheckboxBodyFacet: any = compose(
       return setExpanded(!expanded);
     },
     onSearchChange: ({ setSearch }) => query => setSearch(query),
-  }),
-  sizeMe({ refreshRate: 50, noPlaceholder: true })
+  })
 )(
   ({
     selectedItems,
@@ -91,10 +91,9 @@ export const CheckboxBodyFacet: any = compose(
     hasNotSelected,
     showStaticContent,
     showMoreButton,
-    size,
     ...rest,
   }: any) => (
-    <div className={styles.wrap} style={{ width: size.width }}>
+    <div className={styles.wrap}>
       {showSearch && (
         <SearchInput
           value={search}
