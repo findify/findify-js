@@ -3,7 +3,6 @@ import { pick, memoize, isArray } from 'lodash';
 export const createMetaNormalizer = ({ limit, offset, ...meta }) => state => ({
   limit: (limit && Number(limit)) || 24,
   offset: (offset && Number(offset)) || 0,
-  filters: [],
   ...meta,
   ...state,
 });
