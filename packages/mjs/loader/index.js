@@ -19,12 +19,11 @@
     var complete = 0;
     var ref = doc.getElementsByTagName('script')[0];
 
-    function append(src, index) {
+    function append(i) {
       var script = doc.createElement('script');
-      var isAsync = !~src.indexOf('polyfill');
       script.src = scripts[i];
-      script.async = isAsync;
-      script.defer = isAsync;
+      script.async = true;
+      script.defer = true;
       script.crossorigin = 'anonymous';
       ref.parentNode.insertBefore(script, ref);
       script.onload = function() {
@@ -50,9 +49,6 @@
   var basePath = 'https://findify-assets-2bveeb6u8ag.netdna-ssl.com';
   var sentryKey = 'https://9fa0e9f3937c4758b446daad96b004be@sentry.io/158607';
   var config = __CONFIG__;
-  var analyticsIsNew =
-    !!~config.analyticsjs_version.indexOf('2.0') ||
-    !!~config.analyticsjs_version.indexOf('3.');
 
   /**
    * Include polyfill
@@ -65,22 +61,30 @@
   }
 
   /**
-   * @findify/analytics-js from CDN
+   * @findify/analytics-js from CDN or dev version
    */
-  libs.push(
+  var analyticsPath =
+    devVersions.analytics ||
     basePath +
       '/analytics-js/__ENV__/' +
       (!!~config.analyticsjs_version.indexOf('3.')
         ? config.analyticsjs_version + '/findify-analytics.min.js'
-        : 'findify-analytics.' + config.analyticsjs_version + '.min.js')
-  );
+        : 'findify-analytics.' + config.analyticsjs_version + '.min.js');
+
+  var analyticsIsNew =
+    !!~analyticsPath.indexOf('2.0') || !!~analyticsPath.indexOf('/3.');
+
+  libs.push(analyticsPath);
 
   /**
    * @findify/mjs from CDN
    */
   libs.push(
-    getMJSDevVersion() ||
-      basePath + '/mjs/__ENV__/' + config.mjs_version + '/pure.js'
+    devVersions.mjs ||
+      basePath +
+        '/mjs/__ENV__/' +
+        config.mjs_version +
+        (alreadyHasPolyfill ? '/pure.js' : '/extended.js')
   );
 
   /**
