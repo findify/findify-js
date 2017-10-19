@@ -124,7 +124,7 @@ export const ResultsLayout = compose(
               response,
               onFacetsChange,
               onClearAll,
-              className: styles.facets,
+              columnClass: styles.facets,
             }}
           />
         )}
