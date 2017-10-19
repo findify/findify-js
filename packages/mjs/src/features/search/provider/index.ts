@@ -1,5 +1,13 @@
 import { createSearch, createCollection } from '@findify/helpers';
-import { defer, isArray, isEqual, mapValues, isEmpty, filter } from 'lodash';
+import {
+  pick,
+  defer,
+  isArray,
+  isEqual,
+  mapValues,
+  isEmpty,
+  filter,
+} from 'lodash';
 import { RESPONSE_SUCCESS, RESPONSE_FAILURE, REQUEST } from 'helpers/constants';
 import {
   createMetaNormalizer,
@@ -7,8 +15,9 @@ import {
   createFacetsUpdater,
 } from './helpers';
 import InstanceMemo from './InstanceMemo';
-
 import jump from 'jump.js';
+
+let numOfResetChecks = 0;
 
 export default ({
   analytics,
@@ -24,7 +33,6 @@ export default ({
 }) => {
   let hasError = false;
   const memo = new InstanceMemo();
-
   const slot = location.collection;
   const normalizeMeta = createMetaNormalizer(meta);
   const instance: any = slot ? createCollection(slot, api) : createSearch(api);
@@ -34,7 +42,6 @@ export default ({
       .emit({ name: 'setRequestBody', payload })
       .emit({ name: 'request' });
   const commit = () => instance.emit({ name: 'request' });
-
   const subscriber = (callback, setLoading?) => async ({ name }) => {
     setLoading(true);
     if (name === RESPONSE_FAILURE) {
@@ -46,12 +53,10 @@ export default ({
       if (!view.infinite && !disableScroll) {
         return jump(node.instance, { offset: scrollOffset });
       }
-      if (view.infinite) {
-        return memo.reset();
-      }
     }
 
     if (name !== RESPONSE_SUCCESS) return;
+
     const response = instance.get('response');
     const request = instance.get('request');
 
@@ -70,7 +75,6 @@ export default ({
     }
 
     if (!isStatesEqual) location.state = request;
-
     if (slot) {
       const stateFromResponse = pickRequestFromMeta(response.meta);
       if (!isEqual({ ...stateFromResponse, slot }, request)) {
@@ -87,20 +91,18 @@ export default ({
 
     hasError = false;
     setLoading(false);
+
     if (view.infinite) return callback(memo.merge(response));
     return callback(response);
   };
-
   const locationListener = location.listen(() => {
     const locationWithMeta = normalizeMeta(location.state);
     if (isEqual(locationWithMeta, instance.get('request'))) return;
     return request(locationWithMeta);
   });
-
   if (location.state.q !== void 0 || location.collection) {
     request(normalizeMeta(location.state));
   }
-
   return {
     request,
 
@@ -121,9 +123,8 @@ export default ({
       const req = instance.get('request');
       const { meta, items } = instance.get('response');
       if (meta.total < meta.offset + meta.limit) return;
-      memo.set(items, 1);
+      memo.memorize(1);
       const offset = memo.items[memo.items.length - 1].position + 1;
-
       return request({ ...req, offset });
     },
 
@@ -131,13 +132,17 @@ export default ({
       const req = instance.get('request');
       const res = instance.get('response');
       const { meta, items } = instance.get('response');
-      memo.set(items, -1);
+      memo.memorize(-1);
       const offset = memo.items[0].position - meta.limit;
       return request({ ...req, offset });
     },
 
-    onClearAll: () =>
-      instance.emit({ name: 'clearAllFilters' }).emit({ name: 'request' }),
+    onClearAll: () => {
+      memo.reset();
+      return instance
+        .emit({ name: 'clearAllFilters' })
+        .emit({ name: 'request' });
+    },
 
     onSortChange: ({ order, field }) => {
       instance
@@ -148,21 +153,25 @@ export default ({
       if (order) {
         instance.emit({ name: 'setSorting', payload: { order, field } });
       }
+      memo.reset();
       return instance.emit({ name: 'request' });
     },
 
     onBreadCrumbRemove: facet => {
       updateFacet({ ...facet, changes: { ...facet, selected: false } });
+      memo.reset();
       return commit();
     },
 
     onFacetChange: facet => {
       updateFacet(facet);
+      memo.reset();
       return commit();
     },
 
     onFacetsChange: facets => {
       facets.forEach(updateFacet);
+      memo.reset();
       return commit();
     },
   };

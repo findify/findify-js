@@ -10,7 +10,7 @@ import {
   withPropsOnChange,
 } from 'recompose';
 import * as cx from 'classnames';
-import { defer } from 'lodash';
+import sizeMe from 'react-sizeme';
 
 const styles = require('./styles.css');
 
@@ -60,23 +60,22 @@ const fetch = (src: string) =>
 const getShopifyUrl = (
   src: string,
   isThumb: boolean,
-  width?: number,
-  height?: number
+  size: { width?: number }
 ) => {
-  const size = isThumb ? '19x' : !!width ? `${round(width, 1)}x` : 'medium';
-  return src.replace(/_(medium|large)./g, `_${size}.`);
+  const resolution = isThumb ? '19x' : `${round(size.width, 1)}x`;
+  return src.replace(/_(medium|large|small)./g, `_${resolution}.`);
 };
 
 const ImageComponent = compose<OwnProps, Props>(
-  pure,
-  withPropsOnChange(['src'], ({ src, width, height }) => {
-    if (src.includes('.shopify')) {
-      return {
-        src: void 0,
-        original: getShopifyUrl(src, false, width, height),
-        thumbnail: getShopifyUrl(src, true),
-      };
-    }
+  // sizeMe({ refreshRate: 50 }),
+  withPropsOnChange(['src'], ({ src, size }) => {
+    // if (src.includes('.shopify')) {
+    //   return {
+    //     src: void 0,
+    //     original: getShopifyUrl(src, false, size),
+    //     thumbnail: getShopifyUrl(src, true, size),
+    //   };
+    // }
     return { src: void 0, original: src };
   }),
   withStateHandlers(
@@ -86,16 +85,19 @@ const ImageComponent = compose<OwnProps, Props>(
       setThumbnail: () => src => ({ src, stage: 1 }),
     }
   ),
-  withPropsOnChange(['^'], ({ setSrc, setThumbnail, thumbnail, original }) => {
-    if (thumbnail) {
-      fetch(thumbnail)
-        .then(setThumbnail)
-        .then(() => fetch(original))
-        .then(setSrc);
-    } else {
-      fetch(original).then(setSrc);
+  withPropsOnChange(
+    ['thumbnail', 'original'],
+    ({ setSrc, setThumbnail, thumbnail, original }) => {
+      if (thumbnail) {
+        fetch(thumbnail)
+          .then(setThumbnail)
+          .then(() => fetch(original))
+          .then(setSrc);
+      } else {
+        fetch(original).then(setSrc);
+      }
     }
-  }),
+  ),
   mapProps(({ stage, className, src, alt, onClick }: Props) => ({
     alt,
     onClick,

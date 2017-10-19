@@ -93,6 +93,7 @@ export default createFeature({
   component,
 })(
   withState('mobileFacetsOpen', 'setMobileFacetsOpen', false),
+
   withHandlers({
     onClearAll: props => props.provider.onClearAll,
     onPageChange: props => props.provider.onPageChange,
@@ -121,20 +122,25 @@ export default createFeature({
       );
     },
   }),
+
   branch(({ location, node, inline, provider }) => {
     if (inline) return false;
     return (
       (!location.isSearchPage && !location.collection) || !!provider.hasError
     );
   }, renderComponent(initialHTML('fallback'))),
+
   branch(({ response }) => !response, renderComponent(initialHTML('html'))),
+
   branch(
     ({ response }) => response && !response.items.length,
     renderComponent(noResultsComponent)
   ),
+
   branch(
     ({ isMobile, ...rest }) => isMobile,
     withPortal(mobileFacetsComponent)
   ),
+
   withFrame(stylesMapper.desktop)
 );

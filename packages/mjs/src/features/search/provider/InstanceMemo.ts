@@ -1,13 +1,12 @@
 class InstanceMemo {
   items: any[] = [];
-  memorize = false;
+  memorized = false;
   instance = void 0;
   direction: number = 0;
 
-  set(items, dir = 0) {
+  memorize(dir = 0) {
     this.direction = dir;
-    this.memorize = true;
-    this.items = !!~dir ? [...this.items, ...items] : [...items, ...this.items];
+    this.memorized = true;
   }
 
   get() {
@@ -15,8 +14,8 @@ class InstanceMemo {
   }
 
   reset() {
-    if (!this.memorize) this.items = [];
-    this.memorize = false;
+    this.items = [];
+    this.memorized = false;
   }
 
   merge(response) {
@@ -26,7 +25,6 @@ class InstanceMemo {
       position: Number(response.meta.offset) + i,
     }));
     const res = response;
-
     if (dir) {
       this.direction = 0;
       res.items = !!~dir
@@ -35,7 +33,7 @@ class InstanceMemo {
     } else {
       res.items = [...this.items, ...items];
     }
-
+    this.items = res.items;
     return res;
   }
 }
