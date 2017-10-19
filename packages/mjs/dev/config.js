@@ -1,17 +1,17 @@
 export default {
   api: {
-    key: '4c220ec3-ef86-4c49-9d86-ce31f5e66fda',
+    key: '439105be-ae95-4149-9e1f-ea36867d79cd',
   },
   sentryDisabled: false,
   platform: {
     shopify: true,
   },
-  mjs_version: '5.2.8',
-  analyticsjs_version: '3.0.4',
+  mjs_version: 'v3.2.83',
+  analyticsjs_version: '1.1.43',
   status: 'live',
   mobileBreakpoint: 767,
   css: [
-    '.collection-title {\n  width: 100%;\n}\n\n.findify-layouts--results-layout__mobileSort {\n  display: none !important;\n}\n\n@media only screen and (min-width: 768px) {\n.collections-findify .findify--results .findify-layouts--results-layout__sort {\n  float: right !important;\n}\n.findify-root .findify--results .findify-layouts--results-layout__sort{\n    margin: 17px 17px 10px auto!important;\n}}\n\n.findify-root .findify-widget--count__dropdown-root{\n    display: table-cell;\n}\n.findify-root .findify-widget--count__dropdown-select{\n    -webkit-appearance: none;\n    appearance: none;\n    padding: 6px;\n    padding-right: 24px;\n}\n.findify-root .findify-widget--count__dropdown-select::-ms-expand {\n    display: none;\n}\n\n.findify-root .findify-block--infinite-loader__load-next {\n  margin-bottom: 10px;\n}\n\n.findify-root .findify-block--infinite-loader__load-prev{\n  margin-top: 10px;\n}\n\n.findify-root .findify-block--infinite-loader__load-next .findify-block--infinite-loader__button,\n.findiry-root .findify-block--infinite-loader__load-prev .findify-block--infinite-loader__button{\n  padding: 10px 35px;\n}\n\n.findify-root .js-findify-results-limit {\n  display: none;\n}\n.findify-root .findify--results .findify-block--generic-facet__content>.findify-block--generic-facet__content{\n  box-sizing: border-box;\n}',
+    '.collection-title {\n  width: 100%;\n}\n\n.findify-layouts--results-layout__mobileSort {\n  display: none !important;\n}\n\n@media only screen and (min-width: 768px) {\n.collections-findify .findify--results .findify-layouts--results-layout__sort {\n  float: right !important;\n}\n.findify-root .findify--results .findify-layouts--results-layout__sort{\n    margin: 17px 17px 10px auto!important;\n}}\n\n.findify-root .findify-widget--count__dropdown-root{\n    display: table-cell;\n}\n.findify-root .findify-widget--count__dropdown-select{\n    -webkit-appearance: none;\n    appearance: none;\n    padding: 6px;\n    padding-right: 24px;\n}\n.findify-root .findify-widget--count__dropdown-select::-ms-expand {\n    display: none;\n}\n\n.findify-root .findify-block--infinite-loader__load-next {\n  margin-bottom: 10px;\n}\n\n.findify-root .findify-block--infinite-loader__load-prev{\n  margin-top: 10px;\n}\n\n.findify-root .findify-block--infinite-loader__load-next .findify-block--infinite-loader__button,\n.findiry-root .findify-block--infinite-loader__load-prev .findify-block--infinite-loader__button{\n  padding: 10px 35px;\n}\n\n.findify-root .js-findify-results-limit {\n  display: none;\n}\n/*.findify-root .findify--results .findify-block--generic-facet__content{*/\n/*    padding: 11px 11px 15px 16px;*/\n/*    border-top: 1px solid #ebe9e9;*/\n/*    box-sizing: border-box;*/\n/*}*/',
   ],
   location: {
     searchUrl: '/search',
@@ -34,7 +34,6 @@ export default {
   poweredByFindify: false,
   view: {
     pagination: false,
-    lazyLoadCount: 4,
     infinite: true,
   },
   features: {
@@ -111,6 +110,7 @@ export default {
         },
       },
       loadMore: {
+        lazyLoadCount: 4,
         i18n: {
           loadMore: 'Load more',
           loadPrev: 'Load previous',
@@ -1129,5 +1129,8 @@ export default {
     'collections/wacoal-sale-plus-clearance',
     'collections/womens-glamorise',
     'collections/womens-sleepwear-bodysuit',
+    'collections/mens-underwear-10-20',
+    'collections/mens-underwear-20-30',
+    'collections/mens-underwear-30-40',
   ],
 };
