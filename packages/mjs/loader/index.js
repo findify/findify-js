@@ -61,7 +61,9 @@
     (!win._babelPolyfill && config.useSimpleLoader) ||
     (config.platform && config.platform.magento)
   ) {
-    libs.push('https://cdn.polyfill.io/v2/polyfill.min.js');
+    libs.push(
+      'https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.26.0/polyfill.min.js'
+    );
   }
 
   /**
