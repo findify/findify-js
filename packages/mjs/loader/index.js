@@ -90,7 +90,7 @@
     devVersions.mjs ||
     basePath + '/mjs/__ENV__/' + config.mjs_version + alreadyHasPolyfill
       ? '/pure.js'
-      : 'extended.js'
+      : '/extended.js'
   );
 
   /**
