@@ -35,6 +35,10 @@
   }
 }
 
+.root-item > .list:first-child{
+  padding-left: 0;
+}
+
 .count {
   color: #b2b2b2;
   display: table-cell;

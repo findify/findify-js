@@ -43,7 +43,7 @@ export const Tree = compose(
       onChange({ selected: !selected, track }),
   }),
   branch(
-    ({ has_children, cursor, track }: any) => has_children,
+    ({ has_children }: any) => has_children,
     renderComponent(props =>
       createEagerElement(NestedTree, { ...props, Nested: Tree })
     ),
