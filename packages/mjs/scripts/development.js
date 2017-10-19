@@ -28,6 +28,10 @@ export default (env, { module, plugins, ...config }) => ({
         ],
       },
       {
+        test: /\.(css)$/,
+        use: ['style-loader', 'css-loader'],
+      },
+      {
         ...module.rules.ts,
         use: [
           'react-hot-loader/webpack',

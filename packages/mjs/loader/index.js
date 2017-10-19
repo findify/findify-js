@@ -1,14 +1,30 @@
 'use strict';
 
 (function(win, doc) {
+  win.__isMJSLoaded = win.__isMJSLoaded || false;
+  if (win.__isMJSLoaded) return;
+
+  /**
+   * Set "mjsPath" in localStorage to debug new versions in store
+   */
+  function getMJSDevVersion() {
+    try {
+      return localStorage.getItem('mjsPath');
+    } catch (e) {
+      return null;
+    }
+  }
+
   function load(scripts, cb) {
     var complete = 0;
     var ref = doc.getElementsByTagName('script')[0];
 
     function append(src, index) {
       var script = doc.createElement('script');
+      var isAsync = !~src.indexOf('polyfill');
       script.src = scripts[i];
-      script.async = true;
+      script.async = isAsync;
+      script.defer = isAsync;
       script.crossorigin = 'anonymous';
       ref.parentNode.insertBefore(script, ref);
       script.onload = function() {
@@ -30,50 +46,69 @@
     }
   })();
 
+  var libs = [];
+  var basePath = 'https://findify-assets-2bveeb6u8ag.netdna-ssl.com';
+  var sentryKey = 'https://9fa0e9f3937c4758b446daad96b004be@sentry.io/158607';
   var config = __CONFIG__;
   var analyticsIsNew =
     !!~config.analyticsjs_version.indexOf('2.0') ||
     !!~config.analyticsjs_version.indexOf('3.');
 
-  var mainFile =
-    config.useSimpleLoader || (config.platform && config.platform.magento)
-      ? 'pure.js'
-      : 'extended.js';
+  /**
+   * Include polyfill
+   */
+  if (
+    (!win._babelPolyfill && config.useSimpleLoader) ||
+    (config.platform && config.platform.magento)
+  ) {
+    libs.push('https://cdn.polyfill.io/v2/polyfill.min.js');
+  }
 
-  var basePath = 'https://findify-assets-2bveeb6u8ag.netdna-ssl.com';
-
-  var analyticsPath =
+  /**
+   * @findify/analytics-js from CDN
+   */
+  libs.push(
     basePath +
-    '/analytics-js/__ENV__/' +
-    (!!~config.analyticsjs_version.indexOf('3.')
-      ? config.analyticsjs_version + '/findify-analytics.min.js'
-      : 'findify-analytics.' + config.analyticsjs_version + '.min.js');
+      '/analytics-js/__ENV__/' +
+      (!!~config.analyticsjs_version.indexOf('3.')
+        ? config.analyticsjs_version + '/findify-analytics.min.js'
+        : 'findify-analytics.' + config.analyticsjs_version + '.min.js')
+  );
 
-  var mjsPath =
-    basePath + '/mjs/__ENV__/' + config.mjs_version + '/' + mainFile;
-  var ravenPath = 'https://cdn.ravenjs.com/3.14.2/raven.min.js';
-  var sentryKey = 'https://9fa0e9f3937c4758b446daad96b004be@sentry.io/158607';
-  var libs = [mjsPath, analyticsPath];
+  /**
+   * @findify/mjs from CDN
+   */
+  libs.push(
+    getMJSDevVersion() ||
+      basePath + '/mjs/__ENV__/' + config.mjs_version + '/pure.js'
+  );
 
-  win.__isMJSLoaded = win.__isMJSLoaded || false;
-  if (win.__isMJSLoaded) return;
-
+  /**
+   * Include sentry if not disabled
+   */
   if (!config.sentryDisabled) {
-    libs.push(ravenPath);
+    libs.push('https://cdn.ravenjs.com/3.19.1/raven.min.js');
   }
 
   return load(libs, function() {
     win.__isMJSLoaded = true;
+
+    /**
+     * Initialize Sentry
+     */
     if (win.Raven) {
       win.Raven
         .config(sentryKey, {
           release: config.mjs_version,
-          whitelistUrls: [mjsPath, analyticsPath],
+          whitelistUrls: libs,
         })
         .install();
       win.Raven.setUserContext({ key: config.api.key });
     }
 
+    /**
+     * Initialize analytics
+     */
     var analytics = analyticsIsNew
       ? win.FindifyAnalytics
       : win.FindifyAnalytics.init;

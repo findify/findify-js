@@ -1,6 +1,6 @@
 if (__DEVELOPMENT__) {
   require('regenerator-runtime/runtime');
-  require('!!style-loader!css-loader!@findify/ui-components/dist/wrapped.css');
+  require('@findify/ui-components/dist/wrapped.css');
 }
 
 import getComponentNodes from './helpers/getComponentNodes';

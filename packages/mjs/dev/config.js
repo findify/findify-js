@@ -1,6 +1,6 @@
 export default {
   api: {
-    key: '439105be-ae95-4149-9e1f-ea36867d79cd',
+    key: '4c220ec3-ef86-4c49-9d86-ce31f5e66fda',
   },
   sentryDisabled: false,
   platform: {
