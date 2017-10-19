@@ -7,13 +7,16 @@
   /**
    * Set "mjsPath" in localStorage to debug new versions in store
    */
-  function getMJSDevVersion() {
+  var devVersions = (function getMJSDevVersion() {
     try {
-      return localStorage.getItem('mjsPath');
+      return {
+        mjs: localStorage.getItem('findifyMjsPath'),
+        analytics: localStorage.getItem('findifyAnalyticsPath'),
+      };
     } catch (e) {
-      return null;
+      return {};
     }
-  }
+  })();
 
   function load(scripts, cb) {
     var complete = 0;
@@ -57,32 +60,37 @@
   /**
    * Include polyfill
    */
-  if (
-    (!win._babelPolyfill && config.useSimpleLoader) ||
-    (config.platform && config.platform.magento)
-  ) {
-    libs.push(
-      'https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.26.0/polyfill.min.js'
-    );
-  }
+  // if (
+  //   !win._babelPolyfill && config.useSimpleLoader ||
+  //   (config.platform && config.platform.magento)
+  // ) {
+  //   libs.push(
+  //     'https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.26.0/polyfill.min.js'
+  //   );
+  // }
 
   /**
    * @findify/analytics-js from CDN
    */
   libs.push(
-    basePath +
-      '/analytics-js/__ENV__/' +
-      (!!~config.analyticsjs_version.indexOf('3.')
-        ? config.analyticsjs_version + '/findify-analytics.min.js'
-        : 'findify-analytics.' + config.analyticsjs_version + '.min.js')
+    devVersions.analytics ||
+      basePath +
+        '/analytics-js/__ENV__/' +
+        (!!~config.analyticsjs_version.indexOf('3.')
+          ? config.analyticsjs_version + '/findify-analytics.min.js'
+          : 'findify-analytics.' + config.analyticsjs_version + '.min.js')
   );
 
   /**
    * @findify/mjs from CDN
    */
+  const alreadyHasPolyfill =
+    config.useSimpleLoader || (config.platform && config.platform.magento);
   libs.push(
-    getMJSDevVersion() ||
-      basePath + '/mjs/__ENV__/' + config.mjs_version + '/pure.js'
+    devVersions.mjs ||
+    basePath + '/mjs/__ENV__/' + config.mjs_version + alreadyHasPolyfill
+      ? '/pure.js'
+      : '/extended.js'
   );
 
   /**
