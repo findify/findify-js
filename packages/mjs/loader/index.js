@@ -53,12 +53,12 @@
   /**
    * Include polyfill
    */
-  if (
-    (!win._babelPolyfill && config.useSimpleLoader) ||
-    (config.platform && config.platform.magento)
-  ) {
-    libs.push('https://cdn.polyfill.io/v2/polyfill.min.js');
-  }
+  // if (
+  //   (!win._babelPolyfill && config.useSimpleLoader) ||
+  //   (config.platform && config.platform.magento)
+  // ) {
+  //   libs.push('https://cdn.polyfill.io/v2/polyfill.min.js');
+  // }
 
   /**
    * @findify/analytics-js from CDN or dev version
@@ -79,6 +79,8 @@
   /**
    * @findify/mjs from CDN
    */
+  var alreadyHasPolyfill =
+    config.useSimpleLoader || (config.platform && config.platform.magento);
   libs.push(
     devVersions.mjs ||
       basePath +
