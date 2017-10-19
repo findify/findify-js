@@ -36,13 +36,13 @@
       }
     </style>
     <script type="text/javascript">
-      // window.findifyApiRegistry = [{
-      //   hook: '*.item',
-      //   mapProps: function(props, funcs, config, sendEvent) {
-      //     console.log(config)
-      //     return;
-      //   }
-      // }]
+      window.findifyApiRegistry = [{
+        hook: '*.results',
+        didMount: function(props, funcs, config, sendEvent) {
+          console.log($(props.node));
+          $(props.node).addClass('trooololo')
+        }
+      }]
     </script>
   </head>
   <body>

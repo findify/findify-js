@@ -59,7 +59,11 @@ export const Wrapper = Content =>
           onClick={toggleOpen}
         />
       </div>
-      <div style={{ width: size.width }}>{isOpen && <Content {...rest} />}</div>
+      <div style={{ position: 'relative' }}>
+        <div style={{ width: size.width }}>
+          {isOpen && <Content {...rest} />}
+        </div>
+      </div>
     </div>
   ));
 
