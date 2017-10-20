@@ -129,7 +129,12 @@ export const ResultsLayout = compose(
           />
         )}
 
-        <div className={styles.products}>
+        <div
+          className={cx(
+            styles.products,
+            !isMobile && styles.productsWithPadding
+          )}
+        >
           {response.banner &&
             response.banner.products && (
               <Banner {...response.banner.products} onClick={onBannerClick} />
