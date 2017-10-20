@@ -58,11 +58,14 @@ export default createFeature({
       );
     },
   }),
+
   watchNode({ position: null }),
+
   branch(
     ({ response, config }) =>
       response && response.items.length < config.minResultsToShow,
     renderNothing
   ),
+
   withFrame(stylesMapper)
 );
