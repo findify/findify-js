@@ -130,7 +130,7 @@ export const ResultsLayout = compose(
         )}
 
         <div
-          className={cx(
+          columnClass={cx(
             styles.products,
             !isMobile && styles.productsWithPadding
           )}
