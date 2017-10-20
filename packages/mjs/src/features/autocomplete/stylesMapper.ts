@@ -27,18 +27,16 @@ const defaultAdjust = { left: 0, top: 0 };
 
 const computeStyles = (position, componentWidth, node, inline, config) => {
   if (inline || config.inline) return { top: position.get('height'), left: 0 };
-  const adjust = config.adjust || defaultAdjust;
 
   const offset =
     node.position.get('left') + node.position.get('width') + componentWidth;
 
   return {
-    top: position.get('top') + position.get('height') + adjust.top,
+    top: position.get('top') + position.get('height'),
     left:
       offset > window.innerWidth
-        ? position.get('left') + position.get('width') - componentWidth ||
-          0 + adjust.left
-        : position.get('left') + adjust.left,
+        ? position.get('left') + position.get('width') - componentWidth || 0
+        : position.get('left'),
   };
 };
 
