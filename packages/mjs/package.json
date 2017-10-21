@@ -92,7 +92,7 @@
   },
   "scripts": {
     "build": "run-s clean build:library build:production",
-    "build:library": "NODE_ENV=production webpack --env.production --env.publicPath=$PUBLIC_PATH",
+    "build:library": "NODE_ENV=production webpack --env.library --env.publicPath=$PUBLIC_PATH",
     "build:production": "NODE_ENV=production webpack --env.production --env.publicPath=$PUBLIC_PATH",
     "build:staging": "FINDIFY_ENV=staging NODE_ENV=production webpack --env.production --env.publicPath=$PUBLIC_PATH",
     "build:test": "npm run build",

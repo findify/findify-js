@@ -7,13 +7,16 @@
   /**
    * Set "mjsPath" in localStorage to debug new versions in store
    */
-  function getMJSDevVersion() {
+  var devVersions = (function getMJSDevVersion() {
     try {
-      return localStorage.getItem('mjsPath');
+      return {
+        mjs: localStorage.getItem('findifyMjsPath'),
+        analytics: localStorage.getItem('findifyAnalyticsPath'),
+      };
     } catch (e) {
-      return null;
+      return {};
     }
-  }
+  })();
 
   function load(scripts, cb) {
     var complete = 0;
