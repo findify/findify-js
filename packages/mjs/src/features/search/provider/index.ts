@@ -97,7 +97,8 @@ export default ({
   };
   const locationListener = location.listen(() => {
     const locationWithMeta = normalizeMeta(location.state);
-    if (isEqual(locationWithMeta, instance.get('request'))) return;
+    if (isEqual(locationWithMeta, { filters: [], ...instance.get('request') }))
+      return;
     return request(locationWithMeta);
   });
   if (location.state.q !== void 0 || location.collection) {

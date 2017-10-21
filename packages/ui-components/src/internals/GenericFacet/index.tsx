@@ -59,7 +59,7 @@ export const Wrapper = Content =>
           onClick={toggleOpen}
         />
       </div>
-      <div style={{ width: size.width }}>{isOpen && <Content {...rest} />}</div>
+      <div className={styles.content}>{isOpen && <Content {...rest} />}</div>
     </div>
   ));
 
@@ -75,7 +75,7 @@ export const HOC = (Content, WrappedContent) =>
         onChange({ type, name, changes });
       },
     }),
-    sizeMe({ refreshRate: 50 }),
+    // sizeMe({ refreshRate: 50 }),
     withState('state', 'setState', {}),
     withHooks('facet'),
     branch(

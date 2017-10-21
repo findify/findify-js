@@ -27,6 +27,10 @@ export const ResultsLayout = compose(
   }),
   defaultProps({
     showFacets: true,
+    columns: {
+      facets: 3,
+      products: 9,
+    },
   }),
   withPropsOnChange(['isMobile'], ({ isMobile }) => ({
     showMobileHeader: !!isMobile,
@@ -55,6 +59,7 @@ export const ResultsLayout = compose(
     showBreadcrumbs,
     type,
     isLoading,
+    columns,
 
     response,
   }: any) => (
@@ -108,7 +113,9 @@ export const ResultsLayout = compose(
         </Grid>
       )}
 
-      <div className={styles.content}>
+      <Grid
+        columns={showFacets ? `${columns.facets}|${columns.products}` : '12'}
+      >
         {showFacets && (
           <FacetsLayout
             {...{
@@ -117,12 +124,17 @@ export const ResultsLayout = compose(
               response,
               onFacetsChange,
               onClearAll,
-              className: styles.facets,
+              columnClass: styles.facets,
             }}
           />
         )}
 
-        <div className={styles.products}>
+        <div
+          columnClass={cx(
+            styles.products,
+            !isMobile && styles.productsWithPadding
+          )}
+        >
           {response.banner &&
             response.banner.products && (
               <Banner {...response.banner.products} onClick={onBannerClick} />
@@ -179,7 +191,7 @@ export const ResultsLayout = compose(
             <PoweredBy onClick={onPoweredByClick} />
           )}
         </div>
-      </div>
+      </Grid>
     </div>
   )
 );
