@@ -1,5 +1,110 @@
-<a name="2.1.7"></a>
-## 2.1.7 (2017-10-18)
+<a name="2.2.10"></a>
+## 2.2.10 (2017-10-23)
+
+
+
+<a name="2.2.10"></a>
+## 2.2.10 (2017-10-20)
+
+
+### Bug Fixes
+
+* **mjs:** fix checkboxes ([c5d2b49](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/c5d2b49))
+
+
+
+<a name="2.2.9"></a>
+## 2.2.9 (2017-10-20)
+
+
+### Bug Fixes
+
+* **mjs:** change products class nesting ([216af03](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/216af03))
+
+
+
+<a name="2.2.8"></a>
+## 2.2.8 (2017-10-20)
+
+
+### Bug Fixes
+
+* **mjs:** return class names in ResultsLayout and GenericFacet ([b0af091](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/b0af091))
+
+
+
+<a name="2.2.7"></a>
+## 2.2.7 (2017-10-19)
+
+
+### Bug Fixes
+
+* **mjs:** return class to the facets grid wrapper to support customizations ([143753d](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/143753d))
+
+
+
+<a name="2.2.6"></a>
+## 2.2.6 (2017-10-19)
+
+
+### Bug Fixes
+
+* **mjs:** remove facets auto sizer ([3ab8502](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/3ab8502))
+
+
+
+<a name="2.2.5"></a>
+## 2.2.5 (2017-10-19)
+
+
+### Bug Fixes
+
+* **mjs:** fix Lazy Load in Collections and Facets computed width ([c9fa55b](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/c9fa55b))
+
+
+
+<a name="2.2.4"></a>
+## 2.2.4 (2017-10-19)
+
+
+### Bug Fixes
+
+* **mjs:** return loosed resuts class name ([c19489b](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/c19489b))
+
+
+
+<a name="2.2.3"></a>
+## 2.2.3 (2017-10-19)
+
+
+### Bug Fixes
+
+* **mjs:** fix category facet nesting styles | Update mjs loader ([0d48e87](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/0d48e87))
+
+
+
+<a name="2.2.2"></a>
+## 2.2.2 (2017-10-18)
+
+
+### Bug Fixes
+
+* **mjs:** hide images lazy load ([5412323](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/5412323))
+
+
+
+<a name="2.2.1"></a>
+## 2.2.1 (2017-10-18)
+
+
+### Bug Fixes
+
+* **mjs:** move sizeMe to image component ([f53ef90](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/f53ef90))
+
+
+
+<a name="2.2.0"></a>
+# 2.2.0 (2017-10-18)
 
 
 
@@ -10,6 +115,11 @@
 ### Bug Fixes
 
 * **mjs:** set max width to facets list | remove doubling class names ([9acfb73](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/9acfb73))
+
+
+### Features
+
+* **mjs:** preload small images for shopify ([976ff35](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/976ff35))
 
 
 

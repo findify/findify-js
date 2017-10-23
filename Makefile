@@ -12,6 +12,8 @@ build-tdd:
 	npm run build:tdd
 commit:
 	npm run c
+changelogs:
+	npm run release:post
 release:
 	npm run release
 
