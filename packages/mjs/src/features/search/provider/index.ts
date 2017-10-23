@@ -95,15 +95,21 @@ export default ({
     if (view.infinite) return callback(memo.merge(response));
     return callback(response);
   };
+
   const locationListener = location.listen(() => {
     const locationWithMeta = normalizeMeta(location.state);
+    if (location.state.q !== instance.get('request').q) {
+      memo.reset();
+    }
     if (isEqual(locationWithMeta, { filters: [], ...instance.get('request') }))
       return;
     return request(locationWithMeta);
   });
+
   if (location.state.q !== void 0 || location.collection) {
     request(normalizeMeta(location.state));
   }
+
   return {
     request,
 
