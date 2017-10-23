@@ -1,5 +1,156 @@
-<a name="5.2.13"></a>
-## 5.2.13 (2017-10-18)
+<a name="5.3.14"></a>
+## 5.3.14 (2017-10-23)
+
+
+
+<a name="5.3.14"></a>
+## 5.3.14 (2017-10-23)
+
+
+### Bug Fixes
+
+* **mjs:** fix infinite scroll (for case when query is changed) ([2c3d2fc](https://github.com/findify/findify-mjs/commit/2c3d2fc))
+
+
+
+<a name="5.3.13"></a>
+## 5.3.13 (2017-10-20)
+
+
+### Bug Fixes
+
+* **mjs:** fix checkboxes ([c5d2b49](https://github.com/findify/findify-mjs/commit/c5d2b49))
+
+
+
+<a name="5.3.12"></a>
+## 5.3.12 (2017-10-20)
+
+
+### Bug Fixes
+
+* **mjs:** change products class nesting ([216af03](https://github.com/findify/findify-mjs/commit/216af03))
+
+
+
+<a name="5.3.11"></a>
+## 5.3.11 (2017-10-20)
+
+
+### Bug Fixes
+
+* **mjs:** bump version ([23d2e27](https://github.com/findify/findify-mjs/commit/23d2e27))
+* **mjs:** return class names in ResultsLayout and GenericFacet ([b0af091](https://github.com/findify/findify-mjs/commit/b0af091))
+
+
+
+<a name="5.3.10"></a>
+## 5.3.10 (2017-10-19)
+
+
+### Bug Fixes
+
+* **mjs:** return class to the facets grid wrapper to support customizations ([143753d](https://github.com/findify/findify-mjs/commit/143753d))
+
+
+
+<a name="5.3.9"></a>
+## 5.3.9 (2017-10-19)
+
+
+### Bug Fixes
+
+* **mjs:** remove facets auto sizer ([3ab8502](https://github.com/findify/findify-mjs/commit/3ab8502))
+
+
+
+<a name="5.3.8"></a>
+## 5.3.8 (2017-10-19)
+
+
+### Bug Fixes
+
+* **mjs:** fix Lazy Load in Collections and Facets computed width ([c9fa55b](https://github.com/findify/findify-mjs/commit/c9fa55b))
+
+
+
+<a name="5.3.7"></a>
+## 5.3.7 (2017-10-19)
+
+
+### Bug Fixes
+
+* **mjs:** fix loader ([28d1e9f](https://github.com/findify/findify-mjs/commit/28d1e9f))
+
+
+
+<a name="5.3.6"></a>
+## 5.3.6 (2017-10-19)
+
+
+### Bug Fixes
+
+* **mjs:** return loosed resuts class name ([c19489b](https://github.com/findify/findify-mjs/commit/c19489b))
+
+
+
+<a name="5.3.5"></a>
+## 5.3.5 (2017-10-19)
+
+
+### Bug Fixes
+
+* **mjs:** fix category facet nesting styles | Update mjs loader ([0d48e87](https://github.com/findify/findify-mjs/commit/0d48e87))
+
+
+
+<a name="5.3.4"></a>
+## 5.3.4 (2017-10-18)
+
+
+### Bug Fixes
+
+* **mjs:** hide images lazy load ([5412323](https://github.com/findify/findify-mjs/commit/5412323))
+
+
+
+<a name="5.3.3"></a>
+## 5.3.3 (2017-10-18)
+
+
+### Bug Fixes
+
+* **mjs:** remove filtrs from initial state comparator ([5585342](https://github.com/findify/findify-mjs/commit/5585342))
+
+
+
+<a name="5.3.2"></a>
+## 5.3.2 (2017-10-18)
+
+
+### Bug Fixes
+
+* **mjs:** move sizeMe to image component ([f53ef90](https://github.com/findify/findify-mjs/commit/f53ef90))
+
+
+
+<a name="5.3.1"></a>
+## 5.3.1 (2017-10-18)
+
+
+### Bug Fixes
+
+* **mjs:** release new version of mjs ([64ecdad](https://github.com/findify/findify-mjs/commit/64ecdad))
+
+
+
+<a name="5.3.0"></a>
+# 5.3.0 (2017-10-18)
+
+
+### Bug Fixes
+
+* **mjs:** fix infinite scroll ([f3817a1](https://github.com/findify/findify-mjs/commit/f3817a1))
 
 
 
@@ -46,6 +197,11 @@
 ### Bug Fixes
 
 * **mjs:** fix collection lazy loading ([b14aa9d](https://github.com/findify/findify-mjs/commit/b14aa9d))
+
+
+### Features
+
+* **mjs:** preload small images for shopify ([976ff35](https://github.com/findify/findify-mjs/commit/976ff35))
 
 
 
