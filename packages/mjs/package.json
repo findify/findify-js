@@ -85,7 +85,7 @@
     "search"
   ],
   "license": "MIT",
-  "main": "lib/components.js",
+  "main": "lib/main.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/findify/findify-mjs.git"

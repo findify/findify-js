@@ -30,6 +30,11 @@ export default (env, { module, plugins, output, ...config }) => {
       rules: [
         {
           ...module.rules.ts,
+          include: [
+            path.resolve(process.cwd(), 'src'),
+            path.resolve(process.cwd(), 'dev'),
+            path.resolve(process.cwd(), 'node_modules'),
+          ],
           use: [
             {
               loader: 'babel-loader',
@@ -49,7 +54,6 @@ export default (env, { module, plugins, output, ...config }) => {
                     'env',
                     {
                       modules: false,
-                      useBuiltIns: true,
                       targets: { browsers: ['last 2 versions', 'ie > 8'] },
                     },
                   ],
