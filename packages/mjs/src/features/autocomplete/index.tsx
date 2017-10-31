@@ -30,11 +30,13 @@ const empty = {};
 
 const component = compose(
   renderForProps(['visible']),
+
   branch(
     ({ isMobile, response, config }) =>
       (!isMobile || config.isMobileSimple) && !response,
     renderNothing
   ),
+
   withPropsOnChange(
     ['config', 'styles'],
     ({ isMobile, node, styles, config }) => {
@@ -46,6 +48,7 @@ const component = compose(
       return { config: { ...config, position: 'right' } };
     }
   ),
+
   onlyUpdateForKeys([
     'value',
     'response',
@@ -53,7 +56,9 @@ const component = compose(
     'isMobile',
     'config',
   ]),
+
   flattenProp('response'),
+
   provideHooks('autocomplete')
 )(load('Autocomplete'));
 
@@ -62,6 +67,7 @@ export default createFeature({
   provider,
 })(
   withState('visible', 'setVisible', false),
+
   withHandlers({
     onSearchSuggestionClick: ({
       node,
@@ -101,10 +107,12 @@ export default createFeature({
       );
     },
   }),
+
   branch(
     ({ isMobile, config, visible }) => isMobile && !config.isMobileSimple,
     mobileComponent,
     desktopComponent
   ),
+
   withFrame(stylesMapper)
 );
