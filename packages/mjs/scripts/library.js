@@ -1,19 +1,25 @@
 import path from 'path';
 import nodeExternals from 'webpack-node-externals';
+import webpack from 'webpack';
 
 export default (env, { module, plugins, output, ...config }) => ({
   ...config,
   entry: {
-    components: path.resolve(process.cwd(), 'src/components.ts'),
+    main: path.resolve(process.cwd(), 'src/components.ts'),
   },
 
   output: {
     ...output,
     path: path.resolve(process.cwd(), 'lib'),
-    libraryTarget: 'umd',
+    libraryTarget: 'commonjs2',
   },
 
-  externals: nodeExternals(),
+  target: 'node',
+  externals: [
+    nodeExternals({
+      modulesFromFile: true,
+    }),
+  ],
 
   module: {
     ...module,
@@ -25,19 +31,24 @@ export default (env, { module, plugins, output, ...config }) => ({
             loader: 'babel-loader',
             options: {
               babelrc: false,
-              plugins: ['lodash', 'syntax-dynamic-import'],
+              plugins: [
+                'lodash',
+                'syntax-dynamic-import',
+                'transform-object-rest-spread',
+                'babel-plugin-transform-class-properties',
+                'transform-react-constant-elements',
+                'transform-react-inline-elements',
+                'transform-react-remove-prop-types',
+                'transform-react-pure-class-to-function',
+              ],
               presets: [
                 [
                   'env',
                   {
                     modules: false,
-                    targets: {
-                      browsers: ['last 2 versions', 'ie > 8'],
-                    },
+                    targets: { browsers: ['last 2 versions', 'ie > 8'] },
                   },
                 ],
-                'react-optimize',
-                'stage-0',
                 'react',
               ],
             },
@@ -47,7 +58,6 @@ export default (env, { module, plugins, output, ...config }) => ({
     ],
   },
   plugins: [
-    ...plugins,
     // new Stats('stats.json')
   ],
 });
