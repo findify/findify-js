@@ -23,9 +23,7 @@ import {
 const initialStyles = { width: 0, height: 0 };
 let key = 1;
 
-const defaultStyles = {
-  overflow: 'hidden',
-};
+const defaultStyles = {};
 
 const FrameComponent = (decorators, factory) =>
   compose(
@@ -37,11 +35,11 @@ const FrameComponent = (decorators, factory) =>
           config.css,
           config.scripts,
           config.featureType,
-          !isMobile || !!config.isMobileSimple,
+          !isMobile || !!config.isMobileSimple
         ),
-      }),
+      })
     ),
-    decorators,
+    decorators
   )(({ frameStyles, html, frameID, ...props }) => (
     <Frame
       style={frameStyles}
@@ -79,13 +77,13 @@ const withFrame = mapper => BaseComponent => {
     withHandlers({
       onResize: ({ setStyles }) => (width, height) =>
         setStyles({ width, height }),
-    }),
+    })
   );
 
   return branch(
     ({ config }) => config.frameDisabled,
     renderComponent(StaticComponent(sizeHandlers, factory)),
-    renderComponent(FrameComponent(sizeHandlers, factory)),
+    renderComponent(FrameComponent(sizeHandlers, factory))
   )(null);
 };
 

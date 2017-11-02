@@ -49,6 +49,8 @@ export default ({
   visible,
   inline,
 }) => {
+  if (config.appendTo === 'parent')
+    return { position: 'relative', width: '100%' };
   if (isMobile && !config.isMobileSimple) return mobileStyles;
   if (!visible) return hiddenStyles;
 
