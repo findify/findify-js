@@ -38,7 +38,7 @@ const getPropsFromChildren = nodeList =>
 export const getEventData = node => {
   const ownProps = normalizeKeys(node.dataset);
 
-  if (ownProps.event === 'update-cart') {
+  if (['update-cart', 'purchase'].includes(ownProps.event)) {
     return {
       ...ownProps,
       line_items: nodeToArray(node.children).map(e => normalizeKeys(e.dataset)),
