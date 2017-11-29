@@ -75,12 +75,10 @@ function deploy_to_s3() {
 }
 
 if [[ $TRAVIS_BRANCH == 'master' ]]; then
-  echo "publishing new versions to npm"
-  npm run release
+  echo "creating new versions"
+  npm run release:pre
   # new tags are created by lerna-semantic-release
 
-  echo "changelogs"
-  find packages -maxdepth 2 -name 'CHANGELOG.md' -print0 | xargs -0 -I % sh -c 'echo %; cat %'
 fi
 
 PKGS=(analytics helpers mjs)
@@ -121,4 +119,12 @@ if [[ $TRAVIS_BRANCH == 'master' || $TRAVIS_BRANCH == 'develop' ]]; then
   done
 else
   echo "branch is neither master nor develop, skipping"
+fi
+
+if [[ $TRAVIS_BRANCH == 'master' ]]; then
+  echo "publishing new versions to npm"
+  run-s release:perform release:post
+
+  echo "changelogs"
+  find packages -maxdepth 2 -name 'CHANGELOG.md' -print0 | xargs -0 -I % sh -c 'echo %; cat %'
 fi
