@@ -156,7 +156,7 @@ export const ResultsLayout = compose(
                 ...config,
                 ...config.productsGrid,
               }}
-              columnClass={styles.product}
+              columnClass={styles.products}
               items={response.items}
               onProductClick={onProductClick}
             />

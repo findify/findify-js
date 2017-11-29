@@ -18,7 +18,11 @@ export default (env, { module, plugins, output, ...config }) => ({
     libraryTarget: 'commonjs2',
   },
 
-  externals: [nodeExternals()],
+  externals: [
+    nodeExternals({
+      modulesFromFile: true,
+    }),
+  ],
 
   module: {
     ...module,

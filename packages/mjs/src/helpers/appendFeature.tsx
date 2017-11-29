@@ -51,7 +51,8 @@ export default analytics => ({ node, type, config, initialHTML }) => {
       initialHTML,
     });
 
-    componentDOMRoot = componentDOMRoot || mutateDom(node, appendTo);
+    componentDOMRoot =
+      componentDOMRoot || mutateDom(node, config.appendTo || appendTo);
     render(Component, componentDOMRoot);
   });
 };
