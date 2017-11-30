@@ -1,6 +1,6 @@
 {
   "name": "@findify/helpers",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "main": "lib/index.js",
   "types": "types/index.d.ts",
   "author": "Findify <yourfriends@findify.io>",
@@ -14,7 +14,7 @@
     "types"
   ],
   "license": "MIT",
-  "homepage": "https://github.com/findify/findify-js#readme",  
+  "homepage": "https://github.com/findify/findify-js#readme",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/findify/findify-js.git"
