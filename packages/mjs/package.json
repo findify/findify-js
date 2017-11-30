@@ -14,7 +14,7 @@
     "bluebird": "^3.5.0",
     "change-emitter": "^0.1.6",
     "@findify/helpers": "^1.0.1",
-    "@findify/ui-components": "^2.1.0",
+    "@findify/ui-components": "^2.1.15",
     "flat": "^4.0.0",
     "history": "^4.7.2",
     "immutable": "^3.8.1",
