@@ -14,7 +14,11 @@
     "types"
   ],
   "license": "MIT",
-  "repository": "https://github.com/findify/findify-js/tree/master/packages/helpers",
+  "homepage": "https://github.com/findify/findify-js#readme",  
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/findify/findify-js.git"
+  },
   "config": {
     "access": "public"
   },

@@ -1,40 +1,14 @@
 {
   "name": "@findify/analytics",
   "description": "Findify analytics",
-  "version": "3.0.7",
-  "main": "lib/index.js",
-  "tags": [
-    "findify",
-    "analytics",
-    "search"
-  ],
-  "scripts": {
-    "toc": "doctoc README.md --github --maxlevel 3",
-    "clean": "del lib dist",
-    "lint": "tslint --project .",
-    "test": "# mocha --compilers ts:ts-node/register --recursive -R min  ./__tests__",
-    "build:commonjs": "tsc --project . && cpx './src/env/*.js' ./lib/env",
-    "build:umd": "cross-env FINDIFY_ENV=production NODE_ENV=development webpack src/index.ts dist/prod/findify-analytics.js",
-    "build:umd:min": "cross-env FINDIFY_ENV=production NODE_ENV=production webpack src/index.ts dist/prod/findify-analytics.min.js",
-    "build:umd-staging": "cross-env FINDIFY_ENV=staging NODE_ENV=development webpack src/index.ts dist/staging/findify-analytics.js",
-    "build:umd:min-staging": "cross-env FINDIFY_ENV=staging NODE_ENV=production webpack src/index.ts dist/staging/findify-analytics.min.js",
-    "build": "run-p build:commonjs build:umd build:umd:min",
-    "build:test": "npm run build",
-    "build:staging": "npm run build:umd-staging && npm run build:umd:min-staging"
-  },
+  "version": "3.0.8",
   "author": "Findify <yourfriends@findify.io>",
-  "license": "MIT",
-  "files": [
-    "lib",
-    "index.d.ts"
-  ],
-  "repository": "https://github.com/findify/findify-js/tree/master/packages/analytics",
   "config": {
     "access": "public"
   },
   "dependencies": {
-    "element-dataset": "^2.2.6",
     "change-emitter": "^0.1.6",
+    "element-dataset": "^2.2.6",
     "humps": "^2.0.1",
     "js-cookie": "^2.1.4",
     "lodash": "^4.17.4",
@@ -51,8 +25,8 @@
     "compression-webpack-plugin": "^1.0.1",
     "cpx": "^1.5.0",
     "cross-env": "^5.0.5",
-    "doctoc": "^1.3.0",
     "del-cli": "^1.1.0",
+    "doctoc": "^1.3.0",
     "expect": "^1.20.2",
     "faux-jax": "^5.0.6",
     "jsdom": "^9.12.0",
@@ -64,5 +38,35 @@
     "tslint": "^5.7.0",
     "typescript": "^2.5.3",
     "webpack": "^3.8.1"
-  }
+  },
+  "files": [
+    "lib",
+    "index.d.ts"
+  ],
+  "license": "MIT",
+  "main": "lib/index.js",
+  "homepage": "https://github.com/findify/findify-js#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/findify/findify-js.git"
+  },
+  "scripts": {
+    "build": "run-p build:commonjs build:umd build:umd:min",
+    "build:commonjs": "tsc --project . && cpx './src/env/*.js' ./lib/env",
+    "build:staging": "npm run build:umd-staging && npm run build:umd:min-staging",
+    "build:test": "npm run build",
+    "build:umd": "cross-env FINDIFY_ENV=production NODE_ENV=development webpack src/index.ts dist/prod/findify-analytics.js",
+    "build:umd-staging": "cross-env FINDIFY_ENV=staging NODE_ENV=development webpack src/index.ts dist/staging/findify-analytics.js",
+    "build:umd:min": "cross-env FINDIFY_ENV=production NODE_ENV=production webpack src/index.ts dist/prod/findify-analytics.min.js",
+    "build:umd:min-staging": "cross-env FINDIFY_ENV=staging NODE_ENV=production webpack src/index.ts dist/staging/findify-analytics.min.js",
+    "clean": "del lib dist",
+    "lint": "tslint --project .",
+    "test": "# mocha --compilers ts:ts-node/register --recursive -R min  ./__tests__",
+    "toc": "doctoc README.md --github --maxlevel 3"
+  },
+  "tags": [
+    "findify",
+    "analytics",
+    "search"
+  ]
 }
