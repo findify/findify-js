@@ -29,7 +29,7 @@
     "react-dom": "^16.0.0",
     "react-frame-component": "^1.1.1",
     "react-resize-detector": "^0.6.0",
-    "recompose": "^0.25.0",
+    "recompose": "^0.26.0",
     "element-dataset": "^2.2.6",
     "uuid": "^3.1.0"
   },

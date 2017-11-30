@@ -1,11 +1,6 @@
 import * as React from 'react';
 import * as cx from 'classnames';
-import {
-  compose,
-  withState,
-  withHandlers,
-  createEagerElement,
-} from 'recompose';
+import { compose, withState, withHandlers } from 'recompose';
 import Icon from 'internals/Icon';
 
 const styles = require('./styles.css');
@@ -51,7 +46,7 @@ export const AutocompleteMobileBody = compose(
       setQuery('');
       return onInput('');
     },
-  }),
+  })
 )(
   ({
     query,
@@ -86,23 +81,23 @@ export const AutocompleteMobileBody = compose(
       <div className={styles.suggestions}>
         {!!suggestions &&
           suggestions.map((suggestion: any) =>
-            createEagerElement(Suggestion, {
+            React.createElement(Suggestion, {
               key: suggestion.value,
               onClick: onSelect,
               suggestion,
               query,
-            }),
+            })
           )}
       </div>
     </div>
-  ),
+  )
 );
 
 function highlightSuggestion(value: string, highlighted: string) {
   const regexp = new RegExp(`(${highlighted})`);
   return value.replace(
     regexp,
-    `<span class="${styles.highlightedText}">$1</span>`,
+    `<span class="${styles.highlightedText}">$1</span>`
   );
 }
 

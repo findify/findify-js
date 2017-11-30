@@ -1,14 +1,14 @@
-import { Component } from 'react';
-import { setDisplayName, wrapDisplayName, createEagerFactory } from 'recompose';
+import { Component, createFactory } from 'react';
+import { setDisplayName, wrapDisplayName } from 'recompose';
 
 const withStateOnChange = (
   stateName,
   stateUpdaterName,
   initialState,
   prop,
-  onReceiveProps,
+  onReceiveProps
 ) => BaseComponent => {
-  const factory = createEagerFactory(BaseComponent);
+  const factory = createFactory(BaseComponent);
   class WithStateOnChange extends Component<any, any> {
     state = {
       stateValue:
@@ -29,7 +29,7 @@ const withStateOnChange = (
           stateValue:
             typeof updateFn === 'function' ? updateFn(stateValue) : updateFn,
         }),
-        callback,
+        callback
       );
 
     render() {
@@ -43,7 +43,7 @@ const withStateOnChange = (
 
   if (process.env.NODE_ENV !== 'production') {
     return setDisplayName(wrapDisplayName(BaseComponent, 'withStateOnChange'))(
-      WithStateOnChange,
+      WithStateOnChange
     );
   }
   return WithStateOnChange;

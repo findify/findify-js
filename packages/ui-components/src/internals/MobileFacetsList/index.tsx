@@ -5,7 +5,6 @@ import {
   withHandlers,
   withPropsOnChange,
   withState,
-  createEagerElement,
 } from 'recompose';
 import * as cx from 'classnames';
 
@@ -31,7 +30,7 @@ export const MobileFacetsList = compose(
       if (isRange) {
         const valuesKeys = facet.values.map(value => getRangeFacetKey(value));
         const notInList = Object.keys(changedFacet).filter(
-          key => !valuesKeys.includes(key),
+          key => !valuesKeys.includes(key)
         );
         if (!!notInList.length) {
           values = [
@@ -90,14 +89,14 @@ export const MobileFacetsList = compose(
       }
       updateChanges(
         { ...changes, [name]: { ...changes[name], [value]: update } },
-        () => type === 'category' && onCommit(),
+        () => type === 'category' && onCommit()
       );
     },
 
     onReset: ({ onCommit, onChange, updateChanges, facets, changes }) => (
       type,
       name,
-      commit = true,
+      commit = true
     ) => {
       const facet = facets.find(facet => facet.name === name);
       let update = { ...changes };
@@ -129,7 +128,7 @@ export const MobileFacetsList = compose(
     },
 
     onResetAll: ({ onClearAll }) => onClearAll,
-  }),
+  })
 )(({ facets, config, ...rest }: Response) => (
   <div className={cx(styles.wrap, !rest.selectedFacet && styles.wrapDark)}>
     <div className={styles.header}>
@@ -138,7 +137,7 @@ export const MobileFacetsList = compose(
     <FacetTitle {...rest} facets={facets} config={config} />
     <div className={styles.content}>
       {facets.map((facet, index) =>
-        createEagerElement(Facet, {
+        React.createElement(Facet, {
           ...rest,
           ...facet,
           config,
@@ -146,7 +145,7 @@ export const MobileFacetsList = compose(
           key: facet.name,
           label: config.facets.labels[facet.name],
           type: facet.type,
-        }),
+        })
       )}
     </div>
   </div>

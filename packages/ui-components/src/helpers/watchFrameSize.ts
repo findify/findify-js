@@ -1,9 +1,8 @@
-import { Component } from 'react';
+import { Component, createFactory } from 'react';
 import PropTypes from 'prop-types';
-import { createEagerFactory } from 'recompose';
 
 export default BaseComponent => {
-  const factory = createEagerFactory(BaseComponent);
+  const factory = createFactory(BaseComponent);
 
   return class FrameSizeWatcher extends Component<any, any> {
     win: any = void 0;

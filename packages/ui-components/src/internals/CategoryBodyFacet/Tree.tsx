@@ -6,7 +6,6 @@ import {
   renderNothing,
   withProps,
   withPropsOnChange,
-  createEagerElement,
   pure,
   branch,
 } from 'recompose';
@@ -21,7 +20,7 @@ export const Tree = compose(
   branch(
     ({ cursor }: any) => cursor.size > 2, // Max level is 2
     renderComponent(({ children, cursor, ...rest }) =>
-      createEagerElement(Tree, {
+      React.createElement(Tree, {
         ...rest,
         ...children[cursor.first()],
         cursor: cursor.shift(),
@@ -45,7 +44,7 @@ export const Tree = compose(
   branch(
     ({ has_children }: any) => has_children,
     renderComponent(props =>
-      createEagerElement(NestedTree, { ...props, Nested: Tree })
+      React.createElement(NestedTree, { ...props, Nested: Tree })
     ),
     renderComponent(SingleItem)
   )

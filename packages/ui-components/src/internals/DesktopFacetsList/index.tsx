@@ -4,7 +4,6 @@ import {
   compose,
   setDisplayName,
   withState,
-  createEagerElement,
   withPropsOnChange,
 } from 'recompose';
 import { mapTypeToFacet } from 'helpers/mapTypeToFacet';
@@ -32,7 +31,7 @@ export const DesktopFacetsList = setDisplayName(
 )(({ facets, className, ...rest }: DesktopFacetsListType) => (
   <div className={className}>
     {facets.map(facet =>
-      createEagerElement(Facet, {
+      React.createElement(Facet, {
         ...rest,
         facet,
         key: facet.name,

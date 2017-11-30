@@ -6,16 +6,16 @@ import { PriceFacet } from 'widgets/PriceFacet';
 import { RatingFacet } from 'widgets/RatingFacet';
 import { memoize } from 'lodash';
 
-import { createEagerFactory } from 'recompose';
+import { createFactory } from 'react';
 
 export const mapTypeToFacet = memoize(
   (type: string) =>
     ({
-      category: createEagerFactory(CategoryFacet),
-      text: createEagerFactory(CheckboxFacet),
-      range: createEagerFactory(RangeFacet),
-      color: createEagerFactory(ColorFacet),
-      price: createEagerFactory(PriceFacet),
-      rating: createEagerFactory(RatingFacet),
-    }[type]),
+      category: createFactory(CategoryFacet),
+      text: createFactory(CheckboxFacet),
+      range: createFactory(RangeFacet),
+      color: createFactory(ColorFacet),
+      price: createFactory(PriceFacet),
+      rating: createFactory(RatingFacet),
+    }[type])
 );

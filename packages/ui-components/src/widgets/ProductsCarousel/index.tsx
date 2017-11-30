@@ -6,7 +6,6 @@ import {
   defaultProps,
   withPropsOnChange,
   pure,
-  createEagerElement,
   withState,
   withHandlers,
 } from 'recompose';
@@ -44,7 +43,7 @@ const Arrow = withHandlers({
       name={`chevron-${dir}`}
       className={cx(styles.arrow, className)}
     />
-  ),
+  )
 );
 
 const countProductsToShow = width => {
@@ -87,7 +86,7 @@ export const HOC = compose(
       nextArrow: <Arrow dir="right" defaultOnClick={scrollToFirst} />,
       prevArrow: <Arrow dir="left" defaultOnClick={scrollToLast} />,
     },
-  })),
+  }))
 );
 
 export const Component = ({
@@ -100,7 +99,7 @@ export const Component = ({
 }: any) => (
   <div className={styles.root}>
     {title && <h4 className={styles.title}>{title}</h4>}
-    {createEagerElement(
+    {React.createElement(
       Slider,
       {
         ref: setRef,
@@ -121,7 +120,7 @@ export const Component = ({
             }}
           />
         </div>
-      )),
+      ))
     )}
   </div>
 );

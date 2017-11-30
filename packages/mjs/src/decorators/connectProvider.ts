@@ -1,10 +1,10 @@
 import * as helpers from '@findify/helpers';
+import { createFactory } from 'react';
 import {
   compose,
   setDisplayName,
   defaultProps,
   withState,
-  createEagerFactory,
   lifecycle,
   withHandlers,
 } from 'recompose';
@@ -13,7 +13,7 @@ const connectHelpers = (Provider: IProvider) => BaseComponent => {
   let provider;
   let unsubscribe;
 
-  const factory = createEagerFactory(
+  const factory = createFactory(
     compose(
       withState('response', 'setStore', ({ state }) => state),
       withState('isLoading', 'setLoading', false),
@@ -27,7 +27,7 @@ const connectHelpers = (Provider: IProvider) => BaseComponent => {
         componentWillMount() {
           unsubscribe = provider.subscribe(
             this.props.setStore,
-            this.props.setLoading,
+            this.props.setLoading
           );
         },
 
@@ -40,7 +40,7 @@ const connectHelpers = (Provider: IProvider) => BaseComponent => {
         trackEvent: ({ analytics, response }) => (
           name: string,
           data,
-          useCookie = false,
+          useCookie = false
         ) =>
           analytics.sendEvent(
             name,
@@ -48,10 +48,10 @@ const connectHelpers = (Provider: IProvider) => BaseComponent => {
               ...data,
               rid: (response && response.meta && response.meta.rid) || void 0,
             },
-            useCookie,
+            useCookie
           ),
-      }),
-    )(BaseComponent),
+      })
+    )(BaseComponent)
   );
 
   return props => {
@@ -72,7 +72,7 @@ const connectHelpers = (Provider: IProvider) => BaseComponent => {
 export default setDisplayName('connectHelpers')(connectHelpers);
 
 type IProvider = (
-  config,
+  config
 ) => {
   subscribe: (callback) => void;
 };
