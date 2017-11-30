@@ -112,7 +112,7 @@ export const Component = ({
     {filters.map((filter, index) =>
       filter.values.map(item => {
         const key = [filter.name, item.value, item.from, item.to].join('_');
-        return createEagerElement(Filter, {
+        return React.createElement(Filter, {
           ...filter,
           ...item,
           key,

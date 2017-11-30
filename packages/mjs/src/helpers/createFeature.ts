@@ -1,4 +1,5 @@
-import { compose, createEagerElement, defaultProps } from 'recompose';
+import { createElement } from 'react';
+import { compose, defaultProps } from 'recompose';
 import withNodeState from '../decorators/withNodeState';
 import withLocationManager from '../decorators/withLocationManager';
 import watchIsMobile from '../decorators/watchIsMobile';
@@ -28,7 +29,7 @@ const createGlobalComponent = ({
     watchIsMobile(config),
     connectProvider(provider),
     ...decorators,
-    postProcess,
+    postProcess
   );
 
 /**
@@ -50,7 +51,7 @@ const createInlineComponent = ({
     withFakeLocation,
     withNodeState(),
     connectProvider(provider),
-    ...decorators,
+    ...decorators
   );
 
 export default ({ appendTo, component, provider }: IFeatureCreator) => (
@@ -60,8 +61,8 @@ export default ({ appendTo, component, provider }: IFeatureCreator) => (
     ? createInlineComponent({ ...props, provider, decorators })(component)
     : {
         appendTo,
-        Component: createEagerElement(
-          createGlobalComponent({ ...props, provider, decorators })(component),
+        Component: createElement(
+          createGlobalComponent({ ...props, provider, decorators })(component)
         ),
       };
 

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as DOM from 'react-dom-factories';
-import { compose, createEagerElement, withProps } from 'recompose';
+import { compose, withProps } from 'recompose';
 import { memoize, isArray } from 'lodash';
 import template from 'helpers/template';
 const styles = require('./styles.css');
@@ -53,7 +53,7 @@ const Sticker: any = compose(
     position: getPosition(config.position),
     content: getContent(value, config.template),
     style: getStyles(config.styles),
-  })),
+  }))
 )(({ position, style, content, name }: any) => (
   <div className={cx(styles.root, `sticker-${name}`)} style={position.root}>
     <div className={styles.sticker} style={{ ...position.container, ...style }}>
@@ -69,12 +69,12 @@ export const Stickers: any = ({ stickers, config }) => {
       Object.keys(stickers)
         .filter(i => stickers[i] && !!config[i] && !ignore.includes(i))
         .map(key =>
-          createEagerElement(Sticker, {
+          React.createElement(Sticker, {
             key,
             name: key,
             value: stickers[key],
             config: config[key],
-          }),
-        ),
+          })
+        )
   );
 };

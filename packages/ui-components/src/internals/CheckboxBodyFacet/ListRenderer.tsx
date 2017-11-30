@@ -9,7 +9,6 @@ import {
   withProps,
   renderNothing,
   withPropsOnChange,
-  createEagerElement,
   defaultProps,
 } from 'recompose';
 import { AutoSizer } from 'react-virtualized/dist/commonjs/AutoSizer';
@@ -32,7 +31,7 @@ const StaticList = ({
 }) => (
   <div className={cx(styles.list, className)}>
     {items.map(item =>
-      createEagerElement(itemComponent, {
+      React.createElement(itemComponent, {
         ...rest,
         item,
         key: item.value,
@@ -69,7 +68,7 @@ const VirtualizedList = compose(
           parent={parent}
         >
           {({ measure }) =>
-            createEagerElement(itemComponent, {
+            React.createElement(itemComponent, {
               ...rest,
               item: items[index],
               title: items[index].label || items[index].value,

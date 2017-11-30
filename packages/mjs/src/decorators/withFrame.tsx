@@ -13,7 +13,6 @@ import {
   withHandlers,
   onlyUpdateForKeys,
   renderComponent,
-  createEagerFactory,
   withProps,
   branch,
   defaultProps,
@@ -65,7 +64,7 @@ const StaticComponent = (decorators, factory) =>
   });
 
 const withFrame = mapper => BaseComponent => {
-  const factory = createEagerFactory(BaseComponent);
+  const factory = React.createFactory(BaseComponent);
   const sizeHandlers = compose(
     withState('styles', 'setStyles', initialStyles),
     withPropsOnChange(['styles', 'node', 'visible'], props => ({

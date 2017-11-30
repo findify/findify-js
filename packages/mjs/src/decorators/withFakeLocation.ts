@@ -1,10 +1,5 @@
-import { Component } from 'react';
-import {
-  compose,
-  withPropsOnChange,
-  lifecycle,
-  createEagerFactory,
-} from 'recompose';
+import { Component, createFactory } from 'react';
+import { compose, withPropsOnChange, lifecycle } from 'recompose';
 import { identity } from 'lodash';
 
 class FakeLocation {
@@ -36,7 +31,7 @@ class FakeLocation {
 }
 
 export default BaseComponent => {
-  const factory = createEagerFactory(BaseComponent);
+  const factory = createFactory(BaseComponent);
 
   return class Location extends Component<any, any> {
     _location: any = void 0;
