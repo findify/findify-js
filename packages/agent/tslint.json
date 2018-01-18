@@ -1,0 +1,9 @@
+{
+  "extends": [
+    "tslint-config-airbnb",
+    "tslint-config-prettier"
+  ],
+  "rules": {
+    "variable-name": [true, "allow-leading-underscore"]
+  }
+}

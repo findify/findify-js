@@ -1,0 +1,13 @@
+{
+  "name": "@findify/agent",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {},
+  "dependencies": {
+    "@findify/sdk": "^1.3.9",
+    "lodash": "^4.17.4"
+  }
+}
