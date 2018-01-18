@@ -29,6 +29,8 @@ var config = {
   resolve: {
     extensions: ['.ts', '.js'],
   },
+
+  stats: 'minimal',
 };
 
 if (env === 'production') {

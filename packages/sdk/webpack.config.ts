@@ -28,6 +28,7 @@ export default (env: WebpackEnvArgs) => {
       umdNamedDefine: true,
     },
     devtool: 'source-map',
+    stats: 'minimal',
     bail: true,
     resolve: { extensions: ['.ts', '.js'] },
     module: {
