@@ -102,14 +102,18 @@ const initializeCreator = (root, sendEvent, { platform, events }) => (
       }
     }
 
-    if (key === 'purchase' && platform.bigcommerce)
+    if (key === 'purchase' && platform.bigcommerce) {
       endpoint = env.bigcommerceTrackingUrl;
+    }
+
     return sendEvent(key, state.events[key], false, endpoint);
   });
 };
 
-module.exports = (props: Config | Function, context = document): Client => {
-  if (isFunction(props)) return emitter.listen(props);
+module.exports = (props: Config | (() => void), context = document): Client => {
+  if (isFunction(props)) {
+    return emitter.listen(props);
+  }
 
   const config = { events: {}, platform: {}, ...props };
   const sendEvent = sendEventCreator(config);

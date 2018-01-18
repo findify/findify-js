@@ -30,7 +30,7 @@ var config = {
     extensions: ['.ts', '.js'],
   },
 
-  stats: 'minimal',
+  stats: 'normal',
 };
 
 if (env === 'production') {
