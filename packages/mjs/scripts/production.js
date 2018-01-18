@@ -78,28 +78,19 @@ export default (env, { module, plugins, output, ...config }) => {
         template: path.resolve(process.cwd(), 'dev/templates/index.html'),
       }),
       new UglifyJSPlugin({
-        sourceMap: false,
-        minimize: true,
-        output: {
-          comments: false,
-        },
-        compress: {
-          warnings: false,
-          screw_ie8: true,
-          sequences: true,
-          dead_code: true,
-          drop_debugger: true,
-          comparisons: true,
-          conditionals: true,
-          evaluate: true,
-          booleans: true,
-          loops: true,
-          unused: true,
-          hoist_funs: true,
-          if_return: true,
-          join_vars: true,
-          cascade: true,
-          drop_console: true,
+        test: /\.js($|\?)/i,
+        cache: true,
+        parallel: true,
+        sourceMap: true,
+        uglifyOptions: {
+          output: {
+            comments: false,
+          },
+          compress: {
+            warnings: false,
+            drop_debugger: true,
+            drop_console: true,
+          },
         },
       }),
       new webpack.LoaderOptionsPlugin({
