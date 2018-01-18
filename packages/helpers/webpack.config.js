@@ -17,6 +17,8 @@ var config = {
       },
     ],
   },
+  stats: 'normal',
+
   output: {
     library: 'FindifyHelpers',
     libraryTarget: 'umd',
