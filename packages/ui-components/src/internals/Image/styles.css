@@ -3,6 +3,9 @@
   transform: filter .3s linear, opacity .3s linear, height .1s linear;
 }
 
+.loading{
+  display: none;
+}
 .thumbnail{
   height: 150px;
   opacity: .5;
