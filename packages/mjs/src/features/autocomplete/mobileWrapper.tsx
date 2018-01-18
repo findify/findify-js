@@ -22,7 +22,7 @@ const helperStyles = {
 export default withHandlers({
   onClick: ({ setVisible }) => () => setVisible(false),
 })(({ children, onClick, motion }) => (
-  <div style={wrapStyles}>
+  <div style={wrapStyles} className="findify-autocomplete-mobile">
     <div style={helperStyles} onClick={onClick} />
     {children}
   </div>
