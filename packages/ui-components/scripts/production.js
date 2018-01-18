@@ -24,6 +24,8 @@ export default (env, { module, plugins, output, ...config }) => ({
     }),
   ],
 
+  stats: 'minimal',
+
   module: {
     ...module,
     rules: [

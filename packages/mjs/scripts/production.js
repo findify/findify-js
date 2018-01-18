@@ -66,6 +66,8 @@ export default (env, { module, plugins, output, ...config }) => {
       ],
     },
 
+    stats: 'minimal',
+
     devtool: 'hidden-source-map',
 
     plugins: [
