@@ -54,9 +54,11 @@ const FrameComponent = (decorators, factory) =>
 const StaticComponent = (decorators, factory) =>
   decorators(({ frameStyles, ...props }) => {
     injectTags(props.config.css, props.config.js);
-
     return (
-      <div style={frameStyles}>
+      <div
+        style={frameStyles}
+        className={`findify-${props.config.featureType}-wrapper`}
+      >
         {factory(props)}
         <ResizeDetector handleWidth handleHeight onResize={props.onResize} />
       </div>

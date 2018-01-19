@@ -71,7 +71,6 @@ export default ({
     inline,
     config
   );
-  const transform = `translate3d(${left}px, ${top}px, 0)`;
 
   return {
     ...defaults,
@@ -81,8 +80,7 @@ export default ({
       !response || (response && !response.suggestions.length)
         ? 'hidden'
         : 'visible',
-    transform,
-    msTransform: transform,
-    WebkitTransform: transform,
+    top,
+    left,
   };
 };
