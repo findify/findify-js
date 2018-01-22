@@ -4,21 +4,33 @@ export class Cache {
   cache: any = {};
   resolver: any;
 
-  constructor(resolver) {
+  constructor(resolver: () => void) {
     this.resolver = resolver;
+    this.invalidate = this.invalidate.bind(this);
   }
 
-  set(field, value) {
-    this.cache[field] = { ...this.cache[field], ...value };
+  private invalidate() {
+    this.resolver(this.cache);
+    this.purge();
+  }
+
+  public set(field, value) {
+    this.cache[field] = value;
     this.resolve();
   }
 
-  resolve = debounce(() => {
-    this.resolver(this.cache);
-    this.purge();
-  });
+  public reset(field) {
+    if (!field) {
+      this.cache = {};
+    } else {
+      this.cache[field] = undefined;
+    }
+    this.resolve();
+  }
 
-  purge() {
+  public resolve = debounce(this.invalidate);
+
+  private purge() {
     this.cache = {};
   }
 }

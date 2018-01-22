@@ -1,11 +1,8 @@
 import { isArray, isObject } from 'lodash/fp';
-import { FacetTypes } from '../constants';
+import { Facets } from '../types';
 
 export const getFacetType = value => {
-  if (isArray(value)) return FacetTypes.category;
-  if (isObject(value)) return FacetTypes.range;
-  return FacetTypes.text;
+  if (isArray(value)) return Facets.category;
+  if (isObject(value)) return Facets.range;
+  return Facets.text;
 };
-
-export const normalizeFilters = filters =>
-  Object.keys(filters).reduce((acc, key) => {}, {});

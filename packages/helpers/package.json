@@ -30,7 +30,6 @@
     "@types/lodash": "^4.14.76",
     "@types/redux-logger": "^3.0.0",
     "@types/redux-mock-store": "^0.0.9",
-    "@types/redux-saga": "^0.10.5",
     "cross-env": "^5.0.5",
     "deep-freeze": "^0.0.1",
     "expect": "^1.20.2",
@@ -41,10 +40,10 @@
     "del-cli": "^1.1.0",
     "npm-run-all": "^4.1.1",
     "ts-loader": "^2.3.7",
-    "ts-node": "^3.3.0",
+    "ts-node": "^4.1.0",
     "tslint": "^5.7.0",
     "typescript": "^2.5.3",
-    "webpack": "^3.6.0",
+    "webpack": "^3.8.1",
     "webpack-node-externals": "^1.6.0"
   },
   "scripts": {

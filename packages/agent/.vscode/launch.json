@@ -6,10 +6,12 @@
       "name": "TS File",
       "type": "node",
       "request": "launch",
-      "program": "/usr/local/bin/ts-node",
-      "args": ["${relativeFile}"],
+      "runtimeArgs": ["-r", "ts-node/register"],
+      "args": ["${workspaceRoot}/src/index.ts"],
       "cwd": "${workspaceRoot}",
-      "protocol": "inspector"
+      "protocol": "inspector",
+      "internalConsoleOptions": "openOnSessionStart",
+      "sourceMaps": true
     }
   ]
 }
