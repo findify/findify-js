@@ -47,7 +47,7 @@ export interface State {
   setThumbnail: (isLoading: boolean) => void;
 }
 
-export type MappedProps = OwnProps & { src?: string };
+export type MappedProps = OwnProps & { src?: string; style?: any };
 export type Props = MappedProps & State;
 
 const fetch = (src: string) =>
@@ -98,10 +98,11 @@ const ImageComponent = compose<OwnProps, Props>(
       }
     }
   ),
-  mapProps(({ stage, className, src, alt, onClick }: Props) => ({
+  mapProps(({ stage, className, src, alt, onClick, style }: Props) => ({
     alt,
     onClick,
     src,
+    style,
     className: cx(
       styles.root,
       className,
