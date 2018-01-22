@@ -23,7 +23,7 @@ export const getChangedFields = (prev, next) => {
   return Object.keys(next).reduce((acc, key) => {
     if (prev[key] === next[key]) return acc;
     return isArray(next[key]) && isValidField(next[key], key)
-      ? { ...acc, [key]: next[key] }
+      ? { ...(acc || {}), [key]: next[key] }
       : acc;
   }, undefined);
 };

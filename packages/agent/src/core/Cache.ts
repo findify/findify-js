@@ -28,9 +28,9 @@ export class Cache {
     this.resolve();
   }
 
-  public resolve = debounce(this.invalidate);
-
   private purge() {
     this.cache = {};
   }
+
+  public resolve = (debounce as any)(this.invalidate);
 }

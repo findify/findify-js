@@ -13,7 +13,8 @@
     "pretty": true,
     "baseUrl": "src",
     "rootDirs": ["src"],
-    "allowJs": false
+    "allowJs": false,
+    "outDir": "lib"
   },
   "compileOnSave": false,
   "buildOnSave": false

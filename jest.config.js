@@ -21,7 +21,6 @@ module.exports = {
     '**/*.{ts,tsx}',
     '!**/*.d.ts',
     '!**/node_modules/**',
-    '!**/bower_components/**',
     '!**/vendor/**',
     '!**/output/**',
   ],
