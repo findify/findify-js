@@ -25,7 +25,7 @@
     "build:dist": "TS_NODE_COMPILER_OPTIONS=\"{\\\"module\\\":\\\"commonjs\\\"}\" webpack",
     "build:dist:analyze": "npm run build:dist -- --env.analyze",
     "build:lib": "tsc --project tsconfig.lib.json --declaration --declarationDir types",
-    "build:test": "npm run build:lib -- --module commonjs",
+    "build:test": "npm run build:lib -- --project tsconfig.test.json --module commonjs",
     "build:test:watch": "npm run build:test -- --watch",
     "test": "# jest",
     "test:ci": "jest --ci",
@@ -41,6 +41,7 @@
     "shallowequal": "^1.0.2"
   },
   "devDependencies": {
+    "@types/jest": "^22.0.1",
     "@types/node": "^9.3.0",
     "@types/webpack": "^3.8.3",
     "del-cli": "^1.1.0",

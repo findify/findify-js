@@ -1,4 +1,3 @@
-
 {
   "version": "0.2.0",
   "configurations": [
@@ -7,7 +6,7 @@
       "type": "node",
       "request": "launch",
       "runtimeArgs": ["-r", "ts-node/register"],
-      "args": ["${workspaceRoot}/src/index.ts"],
+      "args": ["${workspaceRoot}/examples/index.ts"],
       "cwd": "${workspaceRoot}",
       "protocol": "inspector",
       "internalConsoleOptions": "openOnSessionStart",

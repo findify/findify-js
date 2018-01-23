@@ -14,7 +14,8 @@
     "baseUrl": "src",
     "rootDirs": ["src"],
     "allowJs": false,
-    "outDir": "lib"
+    "outDir": "lib",
+    "types" : ["node", "lodash", "webpack", "jest"]
   },
   "compileOnSave": false,
   "buildOnSave": false

@@ -4,12 +4,12 @@ export class Cache {
   cache: any = {};
   resolver: any;
 
-  constructor(resolver: () => void) {
+  constructor(resolver: (store) => void) {
     this.resolver = resolver;
     this.invalidate = this.invalidate.bind(this);
   }
 
-  private invalidate() {
+  public invalidate() {
     this.resolver(this.cache);
     this.purge();
   }
