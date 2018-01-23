@@ -74,13 +74,13 @@ export default ({
 
   return {
     ...defaults,
+    top,
+    left,
     width: inline || config.frameDisabled ? 'auto' : width || '100%',
     height: inline || config.frameDisabled ? 'auto' : height || '100%',
     visibility:
       !response || (response && !response.suggestions.length)
         ? 'hidden'
         : 'visible',
-    top,
-    left,
   };
 };
