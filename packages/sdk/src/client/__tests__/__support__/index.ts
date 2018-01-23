@@ -34,6 +34,7 @@ export async function verifyRequest(
     fixture,
     nockBackOptions as any
   )) as any;
+
   const response = await client.send(request);
   context.assertScopesFinished();
   const sanitized = sanitizeResponseBody(response);

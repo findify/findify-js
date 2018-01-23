@@ -2,7 +2,7 @@
     {
         "scope": "https://search-staging.findify.io:443",
         "method": "post",
-        "path": "/search",
+        "path": "/v3/search",
         "body": {
             "user": {
                 "lang": [
@@ -14,22 +14,23 @@
                 "ip": "192.168.0.1",
                 "ua": "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36"
             },
-            "t_client": 1516741129539,
+            "t_client": 1508153334657,
             "key": "0d2f3aad-8702-46ad-a786-ae9fe2670294",
             "q": "spa"
         },
         "status": 200,
         "response": {
             "meta": {
+                "no_result": true,
+                "corrected_q": "sea",
+                "q": "spa",
                 "offset": 0,
                 "limit": 24,
                 "total": 30,
                 "filters": [],
-                "totalFacets": 9,
-                "query": "sea",
-                "noResult": "spa",
-                "id": "81b18417-f0b8-486a-8848-554dd475337a",
-                "rid": "<stripped>"
+                "sort": [],
+                "rid": "<stripped>",
+                "query_type": "and"
             },
             "facets": [
                 {
@@ -38,107 +39,87 @@
                     "values": [
                         {
                             "selected": false,
-                            "count": 9,
-                            "name": "category1",
-                            "key": "Water Pipe",
-                            "hasChildren": false,
-                            "type": "category"
+                            "count": 7,
+                            "has_children": false,
+                            "value": "Spoon",
+                            "name": "category1"
                         },
                         {
                             "selected": false,
                             "count": 7,
-                            "name": "category1",
-                            "key": "Spoon",
-                            "hasChildren": false,
-                            "type": "category"
+                            "has_children": false,
+                            "value": "Water Pipe",
+                            "name": "category1"
+                        },
+                        {
+                            "selected": false,
+                            "count": 3,
+                            "has_children": false,
+                            "value": "Bowl",
+                            "name": "category1"
+                        },
+                        {
+                            "selected": false,
+                            "count": 3,
+                            "has_children": false,
+                            "value": "Concentrate Pipe",
+                            "name": "category1"
                         },
                         {
                             "selected": false,
                             "count": 2,
-                            "name": "category1",
-                            "key": "Bowl",
-                            "hasChildren": false,
-                            "type": "category"
+                            "has_children": false,
+                            "value": "Quartz Nail",
+                            "name": "category1"
                         },
                         {
                             "selected": false,
                             "count": 2,
-                            "name": "category1",
-                            "key": "Concentrate Pipe",
-                            "hasChildren": false,
-                            "type": "category"
-                        },
-                        {
-                            "selected": false,
-                            "count": 2,
-                            "name": "category1",
-                            "key": "Sherlock",
-                            "hasChildren": false,
-                            "type": "category"
+                            "has_children": false,
+                            "value": "Sherlock",
+                            "name": "category1"
                         },
                         {
                             "selected": false,
                             "count": 1,
-                            "name": "category1",
-                            "key": "Bubbler",
-                            "hasChildren": false,
-                            "type": "category"
+                            "has_children": false,
+                            "value": "Bubbler",
+                            "name": "category1"
                         },
                         {
                             "selected": false,
                             "count": 1,
-                            "name": "category1",
-                            "key": "Carb Cap",
-                            "hasChildren": false,
-                            "type": "category"
+                            "has_children": false,
+                            "value": "Chillum",
+                            "name": "category1"
                         },
                         {
                             "selected": false,
                             "count": 1,
-                            "name": "category1",
-                            "key": "Chillum",
-                            "hasChildren": false,
-                            "type": "category"
+                            "has_children": false,
+                            "value": "Dabber",
+                            "name": "category1"
                         },
                         {
                             "selected": false,
                             "count": 1,
-                            "name": "category1",
-                            "key": "Dabber",
-                            "hasChildren": false,
-                            "type": "category"
+                            "has_children": false,
+                            "value": "Drop Down",
+                            "name": "category1"
                         },
                         {
                             "selected": false,
                             "count": 1,
-                            "name": "category1",
-                            "key": "Drop Down",
-                            "hasChildren": false,
-                            "type": "category"
+                            "has_children": false,
+                            "value": "Glass Dome",
+                            "name": "category1"
                         },
                         {
                             "selected": false,
                             "count": 1,
-                            "name": "category1",
-                            "key": "Glass Dome",
-                            "hasChildren": false,
-                            "type": "category"
-                        },
-                        {
-                            "selected": false,
-                            "count": 1,
-                            "name": "category1",
-                            "key": "Quartz Nail",
-                            "hasChildren": false,
-                            "type": "category"
-                        },
-                        {
-                            "selected": false,
-                            "count": 1,
-                            "name": "category1",
-                            "key": "Recycler",
-                            "hasChildren": false,
-                            "type": "category"
+                            "has_children": false,
+                            "value": "Recycler",
+                            "name": "category1"
                         }
                     ],
                     "sort_type": "count"
@@ -151,298 +132,213 @@
                             "has_children": false,
                             "name": "brand",
                             "value": "Empire Glassworks",
-                            "selected": false,
-                            "key": "Empire Glassworks"
+                            "selected": false
                         },
                         {
-                            "count": 4,
+                            "count": 3,
                             "has_children": false,
                             "name": "brand",
                             "value": "Sesh Supply",
-                            "selected": false,
-                            "key": "Sesh Supply"
+                            "selected": false
                         },
                         {
                             "count": 2,
                             "has_children": false,
                             "name": "brand",
                             "value": "Glassheads",
-                            "selected": false,
-                            "key": "Glassheads"
+                            "selected": false
                         },
                         {
                             "count": 2,
                             "has_children": false,
                             "name": "brand",
                             "value": "Harley Morales",
-                            "selected": false,
-                            "key": "Harley Morales"
+                            "selected": false
+                        },
+                        {
+                            "count": 2,
+                            "has_children": false,
+                            "name": "brand",
+                            "value": "Nexus Glass",
+                            "selected": false
                         },
                         {
                             "count": 2,
                             "has_children": false,
                             "name": "brand",
                             "value": "Smoke Cartel",
-                            "selected": false,
-                            "key": "Smoke Cartel"
+                            "selected": false
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "brand",
                             "value": "BFF Glass",
-                            "selected": false,
-                            "key": "BFF Glass"
+                            "selected": false
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "brand",
                             "value": "Deranged Lion",
-                            "selected": false,
-                            "key": "Deranged Lion"
+                            "selected": false
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "brand",
                             "value": "GlasseX",
-                            "selected": false,
-                            "key": "GlasseX"
-                        },
-                        {
-                            "count": 1,
-                            "has_children": false,
-                            "name": "brand",
-                            "value": "Nexus Glass",
-                            "selected": false,
-                            "key": "Nexus Glass"
+                            "selected": false
                         }
                     ],
-                    "type": "terms",
+                    "type": "text",
                     "sort_type": "count"
                 },
                 {
                     "name": "color",
                     "values": [
                         {
-                            "count": 3,
+                            "count": 2,
                             "has_children": false,
                             "name": "color",
-                            "value": "Mango",
-                            "selected": false,
-                            "key": "Mango"
+                            "value": "Cobalt",
+                            "selected": false
                         },
                         {
                             "count": 2,
                             "has_children": false,
                             "name": "color",
-                            "value": "Clear",
-                            "selected": false,
-                            "key": "Clear"
+                            "value": "Illuminati",
+                            "selected": false
                         },
                         {
                             "count": 2,
                             "has_children": false,
                             "name": "color",
-                            "value": "Green",
-                            "selected": false,
-                            "key": "Green"
+                            "value": "Lemon Drop",
+                            "selected": false
                         },
                         {
                             "count": 2,
                             "has_children": false,
                             "name": "color",
-                            "value": "Red",
-                            "selected": false,
-                            "key": "Red"
-                        },
-                        {
-                            "count": 2,
-                            "has_children": false,
-                            "name": "color",
-                            "value": "Sea Foam",
-                            "selected": false,
-                            "key": "Sea Foam"
+                            "value": "Triple Passion",
+                            "selected": false
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "Acid Yellow Crayon",
-                            "selected": false,
-                            "key": "Acid Yellow Crayon"
+                            "selected": false
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
-                            "value": "Aqua",
-                            "selected": false,
-                            "key": "Aqua"
-                        },
-                        {
-                            "count": 1,
-                            "has_children": false,
-                            "name": "color",
-                            "value": "Black",
-                            "selected": false,
-                            "key": "Black"
+                            "value": "Agua Azul",
+                            "selected": false
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "Blue",
-                            "selected": false,
-                            "key": "Blue"
+                            "selected": false
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
-                            "value": "Butterscotch",
-                            "selected": false,
-                            "key": "Butterscotch"
+                            "value": "Candy Cocktail",
+                            "selected": false
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "Canyon",
-                            "selected": false,
-                            "key": "Canyon"
+                            "selected": false
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
-                            "value": "Charcoal",
-                            "selected": false,
-                            "key": "Charcoal"
-                        },
-                        {
-                            "count": 1,
-                            "has_children": false,
-                            "name": "color",
-                            "value": "Cobalt",
-                            "selected": false,
-                            "key": "Cobalt"
+                            "value": "Clear",
+                            "selected": false
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "Cobalt Blue And Gold",
-                            "selected": false,
-                            "key": "Cobalt Blue And Gold"
+                            "selected": false
+                        },
+                        {
+                            "count": 1,
+                            "has_children": false,
+                            "name": "color",
+                            "value": "Dichroic Violet",
+                            "selected": false
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "Fumed",
-                            "selected": false,
-                            "key": "Fumed"
-                        },
-                        {
-                            "count": 1,
-                            "has_children": false,
-                            "name": "color",
-                            "value": "Gray",
-                            "selected": false,
-                            "key": "Gray"
+                            "selected": false
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "Green Paparazzi",
-                            "selected": false,
-                            "key": "Green Paparazzi"
+                            "selected": false
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
-                            "value": "Illuminati",
-                            "selected": false,
-                            "key": "Illuminati"
-                        },
-                        {
-                            "count": 1,
-                            "has_children": false,
-                            "name": "color",
-                            "value": "Lemon Drop",
-                            "selected": false,
-                            "key": "Lemon Drop"
-                        },
-                        {
-                            "count": 1,
-                            "has_children": false,
-                            "name": "color",
-                            "value": "Pink",
-                            "selected": false,
-                            "key": "Pink"
+                            "value": "Mango",
+                            "selected": false
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "Purple Urple",
-                            "selected": false,
-                            "key": "Purple Urple"
+                            "selected": false
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
-                            "value": "Seafoam",
-                            "selected": false,
-                            "key": "Seafoam"
+                            "value": "Sublime",
+                            "selected": false
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "Tidal Wave",
-                            "selected": false,
-                            "key": "Tidal Wave"
-                        },
-                        {
-                            "count": 1,
-                            "has_children": false,
-                            "name": "color",
-                            "value": "Triple Passion",
-                            "selected": false,
-                            "key": "Triple Passion"
+                            "selected": false
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "White And Gold",
-                            "selected": false,
-                            "key": "White And Gold"
+                            "selected": false
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "White/red",
-                            "selected": false,
-                            "key": "White/red"
-                        },
-                        {
-                            "count": 1,
-                            "has_children": false,
-                            "name": "color",
-                            "value": "Wisteria",
-                            "selected": false,
-                            "key": "Wisteria"
+                            "selected": false
                         }
                     ],
-                    "type": "terms",
+                    "type": "text",
                     "sort_type": "count"
                 },
                 {
@@ -450,37 +346,37 @@
                     "values": [
                         {
                             "name": "price",
-                            "count": 4,
+                            "count": 5,
+                            "value": "_45",
                             "has_children": false,
                             "to": 45,
-                            "selected": false,
-                            "key": "_45"
-                        },
-                        {
-                            "name": "price",
-                            "count": 11,
-                            "has_children": false,
-                            "from": 45,
-                            "to": 100,
-                            "selected": false,
-                            "key": "45_100"
-                        },
-                        {
-                            "name": "price",
-                            "count": 6,
-                            "has_children": false,
-                            "from": 100,
-                            "to": 200,
-                            "selected": false,
-                            "key": "100_200"
+                            "selected": false
                         },
                         {
                             "name": "price",
                             "count": 10,
+                            "value": "45_100",
+                            "has_children": false,
+                            "from": 45,
+                            "to": 100,
+                            "selected": false
+                        },
+                        {
+                            "name": "price",
+                            "count": 5,
+                            "value": "100_200",
+                            "has_children": false,
+                            "from": 100,
+                            "to": 200,
+                            "selected": false
+                        },
+                        {
+                            "name": "price",
+                            "count": 10,
+                            "value": "200_",
                             "has_children": false,
                             "from": 200,
-                            "selected": false,
-                            "key": "200_"
+                            "selected": false
                         }
                     ],
                     "type": "range",
@@ -496,232 +392,192 @@
                             "has_children": false,
                             "name": "custom_fields.height",
                             "value": "5 Inches",
-                            "selected": false,
-                            "key": "5 Inches"
+                            "selected": false
+                        },
+                        {
+                            "count": 3,
+                            "has_children": false,
+                            "name": "custom_fields.height",
+                            "value": "2.5 Inches",
+                            "selected": false
+                        },
+                        {
+                            "count": 3,
+                            "has_children": false,
+                            "name": "custom_fields.height",
+                            "value": "4 Inches",
+                            "selected": false
                         },
                         {
                             "count": 3,
                             "has_children": false,
                             "name": "custom_fields.height",
                             "value": "4.5 Inches",
-                            "selected": false,
-                            "key": "4.5 Inches"
-                        },
-                        {
-                            "count": 2,
-                            "has_children": false,
-                            "name": "custom_fields.height",
-                            "value": "2.5 Inches",
-                            "selected": false,
-                            "key": "2.5 Inches"
-                        },
-                        {
-                            "count": 2,
-                            "has_children": false,
-                            "name": "custom_fields.height",
-                            "value": "4 Inches",
-                            "selected": false,
-                            "key": "4 Inches"
+                            "selected": false
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "custom_fields.height",
                             "value": "10.5 Inches",
-                            "selected": false,
-                            "key": "10.5 Inches"
-                        },
-                        {
-                            "count": 1,
-                            "has_children": false,
-                            "name": "custom_fields.height",
-                            "value": "11 Inches",
-                            "selected": false,
-                            "key": "11 Inches"
-                        },
-                        {
-                            "count": 1,
-                            "has_children": false,
-                            "name": "custom_fields.height",
-                            "value": "12 Inches",
-                            "selected": false,
-                            "key": "12 Inches"
+                            "selected": false
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "custom_fields.height",
                             "value": "15 Inches",
-                            "selected": false,
-                            "key": "15 Inches"
+                            "selected": false
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "custom_fields.height",
                             "value": "17 Inches",
-                            "selected": false,
-                            "key": "17 Inches"
+                            "selected": false
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "custom_fields.height",
                             "value": "3.5 Inches",
-                            "selected": false,
-                            "key": "3.5 Inches"
+                            "selected": false
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "custom_fields.height",
                             "value": "5.5 Inches",
-                            "selected": false,
-                            "key": "5.5 Inches"
+                            "selected": false
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "custom_fields.height",
                             "value": "6 Inches",
-                            "selected": false,
-                            "key": "6 Inches"
+                            "selected": false
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "custom_fields.height",
                             "value": "6.5 Inches",
-                            "selected": false,
-                            "key": "6.5 Inches"
+                            "selected": false
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "custom_fields.height",
                             "value": "7 Inches",
-                            "selected": false,
-                            "key": "7 Inches"
+                            "selected": false
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "custom_fields.height",
                             "value": "7.25 Inches",
-                            "selected": false,
-                            "key": "7.25 Inches"
+                            "selected": false
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "custom_fields.height",
                             "value": "8 Inches",
-                            "selected": false,
-                            "key": "8 Inches"
+                            "selected": false
                         }
                     ],
-                    "type": "terms",
+                    "type": "text",
                     "sort_type": "count"
                 },
                 {
                     "name": "custom_fields.joint_gender",
                     "values": [
                         {
-                            "count": 12,
+                            "count": 11,
                             "has_children": false,
                             "name": "custom_fields.joint_gender",
                             "value": "Female Joint",
-                            "selected": false,
-                            "key": "Female Joint"
+                            "selected": false
                         },
                         {
-                            "count": 4,
+                            "count": 6,
                             "has_children": false,
                             "name": "custom_fields.joint_gender",
                             "value": "Male Joint",
-                            "selected": false,
-                            "key": "Male Joint"
+                            "selected": false
                         },
                         {
-                            "count": 2,
+                            "count": 3,
                             "has_children": false,
                             "name": "custom_fields.joint_gender",
                             "value": "male Joint",
-                            "selected": false,
-                            "key": "male Joint"
+                            "selected": false
                         }
                     ],
-                    "type": "terms",
+                    "type": "text",
                     "sort_type": "count"
                 },
                 {
                     "name": "custom_fields.use_case",
                     "values": [
                         {
-                            "count": 11,
+                            "count": 12,
                             "has_children": false,
                             "name": "custom_fields.use_case",
                             "value": "Made For Dry Herbs",
-                            "selected": false,
-                            "key": "Made For Dry Herbs"
+                            "selected": false
                         },
                         {
-                            "count": 1,
+                            "count": 2,
                             "has_children": false,
                             "name": "custom_fields.use_case",
                             "value": "Made For Concentrates",
-                            "selected": false,
-                            "key": "Made For Concentrates"
+                            "selected": false
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "custom_fields.use_case",
                             "value": "Made For Thin Oils",
-                            "selected": false,
-                            "key": "Made For Thin Oils"
+                            "selected": false
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "custom_fields.use_case",
                             "value": "Made For Waxy Oils",
-                            "selected": false,
-                            "key": "Made For Waxy Oils"
+                            "selected": false
                         }
                     ],
-                    "type": "terms",
+                    "type": "text",
                     "sort_type": "count"
                 },
                 {
                     "name": "custom_fields.joint_size",
                     "values": [
                         {
-                            "count": 14,
+                            "count": 13,
                             "has_children": false,
                             "name": "custom_fields.joint_size",
                             "value": "14.5mm",
-                            "selected": false,
-                            "key": "14.5mm"
+                            "selected": false
                         },
                         {
-                            "count": 1,
+                            "count": 3,
                             "has_children": false,
                             "name": "custom_fields.joint_size",
                             "value": "10mm",
-                            "selected": false,
-                            "key": "10mm"
+                            "selected": false
                         },
                         {
-                            "count": 1,
+                            "count": 2,
                             "has_children": false,
                             "name": "custom_fields.joint_size",
                             "value": "18.8mm",
-                            "selected": false,
-                            "key": "18.8mm"
+                            "selected": false
                         }
                     ],
-                    "type": "terms",
+                    "type": "text",
                     "sort_type": "count"
                 },
                 {
@@ -729,41 +585,40 @@
                     "values": [
                         {
                             "name": "discount",
-                            "count": 2,
+                            "count": 1,
+                            "value": "_10",
                             "has_children": false,
                             "to": 10,
-                            "selected": false,
-                            "key": "_10"
+                            "selected": false
                         },
                         {
                             "name": "discount",
-                            "count": 3,
+                            "count": 2,
+                            "value": "10_30",
                             "has_children": false,
                             "from": 10,
                             "to": 30,
-                            "selected": false,
-                            "key": "10_30"
+                            "selected": false
                         },
                         {
                             "name": "discount",
-                            "count": 3,
+                            "count": 2,
+                            "value": "30_",
                             "has_children": false,
                             "from": 30,
-                            "selected": false,
-                            "key": "30_"
+                            "selected": false
                         }
                     ],
                     "type": "range",
-                    "min": 0,
-                    "max": 43,
+                    "min": 8,
+                    "max": 34,
                     "sort_type": "value"
                 }
             ],
-            "banner": {},
-            "products": [
+            "items": [
                 {
                     "seller": "",
-                    "quantity": 7,
+                    "quantity": 9,
                     "color": [],
                     "color_variants": 1,
                     "image_2_url": "https://cdn.shopify.com/s/files/1/0350/8253/products/EMPIRE-1672-1_medium.jpg?v=1493066209",
@@ -813,33 +668,18 @@
                         }
                     ],
                     "brand": "Empire Glassworks",
-                    "hash": "AWBzBXNnso7SSYcnxv0u",
+                    "hash": "AV11Vmq_CQkVMwqrFH3m",
                     "compare_at": -1
                 },
                 {
                     "seller": "",
-                    "quantity": 6,
-                    "color": [
-                        "Butterscotch",
-                        "Aqua",
-                        "Red",
-                        "Green",
-                        "Pink",
-                        "Black"
-                    ],
-                    "color_variants": 6,
-                    "image_2_url": "https://cdn.shopify.com/s/files/1/0350/8253/products/CHSG1-11_medium.jpg?v=1504205755",
+                    "quantity": 38,
+                    "color": [],
+                    "color_variants": 1,
+                    "image_2_url": "https://cdn.shopify.com/s/files/1/0350/8253/products/CHSG1-2-0_medium.jpg?v=1459032138",
                     "custom_fields": {
                         "use_case": [
                             "Made For Dry Herbs"
-                        ],
-                        "variant_image_url": [
-                            "https://cdn.shopify.com/s/files/1/0350/8253/products/CHSG1-8.jpg?v=1504205755",
-                            "https://cdn.shopify.com/s/files/1/0350/8253/products/CHSG1-9.jpg?v=1504205755",
-                            "https://cdn.shopify.com/s/files/1/0350/8253/products/CHSG1-7.jpg?v=1504205755",
-                            "https://cdn.shopify.com/s/files/1/0350/8253/products/CHSG1-5.jpg?v=1504205755",
-                            "https://cdn.shopify.com/s/files/1/0350/8253/products/CHSG1-10.jpg?v=1504205755",
-                            "https://cdn.shopify.com/s/files/1/0350/8253/products/CHSG1-6.jpg?v=1504205755"
                         ],
                         "barcode": [
                             ""
@@ -850,17 +690,12 @@
                     "availability": true,
                     "title": "Under the Sea Turtle Pendant",
                     "reviews": {
-                        "total_reviews": 1,
-                        "average_score": 5
+                        "total_reviews": 0,
+                        "average_score": 0
                     },
                     "material": [],
                     "size": [],
                     "price": [
-                        52,
-                        52,
-                        52,
-                        52,
-                        52,
                         52
                     ],
                     "stickers": {
@@ -872,12 +707,7 @@
                     },
                     "id": "4595635908",
                     "sku": [
-                        "CHSG1-BS",
-                        "CHSG1-AQ",
-                        "CHSG1-RD",
-                        "CHSG1-GR",
-                        "CHSG1-PK",
-                        "CHSG1-BK"
+                        "CHSG1"
                     ],
                     "category": [
                         {
@@ -888,121 +718,12 @@
                         }
                     ],
                     "brand": "Glassheads",
-                    "hash": "AWBzBXNoso7SSYcnxv5u",
+                    "hash": "AV11VmrGCQkVMwqrFH-A",
                     "compare_at": -1
                 },
                 {
                     "seller": "",
-                    "quantity": 1,
-                    "color": [],
-                    "color_variants": 1,
-                    "image_2_url": "https://cdn.shopify.com/s/files/1/0350/8253/products/GLASSEX-HP-SEA-SHORE-5_medium.jpg?v=1502306047",
-                    "custom_fields": {
-                        "use_case": [
-                            "Made For Dry Herbs"
-                        ],
-                        "barcode": [
-                            ""
-                        ]
-                    },
-                    "description": "Down by the Sea Shore....\n\n \nThis spoon is presented by our wonderful friends at GlasseX! Worked in cobalt glass, this fumed spoon is sure to catch your eye! The pattern on the head of the spoon is worked in a beautiful pale fumed yellow. The Sea Shore Spoon also features a firm dotted hand grip on the opposite side of the carb. ",
-                    "discount": [],
-                    "availability": true,
-                    "title": "GlasseX \"Sea Shore\" Fumed Spoon",
-                    "reviews": {
-                        "total_reviews": 0,
-                        "average_score": 0
-                    },
-                    "material": [],
-                    "size": [],
-                    "price": [
-                        40
-                    ],
-                    "stickers": {
-                        "availability": true,
-                        "in-stock": true,
-                        "out-of-stock": false,
-                        "discount": false,
-                        "free-shipping": false
-                    },
-                    "id": "1778657540",
-                    "sku": [
-                        "GLASSEX-HP-SEA-SHORE"
-                    ],
-                    "category": [
-                        {
-                            "category2": "",
-                            "category3": "",
-                            "category4": "",
-                            "category1": "Spoon"
-                        }
-                    ],
-                    "brand": "GlasseX",
-                    "hash": "AWBzBXNnso7SSYcnxvzY",
-                    "compare_at": -1
-                },
-                {
-                    "seller": "",
-                    "quantity": 3,
-                    "color": [],
-                    "color_variants": 1,
-                    "image_2_url": "https://cdn.shopify.com/s/files/1/0350/8253/products/EMPIRE-1552-14-H-1_medium.jpg?v=1464022486",
-                    "custom_fields": {
-                        "use_case": [
-                            "Made For Thin Oils",
-                            "Made For Waxy Oils",
-                            "Made For Concentrates"
-                        ],
-                        "joint_size": [
-                            "14.5mm"
-                        ],
-                        "joint_gender": [
-                            "Male Joint",
-                            "Female Joint"
-                        ],
-                        "barcode": [
-                            ""
-                        ]
-                    },
-                    "description": "Up From The Depths!\n\n \nThis is a truly unique honey bucket to add to your collection! Empire has done it again with this meticulously adorned accessory. Fish swim through underwater plants around the dome of this nail. Also included is a matching carb cap to ensure that your rig set up is complete!",
-                    "discount": [],
-                    "availability": true,
-                    "title": "Empire Glassworks \"Under The Sea\" Honey Bucket",
-                    "reviews": {
-                        "total_reviews": 1,
-                        "average_score": 5
-                    },
-                    "material": [],
-                    "size": [],
-                    "price": [
-                        120
-                    ],
-                    "stickers": {
-                        "availability": true,
-                        "in-stock": true,
-                        "out-of-stock": false,
-                        "discount": false,
-                        "free-shipping": false
-                    },
-                    "id": "4967737988",
-                    "sku": [
-                        "EMPIRE-1552-14-H"
-                    ],
-                    "category": [
-                        {
-                            "category2": "",
-                            "category3": "",
-                            "category4": "",
-                            "category1": "Quartz Nail"
-                        }
-                    ],
-                    "brand": "Empire Glassworks",
-                    "hash": "AWBzBXNoso7SSYcnxv7R",
-                    "compare_at": -1
-                },
-                {
-                    "seller": "",
-                    "quantity": 2,
+                    "quantity": 8,
                     "color": [],
                     "color_variants": 1,
                     "image_2_url": "https://cdn.shopify.com/s/files/1/0350/8253/products/EMPIRE-1589-1_medium.jpg?v=1466521440",
@@ -1050,12 +771,12 @@
                         }
                     ],
                     "brand": "Empire Glassworks",
-                    "hash": "AWBzBXNoso7SSYcnxv8Y",
+                    "hash": "AV11VmrICQkVMwqrFIBU",
                     "compare_at": -1
                 },
                 {
                     "seller": "",
-                    "quantity": 16,
+                    "quantity": 1,
                     "color": [],
                     "color_variants": 1,
                     "image_2_url": "https://cdn.shopify.com/s/files/1/0350/8253/products/EMPIRE-1682-1_medium.jpg?v=1495056004",
@@ -1100,7 +821,7 @@
                         }
                     ],
                     "brand": "Empire Glassworks",
-                    "hash": "AWBzBXNnso7SSYcnxv1B",
+                    "hash": "AV11VmrACQkVMwqrFH4C",
                     "compare_at": -1
                 },
                 {
@@ -1153,7 +874,7 @@
                         }
                     ],
                     "brand": "Harley Morales",
-                    "hash": "AWBzBXNoso7SSYcnxv3l",
+                    "hash": "AV11VmrDCQkVMwqrFH7Q",
                     "compare_at": -1
                 },
                 {
@@ -1206,12 +927,12 @@
                         }
                     ],
                     "brand": "Harley Morales",
-                    "hash": "AWBzBXNoso7SSYcnxv3m",
+                    "hash": "AV11VmrDCQkVMwqrFH7R",
                     "compare_at": -1
                 },
                 {
                     "seller": "",
-                    "quantity": 4,
+                    "quantity": 6,
                     "color": [],
                     "color_variants": 1,
                     "image_2_url": "https://cdn.shopify.com/s/files/1/0350/8253/products/EMPIRE-1561-14-5_medium.jpg?v=1496332378",
@@ -1237,8 +958,8 @@
                     "availability": true,
                     "title": "Empire Glassworks \"Under The Sea\" Water Pipe",
                     "reviews": {
-                        "total_reviews": 5,
-                        "average_score": 4
+                        "total_reviews": 4,
+                        "average_score": 3.75
                     },
                     "material": [],
                     "size": [],
@@ -1265,7 +986,7 @@
                         }
                     ],
                     "brand": "Empire Glassworks",
-                    "hash": "AWBzBXNoso7SSYcnxv7K",
+                    "hash": "AV11VmrHCQkVMwqrFH_-",
                     "compare_at": -1
                 },
                 {
@@ -1294,7 +1015,7 @@
                     "availability": true,
                     "title": "Empire Glassworks \"Under the Sea\" Male to Female Drop Down Adapter",
                     "reviews": {
-                        "total_reviews": 2,
+                        "total_reviews": 1,
                         "average_score": 5
                     },
                     "material": [],
@@ -1322,184 +1043,7 @@
                         }
                     ],
                     "brand": "Empire Glassworks",
-                    "hash": "AWBzBXa6so7SSYcnxwCj",
-                    "compare_at": -1
-                },
-                {
-                    "seller": "",
-                    "quantity": 59,
-                    "color": [
-                        "Clear",
-                        "Mango",
-                        "Sea Foam"
-                    ],
-                    "color_variants": 3,
-                    "image_2_url": "https://cdn.shopify.com/s/files/1/0350/8253/products/SS-HYPNOS_SC-2_medium.jpg?v=1507734754",
-                    "custom_fields": {
-                        "joint_size": [
-                            "14.5mm"
-                        ],
-                        "variant_image_url": [
-                            "https://cdn.shopify.com/s/files/1/0350/8253/products/SS-HYPNOS_SC-0.jpg?v=1507734747",
-                            "https://cdn.shopify.com/s/files/1/0350/8253/products/SS-HYPNOS_SC-8.jpg?v=1507734840"
-                        ],
-                        "joint_gender": [
-                            "Female Joint"
-                        ],
-                        "barcode": [
-                            ""
-                        ],
-                        "height": [
-                            "11 Inches"
-                        ]
-                    },
-                    "description": "In Greek Mythology, Hypnos is the personification of sleep, so take heed when using this piece, because it might just cast the spell of slumber upon you! This vertical puck design by Sesh Supply features a pedestal base, a vertical propeller perc with multiple colored accents to choose from. Add some flair to your water pipe collection by picking up this truly unique piece today!",
-                    "discount": [
-                        22,
-                        38
-                    ],
-                    "availability": true,
-                    "title": "Sesh Supply \"Hypnos\" Puck Water Pipe With Vertical Propeller Perc",
-                    "reviews": {
-                        "total_reviews": 9,
-                        "average_score": 4.33
-                    },
-                    "material": [],
-                    "size": [],
-                    "price": [
-                        80,
-                        100,
-                        100
-                    ],
-                    "stickers": {
-                        "discount": [
-                            38,
-                            22
-                        ],
-                        "availability": true,
-                        "in-stock": true,
-                        "out-of-stock": false,
-                        "free-shipping": false
-                    },
-                    "id": "4939062404",
-                    "sku": [
-                        "SS-HYPNOS-CL",
-                        "SS-HYPNOS-MGO",
-                        "SS-HYPNOS-SF"
-                    ],
-                    "category": [
-                        {
-                            "category2": "",
-                            "category3": "",
-                            "category4": "",
-                            "category1": "Water Pipe"
-                        }
-                    ],
-                    "brand": "Sesh Supply",
-                    "hash": "AWBzBXNoso7SSYcnxv7A",
-                    "compare_at": 129
-                },
-                {
-                    "seller": "",
-                    "quantity": 59,
-                    "color": [
-                        "Acid Yellow Crayon",
-                        "Triple Passion",
-                        "Illuminati",
-                        "Clear",
-                        "Cobalt",
-                        "Lemon Drop",
-                        "Mango",
-                        "Green Paparazzi",
-                        "Purple Urple",
-                        "Sea Foam"
-                    ],
-                    "color_variants": 10,
-                    "image_2_url": "https://cdn.shopify.com/s/files/1/0350/8253/products/SS-CHARYBDIS-3_fe1da89a-79ae-40be-8271-29d5bde5bf08_medium.jpg?v=1501535817",
-                    "custom_fields": {
-                        "joint_size": [
-                            "14.5mm"
-                        ],
-                        "variant_image_url": [
-                            "https://cdn.shopify.com/s/files/1/0350/8253/products/SS-CHARYBDIS-YW-0.jpg?v=1501537070",
-                            "https://cdn.shopify.com/s/files/1/0350/8253/products/SS-CHARYBDIS-5.jpg?v=1501535817",
-                            "https://cdn.shopify.com/s/files/1/0350/8253/products/SS-CHARYBDIS-7.jpg?v=1501535817",
-                            "https://cdn.shopify.com/s/files/1/0350/8253/products/SS-CHARYBDIS-8.jpg?v=1501535817",
-                            "https://cdn.shopify.com/s/files/1/0350/8253/products/SS-CHARYBDIS-LD-0.jpg?v=1501535817",
-                            "https://cdn.shopify.com/s/files/1/0350/8253/products/SS-CHARYBDIS-1-0.jpg?v=1501535817",
-                            "https://cdn.shopify.com/s/files/1/0350/8253/products/SS-CHARYBDIS-6.jpg?v=1501535817",
-                            "https://cdn.shopify.com/s/files/1/0350/8253/products/SS-CHARYBDIS-4.jpg?v=1501535817"
-                        ],
-                        "joint_gender": [
-                            "Female Joint"
-                        ],
-                        "barcode": [
-                            ""
-                        ],
-                        "height": [
-                            "10.5 Inches"
-                        ]
-                    },
-                    "description": "Incredible diffusion with wild style.\n\n \nCharybdis was once the great sea monster that tormented the Greek sailors on the Strait of Messina, but has now been rationalized as a giant whirlpool.  A fitting name for Sesh Supply's latest water pipe, the \"Charybdis\" is a whirlpool of a piece, and as an internal recycler it is constantly working to keep your smoke wonderfully diffused and clean as ever.  With the \"Charybdis,\" you can pack your dry herbs into the packaged flower bowl and send them on a wild ride through the propellor perc, and then through the water of the Klein recycler.  If you're a fan of terrifyingly powerful water pipes, you'll definitely want to add the \"Charybdis\" to your monster collection.\n\n \nWant to see more pipes named after Greek mythological creatures? ",
-                    "discount": [
-                        34,
-                        42,
-                        43
-                    ],
-                    "availability": true,
-                    "title": "Sesh Supply \"Charybdis\" Propellor Perc Klein-Style Recycler",
-                    "reviews": {
-                        "total_reviews": 13,
-                        "average_score": 3.92
-                    },
-                    "material": [],
-                    "size": [],
-                    "price": [
-                        130,
-                        150,
-                        150,
-                        150,
-                        150,
-                        150,
-                        150,
-                        150,
-                        150,
-                        150
-                    ],
-                    "stickers": {
-                        "discount": [
-                            43,
-                            42,
-                            34
-                        ],
-                        "availability": true,
-                        "in-stock": true,
-                        "out-of-stock": false,
-                        "free-shipping": false
-                    },
-                    "id": "4203454788",
-                    "sku": [
-                        "SS-CHARYBDIS-YW",
-                        "SS-CHARYBDIS-TP",
-                        "SS-CHARYBDIS-IL",
-                        "SS-CHARYBDIS-CL",
-                        "SS-CHARYBDIS-CO",
-                        "SS-CHARYBDIS-LD",
-                        "SS-CHARYBDIS-MGO",
-                        "SS-CHARYBDIS-GD",
-                        "SS-CHARYBDIS-PU",
-                        "SS-CHARYBDIS-SF"
-                    ],
-                    "category": [
-                        {
-                            "category2": "",
-                            "category3": "",
-                            "category4": "",
-                            "category1": "Water Pipe"
-                        }
-                    ],
-                    "brand": "Sesh Supply",
-                    "hash": "AWBzBXNoso7SSYcnxv3c",
+                    "hash": "AV11VniCCQkVMwqrFII0",
                     "compare_at": -1
                 },
                 {
@@ -1507,7 +1051,7 @@
                     "quantity": 1,
                     "color": [],
                     "color_variants": 1,
-                    "image_2_url": "https://cdn.shopify.com/s/files/1/0350/8253/products/DL-SEASHELL_WM-4_medium.jpg?v=1506011596",
+                    "image_2_url": "https://cdn.shopify.com/s/files/1/0350/8253/products/DL-SHELL-0_medium.jpeg?v=1459800865",
                     "custom_fields": {
                         "use_case": [
                             "Made For Dry Herbs"
@@ -1516,8 +1060,8 @@
                             "14.5mm"
                         ],
                         "variant_image_url": [
-                            "https://cdn.shopify.com/s/files/1/0350/8253/products/DL-SEASHELL_WM-6.jpg?v=1506011522",
-                            "https://cdn.shopify.com/s/files/1/0350/8253/products/DL-SEASHELL-WM1-0.jpg?v=1506011572"
+                            "https://cdn.shopify.com/s/files/1/0350/8253/products/DL-SHELL-1.jpeg?v=1459800865",
+                            "https://cdn.shopify.com/s/files/1/0350/8253/products/DL-SEASHELL-SEAHORSE-0.jpg?v=1459800876"
                         ],
                         "style": [
                             "Seashell Only",
@@ -1568,7 +1112,7 @@
                         }
                     ],
                     "brand": "Deranged Lion",
-                    "hash": "AWBzBXNoso7SSYcnxv5_",
+                    "hash": "AV11VmrGCQkVMwqrFH-Z",
                     "compare_at": -1
                 },
                 {
@@ -1590,7 +1134,7 @@
                     "availability": true,
                     "title": "Empire Glassworks \"Sandy Shores\" Female Dome",
                     "reviews": {
-                        "total_reviews": 2,
+                        "total_reviews": 1,
                         "average_score": 5
                     },
                     "material": [],
@@ -1623,32 +1167,89 @@
                         }
                     ],
                     "brand": "Empire Glassworks",
-                    "hash": "AWBzBXa6so7SSYcnxwBy",
+                    "hash": "AV11VniCCQkVMwqrFIH7",
                     "compare_at": -1
                 },
                 {
                     "seller": "",
-                    "quantity": 12,
+                    "quantity": 10,
                     "color": [],
                     "color_variants": 1,
-                    "image_2_url": "https://cdn.shopify.com/s/files/1/0350/8253/products/EMPIRE-1388-C1-1_medium.jpg?v=1501512874",
+                    "image_2_url": "https://cdn.shopify.com/s/files/1/0350/8253/products/SMOKE-CARTEL-QUOT-TAKO-QUOT-TENTACLE-THEMED-HAND-PIPE_GHHP13-1_medium.jpg?v=1499886981",
                     "custom_fields": {
+                        "barcode": [
+                            ""
+                        ],
+                        "height": [
+                            "4 Inches"
+                        ]
+                    },
+                    "description": "It came from the deep...to smoke you out.\n\n \nThis tentacle is not here to drag you to the depths. Instead, it is here to elevate your next smoke break. A tribute to your life on the high seas battling raging storms and sea monsters. Each pipe is worked from various colors for an uncanny look. The finishing touch is the glass suckers lining the top. A great pipe for sea lovers. Orders yours today.",
+                    "discount": [],
+                    "availability": true,
+                    "title": "\"Tako\" 🐙 Tentacle Themed Hand Pipe",
+                    "reviews": {
+                        "total_reviews": 0,
+                        "average_score": 0
+                    },
+                    "material": [],
+                    "size": [],
+                    "price": [
+                        50
+                    ],
+                    "stickers": {
+                        "availability": true,
+                        "in-stock": true,
+                        "out-of-stock": false,
+                        "discount": false,
+                        "free-shipping": false
+                    },
+                    "id": "10156168648",
+                    "sku": [
+                        "GHHP13"
+                    ],
+                    "category": [
+                        {
+                            "category2": "",
+                            "category3": "",
+                            "category4": "",
+                            "category1": "Spoon"
+                        }
+                    ],
+                    "brand": "Smoke Cartel",
+                    "hash": "AV11Vmq6CQkVMwqrFH0S",
+                    "compare_at": -1
+                },
+                {
+                    "seller": "",
+                    "quantity": 13,
+                    "color": [],
+                    "color_variants": 1,
+                    "image_2_url": "https://cdn.shopify.com/s/files/1/0350/8253/products/EMPIRE-1388-2_medium.jpg?v=1496417993",
+                    "custom_fields": {
+                        "use_case": [
+                            "Made For Concentrates"
+                        ],
+                        "joint_size": [
+                            "10mm"
+                        ],
                         "variant_image_url": [
-                            "https://cdn.shopify.com/s/files/1/0350/8253/products/EMPIRE-1388-C1-3.jpg?v=1501512874",
-                            "https://cdn.shopify.com/s/files/1/0350/8253/products/EMPIRE-10MM-BANGERS-4.jpg?v=1501512874",
-                            "https://cdn.shopify.com/s/files/1/0350/8253/products/EMPIRE-10MM-BANGERS-8.jpg?v=1501512874",
-                            "https://cdn.shopify.com/s/files/1/0350/8253/products/EMPIRE-10MM-BANGERS-7.jpg?v=1501512874",
-                            "https://cdn.shopify.com/s/files/1/0350/8253/products/EMPIRE-10MM-BANGERS-6.jpg?v=1501512874",
-                            "https://cdn.shopify.com/s/files/1/0350/8253/products/EMPIRE-1503-0.jpg?v=1501512874",
-                            "https://cdn.shopify.com/s/files/1/0350/8253/products/EMPIRE-10MM-BANGERS-2.jpg?v=1501512874",
-                            "https://cdn.shopify.com/s/files/1/0350/8253/products/EMPIRE-10MM-BANGERS-11.jpg?v=1501512874",
-                            "https://cdn.shopify.com/s/files/1/0350/8253/products/EMPIRE-UTS-0.jpg?v=1501512874",
-                            "https://cdn.shopify.com/s/files/1/0350/8253/products/EMPIRE-10MM-BANGERS-1.jpg?v=1501512874",
-                            "https://cdn.shopify.com/s/files/1/0350/8253/products/EMPIRE-10MM-BANGERS-10.jpg?v=1501512874",
-                            "https://cdn.shopify.com/s/files/1/0350/8253/products/EMPIRE-10MM-BANGERS-3.jpg?v=1501512874",
-                            "https://cdn.shopify.com/s/files/1/0350/8253/products/EMPIRE-Q1-10-15.jpg?v=1501512874",
-                            "https://cdn.shopify.com/s/files/1/0350/8253/products/EMPIRE-10MM-BANGERS-0.jpg?v=1501512874",
-                            "https://cdn.shopify.com/s/files/1/0350/8253/products/EMPIRE-10MM-BANGERS-9.jpg?v=1501512874"
+                            "https://cdn.shopify.com/s/files/1/0350/8253/products/EMPIRE-1388-2-0.jpg?v=1496417993",
+                            "https://cdn.shopify.com/s/files/1/0350/8253/products/EMPIRE-10MM-BANGERS-4.jpg?v=1496417993",
+                            "https://cdn.shopify.com/s/files/1/0350/8253/products/EMPIRE-10MM-BANGERS-8.jpg?v=1496417993",
+                            "https://cdn.shopify.com/s/files/1/0350/8253/products/EMPIRE-10MM-BANGERS-7.jpg?v=1496417993",
+                            "https://cdn.shopify.com/s/files/1/0350/8253/products/EMPIRE-10MM-BANGERS-6.jpg?v=1496417993",
+                            "https://cdn.shopify.com/s/files/1/0350/8253/products/EMPIRE-1503-0.jpg?v=1496417993",
+                            "https://cdn.shopify.com/s/files/1/0350/8253/products/EMPIRE-10MM-BANGERS-2.jpg?v=1496417993",
+                            "https://cdn.shopify.com/s/files/1/0350/8253/products/EMPIRE-10MM-BANGERS-11.jpg?v=1496417993",
+                            "https://cdn.shopify.com/s/files/1/0350/8253/products/EMPIRE-UTS-0.jpg?v=1496417993",
+                            "https://cdn.shopify.com/s/files/1/0350/8253/products/EMPIRE-1537-0.jpg?v=1496417993",
+                            "https://cdn.shopify.com/s/files/1/0350/8253/products/EMPIRE-10MM-BANGERS-1.jpg?v=1496417993",
+                            "https://cdn.shopify.com/s/files/1/0350/8253/products/EMPIRE-10MM-BANGERS-10.jpg?v=1496417993",
+                            "https://cdn.shopify.com/s/files/1/0350/8253/products/EMPIRE-10MM-BANGERS-3.jpg?v=1496417993",
+                            "https://cdn.shopify.com/s/files/1/0350/8253/products/EMPIRE-Q1-10-15.jpg?v=1496417993",
+                            "https://cdn.shopify.com/s/files/1/0350/8253/products/EMPIRE-10MM-BANGERS-0.jpg?v=1496417993",
+                            "https://cdn.shopify.com/s/files/1/0350/8253/products/EMPIRE-10MM-BANGERS-9.jpg?v=1496417993"
                         ],
                         "style": [
                             "Mushroom",
@@ -1660,6 +1261,7 @@
                             "Flying Saucer",
                             "Piranha",
                             "Under The Sea",
+                            "Rasta Ball",
                             "Honey Drip",
                             "Pizza",
                             "Panda",
@@ -1667,14 +1269,18 @@
                             "Dragon Sphere",
                             "Pocket Monster"
                         ],
+                        "joint_gender": [
+                            "Female Joint",
+                            "Male Joint"
+                        ],
                         "barcode": [
                             ""
                         ]
                     },
-                    "description": "Diversify your nail set up with these awesome decorative carb caps! Pick from a number of different characters and creatures, meticulously crafted by Empire Glassworks.",
+                    "description": "Diversify your nail set up with these awesome quartz bangers, adorned with your favorite decorative banger cap! Pick from a number of different characters and creatures, meticulously crafted by Empire Glassworks.",
                     "discount": [],
                     "availability": true,
-                    "title": "Empire Glassworks Decorative Carb Cap",
+                    "title": "Empire Glassworks Quartz Banger With Decorative Cap",
                     "reviews": {
                         "total_reviews": 1,
                         "average_score": 3
@@ -1682,6 +1288,7 @@
                     "material": [],
                     "size": [],
                     "price": [
+                        72,
                         72,
                         72,
                         72,
@@ -1716,6 +1323,7 @@
                         "EMPIRE-1461-C1",
                         "EMPIRE-1586-C1",
                         "EMPIRE-1457-C1",
+                        "EMPIRE-1537-C1",
                         "EMPIRE-1458-C1",
                         "EMPIRE-1585-C1",
                         "EMPIRE-1462-C1",
@@ -1728,50 +1336,57 @@
                             "category2": "",
                             "category3": "",
                             "category4": "",
-                            "category1": "Carb Cap"
+                            "category1": "Quartz Nail"
                         }
                     ],
                     "brand": "Empire Glassworks",
-                    "hash": "AWBzBXNoso7SSYcnxv7U",
+                    "hash": "AV11VmrICQkVMwqrFIAL",
                     "compare_at": -1
                 },
                 {
                     "seller": "",
-                    "quantity": 1,
-                    "color": [
-                        "Red",
-                        "Gray",
-                        "Green"
-                    ],
-                    "color_variants": 3,
-                    "image_2_url": "https://cdn.shopify.com/s/files/1/0350/8253/products/SMOKE-CARTEL-QUOT-TAKO-QUOT-TENTACLE-THEMED-HAND-PIPE_GHHP13-1_medium.jpg?v=1501183810",
+                    "quantity": 5,
+                    "color": [],
+                    "color_variants": 1,
+                    "image_2_url": "https://cdn.shopify.com/s/files/1/0350/8253/products/EMP-SSFB-1_medium.jpg?v=1462205513",
                     "custom_fields": {
+                        "use_case": [
+                            "Made For Dry Herbs"
+                        ],
+                        "joint_size": [
+                            "14.5mm",
+                            "18.8mm"
+                        ],
                         "variant_image_url": [
-                            "https://cdn.shopify.com/s/files/1/0350/8253/products/SMOKE-CARTEL-QUOT-TAKO-QUOT-TENTACLE-THEMED-HAND-PIPE_GHHP13-0.jpg?v=1501183810",
-                            "https://cdn.shopify.com/s/files/1/0350/8253/products/GHHP-1.jpg?v=1501183810",
-                            "https://cdn.shopify.com/s/files/1/0350/8253/products/GHHP-0.jpg?v=1501183810"
+                            "https://cdn.shopify.com/s/files/1/0350/8253/products/EMP-SSFB-2.jpg?v=1462205515",
+                            "https://cdn.shopify.com/s/files/1/0350/8253/products/EMP-SSFB-3.jpg?v=1462205517"
+                        ],
+                        "joint_gender": [
+                            "Male Joint"
                         ],
                         "barcode": [
                             ""
                         ],
                         "height": [
-                            "4 Inches"
+                            "2.5 Inches"
                         ]
                     },
-                    "description": "It came from the deep...to smoke you out.\n\n \nThis tentacle is not here to drag you to the depths. Instead, it is here to elevate your next smoke break. A tribute to your life on the high seas battling raging storms and sea monsters. Each pipe is worked from various colors for an uncanny look. The finishing touch is the glass suckers lining the top. A great pipe for sea lovers. Orders yours today.",
+                    "description": "This piece will surely add some flair to your bowl collection. The Sandy Shores Female Flower Bowl come to you from Empire Glassworks and features and under-the-sea theme adorned with fish, starfish, and aquatic plants!",
                     "discount": [],
                     "availability": true,
-                    "title": "\"Tako\" 🐙 Tentacle Themed Hand Pipe",
+                    "title": "Empire Glassworks \"Sandy Shores\" Female Flower Bowl",
                     "reviews": {
-                        "total_reviews": 7,
+                        "total_reviews": 1,
                         "average_score": 5
                     },
                     "material": [],
-                    "size": [],
+                    "size": [
+                        "14.5mm",
+                        "18.8mm"
+                    ],
                     "price": [
-                        49,
-                        49,
-                        49
+                        42,
+                        42
                     ],
                     "stickers": {
                         "availability": true,
@@ -1780,30 +1395,29 @@
                         "discount": false,
                         "free-shipping": false
                     },
-                    "id": "10156168648",
+                    "id": "4852014532",
                     "sku": [
-                        "GHHP13",
-                        "GHHP13-GY",
-                        "GHHP13-GR"
+                        "EMPIRE-SANDY-14F",
+                        "EMPIRE-SANDY-18F"
                     ],
                     "category": [
                         {
                             "category2": "",
                             "category3": "",
                             "category4": "",
-                            "category1": "Spoon"
+                            "category1": "Bowl"
                         }
                     ],
-                    "brand": "Smoke Cartel",
-                    "hash": "AWBzBXNnso7SSYcnxvxj",
+                    "brand": "Empire Glassworks",
+                    "hash": "AV11VmrHCQkVMwqrFH_n",
                     "compare_at": -1
                 },
                 {
                     "seller": "",
-                    "quantity": 2,
+                    "quantity": 3,
                     "color": [],
                     "color_variants": 1,
-                    "image_2_url": "https://cdn.shopify.com/s/files/1/0350/8253/products/EMPIRE-1552-14-S--2_medium.jpg?v=1509557902",
+                    "image_2_url": "https://cdn.shopify.com/s/files/1/0350/8253/products/EMPIRE-1552-14-S-1_medium.jpg?v=1470951135",
                     "custom_fields": {
                         "joint_size": [
                             "14.5mm"
@@ -1820,8 +1434,8 @@
                     "availability": true,
                     "title": "Empire Glassworks \"Ocean Critters\" Water Pipe",
                     "reviews": {
-                        "total_reviews": 1,
-                        "average_score": 5
+                        "total_reviews": 0,
+                        "average_score": 0
                     },
                     "material": [],
                     "size": [],
@@ -1848,19 +1462,20 @@
                         }
                     ],
                     "brand": "Empire Glassworks",
-                    "hash": "AWBzBXa6so7SSYcnxwBq",
+                    "hash": "AV11VniCCQkVMwqrFIHz",
                     "compare_at": -1
                 },
                 {
                     "seller": "",
-                    "quantity": 7,
+                    "quantity": 3,
                     "color": [
                         "Cobalt Blue And Gold",
                         "White And Gold",
+                        "Dichroic Violet",
                         "Canyon",
                         "Tidal Wave"
                     ],
-                    "color_variants": 4,
+                    "color_variants": 5,
                     "image_2_url": "https://cdn.shopify.com/s/files/1/0350/8253/products/EMPIRE-1640-3_medium.jpg?v=1495811277",
                     "custom_fields": {
                         "use_case": [
@@ -1882,12 +1497,13 @@
                     "availability": true,
                     "title": "Empire Glassworks \"Seashell\" Spoon",
                     "reviews": {
-                        "total_reviews": 7,
-                        "average_score": 4.86
+                        "total_reviews": 2,
+                        "average_score": 5
                     },
                     "material": [],
                     "size": [],
                     "price": [
+                        79,
                         79,
                         79,
                         80,
@@ -1904,6 +1520,7 @@
                     "sku": [
                         "EMPIRE-1040",
                         "EMPIRE-1195",
+                        "EMPIRE-1196",
                         "EMPIRE-1641",
                         "EMPIRE-1640"
                     ],
@@ -1916,62 +1533,12 @@
                         }
                     ],
                     "brand": "Empire Glassworks",
-                    "hash": "AWBzBXNoso7SSYcnxv63",
+                    "hash": "AV11VmrHCQkVMwqrFH_q",
                     "compare_at": -1
                 },
                 {
                     "seller": "",
-                    "quantity": 5,
-                    "color": [],
-                    "color_variants": 1,
-                    "image_2_url": "https://cdn.shopify.com/s/files/1/0350/8253/products/EMPIRE-GLASSWORKS-QUOT-NED-THE-NARWAHL-QUOT-DABBER_EMPIRE-1729-0_medium.jpg?v=1493753910",
-                    "custom_fields": {
-                        "barcode": [
-                            ""
-                        ],
-                        "height": [
-                            "5 Inches"
-                        ]
-                    },
-                    "description": "Dabbin with a Sea Unicorn!\n\n \nThe Narwhal is usually found in the arctic waters of the north. Far far away from you and your dabbing rig. Thankfully, these handmade glass dabbers can keep you company in any climate. All made with the detail and quality you expect from Empire Glassworks. \n\n \n Borosilicate Glass\n Hand-mixed Colors\n Dichro Worked in the Tusk\n Made in Placentia, CA",
-                    "discount": [],
-                    "availability": true,
-                    "title": "Empire Glassworks \"Ned the Narwhal\" Dabber",
-                    "reviews": {
-                        "total_reviews": 1,
-                        "average_score": 5
-                    },
-                    "material": [],
-                    "size": [],
-                    "price": [
-                        40
-                    ],
-                    "stickers": {
-                        "availability": true,
-                        "in-stock": true,
-                        "out-of-stock": false,
-                        "discount": false,
-                        "free-shipping": false
-                    },
-                    "id": "9517645640",
-                    "sku": [
-                        "EMPIRE-1729"
-                    ],
-                    "category": [
-                        {
-                            "category2": "",
-                            "category3": "",
-                            "category4": "",
-                            "category1": "Dabber"
-                        }
-                    ],
-                    "brand": "Empire Glassworks",
-                    "hash": "AWBzBXa6so7SSYcnxwB9",
-                    "compare_at": -1
-                },
-                {
-                    "seller": "",
-                    "quantity": 5,
+                    "quantity": 9,
                     "color": [],
                     "color_variants": 1,
                     "image_2_url": "https://cdn.shopify.com/s/files/1/0350/8253/products/EMPIRE-1035-2_medium.jpg?v=1495742627",
@@ -1997,7 +1564,7 @@
                     "availability": true,
                     "title": "Empire Glassworks Green Pufferfish Male Flower Bowl",
                     "reviews": {
-                        "total_reviews": 2,
+                        "total_reviews": 1,
                         "average_score": 5
                     },
                     "material": [],
@@ -2030,7 +1597,7 @@
                         }
                     ],
                     "brand": "Empire Glassworks",
-                    "hash": "AWBzBXNoso7SSYcnxv60",
+                    "hash": "AV11VmrHCQkVMwqrFH_l",
                     "compare_at": -1
                 },
                 {
@@ -2069,13 +1636,13 @@
                         650
                     ],
                     "stickers": {
+                        "free-shipping": true,
                         "discount": [
                             8
                         ],
                         "availability": true,
                         "in-stock": true,
-                        "out-of-stock": false,
-                        "free-shipping": true
+                        "out-of-stock": false
                     },
                     "id": "1281471940",
                     "sku": [
@@ -2090,71 +1657,12 @@
                         }
                     ],
                     "brand": "BFF Glass",
-                    "hash": "AWBzBXNnso7SSYcnxvyt",
+                    "hash": "AV11Vmq8CQkVMwqrFH1C",
                     "compare_at": 710
                 },
                 {
                     "seller": "",
-                    "quantity": 4,
-                    "color": [],
-                    "color_variants": 1,
-                    "image_2_url": "https://cdn.shopify.com/s/files/1/0350/8253/products/EMPIRE-STONEDFISH-1_medium.jpg?v=1481748709",
-                    "custom_fields": {
-                        "use_case": [
-                            "Made For Dry Herbs"
-                        ],
-                        "joint_size": [
-                            "14.5mm"
-                        ],
-                        "joint_gender": [
-                            "Male Joint"
-                        ],
-                        "barcode": [
-                            ""
-                        ],
-                        "height": [
-                            "2.5 Inches"
-                        ]
-                    },
-                    "description": "Puff on your dry herbs like a little pufferfish.\n\n \nIf you're looking for a new bowl with a new kind of style, check out this pufferfish bowl from Empire Glassworks.  This male bowl wears a 14.5mm joint and a deep, ridged bowl for ensuring maximum efficiency from your dry herbs.  Even the little spines on the pufferfish himself make this bowl feel all the more alive.  With this flower bowl, you can take your next smoking sesh down low to sea levels with style and good humor.",
-                    "discount": [],
-                    "availability": true,
-                    "title": "Empire Glassworks Blue Pufferfish Flower Bowl",
-                    "reviews": {
-                        "total_reviews": 2,
-                        "average_score": 4.5
-                    },
-                    "material": [],
-                    "size": [],
-                    "price": [
-                        42
-                    ],
-                    "stickers": {
-                        "availability": true,
-                        "in-stock": true,
-                        "out-of-stock": false,
-                        "discount": false,
-                        "free-shipping": false
-                    },
-                    "id": "4530019908",
-                    "sku": [
-                        "EMPIRE-1035-14M-BLK"
-                    ],
-                    "category": [
-                        {
-                            "category2": "",
-                            "category3": "",
-                            "category4": "",
-                            "category1": "Bowl"
-                        }
-                    ],
-                    "brand": "Empire Glassworks",
-                    "hash": "AWBzBXNoso7SSYcnxv4p",
-                    "compare_at": -1
-                },
-                {
-                    "seller": "",
-                    "quantity": 2,
+                    "quantity": 17,
                     "color": [],
                     "color_variants": 1,
                     "image_2_url": "https://cdn.shopify.com/s/files/1/0350/8253/products/EMPIRE-GLASSWORKS-EXOTIC-AQUATIC-CREATURES-MINI-RECYCLER_EMPIRE-1747-2_medium.jpg?v=1494528707",
@@ -2173,9 +1681,7 @@
                         ]
                     },
                     "description": "Have your Next Sesh with the Creatures of the Sea!\n\n \n \nThis mini recycler from Empire Glassworks, is guaranteed to bring the fun to to your next sesh. The Mini Beehive Recycler has features for you. The 3-hole downstem pushes out bubbles as the water flows to the top chamber and cycles back down, cooling your smoke for the best experience.\n\n \nClassically styled, with an aquatic creatures theme, complete with fish, turtles, and matching flower bowl, and honey drips. All made from hand-mixed colors and quality materials by the team in Placentia, CA. A great pipe for your collection, or if you're looking to for a pipe that's outside the norm. Get yours today!\n\n \n ",
-                    "discount": [
-                        0
-                    ],
+                    "discount": [],
                     "availability": true,
                     "title": "Empire Glassworks Eastern Australian Current Mini Recycler",
                     "reviews": {
@@ -2185,15 +1691,13 @@
                     "material": [],
                     "size": [],
                     "price": [
-                        299.85
+                        300
                     ],
                     "stickers": {
-                        "discount": [
-                            0
-                        ],
                         "availability": true,
                         "in-stock": true,
                         "out-of-stock": false,
+                        "discount": false,
                         "free-shipping": false
                     },
                     "id": "9574322760",
@@ -2209,12 +1713,12 @@
                         }
                     ],
                     "brand": "Empire Glassworks",
-                    "hash": "AWBzBXa6so7SSYcnxwCL",
-                    "compare_at": 300
+                    "hash": "AV11VniCCQkVMwqrFIIY",
+                    "compare_at": -1
                 },
                 {
                     "seller": "",
-                    "quantity": 27,
+                    "quantity": 29,
                     "color": [
                         "Fumed",
                         "White/red",
@@ -2272,36 +1776,364 @@
                         }
                     ],
                     "brand": "Smoke Cartel",
-                    "hash": "AWBzBXa6so7SSYcnxwCu",
+                    "hash": "AV11VniCCQkVMwqrFII_",
+                    "compare_at": -1
+                },
+                {
+                    "seller": "",
+                    "quantity": 39,
+                    "color": [
+                        "Acid Yellow Crayon",
+                        "Triple Passion",
+                        "Illuminati",
+                        "Clear",
+                        "Cobalt",
+                        "Lemon Drop",
+                        "Mango",
+                        "Green Paparazzi",
+                        "Purple Urple"
+                    ],
+                    "color_variants": 9,
+                    "image_2_url": "https://cdn.shopify.com/s/files/1/0350/8253/products/SS-CHARYBDIS-1_medium.jpg?v=1474385286",
+                    "custom_fields": {
+                        "joint_size": [
+                            "14.5mm"
+                        ],
+                        "variant_image_url": [
+                            "https://cdn.shopify.com/s/files/1/0350/8253/products/SS-CHARYBDIS-8.jpg?v=1474385510",
+                            "https://cdn.shopify.com/s/files/1/0350/8253/products/SS-CHARYBDIS-9.jpg?v=1474385653",
+                            "https://cdn.shopify.com/s/files/1/0350/8253/products/SS-CHARYBDIS-6.jpg?v=1474385413",
+                            "https://cdn.shopify.com/s/files/1/0350/8253/products/SS-CHARYBDIS-0.jpg?v=1474385272"
+                        ],
+                        "joint_gender": [
+                            "Female Joint"
+                        ],
+                        "barcode": [
+                            ""
+                        ],
+                        "height": [
+                            "10.5 Inches"
+                        ]
+                    },
+                    "description": "Incredible diffusion with wild style.\n\n \nCharybdis was once the great sea monster that tormented the Greek sailors on the Strait of Messina, but has now been rationalized as a giant whirlpool.  A fitting name for Sesh Supply's latest water pipe, the \"Charybdis\" is a whirlpool of a piece, and as an internal recycler it is constantly working to keep your smoke wonderfully diffused and clean as ever.  With the \"Charybdis,\" you can pack your dry herbs into the packaged flower bowl and send them on a wild ride through the propellor perc, and then through the water of the Klein recycler.  If you're a fan of terrifyingly powerful water pipes, you'll definitely want to add the \"Charybdis\" to your monster collection.\n\n \nWant to see more pipes named after Greek mythological creatures? ",
+                    "discount": [
+                        23,
+                        26,
+                        31
+                    ],
+                    "availability": true,
+                    "title": "Sesh Supply \"Charybdis\" Propellor Perc Klein-Style Recycler",
+                    "reviews": {
+                        "total_reviews": 11,
+                        "average_score": 3.73
+                    },
+                    "material": [],
+                    "size": [],
+                    "price": [
+                        159,
+                        169,
+                        169,
+                        169,
+                        169,
+                        199,
+                        199,
+                        199,
+                        199
+                    ],
+                    "stickers": {
+                        "discount": [
+                            31,
+                            26,
+                            23
+                        ],
+                        "availability": true,
+                        "in-stock": true,
+                        "out-of-stock": false,
+                        "free-shipping": false
+                    },
+                    "id": "4203454788",
+                    "sku": [
+                        "SS-CHARYBDIS-YW",
+                        "SS-CHARYBDIS-TP",
+                        "SS-CHARYBDIS-IL",
+                        "SS-CHARYBDIS-CL",
+                        "SS-CHARYBDIS-CO",
+                        "SS-CHARYBDIS-LD",
+                        "SS-CHARYBDIS-MGO",
+                        "SS-CHARYBDIS-GD",
+                        "SS-CHARYBDIS-PU"
+                    ],
+                    "category": [
+                        {
+                            "category2": "",
+                            "category3": "",
+                            "category4": "",
+                            "category1": "Water Pipe"
+                        }
+                    ],
+                    "brand": "Sesh Supply",
+                    "hash": "AV11VmrDCQkVMwqrFH7G",
+                    "compare_at": -1
+                },
+                {
+                    "seller": "",
+                    "quantity": 0,
+                    "color": [],
+                    "color_variants": 1,
+                    "image_2_url": "https://cdn.shopify.com/s/files/1/0350/8253/products/EMPIRE-1457-1_medium.jpg?v=1493226517",
+                    "custom_fields": {
+                        "joint_size": [
+                            "14.5mm"
+                        ],
+                        "variant_image_url": [
+                            "https://cdn.shopify.com/s/files/1/0350/8253/products/EMPIRE-1457-2.jpg?v=1493226509"
+                        ],
+                        "joint_gender": [
+                            "Female Joint"
+                        ],
+                        "barcode": [
+                            ""
+                        ],
+                        "height": [
+                            "4.5 Inches"
+                        ]
+                    },
+                    "description": "Empire Glassworks will never let you down with one of their octopi, and they especially don't on this mini sea rig. The mouthpiece of this rig is an octopus, and there are fish, coral, starfish, and other sea creatures that can be found on the body, neck, and dome of the piece. This piece features a fixed downstem and has a 14.5mm female joint. Dive into Empire Glassworks and their great glass by starting with one of these.",
+                    "discount": [],
+                    "availability": false,
+                    "title": "Empire Glassworks \"Sea Critter\" Mini Rig",
+                    "reviews": {
+                        "total_reviews": 4,
+                        "average_score": 4
+                    },
+                    "material": [],
+                    "size": [
+                        "14.5mm Female"
+                    ],
+                    "price": [
+                        180
+                    ],
+                    "stickers": {
+                        "availability": false,
+                        "in-stock": false,
+                        "out-of-stock": true,
+                        "discount": false,
+                        "free-shipping": false
+                    },
+                    "id": "882244356",
+                    "sku": [
+                        "EMPIRE-1457-B"
+                    ],
+                    "category": [
+                        {
+                            "category2": "",
+                            "category3": "",
+                            "category4": "",
+                            "category1": "Water Pipe"
+                        }
+                    ],
+                    "brand": "Empire Glassworks",
+                    "hash": "AV11VniCCQkVMwqrFIG4",
+                    "compare_at": -1
+                },
+                {
+                    "seller": "",
+                    "quantity": 0,
+                    "color": [],
+                    "color_variants": 1,
+                    "image_2_url": "https://cdn.shopify.com/s/files/1/0350/8253/products/SESH-1_medium.jpeg?v=1444683637",
+                    "custom_fields": {
+                        "use_case": [
+                            "Made For Dry Herbs"
+                        ],
+                        "barcode": [
+                            ""
+                        ]
+                    },
+                    "description": "Down by the Sea Shore....\n\n \nThis spoon is presented by our wonderful friends at GlasseX! Worked in cobalt glass, this fumed spoon is sure to catch your eye! The pattern on the head of the spoon is worked in a beautiful pale fumed yellow. The Sea Shore Spoon also features a firm dotted hand grip on the opposite side of the carb. ",
+                    "discount": [],
+                    "availability": false,
+                    "title": "GlasseX \"Sea Shore\" Fumed Spoon",
+                    "reviews": {
+                        "total_reviews": 0,
+                        "average_score": 0
+                    },
+                    "material": [],
+                    "size": [],
+                    "price": [
+                        40
+                    ],
+                    "stickers": {
+                        "availability": false,
+                        "in-stock": false,
+                        "out-of-stock": true,
+                        "discount": false,
+                        "free-shipping": false
+                    },
+                    "id": "1778657540",
+                    "sku": [
+                        "GLASSEX-HP-SEA-SHORE"
+                    ],
+                    "category": [
+                        {
+                            "category2": "",
+                            "category3": "",
+                            "category4": "",
+                            "category1": "Spoon"
+                        }
+                    ],
+                    "brand": "GlasseX",
+                    "hash": "AV11Vmq9CQkVMwqrFH18",
+                    "compare_at": -1
+                },
+                {
+                    "seller": "",
+                    "quantity": 0,
+                    "color": [],
+                    "color_variants": 1,
+                    "image_2_url": "https://cdn.shopify.com/s/files/1/0350/8253/products/EMPIRE-1552-14-H-1_medium.jpg?v=1464022486",
+                    "custom_fields": {
+                        "use_case": [
+                            "Made For Thin Oils",
+                            "Made For Waxy Oils",
+                            "Made For Concentrates"
+                        ],
+                        "joint_size": [
+                            "14.5mm"
+                        ],
+                        "joint_gender": [
+                            "Male Joint",
+                            "Female Joint"
+                        ],
+                        "barcode": [
+                            ""
+                        ]
+                    },
+                    "description": "Up From The Depths!\n\n \nThis is a truly unique honey bucket to add to your collection! Empire has done it again with this meticulously adorned accessory. Fish swim through underwater plants around the dome of this nail. Also included is a matching carb cap to ensure that your rig set up is complete!",
+                    "discount": [],
+                    "availability": false,
+                    "title": "Empire Glassworks \"Under The Sea\" Honey Bucket",
+                    "reviews": {
+                        "total_reviews": 0,
+                        "average_score": 0
+                    },
+                    "material": [],
+                    "size": [],
+                    "price": [
+                        120
+                    ],
+                    "stickers": {
+                        "availability": false,
+                        "in-stock": false,
+                        "out-of-stock": true,
+                        "discount": false,
+                        "free-shipping": false
+                    },
+                    "id": "4967737988",
+                    "sku": [
+                        "EMPIRE-1552-14-H"
+                    ],
+                    "category": [
+                        {
+                            "category2": "",
+                            "category3": "",
+                            "category4": "",
+                            "category1": "Quartz Nail"
+                        }
+                    ],
+                    "brand": "Empire Glassworks",
+                    "hash": "AV11VmrHCQkVMwqrFIAF",
+                    "compare_at": -1
+                },
+                {
+                    "seller": "",
+                    "quantity": 0,
+                    "color": [],
+                    "color_variants": 1,
+                    "image_2_url": "https://cdn.shopify.com/s/files/1/0350/8253/products/NEXUS-PHATTMIKE-CHORSE_2_medium.jpg?v=1427388373",
+                    "custom_fields": {
+                        "joint_size": [
+                            "10mm"
+                        ],
+                        "variant_image_url": [
+                            "https://cdn.shopify.com/s/files/1/0350/8253/products/NEXUS-PHATTMIKE-CHORSE_1.jpg?v=1427388371",
+                            "https://cdn.shopify.com/s/files/1/0350/8253/products/NEXUS-PHATTMIKE-CHORSE_9.jpg?v=1427388384"
+                        ],
+                        "joint_gender": [
+                            "male Joint"
+                        ],
+                        "barcode": [
+                            ""
+                        ],
+                        "height": [
+                            "4 Inches"
+                        ]
+                    },
+                    "description": "This collaboration piece from Nexus Glass features the classic Nexus Puck design covered in heady glasswork by Phatt Matt. The puck itself has a polished male joint and comes with a polished female dome. On the side of the dome is a small fish detail which can be found on two other glass marbles attached to the side of the puck, too. A heady worked Sea horse, cluster of sea weed, red coral, starfish, and coral worked in green slime are the main focal points of this concentrate pipe, and make it the perfect addition to any ocean lovers collection!",
+                    "discount": [],
+                    "availability": false,
+                    "title": "Nexus Glass and Phatt Matt Under the Sea-horse Collab",
+                    "reviews": {
+                        "total_reviews": 1,
+                        "average_score": 2
+                    },
+                    "material": [],
+                    "size": [],
+                    "price": [
+                        700,
+                        700
+                    ],
+                    "stickers": {
+                        "free-shipping": true,
+                        "availability": false,
+                        "in-stock": false,
+                        "out-of-stock": true,
+                        "discount": false
+                    },
+                    "id": "451137184",
+                    "sku": [
+                        "NEXUSPHATTMAT"
+                    ],
+                    "category": [
+                        {
+                            "category2": "",
+                            "category3": "",
+                            "category4": "",
+                            "category1": "Concentrate Pipe"
+                        }
+                    ],
+                    "brand": "Nexus Glass",
+                    "hash": "AV11VmrECQkVMwqrFH8i",
                     "compare_at": -1
                 }
-            ]
+            ],
+            "banner": {}
         },
         "rawHeaders": [
-            "Date",
-            "Tue, 23 Jan 2018 20:58:49 GMT",
-            "Content-Type",
-            "application/json; charset=utf-8",
-            "Content-Length",
-            "44180",
-            "Connection",
-            "close",
-            "Server",
-            "nginx/1.12.1",
-            "Cache-Control",
-            "no-cache, no-store, must-revalidate",
-            "Pragma",
-            "no-cache",
-            "Expires",
-            "0",
-            "Access-Control-Allow-Origin",
-            "*",
-            "Access-Control-Allow-Methods",
-            "GET,POST,OPTIONS",
             "Access-Control-Allow-Headers",
             "Content-type,Accept,x-key",
+            "Access-Control-Allow-Methods",
+            "GET,POST,OPTIONS",
+            "Access-Control-Allow-Origin",
+            "*",
+            "Cache-Control",
+            "no-cache, no-store, must-revalidate",
+            "Content-Type",
+            "application/json; charset=utf-8",
+            "Date",
+            "Mon, 16 Oct 2017 11:28:55 GMT",
             "ETag",
-            "W/\"ac94-9o+LvZBxnGrajJ10x80s6UWWfKg\""
+            "W/\"a0bc-ezEzShy6jMMLZh0eRodh6SKrrg8\"",
+            "Expires",
+            "0",
+            "Pragma",
+            "no-cache",
+            "Server",
+            "nginx/1.12.1",
+            "Content-Length",
+            "41148",
+            "Connection",
+            "Close"
         ]
     }
 ]
