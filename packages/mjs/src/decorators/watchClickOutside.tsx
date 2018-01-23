@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Component } from 'react';
-import { setDisplayName, createEagerFactory } from 'recompose';
+import { setDisplayName } from 'recompose';
 
 const EVENTS = ['mousedown', 'touchstart'];
 const isNodeFound = (current, componentNode) => current === componentNode;
@@ -21,7 +21,7 @@ const createClickHandler = callback => (componentNode, getProps) => e => {
 
 const onClickOutside = handler => BaseComponent => {
   const handlerCreator = createClickHandler(handler);
-  const factory = createEagerFactory(BaseComponent);
+  const factory = React.createFactory(BaseComponent);
   return class HandleComponent extends React.Component<any, void> {
     fn: any = void 0;
     instance: any = void 0;
@@ -31,7 +31,7 @@ const onClickOutside = handler => BaseComponent => {
       this.fn = handlerCreator(this.instance, getProps);
       if (typeof document !== 'undefined') {
         EVENTS.forEach(eventName =>
-          document.addEventListener(eventName, this.fn),
+          document.addEventListener(eventName, this.fn)
         );
       }
     }
@@ -39,7 +39,7 @@ const onClickOutside = handler => BaseComponent => {
     componentWillUnmount() {
       if (typeof document !== 'undefined') {
         EVENTS.forEach(eventName =>
-          document.removeEventListener(eventName, this.fn),
+          document.removeEventListener(eventName, this.fn)
         );
         this.fn = void 0;
       }

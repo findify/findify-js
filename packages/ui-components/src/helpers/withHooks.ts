@@ -1,11 +1,4 @@
-import {
-  compose,
-  createEagerFactory,
-  branch,
-  lifecycle,
-  mapProps,
-  getContext,
-} from 'recompose';
+import { compose, branch, lifecycle, mapProps, getContext } from 'recompose';
 import { findDOMNode } from 'react-dom';
 import { identity, isObject, isFunction, isArray, isEqual } from 'lodash';
 import PropTypes from 'prop-types';
@@ -24,7 +17,7 @@ const splitProps = props =>
       acc[index] = update;
       return acc;
     },
-    [{}, {}],
+    [{}, {}]
   );
 
 const check = (type, hookName) => ({ hooks }) =>
@@ -61,7 +54,7 @@ export default featureType => BaseComponent => {
               node: findDOMNode(this),
               data: this.props,
             },
-            this.props.globalConfig,
+            this.props.globalConfig
           );
         },
         componentDidUpdate(next) {
@@ -72,10 +65,10 @@ export default featureType => BaseComponent => {
               node: findDOMNode(this),
               data: this.props,
             },
-            this.props.globalConfig,
+            this.props.globalConfig
           );
         },
-      }),
+      })
     ),
     hook(
       types.mapProps,
@@ -85,7 +78,7 @@ export default featureType => BaseComponent => {
         const mappedProps = reflect(
           hooks[featureType][types.mapProps],
           ...propsToMap,
-          globalConfig,
+          globalConfig
         );
 
         if (
@@ -98,7 +91,7 @@ export default featureType => BaseComponent => {
           ...props,
           ...mappedProps,
         };
-      }),
+      })
     ),
     hook(
       types.didMount,
@@ -110,10 +103,10 @@ export default featureType => BaseComponent => {
               node: findDOMNode(this),
               data: this.props,
             },
-            this.props.globalConfig,
+            this.props.globalConfig
           );
         },
-      }),
-    ),
+      })
+    )
   )(BaseComponent);
 };

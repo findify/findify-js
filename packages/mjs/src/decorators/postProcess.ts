@@ -1,10 +1,9 @@
-import { Component, createElement } from 'react';
+import { Component, createElement, createFactory } from 'react';
 import PropTypes from 'prop-types';
 import {
   compose,
   lifecycle,
   getContext,
-  createEagerFactory,
   branch,
   renderComponent,
 } from 'recompose';
@@ -30,7 +29,7 @@ const proxyClick = () => {
 };
 
 const withPostProcess = BaseComponent => {
-  const factory = createEagerFactory(BaseComponent);
+  const factory = createFactory(BaseComponent);
 
   return class PostProcessor extends Component<any, any> {
     resize = () => {};
@@ -49,7 +48,7 @@ const withPostProcess = BaseComponent => {
 
       if (
         ['complete', 'loaded', 'interactive'].includes(
-          iframeDocument.readyState,
+          iframeDocument.readyState
         ) &&
         iframeDocument.body
       ) {

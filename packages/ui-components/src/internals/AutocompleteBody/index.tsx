@@ -3,7 +3,6 @@ import * as cx from 'classnames';
 
 import { SearchSuggestions } from 'internals/SearchSuggestions';
 import { ProductMatches } from 'internals/ProductMatches';
-import { createEagerElement } from 'recompose';
 
 const styles = require('./styles.css');
 
@@ -19,7 +18,7 @@ export const AutocompleteBody: any = ({
 }: Props) => {
   if (suggestions && !suggestions.length) return null;
 
-  const searchSuggestionsNode = createEagerElement(SearchSuggestions, {
+  const searchSuggestionsNode = React.createElement(SearchSuggestions, {
     selectedSuggestion,
     suggestions,
     onSearchSuggestionClick,
@@ -30,7 +29,7 @@ export const AutocompleteBody: any = ({
   const productMatchesNode =
     !!items &&
     !!items.length &&
-    createEagerElement(ProductMatches, {
+    React.createElement(ProductMatches, {
       items,
       config,
       onProductClick,
@@ -49,11 +48,11 @@ export const AutocompleteBody: any = ({
             {searchSuggestionsNode}
           </div>
         )) || (
-            <div className={styles.container}>
-              {searchSuggestionsNode}
-              {productMatchesNode}
-            </div>
-          )}
+          <div className={styles.container}>
+            {searchSuggestionsNode}
+            {productMatchesNode}
+          </div>
+        )}
         {i18n.tipTitle && (
           <div
             className={styles.tip}

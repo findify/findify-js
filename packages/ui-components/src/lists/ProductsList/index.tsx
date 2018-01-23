@@ -4,7 +4,6 @@ import {
   mapProps,
   setDisplayName,
   defaultProps,
-  createEagerElement,
   withPropsOnChange,
 } from 'recompose';
 import withConfig from 'helpers/withConfig';
@@ -50,7 +49,7 @@ export const Component = ({
     {config.title && <h4 className={styles.title}>{config.title}</h4>}
     <Grid columns={String(12 / columns)} className={className}>
       {items.map((product, i) =>
-        createEagerElement(Product, {
+        React.createElement(Product, {
           ...product,
           key: getProductKey(product),
           index: i,

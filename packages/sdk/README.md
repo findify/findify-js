@@ -54,15 +54,6 @@ $ yard add @findify/sdk
 The Findify SDK for JavaScript bundles TypeScript definition files for use in TypeScript projects and to support tools that can read `.d.ts` files.
 Our goal is to keep these TypeScript definition files updated with each release for any public api.
 
-### Using Bower
-
-You can also use [bower](http://bower.io) to install the SDK by typing the
-following into a terminal window:
-
-```sh
-bower install @findify/sdk
-```
-
 ## Examples
 
 ```javascript

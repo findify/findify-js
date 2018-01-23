@@ -13,7 +13,6 @@ import {
   withHandlers,
   onlyUpdateForKeys,
   renderComponent,
-  createEagerFactory,
   withProps,
   branch,
   defaultProps,
@@ -55,9 +54,11 @@ const FrameComponent = (decorators, factory) =>
 const StaticComponent = (decorators, factory) =>
   decorators(({ frameStyles, ...props }) => {
     injectTags(props.config.css, props.config.js);
-
     return (
-      <div style={frameStyles}>
+      <div
+        style={frameStyles}
+        className={`findify-${props.config.featureType}-wrapper`}
+      >
         {factory(props)}
         <ResizeDetector handleWidth handleHeight onResize={props.onResize} />
       </div>
@@ -65,7 +66,7 @@ const StaticComponent = (decorators, factory) =>
   });
 
 const withFrame = mapper => BaseComponent => {
-  const factory = createEagerFactory(BaseComponent);
+  const factory = React.createFactory(BaseComponent);
   const sizeHandlers = compose(
     withState('styles', 'setStyles', initialStyles),
     withPropsOnChange(['styles', 'node', 'visible'], props => ({

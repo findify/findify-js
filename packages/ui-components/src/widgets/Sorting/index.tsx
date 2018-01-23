@@ -40,7 +40,7 @@ export const Sorting: any = compose(
       value:
         (!!value && opts.find(o => o.value === createValue(value))) || opts[0],
     };
-  }),
+  })
 )(({ config, options, onChange, value, style, className, isMobile }: any) => (
   <div
     className={cx(styles.root, className, isMobile && styles.mobile)}

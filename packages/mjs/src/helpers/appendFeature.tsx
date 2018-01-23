@@ -12,6 +12,7 @@ const createDiv = (className?: string) => {
 
 export const mutateDom = (node, appendTo) => {
   const reactRoot = createDiv('findify-root');
+
   if (appendTo === 'self') {
     node.innerHTML = '';
     node.appendChild(reactRoot);
@@ -27,7 +28,6 @@ export const mutateDom = (node, appendTo) => {
     wrapper.appendChild(reactRoot);
   }
 
-  // Remove default from input
   if (node.tagName === 'INPUT') {
     node.autocomplete = 'off';
     const form = findClosest('form')(node);

@@ -1,5 +1,4 @@
-import { Component } from 'react';
-import { createEagerFactory } from 'recompose';
+import { Component, createFactory } from 'react';
 
 export default item => {
   let component;
@@ -13,7 +12,7 @@ export default item => {
     componentDidMount() {
       if (!!component) return;
       promise.then(res => {
-        component = createEagerFactory(res[item]);
+        component = createFactory(res[item]);
         this.setState({ isLoaded: true });
       });
     }

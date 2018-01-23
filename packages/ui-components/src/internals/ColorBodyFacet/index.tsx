@@ -1,11 +1,5 @@
 import * as React from 'react';
-import {
-  compose,
-  withHandlers,
-  withPropsOnChange,
-  createEagerElement,
-  pure,
-} from 'recompose';
+import { compose, withHandlers, withPropsOnChange, pure } from 'recompose';
 import * as cx from 'classnames';
 import * as color from 'tinycolor2';
 import Icon from 'internals/Icon';
@@ -53,7 +47,7 @@ export const ColorBodyFacet = compose(
 )(({ values, ...rest }: any) => (
   <div className={styles.root}>
     {values.map(item =>
-      createEagerElement(Item, {
+      React.createElement(Item, {
         ...rest,
         key: item.value,
         title: item.value,

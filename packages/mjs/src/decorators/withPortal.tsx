@@ -1,13 +1,7 @@
 import { createPortal } from 'react-dom';
-import React from 'react';
+import * as React from 'react';
 
-import {
-  lifecycle,
-  createEagerFactory,
-  createEagerElement,
-  branch,
-  setDisplayName,
-} from 'recompose';
+import { lifecycle, branch, setDisplayName } from 'recompose';
 
 const portalCreator = (component, node) => props =>
   createPortal(component(props), node);
@@ -15,7 +9,7 @@ const portalCreator = (component, node) => props =>
 const withPortal = (component, _target) => BaseComponent => {
   const body = document.getElementsByTagName('body')[0];
   const target = _target || body;
-  const factory = createEagerFactory(component);
+  const factory = React.createFactory(component);
 
   const node = document.createElement('div');
   node.className = 'findify-root';

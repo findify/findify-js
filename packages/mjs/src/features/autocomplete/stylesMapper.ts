@@ -26,17 +26,24 @@ const mobileStyles = {
 const defaultAdjust = { left: 0, top: 0 };
 
 const computeStyles = (position, componentWidth, node, inline, config) => {
-  if (inline || config.inline) return { top: position.get('height'), left: 0 };
+  if (inline || config.inline)
+    return {
+      top: Math.round(position.get('height')),
+      left: 0,
+    };
 
-  const offset =
-    node.position.get('left') + node.position.get('width') + componentWidth;
+  const offset = Math.round(
+    node.position.get('left') + node.position.get('width') + componentWidth
+  );
 
   return {
     top: position.get('top') + position.get('height'),
     left:
       offset > window.innerWidth
-        ? position.get('left') + position.get('width') - componentWidth || 0
-        : position.get('left'),
+        ? Math.round(
+            position.get('left') + position.get('width') - componentWidth || 0
+          )
+        : Math.round(position.get('left')),
   };
 };
 
@@ -64,18 +71,16 @@ export default ({
     inline,
     config
   );
-  const transform = `translate(${left}px, ${top}px)`;
 
   return {
     ...defaults,
+    top,
+    left,
     width: inline || config.frameDisabled ? 'auto' : width || '100%',
     height: inline || config.frameDisabled ? 'auto' : height || '100%',
     visibility:
       !response || (response && !response.suggestions.length)
         ? 'hidden'
         : 'visible',
-    transform,
-    msTransform: transform,
-    WebkitTransform: transform,
   };
 };
