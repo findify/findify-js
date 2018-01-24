@@ -1,7 +1,7 @@
 import { render } from 'react-dom';
 import { delay } from 'lodash';
 
-import findClosest from './findClosestElement';
+import findClosestElement from './findClosestElement';
 import registerHooks from './registerHooks';
 
 const createDiv = (className?: string) => {
@@ -30,7 +30,7 @@ export const mutateDom = (node, appendTo) => {
 
   if (node.tagName === 'INPUT') {
     node.autocomplete = 'off';
-    const form = findClosest('form')(node);
+    const form = findClosestElement('form')(node);
     if (form) form.removeAttribute('onsubmit');
   }
 
