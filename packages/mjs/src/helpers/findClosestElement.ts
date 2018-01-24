@@ -13,7 +13,7 @@ export default selector => el => {
     'msMatchesSelector',
     'oMatchesSelector',
   ].some(fn => {
-    if (typeof document.body[fn] == 'function') {
+    if (typeof document.body[fn] === 'function') {
       matchesFn = fn;
       return true;
     }
