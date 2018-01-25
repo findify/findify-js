@@ -1,6 +1,9 @@
 import * as Types from '../types';
 import { getFacetType } from './filters';
-import { identity, pick, values, get } from 'lodash/fp';
+const identity = require('lodash/identity');
+const pick = require('lodash/fp/pick');
+const values = require('lodash/fp/values');
+const get = require('lodash/fp/get');
 
 const pickFields = pick(values(Types.Field));
 const pickFilterValue = get('value');
@@ -20,7 +23,8 @@ const formatQueryField = key =>
   }[key] || identity);
 
 export const queryToState = (prev, next, defaults = {}) => {
-  const fields = Object.keys(prev).filter(key => !!next[key]);
+  const fields = Object.keys(prev).filter(key => next.hasOwnProperty(key));
+  
   return fields.reduce((acc, key) => {
     if (defaults[key] === next[key]) return acc;
     if (key !== 'filters') return { ...acc, [key]: next[key] };
@@ -34,7 +38,7 @@ export const queryToState = (prev, next, defaults = {}) => {
         return !values.length
           ? acc
           : {
-              ...acc,
+              ...filters,
               [filter.name]: values,
             };
       }, {}),

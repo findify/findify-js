@@ -1,5 +1,5 @@
 import { Cache } from '../Cache';
-import { defer } from 'lodash';
+import defer from 'lodash/defer';
 
 const mockObject = { '1': 1, '2': 2 };
 

@@ -1,5 +1,4 @@
 import { Agent } from '../Agent';
-
 const config = {
   url: 'https://api-v3.findify.io',
   key: '2e963f3e-38bd-4c00-9636-c00e48945eb7',

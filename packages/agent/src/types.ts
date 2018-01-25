@@ -36,9 +36,11 @@ export type State = {
   limit?: number
 }
 
+export type ActionHandler = (state: any, meta?:any) => any
+
 export type Handler = {
   key: string,
-  handler: (state, meta?) => void,
+  handler: ActionHandler
   path: (any) => any
 }
 

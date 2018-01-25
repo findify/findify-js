@@ -1,4 +1,4 @@
-import { debounce } from 'lodash';
+const debounce = require('lodash/debounce');
 
 export class Cache {
   cache: any = {};

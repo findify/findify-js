@@ -3,16 +3,20 @@ import * as Types from '../types';
 import shallowequal from 'shallowequal';
 import { init } from '@findify/sdk';
 
-import { get, pick, isFunction, isObject } from 'lodash/fp';
-import { debounce } from 'lodash';
 import { Cache } from './Cache';
 import { getChangedFields } from '../utils/changes';
 import { deepMerge } from '../utils/merge';
 import { stateToQuery, queryToState } from '../utils/format';
 import { getFacetType } from '../utils/filters';
 
+const get = require('lodash/fp/get');
+const pick = require('lodash/fp/pick');
+const isFunction = require('lodash/isFunction');
+const isObject = require('lodash/isObject');
+const debounce = require('lodash/debounce');
+
 const pickFilters = get('filters');
-const pickConfigProps = pick(['debounce']);
+const pickConfigProps = pick(['debounce', 'onError']);
 
 export class Agent {
   type: Types.RequestType = Types.RequestType.Search;
@@ -21,6 +25,7 @@ export class Agent {
   handlers: Types.Handler[] = [];
   response: Types.ResponseBody | any = {};
   config: Types.AgentConfig;
+  onError: (error: Error) => void;
 
   provider: Types.SDKClient;
   cache: Cache;
@@ -44,15 +49,17 @@ export class Agent {
     return this;
   }
 
-  public on(action: string, handler: (state, meta?) => void) {
+  public on(action: string, handler: Types.ActionHandler) {
     const [ event, ...path ] = action.split(':');
     this.handlers.push({ handler, key: action, path: get(path) });
     return this;
   }
 
-  public off(action?: string) {
+  public off(action?: string | Types.ActionHandler) {
     if (!action) this.handlers = [];
-    this.handlers = this.handlers.filter(({ key }) => key !== action);
+    this.handlers = this.handlers.filter(
+      ({ key, handler }) => (isFunction(action) ? handler : key) !== action
+    );
     return this;
   }
 
@@ -108,9 +115,11 @@ export class Agent {
     this.provider
       .send({ params, type })
       .then(this.handleResponse)
-      .catch(error => {
-        error
-      });
+      .catch(error =>
+        this.onError
+        ? this.onError(error)
+        : console.warn(error)
+      );
 
     this.state = state;
     return;

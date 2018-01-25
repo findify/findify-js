@@ -1,5 +1,8 @@
 import { getFacetType } from './filters';
-import { isString, isArray, isEmpty, isEqual } from 'lodash/fp';
+const isString = require('lodash/isString');
+const isArray = require('lodash/isArray');
+const isEmpty = require('lodash/isEmpty');
+const isEqual = require('lodash/isEqual');
 
 const isValidField = (values, key) =>
   values.every((value, i) => {
