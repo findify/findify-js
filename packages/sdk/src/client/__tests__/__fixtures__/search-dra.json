@@ -2,7 +2,7 @@
     {
         "scope": "https://search-staging.findify.io:443",
         "method": "post",
-        "path": "/v3/search",
+        "path": "/search",
         "body": {
             "user": {
                 "lang": [
@@ -14,7 +14,7 @@
                 "ip": "192.168.0.1",
                 "ua": "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36"
             },
-            "t_client": 1508153332131,
+            "t_client": 1516741127848,
             "key": "0d2f3aad-8702-46ad-a786-ae9fe2670294",
             "q": "dra",
             "offset": 2,
@@ -23,16 +23,15 @@
         "status": 200,
         "response": {
             "meta": {
-                "no_result": true,
-                "corrected_q": "dry",
-                "q": "dra",
                 "offset": 2,
                 "limit": 5,
-                "total": 499,
+                "total": 418,
                 "filters": [],
-                "sort": [],
-                "rid": "<stripped>",
-                "query_type": "and"
+                "totalFacets": 9,
+                "query": "dry",
+                "noResult": "dra",
+                "id": "ecbc98f3-2d54-4b6f-b661-eec274d9d86e",
+                "rid": "<stripped>"
             },
             "facets": [
                 {
@@ -41,129 +40,147 @@
                     "values": [
                         {
                             "selected": false,
-                            "count": 137,
-                            "has_children": false,
-                            "value": "Water Pipe",
-                            "name": "category1"
+                            "count": 105,
+                            "name": "category1",
+                            "key": "Spoon",
+                            "hasChildren": false,
+                            "type": "category"
                         },
                         {
                             "selected": false,
-                            "count": 117,
-                            "has_children": false,
-                            "value": "Spoon",
-                            "name": "category1"
+                            "count": 101,
+                            "name": "category1",
+                            "key": "Water Pipe",
+                            "hasChildren": false,
+                            "type": "category"
                         },
                         {
                             "selected": false,
-                            "count": 48,
-                            "has_children": false,
-                            "value": "Sherlock",
-                            "name": "category1"
+                            "count": 40,
+                            "name": "category1",
+                            "key": "Sherlock",
+                            "hasChildren": false,
+                            "type": "category"
                         },
                         {
                             "selected": false,
-                            "count": 39,
-                            "has_children": false,
-                            "value": "Bubbler",
-                            "name": "category1"
+                            "count": 36,
+                            "name": "category1",
+                            "key": "Vaporizer",
+                            "hasChildren": false,
+                            "type": "category"
                         },
                         {
                             "selected": false,
-                            "count": 38,
-                            "has_children": false,
-                            "value": "Vaporizer",
-                            "name": "category1"
-                        },
-                        {
-                            "selected": false,
-                            "count": 29,
-                            "has_children": false,
-                            "value": "Bowl",
-                            "name": "category1"
+                            "count": 28,
+                            "name": "category1",
+                            "key": "Bubbler",
+                            "hasChildren": false,
+                            "type": "category"
                         },
                         {
                             "selected": false,
                             "count": 26,
-                            "has_children": false,
-                            "value": "Chillum",
-                            "name": "category1"
+                            "name": "category1",
+                            "key": "Bowl",
+                            "hasChildren": false,
+                            "type": "category"
                         },
                         {
                             "selected": false,
-                            "count": 15,
-                            "has_children": false,
-                            "value": "Grinder",
-                            "name": "category1"
+                            "count": 25,
+                            "name": "category1",
+                            "key": "Chillum",
+                            "hasChildren": false,
+                            "type": "category"
                         },
                         {
                             "selected": false,
-                            "count": 15,
-                            "has_children": false,
-                            "value": "Rolling Paper",
-                            "name": "category1"
+                            "count": 14,
+                            "name": "category1",
+                            "key": "Grinder",
+                            "hasChildren": false,
+                            "type": "category"
                         },
                         {
                             "selected": false,
-                            "count": 13,
-                            "has_children": false,
-                            "value": "Concentrate Pipe",
-                            "name": "category1"
+                            "count": 14,
+                            "name": "category1",
+                            "key": "Rolling Paper",
+                            "hasChildren": false,
+                            "type": "category"
                         },
                         {
                             "selected": false,
-                            "count": 9,
-                            "has_children": false,
-                            "value": "Accessory",
-                            "name": "category1"
+                            "count": 10,
+                            "name": "category1",
+                            "key": "Accessory",
+                            "hasChildren": false,
+                            "type": "category"
+                        },
+                        {
+                            "selected": false,
+                            "count": 7,
+                            "name": "category1",
+                            "key": "Concentrate Pipe",
+                            "hasChildren": false,
+                            "type": "category"
                         },
                         {
                             "selected": false,
                             "count": 4,
-                            "has_children": false,
-                            "value": "Steamroller",
-                            "name": "category1"
+                            "name": "category1",
+                            "key": "Steamroller",
+                            "hasChildren": false,
+                            "type": "category"
                         },
                         {
                             "selected": false,
                             "count": 3,
-                            "has_children": false,
-                            "value": "Storage",
-                            "name": "category1"
-                        },
-                        {
-                            "selected": false,
-                            "count": 2,
-                            "has_children": false,
-                            "value": "Recycler",
-                            "name": "category1"
+                            "name": "category1",
+                            "key": "Storage",
+                            "hasChildren": false,
+                            "type": "category"
                         },
                         {
                             "selected": false,
                             "count": 1,
-                            "has_children": false,
-                            "value": "Addon",
-                            "name": "category1"
+                            "name": "category1",
+                            "key": "Addon",
+                            "hasChildren": false,
+                            "type": "category"
                         },
                         {
                             "selected": false,
                             "count": 1,
-                            "has_children": false,
-                            "value": "Apparel",
-                            "name": "category1"
+                            "name": "category1",
+                            "key": "Apparel",
+                            "hasChildren": false,
+                            "type": "category"
                         },
                         {
                             "selected": false,
                             "count": 1,
-                            "has_children": false,
-                            "value": "Glass Dome",
-                            "name": "category1"
+                            "name": "category1",
+                            "key": "Glass Dome",
+                            "hasChildren": false,
+                            "type": "category"
                         },
                         {
                             "selected": false,
                             "count": 1,
-                            "has_children": false,
-                            "value": "Oil Accessories",
-                            "name": "category1"
+                            "name": "category1",
+                            "key": "Oil Accessories",
+                            "hasChildren": false,
+                            "type": "category"
+                        },
+                        {
+                            "selected": false,
+                            "count": 1,
+                            "name": "category1",
+                            "key": "Recycler",
+                            "hasChildren": false,
+                            "type": "category"
                         }
                     ],
                     "sort_type": "count"
@@ -172,1680 +189,1750 @@
                     "name": "brand",
                     "values": [
                         {
-                            "count": 146,
+                            "count": 139,
                             "has_children": false,
                             "name": "brand",
                             "value": "Glassheads",
-                            "selected": false
+                            "selected": false,
+                            "key": "Glassheads"
                         },
                         {
-                            "count": 56,
+                            "count": 51,
                             "has_children": false,
                             "name": "brand",
                             "value": "Smoke Cartel",
-                            "selected": false
+                            "selected": false,
+                            "key": "Smoke Cartel"
                         },
                         {
-                            "count": 40,
+                            "count": 35,
                             "has_children": false,
                             "name": "brand",
                             "value": "Empire Glassworks",
-                            "selected": false
+                            "selected": false,
+                            "key": "Empire Glassworks"
                         },
                         {
-                            "count": 28,
+                            "count": 25,
                             "has_children": false,
                             "name": "brand",
                             "value": "Sesh Supply",
-                            "selected": false
+                            "selected": false,
+                            "key": "Sesh Supply"
                         },
                         {
-                            "count": 21,
+                            "count": 15,
                             "has_children": false,
                             "name": "brand",
                             "value": "UPC",
-                            "selected": false
+                            "selected": false,
+                            "key": "UPC"
                         },
                         {
-                            "count": 14,
-                            "has_children": false,
-                            "name": "brand",
-                            "value": "GlasseX",
-                            "selected": false
-                        },
-                        {
-                            "count": 13,
+                            "count": 12,
                             "has_children": false,
                             "name": "brand",
                             "value": "High Tech Glassworks",
-                            "selected": false
-                        },
-                        {
-                            "count": 13,
-                            "has_children": false,
-                            "name": "brand",
-                            "value": "Purr Glass",
-                            "selected": false
+                            "selected": false,
+                            "key": "High Tech Glassworks"
                         },
                         {
                             "count": 10,
                             "has_children": false,
                             "name": "brand",
                             "value": "Grav Labs",
-                            "selected": false
-                        },
-                        {
-                            "count": 10,
-                            "has_children": false,
-                            "name": "brand",
-                            "value": "JM Flow Sci Glass",
-                            "selected": false
+                            "selected": false,
+                            "key": "Grav Labs"
                         },
                         {
                             "count": 9,
                             "has_children": false,
                             "name": "brand",
                             "value": "Kraken Grinders",
-                            "selected": false
-                        },
-                        {
-                            "count": 9,
-                            "has_children": false,
-                            "name": "brand",
-                            "value": "Smoky Mountain Glass",
-                            "selected": false
+                            "selected": false,
+                            "key": "Kraken Grinders"
                         },
                         {
                             "count": 7,
                             "has_children": false,
                             "name": "brand",
                             "value": "RAW",
-                            "selected": false
-                        },
-                        {
-                            "count": 6,
-                            "has_children": false,
-                            "name": "brand",
-                            "value": "Hi Si Glass",
-                            "selected": false
+                            "selected": false,
+                            "key": "RAW"
                         },
                         {
                             "count": 6,
                             "has_children": false,
                             "name": "brand",
                             "value": "Pyptek",
-                            "selected": false
+                            "selected": false,
+                            "key": "Pyptek"
                         },
                         {
                             "count": 6,
                             "has_children": false,
                             "name": "brand",
                             "value": "The China Glass",
-                            "selected": false
+                            "selected": false,
+                            "key": "The China Glass"
                         },
                         {
                             "count": 5,
                             "has_children": false,
                             "name": "brand",
-                            "value": "Chubz Glass",
-                            "selected": false
+                            "value": "Hi Si Glass",
+                            "selected": false,
+                            "key": "Hi Si Glass"
                         },
                         {
                             "count": 5,
                             "has_children": false,
                             "name": "brand",
                             "value": "Liquid Sci Glass",
-                            "selected": false
+                            "selected": false,
+                            "key": "Liquid Sci Glass"
                         },
                         {
                             "count": 4,
                             "has_children": false,
                             "name": "brand",
                             "value": "Arizer",
-                            "selected": false
+                            "selected": false,
+                            "key": "Arizer"
                         },
                         {
                             "count": 4,
                             "has_children": false,
                             "name": "brand",
-                            "value": "Nexus Glass",
-                            "selected": false
+                            "value": "Chubz Glass",
+                            "selected": false,
+                            "key": "Chubz Glass"
+                        },
+                        {
+                            "count": 4,
+                            "has_children": false,
+                            "name": "brand",
+                            "value": "Purr Glass",
+                            "selected": false,
+                            "key": "Purr Glass"
                         },
                         {
                             "count": 4,
                             "has_children": false,
                             "name": "brand",
                             "value": "Storz and Bickel",
-                            "selected": false
-                        },
-                        {
-                            "count": 4,
-                            "has_children": false,
-                            "name": "brand",
-                            "value": "Three Monkey Designs",
-                            "selected": false
+                            "selected": false,
+                            "key": "Storz and Bickel"
                         },
                         {
                             "count": 3,
                             "has_children": false,
                             "name": "brand",
                             "value": "420 Science",
-                            "selected": false
-                        },
-                        {
-                            "count": 3,
-                            "has_children": false,
-                            "name": "brand",
-                            "value": "BoroTech Glass",
-                            "selected": false
-                        },
-                        {
-                            "count": 3,
-                            "has_children": false,
-                            "name": "brand",
-                            "value": "Burner Glassworks",
-                            "selected": false
+                            "selected": false,
+                            "key": "420 Science"
                         },
                         {
                             "count": 3,
                             "has_children": false,
                             "name": "brand",
                             "value": "Cyclones",
-                            "selected": false
+                            "selected": false,
+                            "key": "Cyclones"
                         },
                         {
                             "count": 3,
                             "has_children": false,
                             "name": "brand",
                             "value": "Da Vinci",
-                            "selected": false
+                            "selected": false,
+                            "key": "Da Vinci"
                         },
                         {
                             "count": 3,
                             "has_children": false,
                             "name": "brand",
                             "value": "Kandy Pens",
-                            "selected": false
+                            "selected": false,
+                            "key": "Kandy Pens"
                         },
                         {
                             "count": 3,
                             "has_children": false,
                             "name": "brand",
                             "value": "Phoenician",
-                            "selected": false
+                            "selected": false,
+                            "key": "Phoenician"
+                        },
+                        {
+                            "count": 3,
+                            "has_children": false,
+                            "name": "brand",
+                            "value": "Smoky Mountain Glass",
+                            "selected": false,
+                            "key": "Smoky Mountain Glass"
+                        },
+                        {
+                            "count": 3,
+                            "has_children": false,
+                            "name": "brand",
+                            "value": "Three Monkey Designs",
+                            "selected": false,
+                            "key": "Three Monkey Designs"
                         },
                         {
                             "count": 2,
                             "has_children": false,
                             "name": "brand",
-                            "value": "C2 Glass",
-                            "selected": false
+                            "value": "BoroTech Glass",
+                            "selected": false,
+                            "key": "BoroTech Glass"
+                        },
+                        {
+                            "count": 2,
+                            "has_children": false,
+                            "name": "brand",
+                            "value": "Burner Glassworks",
+                            "selected": false,
+                            "key": "Burner Glassworks"
                         },
                         {
                             "count": 2,
                             "has_children": false,
                             "name": "brand",
                             "value": "Elements",
-                            "selected": false
+                            "selected": false,
+                            "key": "Elements"
                         },
                         {
                             "count": 2,
                             "has_children": false,
                             "name": "brand",
                             "value": "Flytlab",
-                            "selected": false
+                            "selected": false,
+                            "key": "Flytlab"
                         },
                         {
                             "count": 2,
                             "has_children": false,
                             "name": "brand",
-                            "value": "Glassical Creations",
-                            "selected": false
+                            "value": "GlasseX",
+                            "selected": false,
+                            "key": "GlasseX"
                         },
                         {
                             "count": 2,
                             "has_children": false,
                             "name": "brand",
                             "value": "Green Flash Glass",
-                            "selected": false
+                            "selected": false,
+                            "key": "Green Flash Glass"
                         },
                         {
                             "count": 2,
                             "has_children": false,
                             "name": "brand",
                             "value": "Harley Morales",
-                            "selected": false
+                            "selected": false,
+                            "key": "Harley Morales"
                         },
                         {
                             "count": 2,
                             "has_children": false,
                             "name": "brand",
                             "value": "Herbal Aire",
-                            "selected": false
+                            "selected": false,
+                            "key": "Herbal Aire"
                         },
                         {
                             "count": 2,
                             "has_children": false,
                             "name": "brand",
                             "value": "Incredibowl",
-                            "selected": false
+                            "selected": false,
+                            "key": "Incredibowl"
                         },
                         {
                             "count": 2,
                             "has_children": false,
                             "name": "brand",
                             "value": "Iolite",
-                            "selected": false
+                            "selected": false,
+                            "key": "Iolite"
                         },
                         {
                             "count": 2,
                             "has_children": false,
                             "name": "brand",
                             "value": "Juicy Jays",
-                            "selected": false
+                            "selected": false,
+                            "key": "Juicy Jays"
                         },
                         {
                             "count": 2,
                             "has_children": false,
                             "name": "brand",
                             "value": "Nectar Collector",
-                            "selected": false
+                            "selected": false,
+                            "key": "Nectar Collector"
+                        },
+                        {
+                            "count": 2,
+                            "has_children": false,
+                            "name": "brand",
+                            "value": "Nexus Glass",
+                            "selected": false,
+                            "key": "Nexus Glass"
                         },
                         {
                             "count": 2,
                             "has_children": false,
                             "name": "brand",
                             "value": "PAX",
-                            "selected": false
-                        },
-                        {
-                            "count": 2,
-                            "has_children": false,
-                            "name": "brand",
-                            "value": "Pulse Glass",
-                            "selected": false
+                            "selected": false,
+                            "key": "PAX"
                         },
                         {
                             "count": 2,
                             "has_children": false,
                             "name": "brand",
                             "value": "Vapir",
-                            "selected": false
+                            "selected": false,
+                            "key": "Vapir"
                         },
                         {
                             "count": 2,
                             "has_children": false,
                             "name": "brand",
                             "value": "Vaporfection",
-                            "selected": false
+                            "selected": false,
+                            "key": "Vaporfection"
                         },
                         {
                             "count": 2,
                             "has_children": false,
                             "name": "brand",
                             "value": "Zob Glass",
-                            "selected": false
+                            "selected": false,
+                            "key": "Zob Glass"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "brand",
                             "value": "Boveda",
-                            "selected": false
+                            "selected": false,
+                            "key": "Boveda"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "brand",
                             "value": "CVault",
-                            "selected": false
+                            "selected": false,
+                            "key": "CVault"
+                        },
+                        {
+                            "count": 1,
+                            "has_children": false,
+                            "name": "brand",
+                            "value": "Cali Sweets",
+                            "selected": false,
+                            "key": "Cali Sweets"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "brand",
                             "value": "Chrontainer",
-                            "selected": false
-                        },
-                        {
-                            "count": 1,
-                            "has_children": false,
-                            "name": "brand",
-                            "value": "Cloud V",
-                            "selected": false
+                            "selected": false,
+                            "key": "Chrontainer"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "brand",
                             "value": "Deranged Lion",
-                            "selected": false
+                            "selected": false,
+                            "key": "Deranged Lion"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "brand",
                             "value": "FEZ",
-                            "selected": false
+                            "selected": false,
+                            "key": "FEZ"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "brand",
                             "value": "Genius",
-                            "selected": false
+                            "selected": false,
+                            "key": "Genius"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "brand",
                             "value": "Goboof",
-                            "selected": false
+                            "selected": false,
+                            "key": "Goboof"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "brand",
                             "value": "Grenco Science",
-                            "selected": false
+                            "selected": false,
+                            "key": "Grenco Science"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "brand",
                             "value": "HaHa Glass",
-                            "selected": false
+                            "selected": false,
+                            "key": "HaHa Glass"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "brand",
                             "value": "Herbalizer",
-                            "selected": false
-                        },
-                        {
-                            "count": 1,
-                            "has_children": false,
-                            "name": "brand",
-                            "value": "Huffy Glass",
-                            "selected": false
+                            "selected": false,
+                            "key": "Herbalizer"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "brand",
                             "value": "Illadelph",
-                            "selected": false
+                            "selected": false,
+                            "key": "Illadelph"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "brand",
                             "value": "Kuhns Glass",
-                            "selected": false
+                            "selected": false,
+                            "key": "Kuhns Glass"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "brand",
                             "value": "Magic Flight",
-                            "selected": false
+                            "selected": false,
+                            "key": "Magic Flight"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "brand",
                             "value": "Mia Shea Glass",
-                            "selected": false
-                        },
-                        {
-                            "count": 1,
-                            "has_children": false,
-                            "name": "brand",
-                            "value": "Micro Vaped",
-                            "selected": false
-                        },
-                        {
-                            "count": 1,
-                            "has_children": false,
-                            "name": "brand",
-                            "value": "No Stress Glass",
-                            "selected": false
-                        },
-                        {
-                            "count": 1,
-                            "has_children": false,
-                            "name": "brand",
-                            "value": "OCB",
-                            "selected": false
+                            "selected": false,
+                            "key": "Mia Shea Glass"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "brand",
                             "value": "Snoops Glass",
-                            "selected": false
+                            "selected": false,
+                            "key": "Snoops Glass"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "brand",
                             "value": "The Knockout",
-                            "selected": false
+                            "selected": false,
+                            "key": "The Knockout"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "brand",
                             "value": "Trip2",
-                            "selected": false
+                            "selected": false,
+                            "key": "Trip2"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "brand",
                             "value": "Vapman",
-                            "selected": false
+                            "selected": false,
+                            "key": "Vapman"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "brand",
                             "value": "Vapor Blunt",
-                            "selected": false
+                            "selected": false,
+                            "key": "Vapor Blunt"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "brand",
                             "value": "Vapor Cup",
-                            "selected": false
+                            "selected": false,
+                            "key": "Vapor Cup"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "brand",
                             "value": "Zen",
-                            "selected": false
+                            "selected": false,
+                            "key": "Zen"
                         }
                     ],
-                    "type": "text",
+                    "type": "terms",
                     "sort_type": "count"
                 },
                 {
                     "name": "color",
                     "values": [
                         {
+                            "count": 47,
+                            "has_children": false,
+                            "name": "color",
+                            "value": "Black",
+                            "selected": false,
+                            "key": "Black"
+                        },
+                        {
                             "count": 45,
                             "has_children": false,
                             "name": "color",
                             "value": "Green",
-                            "selected": false
+                            "selected": false,
+                            "key": "Green"
                         },
                         {
-                            "count": 42,
-                            "has_children": false,
-                            "name": "color",
-                            "value": "Black",
-                            "selected": false
-                        },
-                        {
-                            "count": 41,
+                            "count": 39,
                             "has_children": false,
                             "name": "color",
                             "value": "Blue",
-                            "selected": false
+                            "selected": false,
+                            "key": "Blue"
                         },
                         {
                             "count": 29,
                             "has_children": false,
                             "name": "color",
                             "value": "Red",
-                            "selected": false
+                            "selected": false,
+                            "key": "Red"
+                        },
+                        {
+                            "count": 20,
+                            "has_children": false,
+                            "name": "color",
+                            "value": "White",
+                            "selected": false,
+                            "key": "White"
                         },
                         {
                             "count": 19,
                             "has_children": false,
                             "name": "color",
-                            "value": "White",
-                            "selected": false
+                            "value": "Pink",
+                            "selected": false,
+                            "key": "Pink"
                         },
                         {
-                            "count": 17,
+                            "count": 18,
                             "has_children": false,
                             "name": "color",
-                            "value": "Pink",
-                            "selected": false
+                            "value": "Purple",
+                            "selected": false,
+                            "key": "Purple"
                         },
                         {
                             "count": 16,
                             "has_children": false,
                             "name": "color",
                             "value": "Clear",
-                            "selected": false
+                            "selected": false,
+                            "key": "Clear"
                         },
                         {
-                            "count": 16,
-                            "has_children": false,
-                            "name": "color",
-                            "value": "Purple",
-                            "selected": false
-                        },
-                        {
-                            "count": 13,
-                            "has_children": false,
-                            "name": "color",
-                            "value": "Illuminati",
-                            "selected": false
-                        },
-                        {
-                            "count": 13,
+                            "count": 15,
                             "has_children": false,
                             "name": "color",
                             "value": "Wisteria",
-                            "selected": false
-                        },
-                        {
-                            "count": 12,
-                            "has_children": false,
-                            "name": "color",
-                            "value": "Green Slyme",
-                            "selected": false
+                            "selected": false,
+                            "key": "Wisteria"
                         },
                         {
                             "count": 11,
                             "has_children": false,
                             "name": "color",
-                            "value": "Lemon Drop",
-                            "selected": false
-                        },
-                        {
-                            "count": 10,
-                            "has_children": false,
-                            "name": "color",
                             "value": "Silver",
-                            "selected": false
+                            "selected": false,
+                            "key": "Silver"
                         },
                         {
                             "count": 10,
-                            "has_children": false,
-                            "name": "color",
-                            "value": "Triple Passion",
-                            "selected": false
-                        },
-                        {
-                            "count": 9,
-                            "has_children": false,
-                            "name": "color",
-                            "value": "Amber",
-                            "selected": false
-                        },
-                        {
-                            "count": 9,
                             "has_children": false,
                             "name": "color",
                             "value": "Gold",
-                            "selected": false
+                            "selected": false,
+                            "key": "Gold"
                         },
                         {
-                            "count": 9,
+                            "count": 10,
+                            "has_children": false,
+                            "name": "color",
+                            "value": "Green Slyme",
+                            "selected": false,
+                            "key": "Green Slyme"
+                        },
+                        {
+                            "count": 8,
+                            "has_children": false,
+                            "name": "color",
+                            "value": "Amber",
+                            "selected": false,
+                            "key": "Amber"
+                        },
+                        {
+                            "count": 8,
+                            "has_children": false,
+                            "name": "color",
+                            "value": "Illuminati",
+                            "selected": false,
+                            "key": "Illuminati"
+                        },
+                        {
+                            "count": 8,
                             "has_children": false,
                             "name": "color",
                             "value": "Light Blue",
-                            "selected": false
+                            "selected": false,
+                            "key": "Light Blue"
                         },
                         {
-                            "count": 9,
+                            "count": 8,
                             "has_children": false,
                             "name": "color",
                             "value": "Pink Cadillac",
-                            "selected": false
+                            "selected": false,
+                            "key": "Pink Cadillac"
                         },
                         {
                             "count": 7,
                             "has_children": false,
                             "name": "color",
                             "value": "Aqua",
-                            "selected": false
+                            "selected": false,
+                            "key": "Aqua"
+                        },
+                        {
+                            "count": 7,
+                            "has_children": false,
+                            "name": "color",
+                            "value": "Lemon Drop",
+                            "selected": false,
+                            "key": "Lemon Drop"
+                        },
+                        {
+                            "count": 7,
+                            "has_children": false,
+                            "name": "color",
+                            "value": "Mango",
+                            "selected": false,
+                            "key": "Mango"
                         },
                         {
                             "count": 7,
                             "has_children": false,
                             "name": "color",
                             "value": "Orange",
-                            "selected": false
-                        },
-                        {
-                            "count": 6,
-                            "has_children": false,
-                            "name": "color",
-                            "value": "Agua Azul",
-                            "selected": false
-                        },
-                        {
-                            "count": 6,
-                            "has_children": false,
-                            "name": "color",
-                            "value": "Cobalt",
-                            "selected": false
-                        },
-                        {
-                            "count": 6,
-                            "has_children": false,
-                            "name": "color",
-                            "value": "Red Elvis",
-                            "selected": false
+                            "selected": false,
+                            "key": "Orange"
                         },
                         {
                             "count": 5,
                             "has_children": false,
                             "name": "color",
                             "value": "Black With Blue Accents",
-                            "selected": false
+                            "selected": false,
+                            "key": "Black With Blue Accents"
                         },
                         {
                             "count": 5,
                             "has_children": false,
                             "name": "color",
-                            "value": "Pink Slyme",
-                            "selected": false
+                            "value": "Cobalt",
+                            "selected": false,
+                            "key": "Cobalt"
                         },
                         {
                             "count": 5,
                             "has_children": false,
                             "name": "color",
                             "value": "Rasta",
-                            "selected": false
-                        },
-                        {
-                            "count": 5,
-                            "has_children": false,
-                            "name": "color",
-                            "value": "Sublime",
-                            "selected": false
+                            "selected": false,
+                            "key": "Rasta"
                         },
                         {
                             "count": 5,
                             "has_children": false,
                             "name": "color",
                             "value": "White With Blue Accents",
-                            "selected": false
-                        },
-                        {
-                            "count": 5,
-                            "has_children": false,
-                            "name": "color",
-                            "value": "Yellow",
-                            "selected": false
+                            "selected": false,
+                            "key": "White With Blue Accents"
                         },
                         {
                             "count": 4,
                             "has_children": false,
                             "name": "color",
                             "value": "Black With Gold Accents",
-                            "selected": false
+                            "selected": false,
+                            "key": "Black With Gold Accents"
                         },
                         {
                             "count": 4,
                             "has_children": false,
                             "name": "color",
                             "value": "Candy Cocktail",
-                            "selected": false
+                            "selected": false,
+                            "key": "Candy Cocktail"
                         },
                         {
                             "count": 4,
                             "has_children": false,
                             "name": "color",
                             "value": "Gray",
-                            "selected": false
+                            "selected": false,
+                            "key": "Gray"
                         },
                         {
                             "count": 4,
                             "has_children": false,
                             "name": "color",
                             "value": "Purple Slyme",
-                            "selected": false
+                            "selected": false,
+                            "key": "Purple Slyme"
+                        },
+                        {
+                            "count": 4,
+                            "has_children": false,
+                            "name": "color",
+                            "value": "Red Elvis",
+                            "selected": false,
+                            "key": "Red Elvis"
+                        },
+                        {
+                            "count": 4,
+                            "has_children": false,
+                            "name": "color",
+                            "value": "Triple Passion",
+                            "selected": false,
+                            "key": "Triple Passion"
+                        },
+                        {
+                            "count": 4,
+                            "has_children": false,
+                            "name": "color",
+                            "value": "Yellow",
+                            "selected": false,
+                            "key": "Yellow"
+                        },
+                        {
+                            "count": 3,
+                            "has_children": false,
+                            "name": "color",
+                            "value": "Alien Green",
+                            "selected": false,
+                            "key": "Alien Green"
                         },
                         {
                             "count": 3,
                             "has_children": false,
                             "name": "color",
                             "value": "Fumed",
-                            "selected": false
+                            "selected": false,
+                            "key": "Fumed"
                         },
                         {
                             "count": 3,
                             "has_children": false,
                             "name": "color",
-                            "value": "Lava Orange",
-                            "selected": false
+                            "value": "Seafoam",
+                            "selected": false,
+                            "key": "Seafoam"
                         },
                         {
                             "count": 3,
                             "has_children": false,
                             "name": "color",
                             "value": "Teal",
-                            "selected": false
+                            "selected": false,
+                            "key": "Teal"
                         },
                         {
                             "count": 3,
                             "has_children": false,
                             "name": "color",
                             "value": "Violet",
-                            "selected": false
+                            "selected": false,
+                            "key": "Violet"
                         },
                         {
                             "count": 2,
                             "has_children": false,
                             "name": "color",
-                            "value": "Amber Purple",
-                            "selected": false
-                        },
-                        {
-                            "count": 2,
-                            "has_children": false,
-                            "name": "color",
-                            "value": "Black Dichro",
-                            "selected": false
+                            "value": "Agua Azul",
+                            "selected": false,
+                            "key": "Agua Azul"
                         },
                         {
                             "count": 2,
                             "has_children": false,
                             "name": "color",
                             "value": "Black With Gold Decals",
-                            "selected": false
+                            "selected": false,
+                            "key": "Black With Gold Decals"
                         },
                         {
                             "count": 2,
                             "has_children": false,
                             "name": "color",
-                            "value": "Blue Cheese",
-                            "selected": false
+                            "value": "Charcoal",
+                            "selected": false,
+                            "key": "Charcoal"
                         },
                         {
                             "count": 2,
                             "has_children": false,
                             "name": "color",
                             "value": "Dragon's Blood",
-                            "selected": false
-                        },
-                        {
-                            "count": 2,
-                            "has_children": false,
-                            "name": "color",
-                            "value": "Electric Blue",
-                            "selected": false
-                        },
-                        {
-                            "count": 2,
-                            "has_children": false,
-                            "name": "color",
-                            "value": "Green Slime",
-                            "selected": false
+                            "selected": false,
+                            "key": "Dragon's Blood"
                         },
                         {
                             "count": 2,
                             "has_children": false,
                             "name": "color",
                             "value": "Grey",
-                            "selected": false
+                            "selected": false,
+                            "key": "Grey"
                         },
                         {
                             "count": 2,
                             "has_children": false,
                             "name": "color",
-                            "value": "Mango",
-                            "selected": false
+                            "value": "Lava Orange",
+                            "selected": false,
+                            "key": "Lava Orange"
                         },
                         {
                             "count": 2,
                             "has_children": false,
                             "name": "color",
                             "value": "Paparazzi Green",
-                            "selected": false
+                            "selected": false,
+                            "key": "Paparazzi Green"
                         },
                         {
                             "count": 2,
                             "has_children": false,
                             "name": "color",
                             "value": "Purple Urple",
-                            "selected": false
+                            "selected": false,
+                            "key": "Purple Urple"
                         },
                         {
                             "count": 2,
                             "has_children": false,
                             "name": "color",
                             "value": "Rainbow",
-                            "selected": false
+                            "selected": false,
+                            "key": "Rainbow"
                         },
                         {
-                            "count": 1,
+                            "count": 2,
                             "has_children": false,
                             "name": "color",
-                            "value": "Acid Yellow",
-                            "selected": false
+                            "value": "Sublime",
+                            "selected": false,
+                            "key": "Sublime"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "Acid Yellow Crayon",
-                            "selected": false
+                            "selected": false,
+                            "key": "Acid Yellow Crayon"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "All Seeing Eye",
-                            "selected": false
+                            "selected": false,
+                            "key": "All Seeing Eye"
+                        },
+                        {
+                            "count": 1,
+                            "has_children": false,
+                            "name": "color",
+                            "value": "Amber Purple",
+                            "selected": false,
+                            "key": "Amber Purple"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "Atomic Aqua",
-                            "selected": false
+                            "selected": false,
+                            "key": "Atomic Aqua"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "Baby Blue",
-                            "selected": false
-                        },
-                        {
-                            "count": 1,
-                            "has_children": false,
-                            "name": "color",
-                            "value": "Black And Gold Dichro",
-                            "selected": false
+                            "selected": false,
+                            "key": "Baby Blue"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "Black Dragon",
-                            "selected": false
+                            "selected": false,
+                            "key": "Black Dragon"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "Black Dragon/tan Sherlock",
-                            "selected": false
+                            "selected": false,
+                            "key": "Black Dragon/tan Sherlock"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "Black With Blue Decals",
-                            "selected": false
-                        },
-                        {
-                            "count": 1,
-                            "has_children": false,
-                            "name": "color",
-                            "value": "Blue And Clear",
-                            "selected": false
+                            "selected": false,
+                            "key": "Black With Blue Decals"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "Blue And Yellow Stripe",
-                            "selected": false
+                            "selected": false,
+                            "key": "Blue And Yellow Stripe"
+                        },
+                        {
+                            "count": 1,
+                            "has_children": false,
+                            "name": "color",
+                            "value": "Blue Cheese",
+                            "selected": false,
+                            "key": "Blue Cheese"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "Blue Moon",
-                            "selected": false
+                            "selected": false,
+                            "key": "Blue Moon"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "Blue Stardust",
-                            "selected": false
+                            "selected": false,
+                            "key": "Blue Stardust"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "Blue, Yellow, And Black Stripe",
-                            "selected": false
+                            "selected": false,
+                            "key": "Blue, Yellow, And Black Stripe"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "Brown",
-                            "selected": false
+                            "selected": false,
+                            "key": "Brown"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "Brown Icing",
-                            "selected": false
+                            "selected": false,
+                            "key": "Brown Icing"
+                        },
+                        {
+                            "count": 1,
+                            "has_children": false,
+                            "name": "color",
+                            "value": "Butterscotch",
+                            "selected": false,
+                            "key": "Butterscotch"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "Cane",
-                            "selected": false
+                            "selected": false,
+                            "key": "Cane"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "Canyon",
-                            "selected": false
+                            "selected": false,
+                            "key": "Canyon"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "Caramel",
-                            "selected": false
+                            "selected": false,
+                            "key": "Caramel"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "Carbon Fiber",
-                            "selected": false
-                        },
-                        {
-                            "count": 1,
-                            "has_children": false,
-                            "name": "color",
-                            "value": "Carmel",
-                            "selected": false
-                        },
-                        {
-                            "count": 1,
-                            "has_children": false,
-                            "name": "color",
-                            "value": "Cobalt Blue",
-                            "selected": false
+                            "selected": false,
+                            "key": "Carbon Fiber"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "Cobalt Blue And Gold",
-                            "selected": false
+                            "selected": false,
+                            "key": "Cobalt Blue And Gold"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "Colored Glass Rolling Tip",
-                            "selected": false
+                            "selected": false,
+                            "key": "Colored Glass Rolling Tip"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "Copper",
-                            "selected": false
+                            "selected": false,
+                            "key": "Copper"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "Crayon Red",
-                            "selected": false
+                            "selected": false,
+                            "key": "Crayon Red"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "Crayon Yellow",
-                            "selected": false
-                        },
-                        {
-                            "count": 1,
-                            "has_children": false,
-                            "name": "color",
-                            "value": "Dark Blue Stardust",
-                            "selected": false
+                            "selected": false,
+                            "key": "Crayon Yellow"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "Dichro",
-                            "selected": false
-                        },
-                        {
-                            "count": 1,
-                            "has_children": false,
-                            "name": "color",
-                            "value": "Dichroic Violet",
-                            "selected": false
+                            "selected": false,
+                            "key": "Dichro"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "Dopey",
-                            "selected": false
+                            "selected": false,
+                            "key": "Dopey"
+                        },
+                        {
+                            "count": 1,
+                            "has_children": false,
+                            "name": "color",
+                            "value": "Electric Blue",
+                            "selected": false,
+                            "key": "Electric Blue"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "Explosion",
-                            "selected": false
+                            "selected": false,
+                            "key": "Explosion"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "Fumed White",
-                            "selected": false
+                            "selected": false,
+                            "key": "Fumed White"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "Gold Fumed",
-                            "selected": false
+                            "selected": false,
+                            "key": "Gold Fumed"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "Gold Leaf",
-                            "selected": false
+                            "selected": false,
+                            "key": "Gold Leaf"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "Green Blue And Black",
-                            "selected": false
+                            "selected": false,
+                            "key": "Green Blue And Black"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "Green Paparazzi",
-                            "selected": false
+                            "selected": false,
+                            "key": "Green Paparazzi"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "Gun Metal",
-                            "selected": false
+                            "selected": false,
+                            "key": "Gun Metal"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "Gunmetal",
-                            "selected": false
+                            "selected": false,
+                            "key": "Gunmetal"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "Haldu",
-                            "selected": false
+                            "selected": false,
+                            "key": "Haldu"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "Heisenberg Blue",
-                            "selected": false
+                            "selected": false,
+                            "key": "Heisenberg Blue"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "Large Aqua",
-                            "selected": false
+                            "selected": false,
+                            "key": "Large Aqua"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "Large Black",
-                            "selected": false
+                            "selected": false,
+                            "key": "Large Black"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "Large Blue",
-                            "selected": false
+                            "selected": false,
+                            "key": "Large Blue"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "Large Clear",
-                            "selected": false
+                            "selected": false,
+                            "key": "Large Clear"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "Large Fumed",
-                            "selected": false
+                            "selected": false,
+                            "key": "Large Fumed"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "Large Green",
-                            "selected": false
+                            "selected": false,
+                            "key": "Large Green"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "Large Pink",
-                            "selected": false
+                            "selected": false,
+                            "key": "Large Pink"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "Large White",
-                            "selected": false
-                        },
-                        {
-                            "count": 1,
-                            "has_children": false,
-                            "name": "color",
-                            "value": "Lemonade",
-                            "selected": false
+                            "selected": false,
+                            "key": "Large White"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "Light  Blue",
-                            "selected": false
+                            "selected": false,
+                            "key": "Light  Blue"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "Light Blue Black Purple",
-                            "selected": false
-                        },
-                        {
-                            "count": 1,
-                            "has_children": false,
-                            "name": "color",
-                            "value": "Light Blue Dichro",
-                            "selected": false
+                            "selected": false,
+                            "key": "Light Blue Black Purple"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "Light Pink",
-                            "selected": false
+                            "selected": false,
+                            "key": "Light Pink"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "Malachite",
-                            "selected": false
+                            "selected": false,
+                            "key": "Malachite"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "Meadow",
-                            "selected": false
+                            "selected": false,
+                            "key": "Meadow"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "Millenium Moss",
-                            "selected": false
-                        },
-                        {
-                            "count": 1,
-                            "has_children": false,
-                            "name": "color",
-                            "value": "Mint",
-                            "selected": false
+                            "selected": false,
+                            "key": "Millenium Moss"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "Mint Green",
-                            "selected": false
+                            "selected": false,
+                            "key": "Mint Green"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "Olive Green",
-                            "selected": false
+                            "selected": false,
+                            "key": "Olive Green"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "Opal",
-                            "selected": false
+                            "selected": false,
+                            "key": "Opal"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "Orange And Violet",
-                            "selected": false
-                        },
-                        {
-                            "count": 1,
-                            "has_children": false,
-                            "name": "color",
-                            "value": "Owl Grey  Light",
-                            "selected": false
+                            "selected": false,
+                            "key": "Orange And Violet"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "Owl Grey Dark",
-                            "selected": false
+                            "selected": false,
+                            "key": "Owl Grey Dark"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
-                            "value": "Owl Riveral",
-                            "selected": false
+                            "value": "Owl Grey Light",
+                            "selected": false,
+                            "key": "Owl Grey Light"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
-                            "value": "Paparazzi Green Dichroic",
-                            "selected": false
+                            "value": "Owl Reversal",
+                            "selected": false,
+                            "key": "Owl Reversal"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "Pink Icing",
-                            "selected": false
+                            "selected": false,
+                            "key": "Pink Icing"
+                        },
+                        {
+                            "count": 1,
+                            "has_children": false,
+                            "name": "color",
+                            "value": "Pink Slyme",
+                            "selected": false,
+                            "key": "Pink Slyme"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "Portland Grey",
-                            "selected": false
+                            "selected": false,
+                            "key": "Portland Grey"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "Pumpkin",
-                            "selected": false
+                            "selected": false,
+                            "key": "Pumpkin"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "Purple Lollipop",
-                            "selected": false
-                        },
-                        {
-                            "count": 1,
-                            "has_children": false,
-                            "name": "color",
-                            "value": "Purple Stardust",
-                            "selected": false
+                            "selected": false,
+                            "key": "Purple Lollipop"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "Radioactive Lavender",
-                            "selected": false
+                            "selected": false,
+                            "key": "Radioactive Lavender"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "Radioactive Ultramarine",
-                            "selected": false
+                            "selected": false,
+                            "key": "Radioactive Ultramarine"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "Rainbow Stripe",
-                            "selected": false
+                            "selected": false,
+                            "key": "Rainbow Stripe"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "Rasta And Black Dichro Stripe",
-                            "selected": false
+                            "selected": false,
+                            "key": "Rasta And Black Dichro Stripe"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "Red And Black Stripe",
-                            "selected": false
-                        },
-                        {
-                            "count": 1,
-                            "has_children": false,
-                            "name": "color",
-                            "value": "Red And Orange",
-                            "selected": false
+                            "selected": false,
+                            "key": "Red And Black Stripe"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "Red And Yellow Label",
-                            "selected": false
+                            "selected": false,
+                            "key": "Red And Yellow Label"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "Red Dragon",
-                            "selected": false
+                            "selected": false,
+                            "key": "Red Dragon"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "Red Dragon/black Sherlock",
-                            "selected": false
+                            "selected": false,
+                            "key": "Red Dragon/black Sherlock"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "Rose Gold",
-                            "selected": false
+                            "selected": false,
+                            "key": "Rose Gold"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "Rosewood",
-                            "selected": false
+                            "selected": false,
+                            "key": "Rosewood"
+                        },
+                        {
+                            "count": 1,
+                            "has_children": false,
+                            "name": "color",
+                            "value": "Sea Foam",
+                            "selected": false,
+                            "key": "Sea Foam"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "Seussical",
-                            "selected": false
+                            "selected": false,
+                            "key": "Seussical"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "Silver Leaf",
-                            "selected": false
+                            "selected": false,
+                            "key": "Silver Leaf"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "Skulls",
-                            "selected": false
+                            "selected": false,
+                            "key": "Skulls"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "Sky Blue",
-                            "selected": false
+                            "selected": false,
+                            "key": "Sky Blue"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "Skyline",
-                            "selected": false
+                            "selected": false,
+                            "key": "Skyline"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "Sleepy",
-                            "selected": false
-                        },
-                        {
-                            "count": 1,
-                            "has_children": false,
-                            "name": "color",
-                            "value": "Slyme Green",
-                            "selected": false
+                            "selected": false,
+                            "key": "Sleepy"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "Small Black",
-                            "selected": false
+                            "selected": false,
+                            "key": "Small Black"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "Small Blue",
-                            "selected": false
+                            "selected": false,
+                            "key": "Small Blue"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "Small Clear",
-                            "selected": false
+                            "selected": false,
+                            "key": "Small Clear"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "Small Fumed",
-                            "selected": false
+                            "selected": false,
+                            "key": "Small Fumed"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "Small Green",
-                            "selected": false
+                            "selected": false,
+                            "key": "Small Green"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "Small Pink",
-                            "selected": false
+                            "selected": false,
+                            "key": "Small Pink"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "Small White",
-                            "selected": false
+                            "selected": false,
+                            "key": "Small White"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "Stardust",
-                            "selected": false
+                            "selected": false,
+                            "key": "Stardust"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "Stealth Black",
-                            "selected": false
+                            "selected": false,
+                            "key": "Stealth Black"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "Stormy Blue",
-                            "selected": false
+                            "selected": false,
+                            "key": "Stormy Blue"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "Sublime Orange",
-                            "selected": false
+                            "selected": false,
+                            "key": "Sublime Orange"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "Sublime Purple",
-                            "selected": false
-                        },
-                        {
-                            "count": 1,
-                            "has_children": false,
-                            "name": "color",
-                            "value": "Tan Dragon",
-                            "selected": false
+                            "selected": false,
+                            "key": "Sublime Purple"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "Tan-amber",
-                            "selected": false
+                            "selected": false,
+                            "key": "Tan-amber"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "Tidal Wave",
-                            "selected": false
+                            "selected": false,
+                            "key": "Tidal Wave"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "Tie-pink Slyme",
-                            "selected": false
+                            "selected": false,
+                            "key": "Tie-pink Slyme"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "Toffy",
-                            "selected": false
+                            "selected": false,
+                            "key": "Toffy"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "Tripple Passion",
-                            "selected": false
+                            "selected": false,
+                            "key": "Tripple Passion"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "Unobtanium",
-                            "selected": false
+                            "selected": false,
+                            "key": "Unobtanium"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "White Accents",
-                            "selected": false
+                            "selected": false,
+                            "key": "White Accents"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "White And Gold",
-                            "selected": false
+                            "selected": false,
+                            "key": "White And Gold"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "White And Rainbow Stripe",
-                            "selected": false
+                            "selected": false,
+                            "key": "White And Rainbow Stripe"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "White And Red",
-                            "selected": false
+                            "selected": false,
+                            "key": "White And Red"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "White Icing",
-                            "selected": false
+                            "selected": false,
+                            "key": "White Icing"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "White With Blue Decals",
-                            "selected": false
+                            "selected": false,
+                            "key": "White With Blue Decals"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "Wisteria And Black Stripe",
-                            "selected": false
+                            "selected": false,
+                            "key": "Wisteria And Black Stripe"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "Wisteria Purple",
-                            "selected": false
-                        },
-                        {
-                            "count": 1,
-                            "has_children": false,
-                            "name": "color",
-                            "value": "Yellow Black And Blue Striped",
-                            "selected": false
+                            "selected": false,
+                            "key": "Wisteria Purple"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "color",
                             "value": "Yellow Label",
-                            "selected": false
+                            "selected": false,
+                            "key": "Yellow Label"
                         }
                     ],
-                    "type": "text",
+                    "type": "terms",
                     "sort_type": "count"
                 },
                 {
@@ -1853,37 +1940,37 @@
                     "values": [
                         {
                             "name": "price",
-                            "count": 206,
-                            "value": "_45",
+                            "count": 196,
                             "has_children": false,
                             "to": 45,
-                            "selected": false
+                            "selected": false,
+                            "key": "_45"
                         },
                         {
                             "name": "price",
-                            "count": 113,
-                            "value": "45_100",
+                            "count": 89,
                             "has_children": false,
                             "from": 45,
                             "to": 100,
-                            "selected": false
+                            "selected": false,
+                            "key": "45_100"
                         },
                         {
                             "name": "price",
-                            "count": 86,
-                            "value": "100_200",
+                            "count": 75,
                             "has_children": false,
                             "from": 100,
                             "to": 200,
-                            "selected": false
+                            "selected": false,
+                            "key": "100_200"
                         },
                         {
                             "name": "price",
-                            "count": 104,
-                            "value": "200_",
+                            "count": 65,
                             "has_children": false,
                             "from": 200,
-                            "selected": false
+                            "selected": false,
+                            "key": "200_"
                         }
                     ],
                     "type": "range",
@@ -1895,434 +1982,436 @@
                     "name": "custom_fields.height",
                     "values": [
                         {
-                            "count": 45,
+                            "count": 41,
                             "has_children": false,
                             "name": "custom_fields.height",
                             "value": "4 Inches",
-                            "selected": false
+                            "selected": false,
+                            "key": "4 Inches"
                         },
                         {
-                            "count": 32,
+                            "count": 28,
                             "has_children": false,
                             "name": "custom_fields.height",
                             "value": "4.5 Inches",
-                            "selected": false
+                            "selected": false,
+                            "key": "4.5 Inches"
                         },
                         {
-                            "count": 27,
-                            "has_children": false,
-                            "name": "custom_fields.height",
-                            "value": "7 Inches",
-                            "selected": false
-                        },
-                        {
-                            "count": 26,
+                            "count": 24,
                             "has_children": false,
                             "name": "custom_fields.height",
                             "value": "6 Inches",
-                            "selected": false
+                            "selected": false,
+                            "key": "6 Inches"
                         },
                         {
-                            "count": 23,
+                            "count": 22,
                             "has_children": false,
                             "name": "custom_fields.height",
                             "value": "13 Inches",
-                            "selected": false
+                            "selected": false,
+                            "key": "13 Inches"
                         },
                         {
                             "count": 21,
                             "has_children": false,
                             "name": "custom_fields.height",
-                            "value": "3.5 Inches",
-                            "selected": false
+                            "value": "7 Inches",
+                            "selected": false,
+                            "key": "7 Inches"
                         },
                         {
                             "count": 19,
                             "has_children": false,
                             "name": "custom_fields.height",
-                            "value": "3 Inches",
-                            "selected": false
+                            "value": "3.5 Inches",
+                            "selected": false,
+                            "key": "3.5 Inches"
                         },
                         {
                             "count": 19,
                             "has_children": false,
                             "name": "custom_fields.height",
                             "value": "5 Inches",
-                            "selected": false
-                        },
-                        {
-                            "count": 16,
-                            "has_children": false,
-                            "name": "custom_fields.height",
-                            "value": "10 Inches",
-                            "selected": false
-                        },
-                        {
-                            "count": 16,
-                            "has_children": false,
-                            "name": "custom_fields.height",
-                            "value": "12 Inches",
-                            "selected": false
-                        },
-                        {
-                            "count": 16,
-                            "has_children": false,
-                            "name": "custom_fields.height",
-                            "value": "5.5 Inches",
-                            "selected": false
+                            "selected": false,
+                            "key": "5 Inches"
                         },
                         {
                             "count": 15,
                             "has_children": false,
                             "name": "custom_fields.height",
-                            "value": "2.5 Inches",
-                            "selected": false
+                            "value": "3 Inches",
+                            "selected": false,
+                            "key": "3 Inches"
                         },
                         {
                             "count": 15,
                             "has_children": false,
                             "name": "custom_fields.height",
                             "value": "8 Inches",
-                            "selected": false
+                            "selected": false,
+                            "key": "8 Inches"
                         },
                         {
-                            "count": 12,
+                            "count": 14,
                             "has_children": false,
                             "name": "custom_fields.height",
-                            "value": "9 Inches",
-                            "selected": false
+                            "value": "12 Inches",
+                            "selected": false,
+                            "key": "12 Inches"
                         },
                         {
-                            "count": 11,
+                            "count": 14,
                             "has_children": false,
                             "name": "custom_fields.height",
-                            "value": "14 Inches",
-                            "selected": false
+                            "value": "5.5 Inches",
+                            "selected": false,
+                            "key": "5.5 Inches"
+                        },
+                        {
+                            "count": 13,
+                            "has_children": false,
+                            "name": "custom_fields.height",
+                            "value": "2.5 Inches",
+                            "selected": false,
+                            "key": "2.5 Inches"
                         },
                         {
                             "count": 10,
                             "has_children": false,
                             "name": "custom_fields.height",
+                            "value": "10 Inches",
+                            "selected": false,
+                            "key": "10 Inches"
+                        },
+                        {
+                            "count": 10,
+                            "has_children": false,
+                            "name": "custom_fields.height",
+                            "value": "14 Inches",
+                            "selected": false,
+                            "key": "14 Inches"
+                        },
+                        {
+                            "count": 8,
+                            "has_children": false,
+                            "name": "custom_fields.height",
                             "value": "16 Inches",
-                            "selected": false
+                            "selected": false,
+                            "key": "16 Inches"
                         },
                         {
                             "count": 8,
                             "has_children": false,
                             "name": "custom_fields.height",
-                            "value": "2 Inches",
-                            "selected": false
-                        },
-                        {
-                            "count": 8,
-                            "has_children": false,
-                            "name": "custom_fields.height",
-                            "value": "6.5 Inches",
-                            "selected": false
-                        },
-                        {
-                            "count": 7,
-                            "has_children": false,
-                            "name": "custom_fields.height",
-                            "value": "11 Inches",
-                            "selected": false
-                        },
-                        {
-                            "count": 7,
-                            "has_children": false,
-                            "name": "custom_fields.height",
-                            "value": "17 Inches",
-                            "selected": false
-                        },
-                        {
-                            "count": 7,
-                            "has_children": false,
-                            "name": "custom_fields.height",
-                            "value": "7.5 Inches",
-                            "selected": false
+                            "value": "9 Inches",
+                            "selected": false,
+                            "key": "9 Inches"
                         },
                         {
                             "count": 6,
                             "has_children": false,
                             "name": "custom_fields.height",
-                            "value": "9.5 Inches",
-                            "selected": false
+                            "value": "2 Inches",
+                            "selected": false,
+                            "key": "2 Inches"
                         },
                         {
                             "count": 5,
                             "has_children": false,
                             "name": "custom_fields.height",
                             "value": "10.5 Inches",
-                            "selected": false
+                            "selected": false,
+                            "key": "10.5 Inches"
                         },
                         {
                             "count": 5,
                             "has_children": false,
                             "name": "custom_fields.height",
-                            "value": "15 Inches",
-                            "selected": false
+                            "value": "11 Inches",
+                            "selected": false,
+                            "key": "11 Inches"
                         },
                         {
                             "count": 5,
                             "has_children": false,
                             "name": "custom_fields.height",
-                            "value": "18 Inches",
-                            "selected": false
+                            "value": "9.5 Inches",
+                            "selected": false,
+                            "key": "9.5 Inches"
+                        },
+                        {
+                            "count": 4,
+                            "has_children": false,
+                            "name": "custom_fields.height",
+                            "value": "6.5 Inches",
+                            "selected": false,
+                            "key": "6.5 Inches"
+                        },
+                        {
+                            "count": 4,
+                            "has_children": false,
+                            "name": "custom_fields.height",
+                            "value": "7.5 Inches",
+                            "selected": false,
+                            "key": "7.5 Inches"
                         },
                         {
                             "count": 3,
                             "has_children": false,
                             "name": "custom_fields.height",
-                            "value": "12.5 Inches",
-                            "selected": false
+                            "value": "15 Inches",
+                            "selected": false,
+                            "key": "15 Inches"
+                        },
+                        {
+                            "count": 3,
+                            "has_children": false,
+                            "name": "custom_fields.height",
+                            "value": "17 Inches",
+                            "selected": false,
+                            "key": "17 Inches"
                         },
                         {
                             "count": 3,
                             "has_children": false,
                             "name": "custom_fields.height",
                             "value": "2.2 Inches",
-                            "selected": false
+                            "selected": false,
+                            "key": "2.2 Inches"
                         },
                         {
                             "count": 3,
                             "has_children": false,
                             "name": "custom_fields.height",
                             "value": "4.25 Inches",
-                            "selected": false
-                        },
-                        {
-                            "count": 3,
-                            "has_children": false,
-                            "name": "custom_fields.height",
-                            "value": "8.5 Inches",
-                            "selected": false
+                            "selected": false,
+                            "key": "4.25 Inches"
                         },
                         {
                             "count": 2,
                             "has_children": false,
                             "name": "custom_fields.height",
                             "value": "13.5 Inches",
-                            "selected": false
-                        },
-                        {
-                            "count": 2,
-                            "has_children": false,
-                            "name": "custom_fields.height",
-                            "value": "14.5 Inches",
-                            "selected": false
+                            "selected": false,
+                            "key": "13.5 Inches"
                         },
                         {
                             "count": 2,
                             "has_children": false,
                             "name": "custom_fields.height",
                             "value": "14in",
-                            "selected": false
+                            "selected": false,
+                            "key": "14in"
                         },
                         {
                             "count": 2,
                             "has_children": false,
                             "name": "custom_fields.height",
-                            "value": "15.25 Inches",
-                            "selected": false
+                            "value": "18 Inches",
+                            "selected": false,
+                            "key": "18 Inches"
                         },
                         {
                             "count": 2,
                             "has_children": false,
                             "name": "custom_fields.height",
                             "value": "18in",
-                            "selected": false
+                            "selected": false,
+                            "key": "18in"
                         },
                         {
                             "count": 2,
                             "has_children": false,
                             "name": "custom_fields.height",
-                            "value": "19 Inches",
-                            "selected": false
+                            "value": "24in",
+                            "selected": false,
+                            "key": "24in"
+                        },
+                        {
+                            "count": 2,
+                            "has_children": false,
+                            "name": "custom_fields.height",
+                            "value": "8.5 Inches",
+                            "selected": false,
+                            "key": "8.5 Inches"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "custom_fields.height",
                             "value": "1 Inches",
-                            "selected": false
+                            "selected": false,
+                            "key": "1 Inches"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "custom_fields.height",
                             "value": "1.2 Inches",
-                            "selected": false
+                            "selected": false,
+                            "key": "1.2 Inches"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "custom_fields.height",
-                            "value": "15.5 Inches",
-                            "selected": false
+                            "value": "12.5 Inches",
+                            "selected": false,
+                            "key": "12.5 Inches"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "custom_fields.height",
-                            "value": "16.25 Inches",
-                            "selected": false
-                        },
-                        {
-                            "count": 1,
-                            "has_children": false,
-                            "name": "custom_fields.height",
-                            "value": "18.5 Inches",
-                            "selected": false
+                            "value": "14.5 Inches",
+                            "selected": false,
+                            "key": "14.5 Inches"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "custom_fields.height",
                             "value": "19.5 Inches",
-                            "selected": false
+                            "selected": false,
+                            "key": "19.5 Inches"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "custom_fields.height",
                             "value": "2.75 Inches",
-                            "selected": false
+                            "selected": false,
+                            "key": "2.75 Inches"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "custom_fields.height",
                             "value": "20 Inches",
-                            "selected": false
+                            "selected": false,
+                            "key": "20 Inches"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "custom_fields.height",
                             "value": "20.5 Inches",
-                            "selected": false
+                            "selected": false,
+                            "key": "20.5 Inches"
                         },
                         {
                             "count": 1,
                             "has_children": false,
                             "name": "custom_fields.height",
                             "value": "22.5 Inches",
-                            "selected": false
-                        },
-                        {
-                            "count": 1,
-                            "has_children": false,
-                            "name": "custom_fields.height",
-                            "value": "24",
-                            "selected": false
-                        },
-                        {
-                            "count": 1,
-                            "has_children": false,
-                            "name": "custom_fields.height",
-                            "value": "24in",
-                            "selected": false
-                        },
-                        {
-                            "count": 1,
-                            "has_children": false,
-                            "name": "custom_fields.height",
-                            "value": "9.25 Inches",
-                            "selected": false
+                            "selected": false,
+                            "key": "22.5 Inches"
                         }
                     ],
-                    "type": "text",
+                    "type": "terms",
                     "sort_type": "count"
                 },
                 {
                     "name": "custom_fields.joint_gender",
                     "values": [
                         {
-                            "count": 151,
+                            "count": 116,
                             "has_children": false,
                             "name": "custom_fields.joint_gender",
                             "value": "Female Joint",
-                            "selected": false
+                            "selected": false,
+                            "key": "Female Joint"
                         },
                         {
-                            "count": 44,
+                            "count": 38,
                             "has_children": false,
                             "name": "custom_fields.joint_gender",
                             "value": "Male Joint",
-                            "selected": false
+                            "selected": false,
+                            "key": "Male Joint"
                         },
                         {
-                            "count": 9,
+                            "count": 7,
                             "has_children": false,
                             "name": "custom_fields.joint_gender",
                             "value": "male Joint",
-                            "selected": false
+                            "selected": false,
+                            "key": "male Joint"
                         }
                     ],
-                    "type": "text",
+                    "type": "terms",
                     "sort_type": "count"
                 },
                 {
                     "name": "custom_fields.use_case",
                     "values": [
                         {
-                            "count": 441,
+                            "count": 370,
                             "has_children": false,
                             "name": "custom_fields.use_case",
                             "value": "Made For Dry Herbs",
-                            "selected": false
+                            "selected": false,
+                            "key": "Made For Dry Herbs"
                         },
                         {
                             "count": 13,
                             "has_children": false,
                             "name": "custom_fields.use_case",
                             "value": "Made For Waxy Oils",
-                            "selected": false
+                            "selected": false,
+                            "key": "Made For Waxy Oils"
                         },
                         {
                             "count": 8,
                             "has_children": false,
                             "name": "custom_fields.use_case",
                             "value": "Made For Concentrates",
-                            "selected": false
+                            "selected": false,
+                            "key": "Made For Concentrates"
                         },
                         {
                             "count": 3,
                             "has_children": false,
                             "name": "custom_fields.use_case",
                             "value": "Made For Thin Oils",
-                            "selected": false
+                            "selected": false,
+                            "key": "Made For Thin Oils"
                         }
                     ],
-                    "type": "text",
+                    "type": "terms",
                     "sort_type": "count"
                 },
                 {
                     "name": "custom_fields.joint_size",
                     "values": [
                         {
-                            "count": 132,
+                            "count": 106,
                             "has_children": false,
                             "name": "custom_fields.joint_size",
                             "value": "14.5mm",
-                            "selected": false
+                            "selected": false,
+                            "key": "14.5mm"
                         },
                         {
-                            "count": 62,
+                            "count": 43,
                             "has_children": false,
                             "name": "custom_fields.joint_size",
                             "value": "18.8mm",
-                            "selected": false
+                            "selected": false,
+                            "key": "18.8mm"
                         },
                         {
-                            "count": 5,
+                            "count": 4,
                             "has_children": false,
                             "name": "custom_fields.joint_size",
                             "value": "10mm",
-                            "selected": false
+                            "selected": false,
+                            "key": "10mm"
                         }
                     ],
-                    "type": "text",
+                    "type": "terms",
                     "sort_type": "count"
                 },
                 {
@@ -2330,37 +2419,38 @@
                     "values": [
                         {
                             "name": "discount",
-                            "count": 5,
-                            "value": "_10",
+                            "count": 9,
                             "has_children": false,
                             "to": 10,
-                            "selected": false
+                            "selected": false,
+                            "key": "_10"
                         },
                         {
                             "name": "discount",
-                            "count": 55,
-                            "value": "10_30",
+                            "count": 60,
                             "has_children": false,
                             "from": 10,
                             "to": 30,
-                            "selected": false
+                            "selected": false,
+                            "key": "10_30"
                         },
                         {
                             "name": "discount",
-                            "count": 38,
-                            "value": "30_",
+                            "count": 47,
                             "has_children": false,
                             "from": 30,
-                            "selected": false
+                            "selected": false,
+                            "key": "30_"
                         }
                     ],
                     "type": "range",
-                    "min": 7,
+                    "min": 4,
                     "max": 90,
                     "sort_type": "value"
                 }
             ],
-            "items": [
+            "banner": {},
+            "products": [
                 {
                     "seller": "",
                     "quantity": 12,
@@ -2408,12 +2498,12 @@
                         }
                     ],
                     "brand": "Glassheads",
-                    "hash": "AV11VmrHCQkVMwqrFH_j",
+                    "hash": "AWBzBXNoso7SSYcnxv6y",
                     "compare_at": -1
                 },
                 {
                     "seller": "",
-                    "quantity": 115,
+                    "quantity": 38,
                     "color": [],
                     "color_variants": 1,
                     "image_2_url": "https://cdn.shopify.com/s/files/1/0350/8253/products/GLASSHEADS-CLEAR-TWIST-FLOWER-BOWL_MSSC-TWIST-14-0_medium.jpg?v=1476733591",
@@ -2475,118 +2565,73 @@
                         }
                     ],
                     "brand": "Glassheads",
-                    "hash": "AV11VmrKCQkVMwqrFIC4",
+                    "hash": "AWBzBXNoso7SSYcnxv90",
                     "compare_at": -1
                 },
                 {
                     "seller": "",
-                    "quantity": 1,
+                    "quantity": 32,
                     "color": [],
                     "color_variants": 1,
-                    "image_2_url": "https://cdn.shopify.com/s/files/1/0350/8253/products/SMK-hammer-black-1_medium.jpg?v=1478207883",
+                    "image_2_url": "https://cdn.shopify.com/s/files/1/0350/8253/products/GHWP-DRYBONES-FU-2_medium.jpg?v=1496265665",
                     "custom_fields": {
-                        "use_case": [
-                            "Made For Dry Herbs"
+                        "joint_size": [
+                            "14.5mm"
+                        ],
+                        "joint_gender": [
+                            "Male Joint",
+                            "male Joint"
                         ],
                         "barcode": [
                             ""
                         ],
                         "height": [
-                            "4.5 Inches"
+                            "8 Inches"
                         ]
                     },
-                    "description": "This dark piece features dark blues, greys and black to die for!!\n\n \nThis spoon created by Smoky Mountain Glass were created out of scenic Asheville NC. This gorgeous pipe is sure to impress. This spoon is a needed addition to any smoker's glass stockpile.",
-                    "discount": [],
+                    "description": "Good feeling deep in your bones\n\n \nNot every rig should look the same. Sometimes you need a rig that will standout and on a good day scare the bejeezus out of somebody. This rig, from the team at Smoke Cartel is a worked skeletal beauty. Complete fumed skull, rib cage, low level percolation, and puck style base. A great piece available right now for a steal. Pick yours up while you still can!\n\n \n Quartz Nail and Matching Dome Included\n Entire Body Fumed!\n Great Party Piece\n Made in China",
+                    "discount": [
+                        65
+                    ],
                     "availability": true,
-                    "title": "Smoky Mountain Glass \"Black Blues\" Dry Hammer",
+                    "title": "Smoke Cartel \"Dry Bones\" Skeletal Fumed Rig",
                     "reviews": {
-                        "total_reviews": 0,
-                        "average_score": 0
+                        "total_reviews": 9,
+                        "average_score": 4.89
                     },
                     "material": [],
                     "size": [],
                     "price": [
-                        270
+                        104.3
                     ],
                     "stickers": {
+                        "discount": [
+                            65
+                        ],
                         "availability": true,
                         "in-stock": true,
                         "out-of-stock": false,
-                        "discount": false,
                         "free-shipping": false
                     },
-                    "id": "8139805576",
+                    "id": "9768053960",
                     "sku": [
-                        "SMK-HAMMER-BLACK"
+                        "GHWP-DRYBONES-FU"
                     ],
                     "category": [
                         {
                             "category2": "",
                             "category3": "",
                             "category4": "",
-                            "category1": "Spoon"
+                            "category1": "Concentrate Pipe"
                         }
                     ],
-                    "brand": "Smoky Mountain Glass",
-                    "hash": "AV11VniBCQkVMwqrFIDn",
-                    "compare_at": -1
+                    "brand": "Smoke Cartel",
+                    "hash": "AWBzBXa6so7SSYcnxwCt",
+                    "compare_at": 300
                 },
                 {
                     "seller": "",
                     "quantity": 1,
-                    "color": [],
-                    "color_variants": 1,
-                    "image_2_url": "https://cdn.shopify.com/s/files/1/0350/8253/products/SMG-HAMMER-3M-RE-1_714ac033-b4bd-4f42-8948-40dc169fde8f_medium.jpg?v=1478535776",
-                    "custom_fields": {
-                        "use_case": [
-                            "Made For Dry Herbs"
-                        ],
-                        "barcode": [
-                            ""
-                        ],
-                        "height": [
-                            "5.5 Inches"
-                        ]
-                    },
-                    "description": "This lovely piece features red, blue slyme and green slyme marbles!\n\n \nThese dry pipes were made in scenic Asheville, North Carolina by Smoky Mountain Glass. A modern take on a classic hammer pipe, these piece is worked with with several different colors for a uniquely heady aesthetic. Are you a fan of green slyme? There's three green slyme marbles allowing for a solid grip!",
-                    "discount": [],
-                    "availability": true,
-                    "title": "Smoky Mountain Glass \"Alien Blood\" Dry Hammer",
-                    "reviews": {
-                        "total_reviews": 0,
-                        "average_score": 0
-                    },
-                    "material": [],
-                    "size": [],
-                    "price": [
-                        280
-                    ],
-                    "stickers": {
-                        "availability": true,
-                        "in-stock": true,
-                        "out-of-stock": false,
-                        "discount": false,
-                        "free-shipping": false
-                    },
-                    "id": "8139930888",
-                    "sku": [
-                        "SMG-HAMMER-3M-RE"
-                    ],
-                    "category": [
-                        {
-                            "category2": "",
-                            "category3": "",
-                            "category4": "",
-                            "category1": "Spoon"
-                        }
-                    ],
-                    "brand": "Smoky Mountain Glass",
-                    "hash": "AV11VniBCQkVMwqrFIDo",
-                    "compare_at": -1
-                },
-                {
-                    "seller": "",
-                    "quantity": 2,
                     "color": [],
                     "color_variants": 1,
                     "image_2_url": "https://cdn.shopify.com/s/files/1/0350/8253/products/VAPOR-CUP-VAPE-5_medium.jpg?v=1497983888",
@@ -2635,37 +2680,98 @@
                         }
                     ],
                     "brand": "Vapor Cup",
-                    "hash": "AV11VmrCCQkVMwqrFH6m",
+                    "hash": "AWBzBXNoso7SSYcnxv3E",
+                    "compare_at": -1
+                },
+                {
+                    "seller": "",
+                    "quantity": 3,
+                    "color": [
+                        "Black",
+                        "Silver"
+                    ],
+                    "color_variants": 2,
+                    "image_2_url": "https://cdn.shopify.com/s/files/1/0350/8253/products/ARIZER-VAPE-SILVER-4_medium.jpg?v=1498153400",
+                    "custom_fields": {
+                        "use_case": [
+                            "Made For Dry Herbs"
+                        ],
+                        "variant_image_url": [
+                            "https://cdn.shopify.com/s/files/1/0350/8253/products/ARIZER-VAPE-BK-0.jpg?v=1498153400",
+                            "https://cdn.shopify.com/s/files/1/0350/8253/products/ARIZER-VAPE-SILVER-5.jpg?v=1498153400"
+                        ],
+                        "barcode": [
+                            ""
+                        ],
+                        "height": [
+                            "5 Inches"
+                        ]
+                    },
+                    "description": "The Arizer Air is as diverse as it is simple. The Arizer Air can vaporize finely ground dry herbs using its three glass stems and five heat settings. Just pull back the silicone cover and insert your materials into the high-quality ceramic heating chamber.  When the vaporizer has heated, then you will be able to insert the glass stem of your choice.  The Arizer Air can be used for inhalation or aroma therapy, and even comes with some dried flowers for aroma use.  If you're looking for a portable vape that can produce high quality vapor, the Arizer Air is a great choice, and will have you relaxed and de-stressed in no time.",
+                    "discount": [],
+                    "availability": true,
+                    "title": "Arizer Air Portable Vaporizer For Dry Herbs",
+                    "reviews": {
+                        "total_reviews": 2,
+                        "average_score": 5
+                    },
+                    "material": [],
+                    "size": [],
+                    "price": [
+                        259.85,
+                        259.85
+                    ],
+                    "stickers": {
+                        "availability": true,
+                        "in-stock": true,
+                        "out-of-stock": false,
+                        "discount": false,
+                        "free-shipping": false
+                    },
+                    "id": "4109297988",
+                    "sku": [
+                        "ARIZER-AIR-VAPE-BK",
+                        "ARIZER-AIR-VAPE-SILVER"
+                    ],
+                    "category": [
+                        {
+                            "category2": "",
+                            "category3": "",
+                            "category4": "",
+                            "category1": "Vaporizer"
+                        }
+                    ],
+                    "brand": "Arizer",
+                    "hash": "AWBzBXNoso7SSYcnxv3F",
                     "compare_at": -1
                 }
-            ],
-            "banner": {}
+            ]
         },
         "rawHeaders": [
-            "Access-Control-Allow-Headers",
-            "Content-type,Accept,x-key",
-            "Access-Control-Allow-Methods",
-            "GET,POST,OPTIONS",
-            "Access-Control-Allow-Origin",
-            "*",
-            "Cache-Control",
-            "no-cache, no-store, must-revalidate",
+            "Date",
+            "Tue, 23 Jan 2018 20:58:48 GMT",
             "Content-Type",
             "application/json; charset=utf-8",
-            "Date",
-            "Mon, 16 Oct 2017 11:28:53 GMT",
-            "ETag",
-            "W/\"8d4b-ZE53e0/Sw/cc0LaydSyCzGGVgBw\"",
-            "Expires",
-            "0",
-            "Pragma",
-            "no-cache",
+            "Content-Length",
+            "39858",
+            "Connection",
+            "close",
             "Server",
             "nginx/1.12.1",
-            "Content-Length",
-            "36171",
-            "Connection",
-            "Close"
+            "Cache-Control",
+            "no-cache, no-store, must-revalidate",
+            "Pragma",
+            "no-cache",
+            "Expires",
+            "0",
+            "Access-Control-Allow-Origin",
+            "*",
+            "Access-Control-Allow-Methods",
+            "GET,POST,OPTIONS",
+            "Access-Control-Allow-Headers",
+            "Content-type,Accept,x-key",
+            "ETag",
+            "W/\"9bb2-5Z7aFBrA/0JMD5A8H1dUdH9pbxc\""
         ]
     }
 ]

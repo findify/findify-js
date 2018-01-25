@@ -14,6 +14,9 @@ export enum Method {
   JSONP = 'jsonp',
 }
 
+/** Request body */
+export type Body = CommonParams & SpecificParams;
+
 /**
  * Represents a request.
  */
@@ -24,8 +27,6 @@ export type Request =
   | Recommendations.Request
   | Feedback.Request;
 
-/** Request body */
-export type Body = CommonParams & SpecificParams;
 
 /**
  * Common request body parameters.

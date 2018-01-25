@@ -3,6 +3,7 @@
   "compilerOptions": {
     "declaration": true,
     "declarationDir": "types",
-    "outDir": "lib"
+    "outDir": "lib",
+    "target": "es5"
   }
 }

@@ -23,28 +23,20 @@ S3_BUCKET_PATH=findify-assets
 typeset -A SRC_MAP
 SRC_MAP=(
   [analytics]=dist/prod
-  [corge]=lib/js/src
-  [grault]=lib
   [helpers]=dist
   [mjs]=dist
-  [quux]=lib
-  [quuz]=lib
-  [qux]=lib
   [sdk]=lib
+  [agent]=lib
 )
 
 # mapping from pkg name to the directory path on S3
 typeset -A DST_MAP
 DST_MAP=(
   [analytics]=analytics-js
-  [corge]=corge
-  [grault]=grault
   [helpers]=helpers-js
   [mjs]=mjs
-  [quux]=quux
-  [quuz]=quuz
-  [qux]=qux
   [sdk]=js-sdk
+  [agent]=js-agent
 )
 
 # AWS CLI reads config from ~/.aws/config or ~/.aws/credentials

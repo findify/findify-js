@@ -2,7 +2,7 @@
     {
         "scope": "https://search-staging.findify.io:443",
         "method": "post",
-        "path": "/v3/autocomplete",
+        "path": "/autocomplete",
         "body": {
             "user": {
                 "lang": [
@@ -14,7 +14,7 @@
                 "ip": "192.168.0.1",
                 "ua": "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36"
             },
-            "t_client": 1508153329446,
+            "t_client": 1516741126203,
             "key": "0d2f3aad-8702-46ad-a786-ae9fe2670294",
             "q": "fir",
             "item_limit": 2,
@@ -24,43 +24,20 @@
         "response": {
             "meta": {
                 "q": "fir",
-                "suggestion_limit": 10,
-                "item_limit": 2,
+                "suggestion_limit": 5,
+                "item_limit": 3,
+                "id": "35703df6-fdb9-4f86-9f70-6510cb7a679a",
+                "query": "fir",
                 "rid": "<stripped>"
             },
             "suggestions": [
-                {
-                    "value": "fire"
-                },
-                {
-                    "value": "fire ian"
-                },
-                {
-                    "value": "fire cut"
-                },
-                {
-                    "value": "fire cut downstem"
-                },
-                {
-                    "value": "fire rasta"
-                },
-                {
-                    "value": "fire ian jr"
-                },
-                {
-                    "value": "fire 14.5mm"
-                },
-                {
-                    "value": "fire 18mm"
-                },
-                {
-                    "value": "fire 14.5mm 18.8mm"
-                },
-                {
-                    "value": "fire 18mm 18mm"
-                }
+                "fire",
+                "fire rasta",
+                "fire ian",
+                "fire cut",
+                "fire cut downstem"
             ],
-            "items": [
+            "products": [
                 {
                     "product_url": "https://smoke-cartel.myshopify.com/products/5-rasta-frit-pipe",
                     "reviews": {
@@ -82,15 +59,15 @@
                     "id": "4595632644",
                     "title": "Rasta-fire-ian Pipe",
                     "thumbnail_url": "https://cdn.shopify.com/s/files/1/0350/8253/products/HP62-1-0_small.jpg?v=1459019662",
-                    "hash": "AV11VmrFCQkVMwqrFH9w",
+                    "hash": "AWBzBXNoso7SSYcnxv5e",
                     "custom_fields": {},
                     "compare_at": -1
                 },
                 {
                     "product_url": "https://smoke-cartel.myshopify.com/products/3-75-rasta-frit-pipe",
                     "reviews": {
-                        "total_reviews": 6,
-                        "average_score": 4.83
+                        "total_reviews": 8,
+                        "average_score": 4.88
                     },
                     "price": [
                         27
@@ -111,37 +88,63 @@
                     "id": "4595632836",
                     "title": "Rasta-fire-ian Jr.",
                     "thumbnail_url": "https://cdn.shopify.com/s/files/1/0350/8253/products/HP61-1-0_small.jpg?v=1459021436",
-                    "hash": "AV11VmrFCQkVMwqrFH9x",
+                    "hash": "AWBzBXNoso7SSYcnxv5f",
                     "custom_fields": {},
                     "compare_at": 36
+                },
+                {
+                    "product_url": "https://smoke-cartel.myshopify.com/products/empire-glassworks-great-gourd-fumed-mini-rig",
+                    "reviews": {
+                        "total_reviews": 0,
+                        "average_score": 0
+                    },
+                    "price": [
+                        220,
+                        220
+                    ],
+                    "discount": [],
+                    "stickers": {
+                        "availability": true,
+                        "in-stock": true,
+                        "out-of-stock": false,
+                        "discount": false,
+                        "free-shipping": false
+                    },
+                    "availability": true,
+                    "id": "9521700680",
+                    "title": "Empire Glassworks \"Great Gourd\" Fumed Mini Rig",
+                    "thumbnail_url": "https://cdn.shopify.com/s/files/1/0350/8253/products/EMPIRE-GLASSWORKS-QUOT-GREAT-GOURD-QUOT-FUMED-MINI-RIG_EMPIRE-1710-1_small.jpg?v=1493847484",
+                    "hash": "AWBzBXa6so7SSYcnxwCG",
+                    "custom_fields": {},
+                    "compare_at": -1
                 }
             ]
         },
         "rawHeaders": [
-            "Access-Control-Allow-Headers",
-            "Content-type,Accept,x-key",
-            "Access-Control-Allow-Methods",
-            "GET,POST,OPTIONS",
-            "Access-Control-Allow-Origin",
-            "*",
-            "Cache-Control",
-            "no-cache, no-store, must-revalidate",
+            "Date",
+            "Tue, 23 Jan 2018 20:58:46 GMT",
             "Content-Type",
             "application/json; charset=utf-8",
-            "Date",
-            "Mon, 16 Oct 2017 11:28:50 GMT",
-            "ETag",
-            "W/\"560-6UT2QqcTR8iEEeWfj/nwmGxvlmQ\"",
-            "Expires",
-            "0",
-            "Pragma",
-            "no-cache",
+            "Content-Length",
+            "1832",
+            "Connection",
+            "close",
             "Server",
             "nginx/1.12.1",
-            "Content-Length",
-            "1376",
-            "Connection",
-            "Close"
+            "Cache-Control",
+            "no-cache, no-store, must-revalidate",
+            "Pragma",
+            "no-cache",
+            "Expires",
+            "0",
+            "Access-Control-Allow-Origin",
+            "*",
+            "Access-Control-Allow-Methods",
+            "GET,POST,OPTIONS",
+            "Access-Control-Allow-Headers",
+            "Content-type,Accept,x-key",
+            "ETag",
+            "W/\"728-DWa4g0ZpLS+X0uhbOPRE5+ZK5fY\""
         ]
     }
 ]

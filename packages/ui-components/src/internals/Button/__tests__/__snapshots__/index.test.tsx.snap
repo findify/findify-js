@@ -3,7 +3,7 @@
 exports[`<Button /> attaches and calls onClick event handler 1`] = `
 <button
   className="root"
-  onClick={[Function]}
+  onClick={[MockFunction]}
 />
 `;
 

@@ -22,6 +22,7 @@ For release notes, see the [CHANGELOG](./CHANGELOG.md).
 
 ## Quickstart
 
+
 ### In the Browser
 
 To use the SDK in the browser, simply add the following script tag to your

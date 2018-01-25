@@ -1,5 +1,5 @@
 import { LineItem } from '../common';
-import { Type as RequestType } from './type';
+import { Type as RequestType } from './Type';
 import { Base } from './params';
 
 /**
