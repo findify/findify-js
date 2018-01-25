@@ -3,7 +3,7 @@
 exports[`<ExpandedButton /> attaches and calls onClick event handler 1`] = `
 <button
   className="wrap"
-  onClick={[Function]}
+  onClick={[MockFunction]}
 >
   <span
     className="sign"

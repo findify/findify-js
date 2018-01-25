@@ -5,7 +5,7 @@ module.exports = {
   testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$',
   testPathIgnorePatterns: ['(/__tests__/__support__/).*$'],
   transformIgnorePatterns: ['<rootDir>/packages/.+/node_modules/(?!@findify)'],
-  roots: ['<rootDir>', '<rootDir>/packages'],
+  roots: ['<rootDir>'],
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json'],
   moduleNameMapper: {
     '\\.(css|svg)$': 'identity-obj-proxy',
@@ -21,7 +21,6 @@ module.exports = {
     '**/*.{ts,tsx}',
     '!**/*.d.ts',
     '!**/node_modules/**',
-    '!**/bower_components/**',
     '!**/vendor/**',
     '!**/output/**',
   ],

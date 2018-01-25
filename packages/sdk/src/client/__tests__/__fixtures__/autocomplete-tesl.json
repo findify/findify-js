@@ -2,7 +2,7 @@
     {
         "scope": "https://search-staging.findify.io:443",
         "method": "post",
-        "path": "/v3/autocomplete",
+        "path": "/autocomplete",
         "body": {
             "user": {
                 "lang": [
@@ -14,7 +14,7 @@
                 "ip": "192.168.0.1",
                 "ua": "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36"
             },
-            "t_client": 1508153327835,
+            "t_client": 1516741125092,
             "key": "0d2f3aad-8702-46ad-a786-ae9fe2670294",
             "q": "tesl",
             "item_limit": 2,
@@ -24,81 +24,40 @@
         "response": {
             "meta": {
                 "q": "tesl",
-                "suggestion_limit": 3,
-                "item_limit": 2,
+                "suggestion_limit": 5,
+                "item_limit": 3,
+                "id": "3583a7a2-6d70-4634-911c-c6f6da69a6ea",
+                "query": "tesl",
                 "rid": "<stripped>"
             },
-            "suggestions": [
-                {
-                    "value": "tesla double"
-                },
-                {
-                    "value": "tesla double arm"
-                },
-                {
-                    "value": "tesla"
-                }
-            ],
-            "items": [
-                {
-                    "product_url": "https://smoke-cartel.myshopify.com/products/nexus-glass-tesla-dual-arm-recycler",
-                    "reviews": {
-                        "total_reviews": 3,
-                        "average_score": 3.33
-                    },
-                    "price": [
-                        270,
-                        285
-                    ],
-                    "discount": [
-                        5,
-                        10
-                    ],
-                    "stickers": {
-                        "discount": [
-                            10,
-                            5
-                        ],
-                        "availability": true,
-                        "in-stock": true,
-                        "out-of-stock": false,
-                        "free-shipping": false
-                    },
-                    "availability": true,
-                    "id": "373056192",
-                    "title": "Nexus Glass \"Tesla\" Double Arm Recycler",
-                    "thumbnail_url": "https://cdn.shopify.com/s/files/1/0350/8253/products/NEXUS-NEW-TESLA_1_small.jpg?v=1427383897",
-                    "hash": "AV11VmrACQkVMwqrFH4Y",
-                    "custom_fields": {},
-                    "compare_at": 300
-                }
-            ]
+            "suggestions": [],
+            "products": []
         },
         "rawHeaders": [
-            "Access-Control-Allow-Headers",
-            "Content-type,Accept,x-key",
-            "Access-Control-Allow-Methods",
-            "GET,POST,OPTIONS",
-            "Access-Control-Allow-Origin",
-            "*",
-            "Cache-Control",
-            "no-cache, no-store, must-revalidate",
+            "Date",
+            "Tue, 23 Jan 2018 20:58:45 GMT",
             "Content-Type",
             "application/json; charset=utf-8",
-            "Date",
-            "Mon, 16 Oct 2017 11:28:48 GMT",
-            "ETag",
-            "W/\"2fc-A8uiahtmwRnjzIlLc8bB2+FyLLg\"",
-            "Expires",
-            "0",
-            "Pragma",
-            "no-cache",
+            "Content-Length",
+            "147",
+            "Connection",
+            "close",
             "Server",
             "nginx/1.12.1",
-            "Content-Length",
-            "764",
-            "Connection",
-            "Close"
+            "Cache-Control",
+            "no-cache, no-store, must-revalidate",
+            "Pragma",
+            "no-cache",
+            "Expires",
+            "0",
+            "Access-Control-Allow-Origin",
+            "*",
+            "Access-Control-Allow-Methods",
+            "GET,POST,OPTIONS",
+            "Access-Control-Allow-Headers",
+            "Content-type,Accept,x-key",
+            "ETag",
+            "W/\"93-TUmUilg+Sh9LyWVzehSrHijP0ZQ\""
         ]
     }
 ]

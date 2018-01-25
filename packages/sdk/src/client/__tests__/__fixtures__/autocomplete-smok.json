@@ -2,7 +2,7 @@
     {
         "scope": "https://search-staging.findify.io:443",
         "method": "post",
-        "path": "/v3/autocomplete",
+        "path": "/autocomplete",
         "body": {
             "user": {
                 "lang": [
@@ -14,7 +14,7 @@
                 "ip": "192.168.0.2",
                 "ua": "Mozilla/5.0 (Windows NT 6.2; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/32.0.1667.0 Safari/537.36"
             },
-            "t_client": 1508153328568,
+            "t_client": 1516741125782,
             "key": "0d2f3aad-8702-46ad-a786-ae9fe2670294",
             "q": "smok",
             "item_limit": 3,
@@ -26,26 +26,43 @@
                 "q": "smok",
                 "suggestion_limit": 5,
                 "item_limit": 3,
+                "id": "b27b7133-e165-42d4-9836-dd53706ffbd2",
+                "query": "smok",
                 "rid": "<stripped>"
             },
             "suggestions": [
-                {
-                    "value": "smoke"
-                },
-                {
-                    "value": "smoke cartel"
-                },
-                {
-                    "value": "smoky"
-                },
-                {
-                    "value": "smoky mountain"
-                },
-                {
-                    "value": "smoky mountain glass"
-                }
+                "smoke",
+                "smoke cartel",
+                "smoky",
+                "smoky mountain",
+                "smoky mountain glass"
             ],
-            "items": [
+            "products": [
+                {
+                    "product_url": "https://smoke-cartel.myshopify.com/products/smoke-cartel-smoke-trail-hat-pin",
+                    "reviews": {
+                        "total_reviews": 0,
+                        "average_score": 0
+                    },
+                    "price": [
+                        6
+                    ],
+                    "discount": [],
+                    "stickers": {
+                        "availability": true,
+                        "in-stock": true,
+                        "out-of-stock": false,
+                        "discount": false,
+                        "free-shipping": false
+                    },
+                    "availability": true,
+                    "id": "10381856328",
+                    "title": "Smoke Cartel Smoke Trail Hat Pin",
+                    "thumbnail_url": "https://cdn.shopify.com/s/files/1/0350/8253/products/SMOKE-CARTEL-SMOKE-ICON-HAT-PIN_SC-SMOKE-PIN-0_small.jpg?v=1501701585",
+                    "hash": "AWBzBXNnso7SSYcnxvyC",
+                    "custom_fields": {},
+                    "compare_at": -1
+                },
                 {
                     "product_url": "https://smoke-cartel.myshopify.com/products/smoke-cartel-centipede-shenanigans",
                     "reviews": {
@@ -68,22 +85,19 @@
                     "id": "8017104712",
                     "title": "Smoke Cartel \"Caterpillar\" Sherlock",
                     "thumbnail_url": "https://cdn.shopify.com/s/files/1/0350/8253/products/SCHP-SA017-0_small.jpg?v=1476890474",
-                    "hash": "AV11VmrKCQkVMwqrFIDg",
+                    "hash": "AWBzBXNoso7SSYcnxv-a",
                     "custom_fields": {},
                     "compare_at": -1
                 },
                 {
-                    "product_url": "https://smoke-cartel.myshopify.com/products/smoke-cartel-crew-shirts",
+                    "product_url": "https://smoke-cartel.myshopify.com/products/smoke-cartel-debowler-ashtray",
                     "reviews": {
-                        "total_reviews": 0,
-                        "average_score": 0
+                        "total_reviews": 11,
+                        "average_score": 5
                     },
                     "price": [
-                        29,
-                        29,
-                        29,
-                        29,
-                        29
+                        10,
+                        10
                     ],
                     "discount": [],
                     "stickers": {
@@ -94,65 +108,40 @@
                         "free-shipping": false
                     },
                     "availability": true,
-                    "id": "9260965640",
-                    "title": "Smoke Cartel Crew Shirts",
-                    "thumbnail_url": "https://cdn.shopify.com/s/files/1/0350/8253/products/SMOKE-CARTEL-CREW-SHIRTS_SC-T-SHIRTS-WHT-2_small.jpg?v=1492034537",
-                    "hash": "AV11VniCCQkVMwqrFIHn",
-                    "custom_fields": {},
-                    "compare_at": -1
-                },
-                {
-                    "product_url": "https://smoke-cartel.myshopify.com/products/smoke-cartel-backpack",
-                    "reviews": {
-                        "total_reviews": 0,
-                        "average_score": 0
-                    },
-                    "price": [
-                        60
-                    ],
-                    "discount": [],
-                    "stickers": {
-                        "availability": true,
-                        "in-stock": true,
-                        "out-of-stock": false,
-                        "discount": false,
-                        "free-shipping": false
-                    },
-                    "availability": true,
-                    "id": "10246101192",
-                    "title": "Smoke Cartel Odor-Resistiant Backpack",
-                    "thumbnail_url": "https://cdn.shopify.com/s/files/1/0350/8253/products/SMOKE-CARTEL-BACKPACK_SC-BACKPACK-BK-5_small.jpg?v=1500673539",
-                    "hash": "AV11Vmq7CQkVMwqrFH0q",
+                    "id": "10381103880",
+                    "title": "Smoke Cartel Debowler Ashtray",
+                    "thumbnail_url": "https://cdn.shopify.com/s/files/1/0350/8253/products/SMOKE-CARTEL-DEBOWLER-ASHTRAY_SC-ASHTRAY-1_small.jpg?v=1501691819",
+                    "hash": "AWBzBXNnso7SSYcnxvyB",
                     "custom_fields": {},
                     "compare_at": -1
                 }
             ]
         },
         "rawHeaders": [
-            "Access-Control-Allow-Headers",
-            "Content-type,Accept,x-key",
-            "Access-Control-Allow-Methods",
-            "GET,POST,OPTIONS",
-            "Access-Control-Allow-Origin",
-            "*",
-            "Cache-Control",
-            "no-cache, no-store, must-revalidate",
+            "Date",
+            "Tue, 23 Jan 2018 20:58:46 GMT",
             "Content-Type",
             "application/json; charset=utf-8",
-            "Date",
-            "Mon, 16 Oct 2017 11:28:49 GMT",
-            "ETag",
-            "W/\"772-1ufbHzGxyXpboKuWjTQi9+WivrA\"",
-            "Expires",
-            "0",
-            "Pragma",
-            "no-cache",
+            "Content-Length",
+            "1887",
+            "Connection",
+            "close",
             "Server",
             "nginx/1.12.1",
-            "Content-Length",
-            "1906",
-            "Connection",
-            "Close"
+            "Cache-Control",
+            "no-cache, no-store, must-revalidate",
+            "Pragma",
+            "no-cache",
+            "Expires",
+            "0",
+            "Access-Control-Allow-Origin",
+            "*",
+            "Access-Control-Allow-Methods",
+            "GET,POST,OPTIONS",
+            "Access-Control-Allow-Headers",
+            "Content-type,Accept,x-key",
+            "ETag",
+            "W/\"75f-9yUzGnRDsGQrn/eYvymzTw69dVY\""
         ]
     }
 ]

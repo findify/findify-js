@@ -4,7 +4,7 @@ exports[`<Icon /> attaches and calls onClick event handler 1`] = `
 <mapProps(componentFromProp(component))
   height={18}
   name="cross"
-  onClick={[Function]}
+  onClick={[MockFunction]}
   width={15}
 />
 `;

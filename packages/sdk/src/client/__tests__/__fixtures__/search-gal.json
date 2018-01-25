@@ -2,7 +2,7 @@
     {
         "scope": "https://search-staging.findify.io:443",
         "method": "post",
-        "path": "/v3/search",
+        "path": "/search",
         "body": {
             "user": {
                 "lang": [
@@ -14,52 +14,20 @@
                 "ip": "192.168.0.1",
                 "ua": "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36"
             },
-            "t_client": 1508153335480,
+            "t_client": 1516741397177,
             "key": "0d2f3aad-8702-46ad-a786-ae9fe2670294",
-            "q": "gal",
-            "filters": [
-                {
-                    "type": "category",
-                    "name": "category1",
-                    "values": [
-                        {
-                            "value": "Katt"
-                        }
-                    ]
-                }
-            ],
-            "sort": [
-                {
-                    "field": "price",
-                    "order": "desc"
-                }
-            ]
+            "q": "gal"
         },
         "status": 200,
         "response": {
             "meta": {
-                "query_type": "or",
-                "q": "gal",
                 "offset": 0,
                 "limit": 24,
-                "total": 0,
-                "filters": [
-                    {
-                        "type": "category",
-                        "name": "category1",
-                        "values": [
-                            {
-                                "value": "Katt"
-                            }
-                        ]
-                    }
-                ],
-                "sort": [
-                    {
-                        "field": "price",
-                        "order": "desc"
-                    }
-                ],
+                "total": 2,
+                "filters": [],
+                "totalFacets": 9,
+                "query": "gal",
+                "id": "b8e904d4-85f1-4f4b-8b38-e77081d9a7e8",
                 "rid": "<stripped>"
             },
             "facets": [
@@ -70,42 +38,332 @@
                         {
                             "selected": false,
                             "count": 2,
-                            "has_children": false,
-                            "value": "Water Pipe",
-                            "name": "category1"
+                            "name": "category1",
+                            "key": "Water Pipe",
+                            "hasChildren": false,
+                            "type": "category"
                         }
                     ],
                     "sort_type": "count"
+                },
+                {
+                    "name": "brand",
+                    "values": [
+                        {
+                            "count": 2,
+                            "has_children": false,
+                            "name": "brand",
+                            "value": "High Tech Glassworks",
+                            "selected": false,
+                            "key": "High Tech Glassworks"
+                        }
+                    ],
+                    "type": "terms",
+                    "sort_type": "count"
+                },
+                {
+                    "name": "color",
+                    "values": [
+                        {
+                            "count": 1,
+                            "has_children": false,
+                            "name": "color",
+                            "value": "Fumed White",
+                            "selected": false,
+                            "key": "Fumed White"
+                        },
+                        {
+                            "count": 1,
+                            "has_children": false,
+                            "name": "color",
+                            "value": "Orange",
+                            "selected": false,
+                            "key": "Orange"
+                        }
+                    ],
+                    "type": "terms",
+                    "sort_type": "count"
+                },
+                {
+                    "name": "price",
+                    "values": [
+                        {
+                            "name": "price",
+                            "count": 2,
+                            "has_children": false,
+                            "from": 200,
+                            "selected": false,
+                            "key": "200_"
+                        }
+                    ],
+                    "type": "range",
+                    "min": 250,
+                    "max": 305,
+                    "sort_type": "value"
+                },
+                {
+                    "name": "custom_fields.height",
+                    "values": [
+                        {
+                            "count": 1,
+                            "has_children": false,
+                            "name": "custom_fields.height",
+                            "value": "7 Inches",
+                            "selected": false,
+                            "key": "7 Inches"
+                        },
+                        {
+                            "count": 1,
+                            "has_children": false,
+                            "name": "custom_fields.height",
+                            "value": "7.5 Inches",
+                            "selected": false,
+                            "key": "7.5 Inches"
+                        }
+                    ],
+                    "type": "terms",
+                    "sort_type": "count"
+                },
+                {
+                    "name": "custom_fields.joint_gender",
+                    "values": [
+                        {
+                            "count": 1,
+                            "has_children": false,
+                            "name": "custom_fields.joint_gender",
+                            "value": "Female Joint",
+                            "selected": false,
+                            "key": "Female Joint"
+                        },
+                        {
+                            "count": 1,
+                            "has_children": false,
+                            "name": "custom_fields.joint_gender",
+                            "value": "Male Joint",
+                            "selected": false,
+                            "key": "Male Joint"
+                        }
+                    ],
+                    "type": "terms",
+                    "sort_type": "count"
+                },
+                {
+                    "name": "custom_fields.use_case",
+                    "values": [
+                        {
+                            "count": 1,
+                            "has_children": false,
+                            "name": "custom_fields.use_case",
+                            "value": "Made For Dry Herbs",
+                            "selected": false,
+                            "key": "Made For Dry Herbs"
+                        }
+                    ],
+                    "type": "terms",
+                    "sort_type": "count"
+                },
+                {
+                    "name": "custom_fields.joint_size",
+                    "values": [
+                        {
+                            "count": 1,
+                            "has_children": false,
+                            "name": "custom_fields.joint_size",
+                            "value": "10mm",
+                            "selected": false,
+                            "key": "10mm"
+                        },
+                        {
+                            "count": 1,
+                            "has_children": false,
+                            "name": "custom_fields.joint_size",
+                            "value": "14.5mm",
+                            "selected": false,
+                            "key": "14.5mm"
+                        }
+                    ],
+                    "type": "terms",
+                    "sort_type": "count"
+                },
+                {
+                    "name": "discount",
+                    "values": [
+                        {
+                            "name": "discount",
+                            "count": 2,
+                            "has_children": false,
+                            "from": 30,
+                            "selected": false,
+                            "key": "30_"
+                        }
+                    ],
+                    "type": "range",
+                    "min": 50,
+                    "max": 57,
+                    "sort_type": "value"
                 }
             ],
-            "items": [],
-            "banner": {}
+            "banner": {},
+            "products": [
+                {
+                    "seller": "",
+                    "quantity": 0,
+                    "color": [],
+                    "color_variants": 1,
+                    "image_2_url": "https://cdn.shopify.com/s/files/1/0350/8253/products/HT-TRAPTUBE-PRANK-167-2_medium.jpg?v=1479915957",
+                    "custom_fields": {
+                        "joint_size": [
+                            "10mm"
+                        ],
+                        "joint_gender": [
+                            "Male Joint"
+                        ],
+                        "barcode": [
+                            ""
+                        ],
+                        "height": [
+                            "7.5 Inches"
+                        ]
+                    },
+                    "description": "Stay sippin' on your concentrates with this colorful piece!\n\n \nThis \"Purple Lollipop\" Drank Spill Double Cup Rig is a practical glass daily driver. Created by High Tech Glassworks, this piece comes to you from delightful Los Angeles California. Tastefully blown - this will shortly be the most loved glass in your house.\n\n \nA phenomenal average-sized pipe, this gal will adorn any sesh.",
+                    "discount": [
+                        57
+                    ],
+                    "availability": false,
+                    "title": "High Tech Glassworks \"Purple Lollipop\" Drank Spill Double Cup Rig",
+                    "reviews": {
+                        "total_reviews": 0,
+                        "average_score": 0
+                    },
+                    "material": [],
+                    "size": [],
+                    "price": [
+                        305
+                    ],
+                    "stickers": {
+                        "discount": [
+                            57
+                        ],
+                        "availability": false,
+                        "in-stock": false,
+                        "out-of-stock": true,
+                        "free-shipping": false
+                    },
+                    "id": "8301644104",
+                    "sku": [
+                        "HT-TRAPTUBE-PRANK-167"
+                    ],
+                    "category": [
+                        {
+                            "category2": "",
+                            "category3": "",
+                            "category4": "",
+                            "category1": "Water Pipe"
+                        }
+                    ],
+                    "brand": "High Tech Glassworks",
+                    "hash": "AWBzBXNoso7SSYcnxv_Q",
+                    "compare_at": 710
+                },
+                {
+                    "seller": "",
+                    "quantity": 0,
+                    "color": [
+                        "Orange",
+                        "Fumed White"
+                    ],
+                    "color_variants": 2,
+                    "image_2_url": "https://cdn.shopify.com/s/files/1/0350/8253/products/HT210-1_medium.jpg?v=1465589138",
+                    "custom_fields": {
+                        "use_case": [
+                            "Made For Dry Herbs"
+                        ],
+                        "joint_size": [
+                            "14.5mm"
+                        ],
+                        "variant_image_url": [
+                            "https://cdn.shopify.com/s/files/1/0350/8253/products/HT210-2.jpg?v=1465589140",
+                            "https://cdn.shopify.com/s/files/1/0350/8253/products/HT210-4.jpg?v=1465589145"
+                        ],
+                        "joint_gender": [
+                            "Female Joint"
+                        ],
+                        "barcode": [
+                            ""
+                        ],
+                        "height": [
+                            "7 Inches"
+                        ]
+                    },
+                    "description": "This \"Beaker Banger Hanger\" is an absolute stunner! Made by the pros at High Tech Glassworks, this pipe was hand blown in delightful Los Angeles, California. This beaker was meticulously thought out - evident in the High Tech sandblasted pattern at the base and fine color work along the body.\n\n \nStanding at 7 inches, this gal is on the smaller side - making it an ideal travel piece or a coffee table staple.\n\n \nThe High Tech \"Beaker Banger Hanger\" features a three-hole diffuser, perfect for delivering heavy and flavorful hits. Available for only $500, this piece is an absolute steal!",
+                    "discount": [
+                        50
+                    ],
+                    "availability": false,
+                    "title": "High Tech Glassworks \"Beaker Banger Hanger\"",
+                    "reviews": {
+                        "total_reviews": 0,
+                        "average_score": 0
+                    },
+                    "material": [],
+                    "size": [],
+                    "price": [
+                        250,
+                        250
+                    ],
+                    "stickers": {
+                        "discount": [
+                            50
+                        ],
+                        "availability": false,
+                        "in-stock": false,
+                        "out-of-stock": true,
+                        "free-shipping": false
+                    },
+                    "id": "5059408132",
+                    "sku": [
+                        "HT-HT210-OR",
+                        "HT-HT210-FW"
+                    ],
+                    "category": [
+                        {
+                            "category2": "",
+                            "category3": "",
+                            "category4": "",
+                            "category1": "Water Pipe"
+                        }
+                    ],
+                    "brand": "High Tech Glassworks",
+                    "hash": "AWBzBXNoso7SSYcnxv8B",
+                    "compare_at": 500
+                }
+            ]
         },
         "rawHeaders": [
-            "Access-Control-Allow-Headers",
-            "Content-type,Accept,x-key",
-            "Access-Control-Allow-Methods",
-            "GET,POST,OPTIONS",
-            "Access-Control-Allow-Origin",
-            "*",
-            "Cache-Control",
-            "no-cache, no-store, must-revalidate",
+            "Date",
+            "Tue, 23 Jan 2018 21:03:17 GMT",
             "Content-Type",
             "application/json; charset=utf-8",
-            "Date",
-            "Mon, 16 Oct 2017 11:28:55 GMT",
-            "ETag",
-            "W/\"1af-DGiZ4LxM5pjrEb10ok2YWKHCu/c\"",
-            "Expires",
-            "0",
-            "Pragma",
-            "no-cache",
+            "Content-Length",
+            "5176",
+            "Connection",
+            "close",
             "Server",
             "nginx/1.12.1",
-            "Content-Length",
-            "431",
-            "Connection",
-            "Close"
+            "Cache-Control",
+            "no-cache, no-store, must-revalidate",
+            "Pragma",
+            "no-cache",
+            "Expires",
+            "0",
+            "Access-Control-Allow-Origin",
+            "*",
+            "Access-Control-Allow-Methods",
+            "GET,POST,OPTIONS",
+            "Access-Control-Allow-Headers",
+            "Content-type,Accept,x-key",
+            "ETag",
+            "W/\"1438-8J0/OR4N3Mi7zcvYz9Jlw0FJI+Q\""
         ]
     }
 ]

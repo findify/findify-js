@@ -2,8 +2,8 @@ import 'dotenv/config';
 import debug from 'debug';
 import axios, { AxiosError } from 'axios';
 import * as nock from 'nock';
-import { Scope as NockScope, NockBackOptions, NockDefinition } from 'nock';
-import httpAdapter = require('axios/lib/adapters/http');
+import { NockBackOptions, NockDefinition } from 'nock';
+const http = require('axios/lib/adapters/http');
 
 import { Client, Config } from '..';
 import { User, SortingOrder } from '../../common';
@@ -27,7 +27,7 @@ describe('Client', () => {
     // prevents OPTIONS requests, for more info see:
     // https://github.com/node-nock/nock/issues/699#issuecomment-272708264
     // https://github.com/axios/axios/issues/305#issuecomment-272162405
-    axios.defaults.adapter = httpAdapter;
+    axios.defaults.adapter = http;
     nock.back.fixtures = __dirname + '/__fixtures__';
   });
 
@@ -56,13 +56,13 @@ describe('Client', () => {
       ];
       const requests: Req.Autocomplete.Request[] = parameters.map(params => {
         const req: Req.Autocomplete.Request = {
-          type: Req.Type.Autocomplete,
           params,
+          type: Req.Type.Autocomplete,
         };
         return req;
       });
       expect.assertions(requests.length);
-      for (let request of requests) {
+      for (const request of requests) {
         const fixture = `autocomplete-${request.params.q}.json`;
         await verifyRequest({ client, request, fixture });
       }
@@ -97,29 +97,13 @@ describe('Client', () => {
         { q: 'dra', offset: 2, limit: 5 },
         { q: 'bla', offset: 0, limit: 2 },
         { q: 'spa' },
-        {
-          q: 'gal',
-          filters: [
-            {
-              type: 'category',
-              name: 'category1',
-              values: [{ value: 'Katt' }],
-            },
-          ],
-          sort: [
-            {
-              field: 'price',
-              order: SortingOrder.Desc,
-            },
-          ],
-        },
       ];
       const requests: Req.Search.Request[] = parameters.map(params => {
-        const req: Req.Search.Request = { type: Req.Type.Search, params };
+        const req: Req.Search.Request = { params, type: Req.Type.Search };
         return req;
       });
       expect.assertions(requests.length);
-      for (let request of requests) {
+      for (const request of requests) {
         const fixture = `search-${request.params.q}.json`;
         await verifyRequest({ client, request, fixture });
       }
@@ -147,8 +131,8 @@ describe('Client', () => {
         ],
       };
       const request: Req.SmartCollection.Request = {
-        type: Req.Type.SmartCollection,
         params,
+        type: Req.Type.SmartCollection,
       };
       const fixture = `smart-collection-${params.slot}`;
       await verifyRequest({ client, request, fixture });
@@ -181,13 +165,13 @@ describe('Client', () => {
         const requests: Req.Recommendations.Request[] = parameters.map(
           params => {
             const req: Req.Recommendations.Request = {
-              type: Req.Type.Recommendations,
               params,
+              type: Req.Type.Recommendations,
             };
             return req;
           }
         );
-        for (let request of requests) {
+        for (const request of requests) {
           const params = request.params as Req.Recommendations.Slot;
           const fixture = `recommendations-${params.slot}-${params.offset ||
             0}.json`;
@@ -206,12 +190,12 @@ describe('Client', () => {
         const requests: Req.Recommendations.Request[] = parameters.map(
           params =>
             ({
-              type: Req.Type.Recommendations,
               params,
+              type: Req.Type.Recommendations,
             } as Req.Recommendations.Request)
         );
         expect.assertions(requests.length);
-        for (let request of requests) {
+        for (const request of requests) {
           const params = request.params as Req.Recommendations.Newest;
           const fixture = `search-${params.offset || 0}.json`;
           await verifyRequest({ client, request, fixture });

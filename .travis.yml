@@ -2,7 +2,7 @@ language: node_js
 dist: trusty
 sudo: required
 node_js:
-- 6
+- 9
 notifications:
   email: false
   slack:
@@ -10,6 +10,7 @@ notifications:
 cache:
   directories:
   - node_modules
+  - packages/agent/node_modules
   - packages/sdk/node_modules
   - packages/analytics/node_modules
   - packages/helpers/node_modules
