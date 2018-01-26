@@ -11,10 +11,12 @@ interface WebpackEnvArgs {
 export default (env: WebpackEnvArgs) => {
   const config: webpack.Configuration = {
     context: path.resolve(__dirname, 'src'),
+
     entry: {
       'findify-agent': './index',
       'findify-agent.min': './index',
     },
+
     output: {
       filename: '[name].js',
       path: path.resolve(__dirname, 'dist'),
@@ -27,6 +29,7 @@ export default (env: WebpackEnvArgs) => {
       // otherwise an anonymous define is used
       umdNamedDefine: true,
     },
+
     devtool: 'source-map',
     stats: 'minimal',
     bail: true,
