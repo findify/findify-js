@@ -4,18 +4,23 @@ import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import OptimizeCssAssetsPlugin from 'optimize-css-assets-webpack-plugin';
 import webpack from 'webpack';
 import Sprite from 'svg-sprite-loader/plugin';
+import UglifyJSPlugin from 'uglifyjs-webpack-plugin';
 
 const extractGlobal = new ExtractTextPlugin('styles.css');
 const extractCustom = new ExtractTextPlugin('custom.css');
 
+
 export default (env, { module, plugins, output, ...config }) => ({
   ...config,
-  entry: path.resolve(process.cwd(), 'src/index.ts'),
-
+  entry: {
+    'findify-ui-components': path.resolve(process.cwd(), 'src/index.ts'),
+    'findify-ui-components.min': path.resolve(process.cwd(), 'src/index.ts'),
+  },
   output: {
     ...output,
     library: 'FindifyUIComponents',
-    libraryTarget: 'commonjs2',
+    libraryTarget: 'umd',
+    umdNamedDefine: true,
   },
 
   externals: [
@@ -55,37 +60,33 @@ export default (env, { module, plugins, output, ...config }) => ({
       },
       {
         ...module.rules.ts,
+        include: [
+          path.resolve(process.cwd(), 'src'),
+          path.resolve(process.cwd(), 'dev'),
+          'node_modules'
+        ],
         use: [
           {
             loader: 'babel-loader',
             options: {
               babelrc: false,
               plugins: [
-                'lodash',
-                'transform-object-rest-spread',
-                'babel-plugin-transform-class-properties',
-                'transform-react-constant-elements',
-                'transform-react-inline-elements',
-                'transform-react-remove-prop-types',
-                'transform-react-pure-class-to-function',
+                ["lodash", { "id": ["lodash", "recompose", "ramda"] }],
+                "@babel/plugin-syntax-dynamic-import",
+                "@babel/plugin-proposal-object-rest-spread",
+                "@babel/plugin-proposal-class-properties",
+                "@babel/plugin-transform-react-constant-elements",
+                "@babel/plugin-syntax-object-rest-spread"
               ],
               presets: [
-                [
-                  'env',
-                  {
-                    modules: false,
-                    targets: { browsers: ['last 2 versions', 'ie > 8'] },
-                  },
-                ],
-                'react',
-              ],
-            },
-          },
-          {
-            loader: 'ts-loader',
-            options: {
-              transpileOnly: true,
-            },
+                "@babel/preset-typescript",
+                "@babel/preset-react",
+                ["@babel/preset-env", {
+                  "modules": false,
+                  "targets": { "browsers": ["last 2 versions", "ie > 8"] },
+                }]
+              ]
+            }
           },
         ],
       },
@@ -96,6 +97,24 @@ export default (env, { module, plugins, output, ...config }) => ({
     extractGlobal,
     extractCustom,
     new Sprite(),
+
+    new UglifyJSPlugin({
+      test: /\.min\.js($|\?)/i,
+      cache: true,
+      parallel: true,
+      sourceMap: true,
+      uglifyOptions: {
+        output: {
+          comments: false
+        },
+        compress: {
+          warnings: false,
+          drop_debugger: true,
+          drop_console: true
+        }
+      }
+    }),
+
     // new OptimizeCssAssetsPlugin({
     //   cssProcessor: require('cssnano'),
     //   cssProcessorOptions: {
