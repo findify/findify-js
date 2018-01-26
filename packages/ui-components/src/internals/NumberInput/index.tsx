@@ -695,7 +695,7 @@ export default class NumericInput extends React.Component {
       strict,
 
       // The rest are passed to the input
-      ...rest,
+      ...rest
     } = this.props;
 
     let hasFormControl =

@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "moduleResolution": "node",
+    "target": "es5",
+    "module": "commonjs",
+    "lib": ["es6", "es2017", "dom"],
+    "sourceMap": true,
+    "jsx": "react",
+    "allowSyntheticDefaultImports": true,
+    "removeComments": true,
+    "noImplicitAny": false,
+    "noEmitOnError": false,
+    "strictNullChecks": true,
+    "pretty": true,
+    "baseUrl": "src",
+    "rootDirs": ["src"],
+    "allowJs": false,
+    "outDir": "lib"
+  },
+  "compileOnSave": false,
+  "buildOnSave": false
+}
