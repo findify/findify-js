@@ -29,7 +29,7 @@
     "build:test": "npm run build:lib -- --module commonjs",
     "build:test:watch": "npm run build:test -- --watch",
     "test": "jest",
-    "postinstall": "npm run build:lib",
+    "prepare": "npm run build:lib",
     "precommit": "lint-staged",
     "test:ci": "jest --ci",
     "test:watch": "jest --watch",
