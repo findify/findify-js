@@ -23,12 +23,6 @@ export default (env, { module, plugins, output, ...config }) => ({
     umdNamedDefine: true,
   },
 
-  externals: [
-    nodeExternals({
-      modulesFromFile: true,
-    }),
-  ],
-
   stats: 'normal',
 
   module: {
@@ -63,7 +57,7 @@ export default (env, { module, plugins, output, ...config }) => ({
         include: [
           path.resolve(process.cwd(), 'src'),
           path.resolve(process.cwd(), 'dev'),
-          'node_modules'
+          path.resolve(process.cwd(), 'node_modules'),
         ],
         use: [
           {
