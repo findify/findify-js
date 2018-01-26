@@ -73,7 +73,7 @@ if [[ $TRAVIS_BRANCH == 'master' ]]; then
 
 fi
 
-PKGS=(analytics helpers mjs)
+PKGS=(analytics helpers mjs sdk agent)
 export GIT_SHA=$(git rev-parse HEAD)
 
 ASSET_HOST="https://findify-assets-2bveeb6u8ag.netdna-ssl.com"
