@@ -1,16 +1,16 @@
-import { Client } from '@findify/sdk/lib/client';
+import { Client } from '@findify/sdk/lib/client/index';
 import { Config } from '@findify/sdk/lib/client/Config';
 
 export {
   Request,
   Body as RequestBody,
   Type as RequestType
-} from '@findify/sdk/lib/request';
+} from '@findify/sdk/lib/request/index';
 
 export {
   Body as ResponseBody,
   Meta as ResponseMeta,
-} from '@findify/sdk/lib/response';
+} from '@findify/sdk/lib/response/index';
 
 export type SDKClient = Client;
 
