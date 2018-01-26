@@ -34,7 +34,7 @@
   },
   "scripts": {
     "postinstall": "run-s bootstrap postinstall:pkgs",
-    "postinstall:pkgs": "lerna run postinstall --parallel",
+    "postinstall:pkgs": "lerna run prepare --parallel",
     "bootstrap": "lerna bootstrap --hoist",
     "upgrade": "npm-run-all --parallel upgrade:root upgrade:pkgs --serial bootstrap",
     "upgrade:root": "ncu -u",
