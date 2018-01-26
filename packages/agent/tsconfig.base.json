@@ -13,7 +13,7 @@
     "pretty": true,
     "baseUrl": "src",
     "rootDirs": ["src"],
-    "allowJs": true,
+    "allowJs": false,
     "outDir": "lib",
     "types" : ["node", "lodash", "webpack", "jest"]
   },
