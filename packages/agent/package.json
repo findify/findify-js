@@ -1,6 +1,6 @@
 {
   "name": "@findify/agent",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "author": "Findify <yourfriends@findify.io>",
   "bugs": {
     "url": "https://github.com/findify/findify-js/issues"
