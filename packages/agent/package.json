@@ -9,7 +9,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@findify/sdk": "^1.3.9",
+    "@findify/sdk": "^2.0.0",
     "lodash": "^4.17.4",
     "shallowequal": "^1.0.2"
   },
