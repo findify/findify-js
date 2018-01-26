@@ -29,11 +29,10 @@
     "build:test": "npm run build:lib -- --module commonjs",
     "build:test:watch": "npm run build:test -- --watch",
     "test": "jest",
-    "prepare": "run-p version build:lib",
+    "postinstall": "npm run build:lib",
     "precommit": "lint-staged",
     "test:ci": "jest --ci",
     "test:watch": "jest --watch",
-    "version": "tsc -v",
     "lint": "tslint --project tsconfig.json --type-check --format codeFrame src/**/*.ts",
     "lint:fix": "npm run lint -- --fix",
     "docs": "typedoc --name 'Findify SDK' --hideGenerator --target es5 --theme default --out doc src"
