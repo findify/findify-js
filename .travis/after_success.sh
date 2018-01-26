@@ -25,8 +25,8 @@ SRC_MAP=(
   [analytics]=dist/prod
   [helpers]=dist
   [mjs]=dist
-  [sdk]=lib
-  [agent]=lib
+  [sdk]=dist
+  [agent]=dist
 )
 
 # mapping from pkg name to the directory path on S3
