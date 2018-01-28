@@ -25,8 +25,8 @@ SRC_MAP=(
   [analytics]=dist/prod
   [helpers]=dist
   [mjs]=dist
-  [sdk]=lib
-  [agent]=lib
+  [sdk]=dist
+  [agent]=dist
 )
 
 # mapping from pkg name to the directory path on S3
@@ -73,7 +73,7 @@ if [[ $TRAVIS_BRANCH == 'master' ]]; then
 
 fi
 
-PKGS=(analytics helpers mjs)
+PKGS=(analytics helpers mjs sdk agent)
 export GIT_SHA=$(git rev-parse HEAD)
 
 ASSET_HOST="https://findify-assets-2bveeb6u8ag.netdna-ssl.com"

@@ -2,8 +2,6 @@ import axios from 'axios';
 
 const processShopify = (analytics, removeFindifyID = false) => {
   const user = analytics.user;
-  console.log(user);
-
   if (!user.persist) {
     const res = removeFindifyID
       ? ''

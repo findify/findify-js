@@ -1,3 +1,5 @@
+import 'core-js/es6/promise';
+
 import debug from 'debug';
 import jsonp from 'jsonp';
 import axios, { AxiosRequestConfig as AxiosOptions } from 'axios';

@@ -1,9 +1,12 @@
 {
-  "lerna": "2.1.2",
+  "lerna": "2.8.0",
   "version": "independent",
   "packages": [
     "packages/*"
   ],
+  "lifecycle": {
+    "prepare": "prepare"
+  },
   "commands": {
     "publish": {
       "ignore": [

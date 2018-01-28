@@ -7,24 +7,29 @@ import SentryPlugin from 'webpack-sentry-plugin';
 import CompressionPlugin from 'compression-webpack-plugin';
 import pkg from '../package.json';
 
+const entity = [
+  path.resolve(process.cwd(), 'src/polyfill.ts'),
+  path.resolve(process.cwd(), 'src/index.ts')
+]
+
 export default (env, { module, plugins, output, ...config }) => {
   return {
     ...config,
-    entry: {
-      extended: [
-        path.resolve(process.cwd(), 'src/polyfill.ts'),
-        path.resolve(process.cwd(), 'src/index.ts'),
-      ],
-      pure: path.resolve(process.cwd(), 'src/index.ts'),
-    },
 
+    entry: {
+      'extended': entity,
+      'extended.min': entity,
+      'pure': path.resolve(process.cwd(), 'src/index.ts'),
+      'pure.min': path.resolve(process.cwd(), 'src/index.ts'),
+    },
     output: {
       ...output,
       library: 'findifyMJS',
-      libraryTarget: 'window',
-      publicPath: env.publicPath || '/',
+      libraryTarget: 'umd',
+      umdNamedDefine: true,
+      publicPath: env.publicPath || '/'
     },
-
+  
     module: {
       ...module,
       rules: [
@@ -41,25 +46,23 @@ export default (env, { module, plugins, output, ...config }) => {
               options: {
                 babelrc: false,
                 plugins: [
-                  'lodash',
-                  'syntax-dynamic-import',
-                  'transform-object-rest-spread',
-                  'babel-plugin-transform-class-properties',
-                  'transform-react-constant-elements',
-                  'transform-react-remove-prop-types',
-                  'transform-react-pure-class-to-function',
+                  ["lodash", { "id": ["lodash", "recompose", "ramda"] }],
+                  "@babel/plugin-syntax-dynamic-import",
+                  "@babel/plugin-proposal-object-rest-spread",
+                  "@babel/plugin-proposal-class-properties",
+                  "@babel/plugin-transform-react-constant-elements",
+                  "@babel/plugin-syntax-object-rest-spread"
                 ],
                 presets: [
-                  [
-                    'env',
-                    {
-                      modules: false,
-                      targets: { browsers: ['last 2 versions', 'ie > 8'] },
-                    },
-                  ],
-                  'react',
-                ],
-              },
+                  "@babel/preset-typescript",
+                  "@babel/preset-react",
+                  ["@babel/preset-env", {
+                    "modules": false,
+                    "useBuiltIns": 'entry',
+                    "targets": { "browsers": ["last 2 versions", "ie > 8"] },
+                  }]
+                ]
+              }
             },
           ],
         },
@@ -78,7 +81,7 @@ export default (env, { module, plugins, output, ...config }) => {
         template: path.resolve(process.cwd(), 'dev/templates/index.html'),
       }),
       new UglifyJSPlugin({
-        test: /\.js($|\?)/i,
+        test: /\.min\.js($|\?)/i,
         cache: true,
         parallel: true,
         sourceMap: true,
