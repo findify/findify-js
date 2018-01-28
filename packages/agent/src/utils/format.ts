@@ -1,3 +1,5 @@
+import 'core-js/fn/array/includes';
+
 import * as Types from '../types';
 import { getFacetType } from './filters';
 const identity = require('lodash/identity');
