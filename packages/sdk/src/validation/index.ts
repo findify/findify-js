@@ -1,4 +1,5 @@
 import 'core-js/fn/object/values';
+import 'core-js/fn/array/includes';
 
 import { User } from '../common';
 import * as Request from '../request';

@@ -1,3 +1,5 @@
+import 'core-js/fn/array/includes';
+
 import debug from 'debug';
 import { Config, Client } from './client';
 import * as R from './request';

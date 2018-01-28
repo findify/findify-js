@@ -79,7 +79,9 @@ export class Agent {
   private fireEvent(event:string, changes, meta: Types.ResponseMeta) {
     const handlers = this.handlers.filter(({ key }) => key === event);
     if (handlers) {
-      handlers.forEach(({ handler }) => handler(changes, meta))
+      for (let index = 0; index < handlers.length; index++) {
+        handlers[index].handler(changes, meta); 
+      }
     }
   }
 
