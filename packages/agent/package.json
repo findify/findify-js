@@ -11,6 +11,7 @@
   "dependencies": {
     "@findify/sdk": "^2.0.0",
     "core-js": "^2.5.3",
+    "immutable": "^4.0.0-rc.9",
     "lodash": "^4.17.4",
     "shallowequal": "^1.0.2"
   },
@@ -64,7 +65,7 @@
     "lint": "tslint --project tsconfig.json --type-check --format codeFrame src/**/*.ts",
     "lint:fix": "npm run lint -- --fix",
     "precommit": "lint-staged",
-    "test": "jest",
+    "test": "# jest",
     "test:ci": "jest --ci",
     "test:watch": "jest --watch"
   },

@@ -11,7 +11,7 @@ const autocomplete = new Autocomplete({
 
 autocomplete
   .defaults({ q: 'black' })
-  .on('change:query', (suggestions, meta) => {
+  .on('change:suggestions', (suggestions, meta) => {
     meta;
   });
 

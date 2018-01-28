@@ -41,7 +41,7 @@ export type ActionHandler = (state: any, meta?:any) => any
 export type Handler = {
   key: string,
   handler: ActionHandler
-  path: (any) => any
+  path: string[]
 }
 
 export type AgentConfig = {

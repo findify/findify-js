@@ -1,29 +1,23 @@
 import * as Types from '../types';
 
-import shallowequal from 'shallowequal';
 import { init } from '@findify/sdk';
-
+import { fromJS, Map } from 'immutable';
 import { Cache } from './Cache';
 import { getChangedFields } from '../utils/changes';
-import { deepMerge } from '../utils/merge';
 import { stateToQuery, queryToState } from '../utils/format';
 import { getFacetType } from '../utils/filters';
+import { isFunction, isObject, debounce } from '../utils/helpers';
 
-const get = require('lodash/fp/get');
-const pick = require('lodash/fp/pick');
-const isFunction = require('lodash/isFunction');
-const isObject = require('lodash/isObject');
-const debounce = require('lodash/debounce');
+const pickConfigProps = ({ debounce, onError, immutable = false }) =>
+  ({ debounce, onError, immutable });
 
-const pickFilters = get('filters');
-const pickConfigProps = pick(['debounce', 'onError']);
-
+const _initial = Map();
 export class Agent {
   type: Types.RequestType = Types.RequestType.Search;
-  _defaults: any;
-  state: Types.State = {};
+  _defaults: Map<any, any> = _initial;
+  state: Map<any, any> = _initial;
+  response: Map<any, any> = _initial;
   handlers: Types.Handler[] = [];
-  response: Types.ResponseBody | any = {};
   config: Types.AgentConfig;
   onError: (error: Error) => void;
 
@@ -32,7 +26,6 @@ export class Agent {
 
   constructor(config: Types.Config) {
     const request = this.request.bind(this);
-
     this.config = pickConfigProps(config);
     this.handleResponse = this.handleResponse.bind(this);
     this.provider = init(config);
@@ -44,14 +37,14 @@ export class Agent {
   }
 
   public defaults(defaults) {
-    this._defaults = defaults;
+    this._defaults = fromJS(defaults);
     this.cache.resolve();
     return this;
   }
 
-  public on(action: string, handler: Types.ActionHandler) {
-    const [ event, ...path ] = action.split(':');
-    this.handlers.push({ handler, key: action, path: get(path) });
+  public on(key: string, handler: Types.ActionHandler) {
+    const [ event, ...path ] = key.split(':');
+    this.handlers.push({ handler, key, path });
     return this;
   }
 
@@ -64,55 +57,61 @@ export class Agent {
   }
 
   public reset(field?: string) {
-    if (!field) this.state = {};
+    if (!field) this.state = _initial;
     this.cache.reset(field);
     return this;
   }
 
   public set(field: string | Types.Field, update?: any) {
-    const value = isFunction(update) ? update(this.state[field] || {}) : update;
-    const changes = getChangedFields(this.state[field], value);
+    const value = fromJS(
+      isFunction(update)
+      ? update(this.state.get(field).toJS() || {})
+      : update
+    );
+    const changes = getChangedFields(this.state.get(field), value);
     if (changes) this.cache.set(field, changes);
     return this;
   }
 
   private fireEvent(event:string, changes, meta: Types.ResponseMeta) {
     const handlers = this.handlers.filter(({ key }) => key === event);
-    if (handlers) {
-      for (let index = 0; index < handlers.length; index++) {
-        handlers[index].handler(changes, meta); 
-      }
+    if (!handlers) return;
+    for (let index = 0; index < handlers.length; index++) {
+      handlers[index].handler(this.formatCallback(changes), meta); 
     }
+  }
+
+  private formatCallback(res) {
+    return this.config.immutable ? res : res.toJS()
   }
 
   private handleChanges(next, meta?) {
     const prev = this.response;
     this.handlers.forEach(({ path, handler }) => {
-      const update = path(next);
-      const old = path(prev);
-      if (
-        old !== update ||
-        (isObject(update) && !shallowequal(old, update))
-      ) {
-        handler(update, meta)
-      };
+      const update = next.getIn(path);
+      const old = prev.getIn(path);
+      if (update && (!old || !old.equals(update))) {
+        handler(this.formatCallback(update), meta);
+      }
     });
   }
 
   private handleResponse(res:Types.ResponseBody) {
-    const newState = queryToState(this.state, res.meta, this._defaults);
-    this.handleChanges(res, res.meta);
-    if (newState !== this.state) {
+    const response = fromJS(res);
+    const newState = queryToState(this.state, response.get('meta'), this._defaults);
+    this.handleChanges(response, response.get('meta'));
+    if (!newState.equals(this.state)) {
       this.state = newState;
-      this.fireEvent('change:query', newState, res.meta);
+      this.fireEvent('change:query', newState, res.get('meta'));
     }
     this.response = res;
   }
 
   private request(cache) {
-    const state = { ...this.state, ...cache };
-    const merge = deepMerge(this._defaults, state);
-    const params = stateToQuery(merge);
+    const state = this.state.merge(cache);
+    const merge = this._defaults.mergeDeepWith(state);
+    
+    const params = stateToQuery(merge).toJS();
     const type: any = this.type;
     this.provider
       .send({ params, type })

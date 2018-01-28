@@ -1,4 +1,4 @@
-const isObject = require('lodash/isObject');
+import { isObject } from './helpers';
 const mergeWith = require('lodash/fp/mergeWith');
 
 export const deepMerge = mergeWith(
