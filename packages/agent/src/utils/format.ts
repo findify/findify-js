@@ -1,55 +1,47 @@
 import 'core-js/fn/array/includes';
+import 'core-js/fn/object/values';
 
 import * as Types from '../types';
 import { getFacetType } from './filters';
-const identity = require('lodash/identity');
-const pick = require('lodash/fp/pick');
-const values = require('lodash/fp/values');
-const get = require('lodash/fp/get');
+import { identity } from './helpers';
+import { Map } from 'immutable';
 
-const pickFields = pick(values(Types.Field));
-const pickFilterValue = get('value');
+const _initial = Map();
 
-const formatFilters = filters =>
-  Object.keys(filters)
-    .filter(name => filters[name] && !!filters[name].length)
-    .map(name => ({
-      name,
-      type: getFacetType(filters[name][0]),
-      values: filters[name].map(value => ({ value })),
-    }));
+const formatFilters = (filters) => 
+  filters
+  .filter(value => !!value && !value.isEmpty())
+  .map((values, name) => Map({
+    name,
+    type: getFacetType(values.first()),
+    values: values.map(value => ({ value })),
+  }))
+  .toList();
 
 const formatQueryField = key =>
   ({
     filters: formatFilters,
   }[key] || identity);
 
-export const queryToState = (prev, next, defaults = {}) => {
-  const fields = Object.keys(prev).filter(key => next.hasOwnProperty(key));
+export const queryToState = (prev, next, defaults) => {
+  const fields = prev.filter((_, key) => next.has(key));
   
-  return fields.reduce((acc, key) => {
-    if (defaults[key] === next[key]) return acc;
-    if (key !== 'filters') return { ...acc, [key]: next[key] };
-    return {
-      ...acc,
-      [key]: next[key].reduce((filters, filter) => {
-        const _default = get([key, filter.name])(defaults);
-        const values = filter.values
-          .filter(v => !_default || !_default.includes(v.value))
-          .map(pickFilterValue);
-        return !values.length
-          ? acc
-          : {
-              ...filters,
-              [filter.name]: values,
-            };
-      }, {}),
-    };
-  }, {});
+  return fields.reduce((acc, value, key) => {
+
+    if (defaults.get(key) === value) return acc;
+    if (key !== 'filters') return acc.set(key, value);
+    return acc.set(key,
+      value.reduce((filters, filter) => {
+        const values = filter.get('values')
+          .filter(v => !defaults.hasIn([key, filter.name, v.get('value')]))
+          .map(v => v.get('value'));
+        return !values.empty() ? filters : filters.set(filter.get('name'), values);
+      }, _initial)
+    )
+  }, _initial);
 };
 
-export const stateToQuery = (state: Types.State): any =>
-  Object.keys(state).reduce(
-    (acc, key) => ({ ...acc, [key]: formatQueryField(key)(state[key]) }),
-    {}
-  );
+export const stateToQuery = (state: Map<any, any>): Map<any, any> =>
+  state.map((value, key) => {
+    return formatQueryField(key)(value)
+  });

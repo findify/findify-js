@@ -1,7 +1,6 @@
 import { Facets } from '../types';
 
-const isArray = require('lodash/isArray');
-const isObject = require('lodash/isObject');
+import { isArray, isObject } from './helpers';
 
 export const getFacetType = value => {
   if (isArray(value)) return Facets.category;

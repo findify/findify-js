@@ -1,7 +1,10 @@
-const debounce = require('lodash/debounce');
+import { debounce } from '../utils/helpers';
+import { Map } from 'immutable';
+
+const _initial = Map();
 
 export class Cache {
-  cache: any = {};
+  cache: any = _initial;
   resolver: any;
 
   constructor(resolver: (store) => void) {
@@ -15,22 +18,22 @@ export class Cache {
   }
 
   public set(field, value) {
-    this.cache[field] = value;
+    this.cache = this.cache.set(field, value);
     this.resolve();
   }
 
   public reset(field) {
     if (!field) {
-      this.cache = {};
+      this.cache = _initial;
     } else {
-      this.cache[field] = undefined;
+      this.cache = this.cache.delete(field);
     }
     this.resolve();
   }
 
   private purge() {
-    this.cache = {};
+    this.cache = _initial;
   }
 
-  public resolve = (debounce as any)(this.invalidate);
+  public resolve = debounce(this.invalidate);
 }

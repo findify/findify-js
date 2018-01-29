@@ -1,8 +1,5 @@
 import { getFacetType } from './filters';
-const isString = require('lodash/isString');
-const isArray = require('lodash/isArray');
-const isEmpty = require('lodash/isEmpty');
-const isEqual = require('lodash/isEqual');
+import { isArray, isObject } from './helpers';
 
 const isValidField = (values, key) =>
   values.every((value, i) => {
@@ -20,10 +17,10 @@ const isValidField = (values, key) =>
   });
 
 export const getChangedFields = (prev, next) => {
-  if (isEqual(prev, next)) return;
-  if (!prev || isString(next)) return next;
-  if (isEmpty(next)) return next;
-  return Object.keys(next).reduce((acc, key) => {
+  if (prev === next) return;
+  if (!prev || typeof next === 'string') return next;
+  if (next.isEmpty()) return next;
+  return next.reduce((acc, key) => {
     if (prev[key] === next[key]) return acc;
     return isArray(next[key]) && isValidField(next[key], key)
       ? { ...(acc || {}), [key]: next[key] }

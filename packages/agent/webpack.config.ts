@@ -4,6 +4,8 @@ import * as GitRevisionPlugin from 'git-revision-webpack-plugin';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import * as LodashWebpackPlugin from 'lodash-webpack-plugin';
 import * as UglifyJSPlugin from 'uglifyjs-webpack-plugin';
+import * as DuplicatePackageCheckerPlugin from 'duplicate-package-checker-webpack-plugin';
+import * as  CompressionPlugin from 'compression-webpack-plugin';
 
 interface WebpackEnvArgs {
   analyze?: boolean;
@@ -35,7 +37,12 @@ export default (env: WebpackEnvArgs) => {
     devtool: 'source-map',
     stats: 'minimal',
     bail: true,
-    resolve: { extensions: ['.ts', '.js'] },
+    resolve: {
+      extensions: ['.ts', '.js'],
+      alias: {
+        debug: path.resolve(__dirname, 'node_modules/debug')
+      },
+    },
     module: {
       rules: [
         {
@@ -47,7 +54,6 @@ export default (env: WebpackEnvArgs) => {
               options: {
                 babelrc: false,
                 plugins: [
-                  "lodash",
                   "@babel/plugin-proposal-object-rest-spread",
                   "@babel/plugin-proposal-class-properties",
                 ],
@@ -70,16 +76,16 @@ export default (env: WebpackEnvArgs) => {
         __COMMITHASH__: JSON.stringify(new GitRevisionPlugin().commithash()),
         'process.env': { NODE_ENV: JSON.stringify('production') },
       }),
-  
-      new LodashWebpackPlugin({
-        currying: true,
-        placeholders: true,
-        paths: true
-      }),
-      
       // enable scope hoisting
       new webpack.optimize.ModuleConcatenationPlugin(),
 
+      new webpack.LoaderOptionsPlugin({
+        debug: false,
+        minimize: true
+      }),
+  
+      new DuplicatePackageCheckerPlugin(),
+  
       new UglifyJSPlugin({
         test: /\.min\.js($|\?)/i,
         cache: true,
@@ -94,6 +100,10 @@ export default (env: WebpackEnvArgs) => {
           }
         }
       }),
+
+      new CompressionPlugin({
+        exclude: /\.map/,
+      })
     ],
   };
 

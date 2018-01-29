@@ -1,9 +1,9 @@
 import 'core-js/es6/promise';
 
 import debug from 'debug';
-import jsonp from 'jsonp';
 import axios, { AxiosRequestConfig as AxiosOptions } from 'axios';
 import * as qs from 'qs';
+const jsonp = require('jsonp');
 
 import { retryTimes } from './utils';
 import { Method, Body } from './request';
