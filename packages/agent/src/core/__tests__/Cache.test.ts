@@ -1,11 +1,12 @@
 import { Cache } from '../Cache';
 import defer from 'lodash/defer';
+import { fromJS } from 'immutable';
 
-const mockObject = { '1': 1, '2': 2 };
+const mockObject = { 1: 1, 2: 2 };
 
 describe('Cache', () => {
   let store = void 0;
-  const cache = new Cache(c => (store = c));
+  const cache = new Cache(c => (store = c.toJS()));
 
   it('Invalidates cache after next tick', () => {
     cache.set(1, 1);

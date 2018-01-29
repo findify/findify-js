@@ -23,7 +23,7 @@ const formatQueryField = key =>
     filters: formatFilters,
   }[key] || identity);
 
-export const queryToState = (prev, next, defaults) => {
+export const queryToState = (prev, next, defaults?) => {
   const fields = prev.filter((_, key) => next.has(key));
   
   /**
@@ -35,7 +35,7 @@ export const queryToState = (prev, next, defaults) => {
     /**
      * Skip if value equals default one
      */
-    if (defaults.get(key) === nextField) return acc;
+    if (defaults && defaults.get(key) === nextField) return acc;
 
     /**
      * Return new value without formating
@@ -52,7 +52,7 @@ export const queryToState = (prev, next, defaults) => {
         const nextFilterName = nextFilter.get('name');
         const values = nextFilter
           .get('values')
-          .filter(v => !defaults.hasIn([key, nextFilterName, v.get('value')]))
+          .filter(v => !defaults || !defaults.hasIn([key, nextFilterName, v.get('value')]))
           .map(v => v.get('value'));
         return values.isEmpty() ? filters : filters.set(nextFilterName, values);
       }, _initial)
