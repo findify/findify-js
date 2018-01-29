@@ -11,11 +11,15 @@ const autocomplete = new Search({
 autocomplete
   .defaults({ q: 'black', filters: { color: ['black', 'white'] }})
   .set('q', 'white')
-  .set('filters', (f) => ({
+  .set('filters', (f) => {
+    return {
     ...f,
     price: [{ from: 1, to: 20 }]
-  }))
-  .on('change:suggestions', (suggestions, meta) => {
+  }})
+  .on('change:query', (suggestions, meta) => {
+    meta;
+  })
+  .on('change:items', (suggestions, meta) => {
     meta;
   });
 

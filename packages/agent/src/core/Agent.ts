@@ -125,7 +125,7 @@ export class Agent {
     this.handleChanges(response, response.get('meta'));
     if (!newState.equals(this.state)) {
       this.state = newState;
-      this.fireEvent('change:query', newState, res.get('meta'));
+      this.fireEvent('change:query', newState, response.get('meta'));
     }
     this.response = response;
   }

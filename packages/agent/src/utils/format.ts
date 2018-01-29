@@ -26,16 +26,35 @@ const formatQueryField = key =>
 export const queryToState = (prev, next, defaults) => {
   const fields = prev.filter((_, key) => next.has(key));
   
-  return fields.reduce((acc, value, key) => {
+  /**
+   * Walk trough old keys to prevent new fields tracking
+   */
+  return fields.keySeq().reduce((acc, key) => {
+    const nextField = next.get(key);
 
-    if (defaults.get(key) === value) return acc;
-    if (key !== 'filters') return acc.set(key, value);
+    /**
+     * Skip if value equals default one
+     */
+    if (defaults.get(key) === nextField) return acc;
+
+    /**
+     * Return new value without formating
+     */
+    if (key !== 'filters') return acc.set(key, nextField);
+
+    /**
+     *  Reduce filters
+     *  from: [{ name: string, type: string, values:[{ value: any }]}]
+     *  to: { [name: string]: [any[] }
+     */
     return acc.set(key,
-      value.reduce((filters, filter) => {
-        const values = filter.get('values')
-          .filter(v => !defaults.hasIn([key, filter.name, v.get('value')]))
+      nextField.reduce((filters, nextFilter) => {
+        const nextFilterName = nextFilter.get('name');
+        const values = nextFilter
+          .get('values')
+          .filter(v => !defaults.hasIn([key, nextFilterName, v.get('value')]))
           .map(v => v.get('value'));
-        return !values.empty() ? filters : filters.set(filter.get('name'), values);
+        return values.isEmpty() ? filters : filters.set(nextFilterName, values);
       }, _initial)
     )
   }, _initial);
