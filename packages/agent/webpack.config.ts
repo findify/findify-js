@@ -39,9 +39,6 @@ export default (env: WebpackEnvArgs) => {
     bail: true,
     resolve: {
       extensions: ['.ts', '.js'],
-      alias: {
-        debug: path.resolve(__dirname, 'node_modules/debug')
-      },
     },
     module: {
       rules: [
