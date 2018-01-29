@@ -9,15 +9,16 @@ const autocomplete = new Search({
 });
 
 autocomplete
-  .defaults({ q: 'black', filters: { color: ['black', 'white'] }})
+  .defaults({ q: 'black', filters: { color: ['white'] }})
   .set('q', 'white')
-  .set('filters', (f) => ({
-    ...f,
-    price: [{ from: 1, to: 20 }]
-  }))
-  .on('change:suggestions', (suggestions, meta) => {
+  .set('filters', { color: ['black'] })
+  .on('change:query', (suggestions, meta) => {
     meta;
-  });
+  })
+  .on('change:items', (suggestions, meta) => {
+    meta;
+  })
+  .reset();
 
 setTimeout(() => {
   autocomplete.set('q', 'orange');

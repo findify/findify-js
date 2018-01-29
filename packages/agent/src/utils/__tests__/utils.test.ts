@@ -1,6 +1,7 @@
 import { deepMerge } from '../merge';
 import { getFacetType } from '../filters';
 import { stateToQuery, queryToState } from '../format';
+import { fromJS } from 'immutable';
 
 describe('DeepMerge', () => {
   it('Should merge objects', () => {
@@ -47,12 +48,12 @@ describe('Format', () => {
       values: [{ value: { from: 1, to: 2 }}]
     }]
   };
-
+  
   it('Should convert state to query', () => {
-    expect(stateToQuery(state)).toEqual(query)
+    expect(stateToQuery(fromJS(state)).toJS()).toEqual(query)
   })
 
   it('Should convert query to state', () => {
-    expect(queryToState({ q: true, filters: true }, query)).toEqual(state)
+    expect(queryToState(fromJS({ q: true, filters: true }), fromJS(query)).toJS()).toEqual(state)
   })
 })
