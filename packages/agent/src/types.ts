@@ -41,11 +41,13 @@ export type ActionHandler = (state: any, meta?:any) => any
 export type Handler = {
   key: string,
   handler: ActionHandler
-  path: (any) => any
+  path: string[]
 }
 
 export type AgentConfig = {
-  debounce?: number | boolean
+  debounce?: number | boolean,
+  immutable?: boolean,
+  onError?: () => Error
 }
 
 export type Config = Config & AgentConfig

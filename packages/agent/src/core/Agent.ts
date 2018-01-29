@@ -1,29 +1,24 @@
 import * as Types from '../types';
 
-import shallowequal from 'shallowequal';
 import { init } from '@findify/sdk';
-
+import { fromJS, Map, isImmutable } from 'immutable';
 import { Cache } from './Cache';
 import { getChangedFields } from '../utils/changes';
-import { deepMerge } from '../utils/merge';
 import { stateToQuery, queryToState } from '../utils/format';
 import { getFacetType } from '../utils/filters';
+import { isFunction, isObject, debounce } from '../utils/helpers';
 
-const get = require('lodash/fp/get');
-const pick = require('lodash/fp/pick');
-const isFunction = require('lodash/isFunction');
-const isObject = require('lodash/isObject');
-const debounce = require('lodash/debounce');
+const pickConfigProps = ({ debounce, onError, immutable = false }) =>
+  ({ debounce, onError, immutable });
 
-const pickFilters = get('filters');
-const pickConfigProps = pick(['debounce', 'onError']);
+const _initial = Map();
 
 export class Agent {
   type: Types.RequestType = Types.RequestType.Search;
-  _defaults: any;
-  state: Types.State = {};
+  _defaults: Map<any, any> = _initial;
+  state: Map<any, any> = _initial;
+  response: Map<any, any> = _initial;
   handlers: Types.Handler[] = [];
-  response: Types.ResponseBody | any = {};
   config: Types.AgentConfig;
   onError: (error: Error) => void;
 
@@ -32,8 +27,8 @@ export class Agent {
 
   constructor(config: Types.Config) {
     const request = this.request.bind(this);
-
     this.config = pickConfigProps(config);
+    this.onError = config.onError && config.onError.bind(this);
     this.handleResponse = this.handleResponse.bind(this);
     this.provider = init(config);
     this.cache = new Cache(
@@ -43,18 +38,35 @@ export class Agent {
     );
   }
 
+  /**
+   * Set values witch will be added to request by default
+   * The defaults could be overwrite by via .set function
+   * @param defaults [{ q: string, filters: any[], sort: any[], limit: number, offset: number }]
+   */
   public defaults(defaults) {
-    this._defaults = defaults;
+    this._defaults = fromJS(defaults);
     this.cache.resolve();
     return this;
   }
 
-  public on(action: string, handler: Types.ActionHandler) {
-    const [ event, ...path ] = action.split(':');
-    this.handlers.push({ handler, key: action, path: get(path) });
+  /**
+   * Listen to changes in specific response field
+   * eq: change:items
+   * @param key [string]: [action]:[...[:fields]]
+   * @param handler [function(state, meta)]: callback function
+   */
+  public on(key: string, handler: Types.ActionHandler) {
+    const [ event, ...path ] = key.split(':');
+    this.handlers.push({ handler, key, path });
     return this;
   }
 
+  /**
+   * Remove change listeners
+   * eq: .off(someCallback) - will remove listeners with callback function "someCallback"
+   * eq: .off('change:items') - will remove all listeners who listen to changes in items
+   * @param action [string]: [action]:[...[:fields]] | [function]
+   */
   public off(action?: string | Types.ActionHandler) {
     if (!action) this.handlers = [];
     this.handlers = this.handlers.filter(
@@ -63,56 +75,69 @@ export class Agent {
     return this;
   }
 
+  /**
+   * Reset query/or field to default value
+   * @param field [string?]
+   */
   public reset(field?: string) {
-    if (!field) this.state = {};
+    if (!field) this.state = _initial;
     this.cache.reset(field);
     return this;
   }
 
+  /**
+   * Set specific query value
+   * eq: .set('limit', 20)
+   * eq: .set('filters', (prevFilters) => {...prevFilters, size: ['M']})
+   * @param field [string] - query field
+   * @param update [any|function] - function which will return new value or value
+   */
   public set(field: string | Types.Field, update?: any) {
-    const value = isFunction(update) ? update(this.state[field] || {}) : update;
-    const changes = getChangedFields(this.state[field], value);
+    const oldValue = this.state.get(field);
+    const value = isFunction(update) ? update(this.format(oldValue)) : update;
+    const changes = getChangedFields(oldValue, isImmutable(value) ? value : fromJS(value));
     if (changes) this.cache.set(field, changes);
     return this;
   }
 
   private fireEvent(event:string, changes, meta: Types.ResponseMeta) {
     const handlers = this.handlers.filter(({ key }) => key === event);
-    if (handlers) {
-      for (let index = 0; index < handlers.length; index++) {
-        handlers[index].handler(changes, meta); 
-      }
+    if (!handlers) return;
+    for (let index = 0; index < handlers.length; index++) {
+      handlers[index].handler(this.format(changes), this.format(meta)); 
     }
   }
 
   private handleChanges(next, meta?) {
     const prev = this.response;
     this.handlers.forEach(({ path, handler }) => {
-      const update = path(next);
-      const old = path(prev);
-      if (
-        old !== update ||
-        (isObject(update) && !shallowequal(old, update))
-      ) {
-        handler(update, meta)
-      };
+      const update = next.getIn(path);
+      const old = prev.getIn(path);
+      if (update && (!old || !old.equals(update))) {
+        handler(this.format(update), this.format(meta));
+      }
     });
   }
 
   private handleResponse(res:Types.ResponseBody) {
-    const newState = queryToState(this.state, res.meta, this._defaults);
-    this.handleChanges(res, res.meta);
-    if (newState !== this.state) {
+    const response = fromJS(res);
+    const newState = queryToState(this.state, response.get('meta'), this._defaults);
+    this.handleChanges(response, response.get('meta'));
+    if (!newState.equals(this.state)) {
       this.state = newState;
-      this.fireEvent('change:query', newState, res.meta);
+      this.fireEvent('change:query', newState, response.get('meta'));
     }
-    this.response = res;
+    this.response = response;
   }
 
+  /**
+   * This function will fire after next tick after last .set or .default call
+   * @param cache [{any}] - established values
+   */
   private request(cache) {
-    const state = { ...this.state, ...cache };
-    const merge = deepMerge(this._defaults, state);
-    const params = stateToQuery(merge);
+    this.state = this.state.merge(cache);
+    const merge = this._defaults.mergeDeep(this.state);
+    const params = stateToQuery(merge).toJS();
     const type: any = this.type;
     this.provider
       .send({ params, type })
@@ -123,7 +148,16 @@ export class Agent {
         : console.warn(error)
       );
 
-    this.state = state;
     return;
+  }
+
+  /**
+   * Will convert value to pure JS structure
+   * @param value
+   */
+  private format(value) {
+    return this.config.immutable
+      ? value
+      : isImmutable(value) ? value.toJS() : value
   }
 }
