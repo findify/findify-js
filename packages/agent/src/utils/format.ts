@@ -8,19 +8,20 @@ import { Map } from 'immutable';
 
 const _initial = Map();
 
-const formatFilters = filters =>
+const formatFilters = (filters) => 
   filters
-    .filter(name => name && !name.isEmpty())
-    .mapEntries(([name, values]) => Map({
-      name,
-      type: getFacetType(values.at(0)),
-      values: values.map(value => ({ value })),
-    }));
+  .filter(value => !!value && !value.isEmpty())
+  .map((values, name) => Map({
+    name,
+    type: getFacetType(values.first()),
+    values: values.map(value => ({ value })),
+  }))
+  .toList();
 
 const formatQueryField = key =>
   ({
     filters: formatFilters,
-  }[key] || identity)(key);
+  }[key] || identity);
 
 export const queryToState = (prev, next, defaults) => {
   const fields = prev.filter((_, key) => next.has(key));
@@ -41,6 +42,6 @@ export const queryToState = (prev, next, defaults) => {
 };
 
 export const stateToQuery = (state: Map<any, any>): Map<any, any> =>
-  state.map((key) => 
-    formatQueryField(key)
-  );
+  state.map((value, key) => {
+    return formatQueryField(key)(value)
+  });

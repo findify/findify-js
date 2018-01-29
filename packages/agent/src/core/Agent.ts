@@ -1,7 +1,7 @@
 import * as Types from '../types';
 
 import { init } from '@findify/sdk';
-import { fromJS, Map } from 'immutable';
+import { fromJS, Map, isImmutable } from 'immutable';
 import { Cache } from './Cache';
 import { getChangedFields } from '../utils/changes';
 import { stateToQuery, queryToState } from '../utils/format';
@@ -12,6 +12,7 @@ const pickConfigProps = ({ debounce, onError, immutable = false }) =>
   ({ debounce, onError, immutable });
 
 const _initial = Map();
+
 export class Agent {
   type: Types.RequestType = Types.RequestType.Search;
   _defaults: Map<any, any> = _initial;
@@ -27,6 +28,7 @@ export class Agent {
   constructor(config: Types.Config) {
     const request = this.request.bind(this);
     this.config = pickConfigProps(config);
+    this.onError = config.onError && config.onError.bind(this);
     this.handleResponse = this.handleResponse.bind(this);
     this.provider = init(config);
     this.cache = new Cache(
@@ -36,18 +38,35 @@ export class Agent {
     );
   }
 
+  /**
+   * Set values witch will be added to request by default
+   * The defaults could be overwrite by via .set function
+   * @param defaults [{ q: string, filters: any[], sort: any[], limit: number, offset: number }]
+   */
   public defaults(defaults) {
     this._defaults = fromJS(defaults);
     this.cache.resolve();
     return this;
   }
 
+  /**
+   * Listen to changes in specific response field
+   * eq: change:items
+   * @param key [string]: [action]:[...[:fields]]
+   * @param handler [function(state, meta)]: callback function
+   */
   public on(key: string, handler: Types.ActionHandler) {
     const [ event, ...path ] = key.split(':');
     this.handlers.push({ handler, key, path });
     return this;
   }
 
+  /**
+   * Remove change listeners
+   * eq: .off(someCallback) - will remove listeners with callback function "someCallback"
+   * eq: .off('change:items') - will remove all listeners who listen to changes in items
+   * @param action [string]: [action]:[...[:fields]] | [function]
+   */
   public off(action?: string | Types.ActionHandler) {
     if (!action) this.handlers = [];
     this.handlers = this.handlers.filter(
@@ -56,19 +75,27 @@ export class Agent {
     return this;
   }
 
+  /**
+   * Reset query/or field to default value
+   * @param field [string?]
+   */
   public reset(field?: string) {
     if (!field) this.state = _initial;
     this.cache.reset(field);
     return this;
   }
 
+  /**
+   * Set specific query value
+   * eq: .set('limit', 20)
+   * eq: .set('filters', (prevFilters) => {...prevFilters, size: ['M']})
+   * @param field [string] - query field
+   * @param update [any|function] - function which will return new value or value
+   */
   public set(field: string | Types.Field, update?: any) {
-    const value = fromJS(
-      isFunction(update)
-      ? update(this.state.get(field).toJS() || {})
-      : update
-    );
-    const changes = getChangedFields(this.state.get(field), value);
+    const oldValue = this.state.get(field);
+    const value = isFunction(update) ? update(this.format(oldValue)) : update;
+    const changes = getChangedFields(oldValue, isImmutable(value) ? value : fromJS(value));
     if (changes) this.cache.set(field, changes);
     return this;
   }
@@ -77,12 +104,8 @@ export class Agent {
     const handlers = this.handlers.filter(({ key }) => key === event);
     if (!handlers) return;
     for (let index = 0; index < handlers.length; index++) {
-      handlers[index].handler(this.formatCallback(changes), meta); 
+      handlers[index].handler(this.format(changes), this.format(meta)); 
     }
-  }
-
-  private formatCallback(res) {
-    return this.config.immutable ? res : res.toJS()
   }
 
   private handleChanges(next, meta?) {
@@ -91,7 +114,7 @@ export class Agent {
       const update = next.getIn(path);
       const old = prev.getIn(path);
       if (update && (!old || !old.equals(update))) {
-        handler(this.formatCallback(update), meta);
+        handler(this.format(update), this.format(meta));
       }
     });
   }
@@ -104,13 +127,16 @@ export class Agent {
       this.state = newState;
       this.fireEvent('change:query', newState, res.get('meta'));
     }
-    this.response = res;
+    this.response = response;
   }
 
+  /**
+   * This function will fire after next tick after last .set or .default call
+   * @param cache [{any}] - established values
+   */
   private request(cache) {
-    const state = this.state.merge(cache);
-    const merge = this._defaults.mergeDeepWith(state);
-    
+    this.state = this.state.merge(cache);
+    const merge = this._defaults.mergeDeep(this.state);
     const params = stateToQuery(merge).toJS();
     const type: any = this.type;
     this.provider
@@ -122,7 +148,16 @@ export class Agent {
         : console.warn(error)
       );
 
-    this.state = state;
     return;
+  }
+
+  /**
+   * Will convert value to pure JS structure
+   * @param value
+   */
+  private format(value) {
+    return this.config.immutable
+      ? value
+      : isImmutable(value) ? value.toJS() : value
   }
 }

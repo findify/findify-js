@@ -1,8 +1,7 @@
-import { Autocomplete } from '../src';
+import { Autocomplete, Search } from '../src';
 
-const autocomplete = new Autocomplete({
+const autocomplete = new Search({
   key: '8a2c6a1e-1aac-4047-8514-f284203c4b59',
-  debounce: 1000,
   user: {
     uid: '1',
     sid: '1',
@@ -10,14 +9,15 @@ const autocomplete = new Autocomplete({
 });
 
 autocomplete
-  .defaults({ q: 'black' })
+  .defaults({ q: 'black', filters: { color: ['black', 'white'] }})
+  .set('q', 'white')
+  .set('filters', (f) => ({
+    ...f,
+    price: [{ from: 1, to: 20 }]
+  }))
   .on('change:suggestions', (suggestions, meta) => {
     meta;
   });
-
-setTimeout(() => {
-  autocomplete.set('q', 'white');
-}, 100);
 
 setTimeout(() => {
   autocomplete.set('q', 'orange');

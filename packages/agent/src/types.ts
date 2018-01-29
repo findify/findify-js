@@ -45,7 +45,9 @@ export type Handler = {
 }
 
 export type AgentConfig = {
-  debounce?: number | boolean
+  debounce?: number | boolean,
+  immutable?: boolean,
+  onError?: () => Error
 }
 
 export type Config = Config & AgentConfig
