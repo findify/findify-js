@@ -17,7 +17,7 @@ const isValidField = (values, key) =>
   });
 
 export const getChangedFields = (prev, next) => {
-  if (prev === next) return;
+  if (prev === next) return false;
   if (!prev || typeof next === 'string') return next;
   if (next.isEmpty()) return next;
   return next.reduce((acc, key) => {

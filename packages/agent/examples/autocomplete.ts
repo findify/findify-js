@@ -9,8 +9,9 @@ const autocomplete = new Search({
 });
 
 autocomplete
-  .defaults({ q: 'black', filters: { color: ['white'] }})
-  .set('q', 'white')
+  .defaults({ filters: { color: ['white'] }})
+  .set('q', 'black')
+  .set('q', '')
   .set('filters', { color: ['black'] })
   .on('change:query', (suggestions, meta) => {
     meta;
@@ -18,8 +19,7 @@ autocomplete
   .on('change:items', (suggestions, meta) => {
     meta;
   })
-  .reset();
 
-setTimeout(() => {
-  autocomplete.set('q', 'orange');
-}, 100);
+// setTimeout(() => {
+//   autocomplete.set('q', 'orange');
+// }, 100);
