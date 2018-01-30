@@ -80,7 +80,11 @@ export class Agent {
    * @param field [string?]
    */
   public reset(field?: string) {
-    if (!field) this.state = _initial;
+    if (!field) {
+      this.state = _initial;
+    } else {
+      this.state = this.state.delete(field);
+    }
     this.cache.reset(field);
     return this;
   }
@@ -96,7 +100,11 @@ export class Agent {
     const oldValue = this.state.get(field);
     const value = isFunction(update) ? update(this.format(oldValue)) : update;
     const changes = getChangedFields(oldValue, isImmutable(value) ? value : fromJS(value));
-    if (changes) this.cache.set(field, changes);
+    if (changes) {
+      this.cache.set(field, changes);
+    } else if (changes !== false){
+      this.reset(field);
+    }
     return this;
   }
 
