@@ -57,7 +57,7 @@
     "del-cli": "^1.1.0",
     "dotenv": "^4.0.0",
     "jest": "^22.1.4",
-    "ts-jest": "^22.0.1",
+    "ts-jest": "^22.0.2",
     "npm-check-updates": "^2.14.0",
     "tslint": "^5.9.1",
     "tslint-config-airbnb": "^5.4.2",
