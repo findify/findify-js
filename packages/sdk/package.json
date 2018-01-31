@@ -38,8 +38,6 @@
     "docs": "typedoc --name 'Findify SDK' --hideGenerator --target es5 --theme default --out doc src"
   },
   "dependencies": {
-    "@types/qs": "^6.5.1",
-    "@types/jsonp": "^0.2.0",
     "axios": "^0.17.1",
     "jsonp": "^0.2.1",
     "debug": "^3.1.0",
@@ -48,6 +46,8 @@
   },
   "devDependencies": {
     "nock": "^9.1.6",
+    "@types/qs": "^6.5.1",
+    "@types/jsonp": "^0.2.0",
     "@types/nock": "^9.1.2",
     "@types/jest": "^22.0.1",
     "@types/node": "^9.3.0",
