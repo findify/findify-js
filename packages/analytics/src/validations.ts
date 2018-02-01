@@ -1,67 +1,55 @@
-import has = require('lodash/has');
-
 import { Config, EventName } from './types';
 
 function validateInitParams(config: Config) {
-  if (!has(config, 'key')) {
+  if (!('key' in config)) {
     throw new Error('"key" param is required');
   }
 }
 
 function validateSendEventParams(name: EventName, request, config: Config) {
-  if (
-    [
-      'click-suggestion',
-      'click-item',
-      'redirect',
-      'purchase',
-      'add-to-cart',
-      'update-cart',
-      'view-page',
-    ].indexOf(name) === -1
-  ) {
+  if (!(name in EventName)) {
     throw new Error('Event not found');
   }
 
-  if (name === 'click-suggestion') {
-    if (!has(request, 'rid')) {
+  if (name === EventName.clickSuggestion) {
+    if (!('rid' in request)) {
       throw new Error('"rid" param is required');
     }
 
-    if (!has(request, 'suggestion')) {
+    if (!('suggestion' in request)) {
       throw new Error('"suggestion" param is required');
     }
   }
 
-  if (name === 'click-item' && !has(request, 'item_id')) {
+  if (name === EventName.clickItem && !('item_id' in request)) {
     throw new Error('"item_id" param is required');
   }
 
-  if (name === 'redirect') {
-    if (!has(request, 'rid')) {
+  if (name === EventName.redirect) {
+    if (!('rid' in request)) {
       throw new Error('"rid" param is required');
     }
 
-    if (!has(request, 'suggestion')) {
+    if (!('suggestion' in request)) {
       throw new Error('"suggestion" param is required');
     }
   }
 
-  if (name === 'purchase') {
-    if (!has(request, 'order_id')) {
+  if (name === EventName.purchase) {
+    if (!('order_id' in request)) {
       throw new Error('"order_id" param is required');
     }
 
     if (!config.platform || !config.platform.bigcommerce) {
-      if (!has(request, 'currency')) {
+      if (!('currency' in request)) {
         throw new Error('"currency" param is required');
       }
 
-      if (!has(request, 'revenue')) {
+      if (!('revenue' in request)) {
         throw new Error('"revenue" param is required');
       }
 
-      if (!has(request, 'line_items')) {
+      if (!('line_items' in request)) {
         throw new Error('"line_items" param is required');
       }
 
@@ -79,12 +67,12 @@ function validateSendEventParams(name: EventName, request, config: Config) {
     }
   }
 
-  if (name === 'add-to-cart' && !has(request, 'item_id')) {
+  if (name === EventName.addToCart && !('item_id' in request)) {
     throw new Error('"item_id" param is required');
   }
 
-  if (name === 'update-cart') {
-    if (!has(request, 'line_items')) {
+  if (name === EventName.updateCart) {
+    if (!('line_items' in request)) {
       throw new Error('"line_items" param is required');
     }
 

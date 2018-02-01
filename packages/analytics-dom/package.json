@@ -1,7 +1,7 @@
 {
-  "name": "@findify/analytics",
-  "description": "Findify analytics",
-  "version": "3.1.0",
+  "name": "@findify/analytics-dom",
+  "description": "Findify analytics DOM bindings",
+  "version": "0.0.1",
   "main": "lib/index.js",
   "tags": [
     "findify",
@@ -20,10 +20,9 @@
     "lint": "tslint --project tsconfig.json --type-check --format codeFrame src/**/*.ts",
     "lint:fix": "npm run lint -- --fix",
     "precommit": "lint-staged",
-    "test": "# jest",
+    "test": "jest",
     "test:ci": "jest --ci",
-    "test:watch": "jest --watch",
-    "prepare": "npm run build:lib"
+    "test:watch": "jest --watch"
   },
   "author": "Findify <yourfriends@findify.io>",
   "license": "MIT",
@@ -34,14 +33,9 @@
     "access": "public"
   },
   "dependencies": {
-    "change-emitter": "^0.1.6",
-    "qs": "^6.5.1",
-    "store": "^2.0.12",
-    "core-js": "^2.5.3"
+    "@findify/analytics": "^3.1.0"
   },
   "devDependencies": {
-    "@types/node": "^9.3.0",
-    "@types/qs": "^6.5.1",
     "@babel/core": "^7.0.0-beta.38",
     "@babel/plugin-proposal-class-properties": "^7.0.0-beta.38",
     "@babel/plugin-proposal-object-rest-spread": "^7.0.0-beta.38",

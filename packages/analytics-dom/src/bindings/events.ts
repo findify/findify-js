@@ -1,23 +1,28 @@
-import * as storage from '../modules/storage';
-import mapKeys = require('lodash/mapKeys');
-import memoize = require('lodash/memoize');
 import { decamelize } from 'humps';
+import { EventName } from '@findify/analytics/lib/types';
 
 const nodeToArray = node => Array.prototype.slice.call(node);
 
+/**
+ * Transform findifyFooBar to foo_bar
+ * @param obj 
+ */
 const normalizeKeys = (obj = {}): any =>
-  mapKeys(obj, (_, key) =>
-    decamelize(key, { separator: '_' }).replace('findify_', '')
-  );
+  Object.keys(obj).reduce((acc, key) => ({
+    ...acc,
+    [decamelize(key, { separator: '_' }).replace('findify_', '')]: obj[key]
+  }), {});
 
-const normalizeClass = memoize(
-  name =>
-    ({
-      product_id: 'item_id',
-      price_currency_code: 'currency',
-      order_number: 'order_id',
-    }[name] || name)
-);
+/**
+ * Map old class names to new event props
+ * @param name className
+ */
+const normalizeClass = name =>
+  ({
+    product_id: 'item_id',
+    price_currency_code: 'currency',
+    order_number: 'order_id',
+  }[name] || name);
 
 const getPropsFromChildren = nodeList =>
   nodeToArray(nodeList).reduce(
@@ -35,10 +40,15 @@ const getPropsFromChildren = nodeList =>
     {}
   );
 
+/**
+ * Recursively get data-* attributes of node and its children
+ * to create key-value object of event props
+ * @param node DOMNode
+ */
 export const getEventData = node => {
   const ownProps = normalizeKeys(node.dataset);
 
-  if (['update-cart', 'purchase'].includes(ownProps.event)) {
+  if ([EventName.addToCart, EventName.purchase].includes(ownProps.event)) {
     return {
       ...ownProps,
       line_items: nodeToArray(node.children).map(e => normalizeKeys(e.dataset)),
@@ -49,11 +59,20 @@ export const getEventData = node => {
   return { ...ownProps, ...childrenProps };
 };
 
+/**
+ * Get all nodes with data-findify-event
+ * and recursively create object of [eventName]: {eventProps}
+ * @param root window
+ */
 export const getEventsOnPage = root =>
   nodeToArray(root.querySelectorAll('[data-findify-event]'))
     .map(getEventData)
     .reduce((acc, { event, ...rest }) => ({ ...acc, [event]: rest }), {});
 
+/**
+ * An old Analytics API code, but it still works... [maybe] 🤨
+ * @param root DOMNode
+ */
 export const getDeprecatedEvents = root => {
   const events = {};
   const pageViewNode = root.querySelector('.findify_page_product');

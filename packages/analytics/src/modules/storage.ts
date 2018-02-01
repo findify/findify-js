@@ -1,10 +1,16 @@
 import * as store from 'store';
 import * as expire from 'store/plugins/expire';
-import env = require('../env');
 
 store.addPlugin(expire);
 
 const symbols = '0123456789acbdefghijklmnopqrstuvwxyzABCDEFGHIJKLMOPQRSTUVWXYZ';
+
+const keys = {
+  visitKey: '_findify_visit',
+  uniqKey: '_findify_uniq',
+  ctKey: '_findify_ct',
+  cartKey: '_findify_cart',
+};
 
 function generateId() {
   let str = '';
@@ -14,7 +20,7 @@ function generateId() {
   return str;
 }
 
-const { uniqKey, visitKey, cartKey, ctKey } = env.storage;
+const { uniqKey, visitKey, cartKey, ctKey } = keys;
 
 function read(name: string): any {
   return store.get(name);
