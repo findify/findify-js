@@ -60,15 +60,13 @@ const sendEventCreator = ({ events, key }: Config) => (
  * @param sendEvent 
  * @param config
  */
-const invalidate = (sendEvent, eventsToFire, { platform, events }: Config) => {
+const createInvalidator = (sendEvent, { platform, events }: Config) => eventsToFire => {
+  if (!Object.keys(eventsToFire).length) return;
+
   state.events = {
     ...state.events,
     ...eventsToFire
   };
-
-  if (!eventsToFire[EventName.viewPage] && events[EventName.viewPage] !== false) {
-    sendEvent(EventName.viewPage, {});
-  }
 
   return Object.keys(eventsToFire).forEach((key: string) => {
     let endpoint;
@@ -91,13 +89,13 @@ const invalidate = (sendEvent, eventsToFire, { platform, events }: Config) => {
  * Initialize analytics or subscribe to events
  * @param props Configuration or Listener
  */
-export const analytics = (props: Config | (() => void)): Client => {
+export default (props: Config | (() => void)): Client => {
   if (isFunction(props)) return emitter.listen(props);
 
   const config = ({ events: {}, platform: {}, ...props } as Config);
   const sendEvent = sendEventCreator(config);
-  
-  invalidate(sendEvent, storage.memorized, config);
+  const invalidate = createInvalidator(sendEvent, config);
+  invalidate(storage.memorized);
 
   return {
     sendEvent,
@@ -108,6 +106,3 @@ export const analytics = (props: Config | (() => void)): Client => {
     set state(s) { state = s; }
   };
 };
-
-
-module.exports = analytics;

@@ -22,7 +22,8 @@
     "precommit": "lint-staged",
     "test": "# jest",
     "test:ci": "jest --ci",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "prepare": "npm run build:lib"
   },
   "author": "Findify <yourfriends@findify.io>",
   "license": "MIT",

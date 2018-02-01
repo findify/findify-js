@@ -27,12 +27,16 @@ const ImageRequest = (data: any, endpoint?: string) =>
 // tslint:disable-next-line:variable-name
 const BeaconRequest = (data: any, endpoint?: string) =>
   new Promise((resolve, reject) => {
-    global.navigator.sendBeacon(getEndpoint(endpoint), makeQuery(data));
+    const { key, ...rest } = data;
+    global.navigator.sendBeacon(
+      `${getEndpoint(endpoint)}?key=${key}`,
+      JSON.stringify({ ...rest, t_client: Date.now() })
+    );
     resolve();
   });
 
 export const request = (function() {
-  if (typeof global.navigator !== 'undefined' && global.navigator.sendBeacon) return BeaconRequest;
+  // if (typeof global.navigator !== 'undefined' && global.navigator.sendBeacon) return BeaconRequest;
   if (typeof global.window !== 'undefined') return ImageRequest;
   if (!process.env.BROWSER) {
     return (data: any, endpoint?: string) =>

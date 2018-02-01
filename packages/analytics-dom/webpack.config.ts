@@ -29,6 +29,7 @@ export default (env: WebpackEnvArgs) => {
       // it will be accessible at `window.FindifySDK`
       libraryTarget: 'umd',
       library: 'FindifyAnalyticsDom',
+      libraryExport: 'default',
       // will name the AMD module of the UMD build,
       // otherwise an anonymous define is used
       umdNamedDefine: true,
