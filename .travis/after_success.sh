@@ -22,7 +22,8 @@ S3_BUCKET_PATH=findify-assets
 # the corresponding dir that should be published to S3_BUCKET_PATH
 typeset -A SRC_MAP
 SRC_MAP=(
-  [analytics]=dist/prod
+  [analytics]=dist
+  [analytics-dom]=dist
   [helpers]=dist
   [mjs]=dist
   [sdk]=dist
@@ -33,6 +34,7 @@ SRC_MAP=(
 typeset -A DST_MAP
 DST_MAP=(
   [analytics]=analytics-js
+  [analytics-dom]=analytics-dom-js
   [helpers]=helpers-js
   [mjs]=mjs
   [sdk]=js-sdk

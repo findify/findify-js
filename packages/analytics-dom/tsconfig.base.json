@@ -3,7 +3,7 @@
     "moduleResolution": "node",
     "target": "es5",
     "module": "commonjs",
-    "lib": ["es6", "es2017", "dom"],
+    "lib": ["es6", "es2017"],
     "sourceMap": true,
     "jsx": "react",
     "allowSyntheticDefaultImports": true,
@@ -16,7 +16,7 @@
     "rootDirs": ["src"],
     "allowJs": false,
     "outDir": "lib",
-    "types" : ["node", "webpack", "jest"]
+    "types" : ["node", "webpack", "jest", "@findify/analytics"]
   },
   "compileOnSave": false,
   "buildOnSave": false

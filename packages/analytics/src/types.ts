@@ -93,7 +93,7 @@ export enum EventName {
   viewPage = 'view-page'
 };
 
-export type Client = {
+export interface Client {
   user: User;
   sendEvent(
     type: string,
@@ -102,7 +102,7 @@ export type Client = {
     endpoint?: string,
   ): void | Promise<{}>;
   listen(callback?): void;
-  state(): any;
-  initialize(): void;
+  state: any;
+  invalidate: any
 };
 

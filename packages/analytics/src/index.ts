@@ -5,6 +5,8 @@ import { validateSendEventParams, validateInitParams } from './validations';
 import { isFunction, shallowEqual } from './utils/helpers';
 import settings from './settings';
 
+export * from './types';
+
 import {
   Config,
   Client,
@@ -16,7 +18,7 @@ import {
 } from './types';
 
 const emitter = createChangeEmitter();
-const state: any = {};
+let state: any = {};
 
 const getUser = () => ({
   uid: storage.uid,
@@ -25,6 +27,11 @@ const getUser = () => ({
   exist: storage.exist,
 });
 
+/**
+ * Create events creator.
+ * The sendEvent function returns Promise and allow to store events in memory
+ * @param config
+ */
 const sendEventCreator = ({ events, key }: Config) => (
   event: string,
   request: any = {},
@@ -48,21 +55,27 @@ const sendEventCreator = ({ events, key }: Config) => (
   return api({ key, event, properties, user: getUser() }, endpoint);
 };
 
-const initializeCreator = (root, sendEvent, { platform, events }: Config) => (
-  context = root
-) => {
-  state.events = storage.memorized;
+/**
+ * Send memorized events
+ * @param sendEvent 
+ * @param config
+ */
+const invalidate = (sendEvent, eventsToFire, { platform, events }: Config) => {
+  state.events = {
+    ...state.events,
+    ...eventsToFire
+  };
 
-  if (!state.events[EventName.viewPage] && events[EventName.viewPage] !== false) {
+  if (!eventsToFire[EventName.viewPage] && events[EventName.viewPage] !== false) {
     sendEvent(EventName.viewPage, {});
   }
 
-  return Object.keys(state.events).forEach((key: string) => {
+  return Object.keys(eventsToFire).forEach((key: string) => {
     let endpoint;
     if (events[key] === false) return;
 
     if (key === EventName.updateCart) {
-      if (shallowEqual(state.events[key], storage.cart)) return;
+      if (shallowEqual(eventsToFire[key], storage.cart)) return;
       storage.cart = state.events[key];
     }
 
@@ -70,22 +83,31 @@ const initializeCreator = (root, sendEvent, { platform, events }: Config) => (
       endpoint = settings.bigcommerceTrackingUrl;
     }
 
-    return sendEvent(key, state.events[key], false, endpoint);
+    return sendEvent(key, eventsToFire[key], false, endpoint);
   });
 };
 
-module.exports = (props: Config | (() => void), context = global): Client => {
-  if (isFunction(props)) {
-    return emitter.listen(props);
-  }
+/**
+ * Initialize analytics or subscribe to events
+ * @param props Configuration or Listener
+ */
+export const analytics = (props: Config | (() => void)): Client => {
+  if (isFunction(props)) return emitter.listen(props);
+
   const config = ({ events: {}, platform: {}, ...props } as Config);
   const sendEvent = sendEventCreator(config);
-  const initialize = initializeCreator(context, sendEvent, config);
+  
+  invalidate(sendEvent, storage.memorized, config);
+
   return {
     sendEvent,
-    initialize,
+    invalidate,
     listen: emitter.listen,
     get user(): User { return getUser(); },
     get state(): any { return state; },
+    set state(s) { state = s; }
   };
 };
+
+
+module.exports = analytics;

@@ -4,6 +4,12 @@ import { stringify } from 'qs';
 import { User, EventName, PublicEventRequest } from '../types';
 import settings from '../settings';
 
+declare module global {
+  const navigator: any;
+  const document: any;
+  const window: any;
+}
+
 const getEndpoint = (endpoint?: string): string =>
   !endpoint ? (settings.searchApiUrl + '/feedback') : endpoint;
 
@@ -12,7 +18,7 @@ const makeQuery = (query) => stringify({ ...query, t_client: Date.now() });
 // tslint:disable-next-line:variable-name
 const ImageRequest = (data: any, endpoint?: string) =>
   new Promise((resolve, reject) => {
-    const image = window.document.createElement('img');
+    const image = global.document.createElement('img');
     image.onload = resolve;
     image.onerror = resolve;
     image.src = `${getEndpoint(endpoint)}?${makeQuery(data)}`;
@@ -21,7 +27,7 @@ const ImageRequest = (data: any, endpoint?: string) =>
 // tslint:disable-next-line:variable-name
 const BeaconRequest = (data: any, endpoint?: string) =>
   new Promise((resolve, reject) => {
-    navigator.sendBeacon(getEndpoint(endpoint), makeQuery(data));
+    global.navigator.sendBeacon(getEndpoint(endpoint), makeQuery(data));
     resolve();
   });
 
