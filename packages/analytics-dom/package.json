@@ -1,7 +1,7 @@
 {
   "name": "@findify/analytics-dom",
   "description": "Findify analytics DOM bindings",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "lib/index.js",
   "tags": [
     "findify",
@@ -26,7 +26,6 @@
   },
   "author": "Findify <yourfriends@findify.io>",
   "license": "MIT",
-  "main": "lib/index.js",
   "types": "types/index.d.ts",
   "repository": "https://github.com/findify/findify-js/tree/master/packages/analytics",
   "config": {
