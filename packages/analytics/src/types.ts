@@ -1,70 +1,70 @@
-type User = {
+export type User = {
   uid: string;
   sid: string;
   exist: boolean;
   persist: boolean;
 };
 
-type Config = {
+export type Config = {
   key: string;
-  events?: {};
-  platform?: {
+  events: {};
+  platform: {
     bigcommerce?: boolean;
     shopify?: boolean;
   };
 };
 
-type LineItemData = {
+export type LineItemData = {
   item_id: string;
   unit_price: number;
   quantity: number;
 };
 
-type ClickSuggestionPublicEventRequest = {
+export type ClickSuggestionPublicEventRequest = {
   rid: string;
   suggestion: string;
 };
-type ClickItemPublicEventRequest = {
+
+export type ClickItemPublicEventRequest = {
   item_id: string;
   rid?: string;
 };
-type RedirectPublicEventRequest = {
+
+export type RedirectPublicEventRequest = {
   rid: string;
   suggestion: string;
 };
-type PurchasePublicEventRequest = {
+
+export  type PurchasePublicEventRequest = {
   order_id: string;
   currency: string;
   revenue: number;
   line_items: LineItemData[];
   affiliation?: string;
 };
-type UpdateCartPublicEventRequest = {
+
+export type UpdateCartPublicEventRequest = {
   line_items: LineItemData[];
 };
-type AddToCartPublicEventRequest = {
+
+export type AddToCartPublicEventRequest = {
   item_id: string;
   rid?: string;
   quantity?: number;
 };
-type ViewPagePublicEventRequest = {
+
+export type ViewPagePublicEventRequest = {
   item_id?: string;
 };
 
-type ClickSuggestionInternalEventRequest = ClickSuggestionPublicEventRequest;
-type ClickItemInternalEventRequest = ClickItemPublicEventRequest;
-type RedirectInternalEventRequest = RedirectPublicEventRequest;
-type PurchaseInternalEventRequest = PurchasePublicEventRequest;
-type UpdateCartInternalEventRequest = UpdateCartPublicEventRequest;
-type AddToCartInternalEventRequest = AddToCartPublicEventRequest;
-type ViewPageInternalEventRequest = ViewPagePublicEventRequest & {
+export  type ViewPageInternalEventRequest = ViewPagePublicEventRequest & {
   url: string;
   ref: string;
   width: number;
   height: number;
 };
 
-type PublicEventRequest =
+export type PublicEventRequest =
   | ClickSuggestionPublicEventRequest
   | ClickItemPublicEventRequest
   | RedirectPublicEventRequest
@@ -73,35 +73,27 @@ type PublicEventRequest =
   | AddToCartPublicEventRequest
   | ViewPagePublicEventRequest;
 
-type InternalEventRequest =
-  | ClickSuggestionInternalEventRequest
-  | ClickItemInternalEventRequest
-  | RedirectInternalEventRequest
-  | PurchaseInternalEventRequest
-  | UpdateCartInternalEventRequest
-  | AddToCartInternalEventRequest
-  | ViewPageInternalEventRequest;
-
-type IdsData = {
+export type IdsData = {
   item_id?: string;
   item_ids?: string[];
 };
 
-type FiltersData = {
+export type FiltersData = {
   name?: string;
   value?: any[];
 };
 
-type EventName =
-  | 'click-suggestion'
-  | 'click-item'
-  | 'redirect'
-  | 'purchase'
-  | 'add-to-cart'
-  | 'update-cart'
-  | 'view-page';
+export enum EventName {
+  clickSuggestion = 'click-suggestion',
+  clickItem = 'click-item',
+  redirect = 'redirect',
+  purchase = 'purchase',
+  addToCart = 'add-to-cart',
+  updateCart = 'update-cart',
+  viewPage = 'view-page'
+};
 
-type Client = {
+export interface Client {
   user: User;
   sendEvent(
     type: string,
@@ -110,24 +102,7 @@ type Client = {
     endpoint?: string,
   ): void | Promise<{}>;
   listen(callback?): void;
-  state(): any;
-  initialize(): void;
+  state: any;
+  invalidate: any
 };
 
-export {
-  User,
-  Config,
-  Client,
-  EventName,
-  PublicEventRequest,
-  InternalEventRequest,
-  IdsData,
-  FiltersData,
-  ClickSuggestionPublicEventRequest,
-  ClickItemPublicEventRequest,
-  RedirectPublicEventRequest,
-  PurchasePublicEventRequest,
-  UpdateCartPublicEventRequest,
-  AddToCartPublicEventRequest,
-  ViewPagePublicEventRequest,
-};

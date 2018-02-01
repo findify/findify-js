@@ -1,20 +1,11 @@
-import isEqual = require('lodash/isEqual');
-import defaults = require('lodash/defaults');
-import once = require('lodash/once');
-import isFunction = require('lodash/isFunction');
-
 import { createChangeEmitter } from 'change-emitter';
 import storage from './modules/storage';
-import api from './modules/request';
+import { request as api } from './modules/request';
 import { validateSendEventParams, validateInitParams } from './validations';
+import { isFunction, shallowEqual } from './utils/helpers';
+import settings from './settings';
 
-import {
-  getEventsOnPage,
-  getDeprecatedEvents,
-  getEventData,
-} from './helpers/eventsHelpers';
-
-import { getFiltersOnPage } from './helpers/filtersHelpers';
+export * from './types';
 
 import {
   Config,
@@ -22,21 +13,12 @@ import {
   User,
   EventName,
   PublicEventRequest,
-  InternalEventRequest,
   IdsData,
   FiltersData,
 } from './types';
 
-import env = require('./env');
-
-import elementDataset from 'element-dataset';
-
-if (typeof document !== 'undefined') {
-  elementDataset();
-}
-
 const emitter = createChangeEmitter();
-const state: any = {};
+let state: any = {};
 
 const getUser = () => ({
   uid: storage.uid,
@@ -45,7 +27,12 @@ const getUser = () => ({
   exist: storage.exist,
 });
 
-const sendEventCreator = ({ events, key }) => (
+/**
+ * Create events creator.
+ * The sendEvent function returns Promise and allow to store events in memory
+ * @param config
+ */
+const sendEventCreator = ({ events, key }: Config) => (
   event: string,
   request: any = {},
   useCookie?: boolean,
@@ -53,80 +40,69 @@ const sendEventCreator = ({ events, key }) => (
 ) => {
   if (useCookie) return storage.memoize(event, request);
 
-  const properties =
-    event === 'view-page'
-      ? {
-          ...request,
-          url: window.location.href,
-          ref: window.document.referrer,
-          width: window.screen.width,
-          height: window.screen.height,
-        }
-      : request;
+  const properties = event === EventName.viewPage
+    ? {
+        ...request,
+        url: window.location.href,
+        ref: window.document.referrer,
+        width: window.screen.width,
+        height: window.screen.height,
+      }
+    : request;
 
   emitter.emit(event, properties);
-
-  return api.request({ key, event, properties, user: getUser() }, endpoint);
+  
+  return api({ key, event, properties, user: getUser() }, endpoint);
 };
 
-const initializeCreator = (root, sendEvent, { platform, events }) => (
-  context = root
-) => {
+/**
+ * Send memorized events
+ * @param sendEvent 
+ * @param config
+ */
+const createInvalidator = (sendEvent, { platform, events }: Config) => eventsToFire => {
+  if (!Object.keys(eventsToFire).length) return;
+
   state.events = {
-    ...getDeprecatedEvents(context),
-    ...getEventsOnPage(context),
-    ...storage.memorized,
+    ...state.events,
+    ...eventsToFire
   };
 
-  state.filters = getFiltersOnPage(context);
-
-  if (!state.events['view-page'] && events['view-page'] !== false) {
-    sendEvent('view-page', {});
-  }
-
-  root.addEventListener('click', e => {
-    if (!e.target.dataset || !e.target.dataset.findifyEvent) return;
-    const { event, ...rest } = getEventData(e.target);
-    sendEvent(event, rest, true);
-  });
-
-  return Object.keys(state.events).forEach((key: string) => {
+  return Object.keys(eventsToFire).forEach((key: string) => {
     let endpoint;
     if (events[key] === false) return;
 
-    if (key === 'update-cart') {
-      if (isEqual(state.events[key], storage.cart)) {
-        return;
-      } else {
-        storage.cart = state.events[key];
-      }
+    if (key === EventName.updateCart) {
+      if (shallowEqual(eventsToFire[key], storage.cart)) return;
+      storage.cart = state.events[key];
     }
 
-    if (key === 'purchase' && platform.bigcommerce) {
-      endpoint = env.bigcommerceTrackingUrl;
+    if (key === EventName.purchase && platform.bigcommerce) {
+      endpoint = settings.bigcommerceTrackingUrl;
     }
 
-    return sendEvent(key, state.events[key], false, endpoint);
+    return sendEvent(key, eventsToFire[key], false, endpoint);
   });
 };
 
-module.exports = (props: Config | (() => void), context = document): Client => {
-  if (isFunction(props)) {
-    return emitter.listen(props);
-  }
+/**
+ * Initialize analytics or subscribe to events
+ * @param props Configuration or Listener
+ */
+export default (props: Config | (() => void)): Client => {
+  if (isFunction(props)) return emitter.listen(props);
 
-  const config = { events: {}, platform: {}, ...props };
+  const config = ({ events: {}, platform: {}, ...props } as Config);
   const sendEvent = sendEventCreator(config);
-  const initialize = initializeCreator(context, sendEvent, config);
+  const invalidate = createInvalidator(sendEvent, config);
+  invalidate(storage.memorized);
+
   return {
     sendEvent,
-    initialize,
+    invalidate,
     listen: emitter.listen,
-    get user(): User {
-      return getUser();
-    },
-    get state(): any {
-      return state;
-    },
+    get user(): User { return getUser(); },
+    get state(): any { return state; },
+    set state(s) { state = s; }
   };
 };
