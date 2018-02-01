@@ -36,7 +36,7 @@ const BeaconRequest = (data: any, endpoint?: string) =>
   });
 
 export const request = (function() {
-  // if (typeof global.navigator !== 'undefined' && global.navigator.sendBeacon) return BeaconRequest;
+  if (typeof global.navigator !== 'undefined' && global.navigator.sendBeacon) return BeaconRequest;
   if (typeof global.window !== 'undefined') return ImageRequest;
   if (!process.env.BROWSER) {
     return (data: any, endpoint?: string) =>
