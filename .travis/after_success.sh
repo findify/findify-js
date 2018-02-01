@@ -23,7 +23,7 @@ S3_BUCKET_PATH=findify-assets
 typeset -A SRC_MAP
 SRC_MAP=(
   [analytics]=dist
-  [analytics-dom]=dist
+  ['analytics-dom']=dist
   [helpers]=dist
   [mjs]=dist
   [sdk]=dist
@@ -34,7 +34,7 @@ SRC_MAP=(
 typeset -A DST_MAP
 DST_MAP=(
   [analytics]=analytics-js
-  [analytics-dom]=analytics-dom-js
+  ['analytics-dom']=analytics-dom-js
   [helpers]=helpers-js
   [mjs]=mjs
   [sdk]=js-sdk
