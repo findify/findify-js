@@ -1,6 +1,3 @@
-import 'core-js/fn/array/includes';
-import 'core-js/fn/object/values';
-
 import * as Types from '../types';
 import { getFacetType } from './filters';
 import { identity } from './helpers';

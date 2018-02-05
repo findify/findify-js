@@ -89,7 +89,10 @@ export default (env: WebpackEnvArgs) => {
         parallel: true,
         sourceMap: true,
         uglifyOptions: {
+          ie8: false,
+          ecma: 8,
           output: {
+            comments: false,
             beautify: false,
           },
           compress: {
@@ -99,7 +102,7 @@ export default (env: WebpackEnvArgs) => {
       }),
 
       new CompressionPlugin({
-        exclude: /\.map/,
+        exclude: /\.map/
       })
     ],
   };

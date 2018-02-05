@@ -100,7 +100,7 @@ export class Agent {
     const oldValue = this.state.get(field);
     const value = isFunction(update) ? update(this.format(oldValue)) : update;
     const changes = getChangedFields(oldValue, isImmutable(value) ? value : fromJS(value));
-    if (changes) {
+    if (changes && isImmutable(changes) ? !changes.isEmpty() : true) {
       this.cache.set(field, changes);
     } else if (changes !== false){
       this.reset(field);

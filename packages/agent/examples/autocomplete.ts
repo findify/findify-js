@@ -20,6 +20,6 @@ autocomplete
     meta;
   })
 
-// setTimeout(() => {
-//   autocomplete.set('q', 'orange');
-// }, 100);
+setTimeout(() => {
+  autocomplete.set('filters', { color: ['orange'] });
+}, 3000);

@@ -1,14 +1,6 @@
-import { deepMerge } from '../merge';
 import { getFacetType } from '../filters';
 import { stateToQuery, queryToState } from '../format';
 import { fromJS } from 'immutable';
-
-describe('DeepMerge', () => {
-  it('Should merge objects', () => {
-    const merged = deepMerge({a: { b: 1 }}, { a: { c: 2, b: 2 } });
-    expect(merged).toEqual({ a: { b: 2, c: 2 }})
-  })
-})
 
 describe('Filters', () => {
   it('Should be category', () => {

@@ -15,7 +15,15 @@
     "baseUrl": "src",
     "rootDirs": ["src"],
     "allowJs": false,
-    "outDir": "lib"
+    "outDir": "lib",
+    "types": [
+      "qs",
+      "jsonp",
+      "nock",
+      "jest",
+      "node",
+      "webpack"
+    ]
   },
   "compileOnSave": false,
   "buildOnSave": false

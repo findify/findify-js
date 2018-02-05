@@ -1,28 +1,30 @@
 import { Component, Children } from "react";
 import * as PropTypes from 'prop-types';
 
-export default class Provider extends Component {
+const providers = {};
+
+export default class Provider extends Component<any, any>{
   type: string;
 
   static propTypes = {
     agent: PropTypes.object.isRequired,
-    analytics: PropTypes.object.isRequired
+    analytics: PropTypes.object.isRequired,
+    storeKey: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
   }
 
   static childContextTypes = {
-    autocomplete: PropTypes.object,
-    search: PropTypes.object,
-    analytics: PropTypes.object
+    $findify: PropTypes.object.isRequired,
+    $analytics: PropTypes.object.isRequired
   }
 
   constructor(props, context) {
     super(props, context);
-    this.type = `$${props.agent.type}`;
-    this[this.type] = props.agent;
+    this.type = `${props.agent.type}`;
+    providers[`${props.agent.type}${this.props.storeKey || ''}`] = props.agent;
   }
 
   getChildContext() {
-    return { [this.type]: this[this.type], analytics: this.props.analytics }
+    return { $findify: providers, $analytics: this.props.analytics }
   }
 
   render() {
