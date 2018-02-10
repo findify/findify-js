@@ -25,8 +25,11 @@ const updateFilters = (filterName: string, value: any, isSelected:boolean) =>
 export class Facet extends createRecord('Facet'){
   updater: any;
 
-  constructor(value, updater){
-    super(value);
+  constructor(facet, updater){
+    const patchedFacet = facet.update('values', values =>
+      values.map(v => new FacetValue(v, updater, facet))
+    )
+    super(patchedFacet);
     this.updater = updater;
   };
 

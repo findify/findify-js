@@ -4,8 +4,11 @@ export class Filter extends createRecord('Filter'){
   updater: any;
   queried: any;
 
-  constructor(value, updater){
-    super(value);
+  constructor(filter, updater){
+    const patchedFilter = filter.update('values', values =>
+      values.map(v => new FilterValue(v, updater, filter))
+    )
+    super(patchedFilter);
     this.updater = updater;
   };
 

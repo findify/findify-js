@@ -1,17 +1,9 @@
 import createConnect from './createConnect';
 import { Filter, FilterValue } from '../immutable/filters';
+import * as microtime from 'microtime';
 
-const patchValues = (updater, filter) => (value) =>
-  new FilterValue(value, updater, filter);
-
-const patchFilter = (updater) => filter => 
-  new Filter(filter, updater)
-  .update('values', v => v.map(patchValues(updater, filter)));
-
-export const createFilters = (filters, updater) => {
-  if (!filters) return;
-  return filters.map(patchFilter(updater));
-}
+export const createFilters = (filters, updater) => 
+  filters && filters.map(filter => new Filter(filter, updater));
 
 export default createConnect({
   feature: 'Search',
