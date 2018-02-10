@@ -2,6 +2,7 @@ import { Autocomplete, Search } from '../src';
 
 const autocomplete = new Search({
   key: '8a2c6a1e-1aac-4047-8514-f284203c4b59',
+  immutable: true,
   user: {
     uid: '1',
     sid: '1',
@@ -21,5 +22,7 @@ autocomplete
   })
 
 setTimeout(() => {
-  autocomplete.set('filters', { color: ['orange'] });
+  autocomplete.set('filters', (f) => {
+    return f.delete('color')
+  });
 }, 3000);

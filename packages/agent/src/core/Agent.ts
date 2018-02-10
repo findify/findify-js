@@ -96,13 +96,18 @@ export class Agent {
    * @param field [string] - query field
    * @param update [any|function] - function which will return new value or value
    */
-  public set(field: string | Types.Field, update?: any) {
+  public set = (field: string | Types.Field, update?: any) => {
     const oldValue = this.state.get(field);
-    const value = isFunction(update) ? update(this.format(oldValue)) : update;
+    const fx = isFunction(update) && update;
+    const value = fx ? fx(this.format(oldValue)) : update;
+
+    if (fx && !value) return this; // Skip new value setting if update doesn't returned new value
+
     const changes = getChangedFields(oldValue, isImmutable(value) ? value : fromJS(value));
-    if (changes && isImmutable(changes) ? !changes.isEmpty() : true) {
+    if (changes === false) return this;
+    if (isImmutable(changes) ? !changes.isEmpty() : true) {
       this.cache.set(field, changes);
-    } else if (changes !== false){
+    } else {
       this.reset(field);
     }
     return this;
@@ -131,10 +136,8 @@ export class Agent {
     const response = fromJS(res);
     const newState = queryToState(this.state, response.get('meta'), this._defaults);
     this.handleChanges(response, response.get('meta'));
-    if (!newState.equals(this.state)) {
-      this.state = newState;
-      this.fireEvent('change:query', newState, response.get('meta'));
-    }
+    this.fireEvent('change:query', newState, response.get('meta'));
+    this.state = newState;
     this.response = response;
   }
 

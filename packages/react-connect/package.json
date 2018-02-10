@@ -30,6 +30,7 @@
     "duplicate-package-checker-webpack-plugin": "^2.1.0",
     "git-revision-webpack-plugin": "^2.5.1",
     "jest": "^22.1.4",
+    "microtime": "^2.1.7",
     "npm-check-updates": "^2.14.0",
     "npm-run-all": "^4.1.2",
     "react-test-renderer": "^16.2.0",

@@ -3,8 +3,8 @@ import * as PropTypes from 'prop-types';
 import { getDisplayName } from '../utils/getDisplayName';
 import { shallowEqual } from '../utils/shallowEqual';
 import mapValues from '../utils/mapValues';
+import { $findify, $analytics } from '../symbols';
 
-const _empty = {};
 const capitalize = s => s.charAt(0).toUpperCase() + s.slice(1);
 
 const createComponent = ({
@@ -27,17 +27,22 @@ const createComponent = ({
     }
 
     static contextTypes = {
-      $findify: PropTypes.object.isRequired,
-      $analytics: PropTypes.object.isRequired
+      [$findify]: PropTypes.object.isRequired,
+      [$analytics]: PropTypes.object.isRequired
     };
 
     constructor(props, context){
       super(props, context);
-      this.handleUpdate = this.handleUpdate.bind(this);
     }
 
-    handleUpdate(changes, meta) {
-      this.setState({ meta, [field]: changes })
+    handleUpdate = (changes, meta) => {
+      const mapped = mapProps && mapProps(
+        changes,
+        meta,
+        this.changeAction,
+        this.context[$analytics]
+      );
+      this.setState({ meta, ...(mapped || { [field]: changes }) })
     }
 
     private handlers = mapValues(
@@ -47,9 +52,9 @@ const createComponent = ({
         if (cachedHandler) return cachedHandler(...args);
         
         const handler = createHandler({
-          change: this.changeAction,
-          analytics: this.context.$analytics,
-          meta: this.state.meta
+          update: this.changeAction,
+          analytics: this.context[$analytics],
+          ...this.state
         });
 
         this.cachedHandlers[handlerName] = handler;
@@ -58,7 +63,7 @@ const createComponent = ({
     )
 
     componentWillMount() {
-      const $store = this.context.$findify[storeKey];
+      const $store = this.context[$findify][storeKey];
 
       if (!$store) {
         throw new Error(`
@@ -67,21 +72,21 @@ const createComponent = ({
         `);
         return;
       }
-      this.changeAction = $store.set.bind($store);
+      this.changeAction = $store.set;
       $store.on(`change:${field}`, this.handleUpdate);
-      this.setState({
-        meta: $store.response.get('meta'),
-        [field]: $store.response.get(field)
-      });
+      this.handleUpdate(
+        field !== 'query' ? $store.response.get(field) : $store.state,
+        $store.response.get('meta')
+      );
     }
 
     componentWillUnmount() {
-      this.context.$findify[feature].off(this.handleUpdate);
+      this.context[$findify][feature].off(this.handleUpdate);
     }
 
     shouldComponentUpdate(nextProps, nextState) {
       return (
-        (this.state[field] && !this.state[field].equals(nextState[field]))
+        (!this.state[field] || !this.state[field].equals(nextState[field]))
         || shallowEqual(nextProps, this.props)
       );
     }
@@ -94,8 +99,8 @@ const createComponent = ({
       return factory({
         ...this.props,
         ...this.handlers,
-        meta: this.state.meta || _empty,
-        [field]: this.state[field]
+        ...this.state,
+        update: this.changeAction,
       });
     }
   }
@@ -107,12 +112,12 @@ export default ({
   feature,
   field,
   handlers,
-  mapProps
+  mapProps,
 }: {
   feature: string,
   field: string,
   handlers?: any,
-  mapProps?: () => void
+  mapProps?: (field, meta, update, analytics) => void
 }) =>
   (connector: any | { feature?: string, key?: string | number }): any =>
     typeof connector === 'function'

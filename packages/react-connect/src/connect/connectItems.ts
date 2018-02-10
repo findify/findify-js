@@ -1,28 +1,12 @@
 import createConnect from './createConnect';
+import { Item } from '../immutable/item';
 
-const navigate = (openInNewWindow, url) => {
-  if (!window) return;
-  if (openInNewWindow) return window.open(url, '_blank');
-  return window.location.href = url;
-}
+const patchItems = (analytics, meta) => item => new Item(item, meta, analytics);
 
 export default createConnect({
-  feature: 'autocomplete',
+  feature: 'Search',
   field: 'items',
-  handlers: {
-    getItemProps: ({ change, analytics, meta }) =>
-      (item) => ({
-        key: item.get('key'),
-        onClick: (e) => {
-          if (e) e.preventDefault();
-          const openInNewWindow = e && (e.ctrlKey || e.metaKey);
-          analytics.sendEvent(
-            'click-product',
-            { rid: meta.get('rid'), id: item.get('id') },
-            !openInNewWindow // Save analytics in cookies if locations will be changed
-          );
-          navigate(openInNewWindow, item.get('product_url'))
-        }
-      })
-  }
+  mapProps: (items, meta, change, analytics) => ({
+    items: items && items.map(patchItems(analytics, meta))
+  }),
 })
