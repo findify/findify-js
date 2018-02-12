@@ -3,7 +3,7 @@ import * as Agents from '@findify/agent';
 import analytics from '@findify/analytics';
 import { $findify, $analytics } from '../symbols';
 
-import * as PropTypes from 'prop-types';
+import { object, string, number, oneOfType, func } from 'prop-types';
 
 const agents = {};
 
@@ -15,26 +15,33 @@ export const createProvider = (type, onCreate?: (agent) => void) => {
     agent: any;
 
     static propTypes = {
-      apiKey: PropTypes.string.isRequired,
-      agent: PropTypes.object,
-      defaults: PropTypes.object,
-      options: PropTypes.object,
-      onChangeQuery: PropTypes.func,
-      storeKey: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+      apiKey: string.isRequired,
+      agent: object,
+      defaults: object,
+      options: object,
+      onChangeQuery: func,
+      storeKey: oneOfType([string, number])
     }
 
     static childContextTypes = {
-      [$findify]: PropTypes.object.isRequired,
-      [$analytics]: PropTypes.object.isRequired
+      [$findify]: object.isRequired,
+      [$analytics]: object.isRequired
     }
 
     constructor(props, context) {
       super(props, context);
       const { apiKey, agent, options, defaults } = props;
-      this.update = this.update.bind(this);
+      const analyticsConfig: any = { key: apiKey };
 
-      this.storeKey = `${type}${this.props.storeKey || ''}`;
-      this.analytics = analytics({ key: apiKey });
+      if (agent && !agent.immutable) {
+        throw new Error(`
+          Agent should be in "immutable" mode, to work with connectors.
+          Add "immutable: true" to your Agent initializer
+        `)
+      }
+
+      this.storeKey = this.props.storeKey;
+      this.analytics = analytics(analyticsConfig);
       this.agent = agent || new Agents[type]({
         key: apiKey,
         user: this.analytics.user,
@@ -42,14 +49,19 @@ export const createProvider = (type, onCreate?: (agent) => void) => {
         ...options
       });
   
+      if (this.storeKey) agents[this.storeKey] = this.agent;
       if (onCreate) onCreate(this.agent)
       if (defaults) this.agent.defaults(defaults);
-  
-      agents[`${type}${this.props.storeKey || ''}`] = this.agent;
     }
 
     getChildContext() {
-      return { [$findify]: agents, [$analytics]: this.analytics }
+      return {
+        [$analytics]: this.analytics,
+        [$findify]: {
+          ...agents,
+          ...(!this.storeKey && { default: this.agent })
+        },
+      }
     }
 
     componentDidMount() {
@@ -60,10 +72,10 @@ export const createProvider = (type, onCreate?: (agent) => void) => {
 
     componentWillUnmount() {
       this.agent.off()
-      agents[this.storeKey] = null;
+      if (this.storeKey) agents[this.storeKey] = null;
     }
 
-    public update(...args) {
+    update = (...args) => {
       this.agent.update(...args);
     }
   

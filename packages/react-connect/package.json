@@ -11,7 +11,6 @@
   "dependencies": {
     "@findify/agent": "^1.0.0",
     "@findify/analytics": "^3.1.0",
-    "core-js": "^2.5.3",
     "react": "^16.2.0"
   },
   "devDependencies": {
@@ -40,7 +39,7 @@
     "tslint-config-airbnb": "^5.4.2",
     "tslint-config-prettier": "^1.6.0",
     "typedoc": "^0.9.0",
-    "typescript": "^2.6.2",
+    "typescript": "2.6.2",
     "webpack": "^3.10.0",
     "webpack-bundle-analyzer": "^2.9.2"
   },
@@ -58,7 +57,7 @@
     "build": "run-p build:lib build:dist",
     "build:dist": "webpack",
     "build:dist:analyze": "npm run build:dist -- --env.analyze",
-    "build:lib": "tsc --project tsconfig.lib.json --declaration --declarationDir types",
+    "build:lib": "tsc --project tsconfig.lib.json",
     "build:test": "npm run build:lib -- --project tsconfig.test.json --module commonjs",
     "build:test:watch": "npm run build:test -- --watch",
     "clean": "del lib types",

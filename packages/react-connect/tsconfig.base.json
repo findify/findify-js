@@ -5,7 +5,6 @@
     "module": "commonjs",
     "lib": ["es6", "es2017", "dom"],
     "jsx": "react",
-    "allowJs": true,
     "sourceMap": true,
     "allowSyntheticDefaultImports": true,
     "removeComments": true,
@@ -15,7 +14,7 @@
     "pretty": true,
     "baseUrl": "src",
     "rootDirs": ["src"],
-    "allowJs": false,
+    "allowJs": true,
     "outDir": "lib"
   },
   "compileOnSave": false,

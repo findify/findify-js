@@ -14,7 +14,7 @@ const Suggestions = connectSuggestions(({ suggestions, getSuggestionProps }) => 
 });
 
 // tslint:disable-next-line:variable-name
-const Products = connectItems({ feature: 'Autocomplete' })(
+const Products = connectItems(
   ({ items }) => {
     return !!items && items.map((item, index) =>
       <div key={item.hashCode()}>

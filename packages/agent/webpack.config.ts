@@ -5,7 +5,7 @@ import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import * as LodashWebpackPlugin from 'lodash-webpack-plugin';
 import * as UglifyJSPlugin from 'uglifyjs-webpack-plugin';
 import * as DuplicatePackageCheckerPlugin from 'duplicate-package-checker-webpack-plugin';
-import * as  CompressionPlugin from 'compression-webpack-plugin';
+import * as CompressionPlugin from 'compression-webpack-plugin';
 
 interface WebpackEnvArgs {
   analyze?: boolean;

@@ -2,7 +2,6 @@ import { Range } from 'immutable';
 import createConnect from './createConnect';
 
 export default createConnect({
-  feature: 'Search',
   field: 'meta',
   mapProps: (meta) => ({
     pages: meta && Range(1, Math.ceil(meta.get('total') / meta.get('limit'))),

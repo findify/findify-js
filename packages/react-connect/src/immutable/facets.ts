@@ -44,7 +44,6 @@ export class Facet extends createRecord('Facet'){
     this.updater('filters', updateFilters(this.get('name'), fromJS(value), false));
     return this;
   }
-
 }
 
 export class FacetValue extends createRecord('FacetValue'){

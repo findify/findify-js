@@ -1,7 +1,6 @@
 import createConnect from './createConnect';
 
 export default createConnect({
-  feature: 'Autocomplete',
   field: 'suggestions',
   handlers: {
     getSuggestionProps: ({ update, analytics, meta, suggestions }) => 

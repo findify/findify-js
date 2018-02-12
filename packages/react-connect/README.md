@@ -1,4 +1,4 @@
-# Findify JavaScript Agent [![npm (scoped)](https://img.shields.io/npm/v/@findify/sdk.svg)](https://www.npmjs.com/package/@findify/sdk) [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
+# Findify React Connect [![npm (scoped)](https://img.shields.io/npm/v/@findify/react-connect.svg)](https://www.npmjs.com/package/@findify/react-connect) [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 
 The Findify JavaScript SDK is a lightweight, promise based interface to
 to [Findify v3 search API](https://findify.readme.io/v3/reference#search-api) that works

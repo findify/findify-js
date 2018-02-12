@@ -15,7 +15,7 @@ const createComponent = ({
   BaseComponent,
   key = ''
 }: any) => {
-  const storeKey = feature+key;
+  const storeKey = key || 'default';
   const displayName = `Connect${capitalize(field)}(${getDisplayName(BaseComponent)})`;
   const factory: any = createFactory(BaseComponent);
 
@@ -67,10 +67,9 @@ const createComponent = ({
 
       if (!$store) {
         throw new Error(`
-          Can't find Provider "${feature}"${key ? ' with key '+ key : ''},
+          Can't find Provider "${key ? ' with key '+ key : ''},
           You should create provider with correct Agent, or set "storeKey"
         `);
-        return;
       }
       this.changeAction = $store.set;
       $store.on(`change:${field}`, this.handleUpdate);
@@ -81,7 +80,7 @@ const createComponent = ({
     }
 
     componentWillUnmount() {
-      this.context[$findify][feature].off(this.handleUpdate);
+      this.context[$findify][storeKey].off(this.handleUpdate);
     }
 
     shouldComponentUpdate(nextProps, nextState) {
@@ -109,12 +108,10 @@ const createComponent = ({
 }
 
 export default ({
-  feature,
   field,
   handlers,
   mapProps,
 }: {
-  feature: string,
   field: string,
   handlers?: any,
   mapProps?: (field, meta, update, analytics) => void
@@ -122,7 +119,6 @@ export default ({
   (connector: any | { feature?: string, key?: string | number }): any =>
     typeof connector === 'function'
     ? createComponent({
-        feature,
         field,
         handlers,
         mapProps,
@@ -131,7 +127,6 @@ export default ({
       // tslint:disable-next-line:variable-name
     : BaseComponent =>
       createComponent({
-        feature,
         field,
         handlers,
         mapProps,
