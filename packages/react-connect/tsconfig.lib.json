@@ -1,0 +1,10 @@
+{
+  "extends": "./tsconfig.base.json",
+  "exclude": ["node_modules", "src/**/__tests__/*"],
+  "include": ["src/**/*"],
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "types" : ["node", "lodash", "webpack", "jest", "@findify/agent"]
+  }
+}

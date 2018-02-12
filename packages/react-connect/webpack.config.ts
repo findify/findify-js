@@ -2,7 +2,6 @@ import * as path from 'path';
 import * as webpack from 'webpack';
 import * as GitRevisionPlugin from 'git-revision-webpack-plugin';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
-import * as LodashWebpackPlugin from 'lodash-webpack-plugin';
 import * as UglifyJSPlugin from 'uglifyjs-webpack-plugin';
 import * as DuplicatePackageCheckerPlugin from 'duplicate-package-checker-webpack-plugin';
 import * as CompressionPlugin from 'compression-webpack-plugin';
@@ -17,8 +16,8 @@ export default (env: WebpackEnvArgs) => {
     context: path.resolve(__dirname, 'src'),
 
     entry: {
-      'findify-agent': './index',
-      'findify-agent.min': './index',
+      'findify-react-connect': './index',
+      'findify-react-connect.min': './index',
     },
 
     output: {
@@ -28,7 +27,7 @@ export default (env: WebpackEnvArgs) => {
       // when including the bundle in the browser
       // it will be accessible at `window.FindifySDK`
       libraryTarget: 'umd',
-      library: 'FindifyAgent',
+      library: 'FindifyReactConnect',
       // will name the AMD module of the UMD build,
       // otherwise an anonymous define is used
       umdNamedDefine: true,
@@ -89,10 +88,7 @@ export default (env: WebpackEnvArgs) => {
         parallel: true,
         sourceMap: true,
         uglifyOptions: {
-          ie8: false,
-          ecma: 8,
           output: {
-            comments: false,
             beautify: false,
           },
           compress: {
@@ -102,7 +98,7 @@ export default (env: WebpackEnvArgs) => {
       }),
 
       new CompressionPlugin({
-        exclude: /\.map/
+        exclude: /\.map/,
       })
     ],
   };

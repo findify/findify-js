@@ -28,6 +28,7 @@ SRC_MAP=(
   [mjs]=dist
   [sdk]=dist
   [agent]=dist
+  [react-connect]=dist
 )
 
 # mapping from pkg name to the directory path on S3
@@ -39,6 +40,7 @@ DST_MAP=(
   [mjs]=mjs
   [sdk]=js-sdk
   [agent]=js-agent
+  [react-connect]=react-connect
 )
 
 # AWS CLI reads config from ~/.aws/config or ~/.aws/credentials
@@ -75,7 +77,7 @@ if [[ $TRAVIS_BRANCH == 'master' ]]; then
 
 fi
 
-PKGS=(analytics analytics-dom helpers mjs sdk agent)
+PKGS=(analytics analytics-dom helpers mjs sdk agent react-connect)
 export GIT_SHA=$(git rev-parse HEAD)
 
 ASSET_HOST="https://findify-assets-2bveeb6u8ag.netdna-ssl.com"
