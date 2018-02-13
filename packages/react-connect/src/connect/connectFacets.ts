@@ -1,9 +1,12 @@
 import createConnect from './createConnect';
 import { Facet, FacetValue } from '../immutable/facets';
+import { Map } from 'immutable';
 
 // 0.0014s overhead
 export const patchFacets = (facets, updater) => 
-  facets && facets.map(facet => new Facet(facet, updater));
+  facets
+  && facets.map(facet => new Facet(facet, updater))
+  || Map();
 
 export default createConnect({
   field: 'facets',
