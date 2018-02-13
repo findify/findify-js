@@ -26,20 +26,19 @@ export class Facet extends createRecord('Facet'){
   updater: any;
 
   constructor(facet, updater){
-    const patchedFacet = facet.update('values', values =>
+    super(facet.update('values', values =>
       values.map(v => new FacetValue(v, updater, facet))
-    )
-    super(patchedFacet);
+    ));
     this.updater = updater;
   };
 
-  resetValues(e) {
+  resetValues = (e) => {
     preventEvents(e);
     this.updater('filters', f => f && f.remove(this.get('name')))
     return this;
   }
 
-  setValue(value) {
+  setValue = (value) => {
     if (!value) return this;
     this.updater('filters', updateFilters(this.get('name'), fromJS(value), false));
     return this;
@@ -58,7 +57,7 @@ export class FacetValue extends createRecord('FacetValue'){
     this.type = facet.get('type');
   }
 
-  toggle(e) {
+  toggle = (e) => {
     preventEvents(e);
     const value = getFacetValue(this, this.type);
     this.updater('filters', updateFilters(this.index, value, this.get('selected')));
