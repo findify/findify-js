@@ -17,7 +17,7 @@ export class Item extends createRecord('Item'){
     this.analytics = analytics;
   };
 
-  onClick(e) {
+  onClick = (e) => {
     preventEvents(e);
     const openInNewWindow = e && (e.ctrlKey || e.metaKey);
     this.analytics.sendEvent(
