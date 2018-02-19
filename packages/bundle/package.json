@@ -1,0 +1,61 @@
+{
+  "name": "@findify/bundle",
+  "description": "Findify OutOfBox solution",
+  "version": "0.0.1",
+  "main": "lib/index.js",
+  "tags": [
+    "findify",
+    "analytics",
+    "search"
+  ],
+  "scripts": {
+    "build": "run-p build:lib build:dist",
+    "build:dist": "webpack",
+    "build:dist:analyze": "npm run build:dist -- --env.analyze",
+    "build:lib": "tsc --project tsconfig.lib.json --declaration --declarationDir types",
+    "build:test": "npm run build:lib -- --project tsconfig.test.json --module commonjs",
+    "build:test:watch": "npm run build:test -- --watch",
+    "clean": "del lib types",
+    "docs": "typedoc --name 'Findify Agent' --hideGenerator --target es5 --theme default --out doc src",
+    "lint": "tslint --project tsconfig.json --type-check --format codeFrame src/**/*.ts",
+    "lint:fix": "npm run lint -- --fix",
+    "precommit": "lint-staged",
+    "test": "# jest",
+    "test:ci": "jest --ci",
+    "test:watch": "jest --watch"
+  },
+  "author": "Findify <yourfriends@findify.io>",
+  "license": "MIT",
+  "types": "types/index.d.ts",
+  "repository": "https://github.com/findify/findify-js/tree/master/packages/analytics",
+  "config": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@findify/agent": "^1.2.4",
+    "@findify/analytics-dom": "0.0.5",
+    "@findify/react-connect": "^0.1.3",
+    "core-js": "^2.5.3",
+    "load-js": "^3.0.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.0.0-beta.38",
+    "@babel/plugin-proposal-class-properties": "^7.0.0-beta.38",
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0-beta.38",
+    "@babel/plugin-syntax-dynamic-import": "^7.0.0-beta.40",
+    "@babel/preset-env": "^7.0.0-beta.38",
+    "@babel/preset-typescript": "^7.0.0-beta.38",
+    "@types/jest": "^22.0.1",
+    "@types/webpack": "^3.8.3",
+    "babel-loader": "^8.0.0-beta.0",
+    "cross-env": "^5.1.3",
+    "del-cli": "^1.1.0",
+    "doctoc": "^1.3.0",
+    "html-webpack-plugin": "^2.30.1",
+    "npm-run-all": "^4.1.2",
+    "ts-node": "^4.1.0",
+    "tslint": "^5.9.1",
+    "typescript": "2.6.2",
+    "webpack": "^3.10.0"
+  }
+}
