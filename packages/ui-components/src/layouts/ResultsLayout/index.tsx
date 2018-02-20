@@ -131,6 +131,7 @@ export const ResultsLayout = compose(
 
         <div
           columnClass={cx(
+            styles.productsContainer,
             styles.products,
             !isMobile && styles.productsWithPadding
           )}

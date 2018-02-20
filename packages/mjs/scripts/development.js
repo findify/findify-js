@@ -9,9 +9,6 @@ import pkg from '../package.json';
 export default (env, { module, plugins, ...config }) => ({
   ...config,
   entry: [
-    'react-hot-loader/patch',
-    'webpack-dev-server/client?http://localhost:3000',
-    'webpack/hot/only-dev-server',
     path.resolve(process.cwd(), 'src/index.ts'),
     // path.resolve(process.cwd(), 'dev/components.tsx')
   ],
@@ -34,30 +31,27 @@ export default (env, { module, plugins, ...config }) => ({
       {
         ...module.rules.ts,
         use: [
-          'react-hot-loader/webpack',
           {
             loader: 'babel-loader',
             options: {
               babelrc: false,
-              plugins: [
-                'lodash',
-                'syntax-dynamic-import',
-                'transform-object-rest-spread',
-                'babel-plugin-transform-class-properties',
-                'transform-react-constant-elements',
-                'transform-react-remove-prop-types',
-                'transform-react-pure-class-to-function',
+              "plugins": [
+                "react-hot-loader/babel",
+                ["lodash", { "id": ["lodash", "recompose"] }],
+                "@babel/plugin-syntax-dynamic-import",
+                "@babel/plugin-proposal-object-rest-spread",
+                "@babel/plugin-proposal-class-properties",
+                "@babel/plugin-transform-react-constant-elements",
+                "@babel/plugin-syntax-object-rest-spread"
               ],
-              presets: [
-                [
-                  'env',
-                  {
-                    modules: false,
-                    targets: { browsers: ['last 2 versions', 'ie > 8'] },
-                  },
-                ],
-                'react',
-              ],
+              "presets": [
+                "@babel/preset-typescript",
+                "@babel/preset-react",
+                ["@babel/preset-env", {
+                  "modules": false,
+                  "targets": { "browsers": ["last 2 versions", "ie > 8"] }
+                }]
+              ]
             },
           },
         ],

@@ -63,7 +63,7 @@ export const init = (cfg, analytics) => {
 
 if (__DEVELOPMENT__) {
   const config = require('../dev/config').default;
-  const analytics = require('@findify/analytics/lib/index');
+  const analytics = require('@findify/analytics').default;
   const client = analytics({
     key: config.api.key,
     platform: { bigcommerce: true },

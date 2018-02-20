@@ -35,6 +35,7 @@ export default {
   view: {
     pagination: false,
     infinite: true,
+    stickyFilters: true,
   },
   features: {
     autocomplete: {
