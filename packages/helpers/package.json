@@ -53,6 +53,7 @@
     "build:umd:min": "cross-env NODE_ENV=production webpack src/index.ts dist/findify-helpers.min.js",
     "build:watch": "run-s tsc:watch",
     "build:test": "npm run build",
+    "prepare": "npm run build",
     "tsc": "tsc --project .",
     "tsc:watch": "tsc --watch --project .",
     "clean": "del lib dist",

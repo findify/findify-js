@@ -1,7 +1,11 @@
 {
-  "extends": "tslint:recommended",
+  "extends": [
+    "tslint-config-airbnb",
+    "tslint-config-prettier"
+  ],
   "rules": {
-    "quotemark": "single",
+    "quotemark": [0, "single"],
+    "variable-name": [0],
     "object-literal-sort-keys": false,
     "ordered-imports": false,
     "interface-name": false,
