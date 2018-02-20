@@ -44,8 +44,9 @@ const defaultConfig = environment => ({
         test: /\.tsx?$/,
         include: [
           path.resolve(process.cwd(), 'src'),
-          path.resolve(process.cwd(), 'dev'),
+          path.resolve(process.cwd(), 'dev')
         ],
+        exclude: path.resolve(process.cwd(), 'node_modules')
       },
 
       font: {

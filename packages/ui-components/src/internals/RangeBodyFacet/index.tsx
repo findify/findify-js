@@ -11,7 +11,7 @@ import formatRange from 'helpers/formatRange';
 import { findCurrency } from 'currency-formatter';
 import { getRangeFacetKey } from 'helpers/getRangeFacetKey';
 import * as cx from 'classnames';
-import NumberInput from 'internals/NumberInput';
+import NumberInput from 'react-numeric-input';
 
 const styles = require('./styles.css');
 
@@ -85,6 +85,7 @@ export const RangeBodyFacet: any = compose(
       <div className={styles.inputWrap}>
         {useCurrency && !!symbolOnLeft && currencySymbol}
         <NumberInput
+          style={false}
           className={styles.input}
           value={min}
           max={max || initial.max}
@@ -99,6 +100,7 @@ export const RangeBodyFacet: any = compose(
       <div className={styles.inputWrap}>
         {useCurrency && !!symbolOnLeft && currencySymbol}
         <NumberInput
+          style={false}
           className={styles.input}
           value={max}
           mobile={false}

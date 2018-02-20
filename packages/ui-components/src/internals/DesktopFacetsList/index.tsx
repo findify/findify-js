@@ -7,6 +7,7 @@ import {
   withPropsOnChange,
 } from 'recompose';
 import { mapTypeToFacet } from 'helpers/mapTypeToFacet';
+import { StickyFilters } from 'internals/StickyFilters';
 
 const Facet = compose(
   withState('isLoaded', 'setLoaded', ({ isMobile }) => isMobile),
@@ -26,10 +27,15 @@ const Facet = compose(
       : defer(() => setLoaded(true)) && null
 );
 
+const Wrapper = ({ config, className, children }) =>
+  config && config.view && config.view.stickyFilters
+  && React.createElement(StickyFilters, { children, className, config })
+  || React.createElement('div', { children, className });
+
 export const DesktopFacetsList = setDisplayName(
   'DesktopFacetsList'
-)(({ facets, className, ...rest }: DesktopFacetsListType) => (
-  <div className={className}>
+)(({ facets, className, ...rest }: DesktopFacetsListType) =>
+  <Wrapper className={className} config={rest.config}>
     {facets.map(facet =>
       React.createElement(Facet, {
         ...rest,
@@ -38,8 +44,8 @@ export const DesktopFacetsList = setDisplayName(
         label: rest.config.facets.labels[facet.name],
       })
     )}
-  </div>
-));
+  </Wrapper>
+);
 
 type DesktopFacetsListType = {
   children: any[];

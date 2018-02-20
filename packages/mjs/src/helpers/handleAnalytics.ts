@@ -11,7 +11,7 @@ const processShopify = (analytics, removeFindifyID = false) => {
 };
 
 export default (analytics, config) => {
-  analytics.initialize();
+  if ('initialize' in analytics) analytics.initialize();
 
   /**
    * Platform specific code
