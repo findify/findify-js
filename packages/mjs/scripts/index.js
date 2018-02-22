@@ -20,6 +20,11 @@ const defaultConfig = environment => ({
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.css'],
     modules: [path.resolve(process.cwd(), 'src'), 'node_modules'],
+    alias: {
+      'axios': path.resolve(process.cwd(), 'node_modules/axios'),
+      'bluebird': path.resolve(process.cwd(), 'node_modules/bluebird'),
+      'lodash': path.resolve(process.cwd(), 'node_modules/lodash'),
+    }
   },
 
   node: {

@@ -23,6 +23,7 @@ export const ResultsLayout = compose(
     view: {
       pagination: true,
       infinite: false,
+      stickyFilters: false,
     },
   }),
   defaultProps({
