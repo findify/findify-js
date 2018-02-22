@@ -3,8 +3,11 @@ import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import UglifyJSPlugin from 'uglifyjs-webpack-plugin';
 import Stats from 'stats-webpack-plugin';
+import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import SentryPlugin from 'webpack-sentry-plugin';
 import CompressionPlugin from 'compression-webpack-plugin';
+import DuplicatePackageCheckerPlugin from 'duplicate-package-checker-webpack-plugin';
+
 import pkg from '../package.json';
 
 const entity = [
@@ -75,11 +78,14 @@ export default (env, { module, plugins, output, ...config }) => {
 
     plugins: [
       ...plugins,
+      new DuplicatePackageCheckerPlugin(),
+  
       new HtmlWebpackPlugin({
         title: pkg.description,
         inject: 'head',
         template: path.resolve(process.cwd(), 'dev/templates/index.html'),
       }),
+  
       new UglifyJSPlugin({
         test: /\.min\.js($|\?)/i,
         cache: true,
@@ -100,6 +106,21 @@ export default (env, { module, plugins, output, ...config }) => {
         debug: false,
         minimize: true,
       }),
+
+      ...(Boolean(env && env.analyze)
+        ? [
+          new BundleAnalyzerPlugin({
+            analyzerMode: 'server',
+            analyzerPort: 8888,
+            openAnalyzer: true,
+            generateStatsFile: Boolean(env.generateStatsFile),
+            reportFilename: 'stats/webpack.stats.html',
+            statsFilename: 'stats/webpack.stats.json',
+          })
+        ]
+        : []
+      ),
+
       new CompressionPlugin(),
       ...(process.env.SENTRY_API_KEY
         ? [
