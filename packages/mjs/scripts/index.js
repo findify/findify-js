@@ -23,7 +23,6 @@ const defaultConfig = environment => ({
     alias: {
       'axios': path.resolve(process.cwd(), 'node_modules/axios'),
       'bluebird': path.resolve(process.cwd(), 'node_modules/bluebird'),
-      'lodash': path.resolve(process.cwd(), 'node_modules/lodash'),
     }
   },
 
