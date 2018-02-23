@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { debounce } from 'lodash';
+
 const selector = '.findify-layouts--results-layout__productsContainer';
+
 const minHeight = 500;
 const offset = 30;
 
@@ -12,6 +14,10 @@ export class StickyFilters extends React.Component<any, any> {
   constructor(props) {
     super(props);
     this.handleScroll = this.handleScroll.bind(this);
+    this.state = {
+      top: 0,
+      maxHeight: window.innerHeight
+    };
   }
 
   setContent = (r) => {
@@ -39,13 +45,19 @@ export class StickyFilters extends React.Component<any, any> {
       && contentBound.top + offset <= 0;
 
     if (!shouldStick) {
-      this.container.style.top = 0;
-      this.container.style.maxHeight = window.innerHeight;
-      return;
+      if (!this.state.top) return;
+      return this.setState({
+        top: 0,
+        maxHeight: window.innerHeight
+      });
     }
+  
     if (contentBound.bottom <= minHeight) return;
-    this.container.style.top = `${~contentBound.top + offset}px`;
-    this.container.style.maxHeight = `${contentBound.bottom - offset}px`;
+
+    return this.setState({
+      top: ~contentBound.top + offset,
+      maxHeight: contentBound.bottom - offset
+    });
   })
 
   componentDidMount() {
@@ -63,6 +75,7 @@ export class StickyFilters extends React.Component<any, any> {
         <div
           ref={this.setContent}
           style={{
+            ...this.state,
             position: 'relative',
             overflow: 'hidden',
             overflowY: 'auto',
