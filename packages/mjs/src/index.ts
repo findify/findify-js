@@ -17,7 +17,6 @@ if (typeof document !== 'undefined') elementDataset();
 const prepareConfig = config => {
   const frameDisabled = config.frameDisabled || isBot;
   const css = [];
-
   if (!__DEVELOPMENT__) {
     if (frameDisabled) {
       css.push(
