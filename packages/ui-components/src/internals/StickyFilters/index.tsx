@@ -76,14 +76,13 @@ export class StickyFilters extends React.Component<any, any> {
         ref={this.setWrapper}
         className={className}
         style={{
-          position: 'relative',
           transform: 'translateZ(0)',
         }}>
         <div
           ref={this.setContent}
           style={{
             ...this.state,
-            position: 'absolute',
+            position: 'relative',
             overflow: 'hidden',
             overflowY: 'auto',
             willChange: 'top, max-height',
