@@ -30,6 +30,7 @@ export const createFacetsUpdater = instance => ({
         payload: changes,
       });
     case 'range':
+      console.log(changes);
       return instance.emit({
         name: changes.selected ? 'setRangeFacet' : 'unsetRangeFacet',
         payload: pick(changes, ['name', 'from', 'to']),
