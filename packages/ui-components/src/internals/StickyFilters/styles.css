@@ -1,0 +1,7 @@
+.sticky{
+  position: relative;
+  overflow: hidden;
+  overflow-y: auto;
+  will-change: top, max-height;
+  transition: top .5s linear;
+}

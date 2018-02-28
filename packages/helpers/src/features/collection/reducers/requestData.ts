@@ -244,7 +244,7 @@ function handleUnsetRangeFacet(state, { name, from, to }) {
             ? {
                 ...el,
                 values: el.values.filter(
-                  v => !(v.from === from && v.to === to),
+                  v => !(String(v.from) === String(from) && String(v.to) === String(to)),
                 ),
               }
             : el,

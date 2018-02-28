@@ -3,6 +3,7 @@ import { debounce } from 'lodash';
 
 const selector = '.findify-layouts--results-layout__productsContainer';
 
+const styles = require('./styles.css');
 const minHeight = 500;
 const offset = 30;
 
@@ -80,13 +81,8 @@ export class StickyFilters extends React.Component<any, any> {
         }}>
         <div
           ref={this.setContent}
-          style={{
-            ...this.state,
-            position: 'relative',
-            overflow: 'hidden',
-            overflowY: 'auto',
-            willChange: 'top, max-height',
-          }}
+          style={this.state}
+          className={styles.sticky}
         >
         { children }
         </div>
