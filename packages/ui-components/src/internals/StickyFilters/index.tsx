@@ -29,7 +29,7 @@ export class StickyFilters extends React.Component<any, any> {
     this.wrapper = r;
   }
 
-  handleScroll: any = debounce(() => {
+  handleScroll: any = () => {
     const content =
       document.querySelector(selector) &&
       document.querySelector(selector).childNodes[0];
@@ -54,11 +54,12 @@ export class StickyFilters extends React.Component<any, any> {
   
     if (contentBound.bottom <= minHeight) return;
 
+    const height = contentBound.bottom - offset;
     return this.setState({
       top: ~contentBound.top + offset,
-      maxHeight: contentBound.bottom - offset
+      maxHeight: height > window.innerHeight ? window.innerHeight : height
     });
-  })
+  }
 
   componentDidMount() {
     document.addEventListener('scroll', this.handleScroll, true)
@@ -71,16 +72,21 @@ export class StickyFilters extends React.Component<any, any> {
   public render() {
     const { className, children } = this.props;
     return (
-      <div ref={this.setWrapper} className={className}>
+      <div
+        ref={this.setWrapper}
+        className={className}
+        style={{
+          position: 'relative',
+          transform: 'translateZ(0)',
+        }}>
         <div
           ref={this.setContent}
           style={{
             ...this.state,
-            position: 'relative',
+            position: 'absolute',
             overflow: 'hidden',
             overflowY: 'auto',
-            transform: 'translateZ(0)',
-            willChange: 'top, max-height'
+            willChange: 'top, max-height',
           }}
         >
         { children }
