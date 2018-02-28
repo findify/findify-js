@@ -15,19 +15,22 @@ import {
 const history = createHistory();
 const emptyObject = {};
 
-const isValidNumber = s =>
-  s.length > 1 &&
-  (s[0] === '0' || (s.includes('.') && s[s.length - 1] === '0'));
 const toString = state => stringify(state, { encode: encodeURIComponent });
-const fromString = str =>
-  parse(str, {
-    decoder: str => {
-      const value: any = decodeURIComponent(str);
-      return isNaN(value) || !value || isValidNumber(value)
-        ? value
-        : parseFloat(value);
-    },
-  });
+
+const fromString = (str, prefix = false) => {
+  const elements = parse(str, { decoder: decodeURIComponent });
+  const res = Object.keys(elements).reduce((acc, key) => {
+    const _key = prefix ? key.replace(`${prefix}_`, '') : key;
+    return {
+      ...acc,
+      [_key]: ['limit', 'offset'].includes(_key)
+        ? Number(elements[key])
+        : elements[key]
+    }
+  }, {})
+  console.log(res)
+  return res;
+}
 
 const reduceState = (state, keyFn, valueFn = identity) =>
   Object.keys(state).reduce((acc, key) => {
@@ -86,13 +89,7 @@ class Location {
 
   _getter(string) {
     if (/search=\{.*?\}/.test(string)) return parseOldQuery(string);
-    const state = fromString(string);
-    if (!this.prefix) return state;
-    const prefix = this.prefix + '_';
-    return reduceState(
-      state,
-      key => key.includes(prefix) && key.replace(prefix, '')
-    );
+    return fromString(string, this.prefix);
   }
 
   setter(state) {

@@ -202,7 +202,7 @@ function handleSetRangeFacet(state, { name, from, to }) {
     filter.name === name &&
     filter.type === 'range' &&
     (!filter.values ||
-      filter.values.filter(item => item.from === from && item.to === to)
+      filter.values.filter(item => String(item.from) === String(from) && String(item.to) === String(to))
         .length === 0);
   const filters = state.filters || [];
   const isItemExists =
@@ -247,7 +247,7 @@ function handleUnsetRangeFacet(state, { name, from, to }) {
             ? {
                 ...el,
                 values: el.values.filter(
-                  v => !(v.from === from && v.to === to),
+                  v => !(String(v.from) === String(from) && String(v.to) === String(to)),
                 ),
               }
             : el,
