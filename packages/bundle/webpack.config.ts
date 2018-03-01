@@ -53,12 +53,13 @@ export default (env: WebpackEnvArgs) => {
                 plugins: [
                   "@babel/plugin-proposal-object-rest-spread",
                   "@babel/plugin-proposal-class-properties",
-                  "@babel/plugin-syntax-dynamic-import"
+                  "@babel/plugin-syntax-dynamic-import",
                 ],
                 presets: [
                   "@babel/preset-typescript",
                   ["@babel/preset-env", {
                     "modules": false,
+                    "useBuiltIns": 'entry',
                     "targets": { "browsers": ["last 2 versions", "ie > 8"] },
                   }]
                 ]
@@ -77,11 +78,6 @@ export default (env: WebpackEnvArgs) => {
         },
       }),
 
-
-      // enable scope hoisting
-      new webpack.optimize.ModuleConcatenationPlugin(),
-
-
       new webpack.optimize.CommonsChunkPlugin({
         async: 'common',
         minChunks(module, count) {
@@ -90,11 +86,6 @@ export default (env: WebpackEnvArgs) => {
           && !module.context.includes('@findify')
           && count >= 2;
         },
-      }),
-
-      new webpack.LoaderOptionsPlugin({
-        debug: false,
-        minimize: true
       }),
   
       // new DuplicatePackageCheckerPlugin(),
@@ -124,7 +115,7 @@ export default (env: WebpackEnvArgs) => {
         inject: false
       }),
 
-      new webpack.HashedModuleIdsPlugin()
+      // new webpack.HashedModuleIdsPlugin()
     ],
     
   };
