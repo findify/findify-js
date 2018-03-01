@@ -21,9 +21,7 @@ export default (env, { module, plugins, output, ...config }) => {
 
     entry: {
       'extended': entity,
-      'extended.min': entity,
       'pure': path.resolve(process.cwd(), 'src/index.ts'),
-      'pure.min': path.resolve(process.cwd(), 'src/index.ts'),
     },
     output: {
       ...output,
@@ -87,7 +85,7 @@ export default (env, { module, plugins, output, ...config }) => {
       }),
   
       new UglifyJSPlugin({
-        test: /\.min\.js($|\?)/i,
+        test: /\.js($|\?)/i,
         cache: true,
         parallel: true,
         sourceMap: true,
