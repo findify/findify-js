@@ -10,7 +10,7 @@
   ],
   "scripts": {
     "build": "run-p build:lib build:dist",
-    "build:dist": "webpack",
+    "build:dist": "webpack-cli --mode=production",
     "build:dist:analyze": "npm run build:dist -- --env.analyze",
     "build:lib": "tsc --project tsconfig.lib.json --declaration --declarationDir types",
     "build:test": "npm run build:lib -- --project tsconfig.test.json --module commonjs",
@@ -55,6 +55,7 @@
     "npm-run-all": "^4.1.2",
     "ts-node": "^5.0.0",
     "tslint": "^5.9.1",
+    "webpack-cli": "^2.0.9",
     "typescript": "2.7.2"
   }
 }

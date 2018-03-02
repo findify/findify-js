@@ -33,7 +33,7 @@ export const createProvider = (type, onCreate?: (agent) => void) => {
       const { apiKey, agent, options, defaults } = props;
       const analyticsConfig: any = { key: apiKey };
 
-      if (agent && !agent.immutable) {
+      if (agent && !agent.config.immutable) {
         throw new Error(`
           Agent should be in "immutable" mode, to work with connectors.
           Add "immutable: true" to your Agent initializer

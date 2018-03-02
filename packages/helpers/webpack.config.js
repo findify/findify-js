@@ -1,7 +1,6 @@
-'use strict';
-
 var webpack = require('webpack');
 var nodeExternals = require('webpack-node-externals');
+var path = require('path');
 
 var env = process.env.NODE_ENV;
 
@@ -13,7 +12,13 @@ var config = {
     rules: [
       {
         test: /\.ts$/,
-        use: ['ts-loader'],
+        loader: 'ts-loader',
+        include: path.resolve(__dirname, 'src'),
+        options: {
+          silent: true,
+          configFile: path.resolve(__dirname, 'tsconfig.lib.json'),
+          compilerOptions: { target: 'es5' },
+        },
       },
     ],
   },

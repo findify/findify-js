@@ -1,23 +1,26 @@
+import 'regenerator-runtime/runtime';
 import { fromJS } from 'immutable';
 import { documentReady } from './helpers/documentReady';
-import { createEntities } from './helpers/createEntities';
+import { createEntities } from './core/entities';
+import { renderEntities } from './core/render';
 import { capitalize } from './helpers/capitalize';
+import emmiter from './core/emmiter';
+
+// tslint:disable-next-line:import-name
+import Analytics from '@findify/analytics-dom';
+import * as Agents from '@findify/agent';
+
+__root.emmiter = emmiter;
 
 export default async (
-  _analytics,
-  _config,
-  _agents
+  _config
 ) => {
   const cfg = _config.default;
-  const config = fromJS(cfg);
-  const analytics = _analytics.default({ ...cfg.api, ...cfg.platform });
+  const config = __root.config = fromJS(cfg);
+  const analytics = __root.analytics = Analytics({ ...cfg.api, ...cfg.platform });
   
   await documentReady;
 
-  const entries = createEntities(cfg.selectors)
-    .map(entity => {
-      const agent = _agents[capitalize(entity.type)];
-      if (!agent) throw new Error(`Feature ${entity.type} is not exists!`);
-      return { ...entity, agent: new agent({ ...cfg.api }) }
-    });
+  const entries = __root.entries = createEntities(cfg.selectors, config);
+  renderEntities(entries);
 }

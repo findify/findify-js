@@ -14,10 +14,8 @@ interface WebpackEnvArgs {
 
 export default (env: WebpackEnvArgs) => {
   const config: webpack.Configuration = {
-    context: path.resolve(process.cwd(), 'src'),
-
     entry: {
-      'bundle': ['./index'],
+      'bundle': path.resolve(__dirname, 'src/index'),
     },
 
     output: {
@@ -28,17 +26,18 @@ export default (env: WebpackEnvArgs) => {
     },
 
     devServer: {
-      contentBase: path.resolve(process.cwd(), 'dist'),
+      contentBase: path.resolve(__dirname, 'dist'),
       port: 3000,
       stats: 'minimal',
       historyApiFallback: true,
     },
-
-    devtool: 'source-map',
     stats: 'minimal',
     bail: true,
     resolve: {
       extensions: ['.ts', '.js'],
+      alias: {
+        debug: path.resolve(__dirname, '../../node_modules/debug')
+      }
     },
     module: {
       rules: [
@@ -58,7 +57,7 @@ export default (env: WebpackEnvArgs) => {
                 presets: [
                   "@babel/preset-typescript",
                   ["@babel/preset-env", {
-                    "modules": false,
+                    "modules": 'commonjs',
                     "useBuiltIns": 'entry',
                     "targets": { "browsers": ["last 2 versions", "ie > 8"] },
                   }]
@@ -71,43 +70,14 @@ export default (env: WebpackEnvArgs) => {
     },
     plugins: [
       new webpack.DefinePlugin({
+        __root: 'window.findify',
         __COMMITHASH__: JSON.stringify(new GitRevisionPlugin().commithash()),
         'process.env': {
-          NODE_ENV: JSON.stringify('production'),
           BROWSER: true
         },
       }),
-
-      new webpack.optimize.CommonsChunkPlugin({
-        async: 'common',
-        minChunks(module, count) {
-          return module.context
-          && module.context.includes("node_modules")
-          && !module.context.includes('@findify')
-          && count >= 2;
-        },
-      }),
   
-      // new DuplicatePackageCheckerPlugin(),
-  
-      // new UglifyJSPlugin({
-      //   test: /\.js($|\?)/i,
-      //   cache: true,
-      //   parallel: true,
-      //   sourceMap: true,
-      //   uglifyOptions: {
-      //     output: {
-      //       beautify: false,
-      //     },
-      //     compress: {
-      //       drop_debugger: true,
-      //     }
-      //   }
-      // }),
-
-    //   new CompressionPlugin({
-    //     exclude: /\.map/,
-    //   })
+      new DuplicatePackageCheckerPlugin(),
 
       new HtmlWebpackPlugin({
         hash: true,
