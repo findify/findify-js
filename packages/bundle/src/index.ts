@@ -6,6 +6,7 @@
 import 'core-js/es6/promise';
 import loadJs from 'load-js';
 
+
 /**
  * Load Dependencies
  */
@@ -21,7 +22,7 @@ Promise.all([
   import(
     /* webpackChunkName: "polyfill" */
     '@babel/polyfill'
-  )
+  ),
 ])
 .then(([initialize, config]) => {
   initialize.default(config)

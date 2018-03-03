@@ -1,26 +1,26 @@
 import 'regenerator-runtime/runtime';
-import { fromJS } from 'immutable';
 import { documentReady } from './helpers/documentReady';
 import { createEntities } from './core/entities';
 import { renderEntities } from './core/render';
 import { capitalize } from './helpers/capitalize';
+import { createConfigBase } from './helpers/createConfigBase';
 import emmiter from './core/emmiter';
 
 // tslint:disable-next-line:import-name
 import Analytics from '@findify/analytics-dom';
-import * as Agents from '@findify/agent';
 
-__root.emmiter = emmiter;
+__root.listen = emmiter.listen;
+__root.emit = emmiter.emit;
 
 export default async (
   _config
 ) => {
   const cfg = _config.default;
-  const config = __root.config = fromJS(cfg);
+  const config = __root.config = createConfigBase(cfg);
   const analytics = __root.analytics = Analytics({ ...cfg.api, ...cfg.platform });
-  
+
   await documentReady;
 
-  const entries = __root.entries = createEntities(cfg.selectors, config);
-  renderEntities(entries);
+  const entities = __root.entities = createEntities(cfg.selectors, config);
+  renderEntities(entities);
 }

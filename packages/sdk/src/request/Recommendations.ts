@@ -41,11 +41,11 @@ export enum Type {
   Slot = 'slot',
   Newest = 'newest',
   Trending = 'trending',
-  RecentlyViewed = 'recently-viewed',
-  AlsoViewed = 'also-viewed',
-  AlsoBought = 'also-bought',
-  FrequentlyPurchasedTogether = 'frequently-purchased-together',
-  Featured = 'featured',
+  RecentlyViewed = 'latest',
+  AlsoViewed = 'viewed',
+  AlsoBought = 'bought',
+  FrequentlyPurchasedTogether = 'purchasedTogether',
+  Featured = 'featured'
 }
 
 /** Slot recommendations request parameters */

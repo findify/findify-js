@@ -10,7 +10,7 @@ export class Autocomplete extends Agent {
 }
 
 export class Recommendation extends Agent {
-  type = Types.RequestType.Recommendation;
+  type = Types.RequestType.Recommendations;
 }
 
 export class SmartCollection extends Agent {

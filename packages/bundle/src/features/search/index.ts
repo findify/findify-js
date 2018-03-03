@@ -1,16 +1,18 @@
 import { createElement } from 'react';
 import { SearchProvider } from "@findify/react-connect";
-import { getQuery } from '../../core/location';
+import { getQuery, setQuery } from '../../core/location';
 import { Items } from '../../test.components';
 
-export default (entity) => {
+export default ({ agent, config }, rerender) => {
   const state = getQuery();
-  entity.agent.defaults(state);
-  console.log(entity.agent);
+  const props = { agent, apiKey: config.getIn(['api', 'key']) };
+
+  /** Setup initial request */
+  for (const key in state) agent.set(key, state[key]);
+
+  /** Listen to changes */
+  agent.on('change:query', q => setQuery(q.toJS()));
   
-  return createElement(
-    SearchProvider,
-    { agent: entity.agent, apiKey: entity.config.getIn(['api', 'key']) },
-    Items
-  );
+  /** Render */
+  return createElement(SearchProvider, props, Items);
 }

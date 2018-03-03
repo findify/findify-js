@@ -1,6 +1,7 @@
 declare module __root {
-  let on: any;
+  let emit: any;
+  let listen: any;
   let config: any;
   let analytics: any;
-  let entries: any;
+  let entities: any;
 }

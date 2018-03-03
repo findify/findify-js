@@ -1,6 +1,7 @@
 import { Component, createElement } from 'react';
 import { render, createPortal } from 'react-dom';
 import { createFeature } from '../features/create';
+import { getParentNode } from '../helpers/getParentNode';
 
 const createRoot = () => {
   const div = document.createElement('div');
@@ -13,25 +14,29 @@ const createRoot = () => {
 class Portal extends Component<any>{
   element: HTMLElement;
   component: any;
+  parent: any;
 
   static displayName = 'Container'
 
   constructor(props) {
     super(props);
     const { entity } = props;
+
     this.element = document.createElement('div');
     this.element.className = `findify-container-element findify-${entity.type}`;
     this.component = createFeature(entity);
+    this.parent = getParentNode(entity);
   }
 
   componentDidMount() {
     const { entity } = this.props;
-    entity.node.appendChild(this.element);
+    const renderTo = entity.config.get('renderTo');
+    this.parent.appendChild(this.element);
   }
 
   componentWillUnmount() {
     const { entity } = this.props;
-    entity.node.parentElement.removeChild(this.element);
+    this.parent.removeChild(this.element);
   }
 
   render() {
@@ -47,7 +52,7 @@ class RootElement extends Component{
   constructor(props){
     super(props);
     this.state = { entities: props.entities.list() };
-    __root.emmiter.listen((event, entity) => {
+    __root.listen((event, entity) => {
       if (event === 'attachEntity') {
         this.setState(({ entities }: any) =>
           ({ entities: [...entities, entity] })

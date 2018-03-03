@@ -57,8 +57,8 @@ export default (env: WebpackEnvArgs) => {
                 presets: [
                   "@babel/preset-typescript",
                   ["@babel/preset-env", {
-                    "modules": 'commonjs',
-                    "useBuiltIns": 'entry',
+                    "modules": false,
+                    "useBuiltIns": 'usage',
                     "targets": { "browsers": ["last 2 versions", "ie > 8"] },
                   }]
                 ]

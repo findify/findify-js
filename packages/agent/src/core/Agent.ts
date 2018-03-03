@@ -123,13 +123,16 @@ export class Agent {
 
   private handleChanges(next, meta?) {
     const prev = this.response;
-    this.handlers.forEach(({ path, handler }) => {
+    for (let index = 0; index < this.handlers.length; index++) {
+      if (!this.handlers[index]) return;
+      const { path, handler } = this.handlers[index];
       const update = next.getIn(path);
       const old = prev.getIn(path);
       if (update && (!old || !old.equals(update))) {
         handler(this.format(update), this.format(meta));
       }
-    });
+      
+    }
   }
 
   private handleResponse(res:Types.ResponseBody) {
