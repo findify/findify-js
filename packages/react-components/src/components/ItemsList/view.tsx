@@ -1,8 +1,10 @@
 import react from 'react'
 import ItemCard from '../ItemCard';
+import MapArray from '../MapArray';
+
+const ItemFactory = ({ props }) => <ItemCard {...props} />
+const keyAccessor = item => item.hashCode()
 
 export default ({ items }) => (
-  items.map(item => (
-    <ItemCard key={item.hashCode()} item={item} />
-  ))
+  <MapArray array={items} factory={ItemFactory} keyAccessor={keyAccessor} />
 )
