@@ -21,22 +21,21 @@ class Portal extends Component<any>{
 
   constructor(props) {
     super(props);
-    const { entity } = props;
+    const { widget } = props;
 
     this.element = document.createElement('div');
-    this.element.className = `findify-container findify-${entity.type} findify-element-${entity.key}`;
-    this.component = createFeature(entity);
-    this.parent = getParentNode(entity);
+    this.element.className = `findify-container findify-${widget.type} findify-widget-${widget.key}`;
+    this.component = createFeature(widget);
+    this.parent = getParentNode(widget);
   }
 
   componentDidMount() {
-    const { entity } = this.props;
-    const renderTo = entity.config.get('renderTo');
+    const { widget } = this.props;
+    const renderTo = widget.config.get('renderTo');
     this.parent.appendChild(this.element);
   }
 
   componentWillUnmount() {
-    const { entity } = this.props;
     this.parent.removeChild(this.element);
   }
 
@@ -46,34 +45,34 @@ class Portal extends Component<any>{
 }
 
 class RootElement extends Component{
-  state = { entities: [] }
+  state = { widgets: [] }
 
   static displayName = 'Findify'
 
   constructor(props){
     super(props);
-    this.state = { entities: props.entities.list() };
-    __root.listen((event, entity) => {
+    this.state = { widgets: props.widgets.list() };
+    __root.listen((event, widget) => {
       if (event === Events.attach) {
-        this.setState(({ entities }: any) =>
-          ({ entities: [...entities, entity] })
+        this.setState(({ widgets }: any) =>
+          ({ widgets: [...widgets, widget] })
         )
       }
       if (event === Events.detach) {
-        this.setState(({ entities }: any) =>
-          ({ entities: entities.filter(({ key }) => key !== entity.key) })
+        this.setState(({ widgets }: any) =>
+          ({ widgets: widgets.filter(({ key }) => key !== widget.key) })
         )
       }
     })
   }
 
   render() {
-    const { entities } = this.state;
-    return entities.map((entity: any) => 
-      createElement(Portal, { entity, key: entity.key })
+    const { widgets } = this.state;
+    return widgets.map((widget: any) => 
+      createElement(Portal, { widget, key: widget.key })
     );
   }
 }
 
-export const renderEntities = (entities) =>
-  render(createElement(RootElement, { entities }), createRoot());
+export const renderWidgets = (widgets) =>
+  render(createElement(RootElement, { widgets }), createRoot());

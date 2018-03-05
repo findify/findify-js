@@ -18,14 +18,14 @@ const stylesUpdater = (ghost, styles: any) => {
   return cache = styles;
 }
 
-export const registerHandlers = (entity, render) => {
-  const { node, config, agent } = entity;
+export const registerHandlers = (widget, render) => {
+  const { node, config, agent } = widget;
   const subscribers: any = [];
   let container: any;
 
   /** Track input position and update container styles */
   const handleWindowScroll = debounce(() => {
-    container = container || document.querySelector(`.findify-element-${entity.key}`);
+    container = container || document.querySelector(`.findify-widget-${widget.key}`);
     if (!container.childNodes.length) return;
 
     const { width, top, left, height } = node.getBoundingClientRect();
@@ -46,10 +46,8 @@ export const registerHandlers = (entity, render) => {
   /** Handle input change */
   const handleInputChange = (e) => {
     const value = e.target.value;
-    if (!value) return render();
     agent.set('q', value);
     handleWindowScroll();
-    return render('initial')
   };
 
   /** Handle input blur */
@@ -59,7 +57,7 @@ export const registerHandlers = (entity, render) => {
   const search = (_value?) => {
     const value = _value || agent.state.get('q');
     if (!isSearch()) return redirectToSearch(value);
-    __root.entities
+    __root.widgets
       .findByType('search', 'smart-collection')
       .forEach(({ agent }) => agent.reset().set('q', value)); 
     node.value = value;
@@ -119,10 +117,10 @@ export const registerHandlers = (entity, render) => {
 
   /** Unsubscribe from events on instance destroy  */
   const unsubscribe = __root.listen((event, prop, ...args) => {
-    if (event === Events.search && prop === entity.key) {
+    if (event === Events.search && prop === widget.key) {
       return search(...args);
     }
-    if (event !== Events.detach || prop !== entity) return;
+    if (event !== Events.detach || prop !== widget) return;
     subscribers.forEach(fn => fn());
     unsubscribe();
   })

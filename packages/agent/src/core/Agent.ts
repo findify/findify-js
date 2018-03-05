@@ -21,7 +21,7 @@ export class Agent {
   handlers: Types.Handler[] = [];
   config: Types.AgentConfig;
   onError: (error: Error) => void;
-
+  beforeRequest: any;
   provider: Types.SDKClient;
   cache: Cache;
 
@@ -135,7 +135,7 @@ export class Agent {
     }
   }
 
-  private handleResponse(res:Types.ResponseBody) {
+  public handleResponse(res:Types.ResponseBody) {
     const response = fromJS(res);
     const newState = queryToState(this.state, response.get('meta'), this._defaults);
     this.handleChanges(response, response.get('meta'));
@@ -144,25 +144,28 @@ export class Agent {
     this.response = response;
   }
 
-  /**
-   * This function will fire after next tick after last .set or .default call
-   * @param cache [{any}] - established values
-   */
-  private request(cache) {
+  public createRequestBody (cache) {
     this.state = this.state.merge(cache);
     const merge = this._defaults.mergeDeep(this.state);
     const params = stateToQuery(merge).toJS();
     const type: any = this.type;
-    this.provider
-      .send({ params, type })
-      .then(this.handleResponse)
-      .catch(error =>
-        this.onError
-        ? this.onError(error)
-        : console.warn(error)
-      );
+    return { params, type }
+  }
 
-    return;
+  /**
+   * This function will fire after next tick after last .set or .default call
+   * @param cache [{any}] - established values
+   */
+  public request(cache) {
+    const params = this.createRequestBody(cache);
+    return this.provider
+    .send(params)
+    .then(this.handleResponse)
+    .catch(error =>
+      this.onError
+      ? this.onError(error)
+      : console.warn(error)
+    );;
   }
 
   /**

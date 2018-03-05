@@ -16,8 +16,8 @@ export default async (
   /* Load Dependencies in closure to support polyfills */
   const { fromJS } = require('immutable');
   const { documentReady } = require('./helpers/documentReady');
-  const { createEntities } = require('./core/entities');
-  const { renderEntities }  = require('./core/render');
+  const { createWidgets } = require('./core/widgets');
+  const { renderWidgets }  = require('./core/render');
 
   const cfg = _config.default;
   const config = __root.config = fromJS(cfg);
@@ -25,6 +25,6 @@ export default async (
 
   await documentReady;
 
-  const entities = __root.entities = createEntities(cfg.selectors, config);
-  renderEntities(entities);
+  const widgets = __root.widgets = createWidgets(cfg.selectors, config);
+  renderWidgets(widgets);
 }

@@ -13,9 +13,12 @@ const keySelector = 'data-key';
 let index: number = 0;
 let cache: any[] = [];
 let config: Map<any, any> = Map();
+const getAgentType = type => camelize({
+  'search-button': 'autocomplete'
+}[type] || type);
 
 const createAgent = (type, config) => {
-  const agent = Agents[camelize(type)];
+  const agent = Agents[getAgentType(type)];
   if (!agent) throw new Error(`Feature ${type} is not exists!`);
 
   return new agent({
@@ -50,29 +53,29 @@ const getEntity = (selector, _type?, _config?) => getNodes(selector)
 
   const agent = createAgent(type, config);
 
-  /** Actuall entity */
-  const entity = { key, type, node, agent, config };
+  /** Actual widget */
+  const widget = { key, type, node, agent, config };
 
-  /** Notify everyone that entity was created */
-  emmiter.emit(Events.attach, entity);
-  return entity;
+  /** Notify everyone that widget was created */
+  emmiter.emit(Events.attach, widget);
+  return widget;
 })
 
-const entities = {
-  /** Add new entity */
+const widgets = {
+  /** Add new widget */
   attach(selector, type?, config?) {
     const cfg = config && !isImmutable(config) ? fromJS(config) : config;
     cache = [...cache, ...getEntity(selector, type, cfg)];
     return cache;
   },
 
-  /** Remove exist entity */
-  detach(entity) {
-    cache = cache.filter(entity => entity.key !== entity.key);
-    emmiter.emit(Events.detach, entity);
+  /** Remove exist widget */
+  detach(widget) {
+    cache = cache.filter(widget => widget.key !== widget.key);
+    emmiter.emit(Events.detach, widget);
   },
 
-  /** Get all stored entities */
+  /** Get all rendered widget */
   list(){
     return cache;
   },
@@ -82,16 +85,16 @@ const entities = {
   }
 };
 
-export const createEntities = (selectors = {}, _config) => {
+export const createWidgets = (selectors = {}, _config) => {
   config = _config;
 
   /** Attach default nodes */
-  entities.attach(`[${attrSelector}]`);
+  widgets.attach(`[${attrSelector}]`);
 
   /** Attach nodes specified in configuration */
   for (const key in selectors) {
-    entities.attach(key, selectors[key]);
+    widgets.attach(key, selectors[key]);
   }
 
-  return entities;
+  return widgets;
 }

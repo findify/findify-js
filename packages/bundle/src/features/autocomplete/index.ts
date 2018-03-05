@@ -4,16 +4,16 @@ import { getQuery, setQuery } from '../../core/location';
 import { Items } from '../../test.components';
 import { registerHandlers } from './handlers';
 
-export default (entity, rerender) => {
-  const { node, agent, config } = entity;
+export default (widget, rerender) => {
+  const { node, agent, config } = widget;
   const state: any = getQuery();
-  const apiKey = entity.config.getIn(['api', 'key']);
+  const apiKey = config.getIn(['api', 'key']);
 
   const props = { apiKey, agent };
 
   if (state.q) node.value = state.q;
 
-  registerHandlers(entity, rerender);
+  registerHandlers(widget, rerender);
 
   /** Render */
   return createElement(AutocompleteProvider, props, Items);

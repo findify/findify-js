@@ -3,7 +3,7 @@ declare module __root {
   let listen: any; // Listen for events
   let config: any; // Merchant configuration (Immutable)
   let analytics: any; // Analytics instance
-  let entities: any; // Entities manager (list, attach, detach, find)
+  let widgets: any; // Widgets manager (list, attach, detach, find)
 }
 
 declare module __webpack_require__ {

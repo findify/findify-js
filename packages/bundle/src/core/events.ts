@@ -1,17 +1,17 @@
 export enum Events {
   /** 
-   *  Creates new entity
+   *  Creates new widget
    *  @prop [selector: string] - Element where to inject widget
    *  @prop [type: string] - Type of widget
    *  @prop [config: object] - Config which will extend base config
    */
-  attach = 'attachEntity',
+  attach = 'attachWidget',
 
   /** 
-   * Removes exist entity
-   * @prop [entity: object] - Entity to remove
+   * Removes exist widget
+   * @prop [entity: object] - widget to remove
   */
-  detach = 'detachEntity',
+  detach = 'detachWidget',
 
   /** 
    * Will navigate to search page with passed value as search query

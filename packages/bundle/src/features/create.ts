@@ -10,8 +10,8 @@ class FeatureCreator extends Component<any>{
 
   constructor(props) {
     super(props);
-    const { entity, updater } = props;
-    this.initial = updater(entity, this.callback);
+    const { widget, updater } = props;
+    this.initial = updater(widget, this.callback);
     this.state = { component: this.initial };
   }
 
@@ -19,8 +19,7 @@ class FeatureCreator extends Component<any>{
     let component;
     if (!_component) component = null;
     if (_component === 'initial') component = this.initial;
-    if (typeof _component === 'object') component = createElement(_component, props, children);
-
+    if (typeof _component === 'function') component = createElement(_component, props, children);
     this.setState({ component });
   }
 
@@ -33,8 +32,8 @@ class FeatureCreator extends Component<any>{
   }
 }
 
-export const createFeature = (entity) =>
+export const createFeature = (widget) =>
   createElement(FeatureCreator, {
-    entity,
-    updater: require(`./${entity.type}`).default
+    widget,
+    updater: require(`./${widget.type}`).default
   });
