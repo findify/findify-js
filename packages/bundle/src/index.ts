@@ -1,11 +1,10 @@
+import 'core-js/es6/promise';
+import loadJs from 'load-js';
+
 /**
  * Create global namespace
  */
 (global as any).findify = {};
-
-import 'core-js/es6/promise';
-import loadJs from 'load-js';
-
 
 /**
  * Load Dependencies
@@ -15,15 +14,16 @@ Promise.all([
     /* webpackChunkName: "initializer" */
     './initialize'
   ),
+
   import(
     /* webpackChunkName: "config" */
     './config'
   ),
-  import(
-    /* webpackChunkName: "polyfill" */
-    '@babel/polyfill'
-  ),
+
+  loadJs(
+    /* Load polyfills if needed */
+    __webpack_require__.p + 'polyfill.js'
+  )
+
 ])
-.then(([initialize, config]) => {
-  initialize.default(config)
-});
+.then(([initialize, config]) => initialize.default(config));

@@ -16,8 +16,9 @@ export default (env: WebpackEnvArgs) => {
   const config: webpack.Configuration = {
     entry: {
       'bundle': path.resolve(__dirname, 'src/index'),
+      'polyfill': path.resolve(__dirname, 'src/polyfill'),
     },
-
+    devtool: 'source-map',
     output: {
       filename: '[name].js',
       chunkFilename: '[name].js',
@@ -58,7 +59,7 @@ export default (env: WebpackEnvArgs) => {
                   "@babel/preset-typescript",
                   ["@babel/preset-env", {
                     "modules": false,
-                    "useBuiltIns": 'usage',
+                    "useBuiltIns": 'entry',
                     "targets": { "browsers": ["last 2 versions", "ie > 8"] },
                   }]
                 ]

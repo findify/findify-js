@@ -16,3 +16,12 @@ export const Items = createElement(
   'div',
   { children: createElement(ConnectedItems) }
 );
+
+// tslint:disable-next-line:variable-name
+export const AutocompleteItems = createElement(
+  'div',
+  {
+    children: createElement(ConnectedItems),
+    style: { position: 'absolute' }
+  }
+);

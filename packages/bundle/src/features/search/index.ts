@@ -3,7 +3,7 @@ import { SearchProvider } from "@findify/react-connect";
 import { getQuery, setQuery } from '../../core/location';
 import { Items } from '../../test.components';
 
-export default ({ agent, config }, rerender) => {
+export default ({ agent, config }, render) => {
   const state = getQuery();
   const props = { agent, apiKey: config.getIn(['api', 'key']) };
 

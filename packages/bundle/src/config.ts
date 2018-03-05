@@ -43,6 +43,7 @@ export default {
     },
     "features": {
         "autocomplete": {
+            "renderIn": "body",
             "isMobileSimple": true,
             "disableFormSubmit": true,
             "position": "left",

@@ -8,6 +8,7 @@ export default (entity, rerender) => {
   const { node, agent, config } = entity;
   const state: any = getQuery();
   const apiKey = entity.config.getIn(['api', 'key']);
+
   const props = { apiKey, agent };
 
   if (state.q) node.value = state.q;

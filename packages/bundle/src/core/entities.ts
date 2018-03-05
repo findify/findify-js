@@ -5,6 +5,8 @@ import { fromJS, isImmutable, Map } from 'immutable';
 import emmiter from './emmiter';
 import { camelize } from '../helpers/capitalize';
 import { isCollection } from './location';
+import { Events } from './events';
+
 const attrSelector = 'data-findify';
 const keySelector = 'data-key';
 
@@ -52,7 +54,7 @@ const getEntity = (selector, _type?, _config?) => getNodes(selector)
   const entity = { key, type, node, agent, config };
 
   /** Notify everyone that entity was created */
-  emmiter.emit('attachEntity', entity);
+  emmiter.emit(Events.attach, entity);
   return entity;
 })
 
@@ -67,7 +69,7 @@ const entities = {
   /** Remove exist entity */
   detach(entity) {
     cache = cache.filter(entity => entity.key !== entity.key);
-    emmiter.emit('detachEntity', entity);
+    emmiter.emit(Events.detach, entity);
   },
 
   /** Get all stored entities */

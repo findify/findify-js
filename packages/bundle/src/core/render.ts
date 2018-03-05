@@ -2,10 +2,11 @@ import { Component, createElement } from 'react';
 import { render, createPortal } from 'react-dom';
 import { createFeature } from '../features/create';
 import { getParentNode } from '../helpers/getParentNode';
+import { Events } from './events';
 
 const createRoot = () => {
   const div = document.createElement('div');
-  div.id = 'findify-root-element';
+  div.id = 'findify-root';
   div.style.display = 'none';
   document.body.appendChild(div);
   return div;
@@ -23,7 +24,7 @@ class Portal extends Component<any>{
     const { entity } = props;
 
     this.element = document.createElement('div');
-    this.element.className = `findify-container-element findify-${entity.type}`;
+    this.element.className = `findify-container findify-${entity.type} findify-element-${entity.key}`;
     this.component = createFeature(entity);
     this.parent = getParentNode(entity);
   }
@@ -53,12 +54,12 @@ class RootElement extends Component{
     super(props);
     this.state = { entities: props.entities.list() };
     __root.listen((event, entity) => {
-      if (event === 'attachEntity') {
+      if (event === Events.attach) {
         this.setState(({ entities }: any) =>
           ({ entities: [...entities, entity] })
         )
       }
-      if (event === 'detachEntity') {
+      if (event === Events.detach) {
         this.setState(({ entities }: any) =>
           ({ entities: entities.filter(({ key }) => key !== entity.key) })
         )
