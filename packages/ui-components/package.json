@@ -132,8 +132,6 @@
     "prepare": "# npm run build",
     "start": "webpack-dashboard -- webpack-dev-server",
     "storybook": "start-storybook -p 6006",
-    "test": "jest",
-    "test:ci": "jest --ci",
     "test:watch": "jest --watch",
     "wrap-css": "node ./scripts/wrapCss.js"
   }

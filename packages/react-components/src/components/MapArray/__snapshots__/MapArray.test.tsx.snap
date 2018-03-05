@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ItemCard renders correctly 1`] = `
+Array [
+  <div
+    key="Test Titlehttps://picsum.photos/100/200"
+  />,
+  <div
+    key="Test Title 2https://picsum.photos/100/200"
+  />,
+]
+`;

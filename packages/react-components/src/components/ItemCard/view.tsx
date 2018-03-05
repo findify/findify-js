@@ -1,4 +1,4 @@
-import react from 'react'
+import React from 'react'
 
 const ItemCard = ({ item }) => (
   <div className="findify__item-card">
