@@ -1,7 +1,8 @@
 import { Component, Children } from "react";
+import { Map } from 'immutable';
 import * as Agents from '@findify/agent';
 import analytics from '@findify/analytics';
-import { $findify, $analytics } from '../symbols';
+import { $findify, $analytics, $config } from '../symbols';
 
 import { object, string, number, oneOfType, func } from 'prop-types';
 
@@ -19,18 +20,20 @@ export const createProvider = (type, onCreate?: (agent) => void) => {
       agent: object,
       defaults: object,
       options: object,
+      config: object,
       onChangeQuery: func,
       storeKey: oneOfType([string, number])
     }
 
     static childContextTypes = {
       [$findify]: object.isRequired,
-      [$analytics]: object.isRequired
+      [$analytics]: object.isRequired,
+      [$config]: object.isRequired
     }
 
     constructor(props, context) {
       super(props, context);
-      const { apiKey, agent, options, defaults } = props;
+      const { apiKey, agent, options, defaults, config } = props;
       const analyticsConfig: any = { key: apiKey };
 
       if (agent && !agent.config.immutable) {
@@ -42,6 +45,7 @@ export const createProvider = (type, onCreate?: (agent) => void) => {
 
       this.storeKey = this.props.storeKey;
       this.analytics = analytics(analyticsConfig);
+      this.state = { config: config || Map() };
       this.agent = agent || new Agents[type]({
         key: apiKey,
         user: this.analytics.user,
@@ -57,6 +61,7 @@ export const createProvider = (type, onCreate?: (agent) => void) => {
     getChildContext() {
       return {
         [$analytics]: this.analytics,
+        [$config]: this.state.config,
         [$findify]: {
           ...agents,
           ...(!this.storeKey && { default: this.agent })

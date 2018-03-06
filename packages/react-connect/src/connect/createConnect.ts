@@ -3,7 +3,7 @@ import * as PropTypes from 'prop-types';
 import { getDisplayName } from '../utils/getDisplayName';
 import { shallowEqual } from '../utils/shallowEqual';
 import mapValues from '../utils/mapValues';
-import { $findify, $analytics } from '../symbols';
+import { $findify, $analytics, $config } from '../symbols';
 
 const capitalize = s => s.charAt(0).toUpperCase() + s.slice(1);
 
@@ -23,12 +23,13 @@ const createComponent = ({
     changeAction: any
     cachedHandlers = {}
     state = {
-      meta: undefined
+      meta: undefined,
     }
 
     static contextTypes = {
       [$findify]: PropTypes.object.isRequired,
-      [$analytics]: PropTypes.object.isRequired
+      [$analytics]: PropTypes.object.isRequired,
+      [$config]: PropTypes.object.isRequired
     };
 
     constructor(props, context){
@@ -36,13 +37,14 @@ const createComponent = ({
     }
 
     handleUpdate = (changes, meta) => {
+      const config = this.context[$config];
       const mapped = mapProps && mapProps(
         changes,
         meta,
         this.changeAction,
         this.context[$analytics]
       );
-      this.setState({ meta, ...(mapped || { [field]: changes }) })
+      this.setState({ meta, config, ...(mapped || { [field]: changes }) })
     }
 
     private handlers = mapValues(
@@ -75,7 +77,7 @@ const createComponent = ({
       $store.on(`change:${field}`, this.handleUpdate);
       this.handleUpdate(
         field !== 'query' ? $store.response.get(field) : $store.state,
-        $store.response.get('meta')
+        $store.response.get('meta'),
       );
     }
 
@@ -99,6 +101,7 @@ const createComponent = ({
         ...this.props,
         ...this.handlers,
         ...this.state,
+        config: this.context[$config],
         update: this.changeAction,
       });
     }

@@ -7,7 +7,8 @@ import { Items } from '../../test.components';
 
 export default (widget) => {
   const { node, agent, config } = widget;
-  
+  const props = { agent, config, apiKey: config.getIn(['api', 'key']) };
+
   agent.defaults(getPayload(config, __root.analytics.state));
 
   /** Remove entity and instance if nothing was found */
@@ -17,9 +18,5 @@ export default (widget) => {
   })
 
   /** Render */
-  return createElement(
-    RecommendationProvider,
-    { agent, apiKey: config.getIn(['api', 'key']) },
-    Items
-  );
+  return createElement(RecommendationProvider, props, Items);
 }

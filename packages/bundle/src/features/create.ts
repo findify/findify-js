@@ -1,18 +1,27 @@
 import { Component, createElement } from 'react';
+import emmiter from '../core/emmiter';
 import { debounce } from 'lodash';
+import { Events } from '../core/events';
 
 class FeatureCreator extends Component<any>{
   initial: any;
+  unsubscribeForceUpdate: any;
+  state = { component: null };
 
   static displayName = 'FeatureCreator';
 
-  state = { component: null };
 
   constructor(props) {
     super(props);
-    const { widget, updater } = props;
+    const { widget, updater, key } = props;
     this.initial = updater(widget, this.callback);
     this.state = { component: this.initial };
+    this.unsubscribeForceUpdate = emmiter.listen((type, key, changes) => {
+      if (type !== Events.forceUpdate || key !== widget.key) return;
+      widget.config = changes;
+      this.initial = updater(widget, this.callback);
+      this.setState({ component: this.initial });
+    });
   }
 
   callback = (_component, props, children) => {
@@ -25,6 +34,10 @@ class FeatureCreator extends Component<any>{
 
   shouldComponentUpdate(_, next) {
     return next.component !== this.state.component;
+  }
+
+  componentWillUnmount() {
+    this.unsubscribeForceUpdate();
   }
 
   render() {

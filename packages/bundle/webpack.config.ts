@@ -37,7 +37,8 @@ export default (env: WebpackEnvArgs) => {
     resolve: {
       extensions: ['.ts', '.js'],
       alias: {
-        debug: path.resolve(__dirname, '../../node_modules/debug')
+        debug: path.resolve(__dirname, '../../node_modules/debug'),
+        immutable: path.resolve(__dirname, '../../node_modules/immutable')
       }
     },
     module: {

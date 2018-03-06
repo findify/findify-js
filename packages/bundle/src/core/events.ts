@@ -17,5 +17,11 @@ export enum Events {
    * Will navigate to search page with passed value as search query
    * @prop [value: string] - search query
   */
-  search = 'search'
+  search = 'search',
+
+  /** 
+   * Will rerender widget
+   * @prop [key: string|number] - widget key
+  */
+  forceUpdate = 'forceUpdate'
 }

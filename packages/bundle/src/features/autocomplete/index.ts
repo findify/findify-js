@@ -9,7 +9,7 @@ export default (widget, rerender) => {
   const state: any = getQuery();
   const apiKey = config.getIn(['api', 'key']);
 
-  const props = { apiKey, agent };
+  const props = { apiKey, agent, config };
 
   if (state.q) node.value = state.q;
 

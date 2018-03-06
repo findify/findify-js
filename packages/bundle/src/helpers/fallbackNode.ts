@@ -1,7 +1,5 @@
 export const hideFallback = (node) => {
   const fallback = [].slice.call(node.querySelectorAll('.findify-fallback'));
-  console.log(node);
-  
   for (let index = 0; index < fallback.length; index++) {
     const element = fallback[index];
     element.style.display = 'none';

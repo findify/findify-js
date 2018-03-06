@@ -1,6 +1,7 @@
 
 import 'core-js/fn/array/includes';
 import * as Agents from '@findify/agent';
+import * as Cursor from 'immutable-cursor';
 import { fromJS, isImmutable, Map } from 'immutable';
 import emmiter from './emmiter';
 import { camelize } from '../helpers/capitalize';
@@ -13,6 +14,7 @@ const keySelector = 'data-key';
 let index: number = 0;
 let cache: any[] = [];
 let config: Map<any, any> = Map();
+const noop = () => {};
 const getAgentType = type => camelize({
   'search-button': 'autocomplete'
 }[type] || type);
@@ -44,7 +46,14 @@ const getEntity = (selector, _type?, _config?) => getNodes(selector)
 .map(node => {
   let type = _type || node.getAttribute(attrSelector);
   const key = node.getAttribute(keySelector) || ++index;
-  const config = createConfig(type, node, _config);
+
+  /** 
+   * Subscribe to config changes
+   */
+  const config = Cursor.from(
+    createConfig(type, node, _config), (changes) => 
+      emmiter.emit('forceUpdate', key, changes)
+  );
   
   /** Change feature type to collection if we are on collection page */
   if (type === 'search' && isCollection(config.get('collections'))) {
@@ -54,7 +63,7 @@ const getEntity = (selector, _type?, _config?) => getNodes(selector)
   const agent = createAgent(type, config);
 
   /** Actual widget */
-  const widget = { key, type, node, agent, config };
+  const widget = { type, key, node, agent, config };
 
   /** Notify everyone that widget was created */
   emmiter.emit(Events.attach, widget);
@@ -78,6 +87,10 @@ const widgets = {
   /** Get all rendered widget */
   list(){
     return cache;
+  },
+
+  get(_key){
+    return cache.find(({ key }) => key === _key)
   },
 
   findByType(...types) {

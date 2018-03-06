@@ -16,7 +16,7 @@ const createFallbackAgent = (config, node) => new RecommendationAgent({
 export default ({ agent, config, node }, render) => {
   const state = getQuery();
   const apiKey = config.getIn(['api', 'key'])
-  const props = { agent, apiKey };
+  const props = { agent, apiKey, config };
 
   /** Setup initial request */
   for (const key in state) agent.set(key, state[key]);

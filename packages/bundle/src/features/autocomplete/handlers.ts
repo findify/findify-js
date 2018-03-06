@@ -48,10 +48,11 @@ export const registerHandlers = (widget, render) => {
     const value = e.target.value;
     agent.set('q', value);
     handleWindowScroll();
+    render('initial');
   };
 
   /** Handle input blur */
-  const handleInputBlur = (e) => render();
+  const handleInputBlur = (e) => e.target === node && render();
 
   /** search for the value */
   const search = (_value?) => {
@@ -79,9 +80,10 @@ export const registerHandlers = (widget, render) => {
   subscribers.push(addEventListeners(
     ['blur'],
     handleInputBlur,
-    node
+    document
   ));
 
+  /** Listen for form submit */
   if (!config.get('disableFormSubmit')) {
     subscribers.push(addEventListeners(
       ['change'],
