@@ -19,6 +19,10 @@ Promise.all([
     /* webpackChunkName: "config" */
     './config'
   ),
+  import(
+    /* webpackChunkName: "components" */
+    '@findify/react-components'
+  ),
 
   loadJs(
     /* Load polyfills if needed */

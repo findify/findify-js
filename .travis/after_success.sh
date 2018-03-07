@@ -24,8 +24,6 @@ typeset -A SRC_MAP
 SRC_MAP=(
   [analytics]=dist
   [analytics-dom]=dist
-  [helpers]=dist
-  [mjs]=dist
   [sdk]=dist
   [agent]=dist
   [react-connect]=dist
@@ -36,8 +34,6 @@ typeset -A DST_MAP
 DST_MAP=(
   [analytics]=analytics-js
   [analytics-dom]=analytics-dom-js
-  [helpers]=helpers-js
-  [mjs]=mjs
   [sdk]=js-sdk
   [agent]=js-agent
   [react-connect]=react-connect
@@ -81,7 +77,7 @@ PKGS=(analytics analytics-dom helpers mjs sdk agent react-connect)
 export GIT_SHA=$(git rev-parse HEAD)
 
 ASSET_HOST="https://findify-assets-2bveeb6u8ag.netdna-ssl.com"
-LAST_MJS_TAG=$(git describe --always --tags --match "@findify/mjs@*" --abbrev=0)
+LAST_MJS_TAG=$(git describe --always --tags --match "@findify/bundle@*" --abbrev=0)
 LAST_MJS_VER=0.0.0-invalid
 
 if [[ $LAST_MJS_TAG =~ ^@findify\/(.+)\@([0-9]+\.[0-9]+\.[0-9]+) ]]; then

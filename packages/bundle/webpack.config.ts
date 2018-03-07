@@ -12,6 +12,8 @@ interface WebpackEnvArgs {
   generateStatsFile?: boolean;
 }
 
+const componentsPath = path.resolve(__dirname, '../react-components');
+
 export default (env: WebpackEnvArgs) => {
   const config: webpack.Configuration = {
     entry: {
@@ -35,35 +37,60 @@ export default (env: WebpackEnvArgs) => {
     stats: 'minimal',
     bail: true,
     resolve: {
-      extensions: ['.ts', '.js'],
+      extensions: ['.ts', '.tsx', '.js', '.css'],
       alias: {
         debug: path.resolve(__dirname, '../../node_modules/debug'),
         immutable: path.resolve(__dirname, '../../node_modules/immutable')
       }
     },
     module: {
+      noParse: /\.min\.js/,
       rules: [
         {
+          test: /\.css$/,
+          include: [
+            path.resolve(componentsPath, 'src')
+          ],
+          use: [
+            'style-loader',
+            {
+              loader: 'css-loader',
+              options: {
+                modules: true,
+                camelCase: true,
+                getLocalIdent: require(
+                  path.resolve(componentsPath, 'scripts/getLocalIdent')
+                ).styleLoader
+              }
+            },
+            {
+              loader: 'postcss-loader',
+              options: {
+                config: {
+                  path: path.resolve(componentsPath, 'postcss.config.js')
+                }
+              }
+            }
+          ]
+        },
+        {
           test: /\.ts$/,
-          include: path.resolve(__dirname, 'src'),
+          include: [
+            path.resolve(__dirname, 'src'),
+          ],
+          use: ['babel-loader']
+        },
+        {
+          test: /\.tsx?$/,
+          include: [
+            path.resolve(componentsPath, 'src'),
+          ],
           use: [
             {
               loader: 'babel-loader',
               options: {
                 babelrc: false,
-                plugins: [
-                  "@babel/plugin-proposal-object-rest-spread",
-                  "@babel/plugin-proposal-class-properties",
-                  "@babel/plugin-syntax-dynamic-import",
-                ],
-                presets: [
-                  "@babel/preset-typescript",
-                  ["@babel/preset-env", {
-                    "modules": false,
-                    "useBuiltIns": 'entry',
-                    "targets": { "browsers": ["last 2 versions", "ie > 8"] },
-                  }]
-                ]
+                extends: path.resolve(componentsPath, '.babelrc')
               }
             }
           ]

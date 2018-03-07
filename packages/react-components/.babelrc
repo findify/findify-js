@@ -1,34 +1,7 @@
+
 {
-  "plugins": [
-    "@babel/plugin-proposal-object-rest-spread",
-    "@babel/plugin-proposal-class-properties"
-  ],
+  "extends": "../../.babelrc",
   "presets": [
-    ["env", {
-      "targets": {
-        "node": "current"
-      }
-    }]
-  ],
-  "ignore": ["node_modules", "src/**/__tests__/*"],
-  "env": {
-    "lib": {
-      "plugins": [
-        ["lodash", { "id": ["lodash", "recompose", "ramda"] }],
-        "@babel/plugin-syntax-dynamic-import",
-        "@babel/plugin-proposal-object-rest-spread",
-        "@babel/plugin-proposal-class-properties",
-        "@babel/plugin-transform-react-constant-elements",
-        "@babel/plugin-syntax-object-rest-spread"
-      ],
-      "presets": [
-        "@babel/preset-typescript",
-        "@babel/preset-react",
-        ["@babel/preset-env", {
-          "modules": false,
-          "targets": { "browsers": ["last 2 versions", "ie > 8"] }
-        }]
-      ]
-    }
-  }
+    "@babel/preset-react"
+  ]
 }

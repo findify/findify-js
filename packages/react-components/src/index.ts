@@ -1,1 +1,1 @@
-import './styles.global.css';
+import './components/__component__'

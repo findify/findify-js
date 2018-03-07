@@ -1,8 +1,11 @@
-const { compact } = require('lodash');
+const { compact, noop } = require('lodash');
+const path = require('path');
 
 module.exports = ctx => ({
   plugins: compact([
-    require('postcss-smart-import'),
+    require('postcss-import')({
+      addModulesDirectories: path.resolve(__dirname, 'src')
+    }),
     require('postcss-custom-properties'),
     require('postcss-focus'),
     require('postcss-for'),
@@ -14,6 +17,5 @@ module.exports = ctx => ({
     ctx.development &&
       require('postcss-reporter')({ clearReportedMessages: true }),
     require('autoprefixer'),
-    require('postcss-font-magician'),
   ]),
 });

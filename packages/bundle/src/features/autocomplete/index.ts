@@ -3,6 +3,7 @@ import { AutocompleteProvider } from "@findify/react-connect";
 import { getQuery, setQuery } from '../../core/location';
 import { Items } from '../../test.components';
 import { registerHandlers } from './handlers';
+import '@findify/react-components/src/components/__component__';
 
 export default (widget, rerender) => {
   const { node, agent, config } = widget;

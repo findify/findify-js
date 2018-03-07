@@ -1,0 +1,16 @@
+
+{
+  "plugins": [
+    "@babel/plugin-proposal-object-rest-spread",
+    "@babel/plugin-proposal-class-properties",
+    "@babel/plugin-syntax-object-rest-spread"
+  ],
+  "presets": [
+    "@babel/preset-typescript",
+    ["@babel/preset-env", {
+      "modules": false,
+      "targets": { "browsers": ["last 2 versions", "ie > 8"] }
+    }]
+  ],
+  "ignore": ["node_modules", "src/**/test.*"]
+}

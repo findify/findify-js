@@ -1,4 +1,5 @@
 import React from 'react'
+import styles from './styles.css';
 
 const ItemCard = ({ item }) => (
   <div className="findify__item-card">
