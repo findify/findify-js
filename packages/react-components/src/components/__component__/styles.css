@@ -1,6 +1,0 @@
-@import 'variables.css';
-
-.test{
-  color: $color;
-  width: 100%;
-}

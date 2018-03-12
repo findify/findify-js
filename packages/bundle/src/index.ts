@@ -19,9 +19,10 @@ Promise.all([
     /* webpackChunkName: "config" */
     './config'
   ),
+
   import(
     /* webpackChunkName: "components" */
-    '@findify/react-components'
+    '@findify/react-components/src'
   ),
 
   loadJs(

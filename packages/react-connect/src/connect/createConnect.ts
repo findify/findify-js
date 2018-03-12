@@ -20,6 +20,7 @@ const createComponent = ({
   const factory: any = createFactory(BaseComponent);
 
   class Connect extends Component{
+    displayName: string;
     changeAction: any
     cachedHandlers = {}
     state = {
@@ -107,6 +108,7 @@ const createComponent = ({
     }
   }
 
+  Connect.prototype.displayName = displayName;
   return Connect;
 }
 

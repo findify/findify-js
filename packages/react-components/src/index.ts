@@ -1,1 +1,2 @@
-import './components/__component__'
+import './variables.css';
+export * from './layouts/Autocomplete';

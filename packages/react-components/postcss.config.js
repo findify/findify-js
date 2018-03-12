@@ -1,11 +1,8 @@
 const { compact, noop } = require('lodash');
 const path = require('path');
 
-module.exports = ctx => ({
+module.exports = (ctx = {}) => ({
   plugins: compact([
-    require('postcss-import')({
-      addModulesDirectories: path.resolve(__dirname, 'src')
-    }),
     require('postcss-custom-properties'),
     require('postcss-focus'),
     require('postcss-for'),

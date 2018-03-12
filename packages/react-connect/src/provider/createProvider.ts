@@ -85,7 +85,7 @@ export const createProvider = (type, onCreate?: (agent) => void) => {
     }
   
     render() {
-      return Children.only(this.props.children)
+      return this.props.children;
     }
   }
 }
