@@ -4,5 +4,5 @@
   "plugins": [
     ["lodash", { "id": ["lodash"] }],
     "@babel/plugin-syntax-dynamic-import"
-  ]
+  ],
 }

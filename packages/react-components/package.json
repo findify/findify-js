@@ -45,6 +45,7 @@
     "autoprefixer": "^8.1.0",
     "babel-loader": "^8.0.0-beta.0",
     "babel-plugin-lodash": "^3.3.2",
+    "react-hot-loader": "^4.0.0",
     "@findify/babel-plugin-css-modules-transform": "^1.5.1",
     "css-loader": "^0.28.10",
     "del-cli": "^1.1.0",

@@ -1,12 +1,12 @@
 import { createElement } from 'react';
+import { hot } from 'react-hot-loader';
 import { connectConfig } from '@findify/react-connect';
 import { createPortal } from '../../helpers/createPortal';
 
 import Dropdown from './Dropdown';
 import Fullscreen from './Fullscreen';
 
-export const Autocomplete = connectConfig(({ config }) => {
-  console.log(config);
+const Autocomplete = connectConfig(({ config }) => {
   if (config.get('viewType') === 'simple') {
     return createElement(Dropdown);
   }
@@ -15,3 +15,5 @@ export const Autocomplete = connectConfig(({ config }) => {
   }
   return createPortal(Fullscreen)
 });
+
+export default hot(module)(Autocomplete);

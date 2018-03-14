@@ -2,7 +2,6 @@ import * as path from 'path';
 import * as webpack from 'webpack';
 import * as GitRevisionPlugin from 'git-revision-webpack-plugin';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
-import * as LodashWebpackPlugin from 'lodash-webpack-plugin';
 import * as UglifyJSPlugin from 'uglifyjs-webpack-plugin';
 import * as DuplicatePackageCheckerPlugin from 'duplicate-package-checker-webpack-plugin';
 import * as CompressionPlugin from 'compression-webpack-plugin';

@@ -2,7 +2,10 @@ const path = require('path');
 module.exports = {
   "extends": "../../.babelrc",
   "presets": [
-    "@babel/preset-react"
+    "@babel/preset-react",
+  ],
+  plugins: [
+    "react-hot-loader/babel"
   ],
   "env": {
     "lib": {

@@ -14,7 +14,7 @@ interface WebpackEnvArgs {
 
 const componentsPath = path.resolve(__dirname, '../react-components');
 
-export default (env: WebpackEnvArgs) => {
+export default (env: WebpackEnvArgs, { mode }) => {
   const config: webpack.Configuration = {
     entry: {
       'bundle': path.resolve(__dirname, 'src/index'),
@@ -33,6 +33,7 @@ export default (env: WebpackEnvArgs) => {
       port: 3000,
       stats: 'minimal',
       historyApiFallback: true,
+      hot: true
     },
     stats: 'minimal',
     bail: true,
@@ -129,6 +130,10 @@ export default (env: WebpackEnvArgs) => {
       statsFilename: 'stats/webpack.stats.json',
     });
     config.plugins!.push(analyzerPlugin);
+  }
+
+  if (mode === 'development') {
+    config.plugins.push(new webpack.HotModuleReplacementPlugin());
   }
 
   return config;

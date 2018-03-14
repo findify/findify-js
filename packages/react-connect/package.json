@@ -60,6 +60,7 @@
     "build:dist": "webpack",
     "build:dist:analyze": "npm run build:dist -- --env.analyze",
     "build:lib": "tsc --project tsconfig.lib.json",
+    "build:types": "tsc --project tsconfig.lib.json  --declaration --declarationDir types",
     "build:test": "npm run build:lib -- --project tsconfig.test.json --module commonjs",
     "build:test:watch": "npm run build:test -- --watch",
     "clean": "del lib types",

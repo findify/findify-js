@@ -3,7 +3,7 @@ import { RecommendationProvider } from "@findify/react-connect";
 import { getQuery, setQuery } from '../../core/location';
 import { hideFallback } from '../../helpers/fallbackNode';
 import { getPayload } from './payload';
-import { Items } from '../../test.components';
+import { Recommendation } from '@findify/react-components/src';
 
 export default (widget) => {
   const { node, agent, config } = widget;
@@ -18,5 +18,5 @@ export default (widget) => {
   })
 
   /** Render */
-  return createElement(RecommendationProvider, props, Items);
+  return createElement(RecommendationProvider, props, createElement(Recommendation));
 }
