@@ -10,7 +10,7 @@
   padding-bottom: 0;
 }
 
-.typeTitle {
+.type-title {
   margin-top: 15px;
   margin-bottom: 21px;
   color: #b2b2b2;
@@ -39,14 +39,14 @@
   display: table;
 }
 
-.productMatchesContainer {
+.product-matches-container {
   display: table-cell;
   vertical-align: top;
   padding: 0 15px;
   background: #fff;
 }
 
-.suggestionsContainer {
+.suggestions-container {
   display: table-cell;
   vertical-align: top;
   padding: 0 15px;

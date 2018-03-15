@@ -7,6 +7,7 @@
     "quotemark": [0, "single"],
     "variable-name": [0],
     "import-name": false,
+    "function-name": false,
     "object-literal-sort-keys": false,
     "ordered-imports": false,
     "interface-name": false,

@@ -1,6 +1,5 @@
 import React from 'react';
 import cx from 'classnames';
-import { createEagerFactory } from 'recompose';
 
 const styles = require('./styles.css');
 
@@ -14,7 +13,7 @@ export interface Props {
 const getClassName = (props: Props) =>
   cx(styles.column, props.className, props.columnClass);
 
-export const Column = createEagerFactory((props: Props) => (
+export const Column = React.createFactory((props: Props) => (
   <div className={getClassName(props)} style={props.columnStyle}>
     {props.children}
   </div>

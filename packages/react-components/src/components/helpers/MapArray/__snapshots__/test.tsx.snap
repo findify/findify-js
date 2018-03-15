@@ -2,10 +2,28 @@
 
 exports[`MapArray renders correctly 1`] = `
 Array [
-  <div
+  <factory
+    index={0}
+    item={
+      Object {
+        "get": [Function],
+        "hashCode": [Function],
+        "image_url": "https://picsum.photos/100/200",
+        "title": "Test Title",
+      }
+    }
     key="Test Titlehttps://picsum.photos/100/200"
   />,
-  <div
+  <factory
+    index={1}
+    item={
+      Object {
+        "get": [Function],
+        "hashCode": [Function],
+        "image_url": "https://picsum.photos/100/200",
+        "title": "Test Title 2",
+      }
+    }
     key="Test Title 2https://picsum.photos/100/200"
   />,
 ]
@@ -13,17 +31,53 @@ Array [
 
 exports[`MapArray respects limit property 1`] = `
 Array [
-  <div
-    key="Test title 2some image url_0"
+  <factory
+    index={0}
+    item={
+      Object {
+        "get": [Function],
+        "hashCode": [Function],
+        "image_url": "some image url",
+        "title": "Test title 2",
+      }
+    }
+    key="Test title 2some image url"
   />,
-  <div
-    key="Test title 2some image url_1"
+  <factory
+    index={1}
+    item={
+      Object {
+        "get": [Function],
+        "hashCode": [Function],
+        "image_url": "some image url",
+        "title": "Test title 2",
+      }
+    }
+    key="Test title 2some image url"
   />,
-  <div
-    key="Test title 2some image url_2"
+  <factory
+    index={2}
+    item={
+      Object {
+        "get": [Function],
+        "hashCode": [Function],
+        "image_url": "some image url",
+        "title": "Test title 2",
+      }
+    }
+    key="Test title 2some image url"
   />,
-  <div
-    key="Test title 2some image url_3"
+  <factory
+    index={3}
+    item={
+      Object {
+        "get": [Function],
+        "hashCode": [Function],
+        "image_url": "some image url",
+        "title": "Test title 2",
+      }
+    }
+    key="Test title 2some image url"
   />,
 ]
 `;

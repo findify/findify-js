@@ -61,7 +61,7 @@ export default (env: WebpackEnvArgs, { mode }) => {
                 camelCase: true,
                 getLocalIdent: require(
                   path.resolve(componentsPath, 'scripts/getLocalIdent')
-                ).styleLoader
+                )
               }
             },
             {
