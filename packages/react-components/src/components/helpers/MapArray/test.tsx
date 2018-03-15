@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import MapArray from './index'
-import itemMock from '../../../jest/item.mock';
+import itemMock from '../../../../jest/item.mock';
 
 const items = [
   itemMock(
@@ -14,7 +14,7 @@ const items = [
   )
 ]
 
-describe('ItemCard', () => {
+describe('MapArray', () => {
   it('renders correctly', () => {
     expect(shallow(
       <MapArray
@@ -23,5 +23,19 @@ describe('ItemCard', () => {
           <div key={key}>{item.get('title')} {item.get('image_url')}</div>
         }
         keyAccessor={item => item.hashCode()} />)).toMatchSnapshot()
+  })
+
+  it('respects limit property', () => {
+    const testArray = []
+    for (let i = 0; i < 100; i += 1) testArray.push(itemMock('Test title 2', 'some image url'))
+    expect(shallow(
+      <MapArray
+        array={testArray}
+        factory={({ item, key, index }) =>
+          <div key={key + '_' + index}>{item.get('title')} {item.get('image_url')}</div>
+        }
+        limit={4}
+        keyAccessor={item => item.hashCode()} />
+    )).toMatchSnapshot()
   })
 })

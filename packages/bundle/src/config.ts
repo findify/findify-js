@@ -45,6 +45,7 @@ export default {
         "autocomplete": {
             "renderIn": "body",
             // "isMobileSimple": true,
+            "viewType": "simple",
             "view": {
                 simple: true,
                 fullsize: false,

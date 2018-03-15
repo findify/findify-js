@@ -1,3 +1,4 @@
 import React from 'react';
+import { connectSuggestions } from '@findify/react-connect';
 
-export default () => <div>HOOOOY</div>;
+export default connectSuggestions(({ suggestions }) => console.log(suggestions) || <div>HOOOOY</div>);
