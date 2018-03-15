@@ -18,28 +18,11 @@ exports[`ProductCard view renders correctly 1`] = `
     className="content"
   >
     <Title
-      config={
-        Object {
-          "display": true,
-          "lines": 1,
-        }
-      }
       text="Product Title"
     />
     <Description
-      config={
-        Object {
-          "display": true,
-          "lines": 2,
-        }
-      }
       text="A description for item"
     />
   </div>
-  <span
-    className="price"
-  >
-    9.99
-  </span>
 </a>
 `;

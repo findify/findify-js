@@ -1,8 +1,8 @@
 import React from 'react'
 import classNames from 'classnames'
 import styles from './styles.css'
-import Image from '../../internal/Image'
-import Truncate from '../../internal/Truncate'
+import Image from '../../helpers/Image'
+import Truncate from '../../helpers/Truncate'
 
 const Title: any = ({ text, config, ...rest }) =>
   config.display &&
@@ -24,42 +24,40 @@ const Description: any = ({ text, config, ...rest }) =>
   );
 
 export default ({
+  item,
   product_url,
-  image_url,
   imageQuery,
   description,
-  thumbnail_url,
   title,
   price,
   onClick,
   config,
-  html = {},
 }: any) => (
   <a
     onClick={onClick}
-    href={product_url}
+    href={item.get('product_url')}
     className={classNames(
       styles.root,
-      config.simple && styles.simple
+      config.get('simple') && styles.simple
     )}
   >
     <div className={styles.imageWrap}>
-      {(html.image && (
-        <div dangerouslySetInnerHTML={{ __html: html.image }} />
+      {(item.get('html.image') && (
+        <div dangerouslySetInnerHTML={{ __html: item.get('html.image') }} />
       )) || (
         <Image
           className={styles.image}
-          src={image_url || thumbnail_url}
-          alt={title}
+          src={item.get('image_url') || item.get('thumbnail_url')}
+          alt={item.get('title')}
         />
       )}
     </div>
     <div className={styles.content}>
-      <Title text={title} config={config.title} />
-      <Description text={description} config={config.description} />
+      <Title text={item.get('title')} config={config.get('productcard.title')} />
+      <Description text={item.get('description')} config={config.get('productcard.description')} />
     </div>
-    {config.price.display && (
-      <span className={styles.price}>{price}</span>
+    {config.get('productcard.price.display') && (
+      <span className={styles.price}>{item.get('price')}</span>
     )}
   </a>
 );

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import {
   compose,
   mapProps,
@@ -6,7 +6,7 @@ import {
   defaultProps,
   withPropsOnChange,
 } from 'recompose';
-import { connectSuggestions } from '@findify/react-connect/src';
+import { connectItems } from '@findify/react-connect';
 import sizeMe from 'react-sizeme';
 import ProductCard from '../ProductCard';
 import view from './view'
@@ -19,12 +19,13 @@ const countColumns = width => {
   return 2;
 };
 
+
 const ProductMatches = compose(
   setDisplayName('ProductMatches'),
   sizeMe({ refreshRate: 100, refreshMode: 'debounce' }),
   withPropsOnChange(['size'], ({ size }) => ({
     columns: countColumns(size.width),
   })),
-)(connectSuggestions(view));
+)(connectItems(view));
 
 export default ProductMatches

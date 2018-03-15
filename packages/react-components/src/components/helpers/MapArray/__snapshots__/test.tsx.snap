@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MapArray renders correctly 1`] = `
+Array [
+  <div
+    key="Test Titlehttps://picsum.photos/100/200"
+  />,
+  <div
+    key="Test Title 2https://picsum.photos/100/200"
+  />,
+]
+`;
+
+exports[`MapArray respects limit property 1`] = `
+Array [
+  <div
+    key="Test title 2some image url_0"
+  />,
+  <div
+    key="Test title 2some image url_1"
+  />,
+  <div
+    key="Test title 2some image url_2"
+  />,
+  <div
+    key="Test title 2some image url_3"
+  />,
+]
+`;
