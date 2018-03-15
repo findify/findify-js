@@ -1,6 +1,6 @@
 import { createElement } from 'react';
-import { connectConfig } from '@findify/react-connect';
 import { hot } from 'react-hot-loader';
+import { connectConfig } from '@findify/react-connect';
 
 import Grid from './Grid';
 import Slider from './Slider';

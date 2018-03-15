@@ -1,17 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ItemCard renders correctly 1`] = `
-<div
-  className="findify__item-card"
->
-  <h4
-    className="findify__item-card__title"
-  >
-    Test Title
-  </h4>
-  <img
-    className="findify__item-card__image"
-    src="https://picsum.photos/100/200"
-  />
-</div>
+<Component
+  item={
+    Object {
+      "get": [Function],
+      "hashCode": [Function],
+      "image_url": "https://picsum.photos/100/200",
+      "title": "Test Title",
+    }
+  }
+  theme={null}
+/>
 `;

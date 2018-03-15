@@ -14,7 +14,6 @@ const getClassName = memoize(columns =>
 );
 
 export const Grid = compose(
-  pure,
   setDisplayName('Grid'),
   withPropsOnChange(['columns', 'children'], ({ columns, children }: Props) => {
     const classNames = getClassName(columns);

@@ -10,12 +10,10 @@ const computePath = (path, name) => {
     .slice(0, -1)
     .join('-');
   const className = name === 'root' ? '' : '__' + name;
-  console.log(className);
   return `findify-${decamelize(sourcePath, { separator: '-' })}${className}`;
 }
 
-module.exports.styleLoader = (context, localIdentName, localName, options) =>
-  computePath(context.resourcePath, localName);
-
-module.exports = (name, filename) =>
-  computePath(filename, name);
+module.exports = (...args) => 
+  typeof args[0] === 'string'
+  ? computePath(args[1], args[0]) // Postcss-modules support
+  : computePath(args[0].resourcePath, args[2]); // CSS-loader support

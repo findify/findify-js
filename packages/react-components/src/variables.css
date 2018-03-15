@@ -1,4 +1,10 @@
-$color: yellow;
-.root{
-  color: $color;
+:root {
+/* Fonts */
+--font-base: 'Source Sans Pro', sans-serif;
+--font-size-14: 14px;
+--font-size-18: 18px;
+
+/* Colors */
+--color-base: hsl(214, 23%, 36%);
+
 }

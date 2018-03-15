@@ -17,7 +17,7 @@ module.exports = {
           },
           "extractCss": "./lib/styles.css",
           "prepend": "./postcss.config.js",
-          "generateScopedName": "./scripts/getLocalIdent.js"
+          "generateScopedName": path.resolve(__dirname, "scripts/getLocalIdent.js")
         }]
       ]
     }
