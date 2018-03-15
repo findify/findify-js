@@ -1,9 +1,9 @@
 import React from 'react';
 
-import ItemCard from '../../../components/ItemCard';
-import Grid from '../../../components/helpers/Grid';
-import MapArray from '../../../components/helpers/MapArray';
-import Title from '../../../components/Title';
+import ItemCard from 'components/ItemCard';
+import Grid from 'components/helpers/Grid';
+import MapArray from 'components/helpers/MapArray';
+import Title from 'components/Title';
 
 export default ({ items, config, theme }) =>
 <>

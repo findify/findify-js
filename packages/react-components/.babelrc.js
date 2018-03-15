@@ -5,7 +5,11 @@ module.exports = {
     "@babel/preset-react",
   ],
   plugins: [
-    "react-hot-loader/babel"
+    "react-hot-loader/babel",
+    ["module-resolver", {
+      "extensions": [".ts", ".tsx"],
+      "root": [path.resolve(__dirname,"src")]
+    }]
   ],
   "env": {
     "lib": {

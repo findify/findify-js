@@ -1,7 +1,7 @@
 import React from 'react';
-import Tip from '../../../components/autocomplete/Tip'
-import ProductMatches from '../../../components/autocomplete/ProductMatches'
-import SearchSuggestions from '../../../components/autocomplete/SearchSuggestions'
+import Tip from 'components/autocomplete/Tip'
+import ProductMatches from 'components/autocomplete/ProductMatches'
+import SearchSuggestions from 'components/autocomplete/SearchSuggestions'
 
 export default ({ config, theme }) => (
   <div className={theme.root}>

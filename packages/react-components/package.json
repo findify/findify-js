@@ -46,6 +46,7 @@
     "autoprefixer": "^8.1.0",
     "babel-loader": "^8.0.0-beta.0",
     "babel-plugin-lodash": "^3.3.2",
+    "babel-plugin-module-resolver": "^3.1.0",
     "css-loader": "^0.28.10",
     "del-cli": "^1.1.0",
     "enzyme": "^3.3.0",
