@@ -1,8 +1,8 @@
 import React from 'react';
 
 import ItemCard from 'components/ItemCard';
-import Grid from 'components/helpers/Grid';
-import mapArray from 'components/helpers/MapArray';
+import Grid from 'components/common/Grid';
+import mapArray from 'components/common/MapArray';
 import Title from 'components/Title';
 
 export default ({ items, config, theme }) =>

@@ -1,6 +1,6 @@
 import React from 'react'
 import ItemCard from '../ItemCard';
-import MapArray from '../helpers/MapArray';
+import MapArray from '../common/MapArray';
 
 const ItemFactory = React.createFactory(ItemCard);
 const keyAccessor = item => item.hashCode()

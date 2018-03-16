@@ -1,0 +1,161 @@
+Arguments: 
+  /home/asn007/.nvm/versions/node/v8.9.1/bin/node /usr/bin/yarn test
+
+PATH: 
+  /home/asn007/.nvm/versions/node/v8.9.1/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl
+
+Yarn version: 
+  1.5.1
+
+Node version: 
+  8.9.1
+
+Platform: 
+  linux x64
+
+npm manifest: 
+  {
+    "name": "@findify/react-components",
+    "description": "Findify react UI components",
+    "version": "0.0.1",
+    "author": "Findify <yourfriends@findify.io>",
+    "dependencies": {
+      "classnames": "^2.2.5",
+      "currency-formatter": "^1.4.2",
+      "humps": "^2.0.1",
+      "immutable": "^4.0.0-rc.9",
+      "match-media": "^0.2.0",
+      "prop-types": "^15.6.1",
+      "qs": "^6.5.1",
+      "react-sizeme": "^2.3.6",
+      "react-virtualized": "^9.18.5",
+      "recompose": "^0.26.0",
+      "tinycolor2": "^1.4.1",
+      "react-slick": "^0.20.0"
+    },
+    "devDependencies": {
+      "@babel/cli": "^7.0.0-beta.41",
+      "@babel/core": "^7.0.0-beta.41",
+      "@babel/plugin-proposal-class-properties": "^7.0.0-beta.41",
+      "@babel/plugin-proposal-object-rest-spread": "^7.0.0-beta.41",
+      "@babel/plugin-proposal-optional-chaining": "^7.0.0-beta.41",
+      "@babel/plugin-proposal-pipeline-operator": "^7.0.0-beta.41",
+      "@babel/plugin-syntax-dynamic-import": "^7.0.0-beta.41",
+      "@babel/plugin-syntax-object-rest-spread": "^7.0.0-beta.41",
+      "@babel/plugin-syntax-typescript": "^7.0.0-beta.41",
+      "@babel/plugin-transform-react-constant-elements": "^7.0.0-beta.41",
+      "@babel/plugin-transform-react-inline-elements": "^7.0.0-beta.41",
+      "@babel/plugin-transform-spread": "^7.0.0-beta.41",
+      "@babel/plugin-transform-typescript": "^7.0.0-beta.41",
+      "@babel/preset-env": "^7.0.0-beta.41",
+      "@babel/preset-react": "^7.0.0-beta.41",
+      "@babel/preset-typescript": "^7.0.0-beta.41",
+      "@babel/register": "^7.0.0-beta.41",
+      "@findify/babel-plugin-css-modules-transform": "^1.5.1",
+      "@findify/react-connect": "^0.1.3",
+      "@types/react": "^16.0.40",
+      "@types/react-virtualized": "^9.7.12",
+      "@types/recompose": "^0.24.6",
+      "@types/webpack": "^4.1.0",
+      "@types/webpack-env": "^1.13.5",
+      "add-asset-html-webpack-plugin": "^2.1.3",
+      "autoprefixer": "^8.1.0",
+      "babel-loader": "^8.0.0-beta.0",
+      "babel-plugin-lodash": "^3.3.2",
+      "babel-plugin-module-resolver": "^3.1.0",
+      "css-loader": "^0.28.10",
+      "del-cli": "^1.1.0",
+      "enzyme": "^3.3.0",
+      "enzyme-adapter-react-16": "^1.1.1",
+      "enzyme-to-json": "^3.3.1",
+      "extract-text-webpack-plugin": "^3.0.2",
+      "html-webpack-plugin": "^3.0.6",
+      "image-webpack-loader": "^4.2.0",
+      "jest": "^23.0.0-alpha.0",
+      "npm-check-updates": "^2.14.1",
+      "npm-run-all": "^4.1.2",
+      "postcss": "^6.0.19",
+      "postcss-calc": "^6.0.1",
+      "postcss-clearfix": "^2.0.1",
+      "postcss-cli": "^5.0.0",
+      "postcss-color-function": "^4.0.1",
+      "postcss-custom-properties": "^7.0.0",
+      "postcss-direct-reset": "^1.0.2",
+      "postcss-focus": "^3.0.0",
+      "postcss-font-magician": "^2.1.0",
+      "postcss-for": "^2.1.1",
+      "postcss-import": "^11.1.0",
+      "postcss-loader": "^2.1.1",
+      "postcss-modules": "^1.1.0",
+      "postcss-nested": "^3.0.0",
+      "postcss-pxtorem": "^4.0.1",
+      "postcss-reporter": "^5.0.0",
+      "postcss-scss": "^1.0.4",
+      "postcss-simple-vars": "^4.1.0",
+      "raw-loader": "^0.5.1",
+      "react": "^16.2.0",
+      "react-dom": "^16.2.0",
+      "react-hot-loader": "^4.0.0",
+      "react-svg-loader": "^2.1.0",
+      "storybook-host": "^4.1.5",
+      "style-loader": "^0.20.3",
+      "svg-sprite-loader": "^3.7.1",
+      "ts-jest": "^22.4.1",
+      "tslint": "^5.9.1",
+      "typedoc": "^0.11.1",
+      "typescript": "2.7.2",
+      "webpack": "^4.1.1",
+      "webpack-bundle-analyzer": "^2.11.1",
+      "webpack-dashboard": "1.1.1",
+      "webpack-dev-server": "^3.1.1"
+    },
+    "engines": {
+      "npm": ">=4",
+      "node": ">=7"
+    },
+    "main": "src/index.ts",
+    "files": [
+      "dist",
+      "src",
+      "index.d.ts"
+    ],
+    "license": "MIT",
+    "peerDependencies": {
+      "react": ">=16.0.0"
+    },
+    "repository": "https://github.com/findify/findify-js/tree/master/packages/ui-components",
+    "scripts": {
+      "build": "BABEL_ENV=lib babel src --out-dir lib --extensions \".ts,.tsx\"",
+      "lint": "tslint --project .",
+      "precommit": "lint-staged",
+      "prepare": "npm run build",
+      "start": "webpack-dashboard -- webpack-dev-server",
+      "storybook": "start-storybook -p 6006",
+      "test": "jest",
+      "test:ci": "jest --ci",
+      "test:watch": "jest --watch",
+      "wrap-css": "node ./scripts/wrapCss.js"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
+
+Trace: 
+  Error: Command failed.
+  Exit code: 1
+  Command: sh
+  Arguments: -c jest
+  Directory: /home/asn007/WorkProjects/findify-js/packages/react-components
+  Output:
+  
+      at ProcessTermError.MessageError (/usr/lib/node_modules/yarn/lib/cli.js:186:110)
+      at new ProcessTermError (/usr/lib/node_modules/yarn/lib/cli.js:226:113)
+      at ChildProcess.<anonymous> (/usr/lib/node_modules/yarn/lib/cli.js:30281:17)
+      at emitTwo (events.js:126:13)
+      at ChildProcess.emit (events.js:214:7)
+      at maybeClose (internal/child_process.js:925:16)
+      at Process.ChildProcess._handle.onexit (internal/child_process.js:209:5)
