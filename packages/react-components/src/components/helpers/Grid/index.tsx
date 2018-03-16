@@ -1,22 +1,31 @@
 import React from 'react';
-import { compose, pure, withPropsOnChange, setDisplayName } from 'recompose';
+import { compose, pure, withPropsOnChange, setDisplayName, defaultProps } from 'recompose';
 import { memoize } from 'lodash';
 import cx from 'classnames';
 import styles from './styles.css'
 
-
 import { Column } from './Column';
 
+type Props = {
+  columns: string,
+  style?: React.StyleHTMLAttributes<any>,
+  children: any,
+  theme?: { [className: string]: string }
+}
 
+type OwnProps = Props & {
+  theme: { [className: string]: string }
+}
 
-const getClassName = memoize(columns =>
-  columns.split('|').map(value => styles[`column-${value}`])
+const getClassName = memoize((columns, theme) =>
+  columns.split('|').map(value => theme[`column-${value}`])
 );
 
-export const Grid = compose(
+export const Grid = compose<OwnProps, Props>(
   setDisplayName('Grid'),
-  withPropsOnChange(['columns', 'children'], ({ columns, children }: Props) => {
-    const classNames = getClassName(columns);
+  defaultProps({ theme: styles }),
+  withPropsOnChange(['columns', 'children'], ({ columns, children, theme }) => {
+    const classNames = getClassName(columns, theme);
     return {
       children: React.Children.map(
         children,
@@ -32,8 +41,8 @@ export const Grid = compose(
       ),
     };
   })
-)(({ children, className, style }) => (
-  <div className={cx(styles.wrap, className)} style={style}>
+)(({ children, theme, style }) => (
+  <div className={theme.root} style={style}>
     {children}
   </div>
 ));

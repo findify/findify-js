@@ -14,7 +14,7 @@ const sanitize = value => value.startsWith("$") ? value.substr(1) : value;
 const format = (...classNames) => ["-", ...classNames.map(sanitize)].join("-").toLowerCase();
 const normalizeName = (pathName, contentBase) => {
   const relative = path.relative(contentBase + '/src', pathName);
-  return relative.substring(0, relative.lastIndexOf('/')).replace('/', '-');
+  return relative.substring(0, relative.lastIndexOf('/')).replace(/\//g, '-');
 }
 
 const getValue = (value, parent, variables) =>

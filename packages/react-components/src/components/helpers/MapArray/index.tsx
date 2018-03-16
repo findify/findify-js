@@ -8,7 +8,7 @@ export type ArrayLike = {
   slice: (from: number, to?: number) => ArrayLike
 }
 export type ReactFactory = (props: object) => React.Component
-export type MapArrayProps = { array: ArrayLike, keyAccessor: KeyAccessor, factory: ReactFactory, limit: number }
+export type MapArrayProps = { array: ArrayLike, keyAccessor?: KeyAccessor, factory: ReactFactory, limit?: number }
 
 const defaultKeyAccessor = (item, index) => item.hashCode();
 

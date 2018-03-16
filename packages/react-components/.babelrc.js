@@ -8,7 +8,7 @@ module.exports = {
     "react-hot-loader/babel",
     ["module-resolver", {
       "extensions": [".ts", ".tsx"],
-      "root": [path.resolve(__dirname,"src")]
+      "root": [path.resolve(__dirname, "src")]
     }]
   ],
   "env": {

@@ -1,0 +1,14 @@
+.title {
+  font-size: 18px;
+  color: $color-base;
+  padding: 10px 0;
+  margin: 0;
+  text-align: center; 
+}
+
+.arrow {
+  fill: $color-base-dark;
+  &:global(.slick-disabled){
+    opacity: .7;
+  }
+}

@@ -1,4 +1,6 @@
-.wrap{
+$font-size: var(--font-size-14);
+
+.root{
   font-size: 0;
   line-height: 0;
 }
@@ -7,13 +9,13 @@
   display: inline-block;
   box-sizing: border-box;
   min-height: 1px;
-  font-size: 14px;
-  line-height: 1.2;
+  font-size: $font-size;
+  line-height: $line-height;
   vertical-align: top;
 }
 
 @supports(display: flex) {
-  .wrap{
+  .root{
     display: flex;
     flex-direction: row;
     align-items: top;
