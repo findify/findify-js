@@ -3,7 +3,6 @@ import { debounce } from 'lodash';
 const styles = require('./styles.css');
 const selector = '.findify-layouts--results-layout__productsContainer';
 
-const styles = require('./styles.css');
 const minHeight = 500;
 const offset = 15;
 
