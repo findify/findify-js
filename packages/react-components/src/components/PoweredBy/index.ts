@@ -1,11 +1,13 @@
-import { compose, defaultProps } from 'recompose';
+import { compose, setDisplayName } from 'recompose';
 import { connectConfig } from '@findify/react-connect';
+import withTheme from 'helpers/withTheme';
 
 import view from './view';
 
-import theme from './styles.css';
+import styles from './styles.css';
 
 export default compose(
-  defaultProps({ theme }),
+  setDisplayName('PoweredBy'),
+  withTheme(styles),
   connectConfig
 )(view)

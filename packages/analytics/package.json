@@ -33,7 +33,7 @@
     "access": "public"
   },
   "dependencies": {
-    "change-emitter": "^0.1.6",
+    "@findify/change-emitter": "^0.2.0",
     "qs": "^6.5.1",
     "store": "^2.0.12",
     "core-js": "^2.5.3"

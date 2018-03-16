@@ -4,6 +4,7 @@
   "version": "0.0.1",
   "author": "Findify <yourfriends@findify.io>",
   "dependencies": {
+    "@findify/change-emitter": "^0.2.0",
     "classnames": "^2.2.5",
     "currency-formatter": "^1.4.2",
     "humps": "^2.0.1",

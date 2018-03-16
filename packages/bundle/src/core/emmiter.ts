@@ -1,3 +1,3 @@
-import { createChangeEmitter } from 'change-emitter';
+import { createChangeEmitter } from '@findify/change-emitter';
 
 export default createChangeEmitter();

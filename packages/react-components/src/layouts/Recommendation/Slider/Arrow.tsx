@@ -4,7 +4,7 @@ import { omit } from 'lodash/fp';
 
 import styles from './styles.css';
 
-const Arrow = compose(
+const Arrow = compose<any, any>(
   withHandlers({
     onClick: ({ onClick, defaultOnClick }) => () => onClick ? onClick() : defaultOnClick(),
   }),

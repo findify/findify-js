@@ -1,4 +1,4 @@
-import { createChangeEmitter } from 'change-emitter';
+import { createChangeEmitter } from '@findify/change-emitter';
 import storage from './modules/storage';
 import { request as api } from './modules/request';
 import { validateSendEventParams, validateInitParams } from './validations';

@@ -1,7 +1,7 @@
 import { compose, withPropsOnChange, withStateHandlers, withHandlers, defaultProps } from 'recompose';
 import { connectItems } from '@findify/react-connect';
 import sizeMe from 'react-sizeme';
-
+import withTheme from 'helpers/withTheme';
 import { renderArrow } from './Arrow';
 import view from './view';
 
@@ -18,7 +18,7 @@ const countProductsToShow = width => {
 };
 
 export default compose(
-  defaultProps({ theme: styles }),
+  withTheme(styles),
 
   sizeMe(),
 

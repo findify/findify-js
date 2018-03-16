@@ -1,5 +1,6 @@
-import { defaultProps } from 'recompose';
-import theme from './styles.css';
+import withTheme from 'helpers/withTheme';
 import view from './view';
 
-export default defaultProps({ theme })(view)
+import styles from './styles.css';
+
+export default withTheme(styles)(view)

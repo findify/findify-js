@@ -8,6 +8,7 @@ import emmiter from './core/emmiter';
 
 __root.listen = emmiter.listen;
 __root.emit = emmiter.emit;
+__root.addListeners = emmiter.addListeners;
 
 export default async (
   _config

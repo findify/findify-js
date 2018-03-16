@@ -32,6 +32,7 @@
     "access": "public"
   },
   "dependencies": {
+    "@findify/change-emitter": "^0.2.0",
     "@findify/agent": "^1.2.4",
     "@findify/analytics-dom": "0.0.5",
     "@findify/react-connect": "^0.1.3",
