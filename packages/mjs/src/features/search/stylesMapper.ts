@@ -10,9 +10,7 @@ export const mobile = () => ({
 
 export const desktop = ({ styles, config }) =>
   (config.frameDisabled && {
-    transform: 'translateZ(0)',
-    WebkitTransform: 'translateZ(0)',
-    msTransform: 'translateZ(0)',
+    position: 'relative',
   }) || {
     position: 'relative',
     width: '100%',

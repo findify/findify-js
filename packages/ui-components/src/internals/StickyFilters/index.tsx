@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { debounce } from 'lodash';
-
+const styles = require('./styles.css');
 const selector = '.findify-layouts--results-layout__productsContainer';
 
 const styles = require('./styles.css');
 const minHeight = 500;
-const offset = 30;
+const offset = 15;
 
 export class StickyFilters extends React.Component<any, any> {
   container: any = void 0;
@@ -16,8 +16,9 @@ export class StickyFilters extends React.Component<any, any> {
     super(props);
     this.handleScroll = this.handleScroll.bind(this);
     this.state = {
-      top: 0,
-      maxHeight: window.innerHeight
+      style: {
+        maxHeight: window.innerHeight
+      }
     };
   }
 
@@ -43,22 +44,34 @@ export class StickyFilters extends React.Component<any, any> {
     const wrapperBound = this.wrapper.getBoundingClientRect();
     const shouldStick =
       wrapperBound.height < contentBound.height
-      && contentBound.top + offset <= 0;
+      && contentBound.top - offset <= 0;
 
     if (!shouldStick) {
-      if (!this.state.top) return;
       return this.setState({
-        top: 0,
-        maxHeight: window.innerHeight
+        style: {
+          maxHeight: window.innerHeight
+        }
       });
     }
   
-    if (contentBound.bottom <= minHeight) return;
+    if (contentBound.bottom <= minHeight) {
+      return this.setState({
+        style: {
+          position: 'absolute',
+          top: contentBound.height - minHeight,
+          maxHeight: minHeight
+        }
+      });
+    }
 
     const height = contentBound.bottom - offset;
     return this.setState({
-      top: ~contentBound.top + offset,
-      maxHeight: height > window.innerHeight ? window.innerHeight : height
+      style: {
+        position: 'fixed',
+        top: offset,
+        width: wrapperBound.width,
+        maxHeight: height > window.innerHeight ? window.innerHeight - offset : height
+      }
     });
   }
 
@@ -76,12 +89,10 @@ export class StickyFilters extends React.Component<any, any> {
       <div
         ref={this.setWrapper}
         className={className}
-        style={{
-          transform: 'translateZ(0)',
-        }}>
+        style={{position: 'relative'}}>
         <div
           ref={this.setContent}
-          style={this.state}
+          style={this.state.style}
           className={styles.sticky}
         >
         { children }
