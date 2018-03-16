@@ -37,6 +37,7 @@ const prepareConfig = config => {
   };
 };
 
+
 export const init = (cfg, analytics) => {
   const appendFeature = appendFeatureCreator(analytics);
   const config = prepareConfig(cfg);
