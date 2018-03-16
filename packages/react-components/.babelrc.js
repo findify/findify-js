@@ -5,6 +5,7 @@ module.exports = {
     "@babel/preset-react",
   ],
   plugins: [
+    "babel-plugin-jsx-display-if",
     "react-hot-loader/babel",
     ["module-resolver", {
       "extensions": [".ts", ".tsx"],

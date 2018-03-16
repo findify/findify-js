@@ -36,7 +36,7 @@ export default {
         "symbol": "$",
         "symbolOnLeft": true
     },
-    "poweredByFindify": false,
+    "poweredByFindify": true,
     "view": {
         "pagination": false,
         "infinite": true
