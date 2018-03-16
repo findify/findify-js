@@ -1,8 +1,8 @@
 import React from 'react'
 import styles from './styles.css'
 import ProductCard from '../ProductCard'
-import Grid from '../../helpers/Grid'
-import MapArray from '../../helpers/MapArray';
+import Grid from '../../common/Grid'
+import MapArray from '../../common/MapArray';
 
 // TODO: use MapArray for it?
 

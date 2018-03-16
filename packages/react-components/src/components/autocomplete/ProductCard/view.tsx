@@ -1,8 +1,8 @@
 import React from 'react'
 import classNames from 'classnames'
 import styles from './styles.css'
-import Image from '../../helpers/Image'
-import Truncate from '../../helpers/Truncate'
+import Image from '../../common/Image'
+import Truncate from '../../common/Truncate'
 
 const Title: any = ({ text, config, ...rest }) =>
   config.display &&

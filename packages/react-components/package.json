@@ -112,7 +112,7 @@
     "build": "BABEL_ENV=lib babel src --out-dir lib --extensions \".ts,.tsx\"",
     "lint": "tslint --project .",
     "precommit": "lint-staged",
-    "prepare": "# npm run build",
+    "prepare": "npm run build",
     "start": "webpack-dashboard -- webpack-dev-server",
     "storybook": "start-storybook -p 6006",
     "test": "jest",

@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`withTheme merges themes, overriding values 1`] = `
+<ThemedMock
+  theme={
+    Object {
+      "defenestration": "|__|",
+      "key": "value1",
+    }
+  }
+/>
+`;
+
+exports[`withTheme provides the component with default theme in case no theme is given 1`] = `
+<ThemedMock
+  theme={
+    Object {
+      "key": "value",
+    }
+  }
+/>
+`;
