@@ -2,7 +2,7 @@
 
 exports[`Tip renders correctly 1`] = `
 <div
-  className="root test"
+  className="tip test"
 >
   Press Enter to search
    
@@ -11,7 +11,16 @@ exports[`Tip renders correctly 1`] = `
 
 exports[`Tip renders correctly 2`] = `
 <div
-  className="root test"
+  className="tip test"
+>
+  Press Enter to search
+   
+</div>
+`;
+
+exports[`Tip renders correctly 3`] = `
+<div
+  className="tip test"
 >
   Press Enter to search
    

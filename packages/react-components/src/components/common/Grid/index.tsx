@@ -1,5 +1,5 @@
 import React from 'react';
-import { compose, pure, withPropsOnChange, setDisplayName, defaultProps } from 'recompose';
+import { compose, withPropsOnChange, setDisplayName, defaultProps } from 'recompose';
 import { memoize } from 'lodash';
 import cx from 'classnames';
 import styles from './styles.css'

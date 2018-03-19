@@ -8,7 +8,7 @@ export default ({ config, theme }) => (
     <div className={theme.container}>
       <div className={theme.productMatchesContainer}>
         <h4 className={theme.typeTitle}>{config.getIn(['i18n', 'productMatchesTitle'])}</h4>
-        <ProductMatches className={theme.productMatches} />
+        <ProductMatches className={theme.productMatches} config={config} />
       </div>
       <div className={theme.suggestionsContainer}>
         <h4 className={theme.typeTitle}>{config.getIn(['i18n', 'suggestionsTitle'])}</h4>

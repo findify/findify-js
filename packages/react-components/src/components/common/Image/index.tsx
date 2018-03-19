@@ -5,7 +5,6 @@ import {
   compose,
   lifecycle,
   onlyUpdateForKeys,
-  pure,
   withProps,
   mapProps,
   withStateHandlers,

@@ -3,17 +3,17 @@ import {
   compose,
   defaultProps,
   mapProps,
-  pure,
   setDisplayName,
   withHandlers,
   withProps,
   withPropsOnChange,
 } from 'recompose';
 import view from './view';
+import styles from './styles.css'
+import withTheme from 'helpers/withTheme';
 
 const ProductCard = compose(
   setDisplayName('ProductCard'),
-  pure,
   withHandlers({
     onClick: ({ onProductClick, ...rest }) => e => {
       if (onProductClick) {
@@ -23,6 +23,7 @@ const ProductCard = compose(
       }
     },
   }),
+  withTheme(styles)
 )(view);
 
 export default ProductCard;

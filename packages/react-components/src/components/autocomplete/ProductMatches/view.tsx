@@ -3,6 +3,7 @@ import styles from './styles.css'
 import ProductCard from '../ProductCard'
 import Grid from '../../common/Grid'
 import MapArray from '../../common/MapArray';
+import ItemsList from '../../ItemsList'
 
 // TODO: use MapArray for it?
 
@@ -27,12 +28,12 @@ export default ({
   limit
 }: any) => (
   <div className={styles.root}>
-    <Grid columns={String(12 / columns)} className={className}>
-      <MapArray
-        array={items}
-        keyAccessor={getProductKey}
-        factory={(props) => productCardFactory({...props, columnClass, onProductClick})}
-        limit={config.get('meta.item_limit')} />
-    </Grid>
+    <ItemsList
+      wrapper={Grid}
+      columns={String(12 / columns)}
+      className={className}
+      limit={config.getIn(['meta', 'item_limit'])}
+      factory={(props) => productCardFactory({...props, columnClass, onProductClick, config })}
+      keyAccessor={getProductKey} />
   </div>
 );

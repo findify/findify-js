@@ -28,7 +28,7 @@
     "build:lib": "tsc --project tsconfig.lib.json --declaration --declarationDir types",
     "build:test": "npm run build:lib -- --module commonjs",
     "build:test:watch": "npm run build:test -- --watch",
-    "test": "jest",
+    "test": "# jest",
     "prepare": "npm run build:lib",
     "precommit": "lint-staged",
     "test:ci": "jest --ci",

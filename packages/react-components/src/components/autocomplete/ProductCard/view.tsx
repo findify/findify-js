@@ -3,25 +3,23 @@ import classNames from 'classnames'
 import styles from './styles.css'
 import Image from '../../common/Image'
 import Truncate from '../../common/Truncate'
+import { Map } from 'immutable'
 
-const Title: any = ({ text, config, ...rest }) =>
-  config.display &&
-  !!text && (
-    <h5 className={styles.title} {...rest}>
-      {text}
-    </h5>
-  );
+const Title: any = ({ text, config = Map(), ...rest }) => (
+  <h5 display-if={!!text} className={styles.title} {...rest}>
+    {text}
+  </h5>
+);
 
-const Description: any = ({ text, config, ...rest }) =>
-  config.display &&
-  !!text && (
-    <p
-      className={styles.description}
-      {...rest}
-    >
-      <Truncate lines={config.lines}>{text}</Truncate>
-    </p>
-  );
+const Description: any = ({ text, config = Map(), ...rest }) => (
+  <p
+    display-if={!!text}
+    className={styles.description}
+    {...rest}
+  >
+    <Truncate>{text}</Truncate>
+  </p>
+);
 
 export default ({
   item,
@@ -32,6 +30,7 @@ export default ({
   price,
   onClick,
   config,
+  theme
 }: any) => (
   <a
     onClick={onClick}
@@ -42,8 +41,8 @@ export default ({
     )}
   >
     <div className={styles.imageWrap}>
-      {(item.get('html.image') && (
-        <div dangerouslySetInnerHTML={{ __html: item.get('html.image') }} />
+      {(item.getIn(['html', 'image']) && (
+        <div dangerouslySetInnerHTML={{ __html: item.getIn(['html', 'image']) }} />
       )) || (
         <Image
           className={styles.image}
@@ -53,10 +52,16 @@ export default ({
       )}
     </div>
     <div className={styles.content}>
-      <Title text={item.get('title')} config={config.get('productcard.title')} />
-      <Description text={item.get('description')} config={config.get('productcard.description')} />
+      <Title
+        display-if={config.getIn(['productcard', 'title', 'display'])}
+        text={item.get('title')}
+        config={config.getIn(['productcard', 'title'])} />
+      <Description
+        display-if={config.getIn(['productcard', 'description', 'display'])}
+        text={item.get('description')}
+        config={config.getIn('productcard', 'description')} />
     </div>
-    {config.get('productcard.price.display') && (
+    {config.getIn(['productcard', 'price', 'display']) && (
       <span className={styles.price}>{item.get('price')}</span>
     )}
   </a>

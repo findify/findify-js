@@ -3,13 +3,13 @@ import classnames from 'classnames'
 
 import styles from './styles.css'
 
-export default ({ query, className, title }) => (
-  <div className={classnames(styles.root, className)}>
+export default ({ query, className, title, theme }) => (
+  <div className={classnames(theme.tip, className)}>
     {title}
     {' '}
     {
-      query.length > 0
-      ? <span className={styles.highlight}>{query}</span>
+      query && query.get('q') && query.get('q').length > 0
+      ? <span className={theme.highlight}>{query.get('q')}</span>
       : ''
     }
   </div>

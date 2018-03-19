@@ -22,10 +22,13 @@ const countColumns = width => {
 
 const ProductMatches = compose(
   setDisplayName('ProductMatches'),
+  defaultProps({ columns: 3 }),
+  /*
   sizeMe({ refreshRate: 100, refreshMode: 'debounce' }),
   withPropsOnChange(['size'], ({ size }) => ({
     columns: countColumns(size.width),
-  })),
-)(connectItems(view));
+  })),*/
+  connectItems,
+)(view);
 
 export default ProductMatches

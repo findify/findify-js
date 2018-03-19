@@ -13,23 +13,40 @@ const itemMock = {
 
   get(key) {
     return this[key]
+  },
+
+  getIn(path, obj) {
+    if (path.length === 0) return obj
+    const nPath = Array.isArray(path) ? path.slice() : [path]
+    const key = nPath.shift()
+    if ((obj && !obj[key]) || this[key]) return void 0
+    return this.getIn(nPath, (obj ? obj[key] : this[key]))
   }
 }
 
 const configMock = {
-  title: {
-    display: true,
-    lines: 1
-  },
-  description: {
-    display: true,
-    lines: 2
-  },
-  price: {
-    display: true
+  productcard: {
+      title: {
+      display: true,
+      lines: 1
+    },
+    description: {
+      display: true,
+      lines: 2
+    },
+    price: {
+      display: true
+    },
   },
   get(key) {
     return _get(this, key)
+  },
+  getIn(path, obj) {
+    if (path.length === 0) return obj
+    const nPath = Array.isArray(path) ? path.slice() : [path]
+    const key = nPath.shift()
+    if ((obj && !obj[key]) || this[key]) return void 0
+    return this.getIn(nPath, (obj ? obj[key] : this[key]))
   }
 }
 
