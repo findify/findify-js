@@ -32,12 +32,17 @@ const createAgent = (type, config) => {
   });
 }
 
-const createConfig = (type, node, customs?) => {
+const createConfig = (type, node, key, customs?) => {
   const cfg = customs || type === 'recommendation'
     && config.getIn(['features', 'recommendations', '#' + node.getAttribute('id')])
     || config.getIn(['features', type]);
     
-  return config.withMutations(c => c.delete('features').mergeDeep(cfg));
+  return config.withMutations(c =>
+      c.delete('features')
+      .mergeDeep(cfg)
+      .set('node', node)
+      .set('cssSelector', `findify-${type} findify-widget-${key}`)
+    );
 };
 
 const getNodes = selector => [].slice.call(document.querySelectorAll(selector));
@@ -51,7 +56,7 @@ const getEntity = (selector, _type?, _config?) => getNodes(selector)
    * Subscribe to config changes
    */
   const config = Cursor.from(
-    createConfig(type, node, _config), (changes) => 
+    createConfig(type, node, key, _config), (changes) => 
       emmiter.emit('forceUpdate', key, changes)
   );
   
