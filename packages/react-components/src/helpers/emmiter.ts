@@ -19,10 +19,10 @@ const subscribe = () => {
 
 export const emit = (...args) => {
   subscribe();
-  emmiter.emit(...args)
+  return emmiter.emit(...args)
 }
 
 export const listen = (...args) => {
   subscribe();
-  emmiter.listen(...args);
+  return emmiter.listen(...args);
 }

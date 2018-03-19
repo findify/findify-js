@@ -4,6 +4,7 @@ import { Recommendation as RecommendationAgent } from "@findify/agent";
 import { Search, ZeroResults } from '@findify/react-components/src';
 import { getQuery, setQuery } from '../../core/location';
 import { hideFallback } from '../../helpers/fallbackNode';
+import { Map } from 'immutable';
 
 const createFallbackAgent = (config, node) => new RecommendationAgent({
   key: config.getIn(['api', 'key']),
@@ -31,7 +32,12 @@ export default ({ agent, config, node }, render) => {
       return render('initial');
     }
     const agent = createFallbackAgent(config, node);
-    return render(RecommendationProvider, { agent, apiKey }, createElement(ZeroResults));
+    
+    return render(
+      RecommendationProvider,
+      { agent, apiKey },
+      createElement(ZeroResults, getQuery())
+    );
   })
   
   /** Render */

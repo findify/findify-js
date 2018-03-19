@@ -2,6 +2,7 @@ import { Component, createElement } from 'react';
 import { render, createPortal } from 'react-dom';
 import { createFeature } from '../features/create';
 import { getParentNode } from '../helpers/getParentNode';
+import { debounce } from 'lodash';
 import { Events } from './events';
 
 const createRoot = () => {
@@ -74,5 +75,6 @@ class RootElement extends Component{
   }
 }
 
-export const renderWidgets = (widgets) =>
-  render(createElement(RootElement, { widgets }), createRoot());
+export const renderWidgets = debounce((widgets) =>
+  render(createElement(RootElement, { widgets }), createRoot())
+);

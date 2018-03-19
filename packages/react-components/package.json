@@ -12,11 +12,12 @@
     "match-media": "^0.2.0",
     "prop-types": "^15.6.1",
     "qs": "^6.5.1",
+    "react-motion": "^0.5.2",
     "react-sizeme": "^2.3.6",
+    "react-slick": "^0.20.0",
     "react-virtualized": "^9.18.5",
     "recompose": "^0.26.0",
-    "tinycolor2": "^1.4.1",
-    "react-slick": "^0.20.0"
+    "tinycolor2": "^1.4.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.0.0-beta.41",

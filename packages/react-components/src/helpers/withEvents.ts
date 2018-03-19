@@ -14,10 +14,12 @@ export default events => BaseComponent => {
   
     componentDidMount() {
       this.removeListener = listen(this.handler);
+      
     }
 
     componentWillUnmount(){
       this.removeListener();
+      
     }
 
     render() {
