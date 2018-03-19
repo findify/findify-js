@@ -1,0 +1,16 @@
+.suggestion {
+  color: black;
+  margin: 0;
+  padding: 0;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  cursor: pointer;
+
+  &:first-child {
+    padding-top: 0;
+  }
+}
+
+.highlightedText {
+  font-weight: bolder;
+}
