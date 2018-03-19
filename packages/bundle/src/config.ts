@@ -43,7 +43,7 @@ export default {
     },
     "features": {
         "autocomplete": {
-            "renderIn": "body",
+            "renderIn": "parent",
             // "isMobileSimple": true,
             "viewType": "simple",
             "view": {
