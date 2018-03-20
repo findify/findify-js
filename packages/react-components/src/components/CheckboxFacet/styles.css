@@ -1,0 +1,12 @@
+.root{
+  
+}
+
+.expandedList{
+  height: 300px;
+}
+
+.item{
+  display: block;
+  width: 100%;
+}

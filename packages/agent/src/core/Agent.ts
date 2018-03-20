@@ -7,6 +7,7 @@ import { getChangedFields } from '../utils/changes';
 import { stateToQuery, queryToState } from '../utils/format';
 import { getFacetType } from '../utils/filters';
 import { isFunction, isObject, debounce } from '../utils/helpers';
+import deepMerge from '../utils/deepMerge';
 
 const pickConfigProps = ({ debounce, onError, immutable = false }) =>
   ({ debounce, onError, immutable });
@@ -145,7 +146,7 @@ export class Agent {
   }
 
   public createRequestBody (cache) {
-    this.state = this.state.merge(cache);
+    this.state = deepMerge(this.state, cache);
     const merge = this._defaults.mergeDeep(this.state);
     const params = stateToQuery(merge).toJS();
     const type: any = this.type;

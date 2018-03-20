@@ -43,4 +43,9 @@ export default (name) => class ExtendableRecord extends Record({ [key]: void 0 }
   toObject(){
     return (super.get as any)(key, empty).toObject();
   }
+
+  filter(...args) {
+    const _immutable = (super.get as any)(key, empty);
+    return _immutable.filter(...args);
+  }
 }

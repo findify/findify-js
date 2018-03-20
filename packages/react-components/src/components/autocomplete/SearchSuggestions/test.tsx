@@ -4,7 +4,8 @@ import theme from './styles.css'
 import SearchSuggestions from './view'
 
 const createAnyGetMock = (value) => ({
-  get: () => value
+  get: () => value,
+  hashCode: () => value
 })
 
 

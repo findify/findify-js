@@ -16,7 +16,7 @@ class FeatureCreator extends Component<any>{
     const { widget, updater, key } = props;
     this.initial = updater(widget, this.callback);
     this.state = { component: this.initial };
-    this.unsubscribeForceUpdate = emmiter.listen((type, key, changes) => {
+    this.unsubscribeForceUpdate = emmiter.listen((type, key, changes) => {      
       if (type !== Events.forceUpdate || key !== widget.key) return;
       widget.config = changes;
       this.initial = updater(widget, this.callback);

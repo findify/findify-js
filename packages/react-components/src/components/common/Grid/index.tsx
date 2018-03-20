@@ -2,9 +2,9 @@ import React from 'react';
 import { compose, withPropsOnChange, setDisplayName, defaultProps } from 'recompose';
 import { memoize } from 'lodash';
 import cx from 'classnames';
-import styles from './styles.css'
+import Column from './Column';
 
-import { Column } from './Column';
+import styles from './styles.css'
 
 type Props = {
   columns: string,
@@ -31,13 +31,14 @@ export const Grid = compose<OwnProps, Props>(
         children,
         (child: React.ReactChild, index: number) =>
           child &&
-          Column({
-            key: child.key,
-            children: child,
-            className: classNames[index] || classNames[0],
-            columnClass: child.props.columnClass,
-            columnStyle: child.props.columnStyle,
-          })
+          React.createElement(Column,
+            {
+              key: child.key,
+              className: classNames[index] || classNames[0],
+              columnClass: child.props.columnClass,
+              columnStyle: child.props.columnStyle,
+            }, child
+          )
       ),
     };
   })

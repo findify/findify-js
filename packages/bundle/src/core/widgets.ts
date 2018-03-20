@@ -2,7 +2,7 @@
 import 'core-js/fn/array/includes';
 import * as Agents from '@findify/agent';
 import * as Cursor from 'immutable-cursor';
-import { fromJS, isImmutable, Map } from 'immutable';
+import { fromJS, Iterable, Map } from 'immutable';
 import emmiter from './emmiter';
 import { camelize } from '../helpers/capitalize';
 import { isCollection } from './location';
@@ -52,9 +52,7 @@ const getEntity = (selector, _type?, _config?) => getNodes(selector)
   let type = _type || node.getAttribute(attrSelector);
   const key = node.getAttribute(keySelector) || ++index;
 
-  /** 
-   * Subscribe to config changes
-   */
+  /** Subscribe to config changes */
   const config = Cursor.from(
     createConfig(type, node, key, _config), (changes) => 
       emmiter.emit('forceUpdate', key, changes)
@@ -78,7 +76,7 @@ const getEntity = (selector, _type?, _config?) => getNodes(selector)
 const widgets = {
   /** Add new widget */
   attach(selector, type?, config?) {
-    const cfg = config && !isImmutable(config) ? fromJS(config) : config;
+    const cfg = config && !Iterable.isIterable(config) ? fromJS(config) : config;
     cache = [...cache, ...getEntity(selector, type, cfg)];
     return cache;
   },

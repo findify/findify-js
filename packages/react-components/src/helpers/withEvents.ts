@@ -1,14 +1,14 @@
 import React from 'react';
 import { emit, listen } from './emmiter';
 
-export default events => BaseComponent => {
+export default (events?) => BaseComponent => {
   const factory = React.createFactory(BaseComponent);
   return class Events extends React.Component{
     static displayName = 'Events';
     removeListener: any;
 
     handler = (event, ...args) => {
-      if (!events[event]) return;
+      if (!events || !events[event]) return;
       events[event](this.props)(...args);
     }
   
@@ -19,7 +19,6 @@ export default events => BaseComponent => {
 
     componentWillUnmount(){
       this.removeListener();
-      
     }
 
     render() {

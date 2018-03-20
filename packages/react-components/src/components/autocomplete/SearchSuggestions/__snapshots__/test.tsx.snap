@@ -6,22 +6,31 @@ exports[`SearchSuggestions renders correctly 1`] = `
   display-if={
     Object {
       "get": [Function],
+      "hashCode": [Function],
     }
   }
 >
   <ul>
-    <MapArray
+    <Component
       array={
         Array [
           Object {
             "get": [Function],
+            "hashCode": [Function],
           },
           Object {
             "get": [Function],
+            "hashCode": [Function],
           },
         ]
       }
       factory={[Function]}
+      query={
+        Object {
+          "get": [Function],
+          "hashCode": [Function],
+        }
+      }
     />
   </ul>
 </div>

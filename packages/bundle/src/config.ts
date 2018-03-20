@@ -72,6 +72,7 @@ export default {
             }
         },
         "search": {
+            "filtersOnRight": false,
             "disableScroll": false,
             "scrollOffset": 0,
             "meta": {
@@ -177,6 +178,7 @@ export default {
                     "custom_fields.language": "Language"
                 },
                 "category": {
+                    "expandedHeight": 100,
                     "maxItemsCount": 6,
                     "initiallyExpanded": false,
                     "rowHeight": 20,
@@ -187,6 +189,8 @@ export default {
                     }
                 },
                 "text": {
+                    "pullSelected": true,
+                    "expandedHeight": 100,
                     "maxItemsCount": 6,
                     "initiallyExpanded": false,
                     "rowHeight": 20,

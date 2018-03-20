@@ -1,4 +1,4 @@
-import { Map, fromJS } from 'immutable';
+import { Map, List, fromJS, isImmutable } from 'immutable';
 import createRecord from './createRecord';
 import { preventEvents } from '../utils/preventEvents';
 
@@ -19,7 +19,7 @@ const updateFilters = (filterName: string, value: any, isSelected:boolean) =>
     if (filters.has(filterName)) {
       return filters.set(filterName, filters.get(filterName).push(value));
     }
-    return filters.set(filterName, Map(value));
+    return filters.set(filterName, fromJS([value]));
   })
 
 export class Facet extends createRecord('Facet'){

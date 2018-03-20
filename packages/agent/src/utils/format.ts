@@ -8,11 +8,14 @@ const _initial = Map();
 const formatFilters = (filters) => 
   filters
   .filter(value => !!value && !value.isEmpty())
-  .map((values, name) => Map({
-    name,
-    type: getFacetType(values.first()),
-    values: values.map(value => ({ value })),
-  }))
+  .map((values, name) => {
+    const type = getFacetType(values.first());
+    return Map({
+      name,
+      type,
+      values: type === 'range' ? values : values.map(value => ({ value })),
+    })
+  })
   .toList();
 
 const formatQueryField = key =>
@@ -47,10 +50,18 @@ export const queryToState = (prev, next, defaults?) => {
     return acc.set(key,
       nextField.reduce((filters, nextFilter) => {
         const nextFilterName = nextFilter.get('name');
+        const type = nextFilter.get('type');
+        
         const values = nextFilter
           .get('values')
-          .filter(v => !defaults || !defaults.hasIn([key, nextFilterName, v.get('value')]))
-          .map(v => v.get('value'));
+          .filter(v => !defaults ||
+            (
+              type === 'range'
+              ? !defaults.hasIn([key, nextFilterName])
+              : !defaults.hasIn([key, nextFilterName,  v.get('value')])
+            )
+          )
+          .map(v => type === 'range' ? v : v.get('value'));
         return values.isEmpty() ? filters : filters.set(nextFilterName, values);
       }, _initial)
     )

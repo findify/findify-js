@@ -37,7 +37,7 @@ describe('Format', () => {
     }, {
       name: 'range',
       type: 'range',
-      values: [{ value: { from: 1, to: 2 }}]
+      values: [{ from: 1, to: 2 }]
     }]
   };
   
@@ -46,6 +46,6 @@ describe('Format', () => {
   })
 
   it('Should convert query to state', () => {
-    expect(queryToState(fromJS({ q: true, filters: true }), fromJS(query)).toJS()).toEqual(state)
+    expect(queryToState(fromJS({ q: true, filters: {} }), fromJS(query)).toJS()).toEqual(state)
   })
 })

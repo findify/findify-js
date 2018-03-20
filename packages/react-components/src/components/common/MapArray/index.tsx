@@ -8,14 +8,27 @@ export type ArrayLike = {
   slice: (from: number, to?: number) => ArrayLike
 }
 export type ReactFactory = (props: object) => React.Component
-export type MapArrayProps = { array: ArrayLike, keyAccessor?: KeyAccessor, factory: ReactFactory, limit?: number }
+export type MapArrayProps = {
+  array: ArrayLike,
+  keyAccessor?: KeyAccessor,
+  factory: ReactFactory,
+  limit?: number,
+  [key: string]: any
+}
 
 const defaultKeyAccessor = (item, index) => item.hashCode();
 
-export default function MapArray({array, keyAccessor = defaultKeyAccessor, factory, limit}: MapArrayProps) {
+export default ({
+  array,
+  keyAccessor = defaultKeyAccessor,
+  factory,
+  limit,
+  ...rest
+}: MapArrayProps) => {
   const f = React.createFactory(factory);
-  return Array.from(
+  const res: any = Array.from(
     array.slice(0, limit || array.length)
-      .map((item, index) => f({ item, index, key: keyAccessor(item, index) }))
-  )
+      .map((item, index) => f({ ...rest, item, index, key: keyAccessor(item, index) }))
+  );
+  return res;
 }

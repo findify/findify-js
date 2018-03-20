@@ -105,6 +105,9 @@ export default (env: WebpackEnvArgs, { mode }) => {
         'process.env': {
           BROWSER: true
         },
+        __DEBUG__: mode === 'development'
+          ? 'base => props => { console.log(props); return base(props) }'
+          : ''
       }),
   
       new DuplicatePackageCheckerPlugin(),
