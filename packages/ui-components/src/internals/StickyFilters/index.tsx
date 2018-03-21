@@ -2,6 +2,7 @@ import * as React from 'react';
 import { debounce } from 'lodash';
 const styles = require('./styles.css');
 const selector = '.findify-layouts--results-layout__productsContainer';
+import * as cx from 'classnames';
 
 const minHeight = 500;
 const offset = 15;
@@ -15,8 +16,9 @@ export class StickyFilters extends React.Component<any, any> {
     super(props);
     this.handleScroll = this.handleScroll.bind(this);
     this.state = {
+      state: 'static',
       style: {
-        maxHeight: window.innerHeight
+        maxHeight: window.innerHeight,
       }
     };
   }
@@ -47,6 +49,7 @@ export class StickyFilters extends React.Component<any, any> {
 
     if (!shouldStick) {
       return this.setState({
+        state: 'static',
         style: {
           maxHeight: window.innerHeight
         }
@@ -55,9 +58,8 @@ export class StickyFilters extends React.Component<any, any> {
   
     if (contentBound.bottom <= minHeight) {
       return this.setState({
+        state: 'stuck',
         style: {
-          position: 'absolute',
-          top: contentBound.height - minHeight,
           maxHeight: minHeight
         }
       });
@@ -65,8 +67,8 @@ export class StickyFilters extends React.Component<any, any> {
 
     const height = contentBound.bottom - offset;
     return this.setState({
+      state: 'sticky',
       style: {
-        position: 'fixed',
         top: offset,
         width: wrapperBound.width,
         maxHeight: height > window.innerHeight ? window.innerHeight - offset : height
@@ -85,16 +87,18 @@ export class StickyFilters extends React.Component<any, any> {
   public render() {
     const { className, children } = this.props;
     return (
-      <div
-        ref={this.setWrapper}
-        className={className}
-        style={{position: 'relative'}}>
+      <div className={styles.wrapper}>
         <div
-          ref={this.setContent}
-          style={this.state.style}
-          className={styles.sticky}
-        >
-        { children }
+          style={{ width: '100%' }}
+          ref={this.setWrapper}
+          className={className}>
+          <div
+            ref={this.setContent}
+            style={this.state.style}
+            className={cx(styles.root, styles[this.state.state])}
+          >
+          { children }
+          </div>
         </div>
       </div>
     );
