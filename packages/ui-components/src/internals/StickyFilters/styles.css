@@ -1,6 +1,31 @@
-.sticky{
-  top: 0;
-  overflow: hidden;
-  overflow-y: auto;
-  will-change: max-height;
+.root{
+  max-height: auto;
+}
+
+.wrapper{
+  position: relative;
+  display: flex;
+  height: 100%;
+  align-items: flex-start;
+}
+
+@supports(display: flex) {
+  .root{
+    overflow: hidden;
+    overflow-y: auto;
+    will-change: max-height;
+  }
+  
+  .static{
+    position: static;
+  }
+  
+  .stuck{
+    bottom: 0;
+    position: absolute;
+  }
+  
+  .sticky{
+    position: fixed
+  }
 }
