@@ -1,16 +1,17 @@
 import { compose, withStateHandlers, withProps, setDisplayName } from 'recompose';
 import withTheme from 'helpers/withTheme';
+import template from 'helpers/template';
 
 import view from './view';
 import styles from './styles.css';
 
-const format = (...args) => args.join('_')
+const createKey = (...args) => args.join('_')
 export default compose(
   setDisplayName('RangeFacet'),
 
   withTheme(styles),
 
-  withProps(({ facet }) => ({
+  withProps(({ facet, config }) => ({
     items: facet.get('values')
   })),
 
@@ -19,7 +20,7 @@ export default compose(
     {
       onCommit: ({ from, to }, { config, facet }) => e => {
         if (!from && !to) return;
-        const key = format(from, to);
+        const key = [from, to].join('_');
         facet.setValue({ from, to });
         return { from: void 0, to: void 0 };
       },
@@ -36,5 +37,5 @@ export default compose(
         return { to: normalizedValue };
       },
     },
-  ),
+  )
 )(view);

@@ -20,8 +20,9 @@ export enum Events {
   search = 'search',
 
   /** 
-   * Will rerender widget
+   *  Will rerender widget with new config
    * @prop [key: string|number] - widget key
+   * @prop [config: Immutable.Map] - new config
   */
-  forceUpdate = 'forceUpdate'
+  updateConfig = 'updateConfig'
 }

@@ -1,12 +1,14 @@
 import { Component, createElement, createFactory } from 'react';
 import { compose, defaultProps } from 'recompose';
 import { CellMeasurerCache, CellMeasurer } from 'react-virtualized/dist/commonjs/CellMeasurer';
-
+import { Scrollbars } from 'react-custom-scrollbars';
+import styles from "./styles.css";
 import view from './view';
 const viewFactory: any = createFactory(view);
 
 export default class List extends Component<any, any>{
   autoSizer: any;
+  list: any;
   cache = new CellMeasurerCache({ fixedWidth: true });
 
   static displayName = 'VirtualizedList'
@@ -19,6 +21,16 @@ export default class List extends Component<any, any>{
     if (!ref || this.autoSizer) return;
     this.autoSizer = ref;
     ref._onResize();
+  }
+
+  initList = (ref) => {
+    if (!ref || this.list) return;
+    this.list = ref;
+  }
+
+  handleScroll = ({ target }) => {
+    const { scrollTop, scrollLeft } = target;
+    this.list.Grid.handleScrollEvent({ scrollTop, scrollLeft });
   }
 
   rowRenderer = ({ index, key, parent, style }) => {
@@ -40,8 +52,11 @@ export default class List extends Component<any, any>{
   render() {
     return viewFactory({
       ...this.props,
+      theme: styles,
       rowRenderer: this.rowRenderer,
       initAutoSizer: this.initAutoSizer,
+      initList: this.initList,
+      handleScroll: this.handleScroll,
       cache: this.cache
     })
   }

@@ -15,6 +15,8 @@ export const isCollection = (collections) => collections && collections.includes
 export const isSearch = () =>
   history.location.pathname === __root.config.getIn(['location', 'searchUrl']);
 
+export const listenHistory = history.listen;
+
 export const getQuery = () => {
   const str = history.location.search;
   const prefix = __root.config.getIn(['location', 'prefix']);

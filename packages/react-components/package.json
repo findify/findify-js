@@ -12,6 +12,7 @@
     "match-media": "^0.2.0",
     "prop-types": "^15.6.1",
     "qs": "^6.5.1",
+    "react-custom-scrollbars": "^4.2.1",
     "react-motion": "^0.5.2",
     "react-numeric-input": "^2.2.3",
     "react-sizeme": "^2.3.6",

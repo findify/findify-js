@@ -1,4 +1,4 @@
-import { compose, setDisplayName, withStateHandlers, withPropsOnChange } from 'recompose';
+import { compose, setDisplayName, withStateHandlers, withPropsOnChange, pure } from 'recompose';
 import withEvents from 'helpers/withEvents';
 
 import view from './view';
@@ -14,15 +14,17 @@ const components = {
 const getComponent = (name, type) => components[name] || components[type] || (() => null);
 
 export default compose(
+  pure,
+
   setDisplayName('Facet'),
 
   withTheme(styles),
 
   withPropsOnChange(['config'], ({ config, item }) => {
     const name = item.get('name');
-    const _config = config.getIn(['facets', name]) || config.getIn(['facets', item.get('type')])
+    const facetConfig = config.getIn(['facets', name]) || config.getIn(['facets', item.get('type')]);
     return {
-      config: _config,
+      config: config.merge(facetConfig),
       title: config.getIn(['facets', 'labels', name], name),
       FacetComponent: getComponent(config.getIn(['facets', name], name), item.get('type')),
     }

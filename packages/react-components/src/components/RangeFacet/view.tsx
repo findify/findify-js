@@ -30,11 +30,13 @@ export default ({
     display-if={config.get('pullSelected')}
     array={config.get('pullSelected') ? items.filter(i => i.get('selected')) : items}
     factory={Item}
+    config={config}
     theme={theme} />
 
   <MapArray
     array={config.get('pullSelected') ? items.filter(i => !i.get('selected')) : items}
     factory={Item}
+    config={config}
     theme={theme} />
 
   <div className={theme.range}>
@@ -56,7 +58,9 @@ export default ({
       max={facet.get('max')}
       onBlur={onChangeMax}
     />
-    <Button onClick={onCommit}>Apply</Button>
+    <Button onClick={onCommit}>
+      { config.getIn(['i18n', 'submit']) }
+    </Button>
   </div>
 </>
 

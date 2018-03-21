@@ -2,10 +2,14 @@ import { createElement } from 'react';
 import { SearchProvider, RecommendationProvider } from "@findify/react-connect";
 import { Recommendation as RecommendationAgent } from "@findify/agent";
 import { Search, ZeroResults } from '@findify/react-components/src';
-import { getQuery, setQuery } from '../../core/location';
+import { getQuery, setQuery, listenHistory } from '../../core/location';
 import { hideFallback } from '../../helpers/fallbackNode';
-import { Map } from 'immutable';
+import { Events } from '../../core/events';
 
+const applyState = (state, agent) => {
+  agent.reset();
+  for (const key in state) agent.set(key, state[key]);
+}
 const createFallbackAgent = (config, node) => new RecommendationAgent({
   key: config.getIn(['api', 'key']),
   immutable: true,
@@ -14,16 +18,22 @@ const createFallbackAgent = (config, node) => new RecommendationAgent({
 .defaults({ ...config.get('meta').toJS(), type: config.get('zeroResultsType') })
 .on('change:items', () => hideFallback(node));
 
-export default ({ agent, config, node }, render) => {
+export default (widget, render) => {
+  const { agent, config, node } = widget;
   const state = getQuery();
   const apiKey = config.getIn(['api', 'key'])
   const props = { agent, apiKey, config };
 
   /** Setup initial request */
-  for (const key in state) agent.set(key, state[key]);
+  applyState(state, agent);
 
   /** Listen to changes */
   agent.on('change:query', q => setQuery(q.toJS()));
+
+  /** Listen to location back/fwd */
+  const stopListenLocation = listenHistory((_, action) => {
+    if (action === 'POP') applyState(getQuery(), agent);
+  });
 
   /** Switch to recommendation if query not present */
   agent.on('change:items', (items) => {
@@ -38,6 +48,13 @@ export default ({ agent, config, node }, render) => {
       { agent, apiKey },
       createElement(ZeroResults, getQuery())
     );
+  })
+
+  /** Unsubscribe from events on instance destroy  */
+  const unsubscribe = __root.listen((event, prop, ...args) => {
+    if (event !== Events.detach || prop !== widget) return;
+    stopListenLocation();
+    unsubscribe();
   })
   
   /** Render */
