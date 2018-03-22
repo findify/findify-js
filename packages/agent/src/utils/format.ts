@@ -13,7 +13,10 @@ const formatFilters = (filters) =>
     return Map({
       name,
       type,
-      values: type === 'range' ? values : values.map(value => ({ value })),
+      values:
+        (type === 'range' && values) ||
+        (type === 'category' && values.map(value => ({ value: value.join('>') }))) ||
+        values.map(value => ({ value })),
     })
   })
   .toList();
@@ -56,12 +59,15 @@ export const queryToState = (prev, next, defaults?) => {
           .get('values')
           .filter(v => !defaults ||
             (
-              type === 'range'
-              ? !defaults.hasIn([key, nextFilterName])
-              : !defaults.hasIn([key, nextFilterName,  v.get('value')])
+              (type === 'range' && !defaults.hasIn([key, nextFilterName])) ||
+              !defaults.hasIn([key, nextFilterName,  v.get('value')])
             )
           )
-          .map(v => type === 'range' ? v : v.get('value'));
+          .map(v =>
+            (type === 'range' && v) ||
+            (type === 'category' && v.get('value').split('>')) ||
+            v.get('value')
+          );
         return values.isEmpty() ? filters : filters.set(nextFilterName, values);
       }, _initial)
     )
@@ -69,6 +75,4 @@ export const queryToState = (prev, next, defaults?) => {
 };
 
 export const stateToQuery = (state: Map<any, any>): Map<any, any> =>
-  state.map((value, key) => {
-    return formatQueryField(key)(value)
-  });
+  state.map((value, key) => formatQueryField(key)(value));

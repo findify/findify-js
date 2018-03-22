@@ -19,7 +19,8 @@ describe('Format', () => {
     q: '',
     filters: {
       text: ['text'],
-      category: [['category', 'category1']],
+      category1: [['category1']],
+      category2: [['category2']],
       range: [{ from: 1, to: 2 }]
     }
   };
@@ -31,9 +32,13 @@ describe('Format', () => {
       type: 'text',
       values: [{ value: 'text' }]
     }, {
-      name: 'category',
+      name: 'category1',
       type: 'category',
-      values: [{ value: ['category', 'category1'] }]
+      values: [{ value: 'category1' }]
+    }, {
+      name: 'category2',
+      type: 'category',
+      values: [{ value: 'category2' }]
     }, {
       name: 'range',
       type: 'range',

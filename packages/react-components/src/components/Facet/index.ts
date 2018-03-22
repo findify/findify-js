@@ -1,17 +1,24 @@
-import { compose, setDisplayName, withStateHandlers, withPropsOnChange, pure } from 'recompose';
+import { compose, setDisplayName, withStateHandlers, withPropsOnChange } from 'recompose';
 import withEvents from 'helpers/withEvents';
+import pure from 'helpers/pure';
+import TextFacet from 'components/CheckboxFacet';
+import RangeFacet from 'components/RangeFacet';
+import ColorFacet from 'components/ColorFacet';
+import CategoryFacet from 'components/CategoryFacet';
 
 import view from './view';
 import withTheme from 'helpers/withTheme';
 
 import styles from "./styles.css";
 
-const components = {
-  text: require('components/CheckboxFacet').default,
-  range: require('components/RangeFacet').default
-};
-
-const getComponent = (name, type) => components[name] || components[type] || (() => null);
+const getComponent = type => ({
+  text: TextFacet,
+  range: RangeFacet,
+  rating: RangeFacet,
+  price: RangeFacet,
+  color: ColorFacet,
+  category: CategoryFacet
+}[type] || (() => null));
 
 export default compose(
   pure,
@@ -22,11 +29,12 @@ export default compose(
 
   withPropsOnChange(['config'], ({ config, item }) => {
     const name = item.get('name');
-    const facetConfig = config.getIn(['facets', name]) || config.getIn(['facets', item.get('type')]);
+    const type = config.getIn(['facets', 'types', name]) || item.get('type');
+    const facetConfig = config.getIn(['facets', type]);
     return {
       config: config.merge(facetConfig),
       title: config.getIn(['facets', 'labels', name], name),
-      FacetComponent: getComponent(config.getIn(['facets', name], name), item.get('type')),
+      FacetComponent: getComponent(type),
     }
   }),
 

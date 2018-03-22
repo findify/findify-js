@@ -54,7 +54,7 @@
     "del-cli": "^1.1.0",
     "dotenv": "^5.0.1",
     "git-revision-webpack-plugin": "^2.5.1",
-    "jest": "^23.0.0-alpha.0",
+    "jest": "^22.4.2",
     "nock": "^9.2.3",
     "npm-check-updates": "^2.14.1",
     "npm-run-all": "^4.1.2",

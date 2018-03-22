@@ -12,7 +12,7 @@
     "git-revision-webpack-plugin": "^2.5.1",
     "husky": "^0.14.3",
     "identity-obj-proxy": "^3.0.0",
-    "jest": "^23.0.0-alpha.0",
+    "jest": "^22.4.2",
     "lerna": "^2.9.0",
     "lerna-changelog": "^0.7.0",
     "lerna-semantic-release": "^9.1.0",
