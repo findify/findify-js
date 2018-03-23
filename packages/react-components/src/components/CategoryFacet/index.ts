@@ -10,6 +10,7 @@ export default compose(
   withTheme(styles),
 
   withProps(({ facet }) => ({
-    items: facet.get('values')
+    items: facet.get('values'),
+    total: facet.get('values').reduce((acc, v) => acc + v.get('count'), 0)
   }))
 )(view);

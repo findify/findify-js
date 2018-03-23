@@ -7,8 +7,13 @@ export default ({
   theme,
   items,
   config,
+  facet,
+  total
 }) => 
 <>
+  <button onClick={facet.resetValues}>
+    All categories ({ total })
+  </button>
   <MapArray
     config={config}
     array={items}

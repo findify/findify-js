@@ -1,6 +1,7 @@
 import { getFacetType } from './filters';
 import { isArray, isObject } from './helpers';
 import { Map, List, isImmutable } from 'immutable';
+import deepMerge from './deepMerge';
 
 const isValidField = (values, key) =>
   values
@@ -22,7 +23,8 @@ export const getChangedFields = (prev, next) => {
   if (next && isImmutable(next) ? next.equals(prev) : next === prev) return false;
   if (!prev || !isImmutable(next)) return next;
   if (!next || next.isEmpty()) return next;
-  return next.reduce((acc, value, key) => {
+  return deepMerge(prev, next).reduce((acc, value, key) => {
+    if (!next.has(key)) return acc.set(key, null);
     if (prev.has(key) && prev.get(key).equals(value)) return acc;
     return value instanceof List && isValidField(value.filter(v => v), key)
       ? acc.set(key, value)

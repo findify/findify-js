@@ -100,8 +100,8 @@ export class Agent {
   public set = (field: string | Types.Field, update?: any) => {
     const oldValue = this.state.get(field);
     const fx = isFunction(update) && update;
-    const value = fx ? fx(this.format(oldValue)) : update;
-
+    const value = fx ? fromJS(fx(this.format(oldValue))) : fromJS(update);
+    if (field !== 'offset') this.reset('offset'); // Reset offset on query change
     if (fx && !value) return this; // Skip new value setting if update doesn't returned new value
 
     const changes = getChangedFields(oldValue, isImmutable(value) ? value : fromJS(value));

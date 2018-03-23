@@ -9,6 +9,7 @@ export default compose(
   withTheme(styles),
   withEvents(),
   withHandlers({
-    showFacets: ({ emit }) => () => emit('toggleMobileFacets')
+    showFacets: ({ emit }) => () => emit('toggleMobileFacets'),
+    showSort: ({ emit }) => () => emit('toggleMobileSort')
   })
 )(view);

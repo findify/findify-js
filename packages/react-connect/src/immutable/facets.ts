@@ -39,7 +39,12 @@ export class Facet extends createRecord('Facet'){
 
   resetValues = (e) => {
     preventEvents(e);
-    this.updater('filters', f => f && f.remove(this.get('name')))
+    const name = this.get('name');
+    if (this.get('type') === 'category') {
+      this.updater('filters', f => f && f.filter((v, k) => !k.includes(name)))
+    } else {
+      this.updater('filters', f => f && f.remove(name))
+    }
     return this;
   }
 

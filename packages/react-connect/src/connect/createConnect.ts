@@ -1,5 +1,6 @@
 import { Component, createFactory } from "react";
 import * as PropTypes from 'prop-types';
+import { Map } from 'immutable';
 import { getDisplayName } from '../utils/getDisplayName';
 import { shallowEqual } from '../utils/shallowEqual';
 import mapValues from '../utils/mapValues';
@@ -37,7 +38,7 @@ const createComponent = ({
       super(props, context);
     }
 
-    handleUpdate = (changes, meta) => {
+    handleUpdate = (changes, meta = Map()) => {
       const config = this.context[$config];
       const mapped = mapProps && mapProps(
         changes,

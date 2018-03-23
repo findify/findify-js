@@ -18,3 +18,4 @@ export default ({
   </button>
   <FacetComponent display-if={isOpen} facet={item} config={config} />
 </div>
+
