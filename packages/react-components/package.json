@@ -7,6 +7,7 @@
     "@findify/change-emitter": "^0.2.0",
     "classnames": "^2.2.5",
     "currency-formatter": "^1.4.2",
+    "downshift": "^1.31.2",
     "humps": "^2.0.1",
     "immutable": "^4.0.0-rc.9",
     "match-media": "^0.2.0",

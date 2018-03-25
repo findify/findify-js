@@ -26,8 +26,7 @@ export const getChangedFields = (prev, next) => {
   return deepMerge(prev, next).reduce((acc, value, key) => {
     if (!next.has(key)) return acc.set(key, null);
     if (prev.has(key) && prev.get(key).equals(value)) return acc;
-    return value instanceof List && isValidField(value.filter(v => v), key)
-      ? acc.set(key, value)
-      : acc;
+    if (value instanceof List && !isValidField(value.filter(v => v), key)) return acc;
+    return acc.set(key, value);
   }, Map());
 };
