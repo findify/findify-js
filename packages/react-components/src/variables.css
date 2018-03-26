@@ -1,13 +1,17 @@
 :root {
 /* Fonts */
 --font-base: 'Source Sans Pro', sans-serif;
---font-size-14: 14px;
---font-size-18: 18px;
+--font-size-normal: 13px;
+--font-size-small: 11px;
 --line-height: 1.2;
 
 /* Colors */
---color-base: #475971;
---color-base-dark: #2F3B4B;
---color-base-darker: #1F2732;
-
+--color-base: #111111;
+--color-light: #ffffff;
+--color-grey: #E2E2E2;
+--color-grey-darker: #9BA1A9;
+--color-grey-darkest: #8D8D8D;
+--color-dangerous: #D0284B;
+--color-warning: #E9BE57;
+--color-primary: rgba(60,116,197);
 }

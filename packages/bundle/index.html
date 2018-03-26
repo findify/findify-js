@@ -3,22 +3,27 @@
   <head>
     <meta charset="UTF-8">
     <title>Webpack App</title>
-  <script type="text/javascript" src="/bundle.js"></script></head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css">
+    <script type="text/javascript" src="/bundle.js"></script></head>
   <body>
-    <!-- <div id='home-findify-rec-3'>
-      <div class='findify-fallback'>
-        i am fallback
+    <header style='height: 90px; padding: 0 20px; background-color:#475971; display: flex; align-items: center'>
+      <div style='margin-left: auto'>
+        <input name='q' />
       </div>
-    </div> -->
-    <!-- <div>
-      <input data-findify='autocomplete' data-key='autocomplete' type='text' />
-    </div> -->
-    <!-- <div>
-      <input name='q' />
-    </div> -->
-    <div id='findify_results'>
-      <div class='findify-fallback'>
-        i am fallback too
+    </header>
+    <div style='padding: 20px'>
+      <!-- <div id='home-findify-rec-3'>
+        <div class='findify-fallback'>
+          i am fallback
+        </div>
+      </div> -->
+      <!-- <div>
+        <input data-findify='autocomplete' data-key='autocomplete' type='text' />
+      </div> -->
+      <div id='findify_results'>
+        <div class='findify-fallback'>
+          i am fallback too
+        </div>
       </div>
     </div>
     <!-- <div id='attacher'></div> -->

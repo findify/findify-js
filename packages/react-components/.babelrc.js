@@ -5,6 +5,7 @@ module.exports = {
     "@babel/preset-react",
   ],
   plugins: [
+    "inline-react-svg",
     "babel-plugin-jsx-display-if",
     "react-hot-loader/babel",
     ["module-resolver", {

@@ -1,6 +1,7 @@
 import React from 'react';
 import Downshift from 'downshift';
 import MapArray from 'components/common/MapArray';
+import Icon from 'components/Icon';
 
 const Item = ({ item, index, getItemProps, highlighted, active }) => (
   <button display-if={!active.equals(item)} {...getItemProps({ item })}>
@@ -18,6 +19,7 @@ export default ({ sort, onChangeSort, config, theme, items }) =>
     <div className={theme.root}>
       <button {...getToggleButtonProps()}>
         { selectedItem.get('label') }
+        <Icon name='arrow' />
       </button>
       <MapArray
         active={selectedItem}
