@@ -1,0 +1,28 @@
+.backdrop {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, .5);
+  z-index: 999;
+}
+
+.content-wrapper {
+  background: #fff;
+  height: 100vh;
+  overflow-y: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: inline-block;
+  z-index: 1000;
+}
+
+.content {
+  padding: 20px;
+}
+
+.body-noscroll {
+  overflow: hidden;
+}
