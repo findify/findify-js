@@ -8,11 +8,11 @@ export default ({
   items,
   config,
 }) => 
-<>
+<div className={theme.root}>
   <MapArray
     config={config}
     array={items}
     factory={Item}
     theme={theme} />
-</>
+</div>
 

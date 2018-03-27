@@ -32,7 +32,9 @@ export default (widget, render) => {
 
   /** Listen to location back/fwd */
   const stopListenLocation = listenHistory((_, action) => {
-    if (action === 'POP') applyState(getQuery(), agent);
+    if (action !== 'POP') return;
+    applyState(getQuery(), agent);
+    render('initial');
   });
 
   /** Switch to recommendation if query not present */

@@ -16,6 +16,7 @@ export default ({
   facet,
   items,
   config,
+  currencySymbol,
 
   from,
   to,
@@ -25,7 +26,8 @@ export default ({
   onCommit
 
 }) =>
-<>
+<div className={theme.root}>
+
   <MapArray
     display-if={config.get('pullSelected')}
     array={config.get('pullSelected') ? items.filter(i => i.get('selected')) : items}
@@ -40,27 +42,35 @@ export default ({
     theme={theme} />
 
   <div className={theme.range}>
-    <NumberInput
-      {...inputDefaults}
-      className={theme.input}
-      precision={config.get('precision', 0)}
-      value={from}
-      max={to || facet.get('max')}
-      min={facet.get('min')}
-      onBlur={onChangeMin}
-    />
-    <NumberInput
-      {...inputDefaults}
-      className={theme.input}
-      precision={config.get('precision', 0)}
-      value={to}
-      min={from || facet.get('min')}
-      max={facet.get('max')}
-      onBlur={onChangeMax}
-    />
-    <Button onClick={onCommit}>
+    <div className={theme.inputWrap}>
+      <span className={theme.currency}>{currencySymbol}</span>
+      <NumberInput
+        {...inputDefaults}
+        className={theme.input}
+        precision={config.get('precision', 0)}
+        value={from}
+        max={to || facet.get('max')}
+        min={facet.get('min')}
+        onBlur={onChangeMin}
+      />
+    </div>
+    <div className={theme.divider}>-</div>
+    <div className={theme.inputWrap}>
+      <span className={theme.currency}>{currencySymbol}</span>
+      <NumberInput
+        {...inputDefaults}
+        className={theme.input}
+        precision={config.get('precision', 0)}
+        value={to}
+        min={from || facet.get('min')}
+        max={facet.get('max')}
+        onBlur={onChangeMax}
+      />
+    </div>
+    <Button onClick={onCommit} className={theme.submit}>
       { config.getIn(['i18n', 'submit']) }
     </Button>
   </div>
-</>
+
+</div>
 

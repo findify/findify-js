@@ -1,11 +1,20 @@
-$padding: 0 25px;
+$padding: 25px;
+$gutter: 40px;
 
 .root{
-
+  width: 300px;
+  display: table-cell;
+  vertical-align: top;
+  padding-left: $gutter;
+  box-sizing: border-box;
+  &:first-child{
+    padding-left: inherit;
+    padding-right: $gutter;
+  }
 }
 
 .header{
-  padding: $padding;
+  padding: 15px $padding;
   clear: fix;
 }
 
@@ -28,6 +37,7 @@ $padding: 0 25px;
   font-size: $font-size-small;
   font-weight: bold;
   outline: 0;
+  padding: 0;
   color: $color-grey;
   &:hover{
     color: $color-grey-darkest;
@@ -36,7 +46,7 @@ $padding: 0 25px;
 }
 
 .facet{
-  padding: $padding;
+  padding: 0 $padding;
   padding-top: 25px;
   margin-top: 25px;
   border-top: 1px solid $color-grey;

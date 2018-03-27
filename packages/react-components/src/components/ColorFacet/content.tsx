@@ -10,7 +10,7 @@ const getStyles = (item, config) => {
   }
 };
 
-export default ({ item, config }) => {
+export default ({ item, config, theme }) => {
   const styles = getStyles(item, config);
-  return <span style={styles.ball}/>
+  return <span style={styles.ball} className={theme.ball}/>
 }

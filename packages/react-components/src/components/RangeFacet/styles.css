@@ -1,0 +1,78 @@
+$height: 30px;
+
+.item{
+  $font-size: $font-size-normal;
+  $padding: 7px 0;
+  display: block;
+  width: 100%;
+  border: 0;
+  background: transparent;
+  outline: 0;
+  font-size: $font-size;
+  border-radius: 0;
+  text-align: left;
+  padding: $padding;
+  height: auto;
+  cursor: pointer;
+}
+
+.range{
+  display: table;
+  width: 1%;
+  padding-top: 10px;
+}
+
+.input-wrap{
+  display: table-cell;
+  position: relative;
+  white-space: nowrap;
+  :global(.react-numeric-input){
+    display: inline-block;
+  }
+}
+
+.input{
+  $width: 60px;
+  $font-size: $font-size-normal;
+  $indent: 8px;
+  display: block;
+  width: $width;
+  box-sizing: border-box;
+  height: $height;
+  font-size: $font-size;
+  padding: 0 8px;
+  padding-left: calc(8px + $indent);
+}
+
+.currency{
+  $font-size: $font-size-normal;
+  display: inline-block;
+  position: relative;
+  font-size: $font-size;
+  left: 9px;
+  width: 0;
+}
+
+.submit{
+  $font-size: $font-size-normal;
+  display: table-cell;
+  border: 0;
+  background: transparent;
+  outline: 0;
+  font-size: $font-size;
+  border-radius: 0;
+  width: 100%;
+  height: $height;
+  padding: 0 8px;
+  cursor: pointer;
+  &:hover{
+    text-decoration: underline;
+  }
+}
+
+.divider{
+  display: table-cell;
+  padding: 0 6px;
+  width: 1%;
+}
+

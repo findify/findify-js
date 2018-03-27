@@ -29,6 +29,7 @@ $text-transform: uppercase;
 .dots{
   cursor: default;
   pointer-events: none;
+  padding: 0;
 }
 
 .active, .active:focus{

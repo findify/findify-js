@@ -30,3 +30,11 @@
     color: $color-base;
   }
 }
+
+.ball{
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  display: inline-block;
+  vertical-align: -1px;
+}

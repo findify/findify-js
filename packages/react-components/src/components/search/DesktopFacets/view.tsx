@@ -3,10 +3,11 @@ import Branch from 'components/common/Branch';
 import MapArray from 'components/common/MapArray';
 import Facet from 'components/Facet';
 
-const DefaultContent = ({ theme, children, config }) =><div></div>;
+const DefaultContent = ({ theme, children, config }) =>
+  <div className={theme.root}>{children}</div>
 
 export default ({ config, facets, theme, onReset, meta }) =>
-<Branch condition={config.getIn(['view', 'stickyFilters'])} left={DefaultContent}>
+<Branch theme={theme} condition={!config.getIn(['view', 'stickyFilters'])} left={DefaultContent}>
 
   <div className={theme.header} display-if={!config.get('showFacetsTitle')}>
     <h5 className={theme.title}>

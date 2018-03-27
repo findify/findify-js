@@ -1,0 +1,18 @@
+.item{
+  display: inline-block;
+  border: none;
+  padding: 0;
+  outline: none;
+  margin-right: 5px;
+  line-height: 1;
+  cursor: pointer;
+  outline: none;
+  border-radius: 0;
+}
+
+.ball{
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}

@@ -10,15 +10,13 @@ import Branch from 'components/common/Branch';
 
 export default ({ config, isMobile, mobileFacetsOpened, filtersOnRight, theme }) =>
 <div className={theme.root}>
-  <Branch left={Grid} condition={!isMobile} columns={filtersOnRight ? '9|3' : '3|9'}>
-    <DesktopFacets display-if={!isMobile && !filtersOnRight} />
-    <>
-      <MobileActions display-if={isMobile} />
-      <DesktopActions display-if={!isMobile} />
-      <Branch left={LazyResults} right={StaticResults} condition={config.getIn(['view', 'lazy'])} />
-    </>
-    <DesktopFacets display-if={!isMobile && filtersOnRight} />
-  </Branch>
+  <DesktopFacets display-if={!isMobile && !filtersOnRight} />
+  <div className={theme.content}>
+    <MobileActions display-if={isMobile} />
+    <DesktopActions display-if={!isMobile} />
+    <Branch left={LazyResults} right={StaticResults} condition={config.getIn(['view', 'lazy'])} />
+  </div>
+  <DesktopFacets display-if={!isMobile && filtersOnRight} />
 
   <MobileFacets display-if={isMobile} />
 </div>
