@@ -2,12 +2,17 @@ import React from 'react';
 import Branch from 'components/common/Branch';
 import MapArray from 'components/common/MapArray';
 import Facet from 'components/Facet';
+import Sticky from 'components/common/Sticky';
 
 const DefaultContent = ({ theme, children, config }) =>
   <div className={theme.root}>{children}</div>
 
 export default ({ config, facets, theme, onReset, meta }) =>
-<Branch theme={theme} condition={!config.getIn(['view', 'stickyFilters'])} left={DefaultContent}>
+<Branch
+  theme={theme}
+  condition={config.getIn(['view', 'stickyFilters'])}
+  left={DefaultContent}
+  right={Sticky}>
 
   <div className={theme.header} display-if={!config.get('showFacetsTitle')}>
     <h5 className={theme.title}>

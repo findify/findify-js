@@ -2,6 +2,7 @@ $padding: 25px;
 $gutter: 40px;
 
 .root{
+  position: relative;
   width: 300px;
   display: table-cell;
   vertical-align: top;

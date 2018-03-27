@@ -1,0 +1,25 @@
+.container{
+  max-height: auto;
+}
+
+@supports(display: flex) {
+  .container{
+    overflow: hidden;
+    overflow-y: auto;
+    will-change: max-height;
+  }
+  
+  .static{
+    position: static;
+  }
+  
+  .stuck{
+    bottom: 0;
+    position: absolute;
+  }
+  
+  .sticky{
+    position: fixed;
+    top: 0;
+  }
+}
