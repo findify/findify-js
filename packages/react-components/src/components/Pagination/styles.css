@@ -1,3 +1,37 @@
+$height: 40px;
+$text-transform: uppercase;
+
 .root{
   clear: fix;
+  padding-top: 30px;
+  border-top: 1px solid $color-grey;
+  margin-top: 22px;
+  text-align: center;
+}
+
+.prev, .next, .first, .last, .page, .dots{
+  border: none;
+  height: $height;
+  background: transparent;
+  outline: none;
+  cursor: pointer;
+  padding: 0 16px;
+  font-size: $font-size-normal;
+  &:hover{
+    text-decoration: underline;
+  }
+}
+
+.prev, .next{
+  text-transform: $text-transform;
+}
+
+.dots{
+  cursor: default;
+  pointer-events: none;
+}
+
+.active, .active:focus{
+  background-color: $color-grey-darker;
+  text-decoration: none;
 }

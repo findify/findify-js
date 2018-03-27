@@ -1,0 +1,27 @@
+.root{
+  display: table;
+  width: 100%;
+}
+
+.block{
+  display: table;
+  width: 100%;
+}
+
+.sorting{
+  display: table-cell;
+  width: 240px;
+  position: relative;
+}
+
+
+.query{
+  display: table-cell;
+  white-space: nowrap;
+  width: 1%;
+  font-size: $font-size-normal;
+}
+
+.breadcrumbs{
+  display: table-cell;
+}

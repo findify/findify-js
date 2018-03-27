@@ -1,0 +1,43 @@
+$padding: 0 25px;
+
+.root{
+
+}
+
+.header{
+  padding: $padding;
+  clear: fix;
+}
+
+.title{
+  margin: 0;
+  padding: 0;
+  font-size: $font-size-small;
+  text-transform: uppercase;
+  font-weight: bold;
+  float: left;
+}
+
+.reset{
+  float: right;
+  display: block;
+  border: none;
+  background: transparent;
+  border-radius: 0;
+  text-transform: uppercase;
+  font-size: $font-size-small;
+  font-weight: bold;
+  outline: 0;
+  color: $color-grey;
+  &:hover{
+    color: $color-grey-darkest;
+    cursor: pointer;
+  }
+}
+
+.facet{
+  padding: $padding;
+  padding-top: 25px;
+  margin-top: 25px;
+  border-top: 1px solid $color-grey;
+}

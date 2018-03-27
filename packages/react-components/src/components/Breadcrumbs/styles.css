@@ -1,0 +1,32 @@
+.root{
+  white-space: nowrap;
+}
+
+.breadcrumb{
+  display: inline-block;
+  font-size: $font-size-small;
+  padding: 0;
+  margin-left: 12px;
+  position: relative;
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: $color-grey-darkest;
+  &:before{
+    content: '/';
+    display: inline-block;
+    padding-right: 12px;
+    font-size: 16px;
+    vertical-align: -1px;
+  }
+  &:hover{
+    text-decoration: line-through;
+    text-decoration-color: $color-base;
+  }
+  &:first-child:before{
+    color: $color-base;
+  }
+}

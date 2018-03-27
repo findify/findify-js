@@ -1,0 +1,8 @@
+[class^=findify]{
+  font-family: $font-base;
+}
+
+.root{
+  padding-top: 25px;
+  border-top: 1px solid $color-grey;
+}

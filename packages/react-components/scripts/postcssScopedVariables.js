@@ -18,11 +18,12 @@ const normalizeName = (pathName, contentBase) => {
 }
 
 const getValue = (value, parent, variables) =>
-  `var(${
-    variables.get(parent + value) ||
-    variables.get(value) ||
-    '--' + value.substr(1)
-  })`;
+  value.replace(/\$(([\w\d-_])+)/g, (name) =>
+    `var(${variables.get(parent + name) ||
+    variables.get(name) ||
+    '--' + name.substr(1)
+    })`
+  );
 
 module.exports = postcss.plugin("postcss-reverse-props", ({ contentBase, include }) => root => {
   const baseClassName = normalizeName(root.source.input.file, contentBase);
@@ -46,11 +47,11 @@ module.exports = postcss.plugin("postcss-reverse-props", ({ contentBase, include
       variables.set(parentSelector + prop, variable)
       node.prop = variable;
 
-      if (value.startsWith("$")) {
+      if (value.includes("$")) {
         node.value = getValue(value, parentSelector, variables);
       }
   
-    } else if (value.startsWith("$")) {
+    } else if (value.includes("$")) {
       node.value = getValue(value, parentSelector, variables);
     }
     

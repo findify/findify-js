@@ -280,7 +280,9 @@ export default {
                     "hideFilters": "Exit filters",
                     "ok": "Ok",
                     "backToFilters": "Back to menu",
-                    "search": "Search"
+                    "search": "Search",
+                    "filters": "Filters",
+                    "clearAll": 'Clear all'
                 },
                 "color": {
                     "mapping": {

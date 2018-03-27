@@ -8,9 +8,8 @@ import MobileActions from 'components/search/MobileActions';
 import DesktopActions from 'components/search/DesktopActions';
 import Branch from 'components/common/Branch';
 
-export default ({ config, isMobile, mobileFacetsOpened, filtersOnRight }) =>
-<>
-
+export default ({ config, isMobile, mobileFacetsOpened, filtersOnRight, theme }) =>
+<div className={theme.root}>
   <Branch left={Grid} condition={!isMobile} columns={filtersOnRight ? '9|3' : '3|9'}>
     <DesktopFacets display-if={!isMobile && !filtersOnRight} />
     <>
@@ -22,5 +21,5 @@ export default ({ config, isMobile, mobileFacetsOpened, filtersOnRight }) =>
   </Branch>
 
   <MobileFacets display-if={isMobile} />
-</>
+</div>
 

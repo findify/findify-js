@@ -1,8 +1,10 @@
 import { compose, setDisplayName, withPropsOnChange } from 'recompose';
 import sizeMe from 'react-sizeme';
+import { connectConfig } from '@findify/react-connect';
+import withTheme from 'helpers/withTheme';
 
 import view from './view';
-import { connectConfig } from '@findify/react-connect';
+import styles from './styles.css';
 
 const countProductsToShow = width => {
   if (width > 1000) return 2;
@@ -14,6 +16,8 @@ const countProductsToShow = width => {
 
 export default compose(
   setDisplayName('StaticResults'),
+
+  withTheme(styles),
 
   connectConfig,
 

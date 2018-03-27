@@ -20,22 +20,30 @@ export default ({
   visiblePages,
 }) => (
   <div className={theme.root}>
-    <Button display-if={showPrev} {...getPageProps(current - 1)}>
-      { config.getIn(['i18n', 'previous'], null) }
-    </Button>
-    <Button display-if={showFirst} {...getPageProps(1)}>1</Button>
-    <Button display-if={showFirstDots}>...</Button>
+    <button display-if={showPrev} {...getPageProps(current - 1)} className={theme.prev}>
+      { config.getIn(['pagination', 'i18n', 'previous'], 'previous') }
+    </button>
+    <button display-if={showFirst} {...getPageProps(1)} className={theme.first}>
+      1
+    </button>
+    <button display-if={showFirstDots} className={theme.dots}>
+      ...
+    </button>
     {
       visiblePages.map(page =>
-        <Button {...getPageProps(page)} active={current === page}>
+        <button {...getPageProps(page)} className={cx(theme.page, current === page && theme.active)}>
           { page }
-        </Button>
+        </button>
       )
     }
-    <Button display-if={showLastDots}>...</Button>
-    <Button display-if={showLast} {...getPageProps(total)}>{total}</Button>
-    <Button display-if={showNext} {...getPageProps(current +1)}>
-      { config.getIn(['i18n', 'next'], null) }
-    </Button>
+    <button display-if={showLastDots} className={theme.dots}>
+      ...
+    </button>
+    <button display-if={showLast} {...getPageProps(total)} className={theme.last}>
+      {total}
+    </button>
+    <button display-if={showNext} {...getPageProps(current +1)} className={theme.next}>
+      { config.getIn(['pagination', 'i18n', 'next'], 'next') }
+    </button>
   </div>
 )

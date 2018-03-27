@@ -15,10 +15,13 @@ export default ({
   onSearch,
   onToggle
 }) => 
-<>
+<div className={theme.root}>
 
   <div className={theme.search} display-if={isExpanded}>
-    <input className={theme.searchInput} onChange={onSearch} />
+    <input
+      placeholder={config.getIn(['i18n', 'search'])}
+      className={theme.input}
+      onChange={onSearch} />
   </div>
 
   <MapArray
@@ -43,9 +46,12 @@ export default ({
     theme={theme}
     limit={config.get('maxItemsCount')} />
 
-  <Button onClick={onToggle} display-if={items.size > config.get('maxItemsCount')}>
+  <Button
+    className={theme.expand}
+    onClick={onToggle}
+    display-if={items.size > config.get('maxItemsCount')}>
     { isExpanded ? config.getIn(['i18n', 'less']) : config.getIn(['i18n', 'more']) }
   </Button>
 
-</>
+</div>
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import cx from 'classnames';
 
 import MapArray from 'components/common/MapArray';
 import Item from 'components/CategoryFacet/Item';
@@ -10,8 +11,10 @@ export default ({
   facet,
   total
 }) => 
-<>
-  <button onClick={facet.resetValues}>
+<div className={theme.root}>
+  <button
+    className={cx(theme.item, !items.find(i => i.get('selected')) && theme.active)}
+    onClick={facet.resetValues}>
     All categories ({ total })
   </button>
   <MapArray
@@ -19,5 +22,5 @@ export default ({
     array={items}
     factory={Item}
     theme={theme} />
-</>
+</div>
 

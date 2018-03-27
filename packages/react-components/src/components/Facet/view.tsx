@@ -16,6 +16,10 @@ export default ({
   <button className={theme.title} onClick={toggleFacet}>
     <strong>{ title }</strong>
   </button>
-  <FacetComponent display-if={isOpen} facet={item} config={config} />
+  <FacetComponent
+    display-if={isOpen}
+    facet={item}
+    config={config}
+    theme={{ root: theme.body }} />
 </div>
 

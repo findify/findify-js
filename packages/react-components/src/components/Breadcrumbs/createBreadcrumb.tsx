@@ -14,10 +14,10 @@ const Item = compose(
   }),
   pure,
 )(({ theme, item, config, Content }: any) =>
-  <div className={theme.breadcrumb}>
+  <button className={theme.breadcrumb} onClick={item.toggle}>
     <Content item={item} theme={theme} config={config} />
-    <button onClick={item.toggle}>x</button>
-  </div>
+    <span className={theme.cross}>x</span>
+  </button>
 );
 
 export default mapping => ({ item, children, theme, config }) =>

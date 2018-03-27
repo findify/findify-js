@@ -17,9 +17,12 @@ export default compose(
     }
   ),
 
-  withProps(({ search, isExpanded, facet }) => ({
-    items: isExpanded && search
-      ? facet.get('values').filter(i => i.get('value').includes(search))
-      : facet.get('values')
-  }))
+  withProps(({ search, isExpanded, facet }) => {
+    if (isExpanded && search) {
+      const regexp = new RegExp(search, 'gi');
+      return { items: facet.get('values').filter(i => regexp.test(i.get('value'))) }
+    }
+    return { items: facet.get('values') };
+  })
+
 )(view);

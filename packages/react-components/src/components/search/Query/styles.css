@@ -1,0 +1,5 @@
+.root{
+  white-space: nowrap;
+  display: table-cell;
+  width: 1%;
+}
