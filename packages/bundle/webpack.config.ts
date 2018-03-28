@@ -6,6 +6,7 @@ import * as UglifyJSPlugin from 'uglifyjs-webpack-plugin';
 import * as DuplicatePackageCheckerPlugin from 'duplicate-package-checker-webpack-plugin';
 import * as  CompressionPlugin from 'compression-webpack-plugin';
 import * as  HtmlWebpackPlugin from 'html-webpack-plugin';
+import * as AddAssetHtmlPlugin from 'add-asset-html-webpack-plugin';
 
 interface WebpackEnvArgs {
   analyze?: boolean;
@@ -115,7 +116,7 @@ export default (env: WebpackEnvArgs, { mode }) => {
       new HtmlWebpackPlugin({
         hash: true,
         template:  path.resolve(__dirname, 'index.html'),
-        inject: false
+        inject: 'head'
       }),
 
       // new webpack.HashedModuleIdsPlugin()
@@ -137,6 +138,14 @@ export default (env: WebpackEnvArgs, { mode }) => {
 
   if (mode === 'development') {
     config.plugins.push(new webpack.HotModuleReplacementPlugin());
+    config.plugins.push(new webpack.DllReferencePlugin({
+      context: __dirname,
+      manifest: require(path.join(__dirname, 'node_modules/dll/vendor-manifest.json'))
+    }));
+    config.plugins.push(new AddAssetHtmlPlugin({
+      filepath: require.resolve(path.join(__dirname, 'node_modules/dll/vendor.dll.js'))
+    }));
+
   }
 
   return config;

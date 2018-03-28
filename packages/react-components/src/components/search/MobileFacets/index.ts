@@ -9,22 +9,4 @@ export default compose(
   setDisplayName('MobileFacets'),
 
   withTheme(styles),
-
-  withStateHandlers(
-    { visible: false },
-    { toggleVisibility: ({ visible }) => () => ({ visible: !visible }) }
-  ),
-
-  withEvents({
-    toggleMobileFacets: ({ toggleVisibility }) => toggleVisibility
-  }),
-
-  withHandlers({
-    onHideFacets: ({ emit }) => () => emit('toggleMobileFacets')
-  }),
-
-  branch(
-    ({ visible }) => !visible,
-    renderNothing
-  )
 )(view);

@@ -17,7 +17,6 @@ export default ({ config, isMobile, mobileFacetsOpened, filtersOnRight, theme })
     <Branch left={LazyResults} right={StaticResults} condition={config.getIn(['view', 'lazy'])} />
   </div>
   <DesktopFacets display-if={!isMobile && filtersOnRight} />
-
-  <MobileFacets display-if={isMobile} />
+  <MobileFacets />
 </div>
 

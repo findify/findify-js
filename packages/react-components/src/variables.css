@@ -1,16 +1,16 @@
 :root {
 /* Fonts */
---font-base: 'Source Sans Pro', sans-serif;
+--font-base: 'Karla', sans-serif;
 --font-size-normal: 13px;
 --font-size-small: 11px;
 --line-height: 1.2;
 
 /* Colors */
---color-base: #111111;
+--color-base: #140808;
 --color-light: #ffffff;
 --color-grey: #E2E2E2;
 --color-grey-darker: #F2F4F7;
---color-grey-darkest: #9BA1A9;
+--color-grey-darkest: rgb(12, 13, 14);
 --color-dangerous: #D0284B;
 --color-warning: #E9BE57;
 --color-primary: rgba(60,116,197);

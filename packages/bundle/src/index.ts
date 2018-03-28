@@ -9,7 +9,7 @@ import loadJs from 'load-js';
 /**
  * Load Dependencies
  */
-Promise.all([
+const deps = [
   import(
     /* webpackChunkName: "initializer" */
     './initialize'
@@ -24,11 +24,10 @@ Promise.all([
     /* webpackChunkName: "components" */
     '@findify/react-components/src'
   ),
+];
 
-  loadJs(
-    /* Load polyfills if needed */
-    __webpack_require__.p + 'polyfill.js'
-  )
+if (process.env.NODE_ENV !== 'development') {
+  loadJs(__webpack_require__.p + 'polyfill.js');
+}
 
-])
-.then(([initialize, config]) => initialize.default(config));
+Promise.all(deps).then(([initialize, config]) => initialize.default(config));
