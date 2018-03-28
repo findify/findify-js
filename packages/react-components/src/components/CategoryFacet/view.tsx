@@ -3,6 +3,8 @@ import cx from 'classnames';
 
 import MapArray from 'components/common/MapArray';
 import Item from 'components/CategoryFacet/Item';
+import Button from 'components/Button';
+import Text from 'components/Text';
 
 export default ({
   theme,
@@ -12,11 +14,13 @@ export default ({
   total
 }) => 
 <div className={theme.root}>
-  <button
-    className={cx(theme.item, !items.find(i => i.get('selected')) && theme.active)}
+  <Button
+    className={theme.item}
     onClick={facet.resetValues}>
-    All categories ({ total })
-  </button>
+    <Text lowercase primary bold={!items.find(i => i.get('selected'))}>
+       All categories ({ total })
+    </Text>
+  </Button>
   <MapArray
     config={config}
     array={items}

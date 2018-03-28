@@ -3,6 +3,8 @@ import Branch from 'components/common/Branch';
 import MapArray from 'components/common/MapArray';
 import Facet from 'components/Facet';
 import Sticky from 'components/common/Sticky';
+import Text from 'components/Text';
+import Button from 'components/Button';
 
 const DefaultContent = ({ theme, children, config }) =>
   <div className={theme.root}>{children}</div>
@@ -13,17 +15,21 @@ export default ({ config, facets, theme, onReset, meta }) =>
   condition={config.getIn(['view', 'stickyFilters'])}
   left={DefaultContent}
   right={Sticky}>
-
   <div className={theme.header} display-if={!config.get('showFacetsTitle')}>
-    <h5 className={theme.title}>
+    
+    <Text primary uppercase className={theme.title}>
       { config.getIn(['facets', 'i18n', 'filters'], 'Filters') }
-    </h5>
-    <button
-      className={theme.reset}
+    </Text>
+  
+    <Button
       display-if={meta.get('filters') && meta.get('filters').size}
+      className={theme.reset}
       onClick={onReset}>
-      { config.getIn(['facets', 'i18n', 'clearAll'], 'Clear all') }
-    </button>
+      <Text secondary uppercase>
+        { config.getIn(['facets', 'i18n', 'clearAll'], 'Clear all') }
+      </Text>
+    </Button>
+
   </div>
 
   <MapArray

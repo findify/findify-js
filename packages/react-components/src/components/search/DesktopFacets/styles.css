@@ -20,35 +20,16 @@ $gutter: 40px;
 }
 
 .title{
-  margin: 0;
-  padding: 0;
-  font-size: $font-size-small;
-  text-transform: uppercase;
-  font-weight: bold;
   float: left;
 }
 
 .reset{
   float: right;
-  display: block;
-  border: none;
-  background: transparent;
-  border-radius: 0;
-  text-transform: uppercase;
-  font-size: $font-size-small;
-  font-weight: bold;
-  outline: 0;
-  padding: 0;
-  color: $color-grey;
-  &:hover{
-    color: $color-grey-darkest;
-    cursor: pointer;
-  }
 }
 
 .facet{
   padding: 0 $padding;
   padding-top: 25px;
   margin-top: 25px;
-  border-top: 1px solid $color-grey;
+  border-top: 1px solid $color-grey-2;
 }

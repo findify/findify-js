@@ -2,15 +2,12 @@ import React from 'react';
 import { compose, withHandlers } from 'recompose';
 import cx from 'classnames';
 
-export default ({ theme, onClick, children, active, size, className }) => (
+export default ({ theme, onClick, children, active, raw, className, disabled, ...rest }) => (
   <button
+    {...rest}
     onClick={onClick}
-    className={cx(
-      theme.button,
-      active && theme.active,
-      theme[size],
-      className
-    )}
+    disabled={disabled}
+    className={cx(theme.button, active && theme.active, raw && theme.raw, className)}
   >
   { children }
   </button>

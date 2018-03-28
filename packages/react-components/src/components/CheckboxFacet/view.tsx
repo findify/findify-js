@@ -5,6 +5,7 @@ import MapArray from 'components/common/MapArray';
 import Item from 'components/CheckboxFacet/Item';
 import Button from 'components/Button';
 import VirtualizedList from 'components/common/VirtualizedList';
+import Text from 'components/Text';
 
 export default ({
   theme,
@@ -50,7 +51,9 @@ export default ({
     className={theme.expand}
     onClick={onToggle}
     display-if={items.size > config.get('maxItemsCount')}>
-    { isExpanded ? config.getIn(['i18n', 'less']) : config.getIn(['i18n', 'more']) }
+    <Text primary uppercase>
+      { isExpanded ? config.getIn(['i18n', 'less']) : config.getIn(['i18n', 'more']) }
+    </Text>
   </Button>
 
 </div>

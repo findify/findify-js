@@ -3,7 +3,7 @@ $padding: 10px 0;
 .root{
   $padding: 20px 0;
   $text-align: center;
-  $color: $color-base;
+  $color: $color-black;
   $font-size: $font-size-18;
   $font-family: $font-base;
 

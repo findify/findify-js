@@ -3,13 +3,17 @@ import cx from 'classnames';
 import Downshift from 'downshift';
 import MapArray from 'components/common/MapArray';
 import Icon from 'components/Icon';
+import Button from 'components/Button';
+import Text from 'components/Text';
 
 const Item = ({ item, index, getItemProps, highlighted, theme }) => (
-  <button
+  <Button
     className={cx(theme.option, highlighted === index && theme.highlighted)}
     {...getItemProps({ item })}>
-    { item.get('label') }
-  </button>
+    <Text primary lowercase>
+      { item.get('label') }
+    </Text>
+  </Button>
 );
 
 export default ({ sort, onChangeSort, config, theme, items, selectedItem }) =>
@@ -20,10 +24,12 @@ export default ({ sort, onChangeSort, config, theme, items, selectedItem }) =>
 {
   ({ isOpen, selectedItem, getToggleButtonProps, getItemProps, highlightedIndex }) => (
     <div className={theme.root}>
-      <button {...getToggleButtonProps()} className={theme.select}>
-        { selectedItem.get('label') }
+      <Button {...getToggleButtonProps()} className={theme.select}>
+        <Text primary lowercase>
+          { selectedItem.get('label') }
+        </Text>
         <Icon name='arrow' className={theme.arrow}/>
-      </button>
+      </Button>
       <div className={theme.dropdown} display-if={isOpen}>
         <MapArray
           theme={theme}

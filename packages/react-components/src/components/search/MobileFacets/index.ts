@@ -1,4 +1,6 @@
-import { compose, withHandlers, withStateHandlers, branch, renderNothing, setDisplayName } from 'recompose';
+import { compose, withStateHandlers, setDisplayName } from 'recompose';
+import { connectFacets } from '@findify/react-connect';
+
 import withEvents from 'helpers/withEvents';
 import withTheme from 'helpers/withTheme';
 
@@ -9,4 +11,11 @@ export default compose(
   setDisplayName('MobileFacets'),
 
   withTheme(styles),
+
+  connectFacets,
+
+  withStateHandlers(
+    { activeFacet: undefined },
+    { selectFacet: () => activeFacet => ({ activeFacet }) }
+  )
 )(view);

@@ -1,4 +1,6 @@
 import React from 'react';
+import Button from 'components/Button';
+import Text from 'components/Text';
 
 export default ({
   FacetComponent,
@@ -13,9 +15,9 @@ export default ({
   toggleFacet
 }) =>
 <div className={theme.root}>
-  <button className={theme.title} onClick={toggleFacet}>
-    <strong>{ title }</strong>
-  </button>
+  <Button className={theme.title} onClick={toggleFacet}>
+    <Text primary uppercase>{ title }</Text>
+  </Button>
   <FacetComponent
     display-if={isOpen}
     facet={item}

@@ -1,7 +1,7 @@
 $height: 30px;
 
 .item{
-  $font-size: $font-size-normal;
+  $font-size: $font-size-medium;
   $padding: 7px 0;
   display: block;
   width: 100%;
@@ -33,19 +33,29 @@ $height: 30px;
 
 .input{
   $width: 60px;
-  $font-size: $font-size-normal;
   $indent: 8px;
   display: block;
   width: $width;
   box-sizing: border-box;
   height: $height;
-  font-size: $font-size;
   padding: 0 8px;
   padding-left: calc(8px + $indent);
+  color: $color-black;
+  font-family: $font-base;
+  font-size: $font-size-small;
+  border: 1px solid $color-grey-2;
+  transition: border-color .1s linear;
+  outline: none;
+  &:placeholder{
+    color: $color-grey-1;
+  }
+  &:focus{
+    border-color: $color-grey-3;
+  }
 }
 
 .currency{
-  $font-size: $font-size-normal;
+  $font-size: $font-size-medium;
   display: inline-block;
   position: relative;
   font-size: $font-size;
@@ -54,7 +64,7 @@ $height: 30px;
 }
 
 .submit{
-  $font-size: $font-size-normal;
+  $font-size: $font-size-medium;
   display: table-cell;
   border: 0;
   background: transparent;

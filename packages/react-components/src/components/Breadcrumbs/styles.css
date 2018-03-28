@@ -24,10 +24,10 @@
   }
   &:hover{
     text-decoration: line-through;
-    text-decoration-color: $color-base;
+    text-decoration-color: $color-black;
   }
   &:first-child:before{
-    color: $color-base;
+    color: $color-black;
   }
 }
 

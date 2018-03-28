@@ -3,6 +3,10 @@
 }
 
 @supports(display: flex) {
+  .wrapper{
+    
+  }
+
   .container{
     overflow: hidden;
     overflow-y: auto;

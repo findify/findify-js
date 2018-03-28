@@ -5,6 +5,7 @@ import NumberInput from 'react-numeric-input';
 import MapArray from 'components/common/MapArray';
 import Item from 'components/RangeFacet/Item';
 import Button from 'components/Button';
+import Text from 'components/Text';
 
 const inputDefaults = {
   style: false,
@@ -68,7 +69,9 @@ export default ({
       />
     </div>
     <Button onClick={onCommit} className={theme.submit}>
-      { config.getIn(['i18n', 'submit']) }
+      <Text primary uppercase>
+        { config.getIn(['i18n', 'submit']) }
+      </Text>
     </Button>
   </div>
 

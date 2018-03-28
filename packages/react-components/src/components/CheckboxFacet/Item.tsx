@@ -1,7 +1,11 @@
 import React from 'react';
 import content from 'components/CheckboxFacet/content';
+import Button from 'components/Button';
+import Text from 'components/Text';
 
 export default ({ item, theme, style }) =>
-  <button style={style} className={theme.item} onClick={item.toggle}>
-    { content({ item }) }
-  </button>
+  <Button style={style} className={theme.item} onClick={item.toggle}>
+    <Text primary lowercase bold={item.get('selected')}>
+      { content({ item }) }
+    </Text>
+  </Button>

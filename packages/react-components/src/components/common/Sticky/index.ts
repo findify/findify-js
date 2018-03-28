@@ -17,6 +17,7 @@ const applyStyles = (element, styles?) => {
 class Sticky extends Component<{offset?: number, minHeight?: number}>{
   root: any;
   container: any;
+  wrapper: any;
   state = { state: initial };
 
   static displayName = 'Sticky';
@@ -34,6 +35,11 @@ class Sticky extends Component<{offset?: number, minHeight?: number}>{
     this.root = r;
   }
 
+  registerWrapper = (r) => {
+    if (!r || this.wrapper) return;
+    this.wrapper = r;
+  }
+
   registerContainer = (r) => {
     if (!r || this.container) return;
     this.container = r;
@@ -44,6 +50,8 @@ class Sticky extends Component<{offset?: number, minHeight?: number}>{
     const { offset = 50, minHeight = 500 } = this.props;
     const rootBound = this.root.getBoundingClientRect();
     const containerBound = this.container.getBoundingClientRect();
+    const wrapperBound = this.wrapper.getBoundingClientRect();
+  
     const shouldStick =
       containerBound.height < rootBound.height &&
       rootBound.top + offset < 0;
@@ -53,12 +61,12 @@ class Sticky extends Component<{offset?: number, minHeight?: number}>{
       return this.setState({ state: initial });
     }
     if (rootBound.bottom <= minHeight) {
-      applyStyles(this.container, { minHeight, width: rootBound.width });
+      applyStyles(this.container, { minHeight, width: wrapperBound.width });
       return this.setState({ state: stuck });
     };
 
     const height = rootBound.bottom - offset;
-    applyStyles(this.container, { width: rootBound.width, maxHeight: height })
+    applyStyles(this.container, { width: wrapperBound.width, maxHeight: height })
     return this.setState({ state: sticky });
   }
 
@@ -69,6 +77,7 @@ class Sticky extends Component<{offset?: number, minHeight?: number}>{
       ...this.state,
       ...this.props,
       registerRoot: this.registerRoot,
+      registerWrapper: this.registerWrapper,
       registerContainer: this.registerContainer
     })
   }

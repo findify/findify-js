@@ -7,7 +7,7 @@
 }
 
 .item{
-  $font-size: $font-size-normal;
+  $font-size: $font-size-medium;
   $padding: 7px 0;
   display: block;
   width: 100%;
@@ -19,24 +19,6 @@
   text-align: left;
   padding: $padding;
   height: auto;
-  cursor: pointer;
-}
-
-.expand{
-  $font-size: $font-size-small;
-  $font-weight: bold;
-  $margin-top: 18px;
-  $text-transform: uppercase;
-  display: block;
-  border: 0;
-  background: transparent;
-  outline: 0;
-  padding: 0;
-  height: auto;
-  text-transform: $text-transform;
-  font-size: $font-size;
-  margin-top: $margin-top;
-  font-weight: $font-weight;
   cursor: pointer;
 }
 
@@ -53,8 +35,15 @@
   padding-right: 34px;
   padding-left: 11px;
   box-sizing: border-box;
-  font-size: $font-size-normal;
+  font-family: $font-base;
+  font-size: $font-size-small;
+  border: 1px solid $color-grey-2;
+  transition: border-color .1s linear;
+  outline: none;
   &:placeholder{
-    color: $color-grey-darker;
+    color: $color-grey-1;
+  }
+  &:focus{
+    border-color: $color-grey-3;
   }
 }

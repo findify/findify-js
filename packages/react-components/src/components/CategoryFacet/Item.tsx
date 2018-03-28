@@ -2,15 +2,19 @@ import React from 'react';
 import cx from 'classnames';
 import MapArray from 'components/common/MapArray';
 import content from 'components/CategoryFacet/content';
+import Button from 'components/Button';
+import Text from 'components/Text';
 
 const Item = ({ item, theme, style, config }) => 
 <>
-  <button
+  <Button
     style={style}
-    className={cx(theme.item, item.get('selected') && theme.active)}
+    className={theme.item}
     onClick={item.toggle}>
-    { content({ item }) }
-  </button>
+    <Text primary lowercase bold={item.get('selected')}>
+      { content({ item }) }
+    </Text>
+  </Button>
   <div display-if={item.get('children')} className={theme.nested}>
     <MapArray
       config={config}

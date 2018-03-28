@@ -1,1 +1,48 @@
-.root{}
+.root{
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  max-width: 400px;
+  background: white;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.header{
+  height: 60px;
+  padding: 0 15px;
+  background: #F3F3F3;
+}
+
+.body{
+  flex: 1;
+  overflow: hidden;
+}
+
+.footer{
+  height: 60px;
+  padding: 0 15px;
+  background: #404040;
+}
+
+.titles{
+  height: 100%;
+  overflow: hidden;
+  overflow-y: auto;
+}
+
+.facet-title{
+  padding: 20px 17px;
+  width: 100%;
+  border-top: 1px solid #D3D3D3;
+  &:first-child{
+    border-top: 0;
+  }
+}
+
+.content{
+  
+}

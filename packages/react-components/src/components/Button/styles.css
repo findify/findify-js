@@ -1,16 +1,19 @@
-.root {
-  margin: 0;
-  padding: 5px 8px;
+.button {
   border: none;
   outline: none;
   background: transparent;
   cursor: pointer;
-  font-size: 14px;
   transition: background-color .1s ease-in;
+  padding: 0;
+  margin: 0;
 }
 
-.active {
-  cursor: auto;
-  background-color: #f7f7f7;
+.raw{
+  display: block;
+  padding: 0;
+  margin: 0;
+  display: block;
+  text-align: left;
+  background: transparent;
+  height: auto;
 }
-

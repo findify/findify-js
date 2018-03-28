@@ -12,11 +12,10 @@ export default ({ config, isMobile, mobileFacetsOpened, filtersOnRight, theme })
 <div className={theme.root}>
   <DesktopFacets display-if={!isMobile && !filtersOnRight} />
   <div className={theme.content}>
-    <MobileActions display-if={isMobile} />
-    <DesktopActions display-if={!isMobile} />
+    <Branch condition={isMobile} left={MobileActions} right={DesktopActions} />
     <Branch left={LazyResults} right={StaticResults} condition={config.getIn(['view', 'lazy'])} />
   </div>
   <DesktopFacets display-if={!isMobile && filtersOnRight} />
-  <MobileFacets />
+  {/* <MobileFacets /> */}
 </div>
 

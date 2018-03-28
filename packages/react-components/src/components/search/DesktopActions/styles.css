@@ -19,7 +19,6 @@
   display: table-cell;
   white-space: nowrap;
   width: 1%;
-  font-size: $font-size-normal;
 }
 
 .breadcrumbs{

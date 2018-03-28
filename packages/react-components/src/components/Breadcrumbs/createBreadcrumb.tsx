@@ -2,6 +2,8 @@ import React from 'react';
 import MapArray from 'components/common/MapArray';
 import { compose, withPropsOnChange } from 'recompose';
 import pure from 'helpers/pure';
+import Button from 'components/Button';
+import Text from 'components/Text';
 
 const Item = compose(
   withPropsOnChange(['mapping'], ({ name, type, mapping, item, config }) => {
@@ -14,10 +16,12 @@ const Item = compose(
   }),
   pure,
 )(({ theme, item, config, Content }: any) =>
-  <button className={theme.breadcrumb} onClick={item.toggle}>
-    <Content item={item} theme={theme} config={config} />
+  <Button className={theme.breadcrumb} onClick={item.toggle}>
+    <Text primary uppercase component='span'>
+      <Content item={item} theme={theme} config={config} />
+    </Text>
     <span className={theme.cross}>x</span>
-  </button>
+  </Button>
 );
 
 export default mapping => ({ item, children, theme, config }) =>
