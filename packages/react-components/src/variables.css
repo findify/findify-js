@@ -1,6 +1,7 @@
 :root {
 /* Fonts */
 --font-base: 'Karla', sans-serif;
+--font-size-huge: 18px;
 --font-size-large: 13px;
 --font-size-medium: 12px;
 --font-size-small: 11px;

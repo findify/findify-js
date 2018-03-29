@@ -47,7 +47,7 @@ export default (widget, render) => {
     
     return render(
       RecommendationProvider,
-      { agent, apiKey },
+      { agent, apiKey, config },
       createElement(ZeroResults, getQuery())
     );
   })

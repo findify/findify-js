@@ -2,10 +2,10 @@ import React from 'react';
 
 import Grid from 'components/common/Grid';
 import ItemsList from 'components/ItemsList';
-import Title from 'components/Title';
+import Text from 'components/Text';
 
 export default ({ items, config, theme }) =>
 <>
-  <Title>{ config.get('title') }</Title>
+  <Text primary lowercase>{ config.get('title') }</Text>
   <ItemsList wrapper={Grid} columns='3' />
 </>

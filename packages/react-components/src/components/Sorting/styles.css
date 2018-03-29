@@ -15,8 +15,9 @@
 
 .dropdown{
   display: table-cell;
-  width: 100%;
+  width: 240px;
   position: relative;
+  min-width: 240px;
 }
 
 @supports(display: flex){

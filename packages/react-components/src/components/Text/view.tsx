@@ -9,8 +9,10 @@ export default ({
   theme,
   bold,
   size,
+  html: __html,
 }) => createElement(component, {
   children,
+  ...(__html && { dangerouslySetInnerHTML: { __html } }),
   className: cx(
     theme.root,
     mode && theme[mode] || theme[size],

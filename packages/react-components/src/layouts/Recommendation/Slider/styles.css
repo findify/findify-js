@@ -1,14 +1,21 @@
 .title {
-  font-size: 18px;
-  color: $color-black;
-  padding: 10px 0;
+  padding: 0;
   margin: 0;
+  padding-bottom: 18px;
   text-align: center; 
 }
 
 .arrow {
-  fill: $color-base-dark;
+  position: absolute;
+  top: 50%;
+  margin-top: -11px;
+  z-index: 2;
+  transition: opacity .1s linear;
   &:global(.slick-disabled){
-    opacity: .7;
+    opacity: .3;
+    cursor: default;
+  }
+  svg{
+    color: $color-black;
   }
 }

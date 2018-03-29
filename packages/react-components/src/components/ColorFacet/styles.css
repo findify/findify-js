@@ -12,6 +12,10 @@
   cursor: pointer;
   outline: none;
   border-radius: 0;
+  position: relative;
+  &.active .ball{
+    border: 1px solid $color-grey-2;
+  }
 }
 
 .ball{
@@ -19,4 +23,14 @@
   width: 20px;
   height: 20px;
   border-radius: 50%;
+  border: 1px solid transparent;
+}
+
+.check{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  color: $color-grey-1;
+  margin-left: -6px;
+  margin-top: -8px;
 }

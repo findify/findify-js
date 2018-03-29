@@ -114,7 +114,7 @@ export default {
             },
             "zeroResultsType": "trending",
             "i18n": {
-                "noResult": "Oh no! Your search for <span class=\"findify-query\"></span> did not match any products.<br/>But don't give up, we're here to help you find what you're looking for."
+                "noResult": "Oh no! Your search for %s did not match any products.<br/>But don't give up, we're here to help you find what you're looking for."
             },
             "breadcrumbs": {
                 "i18n": {

@@ -12,7 +12,6 @@ $padding: 25px;
 
 .sorting{
   display: table-cell;
-  width: 240px;
   position: relative;
 }
 
@@ -36,11 +35,10 @@ $padding: 25px;
     display: flex;
     flex-direction: row;
     width: 100%;
-    align-items: baseline;
+    align-items: center;;
   }
   .sorting{
     display: block;
-    min-width: 240px;
   }
   .query{
     display: block;

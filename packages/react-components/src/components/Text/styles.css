@@ -50,6 +50,12 @@
   }
 }
 
+.title{
+  font-size: $font-size-huge;
+  font-weight: normal;
+  color: $color-black;
+}
+
 .bold{
   font-weight: bold
 }

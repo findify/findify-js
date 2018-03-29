@@ -15,12 +15,13 @@ let index: number = 0;
 let cache: any[] = [];
 let config: Map<any, any> = Map();
 const noop = () => {};
-const getAgentType = type => camelize({
-  'search-button': 'autocomplete'
+const getType = type => ({
+  'search-button': 'autocomplete',
+  'recommendations': 'recommendation'
 }[type] || type);
 
 const createAgent = (type, config) => {
-  const agent = Agents[getAgentType(type)];
+  const agent = Agents[camelize(type)];
   if (!agent) throw new Error(`Feature ${type} is not exists!`);
 
   return new agent({
@@ -49,7 +50,7 @@ const getNodes = selector => [].slice.call(document.querySelectorAll(selector));
 
 const getEntity = (selector, _type?, _config?) => getNodes(selector)
 .map(node => {
-  let type = _type || node.getAttribute(attrSelector);
+  let type = getType(_type || node.getAttribute(attrSelector));
   const key = node.getAttribute(keySelector) || ++index;
 
   const config = createConfig(type, node, key, _config);

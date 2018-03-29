@@ -20,12 +20,16 @@
   height: auto;
   cursor: pointer;
   display: table;
+  padding-left: 25px;
+  position: relative;
   & > p{
     display: table-cell;
     width: 100%;
   }
   svg {
-    padding-right: 14px;
+    position: absolute;
+    left: 0;
+    top: 13px;
     vertical-align: -2px;
   }
 }
@@ -56,6 +60,7 @@
   }
 }
 .expand{
+  margin-top: 20px;
   svg{
     vertical-align: -3px;
     padding-right: 5px;

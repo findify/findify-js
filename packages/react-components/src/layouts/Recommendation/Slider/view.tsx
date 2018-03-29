@@ -2,13 +2,14 @@ import React from 'react';
 import Slider from 'react-slick';
 
 import ItemCard from 'components/ItemCard';
-import Title from 'components/Title';
+import Text from 'components/Text';
 
 export default ({ items, config, theme, sliderOptions, _mountSlider }) => 
 <>
-  <Title theme={{ title: theme.title }}>
+  <Text title className={theme.title}>
     { config.get('title') }
-  </Title>
+  </Text>
+
   <Slider {...sliderOptions} ref={_mountSlider}>
     {
       items

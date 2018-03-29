@@ -4,7 +4,7 @@ import withTheme from 'helpers/withTheme';
 import styles from './styles.css';
 import view from './view';
 
-const options = ['primary', 'secondary', 'uppercase', 'lowercase'];
+const options = ['title', 'primary', 'secondary', 'uppercase', 'lowercase'];
 const getClassName = props =>
   options
   .filter(i => Boolean(props[i]))
