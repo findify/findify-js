@@ -1,5 +1,9 @@
 $height: 30px;
-
+.root{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
 .item{
   $font-size: $font-size-medium;
   $padding: 7px 0;

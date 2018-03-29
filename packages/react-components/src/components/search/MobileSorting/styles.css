@@ -54,34 +54,14 @@
   user-select: none;
 }
 
-.facet-title{
-  padding: 20px 17px;
+.item{
   width: 100%;
-  border-top: 1px solid $color-grey-2;
-  &:first-child{
-    border-top: 0;
-  }
-}
-
-.container{
-  padding: 17px;
+  height: 50px;
   display: flex;
-  height: 100%;
-  box-sizing: border-box;
-  overflow: hidden;
-  overflow-y: auto;
-}
-
-.expand{
-  display: none
-}
-
-.range{
-  margin-top: auto;
-  width: 100%;
-  display: table;
-}
-
-.facet-root{
-  width: 100%;
+  padding: 0 17px;
+  border-bottom: 1px solid $color-grey-2;
+  svg{
+    vertical-align: -3px;
+    padding-right: 15px;
+  }
 }

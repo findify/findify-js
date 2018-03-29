@@ -1,2 +1,24 @@
 .root{
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+
+.button{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  border: 1px solid $color-grey-2;
+  svg{
+    padding-right: 6px;
+    height: 11px;
+    width: 12px;
+    vertical-align: -2px;
+  }
+}
+
+.divider{
+  width: 7px;
 }

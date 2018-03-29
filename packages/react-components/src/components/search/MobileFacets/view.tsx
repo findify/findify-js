@@ -19,7 +19,6 @@ const FacetContent = ({ active, config, theme }) => (
       theme={{
         range: theme.range,
         expand: theme.expand,
-        root: theme.facetRoot
       }}
     />
   </div>

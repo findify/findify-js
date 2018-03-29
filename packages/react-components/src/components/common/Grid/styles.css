@@ -1,4 +1,4 @@
-$font-size: var(--font-size-14);
+$gutter: 20px;
 
 .root{
   font-size: 0;
@@ -9,7 +9,7 @@ $font-size: var(--font-size-14);
   display: inline-block;
   box-sizing: border-box;
   min-height: 1px;
-  font-size: $font-size;
+  font-size: $font-size-medium;
   line-height: $line-height;
   vertical-align: top;
 }
@@ -22,6 +22,7 @@ $font-size: var(--font-size-14);
     font-size: inherit;
     line-height: inherit;
     flex-wrap: wrap;
+    justify-content: space-between;
   }
   .column{
     display: block;

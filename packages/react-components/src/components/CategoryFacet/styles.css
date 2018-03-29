@@ -1,11 +1,13 @@
+.root{
+  width: 100%;
+}
 .nested{
   padding-left: 20px;
 }
 
 .item{
-  $font-size: $font-size-normal;
+  $font-size: $font-size-medium;
   $padding: 7px 0;
-  display: block;
   width: 100%;
   border: 0;
   background: transparent;
@@ -17,13 +19,13 @@
   height: auto;
   cursor: pointer;
   display: table;
-  svg {
-    vertical-align: -3px;
-    padding-left: 7px;
-  }
   & > p{
     display: table-cell;
     width: 100%;
+  }
+  svg {
+    vertical-align: -3px;
+    padding-left: 7px;
   }
 }
 
