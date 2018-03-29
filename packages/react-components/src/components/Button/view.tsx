@@ -7,7 +7,7 @@ export default ({ theme, onClick, children, active, raw, className, disabled, ..
     {...rest}
     onClick={onClick}
     disabled={disabled}
-    className={cx(theme.button, active && theme.active, raw && theme.raw, className)}
+    className={cx(theme.root, active && theme.active, raw && theme.raw, className)}
   >
   { children }
   </button>

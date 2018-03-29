@@ -4,6 +4,7 @@ import { compose, withPropsOnChange } from 'recompose';
 import pure from 'helpers/pure';
 import Button from 'components/Button';
 import Text from 'components/Text';
+import Icon from 'components/Icon';
 
 const Item = compose(
   withPropsOnChange(['mapping'], ({ name, type, mapping, item, config }) => {
@@ -17,10 +18,10 @@ const Item = compose(
   pure,
 )(({ theme, item, config, Content }: any) =>
   <Button className={theme.breadcrumb} onClick={item.toggle}>
-    <Text primary uppercase component='span'>
+    <Text secondary uppercase component='span' >
       <Content item={item} theme={theme} config={config} />
     </Text>
-    <span className={theme.cross}>x</span>
+    <Icon className={theme.cross} name='XDark' />
   </Button>
 );
 

@@ -9,7 +9,7 @@ const withClickHandler = withHandlers({
 });
 
 const FacetLabel = withClickHandler(({ item, theme, onClick, config }: any) =>
-  <Button className={theme.facetTitle} onClick={onClick}>
+  <Button raw className={theme.facetTitle} onClick={onClick}>
     <Text primary uppercase>
     { config.getIn(['facets', 'labels', item.get('name')], item.get('name')) }
     </Text>
@@ -17,11 +17,9 @@ const FacetLabel = withClickHandler(({ item, theme, onClick, config }: any) =>
 );
 
 export default ({ theme, facets, selectFacet, config }) =>
-<div className={theme.titles}>
   <MapArray
     config={config}
     theme={theme}
     selectFacet={selectFacet}
     factory={FacetLabel}
     array={facets} />
-</div>

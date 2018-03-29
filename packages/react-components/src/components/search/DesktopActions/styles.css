@@ -1,3 +1,5 @@
+$padding: 25px;
+
 .root{
   display: table;
   width: 100%;
@@ -14,7 +16,6 @@
   position: relative;
 }
 
-
 .query{
   display: table-cell;
   white-space: nowrap;
@@ -23,4 +24,28 @@
 
 .breadcrumbs{
   display: table-cell;
+}
+
+@supports(display: flex){
+  .root{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  .block{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+  }
+  .sorting{
+    display: block;
+    min-width: 240px;
+  }
+  .query{
+    display: block;
+    width: auto;
+  }
+  .breadcrumbs{
+    display: block;
+  }
 }

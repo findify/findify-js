@@ -8,7 +8,7 @@ import MobileActions from 'components/search/MobileActions';
 import DesktopActions from 'components/search/DesktopActions';
 import Branch from 'components/common/Branch';
 
-export default ({ config, isMobile, mobileFacetsOpened, filtersOnRight, theme }) =>
+export default ({ config, meta, isMobile, mobileFacetsOpened, filtersOnRight, theme }) =>
 <div className={theme.root}>
   <DesktopFacets display-if={!isMobile && !filtersOnRight} />
   <div className={theme.content}>

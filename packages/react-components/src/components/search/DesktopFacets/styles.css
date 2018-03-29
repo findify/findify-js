@@ -4,6 +4,7 @@ $gutter: 40px;
 .root{
   position: relative;
   width: 300px;
+  min-width: 300px;
   display: table-cell;
   vertical-align: top;
   padding-left: $gutter;
@@ -32,4 +33,10 @@ $gutter: 40px;
   padding-top: 25px;
   margin-top: 25px;
   border-top: 1px solid $color-grey-2;
+}
+
+@supports(display: flex) {
+  .root{
+    display: block;
+  }
 }

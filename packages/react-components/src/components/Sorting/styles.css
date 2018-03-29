@@ -1,58 +1,30 @@
-$padding: 0 11px;
-
 .root{
-  position: relative;
+  display: table;
 }
 
-.select{
-  $height: 40px;
-  position: relative;
-  border-radius: 0;
-  height: $height;
-  padding: $padding;
-  padding-right: 40px;
-  background: $color-grey-1;
-  text-align: left;
-  width: 100%;
+.icon{
+  display: table-cell;
+  min-width: 17px;
 }
 
-.arrow{
-  width: 8px;
-  height: 8px;
-  position: absolute;
-  top: 50%;
-  right: 16px;
-  margin-top: -4px;
+.title{
+  white-space: nowrap;
+  display: table-cell;
+  padding: 0 10px;
 }
 
 .dropdown{
-  $background: $color-white;
-  position: absolute;
-  top: 100%;
-  left: 0;
+  display: table-cell;
   width: 100%;
-  background: $background;
-  z-index: 1;
-  border: 1px solid $color-grey-3;
-  margin-top: 1px;
-  box-sizing: border-box;
+  position: relative;
 }
 
-.option{
-  $height: 40px;
-  display: block;
-  text-align: left;
-  font-size: $font-size-normal;
-  background: transparent;
-  border: none;
-  border-radius: 0;
-  height: $height;
-  width: 100%;
-  padding: $padding;
-  cursor: pointer;
-}
-
-.highlighted{
-  $background: $color-grey-1;
-  background: $background;
+@supports(display: flex){
+  .root{
+    display: flex;
+    align-items: center;
+  }
+  .icon, .title, .dropdown{
+    display: block
+  }
 }

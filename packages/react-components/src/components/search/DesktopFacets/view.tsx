@@ -15,6 +15,7 @@ export default ({ config, facets, theme, onReset, meta }) =>
   condition={config.getIn(['view', 'stickyFilters'])}
   left={DefaultContent}
   right={Sticky}>
+
   <div className={theme.header} display-if={!config.get('showFacetsTitle')}>
     
     <Text primary uppercase className={theme.title}>

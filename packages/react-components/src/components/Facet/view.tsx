@@ -1,6 +1,7 @@
 import React from 'react';
 import Button from 'components/Button';
 import Text from 'components/Text';
+import Component from 'components/Facet/Component';
 
 export default ({
   FacetComponent,
@@ -18,7 +19,7 @@ export default ({
   <Button className={theme.title} onClick={toggleFacet}>
     <Text primary uppercase>{ title }</Text>
   </Button>
-  <FacetComponent
+  <Component
     display-if={isOpen}
     facet={item}
     config={config}

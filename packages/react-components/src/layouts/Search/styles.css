@@ -1,9 +1,20 @@
 .root{
+  width: 100%;
   display: table;
   padding-top: 25px;
-  border-top: 1px solid $color-grey;
+  border-top: 1px solid $color-grey-1;
 }
 
 .content{
   display: table-cell;
+}
+
+@supports(display: flex) {
+  .root{
+    display: flex;
+    flex-direction: row;
+  }
+  .content{
+    display: block;
+  }
 }

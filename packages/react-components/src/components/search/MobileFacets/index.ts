@@ -1,4 +1,4 @@
-import { compose, withStateHandlers, setDisplayName } from 'recompose';
+import { compose, withStateHandlers, setDisplayName, withProps, withPropsOnChange } from 'recompose';
 import { connectFacets } from '@findify/react-connect';
 
 import withEvents from 'helpers/withEvents';
@@ -15,7 +15,11 @@ export default compose(
   connectFacets,
 
   withStateHandlers(
-    { activeFacet: undefined },
+    { activeFacet: false },
     { selectFacet: () => activeFacet => ({ activeFacet }) }
-  )
+  ),
+
+  withPropsOnChange(['activeFacet', 'facets'], ({ activeFacet, facets }) => ({
+    activeFacet: activeFacet && facets.find(f => f.get('name') === activeFacet)
+  }))
 )(view);

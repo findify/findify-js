@@ -1,4 +1,4 @@
-.button {
+.root {
   border: none;
   outline: none;
   background: transparent;
@@ -6,6 +6,7 @@
   transition: background-color .1s ease-in;
   padding: 0;
   margin: 0;
+  font-family: $font-base;
 }
 
 .raw{

@@ -8,7 +8,7 @@ const factory: any = createFactory(view);
 const [ initial, stuck, sticky ] = ['static', 'stuck', 'sticky'];
 
 const applyStyles = (element, styles?) => {
-  if (!styles) return element.removeAttribute("style");
+  element.removeAttribute("style");
   for (const key in styles) {
     element.style[key] = styles[key] + 'px';
   }
@@ -17,7 +17,7 @@ const applyStyles = (element, styles?) => {
 class Sticky extends Component<{offset?: number, minHeight?: number}>{
   root: any;
   container: any;
-  wrapper: any;
+  sizer: any;
   state = { state: initial };
 
   static displayName = 'Sticky';
@@ -35,9 +35,9 @@ class Sticky extends Component<{offset?: number, minHeight?: number}>{
     this.root = r;
   }
 
-  registerWrapper = (r) => {
-    if (!r || this.wrapper) return;
-    this.wrapper = r;
+  registerSizer = (r) => {
+    if (!r || this.sizer) return;
+    this.sizer = r;
   }
 
   registerContainer = (r) => {
@@ -47,26 +47,26 @@ class Sticky extends Component<{offset?: number, minHeight?: number}>{
 
   handleScroll = (e) => {
     if (!this.container || !this.root) return;
-    const { offset = 50, minHeight = 500 } = this.props;
+    const { offset = 25, minHeight = 500 } = this.props;
     const rootBound = this.root.getBoundingClientRect();
     const containerBound = this.container.getBoundingClientRect();
-    const wrapperBound = this.wrapper.getBoundingClientRect();
+    const { width } = this.sizer.getBoundingClientRect();
   
     const shouldStick =
       containerBound.height < rootBound.height &&
-      rootBound.top + offset < 0;
+      (rootBound.top - offset) < 0;
 
     if (!shouldStick) {
       applyStyles(this.container);
       return this.setState({ state: initial });
     }
     if (rootBound.bottom <= minHeight) {
-      applyStyles(this.container, { minHeight, width: wrapperBound.width });
+      applyStyles(this.container, { minHeight, width });
       return this.setState({ state: stuck });
     };
 
     const height = rootBound.bottom - offset;
-    applyStyles(this.container, { width: wrapperBound.width, maxHeight: height })
+    applyStyles(this.container, { width, maxHeight: height, top: offset })
     return this.setState({ state: sticky });
   }
 
@@ -77,7 +77,7 @@ class Sticky extends Component<{offset?: number, minHeight?: number}>{
       ...this.state,
       ...this.props,
       registerRoot: this.registerRoot,
-      registerWrapper: this.registerWrapper,
+      registerSizer: this.registerSizer,
       registerContainer: this.registerContainer
     })
   }

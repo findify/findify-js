@@ -14,35 +14,35 @@
 .header{
   height: 60px;
   padding: 0 15px;
-  background: #F3F3F3;
+  background: $color-grey-1;
 }
 
 .body{
   flex: 1;
   overflow: hidden;
+  overflow-y: auto;
 }
 
 .footer{
   height: 60px;
   padding: 0 15px;
-  background: #404040;
-}
-
-.titles{
-  height: 100%;
-  overflow: hidden;
-  overflow-y: auto;
+  background: $color-grey-5;
 }
 
 .facet-title{
   padding: 20px 17px;
   width: 100%;
-  border-top: 1px solid #D3D3D3;
+  border-top: 1px solid $color-grey-2;
   &:first-child{
     border-top: 0;
   }
 }
 
-.content{
-  
+.container{
+  padding: 17px;
+  display: flex;
+  height: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  overflow-y: auto;
 }
