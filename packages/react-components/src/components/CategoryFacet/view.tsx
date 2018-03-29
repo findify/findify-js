@@ -18,7 +18,10 @@ export default ({
     className={theme.item}
     onClick={facet.resetValues}>
     <Text lowercase primary bold={!items.find(i => i.get('selected'))}>
-       All categories ({ total })
+       All categories
+    </Text>
+    <Text secondary uppercase>
+      ({ total })
     </Text>
   </Button>
   <MapArray

@@ -10,7 +10,7 @@ export default compose(
   withTheme(styles),
 
   withStateHandlers(
-    { search: false, isExpanded: false },
+    ({ isExpanded }) => ({ isExpanded, search: false }),
     {
       onSearch: (s) => e => ({ ...s, search: e.target.value }),
       onToggle: (s) => () => ({ ...s, isExpanded: !s.isExpanded })

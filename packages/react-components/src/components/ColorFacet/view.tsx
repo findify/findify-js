@@ -9,10 +9,12 @@ export default ({
   config,
 }) => 
 <div className={theme.root}>
-  <MapArray
-    config={config}
-    array={items}
-    factory={Item}
-    theme={theme} />
+  <div className={theme.container}>
+    <MapArray
+      config={config}
+      array={items}
+      factory={Item}
+      theme={theme} />
+  </div>
 </div>
 

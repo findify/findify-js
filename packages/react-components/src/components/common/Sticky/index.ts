@@ -61,12 +61,16 @@ class Sticky extends Component<{offset?: number, minHeight?: number}>{
       return this.setState({ state: initial });
     }
     if (rootBound.bottom <= minHeight) {
-      applyStyles(this.container, { minHeight, width });
+      applyStyles(this.container, { width, maxHeight: minHeight });
       return this.setState({ state: stuck });
     };
 
     const height = rootBound.bottom - offset;
-    applyStyles(this.container, { width, maxHeight: height, top: offset })
+    applyStyles(this.container, {
+        width,
+        maxHeight: height > window.innerHeight && window.innerHeight - offset || height,
+        top: offset
+    })
     return this.setState({ state: sticky });
   }
 

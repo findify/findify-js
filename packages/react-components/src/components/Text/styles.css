@@ -4,6 +4,8 @@
   color: $color-black;
   font-size: $font-size-medium;
   font-family: $font-base;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
 }
 
 .primary{

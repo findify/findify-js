@@ -5,6 +5,8 @@ import Facet from 'components/Facet';
 import Sticky from 'components/common/Sticky';
 import Text from 'components/Text';
 import Button from 'components/Button';
+import Icon from 'components/Icon';
+import { classNames } from 'classnames';
 
 const DefaultContent = ({ theme, children, config }) =>
   <div className={theme.root}>{children}</div>
@@ -17,7 +19,7 @@ export default ({ config, facets, theme, onReset, meta }) =>
   right={Sticky}>
 
   <div className={theme.header} display-if={!config.get('showFacetsTitle')}>
-    
+    <Icon name='Filters' className={theme.icon} />
     <Text primary uppercase className={theme.title}>
       { config.getIn(['facets', 'i18n', 'filters'], 'Filters') }
     </Text>

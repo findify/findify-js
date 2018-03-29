@@ -20,12 +20,21 @@ $gutter: 40px;
   clear: fix;
 }
 
+.icon{
+  float: left;
+  padding-right: 10px;
+}
+
 .title{
   float: left;
 }
 
 .reset{
   float: right;
+  padding: 2px 0px;
+  &:hover p{
+    color: $color-grey-4
+  }
 }
 
 .facet{

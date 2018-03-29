@@ -36,6 +36,7 @@ $padding: 25px;
     display: flex;
     flex-direction: row;
     width: 100%;
+    align-items: baseline;
   }
   .sorting{
     display: block;

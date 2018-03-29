@@ -6,6 +6,7 @@ import Item from 'components/CheckboxFacet/Item';
 import Button from 'components/Button';
 import VirtualizedList from 'components/common/VirtualizedList';
 import Text from 'components/Text';
+import Icon from 'components/Icon';
 
 export default ({
   theme,
@@ -52,6 +53,7 @@ export default ({
     onClick={onToggle}
     display-if={items.size > config.get('maxItemsCount')}>
     <Text primary uppercase>
+      <Icon name={isExpanded ? 'Minus' : 'Plus'} />
       { isExpanded ? config.getIn(['i18n', 'less']) : config.getIn(['i18n', 'more']) }
     </Text>
   </Button>

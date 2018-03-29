@@ -1,5 +1,5 @@
 .root{
-  
+  width: 100%;
 }
 
 .expandedList{
@@ -9,7 +9,6 @@
 .item{
   $font-size: $font-size-medium;
   $padding: 7px 0;
-  display: block;
   width: 100%;
   border: 0;
   background: transparent;
@@ -20,6 +19,15 @@
   padding: $padding;
   height: auto;
   cursor: pointer;
+  display: table;
+  & > p{
+    display: table-cell;
+    width: 100%;
+  }
+  svg {
+    padding-right: 14px;
+    vertical-align: -2px;
+  }
 }
 
 .search{
@@ -47,3 +55,11 @@
     border-color: $color-grey-3;
   }
 }
+.expand{
+  svg{
+    vertical-align: -3px;
+    padding-right: 5px;
+  }
+}
+
+
