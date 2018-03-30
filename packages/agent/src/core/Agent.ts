@@ -45,7 +45,7 @@ export class Agent {
    * @param defaults [{ q: string, filters: any[], sort: any[], limit: number, offset: number }]
    */
   public defaults(defaults) {
-    this._defaults = fromJS(defaults);
+    this._defaults = deepMerge(this._defaults, fromJS(defaults));
     this.cache.resolve();
     return this;
   }

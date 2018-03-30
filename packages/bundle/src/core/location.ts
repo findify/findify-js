@@ -6,10 +6,14 @@ const isIE9 = !('pushState' in window.location);
 
 export const history = createBrowserHistory();
 
+export const collectionPath = () => history
+  .location
+  .pathname
+  .replace(/^\/|\/$/g, '')
+  .toLowerCase();
+
 export const isCollection = (collections) => collections && collections.includes(
-  history.location.pathname
-    .replace(/^\/|\/$/g, '')
-    .toLowerCase()
+  collectionPath()
 );
 
 export const isSearch = () =>
