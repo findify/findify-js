@@ -1,0 +1,26 @@
+.rating {
+  white-space: nowrap;
+}
+
+.stars {
+  white-space: nowrap;
+  display: inline-block;
+}
+
+.star {
+  margin-right: 3px;
+  width: 11px;
+  height: 11px;
+  display: inline-block;
+  vertical-align: -1px;
+  color: $color-black;
+
+  &.filled {
+    color: #FFC000
+  }
+}
+
+.count {
+  display: inline-block;
+  vertical-align: 1px;
+}

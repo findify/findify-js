@@ -1,0 +1,16 @@
+.discount-sticker {
+  width: 70px;
+  height: 70px;
+  border-radius: 70px;
+  background: rgba(208,40,75,0.9);
+  display: table;
+
+  text-align: center;
+  p {
+    color: $color-white !important;
+    display: table-cell;
+    vertical-align: middle;
+    width: 100%;
+    height: 100%;
+  }
+}

@@ -1,5 +1,7 @@
 import React from 'react'
+import Branch from 'components/common/Branch'
 import classNames from 'classnames'
+import sizeMe from 'react-sizeme'
 
 import {
   compose,
@@ -9,6 +11,7 @@ import {
   mapProps,
   withStateHandlers,
   withPropsOnChange,
+  setDisplayName
 } from 'recompose';
 
 import styles from './styles.css'
@@ -20,7 +23,12 @@ const prefetchImage = (src: string) =>
     img.src = src;
   });
 
-const ImageComponent = compose(
+export default compose(
+  sizeMe({
+    monitorWidth: true,
+    refreshRate: 50
+  }),
+  setDisplayName('Image'),
   withPropsOnChange(['src'], ({ src, size }) => {
     return { src: void 0, original: src }
   }),
@@ -37,27 +45,34 @@ const ImageComponent = compose(
       if (thumbnail) {
         prefetchImage(thumbnail)
           .then(setThumbnail)
-          .then(() => fetch(original))
+          .then(() => prefetchImage(original))
           .then(setSrc);
       } else {
         prefetchImage(original).then(setSrc);
       }
     }
   ),
-  mapProps(({ stage, className, src, alt, onClick, style }) => ({
-    alt,
-    onClick,
-    src,
-    style,
-    className: classNames(
-      styles.root,
-      className,
-      stage === 0 && styles.loading,
-      stage === 1 && styles.thumbnail,
-      stage === 2 && styles.original
-    ),
+  withProps(({ aspectRatio }) => ({
+    isFixedRatio: aspectRatio && typeof aspectRatio === 'number' && !isNaN(aspectRatio) &&isFinite(aspectRatio),
   })),
-  onlyUpdateForKeys(['src'])
-)(props => <img {...props} />)
-
-export default ImageComponent
+  withProps(({ className, stage, isFixedRatio }) => ({
+    className: classNames(
+      className,
+      {
+        [styles.root]: !isFixedRatio,
+        [styles.croppedRoot]: isFixedRatio,
+        [styles.loading]: stage === 0,
+        [styles.thumbnail]: stage === 1,
+        [styles.original]: stage === 2,
+      }
+    )
+  })),
+)(({ src, aspectRatio, size: { width }, className, isFixedRatio, ...rest }) => (
+  <div className={className} style={isFixedRatio ? {
+    height: 1 / aspectRatio * width,
+    backgroundImage: `url(${src})`,
+    backgroundSize: 'cover',
+  }: {}}>
+    <img display-if={!isFixedRatio} src={src} />
+  </div>
+))

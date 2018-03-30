@@ -1,12 +1,13 @@
-import * as path from 'path';
-import * as webpack from 'webpack';
-import * as GitRevisionPlugin from 'git-revision-webpack-plugin';
-import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
-import * as UglifyJSPlugin from 'uglifyjs-webpack-plugin';
-import * as DuplicatePackageCheckerPlugin from 'duplicate-package-checker-webpack-plugin';
-import * as  CompressionPlugin from 'compression-webpack-plugin';
-import * as  HtmlWebpackPlugin from 'html-webpack-plugin';
-import * as AddAssetHtmlPlugin from 'add-asset-html-webpack-plugin';
+const path = require('path')
+const webpack = require('webpack')
+const GitRevisionPlugin = require('git-revision-webpack-plugin')
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
+const DuplicatePackageCheckerPlugin = require('duplicate-package-checker-webpack-plugin')
+const CompressionPlugin = require('compression-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin')
+
 
 interface WebpackEnvArgs {
   analyze?: boolean;
@@ -110,7 +111,7 @@ export default (env: WebpackEnvArgs, { mode }) => {
           ? 'base => props => { console.log(props); return base(props) }'
           : ''
       }),
-  
+
       new DuplicatePackageCheckerPlugin(),
 
       new HtmlWebpackPlugin({
@@ -121,7 +122,7 @@ export default (env: WebpackEnvArgs, { mode }) => {
 
       // new webpack.HashedModuleIdsPlugin()
     ],
-    
+
   };
 
   if (Boolean(env && env.analyze)) {

@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProductCard view renders correctly 1`] = `
+<a
+  className="root"
+  href="https://foo.bar"
+>
+  <div
+    className="imageWrap"
+  >
+    <SizeMe(Image)
+      alt="Product Title"
+      className="image"
+      src="https://lorempicsum.net/100/100"
+      thumbnail="https://lorempicsum.net/50/50"
+    />
+    <Component
+      className="discountSticker"
+    />
+  </div>
+  <div
+    className="rating"
+  >
+    <Rating />
+  </div>
+  <div
+    className="content"
+  >
+    <Title
+      text="Product Title"
+    />
+    <Description
+      text="A description for item"
+    />
+  </div>
+  <Price
+    currency={
+      Object {
+        "code": "GBP",
+      }
+    }
+    price="9.99"
+  />
+</a>
+`;

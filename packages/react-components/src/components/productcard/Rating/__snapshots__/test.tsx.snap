@@ -1,0 +1,136 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Rating renders correctly 1`] = `
+<div
+  className="rating"
+>
+  <div
+    className="stars"
+  >
+    <Component
+      className="star filled"
+      key="0"
+      name="Star"
+    />
+    <Component
+      className="star filled"
+      key="1"
+      name="Star"
+    />
+    <Component
+      className="star"
+      key="2"
+      name="Star"
+    />
+    <Component
+      className="star"
+      key="3"
+      name="Star"
+    />
+    <Component
+      className="star"
+      key="4"
+      name="Star"
+    />
+  </div>
+  <Text
+    className="count"
+    display-if={true}
+    mode="secondary-uppercase"
+  >
+    (
+    2
+    )
+  </Text>
+</div>
+`;
+
+exports[`Rating renders correctly 2`] = `
+<div
+  className="rating"
+>
+  <div
+    className="stars"
+  >
+    <Component
+      className="star"
+      key="0"
+      name="Star"
+    />
+    <Component
+      className="star"
+      key="1"
+      name="Star"
+    />
+    <Component
+      className="star"
+      key="2"
+      name="Star"
+    />
+    <Component
+      className="star"
+      key="3"
+      name="Star"
+    />
+    <Component
+      className="star"
+      key="4"
+      name="Star"
+    />
+  </div>
+  <Text
+    className="count"
+    display-if={false}
+    mode="secondary-uppercase"
+  >
+    (
+    0
+    )
+  </Text>
+</div>
+`;
+
+exports[`Rating renders correctly 3`] = `
+<div
+  className="rating"
+>
+  <div
+    className="stars"
+  >
+    <Component
+      className="star filled"
+      key="0"
+      name="Star"
+    />
+    <Component
+      className="star filled"
+      key="1"
+      name="Star"
+    />
+    <Component
+      className="star filled"
+      key="2"
+      name="Star"
+    />
+    <Component
+      className="star filled"
+      key="3"
+      name="Star"
+    />
+    <Component
+      className="star filled"
+      key="4"
+      name="Star"
+    />
+  </div>
+  <Text
+    className="count"
+    display-if={true}
+    mode="secondary-uppercase"
+  >
+    (
+    10
+    )
+  </Text>
+</div>
+`;

@@ -1,3 +1,7 @@
 .root{
   padding-top: 25px;
 }
+
+.column {
+  display: table;
+}

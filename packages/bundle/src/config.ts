@@ -41,6 +41,10 @@ export default {
         "autocomplete": {
             "isMobileSimple": true,
             "disableFormSubmit": false,
+            "renderIn": "parent",
+            // "isMobileSimple": true,
+            "viewType": "simple",
+            "viewOrder": ["SearchSuggestions", "ProductMatches"],
             "position": "left",
             "meta": {
                 "item_limit": 4,
@@ -48,6 +52,7 @@ export default {
             },
             "product": {
                 "title": {
+                    "display": true,
                     "lines": 3
                 },
                 "i18n": {
@@ -57,7 +62,7 @@ export default {
             "i18n": {
                 "suggestionsTitle": "Search suggestions",
                 "productMatchesTitle": "Product matches",
-                "tipTitle": "Press enter to search"
+                "tipTitle": "Click here to search"
             }
         },
         "search": {
@@ -67,11 +72,21 @@ export default {
                 "limit": 24
             },
             "product": {
+                "price": {
+                  "display": true
+                },
                 "title": {
+                    "display": true,
                     "lines": 3
+                },
+                "reviews": {
+                  "display": true,
                 },
                 "i18n": {
                     "colorsAvailable": "Colours available"
+                },
+                "image": {
+                  "aspectRatio": .75
                 }
             },
             "sorting": {
@@ -705,9 +720,9 @@ export default {
             "template": "Temporarily out of stock"
         },
         "discount": {
-            "position": "bottom-center",
+            "position": "top-right",
             "template": {
-                "single": "%s% off",
+                "single": "%s% OFF",
                 "multiple": "Up to %s% off"
             },
             "styles": {
