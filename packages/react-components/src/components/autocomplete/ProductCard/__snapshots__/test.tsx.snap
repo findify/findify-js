@@ -8,7 +8,7 @@ exports[`ProductCard view renders correctly 1`] = `
   <div
     className="imageWrap"
   >
-    <withPropsOnChange(withStateHandlers(withPropsOnChange(mapProps(onlyUpdateForKeys(Component)))))
+    <SizeMe(Image)
       alt="Product Title"
       className="image"
       src="https://lorempicsum.net/100/100"

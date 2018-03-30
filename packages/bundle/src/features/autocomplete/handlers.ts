@@ -85,11 +85,14 @@ export const registerHandlers = (widget, render) => {
 
   /** Listen for form submit */
   if (!config.get('disableFormSubmit')) {
-    subscribers.push(addEventListeners(
-      ['change'],
-      handleFormSubmit,
-      findClosestForm(node)
-    ))
+    const form = findClosestForm(node);
+    if (form) {
+      subscribers.push(addEventListeners(
+        ['change'],
+        handleFormSubmit,
+        form
+      ))
+    }
   }
 
   /** Update container position  */

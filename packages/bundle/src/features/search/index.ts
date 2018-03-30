@@ -5,6 +5,7 @@ import { Search, ZeroResults } from '@findify/react-components/src';
 import { getQuery, setQuery, listenHistory } from '../../core/location';
 import { hideFallback } from '../../helpers/fallbackNode';
 import { Events } from '../../core/events';
+import { scrollTo } from '../../helpers/scrollTo';
 
 const applyState = (state, agent) => {
   agent.reset();
@@ -41,6 +42,7 @@ export default (widget, render) => {
   agent.on('change:items', (items) => {
     if (!items.isEmpty()) {
       hideFallback(node);
+      scrollTo(config.get('cssSelector'));
       return render('initial');
     }
     const agent = createFallbackAgent(config, node);
