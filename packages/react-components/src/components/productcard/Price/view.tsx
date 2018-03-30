@@ -12,7 +12,7 @@ const PriceView: ThemedSFC<{
   discount: List<number>,
   hasDiscount: boolean,
   hasCompare: boolean,
-}> = ({ className, price, theme, currency, hasDiscount, hasCompare, oldPrice }) => ( console.log('PR', price, currency) ||
+}> = ({ className, price, theme, currency, hasDiscount, hasCompare, oldPrice }) => (
   <div className={cx(theme.priceWrapper, className)}>
     <span className={cx(
       theme.price,

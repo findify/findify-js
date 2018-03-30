@@ -61,7 +61,7 @@ export default ({
         discount={item.get('discount')} />
     </div>
     <div display-if={config.getIn(['product', 'reviews', 'display'])} className={styles.rating}>
-      {console.log('it', item.get('discount'), item.get('reviews').toJS())}
+      {/* {console.log('it', item.get('discount'), item.get('reviews').toJS())} */}
       <Rating value={item.getIn(['reviews', 'average_score'])} count={item.getIn(['reviews', 'count'])} />
     </div>
     <div className={styles.content}>

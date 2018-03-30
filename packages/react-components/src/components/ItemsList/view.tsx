@@ -1,5 +1,4 @@
 import React from 'react'
-//import ItemCard from '../ItemCard';
 import ProductCard from 'components/productcard/ProductCard'
 import mapArray from '../common/MapArray';
 

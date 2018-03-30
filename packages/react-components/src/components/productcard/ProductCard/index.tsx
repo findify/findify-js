@@ -12,7 +12,7 @@ import view from './view';
 import styles from './styles.css'
 import withTheme from 'helpers/withTheme';
 
-const ProductCard = compose(
+const ProductCard: any = compose(
   setDisplayName('ProductCard'),
   withHandlers({
     onClick: ({ onProductClick, ...rest }) => e => {

@@ -1,7 +1,7 @@
 import React from 'react';
 import Slider from 'react-slick';
 
-import ItemCard from 'components/ItemCard';
+import ProductCard from 'components/productcard/ProductCard'
 import Text from 'components/Text';
 
 export default ({ items, config, theme, sliderOptions, _mountSlider }) => 
@@ -13,7 +13,11 @@ export default ({ items, config, theme, sliderOptions, _mountSlider }) =>
   <Slider {...sliderOptions} ref={_mountSlider}>
     {
       items
-        .map(item => <div key={item.hashCode()}><ItemCard item={item} /></div>)
+        .map(item =>
+          <div key={item.hashCode()}>
+            <ProductCard item={item} config={config} />
+          </div>
+        )
         .toArray()
     }
   </Slider>

@@ -42,7 +42,9 @@ export default (widget, render) => {
   agent.on('change:items', (items) => {
     if (!items.isEmpty()) {
       hideFallback(node);
-      scrollTo(config.get('cssSelector'));
+      if (!config.getIn(['view', 'infinite'])) {
+        scrollTo(config.get('cssSelector'))
+      }
       return render('initial');
     }
     const agent = createFallbackAgent(config, node);

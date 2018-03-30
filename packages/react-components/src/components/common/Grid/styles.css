@@ -3,6 +3,7 @@ $gutter: 20px;
 .root{
   font-size: 0;
   line-height: 0;
+  width: 100%;
 }
 
 .column{
@@ -22,7 +23,6 @@ $gutter: 20px;
     font-size: inherit;
     line-height: inherit;
     flex-wrap: wrap;
-    justify-content: space-between;
   }
   .column{
     display: block;
