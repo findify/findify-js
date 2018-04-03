@@ -4,10 +4,10 @@ import Button from 'components/Button';
 import Text from 'components/Text';
 import Icon from 'components/Icon';
 
-export default ({ showFacets, showSorting, theme, config, sorting }) =>
+export default ({ showFacets, showSort, theme, config, sorting }) =>
 <div className={theme.root}>
 
-  <Button onClick={showSorting} className={theme.button}>
+  <Button onClick={showSort} className={theme.button}>
     <Text primary uppercase>
       <Icon name='Sorting' />
       { sorting }

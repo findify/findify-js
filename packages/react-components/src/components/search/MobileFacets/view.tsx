@@ -19,6 +19,7 @@ const FacetContent = ({ active, config, theme }) => (
       theme={{
         range: theme.range,
         expand: theme.expand,
+        expandedList: theme.expandedList,
       }}
     />
   </div>
@@ -35,7 +36,7 @@ export default ({
   hideModal,
   total
 }) =>
-<div className={cx(theme.root, 'mobile')}>
+<div className={cx(theme.modal, 'mobile')}>
   <div className={theme.header}>
 
     <div className={theme.title}>

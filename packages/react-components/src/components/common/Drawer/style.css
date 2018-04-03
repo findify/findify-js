@@ -23,7 +23,8 @@
 }
 
 .content {
-  padding: 20px;
+  display: flex;
+  height: 100%;
 }
 
 .body-noscroll {

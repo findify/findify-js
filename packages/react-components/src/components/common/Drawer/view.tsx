@@ -67,7 +67,7 @@ export default class DrawerView extends React.Component {
           {state => (
             <React.Fragment>
               <div className={theme.backdrop} onClick={this.handleBackdropClick}></div>
-              <div className={theme.contentWrapper} style={{ width: width + 'px', left: leftProp(state, width) }}>
+              <div className={theme.contentWrapper} style={{ width, left: leftProp(state, width) }}>
                 <div className={theme.content}>
                   {children}
                 </div>

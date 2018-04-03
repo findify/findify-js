@@ -16,7 +16,8 @@ export default compose(
   connectQuery,
 
   withHandlers({
-    onReset: ({ update, meta }) => () =>  update('filters', f => f && f.clear()) // Reset values
+    onReset: ({ update, meta }) => () =>  update('filters', f => f && f.clear()), // Reset values
+    hideModal: ({ hideModal }) => () =>  hideModal('Filters') // Reset values
   }),
   
 

@@ -28,6 +28,7 @@ export default compose(
 
   withHandlers({
     setSorting: ({ items, onChangeSort }) => index =>
-      onChangeSort(items.getIn([index, 'field']), items.getIn([index, 'order']))
+      onChangeSort(items.getIn([index, 'field']), items.getIn([index, 'order'])),
+    hideModal: ({ hideModal }) => () => hideModal('Sorting')
   })
 )(view)

@@ -17,7 +17,7 @@ export default compose(
     }
   ),
 
-  withProps(({ search, isExpanded, facet }) => {
+  withProps(({ search, isExpanded, facet, theme }) => {
     if (isExpanded && search) {
       const regexp = new RegExp(search, 'gi');
       return { items: facet.get('values').filter(i => regexp.test(i.get('value'))) }
