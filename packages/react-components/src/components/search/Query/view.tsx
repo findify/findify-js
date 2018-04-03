@@ -1,5 +1,5 @@
 import React from 'react';
-import { escape } from 'lodash';
+import escape from 'lodash/escape';
 import template from 'helpers/template';
 import Text from 'components/Text';
 

@@ -5,7 +5,6 @@ import 'raf/polyfill';
 import Analytics from '@findify/analytics-dom';
 import emmiter from './core/emmiter';
 
-
 __root.listen = emmiter.listen;
 __root.emit = emmiter.emit;
 __root.addListeners = emmiter.addListeners;
@@ -22,7 +21,10 @@ export default async (
 
   const cfg = _config.default;
   const config = __root.config = fromJS(cfg);
-  const analytics = __root.analytics = Analytics({ ...cfg.api, ...cfg.platform });
+  const analytics = __root.analytics = Analytics({
+    key: __root.setup.apiKey || cfg.api.key,
+    ...cfg.platform
+  });
 
   await documentReady;
 

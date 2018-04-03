@@ -2,7 +2,7 @@ import { compose, withProps, setDisplayName } from 'recompose';
 import { connectItems, connectQuery } from '@findify/react-connect';
 import withTheme from 'helpers/withTheme';
 import template from 'helpers/template';
-import { escape } from 'lodash';
+import escape from 'lodash/escape';
 
 import view from './view';
 import styles from "./styles.css";

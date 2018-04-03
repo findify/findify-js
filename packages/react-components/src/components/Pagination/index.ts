@@ -1,4 +1,4 @@
-import { range } from 'lodash';
+import range from 'lodash/range';
 import { branch, compose, defaultProps, setDisplayName, renderNothing, withProps } from 'recompose';
 import { connectPagination } from '@findify/react-connect';
 import withTheme from 'helpers/withTheme';

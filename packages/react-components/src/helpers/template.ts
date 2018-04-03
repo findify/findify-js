@@ -1,4 +1,4 @@
-import { unescape } from 'lodash';
+import unescape from 'lodash/unescape';
 
 export default (template = '', selector = /%s/g) => {
   const tpl = unescape(template);

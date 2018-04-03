@@ -7,7 +7,7 @@ const DuplicatePackageCheckerPlugin = require('duplicate-package-checker-webpack
 const CompressionPlugin = require('compression-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin')
-
+const WebpackHashPlugin = require('./scripts/webpackHashPlugin');
 
 interface WebpackEnvArgs {
   analyze?: boolean;
@@ -15,6 +15,16 @@ interface WebpackEnvArgs {
 }
 
 const componentsPath = path.resolve(__dirname, '../react-components');
+const createGlobals = (isDevelopment) => [
+  '__MERCHANT_CONFIG_URL__',
+  '__MERCHANT_API_KEY__',
+  '__MERCHANT_VERSION__',
+  '__MERCHANT_POLYFILL__',
+  '__MERCHANT_CSS__',
+  '__ENVIRONMENT__'
+].reduce((acc, name) =>
+  ({ ...acc, [name]: isDevelopment ? 'false' : `${name} || false` }), {}
+)
 
 export default (env: WebpackEnvArgs, { mode }) => {
   const config: webpack.Configuration = {
@@ -102,6 +112,7 @@ export default (env: WebpackEnvArgs, { mode }) => {
     },
     plugins: [
       new webpack.DefinePlugin({
+        ...createGlobals(mode === 'development'),
         __root: 'window.findify',
         __COMMITHASH__: JSON.stringify(new GitRevisionPlugin().commithash()),
         'process.env': {
@@ -119,8 +130,6 @@ export default (env: WebpackEnvArgs, { mode }) => {
         template:  path.resolve(__dirname, 'index.html'),
         inject: 'head'
       }),
-
-      // new webpack.HashedModuleIdsPlugin()
     ],
 
   };
@@ -137,16 +146,21 @@ export default (env: WebpackEnvArgs, { mode }) => {
     config.plugins!.push(analyzerPlugin);
   }
 
+  if (mode === 'production') {
+    config.plugins.push(new WebpackHashPlugin());
+  }
+
   if (mode === 'development') {
     config.plugins.push(new webpack.HotModuleReplacementPlugin());
+
     config.plugins.push(new webpack.DllReferencePlugin({
       context: __dirname,
       manifest: require(path.join(__dirname, 'node_modules/dll/vendor-manifest.json'))
     }));
+  
     config.plugins.push(new AddAssetHtmlPlugin({
       filepath: require.resolve(path.join(__dirname, 'node_modules/dll/vendor.dll.js'))
     }));
-
   }
 
   return config;

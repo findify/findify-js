@@ -1,6 +1,5 @@
 import React from 'react';
 import { compose, withPropsOnChange, setDisplayName, defaultProps } from 'recompose';
-import { memoize } from 'lodash';
 import cx from 'classnames';
 import Column from './Column';
 
@@ -17,9 +16,8 @@ type OwnProps = Props & {
   theme: { [className: string]: string }
 }
 
-const getClassName = memoize((columns, theme) =>
-  columns.split('|').map(value => theme[`column-${value}`])
-);
+const getClassName = (columns, theme) =>
+  columns.split('|').map(value => theme[`column-${value}`]);
 
 export const Grid = compose<OwnProps, Props>(
   setDisplayName('Grid'),

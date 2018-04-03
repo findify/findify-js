@@ -1,4 +1,4 @@
-import { unescape } from 'lodash';
+import unescape from 'lodash/unescape';
 import formatCurrency from 'helpers/formatCurrency';
 
 const identity = i => i;

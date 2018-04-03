@@ -1,6 +1,6 @@
 import React from 'react';
 import formatCurrency from 'helpers/formatCurrency';
-import { unescape } from 'lodash';
+import unescape from 'lodash/unescape';
 
 const identity = i => i;
 
