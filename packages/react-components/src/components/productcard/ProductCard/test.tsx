@@ -1,6 +1,7 @@
 import React from 'react'
 import { fromJS } from 'immutable';
 import ProductCardView from './view'
+import theme from './styles.css'
 import { shallow } from 'enzyme'
 import { get as _get } from 'lodash'
 
@@ -10,8 +11,8 @@ const itemMock = fromJS({
   description: "A description for item",
   thumbnail_url: "https://lorempicsum.net/50/50",
   title: "Product Title",
-  price: "9.99",
-  reviews: {}
+  price: 9.99,
+  reviews: { averate_rating: 0 }
 });
 
 const configMock = fromJS({
@@ -28,8 +29,8 @@ const configMock = fromJS({
       display: true
     },
   },
-  currency: {}
-});
+  currency: { code: 'GBP' },
+}
 
 describe('ProductCard view', () => {
   it('renders correctly', () => {
@@ -38,6 +39,7 @@ describe('ProductCard view', () => {
         theme={{}}
         item={itemMock}
         config={configMock}
+        theme={theme}
       />
     )).toMatchSnapshot()
   })

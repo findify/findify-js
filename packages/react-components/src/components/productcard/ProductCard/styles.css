@@ -102,24 +102,6 @@
   }
 }
 
-.price, .compare {
-  font-size: 1em;
-  color: #404040;
-  display: inline-block;
-  .simple &{
-    font-weight: bold;
-  }
-}
-
-.price{
-  margin-right: 5px;
-  white-space: nowrap;
-}
-
-.compare {
-  text-decoration: line-through;
-}
-
 .color{
   text-transform: none;
   font-size: 13px;

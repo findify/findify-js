@@ -18,10 +18,10 @@ const PriceView: ThemedSFC<{
       theme.price,
       (hasDiscount || hasCompare) && theme.salePrice
     )}>
-      <Text bold>{getPrice(price, currency)}</Text>
+      {getPrice(price, currency)}
     </span>
     <span display-if={hasCompare} className={cx(theme.compare)}>
-      <Text>{getPrice(oldPrice, currency)}</Text>
+      {getPrice(oldPrice, currency)}
     </span>
   </div>
 )

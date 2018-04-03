@@ -56,12 +56,11 @@ export default ({
       )}
       <DiscountSticker
         display-if={(item.get('discount') && typeof item.get('discount').size !== 'undefined') ? item.get('discount').size > 0 : item.get('discount')}
-        config={config.getIn(['stickers', 'discount'])}
+        config={config}
         className={theme.discountSticker}
         discount={item.get('discount')} />
     </div>
     <div display-if={config.getIn(['product', 'reviews', 'display'])} className={styles.rating}>
-      {/* {console.log('it', item.get('discount'), item.get('reviews').toJS())} */}
       <Rating value={item.getIn(['reviews', 'average_score'])} count={item.getIn(['reviews', 'count'])} />
     </div>
     <div className={styles.content}>
