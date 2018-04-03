@@ -2,8 +2,8 @@ import { Component, createElement, createFactory } from 'react';
 import { compose, defaultProps } from 'recompose';
 import { CellMeasurerCache, CellMeasurer } from 'react-virtualized/dist/commonjs/CellMeasurer';
 import { Scrollbars } from 'react-custom-scrollbars';
-import styles from "./styles.css";
 import view from './view';
+import styles from "./styles.css";
 const viewFactory: any = createFactory(view);
 
 export default class List extends Component<any, any>{

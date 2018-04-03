@@ -5,8 +5,8 @@ import { compose, withPropsOnChange } from 'recompose';
 import withTheme from 'helpers/withTheme';
 import sizeMe from 'react-sizeme';
 
-import styles from "./styles.css";
 import view from './view';
+import styles from "./styles.css";
 
 const isStateEqual = (prev, next) => ['filters', 'q', 'sort'].every(k =>
   is(prev.get(k), next.get(k))

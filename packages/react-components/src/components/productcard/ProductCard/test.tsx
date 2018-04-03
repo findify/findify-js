@@ -11,8 +11,8 @@ const itemMock = fromJS({
   description: "A description for item",
   thumbnail_url: "https://lorempicsum.net/50/50",
   title: "Product Title",
-  price: 9.99,
-  reviews: { averate_rating: 0 }
+  price: '9.99',
+  reviews: { average_rating: 0 }
 });
 
 const configMock = fromJS({
@@ -30,7 +30,7 @@ const configMock = fromJS({
     },
   },
   currency: { code: 'GBP' },
-}
+})
 
 describe('ProductCard view', () => {
   it('renders correctly', () => {

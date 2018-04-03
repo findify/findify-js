@@ -14,7 +14,29 @@ exports[`ProductCard view renders correctly 1`] = `
       src="https://lorempicsum.net/100/100"
       thumbnail="https://lorempicsum.net/50/50"
     />
-    <Component />
+    <Component
+      className="discountSticker"
+      config={
+        Immutable.Map {
+          "productcard": Immutable.Map {
+            "title": Immutable.Map {
+              "display": true,
+              "lines": 1,
+            },
+            "description": Immutable.Map {
+              "display": true,
+              "lines": 2,
+            },
+            "price": Immutable.Map {
+              "display": true,
+            },
+          },
+          "currency": Immutable.Map {
+            "code": "GBP",
+          },
+        }
+      }
+    />
   </div>
   <div
     className="rating"
@@ -32,7 +54,11 @@ exports[`ProductCard view renders correctly 1`] = `
     />
   </div>
   <Price
-    currency={Object {}}
+    currency={
+      Object {
+        "code": "GBP",
+      }
+    }
     price="9.99"
   />
 </a>
