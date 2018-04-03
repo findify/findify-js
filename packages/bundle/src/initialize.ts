@@ -19,12 +19,9 @@ export default async (
   const { createWidgets } = require('./core/widgets');
   const { renderWidgets }  = require('./core/render');
 
-  const cfg = _config.default;
+  const cfg = { ..._config, ...require('./config').default };
   const config = __root.config = fromJS(cfg);
-  const analytics = __root.analytics = Analytics({
-    key: __root.setup.apiKey || cfg.api.key,
-    ...cfg.platform
-  });
+  const analytics = __root.analytics = Analytics({ ...cfg.platform, key: cfg.key });
 
   await documentReady;
 

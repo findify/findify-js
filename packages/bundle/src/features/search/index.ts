@@ -12,7 +12,7 @@ const applyState = (state, agent) => {
   for (const key in state) agent.set(key, state[key]);
 }
 const createFallbackAgent = (config, node) => new RecommendationAgent({
-  key: config.getIn(['api', 'key']),
+  key: config.get('key'),
   immutable: true,
   user: __root.analytics.user
 })
@@ -22,7 +22,7 @@ const createFallbackAgent = (config, node) => new RecommendationAgent({
 export default (widget, render) => {
   const { agent, config, node } = widget;
   const state = getQuery();
-  const apiKey = config.getIn(['api', 'key'])
+  const apiKey = config.get('key');
   const props = { agent, apiKey, config };
 
   /** Setup initial request */

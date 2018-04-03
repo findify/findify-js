@@ -7,7 +7,7 @@ import { Recommendation } from '@findify/react-components/src';
 
 export default (widget) => {
   const { node, agent, config } = widget;
-  const props = { agent, config, apiKey: config.getIn(['api', 'key']) };
+  const props = { agent, config, apiKey: config.get('key') };
 
   agent.defaults(getPayload(config, __root.analytics.state));
 

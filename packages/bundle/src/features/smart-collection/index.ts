@@ -14,7 +14,7 @@ const applyState = (state, agent) => {
 
 export default (widget, render) => {
   const { agent, config, node } = widget;
-  const apiKey = config.getIn(['api', 'key'])
+  const apiKey = config.get('key');
   const props = { agent, apiKey, config };
   const state = getQuery();
 

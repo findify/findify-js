@@ -11,7 +11,7 @@ module.exports = (ctx = {}) => ({
     require('postcss-custom-properties')({
       preserve: false
     }),
-    require('postcss-pxtorem'),
+    // require('postcss-pxtorem'),
     require('postcss-focus'),
     require('postcss-calc'),
     require('postcss-clearfix'),

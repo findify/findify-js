@@ -1,4 +1,5 @@
 const path = require('path')
+const { compact } = require('lodash');
 const webpack = require('webpack')
 const GitRevisionPlugin = require('git-revision-webpack-plugin')
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
@@ -12,6 +13,7 @@ const WebpackHashPlugin = require('./scripts/webpackHashPlugin');
 interface WebpackEnvArgs {
   analyze?: boolean;
   generateStatsFile?: boolean;
+  findify_env?: 'staging'
 }
 
 const componentsPath = path.resolve(__dirname, '../react-components');
@@ -19,9 +21,10 @@ const createGlobals = (isDevelopment) => [
   '__MERCHANT_CONFIG_URL__',
   '__MERCHANT_API_KEY__',
   '__MERCHANT_VERSION__',
-  '__MERCHANT_POLYFILL__',
   '__MERCHANT_CSS__',
-  '__ENVIRONMENT__'
+  '__INCLUDE_POLYFILL__',
+  '__ENVIRONMENT__',
+  '__CONFIG__'
 ].reduce((acc, name) =>
   ({ ...acc, [name]: isDevelopment ? 'false' : `${name} || false` }), {}
 )
@@ -34,9 +37,10 @@ export default (env: WebpackEnvArgs, { mode }) => {
     },
     devtool: 'source-map',
     output: {
+      jsonpFunction: 'findifyJsonp',
       filename: '[name].js',
       chunkFilename: '[name].js',
-      publicPath: '/',
+      publicPath: process.env.PUBLIC_PATH || '/',
       path: path.resolve(__dirname, 'dist'),
     },
 
@@ -57,17 +61,16 @@ export default (env: WebpackEnvArgs, { mode }) => {
       }
     },
     module: {
-      noParse: /\.min\.js/,
       rules: [
         {
           test: /\.css$/,
           include: [
             path.resolve(componentsPath, 'src')
           ],
-          use: [
-            'style-loader',
+          use: compact([
+            mode === 'development' && 'style-loader',
             {
-              loader: 'css-loader',
+              loader: mode === 'development' ? 'css-loader' : 'css-loader/locals',
               options: {
                 modules: true,
                 camelCase: true,
@@ -84,7 +87,7 @@ export default (env: WebpackEnvArgs, { mode }) => {
                 }
               }
             }
-          ]
+          ])
         },
         {
           test: /\.ts$/,
@@ -116,7 +119,8 @@ export default (env: WebpackEnvArgs, { mode }) => {
         __root: 'window.findify',
         __COMMITHASH__: JSON.stringify(new GitRevisionPlugin().commithash()),
         'process.env': {
-          BROWSER: true
+          BROWSER: true,
+          FINDIFY_ENV: JSON.stringify(process.env.FINDIFY_ENV || 'production')
         },
         __DEBUG__: mode === 'development'
           ? 'base => props => { console.log(props); return base(props) }'

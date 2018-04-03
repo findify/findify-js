@@ -25,7 +25,7 @@ const createAgent = (type, config) => {
   if (!agent) throw new Error(`Feature ${type} is not exists!`);
 
   return new agent({
-    key: config.getIn(['api', 'key']),
+    key: config.get('key'),
     user: __root.analytics.user,
     slot: config.get('slot'),
     immutable: true,

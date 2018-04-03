@@ -8,7 +8,7 @@ import { Autocomplete } from '@findify/react-components/src';
 export default (widget, rerender) => {
   const { node, agent, config } = widget;
   const state: any = getQuery();
-  const apiKey = config.getIn(['api', 'key']);
+  const apiKey = config.get('key');
 
   const props = { apiKey, agent, config };
 

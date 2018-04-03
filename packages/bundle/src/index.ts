@@ -1,53 +1,49 @@
 import 'core-js/es6/promise';
 import loadJs from 'load-js';
-
-const setup = {
-  config: __MERCHANT_CONFIG_URL__,
-  apiKey: __MERCHANT_API_KEY__,
-  version: __MERCHANT_VERSION__,
-  polyfill: __MERCHANT_POLYFILL__,
-  css: __MERCHANT_CSS__,
-  environment: __ENVIRONMENT__
-};
-
-// Set the path to files
-if (process.env.NODE_ENV !== 'development' && setup.version) {
+import loadCss from './helpers/loadCss';
+/**
+ * Setup webpack public path, so bundle could be used with different versions
+ * WARNING: If this file will be changed you need to upload new bundle.js to compilation server
+ * */
+if (process.env.NODE_ENV !== 'development' && __MERCHANT_VERSION__) {
   __webpack_require__.p =
-    `https://findify-assets-2bveeb6u8ag.netdna-ssl.com/bundle/${setup.environment}/${setup.version}`;
+    `https://findify-assets-2bveeb6u8ag.netdna-ssl.com/bundle/${__ENVIRONMENT__}/${__MERCHANT_VERSION__}/`;
 }
 
 /**
  * Create global namespace
  */
-(global as any).findify = { setup };
+(global as any).findify = {};
 
 /**
  * Load Dependencies
  */
-const deps = [
-  import(
-    /* webpackChunkName: "initializer" */
-    './initialize'
-  ),
-];
+const deps: Promise<any>[] = [];
 
-if(process.env.NODE_ENV === 'development') {
-  deps.push(import('./config'));
+/** Main initialization file */
+deps.push(import(/* webpackChunkName: "initializer" */ './initialize'));
+
+/** Split configuration to separated chunk */
+const lazyConfig = () => import(/* webpackChunkName: "config" */ './config');
+/** Configuration will be moved to separated file with real Merchant setup */
+if(process.env.NODE_ENV !== 'development') {
+  deps.push(loadJs(__MERCHANT_CONFIG_URL__));
+} else {
+  deps.push(lazyConfig());
 }
 
-if (process.env.NODE_ENV !== 'development' && setup.polyfill) {
+deps.push(import(/* webpackChunkName: "components" */ '@findify/react-components/src'));
+
+/** Load polyfill only for specific merchants */
+if (process.env.NODE_ENV !== 'development' && __INCLUDE_POLYFILL__) {
   deps.push(loadJs(__webpack_require__.p + 'polyfill.js'));
 }
 
-if (process.env.NODE_ENV !== 'development' && setup.config) {
-  deps.push(loadJs(setup.config));
+/** Load styles */
+if (process.env.NODE_ENV !== 'development') {
+  loadCss(__MERCHANT_CSS__);
 }
 
-deps.push(import(
-  /* webpackChunkName: "components" */
-  '@findify/react-components/src'
-));
-
-Promise.all(deps).then(([initialize, config]) =>
-  initialize.default(window.__FINDIFY_CONFIG__ || config)
-);
+Promise.all(deps).then(([initialize]) => {
+  initialize.default({ key: __MERCHANT_API_KEY__ })
+});
