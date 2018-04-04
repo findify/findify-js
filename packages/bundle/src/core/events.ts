@@ -31,5 +31,13 @@ export enum Events {
    * @prop [key: string|number] - widget key
    * @prop [config: Immutable.Map]
    */
-  autocompleteFocusLost = 'autocompleteFocusLost'
+  autocompleteFocusLost = 'autocompleteFocusLost',
+
+  /**
+   * Mobile elements
+   */
+  showMobileFacets = 'showMobileFacets',
+  showMobileSort = 'showMobileSort',
+  hideMobileFacets = 'hideMobileFacets',
+  hideMobileSort = 'hideMobileSort',
 }

@@ -24,7 +24,11 @@ const deps: Promise<any>[] = [];
 deps.push(import(/* webpackChunkName: "initializer" */ './initialize'));
 
 /** Split configuration to separated chunk */
-const lazyConfig = () => import(/* webpackChunkName: "config" */ './config');
+const lazyConfig = () => import(
+  /* webpackChunkName: "config" */
+  /* webpackMode: "weak" */
+  './config'
+);
 /** Configuration will be moved to separated file with real Merchant setup */
 if(process.env.NODE_ENV !== 'development') {
   deps.push(loadJs(__MERCHANT_CONFIG_URL__));

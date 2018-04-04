@@ -7,7 +7,7 @@
   min-width: 17px;
 }
 
-.title{
+.root .title{
   white-space: nowrap;
   display: table-cell;
   padding: 0 10px;

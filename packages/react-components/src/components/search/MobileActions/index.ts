@@ -11,8 +11,8 @@ export default compose(
   connectSort,
   withEvents(),
   withHandlers({
-    showFacets: ({ emit }) => () => emit('toggleMobileFacets'),
-    showSort: ({ emit }) => () => emit('toggleMobileSort')
+    showFacets: ({ emit }) => () => emit('showMobileFacets'),
+    showSort: ({ emit }) => () => emit('showMobileSort')
   }),
   withPropsOnChange(['selected'], ({ selected, config }) => ({
     sorting: config.getIn(['sorting', 'i18n', 'options', selected

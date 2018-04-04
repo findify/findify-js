@@ -1,5 +1,7 @@
 import React from 'react';
+import Text from 'components/Text';
+
 export default ({ config, theme }) =>
-  <div display-if={config.get('poweredByFindify')} className={theme.root}>
+  <Text secondary uppercase display-if={config.get('poweredByFindify')} className={theme.root}>
     Powered by Findify
-  </div>
+  </Text>
