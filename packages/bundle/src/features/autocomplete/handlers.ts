@@ -54,8 +54,7 @@ export const registerHandlers = (widget, render) => {
 
   /** Handle input blur */
   const handleInputBlur = (e) => {
-    //emitter.emit(Events.autocompleteFocusLost, widget.key)
-    return e.target === node && render();
+    return e.target === node && emitter.emit(Events.autocompleteFocusLost, widget.key)
   }
 
   /** search for the value */

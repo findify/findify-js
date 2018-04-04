@@ -65,7 +65,7 @@ export default process.env.NODE_ENV !== 'development'
             "renderIn": "parent",
 
             // Simple|Fullscreen\Sidebar
-            "viewType": "simple",
+            "viewType": "fullscreen",
 
             // Order of content
             "viewOrder": ["SearchSuggestions", "ProductMatches"],
