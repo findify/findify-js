@@ -1,20 +1,34 @@
 export default process.env.NODE_ENV !== 'development'
 ? __CONFIG__
 : {
+    // Merchant API KEY
     "key": "4c220ec3-ef86-4c49-9d86-ce31f5e66fda",
-    "sentryDisabled": false,
+
+    // Show/Hide "Powered by findify badge"
+    "poweredByFindify": false,
+
+    // Specific platform code
     "platform": {
-        "shopify": true
+        "shopify": true,
+        // "bigcommerce": true
     },
-    "mjs_version": "5.3.18",
-    "analyticsjs_version": "3.0.5",
+
+    // Merchant status - will disable features, but send analytics
     "status": "live",
+
+    // If window width gte than this number - view will be changed
     "mobileBreakpoint": 767,
-    "css": ["@font-face{font-family:\"Source Sans Pro\";font-style:italic;font-weight:200;src:local(\"Source Sans Pro ExtraLight Italic\"),local(SourceSansPro-ExtraLightIt),url(//fonts.gstatic.com/s/sourcesanspro/v9/fpTVHK8qsXbIeTHTrnQH6CPAIRw3TZpZEbtNzDM7Nlo.eot?#) format(\"eot\"),url(//fonts.gstatic.com/s/sourcesanspro/v9/fpTVHK8qsXbIeTHTrnQH6GLvoADUPo08d8_TfMCzMpg.woff2) format(\"woff2\"),url(//fonts.gstatic.com/s/sourcesanspro/v9/fpTVHK8qsXbIeTHTrnQH6PwwJPUC4r0o28cUCbhjOjM.woff) format(\"woff\")}@font-face{font-family:\"Source Sans Pro\";font-style:italic;font-weight:300;src:local(\"Source Sans Pro Light Italic\"),local(SourceSansPro-LightIt),url(//fonts.gstatic.com/s/sourcesanspro/v9/fpTVHK8qsXbIeTHTrnQH6Ffv2gilBNcWxh_XnzykpgY.eot?#) format(\"eot\"),url(//fonts.gstatic.com/s/sourcesanspro/v9/fpTVHK8qsXbIeTHTrnQH6MAjkyiewWYrWZc50I8hK7I.woff2) format(\"woff2\"),url(//fonts.gstatic.com/s/sourcesanspro/v9/fpTVHK8qsXbIeTHTrnQH6GGomRtBD2u8FwSY4jjlmeA.woff) format(\"woff\")}@font-face{font-family:\"Source Sans Pro\";font-style:italic;font-weight:400;src:local(\"Source Sans Pro Italic\"),local(SourceSansPro-It),url(//fonts.gstatic.com/s/sourcesanspro/v9/M2Jd71oPJhLKp0zdtTvoM04EkD-uilk0_oIxFXvMtLk.eot?#) format(\"eot\"),url(//fonts.gstatic.com/s/sourcesanspro/v9/M2Jd71oPJhLKp0zdtTvoMxgy2Fsj5sj3EzlXpqVXRKo.woff2) format(\"woff2\"),url(//fonts.gstatic.com/s/sourcesanspro/v9/M2Jd71oPJhLKp0zdtTvoMzNrcjQuD0pTu1za2FULaMs.woff) format(\"woff\")}@font-face{font-family:\"Source Sans Pro\";font-style:italic;font-weight:600;src:local(\"Source Sans Pro Semibold Italic\"),local(SourceSansPro-SemiboldIt),url(//fonts.gstatic.com/s/sourcesanspro/v9/fpTVHK8qsXbIeTHTrnQH6EbumxWHRSe1oVyAWeloI5o.eot?#) format(\"eot\"),url(//fonts.gstatic.com/s/sourcesanspro/v9/fpTVHK8qsXbIeTHTrnQH6GQKuzMuncr0JB710wa2dPI.woff2) format(\"woff2\"),url(//fonts.gstatic.com/s/sourcesanspro/v9/fpTVHK8qsXbIeTHTrnQH6PULlOK_XQENnt2ryrY843E.woff) format(\"woff\")}@font-face{font-family:\"Source Sans Pro\";font-style:italic;font-weight:700;src:local(\"Source Sans Pro Bold Italic\"),local(SourceSansPro-BoldIt),url(//fonts.gstatic.com/s/sourcesanspro/v9/fpTVHK8qsXbIeTHTrnQH6HXzH4U_Axe6qCclt7v7nW0.eot?#) format(\"eot\"),url(//fonts.gstatic.com/s/sourcesanspro/v9/fpTVHK8qsXbIeTHTrnQH6Nnl6YROR5rHLkdLoHwoOWA.woff2) format(\"woff2\"),url(//fonts.gstatic.com/s/sourcesanspro/v9/fpTVHK8qsXbIeTHTrnQH6Nog-We9VNve39Jr4Vs_aDc.woff) format(\"woff\")}@font-face{font-family:\"Source Sans Pro\";font-style:italic;font-weight:900;src:local(\"Source Sans Pro Black Italic\"),local(SourceSansPro-BlackIt),url(//fonts.gstatic.com/s/sourcesanspro/v9/fpTVHK8qsXbIeTHTrnQH6JbSLHYK2KPWJI4XZKReQz0.eot?#) format(\"eot\"),url(//fonts.gstatic.com/s/sourcesanspro/v9/fpTVHK8qsXbIeTHTrnQH6Kixy-5gtMP3-zP8S1pobIg.woff2) format(\"woff2\"),url(//fonts.gstatic.com/s/sourcesanspro/v9/fpTVHK8qsXbIeTHTrnQH6ONg1gFYvjbPSGxSBhvPu6E.woff) format(\"woff\")}@font-face{font-family:\"Source Sans Pro\";font-style:normal;font-weight:200;src:local(\"Source Sans Pro ExtraLight\"),local(SourceSansPro-ExtraLight),url(//fonts.gstatic.com/s/sourcesanspro/v9/toadOcfmlt9b38dHJxOBGFl_EbE5kujbLzdX6sKqH6g.eot?#) format(\"eot\"),url(//fonts.gstatic.com/s/sourcesanspro/v9/toadOcfmlt9b38dHJxOBGCVh0V6fR69OLaFLklYbiSk.woff2) format(\"woff2\"),url(//fonts.gstatic.com/s/sourcesanspro/v9/toadOcfmlt9b38dHJxOBGMa9awK0IKUjIWABZIchFI8.woff) format(\"woff\")}@font-face{font-family:\"Source Sans Pro\";font-style:normal;font-weight:300;src:local(\"Source Sans Pro Light\"),local(SourceSansPro-Light),url(//fonts.gstatic.com/s/sourcesanspro/v9/toadOcfmlt9b38dHJxOBGBlTL9oEQvYTI0YAW1-Ysv0.eot?#) format(\"eot\"),url(//fonts.gstatic.com/s/sourcesanspro/v9/toadOcfmlt9b38dHJxOBGOode0-EuMkY--TSyExeINg.woff2) format(\"woff2\"),url(//fonts.gstatic.com/s/sourcesanspro/v9/toadOcfmlt9b38dHJxOBGNbE_oMaV8t2eFeISPpzbdE.woff) format(\"woff\")}@font-face{font-family:\"Source Sans Pro\";font-style:normal;font-weight:400;src:local(\"Source Sans Pro\"),local(SourceSansPro-Regular),url(//fonts.gstatic.com/s/sourcesanspro/v9/ODelI1aHBYDBqgeIAH2zlN0tugusXa58UbOrParLRF0.eot?#) format(\"eot\"),url(//fonts.gstatic.com/s/sourcesanspro/v9/ODelI1aHBYDBqgeIAH2zlNV_2ngZ8dMf8fLgjYEouxg.woff2) format(\"woff2\"),url(//fonts.gstatic.com/s/sourcesanspro/v9/ODelI1aHBYDBqgeIAH2zlBM0YzuT7MdOe03otPbuUS0.woff) format(\"woff\")}@font-face{font-family:\"Source Sans Pro\";font-style:normal;font-weight:600;src:local(\"Source Sans Pro Semibold\"),local(SourceSansPro-Semibold),url(//fonts.gstatic.com/s/sourcesanspro/v9/toadOcfmlt9b38dHJxOBGNanmHNzStikJN_FjplbBik.eot?#) format(\"eot\"),url(//fonts.gstatic.com/s/sourcesanspro/v9/toadOcfmlt9b38dHJxOBGCOFnW3Jk0f09zW_Yln67Ac.woff2) format(\"woff2\"),url(//fonts.gstatic.com/s/sourcesanspro/v9/toadOcfmlt9b38dHJxOBGJ6-ys_j0H4QL65VLqzI3wI.woff) format(\"woff\")}@font-face{font-family:\"Source Sans Pro\";font-style:normal;font-weight:700;src:local(\"Source Sans Pro Bold\"),local(SourceSansPro-Bold),url(//fonts.gstatic.com/s/sourcesanspro/v9/toadOcfmlt9b38dHJxOBGFV89XnfCtb1fhQGOlhyqi8.eot?#) format(\"eot\"),url(//fonts.gstatic.com/s/sourcesanspro/v9/toadOcfmlt9b38dHJxOBGEo0As1BFRXtCDhS66znb_k.woff2) format(\"woff2\"),url(//fonts.gstatic.com/s/sourcesanspro/v9/toadOcfmlt9b38dHJxOBGFkQc6VGVFSmCnC_l7QZG60.woff) format(\"woff\")}@font-face{font-family:\"Source Sans Pro\";font-style:normal;font-weight:900;src:local(\"Source Sans Pro Black\"),local(SourceSansPro-Black),url(//fonts.gstatic.com/s/sourcesanspro/v9/toadOcfmlt9b38dHJxOBGCDZg7i-e40o9FYYiSpZxAc.eot?#) format(\"eot\"),url(//fonts.gstatic.com/s/sourcesanspro/v9/toadOcfmlt9b38dHJxOBGHZhYM0_6AejPZE-OqA592o.woff2) format(\"woff2\"),url(//fonts.gstatic.com/s/sourcesanspro/v9/toadOcfmlt9b38dHJxOBGHiec-hVyr2k4iOzEQsW1iE.woff) format(\"woff\")}.findify-root ._2mIMY,.frame-content ._2mIMY{font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;!important}.findify-root ._20meW,.frame-content ._20meW{color:#404040!important}.findify-root ._3--9h,.frame-content ._3--9h{color:#404040!important}.findify-root ._1lqmG,.frame-content ._1lqmG{color:#404040!important}.findify-root ._1anW_,.frame-content ._1anW_{font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;!important;text-align:center!important;text-transform:none!important}.findify-root ._1TVYv,.frame-content ._1TVYv{color:#404040}.findify-root ._1TVYv,.findify-root ._3CQiE,.frame-content ._1TVYv,.frame-content ._3CQiE{font-size:1em}.findify-root ._3CQiE,.frame-content ._3CQiE{color:#b2b2b2}.findify-root .ybNII,.frame-content .ybNII{font-family:'Source Sans Pro', sans-serif;;font-size:1em}.findify-root .cgFaj,.frame-content .cgFaj{color:#404040!important}.findify-root ._19m_S,.frame-content ._19m_S{color:#e73853!important}.findify-root .m2HUf,.frame-content .m2HUf{font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;!important;color:#404040!important}", "div[data-findify-attr=\"findify-search-results\"]{\n  width: 100%;\n}"],
+
+    // History setup
     "location": {
+        // Define search url, autocomplete will redirect to this URL
         "searchUrl": "/pages/search-results",
+
+        // Search query prefix eq(?findify_q)
         "prefix": "findify"
     },
+
+    // Element:Feature
     "selectors": {
         "input[name='fq']": "autocomplete",
         "#findify_results": "search",
@@ -29,27 +43,43 @@ export default process.env.NODE_ENV !== 'development'
         "#home-findify-rec-3": "recommendations",
         "#product-findify-rec-5": "recommendations"
     },
+
+    // Currency setup
     "currency": {
         "code": "GBP"
+        // symbol: '$',
+        // thousandsSeparator: ',',
+        // decimalSeparator: '.',
+        // symbolOnLeft: true,
+        // spaceBetweenAmountAndSymbol: false,
+        // decimalDigits: 2
     },
-    "poweredByFindify": false,
-    "view": {
-        "pagination": false,
-        "infinite": true
-    },
+
+    // Features configuration will be pulled and marged with the root lvl
     "features": {
         "autocomplete": {
-            "isMobileSimple": true,
+            // Disable listening for closest form submit
             "disableFormSubmit": false,
+
+            // Where it should be rended: parent|self|body
             "renderIn": "parent",
-            // "isMobileSimple": true,
+
+            // Simple|Fullscreen\Sidebar
             "viewType": "simple",
+
+            // Order of content
             "viewOrder": ["SearchSuggestions", "ProductMatches"],
+
+            // Where to align autocomplete: left|right
             "position": "left",
+
+            // Will be added to all requests eq: Agent.defaults(meta)
             "meta": {
                 "item_limit": 4,
                 "suggestion_limit": 10
             },
+
+            // Product setup
             "product": {
                 "title": {
                     "display": true,
@@ -62,7 +92,8 @@ export default process.env.NODE_ENV !== 'development'
                     "colorsAvailable": "Colours available"
                 },
                 "image": {
-                  "aspectRatio": 1.2
+                    // Image aspect ratio
+                    "aspectRatio": 1.2
                 }
             },
             "i18n": {
@@ -72,12 +103,27 @@ export default process.env.NODE_ENV !== 'development'
                 "viewMore": "View more"
             }
         },
+
         "search": {
-            "disableScroll": false,
-            "scrollOffset": 0,
+            // Fallback recommendation type
+            "zeroResultsType": "trending",
+
+            // Search results setup
+            "view": {
+                "pagination": false,
+                "infinite": true,
+                "stickyFilters": false
+            },
+
+            // Should scroll to value after new data was received
+            "scrollTop": 0,
+
+            // Will be added to all requests eq: Agent.defaults(meta)
             "meta": {
                 "limit": 24
             },
+
+            // Product setup
             "product": {
                 "price": {
                   "display": true
@@ -120,6 +166,7 @@ export default process.env.NODE_ENV !== 'development'
                     }
                 }
             },
+
             "pagination": {
                 "step": 2,
                 "i18n": {
@@ -127,6 +174,7 @@ export default process.env.NODE_ENV !== 'development'
                     "next": "Next"
                 }
             },
+
             "loadMore": {
                 "lazyLoadCount": 2,
                 "i18n": {
@@ -134,10 +182,11 @@ export default process.env.NODE_ENV !== 'development'
                     "loadPrev": "Load previous"
                 }
             },
-            "zeroResultsType": "trending",
+
             "i18n": {
                 "noResult": "Oh no! Your search for %s did not match any products.<br/>But don't give up, we're here to help you find what you're looking for."
             },
+
             "breadcrumbs": {
                 "i18n": {
                     "showing": "Showing %s results for",
@@ -146,7 +195,11 @@ export default process.env.NODE_ENV !== 'development'
                     "zeroResultsFor": "0 results for"
                 }
             },
+
+            // Facets setup
             "facets": {
+
+                // Map Facet name to facet type
                 "types": {
                     "price": "price",
                     "reviews.average_score": "rating",
@@ -249,9 +302,8 @@ export default process.env.NODE_ENV !== 'development'
                     "short_description": "short description"
                 },
                 "category": {
-                    "maxItemsCount": 6,
+                    // Should be expanded by default or not
                     "initiallyExpanded": false,
-                    "rowHeight": 20,
                     "i18n": {
                         "goBackTitle": "All Categories",
                         "more": "More",
@@ -259,9 +311,9 @@ export default process.env.NODE_ENV !== 'development'
                     }
                 },
                 "text": {
+                    // How many item to show when collapsed
                     "maxItemsCount": 6,
                     "initiallyExpanded": false,
-                    "rowHeight": 20,
                     "i18n": {
                         "more": "More",
                         "less": "Less",
@@ -269,7 +321,6 @@ export default process.env.NODE_ENV !== 'development'
                     }
                 },
                 "price": {
-                    "rowHeight": 20,
                     "i18n": {
                         "submit": "go",
                         "under": "Under",
@@ -277,7 +328,6 @@ export default process.env.NODE_ENV !== 'development'
                     }
                 },
                 "rating": {
-                    "rowHeight": 20,
                     "i18n": {
                         "submit": "go",
                         "under": "Under",
@@ -285,7 +335,6 @@ export default process.env.NODE_ENV !== 'development'
                     }
                 },
                 "range": {
-                    "rowHeight": 20,
                     "i18n": {
                         "submit": "go",
                         "under": "Under",

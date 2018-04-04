@@ -15,8 +15,8 @@ export default ({ config, facets, theme, onReset, meta }) =>
 <Branch
   theme={theme}
   condition={config.getIn(['view', 'stickyFilters'])}
-  left={DefaultContent}
-  right={Sticky}>
+  left={Sticky}
+  right={DefaultContent}>
 
   <div className={theme.header} display-if={!config.get('showFacetsTitle')}>
     <Icon name='Filters' className={theme.icon} />

@@ -9,10 +9,10 @@ const registerNode = (string) => {
   return node;
 }
 
-export const scrollTo = debounce((selector) => {
+export const scrollTo: any = debounce((selector, offset = 0) => {
   if (!document) return;
   const node = nodes.get(selector) || registerNode(selector);
   const { top } = node.getBoundingClientRect();
   if (top > 0) return;
-  return jump(node);
+  return jump(node, { offset });
 }, 200);
