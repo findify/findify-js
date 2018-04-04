@@ -5,7 +5,7 @@ const leftProp = (state, width) => {
   switch(state) {
     case 'exiting':
     case 'exited':
-      return -1 * width + 'px'
+      return -1 * width;
     case 'entering':
     case 'entered':
       return 0
@@ -37,8 +37,10 @@ export default class DrawerView extends React.Component {
   }
 
   handleEscapeKeypress = (evt) => {
-    if (evt.key === 'Escape') this.setState({ open: false })
-    this.props.onCloseByUser(this.props.modalName)
+    if (evt.key === 'Escape') {
+      this.setState({ open: false })
+      this.props.onCloseByUser(this.props.modalName)
+    }
   }
 
   render() {

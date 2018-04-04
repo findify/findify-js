@@ -14,15 +14,6 @@ import withTheme from 'helpers/withTheme';
 
 const ProductCard: any = compose(
   setDisplayName('ProductCard'),
-  withHandlers({
-    onClick: ({ onProductClick, ...rest }) => e => {
-      if (onProductClick) {
-        if (e && e.isDefaultPrevented && e.isDefaultPrevented()) return;
-        e.preventDefault();
-        return onProductClick(rest, e.ctrlKey || e.metaKey);
-      }
-    },
-  }),
   withTheme(styles)
 )(view);
 

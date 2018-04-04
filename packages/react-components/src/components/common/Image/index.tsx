@@ -5,6 +5,7 @@ import sizeMe from 'react-sizeme'
 
 import {
   compose,
+  pure,
   lifecycle,
   onlyUpdateForKeys,
   withProps,
@@ -16,10 +17,15 @@ import {
 
 import styles from './styles.css'
 
+const prefetchedImages = {}
+
 const prefetchImage = (src: string) =>
   new Promise(resolve => {
     const img = new Image();
-    img.addEventListener('load', () => resolve(src), false);
+    img.addEventListener('load', () => {
+      prefetchedImages[src] = true
+      resolve(src)
+    }, false);
     img.src = src;
   });
 
@@ -29,11 +35,12 @@ export default compose(
     refreshRate: 50
   }),
   setDisplayName('Image'),
+  onlyUpdateForKeys(['src', 'thumbnail']),
   withPropsOnChange(['src'], ({ src, size }) => {
-    return { src: void 0, original: src }
+    return { src: prefetchedImages[src] ? src : void 0, original: src, }
   }),
   withStateHandlers(
-    { src: void 0, stage: 0 },
+    ({ src, original }) => ({ src, stage: src === original ? 2 : 0 }),
     {
       setSrc: () => src => ({ src, stage: 2 }),
       setThumbnail: () => src => ({ src, stage: 1 })
@@ -41,7 +48,8 @@ export default compose(
   ),
   withPropsOnChange(
     ['thumbnail', 'original'],
-    ({ setSrc, setThumbnail, thumbnail, original }) => {
+    ({ setSrc, setThumbnail, thumbnail, original, src, stage }) => {
+      if (stage === 2) return;
       if (thumbnail) {
         prefetchImage(thumbnail)
           .then(setThumbnail)

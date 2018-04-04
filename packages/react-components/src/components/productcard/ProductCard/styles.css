@@ -54,10 +54,6 @@
   margin: 0 auto;
 }
 
-:global(.findify-block--autocomplete-body) .image {
-  max-height: 65px;
-}
-
 .content{
   font-size: 14px;
 }

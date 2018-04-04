@@ -7,10 +7,11 @@ const config = {
   get: () => 'Press Enter to search'
 }
 
-const createQueryMock = (value) => ({
-  get() {
+const createSuggestionMock = (size, value) => ({
+  getIn() {
     return value
-  }
+  },
+  size
 })
 
 describe('Tip', () => {
@@ -18,19 +19,23 @@ describe('Tip', () => {
 
     expect(
       shallow(
-        <Tip className='test' title='Press Enter to search' theme={theme} />
+        <Tip
+          className='test'
+          title='Press Enter to search'
+          theme={theme}
+          suggestions={createSuggestionMock(0)}
+          getSuggestionProps={() => ({ onClick: () => {} })} />
       )
     ).toMatchSnapshot()
 
     expect(
       shallow(
-        <Tip className='test' query={createQueryMock('')} title='Press Enter to search' theme={theme} />
-      )
-    ).toMatchSnapshot()
-
-    expect(
-      shallow(
-        <Tip className='test' query={createQueryMock('qu')} title='Press Enter to search' theme={theme}  />
+        <Tip
+          className='test'
+          suggestions={createSuggestionMock(2, 'evangelion')}
+          title='Press Enter to search'
+          theme={theme}
+          getSuggestionProps={() => ({ onClick: () => {} })} />
       )
     ).toMatchSnapshot()
   })

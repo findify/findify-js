@@ -6,10 +6,12 @@ import {
   defaultProps,
   withPropsOnChange,
 } from 'recompose';
-import { connectItems } from '@findify/react-connect';
+import { connectItems, connectSuggestions } from '@findify/react-connect';
 import sizeMe from 'react-sizeme';
 import ProductCard from '../ProductCard';
 import view from './view'
+import styles from './styles.css'
+import withTheme from 'helpers/withTheme';
 
 const countColumns = width => {
   if (width > 1900) return 8;
@@ -23,11 +25,13 @@ const countColumns = width => {
 const ProductMatches = compose(
   setDisplayName('ProductMatches'),
   defaultProps({ columns: 3 }),
+  withTheme(styles),
   /*
   sizeMe({ refreshRate: 100, refreshMode: 'debounce' }),
   withPropsOnChange(['size'], ({ size }) => ({
     columns: countColumns(size.width),
   })),*/
+  connectSuggestions,
   connectItems,
 )(view);
 

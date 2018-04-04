@@ -22,7 +22,6 @@ const defaultDiscountConfig = fromJS({
 })
 
 export const DiscountSticker = withTheme(theme)(({ className, discount, theme, config }) => {
-  console.log('got a config', config)
   let realConfig = config.get('stickers')
   if (!realConfig || !realConfig.get('discount')) realConfig = defaultDiscountConfig
   else realConfig = realConfig.get('discount')

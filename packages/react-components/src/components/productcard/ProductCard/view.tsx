@@ -30,24 +30,25 @@ export default ({
   description,
   title,
   price,
-  onClick,
+  onProductClick,
   config,
   theme
 }: any) => (
   <a
-    onClick={onClick}
+    onClick={onProductClick}
     href={item.get('product_url')}
     className={classNames(
       styles.root,
-      config.get('simple') && styles.simple
+      config.get('simple') && styles.simple,
+      theme.productCard,
     )}
   >
-    <div className={styles.imageWrap}>
+    <div className={classNames(styles.imageWrap, theme.imageWrap)}>
       {(item.getIn(['html', 'image']) && (
         <div dangerouslySetInnerHTML={{ __html: item.getIn(['html', 'image']) }} />
       )) || (
         <Image
-          className={styles.image}
+          className={classNames(styles.image, theme.image)}
           aspectRatio={config.getIn(['product', 'image', 'aspectRatio'])}
           thumbnail={item.get('thumbnail_url')}
           src={item.get('image_url') || item.get('thumbnail_url')}
@@ -63,7 +64,7 @@ export default ({
     <div display-if={config.getIn(['product', 'reviews', 'display'])} className={styles.rating}>
       <Rating value={item.getIn(['reviews', 'average_score'])} count={item.getIn(['reviews', 'count'])} />
     </div>
-    <div className={styles.content}>
+    <div className={classNames(styles.content, theme.content)}>
       <Title
         display-if={config.getIn(['product', 'title', 'display'])}
         text={item.get('title')}
@@ -72,12 +73,13 @@ export default ({
         display-if={config.getIn(['product', 'description', 'display'])}
         text={item.get('description')}
         config={config.getIn(['product', 'description'])} />
+      <Price
+        theme={theme}
+        display-if={config.getIn(['product', 'price', 'display'])}
+        price={item.get('price')}
+        oldPrice={item.get('compare_at')}
+        discount={item.get('discount')}
+        currency={config.get('currency').toJS()} />
     </div>
-    <Price
-      display-if={config.getIn(['product', 'price', 'display'])}
-      price={item.get('price')}
-      oldPrice={item.get('compare_at')}
-      discount={item.get('discount')}
-      currency={config.get('currency').toJS()} />
   </a>
 );

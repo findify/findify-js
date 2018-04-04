@@ -25,12 +25,7 @@ exports[`SearchSuggestions renders correctly 1`] = `
         ]
       }
       factory={[Function]}
-      query={
-        Object {
-          "get": [Function],
-          "hashCode": [Function],
-        }
-      }
+      key="(item, index) => item.hashCode() + index + selectedSuggestion === index"
     />
   </ul>
 </div>

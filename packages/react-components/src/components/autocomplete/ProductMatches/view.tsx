@@ -1,9 +1,10 @@
 import React from 'react'
-import styles from './styles.css'
-import ProductCard from '../ProductCard'
+import ProductCard from 'components/productcard/ProductCard'
 import Grid from '../../common/Grid'
 import MapArray from '../../common/MapArray';
 import ItemsList from '../../ItemsList'
+import Button from 'components/Button'
+import styles from './styles.css'
 
 // TODO: use MapArray for it?
 
@@ -25,15 +26,25 @@ export default ({
   onProductClick,
   config,
   columns,
-  limit
+  limit,
+  theme,
+  suggestions,
+  getSuggestionProps
 }: any) => (
   <div className={styles.root}>
     <ItemsList
       wrapper={Grid}
-      columns={String(12 / columns)}
+      columns={String(12 / 1)}
+      columnClass={theme.gridColumnClass}
       className={className}
       limit={config.getIn(['meta', 'item_limit'])}
-      factory={(props) => productCardFactory({...props, columnClass, onProductClick, config })}
+      factory={(props) => productCardFactory({...props, columnClass, onProductClick, config, theme })}
       keyAccessor={getProductKey} />
+    <Button
+      display-if={suggestions && suggestions.size > 0}
+      className={theme.viewMoreButton}
+      onClick={suggestions && suggestions.size > 0 && getSuggestionProps(0).onClick}>
+      {config.getIn(['i18n', 'viewMore'])}
+    </Button>
   </div>
 );

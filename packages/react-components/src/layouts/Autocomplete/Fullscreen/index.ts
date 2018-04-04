@@ -6,7 +6,7 @@ import styles from './styles.css'
 import withAutocompleteLogic from '../withAutocompleteLogic';
 
 export default compose(
-  setDisplayName('Sidebar'),
+  setDisplayName('Fullscreen'),
   withTheme(styles),
   withAutocompleteLogic,
 )((props) => console.log('props', props) || React.createElement(view, props))

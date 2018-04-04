@@ -1,10 +1,11 @@
 import view from './view'
 import styles from './styles.css'
-import { compose } from 'recompose'
-import { connectQuery } from '@findify/react-connect';
+import { compose, setDisplayName } from 'recompose'
+import { connectSuggestions } from '@findify/react-connect';
 import withTheme from '../../../helpers/withTheme';
 
 export default compose(
+  setDisplayName('Tip'),
   withTheme(styles),
-  connectQuery,
+  connectSuggestions,
 )(view)

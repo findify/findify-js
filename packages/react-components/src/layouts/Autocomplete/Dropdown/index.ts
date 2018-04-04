@@ -1,11 +1,14 @@
-import { connectConfig } from '@findify/react-connect';
-import { compose, defaultProps, setDisplayName } from 'recompose';
+import { connectConfig, connectSuggestions } from '@findify/react-connect';
+import { compose, defaultProps, setDisplayName, lifecycle, withStateHandlers } from 'recompose'
+import withTheme from 'helpers/withTheme'
+import withAutocompleteLogic from '../withAutocompleteLogic'
 import view from './view'
 import styles from './styles.css'
-import withTheme from '../../../helpers/withTheme';
+
+
 
 export default compose(
-  connectConfig,
   setDisplayName('Dropdown'),
-  withTheme(styles)
+  withTheme(styles),
+  withAutocompleteLogic
 )(view);

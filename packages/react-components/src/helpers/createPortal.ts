@@ -32,4 +32,4 @@ class Portal extends Component<any>{
 }
 
 
-export const createPortal = (children) => createElement(Portal, { children });
+export const createPortal = (children, extraProps = {}) => createElement(Portal, { children, ...extraProps });

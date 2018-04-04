@@ -3,31 +3,29 @@
 exports[`Tip renders correctly 1`] = `
 <div
   className="tip test"
+  display-if={false}
+  onClick={[Function]}
 >
   Press Enter to search
    
+  <span
+    className="highlight"
+  />
 </div>
 `;
 
 exports[`Tip renders correctly 2`] = `
 <div
   className="tip test"
->
-  Press Enter to search
-   
-</div>
-`;
-
-exports[`Tip renders correctly 3`] = `
-<div
-  className="tip test"
+  display-if={true}
+  onClick={[Function]}
 >
   Press Enter to search
    
   <span
     className="highlight"
   >
-    qu
+    evangelion
   </span>
 </div>
 `;

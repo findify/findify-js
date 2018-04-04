@@ -55,14 +55,21 @@ export default process.env.NODE_ENV !== 'development'
                     "display": true,
                     "lines": 3
                 },
+                "price": {
+                  "display": true,
+                },
                 "i18n": {
                     "colorsAvailable": "Colours available"
+                },
+                "image": {
+                  "aspectRatio": 1.2
                 }
             },
             "i18n": {
-                "suggestionsTitle": "Search suggestions",
+                "suggestionsTitle": "Suggestions",
                 "productMatchesTitle": "Product matches",
-                "tipTitle": "Click here to search"
+                "tipTitle": "Click here to search",
+                "viewMore": "View more"
             }
         },
         "search": {
@@ -718,20 +725,6 @@ export default process.env.NODE_ENV !== 'development'
     "stickers": {
         "out-of-stock": {
             "template": "Temporarily out of stock"
-        },
-        "discount": {
-            "position": "top-right",
-            "template": {
-                "single": "%s% OFF",
-                "multiple": "Up to %s% off"
-            },
-            "styles": {
-                "background": "#c483b3",
-                "color": "#ffffff",
-                "fontFamily": "'Helvetica Neue', Helvetica, Arial, sans-serif;",
-                "fontSize": "14",
-                "fontWeight": "700"
-            }
         }
     },
     "frameDisabled": true,
