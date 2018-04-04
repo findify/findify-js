@@ -7,7 +7,9 @@ import Dropdown from './Dropdown';
 import Sidebar from './Sidebar';
 import Fullscreen from './Fullscreen';
 
-const Autocomplete = connectConfig(({ config }) => {
+const Autocomplete = connectConfig(({ config, ...rest }) => {
+  console.log(config.toJS())
+  console.log(rest)
   const isMobile = window.innerWidth < config.get('mobileBreakpoint')
   if (config.get('viewType') === 'simple') {
     return createElement(isMobile ? Sidebar : Dropdown, { isMobile });

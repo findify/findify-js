@@ -2,7 +2,7 @@ import { createElement } from 'react';
 import { SmartCollectionProvider } from "@findify/react-connect";
 import { getQuery, setQuery, collectionPath, listenHistory } from '../../core/location';
 import { Events } from '../../core/events';
-import emmiter from '../../core/emmiter';
+import emitter from '../../core/emitter';
 import { Items } from '../../test.components';
 import { hideFallback, showFallback } from '../../helpers/fallbackNode';
 import { Search, ZeroResults } from '@findify/react-components/src';
@@ -32,7 +32,7 @@ export default (widget, render) => {
       render('initial');
     } else {
       showFallback(node);
-      emmiter.emit(Events.detach, widget);
+      emitter.emit(Events.detach, widget);
     }
   }
 
@@ -44,7 +44,7 @@ export default (widget, render) => {
 
   /** Switch to recommendation if query not present */
   agent.on('change:items', handleFirstResponse);
-  
+
   /** Unsubscribe from events on instance destroy  */
   const unsubscribe = __root.listen((event, prop, ...args) => {
     if (event !== Events.detach || prop !== widget) return;

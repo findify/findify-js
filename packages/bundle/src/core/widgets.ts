@@ -3,7 +3,7 @@ import 'core-js/fn/array/includes';
 import * as Agents from '@findify/agent';
 import * as Cursor from 'immutable-cursor';
 import { fromJS, isImmutable, Map } from 'immutable';
-import emmiter from './emmiter';
+import emitter from './emitter';
 import { camelize } from '../helpers/capitalize';
 import { isCollection } from './location';
 import { Events } from './events';
@@ -37,11 +37,12 @@ const createConfig = (type, node, key, customs?) => {
   const cfg = customs || type === 'recommendation'
     && config.getIn(['features', 'recommendations', '#' + node.getAttribute('id')])
     || config.getIn(['features', type]);
-    
+
   return config.withMutations(c =>
       c.delete('features')
       .mergeDeep(cfg)
       .set('node', node)
+      .set('widgetKey', key)
       .set('cssSelector', `findify-${type} findify-widget-${key}`)
     );
 };
@@ -54,7 +55,7 @@ const getEntity = (selector, _type?, _config?) => getNodes(selector)
   const key = node.getAttribute(keySelector) || ++index;
 
   const config = createConfig(type, node, key, _config);
-  
+
   /** Change feature type to collection if we are on collection page */
   if (type === 'search' && isCollection(config.get('collections'))) {
     type = 'smart-collection';
@@ -66,7 +67,7 @@ const getEntity = (selector, _type?, _config?) => getNodes(selector)
   const widget = { type, key, node, agent, config };
 
   /** Notify everyone that widget was created */
-  emmiter.emit(Events.attach, widget);
+  emitter.emit(Events.attach, widget);
   return widget;
 })
 
@@ -81,7 +82,7 @@ const widgets = {
   /** Remove exist widget */
   detach(widget) {
     cache = cache.filter(widget => widget.key !== widget.key);
-    emmiter.emit(Events.detach, widget);
+    emitter.emit(Events.detach, widget);
   },
 
   /** Get all rendered widget */

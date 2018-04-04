@@ -4,6 +4,7 @@ import { findClosestElement } from '../../helpers/findClosestElement';
 import { isSearch, setQuery, buildQuery, redirectToSearch } from '../../core/location';
 import { Events } from '../../core/events';
 import { debounce } from 'lodash';
+import emitter from '../../core/emitter'
 
 const findClosestForm = findClosestElement('form');
 
@@ -52,7 +53,10 @@ export const registerHandlers = (widget, render) => {
   };
 
   /** Handle input blur */
-  const handleInputBlur = (e) => e.target === node && render();
+  const handleInputBlur = (e) => {
+    //emitter.emit(Events.autocompleteFocusLost, widget.key)
+    return e.target === node && render();
+  }
 
   /** search for the value */
   const search = (_value?) => {
@@ -78,9 +82,9 @@ export const registerHandlers = (widget, render) => {
 
   /** Listen for input blur */
   subscribers.push(addEventListeners(
-    ['blur'],
+    ['focusout'],
     handleInputBlur,
-    document
+    document.body
   ));
 
   /** Listen for form submit */
@@ -124,6 +128,9 @@ export const registerHandlers = (widget, render) => {
   const unsubscribe = __root.listen((event, prop, ...args) => {
     if (event === Events.search && prop === widget.key) {
       return search(...args);
+    }
+    if (event === Events.autocompleteFocusLost && prop === widget.key) {
+      render();
     }
     if (event !== Events.detach || prop !== widget) return;
     subscribers.forEach(fn => fn());

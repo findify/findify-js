@@ -44,13 +44,14 @@ export default class DrawerView extends React.Component {
   }
 
   render() {
-    const { modalName, theme, config, children, width, willEnter, willLeave } = this.props
+    const { modalName, theme, config, calculateWidth, children, width, willEnter, willLeave, ...rest } = this.props
     const transitionName = {
       enter: theme.exampleEnter,
       enterActive: theme.exampleEnterActive,
       leave: theme.exampleLeave,
       leaveActive: theme.exampleLeaveActive,
     }
+    const realWidth = calculateWidth()
     return (
       <React.Fragment>
         <CSSTransition
@@ -65,11 +66,12 @@ export default class DrawerView extends React.Component {
             exitActive: theme.drawerExitActive
           }}
           unmountOnExit
+          {...rest}
         >
           {state => (
             <React.Fragment>
               <div className={theme.backdrop} onClick={this.handleBackdropClick}></div>
-              <div className={theme.contentWrapper} style={{ width, left: leftProp(state, width) }}>
+              <div className={theme.contentWrapper} style={{ width: realWidth, left: leftProp(state, realWidth) }}>
                 <div className={theme.content}>
                   {children}
                 </div>

@@ -1,5 +1,5 @@
 import { Component, createElement } from 'react';
-import emmiter from '../core/emmiter';
+import emmiter from '../core/emitter';
 import { debounce } from 'lodash';
 import { Events } from '../core/events';
 
@@ -16,7 +16,7 @@ class FeatureCreator extends Component<any>{
     const { widget, updater, key } = props;
     this.initial = updater(widget, this.callback);
     this.state = { component: this.initial };
-    this.unsubscribeForceUpdate = emmiter.listen((type, key, nextConfig) => {      
+    this.unsubscribeForceUpdate = emmiter.listen((type, key, nextConfig) => {
       if (type !== Events.updateConfig || key !== widget.key) return;
       widget.config = nextConfig;
       this.initial = updater(widget, this.callback);

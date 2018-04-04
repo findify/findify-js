@@ -3,11 +3,11 @@ import 'raf/polyfill';
 
 // tslint:disable-next-line:import-name
 import Analytics from '@findify/analytics-dom';
-import emmiter from './core/emmiter';
+import emitter from './core/emitter';
 
-__root.listen = emmiter.listen;
-__root.emit = emmiter.emit;
-__root.addListeners = emmiter.addListeners;
+__root.listen = emitter.listen;
+__root.emit = emitter.emit;
+__root.addListeners = emitter.addListeners;
 
 export default async (
   _config

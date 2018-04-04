@@ -8,7 +8,6 @@ export default class Sidebar extends React.Component {
   constructor(props) {
     super(props)
     this.state = { isOpen: false }
-    this.input = React.createRef()
   }
 
   componentWillUnmount() {
@@ -17,29 +16,57 @@ export default class Sidebar extends React.Component {
 
   componentDidMount() {
     this.setState({ isOpen: true })
-    this.input.current && this.input.current.focus()
+
+    document.addEventListener('focusout', this.handleFocusOut, true)
+  }
+
+  handleFocusOut = (e) => {
+    e.stopImmediatePropagation()
+
+    if (e.relatedTarget === this.input) {
+      this.isFocused = false;
+      this.setState({ isOpen: false })
+      //__root.emit('autocompleteFocusLost', this.props.config.get('widgetKey'))
+      return;
+    }
   }
 
   handleCloseByUser = () => (
     this.setState({ isOpen: false })
+
   )
 
   handleInputChange = ({ target: { value }}) => {
     // update agent
-    console.log('rv', value)
     this.props.update('q', value)
+  }
+
+  componentDidUpdate() {
+    this.input && this.input.focus()
+  }
+
+  handleExited = () => {
+    __root.emit('autocompleteFocusLost', this.props.config.get('widgetKey'))
+  }
+
+  getInputRef = (el) => {
+    this.input = el
   }
 
   render() {
     const { theme, meta, isMobile, suggestions, config, ...rest } = this.props
     return (
-      <Drawer isOpen={this.state.isOpen} width={isMobile ? '90%' : 300} onCloseByUser={this.handleCloseByUser}>
+      <Drawer
+        isOpen={this.state.isOpen}
+        width={isMobile ? '90%' : 300}
+        onCloseByUser={this.handleCloseByUser}
+        onExited={this.handleExited}>
         <div className={theme.root}>
           <div className={theme.header}>
             <Icon className={theme.searchIcon} name={'Search'} width={24} height={24} />
           </div>
           <div className={theme.inputWrapper}>
-            <input ref={this.input} onChange={this.handleInputChange} placeholder={'What are you looking for?'} />
+            <input ref={this.getInputRef} onChange={this.handleInputChange} placeholder={'What are you looking for?'} />
           </div>
           <div className={theme.suggestionsContainer} display-if={suggestions && suggestions.size > 0}>
             <h4 className={theme.typeTitle}>{config.getIn(['i18n', 'suggestionsTitle'])}</h4>
