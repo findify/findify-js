@@ -32,7 +32,7 @@ export const registerHandlers = (widget, render) => {
     const _top = top + (window.scrollY || document.documentElement.scrollTop);
     const _left = left + (window.scrollX || document.documentElement.scrollLeft);
     if (top + height < 0 || left < 0) return;
-    
+
     return stylesUpdater(container, {
       width,
       height: 0,
@@ -48,7 +48,7 @@ export const registerHandlers = (widget, render) => {
     const value = e.target.value;
     agent.set('q', value);
     handleWindowScroll();
-    render('initial');
+    return render('initial');
   };
 
   /** Handle input blur */
@@ -60,7 +60,7 @@ export const registerHandlers = (widget, render) => {
     if (!isSearch()) return redirectToSearch(value);
     __root.widgets
       .findByType('search', 'smart-collection')
-      .forEach(({ agent }) => agent.reset().set('q', value)); 
+      .forEach(({ agent }) => agent.reset().set('q', value));
     node.value = value;
   };
 
@@ -68,7 +68,7 @@ export const registerHandlers = (widget, render) => {
     if (e) e.stopPropagation();
     search();
   }
-  
+
   /** Listen for input change */
   subscribers.push(addEventListeners(
     ['input', 'focus', 'cut', 'paste'],
@@ -130,5 +130,8 @@ export const registerHandlers = (widget, render) => {
     unsubscribe();
   })
 
-  return; 
+  window.requestAnimationFrame(() => {
+    render();
+  })
+  return;
 }
