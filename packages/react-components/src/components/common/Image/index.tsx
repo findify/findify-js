@@ -29,6 +29,22 @@ const prefetchImage = (src: string) =>
     img.src = src;
   });
 
+/** This is a list of props which Image component accepts */
+interface ImageProps {
+  /** Custom classname */
+  className?: string,
+  /** Source to original image */
+  src: string,
+  /** Source to thumbnail, which will be showed blurred during loading */
+  thumbnail?: string,
+  /** Width / height ratio, to which image will conform */
+  aspectRatio?: number,
+  /** @hidden */
+  size: { width: number },
+  /** @hidden */
+  isFixedRatio: boolean
+}
+
 export default compose(
   sizeMe({
     monitorWidth: true,
@@ -75,7 +91,7 @@ export default compose(
       }
     )
   })),
-)(({ src, aspectRatio, size: { width }, className, isFixedRatio, ...rest }) => (
+)(({ src, aspectRatio, size: { width }, className, isFixedRatio }: ImageProps) => (
   <div className={className} style={isFixedRatio ? {
     height: 1 / aspectRatio * width,
     backgroundImage: `url(${src})`,
