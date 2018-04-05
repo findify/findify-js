@@ -19,7 +19,7 @@
   height: auto;
   cursor: pointer;
   display: table;
-  & > p{
+  & > *{
     display: table-cell;
     width: 100%;
   }

@@ -97,9 +97,12 @@ const widgets = {
   }
 };
 
-export const createWidgets = (selectors = {}, _config) => {
+export const createWidgets = (_config) => {
   config = _config;
+  return widgets;
+}
 
+export const bulkAddWidgets = (selectors = {}) => {
   /** Attach default nodes */
   widgets.attach(`[${attrSelector}]`);
 
@@ -107,6 +110,4 @@ export const createWidgets = (selectors = {}, _config) => {
   for (const key in selectors) {
     widgets.attach(key, selectors[key]);
   }
-
-  return widgets;
 }

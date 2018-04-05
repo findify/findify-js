@@ -27,7 +27,7 @@ export default compose(
 
   withProps(({ current, pages, meta, config }: any) => {
     const step = config.getIn(['pagination', 'step']);
-    const total = Math.round(pages.size / meta.get('limit')) + 1;
+    const total =pages.size + 1;
     return {
       total,
       showFirst: current > step + 1,

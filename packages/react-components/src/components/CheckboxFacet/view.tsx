@@ -24,6 +24,7 @@ export default ({
       placeholder={config.getIn(['i18n', 'search'])}
       className={theme.input}
       onChange={onSearch} />
+    <Icon name='Search' className={theme.icon} />
   </div>
 
   <MapArray

@@ -2,7 +2,7 @@ import { createElement } from 'react';
 import cx from 'classnames';
 
 export default ({
-  component = 'p',
+  component = 'span',
   className,
   children,
   mode,

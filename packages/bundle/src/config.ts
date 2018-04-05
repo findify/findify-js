@@ -5,7 +5,7 @@ export default process.env.NODE_ENV !== 'development'
     "key": "4c220ec3-ef86-4c49-9d86-ce31f5e66fda",
 
     // Show/Hide "Powered by findify badge"
-    "poweredByFindify": false,
+    "poweredByFindify": true,
 
     // Specific platform code
     "platform": {
@@ -110,8 +110,8 @@ export default process.env.NODE_ENV !== 'development'
 
             // Search results setup
             "view": {
-                "pagination": false,
-                "infinite": true,
+                "pagination": true,
+                "infinite": false,
                 "stickyFilters": false
             },
 

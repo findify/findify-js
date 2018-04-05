@@ -22,7 +22,7 @@
   display: table;
   padding-left: 25px;
   position: relative;
-  & > p{
+  & > *{
     display: table-cell;
     width: 100%;
   }
@@ -39,6 +39,14 @@
   $padding-bottom: 11px;
   width: 100%;
   padding-bottom: $padding-bottom;
+  .icon{
+    position: absolute;
+    right: 11px;
+    top: 50%;
+    margin-top: -13px;
+    pointer-events: none;
+    color: $color-grey-2;
+  }
 }
 
 .input{
