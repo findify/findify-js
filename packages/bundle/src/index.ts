@@ -23,17 +23,17 @@ const deps: Promise<any>[] = [];
 /** Main initialization file */
 deps.push(import(/* webpackChunkName: "initializer" */ './initialize'));
 
-/** Split configuration to separated chunk */
-const lazyConfig = () => import(
-  /* webpackChunkName: "config" */
-  /* webpackMode: "weak" */
-  './config'
-);
-/** Configuration will be moved to separated file with real Merchant setup */
+/**
+ * Split configuration to separated chunk
+ * The real merchant configuration will be added there on Findify Compilation server
+ * So we will load it by load.js ~_~
+ */
+const loadConfig = () => import(/* webpackChunkName: "config" */ './config');
+
 if(process.env.NODE_ENV !== 'development') {
   deps.push(loadJs(__MERCHANT_CONFIG_URL__));
 } else {
-  deps.push(lazyConfig());
+  deps.push(loadConfig());
 }
 
 deps.push(import(/* webpackChunkName: "components" */ '@findify/react-components/src'));
@@ -48,6 +48,6 @@ if (process.env.NODE_ENV !== 'development') {
   loadCss(__MERCHANT_CSS__);
 }
 
-Promise.all(deps).then(([initialize]) => {
+Promise.all(deps).then(([initialize]) =>
   initialize.default({ key: __MERCHANT_API_KEY__ })
-});
+);
