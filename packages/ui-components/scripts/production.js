@@ -52,6 +52,7 @@ export default (env, { module, plugins, output, ...config }) => ({
           use: module.rules.customCSS.use[1],
         }),
       },
+
       {
         ...module.rules.ts,
         include: [
