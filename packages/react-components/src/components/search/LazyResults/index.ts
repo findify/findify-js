@@ -83,8 +83,8 @@ class LazyResults extends Component<any, any>{
   render () {
     const { config, theme, meta } = this.props;
     const { ranges, items, columns } = this.state;
-    const firstRange = ranges.last();
-    const lastRange = ranges.first();
+    const firstRange = ranges.first();
+    const lastRange = ranges.last();
     
     return createElement(view, {
       config,
