@@ -100,9 +100,11 @@ const defaultConfig = environment => ({
       },
 
       svg: {
-        test: /\.(svg)$/,
+        test: /\.svg$/,
+        include: [
+          path.resolve(process.cwd(), 'src'),
+        ],
         use: [
-          'react-svg-loader',
           {
             loader: 'babel-loader',
             options: {
@@ -114,7 +116,6 @@ const defaultConfig = environment => ({
                 "@babel/plugin-syntax-object-rest-spread"
               ],
               presets: [
-                "@babel/preset-react",
                 ["@babel/preset-env", {
                   "modules": false,
                   "targets": { "browsers": ["last 2 versions", "ie > 8"] },
@@ -122,6 +123,7 @@ const defaultConfig = environment => ({
               ]
             }
           },
+          'react-svg-loader'
         ],
       },
 
