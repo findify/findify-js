@@ -9,26 +9,18 @@ export default class Sidebar extends React.Component {
   componentWillUnmount() {
     document.querySelector('body')!.classList.remove(this.props.theme.bodyNoscroll)
     document.removeEventListener('keydown', this.handleEscapeKeypress)
-    document.removeEventListener('focusin', this.handleFocus)
-    document.removeEventListener('focusout', this.handleFocus)
+    document.removeEventListener('focusout', this.handleFocusOut)
   }
 
   componentDidMount() {
     document.querySelector('body')!.classList.add(this.props.theme.bodyNoscroll)
     document.addEventListener('keydown', this.handleEscapeKeypress)
-
-    document.addEventListener('focusin', this.handleFocusIn, true)
     document.addEventListener('focusout', this.handleFocusOut, true)
-  }
-
-  handleFocusIn = (e) => {
-    if (e.target === this.input) {
-      this.isFocused = true;
-    }
   }
 
   handleEscapeKeypress = (e) => {
     if (e.key === 'Escape') {
+      console.log(this.props.config.toJS())
       __root.emit('autocompleteFocusLost', this.props.config.get('widgetKey'))
     }
   }
@@ -36,15 +28,9 @@ export default class Sidebar extends React.Component {
   handleFocusOut = (e) => {
     e.stopImmediatePropagation()
     if (e.relatedTarget === this.input) {
-      this.isFocused = false;
       __root.emit('autocompleteFocusLost', this.props.config.get('widgetKey'))
       return;
     }
-  }
-
-  componentWillUnmount() {
-    document.removeEventListener('focusout', this.handleFocusOut)
-    document.removeEventListener('focusin', this.handleFocusIn)
   }
 
   componentDidUpdate() {
@@ -56,14 +42,11 @@ export default class Sidebar extends React.Component {
     this.props.update('q', value)
   }
 
-  handleFocus = (e) => {
-    e.stopPropagation();
-    this.isFocused = true;
-  }
-
   handleBlur = (e) => {
     e.stopPropagation();
-    this.isFocused = false;
+    console.log('hiding autocomplete')
+    __root.emit('autocompleteFocusLost', this.props.config.get('widgetKey'))
+
   }
 
   getInputRef = (el) => {
@@ -83,7 +66,6 @@ export default class Sidebar extends React.Component {
             ref={this.getInputRef}
             onChange={this.handleInputChange}
             placeholder='What are you looking for?'
-            onFocus={this.handleFocus}
             onBlur={this.handleBlur} />
         </div>
         <div className={theme.suggestionsWrapper} display-if={suggestions && suggestions.size > 0}>
