@@ -102,11 +102,25 @@ const defaultConfig = environment => ({
       svg: {
         test: /\.(svg)$/,
         use: [
+          'react-svg-loader',
           {
-            loader: 'svg-sprite-loader',
+            loader: 'babel-loader',
             options: {
-              symbolId: 'icon-[name]',
-            },
+              babelrc: false,
+              plugins: [
+                "@babel/plugin-proposal-object-rest-spread",
+                "@babel/plugin-proposal-class-properties",
+                "@babel/plugin-transform-react-constant-elements",
+                "@babel/plugin-syntax-object-rest-spread"
+              ],
+              presets: [
+                "@babel/preset-react",
+                ["@babel/preset-env", {
+                  "modules": false,
+                  "targets": { "browsers": ["last 2 versions", "ie > 8"] },
+                }]
+              ]
+            }
           },
         ],
       },

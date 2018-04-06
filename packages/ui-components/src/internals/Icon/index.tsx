@@ -24,7 +24,7 @@ export interface MappedProps {
 export type Props = OwnProps & MappedProps;
 
 const getIcon = (name: string) =>
-  require(`!!babel-loader!react-svg-loader!./icons/${name}.svg`).default;
+  require(`./icons/${name}.svg`).default;
 
 export default compose<Props, OwnProps>(
   setDisplayName('Icon'),
