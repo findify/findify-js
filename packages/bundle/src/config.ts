@@ -110,8 +110,8 @@ export default process.env.NODE_ENV !== 'development'
 
             // Search results setup
             "view": {
-                "pagination": true,
-                "infinite": false,
+                "pagination": false,
+                "infinite": true,
                 "stickyFilters": false
             },
 

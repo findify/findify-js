@@ -6,7 +6,7 @@ import Button from 'components/Button';
 import Text from 'components/Text';
 
 export default ({
-  chunks,
+  items,
   config,
   theme,
   columns,
@@ -27,7 +27,7 @@ export default ({
       MapArray({
         ...rest,
         config,
-        array: chunks.flatMap(i => i.get('items')),
+        array: items,
         factory: ProductCard
       })
     }

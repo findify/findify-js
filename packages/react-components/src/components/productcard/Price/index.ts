@@ -8,7 +8,7 @@ export default compose(
   setDisplayName('Price'),
   withTheme(theme),
   withProps(({ discount, oldPrice, price }) => ({
-    hasDiscount: (!oldPrice || oldPrice < 0) && (discount.size > 0) && priceIsSampleArray(price),
+    hasDiscount: (!oldPrice || oldPrice < 0) && (discount && discount.size > 0) && priceIsSampleArray(price),
     hasCompare: oldPrice && oldPrice > 0
   }))
 )(view)
