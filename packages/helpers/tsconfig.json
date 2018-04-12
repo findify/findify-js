@@ -17,7 +17,8 @@
     "pretty": true,
     "baseUrl": "src",
     "rootDirs": ["src"],
-    "allowJs": false
+    "allowJs": false,
+    "types" : ["node", "lodash", "webpack", "jest"]
   },
   "compileOnSave": false,
   "buildOnSave": false,

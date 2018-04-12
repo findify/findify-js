@@ -26,7 +26,7 @@ export default (env, { module, plugins, output, ...config }) => {
     output: {
       ...output,
       library: 'findifyMJS',
-      libraryTarget: 'umd',
+      libraryTarget: 'window',
       umdNamedDefine: true,
       publicPath: env.publicPath || '/'
     },
