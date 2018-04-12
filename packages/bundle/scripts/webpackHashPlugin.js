@@ -1,9 +1,9 @@
-const createHash = require('webpack/lib/util/createHash');
-
 const getPath = (base, path) => {
-  const index = path.indexOf(base);
-  if (!~index) return;
-  return path.substring(index + base.length);
+  const index = path.lastIndexOf(base);
+	if (!~index) return;
+	const raw = path.substr(index + base.length);
+	const stripExt = raw.substr(0, raw.lastIndexOf('.')) || raw;
+	return stripExt.substr(0, stripExt.lastIndexOf('/index')) || stripExt;
 }
 
 class HashedPlugin {
@@ -11,7 +11,7 @@ class HashedPlugin {
 		this.options = Object.assign(
 			{
 				context: null,
-				hashFunction: "md4",
+				hashFunction: "md5",
 				hashDigest: "base64",
 				hashDigestLength: 4
 			},
@@ -30,14 +30,18 @@ class HashedPlugin {
 						if (module.id === null && module.libIdent) {
 							const id = module.libIdent({
 								context: this.options.context || compiler.options.context
-              });
+							});
+							
               const _path = getPath('react-components/src/', id) ||
                             getPath('node_modules/', id) ||
-                            id;
-              const _hash = createHash('md4')
-                .update(_path)
-                .digest(options.hashDigest)
-                .substr(0, options.hashDigestLength);
+														id;
+
+							const _hash = require("crypto")
+								.createHash('md5')
+								.update(_path)
+								.digest('base64')
+								.substr(0, 4);
+
               module.id = _hash;
 						}
 					}

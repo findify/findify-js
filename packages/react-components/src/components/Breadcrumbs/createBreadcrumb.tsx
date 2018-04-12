@@ -18,7 +18,7 @@ const Item = compose(
   pure,
 )(({ theme, item, config, Content }: any) =>
   <Button className={theme.breadcrumb} onClick={item.toggle}>
-    <Text secondary uppercase component='span' >
+    <Text secondary uppercase className={theme.title}>
       <Content item={item} theme={theme} config={config} />
     </Text>
     <Icon className={theme.cross} name='XDark' />

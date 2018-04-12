@@ -6,7 +6,7 @@
   display: table;
 
   text-align: center;
-  p {
+  span {
     color: $color-white !important;
     display: table-cell;
     vertical-align: middle;

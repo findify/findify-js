@@ -18,7 +18,7 @@ $height: 30px;
   height: auto;
   cursor: pointer;
   display: table;
-  & > *{
+  & > span{
     display: table-cell;
     width: 100%;
   }
