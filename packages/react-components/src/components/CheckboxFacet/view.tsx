@@ -12,18 +12,19 @@ export default ({
   theme,
   items,
   config,
-
+  search,
   isExpanded,
   onSearch,
   onToggle
-}) => 
+}) =>
 <div className={theme.root}>
 
   <div className={theme.search} display-if={isExpanded}>
     <input
       placeholder={config.getIn(['i18n', 'search'])}
       className={theme.input}
-      onChange={onSearch} />
+      onChange={onSearch}
+      value={search}/>
     <Icon name='Search' className={theme.icon} />
   </div>
 
@@ -35,7 +36,7 @@ export default ({
 
   <VirtualizedList
     display-if={isExpanded}
-    factory={Item}
+    factory={(props) => Item({ ...props, onItemClick: () => onSearch('') })}
     theme={theme}
     className={theme.expandedList}
     height={config.get('expandedHeight')}

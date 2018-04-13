@@ -6,7 +6,7 @@ $height: 30px;
 }
 .item{
   $font-size: $font-size-medium;
-  $padding: 7px 0;
+  $padding: 5px 0;
   width: 100%;
   border: 0;
   background: transparent;
@@ -90,6 +90,10 @@ $height: 30px;
   cursor: pointer;
   &:hover{
     text-decoration: underline;
+  }
+
+  span {
+    font-size: $font-size-large;
   }
 }
 

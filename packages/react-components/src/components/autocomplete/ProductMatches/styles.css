@@ -1,8 +1,9 @@
 .root {
-  width: 355px;
+  //width: 355px;
 }
 
 .product-card {
+  padding-bottom: 16px;
   .imageWrap {
     display: table-cell;
     width: 40%;
@@ -14,7 +15,7 @@
     padding-left: 10px;
     display: table-cell;
     vertical-align: top;
-    p, .price-wrapper {
+    p, .price-wrapper, span {
       text-align: left;
     }
     .price-wrapper {
@@ -31,11 +32,12 @@
     height: 1px;
     background: $color-grey-2;
     margin-left: 10%;
+    margin-bottom: 16px;
   }
 }
 
 .view-more-button {
-  margin: 20px auto 20px auto;
+  margin: 0 auto 0 auto;
   display: block;
   padding: 0 85px;
   height: 40px;

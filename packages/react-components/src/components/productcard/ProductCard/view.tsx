@@ -55,11 +55,13 @@ export default ({
           alt={item.get('title')}
         />
       )}
+    <React.Fragment display-if={config.getIn(['product', 'stickers', 'display'])}>
       <DiscountSticker
         display-if={(item.get('discount') && typeof item.get('discount').size !== 'undefined') ? item.get('discount').size > 0 : item.get('discount')}
         config={config}
         className={theme.discountSticker}
         discount={item.get('discount')} />
+    </React.Fragment>
     </div>
     <div display-if={config.getIn(['product', 'reviews', 'display'])} className={styles.rating}>
       <Rating value={item.getIn(['reviews', 'average_score'])} count={item.getIn(['reviews', 'count'])} />
@@ -74,7 +76,7 @@ export default ({
         text={item.get('description')}
         config={config.getIn(['product', 'description'])} />
       <Price
-        theme={theme}
+        className={theme.priceWrapper}
         display-if={config.getIn(['product', 'price', 'display'])}
         price={item.get('price')}
         oldPrice={item.get('compare_at')}

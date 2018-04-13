@@ -94,13 +94,16 @@ export default process.env.NODE_ENV !== 'development'
                 "image": {
                     // Image aspect ratio
                     "aspectRatio": 1.2
+                },
+                "stickers": {
+                  "display": false,
                 }
             },
             "i18n": {
                 "suggestionsTitle": "Suggestions",
                 "productMatchesTitle": "Product matches",
                 "tipTitle": "Click here to search",
-                "viewMore": "View more"
+                "viewMore": "View all"
             }
         },
 
@@ -140,6 +143,9 @@ export default process.env.NODE_ENV !== 'development'
                 },
                 "image": {
                   "aspectRatio": .75
+                },
+                "stickers": {
+                  "display": true,
                 }
             },
             "sorting": {
@@ -189,6 +195,7 @@ export default process.env.NODE_ENV !== 'development'
 
             "breadcrumbs": {
                 "i18n": {
+                    "showingEmpty": "Showing %s results",
                     "showing": "Showing %s results for",
                     "noQuery": "Showing all products. Use filters to refine your search.",
                     "partialMatch": "Showing results that partially match instead.",
@@ -198,7 +205,7 @@ export default process.env.NODE_ENV !== 'development'
 
             // Facets setup
             "facets": {
-
+                "initiallyExpanded": true,
                 // Map Facet name to facet type
                 "types": {
                     "price": "price",
@@ -303,7 +310,7 @@ export default process.env.NODE_ENV !== 'development'
                 },
                 "category": {
                     // Should be expanded by default or not
-                    "initiallyExpanded": false,
+                    "initiallyExpanded": true,
                     "i18n": {
                         "goBackTitle": "All Categories",
                         "more": "More",
@@ -313,7 +320,7 @@ export default process.env.NODE_ENV !== 'development'
                 "text": {
                     // How many item to show when collapsed
                     "maxItemsCount": 6,
-                    "initiallyExpanded": false,
+                    "initiallyExpanded": true,
                     "i18n": {
                         "more": "More",
                         "less": "Less",

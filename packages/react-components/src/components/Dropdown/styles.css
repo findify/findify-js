@@ -27,14 +27,15 @@ $padding: 0 11px;
 .dropdown{
   $background: $color-white;
   position: absolute;
-  top: 100%;
+  top: calc(100% - 1px);
   left: 0;
   width: 100%;
   background: $background;
-  z-index: 1;
-  border: 1px solid $color-grey-3;
+  z-index: 9999;
+  border: 1px solid $color-grey-2;
   margin-top: 1px;
   box-sizing: border-box;
+  box-shadow: 0 5px 10px -4px rgba(0,0,0,0.07);
 }
 
 .option{

@@ -8,8 +8,8 @@ import {
   withProps,
   withPropsOnChange,
 } from 'recompose';
-import view from './view';
 import styles from './styles.css'
+import view from './view';
 import withTheme from 'helpers/withTheme';
 
 const ProductCard: any = compose(

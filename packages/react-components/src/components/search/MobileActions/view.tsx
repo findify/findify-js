@@ -9,7 +9,7 @@ export default ({ showFacets, showSort, theme, config, sorting }) =>
 
   <Button onClick={showSort} className={theme.button}>
     <Text primary uppercase>
-      <Icon name='Sorting' />
+      <Icon name='Sorting' className={theme.icon} />
       { sorting }
     </Text>
   </Button>

@@ -54,7 +54,7 @@ const createComponent = ({
       (createHandler, handlerName) => (...args) => {
         const cachedHandler = this.cachedHandlers[handlerName];
         if (cachedHandler) return cachedHandler(...args);
-        
+
         const handler = createHandler({
           update: this.changeAction,
           analytics: this.context[$analytics],
@@ -90,7 +90,7 @@ const createComponent = ({
     shouldComponentUpdate(nextProps, nextState) {
       return (
         (!this.state[field] || !this.state[field].equals(nextState[field]))
-        || shallowEqual(nextProps, this.props)
+        || !shallowEqual(nextProps, this.props)
       );
     }
 

@@ -14,29 +14,31 @@ exports[`ProductCard view renders correctly 1`] = `
       src="https://lorempicsum.net/100/100"
       thumbnail="https://lorempicsum.net/50/50"
     />
-    <Component
-      className="discountSticker"
-      config={
-        Immutable.Map {
-          "productcard": Immutable.Map {
-            "title": Immutable.Map {
-              "display": true,
-              "lines": 1,
+    <React.Fragment>
+      <Component
+        className="discountSticker"
+        config={
+          Immutable.Map {
+            "productcard": Immutable.Map {
+              "title": Immutable.Map {
+                "display": true,
+                "lines": 1,
+              },
+              "description": Immutable.Map {
+                "display": true,
+                "lines": 2,
+              },
+              "price": Immutable.Map {
+                "display": true,
+              },
             },
-            "description": Immutable.Map {
-              "display": true,
-              "lines": 2,
+            "currency": Immutable.Map {
+              "code": "GBP",
             },
-            "price": Immutable.Map {
-              "display": true,
-            },
-          },
-          "currency": Immutable.Map {
-            "code": "GBP",
-          },
+          }
         }
-      }
-    />
+      />
+    </React.Fragment>
   </div>
   <div
     className="rating"
@@ -53,13 +55,13 @@ exports[`ProductCard view renders correctly 1`] = `
       text="A description for item"
     />
     <Price
+      className="priceWrapper"
       currency={
         Object {
           "code": "GBP",
         }
       }
       price="9.99"
-      theme={null}
     />
   </div>
 </a>

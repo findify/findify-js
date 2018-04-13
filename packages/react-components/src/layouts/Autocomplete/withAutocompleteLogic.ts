@@ -7,12 +7,18 @@ export default compose(
   connectSuggestions,
   connectConfig,
   withStateHandlers({ selectedSuggestion: -1, }, {
-    changeSuggestionIndex: ({ selectedSuggestion }, { config, suggestions }) => (evt) => {
+    changeSuggestionIndex: ({ selectedSuggestion }, { config, suggestions, getSuggestionProps }) => (evt) => {
       const arrowCodes = ['ArrowUp', 'ArrowDown']
+      if (evt.key === 'Enter' && selectedSuggestion !== -1) {
+        evt.preventDefault()
+        getSuggestionProps(selectedSuggestion, config.get('widgetKey')).onClick()
+        return;
+      }
       if (!arrowCodes.includes(evt.key)) return
       evt.preventDefault()
       const newSuggestionIndex = selectedSuggestion + (evt.key === 'ArrowUp' ? -1 : 1)
       const totalSuggestions = suggestions && suggestions.size || 0
+
 
       if (newSuggestionIndex < 0) return { selectedSuggestion: totalSuggestions - 1 }
       if (totalSuggestions - 1 < newSuggestionIndex) return  { selectedSuggestion: 0 }

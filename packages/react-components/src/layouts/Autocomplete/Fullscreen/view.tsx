@@ -20,7 +20,6 @@ export default class Sidebar extends React.Component {
 
   handleEscapeKeypress = (e) => {
     if (e.key === 'Escape') {
-      console.log(this.props.config.toJS())
       __root.emit('autocompleteFocusLost', this.props.config.get('widgetKey'))
     }
   }
@@ -28,7 +27,10 @@ export default class Sidebar extends React.Component {
   handleFocusOut = (e) => {
     e.stopImmediatePropagation()
     if (e.relatedTarget === this.input) {
-      __root.emit('autocompleteFocusLost', this.props.config.get('widgetKey'))
+      // FIXME: this is a very dirty hack, so we need to figure out something
+      setTimeout(() => {
+        __root.emit('autocompleteFocusLost', this.props.config.get('widgetKey'))
+      }, 300)
       return;
     }
   }
@@ -40,13 +42,6 @@ export default class Sidebar extends React.Component {
   handleInputChange = ({ target: { value }}) => {
     // update agent
     this.props.update('q', value)
-  }
-
-  handleBlur = (e) => {
-    e.stopPropagation();
-    console.log('hiding autocomplete')
-    __root.emit('autocompleteFocusLost', this.props.config.get('widgetKey'))
-
   }
 
   getInputRef = (el) => {
@@ -65,13 +60,12 @@ export default class Sidebar extends React.Component {
           <input
             ref={this.getInputRef}
             onChange={this.handleInputChange}
-            placeholder='What are you looking for?'
-            onBlur={this.handleBlur} />
+            placeholder='What are you looking for?' />
         </div>
         <div className={theme.suggestionsWrapper} display-if={suggestions && suggestions.size > 0}>
-          <div className={theme.suggestionsContainer}>
+          <div className={theme.suggestionsContainer} ref={(el) => {this.suggestionsContainer = el}}>
             <h4 className={theme.typeTitle}>{config.getIn(['i18n', 'suggestionsTitle'])}</h4>
-            <SearchSuggestions className={theme.searchSuggestions} {...rest} />
+            <SearchSuggestions className={theme.searchSuggestions} widgetKey={config.get('widgetKey')} {...rest} />
           </div>
         </div>
       </div>
