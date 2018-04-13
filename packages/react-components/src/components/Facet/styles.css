@@ -6,10 +6,21 @@
 }
 
 .title{
-  padding: 0 20px 0 0;
+  width: 100%;
+  text-align: left;
+  display: table;
+}
+
+.text {
+  display: inline-block;
+  width: calc(100% - 15px);
+}
+
+.icon {
+  vertical-align: middle;
 }
 
 .body{
-  $padding: 25px 0 0 0;
+  $padding: 14px 0 0 0;
   padding: $padding;
 }

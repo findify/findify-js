@@ -5,8 +5,8 @@ import Text from 'components/Text';
 
 const getContent = ({ query, config, meta }: any) => {
   if (!query.get('q') && !query.get('filters')) return config.getIn(['breadcrumbs', 'i18n', 'noQuery']);
-  
-  const total = template(config.getIn(['breadcrumbs', 'i18n', 'showing']))(meta.get('total'));
+  if (query.get('filters') && (!query.get('q') || query.get('q') === '')) return template(config.getIn(['breadcrumbs', 'i18n', 'showingEmpty']))(meta.get('total'));
+  const total = template(config.getIn(['breadcrumbs', 'i18n', !query.get('q') || query.get('q') === '' ? 'showingEmpty' : 'showing']))(meta.get('total'));
   if (query.get('corrected_q')) {
     return <>{total}{ escape(query.get('q')) }{ config.getIn(['i18n', 'partialMatch']) }</>;
   }

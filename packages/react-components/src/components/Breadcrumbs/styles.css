@@ -14,10 +14,10 @@
   cursor: pointer;
   text-transform: uppercase;
   font-weight: bold;
-  color: $color-grey-2;
+  color: $color-grey-3;
   &:before{
     content: '/';
-    color: $color-grey-2;
+    color: $color-grey-3;
     display: inline-block;
     padding-right: 12px;
     font-size: 16px;
@@ -25,10 +25,19 @@
     font-weight: normal;
     font-family: $font-base;
   }
+  .title {
+    color: $color-grey-3;
+  }
   &:hover{
     text-decoration: line-through;
     text-decoration-color: $color-black;
     color: $color-black;
+    .title {
+      color: $color-black;
+    }
+    &:before {
+      color: $color-black;
+    }
   }
   &:first-child:before{
     color: $color-black;

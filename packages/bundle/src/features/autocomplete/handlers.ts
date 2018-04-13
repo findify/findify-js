@@ -23,6 +23,7 @@ export const registerHandlers = (widget, render) => {
   const { node, config, agent } = widget;
   const subscribers: any = [];
   let container: any;
+  if (node.getAttribute('autocomplete') !== 'off') node.setAttribute('autocomplete', 'off')
 
   /** Track input position and update container styles */
   const handleWindowScroll = debounce(() => {
@@ -126,6 +127,7 @@ export const registerHandlers = (widget, render) => {
   /** Unsubscribe from events on instance destroy  */
   const unsubscribe = __root.listen((event, prop, ...args) => {
     if (event === Events.search && prop === widget.key) {
+      console.log('src', ...args)
       return search(...args);
     }
     if (event === Events.autocompleteFocusLost && prop === widget.key) {

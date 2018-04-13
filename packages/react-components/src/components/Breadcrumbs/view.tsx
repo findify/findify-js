@@ -15,12 +15,11 @@ const Breadcrumb = createBreadcrumb({
   price: RangeContent,
 });
 
-export default ({ filters, theme, config }) =>
-<div className={theme.root}>
+export default ({ filters, theme, config }) => (
   <MapArray
     theme={theme}
     config={config}
     array={filters}
     factory={Breadcrumb}
     />
-</div>
+)

@@ -1,10 +1,11 @@
 .root{
-  display: table;
+  display: inline-table;
 }
 
 .icon{
   display: table-cell;
   min-width: 17px;
+  transform: scaleY(-1);
 }
 
 .root .title{
@@ -22,10 +23,11 @@
 
 @supports(display: flex){
   .root{
-    display: flex;
+    display: inline-flex;
     align-items: center;
   }
   .icon, .title, .dropdown{
     display: block
   }
 }
+

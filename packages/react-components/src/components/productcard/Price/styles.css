@@ -18,7 +18,7 @@
 .compare {
   text-decoration: line-through;
   color: $color-grey-4;
-  font-size: $font-size-small;
+  font-size: $font-size-medium;
 }
 
 

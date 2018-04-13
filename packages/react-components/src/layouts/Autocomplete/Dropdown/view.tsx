@@ -13,7 +13,7 @@ const LayoutColumns = {
   SearchSuggestions: ({ config, theme, ...rest }) => (
     <div className={theme.suggestionsContainer}>
       <h4 className={theme.typeTitle}>{config.getIn(['i18n', 'suggestionsTitle'])}</h4>
-      <SearchSuggestions className={theme.searchSuggestions} {...rest} />
+      <SearchSuggestions className={theme.searchSuggestions} widgetKey={config.get('widgetKey')} {...rest} />
     </div>
   ),
   ProductMatches: ({ config, theme, showModal, ...rest}) => (
@@ -38,7 +38,7 @@ const SearchOrZero = connectSuggestions(({ suggestions, config, theme, meta, sel
     left={() => (
       <MapArray
         array={config.get('viewOrder')}
-        keyAccessor={item => item}
+        keyAccessor={item => (item + selectedSuggestion)}
         factory={({ item }) => React.createElement(LayoutColumns[item], { config, theme, meta, selectedSuggestion, ...rest })} />
     )}
     right={() => (
@@ -49,7 +49,7 @@ const SearchOrZero = connectSuggestions(({ suggestions, config, theme, meta, sel
     )} />
 ))
 
-export default ({ config, theme, meta, selectedSuggestion, ...rest }) => ( console.log('meta', meta) ||
+export default ({ config, theme, meta, selectedSuggestion, ...rest }) => ( console.log('meta', selectedSuggestion) ||
   <div className={theme.root}>
     <Tip className={theme.tip} title={config.getIn(['i18n', 'tipTitle'])} />
     <div className={theme.container}>

@@ -1,3 +1,4 @@
+import React from 'react';
 import { compose, setDisplayName, withStateHandlers, withProps } from 'recompose';
 import withTheme from 'helpers/withTheme';
 
@@ -10,9 +11,9 @@ export default compose(
   withTheme(styles),
 
   withStateHandlers(
-    ({ isExpanded }) => ({ isExpanded, search: false }),
+    ({ isExpanded }) => ({ isExpanded, search: '' }),
     {
-      onSearch: (s) => e => ({ ...s, search: e.target.value }),
+      onSearch: (s) => (e: React.FormEvent<HTMLInputElement> | string) => ({ ...s, search: e.target ? e.target.value : e }),
       onToggle: (s) => () => ({ ...s, isExpanded: !s.isExpanded })
     }
   ),

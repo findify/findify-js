@@ -70,7 +70,7 @@ export default class Sidebar extends React.Component {
           </div>
           <div className={theme.suggestionsContainer} display-if={suggestions && suggestions.size > 0}>
             <h4 className={theme.typeTitle}>{config.getIn(['i18n', 'suggestionsTitle'])}</h4>
-            <SearchSuggestions className={theme.searchSuggestions} {...rest} />
+            <SearchSuggestions className={theme.searchSuggestions} widgetKey={config.get('widgetKey')} {...rest} />
           </div>
         </div>
       </Drawer>

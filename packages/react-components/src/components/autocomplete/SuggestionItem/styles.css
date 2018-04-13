@@ -12,6 +12,9 @@
     content: ' ';
     display: table;
   }
+  &:hover {
+    background: $color-grey-1;
+  }
 
 }
 
