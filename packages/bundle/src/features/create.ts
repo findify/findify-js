@@ -14,12 +14,20 @@ class FeatureCreator extends Component<any>{
   constructor(props) {
     super(props);
     const { widget, updater, key } = props;
-    this.initial = updater(widget, this.callback);
+    this.initial = updater()(widget, this.callback);
     this.state = { component: this.initial };
     this.unsubscribeForceUpdate = emitter.listen((type, key, nextConfig) => {
+
+      // Listen to modules invalidation
+      if (type === Events.invalidate) {
+        this.initial = updater()(widget, this.callback);
+        return this.setState({ component: this.initial });
+      }
+      
+      // Listen to config change
       if (type !== Events.updateConfig || key !== widget.key) return;
       widget.config = nextConfig;
-      this.initial = updater(widget, this.callback);
+      this.initial = updater()(widget, this.callback);
       this.setState({ component: this.initial });
     });
   }
@@ -48,5 +56,5 @@ class FeatureCreator extends Component<any>{
 export const createFeature = (widget) =>
   createElement(FeatureCreator, {
     widget,
-    updater: require(`./${widget.type}`).default
+    updater: () => require(`./${widget.type}`).default
   });

@@ -5,6 +5,7 @@ declare module __root {
   let config: any; // Merchant configuration (Immutable)
   let analytics: any; // Analytics instance
   let widgets: any; // Widgets manager (list, attach, detach, find)
+  let invalidate: (id:string) => void; // Will invalidate module
 }
 
 declare module __webpack_require__ {

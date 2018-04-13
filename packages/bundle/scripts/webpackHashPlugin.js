@@ -31,7 +31,7 @@ class HashedPlugin {
 							const id = module.libIdent({
 								context: this.options.context || compiler.options.context
 							});
-							
+							if (id.includes('css')) return;
               const _path = getPath('react-components/src/', id) ||
                             getPath('node_modules/', id) ||
 														id;

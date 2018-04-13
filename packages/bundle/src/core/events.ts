@@ -34,6 +34,11 @@ export enum Events {
   autocompleteFocusLost = 'autocompleteFocusLost',
 
   /**
+   * Invalidate widgets
+   */
+  invalidate = 'invalidate',
+
+  /**
    * Mobile elements
    */
   showMobileFacets = 'showMobileFacets',
