@@ -1,7 +1,7 @@
 {
   "name": "@findify/bundle",
   "description": "Findify Out Of Box solution",
-  "version": "6.0.1",
+  "version": "6.0.2",
   "main": "lib/index.js",
   "tags": [
     "findify",
@@ -9,7 +9,7 @@
     "search"
   ],
   "files": [
-    "dist", "lib"
+    "dist/"
   ],
   "scripts": {
     "build": "run-p build:dist",
