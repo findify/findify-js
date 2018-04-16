@@ -15,7 +15,7 @@ import {
   setDisplayName
 } from 'recompose';
 
-import styles from './styles.css'
+import styles from 'components/common/Image/styles.css';
 
 const prefetchedImages = {}
 

@@ -4,8 +4,8 @@ import withTheme from 'helpers/withTheme';
 import template from 'helpers/template';
 import escape from 'lodash/escape';
 
-import view from './view';
-import styles from "./styles.css";
+import view from 'layouts/ZeroResults/view';
+import styles from 'layouts/ZeroResults/styles.css';
 
 export default compose(
   setDisplayName('ZeroResults'),

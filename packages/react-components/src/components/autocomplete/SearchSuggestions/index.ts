@@ -1,8 +1,8 @@
 import { compose, setDisplayName } from 'recompose'
 import { connectSuggestions, connectQuery } from '@findify/react-connect';
 import withTheme from 'helpers/withTheme';
-import view from './view'
-import styles from './styles.css'
+import view from 'components/autocomplete/SearchSuggestions/view';
+import styles from 'components/autocomplete/SearchSuggestions/styles.css';
 
 
 export default compose(

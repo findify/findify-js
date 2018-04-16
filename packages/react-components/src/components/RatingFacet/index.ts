@@ -2,8 +2,8 @@ import { compose, withStateHandlers, withProps, setDisplayName } from 'recompose
 import withTheme from 'helpers/withTheme';
 import template from 'helpers/template';
 
-import view from './view';
-import styles from './styles.css';
+import view from 'components/RatingFacet/view';
+import styles from 'components/RatingFacet/styles.css';
 
 const createKey = (...args) => args.join('_')
 export default compose(

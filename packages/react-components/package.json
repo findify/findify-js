@@ -10,6 +10,7 @@
     "downshift": "^1.31.2",
     "humps": "^2.0.1",
     "immutable": "^4.0.0-rc.9",
+    "jscodeshift": "^0.5.0",
     "match-media": "^0.2.0",
     "prop-types": "^15.6.1",
     "qs": "^6.5.1",

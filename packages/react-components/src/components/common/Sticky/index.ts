@@ -1,8 +1,8 @@
 import { Component, createFactory } from 'react';
 import withTheme from 'helpers/withTheme';
 
-import view from './view';
-import styles from "./styles.css";
+import view from 'components/common/Sticky/view';
+import styles from 'components/common/Sticky/styles.css';
 
 const factory: any = createFactory(view);
 const [ initial, stuck, sticky ] = ['static', 'stuck', 'sticky'];

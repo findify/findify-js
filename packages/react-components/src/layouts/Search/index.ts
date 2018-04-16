@@ -8,8 +8,8 @@ import { withDrawer } from "helpers/withDrawer";
 import MobileFacets from 'components/search/MobileFacets';
 import MobileSorting from 'components/search/MobileSorting';
 
-import view from './view';
-import styles from './styles.css';
+import view from 'layouts/Search/view';
+import styles from 'layouts/Search/styles.css';
 
 const Search = compose(
   setDisplayName('Search'),

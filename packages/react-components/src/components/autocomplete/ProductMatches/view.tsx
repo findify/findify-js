@@ -1,10 +1,10 @@
 import React from 'react'
 import ProductCard from 'components/productcard/ProductCard'
-import Grid from '../../common/Grid'
-import MapArray from '../../common/MapArray';
-import ItemsList from '../../ItemsList'
+import Grid from 'components/common/Grid';
+import MapArray from 'components/common/MapArray';
+import ItemsList from 'components/ItemsList';
 import Button from 'components/Button'
-import styles from './styles.css'
+import styles from 'components/autocomplete/ProductMatches/styles.css';
 
 // TODO: use MapArray for it?
 

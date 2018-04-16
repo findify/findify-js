@@ -2,9 +2,9 @@ import { compose, setDisplayName } from 'recompose';
 import { connectConfig } from '@findify/react-connect';
 import withTheme from 'helpers/withTheme';
 
-import view from './view';
+import view from 'components/PoweredBy/view';
 
-import styles from './styles.css';
+import styles from 'components/PoweredBy/styles.css';
 
 export default compose(
   setDisplayName('PoweredBy'),

@@ -6,7 +6,7 @@ import SearchSuggestions from 'components/autocomplete/SearchSuggestions'
 import MapArray from 'components/common/MapArray';
 import Branch from 'components/common/Branch'
 import { connectSuggestions, connectItems } from '@findify/react-connect';
-import { withDrawer } from '../../../helpers/withDrawer';
+import { withDrawer } from 'helpers/withDrawer';
 import Rating from 'components/productcard/Rating'
 
 const LayoutColumns = {

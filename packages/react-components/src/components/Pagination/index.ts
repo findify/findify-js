@@ -3,9 +3,9 @@ import { branch, compose, defaultProps, setDisplayName, renderNothing, withProps
 import { connectPagination } from '@findify/react-connect';
 import withTheme from 'helpers/withTheme';
 
-import view from './view';
+import view from 'components/Pagination/view';
 
-import styles from './styles.css';
+import styles from 'components/Pagination/styles.css';
 
 const getRange = ({ current, total, step }) => {
   const min = current - step;

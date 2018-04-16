@@ -1,28 +1,28 @@
 import React from 'react';
 import cx from 'classnames';
-import styles from './styles.css';
+import styles from 'components/Icon/styles.css';
 
-import Filters from './icons/Filters.svg';
-import Minus from './icons/Minus.svg';
-import Plus from './icons/Plus.svg';
-import Search from './icons/Search.svg';
-import Sorting from './icons/Sorting.svg';
+import Filters from 'components/Icon/icons/Filters.svg';
+import Minus from 'components/Icon/icons/Minus.svg';
+import Plus from 'components/Icon/icons/Plus.svg';
+import Search from 'components/Icon/icons/Search.svg';
+import Sorting from 'components/Icon/icons/Sorting.svg';
 
-import CheckmarkDark from './icons/Checkmark/Dark.svg';
-import Star from './icons/Star.svg';
-import XDark from './icons/X/Dark.svg';
-import XMobile from './icons/X/Mobile.svg';
-import RadioEmpty from './icons/Radio/Empty.svg';
-import RadioFilled from './icons/Radio/Filled.svg';
-import ArrowBack from './icons/Arrow/Back.svg';
-import ArrowDown from './icons/Arrow/Down.svg';
-import ArrowUp from './icons/Arrow/Up.svg';
-import ArrowLeft from './icons/Arrow/Left.svg';
-import ArrowRight from './icons/Arrow/Right.svg';
+import CheckmarkDark from 'components/Icon/icons/Checkmark/Dark.svg';
+import Star from 'components/Icon/icons/Star.svg';
+import XDark from 'components/Icon/icons/X/Dark.svg';
+import XMobile from 'components/Icon/icons/X/Mobile.svg';
+import RadioEmpty from 'components/Icon/icons/Radio/Empty.svg';
+import RadioFilled from 'components/Icon/icons/Radio/Filled.svg';
+import ArrowBack from 'components/Icon/icons/Arrow/Back.svg';
+import ArrowDown from 'components/Icon/icons/Arrow/Down.svg';
+import ArrowUp from 'components/Icon/icons/Arrow/Up.svg';
+import ArrowLeft from 'components/Icon/icons/Arrow/Left.svg';
+import ArrowRight from 'components/Icon/icons/Arrow/Right.svg';
 import ArrowLeftBig from './icons/Arrow/Left-Big.svg';
 import ArrowRightBig from './icons/Arrow/Right-Big.svg';
-import CheckboxFilled from './icons/Checkbox/Filled.svg';
-import CheckboxEmpty from './icons/Checkbox/Empty.svg';
+import CheckboxFilled from 'components/Icon/icons/Checkbox/Filled.svg';
+import CheckboxEmpty from 'components/Icon/icons/Checkbox/Empty.svg';
 
 const icons = {
   Filters,

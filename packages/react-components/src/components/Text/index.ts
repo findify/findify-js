@@ -1,8 +1,8 @@
 
 import { compose, setDisplayName, withPropsOnChange } from 'recompose';
 import withTheme from 'helpers/withTheme';
-import styles from './styles.css';
-import view from './view';
+import styles from 'components/Text/styles.css';
+import view from 'components/Text/view';
 
 const options = ['title', 'primary', 'secondary', 'uppercase', 'lowercase'];
 const getClassName = props =>

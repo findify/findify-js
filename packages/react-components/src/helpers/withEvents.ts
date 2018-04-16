@@ -1,5 +1,5 @@
 import React from 'react';
-import { emit, listen } from './emmiter';
+import { emit, listen } from 'helpers/emmiter';
 
 export default (events?) => BaseComponent => {
   const factory = React.createFactory(BaseComponent);

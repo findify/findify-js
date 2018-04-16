@@ -3,8 +3,8 @@ import { compose, withPropsOnChange, setDisplayName, withHandlers } from 'recomp
 import withTheme from 'helpers/withTheme';
 import { is } from 'immutable';
 
-import view from './view';
-import styles from './styles.css';
+import view from 'components/Sorting/view';
+import styles from 'components/Sorting/styles.css';
 
 export default compose(
   setDisplayName('Sorting'),

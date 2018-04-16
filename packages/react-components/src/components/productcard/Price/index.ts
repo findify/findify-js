@@ -1,8 +1,8 @@
 import { compose, setDisplayName, withProps } from 'recompose'
 import withTheme from 'helpers/withTheme'
 import { priceIsSampleArray } from 'helpers/getPrice';
-import view from './view'
-import theme from './styles.css'
+import view from 'components/productcard/Price/view';
+import theme from 'components/productcard/Price/styles.css';
 
 export default compose(
   setDisplayName('Price'),

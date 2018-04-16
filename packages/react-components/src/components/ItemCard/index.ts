@@ -1,5 +1,5 @@
 import { defaultProps } from 'recompose';
-import view from './view'
-import theme from './styles.css';
+import view from 'components/ItemCard/view';
+import theme from 'components/ItemCard/styles.css';
 
 export default defaultProps({ theme })(view);

@@ -1,5 +1,5 @@
 import { isImmutable, List } from 'immutable'
-import formatCurrency from './formatCurrency'
+import formatCurrency from 'helpers/formatCurrency';
 
 const arrayOrImmutableList = (candidate: any[] | List<any>) => (
   Array.isArray(candidate) || (isImmutable(candidate) && (candidate.length || candidate.size))

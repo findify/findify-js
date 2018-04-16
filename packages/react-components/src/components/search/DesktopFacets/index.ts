@@ -2,8 +2,8 @@ import { compose, setDisplayName, withHandlers } from 'recompose';
 import { connectFacets } from '@findify/react-connect';
 import withTheme from 'helpers/withTheme';
 
-import view from './view';
-import styles from './styles.css';
+import view from 'components/search/DesktopFacets/view';
+import styles from 'components/search/DesktopFacets/styles.css';
 
 export default compose(
   setDisplayName('DesktopFacets'),

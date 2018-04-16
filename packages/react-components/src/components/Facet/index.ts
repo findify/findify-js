@@ -2,10 +2,10 @@ import { compose, setDisplayName, withStateHandlers, withPropsOnChange } from 'r
 import withEvents from 'helpers/withEvents';
 import pure from 'helpers/pure';
 
-import view from './view';
+import view from 'components/Facet/view';
 import withTheme from 'helpers/withTheme';
 
-import styles from "./styles.css";
+import styles from 'components/Facet/styles.css';
 
 export default compose(
   pure,

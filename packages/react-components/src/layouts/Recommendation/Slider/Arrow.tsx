@@ -4,7 +4,7 @@ import omit from 'helpers/omit';
 import Button from 'components/Button';
 import Icon from 'components/Icon';
 import cx from 'classnames';
-import styles from './styles.css';
+import styles from 'layouts/Recommendation/Slider/styles.css';
 
 const Arrow = compose<any, any>(
   withHandlers({

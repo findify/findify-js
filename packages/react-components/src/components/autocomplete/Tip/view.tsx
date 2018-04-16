@@ -1,7 +1,7 @@
 import React from 'react'
 import classnames from 'classnames'
 
-import styles from './styles.css'
+import styles from 'components/autocomplete/Tip/styles.css';
 
 export default ({ suggestions, className, title, theme, getSuggestionProps }) => {
   const suggestionProps = suggestions && suggestions.size > 0 && getSuggestionProps(0) || { onClick: () => {} }

@@ -1,12 +1,12 @@
 import React from 'react'
 import classNames from 'classnames'
-import styles from './styles.css'
+import styles from 'components/productcard/ProductCard/styles.css';
 import Image from 'components/common/Image'
 import Truncate from 'components/common/Truncate'
 import Text from 'components/Text'
-import Rating from '../Rating'
-import Price from '../Price'
-import { DiscountSticker } from '../Stickers'
+import Rating from 'components/productcard/Rating';
+import Price from 'components/productcard/Price';
+import { DiscountSticker } from 'components/productcard/Stickers';
 import { Map } from 'immutable'
 
 const Title: any = ({ text, config = Map(), ...rest }) => (

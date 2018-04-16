@@ -1,5 +1,5 @@
 import React from 'react'
-import Image from '../common/Image'
+import Image from 'components/common/Image';
 
 export default ({ item, theme }) => (
   <div className={theme.root}>

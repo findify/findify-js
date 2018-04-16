@@ -1,9 +1,9 @@
 import React from 'react';
 import { compose, withPropsOnChange, setDisplayName, defaultProps } from 'recompose';
 import cx from 'classnames';
-import Column from './Column';
+import Column from 'components/common/Grid/Column';
 
-import styles from './styles.css'
+import styles from 'components/common/Grid/styles.css';
 
 type Props = {
   columns: string,

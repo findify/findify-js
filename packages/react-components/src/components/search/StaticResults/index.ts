@@ -3,8 +3,8 @@ import sizeMe from 'react-sizeme';
 import { connectConfig } from '@findify/react-connect';
 import withTheme from 'helpers/withTheme';
 
-import view from './view';
-import styles from './styles.css';
+import view from 'components/search/StaticResults/view';
+import styles from 'components/search/StaticResults/styles.css';
 
 const countProductsToShow = width => {
   if (width > 1000) return 2;

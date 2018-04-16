@@ -2,11 +2,11 @@ import { compose, withPropsOnChange, withStateHandlers, withHandlers, defaultPro
 import { connectItems } from '@findify/react-connect';
 import sizeMe from 'react-sizeme';
 import withTheme from 'helpers/withTheme';
-import { renderArrow } from './Arrow';
-import view from './view';
+import { renderArrow } from 'layouts/Recommendation/Slider/Arrow';
+import view from 'layouts/Recommendation/Slider/view';
 
 import './styles.global.css';
-import styles from './styles.css';
+import styles from 'layouts/Recommendation/Slider/styles.css';
 
 const countProductsToShow = width => {
   if (width > 1200) return 6;

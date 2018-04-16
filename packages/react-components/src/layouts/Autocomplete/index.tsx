@@ -3,9 +3,9 @@ import { hot } from 'react-hot-loader';
 import { connectConfig } from '@findify/react-connect';
 import { createPortal } from 'helpers/createPortal';
 
-import Dropdown from './Dropdown';
-import Sidebar from './Sidebar';
-import Fullscreen from './Fullscreen';
+import Dropdown from 'layouts/Autocomplete/Dropdown';
+import Sidebar from 'layouts/Autocomplete/Sidebar';
+import Fullscreen from 'layouts/Autocomplete/Fullscreen';
 
 const Autocomplete = connectConfig(({ config, ...rest }) => {
   const isMobile = window.innerWidth < config.get('mobileBreakpoint')

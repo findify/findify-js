@@ -1,6 +1,6 @@
 import React from 'react'
 import MapArray from 'components/common/MapArray';
-import SuggestionItem from '../SuggestionItem'
+import SuggestionItem from 'components/autocomplete/SuggestionItem';
 
 export default ({ theme, suggestions, query, selectedSuggestion, widgetKey, getSuggestionProps, ...rest }) => (
   <div className={theme.list} display-if={suggestions && query}>

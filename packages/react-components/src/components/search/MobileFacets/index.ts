@@ -4,8 +4,8 @@ import { connectFacets, connectQuery } from '@findify/react-connect';
 import withEvents from 'helpers/withEvents';
 import withTheme from 'helpers/withTheme';
 
-import view from './view';
-import styles from "./styles.css";
+import view from 'components/search/MobileFacets/view';
+import styles from 'components/search/MobileFacets/styles.css';
 
 export default compose(
   setDisplayName('MobileFacets'),

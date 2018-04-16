@@ -3,8 +3,8 @@ import { findCurrency } from 'currency-formatter';
 import withTheme from 'helpers/withTheme';
 import template from 'helpers/template';
 
-import view from './view';
-import styles from './styles.css';
+import view from 'components/RangeFacet/view';
+import styles from 'components/RangeFacet/styles.css';
 
 const createKey = (...args) => args.join('_');
 

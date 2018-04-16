@@ -3,8 +3,8 @@ import { connectSort } from '@findify/react-connect';
 import withTheme from 'helpers/withTheme';
 import { is } from 'immutable';
 
-import view from './view';
-import styles from './styles.css';
+import view from 'components/search/MobileSorting/view';
+import styles from 'components/search/MobileSorting/styles.css';
 
 export default compose(
   setDisplayName('MobileSorting'),

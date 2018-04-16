@@ -1,6 +1,6 @@
 import React from 'react'
 import ProductCard from 'components/productcard/ProductCard'
-import mapArray from '../common/MapArray';
+import mapArray from 'components/common/MapArray';
 
 const ItemFactory = React.createFactory(ProductCard);
 
