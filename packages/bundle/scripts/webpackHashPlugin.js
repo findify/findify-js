@@ -6,6 +6,8 @@ const getPath = (base, path) => {
 	return stripExt.substr(0, stripExt.lastIndexOf('/index')) || stripExt;
 }
 
+const cache = new Map();
+
 class HashedPlugin {
 	constructor(options) {
 		this.options = Object.assign(
@@ -27,11 +29,18 @@ class HashedPlugin {
 				"HashedPlugin",
 				modules => {
 					for (const module of modules) {
-						if (module.id === null && module.libIdent) {
+						if (module.libIdent) {
 							const id = module.libIdent({
 								context: this.options.context || compiler.options.context
 							});
-							if (id.includes('css')) return;
+
+							if (id.includes('.css')) continue;
+	
+							if (cache.has(id)) {
+								module.id = cache.get(id);
+								continue;
+							}
+
               const _path = getPath('react-components/src/', id) ||
                             getPath('node_modules/', id) ||
 														id;
@@ -41,6 +50,7 @@ class HashedPlugin {
 								.update(_path)
 								.digest('base64')
 								.substr(0, 4);
+							cache.set(id, _hash);
 
               module.id = _hash;
 						}

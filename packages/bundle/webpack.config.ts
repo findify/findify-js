@@ -155,9 +155,8 @@ export default (env: WebpackEnvArgs, { mode }) => {
   }
 
   if (mode === 'development') {
-    config.plugins.push(new WebpackHashPlugin());
-
     config.plugins.push(new webpack.HotModuleReplacementPlugin());
+    config.plugins.push(new WebpackHashPlugin());
 
     config.plugins.push(new webpack.DllReferencePlugin({
       context: __dirname,
