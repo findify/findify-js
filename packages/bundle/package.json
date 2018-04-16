@@ -1,12 +1,15 @@
 {
   "name": "@findify/bundle",
-  "description": "Findify OutOfBox solution",
-  "version": "0.0.1",
+  "description": "Findify Out Of Box solution",
+  "version": "6.0.1",
   "main": "lib/index.js",
   "tags": [
     "findify",
     "analytics",
     "search"
+  ],
+  "files": [
+    "dist", "lib"
   ],
   "scripts": {
     "build": "run-p build:dist",

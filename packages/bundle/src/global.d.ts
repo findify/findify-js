@@ -19,3 +19,4 @@ declare var __MERCHANT_POLYFILL__: any; // Should use polyfill or not
 declare var __MERCHANT_CSS__: any; // Path to CSS file(could be custom css)
 declare var __ENVIRONMENT__: any; // Environment
 declare var __CONFIG__: any;
+declare var __PUBLIC_PATH__: any;

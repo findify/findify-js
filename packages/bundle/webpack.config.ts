@@ -118,6 +118,7 @@ export default (env: WebpackEnvArgs, { mode }) => {
         ...createGlobals(mode === 'development'),
         __root: 'window.findify',
         __COMMITHASH__: JSON.stringify(new GitRevisionPlugin().commithash()),
+        __PUBLIC_PATH__: JSON.stringify(process.env.PUBLIC_PATH),
         'process.env': {
           BROWSER: true,
           FINDIFY_ENV: JSON.stringify(process.env.FINDIFY_ENV || 'production')
