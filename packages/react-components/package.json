@@ -1,7 +1,7 @@
 {
   "name": "@findify/react-components",
   "description": "Findify react UI components",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "author": "Findify <yourfriends@findify.io>",
   "dependencies": {
     "@findify/change-emitter": "^0.2.0",
@@ -109,10 +109,10 @@
     "npm": ">=4",
     "node": ">=7"
   },
-  "main": "src/index.ts",
+  "main": "lib/index.js",
   "files": [
-    "dist",
-    "src",
+    "lib/",
+    "src/",
     "index.d.ts"
   ],
   "license": "MIT",

@@ -5,6 +5,7 @@ import createBreadcrumb from 'components/Breadcrumbs/createBreadcrumb';
 
 import CheckboxContent from 'components/CheckboxFacet/content';
 import RangeContent from 'components/RangeFacet/content';
+import RatingContent from 'components/RatingFacet/content';
 import ColorContent from 'components/ColorFacet/content';
 
 const Breadcrumb = createBreadcrumb({
@@ -13,6 +14,7 @@ const Breadcrumb = createBreadcrumb({
   color: ColorContent,
   category: CheckboxContent,
   price: RangeContent,
+  rating: RatingContent,
 });
 
 export default ({ filters, theme, config }) => (

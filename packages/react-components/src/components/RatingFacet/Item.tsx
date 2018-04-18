@@ -1,24 +1,16 @@
 import React from 'react';
-import formatCurrency from 'helpers/formatCurrency';
-import unescape from 'lodash/unescape';
-
-const identity = i => i;
-
-const createLabel = (from, to, config, fx) =>
-  (from && to && `${fx(from)} - ${fx(to)}`) ||
-  (from && !to && `${fx(from)} ${unescape(config.getIn(['i18n', 'up']))}`) ||
-  (!from && to && `${unescape(config.getIn(['i18n', 'up']))} ${fx(to)}`);
+import content from 'components/RatingFacet/content';
+import Button from 'components/Button';
+import Text from 'components/Text';
+import Icon from 'components/Icon';
 
 export default ({ item, theme, style, config }) =>
-<button style={style} className={theme.item} onClick={item.toggle}>
-  {
-    createLabel(
-      item.get('from'),
-      item.get('to'),
-      config,
-      item.get('name') === 'price'
-        && formatCurrency(config.get('currency').toJS())
-        || identity
-    )
-  }
-</button>
+<Button style={style} className={theme.item} onClick={item.toggle}>
+  <Text primary lowercase bold={item.get('selected')}>
+    <Icon name={item.get('selected') ? 'CheckboxFilled' : 'CheckboxEmpty'} />
+    { content({ item, config }) }
+  </Text>
+  <Text secondary uppercase>
+    ({ item.get('count') })
+  </Text>
+</Button>

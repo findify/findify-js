@@ -2,7 +2,7 @@ import React from 'react';
 import cx from 'classnames';
 
 import MapArray from 'components/common/MapArray';
-import Item from 'components/RangeFacet/Item';
+import Item from 'components/RatingFacet/Item';
 
 export default ({
   theme,

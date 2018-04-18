@@ -1,13 +1,14 @@
 import { compose, withPropsOnChange, componentFromProp, renderComponent } from 'recompose';
 import TextFacet from 'components/CheckboxFacet';
 import RangeFacet from 'components/RangeFacet';
+import RatingFacet from 'components/RatingFacet';
 import ColorFacet from 'components/ColorFacet';
 import CategoryFacet from 'components/CategoryFacet';
 
 const getComponent = type => ({
   text: TextFacet,
   range: RangeFacet,
-  rating: RangeFacet,
+  rating: RatingFacet,
   price: RangeFacet,
   color: ColorFacet,
   category: CategoryFacet

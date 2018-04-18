@@ -54,10 +54,11 @@ export type Props = {
   className?: string
 }
 
-export default ({ name, width, height, className }: Props) =>
+export default ({ name, width, height, className, style }: Props) =>
   React.createElement(icons[name], {
     width,
     height,
+    style,
     className: cx(styles.root, className)
   })
 
