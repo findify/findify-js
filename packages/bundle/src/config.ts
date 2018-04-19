@@ -213,7 +213,7 @@ export default process.env.NODE_ENV !== 'development'
 
             // Facets setup
             "facets": {
-                "initiallyClosed": true,
+                "initiallyExpanded": true,
                 // Map Facet name to facet type
                 "types": {
                     "price": "price",

@@ -21,10 +21,7 @@ export default compose(
   withStateHandlers(
     ({ config, item }: any) => {
       const facetType = config.getIn(['facets', 'types', item.get('name')]) || item.get('type')
-      const isOpen = !config.getIn(['facets', facetType, 'initiallyClosed'], config.getIn(['facets', 'initiallyClosed', true]))
-      /*!(
-        typeof config.getIn(['facets', facetType, 'initiallyClosed']) !== 'undefined' ?
-        config.getIn(['facets', facetType, 'initiallyExpanded']) : config.getIn(['facets', 'initiallyExpanded']))*/
+      const isOpen = config.getIn(['facets', facetType, 'initiallyExpanded'], config.getIn(['facets', 'initiallyExpanded', true]))
       return { isOpen }
     },
     {
