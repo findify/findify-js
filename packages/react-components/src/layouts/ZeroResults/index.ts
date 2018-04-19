@@ -14,6 +14,6 @@ export default compose(
   connectItems,
 
   withProps(({ config, q }) => ({
-    title: template(config.getIn(['i18n', q && q !== '' ? 'noResult' : 'noResultEmptyQuery'], 'Noope'))(escape(q)),
+    title: template(config.getIn(['i18n', q && q !== '' ? 'noResultsFound' : 'noResultEmptyQuery'], 'Noope'))(escape(q)),
   }))
 )(view);

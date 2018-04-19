@@ -195,7 +195,7 @@ export default process.env.NODE_ENV !== 'development'
 
             "i18n": {
                 "sorryNoResults": "Sorry!",
-                "noResult": "We can't seem to find any products that match your search for \"%s\"",
+                "noResultsFound": "We can't seem to find any products that match your search for \"%s\"",
                 "noResultEmptyQuery": "We can't seem to find any products that match your search",
                 "tryOneOfThese": "Try one of these instead:",
                 "checkOutPopularProducts": "Or check out some of these popular products"
