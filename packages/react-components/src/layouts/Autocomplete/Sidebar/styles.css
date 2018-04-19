@@ -11,8 +11,18 @@
     line-height: 50px;
     color: $color-black;
     padding-left: 13px;
+    box-sizing: border-box;
+    border: 1px solid $color-grey-2;
+    transition: border-color .1s linear;
+    outline: none;
     &:placeholder {
       color: $color-grey-3;
+    }
+    &:placeholder{
+      color: $color-grey-1;
+    }
+    &:focus{
+      border-color: $color-grey-3;
     }
   }
 }

@@ -21,6 +21,12 @@ const defaultDiscountConfig = fromJS({
   }
 })
 
+const defaultOutOfStockConfig = fromJS({
+  "template": {
+    "single": "Out of stock"
+  },
+})
+
 export const DiscountSticker = withTheme(theme)(({ className, discount, theme, config }) => {
   let realConfig = config.get('stickers')
   if (!realConfig || !realConfig.get('discount')) realConfig = defaultDiscountConfig
@@ -32,6 +38,19 @@ export const DiscountSticker = withTheme(theme)(({ className, discount, theme, c
           condition={isImmutable(discount)}
           left={() => realConfig.getIn(['template', 'multiple']).replace('%s', Math.max.apply(Math, discount.toJS()))}
           right={() => realConfig.getIn(['template', 'single']).replace('%s', discount)} />
+      </Text>
+    </div>
+  )
+})
+
+export const OutOfStockSticker = withTheme(theme)(({ className, theme, config }) => {
+  let realConfig = config.get('stickers')
+  if (!realConfig || !realConfig.get('outOfStock')) realConfig = defaultOutOfStockConfig
+  else realConfig = realConfig.get('outOfStock')
+  return (
+    <div className={cx(theme.outOfStockSticker, className)}>
+      <Text>
+        {realConfig.getIn(['template', 'single'])}
       </Text>
     </div>
   )

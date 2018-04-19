@@ -39,7 +39,7 @@ const SearchOrZero = connectSuggestions(({ suggestions, config, theme, meta, sel
       <MapArray
         array={config.get('viewOrder', ["SearchSuggestions", "ProductMatches"])}
         keyAccessor={item => (item + selectedSuggestion)}
-        factory={({ item }) => React.createElement(LayoutColumns[item], { config, theme, meta, selectedSuggestion, ...rest })} />
+        factory={({ item }: ({ item: 'SearchSuggestions' | 'ProductMatches' })) => React.createElement(LayoutColumns[item], { config, theme, meta, selectedSuggestion, ...rest })} />
     )}
     right={() => (
       <Branch
@@ -49,12 +49,15 @@ const SearchOrZero = connectSuggestions(({ suggestions, config, theme, meta, sel
     )} />
 ))
 
-export default ({ config, theme, meta, selectedSuggestion, ...rest }) => ( console.log('meta', selectedSuggestion) ||
-  <div className={theme.root}>
-    <Tip className={theme.tip} title={config.getIn(['i18n', 'tipTitle'])} />
-    <div className={theme.container}>
-      <SearchOrZero theme={theme} meta={meta} selectedSuggestion={selectedSuggestion} />
+export default ({ config, theme, meta, selectedSuggestion, ...rest }) => (
+  <React.Fragment display-if={meta && meta.get('q') && meta.get('q') !== ''}>
+    <div className={theme.overlay} display-if={config.get('showOverlay')}></div>
+    <div className={theme.root}>
+      <Tip className={theme.tip} title={config.getIn(['i18n', 'tipTitle'])} />
+      <div className={theme.container}>
+        <SearchOrZero theme={theme} meta={meta} selectedSuggestion={selectedSuggestion} />
+      </div>
     </div>
-  </div>
+  </React.Fragment>
 );
 

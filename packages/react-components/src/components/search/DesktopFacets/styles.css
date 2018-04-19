@@ -16,7 +16,7 @@ $gutter: 40px;
 }
 
 .header{
-  padding: 15px $padding;
+  padding: 13px $padding;
   clear: fix;
 }
 
@@ -39,8 +39,8 @@ $gutter: 40px;
 
 .facet{
   padding: 0 $padding;
-  padding-top: 25px;
-  margin-top: 25px;
+  padding-top: 20px;
+  margin-top: 20px;
   border-top: 1px solid $color-grey-2;
 }
 

@@ -30,7 +30,7 @@ export default ({ onChange, items, selectedItem, theme }) =>
           </Text>
           <Icon name='ArrowDown' className={theme.arrow}/>
         </Button>
-        <div className={theme.dropdown} display-if={isOpen}>
+        <div className={cx(theme.dropdown, { [theme.open]: isOpen })} >
           <MapArray
             theme={theme}
             highlighted={highlightedIndex}

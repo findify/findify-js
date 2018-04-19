@@ -63,6 +63,28 @@ exports[`ProductCard view renders correctly 1`] = `
       }
       price="9.99"
     />
+    <Component
+      config={
+        Immutable.Map {
+          "productcard": Immutable.Map {
+            "title": Immutable.Map {
+              "display": true,
+              "lines": 1,
+            },
+            "description": Immutable.Map {
+              "display": true,
+              "lines": 2,
+            },
+            "price": Immutable.Map {
+              "display": true,
+            },
+          },
+          "currency": Immutable.Map {
+            "code": "GBP",
+          },
+        }
+      }
+    />
   </div>
 </a>
 `;

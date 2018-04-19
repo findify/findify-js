@@ -13,18 +13,19 @@ export default ({
   name,
   item,
   config,
-
+  filtersSelected,
   toggleFacet
-}) =>
-<div className={theme.root}>
-  <Button className={theme.title} onClick={toggleFacet}>
-    <Text primary uppercase className={theme.text}>{ title }</Text>
-    <Icon name={isOpen ? 'Minus' : 'Plus'} className={theme.icon} />
-  </Button>
-  <Component
-    display-if={isOpen}
-    facet={item}
-    config={config}
-    theme={{ root: theme.body }} />
-</div>
+}) => (
+  <div className={theme.root}>
+    <Button className={theme.title} onClick={toggleFacet}>
+      <Text primary uppercase className={theme.text}>{ title } {filtersSelected > 0 ? `(${filtersSelected})` : ''}</Text>
+      <Icon name={isOpen ? 'Minus' : 'Plus'} className={theme.icon} />
+    </Button>
+    <Component
+      display-if={isOpen}
+      facet={item}
+      config={config}
+      theme={{ root: theme.body }} />
+  </div>
+)
 
