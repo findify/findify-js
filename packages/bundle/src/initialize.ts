@@ -6,6 +6,10 @@ import Analytics from '@findify/analytics-dom';
 import emitter from './core/emitter';
 import resolveCallback from './helpers/resolveCallback';
 
+/**
+ * Create global namespace
+ */
+(global as any).findify = {};
 __root.listen = emitter.listen;
 __root.emit = emitter.emit;
 __root.addListeners = emitter.addListeners;

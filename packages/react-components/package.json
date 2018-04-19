@@ -1,7 +1,7 @@
 {
   "name": "@findify/react-components",
   "description": "Findify react UI components",
-  "version": "0.0.3",
+  "version": "0.0.6",
   "author": "Findify <yourfriends@findify.io>",
   "dependencies": {
     "@findify/change-emitter": "^0.2.0",

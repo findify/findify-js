@@ -105,6 +105,7 @@ export default (env: WebpackEnvArgs, { mode }) => {
             {
               loader: 'babel-loader',
               options: {
+                envName: mode,
                 babelrc: false,
                 extends: path.resolve(componentsPath, '.babelrc')
               }

@@ -7,13 +7,17 @@ module.exports = {
   plugins: [
     "inline-react-svg",
     "babel-plugin-jsx-display-if",
-    "react-hot-loader/babel",
     ["module-resolver", {
       "extensions": [".ts", ".tsx"],
       "root": [path.resolve(__dirname, "src")]
     }]
   ],
   "env": {
+    "development": {
+      "plugins": [
+        "react-hot-loader/babel"
+      ]
+    },
     "lib": {
       "plugins": [
         ["@findify/babel-plugin-css-modules-transform", {

@@ -13,11 +13,6 @@ if (process.env.NODE_ENV !== 'development' && __MERCHANT_VERSION__) {
 }
 
 /**
- * Create global namespace
- */
-(global as any).findify = {};
-
-/**
  * Load Dependencies
  */
 const deps: Promise<any>[] = [];

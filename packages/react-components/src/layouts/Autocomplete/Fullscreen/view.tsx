@@ -2,7 +2,7 @@ import React from 'react'
 import Drawer from 'components/common/Drawer'
 import Icon from 'components/Icon'
 import SearchSuggestions from 'components/autocomplete/SearchSuggestions'
-
+import * as emmiter from 'helpers/emmiter';
 export default class Sidebar extends React.Component {
   isFocused: boolean;
 
@@ -20,7 +20,7 @@ export default class Sidebar extends React.Component {
 
   handleEscapeKeypress = (e) => {
     if (e.key === 'Escape') {
-      __root.emit('autocompleteFocusLost', this.props.config.get('widgetKey'))
+      emmiter.emit('autocompleteFocusLost', this.props.config.get('widgetKey'))
     }
   }
 
@@ -29,7 +29,7 @@ export default class Sidebar extends React.Component {
     if (e.relatedTarget === this.input) {
       // FIXME: this is a very dirty hack, so we need to figure out something
       setTimeout(() => {
-        __root.emit('autocompleteFocusLost', this.props.config.get('widgetKey'))
+        emmiter.emit('autocompleteFocusLost', this.props.config.get('widgetKey'))
       }, 300)
       return;
     }

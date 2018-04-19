@@ -37,7 +37,7 @@ const SearchOrZero = connectSuggestions(({ suggestions, config, theme, meta, sel
     condition={suggestions && suggestions.size > 0}
     left={() => (
       <MapArray
-        array={config.get('viewOrder')}
+        array={config.get('viewOrder', ["SearchSuggestions", "ProductMatches"])}
         keyAccessor={item => (item + selectedSuggestion)}
         factory={({ item }) => React.createElement(LayoutColumns[item], { config, theme, meta, selectedSuggestion, ...rest })} />
     )}
