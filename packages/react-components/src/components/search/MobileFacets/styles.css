@@ -7,6 +7,14 @@
   flex-direction: column;
 }
 
+.filter-count {
+  margin-left: 3px;
+}
+
+.back-button {
+  height: 20px;
+}
+
 .header{
   height: 60px;
   padding: 0 15px;
@@ -57,6 +65,9 @@
   &:first-child{
     border-top: 0;
   }
+  &:last-child {
+    border-bottom: 1px solid $color-grey-2;
+  }
 }
 
 .container{
@@ -77,7 +88,6 @@
 }
 
 .range{
-  margin-top: auto;
   width: 100%;
   display: table;
 }

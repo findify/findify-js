@@ -21,7 +21,10 @@ export default compose(
   withStateHandlers(
     ({ config, item }: any) => {
       const facetType = config.getIn(['facets', 'types', item.get('name')]) || item.get('type')
-      const isOpen = typeof config.getIn(['facets', facetType, 'initiallyExpanded']) !== 'undefined' ? config.getIn(['facets', facetType, 'initiallyExpanded']) : config.getIn(['facets', 'initiallyExpanded'])
+      const isOpen = !config.getIn(['facets', facetType, 'initiallyClosed'], config.getIn(['facets', 'initiallyClosed', true]))
+      /*!(
+        typeof config.getIn(['facets', facetType, 'initiallyClosed']) !== 'undefined' ?
+        config.getIn(['facets', facetType, 'initiallyExpanded']) : config.getIn(['facets', 'initiallyExpanded']))*/
       return { isOpen }
     },
     {
@@ -36,5 +39,9 @@ export default compose(
       (!name || item.get('name') === name) && showFacet(),
     hideFacets: ({ hideFacet, item }) => (name) =>
       (!name || item.get('name') === name) && hideFacet(),
-  })
+  }),
+
+  withPropsOnChange(['item'], ({ item }) => ({
+    filtersSelected: item.get('values').filter(item => item.get('selected')).size
+  }))
 )(view);

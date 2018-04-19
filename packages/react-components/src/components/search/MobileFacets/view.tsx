@@ -34,7 +34,8 @@ export default ({
   config,
   meta,
   hideModal,
-  total
+  total,
+  filtersSelected,
 }) =>
 <div className={cx(theme.modal, 'mobile')}>
   <div className={theme.header}>
@@ -43,18 +44,21 @@ export default ({
       <Text primary uppercase display-if={!activeFacet}>
         { config.getIn(['facets', 'i18n', 'filters'], 'Filters') }
       </Text>
-      <Text secondary uppercase display-if={!activeFacet && total}>
+      <Text secondary uppercase display-if={!activeFacet && total} className={theme.filterCount}>
         ({ total })
       </Text>
       <Text primary uppercase display-if={!!activeFacet}>
         { config.getIn(['facets', 'labels', activeFacet.get('name')]) }
       </Text>
+      <Text secondary uppercase display-if={!!activeFacet && filtersSelected} className={theme.filterCount}>
+        ({ filtersSelected })
+      </Text>
     </div>
-  
-    <Button onClick={activeFacet ? selectFacet : hideModal} >
+
+    <Button onClick={activeFacet ? selectFacet : hideModal} className={theme.backButton} >
       <Icon name='ArrowBack' />
     </Button>
-  
+
     <Button
       display-if={meta.get('filters') && meta.get('filters').size}
       onClick={onReset}>
@@ -76,6 +80,6 @@ export default ({
       left={FacetContent} />
   </div>
   <Button className={theme.footer} onClick={hideModal}>
-    { config.getIn(['facets', 'i18n', 'showResults'], 'See results')}
+    { config.getIn(['facets', 'i18n', activeFacet ? 'done' : 'showResults'], 'See results')}
   </Button>
 </div>

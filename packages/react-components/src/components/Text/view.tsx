@@ -8,6 +8,7 @@ export default ({
   mode,
   theme,
   bold,
+  inlineBlock,
   size,
   html: __html,
 }) => createElement(component, {
@@ -17,6 +18,7 @@ export default ({
     theme.root,
     mode && theme[mode] || theme[size],
     bold && theme.bold,
+    inlineBlock && theme.inlineBlock,
     className,
   )
 })

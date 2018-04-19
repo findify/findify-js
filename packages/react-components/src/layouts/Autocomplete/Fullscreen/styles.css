@@ -12,21 +12,69 @@
   position: absolute;
   top: 0;
   left: 0;
-  background-color: rgba(17,17,17,0.4);
+  background-color: $color-white;
+
   z-index: -1;
 }
 
-.inputWrapper {
+.icons {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding-right: 16px;
+  margin-top: 15px;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .search-icon {
+    cursor: pointer;
+    color: $color-black;
+    path {
+      fill: $color-black;
+    }
+  }
+
+  .x-icon {
+    cursor: pointer;
+    &:hover {
+      color: red;
+    }
+  }
+}
+
+.icon-divider {
+  height: 18px;
+  width: 1px;
+  background: $color-grey-2;
+  display: inline-block;
+  margin-left: 12px;
+  margin-right: 12px;
+}
+
+.header {
+  position: relative;
   input {
-    width: calc(100% - 13px);
+    width: 100%;
     height: 50px;
     font-family: $font-base;
     font-size: $font-size-large;
     line-height: 50px;
     color: $color-black;
     padding-left: 13px;
+    box-sizing: border-box;
+    border: 1px solid $color-grey-2;
+    transition: border-color .1s linear;
+    outline: none;
     &:placeholder {
       color: $color-grey-3;
+    }
+    &:placeholder{
+      color: $color-grey-1;
+    }
+    &:focus{
+      border-color: $color-grey-3;
     }
   }
 }
@@ -55,20 +103,4 @@
 
 .body-noscroll {
   overflow: hidden;
-}
-
-.header {
-  background-color:#475971;
-  display: flex;
-  justify-content: flex-end;
-}
-
-.searchIcon {
-  margin-top: 12px;
-  margin-bottom: 14px;
-  margin-right: 16px;
-  color: $color-white;
-  path {
-    fill: $color-white;
-  }
 }

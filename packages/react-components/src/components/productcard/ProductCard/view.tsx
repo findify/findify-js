@@ -6,7 +6,7 @@ import Truncate from 'components/common/Truncate'
 import Text from 'components/Text'
 import Rating from 'components/productcard/Rating';
 import Price from 'components/productcard/Price';
-import { DiscountSticker } from 'components/productcard/Stickers';
+import { DiscountSticker, OutOfStockSticker  } from 'components/productcard/Stickers';
 import { Map } from 'immutable'
 
 const Title: any = ({ text, config = Map(), ...rest }) => (
@@ -82,6 +82,9 @@ export default ({
         oldPrice={item.get('compare_at')}
         discount={item.get('discount')}
         currency={config.get('currency').toJS()} />
+      <OutOfStockSticker
+        display-if={item.getIn(['stickers', 'out-of-stock'])}
+        config={config} />
     </div>
   </a>
 );

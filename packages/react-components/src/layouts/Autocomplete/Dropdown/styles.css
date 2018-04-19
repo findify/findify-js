@@ -23,6 +23,16 @@
   font-family: $font-base;
 }
 
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9998;
+  background: rgba(0, 0, 0, .3)
+}
+
 .not-found, .start-typing {
   margin-top: 0;
   color: $color-grey-3;

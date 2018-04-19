@@ -60,3 +60,7 @@
 .bold{
   font-weight: bold
 }
+
+.inlineBlock {
+  display: inline-block;
+}

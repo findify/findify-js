@@ -64,8 +64,11 @@ export default process.env.NODE_ENV !== 'development'
             // Where it should be rended: parent|self|body
             "renderIn": "parent",
 
-            // Simple|Fullscreen\Sidebar
-            "viewType": "fullscreen",
+            // dropdown: to invoke usual dropdown behaviour
+            // sidebar: to use sidebar as search component
+            // fullscreen: to use fullscreen view for searching
+            "viewType": "dropdown",
+            "mobileViewType": "fullscreen",
 
             // Order of content
             "viewOrder": ["SearchSuggestions", "ProductMatches"],
@@ -104,7 +107,8 @@ export default process.env.NODE_ENV !== 'development'
                 "productMatchesTitle": "Product matches",
                 "tipTitle": "Click here to search",
                 "viewMore": "View all"
-            }
+            },
+            "showOverlay": true,
         },
 
         "search": {
@@ -190,7 +194,11 @@ export default process.env.NODE_ENV !== 'development'
             },
 
             "i18n": {
-                "noResult": "Oh no! Your search for %s did not match any products.<br/>But don't give up, we're here to help you find what you're looking for."
+                "sorryNoResults": "Sorry!",
+                "noResult": "We can't seem to find any products that match your search for \"%s\"",
+                "noResultEmptyQuery": "We can't seem to find any products that match your search",
+                "tryOneOfThese": "Try one of these instead:",
+                "checkOutPopularProducts": "Or check out some of these popular products"
             },
 
             "breadcrumbs": {
@@ -205,7 +213,7 @@ export default process.env.NODE_ENV !== 'development'
 
             // Facets setup
             "facets": {
-                "initiallyExpanded": true,
+                "initiallyClosed": true,
                 // Map Facet name to facet type
                 "types": {
                     "price": "price",
@@ -310,7 +318,7 @@ export default process.env.NODE_ENV !== 'development'
                 },
                 "category": {
                     // Should be expanded by default or not
-                    "initiallyExpanded": true,
+                    // "initiallyClosed": false,
                     "i18n": {
                         "goBackTitle": "All Categories",
                         "more": "More",
@@ -320,7 +328,7 @@ export default process.env.NODE_ENV !== 'development'
                 "text": {
                     // How many item to show when collapsed
                     "maxItemsCount": 6,
-                    "initiallyExpanded": true,
+                    // "initiallyClosed": false,
                     "i18n": {
                         "more": "More",
                         "less": "Less",
@@ -354,6 +362,7 @@ export default process.env.NODE_ENV !== 'development'
                     "less": "Less",
                     "resetAll": "Clear all",
                     "reset": "Clear",
+                    "done": "Done",
                     "showResults": "See results",
                     "hideFilters": "Exit filters",
                     "ok": "Ok",
