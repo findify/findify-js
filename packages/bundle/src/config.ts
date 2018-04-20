@@ -62,7 +62,7 @@ export default process.env.NODE_ENV !== 'development'
             "disableFormSubmit": false,
 
             // Where it should be rended: parent|self|body
-            "renderIn": "body",
+            "renderIn": "parent",
 
             // dropdown: to invoke usual dropdown behaviour
             // sidebar: to use sidebar as search component
