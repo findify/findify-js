@@ -22,11 +22,17 @@ export default async (
   _config
 ) => {
 
+  // Register custom components
+  if (_config.components) {
+    window.findifyJsonp.push([['extra'], _config.components]);
+    delete _config.components;
+  }
+
   /* Load Dependencies in closure to support polyfills */
   const { fromJS } = require('immutable');
   const { documentReady } = require('./helpers/documentReady');
   const { createWidgets, bulkAddWidgets } = require('./core/widgets');
-  const { renderWidgets }  = require('./core/render');
+  const { renderWidgets } = require('./core/render');
 
   // We loading config independently from webpack and this promise is always resolved
   const asyncConfig = await import(/* webpackMode: "weak" */'./config');
