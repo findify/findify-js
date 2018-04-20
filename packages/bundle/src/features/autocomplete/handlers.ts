@@ -5,6 +5,7 @@ import { isSearch, setQuery, buildQuery, redirectToSearch } from '../../core/loc
 import { Events } from '../../core/events';
 import { debounce } from 'lodash';
 import emitter from '../../core/emitter'
+import { addEventListener } from '../../../../mjs/dist/pure';
 
 const findClosestForm = findClosestElement('form');
 
@@ -23,6 +24,7 @@ export const registerHandlers = (widget, render) => {
   const { node, config, agent } = widget;
   const subscribers: any = [];
   let container: any;
+  let findifyElementFocused = false;
   if (node.getAttribute('autocomplete') !== 'off') node.setAttribute('autocomplete', 'off')
 
   /** Track input position and update container styles */
@@ -56,7 +58,11 @@ export const registerHandlers = (widget, render) => {
 
   /** Handle input blur */
   const handleInputBlur = (e) => {
-    return e.target === node && emitter.emit(Events.autocompleteFocusLost, widget.key)
+    return (
+      !findifyElementFocused &&
+      e.target === node &&
+      emitter.emit(Events.autocompleteFocusLost, widget.key)
+    )
   }
 
   /** search for the value */
@@ -130,6 +136,16 @@ export const registerHandlers = (widget, render) => {
       window
     ))
   }
+
+  const handleActiveElementChange = ({ path }) => {
+    findifyElementFocused = !!path.find(item => item.hasAttribute && item.hasAttribute('data-findify-autocomplete'))
+  }
+
+  subscribers.push(addEventListeners(
+    ['mousemove', 'touchmove'],
+    debounce(handleActiveElementChange),
+    document
+  ))
 
   /** Unsubscribe from events on instance destroy  */
   const unsubscribe = __root.listen((event, prop, ...args) => {
