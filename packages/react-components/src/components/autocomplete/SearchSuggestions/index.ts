@@ -9,5 +9,5 @@ export default compose(
   setDisplayName('SearchSuggestions'),
   withTheme(styles),
   connectSuggestions,
-  connectQuery
+  connectQuery,
 )(view)

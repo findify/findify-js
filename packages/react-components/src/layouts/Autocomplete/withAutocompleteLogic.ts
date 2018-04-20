@@ -1,11 +1,9 @@
 import { withStateHandlers, lifecycle, compose, setDisplayName } from 'recompose'
-import { connectConfig, connectSuggestions } from '@findify/react-connect';
+import { connectSuggestions, connectQuery } from '@findify/react-connect';
 
 
 export default compose(
   setDisplayName('withAutocompleteLogic'),
-  connectSuggestions,
-  connectConfig,
   withStateHandlers({ selectedSuggestion: -1, }, {
     changeSuggestionIndex: ({ selectedSuggestion }, { config, suggestions, getSuggestionProps }) => (evt) => {
       const arrowCodes = ['ArrowUp', 'ArrowDown']
@@ -14,8 +12,9 @@ export default compose(
         getSuggestionProps(selectedSuggestion, config.get('widgetKey')).onClick()
         return;
       }
-      if (!arrowCodes.includes(evt.key)) return
-      evt.preventDefault()
+      if (!arrowCodes.includes(evt.key)) return;
+      evt.preventDefault();
+      
       const newSuggestionIndex = selectedSuggestion + (evt.key === 'ArrowUp' ? -1 : 1)
       const totalSuggestions = suggestions && suggestions.size || 0
 
@@ -28,8 +27,9 @@ export default compose(
   }),
   lifecycle({
     componentDidMount() {
-      const node: HTMLInputElement = this.props.config.get('node')
+      const node: HTMLInputElement = this.props.config.get('node');
       node.addEventListener('keydown', this.props.changeSuggestionIndex)
+      node.autocomplete = 'off';
     },
     componentWillUnmount() {
       const node: HTMLInputElement = this.props.config.get('node')
@@ -37,9 +37,8 @@ export default compose(
     },
     componentWillUpdate(nextProps) {
       if (
-        this.props.meta && nextProps.meta &&
         nextProps.meta.get('q') !== this.props.meta.get('q')
-      ) this.props.setSuggestionIndex(-1)
+      ) nextProps.setSuggestionIndex(-1)
     }
   })
 )

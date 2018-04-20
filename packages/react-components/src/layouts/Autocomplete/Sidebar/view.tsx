@@ -2,6 +2,7 @@ import React from 'react'
 import Drawer from 'components/common/Drawer'
 import Icon from 'components/Icon'
 import SearchSuggestions from 'components/autocomplete/SearchSuggestions'
+import * as events from 'helpers/emmiter';
 
 export default class Sidebar extends React.Component {
 
@@ -46,7 +47,7 @@ export default class Sidebar extends React.Component {
   }
 
   handleExited = () => {
-    __root.emit('autocompleteFocusLost', this.props.config.get('widgetKey'))
+    events.emit('autocompleteFocusLost', this.props.config.get('widgetKey'))
   }
 
   getInputRef = (el) => {

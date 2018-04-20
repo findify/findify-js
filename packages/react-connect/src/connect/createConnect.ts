@@ -1,6 +1,6 @@
 import { Component, createFactory } from "react";
 import * as PropTypes from 'prop-types';
-import { Map } from 'immutable';
+import { Map, is } from 'immutable';
 import { getDisplayName } from '../utils/getDisplayName';
 import { shallowEqual } from '../utils/shallowEqual';
 import mapValues from '../utils/mapValues';
@@ -24,9 +24,6 @@ const createComponent = ({
     displayName: string;
     changeAction: any
     cachedHandlers = {}
-    state = {
-      meta: undefined,
-    }
 
     static contextTypes = {
       [$findify]: PropTypes.object.isRequired,
@@ -36,9 +33,23 @@ const createComponent = ({
 
     constructor(props, context){
       super(props, context);
+      const $store = context[$findify][storeKey];
+
+      if (!$store) {
+        throw new Error(`
+          Can't find Provider "${key ? ' with key '+ key : ''},
+          You should create provider with correct Agent, or set "storeKey"
+        `);
+      }
+      this.changeAction = $store.set;
+      this.handleUpdate(
+        field !== 'query' ? $store.response.get(field) : $store.state,
+        $store.response.get('meta'),
+        true
+      );
     }
 
-    handleUpdate = (changes, meta = Map()) => {
+    handleUpdate = (changes, meta = Map(), direct = false) => {
       const config = this.context[$config];
       const mapped = mapProps && mapProps(
         changes,
@@ -46,7 +57,8 @@ const createComponent = ({
         this.changeAction,
         this.context[$analytics]
       );
-      this.setState({ meta, config, ...(mapped || { [field]: changes }) })
+      const state = { meta, config, ...(mapped || { [field]: changes }) }
+      direct ? this.state = state : this.setState(state);
     }
 
     private handlers = mapValues(
@@ -67,20 +79,7 @@ const createComponent = ({
     )
 
     componentWillMount() {
-      const $store = this.context[$findify][storeKey];
-
-      if (!$store) {
-        throw new Error(`
-          Can't find Provider "${key ? ' with key '+ key : ''},
-          You should create provider with correct Agent, or set "storeKey"
-        `);
-      }
-      this.changeAction = $store.set;
-      $store.on(`change:${field}`, this.handleUpdate);
-      this.handleUpdate(
-        field !== 'query' ? $store.response.get(field) : $store.state,
-        $store.response.get('meta'),
-      );
+      this.context[$findify][storeKey].on(`change:${field}`, this.handleUpdate);
     }
 
     componentWillUnmount() {
@@ -90,7 +89,7 @@ const createComponent = ({
     shouldComponentUpdate(nextProps, nextState) {
       return (
         (!this.state[field] || !this.state[field].equals(nextState[field]))
-        || !shallowEqual(nextProps, this.props)
+        || !!Object.keys(nextProps).find(key => !is(nextProps[key], this.props[key]))
       );
     }
 

@@ -32,14 +32,16 @@ const StartTypingView = ({ theme }) => (
   <h4 className={theme.startTyping}>What are you looking for?</h4>
 )
 
-const SearchOrZero = connectSuggestions(({ suggestions, config, theme, meta, selectedSuggestion, ...rest }) => (
+const SearchOrZero = ({ suggestions, config, theme, meta, selectedSuggestion, ...rest }) => (
   <Branch
     condition={suggestions && suggestions.size > 0}
     left={() => (
       <MapArray
         array={config.get('viewOrder', ["SearchSuggestions", "ProductMatches"])}
         keyAccessor={item => (item + selectedSuggestion)}
-        factory={({ item }: ({ item: 'SearchSuggestions' | 'ProductMatches' })) => React.createElement(LayoutColumns[item], { config, theme, meta, selectedSuggestion, ...rest })} />
+        factory={({ item }: ({ item: 'SearchSuggestions' | 'ProductMatches' })) =>
+          React.createElement(LayoutColumns[item], { config, theme, meta, selectedSuggestion, ...rest })
+        } />
     )}
     right={() => (
       <Branch
@@ -47,15 +49,15 @@ const SearchOrZero = connectSuggestions(({ suggestions, config, theme, meta, sel
         left={() => <NotFoundView theme={theme} />}
         right={() => <StartTypingView theme={theme} />} />
     )} />
-))
+)
 
-export default ({ config, theme, meta, selectedSuggestion, ...rest }) => (
+export default ({ config, theme, meta, ...rest }) => (
   <React.Fragment display-if={meta && meta.get('q') && meta.get('q') !== ''}>
     <div className={theme.overlay} display-if={config.get('showOverlay')}></div>
     <div className={theme.root}>
       <Tip className={theme.tip} title={config.getIn(['i18n', 'tipTitle'])} />
       <div className={theme.container}>
-        <SearchOrZero theme={theme} meta={meta} selectedSuggestion={selectedSuggestion} />
+        <SearchOrZero theme={theme} meta={meta} config={config} {...rest} />
       </div>
     </div>
   </React.Fragment>

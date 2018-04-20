@@ -48,9 +48,10 @@ export const registerHandlers = (widget, render) => {
   /** Handle input change */
   const handleInputChange = (e) => {
     const value = e.target.value;
-    agent.set('q', value);
     handleWindowScroll();
-    return render('initial');
+    render('initial');
+    agent.set('q', value);
+    return;
   };
 
   /** Handle input blur */
@@ -75,8 +76,14 @@ export const registerHandlers = (widget, render) => {
 
   /** Listen for input change */
   subscribers.push(addEventListeners(
-    ['input', 'focus', 'cut', 'paste'],
+    ['input', 'cut', 'paste'],
     handleInputChange,
+    node
+  ));
+
+  subscribers.push(addEventListeners(
+    ['focus'],
+    () => render('initial'),
     node
   ));
 
