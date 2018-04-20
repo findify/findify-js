@@ -62,7 +62,7 @@ export default class Sidebar extends React.Component {
         width={isMobile ? '90%' : 300}
         onCloseByUser={this.handleCloseByUser}
         onExited={this.handleExited}>
-        <div className={theme.root}>
+        <div className={theme.root} data-findify-autocomplete={true}>
           <div className={theme.header}>
             <Icon className={theme.searchIcon} name={'Search'} width={24} height={24} />
           </div>
