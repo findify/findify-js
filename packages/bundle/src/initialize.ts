@@ -22,11 +22,22 @@ export default async (
   _config
 ) => {
 
-  // Register custom components
-  if (_config.components) {
-    window.findifyJsonp.push([['extra'], _config.components]);
-    delete _config.components;
+
+  // We loading config independently from webpack and this promise is always resolved
+  const asyncConfig = await import(/* webpackMode: "weak" */'./config');
+  const cfg = { ..._config, ...asyncConfig.default };
+   
+  if (cfg.components) {
+    const extra = Object.keys(cfg.components).reduce(
+      (acc, k) => ({ ...acc, [k]: eval(cfg.components[k]) }), {}
+    )
+    window.findifyJsonp.push([['extra'], extra]);
+    __root.invalidate();
+    delete cfg.components;
   }
+
+  console.log(__webpack_require__.c['2g2b']);
+  
 
   /* Load Dependencies in closure to support polyfills */
   const { fromJS } = require('immutable');
@@ -34,10 +45,7 @@ export default async (
   const { createWidgets, bulkAddWidgets } = require('./core/widgets');
   const { renderWidgets } = require('./core/render');
 
-  // We loading config independently from webpack and this promise is always resolved
-  const asyncConfig = await import(/* webpackMode: "weak" */'./config');
-
-  const cfg = { ..._config, ...asyncConfig.default };
+  // Register custom components
 
   __root.config = fromJS(cfg);
 

@@ -4,6 +4,7 @@ import { connectSuggestions, connectQuery } from '@findify/react-connect';
 
 export default compose(
   setDisplayName('withAutocompleteLogic'),
+  connectSuggestions,
   withStateHandlers({ selectedSuggestion: -1, }, {
     changeSuggestionIndex: ({ selectedSuggestion }, { config, suggestions, getSuggestionProps }) => (evt) => {
       const arrowCodes = ['ArrowUp', 'ArrowDown']

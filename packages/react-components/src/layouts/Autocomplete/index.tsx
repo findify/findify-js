@@ -22,7 +22,7 @@ const renderView = (type, props) => (
 const Autocomplete = connectSuggestions(({ config, ...rest }) => {
   const isMobile = window.innerWidth < config.get('mobileBreakpoint')
   const viewType: AutocompleteType = isMobile && config.get('mobileViewType', 'fullscreen') || config.get('viewType', 'simple')
-
+  
   return renderView(viewType, { ...rest, config, isMobile })
 });
 

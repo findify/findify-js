@@ -20,7 +20,6 @@ export default compose(
     hideModal: ({ hideModal }) => () =>  hideModal('Filters') // Reset values
   }),
 
-
   withStateHandlers<{activeFacet: string | boolean}, any, any>(
     { activeFacet: false },
     { selectFacet: () => name => ({ activeFacet: typeof name === 'string' ? name : false }) }
@@ -35,7 +34,10 @@ export default compose(
   })),
 
   withPropsOnChange(['query'], ({ query }) => query.get('filters') && ({
-    total: query.get('filters').reduce((acc, filter) => acc + filter.size, 0)
+    total: query.get('filters').reduce(
+      // The workaround to not sum the nested category filters
+      (acc, filter, key) =>  acc + (/category[2-9]/.test(key) ? 0 : filter.size)
+    , 0)
   }))
 
 )(view);

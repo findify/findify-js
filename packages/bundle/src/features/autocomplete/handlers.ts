@@ -65,7 +65,7 @@ export const registerHandlers = (widget, render) => {
     if (!isSearch()) return redirectToSearch(value);
     __root.widgets
       .findByType('search', 'smart-collection')
-      .forEach(({ agent }) => agent.reset().set('q', value));
+      .forEach(({ agent }) => agent.reset().set('q', value || ''));
     node.value = value;
   };
 
@@ -99,7 +99,7 @@ export const registerHandlers = (widget, render) => {
     const form = findClosestForm(node);
     if (form) {
       subscribers.push(addEventListeners(
-        ['change'],
+        ['submit'],
         handleFormSubmit,
         form
       ))
