@@ -4,7 +4,7 @@ import * as Agents from '@findify/agent';
 import analytics from '@findify/analytics';
 import { $findify, $analytics, $config } from '../symbols';
 
-import { object, string, number, oneOfType, func } from 'prop-types';
+import { object, string, number, oneOfType, func, any } from 'prop-types';
 
 const agents = {};
 
@@ -14,6 +14,7 @@ export const createProvider = (type, onCreate?: (agent) => void) => {
     storeKey: string;
     analytics: any;
     agent: any;
+    nested: any;
 
     static propTypes = {
       apiKey: string.isRequired,
@@ -25,6 +26,10 @@ export const createProvider = (type, onCreate?: (agent) => void) => {
       storeKey: oneOfType([string, number])
     }
 
+    static contextTypes = {
+      [$findify]: object,
+    };
+
     static childContextTypes = {
       [$findify]: object.isRequired,
       [$analytics]: object.isRequired,
@@ -35,7 +40,8 @@ export const createProvider = (type, onCreate?: (agent) => void) => {
       super(props, context);
       const { apiKey, agent, options, defaults, config } = props;
       const analyticsConfig: any = { key: apiKey };
-
+      this.nested = context[$findify];
+    
       if (agent && !agent.config.immutable) {
         throw new Error(`
           Agent should be in "immutable" mode, to work with connectors.
@@ -64,6 +70,7 @@ export const createProvider = (type, onCreate?: (agent) => void) => {
         [$config]: this.state.config,
         [$findify]: {
           ...agents,
+          ...this.nested,
           ...(!this.storeKey && { default: this.agent })
         },
       }

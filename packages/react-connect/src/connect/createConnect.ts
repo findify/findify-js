@@ -16,7 +16,7 @@ const createComponent = ({
   BaseComponent,
   key = ''
 }: any) => {
-  const storeKey = key || 'default';
+  const storeKey = !!key && key || 'default';
   const displayName = `Connect${capitalize(field)}(${getDisplayName(BaseComponent)})`;
   const factory: any = createFactory(BaseComponent);
 

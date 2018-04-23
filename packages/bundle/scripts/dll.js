@@ -1,7 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const pkg = require('../package.json');
-
+const WebpackHashPlugin = require('./webpackHashPlugin');
 const ignore = [
   "@findify/react-components"
 ];
@@ -30,6 +30,8 @@ module.exports = (env = {}) => ({
   },
 
   plugins: [
+    new WebpackHashPlugin(),
+
     new webpack.DefinePlugin({
       __DEVELOPMENT__: false,
       'process.env': {

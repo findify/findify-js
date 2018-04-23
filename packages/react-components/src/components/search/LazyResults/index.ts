@@ -38,11 +38,15 @@ const addItems = ({ ranges, items }, nextItems, meta) => {
 }
 
 class LazyResults extends Component<any, any>{
-  state = {
-    items: List(),
-    ranges: List(),
-    columns: '3',
-  };
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      items: props.items,
+      ranges:  List([createRange(props.meta)]),
+      columns: '3',
+    };
+  }
 
   onLoadNext = () => {
     const { update, meta } = this.props;
@@ -56,7 +60,8 @@ class LazyResults extends Component<any, any>{
     return update('offset', ranges.first().get('from') - meta.get('limit'));
   }
 
-  componentWillReceiveProps({ items, meta, size, config }) {    
+  componentWillReceiveProps({ items, meta, size, config }) {
+     
     if (size.width !== this.props.size.width) {
       this.setState({ columns: String(config.get('columns') || countProductsToShow(size.width)) })
     }

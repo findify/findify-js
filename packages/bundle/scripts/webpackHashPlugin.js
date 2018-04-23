@@ -40,11 +40,14 @@ class HashedPlugin {
 								module.id = cache.get(id);
 								continue;
 							}
+							
 
               const _path = getPath('react-components/src/', id) ||
                             getPath('node_modules/', id) ||
+                            getPath('../', id) ||
 														id;
 
+							if (_path.includes('recompose')) console.log(_path)
 							const _hash = require("crypto")
 								.createHash('md5')
 								.update(_path)
