@@ -40,7 +40,12 @@ export default ({
     theme={theme}
     className={theme.expandedList}
     height={config.get('expandedHeight')}
-    array={config.get('pullSelected') ? items.filter(i => !i.get('selected')) : items}
+    array={(
+      config.get('pullSelected')
+        ? items.filter(i => !i.get('selected'))
+        : items
+      ).sortBy(i => i.get('value'))
+    }
     config={config} />
 
   <MapArray
