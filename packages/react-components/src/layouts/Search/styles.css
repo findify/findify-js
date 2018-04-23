@@ -19,3 +19,28 @@
     display: block;
   }
 }
+
+.tab {
+  font-family: $font-base;
+  text-transform: uppercase;
+  font-size: $font-size-medium;
+  &:after {
+    display: block;
+    height: 2px;
+    width: 22px;
+    margin-left: calc(50% - 11px);
+    margin-right: calc(50% - 11px);
+    margin-top: 8px;
+    content: ' ';
+  }
+}
+
+.active {
+  &:after {
+    background: black;
+  }
+}
+
+.disabled {
+  opacity: .3;
+}

@@ -1,0 +1,332 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tabs renders first tab by default 1`] = `
+<Tabs>
+  <withPropsOnChange(withPropsOnChange(withStateHandlers(withProps(withPropsOnChange(Tabs)))))
+    theme={Object {}}
+  >
+    <withPropsOnChange(withStateHandlers(withProps(withPropsOnChange(Tabs))))
+      controlled={false}
+      theme={Object {}}
+    >
+      <withStateHandlers(withProps(withPropsOnChange(Tabs)))
+        controlled={false}
+        selectedIndex={0}
+        theme={Object {}}
+      >
+        <withProps(withPropsOnChange(Tabs))
+          controlled={false}
+          selectedIndex={0}
+          setSelectedIndex={[Function]}
+          theme={Object {}}
+        >
+          <withPropsOnChange(Tabs)
+            controlled={false}
+            onTabClick={[Function]}
+            selectedIndex={0}
+            setSelectedIndex={[Function]}
+            theme={Object {}}
+          >
+            <Tabs
+              body={
+                <UNDEFINED>
+                  <p>
+                    Wazzup!
+                  </p>
+                </UNDEFINED>
+              }
+              controlled={false}
+              onTabClick={[Function]}
+              selectedIndex={0}
+              setSelectedIndex={[Function]}
+              theme={Object {}}
+            >
+              <ul>
+                <li
+                  key="0/.0"
+                  onClick={[Function]}
+                >
+                  <header
+                    isActive={true}
+                    isDisabled={false}
+                  >
+                    <h1
+                      isActive={true}
+                      isDisabled={false}
+                    >
+                      Hello world
+                    </h1>
+                  </header>
+                </li>
+                <li
+                  key="1/.1"
+                >
+                  <header
+                    isActive={false}
+                    isDisabled={true}
+                  >
+                    <h1
+                      isActive={false}
+                      isDisabled={true}
+                    >
+                      Goodbye world
+                    </h1>
+                  </header>
+                </li>
+                <li
+                  key="2/.2"
+                  onClick={[Function]}
+                >
+                  <header
+                    isActive={false}
+                    isDisabled={false}
+                  >
+                    <h1
+                      isActive={false}
+                      isDisabled={false}
+                    >
+                      See ya later, world
+                    </h1>
+                  </header>
+                </li>
+              </ul>
+              <div>
+                <p>
+                  Wazzup!
+                </p>
+              </div>
+            </Tabs>
+          </withPropsOnChange(Tabs)>
+        </withProps(withPropsOnChange(Tabs))>
+      </withStateHandlers(withProps(withPropsOnChange(Tabs)))>
+    </withPropsOnChange(withStateHandlers(withProps(withPropsOnChange(Tabs))))>
+  </withPropsOnChange(withPropsOnChange(withStateHandlers(withProps(withPropsOnChange(Tabs)))))>
+</Tabs>
+`;
+
+exports[`Tabs respects defaultSelectedIndex property 1`] = `
+<Tabs
+  defaultSelectedIndex={2}
+>
+  <withPropsOnChange(withPropsOnChange(withStateHandlers(withProps(withPropsOnChange(Tabs)))))
+    defaultSelectedIndex={2}
+    theme={Object {}}
+  >
+    <withPropsOnChange(withStateHandlers(withProps(withPropsOnChange(Tabs))))
+      controlled={false}
+      defaultSelectedIndex={2}
+      theme={Object {}}
+    >
+      <withStateHandlers(withProps(withPropsOnChange(Tabs)))
+        controlled={false}
+        defaultSelectedIndex={2}
+        selectedIndex={2}
+        theme={Object {}}
+      >
+        <withProps(withPropsOnChange(Tabs))
+          controlled={false}
+          defaultSelectedIndex={2}
+          selectedIndex={2}
+          setSelectedIndex={[Function]}
+          theme={Object {}}
+        >
+          <withPropsOnChange(Tabs)
+            controlled={false}
+            defaultSelectedIndex={2}
+            onTabClick={[Function]}
+            selectedIndex={2}
+            setSelectedIndex={[Function]}
+            theme={Object {}}
+          >
+            <Tabs
+              body={
+                <UNDEFINED>
+                  <p>
+                    Tab 3 it is!
+                  </p>
+                </UNDEFINED>
+              }
+              controlled={false}
+              defaultSelectedIndex={2}
+              onTabClick={[Function]}
+              selectedIndex={2}
+              setSelectedIndex={[Function]}
+              theme={Object {}}
+            >
+              <ul>
+                <li
+                  key="0/.0"
+                  onClick={[Function]}
+                >
+                  <header
+                    isActive={false}
+                    isDisabled={false}
+                  >
+                    <h1
+                      isActive={false}
+                      isDisabled={false}
+                    >
+                      Hello world
+                    </h1>
+                  </header>
+                </li>
+                <li
+                  key="1/.1"
+                >
+                  <header
+                    isActive={false}
+                    isDisabled={true}
+                  >
+                    <h1
+                      isActive={false}
+                      isDisabled={true}
+                    >
+                      Goodbye world
+                    </h1>
+                  </header>
+                </li>
+                <li
+                  key="2/.2"
+                  onClick={[Function]}
+                >
+                  <header
+                    isActive={true}
+                    isDisabled={false}
+                  >
+                    <h1
+                      isActive={true}
+                      isDisabled={false}
+                    >
+                      See ya later, world
+                    </h1>
+                  </header>
+                </li>
+              </ul>
+              <div>
+                <p>
+                  Tab 3 it is!
+                </p>
+              </div>
+            </Tabs>
+          </withPropsOnChange(Tabs)>
+        </withProps(withPropsOnChange(Tabs))>
+      </withStateHandlers(withProps(withPropsOnChange(Tabs)))>
+    </withPropsOnChange(withStateHandlers(withProps(withPropsOnChange(Tabs))))>
+  </withPropsOnChange(withPropsOnChange(withStateHandlers(withProps(withPropsOnChange(Tabs)))))>
+</Tabs>
+`;
+
+exports[`Tabs respects selectedIndex property 1`] = `
+<Tabs
+  defaultSelectedIndex={2}
+  selectedIndex={0}
+>
+  <withPropsOnChange(withPropsOnChange(withStateHandlers(withProps(withPropsOnChange(Tabs)))))
+    defaultSelectedIndex={2}
+    selectedIndex={0}
+    theme={Object {}}
+  >
+    <withPropsOnChange(withStateHandlers(withProps(withPropsOnChange(Tabs))))
+      controlled={true}
+      defaultSelectedIndex={2}
+      selectedIndex={0}
+      theme={Object {}}
+    >
+      <withStateHandlers(withProps(withPropsOnChange(Tabs)))
+        controlled={true}
+        defaultSelectedIndex={2}
+        selectedIndex={0}
+        theme={Object {}}
+      >
+        <withProps(withPropsOnChange(Tabs))
+          controlled={true}
+          defaultSelectedIndex={2}
+          selectedIndex={0}
+          setSelectedIndex={[Function]}
+          theme={Object {}}
+        >
+          <withPropsOnChange(Tabs)
+            controlled={true}
+            defaultSelectedIndex={2}
+            onTabClick={[Function]}
+            selectedIndex={0}
+            setSelectedIndex={[Function]}
+            theme={Object {}}
+          >
+            <Tabs
+              body={
+                <UNDEFINED>
+                  <p>
+                    Wazzup!
+                  </p>
+                </UNDEFINED>
+              }
+              controlled={true}
+              defaultSelectedIndex={2}
+              onTabClick={[Function]}
+              selectedIndex={0}
+              setSelectedIndex={[Function]}
+              theme={Object {}}
+            >
+              <ul>
+                <li
+                  key="0/.0"
+                  onClick={[Function]}
+                >
+                  <header
+                    isActive={true}
+                    isDisabled={false}
+                  >
+                    <h1
+                      isActive={true}
+                      isDisabled={false}
+                    >
+                      Hello world
+                    </h1>
+                  </header>
+                </li>
+                <li
+                  key="1/.1"
+                >
+                  <header
+                    isActive={false}
+                    isDisabled={true}
+                  >
+                    <h1
+                      isActive={false}
+                      isDisabled={true}
+                    >
+                      Goodbye world
+                    </h1>
+                  </header>
+                </li>
+                <li
+                  key="2/.2"
+                  onClick={[Function]}
+                >
+                  <header
+                    isActive={false}
+                    isDisabled={false}
+                  >
+                    <h1
+                      isActive={false}
+                      isDisabled={false}
+                    >
+                      See ya later, world
+                    </h1>
+                  </header>
+                </li>
+              </ul>
+              <div>
+                <p>
+                  Wazzup!
+                </p>
+              </div>
+            </Tabs>
+          </withPropsOnChange(Tabs)>
+        </withProps(withPropsOnChange(Tabs))>
+      </withStateHandlers(withProps(withPropsOnChange(Tabs)))>
+    </withPropsOnChange(withStateHandlers(withProps(withPropsOnChange(Tabs))))>
+  </withPropsOnChange(withPropsOnChange(withStateHandlers(withProps(withPropsOnChange(Tabs)))))>
+</Tabs>
+`;
