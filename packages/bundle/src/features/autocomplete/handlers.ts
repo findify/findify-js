@@ -67,7 +67,7 @@ export const registerHandlers = (widget, render) => {
 
   /** search for the value */
   const search = (_value?) => {
-    const value = _value || agent.state.get('q');
+    const value = _value || agent.state.get('q') || '';
     if (!isSearch()) return redirectToSearch(value);
     __root.widgets
       .findByType('search', 'smart-collection')
