@@ -9,6 +9,7 @@ const CompressionPlugin = require('compression-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin')
 const WebpackHashPlugin = require('./scripts/webpackHashPlugin');
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 interface WebpackEnvArgs {
   analyze?: boolean;
@@ -136,6 +137,8 @@ export default (env: WebpackEnvArgs, { mode }) => {
         template:  path.resolve(__dirname, 'index.html'),
         inject: 'head'
       }),
+
+      new WebpackHashPlugin()
     ],
 
   };
@@ -153,12 +156,17 @@ export default (env: WebpackEnvArgs, { mode }) => {
   }
 
   if (mode === 'production') {
-    config.plugins.push(new WebpackHashPlugin());
+    config.plugins.push(new CompressionPlugin({
+      exclude: /\.map/,
+    }));
+    config.plugins.push(new CopyWebpackPlugin([{
+      from: path.resolve(__dirname,'../react-components/lib/styles.css'),
+      to: 'styles.css',
+    }]));
   }
 
   if (mode === 'development') {
     config.plugins.push(new webpack.HotModuleReplacementPlugin());
-    config.plugins.push(new WebpackHashPlugin());
 
     config.plugins.push(new webpack.DllReferencePlugin({
       context: __dirname,

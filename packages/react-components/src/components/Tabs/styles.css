@@ -1,0 +1,41 @@
+.list {
+  list-style-type: none;
+  display: block;
+  text-align: center;
+}
+
+.body {
+
+}
+
+
+.tab {
+  display: inline-block;
+  margin-left: 16px;
+  margin-right: 16px;
+  cursor: pointer;
+  user-select: none;
+  font-family: $font-base;
+  text-transform: uppercase;
+  font-size: $font-size-medium;
+  &:after {
+    display: block;
+    height: 2px;
+    width: 22px;
+    margin-left: calc(50% - 11px);
+    margin-right: calc(50% - 11px);
+    margin-top: 8px;
+    content: ' ';
+  }
+}
+
+.active {
+  cursor: default;
+  &:after {
+    background: black;
+  }
+}
+
+.disabled {
+  opacity: .3;
+}

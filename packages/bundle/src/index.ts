@@ -42,7 +42,11 @@ if (process.env.NODE_ENV !== 'development' && __INCLUDE_POLYFILL__) {
 
 /** Load styles */
 if (process.env.NODE_ENV !== 'development') {
-  loadCss(__MERCHANT_CSS__);
+  ((path) => {
+    if (path === false) return;
+    if (!path) return loadCss(__webpack_require__.p + 'styles.css');
+    return loadCss(path);
+  })(__MERCHANT_CSS__);
 }
 
 Promise.all(deps).then(([initialize]) =>

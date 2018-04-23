@@ -47,7 +47,6 @@ class HashedPlugin {
                             getPath('../', id) ||
 														id;
 
-							if (_path.includes('recompose')) console.log(_path)
 							const _hash = require("crypto")
 								.createHash('md5')
 								.update(_path)

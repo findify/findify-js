@@ -1,7 +1,6 @@
 import React from 'react'
 import { mount } from 'enzyme'
-import Tabs from '../Tabs'
-import Tab from '../Tab'
+import { Tabs, Tab } from './index'
 
 const tabData = [
   {
