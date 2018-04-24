@@ -79,7 +79,7 @@ export default ({
       right={FacetTitles}
       left={FacetContent} />
   </div>
-  <Button className={theme.footer} onClick={hideModal}>
+  <Button className={theme.footer} onClick={activeFacet ? selectFacet : hideModal}>
     { config.getIn(['facets', 'i18n', activeFacet ? 'done' : 'showResults'], 'See results')}
   </Button>
 </div>

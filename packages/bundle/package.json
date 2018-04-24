@@ -59,6 +59,7 @@
     "@types/jest": "^22.2.0",
     "@types/webpack": "^4.1.0",
     "@types/webpack-env": "^1.13.5",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "babel-loader": "^8.0.0-beta.0",
     "babel-plugin-jsx-display-if": "^3.0.0",
     "cross-env": "^5.1.4",

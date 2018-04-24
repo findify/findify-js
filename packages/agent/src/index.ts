@@ -23,6 +23,10 @@ export class Recommendation extends Agent {
   type = Types.RequestType.Recommendations;
 }
 
+export class Content extends Agent {
+  type = Types.RequestType.Content;
+}
+
 export class SmartCollection extends Agent {
   type = Types.RequestType.SmartCollection;
 }

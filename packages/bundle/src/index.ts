@@ -9,7 +9,7 @@ if (process.env.NODE_ENV !== 'development' && __MERCHANT_VERSION__) {
   __webpack_require__.p =
     __PUBLIC_PATH__.indexOf('jsdelivr') > 0
     ? `${__PUBLIC_PATH__}@${__MERCHANT_VERSION__}/dist`
-    : `${__PUBLIC_PATH__}/${__ENVIRONMENT__}/${__MERCHANT_VERSION__}/`;
+    : `${__PUBLIC_PATH__}${__ENVIRONMENT__}/${__MERCHANT_VERSION__}/`;
 }
 
 /**

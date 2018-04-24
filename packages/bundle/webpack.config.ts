@@ -10,12 +10,15 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin')
 const WebpackHashPlugin = require('./scripts/webpackHashPlugin');
 const CopyWebpackPlugin = require("copy-webpack-plugin");
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 interface WebpackEnvArgs {
   analyze?: boolean;
   generateStatsFile?: boolean;
   findify_env?: 'staging'
 }
+
 
 const componentsPath = path.resolve(__dirname, '../react-components');
 const createGlobals = (isDevelopment) => [
@@ -61,6 +64,18 @@ export default (env: WebpackEnvArgs, { mode }) => {
         immutable: path.resolve(__dirname, '../../node_modules/immutable')
       }
     },
+    optimization: {
+      splitChunks: {
+        cacheGroups: {
+          styles: {
+            name: 'styles',
+            test: /\.css$/,
+            chunks: 'all',
+            enforce: true
+          }
+        }
+      }
+    },
     module: {
       rules: [
         {
@@ -68,10 +83,10 @@ export default (env: WebpackEnvArgs, { mode }) => {
           include: [
             path.resolve(componentsPath, 'src')
           ],
-          use: compact([
-            mode === 'development' && 'style-loader',
+          use: [
+            mode === 'development' ? "style-loader" : MiniCssExtractPlugin.loader,
             {
-              loader: mode === 'development' ? 'css-loader' : 'css-loader/locals',
+              loader: 'css-loader',
               options: {
                 modules: true,
                 camelCase: true,
@@ -88,7 +103,7 @@ export default (env: WebpackEnvArgs, { mode }) => {
                 }
               }
             }
-          ])
+          ]
         },
         {
           test: /\.ts$/,
@@ -156,12 +171,15 @@ export default (env: WebpackEnvArgs, { mode }) => {
   }
 
   if (mode === 'production') {
+    config.plugins.push(new MiniCssExtractPlugin({
+      filename: "[name].css",
+    }));
     config.plugins.push(new CompressionPlugin({
       exclude: /\.map/,
     }));
     config.plugins.push(new CopyWebpackPlugin([{
-      from: path.resolve(__dirname,'../react-components/lib/styles.css'),
-      to: 'styles.css',
+      from: path.resolve(__dirname,'../react-components/lib/raw.css'),
+      to: 'raw.css',
     }]));
   }
 

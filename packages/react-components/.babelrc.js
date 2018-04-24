@@ -25,10 +25,10 @@ module.exports = {
           "resolve": {
             "modules": [path.resolve(__dirname, "src")]
           },
-          "extractCss": "./lib/styles.css",
+          "extractCss": "./lib/raw.css",
           "prepend": "./postcss.config.js",
           "generateScopedName": path.resolve(__dirname, "scripts/getLocalIdent.js")
-        }]
+        }],
       ]
     }
   }
