@@ -110,7 +110,6 @@ export default process.env.NODE_ENV !== 'development'
             },
             "showOverlay": true,
         },
-
         "search": {
             // Fallback recommendation type
             "zeroResultsType": "trending",
@@ -120,6 +119,15 @@ export default process.env.NODE_ENV !== 'development'
                 "pagination": false,
                 "infinite": true,
                 "stickyFilters": false
+            },
+
+            "contentSearch": {
+              "enabled": true,
+              "content": {
+                "image": {
+                  "aspectRatio": 1
+                }
+              }
             },
 
             // Should scroll to value after new data was received

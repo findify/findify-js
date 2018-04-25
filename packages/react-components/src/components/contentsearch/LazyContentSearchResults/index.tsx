@@ -6,11 +6,11 @@ import withTheme from 'helpers/withTheme';
 import withLazy from 'helpers/withLazy';
 import sizeMe from 'react-sizeme';
 
-import view from 'components/search/LazyResults/view';
-import styles from 'components/search/LazyResults/styles.css';
+import view from 'components/contentsearch/LazyContentSearchResults/view';
+import styles from 'components/contentsearch/LazyContentSearchResults/styles.css';
 
 export default compose(
-  setDisplayName('LazyResults'),
+  setDisplayName('LazyContentSearchResults'),
   withTheme(styles),
   connectItems,
   withLazy(),

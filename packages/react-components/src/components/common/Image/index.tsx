@@ -46,10 +46,7 @@ interface ImageProps {
 }
 
 export default compose(
-  sizeMe({
-    monitorWidth: true,
-    refreshRate: 50
-  }),
+  sizeMe(),
   setDisplayName('Image'),
   onlyUpdateForKeys(['src', 'thumbnail']),
   withPropsOnChange(['src'], ({ src, size }) => {
@@ -91,7 +88,7 @@ export default compose(
       }
     )
   })),
-)(({ src, aspectRatio, size: { width }, className, isFixedRatio }: ImageProps) => (
+)(({ src, aspectRatio, size: { width }, className, isFixedRatio }: ImageProps) => console.log('size is', isFixedRatio, aspectRatio, width) || (
   <div className={className} style={isFixedRatio ? {
     height: 1 / aspectRatio * width,
     backgroundImage: `url(${src})`,

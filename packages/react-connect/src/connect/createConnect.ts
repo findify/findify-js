@@ -1,4 +1,4 @@
-import { Component, createFactory } from "react";
+import { Component, createFactory, createElement } from "react";
 import * as PropTypes from 'prop-types';
 import { Map, is } from 'immutable';
 import { getDisplayName } from '../utils/getDisplayName';
@@ -18,7 +18,7 @@ const createComponent = ({
 }: any) => {
   const storeKey = !!key && key || 'default';
   const displayName = `Connect${capitalize(field)}(${getDisplayName(BaseComponent)})`;
-  const factory: any = createFactory(BaseComponent);
+  //const factory: any = createFactory(BaseComponent);
 
   class Connect extends Component{
     displayName: string;
@@ -98,13 +98,24 @@ const createComponent = ({
     }
 
     render() {
+      return createElement(
+        BaseComponent,
+        {
+          ...this.props,
+          ...this.handlers,
+          ...this.state,
+          config: this.context[$config],
+          update: this.changeAction
+        }
+      )
+      /*
       return factory({
         ...this.props,
         ...this.handlers,
         ...this.state,
         config: this.context[$config],
         update: this.changeAction,
-      });
+      });*/
     }
   }
 

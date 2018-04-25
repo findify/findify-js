@@ -1,7 +1,7 @@
 import { createElement } from 'react';
 import { SearchProvider, RecommendationProvider } from "@findify/react-connect";
 import { Recommendation as RecommendationAgent } from "@findify/agent";
-import { Search, ZeroResults } from '@findify/react-components/src';
+import { Search, ContentSearch, ZeroResults } from '@findify/react-components/src';
 import { getQuery, setQuery, listenHistory } from '../../core/location';
 import { hideFallback } from '../../helpers/fallbackNode';
 import { Events } from '../../core/events';
@@ -48,7 +48,7 @@ export default (widget, render) => {
       return render('initial');
     }
     const agent = createFallbackAgent(config, node);
-    
+
     return render(
       RecommendationProvider,
       { agent, apiKey, config },
@@ -62,7 +62,12 @@ export default (widget, render) => {
     stopListenLocation();
     unsubscribe();
   })
-  
+
   /** Render */
-  return createElement(SearchProvider, props, createElement(Search));
+
+  return (
+    config.getIn(['contentSearch', 'enabled'], false) ?
+      createElement(SearchProvider, props, createElement(ContentSearch)) :
+      createElement(SearchProvider, props, createElement(Search))
+  )
 }
