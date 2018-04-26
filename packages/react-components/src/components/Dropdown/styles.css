@@ -1,0 +1,64 @@
+
+$padding: 0 11px;
+
+.root{
+  position: relative;
+}
+
+.select{
+  $height: 40px;
+  position: relative;
+  border-radius: 0;
+  height: $height;
+  padding: $padding;
+  padding-right: 40px;
+  background: $color-grey-1;
+  text-align: left;
+  width: 100%;
+}
+
+.arrow{
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  margin-top: -8px;
+}
+
+.dropdown{
+  $background: $color-white;
+  position: absolute;
+  top: calc(100% - 1px);
+  left: 0;
+  width: 100%;
+  background: $background;
+  z-index: 9999;
+  border: 1px solid $color-grey-2;
+  margin-top: 1px;
+  box-sizing: border-box;
+  box-shadow: 0 5px 10px -4px rgba(0,0,0,0.07);
+  transition: .3s ease all;
+  transform-origin: center top;
+  transform: scaleY(0);
+  &.open {
+    transform: scaleY(1);
+  }
+}
+
+.option{
+  $height: 40px;
+  display: block;
+  text-align: left;
+  font-size: $font-size-normal;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  height: $height;
+  width: 100%;
+  padding: $padding;
+  cursor: pointer;
+}
+
+.highlighted{
+  $background: $color-grey-1;
+  background: $background;
+}

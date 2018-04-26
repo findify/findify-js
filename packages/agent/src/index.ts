@@ -7,10 +7,24 @@ export class Search extends Agent {
 
 export class Autocomplete extends Agent {
   type = Types.RequestType.Autocomplete;
+  emptyResponse = { items: [], meta: {}, suggestions: [] };
+
+  /** Return empty response if "q" is not set */
+  request(cache: any) {
+    if (!cache.get('q')) {
+      this.createRequestBody(cache);
+      return this.handleResponse(this.emptyResponse);
+    }
+    return super.request(cache);
+  }
 }
 
 export class Recommendation extends Agent {
-  type = Types.RequestType.Recommendation;
+  type = Types.RequestType.Recommendations;
+}
+
+export class Content extends Agent {
+  type = Types.RequestType.Content;
 }
 
 export class SmartCollection extends Agent {

@@ -56,6 +56,8 @@ export class Client {
         return { path: `/autocomplete` };
       case Req.Type.Search:
         return { path: `/search` };
+      case Req.Type.Content:
+        return { path: `/content` };
       case Req.Type.SmartCollection:
         return {
           path: `/smart-collection/${req.params.slot}`,

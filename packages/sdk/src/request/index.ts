@@ -4,6 +4,7 @@ import * as Search from './Search';
 import * as SmartCollection from './SmartCollection';
 import * as Recommendations from './Recommendations';
 import * as Feedback from './Feedback';
+import * as Content from './Content';
 import * as Params from './params';
 
 /**
@@ -25,7 +26,8 @@ export type Request =
   | Search.Request
   | SmartCollection.Request
   | Recommendations.Request
-  | Feedback.Request;
+  | Feedback.Request
+  | Content.Request;
 
 
 /**
@@ -47,6 +49,7 @@ export type SpecificParams =
   | Search.Params
   | SmartCollection.Params
   | Recommendations.Params
+  | Content.Params
   | Feedback.Params;
 
 export { Type } from './Type';
@@ -56,5 +59,6 @@ export {
   Search,
   SmartCollection,
   Recommendations,
+  Content,
   Feedback,
 };

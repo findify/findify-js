@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SuggestionItem renders correctly 1`] = `
+<li
+  className="suggestion"
+  dangerouslySetInnerHTML={
+    Object {
+      "__html": "<span class=\\"highlightedText\\">aisa</span>ka taiga",
+    }
+  }
+  display-if="aisaka taiga"
+/>
+`;

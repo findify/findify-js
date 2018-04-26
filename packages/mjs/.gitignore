@@ -1,9 +1,0 @@
-npm-debug.log
-node_modules
-dist
-lib
-.DS_Store
-.vscode
-dev/config.ts
-dev/example.test.html
-

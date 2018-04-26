@@ -1,0 +1,83 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MapArray renders correctly 1`] = `
+Array [
+  <factory
+    index={0}
+    item={
+      Object {
+        "get": [Function],
+        "hashCode": [Function],
+        "image_url": "https://picsum.photos/100/200",
+        "title": "Test Title",
+      }
+    }
+    key="Test Titlehttps://picsum.photos/100/200"
+  />,
+  <factory
+    index={1}
+    item={
+      Object {
+        "get": [Function],
+        "hashCode": [Function],
+        "image_url": "https://picsum.photos/100/200",
+        "title": "Test Title 2",
+      }
+    }
+    key="Test Title 2https://picsum.photos/100/200"
+  />,
+]
+`;
+
+exports[`MapArray respects limit property 1`] = `
+Array [
+  <factory
+    index={0}
+    item={
+      Object {
+        "get": [Function],
+        "hashCode": [Function],
+        "image_url": "some image url",
+        "title": "Test title 2",
+      }
+    }
+    key="Test title 2some image url"
+  />,
+  <factory
+    index={1}
+    item={
+      Object {
+        "get": [Function],
+        "hashCode": [Function],
+        "image_url": "some image url",
+        "title": "Test title 2",
+      }
+    }
+    key="Test title 2some image url"
+  />,
+  <factory
+    index={2}
+    item={
+      Object {
+        "get": [Function],
+        "hashCode": [Function],
+        "image_url": "some image url",
+        "title": "Test title 2",
+      }
+    }
+    key="Test title 2some image url"
+  />,
+  <factory
+    index={3}
+    item={
+      Object {
+        "get": [Function],
+        "hashCode": [Function],
+        "image_url": "some image url",
+        "title": "Test title 2",
+      }
+    }
+    key="Test title 2some image url"
+  />,
+]
+`;

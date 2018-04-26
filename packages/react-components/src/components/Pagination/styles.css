@@ -1,0 +1,38 @@
+$height: 40px;
+$text-transform: uppercase;
+
+.root{
+  clear: fix;
+  padding-top: 30px;
+  border-top: 1px solid $color-grey-2;
+  margin-top: 22px;
+  text-align: center;
+}
+
+.prev, .next, .first, .last, .page, .dots{
+  height: $height;
+  padding: 0 16px;
+  font-size: $font-size-medium;
+  font-weight: normal;
+  &:hover{
+    text-decoration: underline;
+  }
+}
+
+.prev, .next{
+  text-transform: $text-transform;
+  svg{
+    vertical-align: -3px;
+  }
+}
+
+.dots{
+  cursor: default;
+  pointer-events: none;
+  padding: 0;
+}
+
+.active, .active:focus{
+  background-color: $color-grey-1;
+  text-decoration: none;
+}

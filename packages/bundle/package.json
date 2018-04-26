@@ -1,0 +1,78 @@
+{
+  "name": "@findify/bundle",
+  "description": "Findify Out Of Box solution",
+  "version": "6.0.2",
+  "main": "lib/index.js",
+  "tags": [
+    "findify",
+    "analytics",
+    "search"
+  ],
+  "files": [
+    "dist/"
+  ],
+  "scripts": {
+    "build": "run-p build:dist",
+    "build:dev": "webpack-cli --mode=development",
+    "build:dist": "webpack-cli --mode=production",
+    "build:dist:analyze": "npm run build:dist -- --env.analyze",
+    "build:test": "npm run build:lib -- --project tsconfig.test.json --module commonjs",
+    "build:test:watch": "npm run build:test -- --watch",
+    "build:dll": "webpack-cli --mode development --config scripts/dll.js",
+    "postinstall": "# npm run build:dll",
+    "clean": "del lib types",
+    "docs": "typedoc --name 'Findify Agent' --hideGenerator --target es5 --theme default --out doc src",
+    "lint": "tslint --project tsconfig.json --type-check --format codeFrame src/**/*.ts",
+    "lint:fix": "npm run lint -- --fix",
+    "precommit": "lint-staged",
+    "start": "webpack-dev-server --mode=development",
+    "test": "# jest",
+    "test:ci": "jest --ci",
+    "test:watch": "jest --watch"
+  },
+  "author": "Findify <yourfriends@findify.io>",
+  "license": "MIT",
+  "types": "types/index.d.ts",
+  "repository": "https://github.com/findify/findify-js/tree/master/packages/analytics",
+  "config": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@findify/agent": "^1.2.4",
+    "@findify/analytics-dom": "0.0.5",
+    "@findify/change-emitter": "^0.2.0",
+    "@findify/react-components": "^0.0.6",
+    "@findify/react-connect": "^0.1.3",
+    "core-js": "^2.5.5",
+    "jump.js": "^1.0.2",
+    "load-js": "^3.0.2",
+    "raf": "^3.4.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.0.0-beta.41",
+    "@babel/plugin-proposal-class-properties": "^7.0.0-beta.41",
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0-beta.41",
+    "@babel/plugin-syntax-dynamic-import": "^7.0.0-beta.41",
+    "@babel/polyfill": "^7.0.0-beta.41",
+    "@babel/preset-env": "^7.0.0-beta.41",
+    "@babel/preset-typescript": "^7.0.0-beta.41",
+    "@types/jest": "^22.2.0",
+    "@types/webpack": "^4.1.0",
+    "@types/webpack-env": "^1.13.5",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
+    "babel-loader": "^8.0.0-beta.0",
+    "babel-plugin-jsx-display-if": "^3.0.0",
+    "cross-env": "^5.1.4",
+    "css-loader": "^0.28.10",
+    "del-cli": "^1.1.0",
+    "doctoc": "^1.3.1",
+    "history": "^4.7.2",
+    "npm-run-all": "^4.1.2",
+    "postcss-loader": "^2.1.1",
+    "ts-node": "^5.0.1",
+    "tslint": "^5.9.1",
+    "typescript": "2.7.2",
+    "webpack-cli": "^2.0.12",
+    "webpack-dev-server": "^3.1.1"
+  }
+}

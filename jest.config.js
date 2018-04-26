@@ -26,7 +26,6 @@ module.exports = {
   ],
   coverageReporters: ['json', 'lcov', 'text', 'html'],
   coverageDirectory: 'coverage',
-  mapCoverage: true,
   coverageThreshold: {
     global: {
       branches: 60,

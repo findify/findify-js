@@ -1,0 +1,51 @@
+$padding: 25px;
+$gutter: 40px;
+
+.root{
+  position: relative;
+  width: 300px;
+  min-width: 300px;
+  display: table-cell;
+  vertical-align: top;
+  padding-left: $gutter;
+  box-sizing: border-box;
+  &:first-child{
+    padding-left: inherit;
+    padding-right: $gutter;
+  }
+}
+
+.header{
+  padding: 13px $padding;
+  clear: fix;
+}
+
+.icon{
+  float: left;
+  padding-right: 10px;
+}
+
+.title{
+  float: left;
+}
+
+.reset{
+  float: right;
+  padding: 2px 0px;
+  &:hover p{
+    color: $color-grey-4
+  }
+}
+
+.facet{
+  padding: 0 $padding;
+  padding-top: 20px;
+  margin-top: 20px;
+  border-top: 1px solid $color-grey-2;
+}
+
+@supports(display: flex) {
+  .root{
+    display: block;
+  }
+}

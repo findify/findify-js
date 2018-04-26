@@ -1,0 +1,68 @@
+.backdrop {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, .5);
+  z-index: 999;
+  transition: all 600ms ease;
+  opacity: 0;
+}
+
+.content-wrapper {
+  background: #fff;
+  height: 100vh;
+  overflow-y: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: inline-block;
+  z-index: 1000;
+  transition: all 600ms ease;
+}
+
+.content {
+  display: flex;
+  height: 100%;
+}
+
+.body-noscroll {
+  overflow: hidden;
+}
+
+.drawer-appear {
+  transition: all 600ms ease;
+}
+
+.drawer-enter {
+  &.backdrop {
+    opacity: 0.01;
+  }
+  transition: all 600ms ease;
+}
+.drawer-enter-active {
+  &.backdrop {
+    opacity: 1
+  }
+  transition: all 600ms ease;
+
+}
+.drawer-exit {
+  &.backdrop {
+    opacity: 1;
+  }
+}
+
+.drawer-enter-done {
+  &.backdrop {
+    opacity: 1;
+  }
+}
+
+.drawer-exit-active {
+  &.backdrop {
+    opacity: 0.01;
+  }
+  transition: all 600ms ease;
+}

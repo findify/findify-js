@@ -1,0 +1,62 @@
+.root{
+  white-space: nowrap;
+}
+
+.breadcrumb{
+  display: inline-block;
+  font-size: $font-size-small;
+  padding: 0;
+  margin-left: 12px;
+  position: relative;
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: $color-grey-3;
+  &:before{
+    content: '/';
+    color: $color-grey-3;
+    display: inline-block;
+    padding-right: 12px;
+    font-size: 16px;
+    vertical-align: -1px;
+    font-weight: normal;
+    font-family: $font-base;
+  }
+  .title {
+    color: $color-grey-3;
+  }
+  &:hover{
+    text-decoration: line-through;
+    text-decoration-color: $color-black;
+    color: $color-black;
+    .title {
+      color: $color-black;
+    }
+    &:before {
+      color: $color-black;
+    }
+  }
+  &:first-child:before{
+    color: $color-black;
+  }
+  .title{
+    display: inline-block;
+  }
+}
+
+.ball{
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  display: inline-block;
+  vertical-align: -1px;
+}
+
+.cross{
+  vertical-align: -4px;
+  transition: color .1s linear;
+  padding-left: 5px;
+}

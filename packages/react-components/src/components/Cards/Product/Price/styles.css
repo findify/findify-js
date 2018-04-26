@@ -1,0 +1,40 @@
+.price-wrapper {
+  text-align: center;
+  margin: 5px 0;
+  line-height: inherit;
+  clear: fix;
+  .simple &{
+    margin: 0
+  }
+}
+
+.price {
+  display: inline-block;
+  .simple &{
+    font-weight: bold;
+  }
+}
+
+.compare {
+  text-decoration: line-through;
+  color: $color-grey-4;
+  font-size: $font-size-medium;
+}
+
+
+.price, .compare {
+  font-family: $font-base;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+.price {
+  color: $color-black;
+  font-size: $font-size-medium;
+  font-weight: bold;
+}
+
+.sale-price {
+  color: $color-red;
+  padding-right: 5px;
+}

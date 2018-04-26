@@ -1,0 +1,105 @@
+$height: 30px;
+.root{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.item{
+  $font-size: $font-size-medium;
+  $padding: 5px 0;
+  width: 100%;
+  border: 0;
+  background: transparent;
+  outline: 0;
+  font-size: $font-size;
+  border-radius: 0;
+  text-align: left;
+  padding: $padding;
+  height: auto;
+  cursor: pointer;
+  display: table;
+  & > span{
+    display: table-cell;
+    width: 100%;
+  }
+  svg {
+    padding-right: 14px;
+    vertical-align: -2px;
+  }
+}
+
+.range{
+  display: table;
+  width: 1%;
+  padding-top: 10px;
+  padding-left: 25px;
+}
+
+.input-wrap{
+  display: table-cell;
+  position: relative;
+  white-space: nowrap;
+  :global(.react-numeric-input){
+    display: inline-block;
+  }
+}
+
+.input{
+  $width: 60px;
+  $indent: 8px;
+  display: block;
+  width: $width;
+  box-sizing: border-box;
+  height: $height;
+  padding: 0 8px;
+  padding-left: calc(8px + $indent);
+  color: $color-black;
+  font-family: $font-base;
+  font-size: $font-size-small;
+  border: 1px solid $color-grey-2;
+  transition: border-color .1s linear;
+  outline: none;
+  &:placeholder{
+    color: $color-grey-1;
+  }
+  &:focus{
+    border-color: $color-grey-3;
+  }
+}
+
+.currency{
+  $font-size: $font-size-medium;
+  display: inline-block;
+  position: relative;
+  font-size: $font-size;
+  left: 9px;
+  width: 0;
+}
+
+.submit{
+  $font-size: $font-size-medium;
+  display: table-cell;
+  border: 0;
+  background: transparent;
+  outline: 0;
+  font-size: $font-size;
+  border-radius: 0;
+  width: 100%;
+  height: $height;
+  padding: 0 8px;
+  cursor: pointer;
+  &:hover{
+    text-decoration: underline;
+  }
+
+  span {
+    font-size: $font-size-large;
+  }
+}
+
+.divider{
+  display: table-cell;
+  padding: 0 6px;
+  width: 1%;
+}
+

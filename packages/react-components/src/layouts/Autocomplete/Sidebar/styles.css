@@ -1,0 +1,61 @@
+.root {
+  width: 100%;
+}
+
+.inputWrapper {
+  input {
+    width: 100%;
+    height: 50px;
+    font-family: $font-base;
+    font-size: $font-size-large;
+    line-height: 50px;
+    color: $color-black;
+    padding-left: 13px;
+    box-sizing: border-box;
+    border: 1px solid $color-grey-2;
+    transition: border-color .1s linear;
+    outline: none;
+    &:placeholder {
+      color: $color-grey-3;
+    }
+    &:placeholder{
+      color: $color-grey-1;
+    }
+    &:focus{
+      border-color: $color-grey-3;
+    }
+  }
+}
+
+.type-title {
+  margin-top: 0;
+  margin-bottom: 17px;
+  color: $color-grey-3;
+  font-size: $font-size-small;
+  line-height: $font-size-small;
+  padding-top: 25px;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-family: $font-base;
+}
+
+.suggestions-container {
+  padding-left: 30px;
+}
+
+
+.header {
+  background-color:#475971;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.searchIcon {
+  margin-top: 12px;
+  margin-bottom: 14px;
+  margin-right: 16px;
+  color: $color-white;
+  path {
+    fill: $color-white;
+  }
+}

@@ -1,0 +1,4 @@
+.root{
+  display: inline-block;
+  /*color: inherit; FIXME: for whatever reason styles override each other while ignoring class order completely*/
+}

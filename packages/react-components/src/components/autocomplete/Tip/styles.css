@@ -1,0 +1,15 @@
+.tip {
+  user-select: none;
+  cursor: pointer;
+  text-align: center;
+  height: 48px;
+  line-height: 48px;
+  font-family: $font-base;
+  font-size: $font-size-large;
+  color: #b2b2b2;
+  background: $color-grey-1;
+}
+
+.highlight {
+  color: #404040;
+}

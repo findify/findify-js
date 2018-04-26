@@ -1,0 +1,24 @@
+.root {
+  padding-top: 10px;
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-bottom: 10px;
+  width: calc(100% - 24px);
+  display: table;
+  background-color: transparent;
+  transition: background-color .35s ease-in-out;
+  text-decoration: none;
+  user-select: none;
+  border: none!important;
+  vertical-align: bottom;
+}
+
+.image-wrap {
+  position: relative;
+  overflow: hidden;
+}
+
+.image {
+  max-width: 100%;
+  margin: 0 auto;
+}

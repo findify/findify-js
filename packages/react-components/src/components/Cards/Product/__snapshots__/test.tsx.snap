@@ -1,0 +1,90 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProductCard view renders correctly 1`] = `
+<a
+  className="root productCard"
+  href="https://foo.bar"
+>
+  <div
+    className="imageWrap imageWrap"
+  >
+    <SizeMe(Image)
+      alt="Product Title"
+      className="image image"
+      src="https://lorempicsum.net/100/100"
+      thumbnail="https://lorempicsum.net/50/50"
+    />
+    <React.Fragment>
+      <Component
+        className="discountSticker"
+        config={
+          Immutable.Map {
+            "productcard": Immutable.Map {
+              "title": Immutable.Map {
+                "display": true,
+                "lines": 1,
+              },
+              "description": Immutable.Map {
+                "display": true,
+                "lines": 2,
+              },
+              "price": Immutable.Map {
+                "display": true,
+              },
+            },
+            "currency": Immutable.Map {
+              "code": "GBP",
+            },
+          }
+        }
+      />
+    </React.Fragment>
+  </div>
+  <div
+    className="rating"
+  >
+    <Rating />
+  </div>
+  <div
+    className="content content"
+  >
+    <Title
+      text="Product Title"
+    />
+    <Description
+      text="A description for item"
+    />
+    <Price
+      className="priceWrapper"
+      currency={
+        Object {
+          "code": "GBP",
+        }
+      }
+      price="9.99"
+    />
+    <Component
+      config={
+        Immutable.Map {
+          "productcard": Immutable.Map {
+            "title": Immutable.Map {
+              "display": true,
+              "lines": 1,
+            },
+            "description": Immutable.Map {
+              "display": true,
+              "lines": 2,
+            },
+            "price": Immutable.Map {
+              "display": true,
+            },
+          },
+          "currency": Immutable.Map {
+            "code": "GBP",
+          },
+        }
+      }
+    />
+  </div>
+</a>
+`;

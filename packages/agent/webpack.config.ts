@@ -2,7 +2,6 @@ import * as path from 'path';
 import * as webpack from 'webpack';
 import * as GitRevisionPlugin from 'git-revision-webpack-plugin';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
-import * as LodashWebpackPlugin from 'lodash-webpack-plugin';
 import * as UglifyJSPlugin from 'uglifyjs-webpack-plugin';
 import * as DuplicatePackageCheckerPlugin from 'duplicate-package-checker-webpack-plugin';
 import * as CompressionPlugin from 'compression-webpack-plugin';
@@ -18,7 +17,6 @@ export default (env: WebpackEnvArgs) => {
 
     entry: {
       'findify-agent': './index',
-      'findify-agent.min': './index',
     },
 
     output: {
@@ -34,9 +32,7 @@ export default (env: WebpackEnvArgs) => {
       umdNamedDefine: true,
     },
 
-    devtool: 'source-map',
     stats: 'minimal',
-    bail: true,
     resolve: {
       extensions: ['.ts', '.js'],
     },
@@ -76,30 +72,7 @@ export default (env: WebpackEnvArgs) => {
       // enable scope hoisting
       new webpack.optimize.ModuleConcatenationPlugin(),
 
-      new webpack.LoaderOptionsPlugin({
-        debug: false,
-        minimize: true
-      }),
-  
       new DuplicatePackageCheckerPlugin(),
-  
-      new UglifyJSPlugin({
-        test: /\.min\.js($|\?)/i,
-        cache: true,
-        parallel: true,
-        sourceMap: true,
-        uglifyOptions: {
-          ie8: false,
-          ecma: 8,
-          output: {
-            comments: false,
-            beautify: false,
-          },
-          compress: {
-            drop_debugger: true,
-          }
-        }
-      }),
 
       new CompressionPlugin({
         exclude: /\.map/

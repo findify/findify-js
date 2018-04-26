@@ -1,0 +1,7 @@
+{
+  "extends": "../../tsconfig.lib.json",
+  "compilerOptions": {
+    "baseUrl": "src",
+    "rootDirs": ["src", "dev"]
+  }
+}

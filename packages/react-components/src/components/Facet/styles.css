@@ -1,0 +1,26 @@
+.root{
+  margin-bottom: 15px;
+  &:last-child{
+    margin-bottom: 0;
+  }
+}
+
+.title{
+  width: 100%;
+  text-align: left;
+  display: table;
+}
+
+.text {
+  display: inline-block !important;
+  width: calc(100% - 15px);
+}
+
+.icon {
+  vertical-align: middle;
+}
+
+.body{
+  $padding: 14px 0 0 0;
+  padding: $padding;
+}

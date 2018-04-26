@@ -7,6 +7,7 @@ import { getChangedFields } from '../utils/changes';
 import { stateToQuery, queryToState } from '../utils/format';
 import { getFacetType } from '../utils/filters';
 import { isFunction, isObject, debounce } from '../utils/helpers';
+import deepMerge from '../utils/deepMerge';
 
 const pickConfigProps = ({ debounce, onError, immutable = false }) =>
   ({ debounce, onError, immutable });
@@ -21,7 +22,7 @@ export class Agent {
   handlers: Types.Handler[] = [];
   config: Types.AgentConfig;
   onError: (error: Error) => void;
-
+  beforeRequest: any;
   provider: Types.SDKClient;
   cache: Cache;
 
@@ -44,7 +45,7 @@ export class Agent {
    * @param defaults [{ q: string, filters: any[], sort: any[], limit: number, offset: number }]
    */
   public defaults(defaults) {
-    this._defaults = fromJS(defaults);
+    this._defaults = deepMerge(this._defaults, fromJS(defaults));
     this.cache.resolve();
     return this;
   }
@@ -99,8 +100,8 @@ export class Agent {
   public set = (field: string | Types.Field, update?: any) => {
     const oldValue = this.state.get(field);
     const fx = isFunction(update) && update;
-    const value = fx ? fx(this.format(oldValue)) : update;
-
+    const value = fx ? fromJS(fx(this.format(oldValue))) : fromJS(update);
+    if (field !== 'offset') this.reset('offset'); // Reset offset on query change
     if (fx && !value) return this; // Skip new value setting if update doesn't returned new value
 
     const changes = getChangedFields(oldValue, isImmutable(value) ? value : fromJS(value));
@@ -123,16 +124,19 @@ export class Agent {
 
   private handleChanges(next, meta?) {
     const prev = this.response;
-    this.handlers.forEach(({ path, handler }) => {
+    for (let index = 0; index < this.handlers.length; index++) {
+      if (!this.handlers[index]) return;
+      const { path, handler } = this.handlers[index];
       const update = next.getIn(path);
       const old = prev.getIn(path);
       if (update && (!old || !old.equals(update))) {
         handler(this.format(update), this.format(meta));
       }
-    });
+      
+    }
   }
 
-  private handleResponse(res:Types.ResponseBody) {
+  public handleResponse(res:Types.ResponseBody) {
     const response = fromJS(res);
     const newState = queryToState(this.state, response.get('meta'), this._defaults);
     this.handleChanges(response, response.get('meta'));
@@ -141,25 +145,28 @@ export class Agent {
     this.response = response;
   }
 
+  public createRequestBody (cache) {
+    this.state = deepMerge(this.state, cache);
+    const merge = this._defaults.mergeDeep(this.state);
+    const params = stateToQuery(merge).toJS();
+    const type: any = this.type;
+    return { params, type }
+  }
+
   /**
    * This function will fire after next tick after last .set or .default call
    * @param cache [{any}] - established values
    */
-  private request(cache) {
-    this.state = this.state.merge(cache);
-    const merge = this._defaults.mergeDeep(this.state);
-    const params = stateToQuery(merge).toJS();
-    const type: any = this.type;
-    this.provider
-      .send({ params, type })
-      .then(this.handleResponse)
-      .catch(error =>
-        this.onError
-        ? this.onError(error)
-        : console.warn(error)
-      );
-
-    return;
+  public request(cache) {
+    const params = this.createRequestBody(cache);
+    return this.provider
+    .send(params)
+    .then(this.handleResponse)
+    .catch(error =>
+      this.onError
+      ? this.onError(error)
+      : console.warn(error)
+    );;
   }
 
   /**

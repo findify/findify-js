@@ -10,10 +10,8 @@ interface WebpackEnvArgs {
 
 export default (env: WebpackEnvArgs) => {
   const config: webpack.Configuration = {
-    context: path.resolve(__dirname, 'src'),
     entry: {
-      'findify-sdk': './index',
-      'findify-sdk.min': './index',
+      'findify-sdk': path.resolve(__dirname, 'src/index'),
     },
     output: {
       filename: '[name].js',
@@ -27,16 +25,18 @@ export default (env: WebpackEnvArgs) => {
       // otherwise an anonymous define is used
       umdNamedDefine: true,
     },
-    devtool: 'source-map',
     stats: 'minimal',
     bail: true,
-    resolve: { extensions: ['.ts', '.js'] },
+    target: 'web',
+    resolve: {
+      extensions: ['.ts', '.js'],
+      symlinks: false,
+    },
     module: {
       rules: [
         {
           test: /\.ts$/,
           loader: 'ts-loader',
-          include: path.resolve(__dirname, 'src'),
           options: {
             silent: true,
             configFile: path.resolve(__dirname, 'tsconfig.lib.json'),
@@ -52,14 +52,6 @@ export default (env: WebpackEnvArgs) => {
       }),
       // enable scope hoisting
       new webpack.optimize.ModuleConcatenationPlugin(),
-      new webpack.optimize.UglifyJsPlugin({
-        // activate sourceMaps in UglifyJsPlugin since they are disabled by default
-        // use source maps to map error message locations to modules
-        sourceMap: true,
-        // apply minification only on the second bundle by
-        // using a RegEx on the name, which must end with `.min.js`
-        include: /\.min\.js$/,
-      }),
     ],
   };
 

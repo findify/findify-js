@@ -12,3 +12,4 @@ export { default as connectFacets } from './connect/connectFacets';
 export { default as connectPagination } from './connect/connectPagination';
 export { default as connectSort } from './connect/connectSort';
 export { default as connectQuery } from './connect/connectQuery';
+export { default as connectConfig } from './connect/connectConfig';

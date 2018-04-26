@@ -1,0 +1,103 @@
+.root {
+  padding-top: 9px;
+  padding-left: 9px;
+  padding-right: 9px;
+  padding-bottom: 42px;
+  width: calc(100% - 18px);
+  display: table;
+  background-color: transparent;
+  transition: background-color .35s ease-in-out;
+  text-decoration: none;
+  user-select: none;
+  border: none!important;
+  &.simple{
+    padding: 0 8px 15px 8px;
+  }
+  vertical-align: bottom;
+}
+
+/*
+.root {
+  font-size: 14px;
+  padding: 6%!important;
+  display: flex;
+  background-color: transparent;
+  transition: background-color .35s ease-in-out;
+  text-decoration: none;
+  user-select: none;
+  border: none!important;
+  &.simple{
+    padding: 0 8px 15px 8px;
+  }
+  &:hover {
+    background-color: #f7f7f7;
+  }
+  &.simple:hover{
+    background-color: initial;
+  }
+}*/
+
+:global(.findify-widget--products-carousel) .root:hover{
+  background-color: inherit;
+}
+
+.image-wrap {
+  position: relative;
+  overflow: hidden;
+}
+
+.image {
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.content{
+  font-size: 14px;
+}
+
+.title {
+  width: 100%;
+  text-align: center;
+  font-size: $font-size-large !important; /* FIXME: figure out issue with import order of styles */
+  line-height: 21px;
+}
+
+.description {
+  font-size: 12px;
+  color: #b2b2b2;
+  margin: 5px 0;
+}
+
+.rating {
+  margin: 5px 0;
+  margin-top: 12px;
+  margin-bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+.price-wrapper {
+  margin-top: 8px !important;
+  margin-bottom: 12px !important;
+}
+
+.color{
+  text-transform: none;
+  font-size: 13px;
+  color: #b2b2b2;
+  margin: 5px 0;
+}
+
+.out-of-stock{
+  margin: 0;
+  margin-top: -3px;
+  font-size: 13px;
+  color: #b2b2b2;
+}
+
+.discount-sticker {
+  position: absolute;
+  top: 4%;
+  right: 4%;
+  z-index: 50;
+}

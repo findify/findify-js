@@ -15,4 +15,5 @@ export enum Type {
   SmartCollection = 'smart-collection',
   Recommendations = 'recommendations',
   Feedback = 'feedback',
+  Content = 'content',
 }

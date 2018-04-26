@@ -24,10 +24,9 @@ typeset -A SRC_MAP
 SRC_MAP=(
   [analytics]=dist
   [analytics-dom]=dist
-  [helpers]=dist
-  [mjs]=dist
   [sdk]=dist
   [agent]=dist
+  [bundle]=dist
   [react-connect]=dist
 )
 
@@ -36,10 +35,10 @@ typeset -A DST_MAP
 DST_MAP=(
   [analytics]=analytics-js
   [analytics-dom]=analytics-dom-js
-  [helpers]=helpers-js
-  [mjs]=mjs
   [sdk]=js-sdk
   [agent]=js-agent
+  [bundle]=bundle
+  [react-components]=react-components
   [react-connect]=react-connect
 )
 
@@ -74,14 +73,12 @@ if [[ $TRAVIS_BRANCH == 'master' ]]; then
   echo "creating new versions"
   npm run release:pre
   # new tags are created by lerna-semantic-release
-
 fi
 
-PKGS=(analytics analytics-dom helpers mjs sdk agent react-connect)
+PKGS=(analytics analytics-dom sdk agent react-connect react-components bundle)
 export GIT_SHA=$(git rev-parse HEAD)
 
-ASSET_HOST="https://findify-assets-2bveeb6u8ag.netdna-ssl.com"
-LAST_MJS_TAG=$(git describe --always --tags --match "@findify/mjs@*" --abbrev=0)
+LAST_MJS_TAG=$(git describe --always --tags --match "@findify/bundle@*" --abbrev=0)
 LAST_MJS_VER=0.0.0-invalid
 
 if [[ $LAST_MJS_TAG =~ ^@findify\/(.+)\@([0-9]+\.[0-9]+\.[0-9]+) ]]; then
@@ -90,14 +87,16 @@ if [[ $LAST_MJS_TAG =~ ^@findify\/(.+)\@([0-9]+\.[0-9]+\.[0-9]+) ]]; then
 fi
 
 if [[ $TRAVIS_BRANCH == 'master' ]]; then
-  export PUBLIC_PATH="$ASSET_HOST/mjs/prod/${LAST_MJS_VER}/"
-  export PROJECT_NAME='mjs-production'
+  export PUBLIC_PATH="https://cdn.jsdelivr.net/npm/@findify/bundle"
+  export PROJECT_NAME='bundle-production'
+  export FINDIFY_ENV="production"
   echo "$PROJECT_NAME : $PUBLIC_PATH"
 fi
 
 if [[ $TRAVIS_BRANCH == 'develop' ]]; then
-  export PUBLIC_PATH="$ASSET_HOST/mjs/staging/${LAST_MJS_VER}/"
-  export PROJECT_NAME='mjs-staging'
+  export PUBLIC_PATH="https://findify-assets-2bveeb6u8ag.netdna-ssl.com/bundle/"
+  export PROJECT_NAME='bundle-staging'
+  export FINDIFY_ENV="staging"
   echo "$PROJECT_NAME : $PUBLIC_PATH"
 fi
 

@@ -8,3 +8,5 @@ export const Search = createProvider('Search', (agent) => agent.defaults({}));
 export const SmartCollection = createProvider('SmartCollection', (agent) => agent.defaults({}));
 // tslint:disable-next-line:variable-name
 export const Recommendation = createProvider('Recommendation');
+// tslint:disable-next-line:variable-name
+export const Content = createProvider('Content');

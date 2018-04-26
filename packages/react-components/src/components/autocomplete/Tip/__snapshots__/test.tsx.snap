@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tip renders correctly 1`] = `
+<div
+  className="tip test"
+  display-if={false}
+  onClick={[Function]}
+>
+  Press Enter to search
+   
+  <span
+    className="highlight"
+  />
+</div>
+`;
+
+exports[`Tip renders correctly 2`] = `
+<div
+  className="tip test"
+  display-if={true}
+  onClick={[Function]}
+>
+  Press Enter to search
+   
+  <span
+    className="highlight"
+  >
+    evangelion
+  </span>
+</div>
+`;

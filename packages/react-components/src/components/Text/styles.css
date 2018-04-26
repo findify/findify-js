@@ -1,0 +1,66 @@
+.root{
+  display: block;
+  padding: 0;
+  margin: 0;
+  color: $color-black;
+  font-size: $font-size-medium;
+  font-family: $font-base;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+.primary{
+  &-uppercase{
+    font-size: $font-size-small;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: $color-black;
+    line-height: 17px;
+    :global(.mobile) &{
+      font-weight: normal;
+      line-height: 15px;
+    }
+  }
+  &-lowercase{
+    font-size: $font-size-large;
+    text-transform: capitalize;
+    font-weight: normal;
+    color: $color-black;
+    line-height: 21px;
+    :global(.mobile) &{
+      font-size: $font-size-medium;
+    }
+  }
+}
+
+.secondary{
+  &-uppercase{
+    font-size: $font-size-small;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: $color-grey-3;
+  }
+  &-lowercase{
+    font-size: $font-size-large;
+    text-transform: capitalize;
+    font-weight: normal;
+    color: $color-grey-3;
+    :global(.mobile) &{
+      font-size: $font-size-small;
+    }
+  }
+}
+
+.title{
+  font-size: $font-size-huge;
+  font-weight: normal;
+  color: $color-black;
+}
+
+.bold{
+  font-weight: bold
+}
+
+.inlineBlock {
+  display: inline-block;
+}

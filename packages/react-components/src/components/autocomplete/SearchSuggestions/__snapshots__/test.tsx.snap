@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchSuggestions renders correctly 1`] = `
+<div
+  className="list"
+  display-if={
+    Object {
+      "get": [Function],
+      "hashCode": [Function],
+    }
+  }
+>
+  <ul>
+    <Component
+      array={
+        Array [
+          Object {
+            "get": [Function],
+            "hashCode": [Function],
+          },
+          Object {
+            "get": [Function],
+            "hashCode": [Function],
+          },
+        ]
+      }
+      factory={[Function]}
+      key="(item, index) => item.hashCode() + index + selectedSuggestion === index"
+    />
+  </ul>
+</div>
+`;

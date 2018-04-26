@@ -1,0 +1,20 @@
+.root {
+  border: none;
+  outline: none;
+  background: transparent;
+  cursor: pointer;
+  transition: background-color .1s ease-in;
+  padding: 0;
+  margin: 0;
+  font-family: $font-base;
+}
+
+.raw{
+  display: block;
+  padding: 0;
+  margin: 0;
+  display: block;
+  text-align: left;
+  background: transparent;
+  height: auto;
+}
