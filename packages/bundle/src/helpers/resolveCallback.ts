@@ -15,4 +15,4 @@ export default root => new Promise(resolve => {
     }
   }
   return Promise.all(promises).then(resolve);
-})
+});
