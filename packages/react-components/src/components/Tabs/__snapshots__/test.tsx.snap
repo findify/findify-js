@@ -2,10 +2,10 @@
 
 exports[`Tabs renders first tab by default 1`] = `
 <Tabs>
-  <withStateHandlers(withPropsOnChange(Component))
+  <withStateHandlers(withProps(Component))
     theme={Object {}}
   >
-    <withPropsOnChange(Component)
+    <withProps(Component)
       onTabClick={[Function]}
       selectedIndex={0}
       theme={Object {}}
@@ -101,8 +101,8 @@ exports[`Tabs renders first tab by default 1`] = `
           </p>
         </div>
       </Component>
-    </withPropsOnChange(Component)>
-  </withStateHandlers(withPropsOnChange(Component))>
+    </withProps(Component)>
+  </withStateHandlers(withProps(Component))>
 </Tabs>
 `;
 
@@ -110,11 +110,11 @@ exports[`Tabs respects defaultSelectedIndex property 1`] = `
 <Tabs
   defaultSelectedIndex={2}
 >
-  <withStateHandlers(withPropsOnChange(Component))
+  <withStateHandlers(withProps(Component))
     defaultSelectedIndex={2}
     theme={Object {}}
   >
-    <withPropsOnChange(Component)
+    <withProps(Component)
       defaultSelectedIndex={2}
       onTabClick={[Function]}
       selectedIndex={0}
@@ -212,8 +212,8 @@ exports[`Tabs respects defaultSelectedIndex property 1`] = `
           </p>
         </div>
       </Component>
-    </withPropsOnChange(Component)>
-  </withStateHandlers(withPropsOnChange(Component))>
+    </withProps(Component)>
+  </withStateHandlers(withProps(Component))>
 </Tabs>
 `;
 
@@ -222,12 +222,12 @@ exports[`Tabs respects selectedIndex property 1`] = `
   defaultSelectedIndex={2}
   selectedIndex={0}
 >
-  <withStateHandlers(withPropsOnChange(Component))
+  <withStateHandlers(withProps(Component))
     defaultSelectedIndex={2}
     selectedIndex={0}
     theme={Object {}}
   >
-    <withPropsOnChange(Component)
+    <withProps(Component)
       defaultSelectedIndex={2}
       onTabClick={[Function]}
       selectedIndex={0}
@@ -325,7 +325,7 @@ exports[`Tabs respects selectedIndex property 1`] = `
           </p>
         </div>
       </Component>
-    </withPropsOnChange(Component)>
-  </withStateHandlers(withPropsOnChange(Component))>
+    </withProps(Component)>
+  </withStateHandlers(withProps(Component))>
 </Tabs>
 `;

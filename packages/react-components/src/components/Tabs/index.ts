@@ -21,7 +21,7 @@ export const Tabs = compose(
     }
   ),
 
-  withPropsOnChange(['selectedIndex'], ({ children, selectedIndex, onTabClick }) => {
+  withProps(({ children, selectedIndex, onTabClick }) => {
     const bodyCandidate = React.Children.toArray(children)[selectedIndex];
     return ({
       body: React.cloneElement(bodyCandidate.props.children, { changeTab: onTabClick })

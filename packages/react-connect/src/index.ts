@@ -2,6 +2,7 @@ export { createProvider } from './provider/createProvider';
 export { Autocomplete as AutocompleteProvider } from './provider/index';
 export { Search as SearchProvider } from './provider/index';
 export { Recommendation as RecommendationProvider } from './provider/index';
+export { Content as ContentProvider } from './provider/index';
 export { SmartCollection as SmartCollectionProvider } from './provider/index';
 
 export { default as createConnect } from './connect/createConnect';
