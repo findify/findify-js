@@ -25,16 +25,19 @@ export default (widget, render) => {
     render('initial');
   });
 
-  const handleFirstResponse = (items) => {
-    agent.off(handleFirstResponse);
+  /** Switch to recommendation if query not present */
+  agent.on('change:items', (items) => {
     if (!items.isEmpty()) {
       hideFallback(node);
+      if (!config.getIn(['view', 'infinite']) && config.get('scrollTo') !== false) {
+        scrollTo(config.get('cssSelector'), config.get('scrollTo'))
+      }
       render('initial');
     } else {
       showFallback(node);
-      emitter.emit(Events.detach, widget);
+      render()
     }
-  }
+  })
 
   /** Setup initial request */
   agent.defaults({ slot: collectionPath() });
@@ -43,15 +46,15 @@ export default (widget, render) => {
   agent.on('change:query', q => setQuery(q.toJS()));
 
   /** Switch to recommendation if query not present */
-  agent.on('change:items', handleFirstResponse);
+  // agent.on('change:items', handleFirstResponse);
 
   /** Unsubscribe from events on instance destroy  */
   const unsubscribe = __root.listen((event, prop, ...args) => {
     if (event !== Events.detach || prop !== widget) return;
     stopListenLocation();
     unsubscribe();
-  })
+  });
 
   /** Render */
-  return createElement(SmartCollectionProvider, props, createElement(Search));
+  return createElement(SmartCollectionProvider, props, createElement(Search, { isCollection: true }));
 }

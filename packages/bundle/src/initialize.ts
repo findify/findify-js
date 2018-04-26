@@ -9,19 +9,23 @@ import resolveCallback from './helpers/resolveCallback';
 /**
  * Create global namespace
  */
-(global as any).findify = {};
-__root.listen = emitter.listen;
-__root.emit = emitter.emit;
-__root.addListeners = emitter.addListeners;
-__root.invalidate = () =>  {
-  for (const key in __webpack_require__.c) { __webpack_require__.c[key] = null }
-  emitter.emit('invalidate');
-};
+const isReady = (() => {
+  if ((global as any).findify) return false;
+  (global as any).findify = {};
+  __root.listen = emitter.listen;
+  __root.emit = emitter.emit;
+  __root.addListeners = emitter.addListeners;
+  __root.invalidate = () =>  {
+    for (const key in __webpack_require__.c) { __webpack_require__.c[key] = null }
+    emitter.emit('invalidate');
+  };
+  return true;
+})();
 
 export default async (
   _config
 ) => {
-
+  if (!isReady) return;
 
   // We loading config independently from webpack and this promise is always resolved
   const asyncConfig = await import(/* webpackMode: "weak" */'./config');
@@ -35,8 +39,6 @@ export default async (
     __root.invalidate();
     delete cfg.components;
   }
-
-  console.log(__webpack_require__.c['2g2b']);
   
 
   /* Load Dependencies in closure to support polyfills */

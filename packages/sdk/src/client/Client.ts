@@ -57,7 +57,7 @@ export class Client {
       case Req.Type.Search:
         return { path: `/search` };
       case Req.Type.Content:
-        return { path: `/content` };
+        return { path: `/search/content` };
       case Req.Type.SmartCollection:
         return {
           path: `/smart-collection/${req.params.slot}`,

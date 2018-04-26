@@ -88,7 +88,7 @@ export default compose(
       }
     )
   })),
-)(({ src, aspectRatio, size: { width }, className, isFixedRatio }: ImageProps) => console.log('size is', isFixedRatio, aspectRatio, width) || (
+)(({ src, aspectRatio, size: { width }, className, isFixedRatio }: ImageProps) =>
   <div className={className} style={isFixedRatio ? {
     height: 1 / aspectRatio * width,
     backgroundImage: `url(${src})`,
@@ -96,4 +96,4 @@ export default compose(
   }: {}}>
     <img display-if={!isFixedRatio} src={src} />
   </div>
-))
+)

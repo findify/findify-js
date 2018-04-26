@@ -1,9 +1,9 @@
 import { createElement } from 'react';
-import { SearchProvider, RecommendationProvider } from "@findify/react-connect";
+import { SearchProvider, RecommendationProvider, ContentProvider } from "@findify/react-connect";
 import { Recommendation as RecommendationAgent } from "@findify/agent";
 import { Search, ContentSearch, ZeroResults } from '@findify/react-components/src';
-import { getQuery, setQuery, listenHistory } from '../../core/location';
-import { hideFallback } from '../../helpers/fallbackNode';
+import { getQuery, setQuery, isSearch, listenHistory } from '../../core/location';
+import { hideFallback, showFallback } from '../../helpers/fallbackNode';
 import { Events } from '../../core/events';
 import { scrollTo } from '../../helpers/scrollTo';
 
@@ -24,6 +24,11 @@ export default (widget, render) => {
   const state = getQuery();
   const apiKey = config.get('key');
   const props = { agent, apiKey, config };
+
+  if (!isSearch()) {
+    showFallback(node);
+    return null;
+  }
 
   /** Setup initial request */
   applyState(state, agent);

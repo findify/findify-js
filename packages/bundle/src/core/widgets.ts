@@ -53,11 +53,12 @@ const getEntity = (selector, _type?, _config?) => getNodes(selector)
   let type = getType(_type || node.getAttribute(attrSelector));
   const key = node.getAttribute(keySelector) || ++index;
 
-  const config = createConfig(type, node, key, _config);
+  let config = createConfig(type, node, key, _config);
 
   /** Change feature type to collection if we are on collection page */
   if (type === 'search' && isCollection(config.get('collections'))) {
     type = 'smart-collection';
+    config = config.set('type', type);
   }
 
   const agent = createAgent(type, config);
