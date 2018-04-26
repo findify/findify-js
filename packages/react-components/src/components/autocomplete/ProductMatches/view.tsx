@@ -1,5 +1,5 @@
 import React from 'react'
-import ProductCard from 'components/productcard/ProductCard'
+import ProductCard from 'components/Cards/Product'
 import Grid from 'components/common/Grid';
 import MapArray from 'components/common/MapArray';
 import ItemsList from 'components/ItemsList';

@@ -1,7 +1,7 @@
 import React from 'react';
 import Slider from 'react-slick';
 
-import ProductCard from 'components/productcard/ProductCard'
+import ProductCard from 'components/Cards/Product'
 import Text from 'components/Text';
 
 export default ({ items, config, theme, sliderOptions, _mountSlider }) => 

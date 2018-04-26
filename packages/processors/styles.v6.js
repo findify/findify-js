@@ -3,6 +3,7 @@ import omitBy from 'lodash/omitBy';
 import isEmpty from 'lodash/isEmpty';
 import customProperties from 'postcss-custom-properties';
 import cssnano from 'cssnano-browser';
+import nested from 'postcss-nested';
 
 const postcss = require('postcss');
 const postCssVariables = customProperties({ preserve: false });
@@ -14,7 +15,8 @@ export default styles => data =>
     );
     postcss([
       postCssVariables,
-      cssnano
+      nested,
+      cssnano,
     ])
       .process(styles)
       .then(({ css }) => resolve(css))

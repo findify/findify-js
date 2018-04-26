@@ -65,9 +65,5 @@ export default (widget, render) => {
 
   /** Render */
 
-  return (
-    config.getIn(['contentSearch', 'enabled'], false) ?
-      createElement(SearchProvider, props, createElement(ContentSearch)) :
-      createElement(SearchProvider, props, createElement(Search))
-  )
+  return createElement(SearchProvider, props, createElement(Search))
 }

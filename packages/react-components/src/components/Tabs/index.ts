@@ -21,10 +21,10 @@ export const Tabs = compose(
     }
   ),
 
-  withPropsOnChange(['selectedIndex'], ({ children, selectedIndex }) => {
+  withPropsOnChange(['selectedIndex'], ({ children, selectedIndex, onTabClick }) => {
     const bodyCandidate = React.Children.toArray(children)[selectedIndex];
     return ({
-      body: React.cloneElement(bodyCandidate.props.children)
+      body: React.cloneElement(bodyCandidate.props.children, { changeTab: onTabClick })
     })
   })
 )(view);

@@ -1,7 +1,7 @@
 import { setDisplayName, compose } from 'recompose'
 import withTheme from 'helpers/withTheme'
-import view from 'components/productcard/Rating/view';
-import theme from 'components/productcard/Rating/styles.css';
+import view from 'components/Cards/Product/Rating/view';
+import theme from 'components/Cards/Product/Rating/styles.css';
 
 
 export default compose(

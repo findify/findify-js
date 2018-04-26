@@ -49,6 +49,7 @@ export type SpecificParams =
   | Search.Params
   | SmartCollection.Params
   | Recommendations.Params
+  | Content.Params
   | Feedback.Params;
 
 export { Type } from './Type';
@@ -58,5 +59,6 @@ export {
   Search,
   SmartCollection,
   Recommendations,
+  Content,
   Feedback,
 };

@@ -12,7 +12,9 @@ exports[`Tabs renders first tab by default 1`] = `
     >
       <Component
         body={
-          <p>
+          <p
+            changeTab={[Function]}
+          >
             Wazzup!
           </p>
         }
@@ -92,7 +94,9 @@ exports[`Tabs renders first tab by default 1`] = `
           </withHandlers(Component)>
         </ul>
         <div>
-          <p>
+          <p
+            changeTab={[Function]}
+          >
             Wazzup!
           </p>
         </div>
@@ -118,7 +122,9 @@ exports[`Tabs respects defaultSelectedIndex property 1`] = `
     >
       <Component
         body={
-          <p>
+          <p
+            changeTab={[Function]}
+          >
             Wazzup!
           </p>
         }
@@ -199,7 +205,9 @@ exports[`Tabs respects defaultSelectedIndex property 1`] = `
           </withHandlers(Component)>
         </ul>
         <div>
-          <p>
+          <p
+            changeTab={[Function]}
+          >
             Wazzup!
           </p>
         </div>
@@ -227,7 +235,9 @@ exports[`Tabs respects selectedIndex property 1`] = `
     >
       <Component
         body={
-          <p>
+          <p
+            changeTab={[Function]}
+          >
             Wazzup!
           </p>
         }
@@ -308,7 +318,9 @@ exports[`Tabs respects selectedIndex property 1`] = `
           </withHandlers(Component)>
         </ul>
         <div>
-          <p>
+          <p
+            changeTab={[Function]}
+          >
             Wazzup!
           </p>
         </div>

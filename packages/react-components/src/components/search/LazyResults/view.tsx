@@ -1,7 +1,7 @@
 import React from 'react';
 import MapArray from 'components/common/MapArray';
 import Grid from 'components/common/Grid';
-import ProductCard from 'components/productcard/ProductCard'
+import ProductCard from 'components/Cards/Product'
 import Button from 'components/Button';
 import Text from 'components/Text';
 

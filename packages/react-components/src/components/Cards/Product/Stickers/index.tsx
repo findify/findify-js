@@ -3,7 +3,7 @@ import React from 'react'
 import Text from 'components/Text'
 import Branch from 'components/common/Branch'
 import withTheme from 'helpers/withTheme'
-import theme from 'components/productcard/Stickers/styles.css';
+import theme from 'components/Cards/Product/Stickers/styles.css';
 import { isImmutable, fromJS } from 'immutable'
 
 const defaultDiscountConfig = fromJS({
