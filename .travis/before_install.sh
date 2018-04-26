@@ -10,7 +10,7 @@ if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
   exit 0
 fi
 
-if [[ $TRAVIS_BRANCH == 'master' ]]; then
+if [[ $TRAVIS_BRANCH == 'master' || $TRAVIS_BRANCH == 'develop' ]]; then
   # install AWS CLI tools so we can upload pkg bundles to S3
   pip install --user awscli
   export PATH=$PATH:$HOME/.local/bin
