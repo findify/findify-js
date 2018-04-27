@@ -35,6 +35,15 @@ export default (widget, render) => {
 
   /** Listen to changes */
   agent.on('change:query', q => setQuery(q.toJS()));
+  agent.on('change:redirect', async (redirect, meta) => {
+    render();
+    await __root.analytics.sendEvent('redirect', {
+      ...redirect.toJS(),
+      rid: meta.get('rid'),
+      suggestion: meta.get('q')
+    });
+    document.location.href = redirect.get('url');
+  });
 
   /** Listen to location back/fwd */
   const stopListenLocation = listenHistory((_, action) => {
