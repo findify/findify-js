@@ -38,7 +38,7 @@ export const registerHandlers = (widget, render) => {
     return stylesUpdater(container, {
       width,
       height: 0,
-      top: _top + height,
+      // top: _top + height,
       // FIXME: make left padding work left: _left,
       position: 'absolute',
       'will-change': 'top, left'
@@ -75,7 +75,6 @@ export const registerHandlers = (widget, render) => {
 
   const handleFormSubmit = e => {
     if (e) {
-      e.stopPropagation();
       e.preventDefault();
     }
     search(node.value);
