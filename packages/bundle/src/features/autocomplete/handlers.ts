@@ -78,7 +78,7 @@ export const registerHandlers = (widget, render) => {
       e.stopPropagation();
       e.preventDefault();
     }
-    search();
+    search(node.value);
   }
 
   /** Listen for input change */
