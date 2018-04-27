@@ -4,8 +4,6 @@ import { findClosestElement } from '../../helpers/findClosestElement';
 import { isSearch, setQuery, buildQuery, redirectToSearch } from '../../core/location';
 import { Events } from '../../core/events';
 import { debounce } from 'lodash';
-import emitter from '../../core/emitter'
-import { addEventListener } from '../../../../mjs/dist/pure';
 
 const findClosestForm = findClosestElement('form');
 
@@ -61,7 +59,7 @@ export const registerHandlers = (widget, render) => {
     return (
       !findifyElementFocused &&
       e.target === node &&
-      emitter.emit(Events.autocompleteFocusLost, widget.key)
+      __root.emit(Events.autocompleteFocusLost, widget.key)
     )
   }
 
