@@ -39,7 +39,7 @@ export const registerHandlers = (widget, render) => {
       width,
       height: 0,
       top: _top + height,
-      left: _left,
+      // FIXME: make left padding work left: _left,
       position: 'absolute',
       'will-change': 'top, left'
     });
@@ -78,7 +78,7 @@ export const registerHandlers = (widget, render) => {
       e.stopPropagation();
       e.preventDefault();
     }
-    search();
+    search(node.value);
   }
 
   /** Listen for input change */

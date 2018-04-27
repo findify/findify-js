@@ -28,7 +28,7 @@ const createAgent = (type, config) => {
     user: __root.analytics.user,
     slot: config.get('slot'),
     immutable: true,
-    debounce: type === 'autocomplete' && 500
+    debounce: type === 'autocomplete' && 100
   });
 }
 
