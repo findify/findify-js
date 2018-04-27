@@ -74,7 +74,10 @@ export const registerHandlers = (widget, render) => {
   };
 
   const handleFormSubmit = e => {
-    if (e) e.stopPropagation();
+    if (e) {
+      e.stopPropagation();
+      e.preventDefault();
+    }
     search();
   }
 

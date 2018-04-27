@@ -53,7 +53,7 @@ export default class Sidebar extends React.Component {
   }
 
   handleSubmit = () => {
-    emmiter.emit('search', this.props.config.get('widgetKey'))
+    (window as any).findify.emit('search', this.props.config.get('widgetKey'))
   }
 
   render() {
