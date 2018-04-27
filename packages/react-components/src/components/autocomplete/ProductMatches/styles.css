@@ -3,6 +3,7 @@
 }
 
 .product-card {
+  display: block;
   padding-bottom: 16px;
   .imageWrap {
     display: table-cell;

@@ -8,6 +8,7 @@
   padding-bottom: 5px;
   cursor: pointer;
   border-radius: 2px;
+  text-align: left;
   &:before {
     content: ' ';
     display: table;
@@ -15,7 +16,6 @@
   &:hover {
     background: $color-grey-1;
   }
-
 }
 
 .highlightedText {
