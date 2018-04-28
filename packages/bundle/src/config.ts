@@ -6,6 +6,7 @@ export default process.env.NODE_ENV !== 'development'
     "platform": {
         "shopify": true
     },
+    hidableFacets: false,
     "mjs_version": "6.0.22",
     "analyticsjs_version": "3.0.6",
     "status": "live",

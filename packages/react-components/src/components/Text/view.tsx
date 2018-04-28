@@ -8,12 +8,14 @@ export default ({
   mode,
   theme,
   bold,
+  style,
   inlineBlock,
   size,
   html: __html,
 }) => createElement(component, {
   children,
   ...(__html && { dangerouslySetInnerHTML: { __html } }),
+  style,
   className: cx(
     theme.root,
     mode && theme[mode] || theme[size],
