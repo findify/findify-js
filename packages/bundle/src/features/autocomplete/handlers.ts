@@ -63,6 +63,10 @@ export const registerHandlers = (widget, render) => {
     )
   }
 
+  const handleKeydown = ({ key, target }) => {
+    return key === 'Enter' && search(target.value)
+  }
+
   /** search for the value */
   const search = (_value?) => {
     const value = _value || agent.state.get('q') || '';
@@ -99,6 +103,12 @@ export const registerHandlers = (widget, render) => {
     handleInputBlur,
     document.body
   ));
+
+  subscribers.push(addEventListeners(
+    ['keydown'],
+    handleKeydown,
+    node,
+  ))
 
   /** Listen for form submit */
   if (!config.get('disableFormSubmit')) {
