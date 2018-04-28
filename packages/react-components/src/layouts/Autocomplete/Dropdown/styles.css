@@ -23,6 +23,11 @@
   font-family: $font-base;
 }
 
+.suggestions-title{
+  padding: 0 27px;
+  white-space: nowrap;
+}
+
 .overlay {
   position: fixed;
   top: 0;
@@ -77,7 +82,7 @@
 .suggestions-container {
   display: table-cell;
   vertical-align: top;
-  padding: 0 27px;
+  padding: 0;
   background: #fff;
   width: calc(226px - 60px);
   min-width: calc(226px - 60px);

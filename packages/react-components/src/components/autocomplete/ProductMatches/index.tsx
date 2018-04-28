@@ -8,7 +8,6 @@ import {
 } from 'recompose';
 import { connectItems, connectSuggestions } from '@findify/react-connect';
 import sizeMe from 'react-sizeme';
-import ProductCard from 'components/autocomplete/ProductCard';
 import view from 'components/autocomplete/ProductMatches/view';
 import styles from 'components/autocomplete/ProductMatches/styles.css';
 import withTheme from 'helpers/withTheme';

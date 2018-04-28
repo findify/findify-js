@@ -2,13 +2,10 @@
   color: $color-black;
   font-family: $font-base;
   font-size: $font-size-large;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  padding-top: 5px;
-  padding-bottom: 5px;
   cursor: pointer;
   border-radius: 2px;
   text-align: left;
+  padding: 10px 27px;
   &:before {
     content: ' ';
     display: table;

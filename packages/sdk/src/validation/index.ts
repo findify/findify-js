@@ -60,7 +60,6 @@ function validateAPIKey(key: string) {
  * @throws Throws an error in case of invalid request parameters.
  */
 export function validateAutocomplete(params: Request.Autocomplete.Params) {
-  validatePresence('q', params.q);
 }
 
 /**

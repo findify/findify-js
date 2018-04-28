@@ -49,9 +49,8 @@ export const registerHandlers = (widget, render) => {
   const handleInputChange = (e) => {
     const value = e.target.value;
     handleWindowScroll();
-    agent.set('q', value);
-    if(value !== '') return render('initial');
-    return render();
+    agent.set('q', value || '');
+    return render('initial');
   };
 
   /** Handle input blur */
@@ -93,7 +92,10 @@ export const registerHandlers = (widget, render) => {
 
   subscribers.push(addEventListeners(
     ['focus'],
-    () => render('initial'),
+    (e) => {
+      if (!agent.state.get('q')) agent.set('q', e.target.value);
+      render('initial');
+    },
     node
   ));
 

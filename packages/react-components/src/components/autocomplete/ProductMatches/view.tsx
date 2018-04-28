@@ -17,7 +17,7 @@ const getProductKey = product =>
     ? [product.hash || product.id, product.position].join('_')
     : product.hash || product.id; */
 
-const productCardFactory = (props) => React.createElement(ProductCard, props)
+const productCardFactory = React.createFactory(ProductCard)
 
 export default ({
   items,
@@ -39,7 +39,7 @@ export default ({
       className={className}
       limit={config.getIn(['meta', 'item_limit'])}
       factory={(props) => productCardFactory({...props, columnClass, onProductClick, config, theme })}
-      keyAccessor={getProductKey} />
+      />
     <Button
       display-if={suggestions && suggestions.size > 0}
       className={theme.viewMoreButton}

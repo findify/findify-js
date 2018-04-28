@@ -7,12 +7,12 @@ import MapArray from 'components/common/MapArray';
 import Branch from 'components/common/Branch'
 import { connectSuggestions, connectItems } from '@findify/react-connect';
 import { withDrawer } from 'helpers/withDrawer';
-import Rating from 'components/productcard/Rating'
+import cx from 'classnames';
 
 const LayoutColumns = {
   SearchSuggestions: ({ config, theme, ...rest }) => (
     <div className={theme.suggestionsContainer}>
-      <h4 className={theme.typeTitle}>{config.getIn(['i18n', 'suggestionsTitle'])}</h4>
+      <h4 className={cx(theme.typeTitle, theme.suggestionsTitle)}>{config.getIn(['i18n', 'suggestionsTitle'])}</h4>
       <SearchSuggestions className={theme.searchSuggestions} widgetKey={config.get('widgetKey')} {...rest} />
     </div>
   ),
@@ -52,7 +52,7 @@ const SearchOrZero = ({ suggestions, config, theme, meta, selectedSuggestion, ..
 )
 
 export default ({ config, theme, meta, ...rest }) => (
-  <React.Fragment display-if={meta && meta.get('q') && meta.get('q') !== ''}>
+  <React.Fragment>
     <div className={theme.overlay} display-if={config.get('showOverlay')}></div>
     <div className={theme.root} data-findify-autocomplete={true}>
       <Tip className={theme.tip} title={config.getIn(['i18n', 'tipTitle'])} />
