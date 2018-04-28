@@ -49,9 +49,9 @@ export const registerHandlers = (widget, render) => {
   const handleInputChange = (e) => {
     const value = e.target.value;
     handleWindowScroll();
-    render('initial');
     agent.set('q', value);
-    return;
+    if(value !== '') return render('initial');
+    return render();
   };
 
   /** Handle input blur */
