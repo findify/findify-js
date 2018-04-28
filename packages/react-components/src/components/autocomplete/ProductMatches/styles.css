@@ -4,10 +4,10 @@
 
 .product-card {
   display: block;
+  padding-left: 0;
   padding-bottom: 16px;
   .imageWrap {
     display: table-cell;
-    width: 40%;
   }
   .image {
     width: 100%;
@@ -19,20 +19,23 @@
     p, .price-wrapper, span {
       text-align: left;
     }
+    span {
+      font-size: 12px !important;
+      line-height: 17px;
+    }
     .price-wrapper {
       margin-top: 20px;
     }
   }
 }
 
-.grid-column-class {
+.grid-column-class:not(:last-child) {
   &:after {
     content: ' ';
     display: block;
-    width: 80%;
+    width: 100%;
     height: 1px;
     background: $color-grey-2;
-    margin-left: 10%;
     margin-bottom: 16px;
   }
 }

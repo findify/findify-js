@@ -41,7 +41,7 @@ export default ({
       factory={(props) => productCardFactory({...props, columnClass, onProductClick, config, theme })}
       />
     <Button
-      display-if={suggestions && suggestions.size > 0}
+      display-if={suggestions && suggestions.size > 0 && config.get('showViewMoreButton')}
       className={theme.viewMoreButton}
       onClick={suggestions && suggestions.size > 0 && getSuggestionProps(0).onClick}>
       {config.getIn(['i18n', 'viewMore'])}

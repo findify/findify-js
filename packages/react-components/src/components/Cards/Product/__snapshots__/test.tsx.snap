@@ -8,7 +8,7 @@ exports[`ProductCard view renders correctly 1`] = `
   <div
     className="imageWrap imageWrap"
   >
-    <SizeMe(Image)
+    <Image
       alt="Product Title"
       className="image image"
       src="https://lorempicsum.net/100/100"

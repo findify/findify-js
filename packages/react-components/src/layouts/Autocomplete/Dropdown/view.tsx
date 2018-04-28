@@ -18,7 +18,7 @@ const LayoutColumns = {
   ),
   ProductMatches: ({ config, theme, showModal, ...rest}) => (
     <div className={theme.productMatchesContainer}>
-      <h4 className={theme.typeTitle} onClick={() => showModal('sup')}>{config.getIn(['i18n', 'productMatchesTitle'])}</h4>
+      <h4 className={theme.typeTitle}>{config.getIn(['i18n', 'productMatchesTitle'])}</h4>
       <ProductMatches className={theme.productMatches} config={config} {...rest} />
     </div>
   )
@@ -38,9 +38,9 @@ const SearchOrZero = ({ suggestions, config, theme, meta, selectedSuggestion, ..
     left={() => (
       <MapArray
         array={config.get('viewOrder', ["SearchSuggestions", "ProductMatches"])}
-        keyAccessor={item => (item + selectedSuggestion)}
+        keyAccessor={item => console.log('Using key', item) || item}
         factory={({ item }: ({ item: 'SearchSuggestions' | 'ProductMatches' })) =>
-          React.createElement(LayoutColumns[item], { config, theme, meta, selectedSuggestion, ...rest })
+          React.createElement(LayoutColumns[item], { config, theme, meta, ...(item === 'SearchSuggestions' ? {selectedSuggestion} : {}), ...rest })
         } />
     )}
     right={() => (

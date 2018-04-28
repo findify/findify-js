@@ -2,12 +2,12 @@
 
 exports[`<Image /> renders correctly 1`] = `
 <div
-  style="width:100%;height:100%"
+  class="root loading"
 />
 `;
 
 exports[`<Image /> renders correctly 2`] = `
 <div
-  class="qux"
+  class="qux root loading"
 />
 `;

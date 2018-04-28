@@ -32,7 +32,8 @@ export default ({
   price,
   onProductClick,
   config,
-  theme
+  theme,
+  imageWrapperStyle
 }: any) => (
   <a
     onClick={onProductClick}
@@ -43,7 +44,7 @@ export default ({
       theme.productCard,
     )}
   >
-    <div className={classNames(styles.imageWrap, theme.imageWrap)}>
+    <div className={classNames(styles.imageWrap, theme.imageWrap)} style={imageWrapperStyle}>
       {(item.getIn(['html', 'image']) && (
         <div dangerouslySetInnerHTML={{ __html: item.getIn(['html', 'image']) }} />
       )) || (
@@ -53,6 +54,7 @@ export default ({
           thumbnail={item.get('thumbnail_url')}
           src={item.get('image_url') || item.get('thumbnail_url')}
           alt={item.get('title')}
+          size={imageWrapperStyle}
         />
       )}
     <React.Fragment display-if={config.getIn(['product', 'stickers', 'display'])}>

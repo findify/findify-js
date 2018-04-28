@@ -45,8 +45,9 @@ interface ImageProps {
   isFixedRatio: boolean
 }
 
+const sizeMeInstance = sizeMe()
+
 export default compose(
-  sizeMe(),
   setDisplayName('Image'),
   onlyUpdateForKeys(['src', 'thumbnail']),
   withPropsOnChange(['src'], ({ src, size }) => {
@@ -88,7 +89,16 @@ export default compose(
       }
     )
   })),
-)(({ src, aspectRatio, size: { width }, className, isFixedRatio }: ImageProps) =>
+  (Component) => ({ size, ...rest }) => {
+    const sizeAware = !size || Object.keys(size).length === 0
+    const newProps = {
+      size,
+      ...rest
+    }
+    if (sizeAware) delete newProps.size;
+    return React.createElement(sizeAware && sizeMeInstance(Component) || Component, newProps)
+  }
+)(({ src, aspectRatio, size: { width }, className, isFixedRatio }: ImageProps) => console.log('imgrender') ||
   <div className={className} style={isFixedRatio ? {
     height: 1 / aspectRatio * width,
     backgroundImage: `url(${src})`,

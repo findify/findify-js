@@ -10,6 +10,7 @@
   position: absolute;
   z-index: 9999;
   padding-bottom: 0;
+  width: 600px;
 }
 
 .type-title {
@@ -65,27 +66,29 @@
 .container {
   width: 100%;
   display: table;
-  margin-top: 24px;
-  margin-bottom: 24px;
+  margin-top: 38px;
+  margin-bottom: 38px;
 }
 
 .product-matches-container {
   display: table-cell;
   vertical-align: top;
-  padding: 0 27px;
+  padding: 0 38px;
   background: #fff;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
-  width: calc(356px - 30px);
+  /*width: calc(356px - 30px);*/
 }
 
 .suggestions-container {
   display: table-cell;
   vertical-align: top;
-  padding: 0;
+  padding: 0 38px;
   background: #fff;
-  width: calc(226px - 60px);
-  min-width: calc(226px - 60px);
+  /*
+  width: calc(226px - 60px);*/
+  width: 154px;
+  min-width: 154px;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
 }

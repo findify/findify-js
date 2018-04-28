@@ -65,13 +65,17 @@ export default process.env.NODE_ENV !== 'development'
                     "colorsAvailable": "Colors available"
                 },
                 "image": {
+                    "size": {
+                      "width": 110
+                    },
                     "aspectRatio": 1.2
                 }
             },
+            "showViewMoreButton": false,
             "i18n": {
-                "suggestionsTitle": "Search suggestions",
+                "suggestionsTitle": "Suggestions",
                 "productMatchesTitle": "Product matches",
-                "tipTitle": "Press enter to search"
+                "tipTitle": "View all results for"
             }
         },
         "search": {

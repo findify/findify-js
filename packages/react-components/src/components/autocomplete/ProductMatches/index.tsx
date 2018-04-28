@@ -5,6 +5,7 @@ import {
   setDisplayName,
   defaultProps,
   withPropsOnChange,
+  pure
 } from 'recompose';
 import { connectItems, connectSuggestions } from '@findify/react-connect';
 import sizeMe from 'react-sizeme';
@@ -32,6 +33,7 @@ const ProductMatches = compose(
   })),*/
   connectSuggestions,
   connectItems,
+  pure,
 )(view);
 
 export default ProductMatches
