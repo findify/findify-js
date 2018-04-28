@@ -50,6 +50,7 @@ export const registerHandlers = (widget, render) => {
     const value = e.target.value;
     handleWindowScroll();
     agent.set('q', value || '');
+    if (!value) return render();
     return render('initial');
   };
 
@@ -77,9 +78,7 @@ export const registerHandlers = (widget, render) => {
   };
 
   const handleFormSubmit = e => {
-    if (e) {
-      e.preventDefault();
-    }
+    if (e) e.preventDefault();
     search(node.value);
   }
 
@@ -94,7 +93,7 @@ export const registerHandlers = (widget, render) => {
     ['focus'],
     (e) => {
       if (!agent.state.get('q')) agent.set('q', e.target.value);
-      render('initial');
+      !!e.target.value ? render('initial') : render();
     },
     node
   ));

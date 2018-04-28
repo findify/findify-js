@@ -1,5 +1,5 @@
 import { Component, Children } from "react";
-import { Map } from 'immutable';
+import { Map, is } from 'immutable';
 import * as Agents from '@findify/agent';
 import analytics from '@findify/analytics';
 import { $findify, $analytics, $config } from '../symbols';
@@ -23,7 +23,8 @@ export const createProvider = (type, onCreate?: (agent) => void) => {
       options: object,
       config: object,
       onChangeQuery: func,
-      storeKey: oneOfType([string, number])
+      storeKey: oneOfType([string, number]),
+      query: object
     }
 
     static contextTypes = {
@@ -76,6 +77,20 @@ export const createProvider = (type, onCreate?: (agent) => void) => {
       }
     }
 
+    componentWillReceiveProps(next){
+      if (
+        typeof next.query !== 'object' ||
+        this.props.query === next.query ||
+        Object.keys(next.query).every(k =>
+          is(this.props.query[k], next.query[k])
+        )
+      ) return;
+      this.setQuery(next.query);
+    }
+
+    setQuery(query) {
+      for (const key in query) this.agent.set(key, query[key]);
+    }
     componentDidMount() {
       if (this.props.onChangeQuery) {
         this.agent.on('change:query', this.props.onChangeMeta)
