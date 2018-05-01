@@ -19,7 +19,7 @@
     "react-hammerjs": "^1.0.1",
     "react-motion": "^0.5.2",
     "react-numeric-input": "^2.2.3",
-    "react-sizeme": "^2.3.6",
+    "react-sizeme": "2.4.1",
     "react-slick": "^0.20.0",
     "react-tappable": "^1.0.2",
     "react-transition-group": "^2.3.0",
