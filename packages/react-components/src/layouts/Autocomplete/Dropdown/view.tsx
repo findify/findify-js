@@ -51,13 +51,13 @@ const SearchOrZero = ({ suggestions, config, theme, meta, selectedSuggestion, ..
     )} />
 )
 
-export default ({ config, theme, meta, ...rest }) => (
-  <React.Fragment>
+export default ({ config, theme, meta, suggestions, ...rest }) => (
+  <React.Fragment display-if={suggestions && suggestions.size > 0 && meta && meta.get('q') && meta.get('q') !== ''}>
     <div className={theme.overlay} display-if={config.get('showOverlay')}></div>
     <div className={theme.root} data-findify-autocomplete={true}>
       <Tip className={theme.tip} title={config.getIn(['i18n', 'tipTitle'])} widgetKey={config.get('widgetKey')} />
       <div className={theme.container}>
-        <SearchOrZero theme={theme} meta={meta} config={config} {...rest} />
+        <SearchOrZero theme={theme} meta={meta} config={config} suggestions={suggestions} {...rest} />
       </div>
     </div>
   </React.Fragment>
