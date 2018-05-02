@@ -1,577 +1,798 @@
 export default process.env.NODE_ENV !== 'development'
 ? __CONFIG__
 : {
-    "key": "680d373d-06b3-442b-bebc-d35a5b0868b3",
-    "sentryDisabled": false,
-    "platform": {
-        "shopify": true
-    },
-    hidableFacets: false,
-    "mjs_version": "6.0.22",
-    "analyticsjs_version": "3.0.6",
-    "status": "live",
-    "mobileBreakpoint": 767,
-    "css": [],
-    "mjs_api_script_string": "var mobileBreakPoint = 767;\n\nfunction switchImageOnHover(apiData) {\n  function switchImage(image, src) {\n    return function () {\n      image.src = src;\n    };\n  }\n  var node = apiData.node;\n  var data = apiData.data;\n  if (node && data.image_2_url) {\n    var image = node.querySelector('img');\n    var preload = new Image();\n    preload.src = data.image_2_url;\n\n    node.onmouseover = switchImage(image, data.image_2_url);\n    node.onmouseout = switchImage(image, data.image_url);\n  }\n}\n\nvar tempDiv = document.createElement('div');\nvar tempForm = document.createElement('form');\ntempForm.setAttribute('method', 'POST');\ntempForm.setAttribute('action', '/cart/add');\nvar tempQuantity = document.createElement('input');\ntempQuantity.setAttribute('type', 'hidden');\ntempQuantity.setAttribute('name', 'quantity');\ntempQuantity.setAttribute('value', 1);\nvar tempProductId = document.createElement('input');\ntempProductId.setAttribute('type', 'hidden');\ntempProductId.setAttribute('name', 'id');\nvar tempSubmitButton = document.createElement('input');\ntempSubmitButton.setAttribute('type', 'submit');\ntempSubmitButton.setAttribute('value', 'Add to cart');\n\nfunction attachAddToCartButton(apiData) {\n  function createHideForm($form) {\n    var hideFormsContainer = $('#hide-add-to-cart-container');\n    if (hideFormsContainer.length === 0) {\n      hideFormsContainer = $(tempDiv).clone();\n      hideFormsContainer.attr('id', 'hide-add-to-cart-container');\n      $('body').append(hideFormsContainer);\n    }\n    var hideForm = $form.clone();\n    hideFormsContainer.append(hideForm);\n    return hideForm;\n  }\n\n  var $node = $(apiData.node);\n  var data = apiData.data;\n  var formNode, button;\n\n  if (data.availability) {\n    formNode = $(tempForm).clone();\n    formNode.attr('class', 'findify-widget--add-to-cart');\n    formNode.data('add-to-cart', data.id);\n    formNode.data('findify-type', 'add-to-cart-product');\n    formNode.data('findify-id', data.id);\n\n    var quantity = $(tempQuantity).clone();\n    formNode.append(quantity);\n\n    var productID = $(tempProductId).clone();\n    productID.attr('value', data.variants_ids[0]);\n    /*if (data.variants_ids.length === 1) {\n      productID.setAttribute('value', data.variants_ids[0]);\n    } else {\n      //SET CORRECT VARIANT ID IF THERE ARE MULTIPLE\n    }*/\n\n    formNode.append(productID);\n\n    var hideForm = createHideForm(formNode);\n\n    var submitButton = $(tempSubmitButton).clone();\n\n    submitButton.click(function (e) {\n      e.preventDefault();\n      e.stopPropagation();\n      // send events to our analytics system\n      data.trackEvent('add-to-cart', { item_id: data.id, quantity: 1 }).then(function () {\n        return data.trackEvent('click-item', { item_id: data.id });\n      });\n\n      hideForm[0].submit();\n    });\n\n    formNode.append(submitButton);\n\n    $node.append(formNode);\n  }\n}\n\nvar tempVariantsContainer = document.createElement('div');\ntempVariantsContainer.setAttribute('class', 'findify-variant-container');\nvar tempVariantContainer = document.createElement('div');\ntempVariantContainer.setAttribute('class', 'findify-block--color-body-facet__item');\nvar tempColorBall = document.createElement('button');\ntempColorBall.setAttribute('class', 'findify-block--color-body-facet__ball');\nvar tempToolTip = document.createElement('div');\ntempToolTip.setAttribute('class', 'findify-block--color-body-facet__tooltip');\n\nfunction addColorSwatches(apiData, mapping) {\n  var $node = $(apiData.node);\n  var data = apiData.data;\n\n  var foundColors = [];\n\n  if (data && data.variants.length > 1) {\n    var container = $(tempVariantsContainer).clone();\n    var prodImage = $node.find('img');\n\n    function addColorSwatch(color, imageUrl, variantUrl) {\n      var variantContainer = $(tempVariantContainer).clone();\n\n      var colorBall = $(tempColorBall).clone();\n\n      if (color === 'white') {\n        colorBall.addClass('findify-with-border');\n      }\n\n      if (color === 'multicolor') {\n        colorBall.css('background', 'linear-gradient(125deg,red,#ff0,green,blue,violet)');\n      } else {\n        colorBall.css(\"background\", mapping[color]);\n      }\n\n      var tooltip = $(tempToolTip).clone().text(color);\n\n      variantContainer.append(colorBall);\n      variantContainer.append(tooltip);\n\n      container.append(variantContainer);\n\n      variantContainer.mouseover(function () {\n        prodImage.attr('src', imageUrl);\n        $node.attr('href', variantUrl);\n      });\n\n      variantContainer.click(function () {\n        $node.click();\n      });\n    }\n\n    for (var i = 0; i < data.variants.length; i++) {\n      var variant = data.variants[i];\n      var variantCustomFields = variant.custom_fields;\n      if (variantCustomFields.variant_image_url && variantCustomFields.variant_image_url.length > 0 && !foundColors.includes(variant.color[0])) {\n        foundColors.push(variant.color[0]);\n        var imageUrl = variantCustomFields.variant_image_url[0];\n        var variantUrl = variant.product_url + '?variant=' + variant.id;\n        console.log('Going to add color swatches');\n        addColorSwatch(variant.color[0].trim().toLowerCase(), imageUrl, variantUrl);\n      }\n    }\n\n    $node.append(container);\n\n    $node.click(function (e) {\n      e.preventDefault();\n      e.stopPropagation();\n      var updData = Object.assign({}, data, { product_url: $(this).attr('href') });\n      data.onProductClick(updData);\n    });\n  }\n\n  if (foundColors.length === 0) {\n    switchImageOnHover(apiData);\n  }\n}\n\nfunction createHideQuickView(handle) {\n  var hideQv = $(\".hide-quick-view\").eq(0).clone();\n  if (hideQv.length === 0) {\n    hideQv = $(\"<div></div>\").addClass(\"hide-quick-view\");\n    var hideButtonWrapper = $(\"<div></div>\").attr(\"style\", \"display: none !important\");\n    var hideButton = $(\"<a></a>\").attr({\n      class: \"sca-qv-button\",\n      href: \"#sca-qv-showqv\",\n    });\n    hideQv.append(hideButtonWrapper);\n    hideButtonWrapper.append(hideButton);\n  }\n  hideQv.find(\".sca-qv-button\").attr(\"handle\", handle);\n  return hideQv;\n}\n\nfunction getHideButton(handle) {\n  var hideButton = $(\"a[handle='\" + handle + \"']\");\n  if (hideButton.length === 0) {\n    var hideQuickView = createHideQuickView(handle);\n    hideButton = hideQuickView.find(\".sca-qv-button\");\n    var hideContainer = $(\"#hide-quick-view-container\");\n    if (hideContainer.length === 0) {\n      hideContainer = $(\"<div></div>\").attr(\"id\", \"hide-quick-view-container\");\n      $(\"body\").append(hideContainer);\n    }\n    hideContainer.append(hideQuickView);\n  }\n  return hideButton;\n}\n\nvar findifyQuickViewTemp = document.createElement('a');\nfindifyQuickViewTemp.setAttribute('class', 'findify-sca-qv-button');\nfindifyQuickViewTemp.innerHTML = 'QUICK VIEW';\n\nfunction addQuickViewToProduct(apiData) {\n  var node = $(apiData.node);\n  if (node) {\n    var qvButton = node.find(\".findify-sca-qv-button\");\n    if (qvButton.length === 0) {\n      var prodUrl = apiData.data.productUrl || apiData.data.product_url;\n      var handle = prodUrl.slice(prodUrl.lastIndexOf(\"/\") + 1);\n      if (handle.indexOf(\"?\") > 0) {\n        handle = handle.slice(0, handle.indexOf(\"?\"));\n      }\n\n      qvButton = $(findifyQuickViewTemp).clone();\n\n      node.append(qvButton);\n\n      var hideButton = getHideButton(handle);\n\n      qvButton.on(\"click\", function (e) {\n        e.preventDefault();\n        e.stopPropagation();\n        hideButton[0].click();\n      });\n    }\n  }\n}\n\nvar mobileBreakPoint = 767;\n\nfunction adjustColumns(props) {\n  var columnsCount = 4;\n\n  if (window.innerWidth < 1100) {\n    columnsCount = 3;\n  }\n\n  if (window.innerWidth < mobileBreakPoint) {\n    columnsCount = 2;\n  }\n\n  return {\n    columns: columnsCount\n  };\n}\n\nwindow.findifyApiRegistry = window.findifyApiRegistry || [];\n\nwindow.findifyApiRegistry.push({\n  hook: '*.results',\n  mapProps: function (props) {\n    props.columns.facets = 2;\n    props.columns.products = 10;\n    if (props.type === 'collection' && props.location.collection === 'collections/baseball') {\n      props.config.sorting.options.push({ field: 'title.not_analyzed', 'order': 'asc' });\n      props.config.sorting.options.push({ field: 'title.not_analyzed', 'order': 'desc' });\n      props.config.sorting.i18n.options['title.not_analyzed|asc'] = 'Title A-Z';\n      props.config.sorting.i18n.options['title.not_analyzed|desc'] = 'Title Z-A';\n    }\n\n    return props;\n  },\n  didUpdate: function (props) {\n    $('.page-container').click();\n  }\n});\n\nwindow.findifyApiRegistry.push({\n  hook: '*.item',\n  didMount: function (apiData, config) {\n    try {\n      addColorSwatches(apiData, config.facets.color.mapping);\n      attachAddToCartButton(apiData);\n      addQuickViewToProduct(apiData);\n    } catch (err) {\n      console.log(err);\n    }\n  }\n});\n\nwindow.findifyApiRegistry.push({\n  hook: '*.recommendations.item',\n  didMount: function (apiData, config) {\n    try {\n      addColorSwatches(apiData, config.features.search.facets.color.mapping);\n      attachAddToCartButton(apiData);\n      addQuickViewToProduct(apiData);\n    } catch (err) {\n      console.log(err);\n    }\n  },\n});\n\nwindow.findifyApiRegistry.push({\n  hook: 'autocomplete.item',\n  didMount: function (apiData) {\n  }\n});\n\nwindow.findifyApiRegistry.push({\n  hook: '*.carousel',\n  didMount: function (apiData) {\n    var $node = $(apiData.node);\n    var activeSlides = $node.find('.slick-slide.slick-active');\n    console.log(activeSlides.length, apiData.data.items.length);\n    if (activeSlides.length === apiData.data.items.length) {\n      $node.find('.slick-arrow').hide();\n    }\n  }\n});\n\nwindow.findifyApiRegistry.push({\n  hook: 'search.grid',\n  mapProps: adjustColumns\n});\n\nwindow.findifyApiRegistry.push({\n  hook: 'collection.grid',\n  mapProps: adjustColumns\n});\n\nwindow.findifyApiRegistry.push({\n  hook: '*.facet',\n  didMount: function(apiData) {\n    var $node = $(apiData.node);\n\n    if (apiData.data.name === 'color') {\n      var balls = $node.find('.findify-block--color-body-facet__ball');\n      balls.each(function(i) {\n        if ($(this).css('background').indexOf('rgb(255, 255, 255)') >= 0) {\n          $(this).addClass('findify-with-border');\n        }\n      });\n    }\n  }\n});",
-    "location": {
-        "searchUrl": "/pages/search-results",
-        "prefix": "findify"
-    },
-    "selectors": {
-        "input[name='q']": "autocomplete",
-        "#findify_results": "search",
-        "#cart-findify-rec-4": "recommendations",
-        "#home-findify-rec-3": "recommendations",
-        "#cart-findify-rec-3": "recommendations",
-        "#home-findify-rec-1": "recommendations",
-        "#product-findify-rec-1": "recommendations",
-        "#product-findify-rec-4": "recommendations",
-        "#product-findify-rec-2": "recommendations"
-    },
-    "currency": {
-        "code": "USD"
-    },
-    "poweredByFindify": false,
-    "view": {
-        "pagination": false,
-        "infinite": true
-    },
-    "features": {
-        "autocomplete": {
-            "viewType": "dropdown",
-            "mobileViewType": "fullscreen",
-            "showOverlay": false,
-            "renderIn": "parent",
-            "viewOrder": ["SearchSuggestions", "ProductMatches"],
-            "isMobileSimple": true,
-            "disableFormSubmit": false,
-            "position": "left",
-            "meta": {
-                "item_limit": 4,
-                "suggestion_limit": 10
-            },
-            "product": {
-                "title": {
-                    "lines": "2",
-                    "display": true
-                },
-                "price": {
-                    "display": true
-                },
-                "reviews": {
-                    "display": false
-                },
-                "i18n": {
-                    "colorsAvailable": "Colors available"
-                },
-                "image": {
-                    "size": {
-                      "width": 110
-                    },
-                    "aspectRatio": 1.2
-                }
-            },
-            "showViewMoreButton": false,
-            "i18n": {
-                "suggestionsTitle": "Suggestions",
-                "productMatchesTitle": "Product matches",
-                "tipTitle": "View all results for"
-            }
-        },
-        "search": {
-            "disableScroll": false,
-            "scrollOffset": 0,
-            "scrollTop": true,
-            "meta": {
-                "limit": 24
-            },
-            "product": {
-                "title": {
-                    "lines": "2",
-                    "display": true
-                },
-                "price": {
-                    "display": true
-                },
-                "reviews": {
-                    "display": true
-                },
-                "i18n": {
-                    "colorsAvailable": "Colors available"
-                },
-                "image": {
-                    "aspectRatio": 0.75
-                }
-            },
-            "sorting": {
-                "options": [{
-                    "field": "default",
-                    "order": ""
-                }, {
-                    "field": "price",
-                    "order": "desc"
-                }, {
-                    "field": "price",
-                    "order": "asc"
-                }, {
-                    "field": "created_at",
-                    "order": "desc"
-                }],
-                "i18n": {
-                    "title": "Sort by",
-                    "options": {
-                        "default": "Popularity",
-                        "price|desc": "Price: High to low",
-                        "price|asc": "Price: Low to high",
-                        "created_at|desc": "What's new"
-                    }
-                }
-            },
-            "pagination": {
-                "step": 2,
-                "i18n": {
-                    "previous": "Prev",
-                    "next": "Next"
-                }
-            },
-            "loadMore": {
-                "lazyLoadCount": 2,
-                "i18n": {
-                    "loadMore": "Load more",
-                    "loadPrev": "Load previous"
-                }
-            },
-            "zeroResultsType": "trending",
-            "i18n": {
-                "noResult": "Oh no! Your search for <span class=\"findify-query\"></span> did not match any products.<br/>But don't give up, we're here to help you find what you're looking for.",
-                "sorryNoResults": "Sorry!",
-                "noResultEmptyQuery": "We can't seem to find any products that match your search",
-                "tryOneOfThese": "Try one of these instead:",
-                "checkOutPopularProducts": "Or check out some of these popular products",
-                "noResultsFound": "We can't seem to find any products that match your search for \\\"%s\\\""
-            },
-            "breadcrumbs": {
-                "i18n": {
-                    "showing": "Showing %s results for",
-                    "noQuery": "Showing all products. Use filters to refine your search.",
-                    "partialMatch": "Showing results that partially match instead.",
-                    "zeroResultsFor": "0 results for"
-                }
-            },
-            "facets": {
-                "types": {
-                    "price": "price",
-                    "reviews.average_score": "rating",
-                    "color": "color"
-                },
-                "labels": {
-                    "reviews.average_score": "Avg. customer rating",
-                    "color": "Color",
-                    "custom_fields.multiple_product_type": "Category",
-                    "custom_fields.products-5-dollar": "Products 5 dollars",
-                    "custom_fields.variant_image_url": "Variant Image Url",
-                    "category": "Category",
-                    "sku": "sku",
-                    "image_url": "image_url",
-                    "product_url": "product_url",
-                    "category_str": "category_str",
-                    "thumbnail_url": "thumbnail_url",
-                    "description": "description",
-                    "category.category3": "category.category3",
-                    "title": "title",
-                    "availability": "availability",
-                    "id": "id",
-                    "short_description": "short description",
-                    "category.category4": "category.category4",
-                    "category.category2": "category.category2",
-                    "category.category1": "category.category1",
-                    "variants_ids": "variants_ids",
-                    "price": "Price",
-                    "size": "Size",
-                    "brand": "Brand",
-                    "custom_fields.original_color": "Original Color",
-                    "custom_fields.discount_present": "Discount Present",
-                    "custom_fields.single or pair": "Single Or Pair",
-                    "seller": "seller",
-                    "material": "Material",
-                    "condition": "condition",
-                    "tags": "tags",
-                    "custom_fields.qty": "Qty",
-                    "custom_fields.option": "Option",
-                    "custom_fields.old_colors": "Old Colors",
-                    "custom_fields.barcode": "Barcode",
-                    "discount": "discount",
-                    "custom_fields.blue": "Blue"
-                },
-                "category": {
-                    "maxItemsCount": 6,
-                    "initiallyExpanded": true,
-                    "rowHeight": 20,
-                    "i18n": {
-                        "goBackTitle": "All Categories",
-                        "more": "More",
-                        "less": "Less"
-                    }
-                },
-                "text": {
-                    "maxItemsCount": 6,
-                    "initiallyExpanded": true,
-                    "rowHeight": 20,
-                    "i18n": {
-                        "more": "More",
-                        "less": "Less",
-                        "search": "Search"
-                    }
-                },
-                "price": {
-                    "rowHeight": 20,
-                    "initiallyExpanded": true,
-                    "i18n": {
-                        "submit": "go",
-                        "under": "Under",
-                        "up": "&amp; up"
-                    }
-                },
-                "rating": {
-                    "rowHeight": 20,
-                    "initiallyExpanded": true,
-                    "i18n": {
-                        "submit": "go",
-                        "under": "Under",
-                        "up": "&amp; up"
-                    }
-                },
-                "range": {
-                    "rowHeight": 20,
-                    "initiallyExpanded": true,
-                    "i18n": {
-                        "submit": "go",
-                        "under": "Under",
-                        "up": "&amp; up"
-                    }
-                },
-                "i18n": {
-                    "showMobileFacets": "Filters",
-                    "done": "Done",
-                    "more": "More",
-                    "less": "Less",
-                    "resetAll": "Clear all",
-                    "reset": "Clear",
-                    "showResults": "See results",
-                    "hideFilters": "Exit filters",
-                    "ok": "Ok",
-                    "backToFilters": "Back to menu",
-                    "search": "Search"
-                },
-                "color": {
-                    "initiallyExpanded": true,
-                    "mapping": {
-                        "black": "#000000",
-                        "blue": "#0808FC",
-                        "red": "#FA0000",
-                        "maroon": "#400303",
-                        "purple": "#6B00C2",
-                        "gold": "#9E772E",
-                        "green": "#009000",
-                        "pink": "#E30084",
-                        "yellow": "#FFFF00",
-                        "gray": "#8A8A8A",
-                        "orange": "#FF5500",
-                        "teal": "#008080",
-                        "mint": "#7FFFD4",
-                        "brown": "#642D0A",
-                        "white": "#FFF",
-                        "multicolor": "Multicolor"
-                    }
-                }
-            }
-        },
-        "recommendations": {
-            "#cart-findify-rec-4": {
-                "enabled": true,
-                "slot": "cart-findify-rec-4",
-                "type": "purchasedTogether",
-                "template": "slider",
-                "limit": 3,
-                "multipleIds": true,
-                "minResultsToShow": 2,
-                "product": {
-                    "title": {
-                        "display": true,
-                        "lines": "2"
-                    },
-                    "rating": {
-                        "display": true
-                    },
-                    "description": {
-                        "display": false
-                    },
-                    "price": {
-                        "display": true
-                    },
-                    "stickers": {
-                        "display": true
-                    },
-                    "variants": {
-                        "display": false
-                    },
-                    "availability": {
-                        "display": false
-                    },
-                    "i18n": {
-                        "colorsAvailable": "Colors available"
-                    }
-                },
-                "title": "complete your cart"
-            },
-            "#home-findify-rec-3": {
-                "enabled": true,
-                "slot": "home-findify-rec-3",
-                "type": "newest",
-                "template": "slider",
-                "limit": 10,
-                "multipleIds": false,
-                "minResultsToShow": 1,
-                "product": {
-                    "title": {
-                        "display": true,
-                        "lines": "2"
-                    },
-                    "rating": {
-                        "display": true
-                    },
-                    "description": {
-                        "display": false
-                    },
-                    "price": {
-                        "display": true
-                    },
-                    "stickers": {
-                        "display": true
-                    },
-                    "variants": {
-                        "display": false
-                    },
-                    "availability": {
-                        "display": false
-                    },
-                    "i18n": {
-                        "colorsAvailable": "Colors available"
-                    }
-                },
-                "title": "Newest products"
-            },
-            "#cart-findify-rec-3": {
-                "enabled": true,
-                "slot": "cart-findify-rec-3",
-                "type": "purchasedTogether",
-                "template": "slider",
-                "limit": 10,
-                "multipleIds": true,
-                "minResultsToShow": 1,
-                "product": {
-                    "title": {
-                        "display": true,
-                        "lines": "2"
-                    },
-                    "rating": {
-                        "display": true
-                    },
-                    "description": {
-                        "display": false
-                    },
-                    "price": {
-                        "display": true
-                    },
-                    "stickers": {
-                        "display": true
-                    },
-                    "variants": {
-                        "display": false
-                    },
-                    "availability": {
-                        "display": false
-                    },
-                    "i18n": {
-                        "colorsAvailable": "Colors available"
-                    }
-                },
-                "title": "Frequently purchased together"
-            },
-            "#home-findify-rec-1": {
-                "enabled": true,
-                "slot": "home-findify-rec-1",
-                "type": "latest",
-                "template": "slider",
-                "limit": 10,
-                "multipleIds": false,
-                "minResultsToShow": 1,
-                "product": {
-                    "title": {
-                        "display": true,
-                        "lines": "2"
-                    },
-                    "rating": {
-                        "display": true
-                    },
-                    "description": {
-                        "display": false
-                    },
-                    "price": {
-                        "display": true
-                    },
-                    "stickers": {
-                        "display": true
-                    },
-                    "variants": {
-                        "display": false
-                    },
-                    "availability": {
-                        "display": false
-                    },
-                    "i18n": {
-                        "colorsAvailable": "Colors available"
-                    }
-                },
-                "title": "Products you recently viewed"
-            },
-            "#product-findify-rec-1": {
-                "enabled": true,
-                "slot": "product-findify-rec-1",
-                "type": "latest",
-                "template": "slider",
-                "limit": 10,
-                "multipleIds": false,
-                "minResultsToShow": 1,
-                "product": {
-                    "title": {
-                        "display": true,
-                        "lines": "2"
-                    },
-                    "rating": {
-                        "display": true
-                    },
-                    "description": {
-                        "display": false
-                    },
-                    "price": {
-                        "display": true
-                    },
-                    "stickers": {
-                        "display": true
-                    },
-                    "variants": {
-                        "display": false
-                    },
-                    "availability": {
-                        "display": false
-                    },
-                    "i18n": {
-                        "colorsAvailable": "Colors available"
-                    }
-                },
-                "title": "Products you recently viewed"
-            },
-            "#product-findify-rec-4": {
-                "enabled": true,
-                "slot": "product-findify-rec-4",
-                "type": "purchasedTogether",
-                "template": "slider",
-                "limit": 10,
-                "multipleIds": false,
-                "minResultsToShow": 3,
-                "product": {
-                    "title": {
-                        "display": true,
-                        "lines": "2"
-                    },
-                    "rating": {
-                        "display": true
-                    },
-                    "description": {
-                        "display": false
-                    },
-                    "price": {
-                        "display": true
-                    },
-                    "stickers": {
-                        "display": true
-                    },
-                    "variants": {
-                        "display": false
-                    },
-                    "availability": {
-                        "display": false
-                    },
-                    "i18n": {
-                        "colorsAvailable": "Colors available"
-                    }
-                },
-                "title": "Complete the look"
-            },
-            "#product-findify-rec-2": {
-                "enabled": true,
-                "slot": "product-findify-rec-2",
-                "type": "viewed",
-                "template": "slider",
-                "limit": 10,
-                "multipleIds": false,
-                "minResultsToShow": 1,
-                "product": {
-                    "title": {
-                        "display": true,
-                        "lines": "2"
-                    },
-                    "rating": {
-                        "display": true
-                    },
-                    "description": {
-                        "display": false
-                    },
-                    "price": {
-                        "display": true
-                    },
-                    "stickers": {
-                        "display": true
-                    },
-                    "variants": {
-                        "display": false
-                    },
-                    "availability": {
-                        "display": false
-                    },
-                    "i18n": {
-                        "colorsAvailable": "Colors available"
-                    }
-                },
-                "title": "Customers who viewed this also viewed"
-            }
-        }
-    },
-    "stickers": {
-        "out-of-stock": {
-            "template": "Temporarily out of stock"
-        },
-        "discount": {
-            "position": "bottom-left",
-            "template": {
-                "single": "%s% off Act now!",
-                "multiple": "Up to %s% off"
-            },
-            "styles": {
-                "background": "#d66f6f",
-                "color": "#fafefa",
-                "fontFamily": "Arial, 'Helvetica Neue', Helvetica, sans-serif;",
-                "fontSize": "14",
-                "fontWeight": "400"
-            }
-        }
-    },
-    "frameDisabled": true,
-    "useSimpleLoader": false,
-    "custom_css": {
-        "compiled": ".findify-components--breadcrumbs{white-space:nowrap}.findify-components--breadcrumbs__breadcrumb{background:transparent;border:none;color:#c6c6c6;cursor:pointer;display:inline-block;font-size:11px;font-weight:700;margin-left:12px;outline:none;padding:0;position:relative;text-transform:uppercase}.findify-components--breadcrumbs__breadcrumb:before{color:#c6c6c6;content:\"/\";display:inline-block;font-family:Karla,sans-serif;font-size:16px;font-weight:400;padding-right:12px;vertical-align:-1px}.findify-components--breadcrumbs__breadcrumb .findify-components--breadcrumbs__title{color:#c6c6c6}.findify-components--breadcrumbs__breadcrumb:focus,.findify-components--breadcrumbs__breadcrumb:hover{-webkit-text-decoration-color:#111;color:#111;text-decoration:line-through;text-decoration-color:#111}.findify-components--breadcrumbs__breadcrumb:first-child:before,.findify-components--breadcrumbs__breadcrumb:focus .findify-components--breadcrumbs__title,.findify-components--breadcrumbs__breadcrumb:focus:before,.findify-components--breadcrumbs__breadcrumb:hover .findify-components--breadcrumbs__title,.findify-components--breadcrumbs__breadcrumb:hover:before{color:#111}.findify-components--breadcrumbs__breadcrumb .findify-components--breadcrumbs__title{display:inline-block}.findify-components--breadcrumbs__ball{border-radius:50%;display:inline-block;height:11px;vertical-align:-1px;width:11px}.findify-components--breadcrumbs__cross{-webkit-transition:color .1s linear;padding-left:5px;transition:color .1s linear;vertical-align:-4px}.findify-components--button{-webkit-transition:background-color .1s ease-in;background:transparent;border:none;cursor:pointer;font-family:Karla,sans-serif;margin:0;outline:none;padding:0;transition:background-color .1s ease-in}.findify-components--button__raw{background:transparent;display:block;height:auto;margin:0;padding:0;text-align:left}.findify-components--cards--product--price__price-wrapper{line-height:inherit;margin:5px 0;text-align:center}.findify-components--cards--product--price__simple .findify-components--cards--product--price__price-wrapper{margin:0}.findify-components--cards--product--price__price-wrapper:after{clear:both;content:\"\";display:block}.findify-components--cards--product--price__price{display:inline-block}.findify-components--cards--product--price__simple .findify-components--cards--product--price__price{font-weight:700}.findify-components--cards--product--price__compare{color:#8d8d8d;font-size:12px;text-decoration:line-through}.findify-components--cards--product--price__compare,.findify-components--cards--product--price__price{-webkit-font-smoothing:antialiased;font-family:Karla,sans-serif;text-rendering:optimizeLegibility}.findify-components--cards--product--price__price{color:#111;font-size:12px;font-weight:700}.findify-components--cards--product--price__sale-price{color:#d0284b;padding-right:5px}.findify-components--cards--product--rating__rating{white-space:nowrap}.findify-components--cards--product--rating__stars{display:inline-block;white-space:nowrap}.findify-components--cards--product--rating__star{color:#111;display:inline-block;height:11px;margin-right:3px;vertical-align:-1px;width:11px}.findify-components--cards--product--rating__star.findify-components--cards--product--rating__filled{color:#ffc000}.findify-components--cards--product--rating__count{display:inline-block;vertical-align:1px}.findify-components--cards--product--stickers__discount-sticker{background:rgba(208,40,75,.9);border-radius:70px;display:table;height:70px;text-align:center;width:70px}.findify-components--cards--product--stickers__discount-sticker span{color:#fff;display:table-cell;height:100%;padding:10px;vertical-align:middle;width:100%}.findify-components--cards--product--stickers__outOfStockSticker{text-align:center;width:100%}.findify-components--cards--product--stickers__outOfStockSticker span{color:#c6c6c6}.findify-components--cards--product{-moz-user-select:none;-ms-user-select:none;-webkit-transition:background-color .35s ease-in-out;-webkit-user-select:none;background-color:transparent;border:none!important;display:table;padding:12px 12px 42px;text-decoration:none;transition:background-color .35s ease-in-out;user-select:none;vertical-align:bottom;width:100%}.findify-components--cards--product.findify-components--cards--product__simple{padding:0 8px 15px}.findify-widget--products-carousel .findify-components--cards--product:focus,.findify-widget--products-carousel .findify-components--cards--product:hover{background-color:inherit}.findify-components--cards--product__image-wrap{overflow:hidden;position:relative}.findify-components--cards--product__image{margin:0 auto;max-width:100%}.findify-components--cards--product__content{font-size:14px}.findify-components--cards--product__title{font-size:13px!important;line-height:21px;text-align:center;width:100%}.findify-components--cards--product__description{color:#b2b2b2;font-size:12px;margin:5px 0}.findify-components--cards--product__rating{margin:12px 0 8px;text-align:center;width:100%}.findify-components--cards--product__price-wrapper{margin-bottom:12px!important;margin-top:8px!important}.findify-components--cards--product__color{color:#b2b2b2;font-size:13px;margin:5px 0;text-transform:none}.findify-components--cards--product__out-of-stock{color:#b2b2b2;font-size:13px;margin:-3px 0 0}.findify-components--cards--product__discount-sticker{position:absolute;right:4%;top:4%;z-index:50}.findify-components--category-facet{width:100%}.findify-components--category-facet__nested{padding-left:20px}.findify-components--category-facet__item{background:transparent;border:0;border-radius:0;cursor:pointer;display:table;font-size:12px;height:auto;outline:0;padding:7px 0;text-align:left;width:100%}.findify-components--category-facet__item>span{display:table-cell;width:100%}.findify-components--category-facet__item svg{padding-left:7px;vertical-align:-3px}.findify-components--category-facet__active{font-weight:700}.findify-components--checkbox-facet{width:100%}.findify-components--checkbox-facet__expanded-list{height:300px}.findify-components--checkbox-facet__item{background:transparent;border:0;border-radius:0;cursor:pointer;display:table;font-size:12px;height:auto;outline:0;padding:5px 0 5px 25px;position:relative;text-align:left;width:100%}.findify-components--checkbox-facet__item>span{display:table-cell;width:100%}.findify-components--checkbox-facet__item svg{left:0;position:absolute;top:9px;vertical-align:-2px}.findify-components--checkbox-facet__search{padding-bottom:11px;position:relative;width:100%}.findify-components--checkbox-facet__search .findify-components--checkbox-facet__icon{color:#e2e2e2;margin-top:-13px;pointer-events:none;position:absolute;right:11px;top:50%}.findify-components--checkbox-facet__input{-webkit-box-sizing:border-box;-webkit-transition:border-color .1s linear;border:1px solid #e2e2e2;box-sizing:border-box;font-family:Karla,sans-serif;font-size:11px;height:40px;outline:none;padding-left:11px;padding-right:34px;transition:border-color .1s linear;width:100%}.findify-components--checkbox-facet__input:placeholder{color:#f3f3f3}.findify-components--checkbox-facet__input:focus{border-color:#c6c6c6}.findify-components--checkbox-facet__expand{margin-top:20px}.findify-components--checkbox-facet__expand svg{padding-right:5px;vertical-align:-3px}.findify-components--color-facet__item{border:none;border-radius:0;cursor:pointer;display:inline-block;line-height:1;margin-right:5px;outline:none;padding:0;position:relative}.findify-components--color-facet__item.findify-components--color-facet__active .findify-components--color-facet__ball{border:1px solid #e2e2e2}.findify-components--color-facet__ball{border:1px solid transparent;border-radius:50%;display:inline-block;height:20px;width:20px}.findify-components--color-facet__check{color:#f3f3f3;left:50%;margin-left:-6px;margin-top:-8px;position:absolute;top:50%}.findify-components--dropdown{position:relative}.findify-components--dropdown__select{background:#f3f3f3;border-radius:0;height:40px;padding:0 40px 0 11px;position:relative;text-align:left;width:100%}.findify-components--dropdown__arrow{margin-top:-8px;position:absolute;right:16px;top:50%}.findify-components--dropdown__dropdown{-ms-transform:scaleY(0);-ms-transform-origin:center top;-webkit-box-shadow:0 5px 10px -4px rgba(0,0,0,.07);-webkit-box-sizing:border-box;-webkit-transform:scaleY(0);-webkit-transform-origin:center top;-webkit-transition:all .3s ease;background:#fff;border:1px solid #e2e2e2;box-shadow:0 5px 10px -4px rgba(0,0,0,.07);box-sizing:border-box;left:0;margin-top:1px;position:absolute;top:calc(100% - 1px);transform:scaleY(0);transform-origin:center top;transition:all .3s ease;width:100%;z-index:9999}.findify-components--dropdown__dropdown.findify-components--dropdown__open{-ms-transform:scaleY(1);-webkit-transform:scaleY(1);transform:scaleY(1)}.findify-components--dropdown__option{background:transparent;border:none;border-radius:0;cursor:pointer;display:block;font-size:var(--font-size-normal);height:40px;padding:0 11px;text-align:left;width:100%}.findify-components--dropdown__highlighted{background:#f3f3f3}.findify-components--facet{margin-bottom:15px}.findify-components--facet:last-child{margin-bottom:0}.findify-components--facet__title{display:table;text-align:left;width:100%}.findify-components--facet__text{display:inline-block!important;width:calc(100% - 15px)}.findify-components--facet__icon{vertical-align:middle}.findify-components--facet__body{padding:14px 0 0}.findify-components--icon{box-sizing:content-box;display:inline-block}.findify-components--pagination{border-top:1px solid #e2e2e2;margin-top:22px;padding-top:30px;text-align:center}.findify-components--pagination:after{clear:both;content:\"\";display:block}.findify-components--pagination__dots,.findify-components--pagination__first,.findify-components--pagination__last,.findify-components--pagination__next,.findify-components--pagination__page,.findify-components--pagination__prev{font-size:12px;font-weight:400;height:40px;padding:0 16px}.findify-components--pagination__dots:focus,.findify-components--pagination__dots:hover,.findify-components--pagination__first:focus,.findify-components--pagination__first:hover,.findify-components--pagination__last:focus,.findify-components--pagination__last:hover,.findify-components--pagination__next:focus,.findify-components--pagination__next:hover,.findify-components--pagination__page:focus,.findify-components--pagination__page:hover,.findify-components--pagination__prev:focus,.findify-components--pagination__prev:hover{text-decoration:underline}.findify-components--pagination__next,.findify-components--pagination__prev{text-transform:uppercase}.findify-components--pagination__next svg,.findify-components--pagination__prev svg{vertical-align:-3px}.findify-components--pagination__dots{cursor:default;padding:0;pointer-events:none}.findify-components--pagination__active,.findify-components--pagination__active:focus{background-color:#f3f3f3;text-decoration:none}.findify-components--powered-by{text-align:center}.findify-components--range-facet{-ms-flex-direction:column;-webkit-box-direction:normal;-webkit-box-orient:vertical;display:-webkit-box;display:-ms-flexbox;display:flex;flex-direction:column;width:100%}.findify-components--range-facet__item{background:transparent;border:0;border-radius:0;cursor:pointer;display:table;font-size:12px;height:auto;outline:0;padding:5px 0;text-align:left;width:100%}.findify-components--range-facet__item>span{display:table-cell;width:100%}.findify-components--range-facet__item svg{padding-right:14px;vertical-align:-2px}.findify-components--range-facet__range{display:table;padding-left:25px;padding-top:10px;width:1%}.findify-components--range-facet__input-wrap{display:table-cell;position:relative;white-space:nowrap}.findify-components--range-facet__input-wrap .react-numeric-input{display:inline-block}.findify-components--range-facet__input{-webkit-box-sizing:border-box;-webkit-transition:border-color .1s linear;border:1px solid #e2e2e2;box-sizing:border-box;color:#111;display:block;font-family:Karla,sans-serif;font-size:11px;height:30px;outline:none;padding:0 8px 0 16px;transition:border-color .1s linear;width:60px}.findify-components--range-facet__input:placeholder{color:#f3f3f3}.findify-components--range-facet__input:focus{border-color:#c6c6c6}.findify-components--range-facet__currency{display:inline-block;font-size:12px;left:9px;position:relative;width:0}.findify-components--range-facet__submit{background:transparent;border:0;border-radius:0;cursor:pointer;display:table-cell;font-size:12px;height:30px;outline:0;padding:0 8px;width:100%}.findify-components--range-facet__submit:focus,.findify-components--range-facet__submit:hover{text-decoration:underline}.findify-components--range-facet__submit span{font-size:13px}.findify-components--range-facet__divider{display:table-cell;padding:0 6px;width:1%}.findify-components--rating-facet{-ms-flex-direction:column;-webkit-box-direction:normal;-webkit-box-orient:vertical;display:-webkit-box;display:-ms-flexbox;display:flex;flex-direction:column;width:100%}.findify-components--rating-facet__item{background:transparent;border:0;border-radius:0;cursor:pointer;display:table;font-size:12px;height:auto;outline:0;padding:5px 0;text-align:left;width:100%}.findify-components--rating-facet__item>span{display:table-cell;width:100%}.findify-components--rating-facet__item svg{padding-right:14px;vertical-align:-2px}.findify-components--rating-facet__range{display:table;padding-left:25px;padding-top:10px;width:1%}.findify-components--rating-facet__input-wrap{display:table-cell;position:relative;white-space:nowrap}.findify-components--rating-facet__input-wrap .react-numeric-input{display:inline-block}.findify-components--rating-facet__input{-webkit-box-sizing:border-box;-webkit-transition:border-color .1s linear;border:1px solid #e2e2e2;box-sizing:border-box;color:#111;display:block;font-family:Karla,sans-serif;font-size:11px;height:30px;outline:none;padding:0 8px 0 16px;transition:border-color .1s linear;width:60px}.findify-components--rating-facet__input:placeholder{color:#f3f3f3}.findify-components--rating-facet__input:focus{border-color:#c6c6c6}.findify-components--rating-facet__currency{display:inline-block;font-size:12px;left:9px;position:relative;width:0}.findify-components--rating-facet__submit{background:transparent;border:0;border-radius:0;cursor:pointer;display:table-cell;font-size:12px;height:30px;outline:0;padding:0 8px;width:100%}.findify-components--rating-facet__submit:focus,.findify-components--rating-facet__submit:hover{text-decoration:underline}.findify-components--rating-facet__submit span{font-size:13px}.findify-components--rating-facet__divider{display:table-cell;padding:0 6px;width:1%}.findify-components--sorting{display:inline-table}.findify-components--sorting__icon{-ms-transform:scaleY(-1);-webkit-transform:scaleY(-1);display:table-cell;min-width:17px;transform:scaleY(-1)}.findify-components--sorting .findify-components--sorting__title{display:table-cell;padding:0 10px;white-space:nowrap}.findify-components--sorting__dropdown{display:table-cell;min-width:240px;position:relative;width:240px}@supports (display:flex){.findify-components--sorting{-ms-flex-align:center;-webkit-box-align:center;align-items:center;display:-webkit-inline-box;display:-ms-inline-flexbox;display:inline-flex}.findify-components--sorting__dropdown,.findify-components--sorting__icon,.findify-components--sorting__title{display:block}}.findify-components--tabs__list{display:block;list-style-type:none;margin-bottom:40px;text-align:center}.findify-components--tabs__tab{-moz-user-select:none;-ms-user-select:none;-webkit-user-select:none;cursor:pointer;display:inline-block;font-family:Karla,sans-serif;font-size:12px;margin-left:16px;margin-right:16px;text-transform:uppercase;user-select:none}.findify-components--tabs__tab:after{content:\" \";display:block;height:2px;margin-left:calc(50% - 11px);margin-right:calc(50% - 11px);margin-top:8px;width:22px}.findify-components--tabs__active{cursor:default}.findify-components--tabs__active:after{background:#000}.findify-components--tabs__disabled{opacity:.3}.findify-components--text{-webkit-font-smoothing:antialiased;color:#111;display:block;font-family:Karla,sans-serif;font-size:12px;margin:0;padding:0;text-rendering:optimizeLegibility}.findify-components--text__primary-uppercase{color:#111;font-size:11px;font-weight:700;line-height:17px;text-transform:uppercase}.mobile .findify-components--text__primary-uppercase{font-weight:400;line-height:15px}.findify-components--text__primary-lowercase{color:#111;font-size:13px;font-weight:400;line-height:21px;text-transform:capitalize}.mobile .findify-components--text__primary-lowercase{font-size:12px}.findify-components--text__secondary-uppercase{color:#c6c6c6;font-size:11px;font-weight:700;text-transform:uppercase}.findify-components--text__secondary-lowercase{color:#c6c6c6;font-size:13px;font-weight:400;text-transform:capitalize}.mobile .findify-components--text__secondary-lowercase{font-size:11px}.findify-components--text__title{color:#111;font-size:18px;font-weight:400}.findify-components--text__bold{font-weight:700}.findify-components--text__inlineBlock{display:inline-block}.findify-components-autocomplete--product-matches{//width:355px}.findify-components-autocomplete--product-matches__product-card{display:block;padding-bottom:16px}.findify-components-autocomplete--product-matches__product-card .findify-components-autocomplete--product-matches__imageWrap{display:table-cell;width:40%}.findify-components-autocomplete--product-matches__product-card .findify-components-autocomplete--product-matches__image{width:100%}.findify-components-autocomplete--product-matches__product-card .findify-components-autocomplete--product-matches__content{display:table-cell;padding-left:10px;vertical-align:top}.findify-components-autocomplete--product-matches__product-card .findify-components-autocomplete--product-matches__content .findify-components-autocomplete--product-matches__price-wrapper,.findify-components-autocomplete--product-matches__product-card .findify-components-autocomplete--product-matches__content p,.findify-components-autocomplete--product-matches__product-card .findify-components-autocomplete--product-matches__content span{text-align:left}.findify-components-autocomplete--product-matches__product-card .findify-components-autocomplete--product-matches__content .findify-components-autocomplete--product-matches__price-wrapper{margin-top:20px}.findify-components-autocomplete--product-matches__grid-column-class:after{background:#e2e2e2;content:\" \";display:block;height:1px;margin-bottom:16px;margin-left:10%;width:80%}.findify-components-autocomplete--product-matches__view-more-button{-webkit-transition:background .1s linear;background:#f3f3f3;display:block;font-size:11px;height:40px;margin:0 auto;padding:0 85px;transition:background .1s linear;width:300px}.findify-components-autocomplete--product-matches__view-more-button:focus,.findify-components-autocomplete--product-matches__view-more-button:hover{background:#e2e2e2}.findify-components-autocomplete--search-suggestions__list ul{list-style-type:none;margin:0;padding:0}.findify-components-autocomplete--search-suggestions__list ul li{display:block}.findify-components-autocomplete--suggestion-item__suggestion{border-radius:2px;color:#111;cursor:pointer;font-family:Karla,sans-serif;font-size:13px;margin-bottom:10px;margin-top:10px;padding-bottom:5px;padding-top:5px;text-align:left}.findify-components-autocomplete--suggestion-item__suggestion:before{content:\" \";display:table}.findify-components-autocomplete--suggestion-item__suggestion:focus,.findify-components-autocomplete--suggestion-item__suggestion:hover{background:#f3f3f3}.findify-components-autocomplete--suggestion-item__highlightedText{font-weight:bolder}.findify-components-autocomplete--suggestion-item__highlighted{background:#f3f3f3}.findify-components-autocomplete--tip__tip{-moz-user-select:none;-ms-user-select:none;-webkit-user-select:none;background:#f3f3f3;color:#b2b2b2;cursor:pointer;font-family:Karla,sans-serif;font-size:13px;height:48px;line-height:48px;text-align:center;user-select:none}.findify-components-autocomplete--tip__highlight{color:#404040}.findify-components-common--drawer__backdrop{-webkit-transition:all .6s ease;background:rgba(0,0,0,.5);height:100vh;left:0;opacity:0;position:fixed;top:0;transition:all .6s ease;width:100vw;z-index:999}.findify-components-common--drawer__content-wrapper{-webkit-transition:all .6s ease;background:#fff;display:inline-block;height:100vh;left:0;overflow-y:auto;position:fixed;top:0;transition:all .6s ease;z-index:1000}.findify-components-common--drawer__content{display:-webkit-box;display:-ms-flexbox;display:flex;height:100%}.findify-components-common--drawer__body-noscroll{overflow:hidden}.findify-components-common--drawer__drawer-appear,.findify-components-common--drawer__drawer-enter{-webkit-transition:all .6s ease;transition:all .6s ease}.findify-components-common--drawer__drawer-enter.findify-components-common--drawer__backdrop{opacity:.01}.findify-components-common--drawer__drawer-enter-active{-webkit-transition:all .6s ease;transition:all .6s ease}.findify-components-common--drawer__drawer-enter-active.findify-components-common--drawer__backdrop,.findify-components-common--drawer__drawer-enter-done.findify-components-common--drawer__backdrop,.findify-components-common--drawer__drawer-exit.findify-components-common--drawer__backdrop{opacity:1}.findify-components-common--drawer__drawer-exit-active{-webkit-transition:all .6s ease;transition:all .6s ease}.findify-components-common--drawer__drawer-exit-active.findify-components-common--drawer__backdrop{opacity:.01}.findify-components-common--grid{font-size:0;line-height:0;width:100%}.findify-components-common--grid__column{-webkit-box-sizing:border-box;box-sizing:border-box;display:inline-block;font-size:12px;line-height:1.2;min-height:1px;vertical-align:top}@supports (display:flex){.findify-components-common--grid{-ms-flex-align:top;-ms-flex-direction:row;-ms-flex-wrap:wrap;-webkit-box-align:top;-webkit-box-direction:normal;-webkit-box-orient:horizontal;align-items:top;display:-webkit-box;display:-ms-flexbox;display:flex;flex-direction:row;flex-wrap:wrap;font-size:inherit;line-height:inherit}.findify-components-common--grid__column{display:block}}.findify-components-common--grid__column-1{width:8.33333%}.findify-components-common--grid__column-2{width:16.66667%}.findify-components-common--grid__column-3{width:25%}.findify-components-common--grid__column-4{width:33.33333%}.findify-components-common--grid__column-5{width:41.66667%}.findify-components-common--grid__column-6{width:50%}.findify-components-common--grid__column-7{width:58.33333%}.findify-components-common--grid__column-8{width:66.66667%}.findify-components-common--grid__column-9{width:75%}.findify-components-common--grid__column-10{width:83.33333%}.findify-components-common--grid__column-11{width:91.66667%}.findify-components-common--grid__column-12{width:100%}.findify-components-common--image{-ms-transform:filter .3s linear,opacity .3s linear,height .1s linear;-webkit-transform:filter .3s linear,opacity .3s linear,height .1s linear;position:relative;transform:filter .3s linear,opacity .3s linear,height .1s linear;width:100%;will-change:filter,opacity,height}.findify-components-common--image img{display:block;height:auto;width:100%}.findify-components-common--image__thumbnail{-webkit-filter:blur(10px);filter:blur(10px);opacity:.5}.findify-components-common--image__croppedRoot{-ms-transform:filter .3s linear,opacity .3s linear,height .1s linear;-webkit-transform:filter .3s linear,opacity .3s linear,height .1s linear;display:block;position:relative;transform:filter .3s linear,opacity .3s linear,height .1s linear;width:100%;will-change:filter,opacity,height}.findify-components-common--image__loading{background-color:#f2f4f7}.findify-components-common--sticky__container{max-height:auto}@supports (display:flex){.findify-components-common--sticky__container{overflow:hidden;overflow-y:auto;will-change:max-height}.findify-components-common--sticky__static{position:static}.findify-components-common--sticky__stuck{bottom:0;position:absolute}.findify-components-common--sticky__sticky{position:fixed;top:0}}.findify-components-contentsearch--content-card{-moz-user-select:none;-ms-user-select:none;-webkit-transition:background-color .35s ease-in-out;-webkit-user-select:none;background-color:transparent;border:none!important;display:table;padding:10px 12px;text-decoration:none;transition:background-color .35s ease-in-out;user-select:none;vertical-align:bottom;width:calc(100% - 24px)}.findify-components-contentsearch--content-card__image-wrap{overflow:hidden;position:relative}.findify-components-contentsearch--content-card__image{margin:0 auto;max-width:100%}.findify-components-contentsearch--lazy-content-search-results{width:100%}.findify-components-contentsearch--lazy-content-search-results__next-button{-webkit-transition:background .1s linear;background:#f3f3f3;display:block;height:40px;margin:50px auto 0;padding:0 85px;transition:background .1s linear}.findify-components-contentsearch--lazy-content-search-results__next-button:focus,.findify-components-contentsearch--lazy-content-search-results__next-button:hover{background:#e2e2e2}.findify-components-contentsearch--lazy-content-search-results__prev-button{-webkit-transition:background .1s linear;background:#f3f3f3;display:block;height:40px;margin:0 auto 50px;padding:0 85px;transition:background .1s linear}.findify-components-contentsearch--lazy-content-search-results__prev-button:focus,.findify-components-contentsearch--lazy-content-search-results__prev-button:hover{background:#e2e2e2}.findify-components-contentsearch--trends{margin-bottom:32px;padding-left:12px}.findify-components-contentsearch--trends__topTrendsTitle{margin-right:8px}.findify-components-search--desktop-actions{display:table;padding-bottom:32px;width:100%}.findify-components-search--desktop-actions__block{display:table;width:100%}.findify-components-search--desktop-actions__sorting{display:table-cell;position:relative}.findify-components-search--desktop-actions__query{display:table-cell;white-space:nowrap;width:1%}.findify-components-search--desktop-actions__breadcrumbs{display:table-cell}@supports (display:flex){.findify-components-search--desktop-actions,.findify-components-search--desktop-actions__block{-ms-flex-align:center;-ms-flex-direction:row;-webkit-box-align:center;-webkit-box-direction:normal;-webkit-box-orient:horizontal;align-items:center;display:-webkit-box;display:-ms-flexbox;display:flex;flex-direction:row}.findify-components-search--desktop-actions__block{-ms-flex-flow:row wrap;flex-flow:row wrap;width:100%}.findify-components-search--desktop-actions__sorting{display:block}.findify-components-search--desktop-actions__query{display:block;width:auto}.findify-components-search--desktop-actions__breadcrumbs{display:block}}.findify-components-search--desktop-facets{-webkit-box-sizing:border-box;box-sizing:border-box;display:table-cell;min-width:300px;padding-left:40px;position:relative;vertical-align:top;width:300px}.findify-components-search--desktop-facets:first-child{padding-left:inherit;padding-right:40px}.findify-components-search--desktop-facets__header{padding:13px 25px}.findify-components-search--desktop-facets__header:after{clear:both;content:\"\";display:block}.findify-components-search--desktop-facets__icon{float:left;padding-right:10px}.findify-components-search--desktop-facets__title{float:left}.findify-components-search--desktop-facets__reset{float:right;padding:2px 0}.findify-components-search--desktop-facets__reset:focus p,.findify-components-search--desktop-facets__reset:hover p{color:#8d8d8d}.findify-components-search--desktop-facets__facet{border-top:1px solid #e2e2e2;margin-top:20px;padding:20px 25px 0}@supports (display:flex){.findify-components-search--desktop-facets{display:block}}.findify-components-search--lazy-results{width:100%}.findify-components-search--lazy-results__next-button{-webkit-transition:background .1s linear;background:#f3f3f3;display:block;height:40px;margin:50px auto 0;padding:0 85px;transition:background .1s linear}.findify-components-search--lazy-results__next-button:focus,.findify-components-search--lazy-results__next-button:hover{background:#e2e2e2}.findify-components-search--lazy-results__prev-button{-webkit-transition:background .1s linear;background:#f3f3f3;display:block;height:40px;margin:0 auto 50px;padding:0 85px;transition:background .1s linear}.findify-components-search--lazy-results__prev-button:focus,.findify-components-search--lazy-results__prev-button:hover{background:#e2e2e2}.findify-components-search--mobile-actions{-ms-flex-align:center;-ms-flex-direction:row;-webkit-box-align:center;-webkit-box-direction:normal;-webkit-box-orient:horizontal;align-items:center;display:-webkit-box;display:-ms-flexbox;display:flex;flex-direction:row}.findify-components-search--mobile-actions__icon{-ms-transform:scaleY(-1);-webkit-transform:scaleY(-1);transform:scaleY(-1)}.findify-components-search--mobile-actions__button{-ms-flex-align:center;-ms-flex-pack:center;-webkit-box-align:center;-webkit-box-pack:center;align-items:center;border:1px solid #e2e2e2;display:-webkit-box;display:-ms-flexbox;display:flex;height:32px;justify-content:center;width:100%}.findify-components-search--mobile-actions__button svg{height:11px;padding-right:6px;vertical-align:-2px;width:12px}.findify-components-search--mobile-actions__divider{width:7px}.findify-components-search--mobile-facets__modal{-ms-flex-direction:column;-webkit-box-direction:normal;-webkit-box-orient:vertical;background:#fff;bottom:0;display:-webkit-box;display:-ms-flexbox;display:flex;flex-direction:column;width:100%}.findify-components-search--mobile-facets__filter-count{margin-left:3px}.findify-components-search--mobile-facets__back-button{height:20px}.findify-components-search--mobile-facets__header{-ms-flex-align:center;-ms-flex-direction:row;-ms-flex-pack:justify;-webkit-box-align:center;-webkit-box-direction:normal;-webkit-box-orient:horizontal;-webkit-box-pack:justify;align-items:center;background:#f3f3f3;border-bottom:1px solid #e2e2e2;display:-webkit-box;display:-ms-flexbox;display:flex;flex-direction:row;height:60px;justify-content:space-between;padding:0 15px}.findify-components-search--mobile-facets__header>*{position:relative;z-index:2}.findify-components-search--mobile-facets__body{-ms-flex:1;-webkit-box-flex:1;flex:1;overflow:hidden;overflow-y:auto}.findify-components-search--mobile-facets__footer{background:#404040;color:#fff;font-size:12px;height:60px;padding:0 15px;text-transform:uppercase}.findify-components-search--mobile-facets__title{-moz-user-select:none;-ms-flex-align:center;-ms-flex-pack:center;-ms-user-select:none;-webkit-box-align:center;-webkit-box-pack:center;-webkit-user-select:none;align-items:center;display:-webkit-box;display:-ms-flexbox;display:flex;height:60px;justify-content:center;left:0;position:absolute;right:0;top:0;user-select:none;z-index:1}.findify-components-search--mobile-facets__facet-title{border-top:1px solid #e2e2e2;padding:20px 17px;width:100%}.findify-components-search--mobile-facets__facet-title:first-child{border-top:0}.findify-components-search--mobile-facets__facet-title:last-child{border-bottom:1px solid #e2e2e2}.findify-components-search--mobile-facets__container{-webkit-box-sizing:border-box;box-sizing:border-box;display:-webkit-box;display:-ms-flexbox;display:flex;height:100%;overflow:hidden;overflow-y:auto;padding:17px}.findify-components-search--mobile-facets__expand{display:none}.findify-components-search--mobile-facets__expanded-list{height:100%}.findify-components-search--mobile-facets__range{display:table;width:100%}.findify-components-search--mobile-facets__facet-root{width:100%}.findify-components-search--mobile-sorting{-ms-flex-direction:column;-webkit-box-direction:normal;-webkit-box-orient:vertical;background:#fff;bottom:0;display:-webkit-box;display:-ms-flexbox;display:flex;flex-direction:column;left:0;position:fixed;top:0;width:100%}.findify-components-search--mobile-sorting__header{-ms-flex-align:center;-ms-flex-direction:row;-ms-flex-pack:justify;-webkit-box-align:center;-webkit-box-direction:normal;-webkit-box-orient:horizontal;-webkit-box-pack:justify;align-items:center;background:#f3f3f3;border-bottom:1px solid #e2e2e2;display:-webkit-box;display:-ms-flexbox;display:flex;flex-direction:row;height:60px;justify-content:space-between;padding:0 15px}.findify-components-search--mobile-sorting__header>*{position:relative;z-index:2}.findify-components-search--mobile-sorting__body{-ms-flex:1;-webkit-box-flex:1;flex:1;overflow:hidden;overflow-y:auto}.findify-components-search--mobile-sorting__footer{background:#404040;color:#fff;font-size:12px;height:60px;padding:0 15px;text-transform:uppercase}.findify-components-search--mobile-sorting__title{-moz-user-select:none;-ms-flex-align:center;-ms-flex-pack:center;-ms-user-select:none;-webkit-box-align:center;-webkit-box-pack:center;-webkit-user-select:none;align-items:center;display:-webkit-box;display:-ms-flexbox;display:flex;height:60px;justify-content:center;left:0;position:absolute;right:0;top:0;user-select:none;z-index:1}.findify-components-search--mobile-sorting__item{border-bottom:1px solid #e2e2e2;display:-webkit-box;display:-ms-flexbox;display:flex;height:50px;padding:0 17px;width:100%}.findify-components-search--mobile-sorting__item svg{padding-right:15px;vertical-align:-3px}.findify-components-search--query{display:table-cell;white-space:nowrap;width:1%}.findify-components-search--static-results{padding-top:0}.findify-components-search--static-results__column{display:table}.findify-layouts--autocomplete--dropdown{-webkit-box-shadow:0 5px 10px 0 rgba(71,89,113,.5);//padding:15px 10px 10px;background:#fff;border:1px solid #e2e2e2;box-shadow:0 5px 10px 0 rgba(71,89,113,.5);padding-bottom:0;position:absolute;right:0;top:40px;z-index:9999}.findify-layouts--autocomplete--dropdown__type-title{color:#c6c6c6;font-family:Karla,sans-serif;font-size:11px;font-weight:700;line-height:11px;margin-bottom:17px;margin-top:0;text-align:left;text-transform:uppercase}.findify-layouts--autocomplete--dropdown__overlay{background:rgba(0,0,0,.3);height:100vh;left:0;position:fixed;top:0;width:100vw;z-index:9998}.findify-layouts--autocomplete--dropdown__not-found,.findify-layouts--autocomplete--dropdown__start-typing{color:#c6c6c6;font-family:Karla,sans-serif;font-size:11px;font-weight:700;line-height:11px;margin-bottom:0;margin-top:0;padding-bottom:25px;padding-left:25px;padding-top:25px;text-transform:uppercase}.findify-layouts--autocomplete--dropdown__tip{-moz-user-select:none;-ms-user-select:none;-webkit-user-select:none;border-bottom:1px solid #e2e2e2;text-align:center;user-select:none}.findify-layouts--autocomplete--dropdown__highlight{color:#404040}.findify-layouts--autocomplete--dropdown__container{display:table;margin-bottom:24px;margin-top:24px;width:100%}.findify-layouts--autocomplete--dropdown__product-matches-container{background:#fff;border-bottom-left-radius:5px;border-bottom-right-radius:5px;display:table-cell;padding:0 27px;vertical-align:top;width:326px}.findify-layouts--autocomplete--dropdown__suggestions-container{background:#fff;border-bottom-left-radius:5px;border-bottom-right-radius:5px;display:table-cell;min-width:166px;padding:0 27px;vertical-align:top;width:166px}.findify-layouts--autocomplete--dropdown__container>:first-child{border-right:1px solid #e2e2e2}.findify-layouts--autocomplete--fullscreen{height:100vh;left:0;position:fixed;top:0;width:100vw}.findify-layouts--autocomplete--fullscreen__backdrop{background-color:#fff;height:100%;left:0;position:absolute;top:0;width:100%;z-index:-1}.findify-layouts--autocomplete--fullscreen__icons{-ms-flex-align:center;-ms-flex-pack:center;-webkit-box-align:center;-webkit-box-pack:center;align-items:center;display:-webkit-box;display:-ms-flexbox;display:flex;justify-content:center;margin-bottom:14px;margin-top:15px;padding-right:16px;position:absolute;right:0;top:0}.findify-layouts--autocomplete--fullscreen__icons .findify-layouts--autocomplete--fullscreen__search-icon{color:#111;cursor:pointer}.findify-layouts--autocomplete--fullscreen__icons .findify-layouts--autocomplete--fullscreen__search-icon path{fill:#111}.findify-layouts--autocomplete--fullscreen__icons .findify-layouts--autocomplete--fullscreen__x-icon{cursor:pointer}.findify-layouts--autocomplete--fullscreen__icons .findify-layouts--autocomplete--fullscreen__x-icon:focus,.findify-layouts--autocomplete--fullscreen__icons .findify-layouts--autocomplete--fullscreen__x-icon:hover{color:red}.findify-layouts--autocomplete--fullscreen__icon-divider{background:#e2e2e2;display:inline-block;height:18px;margin-left:12px;margin-right:12px;width:1px}.findify-layouts--autocomplete--fullscreen__header{position:relative}.findify-layouts--autocomplete--fullscreen__header input{-webkit-box-sizing:border-box;-webkit-transition:border-color .1s linear;border:1px solid #e2e2e2;box-sizing:border-box;color:#111;font-family:Karla,sans-serif;font-size:13px;height:50px;line-height:50px;outline:none;padding-left:13px;transition:border-color .1s linear;width:100%}.findify-layouts--autocomplete--fullscreen__header input:placeholder{color:#c6c6c6;color:#f3f3f3}.findify-layouts--autocomplete--fullscreen__header input:focus{border-color:#c6c6c6}.findify-layouts--autocomplete--fullscreen__type-title{color:#c6c6c6;font-family:Karla,sans-serif;font-size:11px;font-weight:700;line-height:11px;margin-bottom:17px;margin-top:0;padding-top:25px;text-transform:uppercase}.findify-layouts--autocomplete--fullscreen__suggestions-container{padding-left:30px}.findify-layouts--autocomplete--fullscreen__suggestions-wrapper{background:#fff;padding-bottom:40px;width:100%}.findify-layouts--autocomplete--fullscreen__body-noscroll{overflow:hidden}.findify-layouts--autocomplete--sidebar{width:100%}.findify-layouts--autocomplete--sidebar__inputWrapper input{-webkit-box-sizing:border-box;-webkit-transition:border-color .1s linear;border:1px solid #e2e2e2;box-sizing:border-box;color:#111;font-family:Karla,sans-serif;font-size:13px;height:50px;line-height:50px;outline:none;padding-left:13px;transition:border-color .1s linear;width:100%}.findify-layouts--autocomplete--sidebar__inputWrapper input:placeholder{color:#c6c6c6;color:#f3f3f3}.findify-layouts--autocomplete--sidebar__inputWrapper input:focus{border-color:#c6c6c6}.findify-layouts--autocomplete--sidebar__type-title{color:#c6c6c6;font-family:Karla,sans-serif;font-size:11px;font-weight:700;line-height:11px;margin-bottom:17px;margin-top:0;padding-top:25px;text-transform:uppercase}.findify-layouts--autocomplete--sidebar__suggestions-container{padding-left:30px}.findify-layouts--autocomplete--sidebar__header{-ms-flex-pack:end;-webkit-box-pack:end;background-color:#475971;display:-webkit-box;display:-ms-flexbox;display:flex;justify-content:flex-end}.findify-layouts--autocomplete--sidebar__searchIcon{color:#fff;margin-bottom:14px;margin-right:16px;margin-top:12px}.findify-layouts--autocomplete--sidebar__searchIcon path{fill:#fff}.findify-layouts--content-search{border-top:1px solid #e2e2e2;display:table;padding-top:25px;width:100%}.findify-layouts--content-search__content{display:table-cell;width:100%}@supports (display:flex){.findify-layouts--content-search{-ms-flex-direction:row;-webkit-box-direction:normal;-webkit-box-orient:horizontal;display:-webkit-box;display:-ms-flexbox;display:flex;flex-direction:row}.findify-layouts--content-search__content{display:block}}.findify-layouts--recommendation--grid__title,.findify-layouts--recommendation--slider__title{margin:0;padding:0 0 18px;text-align:center}.findify-layouts--recommendation--slider__arrow{-webkit-transition:opacity .1s linear;margin-top:-11px;position:absolute;top:50%;transition:opacity .1s linear;z-index:2}.findify-layouts--recommendation--slider__arrow.slick-disabled{cursor:default;opacity:.3}.findify-layouts--recommendation--slider__arrow svg{color:#111}.slick-slider{-khtml-user-select:none;-moz-user-select:none;-ms-touch-action:pan-y;-ms-user-select:none;-webkit-box-sizing:border-box;-webkit-tap-highlight-color:transparent;-webkit-touch-callout:none;-webkit-user-select:none;box-sizing:border-box;touch-action:pan-y;user-select:none}.slick-list,.slick-slider{display:block;position:relative}.slick-list{margin:0;overflow:hidden;padding:0}.slick-list:focus{outline:none}.slick-list.dragging{cursor:pointer;cursor:hand}.slick-slider .slick-list,.slick-slider .slick-track{-ms-transform:translateZ(0);-webkit-transform:translateZ(0);transform:translateZ(0)}.slick-track{display:block;left:0;margin-left:auto;margin-right:auto;position:relative;top:0}.slick-track:after,.slick-track:before{content:\"\";display:table}.slick-track:after{clear:both}.slick-loading .slick-track{visibility:hidden}.slick-slide{display:none;float:left;height:100%;min-height:1px}[dir=rtl] .slick-slide{float:right}.slick-slide img{display:block}.slick-slide.slick-loading img{display:none}.slick-slide.dragging img{pointer-events:none}.slick-initialized .slick-slide{display:block}.slick-loading .slick-slide{visibility:hidden}.slick-vertical .slick-slide{border:1px solid transparent;display:block;height:auto}.slick-arrow.slick-hidden{display:none}.slick-next,.slick-prev{-ms-transform:translateY(-50%);-webkit-transform:translateY(-50%);border:none;cursor:pointer;display:block;font-size:0;height:20px;line-height:0;padding:0;position:absolute;top:50%;transform:translateY(-50%);width:20px}.slick-next,.slick-next:focus,.slick-next:hover,.slick-prev,.slick-prev:focus,.slick-prev:hover{background:transparent;color:transparent;outline:none}.slick-next:focus:before,.slick-next:hover:before,.slick-prev:focus:before,.slick-prev:hover:before{opacity:1}.slick-next.slick-disabled:before,.slick-prev.slick-disabled:before{opacity:.25}.slick-next:before,.slick-prev:before{-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased;color:#fff;font:normal normal normal 14px/1 FontAwesome;font-size:20px;line-height:1;opacity:.75}.slick-prev{left:-25px}[dir=rtl] .slick-prev{left:auto;right:-25px}.slick-next{right:-25px}[dir=rtl] .slick-next{left:-25px;right:auto}.slick-dotted.slick-slider{margin-bottom:30px}.slick-dots{bottom:-25px;display:block;list-style:none;margin:0;padding:0;position:absolute;text-align:center;width:100%}.slick-dots li{display:inline-block;margin:0 5px;padding:0;position:relative}.slick-dots li,.slick-dots li button{cursor:pointer;height:20px;width:20px}.slick-dots li button{background:transparent;border:0;color:transparent;display:block;font-size:0;line-height:0;outline:none;padding:5px}.slick-dots li button:focus,.slick-dots li button:hover{outline:none}.slick-dots li button:focus:before,.slick-dots li button:hover:before{opacity:1}.slick-dots li button:before{-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased;color:#000;content:\"\\2022\";font-family:slick;font-size:6px;height:20px;left:0;line-height:20px;opacity:.25;position:absolute;text-align:center;top:0;width:20px}.slick-dots li.slick-active button:before{color:#000;opacity:.75}.findify-layouts--search{border-top:1px solid #e2e2e2;display:table;padding-top:25px;width:100%}.findify-layouts--search__content{display:table-cell;width:100%}@supports (display:flex){.findify-layouts--search{-ms-flex-direction:row;-webkit-box-direction:normal;-webkit-box-orient:horizontal;display:-webkit-box;display:-ms-flexbox;display:flex;flex-direction:row}.findify-layouts--search__content{display:block}}.findify-layouts--zero-results__sorry{margin-right:8px}.findify-layouts--zero-results__suggestionsRow{margin-bottom:28px;margin-top:28px}.findify-custom--title{color:#111;font-family:Karla,sans-serif;font-size:32px;padding-bottom:40px;text-align:center}.findify-custom--tab-icon{display:inline-block;height:15px;vertical-align:-4px;width:15px}.findify-custom--instagram-preview{background-size:cover;height:0;padding-bottom:100%;width:100%}.findify-custom--results-block{border:1px solid #e2e2e2;margin-bottom:20px;padding:32px 14px 30px}.findify-custom--results-block .findify-components-common--drawer__content-wrapper{border-radius:3px/3px;height:400px;left:50%!important;margin-left:-150px;overflow:hidden;top:10%!important;width:300px!important}.findify-custom--results-block .findify-components-common--drawer__drawer-exit+.findify-components-common--drawer__content-wrapper{top:-100%!important}.findify-custom--results-block-wrap{display:flex;flex-direction:row;flex-wrap:nowrap;justify-content:space-between;padding-top:30px}.findify-custom--results-block-more{display:flex;padding:11px 14px 0}.findify-custom--results-block-more-wrapper{height:0;padding-bottom:100%;position:relative;width:100%}.findify-custom--results-block-more-text{font-size:10px;font-weight:700;margin:0;padding:0;text-transform:uppercase}.findify-custom--results-block-more-button{align-items:center;background:transparent;background-color:#f3f3f3;bottom:0;display:flex;flex-direction:column;font-size:10px;height:100%;justify-content:center;left:0;max-height:280px;position:absolute;right:0;text-transform:uppercase;top:0;transition:background .1s linear;width:100%}.findify-custom--results-block-more-button:hover{background:#e2e2e2}.findify-custom--results-block-more-button p{margin:0}.findify-custom--results-block-title{color:#111;cursor:pointer;font-family:Karla,sans-serif;font-size:10px;font-weight:700;line-height:12px;margin:0!important;padding:0 0 4px!important;text-align:center;text-transform:uppercase}.findify-custom--results-block-subtitle{color:#111;font-family:Karla,sans-serif;font-size:13px;line-height:15px;margin:0!important;padding:0!important;text-align:center}.findify-custom--trend-card{background-color:transparent;border:none!important;display:table;padding:10px 12px;text-decoration:none;transition:background-color .35s ease-in-out;user-select:none;vertical-align:bottom;width:100%}.findify-custom--trend-card-wrap{cursor:pointer;overflow:hidden;position:relative}.findify-custom--trend-card-image{margin:0 auto;max-width:100%}.findify-custom--trend-card-icon{bottom:10px;color:#fff;left:10px;position:absolute;z-index:2}.findify-custom--trend-next{background:#f3f3f3;display:block;height:40px;margin:50px auto 0;padding:0 85px;transition:background .1s linear}.findify-custom--trend-next:hover{background:#e2e2e2}.findify-custom--trend-prev{background:#f3f3f3;display:block;height:40px;margin:0 auto 50px;padding:0 85px;transition:background .1s linear}.findify-custom--trend-prev:hover{background:#e2e2e2}.findify-components-common--grid__column .findify-components-common--drawer__content-wrapper{border-radius:3px/3px;height:500px;left:50%!important;margin-left:-150px;overflow:hidden;top:10%!important;width:400px!important}.findify-components-common--grid__column .findify-components-common--drawer__drawer-exit+.findify-components-common--drawer__content-wrapper{top:-100%!important}",
-        "raw": ":root {\n    /* Fonts */\n    --font-base: 'Karla', sans-serif;\n    --font-size-huge: 18px;\n    --font-size-large: 13px;\n    --font-size-medium: 12px;\n    --font-size-small: 11px;\n    --line-height: 1.2;\n    --color-black: #111;\n    --color-white: #fff;\n    --color-grey-5: #404040;\n    --color-grey-4: #8d8d8d;\n    --color-grey-3: #c6c6c6;\n    --color-grey-2: #e2e2e2;\n    --color-grey-1: #f3f3f3;\n    --color-yellow: #e9be57;\n    --color-red: #d0284b;\n    --color-blue: #3c74c5;\n    --components-categoryfacet-item-font-size: var(--font-size-medium);\n    --components-categoryfacet-item-padding: 7px 0;\n    --components-checkboxfacet-item-font-size: var(--font-size-medium);\n    --components-checkboxfacet-item-padding: 5px 0;\n    --components-checkboxfacet-search-padding-bottom: 11px;\n    --components-dropdown-padding: 0 11px;\n    --components-dropdown-select-height: 40px;\n    --components-dropdown-dropdown-background: var(--color-white);\n    --components-dropdown-option-height: 40px;\n    --components-dropdown-highlighted-background: var(--color-grey-1);\n    --components-facet-body-padding: 14px 0 0 0;\n    --components-pagination-height: 40px;\n    --components-pagination-text-transform: uppercase;\n    --components-rangefacet-height: 30px;\n    --components-rangefacet-item-font-size: var(--font-size-medium);\n    --components-rangefacet-item-padding: 5px 0;\n    --components-rangefacet-input-width: 60px;\n    --components-rangefacet-input-indent: 8px;\n    --components-rangefacet-currency-font-size: var(--font-size-medium);\n    --components-rangefacet-submit-font-size: var(--font-size-medium);\n    --components-ratingfacet-height: 30px;\n    --components-ratingfacet-item-font-size: var(--font-size-medium);\n    --components-ratingfacet-item-padding: 5px 0;\n    --components-ratingfacet-input-width: 60px;\n    --components-ratingfacet-input-indent: 8px;\n    --components-ratingfacet-currency-font-size: var(--font-size-medium);\n    --components-ratingfacet-submit-font-size: var(--font-size-medium);\n    --components-common-grid-gutter: 20px;\n    --components-search-desktopactions-padding: 25px;\n    --components-search-desktopfacets-padding: 25px;\n    --components-search-desktopfacets-gutter: 40px;\n}\n\n/*  imported from styles.css  */\n\n.findify-components--breadcrumbs {\n    white-space: nowrap;\n}\n\n.findify-components--breadcrumbs__breadcrumb {\n    display: inline-block;\n    font-size: var(--font-size-small);\n    padding: 0;\n    margin-left: 12px;\n    position: relative;\n    background: transparent;\n    border: none;\n    outline: none;\n    cursor: pointer;\n    text-transform: uppercase;\n    font-weight: bold;\n    color: var(--color-grey-3);\n}\n\n.findify-components--breadcrumbs__breadcrumb:before {\n    content: '/';\n    color: var(--color-grey-3);\n    display: inline-block;\n    padding-right: 12px;\n    font-size: 16px;\n    vertical-align: -1px;\n    font-weight: normal;\n    font-family: var(--font-base);\n}\n\n.findify-components--breadcrumbs__breadcrumb .findify-components--breadcrumbs__title {\n    color: var(--color-grey-3);\n}\n\n.findify-components--breadcrumbs__breadcrumb:hover,\n.findify-components--breadcrumbs__breadcrumb:focus {\n    text-decoration: line-through;\n    -webkit-text-decoration-color: var(--color-black);\n            text-decoration-color: var(--color-black);\n    color: var(--color-black);\n}\n\n.findify-components--breadcrumbs__breadcrumb:hover .findify-components--breadcrumbs__title,\n.findify-components--breadcrumbs__breadcrumb:focus .findify-components--breadcrumbs__title {\n    color: var(--color-black);\n}\n\n.findify-components--breadcrumbs__breadcrumb:hover:before,\n.findify-components--breadcrumbs__breadcrumb:focus:before {\n    color: var(--color-black);\n}\n\n.findify-components--breadcrumbs__breadcrumb:first-child:before {\n    color: var(--color-black);\n}\n\n.findify-components--breadcrumbs__breadcrumb .findify-components--breadcrumbs__title {\n    display: inline-block;\n}\n\n.findify-components--breadcrumbs__ball {\n    width: 11px;\n    height: 11px;\n    border-radius: 50%;\n    display: inline-block;\n    vertical-align: -1px;\n}\n\n.findify-components--breadcrumbs__cross {\n    vertical-align: -4px;\n    -webkit-transition: color .1s linear;\n            transition: color .1s linear;\n    padding-left: 5px;\n}\n\n/*  imported from styles.css  */\n\n.findify-components--button {\n    border: none;\n    outline: none;\n    background: transparent;\n    cursor: pointer;\n    -webkit-transition: background-color .1s ease-in;\n            transition: background-color .1s ease-in;\n    padding: 0;\n    margin: 0;\n    font-family: var(--font-base);\n}\n\n.findify-components--button__raw {\n    padding: 0;\n    margin: 0;\n    display: block;\n    text-align: left;\n    background: transparent;\n    height: auto;\n}\n\n/*  imported from styles.css  */\n\n.findify-components--cards--product--price__price-wrapper {\n    text-align: center;\n    margin: 5px 0;\n    line-height: inherit;\n}\n\n.findify-components--cards--product--price__simple .findify-components--cards--product--price__price-wrapper {\n    margin: 0;\n}\n\n.findify-components--cards--product--price__price-wrapper:after {\n    content: '';\n    display: block;\n    clear: both;\n}\n\n.findify-components--cards--product--price__price {\n    display: inline-block;\n}\n\n.findify-components--cards--product--price__simple .findify-components--cards--product--price__price {\n    font-weight: bold;\n}\n\n.findify-components--cards--product--price__compare {\n    text-decoration: line-through;\n    color: var(--color-grey-4);\n    font-size: var(--font-size-medium);\n}\n\n.findify-components--cards--product--price__price,\n.findify-components--cards--product--price__compare {\n    font-family: var(--font-base);\n    text-rendering: optimizeLegibility;\n    -webkit-font-smoothing: antialiased;\n}\n\n.findify-components--cards--product--price__price {\n    color: var(--color-black);\n    font-size: var(--font-size-medium);\n    font-weight: bold;\n}\n\n.findify-components--cards--product--price__sale-price {\n    color: var(--color-red);\n    padding-right: 5px;\n}\n\n/*  imported from styles.css  */\n\n.findify-components--cards--product--rating__rating {\n    white-space: nowrap;\n}\n\n.findify-components--cards--product--rating__stars {\n    white-space: nowrap;\n    display: inline-block;\n}\n\n.findify-components--cards--product--rating__star {\n    margin-right: 3px;\n    width: 11px;\n    height: 11px;\n    display: inline-block;\n    vertical-align: -1px;\n    color: var(--color-black);\n}\n\n.findify-components--cards--product--rating__star.findify-components--cards--product--rating__filled {\n    color: #ffc000;\n}\n\n.findify-components--cards--product--rating__count {\n    display: inline-block;\n    vertical-align: 1px;\n}\n\n/*  imported from styles.css  */\n\n.findify-components--cards--product--stickers__discount-sticker {\n    width: 70px;\n    height: 70px;\n    border-radius: 70px;\n    background: rgba(208, 40, 75, .9);\n    display: table;\n    text-align: center;\n}\n\n.findify-components--cards--product--stickers__discount-sticker span {\n    color: var(--color-white);\n    display: table-cell;\n    vertical-align: middle;\n    padding: 10px;\n    width: 100%;\n    height: 100%;\n}\n\n.findify-components--cards--product--stickers__outOfStockSticker {\n    width: 100%;\n    text-align: center;\n}\n\n.findify-components--cards--product--stickers__outOfStockSticker span {\n    color: var(--color-grey-3);\n}\n\n/*  imported from styles.css  */\n\n.findify-components--cards--product {\n    width: 100%;\n    padding-top: 12px;\n    padding-left: 12px;\n    padding-right: 12px;\n    padding-bottom: 42px;\n    display: table;\n    background-color: transparent;\n    -webkit-transition: background-color .35s ease-in-out;\n            transition: background-color .35s ease-in-out;\n    text-decoration: none;\n    -webkit-user-select: none;\n       -moz-user-select: none;\n        -ms-user-select: none;\n            user-select: none;\n    border: none !important;\n    vertical-align: bottom;\n}\n\n.findify-components--cards--product.findify-components--cards--product__simple {\n    padding: 0 8px 15px 8px;\n}\n\n/*\n.root {\n  font-size: 14px;\n  padding: 6%!important;\n  display: flex;\n  background-color: transparent;\n  transition: background-color .35s ease-in-out;\n  text-decoration: none;\n  user-select: none;\n  border: none!important;\n  &.simple{\n    padding: 0 8px 15px 8px;\n  }\n  &:hover {\n    background-color: #f7f7f7;\n  }\n  &.simple:hover{\n    background-color: initial;\n  }\n}*/\n\n.findify-widget--products-carousel .findify-components--cards--product:hover,\n.findify-widget--products-carousel .findify-components--cards--product:focus {\n    background-color: inherit;\n}\n\n.findify-components--cards--product__image-wrap {\n    position: relative;\n    overflow: hidden;\n}\n\n.findify-components--cards--product__image {\n    max-width: 100%;\n    margin: 0 auto;\n}\n\n.findify-components--cards--product__content {\n    font-size: 14px;\n}\n\n.findify-components--cards--product__title {\n    width: 100%;\n    text-align: center;\n    font-size: var(--font-size-large) !important; /* FIXME: figure out issue with import order of styles */\n    line-height: 21px;\n}\n\n.findify-components--cards--product__description {\n    font-size: 12px;\n    color: #b2b2b2;\n    margin: 5px 0;\n}\n\n.findify-components--cards--product__rating {\n    margin: 5px 0;\n    margin-top: 12px;\n    margin-bottom: 8px;\n    width: 100%;\n    text-align: center;\n}\n\n.findify-components--cards--product__price-wrapper {\n    margin-top: 8px !important;\n    margin-bottom: 12px !important;\n}\n\n.findify-components--cards--product__color {\n    text-transform: none;\n    font-size: 13px;\n    color: #b2b2b2;\n    margin: 5px 0;\n}\n\n.findify-components--cards--product__out-of-stock {\n    margin: 0;\n    margin-top: -3px;\n    font-size: 13px;\n    color: #b2b2b2;\n}\n\n.findify-components--cards--product__discount-sticker {\n    position: absolute;\n    top: 4%;\n    right: 4%;\n    z-index: 50;\n}\n\n/*  imported from styles.css  */\n\n.findify-components--category-facet {\n    width: 100%;\n}\n\n.findify-components--category-facet__nested {\n    padding-left: 20px;\n}\n\n.findify-components--category-facet__item {\n    width: 100%;\n    border: 0;\n    background: transparent;\n    outline: 0;\n    font-size: var(--components-categoryfacet-item-font-size);\n    border-radius: 0;\n    text-align: left;\n    padding: var(--components-categoryfacet-item-padding);\n    height: auto;\n    cursor: pointer;\n    display: table;\n}\n\n.findify-components--category-facet__item > span {\n    display: table-cell;\n    width: 100%;\n}\n\n.findify-components--category-facet__item svg {\n    vertical-align: -3px;\n    padding-left: 7px;\n}\n\n.findify-components--category-facet__active {\n    font-weight: bold;\n}\n\n/*  imported from styles.css  */\n\n.findify-components--checkbox-facet {\n    width: 100%;\n}\n\n.findify-components--checkbox-facet__expanded-list {\n    height: 300px;\n}\n\n.findify-components--checkbox-facet__item {\n    width: 100%;\n    border: 0;\n    background: transparent;\n    outline: 0;\n    font-size: var(--components-checkboxfacet-item-font-size);\n    border-radius: 0;\n    text-align: left;\n    padding: var(--components-checkboxfacet-item-padding);\n    height: auto;\n    cursor: pointer;\n    display: table;\n    padding-left: 25px;\n    position: relative;\n}\n\n.findify-components--checkbox-facet__item > span {\n    display: table-cell;\n    width: 100%;\n}\n\n.findify-components--checkbox-facet__item svg {\n    position: absolute;\n    left: 0;\n    top: 9px;\n    vertical-align: -2px;\n}\n\n.findify-components--checkbox-facet__search {\n    position: relative;\n    width: 100%;\n    padding-bottom: var(--components-checkboxfacet-search-padding-bottom);\n}\n\n.findify-components--checkbox-facet__search .findify-components--checkbox-facet__icon {\n    position: absolute;\n    right: 11px;\n    top: 50%;\n    margin-top: -13px;\n    pointer-events: none;\n    color: var(--color-grey-2);\n}\n\n.findify-components--checkbox-facet__input {\n    width: 100%;\n    height: 40px;\n    padding-right: 34px;\n    padding-left: 11px;\n    -webkit-box-sizing: border-box;\n            box-sizing: border-box;\n    font-family: var(--font-base);\n    font-size: var(--font-size-small);\n    border: 1px solid var(--color-grey-2);\n    -webkit-transition: border-color .1s linear;\n            transition: border-color .1s linear;\n    outline: none;\n}\n\n.findify-components--checkbox-facet__input:placeholder {\n    color: var(--color-grey-1);\n}\n\n.findify-components--checkbox-facet__input:focus {\n    border-color: var(--color-grey-3);\n}\n\n.findify-components--checkbox-facet__expand {\n    margin-top: 20px;\n}\n\n.findify-components--checkbox-facet__expand svg {\n    vertical-align: -3px;\n    padding-right: 5px;\n}\n\n/*  imported from styles.css  */\n\n.findify-components--color-facet__item {\n    display: inline-block;\n    border: none;\n    padding: 0;\n    margin-right: 5px;\n    line-height: 1;\n    cursor: pointer;\n    outline: none;\n    border-radius: 0;\n    position: relative;\n}\n\n.findify-components--color-facet__item.findify-components--color-facet__active .findify-components--color-facet__ball {\n    border: 1px solid var(--color-grey-2);\n}\n\n.findify-components--color-facet__ball {\n    display: inline-block;\n    width: 20px;\n    height: 20px;\n    border-radius: 50%;\n    border: 1px solid transparent;\n}\n\n.findify-components--color-facet__check {\n    position: absolute;\n    left: 50%;\n    top: 50%;\n    color: var(--color-grey-1);\n    margin-left: -6px;\n    margin-top: -8px;\n}\n\n/*  imported from styles.css  */\n\n.findify-components--dropdown {\n    position: relative;\n}\n\n.findify-components--dropdown__select {\n    position: relative;\n    border-radius: 0;\n    height: var(--components-dropdown-select-height);\n    padding: var(--components-dropdown-padding);\n    padding-right: 40px;\n    background: var(--color-grey-1);\n    text-align: left;\n    width: 100%;\n}\n\n.findify-components--dropdown__arrow {\n    position: absolute;\n    top: 50%;\n    right: 16px;\n    margin-top: -8px;\n}\n\n.findify-components--dropdown__dropdown {\n    position: absolute;\n    top: calc(100% - 1px);\n    left: 0;\n    width: 100%;\n    background: var(--components-dropdown-dropdown-background);\n    z-index: 9999;\n    border: 1px solid var(--color-grey-2);\n    margin-top: 1px;\n    -webkit-box-sizing: border-box;\n            box-sizing: border-box;\n    -webkit-box-shadow: 0 5px 10px -4px rgba(0, 0, 0, .07);\n            box-shadow: 0 5px 10px -4px rgba(0, 0, 0, .07);\n    -webkit-transition: .3s ease all;\n            transition: .3s ease all;\n    -webkit-transform-origin: center top;\n        -ms-transform-origin: center top;\n             transform-origin: center top;\n    -webkit-transform: scaleY(0);\n        -ms-transform: scaleY(0);\n            transform: scaleY(0);\n}\n\n.findify-components--dropdown__dropdown.findify-components--dropdown__open {\n    -webkit-transform: scaleY(1);\n        -ms-transform: scaleY(1);\n            transform: scaleY(1);\n}\n\n.findify-components--dropdown__option {\n    display: block;\n    text-align: left;\n    font-size: var(--font-size-normal);\n    background: transparent;\n    border: none;\n    border-radius: 0;\n    height: var(--components-dropdown-option-height);\n    width: 100%;\n    padding: var(--components-dropdown-padding);\n    cursor: pointer;\n}\n\n.findify-components--dropdown__highlighted {\n    background: var(--components-dropdown-highlighted-background);\n}\n\n/*  imported from styles.css  */\n\n.findify-components--facet {\n    margin-bottom: 15px;\n}\n\n.findify-components--facet:last-child {\n    margin-bottom: 0;\n}\n\n.findify-components--facet__title {\n    width: 100%;\n    text-align: left;\n    display: table;\n}\n\n.findify-components--facet__text {\n    display: inline-block !important;\n    width: calc(100% - 15px);\n}\n\n.findify-components--facet__icon {\n    vertical-align: middle;\n}\n\n.findify-components--facet__body {\n    padding: var(--components-facet-body-padding);\n}\n\n/*  imported from styles.css  */\n\n.findify-components--icon {\n    display: inline-block;\n    box-sizing: content-box;\n    /*color: inherit; FIXME: for whatever reason styles override each other while ignoring class order completely*/\n}\n\n/*  imported from styles.css  */\n\n/*  imported from styles.css  */\n\n.findify-components--pagination {\n    padding-top: 30px;\n    border-top: 1px solid var(--color-grey-2);\n    margin-top: 22px;\n    text-align: center;\n}\n\n.findify-components--pagination:after {\n    content: '';\n    display: block;\n    clear: both;\n}\n\n.findify-components--pagination__prev, .findify-components--pagination__next,\n.findify-components--pagination__first, .findify-components--pagination__last,\n.findify-components--pagination__page, .findify-components--pagination__dots {\n    height: var(--components-pagination-height);\n    padding: 0 16px;\n    font-size: var(--font-size-medium);\n    font-weight: normal;\n}\n\n.findify-components--pagination__prev:hover,\n.findify-components--pagination__prev:focus,\n.findify-components--pagination__next:hover,\n.findify-components--pagination__next:focus,\n.findify-components--pagination__first:hover,\n.findify-components--pagination__first:focus,\n.findify-components--pagination__last:hover,\n.findify-components--pagination__last:focus,\n.findify-components--pagination__page:hover,\n.findify-components--pagination__page:focus,\n.findify-components--pagination__dots:hover,\n.findify-components--pagination__dots:focus {\n    text-decoration: underline;\n}\n\n.findify-components--pagination__prev, .findify-components--pagination__next {\n    text-transform: var(--components-pagination-text-transform);\n}\n\n.findify-components--pagination__prev svg,\n.findify-components--pagination__next svg {\n    vertical-align: -3px;\n}\n\n.findify-components--pagination__dots {\n    cursor: default;\n    pointer-events: none;\n    padding: 0;\n}\n\n.findify-components--pagination__active,\n.findify-components--pagination__active:focus {\n    background-color: var(--color-grey-1);\n    text-decoration: none;\n}\n\n/*  imported from styles.css  */\n\n.findify-components--powered-by {\n    text-align: center;\n}\n\n/*  imported from styles.css  */\n\n.findify-components--range-facet {\n    width: 100%;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n    -ms-flex-direction: column;\n        flex-direction: column;\n}\n\n.findify-components--range-facet__item {\n    width: 100%;\n    border: 0;\n    background: transparent;\n    outline: 0;\n    font-size: var(--components-rangefacet-item-font-size);\n    border-radius: 0;\n    text-align: left;\n    padding: var(--components-rangefacet-item-padding);\n    height: auto;\n    cursor: pointer;\n    display: table;\n}\n\n.findify-components--range-facet__item > span {\n    display: table-cell;\n    width: 100%;\n}\n\n.findify-components--range-facet__item svg {\n    padding-right: 14px;\n    vertical-align: -2px;\n}\n\n.findify-components--range-facet__range {\n    display: table;\n    width: 1%;\n    padding-top: 10px;\n    padding-left: 25px;\n}\n\n.findify-components--range-facet__input-wrap {\n    display: table-cell;\n    position: relative;\n    white-space: nowrap;\n}\n\n.findify-components--range-facet__input-wrap .react-numeric-input {\n    display: inline-block;\n}\n\n.findify-components--range-facet__input {\n    display: block;\n    width: var(--components-rangefacet-input-width);\n    -webkit-box-sizing: border-box;\n            box-sizing: border-box;\n    height: var(--components-rangefacet-height);\n    padding: 0 8px;\n    padding-left: calc(8px + var(--components-rangefacet-input-indent));\n    color: var(--color-black);\n    font-family: var(--font-base);\n    font-size: var(--font-size-small);\n    border: 1px solid var(--color-grey-2);\n    -webkit-transition: border-color .1s linear;\n            transition: border-color .1s linear;\n    outline: none;\n}\n\n.findify-components--range-facet__input:placeholder {\n    color: var(--color-grey-1);\n}\n\n.findify-components--range-facet__input:focus {\n    border-color: var(--color-grey-3);\n}\n\n.findify-components--range-facet__currency {\n    display: inline-block;\n    position: relative;\n    font-size: var(--components-rangefacet-currency-font-size);\n    left: 9px;\n    width: 0;\n}\n\n.findify-components--range-facet__submit {\n    display: table-cell;\n    border: 0;\n    background: transparent;\n    outline: 0;\n    font-size: var(--components-rangefacet-submit-font-size);\n    border-radius: 0;\n    width: 100%;\n    height: var(--components-rangefacet-height);\n    padding: 0 8px;\n    cursor: pointer;\n}\n\n.findify-components--range-facet__submit:hover,\n.findify-components--range-facet__submit:focus {\n    text-decoration: underline;\n}\n\n.findify-components--range-facet__submit span {\n    font-size: var(--font-size-large);\n}\n\n.findify-components--range-facet__divider {\n    display: table-cell;\n    padding: 0 6px;\n    width: 1%;\n}\n\n/*  imported from styles.css  */\n\n.findify-components--rating-facet {\n    width: 100%;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n    -ms-flex-direction: column;\n        flex-direction: column;\n}\n\n.findify-components--rating-facet__item {\n    width: 100%;\n    border: 0;\n    background: transparent;\n    outline: 0;\n    font-size: var(--components-ratingfacet-item-font-size);\n    border-radius: 0;\n    text-align: left;\n    padding: var(--components-ratingfacet-item-padding);\n    height: auto;\n    cursor: pointer;\n    display: table;\n}\n\n.findify-components--rating-facet__item > span {\n    display: table-cell;\n    width: 100%;\n}\n\n.findify-components--rating-facet__item svg {\n    padding-right: 14px;\n    vertical-align: -2px;\n}\n\n.findify-components--rating-facet__range {\n    display: table;\n    width: 1%;\n    padding-top: 10px;\n    padding-left: 25px;\n}\n\n.findify-components--rating-facet__input-wrap {\n    display: table-cell;\n    position: relative;\n    white-space: nowrap;\n}\n\n.findify-components--rating-facet__input-wrap .react-numeric-input {\n    display: inline-block;\n}\n\n.findify-components--rating-facet__input {\n    display: block;\n    width: var(--components-ratingfacet-input-width);\n    -webkit-box-sizing: border-box;\n            box-sizing: border-box;\n    height: var(--components-ratingfacet-height);\n    padding: 0 8px;\n    padding-left: calc(8px + var(--components-ratingfacet-input-indent));\n    color: var(--color-black);\n    font-family: var(--font-base);\n    font-size: var(--font-size-small);\n    border: 1px solid var(--color-grey-2);\n    -webkit-transition: border-color .1s linear;\n            transition: border-color .1s linear;\n    outline: none;\n}\n\n.findify-components--rating-facet__input:placeholder {\n    color: var(--color-grey-1);\n}\n\n.findify-components--rating-facet__input:focus {\n    border-color: var(--color-grey-3);\n}\n\n.findify-components--rating-facet__currency {\n    display: inline-block;\n    position: relative;\n    font-size: var(--components-ratingfacet-currency-font-size);\n    left: 9px;\n    width: 0;\n}\n\n.findify-components--rating-facet__submit {\n    display: table-cell;\n    border: 0;\n    background: transparent;\n    outline: 0;\n    font-size: var(--components-ratingfacet-submit-font-size);\n    border-radius: 0;\n    width: 100%;\n    height: var(--components-ratingfacet-height);\n    padding: 0 8px;\n    cursor: pointer;\n}\n\n.findify-components--rating-facet__submit:hover,\n.findify-components--rating-facet__submit:focus {\n    text-decoration: underline;\n}\n\n.findify-components--rating-facet__submit span {\n    font-size: var(--font-size-large);\n}\n\n.findify-components--rating-facet__divider {\n    display: table-cell;\n    padding: 0 6px;\n    width: 1%;\n}\n\n/*  imported from styles.css  */\n\n.findify-components--sorting {\n    display: inline-table;\n}\n\n.findify-components--sorting__icon {\n    display: table-cell;\n    min-width: 17px;\n    -webkit-transform: scaleY(-1);\n        -ms-transform: scaleY(-1);\n            transform: scaleY(-1);\n}\n\n.findify-components--sorting .findify-components--sorting__title {\n    white-space: nowrap;\n    display: table-cell;\n    padding: 0 10px;\n}\n\n.findify-components--sorting__dropdown {\n    display: table-cell;\n    width: 240px;\n    position: relative;\n    min-width: 240px;\n}\n\n@supports (display: flex) {\n    .findify-components--sorting {\n        display: -webkit-inline-box;\n        display: -ms-inline-flexbox;\n        display: inline-flex;\n        -webkit-box-align: center;\n        -ms-flex-align: center;\n        align-items: center;\n    }\n\n    .findify-components--sorting__icon, .findify-components--sorting__title,\n    .findify-components--sorting__dropdown {\n        display: block;\n    }\n}\n\n/*  imported from styles.css  */\n\n.findify-components--tabs__list {\n    list-style-type: none;\n    display: block;\n    text-align: center;\n    margin-bottom: 40px;\n}\n\n.findify-components--tabs__tab {\n    display: inline-block;\n    margin-left: 16px;\n    margin-right: 16px;\n    cursor: pointer;\n    -webkit-user-select: none;\n       -moz-user-select: none;\n        -ms-user-select: none;\n            user-select: none;\n    font-family: var(--font-base);\n    text-transform: uppercase;\n    font-size: var(--font-size-medium);\n}\n\n.findify-components--tabs__tab:after {\n    display: block;\n    height: 2px;\n    width: 22px;\n    margin-left: calc(50% - 11px);\n    margin-right: calc(50% - 11px);\n    margin-top: 8px;\n    content: ' ';\n}\n\n.findify-components--tabs__active {\n    cursor: default;\n}\n\n.findify-components--tabs__active:after {\n    background: black;\n}\n\n.findify-components--tabs__disabled {\n    opacity: .3;\n}\n\n/*  imported from styles.css  */\n\n.findify-components--text {\n    display: block;\n    padding: 0;\n    margin: 0;\n    color: var(--color-black);\n    font-size: var(--font-size-medium);\n    font-family: var(--font-base);\n    text-rendering: optimizeLegibility;\n    -webkit-font-smoothing: antialiased;\n}\n\n.findify-components--text__primary-uppercase {\n    font-size: var(--font-size-small);\n    text-transform: uppercase;\n    font-weight: bold;\n    color: var(--color-black);\n    line-height: 17px;\n}\n\n.mobile .findify-components--text__primary-uppercase {\n    font-weight: normal;\n    line-height: 15px;\n}\n\n.findify-components--text__primary-lowercase {\n    font-size: var(--font-size-large);\n    text-transform: capitalize;\n    font-weight: normal;\n    color: var(--color-black);\n    line-height: 21px;\n}\n\n.mobile .findify-components--text__primary-lowercase {\n    font-size: var(--font-size-medium);\n}\n\n.findify-components--text__secondary-uppercase {\n    font-size: var(--font-size-small);\n    text-transform: uppercase;\n    font-weight: bold;\n    color: var(--color-grey-3);\n}\n\n.findify-components--text__secondary-lowercase {\n    font-size: var(--font-size-large);\n    text-transform: capitalize;\n    font-weight: normal;\n    color: var(--color-grey-3);\n}\n\n.mobile .findify-components--text__secondary-lowercase {\n    font-size: var(--font-size-small);\n}\n\n.findify-components--text__title {\n    font-size: var(--font-size-huge);\n    font-weight: normal;\n    color: var(--color-black);\n}\n\n.findify-components--text__bold {\n    font-weight: bold;\n}\n\n.findify-components--text__inlineBlock {\n    display: inline-block;\n}\n\n/*  imported from styles.css  */\n\n.findify-components-autocomplete--product-matches {\n    //width: 355px;\n}\n\n.findify-components-autocomplete--product-matches__product-card {\n    padding-bottom: 16px;\n    display: block;\n}\n\n.findify-components-autocomplete--product-matches__product-card .findify-components-autocomplete--product-matches__imageWrap {\n    display: table-cell;\n    width: 40%;\n}\n\n.findify-components-autocomplete--product-matches__product-card .findify-components-autocomplete--product-matches__image {\n    width: 100%;\n}\n\n.findify-components-autocomplete--product-matches__product-card .findify-components-autocomplete--product-matches__content {\n    padding-left: 10px;\n    display: table-cell;\n    vertical-align: top;\n}\n\n.findify-components-autocomplete--product-matches__product-card .findify-components-autocomplete--product-matches__content p,\n.findify-components-autocomplete--product-matches__product-card .findify-components-autocomplete--product-matches__content .findify-components-autocomplete--product-matches__price-wrapper,\n.findify-components-autocomplete--product-matches__product-card .findify-components-autocomplete--product-matches__content span {\n    text-align: left;\n}\n\n.findify-components-autocomplete--product-matches__product-card .findify-components-autocomplete--product-matches__content .findify-components-autocomplete--product-matches__price-wrapper {\n    margin-top: 20px;\n}\n\n.findify-components-autocomplete--product-matches__grid-column-class:after {\n    content: ' ';\n    display: block;\n    width: 80%;\n    height: 1px;\n    background: var(--color-grey-2);\n    margin-left: 10%;\n    margin-bottom: 16px;\n}\n\n.findify-components-autocomplete--product-matches__view-more-button {\n    margin: 0 auto 0 auto;\n    display: block;\n    padding: 0 85px;\n    height: 40px;\n    background: var(--color-grey-1);\n    -webkit-transition: background .1s linear;\n            transition: background .1s linear;\n    font-size: var(--font-size-small);\n    width: 300px;\n}\n\n.findify-components-autocomplete--product-matches__view-more-button:hover,\n.findify-components-autocomplete--product-matches__view-more-button:focus {\n    background: var(--color-grey-2);\n}\n\n/*  imported from styles.css  */\n\n.findify-components-autocomplete--search-suggestions__list ul {\n    list-style-type: none;\n    margin: 0;\n    padding: 0;\n}\n\n.findify-components-autocomplete--search-suggestions__list ul li {\n    display: block;\n}\n\n/*  imported from styles.css  */\n\n.findify-components-autocomplete--suggestion-item__suggestion {\n    color: var(--color-black);\n    font-family: var(--font-base);\n    font-size: var(--font-size-large);\n    margin-top: 10px;\n    margin-bottom: 10px;\n    padding-top: 5px;\n    padding-bottom: 5px;\n    cursor: pointer;\n    border-radius: 2px;\n    text-align: left;\n}\n\n.findify-components-autocomplete--suggestion-item__suggestion:before {\n    content: ' ';\n    display: table;\n}\n\n.findify-components-autocomplete--suggestion-item__suggestion:hover,\n.findify-components-autocomplete--suggestion-item__suggestion:focus {\n    background: var(--color-grey-1);\n}\n\n.findify-components-autocomplete--suggestion-item__highlightedText {\n    font-weight: bolder;\n}\n\n.findify-components-autocomplete--suggestion-item__highlighted {\n    background: var(--color-grey-1);\n}\n\n/*  imported from styles.css  */\n\n.findify-components-autocomplete--tip__tip {\n    -webkit-user-select: none;\n       -moz-user-select: none;\n        -ms-user-select: none;\n            user-select: none;\n    cursor: pointer;\n    text-align: center;\n    height: 48px;\n    line-height: 48px;\n    font-family: var(--font-base);\n    font-size: var(--font-size-large);\n    color: #b2b2b2;\n    background: var(--color-grey-1);\n}\n\n.findify-components-autocomplete--tip__highlight {\n    color: #404040;\n}\n\n/*  imported from style.css  */\n\n.findify-components-common--drawer__backdrop {\n    position: fixed;\n    width: 100vw;\n    height: 100vh;\n    top: 0;\n    left: 0;\n    background: rgba(0, 0, 0, .5);\n    z-index: 999;\n    -webkit-transition: all 600ms ease;\n            transition: all 600ms ease;\n    opacity: 0;\n}\n\n.findify-components-common--drawer__content-wrapper {\n    background: #fff;\n    height: 100vh;\n    overflow-y: auto;\n    position: fixed;\n    top: 0;\n    left: 0;\n    display: inline-block;\n    z-index: 1000;\n    -webkit-transition: all 600ms ease;\n            transition: all 600ms ease;\n}\n\n.findify-components-common--drawer__content {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    height: 100%;\n}\n\n.findify-components-common--drawer__body-noscroll {\n    overflow: hidden;\n}\n\n.findify-components-common--drawer__drawer-appear {\n    -webkit-transition: all 600ms ease;\n            transition: all 600ms ease;\n}\n\n.findify-components-common--drawer__drawer-enter {\n    -webkit-transition: all 600ms ease;\n            transition: all 600ms ease;\n}\n\n.findify-components-common--drawer__drawer-enter.findify-components-common--drawer__backdrop {\n    opacity: .01;\n}\n\n.findify-components-common--drawer__drawer-enter-active {\n    -webkit-transition: all 600ms ease;\n            transition: all 600ms ease;\n}\n\n.findify-components-common--drawer__drawer-enter-active.findify-components-common--drawer__backdrop {\n    opacity: 1;\n}\n\n.findify-components-common--drawer__drawer-exit.findify-components-common--drawer__backdrop {\n    opacity: 1;\n}\n\n.findify-components-common--drawer__drawer-enter-done.findify-components-common--drawer__backdrop {\n    opacity: 1;\n}\n\n.findify-components-common--drawer__drawer-exit-active {\n    -webkit-transition: all 600ms ease;\n            transition: all 600ms ease;\n}\n\n.findify-components-common--drawer__drawer-exit-active.findify-components-common--drawer__backdrop {\n    opacity: .01;\n}\n\n/*  imported from styles.css  */\n\n.findify-components-common--grid {\n    font-size: 0;\n    line-height: 0;\n    width: 100%;\n}\n\n.findify-components-common--grid__column {\n    display: inline-block;\n    -webkit-box-sizing: border-box;\n            box-sizing: border-box;\n    min-height: 1px;\n    font-size: var(--font-size-medium);\n    line-height: var(--line-height);\n    vertical-align: top;\n}\n\n@supports (display: flex) {\n    .findify-components-common--grid {\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-orient: horizontal;\n        -webkit-box-direction: normal;\n        -ms-flex-direction: row;\n            flex-direction: row;\n        -webkit-box-align: top;\n        -ms-flex-align: top;\n        align-items: top;\n        font-size: inherit;\n        line-height: inherit;\n        -ms-flex-wrap: wrap;\n            flex-wrap: wrap;\n    }\n\n    .findify-components-common--grid__column {\n        display: block;\n    }\n}\n\n.findify-components-common--grid__column-1 {\n    width: 8.33333%;\n}\n\n.findify-components-common--grid__column-2 {\n    width: 16.66667%;\n}\n\n.findify-components-common--grid__column-3 {\n    width: 25%;\n}\n\n.findify-components-common--grid__column-4 {\n    width: 33.33333%;\n}\n\n.findify-components-common--grid__column-5 {\n    width: 41.66667%;\n}\n\n.findify-components-common--grid__column-6 {\n    width: 50%;\n}\n\n.findify-components-common--grid__column-7 {\n    width: 58.33333%;\n}\n\n.findify-components-common--grid__column-8 {\n    width: 66.66667%;\n}\n\n.findify-components-common--grid__column-9 {\n    width: 75%;\n}\n\n.findify-components-common--grid__column-10 {\n    width: 83.33333%;\n}\n\n.findify-components-common--grid__column-11 {\n    width: 91.66667%;\n}\n\n.findify-components-common--grid__column-12 {\n    width: 100%;\n}\n\n/*  imported from styles.css  */\n\n/*\n.root{\n  will-change: filter, opacity, height;\n  transform: filter .3s linear, opacity .3s linear, height .1s linear;\n  display: none;\n}\n\n.thumbnail{\n  display: block;\n  height: 150px;\n  opacity: .5;\n  filter: blur(10px);\n}\n\n.original{\n  display: block;\n  opacity: 1;\n  filter: blur(0);\n  width: 100%;\n\n}\n*/\n\n.findify-components-common--image {\n    will-change: filter, opacity, height;\n    -webkit-transform: filter .3s linear, opacity .3s linear, height .1s linear;\n        -ms-transform: filter .3s linear, opacity .3s linear, height .1s linear;\n            transform: filter .3s linear, opacity .3s linear, height .1s linear;\n    width: 100%;\n    position: relative;\n}\n\n.findify-components-common--image img {\n    display: block;\n    width: 100%;\n    height: auto;\n}\n\n.findify-components-common--image__thumbnail {\n    opacity: .5;\n    -webkit-filter: blur(10px);\n            filter: blur(10px);\n}\n\n.findify-components-common--image__croppedRoot {\n    will-change: filter, opacity, height;\n    -webkit-transform: filter .3s linear, opacity .3s linear, height .1s linear;\n        -ms-transform: filter .3s linear, opacity .3s linear, height .1s linear;\n            transform: filter .3s linear, opacity .3s linear, height .1s linear;\n    display: block;\n    width: 100%;\n    position: relative;\n}\n\n.findify-components-common--image__loading {\n    background-color: #f2f4f7;\n}\n\n/*  imported from styles.css  */\n\n.findify-components-common--sticky__container {\n    max-height: auto;\n}\n\n@supports (display: flex) {\n    .findify-components-common--sticky__container {\n        overflow: hidden;\n        overflow-y: auto;\n        will-change: max-height;\n    }\n\n    .findify-components-common--sticky__static {\n        position: static;\n    }\n\n    .findify-components-common--sticky__stuck {\n        bottom: 0;\n        position: absolute;\n    }\n\n    .findify-components-common--sticky__sticky {\n        position: fixed;\n        top: 0;\n    }\n}\n\n/*  imported from styles.css  */\n\n/*  imported from styles.css  */\n\n.findify-components-contentsearch--content-card {\n    padding-top: 10px;\n    padding-left: 12px;\n    padding-right: 12px;\n    padding-bottom: 10px;\n    width: calc(100% - 24px);\n    display: table;\n    background-color: transparent;\n    -webkit-transition: background-color .35s ease-in-out;\n            transition: background-color .35s ease-in-out;\n    text-decoration: none;\n    -webkit-user-select: none;\n       -moz-user-select: none;\n        -ms-user-select: none;\n            user-select: none;\n    border: none !important;\n    vertical-align: bottom;\n}\n\n.findify-components-contentsearch--content-card__image-wrap {\n    position: relative;\n    overflow: hidden;\n}\n\n.findify-components-contentsearch--content-card__image {\n    max-width: 100%;\n    margin: 0 auto;\n}\n\n/*  imported from styles.css  */\n\n.findify-components-contentsearch--lazy-content-search-results {\n    width: 100%;\n}\n\n.findify-components-contentsearch--lazy-content-search-results__next-button {\n    margin: 50px auto 0 auto;\n    display: block;\n    padding: 0 85px;\n    height: 40px;\n    background: var(--color-grey-1);\n    -webkit-transition: background .1s linear;\n            transition: background .1s linear;\n}\n\n.findify-components-contentsearch--lazy-content-search-results__next-button:hover,\n.findify-components-contentsearch--lazy-content-search-results__next-button:focus {\n    background: var(--color-grey-2);\n}\n\n.findify-components-contentsearch--lazy-content-search-results__prev-button {\n    margin: 0 auto 50px auto;\n    display: block;\n    padding: 0 85px;\n    height: 40px;\n    background: var(--color-grey-1);\n    -webkit-transition: background .1s linear;\n            transition: background .1s linear;\n}\n\n.findify-components-contentsearch--lazy-content-search-results__prev-button:hover,\n.findify-components-contentsearch--lazy-content-search-results__prev-button:focus {\n    background: var(--color-grey-2);\n}\n\n/*  imported from styles.css  */\n\n.findify-components-contentsearch--trends {\n    padding-left: 12px;\n    margin-bottom: 32px;\n}\n\n.findify-components-contentsearch--trends__topTrendsTitle {\n    margin-right: 8px;\n}\n\n/*  imported from styles.css  */\n\n.findify-components-search--desktop-actions {\n    display: table;\n    width: 100%;\n    padding-bottom: 32px;\n}\n\n.findify-components-search--desktop-actions__block {\n    display: table;\n    width: 100%;\n}\n\n.findify-components-search--desktop-actions__sorting {\n    display: table-cell;\n    position: relative;\n}\n\n.findify-components-search--desktop-actions__query {\n    display: table-cell;\n    white-space: nowrap;\n    width: 1%;\n}\n\n.findify-components-search--desktop-actions__breadcrumbs {\n    display: table-cell;\n}\n\n@supports (display: flex) {\n    .findify-components-search--desktop-actions {\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-orient: horizontal;\n        -webkit-box-direction: normal;\n        -ms-flex-direction: row;\n            flex-direction: row;\n        -webkit-box-align: center;\n        -ms-flex-align: center;\n        align-items: center;\n    }\n\n    .findify-components-search--desktop-actions__block {\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-orient: horizontal;\n        -webkit-box-direction: normal;\n        -ms-flex-direction: row;\n            flex-direction: row;\n        width: 100%;\n        -webkit-box-align: center;\n        -ms-flex-align: center;\n        align-items: center;\n        -ms-flex-flow: row wrap;\n            flex-flow: row wrap;\n    }\n\n    .findify-components-search--desktop-actions__sorting {\n        display: block;\n    }\n\n    .findify-components-search--desktop-actions__query {\n        display: block;\n        width: auto;\n    }\n\n    .findify-components-search--desktop-actions__breadcrumbs {\n        display: block;\n    }\n}\n\n/*  imported from styles.css  */\n\n.findify-components-search--desktop-facets {\n    position: relative;\n    width: 300px;\n    min-width: 300px;\n    display: table-cell;\n    vertical-align: top;\n    padding-left: var(--components-search-desktopfacets-gutter);\n    -webkit-box-sizing: border-box;\n            box-sizing: border-box;\n}\n\n.findify-components-search--desktop-facets:first-child {\n    padding-left: inherit;\n    padding-right: var(--components-search-desktopfacets-gutter);\n}\n\n.findify-components-search--desktop-facets__header {\n    padding: 13px var(--components-search-desktopfacets-padding);\n}\n\n.findify-components-search--desktop-facets__header:after {\n    content: '';\n    display: block;\n    clear: both;\n}\n\n.findify-components-search--desktop-facets__icon {\n    float: left;\n    padding-right: 10px;\n}\n\n.findify-components-search--desktop-facets__title {\n    float: left;\n}\n\n.findify-components-search--desktop-facets__reset {\n    float: right;\n    padding: 2px 0;\n}\n\n.findify-components-search--desktop-facets__reset:hover p,\n.findify-components-search--desktop-facets__reset:focus p {\n    color: var(--color-grey-4);\n}\n\n.findify-components-search--desktop-facets__facet {\n    padding: 0 var(--components-search-desktopfacets-padding);\n    padding-top: 20px;\n    margin-top: 20px;\n    border-top: 1px solid var(--color-grey-2);\n}\n\n@supports (display: flex) {\n    .findify-components-search--desktop-facets {\n        display: block;\n    }\n}\n\n/*  imported from styles.css  */\n\n.findify-components-search--lazy-results {\n    width: 100%;\n}\n\n.findify-components-search--lazy-results__next-button {\n    margin: 50px auto 0 auto;\n    display: block;\n    padding: 0 85px;\n    height: 40px;\n    background: var(--color-grey-1);\n    -webkit-transition: background .1s linear;\n            transition: background .1s linear;\n}\n\n.findify-components-search--lazy-results__next-button:hover,\n.findify-components-search--lazy-results__next-button:focus {\n    background: var(--color-grey-2);\n}\n\n.findify-components-search--lazy-results__prev-button {\n    margin: 0 auto 50px auto;\n    display: block;\n    padding: 0 85px;\n    height: 40px;\n    background: var(--color-grey-1);\n    -webkit-transition: background .1s linear;\n            transition: background .1s linear;\n}\n\n.findify-components-search--lazy-results__prev-button:hover,\n.findify-components-search--lazy-results__prev-button:focus {\n    background: var(--color-grey-2);\n}\n\n/*  imported from styles.css  */\n\n.findify-components-search--mobile-actions {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-align: center;\n    -ms-flex-align: center;\n    align-items: center;\n    -webkit-box-orient: horizontal;\n    -webkit-box-direction: normal;\n    -ms-flex-direction: row;\n        flex-direction: row;\n}\n\n.findify-components-search--mobile-actions__icon {\n    -webkit-transform: scaleY(-1);\n        -ms-transform: scaleY(-1);\n            transform: scaleY(-1);\n}\n\n.findify-components-search--mobile-actions__button {\n    width: 100%;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-align: center;\n    -ms-flex-align: center;\n    align-items: center;\n    -webkit-box-pack: center;\n    -ms-flex-pack: center;\n    justify-content: center;\n    height: 32px;\n    border: 1px solid var(--color-grey-2);\n}\n\n.findify-components-search--mobile-actions__button svg {\n    padding-right: 6px;\n    height: 11px;\n    width: 12px;\n    vertical-align: -2px;\n}\n\n.findify-components-search--mobile-actions__divider {\n    width: 7px;\n}\n\n/*  imported from styles.css  */\n\n.findify-components-search--mobile-facets__modal {\n    bottom: 0;\n    width: 100%;\n    background: white;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n    -ms-flex-direction: column;\n        flex-direction: column;\n}\n\n.findify-components-search--mobile-facets__filter-count {\n    margin-left: 3px;\n}\n\n.findify-components-search--mobile-facets__back-button {\n    height: 20px;\n}\n\n.findify-components-search--mobile-facets__header {\n    height: 60px;\n    padding: 0 15px;\n    background: var(--color-grey-1);\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: horizontal;\n    -webkit-box-direction: normal;\n    -ms-flex-direction: row;\n        flex-direction: row;\n    -webkit-box-align: center;\n    -ms-flex-align: center;\n    align-items: center;\n    -webkit-box-pack: justify;\n    -ms-flex-pack: justify;\n    justify-content: space-between;\n    border-bottom: 1px solid var(--color-grey-2);\n}\n\n.findify-components-search--mobile-facets__header > * {\n    position: relative;\n    z-index: 2;\n}\n\n.findify-components-search--mobile-facets__body {\n    -webkit-box-flex: 1;\n    -ms-flex: 1;\n        flex: 1;\n    overflow: hidden;\n    overflow-y: auto;\n}\n\n.findify-components-search--mobile-facets__footer {\n    height: 60px;\n    padding: 0 15px;\n    background: var(--color-grey-5);\n    color: var(--color-white);\n    font-size: var(--font-size-medium);\n    text-transform: uppercase;\n}\n\n.findify-components-search--mobile-facets__title {\n    position: absolute;\n    left: 0;\n    right: 0;\n    top: 0;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    height: 60px;\n    -webkit-box-pack: center;\n    -ms-flex-pack: center;\n    justify-content: center;\n    -webkit-box-align: center;\n    -ms-flex-align: center;\n    align-items: center;\n    z-index: 1;\n    -webkit-user-select: none;\n       -moz-user-select: none;\n        -ms-user-select: none;\n            user-select: none;\n}\n\n.findify-components-search--mobile-facets__facet-title {\n    padding: 20px 17px;\n    width: 100%;\n    border-top: 1px solid var(--color-grey-2);\n}\n\n.findify-components-search--mobile-facets__facet-title:first-child {\n    border-top: 0;\n}\n\n.findify-components-search--mobile-facets__facet-title:last-child {\n    border-bottom: 1px solid var(--color-grey-2);\n}\n\n.findify-components-search--mobile-facets__container {\n    padding: 17px;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    height: 100%;\n    -webkit-box-sizing: border-box;\n            box-sizing: border-box;\n    overflow: hidden;\n    overflow-y: auto;\n}\n\n.findify-components-search--mobile-facets__expand {\n    display: none;\n}\n\n.findify-components-search--mobile-facets__expanded-list {\n    height: 100%;\n}\n\n.findify-components-search--mobile-facets__range {\n    width: 100%;\n    display: table;\n}\n\n.findify-components-search--mobile-facets__facet-root {\n    width: 100%;\n}\n\n/*  imported from styles.css  */\n\n.findify-components-search--mobile-sorting {\n    position: fixed;\n    left: 0;\n    top: 0;\n    bottom: 0;\n    width: 100%;\n    background: white;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n    -ms-flex-direction: column;\n        flex-direction: column;\n}\n\n.findify-components-search--mobile-sorting__header {\n    height: 60px;\n    padding: 0 15px;\n    background: var(--color-grey-1);\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: horizontal;\n    -webkit-box-direction: normal;\n    -ms-flex-direction: row;\n        flex-direction: row;\n    -webkit-box-align: center;\n    -ms-flex-align: center;\n    align-items: center;\n    -webkit-box-pack: justify;\n    -ms-flex-pack: justify;\n    justify-content: space-between;\n    border-bottom: 1px solid var(--color-grey-2);\n}\n\n.findify-components-search--mobile-sorting__header > * {\n    position: relative;\n    z-index: 2;\n}\n\n.findify-components-search--mobile-sorting__body {\n    -webkit-box-flex: 1;\n    -ms-flex: 1;\n        flex: 1;\n    overflow: hidden;\n    overflow-y: auto;\n}\n\n.findify-components-search--mobile-sorting__footer {\n    height: 60px;\n    padding: 0 15px;\n    background: var(--color-grey-5);\n    color: var(--color-white);\n    font-size: var(--font-size-medium);\n    text-transform: uppercase;\n}\n\n.findify-components-search--mobile-sorting__title {\n    position: absolute;\n    left: 0;\n    right: 0;\n    top: 0;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    height: 60px;\n    -webkit-box-pack: center;\n    -ms-flex-pack: center;\n    justify-content: center;\n    -webkit-box-align: center;\n    -ms-flex-align: center;\n    align-items: center;\n    z-index: 1;\n    -webkit-user-select: none;\n       -moz-user-select: none;\n        -ms-user-select: none;\n            user-select: none;\n}\n\n.findify-components-search--mobile-sorting__item {\n    width: 100%;\n    height: 50px;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    padding: 0 17px;\n    border-bottom: 1px solid var(--color-grey-2);\n}\n\n.findify-components-search--mobile-sorting__item svg {\n    vertical-align: -3px;\n    padding-right: 15px;\n}\n\n/*  imported from styles.css  */\n\n.findify-components-search--query {\n    white-space: nowrap;\n    display: table-cell;\n    width: 1%;\n}\n\n/*  imported from styles.css  */\n\n.findify-components-search--static-results {\n    padding-top: 0;\n}\n\n.findify-components-search--static-results__column {\n    display: table;\n}\n\n/*  imported from styles.css  */\n\n.findify-layouts--autocomplete--dropdown {\n    /*width: 561px;*//*\n  height: 541px;\n  max-height: 541px;*/\n    //padding: 15px 10px 10px;\n    background: white;\n    border: 1px solid var(--color-grey-2);\n    -webkit-box-shadow: 0 5px 10px 0 rgba(71, 89, 113, .5);\n            box-shadow: 0 5px 10px 0 rgba(71, 89, 113, .5);\n    position: absolute;\n    z-index: 9999;\n    padding-bottom: 0;\n    right: 0;\n    top: 40px;\n}\n\n.findify-layouts--autocomplete--dropdown__type-title {\n    margin-top: 0;\n    margin-bottom: 17px;\n    color: var(--color-grey-3);\n    font-size: var(--font-size-small);\n    line-height: var(--font-size-small);\n    font-weight: bold;\n    text-transform: uppercase;\n    font-family: var(--font-base);\n    text-align: left;\n}\n\n.findify-layouts--autocomplete--dropdown__overlay {\n    position: fixed;\n    top: 0;\n    left: 0;\n    width: 100vw;\n    height: 100vh;\n    z-index: 9998;\n    background: rgba(0, 0, 0, .3);\n}\n\n.findify-layouts--autocomplete--dropdown__not-found,\n.findify-layouts--autocomplete--dropdown__start-typing {\n    margin-top: 0;\n    color: var(--color-grey-3);\n    font-size: var(--font-size-small);\n    line-height: var(--font-size-small);\n    padding-top: 25px;\n    padding-bottom: 25px;\n    margin-bottom: 0;\n    font-weight: bold;\n    text-transform: uppercase;\n    font-family: var(--font-base);\n    padding-left: 25px;\n}\n\n.findify-layouts--autocomplete--dropdown__tip {\n    -webkit-user-select: none;\n       -moz-user-select: none;\n        -ms-user-select: none;\n            user-select: none;\n    text-align: center;\n    border-bottom: 1px solid #e2e2e2;\n}\n\n.findify-layouts--autocomplete--dropdown__highlight {\n    color: #404040;\n}\n\n.findify-layouts--autocomplete--dropdown__container {\n    width: 100%;\n    display: table;\n    margin-top: 24px;\n    margin-bottom: 24px;\n}\n\n.findify-layouts--autocomplete--dropdown__product-matches-container {\n    display: table-cell;\n    vertical-align: top;\n    padding: 0 27px;\n    background: #fff;\n    border-bottom-left-radius: 5px;\n    border-bottom-right-radius: 5px;\n    width: 326px;\n}\n\n.findify-layouts--autocomplete--dropdown__suggestions-container {\n    display: table-cell;\n    vertical-align: top;\n    padding: 0 27px;\n    background: #fff;\n    width: 166px;\n    min-width: 166px;\n    border-bottom-left-radius: 5px;\n    border-bottom-right-radius: 5px;\n}\n\n.findify-layouts--autocomplete--dropdown__container > *:first-child {\n    border-right: 1px solid #e2e2e2;\n}\n\n/*  imported from styles.css  */\n\n.findify-layouts--autocomplete--fullscreen {\n    width: 100vw;\n    height: 100vh;\n    position: fixed;\n    top: 0;\n    left: 0;\n}\n\n.findify-layouts--autocomplete--fullscreen__backdrop {\n    width: 100%;\n    height: 100%;\n    position: absolute;\n    top: 0;\n    left: 0;\n    background-color: var(--color-white);\n    z-index: -1;\n}\n\n.findify-layouts--autocomplete--fullscreen__icons {\n    position: absolute;\n    top: 0;\n    right: 0;\n    padding-right: 16px;\n    margin-top: 15px;\n    margin-bottom: 14px;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-align: center;\n    -ms-flex-align: center;\n    align-items: center;\n    -webkit-box-pack: center;\n    -ms-flex-pack: center;\n    justify-content: center;\n}\n\n.findify-layouts--autocomplete--fullscreen__icons .findify-layouts--autocomplete--fullscreen__search-icon {\n    cursor: pointer;\n    color: var(--color-black);\n}\n\n.findify-layouts--autocomplete--fullscreen__icons .findify-layouts--autocomplete--fullscreen__search-icon path {\n    fill: var(--color-black);\n}\n\n.findify-layouts--autocomplete--fullscreen__icons .findify-layouts--autocomplete--fullscreen__x-icon {\n    cursor: pointer;\n}\n\n.findify-layouts--autocomplete--fullscreen__icons .findify-layouts--autocomplete--fullscreen__x-icon:hover,\n.findify-layouts--autocomplete--fullscreen__icons .findify-layouts--autocomplete--fullscreen__x-icon:focus {\n    color: red;\n}\n\n.findify-layouts--autocomplete--fullscreen__icon-divider {\n    height: 18px;\n    width: 1px;\n    background: var(--color-grey-2);\n    display: inline-block;\n    margin-left: 12px;\n    margin-right: 12px;\n}\n\n.findify-layouts--autocomplete--fullscreen__header {\n    position: relative;\n}\n\n.findify-layouts--autocomplete--fullscreen__header input {\n    width: 100%;\n    height: 50px;\n    font-family: var(--font-base);\n    font-size: var(--font-size-large);\n    line-height: 50px;\n    color: var(--color-black);\n    padding-left: 13px;\n    -webkit-box-sizing: border-box;\n            box-sizing: border-box;\n    border: 1px solid var(--color-grey-2);\n    -webkit-transition: border-color .1s linear;\n            transition: border-color .1s linear;\n    outline: none;\n}\n\n.findify-layouts--autocomplete--fullscreen__header input:placeholder {\n    color: var(--color-grey-3);\n}\n\n.findify-layouts--autocomplete--fullscreen__header input:placeholder {\n    color: var(--color-grey-1);\n}\n\n.findify-layouts--autocomplete--fullscreen__header input:focus {\n    border-color: var(--color-grey-3);\n}\n\n.findify-layouts--autocomplete--fullscreen__type-title {\n    margin-top: 0;\n    margin-bottom: 17px;\n    color: var(--color-grey-3);\n    font-size: var(--font-size-small);\n    line-height: var(--font-size-small);\n    padding-top: 25px;\n    font-weight: bold;\n    text-transform: uppercase;\n    font-family: var(--font-base);\n}\n\n.findify-layouts--autocomplete--fullscreen__suggestions-container {\n    padding-left: 30px;\n}\n\n.findify-layouts--autocomplete--fullscreen__suggestions-wrapper {\n    width: 100%;\n    background: var(--color-white);\n    padding-bottom: 40px;\n}\n\n.findify-layouts--autocomplete--fullscreen__body-noscroll {\n    overflow: hidden;\n}\n\n/*  imported from styles.css  */\n\n.findify-layouts--autocomplete--sidebar {\n    width: 100%;\n}\n\n.findify-layouts--autocomplete--sidebar__inputWrapper input {\n    width: 100%;\n    height: 50px;\n    font-family: var(--font-base);\n    font-size: var(--font-size-large);\n    line-height: 50px;\n    color: var(--color-black);\n    padding-left: 13px;\n    -webkit-box-sizing: border-box;\n            box-sizing: border-box;\n    border: 1px solid var(--color-grey-2);\n    -webkit-transition: border-color .1s linear;\n            transition: border-color .1s linear;\n    outline: none;\n}\n\n.findify-layouts--autocomplete--sidebar__inputWrapper input:placeholder {\n    color: var(--color-grey-3);\n}\n\n.findify-layouts--autocomplete--sidebar__inputWrapper input:placeholder {\n    color: var(--color-grey-1);\n}\n\n.findify-layouts--autocomplete--sidebar__inputWrapper input:focus {\n    border-color: var(--color-grey-3);\n}\n\n.findify-layouts--autocomplete--sidebar__type-title {\n    margin-top: 0;\n    margin-bottom: 17px;\n    color: var(--color-grey-3);\n    font-size: var(--font-size-small);\n    line-height: var(--font-size-small);\n    padding-top: 25px;\n    font-weight: bold;\n    text-transform: uppercase;\n    font-family: var(--font-base);\n}\n\n.findify-layouts--autocomplete--sidebar__suggestions-container {\n    padding-left: 30px;\n}\n\n.findify-layouts--autocomplete--sidebar__header {\n    background-color: #475971;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: end;\n    -ms-flex-pack: end;\n    justify-content: flex-end;\n}\n\n.findify-layouts--autocomplete--sidebar__searchIcon {\n    margin-top: 12px;\n    margin-bottom: 14px;\n    margin-right: 16px;\n    color: var(--color-white);\n}\n\n.findify-layouts--autocomplete--sidebar__searchIcon path {\n    fill: var(--color-white);\n}\n\n/*  imported from styles.css  */\n\n.findify-layouts--content-search {\n    width: 100%;\n    display: table;\n    padding-top: 25px;\n    border-top: 1px solid var(--color-grey-2);\n}\n\n.findify-layouts--content-search__content {\n    display: table-cell;\n    width: 100%;\n}\n\n@supports (display: flex) {\n    .findify-layouts--content-search {\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-orient: horizontal;\n        -webkit-box-direction: normal;\n        -ms-flex-direction: row;\n            flex-direction: row;\n    }\n\n    .findify-layouts--content-search__content {\n        display: block;\n    }\n}\n\n/*  imported from styles.css  */\n\n.findify-layouts--recommendation--grid__title {\n    padding: 0;\n    margin: 0;\n    padding-bottom: 18px;\n    text-align: center;\n}\n\n/*  imported from styles.css  */\n\n.findify-layouts--recommendation--slider__title {\n    padding: 0;\n    margin: 0;\n    padding-bottom: 18px;\n    text-align: center;\n}\n\n.findify-layouts--recommendation--slider__arrow {\n    position: absolute;\n    top: 50%;\n    margin-top: -11px;\n    z-index: 2;\n    -webkit-transition: opacity .1s linear;\n            transition: opacity .1s linear;\n}\n\n.findify-layouts--recommendation--slider__arrow.slick-disabled {\n    opacity: .3;\n    cursor: default;\n}\n\n.findify-layouts--recommendation--slider__arrow svg {\n    color: var(--color-black);\n}\n\n/*  imported from styles.global.css  */\n\n/* Slider */\n\n.slick-slider {\n    position: relative;\n    display: block;\n    -webkit-box-sizing: border-box;\n            box-sizing: border-box;\n    -webkit-user-select: none;\n       -moz-user-select: none;\n        -ms-user-select: none;\n            user-select: none;\n    -webkit-touch-callout: none;\n     -khtml-user-select: none;\n    -ms-touch-action: pan-y;\n        touch-action: pan-y;\n    -webkit-tap-highlight-color: transparent;\n}\n\n.slick-list {\n    position: relative;\n    display: block;\n    overflow: hidden;\n    margin: 0;\n    padding: 0;\n}\n\n.slick-list:focus {\n    outline: none;\n}\n\n.slick-list.dragging {\n    cursor: pointer;\n    cursor: hand;\n}\n\n.slick-slider .slick-track, .slick-slider .slick-list {\n    -webkit-transform: translate3d(0, 0, 0);\n        -ms-transform: translate3d(0, 0, 0);\n            transform: translate3d(0, 0, 0);\n}\n\n.slick-track {\n    position: relative;\n    top: 0;\n    left: 0;\n    display: block;\n    margin-left: auto;\n    margin-right: auto;\n}\n\n.slick-track:before, .slick-track:after {\n    display: table;\n    content: '';\n}\n\n.slick-track:after {\n    clear: both;\n}\n\n.slick-loading .slick-track {\n    visibility: hidden;\n}\n\n.slick-slide {\n    display: none;\n    float: left;\n    height: 100%;\n    min-height: 1px;\n}\n\n[dir='rtl'] .slick-slide {\n    float: right;\n}\n\n.slick-slide img {\n    display: block;\n}\n\n.slick-slide.slick-loading img {\n    display: none;\n}\n\n.slick-slide.dragging img {\n    pointer-events: none;\n}\n\n.slick-initialized .slick-slide {\n    display: block;\n}\n\n.slick-loading .slick-slide {\n    visibility: hidden;\n}\n\n.slick-vertical .slick-slide {\n    display: block;\n    height: auto;\n    border: 1px solid transparent;\n}\n\n.slick-arrow.slick-hidden {\n    display: none;\n}\n\n.slick-prev, .slick-next {\n    font-size: 0;\n    line-height: 0;\n    position: absolute;\n    top: 50%;\n    display: block;\n    width: 20px;\n    height: 20px;\n    padding: 0;\n    -webkit-transform: translate(0, -50%);\n        -ms-transform: translate(0, -50%);\n            transform: translate(0, -50%);\n    cursor: pointer;\n    color: transparent;\n    border: none;\n    outline: none;\n    background: transparent;\n}\n\n.slick-prev:hover, .slick-prev:focus, .slick-next:hover, .slick-next:focus {\n    color: transparent;\n    outline: none;\n    background: transparent;\n}\n\n.slick-prev:hover:before, .slick-prev:focus:before, .slick-next:hover:before,\n.slick-next:focus:before {\n    opacity: 1;\n}\n\n.slick-prev.slick-disabled:before, .slick-next.slick-disabled:before {\n    opacity: .25;\n}\n\n.slick-prev:before, .slick-next:before {\n    font: normal normal normal 14px/1 FontAwesome;\n    font-size: 20px;\n    line-height: 1;\n    opacity: .75;\n    color: white;\n    -webkit-font-smoothing: antialiased;\n    -moz-osx-font-smoothing: grayscale;\n}\n\n.slick-prev {\n    left: -25px;\n}\n\n[dir='rtl'] .slick-prev {\n    right: -25px;\n    left: auto;\n}\n\n.slick-next {\n    right: -25px;\n}\n\n[dir='rtl'] .slick-next {\n    right: auto;\n    left: -25px;\n}\n\n/* Dots */\n\n.slick-dotted.slick-slider {\n    margin-bottom: 30px;\n}\n\n.slick-dots {\n    position: absolute;\n    bottom: -25px;\n    display: block;\n    width: 100%;\n    padding: 0;\n    margin: 0;\n    list-style: none;\n    text-align: center;\n}\n\n.slick-dots li {\n    position: relative;\n    display: inline-block;\n    width: 20px;\n    height: 20px;\n    margin: 0 5px;\n    padding: 0;\n    cursor: pointer;\n}\n\n.slick-dots li button {\n    font-size: 0;\n    line-height: 0;\n    display: block;\n    width: 20px;\n    height: 20px;\n    padding: 5px;\n    cursor: pointer;\n    color: transparent;\n    border: 0;\n    outline: none;\n    background: transparent;\n}\n\n.slick-dots li button:hover, .slick-dots li button:focus {\n    outline: none;\n}\n\n.slick-dots li button:hover:before, .slick-dots li button:focus:before {\n    opacity: 1;\n}\n\n.slick-dots li button:before {\n    font-family: 'slick';\n    font-size: 6px;\n    line-height: 20px;\n    position: absolute;\n    top: 0;\n    left: 0;\n    width: 20px;\n    height: 20px;\n    content: '\\2022';\n    text-align: center;\n    opacity: .25;\n    color: black;\n    -webkit-font-smoothing: antialiased;\n    -moz-osx-font-smoothing: grayscale;\n}\n\n.slick-dots li.slick-active button:before {\n    opacity: .75;\n    color: black;\n}\n\n/*  imported from styles.css  */\n\n.findify-layouts--search {\n    width: 100%;\n    display: table;\n    padding-top: 25px;\n    border-top: 1px solid var(--color-grey-2);\n}\n\n.findify-layouts--search__content {\n    display: table-cell;\n    width: 100%;\n}\n\n@supports (display: flex) {\n    .findify-layouts--search {\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-orient: horizontal;\n        -webkit-box-direction: normal;\n        -ms-flex-direction: row;\n            flex-direction: row;\n    }\n\n    .findify-layouts--search__content {\n        display: block;\n    }\n}\n\n/*  imported from styles.css  */\n\n.findify-layouts--zero-results__sorry {\n    margin-right: 8px;\n}\n\n.findify-layouts--zero-results__suggestionsRow {\n    margin-top: 28px;\n    margin-bottom: 28px;\n}\n\n.findify-custom{\n  &--title{\n    text-align: center;\n    font-size: 32px;\n    color: var(--color-black);\n    padding-bottom: 40px;\n    font-family: var(--font-base);\n  }\n  &--tab{\n    &-icon{\n      display: inline-block;\n      vertical-align: -4px;\n      width: 15px;\n      height: 15px;\n    }\n  }\n  &--instagram{\n    &-preview{\n      width: 100%;\n      padding-bottom: 100%;\n      height: 0;\n      background-size: cover;\n    }\n  }\n  &--results{\n    &-block{\n      margin-bottom: 20px;\n      padding: 32px 14px 30px 14px;\n      border: 1px solid var(--color-grey-2);\n      & .findify-components-common--drawer__content-wrapper{\n        height: 400px;\n        left: 50%!important;\n        top: 10%!important;\n        width: 300px!important;\n        margin-left: -150px;\n        border-radius: 3px / 3px;\n        overflow: hidden;\n      }\n      & .findify-components-common--drawer__drawer-exit + .findify-components-common--drawer__content-wrapper{\n        top: -100%!important\n      }\n      &-wrap{\n        display: flex;\n        flex-direction: row;\n        flex-wrap: nowrap;\n        padding-top: 30px;\n        justify-content: space-between;\n      }\n      &-item{\n      }\n      &-more{\n        display: flex;\n        padding: 11px 14px 0 14px;\n        &-wrapper{\n          padding-bottom: 100%;\n          position: relative;\n          width: 100%;\n          height: 0;\n        }\n        &-text{\n          font-size: 10px;\n          text-transform: uppercase;\n          margin: 0;\n          padding: 0;\n          font-weight: bold;\n        }\n        &-button{\n          position: absolute;\n          top: 0;\n          left: 0;\n          bottom: 0;\n          right: 0;\n          flex-direction: column;\n          justify-content: center;\n          align-items: center;\n          display: flex;\n          height: 100%;\n          width: 100%;\n          background-color: var(--color-grey-1);\n          background: transparent;\n          transition: background .1s linear;\n          max-height: 280px;\n          font-size: 10px;\n          text-transform: uppercase;\n          &:hover{\n            background: var(--color-grey-2);\n          }\n          p{\n            margin: 0;\n          }\n        }\n      }\n      &-title{\n        cursor: pointer;\n        padding: 0!important;\n        font-size: 10px;\n        line-height: 12px;\n        margin: 0!important;\n        font-weight: bold;\n        padding-bottom: 4px!important;\n        text-transform: uppercase;\n        text-align: center;\n        color: var(--color-black);\n        font-family: var(--font-base);\n      }\n      &-subtitle{\n        font-size: 13px;\n        line-height: 15px;\n        margin: 0!important;\n        padding: 0!important;\n        text-align: center;\n        color: var(--color-black);\n        font-family: var(--font-base);\n      }\n    }\n  }\n  &--trend{\n    &-card{\n      width: 100%;\n      padding-top: 10px;\n      padding-left: 12px;\n      padding-right: 12px;\n      padding-bottom: 10px;\n      display: table;\n      background-color: transparent;\n      transition: background-color .35s ease-in-out;\n      text-decoration: none;\n      user-select: none;\n      border: none!important;\n      vertical-align: bottom;\n      &-wrap{\n        position: relative;\n        overflow: hidden;\n        cursor: pointer;\n      }\n      &-image{\n        max-width: 100%;\n        margin: 0 auto;\n      }\n      &-icon{\n        position: absolute;\n        left: 10px;\n        bottom: 10px;\n        color: white;\n        z-index: 2;\n      }\n    }\n    &-next{\n      margin: 50px auto 0 auto;\n      display: block;\n      padding: 0 85px;\n      height: 40px;\n      background: var(--color-grey-1);\n      transition: background .1s linear;\n      &:hover{\n        background: var(--color-grey-2);\n      }\n    }\n    &-prev{\n      margin: 0 auto 50px auto;\n      display: block;\n      padding: 0 85px;\n      height: 40px;\n      background: var(--color-grey-1);\n      transition: background .1s linear;\n      &:hover{\n        background: var(--color-grey-2);\n      }\n    }\n  }\n}\n.findify-components-common--grid__column {\n  & .findify-components-common--drawer__content-wrapper{\n    height: 500px;\n    left: 50%!important;\n    top: 10%!important;\n    width: 400px!important;\n    margin-left: -150px;\n    border-radius: 3px / 3px;\n    overflow: hidden;\n  }\n  & .findify-components-common--drawer__drawer-exit + .findify-components-common--drawer__content-wrapper{\n    top: -100%!important;\n  }\n}"
-    },
-    "collections": ["collections/all-tights", "collections/clearance", "collections/texas-christian-university", "collections/university-of-south-florida", "collections/reversible-headbands", "freedom", "collections/all", "collections/cyber-monday", "collections/head-neks", "collections/headbands", "collections/tactical-predator", "collections/sleefs-basics", "collections/america", "collections/padded-arm-sleeves", "collections/designs", "collections/bundles", "collections/compression-jerseys/onsale", "collections/sleeveless-quick-dry-jerseys", "collections/three-quarter-tights", "collections/eyeblack", "collections/lanyards", "collections/calf-compression-socks-sleeves", "collections/pull-string-bags", "collections/spats-cleat-covers", "collections/slides", "collections/gloves", "collections/sohoodie", "collections/beanies", "collections/bucket-hats", "collections/hats", "collections/compression-leggings", "collections/discount", "collections/university-of-central-florida", "collections/university-of-kentucky", "collections/penn-state-university", "collections/louisiana-state-university", "collections/clemson-university", "collections/arizona-state-university", "collections/university-of-georgia", "collections/university-of-oregon", "collections/university-of-florida", "collections/florida-state-university", "collections/university-of-miami", "collections/university-of-alabama", "collections/the-ohio-state-university", "collections/red-white-blue", "collections/white", "collections/black", "collections/gray", "collections/maroon", "collections/orange", "collections/green", "collections/purple", "collections/yellow", "collections/blue-1", "collections/red-2", "collections/wild-life", "collections/pink-arm-sleeves", "collections/savage", "collections/hybrid", "collections/icarus", "collections/kids", "collections/socks", "collections/wide-headbands", "collections/pink", "collections/bca-accessories", "collections/wristbands", "collections/t4c", "collections/kids-arm-sleeves", "collections/compression-arm-sleeves", "collections/sleefs-basics", "collections/tights-and-shorts", "collections/5-arm-sleeves", "collections/arm-sleeves-from-1", "collections/shorts", "collections/promo", "collections/tie-headband", "collections/solids", "collections/flags", "collections/pink-arm-sleeves-1", "collections/camos", "collections/jersey", "collections/padded-arm-sleeves", "collections/designs", "collections/sleefs-basics", "collections/compression-jerseys", "collections/sleeveless-quick-dry-jerseys", "collections/virginia-tech-university", "collections/university-of-tennessee", "collections/black", "collections/thin-blue-line", "collections/7-arm-sleeves", "collections/mask-collection", "collections/headwear", "collections/bottoms", "collections/tops", "collections/printed-tights", "collections/tights-sale", "collections/hoodies", "collections/accessories", "collections/tees", "test_collection", "collections/baseball", "example.com/shirts", "example.com/shirts-on-sale", "collections/bag"],
-};
+       // Merchant API KEY
+       "key": "4c220ec3-ef86-4c49-9d86-ce31f5e66fda",
+
+       // Show/Hide "Powered by findify badge"
+       "poweredByFindify": true,
+   
+       // Specific platform code
+       "platform": {
+           "shopify": true,
+           // "bigcommerce": true
+       },
+   
+       // Merchant status - will disable features, but send analytics
+       "status": "live",
+   
+       // If window width gte than this number - view will be changed
+       "mobileBreakpoint": 767,
+   
+       // History setup
+       "location": {
+           // Define search url, autocomplete will redirect to this URL
+           "searchUrl": "/pages/search-results",
+   
+           // Search query prefix eq(?findify_q)
+           "prefix": "findify"
+       },
+   
+       // Element:Feature
+       "selectors": {
+           "input[name='fq']": "autocomplete",
+           "#findify_results": "search",
+           "#home-findify-rec-2": "recommendations",
+           "#product-findify-rec-1": "recommendations",
+           "#category-findify-rec-1": "recommendations",
+           "#product-findify-rec-4": "recommendations",
+           "#product-findify-rec-2": "recommendations",
+           "#cart-findify-rec-1": "recommendations",
+           "#cart-findify-rec-2": "recommendations",
+           "#cart-findify-rec-3": "recommendations",
+           "#home-findify-rec-3": "recommendations",
+           "#product-findify-rec-5": "recommendations"
+       },
+   
+       // Currency setup
+       "currency": {
+           "code": "GBP"
+           // symbol: '$',
+           // thousandsSeparator: ',',
+           // decimalSeparator: '.',
+           // symbolOnLeft: true,
+           // spaceBetweenAmountAndSymbol: false,
+           // decimalDigits: 2
+       },
+   
+       // Features configuration will be pulled and marged with the root lvl
+       "features": {
+           "autocomplete": {
+               // Disable listening for closest form submit
+               "disableFormSubmit": false,
+   
+               // Where it should be rended: parent|self|body
+               "renderIn": "parent",
+   
+               // dropdown: to invoke usual dropdown behaviour
+               // sidebar: to use sidebar as search component
+               // fullscreen: to use fullscreen view for searching
+               "viewType": "dropdown",
+               "mobileViewType": "fullscreen",
+   
+               // Order of content
+               "viewOrder": ["SearchSuggestions", "ProductMatches"],
+   
+               // Where to align autocomplete: left|right
+               "position": "left",
+   
+               // Will be added to all requests eq: Agent.defaults(meta)
+               "meta": {
+                   "item_limit": 4,
+                   "suggestion_limit": 10
+               },
+   
+               // Product setup
+               "product": {
+                   "title": {
+                       "display": true,
+                       "lines": 3
+                   },
+                   "price": {
+                     "display": true,
+                   },
+                   "i18n": {
+                       "colorsAvailable": "Colours available"
+                   },
+                   "image": {
+                       // Image aspect ratio
+                       "aspectRatio": 1.2
+                   },
+                   "stickers": {
+                     "display": false,
+                   }
+               },
+               "i18n": {
+                   "suggestionsTitle": "Suggestions",
+                   "productMatchesTitle": "Product matches",
+                   "tipTitle": "Click here to search",
+                   "viewMore": "View all"
+               },
+               "showOverlay": true,
+           },
+   
+           "search": {
+               // Fallback recommendation type
+               "zeroResultsType": "trending",
+   
+               // Search results setup
+               "view": {
+                   "pagination": false,
+                   "infinite": true,
+                   "stickyFilters": false
+               },
+   
+               // Should scroll to value after new data was received
+               "scrollTop": 0,
+   
+               // Will be added to all requests eq: Agent.defaults(meta)
+               "meta": {
+                   "limit": 24
+               },
+   
+               // Product setup
+               "product": {
+                   "price": {
+                     "display": true
+                   },
+                   "title": {
+                       "display": true,
+                       "lines": 3
+                   },
+                   "reviews": {
+                     "display": true,
+                   },
+                   "i18n": {
+                       "colorsAvailable": "Colours available"
+                   },
+                   "image": {
+                     "aspectRatio": .75
+                   },
+                   "stickers": {
+                     "display": true,
+                   }
+               },
+               "sorting": {
+                   "options": [{
+                       "field": "default",
+                       "order": ""
+                   }, {
+                       "field": "price",
+                       "order": "desc"
+                   }, {
+                       "field": "price",
+                       "order": "asc"
+                   }, {
+                       "field": "created_at",
+                       "order": "desc"
+                   }],
+                   "i18n": {
+                       "title": "Sort by",
+                       "options": {
+                           "default": "Popularity",
+                           "price|desc": "Price: High to low",
+                           "price|asc": "Price: Low to high",
+                           "created_at|desc": "What's new"
+                       }
+                   }
+               },
+   
+               "pagination": {
+                   "step": 2,
+                   "i18n": {
+                       "previous": "Prev",
+                       "next": "Next"
+                   }
+               },
+   
+               "loadMore": {
+                   "lazyLoadCount": 2,
+                   "i18n": {
+                       "loadMore": "Load more",
+                       "loadPrev": "Load previous"
+                   }
+               },
+   
+               "i18n": {
+                   "sorryNoResults": "Sorry!",
+                   "noResult": "We can't seem to find any products that match your search for \"%s\"",
+                   "noResultEmptyQuery": "We can't seem to find any products that match your search",
+                   "tryOneOfThese": "Try one of these instead:",
+                   "checkOutPopularProducts": "Or check out some of these popular products"
+               },
+   
+               "breadcrumbs": {
+                   "i18n": {
+                       "showingEmpty": "Showing %s results",
+                       "showing": "Showing %s results for",
+                       "noQuery": "Showing all products. Use filters to refine your search.",
+                       "partialMatch": "Showing results that partially match instead.",
+                       "zeroResultsFor": "0 results for"
+                   }
+               },
+   
+               // Facets setup
+               "facets": {
+                   "initiallyClosed": true,
+                   // Map Facet name to facet type
+                   "types": {
+                       "price": "price",
+                       "reviews.average_score": "rating",
+                       "color": "color"
+                   },
+                   "labels": {
+                       "custom_fields.cf_accessory_colour": "Accessory Colour",
+                       "custom_fields.cf_accessory_fibre": "Accessory Fibre",
+                       "custom_fields.cf_accessory_length": "Accessory Length",
+                       "custom_fields.cf_accessory_material": "Accessory Material",
+                       "custom_fields.cf_accessory_size": "Accessory Size",
+                       "custom_fields.cf_accessory_type": "Accessory Type",
+                       "custom_fields.cf_book_pattern_for": "Book For",
+                       "custom_fields.cf_accessory_style": "Accessory Style",
+                       "custom_fields.cf_accessory_width": "Accessory Width",
+                       "custom_fields.cf_book_type": "Book Type",
+                       "custom_fields.cf_button_collection": "Button Collection",
+                       "custom_fields.cf_kit_collection": "Kit Collection",
+                       "price": "Price",
+                       "custom_fields.cf_kit_type": "Kit Type",
+                       "custom_fields.cf_minerva_category": "Minerva Category",
+                       "custom_fields.cf_needle_collection": "Needle Collection",
+                       "seller": "Seller",
+                       "condition": "Condition",
+                       "custom_fields.barcode": "Barcode",
+                       "custom_fields.cf_needle_size": "Needle Size",
+                       "custom_fields.cf_needle_weight": "Needle Weight",
+                       "custom_fields.cf_pattern_collection": "Pattern Collection",
+                       "custom_fields.cf_pattern_pattern_for": "Pattern For",
+                       "custom_fields.cf_pattern_type": "Pattern Type",
+                       "custom_fields.cf_thread_colour": "Thread Colour",
+                       "custom_fields.cf_thread_type": "Thread Type",
+                       "custom_fields.cf_yarn_collection": "Yarn Collection",
+                       "custom_fields.pattern_difficulty": "pattern_difficulty",
+                       "custom_fields.new_brand": "Brand",
+                       "custom_fields.cf_thread_collection": "Thread Collection",
+                       "custom_fields.cf_thread_length": "Thread Length",
+                       "custom_fields.cf_thread_yarn_thickness": "Thread Thickness",
+                       "custom_fields.cf_pattern_style": "Pattern Style",
+                       "custom_fields.cf_kit_colour": "Kit Colour",
+                       "custom_fields.cf_kit_size": "Kit Size",
+                       "custom_fields.custom_created_at": "Created At",
+                       "color": "Colour",
+                       "size": "Size",
+                       "custom_fields.cf_needle_length": "Needle Length",
+                       "custom_fields.cf_needle_material": "Needle Material",
+                       "custom_fields.cf_pattern_yarn_thickness": "Pattern By Yarn Thickness",
+                       "custom_fields.cf_thread_fibre": "Thread Fibre",
+                       "custom_fields.cf_accessory_collection": "Accessory Collection",
+                       "custom_fields.cf_yarn_fibre": "Yarn Fibre",
+                       "custom_fields.cf_accessory_shape": "Accessory Shape",
+                       "custom_fields.cf_accessory_weight": "Accessory Weight",
+                       "custom_fields.cf_book_collection": "Book Collection",
+                       "custom_fields.cf_book_style": "Book Style",
+                       "custom_fields.cf_book_yarn_thickness": "Book By Yarn Thickness",
+                       "custom_fields.cf_button_colour": "Button Colour",
+                       "custom_fields.cf_button_material": "Button Material",
+                       "custom_fields.сf_button_shape": "Button Shape",
+                       "custom_fields.cf_button_size": "Button Size",
+                       "custom_fields.cf_button_type": "Button Type",
+                       "custom_fields.cf_kit_style": "Kit Style",
+                       "custom_fields.cf_kit_pattern_for": "Kit For",
+                       "tags": "Tags",
+                       "reviews.average_score": "Avg. customer rating",
+                       "brand": "Vendor",
+                       "discount": "Discount",
+                       "custom_fields.cf_minerva_subcategory": "Minerva Sub Category",
+                       "custom_fields.cf_sale_tag": "Sale Tag",
+                       "custom_fields.cf_yarn_length": "Yarn Length",
+                       "custom_fields.cf_yarn_weight": "Yarn Weight",
+                       "custom_fields.cf_yarn_type": "Yarn Type",
+                       "custom_fields.cf_yarn_colour": "Yarn Colour",
+                       "custom_fields.old_colors": "Old Colors",
+                       "custom_fields.seasonal_collection": "seasonal_collection",
+                       "custom_fields.length": "Length",
+                       "custom_fields.cf_needle_type": "Needle Type",
+                       "custom_fields.cf_pattern_size": "Pattern Size",
+                       "custom_fields.cf_yarn_thickness": "Yarn Thickness",
+                       "availability": "availability",
+                       "created_at": "created_at",
+                       "sku": "sku",
+                       "category": "Category",
+                       "material": "Material",
+                       "custom_fields.variant_image_url": "Variant Image Url",
+                       "id": "id",
+                       "custom_fields.select pattern format": "Select Pattern Format",
+                       "custom_fields.width": "Width",
+                       "custom_fields.cf_needle_colour": "Needle Colour",
+                       "description": "description",
+                       "title": "title",
+                       "category.category1": "category.category1",
+                       "category.category2": "category.category2",
+                       "category.category3": "category.category3",
+                       "category.category4": "category.category4",
+                       "variants_ids": "variants_ids",
+                       "image_url": "image_url",
+                       "thumbnail_url": "thumbnail_url",
+                       "product_url": "product_url",
+                       "category_str": "category_str",
+                       "short_description": "short description"
+                   },
+                   "category": {
+                       // Should be expanded by default or not
+                       // "initiallyClosed": false,
+                       "i18n": {
+                           "goBackTitle": "All Categories",
+                           "more": "More",
+                           "less": "Less"
+                       }
+                   },
+                   "text": {
+                       // How many item to show when collapsed
+                       "maxItemsCount": 6,
+                       // "initiallyClosed": false,
+                       "i18n": {
+                           "more": "More",
+                           "less": "Less",
+                           "search": "Search"
+                       }
+                   },
+                   "price": {
+                       "i18n": {
+                           "submit": "go",
+                           "under": "Under",
+                           "up": "&amp; up"
+                       }
+                   },
+                   "rating": {
+                       "i18n": {
+                           "submit": "go",
+                           "under": "Under",
+                           "up": "&amp; up"
+                       }
+                   },
+                   "range": {
+                       "i18n": {
+                           "submit": "go",
+                           "under": "Under",
+                           "up": "&amp; up"
+                       }
+                   },
+                   "i18n": {
+                       "showMobileFacets": "Filters",
+                       "more": "More",
+                       "less": "Less",
+                       "resetAll": "Clear all",
+                       "reset": "Clear",
+                       "done": "Done",
+                       "showResults": "See results",
+                       "hideFilters": "Exit filters",
+                       "ok": "Ok",
+                       "backToFilters": "Back to menu",
+                       "search": "Search",
+                       "filters": "Filters",
+                       "clearAll": 'Clear all'
+                   },
+                   "color": {
+                       "mapping": {
+                           "dark yellow": "#FF0",
+                           "beige": "#E9E1D6",
+                           "black": "#111",
+                           "cream": "#F5EFD3",
+                           "dark brown": "#7E6645",
+                           "dark green": "#466534",
+                           "dark grey": "#777",
+                           "dark orange": "#ff7f00",
+                           "dark pink": "#ff6eb4",
+                           "dark purple": "#8b4789",
+                           "dark red": "#cd0000",
+                           "gold": "#FED466",
+                           "ivory": "#FCFFEE",
+                           "light green": "#C8DCBC",
+                           "light orange": "#FFB973",
+                           "light pink": "#ffb6c1",
+                           "light purple": "#c9b1f9",
+                           "medium blue": "#BAC6DE",
+                           "medium brown": "#cd661d",
+                           "light yellow": "#FFFFBF",
+                           "white": "#FFF",
+                           "clear": "#F9F9F9",
+                           "light red": "#ff4c4c",
+                           "medium green": "#7EAD63",
+                           "medium grey": "#7f7f7f",
+                           "medium orange": "#FF8000",
+                           "medium purple": "#8E89C9",
+                           "medium red": "#FF2626",
+                           "medium yellow": "#FFFF73",
+                           "multicolor": "multicolor",
+                           "navy blue": "#3F5585",
+                           "other": "#000",
+                           "pink": "#FFC0CB",
+                           "silver": "#EEE",
+                           "teal": "#008080",
+                           "turquoise": "#03B8AF",
+                           "wine": "#600"
+                       }
+                   }
+               }
+           },
+           "recommendations": {
+               "#home-findify-rec-2": {
+                   "enabled": true,
+                   "slot": "home-findify-rec-2",
+                   "type": "trending",
+                   "template": "slider",
+                   "limit": 10,
+                   "multipleIds": false,
+                   "minResultsToShow": 4,
+                   "product": {
+                       "title": {
+                           "display": true,
+                           "lines": 3
+                       },
+                       "rating": {
+                           "display": true
+                       },
+                       "description": {
+                           "display": false
+                       },
+                       "price": {
+                           "display": true
+                       },
+                       "stickers": {
+                           "display": true
+                       },
+                       "variants": {
+                           "display": false
+                       },
+                       "availability": {
+                           "display": false
+                       },
+                       "i18n": {
+                           "colorsAvailable": "Colours available"
+                       }
+                   },
+                   "title": "Our Most Popular Products"
+               },
+               "#product-findify-rec-1": {
+                   "enabled": true,
+                   "slot": "product-findify-rec-1",
+                   "type": "latest",
+                   "template": "slider",
+                   "limit": 10,
+                   "multipleIds": false,
+                   "minResultsToShow": 3,
+                   "product": {
+                       "title": {
+                           "display": true,
+                           "lines": 3
+                       },
+                       "rating": {
+                           "display": true
+                       },
+                       "description": {
+                           "display": false
+                       },
+                       "price": {
+                           "display": true
+                       },
+                       "stickers": {
+                           "display": true
+                       },
+                       "variants": {
+                           "display": false
+                       },
+                       "availability": {
+                           "display": false
+                       },
+                       "i18n": {
+                           "colorsAvailable": "Colours available"
+                       }
+                   },
+                   "title": "Recently Viewed Products"
+               },
+               "#category-findify-rec-1": {
+                   "enabled": true,
+                   "slot": "category-findify-rec-1",
+                   "type": "latest",
+                   "template": "slider",
+                   "limit": 10,
+                   "multipleIds": false,
+                   "minResultsToShow": 3,
+                   "product": {
+                       "title": {
+                           "display": true,
+                           "lines": 3
+                       },
+                       "rating": {
+                           "display": true
+                       },
+                       "description": {
+                           "display": false
+                       },
+                       "price": {
+                           "display": true
+                       },
+                       "stickers": {
+                           "display": true
+                       },
+                       "variants": {
+                           "display": false
+                       },
+                       "availability": {
+                           "display": false
+                       },
+                       "i18n": {
+                           "colorsAvailable": "Colours available"
+                       }
+                   },
+                   "title": "Recently Viewed Products"
+               },
+               "#product-findify-rec-4": {
+                   "enabled": true,
+                   "slot": "product-findify-rec-4",
+                   "type": "purchasedTogether",
+                   "template": "slider",
+                   "limit": 10,
+                   "multipleIds": false,
+                   "minResultsToShow": 3,
+                   "product": {
+                       "title": {
+                           "display": true,
+                           "lines": 3
+                       },
+                       "rating": {
+                           "display": true
+                       },
+                       "description": {
+                           "display": false
+                       },
+                       "price": {
+                           "display": true
+                       },
+                       "stickers": {
+                           "display": true
+                       },
+                       "variants": {
+                           "display": false
+                       },
+                       "availability": {
+                           "display": false
+                       },
+                       "i18n": {
+                           "colorsAvailable": "Colours available"
+                       }
+                   },
+                   "title": "Frequently Bought Together"
+               },
+               "#product-findify-rec-2": {
+                   "enabled": true,
+                   "slot": "product-findify-rec-2",
+                   "type": "viewed",
+                   "template": "slider",
+                   "limit": 10,
+                   "multipleIds": false,
+                   "minResultsToShow": 3,
+                   "product": {
+                       "title": {
+                           "display": true,
+                           "lines": 3
+                       },
+                       "rating": {
+                           "display": true
+                       },
+                       "description": {
+                           "display": false
+                       },
+                       "price": {
+                           "display": true
+                       },
+                       "stickers": {
+                           "display": true
+                       },
+                       "variants": {
+                           "display": false
+                       },
+                       "availability": {
+                           "display": false
+                       },
+                       "i18n": {
+                           "colorsAvailable": "Colours available"
+                       }
+                   },
+                   "title": "Customers Who Viewed This Also Viewed"
+               },
+               "#cart-findify-rec-1": {
+                   "enabled": true,
+                   "slot": "cart-findify-rec-1",
+                   "type": "latest",
+                   "template": "slider",
+                   "limit": 10,
+                   "multipleIds": false,
+                   "minResultsToShow": 3,
+                   "product": {
+                       "title": {
+                           "display": true,
+                           "lines": 3
+                       },
+                       "rating": {
+                           "display": true
+                       },
+                       "description": {
+                           "display": false
+                       },
+                       "price": {
+                           "display": true
+                       },
+                       "stickers": {
+                           "display": true
+                       },
+                       "variants": {
+                           "display": false
+                       },
+                       "availability": {
+                           "display": false
+                       },
+                       "i18n": {
+                           "colorsAvailable": "Colours available"
+                       }
+                   },
+                   "title": "Recently Viewed Products"
+               },
+               "#cart-findify-rec-2": {
+                   "enabled": true,
+                   "slot": "cart-findify-rec-2",
+                   "type": "trending",
+                   "template": "slider",
+                   "limit": 10,
+                   "multipleIds": false,
+                   "minResultsToShow": 3,
+                   "product": {
+                       "title": {
+                           "display": true,
+                           "lines": 3
+                       },
+                       "rating": {
+                           "display": true
+                       },
+                       "description": {
+                           "display": false
+                       },
+                       "price": {
+                           "display": true
+                       },
+                       "stickers": {
+                           "display": true
+                       },
+                       "variants": {
+                           "display": false
+                       },
+                       "availability": {
+                           "display": false
+                       },
+                       "i18n": {
+                           "colorsAvailable": "Colours available"
+                       }
+                   },
+                   "title": "Our Most Popular Products"
+               },
+               "#cart-findify-rec-3": {
+                   "enabled": true,
+                   "slot": "cart-findify-rec-3",
+                   "type": "purchasedTogether",
+                   "template": "slider",
+                   "limit": 10,
+                   "multipleIds": true,
+                   "minResultsToShow": 3,
+                   "product": {
+                       "title": {
+                           "display": true,
+                           "lines": 3
+                       },
+                       "rating": {
+                           "display": true
+                       },
+                       "description": {
+                           "display": false
+                       },
+                       "price": {
+                           "display": true
+                       },
+                       "stickers": {
+                           "display": true
+                       },
+                       "variants": {
+                           "display": false
+                       },
+                       "availability": {
+                           "display": false
+                       },
+                       "i18n": {
+                           "colorsAvailable": "Colours available"
+                       }
+                   },
+                   "title": "Frequently Bought Together"
+               },
+               "#home-findify-rec-3": {
+                   "enabled": true,
+                   "slot": "home-findify-rec-3",
+                   "type": "newest",
+                   "template": "slider",
+                   "limit": 10,
+                   "multipleIds": false,
+                   "minResultsToShow": 4,
+                   "product": {
+                       "title": {
+                           "display": true,
+                           "lines": 3
+                       },
+                       "rating": {
+                           "display": true
+                       },
+                       "description": {
+                           "display": false
+                       },
+                       "price": {
+                           "display": true
+                       },
+                       "stickers": {
+                           "display": true
+                       },
+                       "variants": {
+                           "display": false
+                       },
+                       "availability": {
+                           "display": false
+                       },
+                       "i18n": {
+                           "colorsAvailable": "Colours available"
+                       }
+                   },
+                   "title": "Newest Arrivals"
+               },
+               "#product-findify-rec-5": {
+                   "enabled": true,
+                   "slot": "product-findify-rec-5",
+                   "type": "trending",
+                   "template": "slider",
+                   "limit": 999,
+                   "multipleIds": false,
+                   "minResultsToShow": 1,
+                   "product": {
+                       "title": {
+                           "display": true,
+                           "lines": 3
+                       },
+                       "rating": {
+                           "display": true
+                       },
+                       "description": {
+                           "display": false
+                       },
+                       "price": {
+                           "display": true
+                       },
+                       "stickers": {
+                           "display": true
+                       },
+                       "variants": {
+                           "display": false
+                       },
+                       "availability": {
+                           "display": false
+                       },
+                       "i18n": {
+                           "colorsAvailable": "Colours available"
+                       }
+                   },
+                   "title": "Related Patterns"
+               }
+           }
+       },
+       "stickers": {
+           "out-of-stock": {
+               "template": "Temporarily out of stock"
+           }
+       },
+       "frameDisabled": true,
+       "useSimpleLoader": false,
+       "collections": ["collections/wendy-on-sale", "collections/accessories-on-sale", "collections/merino-yarn", "collections/needles-on-sale", "collections/peter-pan-yarn", "collections/chunky-yarn", "collections/schoppel-wolle-yarn", "collections/2-ply-yarn", "collections/dmc-yarn", "collections/robin-yarn", "collections/sirdar-yarn", "collections/wendy-yarn", "collections/cotton-yarn", "collections/hayfield-yarn", "collections/mohair-yarn", "collections/rico-yarn", "collections/sublime-yarn", "collections/wool-yarn", "collections/myboshi-yarn", "collections/king-cole-yarn", "collections/silk-yarn", "collections/fashion-yarn", "collections/twilleys-of-stamford", "collections/king-cole-on-sale", "collections/aran-yarn", "collections/yarn-on-sale", "collections/nylon-yarn", "collections/polyester-yarn", "collections/linen-yarn", "collections/budget-yarn", "collections/bamboo-yarn", "collections/sparkly-yarn", "collections/scarf-yarn", "collections/variegated-yarn", "collections/sock-yarn", "collections/natural-fibres-yarn", "collections/luxury-yarn", "collections/summer-yarn", "collections/felting-yarn", "collections/crochet-yarn", "collections/colour-packs", "collections/acrylic-yarn", "collections/cashmere-yarn", "collections/llama-yarn", "collections/go-handmade-patterns", "collections/king-cole-patterns", "collections/baby-yarn", "collections/2-ply-patterns", "collections/chunky-patterns", "collections/erika-knight-patterns", "collections/peter-pan-patterns", "collections/sirdar-patterns", "collections/sublime-patterns", "collections/wendy-patterns", "collections/womans-weekly-exclusive-patterns", "collections/welcome10", "collections/lace-patterns", "collections/super-chunky-patterns", "collections/baby-patterns", "collections/childrens-patterns", "collections/home-patterns", "collections/aran-patterns", "collections/3-ply-patterns", "collections/dk-patterns-1", "collections/4-ply-patterns", "collections/mens-patterns", "collections/ladies-patterns", "collections/vintage-patterns", "collections/all-patterns-books", "collections/boye-needles-hooks", "collections/case-needles-hooks", "collections/clover-needles-hooks", "collections/hobby-gift-needles-hooks", "collections/knit-pro-needles-hooks", "collections/pony-needles-hooks", "collections/single-point-needles", "collections/double-point-needles", "collections/crochet-hooks", "collections/cable-needles", "collections/needle-and-hook-sets", "collections/intermediate-patterns-1", "collections/circular-needles", "collections/free-patterns", "collections/beginner-patterns", "collections/bamboo-needles", "collections/advanced-patterns", "collections/addi-needles-hooks", "collections/prym-needles-hooks", "collections/interchangeable-needles", "collections/toy-patterns", "collections/free-knitting-patterns", "collections/storage-bags", "collections/crochet-kits", "collections/needles-hooks", "collections/knitting-kits", "collections/kitazine", "collections/needle-cases", "collections/yarn-holders", "collections/motifs", "collections/patches", "collections/sale", "collections/knitting-patterns-all", "collections/free-crochet-patterns", "collections/wood-needles-hooks", "collections/knitting-buttons", "collections/ribbons-trims", "collections/storage-boxes", "collections/metal-needles-hooks", "collections/plastic-needles-hooks", "collections/knitting-storage", "collections/patterns", "collections/dmc-patterns", "collections/knitting-books", "collections/stylecraft-on-sale", "collections/hayfield-on-sale", "collections/prym-on-sale", "collections/patterns-on-sale", "collections/hooks-on-sale", "collections/alpaca-yarn", "collections/erika-knight-yarn", "collections/lang-yarn", "collections/loweth-yarn", "collections/hayfield-patterns", "collections/pets-patterns", "collections/crochet-threads", "collections/yellow-yarn", "collections/white-yarn", "collections/purple-yarn", "collections/pink-yarn", "collections/red-yarn", "collections/orange-yarn", "collections/multicoloured-yarn", "collections/grey-yarn", "collections/green-yarn", "collections/cream-yarn", "collections/brown-yarn", "collections/blue-yarn", "collections/black-yarn", "collections/knooking", "collections/go-handmade-products", "collections/craft-factory-on-sale", "collections/wendy-products", "collections/sublime-products", "collections/stylecraft-products", "collections/sirdar-products", "collections/king-cole-products", "collections/hayfield-products", "collections/dmc-products", "collections/robin-products", "collections/rico-products", "collections/peter-pan-products", "collections/loweth-products", "collections/erika-knight-products", "collections/sirdar-on-sale", "collections/hobby-gift-on-sale", "collections/sale-50-percent-off", "collections/sale-40-percent-off", "collections/sale-30-percent-off", "collections/sale-20-percent-off", "collections/sale-10-percent-off", "collections/yarn", "collections/christmas", "collections/stylecraft-yarn", "collections/super-chunky-and-chunky-yarns", "collections/all-accessories", "collections/stylecraft-patterns", "collections/super-chunky-yarn", "collections/dk-yarn", "collections/3-ply-yarn", "collections/4-ply-yarn", "collections/lace-yarn", "collections/crochet", "collections/knitting"]
+   };

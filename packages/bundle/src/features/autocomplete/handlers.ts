@@ -74,7 +74,9 @@ export const registerHandlers = (widget, render) => {
     __root.widgets
       .findByType('search', 'smart-collection')
       .forEach(({ agent }) => agent.reset().set('q', value || ''));
-    node.value = value;
+    __root.widgets
+      .findByType('autocomplete')
+      .forEach(({ node }) => node.value = value);
   };
 
   const handleFormSubmit = e => {
