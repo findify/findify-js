@@ -14,7 +14,7 @@ exports[`ProductCard view renders correctly 1`] = `
       src="https://lorempicsum.net/100/100"
       thumbnail="https://lorempicsum.net/50/50"
     />
-    <React.Fragment>
+    <div>
       <Component
         className="discountSticker"
         config={
@@ -38,7 +38,7 @@ exports[`ProductCard view renders correctly 1`] = `
           }
         }
       />
-    </React.Fragment>
+    </div>
   </div>
   <div
     className="rating"

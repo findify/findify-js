@@ -22,7 +22,7 @@ export const registerHandlers = (widget, render) => {
   const { node, config, agent } = widget;
   const subscribers: any = [];
   let container: any;
-  let findifyElementFocused = false;
+  let findifyElementFocused = true;
   if (node.getAttribute('autocomplete') !== 'off') node.setAttribute('autocomplete', 'off')
 
   /** Track input position and update container styles */
@@ -50,18 +50,14 @@ export const registerHandlers = (widget, render) => {
     const value = e.target.value;
     handleWindowScroll();
     agent.set('q', value || '');
-    if (!value) return render();
     return render('initial');
   };
 
   /** Handle input blur */
-  const handleInputBlur = (e) => {
-    return (
-      !findifyElementFocused &&
-      e.target === node &&
-      __root.emit(Events.autocompleteFocusLost, widget.key)
-    )
-  }
+  const handleInputBlur = (e) =>
+    !findifyElementFocused &&
+    e.target === node &&
+    __root.emit(Events.autocompleteFocusLost, widget.key)
 
   const handleKeydown = ({ key, target }) => {
     return key === 'Enter' && search(target.value)
@@ -95,7 +91,7 @@ export const registerHandlers = (widget, render) => {
     ['focus'],
     (e) => {
       if (!agent.state.get('q')) agent.set('q', e.target.value);
-      !!e.target.value ? render('initial') : render();
+      render('initial');
     },
     node
   ));

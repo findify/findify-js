@@ -16,14 +16,14 @@ const Item = ({ item, index, getItemProps, highlighted, theme }) => (
   </Button>
 );
 
-export default ({ onChange, items, selectedItem, theme }) =>
+export default ({ onChange, items, selectedItem, theme, className }) =>
 <Downshift
-    onChange={onChange}
-    selectedItem={selectedItem || items.get(0)}
-    itemToString={i => i.get('label')}>
+  onChange={onChange}
+  selectedItem={selectedItem || items.get(0)}
+  itemToString={i => i.get('label')}>
   {
     ({ isOpen, selectedItem, getToggleButtonProps, getItemProps, highlightedIndex }) => (
-      <div className={theme.root}>
+      <div className={cx(theme.root, className)}>
         <Button {...getToggleButtonProps()} className={theme.select}>
           <Text primary lowercase>
             { selectedItem.get('label') }

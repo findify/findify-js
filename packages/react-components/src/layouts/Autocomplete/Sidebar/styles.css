@@ -28,19 +28,18 @@
 }
 
 .type-title {
-  margin-top: 0;
-  margin-bottom: 17px;
+  margin: 0;
   color: $color-grey-3;
   font-size: $font-size-small;
   line-height: $font-size-small;
-  padding-top: 25px;
   font-weight: bold;
   text-transform: uppercase;
   font-family: $font-base;
+  padding: 25px 27px 17px 27px;
+
 }
 
 .suggestions-container {
-  padding-left: 30px;
 }
 
 

@@ -77,18 +77,14 @@
   background: #fff;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
-  /*width: calc(356px - 30px);*/
 }
 
 .suggestions-container {
   display: table-cell;
   vertical-align: top;
-  padding: 0 38px;
+  padding: 0;
   background: #fff;
-  /*
-  width: calc(226px - 60px);*/
-  width: 154px;
-  min-width: 154px;
+  min-width: 200px;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
 }
@@ -96,5 +92,18 @@
 .container {
   > *:first-child {
     border-right: 1px solid #e2e2e2;
+  }
+}
+
+@supports(display: flex){
+  .container{
+    display: flex;
+    flex-direction: row;
+  }
+  .suggestions-container, .product-matches-container{
+    display: block;
+  }
+  .product-matches-container{
+    flex: 1
   }
 }

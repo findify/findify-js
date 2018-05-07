@@ -67,7 +67,11 @@ export default class Sidebar extends React.Component {
             <Icon className={theme.searchIcon} name={'Search'} width={24} height={24} />
           </div>
           <div className={theme.inputWrapper}>
-            <input ref={this.getInputRef} onChange={this.handleInputChange} placeholder={'What are you looking for?'} />
+            <input
+              defaultValue={meta.get('q')}
+              ref={this.getInputRef}
+              onChange={this.handleInputChange}
+              placeholder={'What are you looking for?'} />
           </div>
           <div className={theme.suggestionsContainer} display-if={suggestions && suggestions.size > 0}>
             <h4 className={theme.typeTitle}>{config.getIn(['i18n', 'suggestionsTitle'])}</h4>

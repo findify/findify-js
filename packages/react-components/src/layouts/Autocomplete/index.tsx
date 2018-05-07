@@ -16,12 +16,12 @@ const LayoutTypes = {
 }
 
 const renderView = (type, props) => (
-  (type === 'fullscreen' ? createPortal : createElement)(LayoutTypes[type] || Fullscreen, props)
+  (type === 'sidebar' ? createPortal : createElement)(LayoutTypes[type] || Fullscreen, props)
 )
 
 const Autocomplete = connectSuggestions(({ config, ...rest }) => {
   const isMobile = window.innerWidth < config.get('mobileBreakpoint')
-  const viewType: AutocompleteType = isMobile && config.get('mobileViewType', 'fullscreen') || config.get('viewType', 'simple')
+  const viewType: AutocompleteType = isMobile && config.get('mobileViewType', 'sidebar') || config.get('viewType', 'simple')
   
   return renderView(viewType, { ...rest, config, isMobile })
 });

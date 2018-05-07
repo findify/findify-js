@@ -3,19 +3,18 @@ import Drawer from 'components/common/Drawer'
 import Icon from 'components/Icon'
 import SearchSuggestions from 'components/autocomplete/SearchSuggestions'
 import * as emmiter from 'helpers/emmiter';
+
 export default class Sidebar extends React.Component {
   isFocused: boolean;
 
   componentWillUnmount() {
     document.querySelector('body')!.classList.remove(this.props.theme.bodyNoscroll)
     document.removeEventListener('keydown', this.handleEscapeKeypress)
-    document.removeEventListener('focusout', this.handleFocusOut)
   }
 
   componentDidMount() {
     document.querySelector('body')!.classList.add(this.props.theme.bodyNoscroll)
     document.addEventListener('keydown', this.handleEscapeKeypress)
-    document.addEventListener('focusout', this.handleFocusOut, true)
   }
 
   handleEscapeKeypress = (e) => {
@@ -24,23 +23,13 @@ export default class Sidebar extends React.Component {
     }
   }
 
-  handleFocusOut = (e) => {
-    e.stopImmediatePropagation()
-    if (e.relatedTarget === this.input) {
-      // FIXME: this is a very dirty hack, so we need to figure out something
-      setTimeout(() => {
-        this.hide()
-      }, 300)
-      return;
-    }
-  }
-
   hide = () => {
     emmiter.emit('autocompleteFocusLost', this.props.config.get('widgetKey'))
   }
 
-  componentDidUpdate() {
-    this.input && this.input.focus()
+  componentDidUpdate(next) {
+    if (!this.input) return;
+    this.input.focus();
   }
 
   handleInputChange = ({ target: { value }}) => {
@@ -57,13 +46,15 @@ export default class Sidebar extends React.Component {
   }
 
   render() {
-    const { theme, meta, isMobile, suggestions, config, ...rest } = this.props
+    const { theme, meta, isMobile, suggestions, config, ...rest } = this.props;
+    
     return (
       <div className={theme.root} data-findify-autocomplete={true}>
         <div className={theme.backdrop} />
         <div className={theme.header}>
           <form onSubmit={this.handleSubmit}>
             <input
+              defaultValue={meta.get('q')}
               ref={this.getInputRef}
               onChange={this.handleInputChange}
               placeholder='What are you looking for?' />
