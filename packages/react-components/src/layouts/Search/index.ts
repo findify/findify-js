@@ -12,6 +12,12 @@ import MobileSorting from 'components/search/MobileSorting';
 import view from 'layouts/Search/view';
 import styles from 'layouts/Search/styles.css';
 
+
+const transform = {
+  from: { transform: `translate3d(-100%, 0, 0)` },
+  to: { transform: `translate3d(0%, 0, 0)` },
+}
+
 const Search = compose(
   setDisplayName('Search'),
 
@@ -35,8 +41,8 @@ const Search = compose(
     ({ isMobile }) => isMobile,
     compose(
       withProps({ theme: {} }),
-      withDrawer('Filters', MobileFacets, '100%'),
-      withDrawer('Sorting', MobileSorting, '100%'),
+      withDrawer('Filters', MobileFacets, transform),
+      withDrawer('Sorting', MobileSorting, transform),
       withEvents({
         showMobileFacets: ({ showModal }) => () => showModal('Filters'),
         showMobileSort: ({ showModal }) => () => showModal('Sorting'),

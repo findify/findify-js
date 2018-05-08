@@ -19,6 +19,7 @@ class Portal extends Component<any>{
   parent: any;
 
   static displayName = 'Container'
+  state = { component: null }
 
   constructor(props) {
     super(props);
@@ -26,7 +27,6 @@ class Portal extends Component<any>{
 
     this.element = document.createElement('div');
     this.element.className = `findify-container ${widget.config.get('cssSelector')}`;
-    this.component = createFeature(widget);
     this.parent = getParentNode(widget);
   }
 
@@ -34,6 +34,7 @@ class Portal extends Component<any>{
     const { widget } = this.props;
     const renderTo = widget.config.get('renderTo');
     this.parent.appendChild(this.element);
+    createFeature(widget).then(component => this.setState({ component }))
   }
 
   componentWillUnmount() {
@@ -41,7 +42,7 @@ class Portal extends Component<any>{
   }
 
   render() {
-    return createPortal(this.component, this.element)
+    return !!this.state.component && createPortal(this.state.component, this.element) || null
   }
 }
 

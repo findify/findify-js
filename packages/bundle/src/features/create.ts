@@ -29,9 +29,9 @@ class FeatureCreator extends Component<any>{
     });
   }
 
-  invalidate = () => {
+  invalidate = async () => {
     const { widget } = this.props;
-    const updater = require(`./${widget.type}`).default;
+    const updater = await require(`./${widget.type}`).default();
     this.initial = updater(widget, this.callback);
     return this.setState({ component: this.initial });
   }
@@ -57,8 +57,7 @@ class FeatureCreator extends Component<any>{
   }
 }
 
-export const createFeature = (widget) =>
-  createElement(FeatureCreator, {
-    widget,
-    updater: require(`./${widget.type}`).default
-  });
+export const createFeature = async (widget) => {
+  const updater = await require(`./${widget.type}`).default();
+  return createElement(FeatureCreator, { widget, updater })
+};

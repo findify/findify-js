@@ -5,19 +5,17 @@ import SearchSuggestions from 'components/autocomplete/SearchSuggestions'
 import * as events from 'helpers/emmiter';
 
 export default class Sidebar extends React.Component {
-
-  constructor(props) {
-    super(props)
-    this.state = { isOpen: false }
-  }
+  state = { isOpen: false };
+  suggestionsContainer: any;
+  input: any;
+  isFocused: any;
 
   componentWillUnmount() {
-    this.setState({ isOpen: false })
+    this.setState({ isOpen: false });
   }
 
   componentDidMount() {
     this.setState({ isOpen: true })
-
     document.addEventListener('focusout', this.handleFocusOut, true)
   }
 
@@ -26,16 +24,10 @@ export default class Sidebar extends React.Component {
 
     if (e.relatedTarget === this.input) {
       this.isFocused = false;
-      this.setState({ isOpen: false })
-      //__root.emit('autocompleteFocusLost', this.props.config.get('widgetKey'))
+      this.setState({ isOpen: false });
       return;
     }
   }
-
-  handleCloseByUser = () => (
-    this.setState({ isOpen: false })
-
-  )
 
   handleInputChange = ({ target: { value }}) => {
     // update agent
@@ -54,28 +46,45 @@ export default class Sidebar extends React.Component {
     this.input = el
   }
 
+  handleSubmit = () => {
+    (window as any).findify.emit('search', this.props.config.get('widgetKey'))
+  }
+
   render() {
     const { theme, meta, isMobile, suggestions, config, ...rest } = this.props
     return (
-      <Drawer
-        isOpen={this.state.isOpen}
-        width={isMobile ? '90%' : 300}
-        onCloseByUser={this.handleCloseByUser}
-        onExited={this.handleExited}>
+      <Drawer hideModal={this.handleExited}>
         <div className={theme.root} data-findify-autocomplete={true}>
+          <div className={theme.backdrop} />
           <div className={theme.header}>
-            <Icon className={theme.searchIcon} name={'Search'} width={24} height={24} />
+            <form onSubmit={this.handleSubmit}>
+              <input
+                defaultValue={meta.get('q')}
+                ref={this.getInputRef}
+                onChange={this.handleInputChange}
+                placeholder='What are you looking for?' />
+            </form>
+            <div className={theme.icons}>
+              <Icon
+                onClick={this.handleSubmit}
+                className={theme.searchIcon}
+                name={'Search'}
+                width={18}
+                height={18} />
+              <div className={theme.iconDivider}></div>
+              <Icon
+                onClick={this.handleExited}
+                className={theme.xIcon}
+                name={'XMobile'}
+                width={13}
+                height={13} />
+            </div>
           </div>
-          <div className={theme.inputWrapper}>
-            <input
-              defaultValue={meta.get('q')}
-              ref={this.getInputRef}
-              onChange={this.handleInputChange}
-              placeholder={'What are you looking for?'} />
-          </div>
-          <div className={theme.suggestionsContainer} display-if={suggestions && suggestions.size > 0}>
-            <h4 className={theme.typeTitle}>{config.getIn(['i18n', 'suggestionsTitle'])}</h4>
-            <SearchSuggestions className={theme.searchSuggestions} widgetKey={config.get('widgetKey')} {...rest} />
+          <div className={theme.suggestionsWrapper} display-if={suggestions && suggestions.size > 0}>
+            <div className={theme.suggestionsContainer} ref={(el) => {this.suggestionsContainer = el}}>
+              <h4 className={theme.typeTitle}>{config.getIn(['i18n', 'suggestionsTitle'])}</h4>
+              <SearchSuggestions className={theme.searchSuggestions} widgetKey={config.get('widgetKey')} {...rest} />
+            </div>
           </div>
         </div>
       </Drawer>

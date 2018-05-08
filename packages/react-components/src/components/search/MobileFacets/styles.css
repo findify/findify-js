@@ -1,8 +1,7 @@
 .modal{
-  bottom: 0;
-  width: 100%;
+  width: 80vw;
+  height: 100vh;
   background: white;
-
   display: flex;
   flex-direction: column;
 }

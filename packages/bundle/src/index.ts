@@ -33,7 +33,23 @@ if(process.env.NODE_ENV !== 'development') {
   deps.push(loadConfig());
 }
 
-deps.push(import(/* webpackChunkName: "components" */ '@findify/react-components/src'));
+/* Load components */
+import(
+  /* webpackChunkName: "search" */
+  '@findify/react-components/src/layouts/Search'
+)
+import(
+  /* webpackChunkName: "autocomplete" */
+  '@findify/react-components/src/layouts/Autocomplete'
+)
+import(
+  /* webpackChunkName: "zero-results" */
+  '@findify/react-components/src/layouts/ZeroResults'
+)
+import(
+  /* webpackChunkName: "recommendation" */
+  '@findify/react-components/src/layouts/Recommendation'
+)
 
 /** Load polyfill only for specific merchants */
 if (process.env.NODE_ENV !== 'development' && __INCLUDE_POLYFILL__) {

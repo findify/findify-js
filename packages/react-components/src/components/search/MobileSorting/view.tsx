@@ -15,8 +15,8 @@ const Item = withHandlers({
     </Text>
   </Button>
 )
-export default ({ theme, hideModal, config, items, setSorting }) =>
-<div className={theme.root}>
+export default ({ theme, style, hideModal, config, items, setSorting }) =>
+<div className={theme.root} style={style}>
   <div className={theme.header}>
 
     <div className={theme.title}>

@@ -1,41 +1,37 @@
 import Drawer from 'components/common/Drawer'
-import { createFactory } from 'react'
+import { createFactory, Fragment } from 'react'
 import { createPortal } from 'react-dom'
 import { withStateHandlers, defaultProps, compose, setDisplayName } from 'recompose'
 
-const drawer = createFactory(Drawer)
+const drawer = createFactory(Drawer);
 
-export const withDrawer = (modalName, component, width) => BaseComponent => {
-  const componentFactory = createFactory(component);
+const enhanced: any = (modalName) => compose(
+  setDisplayName('withDrawer()'),
+  withStateHandlers(
+    { isOpen: false, state: {} },
+    {
+      showModal: (s, { showModal }) => (name) => {
+        if (modalName === name) return ({ isOpen: true });
+        if (showModal) showModal(name);
+        return s
+      },
+      hideModal: (s, { hideModal }) => name => {
+        if (modalName === name) return ({ isOpen: false });
+        if (hideModal) hideModal(name);
+        return s
+      },
+    }
+  )
+);
+
+export const withDrawer = (modalName, modalComponent, { renderTo, ...options }: any = {}) => BaseComponent => {
+  const componentFactory = createFactory(modalComponent);
   const baseFactory = createFactory(BaseComponent);
-  return compose(
-    setDisplayName('withDrawer()'),
-    defaultProps({ open: false, state: void 0 }),
-    withStateHandlers(
-      ({ isOpen, state }) => ({ isOpen, state }),
-      {
-        showModal: (s, { isOpen, showModal }) => (_name, state) => {
-          if (modalName === _name) return ({ isOpen: true, state })
-          if (showModal) showModal(_name);
-          return s
-        },
-        hideModal: (s, { open, hideModal }) => (_name, state) => {
-          if (modalName === _name) return ({ isOpen: false, state })
-          if (hideModal) hideModal(_name);
-          return s
-        },
-        onCloseByUser: (s, { onCloseByUser }) => (_name) => {
-          if (modalName === _name) return ({ isOpen: false })
-          if (onCloseByUser) onCloseByUser(_name)
-          return s
-        }
-      }
+  return enhanced(modalName)(({ isOpen, ...props }: any) => [
+    baseFactory({ ...props, key: 1 }),
+    isOpen && createPortal(
+      drawer({ ...props, options, name: modalName, children: componentFactory, key: 2 }),
+      renderTo || document.body
     )
-  )(({ state, renderTo, onCloseByUser, ...restProps }) => {
-    const modalComponent = drawer({ ...restProps, onCloseByUser, state, modalName, width, key: 2, children: componentFactory({ ...restProps, state }) })
-    return [
-      baseFactory({ ...restProps, key: 1 }),
-      renderTo ? createPortal(modalComponent, renderTo) : modalComponent
-    ]
-  })
+  ])
 }

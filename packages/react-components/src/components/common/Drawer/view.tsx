@@ -1,85 +1,63 @@
-import React from 'react'
-import { CSSTransition } from 'react-transition-group'
+import React from 'react';
+import { Spring, config } from 'react-spring';
+import cx from 'classnames';
 
-const leftProp = (state, width) => {
-  switch(state) {
-    case 'exiting':
-    case 'exited':
-      return -1 * width;
-    case 'entering':
-    case 'entered':
-      return 0
-  }
-}
-export default class DrawerView extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = { open: this.props.isOpen }
-  }
+export default class DrawerView extends React.Component<any, any> {
+  state = { open: false };
 
-  componentWillReceiveProps(nextProps, nextState) {
-    if (nextProps.isOpen !== this.props.isOpen) this.setState({ open: nextProps.isOpen })
-  }
-
-  componentWillUpdate(_, { open }) {
-    if (open) {
-      document.querySelector('body')!.classList.add(this.props.theme.bodyNoscroll)
-      document.addEventListener('keydown', this.handleEscapeKeypress)
-      return
+  static defaultProps = {
+    options: {
+      from: { transform: `translate3d(-100%, 0, 0)` },
+      to: { transform: `translate3d(0%, 0, 0)` },
     }
-    document.querySelector('body')!.classList.remove(this.props.theme.bodyNoscroll)
+  }
+
+  componentDidMount() {
+    document.querySelector('body')!.classList.add(this.props.theme.bodyNoScroll);
+    document.addEventListener('keydown', this.handleEscapeKeypress);
+    requestAnimationFrame(() => {
+      this.setState({ open: true })
+    })
+  }
+
+  componentWillUnmount() {
+    document.querySelector('body')!.classList.remove(this.props.theme.bodyNoScroll)
     document.removeEventListener('keydown', this.handleEscapeKeypress)
   }
 
-  handleBackdropClick = () => {
-    this.setState({ open: false })
-    this.props.onCloseByUser(this.props.modalName)
+  close = () => {
+    const { hideModal, name } = this.props;
+    this.setState({ open: false }, () => setTimeout(() => hideModal(name), 400));
   }
 
   handleEscapeKeypress = (evt) => {
-    if (evt.key === 'Escape') {
-      this.setState({ open: false })
-      this.props.onCloseByUser(this.props.modalName)
-    }
+    if (evt.key !== 'Escape') return;
+    this.close()
   }
 
   render() {
-    const { modalName, theme, config, calculateWidth, children, width, willEnter, willLeave, ...rest } = this.props
-    const transitionName = {
-      enter: theme.exampleEnter,
-      enterActive: theme.exampleEnterActive,
-      leave: theme.exampleLeave,
-      leaveActive: theme.exampleLeaveActive,
-    }
-    const realWidth = calculateWidth()
+    const { open } = this.state;
+    const { theme, options, children, ...rest } = this.props;
     return (
-      <React.Fragment>
-        <CSSTransition
-          in={this.state.open}
-          timeout={600}
-          classNames={{
-            appear: theme.drawerAppear,
-            enter: theme.drawerEnter,
-            enterActive: theme.drawerEnterActive,
-            enterDone: theme.drawerEnterDone,
-            exit: theme.drawerExit,
-            exitActive: theme.drawerExitActive
-          }}
-          unmountOnExit
-          {...rest}
-        >
-          {state => (
-            <React.Fragment>
-              <div className={theme.backdrop} onClick={this.handleBackdropClick}></div>
-              <div className={theme.contentWrapper} style={{ width: realWidth, left: leftProp(state, realWidth) }}>
-                <div className={theme.content}>
-                  {children}
-                </div>
-              </div>
-            </React.Fragment>
-          )}
-        </CSSTransition>
-      </React.Fragment>
+      <Spring
+        from={{ opacity: 0 }}
+        to={{ ...(open ? options.to : options.from), opacity: open ? 1 : 0  }}
+        config={config[options.easing || 'default']}
+      >
+      {
+        ({ opacity, ...style }) =>
+          <>
+            <div className={theme.backdrop} onClick={this.close} style={{ opacity }} />
+            <div className={cx(theme.content, options.className)} style={style}>
+              {
+                children instanceof Function
+                ? children({ ...rest, hideModal: this.close })
+                : children
+              }
+            </div>
+          </>
+      }
+      </Spring>
     )
   }
 }

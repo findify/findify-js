@@ -1,9 +1,6 @@
 .root{
-  position: fixed;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 100%;
+  width: 80vw;
+  height: 100vh;
   background: white;
 
   display: flex;
