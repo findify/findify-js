@@ -6,7 +6,7 @@ import Button from 'components/Button';
 import Text from 'components/Text';
 import Icon from 'components/Icon';
 
-export default ({ showFacets, theme, facetsVisible, config }) =>
+export default ({ showFacets, theme, facetsVisible, isCollection, config }) =>
 <div className={theme.root}>
   <div className={theme.block}>
     <Button
@@ -18,7 +18,7 @@ export default ({ showFacets, theme, facetsVisible, config }) =>
         { config.getIn(['facets', 'i18n', 'hide'], 'show') }
       </Text>
     </Button>
-    <Query theme={{ root: theme.query }} />
+    <Query display-if={isCollection} theme={{ root: theme.query }} />
     <Breadcrumbs theme={{ root: theme.breadcrumbs }} />
   </div>
   <div className={theme.sorting}>

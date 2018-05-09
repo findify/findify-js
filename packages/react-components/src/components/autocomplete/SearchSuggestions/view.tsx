@@ -7,7 +7,7 @@ export default ({ theme, suggestions, query, selectedSuggestion, widgetKey, getS
     <ul>
       <MapArray
         array={suggestions}
-        key={(item, index) => item.hashCode() + index + selectedSuggestion === index}
+        key={(item, index) => item.hashCode() + index + (selectedSuggestion === index)}
         factory={
           ({ item, index, key }) => (
             <SuggestionItem
@@ -15,7 +15,8 @@ export default ({ theme, suggestions, query, selectedSuggestion, widgetKey, getS
               index={index}
               highlighted={selectedSuggestion === index}
               query={query}
-              {...getSuggestionProps(index, widgetKey || '')} />
+              {...getSuggestionProps(index, widgetKey || '')}
+              {...rest} />
           )
         } />
     </ul>
