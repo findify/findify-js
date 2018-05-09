@@ -2,32 +2,32 @@ export default process.env.NODE_ENV !== 'development'
 ? __CONFIG__
 : {
        // Merchant API KEY
-       "key": "4c220ec3-ef86-4c49-9d86-ce31f5e66fda",
+       "key": "680d373d-06b3-442b-bebc-d35a5b0868b3",
 
        // Show/Hide "Powered by findify badge"
        "poweredByFindify": true,
-   
+
        // Specific platform code
        "platform": {
            "shopify": true,
            // "bigcommerce": true
        },
-   
+
        // Merchant status - will disable features, but send analytics
        "status": "live",
-   
+
        // If window width gte than this number - view will be changed
        "mobileBreakpoint": 767,
-   
+
        // History setup
        "location": {
            // Define search url, autocomplete will redirect to this URL
            "searchUrl": "/pages/search-results",
-   
+
            // Search query prefix eq(?findify_q)
            "prefix": "findify"
        },
-   
+
        // Element:Feature
        "selectors": {
            "input[name='fq']": "autocomplete",
@@ -43,7 +43,7 @@ export default process.env.NODE_ENV !== 'development'
            "#home-findify-rec-3": "recommendations",
            "#product-findify-rec-5": "recommendations"
        },
-   
+
        // Currency setup
        "currency": {
            "code": "GBP"
@@ -54,34 +54,33 @@ export default process.env.NODE_ENV !== 'development'
            // spaceBetweenAmountAndSymbol: false,
            // decimalDigits: 2
        },
-   
+
        // Features configuration will be pulled and marged with the root lvl
        "features": {
            "autocomplete": {
                // Disable listening for closest form submit
                "disableFormSubmit": false,
-   
+
                // Where it should be rended: parent|self|body
                "renderIn": "parent",
-   
+
                // dropdown: to invoke usual dropdown behaviour
                // sidebar: to use sidebar as search component
                // fullscreen: to use fullscreen view for searching
                "viewType": "dropdown",
                "mobileViewType": "sidebar",
-   
                // Order of content
                "viewOrder": ["SearchSuggestions", "ProductMatches"],
-   
+
                // Where to align autocomplete: left|right
                "position": "left",
-   
+
                // Will be added to all requests eq: Agent.defaults(meta)
                "meta": {
                    "item_limit": 4,
                    "suggestion_limit": 10
                },
-   
+
                // Product setup
                "product": {
                    "title": {
@@ -105,31 +104,35 @@ export default process.env.NODE_ENV !== 'development'
                "i18n": {
                    "suggestionsTitle": "Suggestions",
                    "productMatchesTitle": "Product matches",
-                   "tipTitle": "Click here to search",
-                   "viewMore": "View all"
+                   "tipResults": "View all results for query",
+                   "tipTrending": "Sorry, we can't find any suggestions. Press enter to search for",
+                   "viewMore": "View all",
+                   "trendingSearches": "Trending searches",
+                   "trendingProducts": "Trending products"
                },
                "showOverlay": true,
            },
-   
+
            "search": {
                // Fallback recommendation type
                "zeroResultsType": "trending",
-   
+
                // Search results setup
                "view": {
                    "pagination": false,
                    "infinite": true,
                    "stickyFilters": false
                },
-   
+
                // Should scroll to value after new data was received
                "scrollTop": 0,
-   
+               "cssSelector": ".site-header",
+
                // Will be added to all requests eq: Agent.defaults(meta)
                "meta": {
                    "limit": 24
                },
-   
+
                // Product setup
                "product": {
                    "price": {
@@ -176,7 +179,7 @@ export default process.env.NODE_ENV !== 'development'
                        }
                    }
                },
-   
+
                "pagination": {
                    "step": 2,
                    "i18n": {
@@ -184,7 +187,7 @@ export default process.env.NODE_ENV !== 'development'
                        "next": "Next"
                    }
                },
-   
+
                "loadMore": {
                    "lazyLoadCount": 2,
                    "i18n": {
@@ -192,7 +195,7 @@ export default process.env.NODE_ENV !== 'development'
                        "loadPrev": "Load previous"
                    }
                },
-   
+
                "i18n": {
                    "sorryNoResults": "Sorry!",
                    "noResult": "We can't seem to find any products that match your search for \"%s\"",
@@ -200,7 +203,7 @@ export default process.env.NODE_ENV !== 'development'
                    "tryOneOfThese": "Try one of these instead:",
                    "checkOutPopularProducts": "Or check out some of these popular products"
                },
-   
+
                "breadcrumbs": {
                    "i18n": {
                        "showingEmpty": "Showing %s results",
@@ -210,7 +213,7 @@ export default process.env.NODE_ENV !== 'development'
                        "zeroResultsFor": "0 results for"
                    }
                },
-   
+
                // Facets setup
                "facets": {
                    "initiallyClosed": true,

@@ -22,3 +22,14 @@
 .highlighted {
   background: $color-grey-1;
 }
+
+.icon {
+  margin-right: 16px;
+}
+
+.withIcon {
+  padding-right: 3px;
+  padding-left: 3px;
+  display: flex !important;
+  align-items: center;
+}

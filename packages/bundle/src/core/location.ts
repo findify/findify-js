@@ -24,7 +24,9 @@ export const listenHistory = history.listen;
 export const getQuery = () => {
   const str = history.location.search;
   const prefix = __root.config.getIn(['location', 'prefix']);
-  const elements = parse(str, { decoder: decodeURIComponent, ignoreQueryPrefix: true });
+  const elements = parse(str,
+    { decoder: (value) => decodeURIComponent(value.replace(/\+/g, ' ')), ignoreQueryPrefix: true }
+  );
   return Object.keys(elements).reduce((acc, key) => {
     const _key = prefix ? key.replace(`${prefix}_`, '') : key;
     return {
@@ -49,7 +51,7 @@ export const buildQuery = (_query = {}) => {
 }
 
 export const redirectToSearch = (q) => {
-  window.location.href = 
+  window.location.href =
     __root.config.getIn(['location', 'searchUrl']) +
     buildQuery({ q });
 };

@@ -64,8 +64,8 @@ export default async () => {
     agent.on('change:items', (items) => {
       if (!items.isEmpty()) {
         hideFallback(node);
-        if (!config.getIn(['view', 'infinite']) && config.get('scrollTo') !== false) {
-          scrollTo(config.get('cssSelector'), config.get('scrollTo'))
+        if (!config.getIn(['view', 'infinite']) && config.get('scrollTop') !== false) {
+          scrollTo(config.get('cssSelector'), config.get('scrollTop'))
         }
         return render('initial');
       }
