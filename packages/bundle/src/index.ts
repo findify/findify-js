@@ -7,9 +7,9 @@ import loadCss from './helpers/loadCss';
  * */
 if (process.env.NODE_ENV !== 'development' && __MERCHANT_VERSION__) {
   __webpack_require__.p =
-  __ENVIRONMENT__ === 'staging'
-    ? `https://cdn.jsdelivr.net/npm/@findify/bundle@${__MERCHANT_VERSION__}/dist/`
-    : `https://findify-assets-2bveeb6u8ag.netdna-ssl.com/bundle/${__ENVIRONMENT__}/${__MERCHANT_VERSION__}/`;
+  (__ENVIRONMENT__).length === 'production'.length
+  ? `https://cdn.jsdelivr.net/npm/@findify/bundle@${__MERCHANT_VERSION__}/dist/`
+  : `https://findify-assets-2bveeb6u8ag.netdna-ssl.com/bundle/${__ENVIRONMENT__}/${__MERCHANT_VERSION__}/`;
 }
 
 /**

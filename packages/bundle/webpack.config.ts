@@ -30,7 +30,7 @@ const createGlobals = (isDevelopment) => [
   '__ENVIRONMENT__',
   '__CONFIG__'
 ].reduce((acc, name) =>
-  ({ ...acc, [name]: isDevelopment ? 'false' : `${name} || false` }), {}
+  ({ ...acc, [name]: isDevelopment ? 'false' : name }), {}
 )
 
 export default (env: WebpackEnvArgs, { mode }) => {
