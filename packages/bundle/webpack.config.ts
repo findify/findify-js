@@ -72,7 +72,7 @@ export default (env: WebpackEnvArgs, { mode }) => {
             test: /\.css$/,
             chunks: 'all',
             enforce: true
-          }
+          },
         }
       }
     },
