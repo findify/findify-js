@@ -1,12 +1,11 @@
+import 'core-js/fn/array/includes';
 import React from 'react'
 import Branch from 'components/common/Branch'
 import classNames from 'classnames'
-import sizeMe from 'react-sizeme'
+import styles from 'components/common/Image/styles.css';
 
 import {
   compose,
-  pure,
-  lifecycle,
   onlyUpdateForKeys,
   withProps,
   mapProps,
@@ -15,16 +14,16 @@ import {
   setDisplayName
 } from 'recompose';
 
-import styles from 'components/common/Image/styles.css';
 
-const prefetchedImages = {}
+const cache = [];
 
 const prefetchImage = (src: string) =>
   new Promise(resolve => {
+    if (cache.includes(src)) return resolve(src);
     const img = new Image();
     img.addEventListener('load', () => {
-      prefetchedImages[src] = true
-      resolve(src)
+      cache.push(src)
+      resolve(src);
     }, false);
     img.src = src;
   });
@@ -45,13 +44,11 @@ interface ImageProps {
   isFixedRatio: boolean
 }
 
-const sizeMeInstance = sizeMe()
-
 export default compose<ImageProps, ImageProps>(
   setDisplayName('Image'),
   onlyUpdateForKeys(['src', 'thumbnail']),
   withPropsOnChange(['src'], ({ src, size }) => {
-    return { src: prefetchedImages[src] ? src : void 0, original: src, }
+    return { src: cache.includes(src) ? src : void 0, original: src, }
   }),
   withStateHandlers(
     ({ src, original }) => ({ src, stage: src === original ? 2 : 0 }),
@@ -75,7 +72,10 @@ export default compose<ImageProps, ImageProps>(
     }
   ),
   withProps(({ aspectRatio }) => ({
-    isFixedRatio: aspectRatio && typeof aspectRatio === 'number' && !isNaN(aspectRatio) &&isFinite(aspectRatio),
+    isFixedRatio: aspectRatio
+      && typeof aspectRatio === 'number'
+      && !isNaN(aspectRatio)
+      && isFinite(aspectRatio),
   })),
   withProps(({ className, stage, isFixedRatio }) => ({
     className: classNames(
@@ -88,16 +88,7 @@ export default compose<ImageProps, ImageProps>(
         [styles.original]: stage === 2,
       }
     )
-  })),
-  (Component) => ({ size, ...rest }) => {
-    const sizeAware = !size || Object.keys(size).length === 0
-    const newProps = {
-      size,
-      ...rest
-    }
-    if (sizeAware) delete newProps.size;
-    return React.createElement(sizeAware && sizeMeInstance(Component) || Component, newProps)
-  }
+  }))
 )(({ src, className, isFixedRatio, aspectRatio }: ImageProps) =>
   isFixedRatio
   ? <div className={className} style={{
