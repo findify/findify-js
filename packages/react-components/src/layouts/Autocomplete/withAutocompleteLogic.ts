@@ -6,7 +6,7 @@ export default compose(
   setDisplayName('withAutocompleteLogic'),
   connectSuggestions,
   withStateHandlers({ selectedSuggestion: -1, }, {
-    changeSuggestionIndex: ({ selectedSuggestion }, { config, suggestions, getSuggestionProps }) => (evt) => {
+    changeSuggestionIndex: ({ selectedSuggestion }, { config, suggestions, getSuggestionProps }) => (evt) => {      
       const arrowCodes = ['ArrowUp', 'ArrowDown']
       if (evt.key === 'Enter' && selectedSuggestion !== -1) {
         evt.preventDefault()
@@ -36,10 +36,10 @@ export default compose(
       const node: HTMLInputElement = this.props.config.get('node')
       node.removeEventListener('keydown', this.props.changeSuggestionIndex)
     },
-    componentWillUpdate(nextProps) {
-      if (
-        nextProps.meta.get('q') !== this.props.meta.get('q')
-      ) nextProps.setSuggestionIndex(-1)
+    componentWillReceiveProps(nextProps) {
+      if (nextProps.meta.get('q') !== this.props.meta.get('q')) {
+        nextProps.setSuggestionIndex(-1);
+      }
     }
   })
 )

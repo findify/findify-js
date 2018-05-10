@@ -33,7 +33,7 @@ export default ({
   onProductClick,
   config,
   theme,
-  imageWrapperStyle
+  imageAspectRatio
 }: any) => (
   <a
     onClick={onProductClick}
@@ -44,19 +44,14 @@ export default ({
       theme.productCard,
     )}
   >
-    <div className={classNames(styles.imageWrap, theme.imageWrap)} style={imageWrapperStyle}>
-      {(item.getIn(['html', 'image']) && (
-        <div dangerouslySetInnerHTML={{ __html: item.getIn(['html', 'image']) }} />
-      )) || (
-        <Image
-          className={classNames(styles.image, theme.image)}
-          aspectRatio={config.getIn(['product', 'image', 'aspectRatio'])}
-          thumbnail={item.get('thumbnail_url')}
-          src={item.get('image_url') || item.get('thumbnail_url')}
-          alt={item.get('title')}
-          size={imageWrapperStyle}
-        />
-      )}
+    <div className={classNames(theme.imageWrap)}>
+      <Image
+        className={classNames(theme.image)}
+        aspectRatio={config.getIn(['product', 'image', 'aspectRatio'], 1)}
+        thumbnail={item.get('thumbnail_url')}
+        src={item.get('image_url') || item.get('thumbnail_url')}
+        alt={item.get('title')}
+      />
     <div display-if={config.getIn(['product', 'stickers', 'display'])}>
       <DiscountSticker
         display-if={(item.get('discount') && typeof item.get('discount').size !== 'undefined') ? item.get('discount').size > 0 : item.get('discount')}
@@ -68,7 +63,7 @@ export default ({
     <div display-if={config.getIn(['product', 'reviews', 'display'])} className={styles.rating}>
       <Rating value={item.getIn(['reviews', 'average_score'])} count={item.getIn(['reviews', 'count'])} />
     </div>
-    <div className={classNames(styles.content, theme.content)}>
+    <div className={classNames(theme.content)}>
       <Title
         display-if={config.getIn(['product', 'title', 'display'])}
         text={item.get('title')}

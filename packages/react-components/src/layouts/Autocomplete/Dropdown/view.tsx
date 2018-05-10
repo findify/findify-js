@@ -26,24 +26,24 @@ const LayoutColumns = {
   )
 }
 
-const SearchOrZero = ({ suggestions, config, theme, meta, selectedSuggestion, ...rest }) => (
+const SearchOrZero: any = ({ suggestions, config, theme, meta, ...rest }) =>(
   <Branch
     condition={suggestions && suggestions.size > 0}
-    left={() => (
-      <MapArray
-        array={config.get('viewOrder', ["SearchSuggestions", "ProductMatches"])}
-        keyAccessor={item => item}
-        factory={({ item }: ({ item: 'SearchSuggestions' | 'ProductMatches' })) =>
-          React.createElement(
-            LayoutColumns[item],
-            {
-              config,
-              theme,
-              meta,
-              ...(item === 'SearchSuggestions' ? {selectedSuggestion, icon: meta && meta.get('q') === '' ? 'Star' : 'Filters'} : {}),
-              ...rest })
-        } />
-    )} />
+    left={MapArray}
+    keyAccessor={item => item}
+    array={config.get('viewOrder', ["SearchSuggestions", "ProductMatches"])}
+    factory={({ item }: ({ item: 'SearchSuggestions' | 'ProductMatches' })) =>
+      React.createElement(
+        LayoutColumns[item],
+        {
+          ...rest,
+          config,
+          theme,
+          meta,
+        }
+      )
+    }
+  />
 )
 
 export default ({ config, theme, meta, suggestions, ...rest }) => (
@@ -52,7 +52,12 @@ export default ({ config, theme, meta, suggestions, ...rest }) => (
     <div className={theme.root} data-findify-autocomplete={true}>
       <Tip className={theme.tip} title={config.getIn(['i18n', 'tipResults'])} widgetKey={config.get('widgetKey')} />
       <div className={theme.container}>
-        <SearchOrZero theme={theme} meta={meta} config={config} suggestions={suggestions} {...rest} />
+        <SearchOrZero
+          theme={theme}
+          meta={meta}
+          config={config}
+          suggestions={suggestions}
+          {...rest} />
       </div>
     </div>
   </React.Fragment>

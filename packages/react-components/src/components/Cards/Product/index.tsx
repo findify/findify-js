@@ -17,10 +17,7 @@ import withTheme from 'helpers/withTheme';
 const ProductCard: any = compose(
   pure,
   setDisplayName('ProductCard'),
-  withTheme(styles),
-  withProps(({ config }) => ({
-    imageWrapperStyle: config.getIn(['product', 'image', 'size'], Map()).toJS()
-  }))
+  withTheme(styles)
 )(view);
 
 export default ProductCard;

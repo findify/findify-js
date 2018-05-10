@@ -4,6 +4,7 @@
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 999;
 }
 
 .backdrop {
@@ -15,6 +16,12 @@
   background-color: $color-white;
 
   z-index: -1;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) { 
+  .input{
+    font-size: 16px;
+  }
 }
 
 .icons {
@@ -97,8 +104,4 @@
   width: 100%;
   background: $color-white;
   padding-bottom: 40px;
-}
-
-.body-noscroll {
-  overflow: hidden;
 }

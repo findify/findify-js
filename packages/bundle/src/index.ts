@@ -6,6 +6,7 @@ import loadCss from './helpers/loadCss';
  * WARNING: If this file will be changed you need to upload new bundle.js to compilation server
  * */
 if (process.env.NODE_ENV !== 'development' && __MERCHANT_VERSION__) {
+  // HACK: Uglify.js removes strict matches
   __webpack_require__.p =
   (__ENVIRONMENT__).length === 'production'.length
   ? `https://cdn.jsdelivr.net/npm/@findify/bundle@${__MERCHANT_VERSION__}/dist/`
@@ -34,22 +35,7 @@ if(process.env.NODE_ENV !== 'development') {
 }
 
 /* Load components */
-import(
-  /* webpackChunkName: "search" */
-  '@findify/react-components/src/layouts/Search'
-)
-import(
-  /* webpackChunkName: "autocomplete" */
-  '@findify/react-components/src/layouts/Autocomplete'
-)
-import(
-  /* webpackChunkName: "zero-results" */
-  '@findify/react-components/src/layouts/ZeroResults'
-)
-import(
-  /* webpackChunkName: "recommendation" */
-  '@findify/react-components/src/layouts/Recommendation'
-)
+deps.push(import(/* webpackChunkName: "components" */ '@findify/react-components/src'));
 
 /** Load polyfill only for specific merchants */
 if (process.env.NODE_ENV !== 'development' && __INCLUDE_POLYFILL__) {

@@ -36,7 +36,6 @@ export default ({ theme, style, hideModal, config, items, setSorting }) =>
       theme={theme}
       array={items}
       factory={Item}
-      selected={items.find(i => i.get('selected'))}
     />
   </div>
 

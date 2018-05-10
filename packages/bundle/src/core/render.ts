@@ -28,13 +28,13 @@ class Portal extends Component<any>{
     this.element = document.createElement('div');
     this.element.className = `findify-container ${widget.config.get('cssSelector')}`;
     this.parent = getParentNode(widget);
+    this.component = createFeature(widget)
   }
 
   componentDidMount() {
     const { widget } = this.props;
     const renderTo = widget.config.get('renderTo');
     this.parent.appendChild(this.element);
-    createFeature(widget).then(component => this.setState({ component }))
   }
 
   componentWillUnmount() {
@@ -42,7 +42,7 @@ class Portal extends Component<any>{
   }
 
   render() {
-    return !!this.state.component && createPortal(this.state.component, this.element) || null
+    return createPortal(this.component, this.element)
   }
 }
 

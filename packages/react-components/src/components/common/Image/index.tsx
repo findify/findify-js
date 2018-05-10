@@ -47,7 +47,7 @@ interface ImageProps {
 
 const sizeMeInstance = sizeMe()
 
-export default compose(
+export default compose<ImageProps, ImageProps>(
   setDisplayName('Image'),
   onlyUpdateForKeys(['src', 'thumbnail']),
   withPropsOnChange(['src'], ({ src, size }) => {
@@ -98,12 +98,11 @@ export default compose(
     if (sizeAware) delete newProps.size;
     return React.createElement(sizeAware && sizeMeInstance(Component) || Component, newProps)
   }
-)(({ src, aspectRatio, size: { width }, className, isFixedRatio }: ImageProps) =>
-  <div className={className} style={isFixedRatio ? {
-    height: 1 / aspectRatio * width,
-    backgroundImage: `url(${src})`,
-    backgroundSize: 'cover',
-  }: {}}>
-    <img display-if={!isFixedRatio} src={src} />
-  </div>
+)(({ src, className, isFixedRatio, aspectRatio }: ImageProps) =>
+  isFixedRatio
+  ? <div className={className} style={{
+      backgroundImage: `url(${src})`,
+      paddingBottom: `${100 * aspectRatio}%`
+    }} />
+  : <img className={className} src={src} />
 )

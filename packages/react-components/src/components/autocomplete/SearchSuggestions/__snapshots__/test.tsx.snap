@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`SearchSuggestions renders correctly 1`] = `
-<div
+<ul
   className="list"
   display-if={
     Object {
@@ -10,23 +10,20 @@ exports[`SearchSuggestions renders correctly 1`] = `
     }
   }
 >
-  <ul>
-    <Component
-      array={
-        Array [
-          Object {
-            "get": [Function],
-            "hashCode": [Function],
-          },
-          Object {
-            "get": [Function],
-            "hashCode": [Function],
-          },
-        ]
-      }
-      factory={[Function]}
-      key="(item, index) => item.hashCode() + index + (selectedSuggestion === index)"
-    />
-  </ul>
-</div>
+  <Component
+    array={
+      Array [
+        Object {
+          "get": [Function],
+          "hashCode": [Function],
+        },
+        Object {
+          "get": [Function],
+          "hashCode": [Function],
+        },
+      ]
+    }
+    factory={[Function]}
+  />
+</ul>
 `;

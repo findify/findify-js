@@ -73,6 +73,7 @@ export const registerHandlers = (widget, render) => {
     __root.widgets
       .findByType('autocomplete')
       .forEach(({ node }) => node.value = value);
+    render();
   };
 
   const handleFormSubmit = e => {
@@ -90,6 +91,7 @@ export const registerHandlers = (widget, render) => {
   subscribers.push(addEventListeners(
     ['focus'],
     (e) => {
+      findifyElementFocused = true;
       if (!agent.state.get('q')) agent.set('q', e.target.value);
       render('initial');
     },
@@ -158,10 +160,7 @@ export const registerHandlers = (widget, render) => {
 
   /** Unsubscribe from events on instance destroy  */
   const unsubscribe = __root.listen((event, prop, ...args) => {
-    if (event === Events.search && prop === widget.key) {
-      console.log('src', ...args)
-      return search(...args);
-    }
+    if (event === Events.search && prop === widget.key) return search(...args);
     if (event === Events.autocompleteFocusLost && prop === widget.key) {
       render();
     }

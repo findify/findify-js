@@ -14,9 +14,10 @@ export default ({ config, meta, isMobile, isCollection, mobileFacetsOpened, filt
     <DesktopFacets display-if={!isMobile && !filtersOnRight} />
     <div className={theme.content}>
       <Branch
+        isCollection={isCollection}
         condition={isMobile}
-        left={(props) => <MobileActions isCollection={isCollection} {...props}/>}
-        right={(props) => <DesktopActions isCollection={isCollection} {...props} />} />
+        left={MobileActions}
+        right={DesktopActions} />
       <Banner />
       <Branch left={LazyResults} right={StaticResults} condition={config.getIn(['view', 'infinite'])} />
     </div>

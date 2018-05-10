@@ -9,19 +9,23 @@ export default class Sidebar extends React.Component {
   suggestionsContainer: any;
   input: any;
   isFocused: any;
+  mounted = false;
 
   componentWillUnmount() {
     this.setState({ isOpen: false });
+    document.removeEventListener('focusout', this.handleFocusOut);
+    this.mounted = false;
   }
 
   componentDidMount() {
-    this.setState({ isOpen: true })
+    this.setState({ isOpen: true });
+    this.mounted = true;
     document.addEventListener('focusout', this.handleFocusOut, true)
   }
 
   handleFocusOut = (e) => {
     e.stopImmediatePropagation()
-
+    if (!this.mounted) return;
     if (e.relatedTarget === this.input) {
       this.isFocused = false;
       this.setState({ isOpen: false });
@@ -47,7 +51,8 @@ export default class Sidebar extends React.Component {
   }
 
   handleSubmit = () => {
-    (window as any).findify.emit('search', this.props.config.get('widgetKey'))
+    (window as any).findify.emit('search', this.props.config.get('widgetKey'));
+    this.handleExited()
   }
 
   render() {
@@ -60,6 +65,7 @@ export default class Sidebar extends React.Component {
             <form onSubmit={this.handleSubmit}>
               <input
                 defaultValue={meta.get('q')}
+                className={theme.input}
                 ref={this.getInputRef}
                 onChange={this.handleInputChange}
                 placeholder='What are you looking for?' />

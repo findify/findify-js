@@ -66,6 +66,11 @@ $height: 30px;
     border-color: $color-grey-3;
   }
 }
+@media screen and (-webkit-min-device-pixel-ratio:0) { 
+  .input{
+    font-size: 16px;
+  }
+}
 
 .currency{
   $font-size: $font-size-medium;

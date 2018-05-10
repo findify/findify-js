@@ -1,7 +1,6 @@
 import React from 'react';
 
-export default ({ banner, theme, ...rest }) => console.log('>>>', banner) ||
-
+export default ({ banner, theme, ...rest }) =>
 <a
   display-if={banner && !banner.isEmpty()}
   href={banner.getIn(['products', 'targetUrl'])}

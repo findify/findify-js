@@ -4,6 +4,7 @@ import cx from 'classnames';
 
 export default class DrawerView extends React.Component<any, any> {
   state = { open: false };
+  mounted = false;
 
   static defaultProps = {
     options: {
@@ -15,14 +16,16 @@ export default class DrawerView extends React.Component<any, any> {
   componentDidMount() {
     document.querySelector('body')!.classList.add(this.props.theme.bodyNoScroll);
     document.addEventListener('keydown', this.handleEscapeKeypress);
+    this.mounted = true;
     requestAnimationFrame(() => {
-      this.setState({ open: true })
+      if (this.mounted) this.setState({ open: true })
     })
   }
 
   componentWillUnmount() {
     document.querySelector('body')!.classList.remove(this.props.theme.bodyNoScroll)
-    document.removeEventListener('keydown', this.handleEscapeKeypress)
+    document.removeEventListener('keydown', this.handleEscapeKeypress);
+    this.mounted = false;
   }
 
   close = () => {
