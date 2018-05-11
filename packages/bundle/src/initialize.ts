@@ -16,7 +16,7 @@ const isReady = (() => {
   __root.emit = emitter.emit;
   __root.addListeners = emitter.addListeners;
   __root.invalidate = () =>  {
-    for (const key in __webpack_require__.c) { __webpack_require__.c[key] = null }
+    for (const key in __webpack_require__.c) { delete __webpack_require__.c[key] }
     emitter.emit('invalidate');
   };
   return true;
@@ -30,13 +30,13 @@ export default async (
   // We loading config independently from webpack and this promise is always resolved
   const asyncConfig = await import(/* webpackMode: "weak" */'./config');
   const cfg = { ..._config, ...asyncConfig.default };
-   
+
+  // Inject custom components
   if (cfg.components) {
     const extra = Object.keys(cfg.components).reduce(
       (acc, k) => ({ ...acc, [k]: eval(cfg.components[k]) }), {}
     )
     window.findifyJsonp.push([['extra'], extra]);
-    __root.invalidate();
     delete cfg.components;
   }
   

@@ -112,3 +112,8 @@ export const bulkAddWidgets = (selectors = {}) => {
     widgets.attach(key, selectors[key]);
   }
 }
+
+// DY: Legacy
+// TODO: Remove after they will release new version
+(global as any).findifyCreateFeature = (selector, { type, ...config }) =>
+  widgets.attach(selector, type, config);
