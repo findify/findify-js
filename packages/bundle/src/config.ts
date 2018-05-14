@@ -146,7 +146,10 @@ export default process.env.NODE_ENV !== 'development'
                      "display": true,
                    },
                    "i18n": {
-                       "colorsAvailable": "Colours available"
+                       "productVariantsAvailable": "Available in %s variants",
+                   },
+                   "variants": {
+                     "display": true
                    },
                    "image": {
                      "aspectRatio": .75

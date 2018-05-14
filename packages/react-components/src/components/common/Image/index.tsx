@@ -93,7 +93,8 @@ export default compose<ImageProps, ImageProps>(
   isFixedRatio
   ? <div className={className} style={{
       backgroundImage: `url(${src})`,
-      paddingBottom: `${100 * aspectRatio}%`
+      paddingBottom: `${100 * aspectRatio}%`,
+      backgroundPosition: 'center center'
     }} />
   : <img className={className} src={src} />
 )

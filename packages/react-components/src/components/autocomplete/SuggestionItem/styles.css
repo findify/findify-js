@@ -5,7 +5,9 @@
   cursor: pointer;
   border-radius: 2px;
   text-align: left;
-  padding: 10px 27px;
+  padding: 10px 17px;
+  margin-left: 10px;
+  margin-right: 10px;
   &:before {
     content: ' ';
     display: table;
@@ -28,8 +30,13 @@
 }
 
 .withIcon {
+  /*
   padding-right: 3px;
-  padding-left: 3px;
+  padding-left: 3px;*/
   display: flex !important;
   align-items: center;
+}
+
+.trending {
+  font-style: italic;
 }

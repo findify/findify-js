@@ -111,6 +111,7 @@ export class Agent {
     } else {
       this.reset(field);
     }
+    this.fireEvent('set:' + field, changes, Map())
     return this;
   }
 
@@ -118,7 +119,7 @@ export class Agent {
     const handlers = this.handlers.filter(({ key }) => key === event);
     if (!handlers) return;
     for (let index = 0; index < handlers.length; index++) {
-      handlers[index].handler(this.format(changes), this.format(meta)); 
+      handlers[index].handler(this.format(changes), this.format(meta));
     }
   }
 
@@ -132,7 +133,7 @@ export class Agent {
       if (update && (!old || !old.equals(update))) {
         handler(this.format(update), this.format(meta));
       }
-      
+
     }
   }
 

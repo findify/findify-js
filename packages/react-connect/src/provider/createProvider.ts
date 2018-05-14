@@ -42,7 +42,7 @@ export const createProvider = (type, onCreate?: (agent) => void) => {
       const { apiKey, agent, options, defaults, config } = props;
       const analyticsConfig: any = { key: apiKey };
       this.nested = context[$findify];
-    
+
       if (agent && !agent.config.immutable) {
         throw new Error(`
           Agent should be in "immutable" mode, to work with connectors.
@@ -59,7 +59,7 @@ export const createProvider = (type, onCreate?: (agent) => void) => {
         immutable: true,
         ...options
       });
-  
+
       if (this.storeKey) agents[this.storeKey] = this.agent;
       if (onCreate) onCreate(this.agent)
       if (defaults) this.agent.defaults(defaults);
@@ -86,11 +86,16 @@ export const createProvider = (type, onCreate?: (agent) => void) => {
         )
       ) return;
       this.setQuery(next.query);
+      if (next.agent !== this.agent) {
+        this.agent = next.agent
+        this.forceUpdate()
+      }
     }
 
     setQuery(query) {
       for (const key in query) this.agent.set(key, query[key]);
     }
+
     componentDidMount() {
       if (this.props.onChangeQuery) {
         this.agent.on('change:query', this.props.onChangeMeta)
@@ -98,14 +103,14 @@ export const createProvider = (type, onCreate?: (agent) => void) => {
     }
 
     componentWillUnmount() {
-      this.agent.off()
+      if (this.props.onChangeMeta) this.agent.off(this.props.onChangeMeta)
       if (this.storeKey) agents[this.storeKey] = null;
     }
 
     update = (...args) => {
       this.agent.update(...args);
     }
-  
+
     render() {
       return this.props.children;
     }

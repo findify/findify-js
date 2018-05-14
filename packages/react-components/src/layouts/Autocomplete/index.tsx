@@ -19,11 +19,11 @@ const renderView = (type, props) => (
   (type === 'sidebar' ? createPortal : createElement)(LayoutTypes[type] || Fullscreen, props)
 )
 
-const Autocomplete = connectSuggestions(({ config, ...rest }) => {
+const Autocomplete = connectSuggestions(({ config, isTrendingSearches,...rest }) => {
   const isMobile = window.innerWidth < config.get('mobileBreakpoint')
   const viewType: AutocompleteType = isMobile && config.get('mobileViewType', 'sidebar') || config.get('viewType', 'simple')
-  
-  return renderView(viewType, { ...rest, config, isMobile })
+
+  return renderView(viewType, { ...rest, config, isMobile, isTrendingSearches })
 });
 
 export default hot(module)(Autocomplete);

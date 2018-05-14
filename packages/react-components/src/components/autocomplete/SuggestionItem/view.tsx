@@ -10,10 +10,10 @@ function highlightSuggestion(value: string, highlighted: string, theme: any) {
   );
 }
 
-export default ({ item, query, theme, highlighted, onClick, icon, ...rest }) => {
+export default ({ item, query, theme, highlighted, onClick, icon, isTrendingSearches, ...rest }) => {
   const value = item && item.get('value')
   return (
-    <li display-if={value} onClick={onClick} className={classnames(theme.suggestion, { [theme.highlighted]: highlighted, [theme.withIcon]: !!icon  })}>
+    <li display-if={value} onClick={onClick} className={classnames(theme.suggestion, { [theme.highlighted]: highlighted, [theme.withIcon]: !!icon , [theme.trending]: isTrendingSearches })}>
       <Icon
         display-if={icon}
         name={icon}

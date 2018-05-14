@@ -39,7 +39,7 @@ export default async (
     window.findifyJsonp.push([['extra'], extra]);
     delete cfg.components;
   }
-  
+
 
   /* Load Dependencies in closure to support polyfills */
   const { fromJS } = require('immutable');
@@ -54,7 +54,7 @@ export default async (
   __root.analytics = Analytics({ ...cfg.platform, key: cfg.key });
 
   await documentReady;
-  
+
   __root.widgets = createWidgets(__root.config);
 
   await resolveCallback(__root);

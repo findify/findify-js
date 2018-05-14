@@ -35,12 +35,14 @@ export default compose(
 
       onChangeMin: ({ from, to }, { facet }) => e => {
         const val = parseFloat(e.target.value) || from || facet.get('min');
+        if (isNaN(val)) return { from: void 0 };
         const normalizedValue = val > to ? to : val;
         return { from: normalizedValue };
       },
 
       onChangeMax: ({ from, to }, { facet }) => e => {
         const val = parseFloat(e.target.value) || to || facet.get('max');
+        if (isNaN(val)) return { to: void 0 };
         const normalizedValue = val < from ? from : val;
         return { to: normalizedValue };
       },

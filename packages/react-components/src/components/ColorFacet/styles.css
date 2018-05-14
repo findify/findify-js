@@ -13,6 +13,7 @@
   outline: none;
   border-radius: 0;
   position: relative;
+  background: none;
   &.active .ball{
     border: 1px solid $color-grey-2;
   }

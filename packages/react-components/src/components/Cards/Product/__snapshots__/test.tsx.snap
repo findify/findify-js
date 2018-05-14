@@ -47,7 +47,12 @@ exports[`ProductCard view renders correctly 1`] = `
     <Rating />
   </div>
   <div
-    className="content"
+    className="variants"
+  >
+    Available in  variants
+  </div>
+  <div
+    className="content content"
   >
     <Title
       text="Product Title"

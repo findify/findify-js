@@ -29,6 +29,10 @@
   white-space: nowrap;
 }
 
+.trending-title {
+  font-style: italic;
+}
+
 .overlay {
   position: fixed;
   top: 0;

@@ -6,8 +6,10 @@ import Truncate from 'components/common/Truncate'
 import Text from 'components/Text'
 import Rating from 'components/Cards/Product/Rating';
 import Price from 'components/Cards/Product/Price';
+import template from 'helpers/template';
 import { DiscountSticker, OutOfStockSticker  } from 'components/Cards/Product/Stickers';
-import { Map } from 'immutable'
+import { Map, List } from 'immutable'
+
 
 const Title: any = ({ text, config = Map(), ...rest }) => (
   <Text display-if={!!text} className={styles.title} {...rest}>{text}</Text>
@@ -30,13 +32,12 @@ export default ({
   description,
   title,
   price,
-  onProductClick,
   config,
   theme,
   imageAspectRatio
 }: any) => (
   <a
-    onClick={onProductClick}
+    onClick={item.onClick}
     href={item.get('product_url')}
     className={classNames(
       styles.root,
@@ -63,7 +64,10 @@ export default ({
     <div display-if={config.getIn(['product', 'reviews', 'display'])} className={styles.rating}>
       <Rating value={item.getIn(['reviews', 'average_score'])} count={item.getIn(['reviews', 'count'])} />
     </div>
-    <div className={classNames(theme.content)}>
+    <div display-if={config.getIn(['product', 'variants', 'display']) && item.get('variants', List()).size > 1} className={styles.variants}>
+      {template(config.getIn(['product', 'i18n', 'variants'], 'Available in %s variants'))(item.get('variants', List()).size)}
+    </div>
+    <div className={classNames(styles.content, theme.content)}>
       <Title
         display-if={config.getIn(['product', 'title', 'display'])}
         text={item.get('title')}

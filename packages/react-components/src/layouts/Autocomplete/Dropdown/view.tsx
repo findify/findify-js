@@ -10,44 +10,47 @@ import { withDrawer } from 'helpers/withDrawer';
 import cx from 'classnames';
 
 const LayoutColumns = {
-  SearchSuggestions: ({ config, theme, suggestionComponent, ...rest }) => (
+  SearchSuggestions: ({ config, theme, suggestionComponent, isTrendingSearches, ...rest }) => (
     <div className={theme.suggestionsContainer}>
-      <h4 className={cx(theme.typeTitle, theme.suggestionsTitle)}>{config.getIn(['i18n', 'suggestionsTitle'])}</h4>
+      <h4 className={cx(theme.typeTitle, theme.suggestionsTitle, {[theme.trendingTitle]: isTrendingSearches})}>{config.getIn(['i18n', isTrendingSearches ? 'trendingSearches'  : 'suggestionsTitle'])}</h4>
       <SearchSuggestions
         className={theme.searchSuggestions}
-        widgetKey={config.get('widgetKey')} {...rest} />
+        widgetKey={config.get('widgetKey')}
+        isTrendingSearches={isTrendingSearches}
+        {...rest} />
     </div>
   ),
-  ProductMatches: ({ config, theme, ...rest}) => (
+  ProductMatches: ({ config, theme, isTrendingSearches, ...rest}) => (
     <div className={theme.productMatchesContainer}>
-      <h4 className={theme.typeTitle}>{config.getIn(['i18n', 'productMatchesTitle'])}</h4>
+      <h4 className={cx(theme.typeTitle, {[theme.trendingTitle]: isTrendingSearches})}>{config.getIn(['i18n', isTrendingSearches ? 'trendingProducts' : 'productMatchesTitle'])}</h4>
       <ProductMatches className={theme.productMatches} config={config} {...rest} />
     </div>
   )
 }
 
-const SearchOrZero: any = ({ suggestions, config, theme, meta, ...rest }) =>(
+const SearchOrZero = ({ suggestions, config, theme, meta, selectedSuggestion, isTrendingSearches, ...rest }) => (
   <Branch
     condition={suggestions && suggestions.size > 0}
-    left={MapArray}
-    keyAccessor={item => item}
-    array={config.get('viewOrder', ["SearchSuggestions", "ProductMatches"])}
-    factory={({ item }: ({ item: 'SearchSuggestions' | 'ProductMatches' })) =>
-      React.createElement(
-        LayoutColumns[item],
-        {
-          ...rest,
-          config,
-          theme,
-          meta,
-        }
-      )
-    }
-  />
+    left={() => (
+      <MapArray
+        array={config.get('viewOrder', ["SearchSuggestions", "ProductMatches"])}
+        keyAccessor={item => item}
+        factory={({ item }: ({ item: 'SearchSuggestions' | 'ProductMatches' })) =>
+          React.createElement(
+            LayoutColumns[item],
+            {
+              config,
+              theme,
+              isTrendingSearches,
+              meta,
+              ...(item === 'SearchSuggestions' ? {selectedSuggestion, icon: isTrendingSearches ? 'Star' : undefined} : {}),
+              ...rest })
+        } />
+    )} />
 )
 
 export default ({ config, theme, meta, suggestions, ...rest }) => (
-  <React.Fragment display-if={suggestions && suggestions.size > 0 && meta && meta.get('q') && meta.get('q') !== ''}>
+  <React.Fragment display-if={suggestions && suggestions.size > 0}>
     <div className={theme.overlay} display-if={config.get('showOverlay')}></div>
     <div className={theme.root} data-findify-autocomplete={true}>
       <Tip className={theme.tip} title={config.getIn(['i18n', 'tipResults'])} widgetKey={config.get('widgetKey')} />

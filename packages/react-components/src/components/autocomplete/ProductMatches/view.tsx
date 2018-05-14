@@ -23,7 +23,6 @@ export default ({
   items,
   className,
   columnClass,
-  onProductClick,
   config,
   columns,
   limit,
@@ -38,7 +37,7 @@ export default ({
       columnClass={theme.gridColumnClass}
       className={className}
       limit={config.getIn(['meta', 'item_limit'])}
-      factory={(props) => productCardFactory({...props, columnClass, onProductClick, config, theme })}
+      factory={(props) => productCardFactory({...props, columnClass, config, theme })}
       />
     <Button
       display-if={suggestions && suggestions.size > 0 && config.get('showViewMoreButton')}
