@@ -72,8 +72,8 @@ export default process.env.NODE_ENV !== 'development'
                // Order of content
                "viewOrder": ["SearchSuggestions", "ProductMatches"],
 
-               // Where to align autocomplete: left|right
-               "position": "left",
+               // Where to align autocomplete: left|right|undefined
+               "position": undefined,
 
                // Will be added to all requests eq: Agent.defaults(meta)
                "meta": {

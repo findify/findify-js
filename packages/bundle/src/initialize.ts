@@ -36,6 +36,7 @@ export default async (
     const extra = Object.keys(cfg.components).reduce(
       (acc, k) => ({ ...acc, [k]: eval(cfg.components[k]) }), {}
     )
+    __root.invalidate();
     window.findifyJsonp.push([['extra'], extra]);
     delete cfg.components;
   }
