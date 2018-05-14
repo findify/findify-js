@@ -47,7 +47,12 @@ const createConfig = (type, node, key, customs?) => {
 
 const getNodes = selector => [].slice.call(document.querySelectorAll(selector));
 
-const getEntity = (selector, _type?, _config?) => getNodes(selector)
+const getEntity = (selector, _type?, _config?) => 
+(
+  typeof selector === 'string'
+  ? getNodes(selector)
+  : [selector]
+)
 .map(node => {
   let type = getType(_type || node.getAttribute(attrSelector));
   const key = node.getAttribute(keySelector) || ++index;
