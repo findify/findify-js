@@ -31,14 +31,15 @@ const createAgent = (type, config) => {
   });
 }
 
-const createConfig = (type, node, key, customs?) => {
-  const cfg = customs || type === 'recommendation'
+const createConfig = (type, node, key, customs = Map()) => {
+  const cfg = type === 'recommendation'
     && config.getIn(['features', 'recommendations', '#' + node.getAttribute('id')])
     || config.getIn(['features', type]);
 
   return config.withMutations(c =>
       c.delete('features')
       .mergeDeep(cfg)
+      .mergeDeep(customs)
       .set('node', node)
       .set('widgetKey', key)
       .set('cssSelector', `findify-${type} findify-widget-${key}`)

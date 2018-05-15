@@ -18,26 +18,6 @@ exports[`ProductCard view renders correctly 1`] = `
     <div>
       <Component
         className="discountSticker"
-        config={
-          Immutable.Map {
-            "productcard": Immutable.Map {
-              "title": Immutable.Map {
-                "display": true,
-                "lines": 1,
-              },
-              "description": Immutable.Map {
-                "display": true,
-                "lines": 2,
-              },
-              "price": Immutable.Map {
-                "display": true,
-              },
-            },
-            "currency": Immutable.Map {
-              "code": "GBP",
-            },
-          }
-        }
       />
     </div>
   </div>
@@ -52,13 +32,15 @@ exports[`ProductCard view renders correctly 1`] = `
     Available in  variants
   </div>
   <div
-    className="content content"
+    className="content"
   >
     <Title
       text="Product Title"
+      theme={null}
     />
     <Description
       text="A description for item"
+      theme={null}
     />
     <Price
       className="priceWrapper"
