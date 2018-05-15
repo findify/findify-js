@@ -2,7 +2,7 @@ import { createElement } from 'react';
 import { SearchProvider, RecommendationProvider, ContentProvider } from "@findify/react-connect";
 import { Recommendation as RecommendationAgent } from "@findify/agent";
 import { getQuery, setQuery, isSearch, listenHistory } from '../../core/location';
-import { hideFallback, showFallback } from '../../helpers/fallbackNode';
+import { hideFallback, showFallback, hideLoader } from '../../helpers/fallbackNode';
 import { Events } from '../../core/events';
 import { scrollTo } from '../../helpers/scrollTo';
 import { Search, ZeroResults } from '@findify/react-components/src/';
@@ -17,7 +17,10 @@ const createFallbackAgent = (config, node) => new RecommendationAgent({
   user: __root.analytics.user
 })
 .defaults({ ...config.get('meta').toJS(), type: config.get('zeroResultsType') })
-.on('change:items', () => hideFallback(node));
+.on('change:items', () => {
+  hideFallback(node);
+  hideLoader(node);
+});
 
 export default (widget, render) => {
   const { agent, config, node } = widget;
@@ -56,6 +59,7 @@ export default (widget, render) => {
   agent.on('change:items', (items) => {
     if (!items.isEmpty()) {
       hideFallback(node);
+      hideLoader(node);
       if (!config.getIn(['view', 'infinite']) && config.get('scrollTop') !== false) {
         scrollTo(config.get('cssSelector'), config.get('scrollTop'))
       }
