@@ -41,7 +41,7 @@ export const getQuery = () => {
 export const buildQuery = (_query = {}) => {
   const prefix = __root.config.getIn(['location', 'prefix']);
   const query = Object.keys(_query).reduce((acc, key) =>
-    ({ ...acc, [`${prefix}_${key}`]: _query[key] })
+    ({ ...acc, [`${!!prefix ? prefix + '_' : ''}${key}`]: _query[key] })
   , {});
   return stringify(query, {
     encoder: encodeURIComponent,

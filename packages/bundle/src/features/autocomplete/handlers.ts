@@ -38,8 +38,8 @@ export const registerHandlers = (widget, render) => {
     return stylesUpdater(container, {
       width,
       height: 0,
-      // top: _top + height,
-      // FIXME: make left padding work left: _left,
+      top: _top + height,
+      left: _left,
       position: 'absolute',
       'will-change': 'top, left'
     });

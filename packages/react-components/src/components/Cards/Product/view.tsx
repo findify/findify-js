@@ -53,6 +53,7 @@ export default ({
     />
     <div display-if={config.getIn(['product', 'stickers', 'display'])}>
       <DiscountSticker
+        config={config}
         className={theme.discountSticker}
         discount={item.get('discount')}
         display-if={

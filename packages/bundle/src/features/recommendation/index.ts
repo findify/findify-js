@@ -1,7 +1,7 @@
 import { createElement } from 'react';
 import { RecommendationProvider } from "@findify/react-connect";
 import { getQuery, setQuery } from '../../core/location';
-import { hideFallback } from '../../helpers/fallbackNode';
+import { hideFallback, hideLoader } from '../../helpers/fallbackNode';
 import { getPayload } from './payload';
 import { Recommendation } from '@findify/react-components/src/';
 
@@ -14,6 +14,7 @@ export default (widget) => {
   agent.on('change:items', items => {
     if (items.isEmpty()) return __root.widgets.detach(widget);
     hideFallback(node);
+    hideLoader(node);
   })
 
   /** Render */
