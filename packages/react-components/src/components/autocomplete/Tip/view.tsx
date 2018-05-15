@@ -3,8 +3,8 @@ import classnames from 'classnames'
 
 import styles from 'components/autocomplete/Tip/styles.css';
 
-export default ({ suggestions, className, title, theme, getSuggestionProps }) => {
-  const suggestionProps = suggestions && suggestions.size > 0 && getSuggestionProps(0) || { onClick: () => {} }
+export default ({ suggestions, className, title, theme, getSuggestionProps, widgetKey }) => {
+  const suggestionProps = suggestions && suggestions.size > 0 && getSuggestionProps(0, widgetKey) || { onClick: () => {} }
   return (
     <div
       display-if={suggestions && suggestions.size > 0}

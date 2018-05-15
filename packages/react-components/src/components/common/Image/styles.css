@@ -44,6 +44,9 @@
   display: block;
   width: 100%;
   position: relative;
+  background-size: cover;
+  background-position: 50%;
+  background-color: transparent;
 }
 
 .loading {

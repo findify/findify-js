@@ -97,12 +97,31 @@ const createComponent = ({
       this.cachedHandlers = {}
     }
 
+    makeHandlers() {
+      return mapValues(
+        handlers,
+        (createHandler, handlerName) => (...args) => {
+          // const cachedHandler = this.cachedHandlers[handlerName];
+          // if (cachedHandler) return cachedHandler(...args);
+
+          const handler = createHandler({
+            update: this.changeAction,
+            analytics: this.context[$analytics],
+            ...this.state
+          });
+
+          this.cachedHandlers[handlerName] = handler;
+          return handler(...args);
+        }
+      )
+    }
+
     render() {
       return createElement(
         BaseComponent,
         {
           ...this.props,
-          ...this.handlers,
+          ...this.makeHandlers(),
           ...this.state,
           config: this.context[$config],
           update: this.changeAction

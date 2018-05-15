@@ -2,12 +2,12 @@
   color: $color-black;
   font-family: $font-base;
   font-size: $font-size-large;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  padding-top: 5px;
-  padding-bottom: 5px;
   cursor: pointer;
   border-radius: 2px;
+  text-align: left;
+  padding: 10px 17px;
+  margin-left: 10px;
+  margin-right: 10px;
   &:before {
     content: ' ';
     display: table;
@@ -15,7 +15,6 @@
   &:hover {
     background: $color-grey-1;
   }
-
 }
 
 .highlightedText {
@@ -24,4 +23,20 @@
 
 .highlighted {
   background: $color-grey-1;
+}
+
+.icon {
+  margin-right: 16px;
+}
+
+.withIcon {
+  /*
+  padding-right: 3px;
+  padding-left: 3px;*/
+  display: flex !important;
+  align-items: center;
+}
+
+.trending {
+  font-style: italic;
 }

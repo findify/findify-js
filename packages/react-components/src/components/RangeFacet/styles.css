@@ -6,7 +6,7 @@ $height: 30px;
 }
 .item{
   $font-size: $font-size-medium;
-  $padding: 5px 0;
+  $padding: 3px 0;
   width: 100%;
   border: 0;
   background: transparent;
@@ -64,6 +64,11 @@ $height: 30px;
   }
   &:focus{
     border-color: $color-grey-3;
+  }
+}
+@media screen and (-webkit-min-device-pixel-ratio:0) { 
+  .input{
+    font-size: 16px;
   }
 }
 

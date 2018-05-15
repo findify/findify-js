@@ -101,3 +101,12 @@
   right: 4%;
   z-index: 50;
 }
+
+.variants {
+  color: $color-grey-3;
+  font-family: $font-base;
+  font-size: $font-size-large;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+}

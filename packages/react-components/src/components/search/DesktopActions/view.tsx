@@ -2,11 +2,23 @@ import React from 'react';
 import Breadcrumbs from 'components/Breadcrumbs';
 import Query from 'components/search/Query';
 import Sorting from 'components/Sorting';
+import Button from 'components/Button';
+import Text from 'components/Text';
+import Icon from 'components/Icon';
 
-export default ({ showFacets, theme }) =>
+export default ({ showFacets, theme, facetsVisible, isCollection, config }) =>
 <div className={theme.root}>
   <div className={theme.block}>
-    <Query theme={{ root: theme.query }} />
+    <Button
+      display-if={config.get('hidableFacets') && !facetsVisible}
+      className={theme.showFacets}
+      onClick={showFacets}>
+      <Text secondary uppercase>
+        <Icon name='Filters' className={theme.icon} />
+        { config.getIn(['facets', 'i18n', 'hide'], 'show') }
+      </Text>
+    </Button>
+    <Query display-if={isCollection} theme={{ root: theme.query }} />
     <Breadcrumbs theme={{ root: theme.breadcrumbs }} />
   </div>
   <div className={theme.sorting}>

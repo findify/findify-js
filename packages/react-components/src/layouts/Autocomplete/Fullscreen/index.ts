@@ -9,4 +9,4 @@ export default compose(
   setDisplayName('Fullscreen'),
   withTheme(styles),
   withAutocompleteLogic,
-)((props) => console.log('props', props) || React.createElement(view, props))
+)(view)

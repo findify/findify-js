@@ -1,23 +1,23 @@
 :root {
-/* Fonts */
---font-base: 'Karla', sans-serif;
---font-size-huge: 18px;
---font-size-large: 13px;
---font-size-medium: 12px;
---font-size-small: 11px;
---line-height: 1.2;
+  /* Fonts */
+  --font-base: 'Karla', sans-serif;
+  --font-size-huge: 18px;
+  --font-size-large: 13px;
+  --font-size-medium: 12px;
+  --font-size-small: 11px;
+  --line-height: 1.2;
 
-/* Colors */
---color-black: #111111;
---color-white: #ffffff;
+  /* Colors */
+  --color-black: #111111;
+  --color-white: #ffffff;
 
---color-grey-5: #404040;
---color-grey-4: #8D8D8D;
---color-grey-3: #C6C6C6;
---color-grey-2: #E2E2E2;
---color-grey-1: #F3F3F3;
+  --color-grey-5: #404040;
+  --color-grey-4: #8D8D8D;
+  --color-grey-3: #C6C6C6;
+  --color-grey-2: #E2E2E2;
+  --color-grey-1: #F3F3F3;
 
---color-yellow: #E9BE57;
---color-red: #D0284B;
---color-blue: #3C74C5;
+  --color-yellow: #E9BE57;
+  --color-red: #D0284B;
+  --color-blue: #3C74C5;
 }

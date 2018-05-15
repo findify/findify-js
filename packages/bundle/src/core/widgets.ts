@@ -28,18 +28,18 @@ const createAgent = (type, config) => {
     user: __root.analytics.user,
     slot: config.get('slot'),
     immutable: true,
-    debounce: type === 'autocomplete' && 500
   });
 }
 
-const createConfig = (type, node, key, customs?) => {
-  const cfg = customs || type === 'recommendation'
+const createConfig = (type, node, key, customs = Map()) => {
+  const cfg = type === 'recommendation'
     && config.getIn(['features', 'recommendations', '#' + node.getAttribute('id')])
     || config.getIn(['features', type]);
 
   return config.withMutations(c =>
       c.delete('features')
       .mergeDeep(cfg)
+      .mergeDeep(customs)
       .set('node', node)
       .set('widgetKey', key)
       .set('cssSelector', `findify-${type} findify-widget-${key}`)
@@ -48,7 +48,12 @@ const createConfig = (type, node, key, customs?) => {
 
 const getNodes = selector => [].slice.call(document.querySelectorAll(selector));
 
-const getEntity = (selector, _type?, _config?) => getNodes(selector)
+const getEntity = (selector, _type?, _config?) => 
+(
+  typeof selector === 'string'
+  ? getNodes(selector)
+  : [selector]
+)
 .map(node => {
   let type = getType(_type || node.getAttribute(attrSelector));
   const key = node.getAttribute(keySelector) || ++index;
@@ -113,3 +118,8 @@ export const bulkAddWidgets = (selectors = {}) => {
     widgets.attach(key, selectors[key]);
   }
 }
+
+// DY: Legacy
+// TODO: Remove after they will release new version
+(global as any).findifyCreateFeature = (selector, { type, ...config }) =>
+  widgets.attach(selector, type, config);

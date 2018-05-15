@@ -7,11 +7,4 @@ import theme from 'components/common/Drawer/style.css';
 export default compose(
   setDisplayName('Drawer'),
   withTheme(theme),
-  withProps(({ width }) => ({
-    calculateWidth: () => (
-      /\D/.test(width) ?
-      document.body.clientWidth * (width.match(/\d*/) / 100) :
-      width
-    )
-  })),
 )(view)

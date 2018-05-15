@@ -30,7 +30,7 @@ const createGlobals = (isDevelopment) => [
   '__ENVIRONMENT__',
   '__CONFIG__'
 ].reduce((acc, name) =>
-  ({ ...acc, [name]: isDevelopment ? 'false' : `${name} || false` }), {}
+  ({ ...acc, [name]: isDevelopment ? 'false' : `(${name}||false)` }), {}
 )
 
 export default (env: WebpackEnvArgs, { mode }) => {
@@ -72,7 +72,7 @@ export default (env: WebpackEnvArgs, { mode }) => {
             test: /\.css$/,
             chunks: 'all',
             enforce: true
-          }
+          },
         }
       }
     },
@@ -138,6 +138,7 @@ export default (env: WebpackEnvArgs, { mode }) => {
         __PUBLIC_PATH__: JSON.stringify(process.env.PUBLIC_PATH),
         'process.env': {
           BROWSER: true,
+          NODE_ENV: JSON.stringify(mode),
           FINDIFY_ENV: JSON.stringify(process.env.FINDIFY_ENV || 'production')
         },
         __DEBUG__: mode === 'development'

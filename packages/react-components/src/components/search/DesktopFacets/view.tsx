@@ -7,33 +7,30 @@ import Text from 'components/Text';
 import Button from 'components/Button';
 import Icon from 'components/Icon';
 import { classNames } from 'classnames';
+import * as titles from 'components/search/DesktopFacets/Title';
 
 const DefaultContent = ({ theme, children, config }) =>
   <div className={theme.root}>{children}</div>
 
-export default ({ config, facets, theme, onReset, meta }) =>
+export default ({ config, facets, theme, onReset, meta, hideFacets, visible }) =>
 <Branch
+  display-if={!config.get('hidableFacets') || visible}
   theme={theme}
   condition={config.getIn(['view', 'stickyFilters'])}
   left={Sticky}
   right={DefaultContent}>
 
-  <div className={theme.header} display-if={!config.get('showFacetsTitle')}>
-    <Icon name='Filters' className={theme.icon} />
-    <Text primary uppercase className={theme.title}>
-      { config.getIn(['facets', 'i18n', 'filters'], 'Filters') }
-    </Text>
-  
-    <Button
-      display-if={meta.get('filters') && meta.get('filters').size}
-      className={theme.reset}
-      onClick={onReset}>
-      <Text secondary uppercase>
-        { config.getIn(['facets', 'i18n', 'clearAll'], 'Clear all') }
-      </Text>
-    </Button>
-
-  </div>
+  <Branch
+    display-if={!config.get('showFacetsTitle')}
+    meta={meta}
+    config={config}
+    theme={theme}
+    onReset={onReset}
+    onHide={hideFacets}
+    condition={config.get('hidableFacets')}
+    left={titles.hidable}
+    right={titles.default}
+  />
 
   <MapArray
     theme={{ root: theme.facet }}

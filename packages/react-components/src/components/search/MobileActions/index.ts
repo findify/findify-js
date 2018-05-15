@@ -15,7 +15,7 @@ export default compose(
     showSort: ({ emit }) => () => emit('showMobileSort')
   }),
   withPropsOnChange(['selected'], ({ selected, config }) => ({
-    sorting: config.getIn(['sorting', 'i18n', 'options', selected
+    sorting: config.getIn(['sorting', 'i18n', 'options', !!selected
       && [selected.get('field'), selected.get('order')].join('|')
       || 'default'
     ])

@@ -7,12 +7,18 @@ import DesktopFacets from 'components/search/DesktopFacets';
 import MobileActions from 'components/search/MobileActions';
 import DesktopActions from 'components/search/DesktopActions';
 import Branch from 'components/common/Branch';
+import Banner from 'components/Banner';
 
-export default ({ config, meta, isMobile, mobileFacetsOpened, filtersOnRight, theme, items }) =>
+export default ({ config, meta, isMobile, isCollection, mobileFacetsOpened, filtersOnRight, theme, items }) =>
   <div className={theme.root}>
     <DesktopFacets display-if={!isMobile && !filtersOnRight} />
     <div className={theme.content}>
-      <Branch condition={isMobile} left={MobileActions} right={DesktopActions} />
+      <Branch
+        isCollection={isCollection}
+        condition={isMobile}
+        left={MobileActions}
+        right={DesktopActions} />
+      <Banner />
       <Branch left={LazyResults} right={StaticResults} condition={config.getIn(['view', 'infinite'])} />
     </div>
     <DesktopFacets display-if={!isMobile && filtersOnRight} />

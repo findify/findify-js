@@ -1,11 +1,11 @@
 import { createElement } from 'react';
 import { SearchProvider, RecommendationProvider, ContentProvider } from "@findify/react-connect";
 import { Recommendation as RecommendationAgent } from "@findify/agent";
-import { Search, ContentSearch, ZeroResults } from '@findify/react-components/src';
 import { getQuery, setQuery, isSearch, listenHistory } from '../../core/location';
 import { hideFallback, showFallback } from '../../helpers/fallbackNode';
 import { Events } from '../../core/events';
 import { scrollTo } from '../../helpers/scrollTo';
+import { Search, ZeroResults } from '@findify/react-components/src/';
 
 const applyState = (state, agent) => {
   agent.reset();
@@ -35,6 +35,15 @@ export default (widget, render) => {
 
   /** Listen to changes */
   agent.on('change:query', q => setQuery(q.toJS()));
+  agent.on('change:redirect', async (redirect, meta) => {
+    render();
+    await __root.analytics.sendEvent('redirect', {
+      ...redirect.toJS(),
+      rid: meta.get('rid'),
+      suggestion: meta.get('q')
+    });
+    document.location.href = redirect.get('url');
+  });
 
   /** Listen to location back/fwd */
   const stopListenLocation = listenHistory((_, action) => {
@@ -47,8 +56,8 @@ export default (widget, render) => {
   agent.on('change:items', (items) => {
     if (!items.isEmpty()) {
       hideFallback(node);
-      if (!config.getIn(['view', 'infinite']) && config.get('scrollTo') !== false) {
-        scrollTo(config.get('cssSelector'), config.get('scrollTo'))
+      if (!config.getIn(['view', 'infinite']) && config.get('scrollTop') !== false) {
+        scrollTo(config.get('cssSelector'), config.get('scrollTop'))
       }
       return render('initial');
     }

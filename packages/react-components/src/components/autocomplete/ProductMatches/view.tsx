@@ -17,13 +17,12 @@ const getProductKey = product =>
     ? [product.hash || product.id, product.position].join('_')
     : product.hash || product.id; */
 
-const productCardFactory = (props) => React.createElement(ProductCard, props)
+const productCardFactory = React.createFactory(ProductCard)
 
 export default ({
   items,
   className,
   columnClass,
-  onProductClick,
   config,
   columns,
   limit,
@@ -38,10 +37,10 @@ export default ({
       columnClass={theme.gridColumnClass}
       className={className}
       limit={config.getIn(['meta', 'item_limit'])}
-      factory={(props) => productCardFactory({...props, columnClass, onProductClick, config, theme })}
-      keyAccessor={getProductKey} />
+      factory={(props) => productCardFactory({...props, columnClass, config, theme })}
+      />
     <Button
-      display-if={suggestions && suggestions.size > 0}
+      display-if={suggestions && suggestions.size > 0 && config.get('showViewMoreButton')}
       className={theme.viewMoreButton}
       onClick={suggestions && suggestions.size > 0 && getSuggestionProps(0).onClick}>
       {config.getIn(['i18n', 'viewMore'])}

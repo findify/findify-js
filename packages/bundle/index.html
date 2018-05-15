@@ -29,9 +29,9 @@
       </div>
     </div>
     <script>
-      window.findifyCallback = function(findify) {
+      (window.findifyCallbacks = window.findifyCallbacks || []).push(function(findify) {
         console.log(findify)
-      }
+      })
     </script>
     <!-- <div id='attacher'></div> -->
   </body>

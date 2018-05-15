@@ -4,8 +4,6 @@ import { findClosestElement } from '../../helpers/findClosestElement';
 import { isSearch, setQuery, buildQuery, redirectToSearch } from '../../core/location';
 import { Events } from '../../core/events';
 import { debounce } from 'lodash';
-import emitter from '../../core/emitter'
-import { addEventListener } from '../../../../mjs/dist/pure';
 
 const findClosestForm = findClosestElement('form');
 
@@ -24,7 +22,7 @@ export const registerHandlers = (widget, render) => {
   const { node, config, agent } = widget;
   const subscribers: any = [];
   let container: any;
-  let findifyElementFocused = false;
+  let findifyElementFocused = true;
   if (node.getAttribute('autocomplete') !== 'off') node.setAttribute('autocomplete', 'off')
 
   /** Track input position and update container styles */
@@ -40,8 +38,8 @@ export const registerHandlers = (widget, render) => {
     return stylesUpdater(container, {
       width,
       height: 0,
-      top: _top + height,
-      left: _left,
+      // top: _top + height,
+      // FIXME: make left padding work left: _left,
       position: 'absolute',
       'will-change': 'top, left'
     });
@@ -51,18 +49,18 @@ export const registerHandlers = (widget, render) => {
   const handleInputChange = (e) => {
     const value = e.target.value;
     handleWindowScroll();
-    render('initial');
-    agent.set('q', value);
-    return;
+    agent.set('q', value || '');
+    return render('initial');
   };
 
   /** Handle input blur */
-  const handleInputBlur = (e) => {
-    return (
-      !findifyElementFocused &&
-      e.target === node &&
-      emitter.emit(Events.autocompleteFocusLost, widget.key)
-    )
+  const handleInputBlur = (e) =>
+    !findifyElementFocused &&
+    e.target === node &&
+    __root.emit(Events.autocompleteFocusLost, widget.key)
+
+  const handleKeydown = ({ key, target }) => {
+    return key === 'Enter' && search(target.value)
   }
 
   /** search for the value */
@@ -72,12 +70,15 @@ export const registerHandlers = (widget, render) => {
     __root.widgets
       .findByType('search', 'smart-collection')
       .forEach(({ agent }) => agent.reset().set('q', value || ''));
-    node.value = value;
+    __root.widgets
+      .findByType('autocomplete')
+      .forEach(({ node }) => node.value = value);
+    render();
   };
 
   const handleFormSubmit = e => {
-    if (e) e.stopPropagation();
-    search();
+    if (e) e.preventDefault();
+    search(node.value);
   }
 
   /** Listen for input change */
@@ -89,7 +90,11 @@ export const registerHandlers = (widget, render) => {
 
   subscribers.push(addEventListeners(
     ['focus'],
-    () => render('initial'),
+    (e) => {
+      findifyElementFocused = true;
+      if (!agent.state.get('q')) agent.set('q', e.target.value);
+      render('initial');
+    },
     node
   ));
 
@@ -99,6 +104,12 @@ export const registerHandlers = (widget, render) => {
     handleInputBlur,
     document.body
   ));
+
+  subscribers.push(addEventListeners(
+    ['keydown'],
+    handleKeydown,
+    node,
+  ))
 
   /** Listen for form submit */
   if (!config.get('disableFormSubmit')) {
@@ -149,10 +160,7 @@ export const registerHandlers = (widget, render) => {
 
   /** Unsubscribe from events on instance destroy  */
   const unsubscribe = __root.listen((event, prop, ...args) => {
-    if (event === Events.search && prop === widget.key) {
-      console.log('src', ...args)
-      return search(...args);
-    }
+    if (event === Events.search && prop === widget.key) return search(...args);
     if (event === Events.autocompleteFocusLost && prop === widget.key) {
       render();
     }

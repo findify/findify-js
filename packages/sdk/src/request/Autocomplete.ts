@@ -15,7 +15,7 @@ export interface Request {
  */
 export interface Params extends Base {
   /** Autocomplete query */
-  q: string;
+  q?: string;
   /** Limit of search suggestions */
   suggestion_limit?: number;
   /** Limit of product matches */
