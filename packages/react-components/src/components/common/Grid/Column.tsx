@@ -2,7 +2,7 @@ import React from 'react';
 import cx from 'classnames';
 import { setDisplayName } from 'recompose';
 
-const styles = require('./styles.css');
+import styles from 'components/common/Grid/styles.css';
 
 export interface Props {
   className?: string;
