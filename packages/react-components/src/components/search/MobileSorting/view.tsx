@@ -8,7 +8,7 @@ import Button from 'components/Button';
 import Text from 'components/Text';
 import Icon from 'components/Icon';
 import MapArray from 'components/common/MapArray';
-import { ThemedSFCProps, ISortingItem, MJSConfiguration } from '../../../types';
+import { ThemedSFCProps, ISortingItem, MJSConfiguration } from 'types/index';
 import { List } from 'immutable';
 
 
