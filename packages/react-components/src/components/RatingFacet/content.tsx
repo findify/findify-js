@@ -1,3 +1,7 @@
+/**
+ * @module components/RatingFacet
+ */
+
 import React from 'react';
 import Icon from 'components/Icon';
 

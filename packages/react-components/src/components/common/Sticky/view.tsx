@@ -1,3 +1,7 @@
+/**
+ * @module components/common/Sticky
+ */
+
 import React from 'react';
 import cx from 'classnames';
 

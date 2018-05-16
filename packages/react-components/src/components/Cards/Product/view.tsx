@@ -1,3 +1,7 @@
+/**
+ * @module components/Cards/Product
+ */
+
 import React from 'react'
 import classNames from 'classnames'
 import Image from 'components/common/Image'
@@ -6,8 +10,9 @@ import Text from 'components/Text'
 import Rating from 'components/Cards/Product/Rating';
 import Price from 'components/Cards/Product/Price';
 import template from 'helpers/template';
-import { DiscountSticker, OutOfStockSticker } from 'components/Cards/Product/Stickers';
-import { List } from 'immutable';
+import { DiscountSticker, OutOfStockSticker  } from 'components/Cards/Product/Stickers';
+import { Map, List } from 'immutable'
+import { IProduct, MJSConfiguration, ThemedSFCProps } from 'types/index';
 
 const Title: any = ({ text, theme, ...rest }) => (
   <Text display-if={!!text} className={theme.title} {...rest}>{text}</Text>
@@ -23,16 +28,15 @@ const Description: any = ({ text, theme, ...rest }) => (
   </p>
 );
 
-export default ({
+interface IProductCardProps extends ThemedSFCProps {
+  item: IProduct;
+  config: MJSConfiguration;
+}
+
+const ProductCardView: React.SFC<IProductCardProps> = ({
   item,
-  product_url,
-  imageQuery,
-  description,
-  title,
-  price,
   config,
   theme,
-  imageAspectRatio
 }: any) =>
 <a
   onClick={item.onClick}
@@ -63,10 +67,8 @@ export default ({
         } />
     </div>
   </div>
-  <div display-if={config.getIn(['product', 'reviews', 'display'])} className={theme.rating}>
-    <Rating
-      value={item.getIn(['reviews', 'average_score'])}
-      count={item.getIn(['reviews', 'count'])} />
+  <div display-if={config.getIn(['product', 'reviews', 'display']) && !!item.getIn(['reviews', 'count'])} className={theme.rating}>
+    <Rating value={item.getIn(['reviews', 'average_score'])} count={item.getIn(['reviews', 'count'])} />
   </div>
   <div
     className={theme.variants}
@@ -75,7 +77,7 @@ export default ({
       item.get('variants', List()).size > 1
     }
     >
-    { 
+    {
       template(config.getIn(['product', 'i18n', 'variants'], 'Available in %s variants'))(
         item.get('variants', List()).size
       )

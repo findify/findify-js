@@ -1,3 +1,7 @@
+/**
+ * @module components/search/DesktopFacets
+ */
+
 import { compose, setDisplayName, withHandlers, withStateHandlers, branch } from 'recompose';
 import { connectFacets } from '@findify/react-connect';
 import withTheme from 'helpers/withTheme';
@@ -38,5 +42,5 @@ export default compose(
       })
     )
   )
-  
+
 )(view);

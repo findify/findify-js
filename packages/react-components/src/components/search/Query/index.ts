@@ -1,3 +1,7 @@
+/**
+ * @module components/search/Query
+ */
+
 import React from 'react';
 import { connectQuery } from '@findify/react-connect';
 import { compose, setDisplayName, withProps } from 'recompose';

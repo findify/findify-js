@@ -1,3 +1,6 @@
+/**
+ * @module layouts/Search
+ */
 import cx from 'classnames'
 import React from 'react';
 import Grid from 'components/common/Grid';
@@ -8,8 +11,26 @@ import MobileActions from 'components/search/MobileActions';
 import DesktopActions from 'components/search/DesktopActions';
 import Branch from 'components/common/Branch';
 import Banner from 'components/Banner';
+import { List } from 'immutable'
+import { MJSConfiguration, ThemedSFCProps, IProduct } from 'types/index';
 
-export default ({ config, meta, isMobile, isCollection, mobileFacetsOpened, filtersOnRight, theme, items }) =>
+/** Props that search layout accepts */
+interface ISearchProps extends ThemedSFCProps {
+  /** MJS Configuration */
+  config: MJSConfiguration;
+  /** Flag that switches Search to mobile layout */
+  isMobile?: boolean;
+  /** Flag to turn on Smart Collection display mode */
+  isCollection?: boolean;
+  /** Flag to render mobile facets */
+  mobileFacetsOpened?: boolean;
+  /** Flag to show filters on the right side of desktop search */
+  filtersOnRight?: boolean;
+  /** Items list */
+  items: List<IProduct>;
+}
+
+const SearchLayout = ({ config, meta, isMobile, isCollection, mobileFacetsOpened, filtersOnRight, theme, items }) =>
   <div className={theme.root}>
     <DesktopFacets display-if={!isMobile && !filtersOnRight} />
     <div className={theme.content}>
@@ -25,3 +46,4 @@ export default ({ config, meta, isMobile, isCollection, mobileFacetsOpened, filt
   </div>
 
 
+export default SearchLayout;

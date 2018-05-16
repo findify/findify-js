@@ -1,3 +1,7 @@
+/**
+ * @module components/Icon
+ */
+
 import React from 'react';
 import cx from 'classnames';
 import styles from 'components/Icon/styles.css';
@@ -24,6 +28,7 @@ import ArrowRightBig from './icons/Arrow/Right-Big.svg';
 import CheckboxFilled from 'components/Icon/icons/Checkbox/Filled.svg';
 import CheckboxEmpty from 'components/Icon/icons/Checkbox/Empty.svg';
 
+/** Possible icon types */
 const icons = {
   Filters,
   Minus,
@@ -47,18 +52,27 @@ const icons = {
   CheckboxEmpty
 }
 
-export type Props = {
+/** Props that Icon accepts */
+export type IIconProps = {
+  /** Icon name */
   name: keyof typeof icons
+  /** Icon width in pixels */
   width?: number
+  /** Icon height in pixels */
   height?: number
+  /** Custom className */
   className?: string
+  /** Rest of props to pass to underlying elements */
+  [x: string]: any;
 }
 
-export default ({ name, width, height, className, ...rest }: Props) =>
-  React.createElement(icons[name], {
-    width,
-    height,
-    className: cx(styles.root, className),
-    ...rest
-  })
+const Icon = ({ name, width, height, className, ...rest }: IIconProps) =>
+React.createElement(icons[name], {
+  width,
+  height,
+  className: cx(styles.root, className),
+  ...rest
+})
+
+export default Icon;
 

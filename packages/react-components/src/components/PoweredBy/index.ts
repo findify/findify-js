@@ -1,3 +1,7 @@
+/**
+ * @module components/PoweredBy
+ */
+
 import { compose, setDisplayName } from 'recompose';
 import { connectConfig } from '@findify/react-connect';
 import withTheme from 'helpers/withTheme';

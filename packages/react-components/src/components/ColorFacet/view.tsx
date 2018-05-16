@@ -1,13 +1,26 @@
+/**
+ * @module components/ColorFacet
+ */
+
 import React from 'react';
 
 import MapArray from 'components/common/MapArray';
 import Item from 'components/ColorFacet/Item';
+import { ThemedSFCProps, MJSConfiguration, IFacetValue } from 'types/index';
+import { List } from 'immutable';
 
-export default ({
+interface IColorFacetProps extends ThemedSFCProps {
+  /** MJS Configuration */
+  config: MJSConfiguration;
+  /** Facet values to render */
+  items: List<IFacetValue>
+}
+
+const ColorFacetView = ({
   theme,
   items,
   config,
-}) => 
+}: IColorFacetProps) =>
 <div className={theme.root}>
   <div className={theme.container}>
     <MapArray
@@ -18,3 +31,4 @@ export default ({
   </div>
 </div>
 
+export default ColorFacetView;

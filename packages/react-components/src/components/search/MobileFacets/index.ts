@@ -1,3 +1,7 @@
+/**
+ * @module components/search/MobileFacets
+ */
+
 import { compose, withStateHandlers, setDisplayName, withProps, withPropsOnChange, withHandlers } from 'recompose';
 import { connectFacets, connectQuery } from '@findify/react-connect';
 

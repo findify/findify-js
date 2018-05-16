@@ -1,3 +1,8 @@
+/**
+ * @module components/common/Truncate
+ */
+
+
 import React from 'react'
 
 // TODO: implement actual truncation

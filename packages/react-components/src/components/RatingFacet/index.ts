@@ -1,3 +1,7 @@
+/**
+ * @module components/RatingFacet
+ */
+
 import { compose, withStateHandlers, withProps, setDisplayName } from 'recompose';
 import withTheme from 'helpers/withTheme';
 import template from 'helpers/template';

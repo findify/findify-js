@@ -1,3 +1,6 @@
+/**
+ * @module components/Text
+ */
 
 import { compose, setDisplayName, withPropsOnChange } from 'recompose';
 import withTheme from 'helpers/withTheme';

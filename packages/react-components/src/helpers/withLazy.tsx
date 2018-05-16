@@ -10,6 +10,11 @@ const isStateEqual = (prev, next) => ['filters', 'q', 'sort'].every(k =>
 
 const hasRange = (ranges, offset) => !!ranges.find(r => r.valueSeq().includes(offset));
 
+/**
+ * This function is used to calculate products to show in a line of a Slider according to its width
+ * @param width Width of slider
+ * @returns Number of items to show in a Slider
+ */
 const countProductsToShow = width => {
   if (width > 1000) return 2;
   if (width > 800) return 3;
@@ -33,8 +38,17 @@ const addItems = ({ ranges, items }, nextItems, meta) => {
   }
 }
 
-
+/**
+ * withLazy() returns a HOC for wrapping around component you want to include lazy loading to
+ * @returns HOC, accepting a view you want to add lazy loading to
+ */
 export default function withLazy() {
+  /**
+   * withLazy HOC allows you to add LazyLoading functionality to your Search views, for example.
+   * It controls items displaying correct range in the LazyView and automatically requests for more data if needed
+   * @param LazyView view you will be adding lazy loading to
+   * @returns LazyLoading HOC
+   */
   return LazyView => {
     class Lazy extends Component<any, any>{
 
