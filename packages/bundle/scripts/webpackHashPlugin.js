@@ -33,14 +33,12 @@ class HashedPlugin {
 							const id = module.libIdent({
 								context: this.options.context || compiler.options.context
 							});
-
-							if (id.includes('.css')) continue;
 	
+							if (id.includes('.css') && id.includes('css-loader')) continue;
 							if (cache.has(id)) {
 								module.id = cache.get(id);
 								continue;
 							}
-							
 
               const _path = getPath('react-components/src/', id) ||
                             getPath('node_modules/', id) ||

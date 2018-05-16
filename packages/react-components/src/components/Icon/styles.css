@@ -1,4 +1,5 @@
 .root{
   display: inline-block;
+  box-sizing: content-box;
   /*color: inherit; FIXME: for whatever reason styles override each other while ignoring class order completely*/
 }
