@@ -1,3 +1,7 @@
+/**
+ * @module components/Button
+ */
+
 import { compose, setDisplayName } from 'recompose';
 import withTheme from 'helpers/withTheme';
 

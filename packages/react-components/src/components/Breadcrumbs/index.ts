@@ -1,3 +1,7 @@
+/**
+ * @module components/Breadcrumbs
+ */
+
 import { compose, withHandlers, setDisplayName } from 'recompose';
 import { connectBreadcrumbs } from '@findify/react-connect';
 import withEvents from 'helpers/withEvents';

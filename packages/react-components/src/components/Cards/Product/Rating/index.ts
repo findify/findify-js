@@ -1,3 +1,7 @@
+/**
+ * @module components/Cards/Product/Rating
+ */
+
 import { setDisplayName, compose } from 'recompose'
 import withTheme from 'helpers/withTheme'
 import view from 'components/Cards/Product/Rating/view';

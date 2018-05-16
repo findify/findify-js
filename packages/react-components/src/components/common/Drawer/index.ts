@@ -1,4 +1,17 @@
-import { compose, setDisplayName, lifecycle, withPropsOnChange, withHandlers, withStateHandlers, defaultProps, withProps } from 'recompose'
+/**
+ * @module components/common/Drawer
+ */
+
+import {
+  compose,
+  setDisplayName,
+  lifecycle,
+  withPropsOnChange,
+  withHandlers,
+  withStateHandlers,
+  defaultProps,
+  withProps
+} from 'recompose'
 import { spring } from 'react-motion'
 import withTheme from 'helpers/withTheme'
 import view from 'components/common/Drawer/view';

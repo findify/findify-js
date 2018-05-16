@@ -1,3 +1,7 @@
+/**
+ * @module components/search/MobileSorting
+ */
+
 import { compose, setDisplayName, withProps, withHandlers } from "recompose";
 import { connectSort } from '@findify/react-connect';
 import withTheme from 'helpers/withTheme';

@@ -1,3 +1,7 @@
+/**
+ * @module components/search/DesktopActions
+ */
+
 import { compose, withHandlers, setDisplayName, branch, withStateHandlers } from 'recompose';
 import withEvents from 'helpers/withEvents';
 import withTheme from 'helpers/withTheme';

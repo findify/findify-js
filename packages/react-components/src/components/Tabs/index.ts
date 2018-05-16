@@ -1,3 +1,7 @@
+/**
+ * @module components/Tabs
+ */
+
 import React from 'react'
 import { compose, setDisplayName, withProps, withPropsOnChange, withStateHandlers } from 'recompose'
 import withTheme from 'helpers/withTheme'

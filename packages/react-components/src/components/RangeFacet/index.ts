@@ -1,3 +1,7 @@
+/**
+ * @module components/RangeFacet
+ */
+
 import { compose, withStateHandlers, withProps, setDisplayName, withPropsOnChange } from 'recompose';
 import { findCurrency } from 'currency-formatter';
 import withTheme from 'helpers/withTheme';

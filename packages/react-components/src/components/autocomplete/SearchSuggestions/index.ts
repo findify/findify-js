@@ -1,3 +1,7 @@
+/**
+ * @module components/autocomplete/SearchSuggestions
+ */
+
 import { compose, setDisplayName } from 'recompose'
 import { connectSuggestions, connectQuery } from '@findify/react-connect';
 import withTheme from 'helpers/withTheme';

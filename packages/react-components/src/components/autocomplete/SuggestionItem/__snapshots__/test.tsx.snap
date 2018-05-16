@@ -5,7 +5,7 @@ exports[`SuggestionItem renders correctly 1`] = `
   className="suggestion"
   display-if="aisaka taiga"
 >
-  <Component
+  <Icon
     className="icon"
     height={14}
     width={14}

@@ -1,3 +1,7 @@
+/**
+ * @module components/Cards/Product/Stickers
+ */
+
 import cx from 'classnames'
 import React from 'react'
 import Text from 'components/Text'

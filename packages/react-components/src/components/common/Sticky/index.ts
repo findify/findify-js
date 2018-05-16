@@ -1,3 +1,7 @@
+/**
+ * @module components/common/Sticky
+ */
+
 import { Component, createFactory } from 'react';
 import withTheme from 'helpers/withTheme';
 
@@ -7,6 +11,7 @@ import styles from 'components/common/Sticky/styles.css';
 const factory: any = createFactory(view);
 const [ initial, stuck, sticky ] = ['static', 'stuck', 'sticky'];
 
+/** Function used to apply sticky styles */
 const applyStyles = (element, styles?) => {
   element.removeAttribute("style");
   for (const key in styles) {
@@ -14,14 +19,22 @@ const applyStyles = (element, styles?) => {
   }
 };
 
-class Sticky extends Component<{offset?: number, minHeight?: number}>{
+/** Props that Sticky component accepts */
+interface IStickyProps {
+  /** Offset for sticky */
+  offset?: number;
+  /** Minimal height */
+  minHeight?: number;
+}
+
+class Sticky extends Component<IStickyProps>{
   root: any;
   container: any;
   sizer: any;
   state = { state: initial };
 
   static displayName = 'Sticky';
-  
+
   componentDidMount() {
     document.addEventListener('scroll', this.handleScroll, true)
   }
@@ -51,7 +64,7 @@ class Sticky extends Component<{offset?: number, minHeight?: number}>{
     const rootBound = this.root.getBoundingClientRect();
     const containerBound = this.container.getBoundingClientRect();
     const { width } = this.sizer.getBoundingClientRect();
-  
+
     const shouldStick =
       containerBound.height < rootBound.height &&
       (rootBound.top - offset) < 0;
@@ -76,7 +89,7 @@ class Sticky extends Component<{offset?: number, minHeight?: number}>{
 
   render() {
     const { children } = this.props;
-    
+
     return factory({
       ...this.state,
       ...this.props,

@@ -1,10 +1,28 @@
+/**
+ * @module layouts/ZeroResults
+ */
+
 import React from 'react';
 
 import Grid from 'components/common/Grid';
 import ItemsList from 'components/ItemsList';
 import Text from 'components/Text';
 
-export default ({ items, title, theme, config }) => (
+import { List } from 'immutable';
+import { IProduct, ThemedSFCProps, MJSConfiguration } from 'types/index';
+
+
+/** Props that ZeroResults layout accepts */
+interface IZeroResultsProps extends ThemedSFCProps {
+  /** List of trending products */
+  items: List<IProduct>;
+  /** @hidden */
+  title: string;
+  /** MJS configuration */
+  config: MJSConfiguration;
+}
+
+const ZeroResultsLayout = ({ items, title, theme, config }: IZeroResultsProps) => (
   <React.Fragment>
     <div className={theme.sorryRow}>
       <Text className={theme.sorry} primary bold uppercase inlineBlock>
@@ -26,3 +44,5 @@ export default ({ items, title, theme, config }) => (
     <ItemsList wrapper={Grid} columns='3' />
   </React.Fragment>
 )
+
+export default ZeroResultsLayout;

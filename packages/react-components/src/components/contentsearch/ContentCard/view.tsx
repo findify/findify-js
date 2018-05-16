@@ -1,3 +1,7 @@
+/**
+ * @module components/contentsearch/ContentCard
+ */
+
 import React from 'react'
 import classNames from 'classnames'
 import Image from 'components/common/Image'

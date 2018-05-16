@@ -1,4 +1,8 @@
-import React from 'react';
+/**
+ * @module components/RangeFacet
+ */
+
+import React, { InputHTMLAttributes } from 'react';
 import cx from 'classnames';
 import NumberInput from 'react-numeric-input';
 
@@ -6,13 +10,37 @@ import MapArray from 'components/common/MapArray';
 import Item from 'components/RangeFacet/Item';
 import Button from 'components/Button';
 import Text from 'components/Text';
+import { ThemedSFCProps, IFacet, IFacetValue } from 'types/index';
+import { List } from 'immutable';
 
+/** Input default styling parameters */
 const inputDefaults = {
   style: false,
   mobile: false,
 };
 
-export default ({
+interface IRangeFacetProps extends ThemedSFCProps {
+  /** Facet to extract values from */
+  facet: IFacet;
+  /** Facet values */
+  items: List<IFacetValue>;
+  /** MJS Configuration */
+  config: MJSConfiguration;
+  /** Currency symbol */
+  currencySymbol: string;
+  /** Minimum possible price */
+  from: number;
+  /** Maximum possible price */
+  to: number;
+  /** Invoked when maximum range is changed */
+  onChangeMax: (evt?: React.ChangeEvent<any>) => any;
+  /** Invoked when minimum range is changed */
+  onChangeMin: (evt?: React.ChangeEvent<any>) => any;
+  /** Invoked when Go button is pressed */
+  onCommit: () => any
+}
+
+const RangeFacetView: React.SFC<IRangeFacetProps> = ({
   theme,
   facet,
   items,
@@ -26,7 +54,7 @@ export default ({
   onChangeMin,
   onCommit
 
-}) =>
+}: IRangeFacetProps) =>
 <div className={theme.root}>
 
   <MapArray
@@ -77,3 +105,4 @@ export default ({
 
 </div>
 
+export default RangeFacetView;

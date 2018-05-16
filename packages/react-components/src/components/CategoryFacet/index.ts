@@ -1,3 +1,7 @@
+/**
+ * @module components/CategoryFacet
+ */
+
 import { compose, setDisplayName, withStateHandlers, withProps } from 'recompose';
 import withTheme from 'helpers/withTheme';
 
