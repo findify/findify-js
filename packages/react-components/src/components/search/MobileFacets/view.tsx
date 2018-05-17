@@ -12,7 +12,7 @@ import Button from 'components/Button';
 import cx from 'classnames';
 import Icon from 'components/Icon';
 import Text from 'components/Text';
-import { ThemedSFCProps, IFacet, MJSConfiguration, MJSValue } from 'types/index';
+import { ThemedSFCProps, IFacet, MJSConfiguration, MJSValue } from 'types';
 import { List } from 'immutable';
 
 /** Props that FacetContent accepts */

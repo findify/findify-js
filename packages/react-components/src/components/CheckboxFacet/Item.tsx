@@ -7,7 +7,7 @@ import content from 'components/CheckboxFacet/content';
 import Button from 'components/Button';
 import Text from 'components/Text';
 import Icon from 'components/Icon';
-import { IFacetValue, ThemedSFCProps } from 'types/index';
+import { IFacetValue, ThemedSFCProps } from 'types';
 
 /** Props that CheckboxFacet Item accepts */
 interface ICheckboxFacetItemProps extends ThemedSFCProps {

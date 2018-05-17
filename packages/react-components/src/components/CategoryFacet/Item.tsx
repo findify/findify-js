@@ -9,7 +9,7 @@ import content from 'components/CategoryFacet/content';
 import Button from 'components/Button';
 import Text from 'components/Text';
 import Icon from 'components/Icon';
-import { ThemedSFCProps, MJSConfiguration } from 'types/index';
+import { ThemedSFCProps, MJSConfiguration } from 'types';
 
 /** This is a list of props that each individual child of CategoryFacet View accepts */
 interface ICategoryFacetCategoryProps extends ThemedSFCProps {

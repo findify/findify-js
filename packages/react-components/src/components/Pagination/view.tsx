@@ -7,7 +7,7 @@ import cx from 'classnames';
 
 import Button from 'components/Button';
 import Icon from 'components/Icon';
-import { ThemedSFCProps, MJSConfiguration } from 'types/index';
+import { ThemedSFCProps, MJSConfiguration } from 'types';
 
 /** Props that Pagination view accepts */
 interface IPaginationProps extends ThemedSFCProps {

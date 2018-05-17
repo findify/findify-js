@@ -11,7 +11,7 @@ import CheckboxContent from 'components/CheckboxFacet/content';
 import RangeContent from 'components/RangeFacet/content';
 import RatingContent from 'components/RatingFacet/content';
 import ColorContent from 'components/ColorFacet/content';
-import { ThemedSFC, IFacet, MJSConfiguration } from 'types/index';
+import { ThemedSFC, IFacet, MJSConfiguration } from 'types';
 import { List } from 'immutable'
 
 

@@ -7,7 +7,7 @@ import Grid from 'components/common/Grid';
 import Button from 'components/Button';
 import Text from 'components/Text';
 import Icon from 'components/Icon';
-import { MJSConfiguration, ThemedSFCProps } from 'types/index';
+import { MJSConfiguration, ThemedSFCProps } from 'types';
 
 /** Props that MobileActionsView accepts */
 interface IMobileActionsProps extends ThemedSFCProps {

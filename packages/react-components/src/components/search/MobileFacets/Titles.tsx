@@ -7,7 +7,7 @@ import { withHandlers, withPropsOnChange, compose } from 'recompose';
 import MapArray from 'components/common/MapArray';
 import Button from 'components/Button';
 import Text from 'components/Text';
-import { ThemedSFCProps, IFacet, MJSConfiguration } from 'types/index';
+import { ThemedSFCProps, IFacet, MJSConfiguration } from 'types';
 import { List } from 'immutable';
 
 const withClickHandler = withHandlers({

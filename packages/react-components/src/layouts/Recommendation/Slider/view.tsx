@@ -7,7 +7,7 @@ import Slider from 'react-slick';
 
 import ProductCard from 'components/Cards/Product'
 import Text from 'components/Text';
-import { IProduct, ThemedSFCProps, MJSConfiguration } from 'types/index';
+import { IProduct, ThemedSFCProps, MJSConfiguration } from 'types';
 import { List } from 'immutable';
 
 /**

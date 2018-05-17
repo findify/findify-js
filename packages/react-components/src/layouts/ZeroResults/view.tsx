@@ -9,7 +9,7 @@ import ItemsList from 'components/ItemsList';
 import Text from 'components/Text';
 
 import { List } from 'immutable';
-import { IProduct, ThemedSFCProps, MJSConfiguration } from 'types/index';
+import { IProduct, ThemedSFCProps, MJSConfiguration } from 'types';
 
 
 /** Props that ZeroResults layout accepts */

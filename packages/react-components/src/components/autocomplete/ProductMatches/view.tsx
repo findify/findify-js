@@ -10,7 +10,7 @@ import ItemsList from 'components/ItemsList';
 import Button from 'components/Button'
 import styles from 'components/autocomplete/ProductMatches/styles.css';
 import { List, Map } from 'immutable'
-import { ThemedSFCProps, GetSuggestionPropsFunction, IProduct, ISuggestion, WidgetAwareProps, SuggestionsConnectedProps } from 'types/index';
+import { ThemedSFCProps, GetSuggestionPropsFunction, IProduct, ISuggestion, WidgetAwareProps, SuggestionsConnectedProps } from 'types';
 
 /**
  * This function extracts key used for rendering in React from Product

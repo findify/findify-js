@@ -7,7 +7,7 @@ import content from 'components/RangeFacet/content';
 import Button from 'components/Button';
 import Text from 'components/Text';
 import Icon from 'components/Icon';
-import { ThemedSFCProps, IFacet, IFacetValue, MJSConfiguration } from 'types/index';
+import { ThemedSFCProps, IFacet, IFacetValue, MJSConfiguration } from 'types';
 
 interface IRangeFacetItemProps extends ThemedSFCProps {
   /** Facet item to render */

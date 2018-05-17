@@ -6,7 +6,7 @@ import React from 'react';
 import Icon from 'components/Icon';
 import Text from 'components/Text';
 import Dropdown from 'components/Dropdown';
-import { MJSConfiguration, ISortingItem, ThemedSFCProps } from 'types/index';
+import { MJSConfiguration, ISortingItem, ThemedSFCProps } from 'types';
 import { List } from 'immutable';
 
 /** List of props Sorting view accepts */

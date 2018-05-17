@@ -61,7 +61,7 @@ export default (env: WebpackEnvArgs, { mode }) => {
       extensions: ['.ts', '.tsx', '.js', '.css'],
       alias: {
         debug: path.resolve(__dirname, '../../node_modules/debug'),
-        immutable: path.resolve(__dirname, '../../node_modules/immutable')
+        immutable: path.resolve(__dirname, '../../node_modules/immutable'),
       }
     },
     optimization: {

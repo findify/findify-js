@@ -17,7 +17,7 @@ import Trends from 'components/contentsearch/Trends'
 import { Tabs, Tab } from 'components/Tabs';
 import { fromJS } from 'immutable'
 
-import { IProduct, MJSConfiguration, MJSValue, ThemedSFCProps } from 'types/index';
+import { IProduct, MJSConfiguration, MJSValue, ThemedSFCProps } from 'types';
 import { List, Map } from 'immutable';
 
 /** This is a list of props ContentSearchLayout accepts */

@@ -7,7 +7,7 @@ import content from 'components/ColorFacet/content';
 import Icon from 'components/Icon';
 import cx from 'classnames';
 /** Props that ColorFacet Item accepts */
-import { IFacetValue, MJSConfiguration, ThemedSFCProps } from 'types/index';
+import { IFacetValue, MJSConfiguration, ThemedSFCProps } from 'types';
 interface IColorFacetItemProps extends ThemedSFCProps {
   /** Facet to render */
   item: IFacetValue;

@@ -40,7 +40,10 @@ const sendEventCreator = ({ events, key }: Config) => (
 ) => {
   if (useCookie) return storage.memoize(event, request);
 
-  const properties = event === EventName.viewPage
+  const properties = (
+    event === EventName.viewPage &&
+    !~document.cookie.indexOf('findify_optout=1')
+    )
     ? {
         ...request,
         url: window.location.href,

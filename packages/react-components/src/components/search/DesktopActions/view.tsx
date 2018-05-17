@@ -9,7 +9,7 @@ import Sorting from 'components/Sorting';
 import Button from 'components/Button';
 import Text from 'components/Text';
 import Icon from 'components/Icon';
-import { ThemedSFCProps, MJSConfiguration } from 'types/index';
+import { ThemedSFCProps, MJSConfiguration } from 'types';
 
 /** Props that DesktopActions view accepts */
 interface IDesktopActionsProps extends ThemedSFCProps {

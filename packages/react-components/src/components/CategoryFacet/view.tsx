@@ -9,7 +9,7 @@ import MapArray from 'components/common/MapArray';
 import Item from 'components/CategoryFacet/Item';
 import Button from 'components/Button';
 import Text from 'components/Text';
-import { IFacet, ThemedSFCProps, MJSConfiguration } from 'types/index';
+import { IFacet, ThemedSFCProps, MJSConfiguration } from 'types';
 import { List, Map } from 'immutable';
 
 /** CategoryFacet props */

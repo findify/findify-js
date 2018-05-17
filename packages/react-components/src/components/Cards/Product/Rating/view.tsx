@@ -6,7 +6,7 @@ import cx from 'classnames'
 import React from 'react'
 import Icon from 'components/Icon'
 import Text from 'components/Text'
-import { ThemedSFCProps } from 'types/index';
+import { ThemedSFCProps } from 'types';
 
 /** Array of empty stars */
 const itemsArray = Array.from(Array(5).keys())

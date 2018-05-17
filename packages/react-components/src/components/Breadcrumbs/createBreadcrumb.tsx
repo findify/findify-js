@@ -10,7 +10,7 @@ import Button from 'components/Button';
 import Text from 'components/Text';
 import Icon from 'components/Icon';
 
-import { FilterType, ThemedSFC, ThemedSFCProps, IFacet, MJSConfiguration } from 'types/index'
+import { FilterType, ThemedSFC, ThemedSFCProps, IFacet, MJSConfiguration } from 'types'
 
 /** Filter mapping type */
 type FilterMapping = {[x in FilterType]: React.SFC<any>}

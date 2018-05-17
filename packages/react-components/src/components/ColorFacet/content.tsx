@@ -4,7 +4,7 @@
 
 import React from 'react';
 // import color from 'tinycolor2';
-import { IFacetValue, MJSConfiguration } from 'types/index';
+import { IFacetValue, MJSConfiguration } from 'types';
 
 /**
  * Used to retrieve CSS styles for each facet

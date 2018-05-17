@@ -12,7 +12,7 @@ import VirtualizedList from 'components/common/VirtualizedList';
 import Text from 'components/Text';
 import Icon from 'components/Icon';
 
-import { IFacetValue, ThemedSFCProps, MJSConfiguration } from 'types/index';
+import { IFacetValue, ThemedSFCProps, MJSConfiguration } from 'types';
 import { List } from 'immutable'
 
 /** Props that CheckboxFacet accepts */

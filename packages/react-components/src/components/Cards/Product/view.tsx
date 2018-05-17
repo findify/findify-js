@@ -12,7 +12,7 @@ import Price from 'components/Cards/Product/Price';
 import template from 'helpers/template';
 import { DiscountSticker, OutOfStockSticker  } from 'components/Cards/Product/Stickers';
 import { Map, List } from 'immutable'
-import { IProduct, MJSConfiguration, ThemedSFCProps } from 'types/index';
+import { IProduct, MJSConfiguration, ThemedSFCProps } from 'types';
 
 const Title: any = ({ text, theme, ...rest }) => (
   <Text display-if={!!text} className={theme.title} {...rest}>{text}</Text>

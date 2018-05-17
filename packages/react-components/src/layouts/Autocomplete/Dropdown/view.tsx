@@ -12,7 +12,7 @@ import Branch from 'components/common/Branch'
 import { connectSuggestions, connectItems } from '@findify/react-connect';
 import { withDrawer } from 'helpers/withDrawer';
 import cx from 'classnames';
-import { ThemedSFCProps, MJSConfiguration, ISuggestion, MJSValue } from 'types/index';
+import { ThemedSFCProps, MJSConfiguration, ISuggestion, MJSValue } from 'types';
 import { List } from 'immutable';
 
 interface IAutocompletePanel extends ThemedSFCProps {
@@ -106,8 +106,10 @@ const AutocompleteDropdownView: React.SFC<IAutocompleteDropdownProps> = ({
   theme,
   meta,
   suggestions,
+  position,
+  innerRef,
   ...rest
-}: IAutocompleteDropdownProps) => (
+}: IAutocompleteDropdownProps) =>
 <div display-if={suggestions && suggestions.size > 0} className={theme.wrapper}>
   <div className={theme.overlay} display-if={config.get('showOverlay')}></div>
   <div

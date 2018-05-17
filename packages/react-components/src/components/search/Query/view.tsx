@@ -6,7 +6,7 @@ import React from 'react';
 import escape from 'lodash/escape';
 import template from 'helpers/template';
 import Text from 'components/Text';
-import { IQuery, MJSConfiguration, MJSValue, ThemedSFCProps } from 'types/index';
+import { IQuery, MJSConfiguration, MJSValue, ThemedSFCProps } from 'types';
 import { Map } from 'immutable'
 
 /** Props that getContent method uses to build query text at the top of Search page */

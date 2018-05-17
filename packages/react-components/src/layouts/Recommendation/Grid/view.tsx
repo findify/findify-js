@@ -7,7 +7,7 @@ import React from 'react';
 import Grid from 'components/common/Grid';
 import ItemsList from 'components/ItemsList';
 import Text from 'components/Text';
-import { IProduct, MJSConfiguration, ThemedSFCProps } from 'types/index';
+import { IProduct, MJSConfiguration, ThemedSFCProps } from 'types';
 import { List } from 'immutable';
 
 /** This is a list of props Grid layout for Recommendations accepts */

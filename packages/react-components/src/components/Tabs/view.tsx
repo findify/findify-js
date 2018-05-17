@@ -7,7 +7,7 @@ import { withHandlers, withPropsOnChange, compose } from 'recompose';
 import cx from 'classnames';
 import Dropdown from 'components/Dropdown';
 import { fromJS } from 'immutable';
-import { ThemedSFCProps } from 'types/index';
+import { ThemedSFCProps } from 'types';
 
 interface ITabsProps extends ThemedSFCProps {
   /** Currently selected tab. Keep it empty if you want to use Tabs in self-controlled mode */

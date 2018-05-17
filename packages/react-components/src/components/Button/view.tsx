@@ -5,7 +5,7 @@
 import React from 'react';
 import { compose, withHandlers } from 'recompose';
 import cx from 'classnames';
-import { ClassnamedProps, ThemedSFCProps } from 'types/index';
+import { ClassnamedProps, ThemedSFCProps } from 'types';
 
 /** Props that Button accepts */
 interface IButtonProps extends ThemedSFCProps, ClassnamedProps {

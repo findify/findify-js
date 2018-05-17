@@ -7,7 +7,7 @@ import React from 'react'
 import { List } from 'immutable'
 import Text from 'components/Text'
 import { getPrice } from 'helpers/getPrice'
-import { ClassnamedProps, ThemedSFCProps } from 'types/index';
+import { ClassnamedProps, ThemedSFCProps } from 'types';
 
 /** List of props that Price component accepts */
 interface IPriceProps extends ThemedSFCProps, ClassnamedProps {

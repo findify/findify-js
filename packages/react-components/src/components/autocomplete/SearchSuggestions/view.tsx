@@ -5,7 +5,7 @@
 import React from 'react'
 import MapArray from 'components/common/MapArray';
 import SuggestionItem from 'components/autocomplete/SuggestionItem';
-import { ThemedSFCProps, WidgetAwareProps, SuggestionsConnectedProps, ISuggestion, IQuery } from 'types/index';
+import { ThemedSFCProps, WidgetAwareProps, SuggestionsConnectedProps, ISuggestion, IQuery } from 'types';
 import { List } from 'immutable'
 
 /** Props that SearchSuggestionsView accept */

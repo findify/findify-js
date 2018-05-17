@@ -6,7 +6,7 @@ import React from 'react';
 
 import MapArray from 'components/common/MapArray';
 import Item from 'components/ColorFacet/Item';
-import { ThemedSFCProps, MJSConfiguration, IFacetValue } from 'types/index';
+import { ThemedSFCProps, MJSConfiguration, IFacetValue } from 'types';
 import { List } from 'immutable';
 
 interface IColorFacetProps extends ThemedSFCProps {

@@ -3,7 +3,7 @@
  */
 
 import React from 'react';
-import { ThemedSFCProps, IBanner } from 'types/index';
+import { ThemedSFCProps, IBanner } from 'types';
 
 /** Props that Banner component accepts */
 interface IBannerProps extends ThemedSFCProps {

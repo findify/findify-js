@@ -9,7 +9,7 @@ import MapArray from 'components/common/MapArray';
 import Icon from 'components/Icon';
 import Button from 'components/Button';
 import Text from 'components/Text';
-import { MJSValue, ThemedSFCProps, ClassnamedProps } from 'types/index';
+import { MJSValue, ThemedSFCProps, ClassnamedProps } from 'types';
 import { List, Map } from 'immutable'
 
 /** Props that Dropdown Item accepts */

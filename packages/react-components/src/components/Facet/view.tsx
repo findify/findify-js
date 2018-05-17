@@ -7,7 +7,7 @@ import Button from 'components/Button';
 import Text from 'components/Text';
 import Icon from 'components/Icon';
 import Component from 'components/Facet/Component';
-import { ThemedSFCProps, IFacet, MJSConfiguration } from 'types/index';
+import { ThemedSFCProps, IFacet, MJSConfiguration } from 'types';
 
 /** Props that Facet view accepts */
 interface IFacetProps extends ThemedSFCProps {

@@ -7,7 +7,7 @@ import cx from 'classnames';
 
 import MapArray from 'components/common/MapArray';
 import Item from 'components/RatingFacet/Item';
-import { IFacet, IFacetValue } from 'types/index';
+import { IFacet, IFacetValue } from 'types';
 import { List } from 'immutable';
 
 /** Props that RatingFacet view accepts */

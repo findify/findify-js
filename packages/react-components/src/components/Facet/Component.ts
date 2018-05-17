@@ -8,7 +8,7 @@ import RangeFacet from 'components/RangeFacet';
 import RatingFacet from 'components/RatingFacet';
 import ColorFacet from 'components/ColorFacet';
 import CategoryFacet from 'components/CategoryFacet';
-import { FilterType } from 'types/index';
+import { FilterType } from 'types';
 
 /**
  * Function, that takes one of filter types and returns facet component for it

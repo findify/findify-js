@@ -7,7 +7,7 @@ import classnames from 'classnames'
 
 import styles from 'components/autocomplete/Tip/styles.css';
 import { List } from 'immutable'
-import { ThemedSFCProps, ClassnamedProps, WidgetAwareProps, SuggestionsConnectedProps } from 'types/index';
+import { ThemedSFCProps, ClassnamedProps, WidgetAwareProps, SuggestionsConnectedProps } from 'types';
 
 /** List of props that Tip accepts */
 interface ITipProps extends ThemedSFCProps, ClassnamedProps, WidgetAwareProps, SuggestionsConnectedProps {

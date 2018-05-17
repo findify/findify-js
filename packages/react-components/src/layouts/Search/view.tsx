@@ -12,7 +12,7 @@ import DesktopActions from 'components/search/DesktopActions';
 import Branch from 'components/common/Branch';
 import Banner from 'components/Banner';
 import { List } from 'immutable'
-import { MJSConfiguration, ThemedSFCProps, IProduct } from 'types/index';
+import { MJSConfiguration, ThemedSFCProps, IProduct } from 'types';
 
 /** Props that search layout accepts */
 interface ISearchProps extends ThemedSFCProps {

@@ -5,7 +5,7 @@
 import React from 'react';
 import { Spring, config } from 'react-spring';
 import cx from 'classnames';
-import { ThemedSFCProps } from 'types/index';
+import { ThemedSFCProps } from 'types';
 
 /** This is a state definition for DrawerView */
 interface IDrawerViewState {

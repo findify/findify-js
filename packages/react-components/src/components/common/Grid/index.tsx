@@ -8,7 +8,7 @@ import cx from 'classnames';
 import Column from 'components/common/Grid/Column';
 
 import styles from 'components/common/Grid/styles.css';
-import { ThemedSFCProps } from 'types/index';
+import { ThemedSFCProps } from 'types';
 import { IGridColumnProps } from './Column';
 
 

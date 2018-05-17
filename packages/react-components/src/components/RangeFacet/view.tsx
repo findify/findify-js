@@ -10,7 +10,7 @@ import MapArray from 'components/common/MapArray';
 import Item from 'components/RangeFacet/Item';
 import Button from 'components/Button';
 import Text from 'components/Text';
-import { ThemedSFCProps, IFacet, IFacetValue } from 'types/index';
+import { ThemedSFCProps, IFacet, IFacetValue } from 'types';
 import { List } from 'immutable';
 
 /** Input default styling parameters */

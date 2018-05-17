@@ -7,7 +7,7 @@ import ItemsList from 'components/ItemsList';
 import Grid from 'components/common/Grid';
 import PoweredBy from 'components/PoweredBy';
 import Pagination from 'components/Pagination';
-import { ThemedSFCProps, MJSConfiguration } from 'types/index';
+import { ThemedSFCProps, MJSConfiguration } from 'types';
 
 /** Props that StaticResults accepts */
 interface IStaticResultsProps extends ThemedSFCProps {

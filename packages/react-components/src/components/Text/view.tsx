@@ -4,7 +4,7 @@
 
 import { createElement, Component } from 'react';
 import cx from 'classnames';
-import { ThemedSFCProps, ClassnamedProps } from 'types/index';
+import { ThemedSFCProps, ClassnamedProps } from 'types';
 
 /** Props that Text component accepts */
 interface ITextProps extends ThemedSFCProps, ClassnamedProps {

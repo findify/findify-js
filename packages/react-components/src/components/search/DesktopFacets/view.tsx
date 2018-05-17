@@ -12,7 +12,7 @@ import Button from 'components/Button';
 import Icon from 'components/Icon';
 import { classNames } from 'classnames';
 import * as titles from 'components/search/DesktopFacets/Title';
-import { MJSConfiguration, ThemedSFCProps, IFacet, MJSValue } from 'types/index';
+import { MJSConfiguration, ThemedSFCProps, IFacet, MJSValue } from 'types';
 import { List, Map } from 'immutable';
 
 const DefaultContent = ({ theme, children, config }) =>
