@@ -12,7 +12,7 @@ import Branch from 'components/common/Branch'
 import { connectSuggestions, connectItems } from '@findify/react-connect';
 import { withDrawer } from 'helpers/withDrawer';
 import cx from 'classnames';
-import { ThemedSFCProps, MJSConfiguration, ISuggestion, MJSValue } from '../../../types';
+import { ThemedSFCProps, MJSConfiguration, ISuggestion, MJSValue } from 'types/index';
 import { List } from 'immutable';
 
 interface IAutocompletePanel extends ThemedSFCProps {

@@ -6,7 +6,7 @@ import React from 'react';
 import Text from 'components/Text';
 import Icon from 'components/Icon';
 import Button from 'components/Button';
-import { ThemedSFCProps, MJSConfiguration, MJSValue } from '../../../types';
+import { ThemedSFCProps, MJSConfiguration, MJSValue } from 'types/index';
 import { Map, List } from 'immutable';
 
 /** Props that hidable facet titles accept */
