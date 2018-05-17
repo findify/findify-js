@@ -1,3 +1,7 @@
+/**
+ * @module layouts/ContentSearch
+ */
+
 import cx from 'classnames'
 import React from 'react';
 import { sample } from 'lodash'
@@ -13,8 +17,32 @@ import Trends from 'components/contentsearch/Trends'
 import { Tabs, Tab } from 'components/Tabs';
 import { fromJS } from 'immutable'
 
+import { IProduct, MJSConfiguration, MJSValue, ThemedSFCProps } from 'types';
+import { List, Map } from 'immutable';
 
-export default ({ config, meta, isMobile, mobileFacetsOpened, filtersOnRight, theme }) => (
+/** This is a list of props ContentSearchLayout accepts */
+interface IContentSearchProps extends ThemedSFCProps {
+  /** MJS configuration */
+  config: MJSConfiguration;
+  /** MJS Request meta-information, like query, offset, limits */
+  meta: Map<string, MJSValue>;
+  /** Flag that tells ContentSearchView to render in mobile mode */
+  isMobile?: boolean;
+  /** Flag to tell that mobile facets should be rendered */
+  mobileFacetsOpened?: boolean;
+  /** Flag to pull filters to the right on desktop */
+  filtersOnRight?: boolean;
+}
+
+
+const ContentSearchLayout = ({
+  config,
+  meta,
+  isMobile,
+  mobileFacetsOpened,
+  filtersOnRight,
+  theme
+}: IContentSearchProps) => (
   <Tabs>
     <Tab label='All content' disabled>
       <h1>Content Search is coming soon...</h1>
@@ -40,4 +68,4 @@ export default ({ config, meta, isMobile, mobileFacetsOpened, filtersOnRight, th
   </Tabs>
 )
 
-
+export default ContentSearchLayout;

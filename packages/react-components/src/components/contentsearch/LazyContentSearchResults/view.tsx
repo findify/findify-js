@@ -1,3 +1,7 @@
+/**
+ * @module components/contentsearch/LazyContentSearchResults
+ */
+
 import React from 'react';
 import MapArray from 'components/common/MapArray';
 import Grid from 'components/common/Grid';

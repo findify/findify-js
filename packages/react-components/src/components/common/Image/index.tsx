@@ -1,3 +1,7 @@
+/**
+ * @module components/common/Image
+ */
+
 import 'core-js/fn/array/includes';
 import React from 'react'
 import Branch from 'components/common/Branch'

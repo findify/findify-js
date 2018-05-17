@@ -1,13 +1,23 @@
+/**
+ * @module components/Tabs
+ */
+
 import React from 'react'
 import { withHandlers, withPropsOnChange, compose } from 'recompose';
 import cx from 'classnames';
 import Dropdown from 'components/Dropdown';
 import { fromJS } from 'immutable';
+import { ThemedSFCProps } from 'types';
 
-interface ITabsProps {
+interface ITabsProps extends ThemedSFCProps {
   /** Currently selected tab. Keep it empty if you want to use Tabs in self-controlled mode */
-  selectedIndex?: number
-
+  selectedIndex?: number;
+  /** Flag to render Tabs in mobile mode */
+  isMobile?: boolean;
+  /** Tab click event handler */
+  onTabClick: (evt: Event) => any
+  /** Current tab body */
+  body: React.ReactChildren;
 }
 
 const Item = withHandlers({
@@ -35,7 +45,7 @@ const MobileDropdown = compose(
       label: i.props.label,
     })))
   }))
-)(({ items, selectedIndex, onChange }: any) => 
+)(({ items, selectedIndex, onChange }: any) =>
   <Dropdown
     selectedItem={items.get(selectedIndex)}
     onChange={onChange}
@@ -43,10 +53,17 @@ const MobileDropdown = compose(
   />
 )
 
-export default ({ theme, children, onTabClick, body, selectedIndex, isMobile = false }) =>
+const TabsView = ({
+  theme,
+  children,
+  onTabClick,
+  body,
+  selectedIndex,
+  isMobile = false
+}: ITabsProps) =>
   <React.Fragment>
     <ul className={theme.list} display-if={!isMobile}>
-      { 
+      {
         React.Children.map(children, (child, idx) =>
           <Item
             {...child.props}
@@ -67,3 +84,5 @@ export default ({ theme, children, onTabClick, body, selectedIndex, isMobile = f
       { body }
     </div>
   </React.Fragment>
+
+export default TabsView

@@ -1,3 +1,7 @@
+/**
+ * @module components/search/MobileFacets
+ */
+
 import React from 'react';
 import { withHandlers } from 'recompose';
 import Branch from 'components/common/Branch';
@@ -8,8 +12,18 @@ import Button from 'components/Button';
 import cx from 'classnames';
 import Icon from 'components/Icon';
 import Text from 'components/Text';
+import { ThemedSFCProps, IFacet, MJSConfiguration, MJSValue } from 'types';
+import { List } from 'immutable';
 
-const FacetContent = ({ active, config, theme }) => (
+/** Props that FacetContent accepts */
+interface IFacetContentProps extends ThemedSFCProps {
+  /** Currently active facet */
+  active: IFacet;
+  /** MJS Configuration */
+  config: MJSConfiguration;
+}
+
+const FacetContent = ({ active, config, theme }: IFacetContentProps) => (
   <div className={theme.container}>
     <Component
       isExpanded
@@ -25,6 +39,28 @@ const FacetContent = ({ active, config, theme }) => (
   </div>
 );
 
+/** Props that MobileFacets view accepts */
+interface IMobileFacetsProps extends ThemedSFCProps {
+  /** immutable.List() of Facets */
+  facets: List<IFacet>;
+  /** Currently active facet */
+  activeFacet?: IFacet;
+  /** Method used to select a facet */
+  selectFacet: (name?: string) => any
+  /** Method used to reset facet */
+  onReset: () => any
+  /** MJS Configuration */
+  config: MJSConfiguration;
+  /** MJS API Request Metadata */
+  meta: Map<string, MJSValue>;
+  /** Method used for hiding modal / drawer */
+  hideModal: (name: string) => any
+  /** Total filters selected */
+  total: number;
+  /** Filters selected for active facet */
+  filtersSelected: number;
+}
+
 export default ({
   theme,
   facets,
@@ -36,7 +72,7 @@ export default ({
   hideModal,
   total,
   filtersSelected,
-}) =>
+}: IMobileFacetsProps) =>
 <div className={cx(theme.modal, 'mobile')}>
   <div className={theme.header}>
 
@@ -48,7 +84,7 @@ export default ({
         ({ total })
       </Text>
       <Text primary uppercase display-if={!!activeFacet}>
-        { config.getIn(['facets', 'labels', activeFacet.get('name')]) }
+        { config.getIn(['facets', 'labels', activeFacet!.get('name')]) }
       </Text>
       <Text secondary uppercase display-if={!!activeFacet && filtersSelected} className={theme.filterCount}>
         ({ filtersSelected })
@@ -60,7 +96,7 @@ export default ({
     </Button>
 
     <Button
-      display-if={meta.get('filters') && meta.get('filters').size}
+      display-if={meta.get('filters') && meta!.get('filters')!.size}
       onClick={onReset}>
       <Text secondary uppercase>
         { config.getIn(['facets', 'i18n', 'clearAll'], 'Clear All')}

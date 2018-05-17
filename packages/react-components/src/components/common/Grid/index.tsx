@@ -1,42 +1,43 @@
+/**
+ * @module components/common/Grid
+ */
+
 import React from 'react';
 import { compose, withPropsOnChange, setDisplayName, defaultProps } from 'recompose';
 import cx from 'classnames';
 import Column from 'components/common/Grid/Column';
 
 import styles from 'components/common/Grid/styles.css';
+import { ThemedSFCProps } from 'types';
+import { IGridColumnProps } from './Column';
 
-type Props = {
-  columns: string,
+
+interface IGridProps extends ThemedSFCProps {
+  columns: string;
   style?: React.StyleHTMLAttributes<any>,
-  children: any,
-  theme?: { [className: string]: string }
-}
-
-type OwnProps = Props & {
-  theme: { [className: string]: string }
 }
 
 const getClassName = (columns, theme) =>
   columns.split('|').map(value => theme[`column-${value}`]);
 
-export const Grid = compose<OwnProps, Props>(
+export const Grid = compose<IGridProps, IGridProps>(
   setDisplayName('Grid'),
   defaultProps({ theme: styles }),
   withPropsOnChange(['columns', 'children'], ({ columns, children, theme }) => {
-    const classNames = getClassName(columns, theme);
+    const classNames: string[] = getClassName(columns, theme);
     return {
       children: React.Children.map(
         children,
-        (child: React.ReactChild, index: number) =>
-          child &&
-          React.createElement(Column,
-            {
-              key: child.key,
-              className: classNames[index] || classNames[0],
-              columnClass: child.props.columnClass,
-              columnStyle: child.props.columnStyle,
-            }, child
-          )
+        (child: React.ReactElement<any>, index: number) => {
+          if (!child) return null;
+          const props: IGridColumnProps & {key: string | number | undefined}= {
+            key: child.key!,
+            className: classNames[index] || classNames[0] as string,
+            columnClass: child.props.columnClass as string,
+            columnStyle: child.props.columnStyle as React.CSSProperties,
+          }
+          return React.createElement(Column, props, child)
+        }
       ),
     };
   })

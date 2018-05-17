@@ -1,6 +1,18 @@
-import React from 'react';
+/**
+ * @module components/Banner
+ */
 
-export default ({ banner, theme, ...rest }) =>
+import React from 'react';
+import { ThemedSFCProps, IBanner } from 'types';
+
+/** Props that Banner component accepts */
+interface IBannerProps extends ThemedSFCProps {
+  /** Banner being shown */
+  banner: IBanner;
+  [x: string]: any;
+}
+
+const BannerView: React.SFC<IBannerProps> =  ({ banner, theme, ...rest }: IBannerProps) =>
 <a
   display-if={banner && !banner.isEmpty()}
   href={banner.getIn(['products', 'targetUrl'])}
@@ -10,3 +22,6 @@ export default ({ banner, theme, ...rest }) =>
     alt={banner.getIn(['products', 'title'])}
     className={theme.image} />
 </a>
+
+
+export default BannerView;

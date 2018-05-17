@@ -7,27 +7,27 @@ exports[`Rating renders correctly 1`] = `
   <div
     className="stars"
   >
-    <Component
+    <Icon
       className="star filled"
       key="0"
       name="Star"
     />
-    <Component
+    <Icon
       className="star filled"
       key="1"
       name="Star"
     />
-    <Component
+    <Icon
       className="star"
       key="2"
       name="Star"
     />
-    <Component
+    <Icon
       className="star"
       key="3"
       name="Star"
     />
-    <Component
+    <Icon
       className="star"
       key="4"
       name="Star"
@@ -52,27 +52,27 @@ exports[`Rating renders correctly 2`] = `
   <div
     className="stars"
   >
-    <Component
+    <Icon
       className="star"
       key="0"
       name="Star"
     />
-    <Component
+    <Icon
       className="star"
       key="1"
       name="Star"
     />
-    <Component
+    <Icon
       className="star"
       key="2"
       name="Star"
     />
-    <Component
+    <Icon
       className="star"
       key="3"
       name="Star"
     />
-    <Component
+    <Icon
       className="star"
       key="4"
       name="Star"
@@ -97,27 +97,27 @@ exports[`Rating renders correctly 3`] = `
   <div
     className="stars"
   >
-    <Component
+    <Icon
       className="star filled"
       key="0"
       name="Star"
     />
-    <Component
+    <Icon
       className="star filled"
       key="1"
       name="Star"
     />
-    <Component
+    <Icon
       className="star filled"
       key="2"
       name="Star"
     />
-    <Component
+    <Icon
       className="star filled"
       key="3"
       name="Star"
     />
-    <Component
+    <Icon
       className="star filled"
       key="4"
       name="Star"

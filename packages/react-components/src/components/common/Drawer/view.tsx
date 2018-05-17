@@ -1,8 +1,36 @@
+/**
+ * @module components/common/Drawer
+ */
+
 import React from 'react';
 import { Spring, config } from 'react-spring';
 import cx from 'classnames';
+import { ThemedSFCProps } from 'types';
 
-export default class DrawerView extends React.Component<any, any> {
+/** This is a state definition for DrawerView */
+interface IDrawerViewState {
+  /** Flag whether Drawer is open */
+  open: boolean;
+}
+
+/** List of props that DrawerView accepts */
+interface IDrawerViewProps extends ThemedSFCProps {
+  /** Additional options for DrawerView */
+  options: {
+    /** Transition from styles */
+    from: {[x: string]: string | number}
+    /** Transition to styles */
+    to: {[x: string]: string | number}
+    /** Easing mode */
+    easing?: string;
+    /** Custom className */
+    className?: string;
+  };
+  /** Rest of the props, passed to children */
+  [x: string]: any;
+}
+
+export default class DrawerView extends React.Component<IDrawerViewProps, IDrawerViewState> {
   state = { open: false };
   mounted = false;
 

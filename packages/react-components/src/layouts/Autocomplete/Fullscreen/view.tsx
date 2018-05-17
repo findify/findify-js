@@ -1,3 +1,7 @@
+/**
+ * @module layouts/Autocomplete/Fullscreen
+ */
+
 import React from 'react'
 import Drawer from 'components/common/Drawer'
 import Icon from 'components/Icon'

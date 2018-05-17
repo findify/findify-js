@@ -1,3 +1,7 @@
+/**
+ * @module components/Sorting
+ */
+
 import { connectSort } from '@findify/react-connect';
 import { compose, withPropsOnChange, setDisplayName, withHandlers, branch, renderNothing } from 'recompose';
 import withTheme from 'helpers/withTheme';
@@ -26,7 +30,7 @@ export default compose(
     )
   })),
   withHandlers({
-    onChangeSort: ({ onChangeSort }) => item => 
+    onChangeSort: ({ onChangeSort }) => item =>
       item.get('field') === 'default'
       ? onChangeSort()
       : onChangeSort(item.get('field'), item.get('order'))

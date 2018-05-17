@@ -1,3 +1,7 @@
+/**
+ * @module layouts/Autocomplete/Dropdown
+ */
+
 import React from 'react';
 import Drawer from 'components/common/Drawer'
 import Tip from 'components/autocomplete/Tip'
@@ -8,9 +12,18 @@ import Branch from 'components/common/Branch'
 import { connectSuggestions, connectItems } from '@findify/react-connect';
 import { withDrawer } from 'helpers/withDrawer';
 import cx from 'classnames';
+import { ThemedSFCProps, MJSConfiguration, ISuggestion, MJSValue } from 'types';
+import { List } from 'immutable';
 
+interface IAutocompletePanel extends ThemedSFCProps {
+  config: MJSConfiguration;
+  isTrendingSearches?: boolean;
+  [x: string]: any;
+}
+
+/** Layout column mapping */
 const LayoutColumns = {
-  SearchSuggestions: ({ config, theme, suggestionComponent, isTrendingSearches, ...rest }) => (
+  SearchSuggestions: ((({ config, theme, isTrendingSearches, ...rest }: IAutocompletePanel) => (
     <div className={theme.suggestionsContainer}>
       <h4 className={cx(theme.typeTitle, theme.suggestionsTitle, {[theme.trendingTitle]: isTrendingSearches})}>{config.getIn(['i18n', isTrendingSearches ? 'trendingSearches'  : 'suggestionsTitle'])}</h4>
       <SearchSuggestions
@@ -19,16 +32,40 @@ const LayoutColumns = {
         isTrendingSearches={isTrendingSearches}
         {...rest} />
     </div>
-  ),
-  ProductMatches: ({ config, theme, isTrendingSearches, ...rest}) => (
+  )) as React.SFC<IAutocompletePanel>),
+  ProductMatches: ((({ config, theme, isTrendingSearches, ...rest}: IAutocompletePanel) => (
     <div className={theme.productMatchesContainer}>
       <h4 className={cx(theme.typeTitle, {[theme.trendingTitle]: isTrendingSearches})}>{config.getIn(['i18n', isTrendingSearches ? 'trendingProducts' : 'productMatchesTitle'])}</h4>
       <ProductMatches className={theme.productMatches} config={config} {...rest} />
     </div>
-  )
+  )) as React.SFC<IAutocompletePanel>)
 }
 
-const SearchOrZero = ({ suggestions, config, theme, meta, selectedSuggestion, isTrendingSearches, ...rest }) => (
+/** Props that SearchOrZero component accepts */
+interface ISearchOrZeroProps {
+  /** List of search suggestions */
+  suggestions: List<ISuggestion>;
+  /** MJS Configuration */
+  config: MJSConfiguration;
+  /** MJS API Request Meta */
+  meta: Map<string, MJSValue>;
+  /** Selected suggestion index. -1 means no suggestion is selected on keyboard */
+  selectedSuggestion: number;
+  /** Flag that shows if autocomplete is running in TrendingSearches mode */
+  isTrendingSearches: boolean;
+  /** Rest of the props passed down to panels */
+  [x: string]: any;
+}
+
+const SearchOrZero: React.SFC<ISearchOrZeroProps> = ({
+  suggestions,
+  config,
+  theme,
+  meta,
+  selectedSuggestion,
+  isTrendingSearches,
+  ...rest
+}: ISearchOrZeroProps) => (
   <Branch
     condition={suggestions && suggestions.size > 0}
     left={() => (
@@ -49,7 +86,30 @@ const SearchOrZero = ({ suggestions, config, theme, meta, selectedSuggestion, is
     )} />
 )
 
-export default ({ config, theme, meta, suggestions, innerRef, position, ...rest }) =>
+interface IAutocompleteDropdownProps {
+  /** List of search suggestions */
+  suggestions: List<ISuggestion>;
+  /** MJS Configuration */
+  config: MJSConfiguration;
+  /** MJS API Request Meta */
+  meta: Map<string, MJSValue>;
+  /** Selected suggestion index. -1 means no suggestion is selected on keyboard */
+  selectedSuggestion: number;
+  /** Flag that shows if autocomplete is running in TrendingSearches mode */
+  isTrendingSearches: boolean;
+  /** Rest of the props passed down to panels */
+  [x: string]: any;
+}
+
+const AutocompleteDropdownView: React.SFC<IAutocompleteDropdownProps> = ({
+  config,
+  theme,
+  meta,
+  suggestions,
+  position,
+  innerRef,
+  ...rest
+}: IAutocompleteDropdownProps) =>
 <div display-if={suggestions && suggestions.size > 0} className={theme.wrapper}>
   <div className={theme.overlay} display-if={config.get('showOverlay')}></div>
   <div
@@ -71,4 +131,6 @@ export default ({ config, theme, meta, suggestions, innerRef, position, ...rest 
     </div>
   </div>
 </div>
+
+export default AutocompleteDropdownView;
 

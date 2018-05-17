@@ -1,10 +1,35 @@
+/**
+ * @module components/search/MobileActions
+ */
+
 import React from 'react';
 import Grid from 'components/common/Grid';
 import Button from 'components/Button';
 import Text from 'components/Text';
 import Icon from 'components/Icon';
+import { MJSConfiguration, ThemedSFCProps } from 'types';
 
-export default ({ showFacets, showSort, theme, config, sorting }) =>
+/** Props that MobileActionsView accepts */
+interface IMobileActionsProps extends ThemedSFCProps {
+  /** Flag whether to show facets selection */
+  showFacets?: boolean;
+  /** Flag whether to show sorting */
+  showSort?: boolean
+  /** MJS Configuration */
+  config: MJSConfiguration
+  /** Current sorting mode */
+  sorting: string;
+}
+
+
+
+const MobileActionsView: React.SFC<IMobileActionsProps> =  ({
+  showFacets,
+  showSort,
+  theme,
+  config,
+  sorting
+}: IMobileActionsProps) =>
 <div className={theme.root}>
 
   <Button onClick={showSort} className={theme.button}>
@@ -24,3 +49,5 @@ export default ({ showFacets, showSort, theme, config, sorting }) =>
   </Button>
 
 </div>
+
+export default MobileActionsView;

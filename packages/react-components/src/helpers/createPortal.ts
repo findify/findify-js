@@ -1,7 +1,11 @@
 import { createElement, Component } from 'react';
 import { createPortal as reactCreatePortal } from 'react-dom';
 
-const createRoot = () => {
+/**
+ * Creates element for the portal to render into
+ * @returns HTML element to pass to React
+ */
+const createRoot = (): HTMLDivElement => {
   const div = document.createElement('div');
   div.className = 'findify-portal';
   document.body.appendChild(div);

@@ -1,3 +1,7 @@
+/**
+ * @module components/ColorFacet
+ */
+
 import { compose, setDisplayName, withStateHandlers, withProps } from 'recompose';
 import withTheme from 'helpers/withTheme';
 

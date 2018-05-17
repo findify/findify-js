@@ -1,3 +1,7 @@
+/**
+ * @module layouts/Search
+ */
+
 import { createElement } from 'react';
 import { hot } from 'react-hot-loader';
 import { compose, withProps, withStateHandlers, setDisplayName, branch, withHandlers, renderNothing } from 'recompose';
@@ -22,7 +26,7 @@ const Search = compose(
   setDisplayName('Search'),
 
   withTheme(styles),
-  
+
   withErrorHandler,
 
   connectItems,

@@ -1,7 +1,17 @@
 import * as React from 'react';
+import { Map } from 'immutable'
 
 declare global {
-  type Theme = object // TODO: implement more okayish type then alias
+  interface Theme {
+    [key: string]: string
+  }
+
+  /** Props that every component with applied withTheme() HOC has during render */
+  interface ThemedSFCProps {
+    children?: React.ReactNode,
+    /** Theme is a raw - generated class mapping */
+    theme: Theme,
+  }
   interface ThemedSFC<P = {}, C = {}> extends React.StatelessComponent<P> {
     (props: P & { children?: React.ReactNode, theme: Theme }, context?: C): React.ReactElement<any> | null;
     propTypes?: React.ValidationMap<P>;
@@ -9,6 +19,18 @@ declare global {
     defaultProps?: Partial<P>;
     displayName?: string;
   }
+
+
+  interface MJSConfiguration<K = string, V = string | boolean | number> extends Map<K, V> {}
+
+
+  interface ISuggestionProps {
+    key: string;
+    onClick: (evt: Event) => any
+  }
+
+  type GetSuggestionPropsFunction = (suggestionProps: number, widgetKey: string) => ISuggestionProps
+
 }
 
 /*
