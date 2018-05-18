@@ -17,7 +17,7 @@ export default process.env.NODE_ENV !== 'development'
        "status": "live",
 
        // If window width gte than this number - view will be changed
-       "mobileBreakpoint": 767,
+       "mobileBreakpoint": 2000,
 
        // History setup
        "location": {

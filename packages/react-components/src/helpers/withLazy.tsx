@@ -1,27 +1,12 @@
-import { Component, createElement } from 'react';
+import { Component, createFactory } from 'react';
 import { is, List, Map } from 'immutable';
 import { compose, withPropsOnChange, setDisplayName } from 'recompose';
-import sizeMe from 'react-sizeme';
-
 
 const isStateEqual = (prev, next) => ['filters', 'q', 'sort'].every(k =>
   is(prev.get(k), next.get(k))
 );
 
 const hasRange = (ranges, offset) => !!ranges.find(r => r.valueSeq().includes(offset));
-
-/**
- * This function is used to calculate products to show in a line of a Slider according to its width
- * @param width Width of slider
- * @returns Number of items to show in a Slider
- */
-const countProductsToShow = width => {
-  if (width > 1000) return 2;
-  if (width > 800) return 3;
-  if (width > 600) return 4;
-  if (width > 400) return 6;
-  return 12;
-};
 
 const createRange = meta => Map({
   from: meta.get('offset'),
@@ -49,8 +34,9 @@ export default function withLazy() {
    * @param LazyView view you will be adding lazy loading to
    * @returns LazyLoading HOC
    */
-  return LazyView => {
-    class Lazy extends Component<any, any>{
+  return BaseComponent => {
+    const factory = createFactory(BaseComponent);
+    return class Lazy extends Component<any, any>{
 
       constructor(props) {
         super(props);
@@ -64,7 +50,7 @@ export default function withLazy() {
       onLoadNext = () => {
         const { update, meta } = this.props;
         const { ranges } = this.state;
-        return update('offset', ranges.last().get('to') + meta.get('limit'));
+        return update('offset', ranges.last().get('to'));
       }
 
       onLoadPrev = () => {
@@ -73,12 +59,7 @@ export default function withLazy() {
         return update('offset', ranges.first().get('from') - meta.get('limit'));
       }
 
-      componentWillReceiveProps({ items, meta, size, config }) {
-
-        if (size.width !== this.props.size.width) {
-          this.setState({ columns: String(config.get('columns') || countProductsToShow(size.width)) })
-        }
-
+      componentWillReceiveProps({ items, meta, config }) {
         // Do nothing if items are equal
         if (items.equals(this.props.items)) return;
 
@@ -95,7 +76,8 @@ export default function withLazy() {
       }
 
       shouldComponentUpdate(props, state) {
-        return this.state.columns !== state.columns || !this.state.items.equals(state.items);
+        return !this.state.items.equals(state.items) ||
+          !!Object.keys(props).find(k => !is(this.props[k], props[k]))
       }
 
       render () {
@@ -104,10 +86,9 @@ export default function withLazy() {
         const firstRange = ranges.first();
         const lastRange = ranges.last();
 
-        return createElement(LazyView, {
+        return factory({
           ...this.props,
           items,
-          columns,
           displayPrevButton: firstRange && firstRange.get('from') > 0,
           displayNextButton: lastRange && lastRange.get('to') < meta.get('total'),
           onLoadNext: this.onLoadNext,
@@ -115,11 +96,5 @@ export default function withLazy() {
         })
       }
     };
-
-    return compose(
-      setDisplayName('withLazy'),
-      sizeMe()
-    )(Lazy)
-
   }
 }
