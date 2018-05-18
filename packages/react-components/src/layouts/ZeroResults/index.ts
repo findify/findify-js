@@ -18,6 +18,13 @@ export default compose(
   connectItems,
 
   withProps(({ config, q }) => ({
-    title: template(config.getIn(['i18n', q && q !== '' ? 'noResultsFound' : 'noResultEmptyQuery'], 'Noope'))(escape(q)),
+    title: template(config.getIn(
+      ['i18n',
+       q && q !== '' ?
+       'noResult' :
+       'noResultEmptyQuery'
+      ],
+      'We can\'t seem to find any products that match your search for "%s"')
+    )(escape(q)),
   }))
 )(view);

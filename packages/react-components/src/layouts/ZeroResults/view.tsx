@@ -30,7 +30,7 @@ const ZeroResultsLayout = ({ items, title, theme, config }: IZeroResultsProps) =
       </Text>
       <Text primary inlineBlock html={title} />
     </div>
-    <div className={theme.suggestionsRow}>
+    <div className={theme.suggestionsRow} display-if={false}>
       <Text className={theme.possibleSuggestions} primary bold uppercase inlineBlock>
         {config.getIn(['i18n', 'tryOneOfThese'], 'Try one of these instead:')}
         {/* FIXME: add suggestions when trending searches API becomes available */}

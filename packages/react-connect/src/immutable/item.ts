@@ -21,7 +21,7 @@ export class Item extends createRecord('Item'){
     preventEvents(e);
     const openInNewWindow = e && (e.ctrlKey || e.metaKey);
     this.analytics.sendEvent(
-      'click-product',
+      'click-item',
       { rid: this.meta.get('rid'), id: this.get('id') },
       !openInNewWindow // Save analytics in cookies if locations will be changed
     );

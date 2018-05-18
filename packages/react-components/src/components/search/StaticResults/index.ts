@@ -13,7 +13,7 @@ import styles from 'components/search/StaticResults/styles.css';
 /**
  * This function is used to calculate products to show in a line of a Slider according to its width
  * @param width Width of slider
- * @returns Number of items to show in a Slider
+ * @returns Number of columns (out of 12) that product occupies
  */
 const countProductsToShow = width => {
   if (width > 1000) return 2;

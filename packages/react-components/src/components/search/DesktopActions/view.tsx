@@ -41,7 +41,7 @@ const DesktopActionsView: React.SFC<IDesktopActionsProps> = ({
         { config.getIn(['facets', 'i18n', 'hide'], 'show') }
       </Text>
     </Button>
-    <Query display-if={isCollection} theme={{ root: theme.query }} />
+    <Query display-if={!isCollection} theme={{ root: theme.query }} />
     <Breadcrumbs theme={{ root: theme.breadcrumbs }} />
   </div>
   <div className={theme.sorting}>
