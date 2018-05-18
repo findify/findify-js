@@ -5,11 +5,10 @@
 import React from 'react';
 import { compose, withPropsOnChange, setDisplayName, defaultProps } from 'recompose';
 import cx from 'classnames';
-import Column from 'components/common/Grid/Column';
+import Column, { IGridColumnProps } from 'components/common/Grid/Column';
 
 import styles from 'components/common/Grid/styles.css';
 import { ThemedSFCProps } from 'types';
-import { IGridColumnProps } from './Column';
 
 
 interface IGridProps extends ThemedSFCProps {
@@ -20,7 +19,7 @@ interface IGridProps extends ThemedSFCProps {
 const getClassName = (columns, theme) =>
   columns.split('|').map(value => theme[`column-${value}`]);
 
-export const Grid = compose<IGridProps, IGridProps>(
+export default compose<IGridProps, IGridProps>(
   setDisplayName('Grid'),
   defaultProps({ theme: styles }),
   withPropsOnChange(['columns', 'children'], ({ columns, children, theme }) => {
@@ -46,5 +45,3 @@ export const Grid = compose<IGridProps, IGridProps>(
     {children}
   </div>
 ));
-
-export default Grid;
