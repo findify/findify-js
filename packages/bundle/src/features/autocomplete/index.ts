@@ -18,8 +18,7 @@ export default (widget, rerender) => {
   const state: any = getQuery();
   const apiKey = config.get('key');
 
-  const trendingSearchesAgent = createTrendingSearchesAgent(config)
-  trendingSearchesAgent.set('q', '')
+  let trendingSearchesAgent;
 
   if (state.q) node.value = state.q;
 
@@ -27,6 +26,10 @@ export default (widget, rerender) => {
 
   agent.on('change:suggestions', (suggestions, meta) => {
     if (meta.get('q') === '' || suggestions.isEmpty()) {
+      if (!trendingSearchesAgent) {
+        trendingSearchesAgent = createTrendingSearchesAgent(config)
+        trendingSearchesAgent.set('q', '')
+      }
       rerender(
         AutocompleteProvider,
         { apiKey, config, agent: trendingSearchesAgent, isTrendingSearches: true },
