@@ -38,6 +38,7 @@ const sendEventCreator = ({ events, key }: Config) => (
   useCookie?: boolean,
   endpoint?: string
 ) => {
+  if (typeof events[event] !== 'undefined' && events[event] === false) return;
   if (useCookie) return storage.memoize(event, request);
 
   const properties = (
@@ -54,13 +55,13 @@ const sendEventCreator = ({ events, key }: Config) => (
     : request;
 
   emitter.emit(event, properties);
-  
+
   return api({ key, event, properties, user: getUser() }, endpoint);
 };
 
 /**
  * Send memorized events
- * @param sendEvent 
+ * @param sendEvent
  * @param config
  */
 const createInvalidator = (sendEvent, { platform, events }: Config) => eventsToFire => {

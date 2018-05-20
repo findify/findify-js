@@ -40,7 +40,7 @@ export const createProvider = (type, onCreate?: (agent) => void) => {
     constructor(props, context) {
       super(props, context);
       const { apiKey, agent, options, defaults, config } = props;
-      const analyticsConfig: any = { key: apiKey };
+      const analyticsConfig: any = { key: apiKey, events: config.get('events', Map()).toJS(), ...config.get('platform', Map()).toJS() };
       this.nested = context[$findify];
 
       if (agent && !agent.config.immutable) {

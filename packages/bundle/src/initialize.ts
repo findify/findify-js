@@ -52,7 +52,7 @@ export default async (
 
   __root.config = fromJS(cfg);
 
-  __root.analytics = Analytics({ ...cfg.platform, key: cfg.key });
+  __root.analytics = Analytics({ ...cfg.platform, key: cfg.key, events: cfg.events });
 
   await documentReady;
 
