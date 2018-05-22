@@ -63,4 +63,8 @@ export default async (
   bulkAddWidgets(cfg.selectors);
 
   renderWidgets(__root.widgets);
+
+  // DY: Legacy
+  // TODO: Remove after they will release new version
+  (global as any).FindifyAnalytics = Analytics.__analytics;
 }
