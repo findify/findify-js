@@ -36,6 +36,7 @@ export default (widget, render) => {
       render('initial');
     } else {
       showFallback(node);
+      hideLoader(node);
       render()
     }
   })

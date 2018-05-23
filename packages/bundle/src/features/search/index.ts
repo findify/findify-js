@@ -65,8 +65,8 @@ export default (widget, render) => {
       }
       return render('initial');
     }
+    hideLoader(node);
     const agent = createFallbackAgent(config, node);
-
     return render(
       RecommendationProvider,
       { agent, apiKey, config },

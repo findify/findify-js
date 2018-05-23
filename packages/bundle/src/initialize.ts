@@ -2,7 +2,9 @@ import 'regenerator-runtime/runtime';
 import 'raf/polyfill';
 
 // tslint:disable-next-line:import-name
-import Analytics from '@findify/analytics-dom';
+import AnalyticsDOM from '@findify/analytics-dom';
+// tslint:disable-next-line:import-name
+import Analytics from '@findify/analytics';
 import emitter from './core/emitter';
 import resolveCallback from './helpers/resolveCallback';
 
@@ -52,7 +54,7 @@ export default async (
 
   __root.config = fromJS(cfg);
 
-  __root.analytics = Analytics({ ...cfg.platform, key: cfg.key, events: cfg.analytics || {} });
+  __root.analytics = AnalyticsDOM({ ...cfg.platform, key: cfg.key, events: cfg.analytics || {} });
 
   await documentReady;
 
@@ -66,5 +68,7 @@ export default async (
 
   // DY: Legacy
   // TODO: Remove after they will release new version
-  (global as any).FindifyAnalytics = Analytics.__analytics;
+  console.log(Analytics);
+  
+  (global as any).FindifyAnalytics = Analytics;
 }
