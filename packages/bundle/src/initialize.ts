@@ -58,17 +58,18 @@ export default async (
 
   await documentReady;
 
-  __root.widgets = createWidgets(__root.config);
+  const widgetsRenderNeeded = !['paused', 'disabled'].includes(__root.config.get('status'))
+  if (widgetsRenderNeeded) {
+    __root.widgets = createWidgets(__root.config);
+  }
 
   await resolveCallback(__root);
 
-  bulkAddWidgets(cfg.selectors);
-
-  renderWidgets(__root.widgets);
-
-  // DY: Legacy
-  // TODO: Remove after they will release new version
+  if (widgetsRenderNeeded) {
+    bulkAddWidgets(cfg.selectors);
+    renderWidgets(__root.widgets);
+  }
   console.log(Analytics);
-  
+
   (global as any).FindifyAnalytics = Analytics;
 }
