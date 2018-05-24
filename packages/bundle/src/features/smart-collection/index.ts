@@ -4,6 +4,7 @@ import { getQuery, setQuery, collectionPath, listenHistory } from '../../core/lo
 import { Events } from '../../core/events';
 import emitter from '../../core/emitter';
 import { Items } from '../../test.components';
+import { scrollTo } from '../../helpers/scrollTo';
 import { hideFallback, showFallback, hideLoader } from '../../helpers/fallbackNode';
 import { Search, ZeroResults } from '@findify/react-components/src/';
 

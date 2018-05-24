@@ -86,7 +86,7 @@ export const createProvider = (type, onCreate?: (agent) => void) => {
         )
       ) return;
       this.setQuery(next.query);
-      if (next.agent && next.agent !== this.agent) {
+      if (!!next.agent && next.agent !== this.agent) {
         this.agent = next.agent
         this.forceUpdate()
       }
