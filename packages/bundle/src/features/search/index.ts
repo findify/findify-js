@@ -30,6 +30,7 @@ export default (widget, render) => {
 
   if (!isSearch()) {
     showFallback(node);
+    hideLoader(node);
     return null;
   }
 
