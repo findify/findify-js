@@ -48,7 +48,7 @@ export const registerHandlers = (widget, render) => {
   /** Handle input change */
   const handleInputChange = (e) => {
     const value = e.target.value;
-    handleWindowScroll();
+    if (config.get('renderIn') === 'body') handleWindowScroll();
     agent.set('q', value || '');
     return render('initial');
   };
