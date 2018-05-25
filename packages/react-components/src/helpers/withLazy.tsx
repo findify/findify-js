@@ -37,7 +37,6 @@ export default function withLazy() {
    */
   return BaseComponent => {
     const factory = createFactory(BaseComponent);
-    let pending = true;
     return class Lazy extends Component<any, any>{
       container: any;
       autoLoadCount = 0;
@@ -49,6 +48,7 @@ export default function withLazy() {
           items: props.items,
           ranges:  List([createRange(props.meta)]),
           columns: '3',
+          pending: false
         };
       }
 
@@ -82,19 +82,21 @@ export default function withLazy() {
         return lastRange && lastRange.get('to') < meta.get('total')
       }
 
-      trackPosition = () => !pending && !!this.autoLoadCount && window.requestAnimationFrame(() => {
+      trackPosition = () =>
+      !this.state.pending &&
+      !!this.autoLoadCount &&
+      window.requestAnimationFrame(() => {
         const offset = 300;
         const { bottom } = this.container.getBoundingClientRect();
         const height = window.innerHeight || document.documentElement.clientHeight;
         const inView = bottom - height <= offset;
-        if (!inView || pending || !this.autoLoadCount || !this.moreAllowed) return;
+        if (!inView || this.state.pending || !this.autoLoadCount || !this.moreAllowed) return;
         this.autoLoadCount -= 1
-        pending = true;
+        this.setState({ pending: true });
         this.onLoadNext();
       })
 
       componentDidMount() {
-        pending = false;
         if (this.props.disableAutoLoad) return;
         window.addEventListener('scroll', this.trackPosition);
       }
@@ -108,7 +110,7 @@ export default function withLazy() {
         // Do nothing if items are equal
         if (items.equals(this.props.items)) return;
     
-        pending = false;
+        this.setState({ pending: false });
     
         // Prepend or append new items
         if (isStateEqual(meta, this.props.meta) && !hasRange(this.state.ranges, meta.get('offset'))) {
@@ -126,19 +128,22 @@ export default function withLazy() {
       }
 
       shouldComponentUpdate(props, state) {
-        return !this.state.items.equals(state.items) ||
+        return (
+          this.state.pending !== state.pending ||
+          !this.state.items.equals(state.items) ||
           !!Object.keys(props).find(k => !is(this.props[k], props[k]))
+        )
       }
 
       render () {
-        const { ranges, items, columns } = this.state;
+        const { ranges, items, columns, pending } = this.state;
         const { meta } = this.props;
+
         const content = factory({
           ...this.props,
           items,
-          pending,
           displayPrevButton: this.lessAllowed,
-          displayNextButton: this.moreAllowed,
+          displayNextButton: !pending && this.moreAllowed,
           onLoadNext: this.onLoadNext,
           onLoadPrev: this.onLoadPrev,
         });
