@@ -28,7 +28,7 @@ const createAgent = (type, config) => {
     user: __root.analytics.user,
     slot: config.get('slot'),
     immutable: true,
-  }).defaults(config.get('meta', {}));
+  }).defaults(config.get('meta', {}), type === 'autocomplete');
 }
 
 const createConfig = (type, node, key, customs = Map()) => {

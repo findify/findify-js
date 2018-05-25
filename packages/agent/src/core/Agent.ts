@@ -43,10 +43,11 @@ export class Agent {
    * Set values witch will be added to request by default
    * The defaults could be overwrite by via .set function
    * @param defaults [{ q: string, filters: any[], sort: any[], limit: number, offset: number }]
+   * @param noInitialRequest whether to try to resolve agent request by default
    */
-  public defaults(defaults) {
+  public defaults(defaults, noInitialRequest = false) {
     this._defaults = deepMerge(this._defaults, fromJS(defaults));
-    this.cache.resolve();
+    if(!noInitialRequest) this.cache.resolve();
     return this;
   }
 
@@ -163,11 +164,12 @@ export class Agent {
     return this.provider
     .send(params)
     .then(this.handleResponse)
-    .catch(error =>
-      this.onError
+    .catch(error => {
+      this.fireEvent('error', error, params);
+      return this.onError
       ? this.onError(error)
       : console.warn(error)
-    );;
+    });
   }
 
   /**

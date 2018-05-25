@@ -38,8 +38,14 @@ export default (widget, render) => {
     } else {
       showFallback(node);
       hideLoader(node);
-      render()
+      render();
     }
+  })
+
+  agent.on('error', (...args) => {
+    showFallback(node);
+    hideLoader(node);
+    render();
   })
 
   /** Setup initial request */
