@@ -21,7 +21,7 @@ export default compose(
     title: template(config.getIn(
       ['i18n',
        q && q !== '' ?
-       'noResult' :
+       'noResultsFound' :
        'noResultEmptyQuery'
       ],
       'We can\'t seem to find any products that match your search for "%s"')
