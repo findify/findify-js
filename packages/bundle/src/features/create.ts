@@ -19,7 +19,7 @@ class FeatureCreator extends Component<any>{
 
       // Listen to modules invalidation
       if (type === Events.invalidate) this.invalidate();
-      
+
       // Listen to config change
       if (type !== Events.updateConfig || key !== widget.key) return;
       widget.config = nextConfig;
