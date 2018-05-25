@@ -16,7 +16,6 @@ export const showFallback = (node) => {
   }
 }
 
-
 export const hideLoader = (node) => {
   const loaders = [].slice.call(node.querySelectorAll('.findify-component-spinner'));
   for (let index = 0; index < loaders.length; index++) {

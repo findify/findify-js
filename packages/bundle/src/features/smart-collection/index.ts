@@ -42,12 +42,12 @@ export default (widget, render) => {
     }
   })
 
-  agent.on('error', (...args) => {
+  agent.on('error', () => {
     showFallback(node);
     hideLoader(node);
     render();
   })
-
+  
   /** Setup initial request */
   agent.defaults({ slot: collectionPath() });
   applyState(state, agent);

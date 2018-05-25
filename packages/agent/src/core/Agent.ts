@@ -59,7 +59,7 @@ export class Agent {
    */
   public on(key: string, handler: Types.ActionHandler) {
     const [ event, ...path ] = key.split(':');
-    this.handlers.push({ handler, key, path });
+    this.handlers.push({ handler, key, path, event });
     return this;
   }
 
@@ -116,6 +116,14 @@ export class Agent {
     return this;
   }
 
+  private emit(event:string, data) {
+    const handlers = this.handlers.filter(({ key }) => key === event);
+    if (!handlers) return;
+    for (let index = 0; index < handlers.length; index++) {
+      handlers[index].handler(data);
+    }
+  }
+
   private fireEvent(event:string, changes, meta: Types.ResponseMeta) {
     const handlers = this.handlers.filter(({ key }) => key === event);
     if (!handlers) return;
@@ -128,13 +136,13 @@ export class Agent {
     const prev = this.response;
     for (let index = 0; index < this.handlers.length; index++) {
       if (!this.handlers[index]) return;
-      const { path, handler } = this.handlers[index];
+      const { path, handler, event } = this.handlers[index];
+      if (event !== 'change') continue;
       const update = next.getIn(path);
       const old = prev.getIn(path);
       if (update && (!old || !old.equals(update))) {
         handler(this.format(update), this.format(meta));
       }
-
     }
   }
 
@@ -165,7 +173,7 @@ export class Agent {
     .send(params)
     .then(this.handleResponse)
     .catch(error => {
-      this.fireEvent('error', error, params);
+      this.emit('error', error);
       return this.onError
       ? this.onError(error)
       : console.warn(error)
