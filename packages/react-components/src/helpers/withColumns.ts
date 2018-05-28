@@ -9,7 +9,7 @@ import { compose, setDisplayName } from 'recompose';
  * @returns Number of items to show in a Slider
  */
 
-const defaultColumnsMapper = width => {
+const defaultColumnsMapper = (width, props?) => {
   if (width > 1000) return 2;
   if (width > 800) return 3;
   if (width > 600) return 4;
@@ -22,7 +22,7 @@ const sizer = sizeMe();
 export default (columnsMapper = defaultColumnsMapper) => baseComponent => {
   const factory: any = createFactory(baseComponent);
   return sizer(({ size, ...rest }) => {
-    const columns = String(columnsMapper(size.width));
+    const columns = String(columnsMapper(size.width, rest));
     return factory({ ...rest, columns });
   });
 }

@@ -34,11 +34,12 @@ const getUser = () => ({
  */
 const sendEventCreator = ({ events, key }: Config) => (
   event: string,
-  request: any = {},
+  _request: any = {},
   useCookie?: boolean,
   endpoint?: string
 ) => {
-  if (typeof events[event] !== 'undefined' && events[event] === false) return;
+  const { force, ...request } = _request;
+  if (!force || typeof events[event] !== 'undefined' && events[event] === false) return;
   if (useCookie) return storage.memoize(event, request);
 
   const properties = event === EventName.viewPage
