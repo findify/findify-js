@@ -56,10 +56,14 @@ export const registerHandlers = (widget, combinator) => {
     combinator.transition()
   };
 
+  const insideAutocomplete = (node: HTMLElement) => {
+    if (!node || !node.parentElement) return false;
+    if (node.hasAttribute && node.hasAttribute('data-findify-autocomplete')) return true;
+    return insideAutocomplete(node.parentElement);
+  }
+
   const isAutocompleteRelated = (e) => (
-    e.relatedTarget &&
-    e.relatedTarget.hasAttribute &&
-    e.relatedTarget.hasAttribute('data-findify-autocomplete')
+    e.relatedTarget && insideAutocomplete(e.relatedTarget)
   )
 
   /** Handle input blur */
