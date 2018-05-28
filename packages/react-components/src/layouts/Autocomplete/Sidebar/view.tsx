@@ -59,7 +59,7 @@ export default class Sidebar extends React.Component {
     const { theme, meta, isMobile, suggestions, config, ...rest } = this.props
     return (
       <Drawer hideModal={this.handleExited}>
-        <div className={theme.root} data-findify-autocomplete={true}>
+        <div className={theme.root} data-findify-autocomplete={true} tabIndex={0}>
           <div className={theme.backdrop} />
           <div className={theme.header}>
             <form onSubmit={this.handleSubmit}>

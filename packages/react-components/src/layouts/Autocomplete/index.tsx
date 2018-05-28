@@ -2,7 +2,7 @@
  * @module layouts/Autocomplete
  */
 
-import { createElement } from 'react';
+import React, { createElement } from 'react';
 import { hot } from 'react-hot-loader';
 import { connectSuggestions } from '@findify/react-connect';
 import { createPortal } from 'helpers/createPortal';
@@ -11,9 +11,6 @@ import Dropdown from 'layouts/Autocomplete/Dropdown';
 import Sidebar from 'layouts/Autocomplete/Sidebar';
 import Fullscreen from 'layouts/Autocomplete/Fullscreen';
 
-/** Possible Autocomplete view types */
-type AutocompleteType = 'fullscreen' | 'sidebar' | 'dropdown';
-
 /** View type to View component mapping */
 const LayoutTypes = {
   dropdown: Dropdown,
@@ -21,13 +18,28 @@ const LayoutTypes = {
   fullscreen: Fullscreen
 }
 
+/** Possible Autocomplete view types */
+type AutocompleteType = keyof typeof LayoutTypes;
+
+
+// TODO: possibly migrate data-findify-autocomplete=true there as well
+/**
+ * Layout factory is used to wrap Autocomplete layout in a div, containing data-findify-autocomplete-wrapper attribute,
+ * which it requires in order to work correctly
+ * @param type View type needed
+ * @param props Props for React component
+ */
+const layoutFactory = (type: AutocompleteType, props) => () => (
+  <div data-findify-autocomplete-wrapper="true">{createElement(LayoutTypes[type] || Fullscreen, props)}</div>
+)
+
 /**
  * Used to render view either in a portal or in place
  * @param type View type needed
  * @param props Props for React component
  */
-const renderView = (type, props) => (
-  (type === 'sidebar' ? createPortal : createElement)(LayoutTypes[type] || Fullscreen, props)
+const renderView = (type: AutocompleteType, props) => (
+  (type === 'sidebar' ? createPortal : createElement)(layoutFactory(type, props))
 )
 
 const Autocomplete = connectSuggestions(({ config, isTrendingSearches,...rest }) => {
