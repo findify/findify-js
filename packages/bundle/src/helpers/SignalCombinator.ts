@@ -1,5 +1,12 @@
 type FunctionMap = { [x: string]: Function }
-
+/**
+ * SignalCombinator is a variation of Finite State Machine, which makes the following assumptions:
+ * 1. Every state can transition to every state and itself
+ * 2. State transitions are derived using a sum of signals, processed by signal processors. Each signal is a named variable,
+ *    each signal processor is a function, that accepts signal value (or if it's a signal summator, values) and returns
+ *    array of possible transitions
+ * 3. For any combination of signals and signal-sums there is just one possible transition from one state to itself or another
+ */
 export default class SignalCombinator {
   /** List of possible states for transitioning */
   private states: string[];

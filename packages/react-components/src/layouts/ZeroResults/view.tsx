@@ -20,9 +20,11 @@ interface IZeroResultsProps extends ThemedSFCProps {
   title: string;
   /** MJS configuration */
   config: MJSConfiguration;
+  /** Number of columns that each item occupies in 12-col grid */
+  columns: number;
 }
 
-const ZeroResultsLayout = ({ items, title, theme, config }: IZeroResultsProps) => (
+const ZeroResultsLayout = ({ items, title, theme, columns, config }: IZeroResultsProps) => (
   <React.Fragment>
     <div className={theme.sorryRow}>
       <Text className={theme.sorry} primary bold uppercase inlineBlock>
@@ -41,7 +43,7 @@ const ZeroResultsLayout = ({ items, title, theme, config }: IZeroResultsProps) =
         {config.getIn(['i18n', 'checkOutPopularProducts'], 'Or check out some of these popular products')}
       </Text>
     </div>
-    <ItemsList wrapper={Grid} columns='3' />
+    <ItemsList wrapper={Grid} columns={columns} />
   </React.Fragment>
 )
 

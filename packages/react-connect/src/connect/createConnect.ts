@@ -88,7 +88,7 @@ const createComponent = ({
 
     shouldComponentUpdate(nextProps, nextState) {
       return (
-        (!this.state[field] || !this.state[field].equals(nextState[field]))
+        (!this.state[field] || !this.state[field].equals(nextState[field]) || !this.state.meta.equals(nextState.meta))
         || !!Object.keys(nextProps).find(key => !is(nextProps[key], this.props[key]))
       );
     }
