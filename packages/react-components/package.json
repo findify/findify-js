@@ -127,7 +127,7 @@
   },
   "repository": "https://github.com/findify/findify-js/tree/master/packages/ui-components",
   "scripts": {
-    "build": "run-s build:js build:css",
+    "build": "run-s build:js build:css build:tree",
     "build:js": "BABEL_ENV=lib babel src --out-dir lib --extensions \".ts,.tsx\"",
     "build:tree": "node scripts/makeModulesTree.js",
     "build:css": "node scripts/processCss.js",

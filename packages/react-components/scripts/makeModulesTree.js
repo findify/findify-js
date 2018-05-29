@@ -3,7 +3,7 @@ const dir = require('directory-tree');
 const path = require('path');
 const tree = dir(
   'src',
-  { exclude: [/__snapshots__/, /test.ts?$/] }
+  { exclude: [/__snapshots__/, /test.ts?$/, /\.css/] }
 );
 
 fs.writeFileSync(
