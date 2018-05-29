@@ -18,9 +18,9 @@ const createComponent = ({
 }: any) => {
   const storeKey = !!key && key || 'default';
   const displayName = `Connect${capitalize(field)}(${getDisplayName(BaseComponent)})`;
-  //const factory: any = createFactory(BaseComponent);
+  // const factory: any = createFactory(BaseComponent);
 
-  class Connect extends Component{
+  class Connect extends Component<any, any>{
     displayName: string;
     changeAction: any
     cachedHandlers = {}
