@@ -40,14 +40,14 @@ export default function withLazy() {
     return class Lazy extends Component<any, any>{
       container: any;
       autoLoadCount = 0;
-  
+
       constructor(props) {
         super(props);
         this.autoLoadCount = props.disableAutoLoad ? 0 : 2;
         this.state = {
           items: props.items,
           ranges:  List([createRange(props.meta)]),
-          columns: '3',
+          columns: props.columns || '3',
           pending: false
         };
       }
@@ -74,7 +74,7 @@ export default function withLazy() {
         const firstRange = ranges.first();
         return firstRange && firstRange.get('from') > 0
       }
-    
+
       get moreAllowed() {
         const { meta } = this.props;
         const { ranges } = this.state;
@@ -109,9 +109,9 @@ export default function withLazy() {
       componentWillReceiveProps({ items, meta, config }) {
         // Do nothing if items are equal
         if (items.equals(this.props.items)) return;
-    
+
         this.setState({ pending: false });
-    
+
         // Prepend or append new items
         if (isStateEqual(meta, this.props.meta) && !hasRange(this.state.ranges, meta.get('offset'))) {
           return this.setState({ ...addItems(this.state, items, meta) });

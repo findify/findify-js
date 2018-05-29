@@ -8,10 +8,6 @@ import { scrollTo } from '../../helpers/scrollTo';
 import { hideFallback, showFallback, hideLoader } from '../../helpers/fallbackNode';
 import { Search, ZeroResults } from '@findify/react-components/src/';
 
-const applyState = (state, agent) => {
-  agent.reset();
-  for (const key in state) agent.set(key, state[key]);
-}
 
 export default (widget, render) => {
   const { agent, config, node } = widget;
@@ -22,7 +18,7 @@ export default (widget, render) => {
   /** Listen to location back/fwd */
   const stopListenLocation = listenHistory((_, action) => {
     if (action !== 'POP') return;
-    applyState(getQuery(), agent);
+    agent.applyState(getQuery());
     render('initial');
   });
 
@@ -47,10 +43,10 @@ export default (widget, render) => {
     hideLoader(node);
     render();
   })
-  
+
   /** Setup initial request */
   agent.defaults({ slot: collectionPath() });
-  applyState(state, agent);
+  agent.applyState(state);
   /** Listen to changes */
   agent.on('change:query', q => setQuery(q.toJS()));
 

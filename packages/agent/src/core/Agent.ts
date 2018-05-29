@@ -92,6 +92,16 @@ export class Agent {
   }
 
   /**
+   * Apply query to agent
+   * @param state next query parameters
+   */
+  public applyState(state: any) {
+    this.reset();
+    for (const key in state) this.set(key, state[key]);
+    if (state.offset) this.set('offset', state.offset);
+  }
+
+  /**
    * Set specific query value
    * eq: .set('limit', 20)
    * eq: .set('filters', (prevFilters) => {...prevFilters, size: ['M']})
