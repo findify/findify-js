@@ -27,8 +27,8 @@ export default (widget, render) => {
     if (!items.isEmpty()) {
       hideFallback(node);
       hideLoader(node);
-      if (!config.getIn(['view', 'infinite']) && config.get('scrollTo') !== false) {
-        scrollTo(config.get('cssSelector'), config.get('scrollTo'))
+      if (!config.getIn(['view', 'infinite']) && config.get('scrollTop') !== false) {
+        scrollTo(config.get('cssSelector'), config.get('scrollTop'))
       }
       render('initial');
     } else {
