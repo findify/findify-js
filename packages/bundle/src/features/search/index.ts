@@ -23,6 +23,13 @@ export default (widget, render) => {
   const state = getQuery();
   const apiKey = config.get('key');
   const props = { agent, apiKey, config };
+  const renderZeroResults = () => (
+    render(
+      RecommendationProvider,
+      { agent, apiKey, config },
+      createElement(ZeroResults, getQuery())
+    )
+  )
 
   if (!isSearch()) {
     showFallback(node);
@@ -34,7 +41,10 @@ export default (widget, render) => {
   agent.applyState(state);
 
   /** Listen to changes */
-  agent.on('change:query', q => setQuery(q.toJS()));
+  agent.on('change:query', (q, meta) => {
+    setQuery(q.toJS())
+    if (meta.get('total') === 0) return renderZeroResults();
+  });
   agent.on('change:redirect', async (redirect, meta) => {
     render();
     await __root.analytics.sendEvent('redirect', {
@@ -64,11 +74,7 @@ export default (widget, render) => {
     }
     hideLoader(node);
     const agent = createFallbackAgent(config, node);
-    return render(
-      RecommendationProvider,
-      { agent, apiKey, config },
-      createElement(ZeroResults, getQuery())
-    );
+    return renderZeroResults();
   })
 
   /** Unsubscribe from events on instance destroy  */
