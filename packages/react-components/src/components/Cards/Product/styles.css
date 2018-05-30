@@ -44,6 +44,7 @@
 .image-wrap {
   position: relative;
   overflow: hidden;
+  margin-bottom: 12px;
 }
 
 .image {
@@ -70,7 +71,6 @@
 
 .rating {
   margin: 5px 0;
-  margin-top: 12px;
   margin-bottom: 8px;
   width: 100%;
   text-align: center;
