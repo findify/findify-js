@@ -159,8 +159,8 @@ export class Agent {
   public handleResponse(res:Types.ResponseBody) {
     const response = fromJS(res);
     const newState = queryToState(this.state, response.get('meta'), this._defaults);
-    this.fireEvent('change:query', newState, response.get('meta'));
     this.handleChanges(response, response.get('meta'));
+    this.fireEvent('change:query', newState, response.get('meta'));
     this.state = newState;
     this.response = response;
   }
