@@ -23,13 +23,16 @@ export default (widget, render) => {
   const state = getQuery();
   const apiKey = config.get('key');
   const props = { agent, apiKey, config };
-  const renderZeroResults = () => (
-    render(
+  let fallbackAgent;
+
+  const renderZeroResults = () => {
+    if (!fallbackAgent) fallbackAgent = createFallbackAgent(config, node);
+    return render(
       RecommendationProvider,
-      { agent, apiKey, config },
+      { agent: fallbackAgent, apiKey, config },
       createElement(ZeroResults, getQuery())
     )
-  )
+  }
 
   if (!isSearch()) {
     showFallback(node);
@@ -73,7 +76,6 @@ export default (widget, render) => {
       return render('initial');
     }
     hideLoader(node);
-    const agent = createFallbackAgent(config, node);
     return renderZeroResults();
   })
 
