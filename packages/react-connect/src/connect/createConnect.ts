@@ -18,9 +18,9 @@ const createComponent = ({
 }: any) => {
   const storeKey = !!key && key || 'default';
   const displayName = `Connect${capitalize(field)}(${getDisplayName(BaseComponent)})`;
-  //const factory: any = createFactory(BaseComponent);
+  // const factory: any = createFactory(BaseComponent);
 
-  class Connect extends Component{
+  class Connect extends Component<any, any>{
     displayName: string;
     changeAction: any
     cachedHandlers = {}
@@ -88,7 +88,7 @@ const createComponent = ({
 
     shouldComponentUpdate(nextProps, nextState) {
       return (
-        (!this.state[field] || !this.state[field].equals(nextState[field]))
+        (!this.state[field] || !this.state[field].equals(nextState[field]) || !this.state.meta.equals(nextState.meta))
         || !!Object.keys(nextProps).find(key => !is(nextProps[key], this.props[key]))
       );
     }

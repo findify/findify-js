@@ -17,7 +17,7 @@ export default process.env.NODE_ENV !== 'development'
        "status": "live",
 
        // If window width gte than this number - view will be changed
-       "mobileBreakpoint": 2000,
+       "mobileBreakpoint": 700,
 
        // History setup
        "location": {
@@ -201,7 +201,7 @@ export default process.env.NODE_ENV !== 'development'
 
                "i18n": {
                    "sorryNoResults": "Sorry!",
-                   "noResult": "We can't seem to find any products that match your search for \"%s\"",
+                   "noResultsFound": "We can't seem to find any products that match your search for <span class=\"findify_q\">\"%s\"</span>",
                    "noResultEmptyQuery": "We can't seem to find any products that match your search",
                    "tryOneOfThese": "Try one of these instead:",
                    "checkOutPopularProducts": "Or check out some of these popular products"

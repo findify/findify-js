@@ -43,10 +43,11 @@ export class Agent {
    * Set values witch will be added to request by default
    * The defaults could be overwrite by via .set function
    * @param defaults [{ q: string, filters: any[], sort: any[], limit: number, offset: number }]
+   * @param noInitialRequest whether to try to resolve agent request by default
    */
-  public defaults(defaults) {
+  public defaults(defaults, noInitialRequest = false) {
     this._defaults = deepMerge(this._defaults, fromJS(defaults));
-    this.cache.resolve();
+    if(!noInitialRequest) this.cache.resolve();
     return this;
   }
 
@@ -58,7 +59,7 @@ export class Agent {
    */
   public on(key: string, handler: Types.ActionHandler) {
     const [ event, ...path ] = key.split(':');
-    this.handlers.push({ handler, key, path });
+    this.handlers.push({ handler, key, path, event });
     return this;
   }
 
@@ -91,6 +92,16 @@ export class Agent {
   }
 
   /**
+   * Apply query to agent
+   * @param state next query parameters
+   */
+  public applyState(state: any) {
+    this.reset();
+    for (const key in state) this.set(key, state[key]);
+    if (state.offset) this.set('offset', state.offset);
+  }
+
+  /**
    * Set specific query value
    * eq: .set('limit', 20)
    * eq: .set('filters', (prevFilters) => {...prevFilters, size: ['M']})
@@ -115,6 +126,14 @@ export class Agent {
     return this;
   }
 
+  private emit(event:string, data) {
+    const handlers = this.handlers.filter(({ key }) => key === event);
+    if (!handlers) return;
+    for (let index = 0; index < handlers.length; index++) {
+      handlers[index].handler(data);
+    }
+  }
+
   private fireEvent(event:string, changes, meta: Types.ResponseMeta) {
     const handlers = this.handlers.filter(({ key }) => key === event);
     if (!handlers) return;
@@ -127,13 +146,13 @@ export class Agent {
     const prev = this.response;
     for (let index = 0; index < this.handlers.length; index++) {
       if (!this.handlers[index]) return;
-      const { path, handler } = this.handlers[index];
+      const { path, handler, event } = this.handlers[index];
+      if (event !== 'change') continue;
       const update = next.getIn(path);
       const old = prev.getIn(path);
       if (update && (!old || !old.equals(update))) {
         handler(this.format(update), this.format(meta));
       }
-
     }
   }
 
@@ -163,11 +182,12 @@ export class Agent {
     return this.provider
     .send(params)
     .then(this.handleResponse)
-    .catch(error =>
-      this.onError
+    .catch(error => {
+      this.emit('error', error);
+      return this.onError
       ? this.onError(error)
       : console.warn(error)
-    );;
+    });
   }
 
   /**

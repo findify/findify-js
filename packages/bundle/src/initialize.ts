@@ -2,10 +2,12 @@ import 'regenerator-runtime/runtime';
 import 'raf/polyfill';
 
 // tslint:disable-next-line:import-name
-import Analytics from '@findify/analytics-dom';
+import AnalyticsDOM from '@findify/analytics-dom';
+// tslint:disable-next-line:import-name
+import Analytics from '@findify/analytics';
 import emitter from './core/emitter';
 import resolveCallback from './helpers/resolveCallback';
-
+import setupPlatforms from './helpers/setupPlatforms';
 /**
  * Create global namespace
  */
@@ -31,7 +33,7 @@ export default async (
   const asyncConfig = await import(/* webpackMode: "weak" */'./config');
   const cfg = { ..._config, ...asyncConfig.default };
 
-  // Inject custom components
+  // Register custom components
   if (cfg.components) {
     const extra = Object.keys(cfg.components).reduce(
       (acc, k) => ({ ...acc, [k]: eval(cfg.components[k]) }), {}
@@ -48,19 +50,26 @@ export default async (
   const { createWidgets, bulkAddWidgets } = require('./core/widgets');
   const { renderWidgets } = require('./core/render');
 
-  // Register custom components
-
   __root.config = fromJS(cfg);
 
-  __root.analytics = Analytics({ ...cfg.platform, key: cfg.key });
+  /** Setup analytics */
+  __root.analytics = AnalyticsDOM({ ...cfg.platform, key: cfg.key, events: cfg.analytics || {} });
+  if (cfg.platform) setupPlatforms(cfg.platform, cfg.removeFindifyID);
 
   await documentReady;
 
-  __root.widgets = createWidgets(__root.config);
+  const widgetsRenderNeeded = !['paused', 'disabled'].includes(__root.config.get('status'));
+
+  if (widgetsRenderNeeded) {
+    __root.widgets = createWidgets(__root.config);
+  }
 
   await resolveCallback(__root);
 
-  bulkAddWidgets(cfg.selectors);
+  if (widgetsRenderNeeded) {
+    bulkAddWidgets(cfg.selectors);
+    renderWidgets(__root.widgets);
+  }
 
-  renderWidgets(__root.widgets);
+  (global as any).FindifyAnalytics = Analytics;
 }

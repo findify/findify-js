@@ -5,6 +5,7 @@
 import { compose, withProps, setDisplayName } from 'recompose';
 import { connectItems, connectQuery } from '@findify/react-connect';
 import withTheme from 'helpers/withTheme';
+import withColumns from 'helpers/withColumns';
 import template from 'helpers/template';
 import escape from 'lodash/escape';
 
@@ -21,10 +22,11 @@ export default compose(
     title: template(config.getIn(
       ['i18n',
        q && q !== '' ?
-       'noResult' :
+       'noResultsFound' :
        'noResultEmptyQuery'
       ],
       'We can\'t seem to find any products that match your search for "%s"')
     )(escape(q)),
-  }))
+  })),
+  withColumns(),
 )(view);

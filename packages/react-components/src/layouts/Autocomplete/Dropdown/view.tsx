@@ -108,13 +108,15 @@ const AutocompleteDropdownView: React.SFC<IAutocompleteDropdownProps> = ({
   suggestions,
   position,
   innerRef,
+  closeAutocomplete,
   ...rest
 }: IAutocompleteDropdownProps) =>
 <div display-if={suggestions && suggestions.size > 0} className={theme.wrapper}>
-  <div className={theme.overlay} display-if={config.get('showOverlay')}></div>
+  <div className={theme.overlay} display-if={config.get('showOverlay')} onClick={closeAutocomplete}></div>
   <div
     className={theme.root}
     data-findify-autocomplete={true}
+    tabIndex={0}
     ref={innerRef}
     style={{ [position]: 0 }}>
     <Tip

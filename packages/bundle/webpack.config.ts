@@ -182,6 +182,10 @@ export default (env: WebpackEnvArgs, { mode }) => {
       from: path.resolve(__dirname,'../react-components/lib/raw.css'),
       to: 'raw.css',
     }]));
+    config.plugins.push(new CopyWebpackPlugin([{
+      from: path.resolve(__dirname,'../react-components/lib/tree.json'),
+      to: 'tree.json',
+    }]));
   }
 
   if (mode === 'development') {

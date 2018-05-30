@@ -7,10 +7,6 @@ import { Events } from '../../core/events';
 import { scrollTo } from '../../helpers/scrollTo';
 import { Search, ZeroResults } from '@findify/react-components/src/';
 
-const applyState = (state, agent) => {
-  agent.reset();
-  for (const key in state) agent.set(key, state[key]);
-}
 const createFallbackAgent = (config, node) => new RecommendationAgent({
   key: config.get('key'),
   immutable: true,
@@ -30,11 +26,12 @@ export default (widget, render) => {
 
   if (!isSearch()) {
     showFallback(node);
+    hideLoader(node);
     return null;
   }
 
   /** Setup initial request */
-  applyState(state, agent);
+  agent.applyState(state);
 
   /** Listen to changes */
   agent.on('change:query', q => setQuery(q.toJS()));
@@ -51,7 +48,7 @@ export default (widget, render) => {
   /** Listen to location back/fwd */
   const stopListenLocation = listenHistory((_, action) => {
     if (action !== 'POP') return;
-    applyState(getQuery(), agent);
+    agent.applyState(getQuery());
     render('initial');
   });
 
@@ -65,8 +62,8 @@ export default (widget, render) => {
       }
       return render('initial');
     }
+    hideLoader(node);
     const agent = createFallbackAgent(config, node);
-
     return render(
       RecommendationProvider,
       { agent, apiKey, config },

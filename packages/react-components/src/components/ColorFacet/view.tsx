@@ -25,7 +25,7 @@ const ColorFacetView = ({
   <div className={theme.container}>
     <MapArray
       config={config}
-      array={items}
+      array={items.filter(item => config.getIn(['facets', 'color', 'mapping', (item.get('value') as string)!.toLocaleLowerCase()]))}
       factory={Item}
       theme={theme} />
   </div>

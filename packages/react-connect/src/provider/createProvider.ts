@@ -40,7 +40,7 @@ export const createProvider = (type, onCreate?: (agent) => void) => {
     constructor(props, context) {
       super(props, context);
       const { apiKey, agent, options, defaults, config } = props;
-      const analyticsConfig: any = { key: apiKey };
+      const analyticsConfig: any = { key: apiKey, events: config.get('analytics', Map()).toJS(), ...config.get('platform', Map()).toJS() };
       this.nested = context[$findify];
 
       if (agent && !agent.config.immutable) {
@@ -86,13 +86,13 @@ export const createProvider = (type, onCreate?: (agent) => void) => {
         )
       ) return;
       this.setQuery(next.query);
-      if (next.agent !== this.agent) {
+      if (!!next.agent && next.agent !== this.agent) {
         this.agent = next.agent
         this.forceUpdate()
       }
     }
 
-    setQuery(query) {
+    setQuery = (query) => {
       for (const key in query) this.agent.set(key, query[key]);
     }
 

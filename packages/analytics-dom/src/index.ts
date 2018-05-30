@@ -36,7 +36,7 @@ const initialize = (config = {events: {}}) => {
   }
 }
 
-export default (props, context: any = document) => {
+const analyticsDOM = (props, context: any = document) => {
   if (typeof props === 'function') return analytics(props);
   if (analyticsInstance) return analyticsInstance;
   analyticsInstance = analytics(props);
@@ -49,3 +49,7 @@ export default (props, context: any = document) => {
 
   return analyticsInstance;
 }
+
+analyticsDOM.prototype.__analytics = analytics;
+
+export default analyticsDOM;

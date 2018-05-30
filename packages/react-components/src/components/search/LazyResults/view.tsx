@@ -18,8 +18,8 @@ interface ILazyResultsProps extends ThemedSFCProps {
   items: List<IProduct>;
   /** MJS Configuration */
   config: MJSConfiguration;
-  /** Number of columns in a grid */
-  columns: number;
+  /** Number of columns that one item occupies in a 12-col grid */
+  columns: string;
   /** Method to load next page */
   onLoadNext: () => any;
   /** Method to load previous page */

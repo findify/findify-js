@@ -28,7 +28,7 @@ const createAgent = (type, config) => {
     user: __root.analytics.user,
     slot: config.get('slot'),
     immutable: true,
-  });
+  }).defaults(config.get('meta', {}), true);
 }
 
 const createConfig = (type, node, key, customs = Map()) => {
@@ -48,7 +48,7 @@ const createConfig = (type, node, key, customs = Map()) => {
 
 const getNodes = selector => [].slice.call(document.querySelectorAll(selector));
 
-const getEntity = (selector, _type?, _config?) => 
+const getEntity = (selector, _type?, _config?) =>
 (
   typeof selector === 'string'
   ? getNodes(selector)
@@ -85,9 +85,10 @@ const widgets = {
   },
 
   /** Remove exist widget */
-  detach(widget) {
-    cache = cache.filter(widget => widget.key !== widget.key);
-    emitter.emit(Events.detach, widget);
+  detach(key) {
+    const widgetToRemove = widgets.get(key);
+    cache = cache.filter(widget => key !== widget.key);
+    emitter.emit(Events.detach, widgetToRemove);
   },
 
   /** Get all rendered widget */

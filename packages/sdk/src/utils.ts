@@ -1,10 +1,10 @@
 import 'core-js/fn/array/includes';
 import 'core-js/es6/promise';
 
-export const omit = <TR>(ks: string[], o: object) =>
-  Object.keys(o)
+export const omit = <TR>(ks: string[], original: object) =>
+  Object.keys(original)
     .filter((k) => !ks.includes(k))
-    .reduce((o, k) => Object.assign(o, { [k]: o[k] }), {});
+    .reduce((filtered, k) => Object.assign(original, { [k]: original[k] }), {});
 
 type RetryCallback = () => Promise<object>;
 

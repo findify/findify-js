@@ -45,8 +45,9 @@ const MobileDropdown = compose(
       label: i.props.label,
     })))
   }))
-)(({ items, selectedIndex, onChange }: any) =>
+)(({ items, selectedIndex, onChange, className }: any) =>
   <Dropdown
+    className={className}
     selectedItem={items.get(selectedIndex)}
     onChange={onChange}
     items={items}
@@ -79,6 +80,7 @@ const TabsView = ({
       display-if={isMobile}
       children={children}
       selectedIndex={selectedIndex}
+      className={theme.dropdown}
       onChange={onTabClick} />
     <div className={theme.body}>
       { body }

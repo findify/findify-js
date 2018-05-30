@@ -1,4 +1,5 @@
 import { findDomNode } from 'react-dom';
+import { List } from 'immutable'
 import { addEventListeners } from '../../helpers/addEventListeners';
 import { findClosestElement } from '../../helpers/findClosestElement';
 import { isSearch, setQuery, buildQuery, redirectToSearch } from '../../core/location';
@@ -18,7 +19,7 @@ const stylesUpdater = (ghost, styles: any) => {
   return cache = styles;
 }
 
-export const registerHandlers = (widget, render) => {
+export const registerHandlers = (widget, combinator) => {
   const { node, config, agent } = widget;
   const subscribers: any = [];
   let container: any;
@@ -47,15 +48,27 @@ export const registerHandlers = (widget, render) => {
 
   /** Handle input change */
   const handleInputChange = (e) => {
-    const value = e.target.value;
-    handleWindowScroll();
-    agent.set('q', value || '');
-    return render('initial');
+    const value = e.target.value || '';
+    if (config.get('renderIn') === 'body') handleWindowScroll();
+    agent.set('q', value);
+    combinator.signal('visible', true);
+    combinator.signal('query', value);
+    combinator.transition()
   };
+
+  const insideAutocomplete = (node: HTMLElement) => {
+    if (!node || !node.parentElement) return false;
+    if (node.hasAttribute && node.hasAttribute('data-findify-autocomplete')) return true;
+    return insideAutocomplete(node.parentElement);
+  }
+
+  const isAutocompleteRelated = (e) => (
+    e.relatedTarget && insideAutocomplete(e.relatedTarget)
+  )
 
   /** Handle input blur */
   const handleInputBlur = (e) =>
-    !findifyElementFocused &&
+    (!findifyElementFocused && !isAutocompleteRelated(e)) &&
     e.target === node &&
     __root.emit(Events.autocompleteFocusLost, widget.key)
 
@@ -73,7 +86,8 @@ export const registerHandlers = (widget, render) => {
     __root.widgets
       .findByType('autocomplete')
       .forEach(({ node }) => node.value = value);
-    render();
+    combinator.signal('visible', false);
+    combinator.transition();
   };
 
   const handleFormSubmit = e => {
@@ -92,8 +106,12 @@ export const registerHandlers = (widget, render) => {
     ['focus'],
     (e) => {
       findifyElementFocused = true;
-      if (!agent.state.get('q')) agent.set('q', e.target.value);
-      render('initial');
+      if (!agent.state.get('q')) {
+        agent.set('q', e.target.value);
+        combinator.signal('query', e.target.value);
+      }
+      combinator.signal('visible', true);
+      combinator.transition();
     },
     node
   ));
@@ -162,7 +180,8 @@ export const registerHandlers = (widget, render) => {
   const unsubscribe = __root.listen((event, prop, ...args) => {
     if (event === Events.search && prop === widget.key) return search(...args);
     if (event === Events.autocompleteFocusLost && prop === widget.key) {
-      render();
+      combinator.signal('visible', false);
+      combinator.transition();
     }
     if (event !== Events.detach || prop !== widget) return;
     subscribers.forEach(fn => fn());
@@ -170,7 +189,8 @@ export const registerHandlers = (widget, render) => {
   })
 
   window.requestAnimationFrame(() => {
-    render();
+    combinator.signal('visible', false)
+    combinator.transition();
   })
   return;
 }

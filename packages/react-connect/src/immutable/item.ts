@@ -22,7 +22,7 @@ export class Item extends createRecord('Item'){
     const openInNewWindow = e && (e.ctrlKey || e.metaKey);
     this.analytics.sendEvent(
       'click-item',
-      { rid: this.meta.get('rid'), id: this.get('id') },
+      { rid: this.meta.get('rid'), item_id: this.get('id') },
       !openInNewWindow // Save analytics in cookies if locations will be changed
     );
     navigate(openInNewWindow, this.get('product_url'))

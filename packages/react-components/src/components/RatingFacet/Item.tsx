@@ -27,8 +27,8 @@ const RatingFacetItem: React.SFC<IRatingFacetItemProps> = ({
 }: IRatingFacetItemProps) =>
 <Button style={style} className={theme.item} onClick={item.toggle}>
   <Text primary lowercase bold={item.get('selected')}>
-    <Icon name={item.get('selected') ? 'CheckboxFilled' : 'CheckboxEmpty'} />
-    { content({ item, config }) }
+    <Icon className={theme.checkbox} name={item.get('selected') ? 'CheckboxFilled' : 'CheckboxEmpty'} />
+    { content({ item, config, theme }) }
   </Text>
   <Text secondary uppercase>
     ({ item.get('count') })

@@ -13,7 +13,7 @@ import { ThemedSFCProps, MJSConfiguration } from 'types';
 interface IStaticResultsProps extends ThemedSFCProps {
   /** MJS Configuration */
   config: MJSConfiguration;
-  /** Number of columns for StaticResults */
+  /** Number of columns that one item occupies in 12-col grid */
   columns: number;
 };
 

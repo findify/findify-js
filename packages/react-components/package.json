@@ -62,6 +62,7 @@
     "babel-plugin-react-svg": "^2.1.0",
     "css-loader": "^0.28.10",
     "del-cli": "^1.1.0",
+    "directory-tree": "^2.1.0",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "enzyme-to-json": "^3.3.1",
@@ -128,6 +129,7 @@
   "scripts": {
     "build": "run-s build:js build:css",
     "build:js": "BABEL_ENV=lib babel src --out-dir lib --extensions \".ts,.tsx\"",
+    "build:tree": "node scripts/makeModulesTree.js",
     "build:css": "node scripts/processCss.js",
     "build:doc": "typedoc --plugin typedoc-plugin-external-module-name --ignoreCompilerErrors --out doc src",
     "lint": "tslint --project .",

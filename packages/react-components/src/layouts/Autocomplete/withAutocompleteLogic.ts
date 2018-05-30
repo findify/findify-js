@@ -1,4 +1,4 @@
-import { withStateHandlers, lifecycle, compose, setDisplayName } from 'recompose'
+import { withStateHandlers, lifecycle, compose, setDisplayName, withProps } from 'recompose'
 import { connectSuggestions, connectQuery } from '@findify/react-connect';
 
 
@@ -6,7 +6,7 @@ export default compose(
   setDisplayName('withAutocompleteLogic'),
   connectSuggestions,
   withStateHandlers({ selectedSuggestion: -1, }, {
-    changeSuggestionIndex: ({ selectedSuggestion }, { config, suggestions, getSuggestionProps }) => (evt) => {      
+    changeSuggestionIndex: ({ selectedSuggestion }, { config, suggestions, getSuggestionProps }) => (evt) => {
       const arrowCodes = ['ArrowUp', 'ArrowDown']
       if (evt.key === 'Enter' && selectedSuggestion !== -1) {
         evt.preventDefault()
@@ -15,7 +15,7 @@ export default compose(
       }
       if (!arrowCodes.includes(evt.key)) return;
       evt.preventDefault();
-      
+
       const newSuggestionIndex = selectedSuggestion + (evt.key === 'ArrowUp' ? -1 : 1)
       const totalSuggestions = suggestions && suggestions.size || 0
 
@@ -41,5 +41,8 @@ export default compose(
         nextProps.setSuggestionIndex(-1);
       }
     }
-  })
+  }),
+  withProps(({ config }) => ({
+    closeAutocomplete: () => (window as any).findify.emit('autocompleteFocusLost', config.get('widgetKey'))
+  }))
 )

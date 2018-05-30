@@ -13,7 +13,8 @@ export default ({ config, theme, meta, suggestions, innerRef, position, ...rest 
 <div display-if={suggestions && suggestions.size > 0} className={theme.wrapper}>
   <div
     className={theme.root}
-    data-findify-autocomplete={true}>
+    data-findify-autocomplete={true}
+    tabIndex={0}>
     <div className={theme.container}>
       <h4 className={cx(theme.typeTitle, theme.suggestionsTitle)}>
         { config.getIn(['i18n', 'suggestionsTitle']) }
