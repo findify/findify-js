@@ -2,7 +2,7 @@
  * @module layouts/ContentSearch
  */
 
-import { createElement } from 'react';
+import React, { createElement } from 'react';
 import { hot } from 'react-hot-loader';
 import { compose, withProps, withStateHandlers, setDisplayName, branch, withHandlers, renderNothing } from 'recompose';
 import { connectItems } from '@findify/react-connect';

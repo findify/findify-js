@@ -1,8 +1,8 @@
 /**
  * @module layouts/ZeroResults
  */
-
-import { compose, withProps, setDisplayName } from 'recompose';
+import React from "react";
+ import { compose, withProps, setDisplayName } from 'recompose';
 import { connectItems, connectQuery } from '@findify/react-connect';
 import withTheme from 'helpers/withTheme';
 import withColumns from 'helpers/withColumns';
