@@ -1,4 +1,4 @@
-import { createFactory, Component } from "react";
+import React, { createFactory, Component } from "react";
 import { basename } from "path";
 
 

@@ -39,7 +39,7 @@ const sendEventCreator = ({ events, key }: Config) => (
   endpoint?: string
 ) => {
   const { force, ...request } = _request;
-  if (!force || typeof events[event] !== 'undefined' && events[event] === false) return;
+  if (!force && typeof events[event] !== 'undefined' && events[event] === false) return;
   if (useCookie) return storage.memoize(event, request);
 
   const properties = event === EventName.viewPage

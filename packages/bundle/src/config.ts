@@ -16,6 +16,10 @@ export default process.env.NODE_ENV !== 'development'
        // Merchant status - will disable features, but send analytics
        "status": "live",
 
+       analytics: {
+           'view-page': false
+       },
+
        // If window width gte than this number - view will be changed
        "mobileBreakpoint": 700,
 
