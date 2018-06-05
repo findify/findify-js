@@ -8,6 +8,8 @@ import Analytics from '@findify/analytics';
 import emitter from './core/emitter';
 import resolveCallback from './helpers/resolveCallback';
 import setupPlatforms from './helpers/setupPlatforms';
+import { Events } from './core/events';
+
 /**
  * Create global namespace
  */
@@ -19,7 +21,7 @@ const isReady = (() => {
   __root.addListeners = emitter.addListeners;
   __root.invalidate = () =>  {
     for (const key in __webpack_require__.c) { delete __webpack_require__.c[key] }
-    emitter.emit('invalidate');
+    emitter.emit(Events.invalidate);
   };
   return true;
 })();
