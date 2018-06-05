@@ -80,7 +80,7 @@ const SearchOrZero: React.SFC<ISearchOrZeroProps> = ({
               theme,
               isTrendingSearches,
               meta,
-              ...(item === 'SearchSuggestions' ? {selectedSuggestion, icon: isTrendingSearches ? 'Star' : undefined} : {}),
+              ...(item === 'SearchSuggestions' ? {selectedSuggestion, icon: isTrendingSearches ? 'Fire' : undefined} : {}),
               ...rest })
         } />
     )} />

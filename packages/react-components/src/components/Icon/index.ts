@@ -7,6 +7,7 @@ import cx from 'classnames';
 import styles from 'components/Icon/styles.css';
 
 import Filters from 'components/Icon/icons/Filters.svg';
+import Fire from 'components/Icon/icons/Fire.svg';
 import Minus from 'components/Icon/icons/Minus.svg';
 import Plus from 'components/Icon/icons/Plus.svg';
 import Search from 'components/Icon/icons/Search.svg';
@@ -31,6 +32,7 @@ import CheckboxEmpty from 'components/Icon/icons/Checkbox/Empty.svg';
 /** Possible icon types */
 const icons = {
   Filters,
+  Fire,
   Minus,
   Plus,
   Search,
