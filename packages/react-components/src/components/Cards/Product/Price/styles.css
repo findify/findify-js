@@ -1,6 +1,7 @@
 .price-wrapper {
   text-align: center;
   margin: 5px 0;
+  margin-top: 20px;
   line-height: inherit;
   clear: fix;
   .simple &{

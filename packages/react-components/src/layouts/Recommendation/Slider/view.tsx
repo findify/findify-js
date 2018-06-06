@@ -76,7 +76,7 @@ export interface ISliderProps extends ThemedSFCProps {
 }
 
 const SliderRecommendationLayout = ({ items, config, theme, sliderOptions, _mountSlider }: ISliderProps) =>
-<>
+<React.Fragment display-if={items && items.size > 0}>
   <Text title className={theme.title}>
     { config.get('title') }
   </Text>
@@ -92,6 +92,6 @@ const SliderRecommendationLayout = ({ items, config, theme, sliderOptions, _moun
         .toArray()
     }
   </Slider>
-</>
+</React.Fragment>
 
 export default SliderRecommendationLayout;

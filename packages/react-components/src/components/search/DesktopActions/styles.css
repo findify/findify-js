@@ -3,7 +3,7 @@ $padding: 25px;
 .root{
   display: table;
   width: 100%;
-  padding-bottom: 32px;
+  padding-bottom: 24px;
 }
 
 .block{

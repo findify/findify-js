@@ -25,9 +25,9 @@ const getContent = ({ query, config, meta }: IGetContentProps) => {
   if (hasFilters && (!query.get('q') || query.get('q') === '')) return template(config.getIn(['breadcrumbs', 'i18n', 'showingEmpty']))(meta.get('total'));
   const total = template(config.getIn(['breadcrumbs', 'i18n', !query.get('q') || query.get('q') === '' ? 'showingEmpty' : 'showing']))(meta.get('total'));
   if (query.get('corrected_q')) {
-    return <Text html={total + ' "' + escape(query.get('q') as string) + '". ' + config.getIn(['i18n', 'partialMatch'])} />
+    return <Text primary uppercase html={total + ' "' + escape(query.get('q') as string) + '". ' + config.getIn(['i18n', 'partialMatch'])} />
   }
-  return <Text html={total + ' "' + escape(query.get('q') as string) + '"'} />
+  return <Text primary uppercase html={total + ' "' + escape(query.get('q') as string) + '"'} />
 }
 
 const QueryView = ({ theme, ...props}: ThemedSFCProps & IGetContentProps) =>
