@@ -39,7 +39,7 @@ const layoutFactory = (type: AutocompleteType, props) => () => (
  * @param props Props for React component
  */
 const renderView = (type: AutocompleteType, props) => (
-  (type === 'sidebar' ? createPortal : createElement)(layoutFactory(type, props))
+  (type === 'sidebar' ? portal : createElement)(layoutFactory(type, props))
 )
 
 const Autocomplete = connectSuggestions(({ config, isTrendingSearches,...rest }) => {

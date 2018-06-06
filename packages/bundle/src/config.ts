@@ -74,7 +74,7 @@ export default process.env.NODE_ENV !== 'development'
                // sidebar: to use sidebar as search component
                // fullscreen: to use fullscreen view for searching
                "viewType": "dropdown",
-               "mobileViewType": "fullscreen",
+               "mobileViewType": "sidebar",
                // Order of content
                "viewOrder": ["SearchSuggestions", "ProductMatches"],
 
