@@ -20,9 +20,9 @@ interface IGridProps extends ThemedSFCProps {
 
 
 const GridRecommendationLayout = ({ items, config, theme }: IGridProps) =>
-<>
+<React.Fragment display-if={items && items.size > 0}>
   <Text primary lowercase>{ config.get('title') }</Text>
   <ItemsList wrapper={Grid} columns='3' />
-</>
+</React.Fragment>
 
 export default GridRecommendationLayout;
