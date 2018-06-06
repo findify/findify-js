@@ -10,7 +10,7 @@ import { MJSConfiguration, ISortingItem, ThemedSFCProps } from 'types';
 import { List } from 'immutable';
 
 /** List of props Sorting view accepts */
-interface ISortingProps extends ThemedSFCProps {
+export interface ISortingProps extends ThemedSFCProps {
   /** Callback called when sorting is changed */
   onChangeSort?: (value: any) => void
   /** MJS configuration */

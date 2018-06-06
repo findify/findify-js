@@ -15,7 +15,7 @@ import cx from 'classnames';
 import { ThemedSFCProps, MJSConfiguration, ISuggestion, MJSValue } from 'types';
 import { List } from 'immutable';
 
-interface IAutocompletePanel extends ThemedSFCProps {
+export interface IAutocompletePanel extends ThemedSFCProps {
   config: MJSConfiguration;
   isTrendingSearches?: boolean;
   [x: string]: any;
@@ -42,7 +42,7 @@ const LayoutColumns = {
 }
 
 /** Props that SearchOrZero component accepts */
-interface ISearchOrZeroProps {
+export interface ISearchOrZeroProps {
   /** List of search suggestions */
   suggestions: List<ISuggestion>;
   /** MJS Configuration */
@@ -86,7 +86,7 @@ const SearchOrZero: React.SFC<ISearchOrZeroProps> = ({
     )} />
 )
 
-interface IAutocompleteDropdownProps {
+export interface IAutocompleteDropdownProps {
   /** List of search suggestions */
   suggestions: List<ISuggestion>;
   /** MJS Configuration */

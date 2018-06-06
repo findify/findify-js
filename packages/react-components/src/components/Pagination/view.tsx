@@ -10,7 +10,7 @@ import Icon from 'components/Icon';
 import { ThemedSFCProps, MJSConfiguration } from 'types';
 
 /** Props that Pagination view accepts */
-interface IPaginationProps extends ThemedSFCProps {
+export interface IPaginationProps extends ThemedSFCProps {
   /** MJS Configuration */
   config: MJSConfiguration;
   /** Current page */

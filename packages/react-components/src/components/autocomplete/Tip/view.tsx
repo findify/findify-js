@@ -10,7 +10,7 @@ import { List } from 'immutable'
 import { ThemedSFCProps, ClassnamedProps, WidgetAwareProps, SuggestionsConnectedProps } from 'types';
 
 /** List of props that Tip accepts */
-interface ITipProps extends ThemedSFCProps, ClassnamedProps, WidgetAwareProps, SuggestionsConnectedProps {
+export interface ITipProps extends ThemedSFCProps, ClassnamedProps, WidgetAwareProps, SuggestionsConnectedProps {
   /** Custom title to display in a Tip */
   title: string;
 }

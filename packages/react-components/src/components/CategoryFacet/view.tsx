@@ -13,7 +13,7 @@ import { IFacet, ThemedSFCProps, MJSConfiguration } from 'types';
 import { List, Map } from 'immutable';
 
 /** CategoryFacet props */
-interface ICategoryFacetProps extends ThemedSFCProps {
+export interface ICategoryFacetProps extends ThemedSFCProps {
   /** Categories facet */
   facet: IFacet;
   /** Facet items */

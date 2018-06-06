@@ -30,7 +30,7 @@ import CheckboxFilled from 'components/Icon/icons/Checkbox/Filled.svg';
 import CheckboxEmpty from 'components/Icon/icons/Checkbox/Empty.svg';
 
 /** Possible icon types */
-const icons = {
+export const icons = {
   Filters,
   Fire,
   Minus,

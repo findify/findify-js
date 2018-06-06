@@ -13,7 +13,7 @@ import { List } from 'immutable';
 import { ArrayLike } from 'components/common/MapArray';
 
 /** Props that LazyResultsView accepts */
-interface ILazyResultsProps extends ThemedSFCProps {
+export interface ILazyResultsProps extends ThemedSFCProps {
   /** List of Products */
   items: List<IProduct>;
   /** MJS Configuration */

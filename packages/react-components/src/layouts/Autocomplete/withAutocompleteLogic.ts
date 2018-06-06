@@ -1,4 +1,5 @@
-import { withStateHandlers, lifecycle, compose, setDisplayName, withProps } from 'recompose'
+import React from 'react';
+import { withStateHandlers, lifecycle, compose, setDisplayName, withProps, ComponentEnhancer } from 'recompose'
 import { connectSuggestions, connectQuery } from '@findify/react-connect';
 
 

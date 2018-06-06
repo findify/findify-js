@@ -10,7 +10,7 @@ import { IQuery, MJSConfiguration, MJSValue, ThemedSFCProps } from 'types';
 import { Map } from 'immutable'
 
 /** Props that getContent method uses to build query text at the top of Search page */
-interface IGetContentProps {
+export interface IGetContentProps {
   /** Search query */
   query: IQuery;
   /** MJS Configuration */

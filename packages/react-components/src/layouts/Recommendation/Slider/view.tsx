@@ -14,7 +14,7 @@ import { List } from 'immutable';
  * This is a list of possible props for React-Slick component, added for better typing.
  * For detailed documentation on react-slick please consult https://react-slick.neostack.com/docs/api/
  */
-interface IReactSlickProps {
+export interface IReactSlickProps {
   accessibility?: boolean;
   adaptiveHeight?: boolean;
   afterChange?: (index: number) => any;
@@ -64,7 +64,7 @@ interface IReactSlickProps {
 }
 
 /** This is a list of props Slider recommendation layout accepts */
-interface ISliderProps extends ThemedSFCProps {
+export interface ISliderProps extends ThemedSFCProps {
   /** List of Products to display */
   items: List<IProduct>;
   /** MJS configuration */

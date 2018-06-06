@@ -13,7 +13,7 @@ import { List } from 'immutable';
 
 
 /** Props that MobileSorting Item accepts */
-interface IMobileSortingItemProps extends ThemedSFCProps {
+export interface IMobileSortingItemProps extends ThemedSFCProps {
   /** Sorting item object to display */
   item: ISortingItem;
   /** Sorting item index in array */
@@ -34,7 +34,7 @@ const Item = withHandlers({
 )
 
 /** Props that MobileSorting view accepts */
-interface IMobileSortingProps extends ThemedSFCProps {
+export interface IMobileSortingProps extends ThemedSFCProps {
   /** Custom inline styles */
   style: React.CSSProperties;
   /** Method to hide modal from Drawer */

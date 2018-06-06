@@ -19,7 +19,7 @@ const DefaultContent = ({ theme, children, config }) =>
   <div className={theme.root}>{children}</div>
 
 /** Props that DesktopFacets view accepts */
-interface IDesktopFacetsProps extends ThemedSFCProps {
+export interface IDesktopFacetsProps extends ThemedSFCProps {
   /** MJS Configuration */
   config: MJSConfiguration;
   /** Facets list */

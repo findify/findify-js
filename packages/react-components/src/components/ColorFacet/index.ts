@@ -1,7 +1,7 @@
 /**
  * @module components/ColorFacet
  */
-
+import React from 'react';
 import { compose, setDisplayName, withStateHandlers, withProps } from 'recompose';
 import withTheme from 'helpers/withTheme';
 

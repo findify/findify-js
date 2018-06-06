@@ -10,7 +10,7 @@ import ItemsList from 'components/ItemsList';
 import Button from 'components/Button'
 import styles from 'components/autocomplete/ProductMatches/styles.css';
 import { List, Map } from 'immutable'
-import { ThemedSFCProps, GetSuggestionPropsFunction, IProduct, ISuggestion, WidgetAwareProps, SuggestionsConnectedProps } from 'types';
+import { ThemedSFCProps, GetSuggestionPropsFunction, IProduct, ISuggestion, MJSConfiguration, WidgetAwareProps, SuggestionsConnectedProps } from 'types';
 
 /**
  * This function extracts key used for rendering in React from Product
@@ -26,7 +26,7 @@ const getProductKey = (product: IProduct): string =>
 const productCardFactory = React.createFactory(ProductCard)
 
 /** This is a list of props which ProductMatches view for Autocomplete accepts */
-interface IProductMatchesProps extends ThemedSFCProps, WidgetAwareProps, SuggestionsConnectedProps {
+export interface IProductMatchesProps extends ThemedSFCProps, WidgetAwareProps, SuggestionsConnectedProps {
   /** List of products */
   items: List<IProduct>,
   /** Custom classname */

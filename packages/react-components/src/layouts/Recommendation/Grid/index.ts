@@ -1,3 +1,4 @@
+import React from 'react';
 import { connectConfig } from '@findify/react-connect';
 import { compose, setDisplayName } from 'recompose';
 import withTheme from 'helpers/withTheme';

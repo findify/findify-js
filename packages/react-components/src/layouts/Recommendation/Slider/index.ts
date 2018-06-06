@@ -1,7 +1,7 @@
 /**
  * @module layouts/Recommendation/Slider
  */
-
+import React from 'react';
 import { compose, withPropsOnChange, withStateHandlers, withHandlers, defaultProps } from 'recompose';
 import { connectItems } from '@findify/react-connect';
 import sizeMe from 'react-sizeme';

@@ -7,7 +7,7 @@ import cx from 'classnames';
 import { ThemedSFCProps, ClassnamedProps } from 'types';
 
 /** Props that Text component accepts */
-interface ITextProps extends ThemedSFCProps, ClassnamedProps {
+export interface ITextProps extends ThemedSFCProps, ClassnamedProps {
   /** Either an html tag name or a React.Component */
   component?: string | Component;
   /** One of modes specified in styles.css */

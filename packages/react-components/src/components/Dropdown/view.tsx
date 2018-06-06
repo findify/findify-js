@@ -13,7 +13,7 @@ import { MJSValue, ThemedSFCProps, ClassnamedProps } from 'types';
 import { List, Map } from 'immutable'
 
 /** Props that Dropdown Item accepts */
-interface IDropdownItemProps extends ThemedSFCProps {
+export interface IDropdownItemProps extends ThemedSFCProps {
   /** Item can be basically any immutable.Map(), that has 'label' attribute */
   item: Map<string, MJSValue>
   /** Index is item's current index in array of elements */
@@ -35,7 +35,7 @@ const Item = ({ item, index, getItemProps, highlighted, theme }: IDropdownItemPr
 );
 
 /** Props that Dropdown accepts */
-interface IDropdownProps extends ClassnamedProps, ThemedSFCProps {
+export interface IDropdownProps extends ClassnamedProps, ThemedSFCProps {
   /** onChange function for Downshift */
   onChange: (x: any) => any
   /** List of items */

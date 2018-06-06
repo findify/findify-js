@@ -1,7 +1,7 @@
 /**
  * @module components/search/MobileActions
  */
-
+import React from 'react';
 import { connectSort } from '@findify/react-connect';
 import { compose, withHandlers, withPropsOnChange } from 'recompose';
 import withEvents from 'helpers/withEvents';

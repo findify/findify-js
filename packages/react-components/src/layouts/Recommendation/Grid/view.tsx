@@ -11,7 +11,7 @@ import { IProduct, MJSConfiguration, ThemedSFCProps } from 'types';
 import { List } from 'immutable';
 
 /** This is a list of props Grid layout for Recommendations accepts */
-interface IGridProps extends ThemedSFCProps {
+export interface IGridProps extends ThemedSFCProps {
   /** immutable.List of Products to display */
   items: List<IProduct>;
   /** MJS configuration */

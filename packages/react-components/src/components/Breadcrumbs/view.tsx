@@ -11,9 +11,8 @@ import CheckboxContent from 'components/CheckboxFacet/content';
 import RangeContent from 'components/RangeFacet/content';
 import RatingContent from 'components/RatingFacet/content';
 import ColorContent from 'components/ColorFacet/content';
-import { ThemedSFC, IFacet, MJSConfiguration } from 'types';
+import { ThemedSFC, IFacet, MJSConfiguration, ThemedSFCProps } from 'types';
 import { List } from 'immutable'
-
 
 
 /**
@@ -30,7 +29,7 @@ const Breadcrumb = createBreadcrumb({
 });
 
 /** Props that Breadcrumbs component accepts */
-interface IBreadcrumbProps extends ThemedSFCProps {
+export interface IBreadcrumbProps extends ThemedSFCProps {
   /* List of active filters for current query */
   filters: List<IFacet>;
   /* MJS configuration */

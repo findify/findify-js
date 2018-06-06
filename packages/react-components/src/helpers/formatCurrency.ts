@@ -1,6 +1,6 @@
 import { format, currencies, defaultCurrency } from 'currency-formatter';
 
-interface ICurrencyData {
+export interface ICurrencyData {
   code?: string;
   symbol?: string;
   thousandsSeparator?: string;

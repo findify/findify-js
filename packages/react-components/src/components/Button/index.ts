@@ -1,7 +1,7 @@
 /**
  * @module components/Button
  */
-
+import React from 'react';
 import { compose, setDisplayName } from 'recompose';
 import withTheme from 'helpers/withTheme';
 

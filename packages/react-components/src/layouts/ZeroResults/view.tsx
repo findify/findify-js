@@ -13,7 +13,7 @@ import { IProduct, ThemedSFCProps, MJSConfiguration } from 'types';
 
 
 /** Props that ZeroResults layout accepts */
-interface IZeroResultsProps extends ThemedSFCProps {
+export interface IZeroResultsProps extends ThemedSFCProps {
   /** List of trending products */
   items: List<IProduct>;
   /** @hidden */

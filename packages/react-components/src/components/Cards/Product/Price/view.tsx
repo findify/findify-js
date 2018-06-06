@@ -10,7 +10,7 @@ import { getPrice } from 'helpers/getPrice'
 import { ClassnamedProps, ThemedSFCProps } from 'types';
 
 /** List of props that Price component accepts */
-interface IPriceProps extends ThemedSFCProps, ClassnamedProps {
+export interface IPriceProps extends ThemedSFCProps, ClassnamedProps {
   /** List of current prices */
   price: List<number>,
   /** Old price for the item */

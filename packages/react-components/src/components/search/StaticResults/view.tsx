@@ -10,7 +10,7 @@ import Pagination from 'components/Pagination';
 import { ThemedSFCProps, MJSConfiguration } from 'types';
 
 /** Props that StaticResults accepts */
-interface IStaticResultsProps extends ThemedSFCProps {
+export interface IStaticResultsProps extends ThemedSFCProps {
   /** MJS Configuration */
   config: MJSConfiguration;
   /** Number of columns that one item occupies in 12-col grid */

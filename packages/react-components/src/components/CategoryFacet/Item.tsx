@@ -12,7 +12,7 @@ import Icon from 'components/Icon';
 import { ThemedSFCProps, MJSConfiguration } from 'types';
 
 /** This is a list of props that each individual child of CategoryFacet View accepts */
-interface ICategoryFacetCategoryProps extends ThemedSFCProps {
+export interface ICategoryFacetCategoryProps extends ThemedSFCProps {
   /** TODO: add typings for Item here */
   item: any;
   /** Custom inline styles for Button holding CategoryFacet Item */

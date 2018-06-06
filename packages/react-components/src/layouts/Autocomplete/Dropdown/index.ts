@@ -1,7 +1,7 @@
 /**
  * @module layouts/Autocomplete/Dropdown
  */
-
+import React from 'react';
 import { connectConfig, connectSuggestions } from '@findify/react-connect';
 import { compose, defaultProps, setDisplayName, lifecycle, withStateHandlers } from 'recompose'
 import withTheme from 'helpers/withTheme'

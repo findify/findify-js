@@ -5,7 +5,7 @@
 import React, { createElement } from 'react';
 import { hot } from 'react-hot-loader';
 import { connectSuggestions } from '@findify/react-connect';
-import { createPortal } from 'helpers/createPortal';
+import { portal } from 'helpers/createPortal';
 
 import Dropdown from 'layouts/Autocomplete/Dropdown';
 import Sidebar from 'layouts/Autocomplete/Sidebar';

@@ -10,7 +10,7 @@ import mapArray, { ArrayLike, MapArrayProps } from 'components/common/MapArray';
 const ItemFactory = React.createFactory(ProductCard);
 
 /** Props that ItemList view accepts */
-interface IItemsListProps extends MapArrayProps {
+export interface IItemsListProps extends MapArrayProps {
   /** Wrapper around mapArray */
   wrapper: React.ComponentType;
   /** Rest props that are passed to wrapper */

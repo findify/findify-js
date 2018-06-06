@@ -8,7 +8,7 @@ import cx from 'classnames';
 import { ClassnamedProps, ThemedSFCProps } from 'types';
 
 /** Props that Button accepts */
-interface IButtonProps extends ThemedSFCProps, ClassnamedProps {
+export interface IButtonProps extends ThemedSFCProps, ClassnamedProps {
   /** Event handler for a button */
   onClick?: (evt: Event) => any;
   /** Flag to show if the button is active */

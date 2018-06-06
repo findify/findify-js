@@ -9,7 +9,7 @@ import Dropdown from 'components/Dropdown';
 import { fromJS } from 'immutable';
 import { ThemedSFCProps } from 'types';
 
-interface ITabsProps extends ThemedSFCProps {
+export interface ITabsProps extends ThemedSFCProps {
   /** Currently selected tab. Keep it empty if you want to use Tabs in self-controlled mode */
   selectedIndex?: number;
   /** Flag to render Tabs in mobile mode */

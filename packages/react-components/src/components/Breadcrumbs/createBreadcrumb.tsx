@@ -13,9 +13,9 @@ import Icon from 'components/Icon';
 import { FilterType, ThemedSFC, ThemedSFCProps, IFacet, MJSConfiguration } from 'types'
 
 /** Filter mapping type */
-type FilterMapping = {[x in FilterType]: React.SFC<any>}
+export type FilterMapping = {[x in FilterType]: React.SFC<any>}
 
-interface IFilterProps {
+export interface IFilterProps {
   /** Filter value */
   item: any;
   /** Filter mapping */
@@ -47,7 +47,7 @@ const Item = compose(
 
 
 /** List of props that component returned by createBreadcrumb accepts */
-interface IFilterListProps extends ThemedSFCProps {
+export interface IFilterListProps extends ThemedSFCProps {
   /** Filter to create a component for */
   item: IFacet;
   /** MJS configuration */

@@ -10,7 +10,7 @@ import Icon from 'components/Icon';
 import { IFacetValue, ThemedSFCProps } from 'types';
 
 /** Props that CheckboxFacet Item accepts */
-interface ICheckboxFacetItemProps extends ThemedSFCProps {
+export interface ICheckboxFacetItemProps extends ThemedSFCProps {
   /** Single item from facet */
   item: IFacetValue;
   /** CheckboxFacet Item click handler */

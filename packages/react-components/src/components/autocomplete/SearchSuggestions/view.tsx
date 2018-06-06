@@ -9,7 +9,7 @@ import { ThemedSFCProps, WidgetAwareProps, SuggestionsConnectedProps, ISuggestio
 import { List } from 'immutable'
 
 /** Props that SearchSuggestionsView accept */
-interface ISearchSuggestionsProps extends ThemedSFCProps, WidgetAwareProps, SuggestionsConnectedProps {
+export interface ISearchSuggestionsProps extends ThemedSFCProps, WidgetAwareProps, SuggestionsConnectedProps {
   /** Query currently entered in the autocomplete */
   query: IQuery;
   /** Any other props that come through here to SuggestionItem */

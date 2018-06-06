@@ -1,7 +1,7 @@
 /**
  * @module components/Cards/Product/Rating
  */
-
+import React from 'react';
 import { setDisplayName, compose } from 'recompose'
 import withTheme from 'helpers/withTheme'
 import view from 'components/Cards/Product/Rating/view';

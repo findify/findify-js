@@ -1,7 +1,7 @@
 /**
  * @module components/Sorting
  */
-
+import React from 'react';
 import { connectSort } from '@findify/react-connect';
 import { compose, withPropsOnChange, setDisplayName, withHandlers, branch, renderNothing } from 'recompose';
 import withTheme from 'helpers/withTheme';

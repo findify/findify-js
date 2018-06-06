@@ -2,7 +2,7 @@
  * @module components/common/Sticky
  */
 
-import { Component, createFactory } from 'react';
+import React, { Component, createFactory } from 'react';
 import withTheme from 'helpers/withTheme';
 
 import view from 'components/common/Sticky/view';
@@ -20,7 +20,7 @@ const applyStyles = (element, styles?) => {
 };
 
 /** Props that Sticky component accepts */
-interface IStickyProps {
+export interface IStickyProps {
   /** Offset for sticky */
   offset?: number;
   /** Minimal height */
