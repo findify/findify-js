@@ -35,6 +35,10 @@
     .title {
       color: $color-black;
     }
+    .title {
+      text-decoration: line-through;
+      text-decoration-color: $color-black;
+    }
     &:before {
       color: $color-black;
     }
