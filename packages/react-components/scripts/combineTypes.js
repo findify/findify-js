@@ -15,7 +15,7 @@ const getContent = (files, _root) => Promise.all(
       const content = [];
       const formatedPath = path.substr(_root.length + 1).replace('.d.ts', '').replace('/index', '');
       content.push(`declare module '${formatedPath}' {`)
-      content.push(buffer.toString())
+      content.push(buffer.toString().replace(/declare /gi, ''))
       content.push(`}\n`)
       resolve(content.join('\n'))
     })

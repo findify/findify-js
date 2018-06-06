@@ -12,7 +12,7 @@ const createRoot = (): HTMLDivElement => {
   return div;
 }
 
-class Portal extends Component<any>{
+export class Portal extends Component<any>{
   element: any;
 
   static displayName = 'BodyRender';

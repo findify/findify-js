@@ -1,5 +1,5 @@
 const path = require('path');
-/**
+/**!
  * This is a Codemod for migrating relative imports from react-components
  * to absolute imports handled by babel-plugin-module-resolver
  * @param {*} fileInfo
