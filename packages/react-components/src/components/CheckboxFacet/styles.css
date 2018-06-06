@@ -57,7 +57,7 @@
   padding-left: 11px;
   box-sizing: border-box;
   font-family: $font-base;
-  font-size: $font-size-small;
+  font-size: $font-size-large;
   border: 1px solid $color-grey-2;
   transition: border-color .1s linear;
   outline: none;
