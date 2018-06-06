@@ -27,6 +27,7 @@
   }
   .title {
     color: $color-grey-3;
+    position: relative;
   }
   &:hover{
     text-decoration: line-through;
@@ -34,10 +35,14 @@
     color: $color-black;
     .title {
       color: $color-black;
-    }
-    .title {
-      text-decoration: line-through;
-      text-decoration-color: $color-black;
+      &:after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 50%;
+        border-bottom: 1px solid #000;
+      }
     }
     &:before {
       color: $color-black;
@@ -63,4 +68,11 @@
   vertical-align: -4px;
   transition: color .1s linear;
   padding-left: 5px;
+}
+
+.star {
+  color: $color-yellow;
+  &.unfilled {
+    color: $color-grey-3;
+  }
 }
