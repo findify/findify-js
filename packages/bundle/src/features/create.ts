@@ -1,5 +1,4 @@
 import { Component, createElement } from 'react';
-import emitter from '../core/emitter';
 import { debounce } from 'lodash';
 import { Events } from '../core/events';
 
@@ -15,7 +14,7 @@ class FeatureCreator extends Component<any>{
     const { widget, updater, key } = props;
     this.initial = updater(widget, this.callback);
     this.state = { component: this.initial };
-    this.unsubscribeForceUpdate = emitter.listen((type, key, nextConfig) => {
+    this.unsubscribeForceUpdate = __root.listen((type, key, nextConfig) => {
 
       // Listen to modules invalidation
       if (type === Events.invalidate) this.invalidate();
