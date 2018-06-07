@@ -71,7 +71,7 @@ export default class SignalCombinator {
    * @param signalProcessor function, that accepts signal data and returns possible transition states
    * @param defaultValue default value for signal
    */
-  createSignal(name: string, signalProcessor: Function, defaultValue: string) {
+  createSignal(name: string, signalProcessor: Function, defaultValue: any) {
     this.signalProcessors[name] = signalProcessor;
     this.signal(name, defaultValue);
   }

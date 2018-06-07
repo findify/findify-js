@@ -65,7 +65,7 @@ export default process.env.NODE_ENV !== 'development'
                // Disable listening for closest form submit
                "disableFormSubmit": false,
 
-               "trendingSearchesEnabled": false,
+               "trendingSearchesDisabled": false,
 
                // Where it should be rended: parent|self|body
                "renderIn": "parent",
