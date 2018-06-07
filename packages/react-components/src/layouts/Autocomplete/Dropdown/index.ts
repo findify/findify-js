@@ -13,6 +13,7 @@ import trackPosition from './trackPosition';
 export default compose(
   setDisplayName('Dropdown'),
   withTheme(styles),
+  connectSuggestions,
   withAutocompleteLogic,
   trackPosition
 )(view);
