@@ -11,7 +11,7 @@ import styles from 'components/common/Grid/styles.css';
 import { ThemedSFCProps } from 'types';
 
 
-interface IGridProps extends ThemedSFCProps {
+export interface IGridProps extends ThemedSFCProps {
   columns: string;
   style?: React.StyleHTMLAttributes<any>,
 }

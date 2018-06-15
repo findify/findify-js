@@ -1,7 +1,7 @@
 /**
  * @module components/Pagination
  */
-
+import React from 'react';
 import range from 'lodash/range';
 import { branch, compose, defaultProps, setDisplayName, renderNothing, withProps } from 'recompose';
 import { connectPagination } from '@findify/react-connect';

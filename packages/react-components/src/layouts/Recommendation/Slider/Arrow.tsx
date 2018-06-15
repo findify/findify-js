@@ -12,7 +12,7 @@ import styles from 'layouts/Recommendation/Slider/styles.css';
 
 
 /** Props that Arrow component accepts */
-interface IArrowProps {
+export interface IArrowProps {
   /** Arrow direction */
   dir: 'left' | 'right';
   /** onClick handler that is used if it is passed */

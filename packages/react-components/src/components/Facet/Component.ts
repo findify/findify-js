@@ -1,7 +1,7 @@
 /**
  * @module components/Facet
  */
-
+import React from 'react';
 import { compose, withPropsOnChange, componentFromProp, renderComponent } from 'recompose';
 import TextFacet from 'components/CheckboxFacet';
 import RangeFacet from 'components/RangeFacet';
@@ -14,7 +14,7 @@ import { FilterType } from 'types';
  * Function, that takes one of filter types and returns facet component for it
  * @param type Filter type to fetch facet component for
  */
-const getComponent = (type: FilterType) => ({
+export const getComponent = (type: FilterType) => ({
   text: TextFacet,
   range: RangeFacet,
   rating: RatingFacet,

@@ -33,7 +33,7 @@ const prefetchImage = (src: string) =>
   });
 
 /** This is a list of props which Image component accepts */
-interface ImageProps {
+export interface ImageProps {
   /** Custom classname */
   className?: string,
   /** Source to original image */

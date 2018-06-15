@@ -16,7 +16,7 @@ import { ThemedSFCProps, IFacet, MJSConfiguration, MJSValue } from 'types';
 import { List } from 'immutable';
 
 /** Props that FacetContent accepts */
-interface IFacetContentProps extends ThemedSFCProps {
+export interface IFacetContentProps extends ThemedSFCProps {
   /** Currently active facet */
   active: IFacet;
   /** MJS Configuration */
@@ -40,7 +40,7 @@ const FacetContent = ({ active, config, theme }: IFacetContentProps) => (
 );
 
 /** Props that MobileFacets view accepts */
-interface IMobileFacetsProps extends ThemedSFCProps {
+export interface IMobileFacetsProps extends ThemedSFCProps {
   /** immutable.List() of Facets */
   facets: List<IFacet>;
   /** Currently active facet */

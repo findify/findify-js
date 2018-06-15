@@ -10,7 +10,7 @@ import MapArray from 'components/common/MapArray';
 import Item from 'components/RangeFacet/Item';
 import Button from 'components/Button';
 import Text from 'components/Text';
-import { ThemedSFCProps, IFacet, IFacetValue } from 'types';
+import { ThemedSFCProps, IFacet, IFacetValue, MJSConfiguration } from 'types';
 import { List } from 'immutable';
 
 /** Input default styling parameters */
@@ -19,7 +19,7 @@ const inputDefaults = {
   mobile: false,
 };
 
-interface IRangeFacetProps extends ThemedSFCProps {
+export interface IRangeFacetProps extends ThemedSFCProps {
   /** Facet to extract values from */
   facet: IFacet;
   /** Facet values */

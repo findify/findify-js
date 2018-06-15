@@ -1,7 +1,7 @@
 /**
  * @module components/contentsearch/Trends
  */
-
+import React from 'react';
 import { compose, setDisplayName } from 'recompose'
 import { connectConfig } from '@findify/react-connect';
 import withTheme from 'helpers/withTheme'

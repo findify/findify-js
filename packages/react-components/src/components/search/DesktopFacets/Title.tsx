@@ -10,13 +10,13 @@ import { ThemedSFCProps, MJSConfiguration, MJSValue } from 'types';
 import { Map, List } from 'immutable';
 
 /** Props that hidable facet titles accept */
-interface IHidableProps extends ITitlesProps {
+export interface IHidableProps extends ITitlesProps {
   /** Method to hide facets */
   onHide: () => any;
 }
 
 /** Props that facet titles accept */
-interface ITitlesProps extends ThemedSFCProps {
+export interface ITitlesProps extends ThemedSFCProps {
   /** MJS Configuration */
   config: MJSConfiguration;
   /** MJS API Response Metadata */

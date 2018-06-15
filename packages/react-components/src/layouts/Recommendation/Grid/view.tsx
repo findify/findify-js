@@ -11,7 +11,7 @@ import { IProduct, MJSConfiguration, ThemedSFCProps } from 'types';
 import { List } from 'immutable';
 
 /** This is a list of props Grid layout for Recommendations accepts */
-interface IGridProps extends ThemedSFCProps {
+export interface IGridProps extends ThemedSFCProps {
   /** immutable.List of Products to display */
   items: List<IProduct>;
   /** MJS configuration */
@@ -20,9 +20,9 @@ interface IGridProps extends ThemedSFCProps {
 
 
 const GridRecommendationLayout = ({ items, config, theme }: IGridProps) =>
-<>
+<React.Fragment display-if={items && items.size > 0}>
   <Text primary lowercase>{ config.get('title') }</Text>
   <ItemsList wrapper={Grid} columns='3' />
-</>
+</React.Fragment>
 
 export default GridRecommendationLayout;

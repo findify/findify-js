@@ -5,7 +5,7 @@
 import React from 'react';
 
 /** Props that Branch component accepts */
-interface IBranchProps {
+export interface IBranchProps {
   /**
     * Use display-if to hide a component.
     * When property is not defined or is set to true - component is rendered,

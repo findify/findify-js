@@ -12,7 +12,7 @@ import Icon from 'components/Icon';
 import { ThemedSFCProps, MJSConfiguration } from 'types';
 
 /** Props that DesktopActions view accepts */
-interface IDesktopActionsProps extends ThemedSFCProps {
+export interface IDesktopActionsProps extends ThemedSFCProps {
   /** Method to show facets */
   showFacets: () => any;
   /** Flag to indicate whether facets are visible */

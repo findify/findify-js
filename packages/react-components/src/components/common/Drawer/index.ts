@@ -1,7 +1,7 @@
 /**
  * @module components/common/Drawer
  */
-
+import React from 'react';
 import {
   compose,
   setDisplayName,

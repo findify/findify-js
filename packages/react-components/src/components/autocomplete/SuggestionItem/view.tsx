@@ -24,7 +24,7 @@ function highlightSuggestion(value: string, highlighted: string, theme: Theme) {
 /**
  * Props that SuggestionItem accepts
  */
-interface ISuggestionItemProps extends ThemedSFCProps, ISuggestionProps {
+export interface ISuggestionItemProps extends ThemedSFCProps, ISuggestionProps {
   /** Suggestion item */
   item?: ISuggestion;
   /** Query, used to highlight matches */

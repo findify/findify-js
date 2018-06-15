@@ -15,7 +15,7 @@ import { List } from 'immutable'
 import { MJSConfiguration, ThemedSFCProps, IProduct } from 'types';
 
 /** Props that search layout accepts */
-interface ISearchProps extends ThemedSFCProps {
+export interface ISearchProps extends ThemedSFCProps {
   /** MJS Configuration */
   config: MJSConfiguration;
   /** Flag that switches Search to mobile layout */

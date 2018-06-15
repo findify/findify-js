@@ -12,7 +12,7 @@ import { ThemedSFCProps } from 'types';
 const itemsArray = Array.from(Array(5).keys())
 
 /** List of props that Rating component accepts */
-interface IRatingProps extends ThemedSFCProps {
+export interface IRatingProps extends ThemedSFCProps {
   /** Rating value */
   value: number,
   /** Total reviews */

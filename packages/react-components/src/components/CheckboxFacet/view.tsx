@@ -16,7 +16,7 @@ import { IFacetValue, ThemedSFCProps, MJSConfiguration } from 'types';
 import { List } from 'immutable'
 
 /** Props that CheckboxFacet accepts */
-interface ICheckboxFacetProps extends ThemedSFCProps {
+export interface ICheckboxFacetProps extends ThemedSFCProps {
   /** List of facet values available for toggling */
   items: List<IFacetValue>;
   /** MJS Configuration */

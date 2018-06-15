@@ -21,7 +21,7 @@ import { IProduct, MJSConfiguration, MJSValue, ThemedSFCProps } from 'types';
 import { List, Map } from 'immutable';
 
 /** This is a list of props ContentSearchLayout accepts */
-interface IContentSearchProps extends ThemedSFCProps {
+export interface IContentSearchProps extends ThemedSFCProps {
   /** MJS configuration */
   config: MJSConfiguration;
   /** MJS Request meta-information, like query, offset, limits */

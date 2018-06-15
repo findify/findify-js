@@ -15,7 +15,7 @@ const withClickHandler = withHandlers({
 });
 
 /** Props that MobileFacets FacetLabel accepts */
-interface IMobileFacetsLabelProps extends ThemedSFCProps {
+export interface IMobileFacetsLabelProps extends ThemedSFCProps {
   /** Facet */
   item: IFacet;
   /** Count of filters enabled */
@@ -43,7 +43,7 @@ const FacetLabel = compose(
 )
 
 /** Props that MobileFacets TitlesView accepts */
-interface IMobileFacetsTitlesProps extends ThemedSFCProps {
+export interface IMobileFacetsTitlesProps extends ThemedSFCProps {
   /** immutable.List of facets */
   facets: List<IFacet>;
   /** Method to select facet by its name */

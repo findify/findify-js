@@ -127,6 +127,7 @@ export const registerHandlers = (widget, combinator) => {
     ['keydown'],
     handleKeydown,
     node,
+    false
   ))
 
   /** Listen for form submit */

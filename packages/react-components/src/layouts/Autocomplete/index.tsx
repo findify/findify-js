@@ -4,8 +4,8 @@
 
 import React, { createElement } from 'react';
 import { hot } from 'react-hot-loader';
-import { connectSuggestions } from '@findify/react-connect';
-import { createPortal } from 'helpers/createPortal';
+import { connectSuggestions, connectConfig } from '@findify/react-connect';
+import { portal } from 'helpers/createPortal';
 
 import Dropdown from 'layouts/Autocomplete/Dropdown';
 import Sidebar from 'layouts/Autocomplete/Sidebar';
@@ -39,13 +39,12 @@ const layoutFactory = (type: AutocompleteType, props) => () => (
  * @param props Props for React component
  */
 const renderView = (type: AutocompleteType, props) => (
-  (type === 'sidebar' ? createPortal : createElement)(layoutFactory(type, props))
+  (type === 'sidebar' ? portal : createElement)(layoutFactory(type, props))
 )
 
-const Autocomplete = connectSuggestions(({ config, isTrendingSearches,...rest }) => {
+const Autocomplete = connectConfig(({ config, isTrendingSearches,...rest }) => {
   const isMobile = window.innerWidth < config.get('mobileBreakpoint')
   const viewType: AutocompleteType = isMobile && config.get('mobileViewType', 'sidebar') || config.get('viewType', 'simple')
-
   return renderView(viewType, { ...rest, config, isMobile, isTrendingSearches })
 });
 

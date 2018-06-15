@@ -9,7 +9,7 @@ import Item from 'components/ColorFacet/Item';
 import { ThemedSFCProps, MJSConfiguration, IFacetValue } from 'types';
 import { List } from 'immutable';
 
-interface IColorFacetProps extends ThemedSFCProps {
+export interface IColorFacetProps extends ThemedSFCProps {
   /** MJS Configuration */
   config: MJSConfiguration;
   /** Facet values to render */

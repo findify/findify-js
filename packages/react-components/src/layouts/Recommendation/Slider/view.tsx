@@ -14,7 +14,7 @@ import { List } from 'immutable';
  * This is a list of possible props for React-Slick component, added for better typing.
  * For detailed documentation on react-slick please consult https://react-slick.neostack.com/docs/api/
  */
-interface IReactSlickProps {
+export interface IReactSlickProps {
   accessibility?: boolean;
   adaptiveHeight?: boolean;
   afterChange?: (index: number) => any;
@@ -64,7 +64,7 @@ interface IReactSlickProps {
 }
 
 /** This is a list of props Slider recommendation layout accepts */
-interface ISliderProps extends ThemedSFCProps {
+export interface ISliderProps extends ThemedSFCProps {
   /** List of Products to display */
   items: List<IProduct>;
   /** MJS configuration */
@@ -76,7 +76,7 @@ interface ISliderProps extends ThemedSFCProps {
 }
 
 const SliderRecommendationLayout = ({ items, config, theme, sliderOptions, _mountSlider }: ISliderProps) =>
-<>
+<React.Fragment display-if={items && items.size > 0}>
   <Text title className={theme.title}>
     { config.get('title') }
   </Text>
@@ -92,6 +92,6 @@ const SliderRecommendationLayout = ({ items, config, theme, sliderOptions, _moun
         .toArray()
     }
   </Slider>
-</>
+</React.Fragment>
 
 export default SliderRecommendationLayout;

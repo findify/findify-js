@@ -1,7 +1,7 @@
 /**
  * @module components/Cards/Product/Price
  */
-
+import React from 'react';
 import { compose, setDisplayName, withProps } from 'recompose'
 import withTheme from 'helpers/withTheme'
 import { priceIsSampleArray } from 'helpers/getPrice';

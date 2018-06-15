@@ -7,10 +7,10 @@ import content from 'components/RatingFacet/content';
 import Button from 'components/Button';
 import Text from 'components/Text';
 import Icon from 'components/Icon';
-import { IFacetValue, ThemedSFCProps } from 'types';
+import { IFacetValue, ThemedSFCProps, MJSConfiguration } from 'types';
 
 /** Props that RatingFacet Item view accepts */
-interface IRatingFacetItemProps extends ThemedSFCProps {
+export interface IRatingFacetItemProps extends ThemedSFCProps {
   /** Facet item to render */
   item: IFacetValue;
   /** Custom inline style */

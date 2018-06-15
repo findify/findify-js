@@ -28,7 +28,9 @@ export default (widget, rerender) => {
   combinator.createSignal('query', query => query !== '' && ['closed', 'open', 'trending'] || ['closed', 'trending'], '');
   combinator.createSignal('suggestionCount', suggestionCount => suggestionCount > 0 && ['closed', 'open'] || ['closed', 'trending'], 0);
   combinator.createSignalSum(['query', 'suggestionCount'], (query, suggestionCount) => (
-    (query === '' || suggestionCount === 0) ? ['closed', 'trending'] : ['closed', 'open']
+    (
+      (query === '' || suggestionCount === 0) && !config.get('trendingSearchesDisabled', false) ? ['closed', 'trending'] : ['closed', 'open']
+    ).filter(item => item)
   ));
   combinator.transitionTo('closed', () => rerender());
   combinator.transitionTo('open', () => rerender('initial'));

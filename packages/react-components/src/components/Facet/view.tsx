@@ -10,7 +10,7 @@ import Component from 'components/Facet/Component';
 import { ThemedSFCProps, IFacet, MJSConfiguration } from 'types';
 
 /** Props that Facet view accepts */
-interface IFacetProps extends ThemedSFCProps {
+export interface IFacetProps extends ThemedSFCProps {
   /** Facet component to render */
   FacetComponent: React.Component<any>;
   /** Flag to show open / closed state of facet */

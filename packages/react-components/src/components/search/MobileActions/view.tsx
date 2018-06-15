@@ -10,7 +10,7 @@ import Icon from 'components/Icon';
 import { MJSConfiguration, ThemedSFCProps } from 'types';
 
 /** Props that MobileActionsView accepts */
-interface IMobileActionsProps extends ThemedSFCProps {
+export interface IMobileActionsProps extends ThemedSFCProps {
   /** Flag whether to show facets selection */
   showFacets?: boolean;
   /** Flag whether to show sorting */

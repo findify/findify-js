@@ -9,7 +9,7 @@ import Text from 'components/Text';
 import Icon from 'components/Icon';
 import { ThemedSFCProps, IFacet, IFacetValue, MJSConfiguration } from 'types';
 
-interface IRangeFacetItemProps extends ThemedSFCProps {
+export interface IRangeFacetItemProps extends ThemedSFCProps {
   /** Facet item to render */
   item: IFacetValue;
   /** Custom inline style */

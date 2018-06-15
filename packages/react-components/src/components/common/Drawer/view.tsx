@@ -8,13 +8,13 @@ import cx from 'classnames';
 import { ThemedSFCProps } from 'types';
 
 /** This is a state definition for DrawerView */
-interface IDrawerViewState {
+export interface IDrawerViewState {
   /** Flag whether Drawer is open */
   open: boolean;
 }
 
 /** List of props that DrawerView accepts */
-interface IDrawerViewProps extends ThemedSFCProps {
+export interface IDrawerViewProps extends ThemedSFCProps {
   /** Additional options for DrawerView */
   options: {
     /** Transition from styles */

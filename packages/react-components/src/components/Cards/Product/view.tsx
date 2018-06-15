@@ -28,7 +28,7 @@ const Description: any = ({ text, theme, ...rest }) => (
   </p>
 );
 
-interface IProductCardProps extends ThemedSFCProps {
+export interface IProductCardProps extends ThemedSFCProps {
   item: IProduct;
   config: MJSConfiguration;
 }

@@ -1,8 +1,7 @@
 /**
  * @module components/search/LazyResults
  */
-
-import { Component, createElement } from 'react';
+import React, { Component, createElement } from 'react';
 import { is, List, Map } from 'immutable';
 import { connectItems } from '@findify/react-connect';
 import { compose, withPropsOnChange, setDisplayName } from 'recompose';

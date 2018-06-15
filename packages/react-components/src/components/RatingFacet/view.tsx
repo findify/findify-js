@@ -7,11 +7,11 @@ import cx from 'classnames';
 
 import MapArray from 'components/common/MapArray';
 import Item from 'components/RatingFacet/Item';
-import { IFacet, IFacetValue } from 'types';
+import { IFacet, IFacetValue, MJSConfiguration, ThemedSFCProps } from 'types';
 import { List } from 'immutable';
 
 /** Props that RatingFacet view accepts */
-interface IRatingFacetProps extends ThemedSFCProps {
+export interface IRatingFacetProps extends ThemedSFCProps {
   /** Facet to extract values from */
   facet: IFacet;
   /** Facet values */

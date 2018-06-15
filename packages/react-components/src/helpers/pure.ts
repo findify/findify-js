@@ -1,4 +1,5 @@
-import { compose, shouldUpdate, setDisplayName } from 'recompose';
+import React from 'react';
+import { compose, shouldUpdate, setDisplayName, ComponentEnhancer } from 'recompose';
 import { is, isImmutable } from 'immutable';
 
 export default compose(

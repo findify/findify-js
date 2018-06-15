@@ -7,7 +7,7 @@ module.exports = {
   propsParser: require('react-docgen-typescript').withCustomConfig('./tsconfig.json', [{ skipPropsWithoutDoc: true }]).parse,
   webpackConfig: webpackConfigFn,
   components: () => {
-    return glob.sync(path.resolve(__dirname, 'src/**/*.tsx'))
+    return glob.sync(path.resolve(__dirname, 'src/**!/*.tsx'))
       .filter(module => !module.endsWith('test.tsx'))
   }
 }
