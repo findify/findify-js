@@ -7,6 +7,8 @@ export default process.env.NODE_ENV !== 'development'
        // Show/Hide "Powered by findify badge"
        "poweredByFindify": true,
 
+       hidableFacets: true,
+
        // Specific platform code
        "platform": {
            "shopify": true,

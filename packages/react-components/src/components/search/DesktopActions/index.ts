@@ -25,7 +25,7 @@ export default compose(
         }
       ),
       withEvents({
-        hideFacets: ({ hideFacets }) => hideFacets()
+        hideFacets: ({ hideFacets }) => hideFacets
       }),
       withHandlers({
         showFacets: ({ showFacets, emit }) => () => {

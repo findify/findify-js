@@ -42,8 +42,7 @@ const createConfig = (type, node, key, customs = Map()) => {
     || config.getIn(['features', type]);
 
   return config.withMutations(c =>
-      c.delete('features')
-      .mergeDeep(cfg)
+      c.mergeDeep(cfg)
       .mergeDeep(customs)
       .set('node', node)
       .set('widgetKey', key)
@@ -112,6 +111,12 @@ const widgets = {
 
 export const createWidgets = (_config) => {
   config = _config;
+
+  // DY: Legacy
+  // TODO: Remove after they will release new version
+  (global as any).findifyCreateFeature = (selector, { type, ...config }) =>
+  widgets.attach(selector, type, config);
+
   return widgets;
 }
 
@@ -124,8 +129,3 @@ export const bulkAddWidgets = (selectors = {}) => {
     widgets.attach(key, selectors[key]);
   }
 }
-
-// DY: Legacy
-// TODO: Remove after they will release new version
-(global as any).findifyCreateFeature = (selector, { type, ...config }) =>
-  widgets.attach(selector, type, config);
