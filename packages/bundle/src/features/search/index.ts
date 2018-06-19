@@ -37,6 +37,7 @@ export default (widget, render) => {
   if (!isSearch()) {
     showFallback(node);
     hideLoader(node);
+    __root.emit(Events.collectionNotFound, widget);
     return null;
   }
 

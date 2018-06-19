@@ -42,7 +42,7 @@
     "yarn": "^1.5.1"
   },
   "dependencies": {
-    "@findify/analytics": "^3.2.0",
+    "@findify/analytics": "^3.2.1",
     "jscodeshift": "^0.5.0",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",

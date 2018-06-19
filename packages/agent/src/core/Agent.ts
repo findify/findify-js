@@ -130,6 +130,7 @@ export class Agent {
     const handlers = this.handlers.filter(({ key }) => key === event);
     if (!handlers) return;
     for (let index = 0; index < handlers.length; index++) {
+      if (!handlers[index]) continue;
       handlers[index].handler(data);
     }
   }
@@ -138,6 +139,7 @@ export class Agent {
     const handlers = this.handlers.filter(({ key }) => key === event);
     if (!handlers) return;
     for (let index = 0; index < handlers.length; index++) {
+      if (!handlers[index]) continue;
       handlers[index].handler(this.format(changes), this.format(meta));
     }
   }
