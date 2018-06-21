@@ -24,7 +24,7 @@ export interface IFacetContentProps extends ThemedSFCProps {
 }
 
 const FacetContent = ({ active, config, theme }: IFacetContentProps) => (
-  <div className={theme.container}>
+  <div className={cx(theme.container, theme[active.get('type')])}>
     <Component
       isExpanded
       type={active.get('type')}

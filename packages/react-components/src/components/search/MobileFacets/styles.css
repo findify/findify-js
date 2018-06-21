@@ -78,6 +78,10 @@
   overflow-y: auto;
 }
 
+.rating {
+  flex-direction: column;
+}
+
 .expand{
   display: none
 }
