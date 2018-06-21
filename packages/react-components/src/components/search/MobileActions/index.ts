@@ -2,7 +2,7 @@
  * @module components/search/MobileActions
  */
 import React from 'react';
-import { connectSort } from '@findify/react-connect';
+import { connectSort, connectFacets } from '@findify/react-connect';
 import { compose, withHandlers, withPropsOnChange } from 'recompose';
 import withEvents from 'helpers/withEvents';
 import withTheme from 'helpers/withTheme';
@@ -13,6 +13,7 @@ import styles from 'components/search/MobileActions/styles.css';
 export default compose(
   withTheme(styles),
   connectSort,
+  connectFacets,
   withEvents(),
   withHandlers({
     showFacets: ({ emit }) => () => emit('showMobileFacets'),
