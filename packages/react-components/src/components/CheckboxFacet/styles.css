@@ -33,7 +33,11 @@
     vertical-align: -2px;
   }
 }
-
+.content{
+  font-size: calc($facet-item-font-size * $font-size-medium);
+  font-family: $facet-item-font-family;
+  color: $facet-item-color;
+}
 .search{
   position: relative;
   $padding-bottom: 11px;

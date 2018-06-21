@@ -20,4 +20,8 @@
   --color-yellow: #E9BE57;
   --color-red: #D0284B;
   --color-blue: #3C74C5;
+
+  --facet-item-color: var(--color-black);
+  --facet-item-font-family: var(--font-base);
+  --facet-item-font-size: 1;
 }

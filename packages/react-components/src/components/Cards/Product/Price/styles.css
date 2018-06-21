@@ -1,3 +1,6 @@
+$font-family: $font-base;
+$font-size: $font-size-medium;
+
 .price-wrapper {
   text-align: center;
   margin: 5px 0;
@@ -17,25 +20,29 @@
 }
 
 .compare {
+  $color: $color-grey-4;
   text-decoration: line-through;
-  color: $color-grey-4;
-  font-size: $font-size-medium;
+  color: $color;
+  font-size: $font-size;
 }
 
 
 .price, .compare {
-  font-family: $font-base;
+  font-family: $font-family;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
 }
 
 .price {
-  color: $color-black;
-  font-size: $font-size-medium;
+  $color: $color-black;
+  color: $color;
+  font-size: $font-size;
   font-weight: bold;
 }
 
 .sale-price {
-  color: $color-red;
+  $color: $color-red;
+  color: $color;
+  font-size: $font-size;
   padding-right: 5px;
 }

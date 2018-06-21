@@ -25,7 +25,11 @@ const Item = ({ item, theme, style, onItemClick }: ICheckboxFacetItemProps) =>
     onItemClick && onItemClick(evt);
   }}>
     <Icon name={item.get('selected') ? 'CheckboxFilled' : 'CheckboxEmpty'} />
-    <Text primary lowercase bold={item.get('selected')}>
+    <Text
+      primary
+      lowercase
+      className={theme.content}
+      bold={item.get('selected')}>
       { content({ item }) }
     </Text>
     <Text secondary uppercase>

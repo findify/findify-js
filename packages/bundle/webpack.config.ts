@@ -34,7 +34,7 @@ const createGlobals = (isDevelopment) => [
 )
 
 export default (env: WebpackEnvArgs, { mode }) => {
-  const config: webpack.Configuration = {
+  const config = {
     entry: {
       'bundle': path.resolve(__dirname, 'src/index'),
       'polyfill': path.resolve(__dirname, 'src/polyfill'),
@@ -186,6 +186,16 @@ export default (env: WebpackEnvArgs, { mode }) => {
       from: path.resolve(__dirname,'../react-components/lib/tree.json'),
       to: 'tree.json',
     }]));
+    config.plugins.push(new UglifyJSPlugin({
+      cache: true,
+      parallel: true,
+      sourceMap: true,
+      uglifyOptions: {
+        compress: {
+          drop_console: true
+        }
+      }
+    }));
   }
 
   if (mode === 'development') {
