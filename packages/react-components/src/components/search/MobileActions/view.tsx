@@ -15,8 +15,8 @@ import { MJSConfiguration, ThemedSFCProps, IFacet } from 'types';
 export interface IMobileActionsProps extends ThemedSFCProps {
   /** Flag, showing whether smart collection or regular searches are opened */
   isCollection?: boolean
-  /** Facets currently applied */
-  facets: List<IFacet>;
+  /** Number of filters currently applied */
+  total: number;
   /** Flag whether to show facets selection */
   showFacets?: boolean;
   /** Flag whether to show sorting */
@@ -32,7 +32,7 @@ export interface IMobileActionsProps extends ThemedSFCProps {
 const MobileActionsView: React.SFC<IMobileActionsProps> =  ({
   isCollection,
   showFacets,
-  facets,
+  total,
   showSort,
   theme,
   config,
@@ -56,7 +56,7 @@ const MobileActionsView: React.SFC<IMobileActionsProps> =  ({
         <Icon name='Filters' />
         { config.getIn(['facets', 'i18n', 'showMobileFacets'], 'Filter') }
         <span className={theme.facetCount}>
-          ({facets.size})
+          ({total})
         </span>
       </Text>
     </Button>
