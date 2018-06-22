@@ -167,8 +167,27 @@ export const registerHandlers = (widget, combinator) => {
     ))
   }
 
-  const handleActiveElementChange = ({ path }) => {
-    findifyElementFocused = !!path.find(item => item.hasAttribute && item.hasAttribute('data-findify-autocomplete'))
+  const getEventPath = (evt) => {
+    if (evt.path) return evt.path; // Chrome only, for now
+    if (evt.composedPath) return evt.composedPath() // FF
+    // (Semi)-Polyfill for other browsers, like Edge & IE
+    // Semi, because originally path & composedPath() keep the original DOM before mutations,
+    // that could've occured after event was dispatched but before it was received
+    // Recursion might be faster, but in that case we will need more speed
+    const path: any[] = [];
+    let currentElement = evt.target;
+    while (currentElement) {
+      path.push(currentElement);
+      currentElement = currentElement.tagName !== 'HTML' ? currentElement.parentElement : null;
+    }
+    path.push(document);
+    path.push(window);
+    return path;
+
+  }
+
+  const handleActiveElementChange = (evt) => {
+    findifyElementFocused = !!((getEventPath(evt)).find(item => item.hasAttribute && item.hasAttribute('data-findify-autocomplete')))
   }
 
   subscribers.push(addEventListeners(

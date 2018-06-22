@@ -1,6 +1,13 @@
 .root{
   display: flex;
   align-items: center;
+  flex-direction: column;
+}
+
+.bottom-row {
+  width: 100%;
+  display: flex;
+  align-items: center;
   flex-direction: row;
 }
 
@@ -23,6 +30,20 @@
   }
 }
 
+.facet-count {
+  color: $color-grey-4;
+  padding-left: 3px;
+}
+
 .divider{
   width: 7px;
+}
+
+.query {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 16px;
+  font-weight: normal !important;
 }
