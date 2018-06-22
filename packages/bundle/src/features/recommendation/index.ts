@@ -12,7 +12,7 @@ export default (widget) => {
 
   /** Remove entity and instance if nothing was found */
   agent.on('change:items', items => {
-    if (items.isEmpty()) return __root.widgets.detach(widget);
+    if (items.isEmpty()) return __root.widgets.detach(widget.key);
     hideFallback(node);
     hideLoader(node);
   })

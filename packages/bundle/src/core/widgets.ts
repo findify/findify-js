@@ -2,7 +2,6 @@
 import 'core-js/fn/array/includes';
 import * as Agents from '@findify/agent';
 import { fromJS, isImmutable, Map } from 'immutable';
-import emitter from './emitter';
 import { camelize } from '../helpers/capitalize';
 import { isCollection } from './location';
 import { Events } from './events';
@@ -76,7 +75,7 @@ const getEntity = (selector, _type?, _config?) =>
   const widget = { type, key, node, agent, config };
 
   /** Notify everyone that widget was created */
-  emitter.emit(Events.attach, widget);
+  __root.emit(Events.attach, widget);
   return widget;
 })
 
@@ -92,7 +91,7 @@ const widgets = {
   detach(key) {
     const widgetToRemove = widgets.get(key);
     cache = cache.filter(widget => key !== widget.key);
-    emitter.emit(Events.detach, widgetToRemove);
+    __root.emit(Events.detach, widgetToRemove);
   },
 
   /** Get all rendered widget */
