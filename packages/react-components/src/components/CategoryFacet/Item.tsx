@@ -27,7 +27,7 @@ const Item = ({ item, theme, style, config }: ICategoryFacetCategoryProps) =>
     style={style}
     className={theme.item}
     onClick={item.toggle}>
-    <Text primary lowercase bold={item.get('selected')}>
+    <Text primary lowercase bold={item.get('selected')} className={theme.content}>
       { content({ item }) }
       <Icon
         display-if={item.get('has_children')}

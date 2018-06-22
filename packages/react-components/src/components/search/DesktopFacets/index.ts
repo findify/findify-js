@@ -32,7 +32,7 @@ export default compose(
         }
       ),
       withEvents({
-        showFacets: ({ showFacets }) => showFacets()
+        showFacets: ({ showFacets }) => showFacets
       }),
       withHandlers({
         hideFacets: ({ hideFacets, emit }) => () => {

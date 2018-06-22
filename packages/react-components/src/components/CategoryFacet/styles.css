@@ -5,6 +5,12 @@
   padding-left: 20px;
 }
 
+.content{
+  font-size: calc($facet-item-font-size * $font-size-medium);
+  font-family: $facet-item-font-family;
+  color: $facet-item-color;
+}
+
 .item{
   $font-size: $font-size-medium;
   $padding: 3px 0;

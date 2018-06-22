@@ -12,7 +12,13 @@
 }
 
 .text {
-  display: inline-block !important;
+  $color: $color-dark;
+  $font-family: $font-base;
+  $font-size: 1;
+  font-size: calc($font-size-small * $font-size);
+  font-family: $font-family;
+  color: $color;
+  display: inline-block;
   width: calc(100% - 15px);
 }
 

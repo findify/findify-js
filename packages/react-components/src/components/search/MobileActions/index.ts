@@ -2,7 +2,7 @@
  * @module components/search/MobileActions
  */
 import React from 'react';
-import { connectSort } from '@findify/react-connect';
+import { connectSort, connectQuery } from '@findify/react-connect';
 import { compose, withHandlers, withPropsOnChange } from 'recompose';
 import withEvents from 'helpers/withEvents';
 import withTheme from 'helpers/withTheme';
@@ -13,6 +13,7 @@ import styles from 'components/search/MobileActions/styles.css';
 export default compose(
   withTheme(styles),
   connectSort,
+  connectQuery,
   withEvents(),
   withHandlers({
     showFacets: ({ emit }) => () => emit('showMobileFacets'),
@@ -23,5 +24,11 @@ export default compose(
       && [selected.get('field'), selected.get('order')].join('|')
       || 'default'
     ])
+  })),
+  withPropsOnChange(['query'], ({ query }) => query.get('filters') && ({
+    total: query.get('filters').reduce(
+      // The workaround to not sum the nested category filters
+      (acc, filter, key) =>  acc + (/category[2-9]/.test(key) ? 0 : filter.size)
+    , 0)
   }))
 )(view);

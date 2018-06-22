@@ -34,6 +34,7 @@ export default (widget, render) => {
     } else {
       showFallback(node);
       hideLoader(node);
+      __root.emit(Events.collectionNotFound, widget);
       render();
     }
   })

@@ -45,4 +45,9 @@ export enum Events {
   showMobileSort = 'showMobileSort',
   hideMobileFacets = 'hideMobileFacets',
   hideMobileSort = 'hideMobileSort',
+
+  /**
+   * Calls when collection was not set up
+   */
+  collectionNotFound = 'collectionNotFound',
 }

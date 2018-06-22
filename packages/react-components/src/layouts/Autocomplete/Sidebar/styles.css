@@ -80,6 +80,7 @@
     }
     &:focus{
       border-color: $color-grey-3;
+      outline: none;
     }
   }
 }

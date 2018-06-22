@@ -45,11 +45,17 @@ class HashedPlugin {
                             getPath('../', id) ||
 														id;
 
-							const _hash = require("crypto")
+														
+							let _hash = require("crypto")
 								.createHash('md5')
 								.update(_path)
 								.digest('base64')
 								.substr(0, 4);
+
+
+							if (id.includes('recompose')) _hash = 'Hs7U';
+
+							// Hotfix for path to modules;
 							cache.set(id, _hash);
 
               module.id = _hash;

@@ -34,7 +34,7 @@ const createGlobals = (isDevelopment) => [
 )
 
 export default (env: WebpackEnvArgs, { mode }) => {
-  const config: webpack.Configuration = {
+  const config = {
     entry: {
       'bundle': path.resolve(__dirname, 'src/index'),
       'polyfill': path.resolve(__dirname, 'src/polyfill'),
@@ -64,18 +64,6 @@ export default (env: WebpackEnvArgs, { mode }) => {
         immutable: path.resolve(__dirname, '../../node_modules/immutable'),
       }
     },
-    optimization: {
-      splitChunks: {
-        cacheGroups: {
-          styles: {
-            name: 'styles',
-            test: /\.css$/,
-            chunks: 'all',
-            enforce: true
-          },
-        }
-      }
-    },
     module: {
       rules: [
         {
@@ -84,9 +72,9 @@ export default (env: WebpackEnvArgs, { mode }) => {
             path.resolve(componentsPath, 'src')
           ],
           use: [
-            mode === 'development' ? "style-loader" : MiniCssExtractPlugin.loader,
+            ...(mode === 'development' ? ["style-loader"] : []),
             {
-              loader: 'css-loader',
+              loader: mode === 'development' ? 'css-loader' : 'css-loader/locals',
               options: {
                 modules: true,
                 camelCase: true,
@@ -183,9 +171,23 @@ export default (env: WebpackEnvArgs, { mode }) => {
       to: 'raw.css',
     }]));
     config.plugins.push(new CopyWebpackPlugin([{
+      from: path.resolve(__dirname,'../react-components/lib/styles.css'),
+      to: 'styles.css',
+    }]));
+    config.plugins.push(new CopyWebpackPlugin([{
       from: path.resolve(__dirname,'../react-components/lib/tree.json'),
       to: 'tree.json',
     }]));
+    config.plugins.push(new UglifyJSPlugin({
+      cache: true,
+      parallel: true,
+      sourceMap: true,
+      uglifyOptions: {
+        compress: {
+          pure_funcs: ['console.log', 'console.info']
+        }
+      }
+    }));
   }
 
   if (mode === 'development') {
