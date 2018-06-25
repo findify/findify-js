@@ -73,7 +73,7 @@ const RangeFacetView: React.SFC<IRangeFacetProps> = ({
     config={config}
     theme={theme} />
 
-  <div className={theme.range}>
+  <div className={cx(theme.range, theme.inputBlock)}>
     <div className={theme.inputWrap}>
       <span className={theme.currency}>{currencySymbol}</span>
       <NumberInput
