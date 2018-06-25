@@ -6,11 +6,13 @@ import { compose, withPropsOnChange, withStateHandlers, withHandlers, defaultPro
 import { connectItems } from '@findify/react-connect';
 import sizeMe from 'react-sizeme';
 import withTheme from 'helpers/withTheme';
+import withMinResultsToShow from 'helpers/withMinResultsToShow';
 import { renderArrow } from 'layouts/Recommendation/Slider/Arrow';
 import view from 'layouts/Recommendation/Slider/view';
 
 import './styles.global.css';
 import styles from 'layouts/Recommendation/Slider/styles.css';
+
 
 /**
  * This function is used to calculate products to show in a line of a Slider according to its width
@@ -29,6 +31,7 @@ const countProductsToShow = width => {
 export default compose(
   withTheme(styles),
 
+
   sizeMe(),
 
   withStateHandlers(
@@ -37,6 +40,7 @@ export default compose(
   ),
 
   connectItems,
+  withMinResultsToShow(),
 
   withHandlers({
     scrollToLast: ({ instance, items, size }) => () =>
