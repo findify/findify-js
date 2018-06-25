@@ -51,5 +51,8 @@ export default compose(
         return { to: normalizedValue };
       },
     },
-  )
+  ),
+  withProps(({ onCommit }) => ({
+    onKeypress: ({ key }) => key === 'Enter' && onCommit()
+  }))
 )(view);
