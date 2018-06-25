@@ -56,7 +56,7 @@ const MobileActionsView: React.SFC<IMobileActionsProps> =  ({
         <Icon name='Filters' />
         { config.getIn(['facets', 'i18n', 'showMobileFacets'], 'Filter') }
         <span className={theme.facetCount}>
-          ({total})
+          ({total || 0})
         </span>
       </Text>
     </Button>
