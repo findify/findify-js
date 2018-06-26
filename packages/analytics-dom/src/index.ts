@@ -30,7 +30,7 @@ const initialize = (config = {events: {}}) => {
   // Always send view-page event if it was not previously defined on the page
   if (
     eventsConfig[EventName.viewPage] !== false &&
-    !analyticsInstance.state[EventName.viewPage]
+    !analyticsInstance.state.events[EventName.viewPage]
   ) {
     analyticsInstance.sendEvent(EventName.viewPage, {});
   }
