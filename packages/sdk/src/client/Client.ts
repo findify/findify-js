@@ -75,6 +75,9 @@ export class Client {
   private getRecommendationsEndpoint(
     params: Req.Recommendations.Params
   ): Endpoint {
+    if ((<Req.Recommendations.Slot>params).slot) {
+      return { path: `/recommend/${(<Req.Recommendations.Slot>params).slot}`, params: ['slot'] };
+    }
     switch (params.type) {
       case Req.Recommendations.Type.Featured:
         return { path: `/recommend/items/featured` };
