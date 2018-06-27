@@ -72,41 +72,58 @@ export class Client {
     }
   }
 
-  private getRecommendationsEndpoint(
+  private getRecommendationUrl(
     params: Req.Recommendations.Params
-  ): Endpoint {
-    if ((<Req.Recommendations.Slot>params).slot) {
-      return { path: `/recommend/${(<Req.Recommendations.Slot>params).slot}`, params: ['slot'] };
+  ): Endpoint["path"] {
+    if (Boolean((<Req.Recommendations.Slot>params).slot)) {
+      return `/recommend/${(<Req.Recommendations.Slot>params).slot}`;
     }
     switch (params.type) {
       case Req.Recommendations.Type.Featured:
-        return { path: `/recommend/items/featured` };
+        return `/recommend/items/featured`;
       case Req.Recommendations.Type.Newest:
-        return { path: `/recommend/items/newest` };
+        return `/recommend/items/newest`;
       case Req.Recommendations.Type.Trending:
-        return { path: `/recommend/items/trending` };
+        return `/recommend/items/trending`;
       case Req.Recommendations.Type.RecentlyViewed:
-        return { path: `/recommend/items/viewed/latest` };
+        return `/recommend/items/viewed/latest`;
       case Req.Recommendations.Type.Slot:
-        return { path: `/recommend/${params.slot}`, params: ['slot'] };
+        return `/recommend/${params.slot}`;
       case Req.Recommendations.Type.AlsoViewed:
-        return {
-          path: `/recommend/items/${params.item_id}/viewed/viewed`,
-          params: ['item_id'],
-        };
+        return `/recommend/items/${params.item_id}/viewed/viewed`;
       case Req.Recommendations.Type.AlsoBought:
-        return {
-          path: `/recommend/items/${params.item_id}/viewed/bought`,
-          params: ['item_id'],
-        };
+        return  `/recommend/items/${params.item_id}/viewed/bought`;
       case Req.Recommendations.Type.FrequentlyPurchasedTogether:
         const ids = params.item_ids.join(',');
-        return {
-          path: `/recommend/items/${ids}/bought/bought`,
-          params: ['item_ids'],
-        };
+        return `/recommend/items/${ids}/bought/bought`;
       default:
         throw new Error('Invalid recommendations type');
+    }
+  }
+
+  private getRecommendationsParams(
+    params: Req.Recommendations.Params
+  ): Endpoint['params'] {
+    switch (params.type) {
+      case Req.Recommendations.Type.Slot:
+        return ['slot'];
+      case Req.Recommendations.Type.AlsoViewed:
+        return ['item_id'];
+      case Req.Recommendations.Type.AlsoBought:
+        return ['item_id'];
+      case Req.Recommendations.Type.FrequentlyPurchasedTogether:
+        return ['item_ids']
+      default:
+        return undefined;
+    }
+  }
+
+  private getRecommendationsEndpoint(
+    params: Req.Recommendations.Params
+  ): Endpoint {
+    return {
+      path: this.getRecommendationUrl(params),
+      params: this.getRecommendationsParams(params)
     }
   }
 

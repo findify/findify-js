@@ -53,7 +53,9 @@ class HashedPlugin {
 								.substr(0, 4);
 
 
+							// Keep package hashes
 							if (id.includes('recompose')) _hash = 'Hs7U';
+							if (id.includes('react-spring')) _hash = 'uVbu';
 
 							// Hotfix for path to modules;
 							cache.set(id, _hash);
