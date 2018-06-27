@@ -42,6 +42,6 @@ describe('Agent', () => {
     agent.set('filters', { filter: ['1'] });
     agent.reset();
     agent.cache.invalidate();
-    expect(agent.state.toJS()).toEqual({});
+    expect(agent.state.toJS()).toEqual({ filters: {} });
   })
 });
