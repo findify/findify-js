@@ -1,4 +1,6 @@
 type FunctionMap = { [x: string]: Function }
+type NullableFunctionMap = { [x: string]: Function | null }
+type SignalSumArgument = string | Function;
 /**
  * SignalCombinator is a variation of Finite State Machine, which makes the following assumptions:
  * 1. Every state can transition to every state and itself
@@ -21,17 +23,18 @@ export default class SignalCombinator {
   /**
    * Mapping of signal processors, that receive signal (or signals) and return possible transition states to signals
    */
-  private signalProcessors: FunctionMap = {};
+  private signalProcessors: NullableFunctionMap = {};
 
   /**
    * Signal values
    */
   private signals = {};
 
+
   /**
-   * Used for lookup of arguments order for signal summators by handler
+   * Used for looking up signal values, that signal processors want
    */
-  private signalSumHandlersReverse = new Map();
+  private processorToSignalMapping = new Map<Function, string>();
 
   /**
    * Used for caching subsequent calls to processSignal() in one transition,
@@ -72,20 +75,49 @@ export default class SignalCombinator {
    * @param defaultValue default value for signal
    */
   createSignal(name: string, signalProcessor: Function, defaultValue: any) {
-    this.signalProcessors[name] = signalProcessor;
+    this.signalProcessors[name] = this.createSignalProcessor(name, [name], signalProcessor);
     this.signal(name, defaultValue);
   }
 
   /**
    * Used to register override for signal processing.
-   * For example, if I have signals A, B and C and want to use (A & C) + B for determining transition,
+   * For example, if I have signals A, B and C and want to use not A & B & C but (A & C) & B for determining transition,
    * then I register signal sum for signals A, C
-   * @param names signal names to register sum handler for
+   * You can also pass a processor previously returned by createSignal or createSignalSum, to make things like ((A & C) & (Z & B))
+   * @param names array of signal name or processors to register sum handler for
    * @param signalProcessor function, that accepts signal values in order they were provided in names argument and returns possible transition states
    */
-  createSignalSum(names: string[], signalProcessor: Function) {
-    names.forEach(name => this.signalProcessors[name] = signalProcessor);
-    this.signalSumHandlersReverse.set(signalProcessor, names);
+  createSignalSum(names: SignalSumArgument[], signalProcessor: Function) {
+    /** JavaScript's sorting is not technically correct, since it sorts by ascii value, but in that case we just need a reproducible name */
+    const signalSumName = names.map(x => (
+      typeof x === 'string' ? x : ('<' + this.processorToSignalMapping.get(x)! + '>')
+    )).sort().join('|')
+    const wrappedSignalProcessor = this.createSignalProcessor(signalSumName, names, signalProcessor);
+    names.forEach((x) => typeof x === 'string' && (this.signalProcessors[x] = null));
+    this.signalProcessors[signalSumName] = wrappedSignalProcessor;
+    this.processorToSignalMapping.set(wrappedSignalProcessor, signalSumName)
+    return wrappedSignalProcessor
+  }
+
+
+  /**
+   * Used to create a signal processor, function, that handles signal caching & processing
+   * @param jointName name of signal processor. For single signals it's just signal name, for sums - sorted sum, joined by '|', i.e. x|y
+   * @param names array of signals that processor is responsible for
+   * @param signalProcessor function, that accepts signal values in order they were provided in names argument and returns possible transition states
+   * @returns object with properties: names - specifies signal arguments that were passed to createSignalProcessor,
+   * args - unwrapped arguments passed to actual signal processor
+   * result - signal processor result
+   */
+  createSignalProcessor(jointName: string, names: SignalSumArgument[], signalProcessor: Function) {
+    return () => {
+      if (this.signalProcessingCache[jointName]) return this.signalProcessingCache[jointName];
+      const argsToApply = names.map(name => typeof name === 'string' ? this.signals[name] : (<Function>name)());
+      const signalResult = signalProcessor.apply(null, argsToApply);
+      const result = { names, args: argsToApply, result: signalResult };
+      this.signalProcessingCache[jointName] = result;
+      return result;
+    }
   }
 
 
@@ -100,35 +132,20 @@ export default class SignalCombinator {
 
 
   /**
-   * Used to process signal response
-   * @param name signal name
-   */
-  private processSignal(name) {
-    if (this.signalProcessingCache[name]) return this.signalProcessingCache[name];
-    const processor = this.signalProcessors[name]
-    if (processor.length === 1) return processor(this.signals[name]);
-    const affectedNames = this.signalSumHandlersReverse.get(processor);
-    const argsToApply = affectedNames.map(name => this.signals[name]);
-    const signalResult =  processor.apply(null, argsToApply);
-    affectedNames.forEach(name => (this.signalProcessingCache[name] = signalResult));
-    return signalResult;
-  }
-
-
-  /**
    * Run transition, possibly to itself
    * @param args any arguments provided to transition() will be provided to transition function
    */
   transition(...args) {
     this.signalProcessingCache = {};
     const possibleStates = this.states.filter(state => (
-      Object.keys(this.signals)
-        .map((signal) => this.processSignal(signal).includes(state))
+      Object.entries(this.signalProcessors)
+        .filter(([_, v]) => v)
+        .map(([_, getSignalValue]) => getSignalValue!().result.includes(state))
         .every(item => item))
     );
-    if (possibleStates.length === 0) console.error('Invariant: unable to form a meaningful transition from state', this.state, 'using signals', this.signals);
-    if (possibleStates.length > 1) console.error('Invariant: more than 1 possible states for transitioning detected:', possibleStates, 'using signals', this.signals);
+    if (possibleStates.length === 0) console.error('SignalCombinator Invariant: unable to form a meaningful transition from state', this.state, 'using signals', this.signals);
+    if (possibleStates.length > 1) console.error('SignalCombinator Invariant: more than 1 possible states for transitioning detected:', possibleStates, 'using signals', this.signals);
     this.state = possibleStates[0];
-    return this.transitionMapping[possibleStates[0]].apply(null, args);
+    return this.transitionMapping[this.state].apply(null, args);
   }
 }
