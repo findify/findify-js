@@ -169,9 +169,8 @@ export const registerHandlers = (widget, combinator) => {
 
   const getEventPath = (evt) => {
     if (evt.path) return evt.path; // Chrome only, for now
-    if (evt.composedPath) return evt.composedPath() // FF
     // (Semi)-Polyfill for other browsers, like Edge & IE
-    // Semi, because originally path & composedPath() keep the original DOM before mutations,
+    // Semi, because originally path keeps the original DOM before mutations,
     // that could've occured after event was dispatched but before it was received
     // Recursion might be more beatiful, but in that case we will need more speed
     const path: any[] = [];
