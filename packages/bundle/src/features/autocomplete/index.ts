@@ -7,6 +7,8 @@ import SignalCombinator from '../../helpers/SignalCombinator';
 import { Autocomplete } from '@findify/react-components/src/';
 import { Autocomplete as AutocompleteAgent } from "@findify/agent";
 
+const empty = () => null
+
 const createTrendingSearchesAgent = (config) => new AutocompleteAgent({
   key: config.get('key'),
   immutable: true,
@@ -24,14 +26,25 @@ export default (widget, rerender) => {
   if (state.q) node.value = state.q;
 
   const combinator = new SignalCombinator(['closed', 'trending', 'open'], 'closed');
-  combinator.createSignal('visible', (ui) => ui && ['trending', 'open'] || ['closed'], false);
-  combinator.createSignal('query', query => query !== '' && ['closed', 'open', 'trending'] || ['closed', 'trending'], '');
-  combinator.createSignal('suggestionCount', suggestionCount => suggestionCount > 0 && ['closed', 'open'] || ['closed', 'trending'], 0);
-  combinator.createSignalSum(['query', 'suggestionCount'], (query, suggestionCount) => (
-    (
-      (query === '' || suggestionCount === 0) && !config.get('trendingSearchesDisabled', false) ? ['closed', 'trending'] : ['closed', 'open']
-    ).filter(item => item)
-  ));
+  combinator.createSignal('trendingSearchesDisabled', empty, config.get('trendingSearchesDisabled', false));
+  combinator.createSignal('visible', empty, false);
+  combinator.createSignal('query', empty, '');
+  combinator.createSignal('suggestionCount', empty, 0);
+
+  const trending = combinator.createSignalSum(['query', 'suggestionCount'], (query, suggestionCount) => {
+    if (query === '' || suggestionCount === 0) return ['closed', 'trending'];
+    return ['closed', 'open'];
+  })
+
+  combinator.createSignalSum(
+    ['visible', 'trendingSearchesDisabled', trending],
+    (ui, noTs, { result }) => {
+      const isTrendingMode = result.includes('trending');
+      if ((isTrendingMode && noTs) || !ui) return ['closed'];
+      return ['open', 'trending'];
+    }
+  )
+
   combinator.transitionTo('closed', () => rerender());
   combinator.transitionTo('open', () => rerender('initial'));
   combinator.transitionTo('trending', () => renderTrendingSearches());
