@@ -180,7 +180,7 @@ export const registerHandlers = (widget, combinator) => {
       path.push(currentElement);
       currentElement = currentElement.tagName !== 'HTML' ? currentElement.parentElement : null;
     }
-    path.push(document);-
+    path.push(document);
     path.push(window);
     return path;
 
