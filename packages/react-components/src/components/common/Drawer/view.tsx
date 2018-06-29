@@ -33,6 +33,7 @@ export interface IDrawerViewProps extends ThemedSFCProps {
 export default class DrawerView extends React.Component<IDrawerViewProps, IDrawerViewState> {
   state = { open: false };
   mounted = false;
+  originalScrollTop: number = 0;
 
   static defaultProps = {
     options: {
@@ -42,6 +43,7 @@ export default class DrawerView extends React.Component<IDrawerViewProps, IDrawe
   }
 
   componentDidMount() {
+    this.originalScrollTop = window.scrollY;
     document.querySelector('body')!.classList.add(this.props.theme.bodyNoScroll);
     document.addEventListener('keydown', this.handleEscapeKeypress);
     this.mounted = true;
@@ -53,6 +55,8 @@ export default class DrawerView extends React.Component<IDrawerViewProps, IDrawe
   componentWillUnmount() {
     document.querySelector('body')!.classList.remove(this.props.theme.bodyNoScroll)
     document.removeEventListener('keydown', this.handleEscapeKeypress);
+    window.scrollTo(0, this.originalScrollTop);
+    this.originalScrollTop = 0;
     this.mounted = false;
   }
 

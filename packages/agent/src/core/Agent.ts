@@ -12,7 +12,12 @@ import deepMerge from '../utils/deepMerge';
 const pickConfigProps = ({ debounce, onError, immutable = false }) =>
   ({ debounce, onError, immutable });
 
-const _initial = Map();
+/**
+ * Empty map of filters is a workaround for Smart Collections which have predefined filters,
+ * that are lost on subsequent requests, because initially state is clear and it just skips generating
+ * new state via queryToState
+ */
+const _initial = fromJS({ filters: {} });
 
 export class Agent {
   type: Types.RequestType = Types.RequestType.Search;

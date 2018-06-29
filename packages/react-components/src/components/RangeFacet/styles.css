@@ -41,6 +41,13 @@ $height: 30px;
   padding-left: 25px;
 }
 
+.input-block {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+}
+
 .input-wrap{
   display: table-cell;
   position: relative;

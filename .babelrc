@@ -10,6 +10,7 @@
     "@babel/preset-typescript",
     ["@babel/preset-env", {
       "modules": "commonjs",
+      "useBuiltIns": "entry",
       "targets": { "browsers": ["last 2 versions", "ie > 8"] }
     }]
   ]

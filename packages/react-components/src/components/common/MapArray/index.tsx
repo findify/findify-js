@@ -1,7 +1,7 @@
 /**
  * @module components/common/MapArray
  */
-
+import 'core-js/fn/array/from';
 import React from 'react'
 
 /** MapCallback is a type signature for array.map(), immutable.List().map() callback */

@@ -1,4 +1,4 @@
-import { format, currencies, defaultCurrency } from 'currency-formatter';
+import { format, findCurrency, defaultCurrency } from 'currency-formatter';
 
 export interface ICurrencyData {
   code?: string;
@@ -18,13 +18,13 @@ const mapConfigToAccountingFormat = (config: ICurrencyData) => ({
   format: config.format || (config.symbolOnLeft ? '%s%v' : '%v%s')
 })
 
-const USD = currencies.find(c => c.code === 'USD')
+const USD = findCurrency('USD')
 
 export default (currency: ICurrencyData) => (value: string) => format(
   value,
   mapConfigToAccountingFormat(Object.assign(
     {},
-    currencies.find(compare => currency.code === compare.code) || defaultCurrency,
+    findCurrency(currency.code) || defaultCurrency,
     currency,
   ))
 )

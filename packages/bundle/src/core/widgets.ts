@@ -21,18 +21,12 @@ const getType = type => ({
 const createAgent = (type, config) => {
   const agent = Agents[camelize(type)];
   if (!agent) throw new Error(`Feature ${type} is not exists!`);
-  console.log('CREATING NEW AGENT', type, {
-    key: config.get('key'),
-    user: __root.analytics.user,
-    immutable: true,
-    ...(config.get('slot') && {slot: config.get('slot') } || {})
-  });
   return new agent({
     key: config.get('key'),
     user: __root.analytics.user,
     immutable: true,
     ...(config.get('slot') && {slot: config.get('slot') } || {})
-  }).defaults(config.get('meta', {}), true);
+  }).defaults(config.get('meta', Map()), true);
 }
 
 const createConfig = (type, node, key, customs = Map()) => {
