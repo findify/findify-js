@@ -729,7 +729,7 @@ export default process.env.NODE_ENV !== 'development'
                    "enabled": true,
                    "slot": "home-findify-rec-3",
                    "type": "newest",
-                   "template": "slider",
+                   "template": "grid",
                    "limit": 10,
                    "multipleIds": false,
                    "minResultsToShow": 4,

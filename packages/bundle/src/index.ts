@@ -3,6 +3,7 @@ import 'core-js/es6/promise';
 
 import loadJs from 'load-js';
 import loadCss from './helpers/loadCss';
+
 /**
  * Setup webpack public path, so bundle could be used with different versions
  * WARNING: If this file will be changed you need to upload new bundle.js to compilation server
@@ -22,6 +23,15 @@ const deps: Promise<any>[] = [];
 
 /** Main initialization file */
 deps.push(import(/* webpackChunkName: "initializer" */ './initialize'));
+
+
+/**
+ * Setup Sentry errors monitoring
+ */
+if (process.env.NODE_ENV !== 'development') {
+  deps.push(loadJs('https://cdn.ravenjs.com/3.24.0/raven.min.js'));
+}
+
 
 /**
  * Split configuration to separated chunk
@@ -55,7 +65,17 @@ if (process.env.NODE_ENV !== 'development') {
 
 Promise
 .all(deps)
-.then(([initialize]) => initialize.default({ key: __MERCHANT_API_KEY__ }))
+.then(([initialize]) => {
+  if (global.Raven) {
+    const sentryKey = 'https://1db8972d9612483b96430ad56611be6e@sentry.io/1234846';
+    global.Raven.config(sentryKey, {
+      version: __MERCHANT_VERSION__,
+      environment: __ENVIRONMENT__,
+      whitelistUrls: [__webpack_require__.p]
+    }).install()
+  }
+  initialize.default({ key: __MERCHANT_API_KEY__ })
+})
 .catch(e => {
   console.error('Findify initialization failed x_x');
   console.error(e.stack);

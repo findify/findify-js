@@ -28,7 +28,8 @@ const createGlobals = (isDevelopment) => [
   '__MERCHANT_CSS__',
   '__INCLUDE_POLYFILL__',
   '__ENVIRONMENT__',
-  '__CONFIG__'
+  '__CONFIG__',
+  '__DISABLE_SENTRY__',
 ].reduce((acc, name) =>
   ({ ...acc, [name]: isDevelopment ? 'false' : `(${name}||false)` }), {}
 )
