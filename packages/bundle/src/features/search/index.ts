@@ -47,8 +47,10 @@ export default (widget, render) => {
   /** Listen to changes */
   agent.on('change:query', (q, meta) => {
     setQuery(q.toJS())
-    if (meta.get('total') === 0) return renderZeroResults();
+    if (!meta.get('total')) return renderZeroResults();
+    render('initial');
   });
+
   agent.on('change:redirect', async (redirect, meta) => {
     render();
     await __root.analytics.sendEvent('redirect', {
