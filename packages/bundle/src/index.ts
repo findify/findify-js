@@ -28,7 +28,7 @@ deps.push(import(/* webpackChunkName: "initializer" */ './initialize'));
 /**
  * Setup Sentry errors monitoring
  */
-if (process.env.NODE_ENV !== 'development') {
+if (process.env.NODE_ENV !== 'development' && __SENTRY_ENABLED__) {
   deps.push(loadJs('https://cdn.ravenjs.com/3.24.0/raven.min.js'));
 }
 
