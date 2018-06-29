@@ -12,6 +12,7 @@ export const getFiltersOnPage = (root): FiltersData[] =>
       let values: any = void 0;
 
       try {
+        if (!isNaN(Number(values))) throw new Error();
         values = JSON.parse(value);
       } catch (e) {
         values = [{ value: value.split(/,|>/).map(v => v && v.trim()) }];

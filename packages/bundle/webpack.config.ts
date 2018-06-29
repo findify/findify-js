@@ -28,13 +28,14 @@ const createGlobals = (isDevelopment) => [
   '__MERCHANT_CSS__',
   '__INCLUDE_POLYFILL__',
   '__ENVIRONMENT__',
-  '__CONFIG__'
+  '__CONFIG__',
+  '__DISABLE_SENTRY__',
 ].reduce((acc, name) =>
-  ({ ...acc, [name]: isDevelopment ? 'false' : `${name} || false` }), {}
+  ({ ...acc, [name]: isDevelopment ? 'false' : `(${name}||false)` }), {}
 )
 
 export default (env: WebpackEnvArgs, { mode }) => {
-  const config: webpack.Configuration = {
+  const config = {
     entry: {
       'bundle': path.resolve(__dirname, 'src/index'),
       'polyfill': path.resolve(__dirname, 'src/polyfill'),
@@ -61,19 +62,7 @@ export default (env: WebpackEnvArgs, { mode }) => {
       extensions: ['.ts', '.tsx', '.js', '.css'],
       alias: {
         debug: path.resolve(__dirname, '../../node_modules/debug'),
-        immutable: path.resolve(__dirname, '../../node_modules/immutable')
-      }
-    },
-    optimization: {
-      splitChunks: {
-        cacheGroups: {
-          styles: {
-            name: 'styles',
-            test: /\.css$/,
-            chunks: 'all',
-            enforce: true
-          }
-        }
+        immutable: path.resolve(__dirname, '../../node_modules/immutable'),
       }
     },
     module: {
@@ -84,9 +73,9 @@ export default (env: WebpackEnvArgs, { mode }) => {
             path.resolve(componentsPath, 'src')
           ],
           use: [
-            mode === 'development' ? "style-loader" : MiniCssExtractPlugin.loader,
+            ...(mode === 'development' ? ["style-loader"] : []),
             {
-              loader: 'css-loader',
+              loader: mode === 'development' ? 'css-loader' : 'css-loader/locals',
               options: {
                 modules: true,
                 camelCase: true,
@@ -138,6 +127,7 @@ export default (env: WebpackEnvArgs, { mode }) => {
         __PUBLIC_PATH__: JSON.stringify(process.env.PUBLIC_PATH),
         'process.env': {
           BROWSER: true,
+          NODE_ENV: JSON.stringify(mode),
           FINDIFY_ENV: JSON.stringify(process.env.FINDIFY_ENV || 'production')
         },
         __DEBUG__: mode === 'development'
@@ -181,6 +171,24 @@ export default (env: WebpackEnvArgs, { mode }) => {
       from: path.resolve(__dirname,'../react-components/lib/raw.css'),
       to: 'raw.css',
     }]));
+    config.plugins.push(new CopyWebpackPlugin([{
+      from: path.resolve(__dirname,'../react-components/lib/styles.css'),
+      to: 'styles.css',
+    }]));
+    config.plugins.push(new CopyWebpackPlugin([{
+      from: path.resolve(__dirname,'../react-components/lib/tree.json'),
+      to: 'tree.json',
+    }]));
+    config.plugins.push(new UglifyJSPlugin({
+      cache: true,
+      parallel: true,
+      sourceMap: true,
+      uglifyOptions: {
+        compress: {
+          pure_funcs: ['console.log', 'console.info']
+        }
+      }
+    }));
   }
 
   if (mode === 'development') {

@@ -18,9 +18,9 @@ const createComponent = ({
 }: any) => {
   const storeKey = !!key && key || 'default';
   const displayName = `Connect${capitalize(field)}(${getDisplayName(BaseComponent)})`;
-  //const factory: any = createFactory(BaseComponent);
+  // const factory: any = createFactory(BaseComponent);
 
-  class Connect extends Component{
+  class Connect extends Component<any, any>{
     displayName: string;
     changeAction: any
     cachedHandlers = {}
@@ -88,7 +88,7 @@ const createComponent = ({
 
     shouldComponentUpdate(nextProps, nextState) {
       return (
-        (!this.state[field] || !this.state[field].equals(nextState[field]))
+        (!this.state[field] || !this.state[field].equals(nextState[field]) || !this.state.meta.equals(nextState.meta))
         || !!Object.keys(nextProps).find(key => !is(nextProps[key], this.props[key]))
       );
     }
@@ -97,12 +97,31 @@ const createComponent = ({
       this.cachedHandlers = {}
     }
 
+    makeHandlers() {
+      return mapValues(
+        handlers,
+        (createHandler, handlerName) => (...args) => {
+          // const cachedHandler = this.cachedHandlers[handlerName];
+          // if (cachedHandler) return cachedHandler(...args);
+
+          const handler = createHandler({
+            update: this.changeAction,
+            analytics: this.context[$analytics],
+            ...this.state
+          });
+
+          this.cachedHandlers[handlerName] = handler;
+          return handler(...args);
+        }
+      )
+    }
+
     render() {
       return createElement(
         BaseComponent,
         {
           ...this.props,
-          ...this.handlers,
+          ...this.makeHandlers(),
           ...this.state,
           config: this.context[$config],
           update: this.changeAction

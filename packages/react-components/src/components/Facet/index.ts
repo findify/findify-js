@@ -1,3 +1,7 @@
+/**
+ * @module components/Facet
+ */
+import React from 'react';
 import { compose, setDisplayName, withStateHandlers, withPropsOnChange } from 'recompose';
 import withEvents from 'helpers/withEvents';
 import pure from 'helpers/pure';

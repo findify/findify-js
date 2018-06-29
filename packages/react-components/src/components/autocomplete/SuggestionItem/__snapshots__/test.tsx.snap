@@ -3,11 +3,19 @@
 exports[`SuggestionItem renders correctly 1`] = `
 <li
   className="suggestion"
-  dangerouslySetInnerHTML={
-    Object {
-      "__html": "<span class=\\"highlightedText\\">aisa</span>ka taiga",
-    }
-  }
   display-if="aisaka taiga"
-/>
+>
+  <Icon
+    className="icon"
+    height={14}
+    width={14}
+  />
+  <span
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "<span class=\\"highlightedText\\">aisa</span>ka taiga",
+      }
+    }
+  />
+</li>
 `;

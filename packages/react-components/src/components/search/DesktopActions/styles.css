@@ -3,7 +3,7 @@ $padding: 25px;
 .root{
   display: table;
   width: 100%;
-  padding-bottom: 32px;
+  padding-bottom: 24px;
 }
 
 .block{
@@ -24,6 +24,27 @@ $padding: 25px;
 
 .breadcrumbs{
   display: table-cell;
+}
+
+.show-facets{
+  margin-right: 60px;
+  position: relative;
+  &:after{
+    content: ' ';
+    position: absolute;
+    right: -30px;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: $color-grey-2;
+  }
+  svg{
+    vertical-align: -4px;
+    margin-right: 3px;
+  }
+  &:hover *{
+    color: $color-grey-4;
+  }
 }
 
 @supports(display: flex){

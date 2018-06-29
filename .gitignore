@@ -11,3 +11,4 @@ typings
 .released-packages
 .npmrc
 .env
+!packages/react-components/src/types

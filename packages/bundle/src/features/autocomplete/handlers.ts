@@ -1,11 +1,10 @@
 import { findDomNode } from 'react-dom';
+import { List } from 'immutable'
 import { addEventListeners } from '../../helpers/addEventListeners';
 import { findClosestElement } from '../../helpers/findClosestElement';
 import { isSearch, setQuery, buildQuery, redirectToSearch } from '../../core/location';
 import { Events } from '../../core/events';
 import { debounce } from 'lodash';
-import emitter from '../../core/emitter'
-import { addEventListener } from '../../../../mjs/dist/pure';
 
 const findClosestForm = findClosestElement('form');
 
@@ -20,11 +19,11 @@ const stylesUpdater = (ghost, styles: any) => {
   return cache = styles;
 }
 
-export const registerHandlers = (widget, render) => {
+export const registerHandlers = (widget, combinator) => {
   const { node, config, agent } = widget;
   const subscribers: any = [];
   let container: any;
-  let findifyElementFocused = false;
+  let findifyElementFocused = true;
   if (node.getAttribute('autocomplete') !== 'off') node.setAttribute('autocomplete', 'off')
 
   /** Track input position and update container styles */
@@ -49,20 +48,32 @@ export const registerHandlers = (widget, render) => {
 
   /** Handle input change */
   const handleInputChange = (e) => {
-    const value = e.target.value;
-    handleWindowScroll();
-    render('initial');
+    const value = e.target.value || '';
+    if (config.get('renderIn') === 'body') handleWindowScroll();
     agent.set('q', value);
-    return;
+    combinator.signal('visible', true);
+    combinator.signal('query', value);
+    combinator.transition()
   };
 
+  const insideAutocomplete = (node: HTMLElement) => {
+    if (!node || !node.parentElement) return false;
+    if (node.hasAttribute && node.hasAttribute('data-findify-autocomplete')) return true;
+    return insideAutocomplete(node.parentElement);
+  }
+
+  const isAutocompleteRelated = (e) => (
+    e.relatedTarget && insideAutocomplete(e.relatedTarget)
+  )
+
   /** Handle input blur */
-  const handleInputBlur = (e) => {
-    return (
-      !findifyElementFocused &&
-      e.target === node &&
-      emitter.emit(Events.autocompleteFocusLost, widget.key)
-    )
+  const handleInputBlur = (e) =>
+    (!findifyElementFocused && !isAutocompleteRelated(e)) &&
+    e.target === node &&
+    __root.emit(Events.autocompleteFocusLost, widget.key)
+
+  const handleKeydown = ({ key, target }) => {
+    return key === 'Enter' && search(target.value)
   }
 
   /** search for the value */
@@ -72,12 +83,16 @@ export const registerHandlers = (widget, render) => {
     __root.widgets
       .findByType('search', 'smart-collection')
       .forEach(({ agent }) => agent.reset().set('q', value || ''));
-    node.value = value;
+    __root.widgets
+      .findByType('autocomplete')
+      .forEach(({ node }) => node.value = value);
+    combinator.signal('visible', false);
+    combinator.transition();
   };
 
   const handleFormSubmit = e => {
-    if (e) e.stopPropagation();
-    search();
+    if (e) e.preventDefault();
+    search(node.value);
   }
 
   /** Listen for input change */
@@ -89,7 +104,15 @@ export const registerHandlers = (widget, render) => {
 
   subscribers.push(addEventListeners(
     ['focus'],
-    () => render('initial'),
+    (e) => {
+      findifyElementFocused = true;
+      if (!agent.state.get('q')) {
+        agent.set('q', e.target.value);
+        combinator.signal('query', e.target.value);
+      }
+      combinator.signal('visible', true);
+      combinator.transition();
+    },
     node
   ));
 
@@ -99,6 +122,13 @@ export const registerHandlers = (widget, render) => {
     handleInputBlur,
     document.body
   ));
+
+  subscribers.push(addEventListeners(
+    ['keydown'],
+    handleKeydown,
+    node,
+    false
+  ))
 
   /** Listen for form submit */
   if (!config.get('disableFormSubmit')) {
@@ -137,8 +167,26 @@ export const registerHandlers = (widget, render) => {
     ))
   }
 
-  const handleActiveElementChange = ({ path }) => {
-    findifyElementFocused = !!path.find(item => item.hasAttribute && item.hasAttribute('data-findify-autocomplete'))
+  const getEventPath = (evt) => {
+    if (evt.path) return evt.path; // Chrome only, for now
+    // (Semi)-Polyfill for other browsers, like Edge & IE
+    // Semi, because originally path keeps the original DOM before mutations,
+    // that could've occured after event was dispatched but before it was received
+    // Recursion might be more beatiful, but in that case we will need more speed
+    const path: any[] = [];
+    let currentElement = evt.target;
+    while (currentElement) {
+      path.push(currentElement);
+      currentElement = currentElement.tagName !== 'HTML' ? currentElement.parentElement : null;
+    }
+    path.push(document);
+    path.push(window);
+    return path;
+
+  }
+
+  const handleActiveElementChange = (evt) => {
+    findifyElementFocused = !!((getEventPath(evt)).find(item => item.hasAttribute && item.hasAttribute('data-findify-autocomplete')))
   }
 
   subscribers.push(addEventListeners(
@@ -149,12 +197,10 @@ export const registerHandlers = (widget, render) => {
 
   /** Unsubscribe from events on instance destroy  */
   const unsubscribe = __root.listen((event, prop, ...args) => {
-    if (event === Events.search && prop === widget.key) {
-      console.log('src', ...args)
-      return search(...args);
-    }
+    if (event === Events.search && prop === widget.key) return search(...args);
     if (event === Events.autocompleteFocusLost && prop === widget.key) {
-      render();
+      combinator.signal('visible', false);
+      combinator.transition();
     }
     if (event !== Events.detach || prop !== widget) return;
     subscribers.forEach(fn => fn());
@@ -162,7 +208,8 @@ export const registerHandlers = (widget, render) => {
   })
 
   window.requestAnimationFrame(() => {
-    render();
+    combinator.signal('visible', false)
+    combinator.transition();
   })
   return;
 }

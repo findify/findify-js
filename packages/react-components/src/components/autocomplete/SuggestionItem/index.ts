@@ -1,3 +1,7 @@
+/**
+ * @module components/autocomplete/SuggestionItem
+ */
+import React from 'react';
 import { compose, setDisplayName } from 'recompose'
 import withTheme from 'helpers/withTheme'
 import styles from 'components/autocomplete/SuggestionItem/styles.css';

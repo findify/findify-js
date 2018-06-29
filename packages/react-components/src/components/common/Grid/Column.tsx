@@ -1,21 +1,33 @@
+/**
+ * @module components/common/Grid
+ */
+
 import React from 'react';
 import cx from 'classnames';
 import { setDisplayName } from 'recompose';
 
-const styles = require('./styles.css');
+import styles from 'components/common/Grid/styles.css';
 
-export interface Props {
+/** List of props that GridColumn accepts */
+export interface IGridColumnProps {
+  /** Custom className for column */
   className?: string;
+  /** Column className */
   columnClass?: string;
+  /** Column inline style */
   columnStyle?: React.CSSProperties;
+  /** Contents of the column */
   children?: React.ReactChild;
 }
 
-const getClassName = (props: Props) =>
+/** Used to concatenate & build complete className from props */
+const getClassName = (props: IGridColumnProps) =>
   cx(styles.column, props.className, props.columnClass);
 
-export default setDisplayName('Column')((props: Props) => (
+const GridColumn = setDisplayName('GridColumn')((props: IGridColumnProps) => (
   <div className={getClassName(props)} style={props.columnStyle}>
     {props.children}
   </div>
 ));
+
+export default GridColumn;

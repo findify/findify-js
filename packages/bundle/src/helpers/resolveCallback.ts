@@ -3,7 +3,8 @@ declare module window {
 }
 
 export default root => new Promise(resolve => {
-  const callbacks = window.findifyCallbacks;
+  const callbacks = window.findifyCallbacks = window.findifyCallbacks || [];
+  window.findifyCallbacks.push = (cb) => cb(root);
   if (!callbacks) return resolve();
   const promises = [];
   for (let index = 0; index < callbacks.length; index++) {

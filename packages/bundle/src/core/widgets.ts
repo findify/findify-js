@@ -2,7 +2,6 @@
 import 'core-js/fn/array/includes';
 import * as Agents from '@findify/agent';
 import { fromJS, isImmutable, Map } from 'immutable';
-import emitter from './emitter';
 import { camelize } from '../helpers/capitalize';
 import { isCollection } from './location';
 import { Events } from './events';
@@ -22,24 +21,22 @@ const getType = type => ({
 const createAgent = (type, config) => {
   const agent = Agents[camelize(type)];
   if (!agent) throw new Error(`Feature ${type} is not exists!`);
-
   return new agent({
     key: config.get('key'),
     user: __root.analytics.user,
-    slot: config.get('slot'),
     immutable: true,
-    debounce: type === 'autocomplete' && 500
-  });
+    ...(config.get('slot') && {slot: config.get('slot') } || {})
+  }).defaults(config.get('meta', Map()), true);
 }
 
-const createConfig = (type, node, key, customs?) => {
-  const cfg = customs || type === 'recommendation'
+const createConfig = (type, node, key, customs = Map()) => {
+  const cfg = type === 'recommendation'
     && config.getIn(['features', 'recommendations', '#' + node.getAttribute('id')])
     || config.getIn(['features', type]);
 
   return config.withMutations(c =>
-      c.delete('features')
-      .mergeDeep(cfg)
+      c.mergeDeep(cfg)
+      .mergeDeep(customs)
       .set('node', node)
       .set('widgetKey', key)
       .set('cssSelector', `findify-${type} findify-widget-${key}`)
@@ -48,16 +45,22 @@ const createConfig = (type, node, key, customs?) => {
 
 const getNodes = selector => [].slice.call(document.querySelectorAll(selector));
 
-const getEntity = (selector, _type?, _config?) => getNodes(selector)
+const getEntity = (selector, _type?, _config?) =>
+(
+  typeof selector === 'string'
+  ? getNodes(selector)
+  : [selector]
+)
 .map(node => {
   let type = getType(_type || node.getAttribute(attrSelector));
   const key = node.getAttribute(keySelector) || ++index;
 
-  const config = createConfig(type, node, key, _config);
+  let config = createConfig(type, node, key, _config);
 
   /** Change feature type to collection if we are on collection page */
   if (type === 'search' && isCollection(config.get('collections'))) {
     type = 'smart-collection';
+    config = config.set('type', type);
   }
 
   const agent = createAgent(type, config);
@@ -66,7 +69,7 @@ const getEntity = (selector, _type?, _config?) => getNodes(selector)
   const widget = { type, key, node, agent, config };
 
   /** Notify everyone that widget was created */
-  emitter.emit(Events.attach, widget);
+  __root.emit(Events.attach, widget);
   return widget;
 })
 
@@ -79,9 +82,10 @@ const widgets = {
   },
 
   /** Remove exist widget */
-  detach(widget) {
-    cache = cache.filter(widget => widget.key !== widget.key);
-    emitter.emit(Events.detach, widget);
+  detach(key) {
+    const widgetToRemove = widgets.get(key);
+    cache = cache.filter(widget => key !== widget.key);
+    __root.emit(Events.detach, widgetToRemove);
   },
 
   /** Get all rendered widget */
@@ -100,6 +104,12 @@ const widgets = {
 
 export const createWidgets = (_config) => {
   config = _config;
+
+  // DY: Legacy
+  // TODO: Remove after they will release new version
+  (global as any).findifyCreateFeature = (selector, { type, ...config }) =>
+  widgets.attach(selector, type, config);
+
   return widgets;
 }
 

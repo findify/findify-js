@@ -1,10 +1,30 @@
+/**
+ * @module layouts/ZeroResults
+ */
+
 import React from 'react';
 
 import Grid from 'components/common/Grid';
 import ItemsList from 'components/ItemsList';
 import Text from 'components/Text';
 
-export default ({ items, title, theme, config }) => (
+import { List } from 'immutable';
+import { IProduct, ThemedSFCProps, MJSConfiguration } from 'types';
+
+
+/** Props that ZeroResults layout accepts */
+export interface IZeroResultsProps extends ThemedSFCProps {
+  /** List of trending products */
+  items: List<IProduct>;
+  /** @hidden */
+  title: string;
+  /** MJS configuration */
+  config: MJSConfiguration;
+  /** Number of columns that each item occupies in 12-col grid */
+  columns: number;
+}
+
+const ZeroResultsLayout = ({ items, title, theme, columns, config }: IZeroResultsProps) => (
   <React.Fragment>
     <div className={theme.sorryRow}>
       <Text className={theme.sorry} primary bold uppercase inlineBlock>
@@ -12,7 +32,7 @@ export default ({ items, title, theme, config }) => (
       </Text>
       <Text primary inlineBlock html={title} />
     </div>
-    <div className={theme.suggestionsRow}>
+    <div className={theme.suggestionsRow} display-if={false}>
       <Text className={theme.possibleSuggestions} primary bold uppercase inlineBlock>
         {config.getIn(['i18n', 'tryOneOfThese'], 'Try one of these instead:')}
         {/* FIXME: add suggestions when trending searches API becomes available */}
@@ -23,6 +43,8 @@ export default ({ items, title, theme, config }) => (
         {config.getIn(['i18n', 'checkOutPopularProducts'], 'Or check out some of these popular products')}
       </Text>
     </div>
-    <ItemsList wrapper={Grid} columns='3' />
+    <ItemsList wrapper={Grid} columns={columns} />
   </React.Fragment>
 )
+
+export default ZeroResultsLayout;

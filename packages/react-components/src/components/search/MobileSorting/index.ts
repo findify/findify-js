@@ -1,16 +1,23 @@
-import { compose, setDisplayName, withPropsOnChange, withHandlers } from "recompose";
+/**
+ * @module components/search/MobileSorting
+ */
+import React from 'react';
+import { compose, setDisplayName, withProps, withHandlers } from "recompose";
 import { connectSort } from '@findify/react-connect';
 import withTheme from 'helpers/withTheme';
 import { is } from 'immutable';
+import pure from 'helpers/pure';
 
 import view from 'components/search/MobileSorting/view';
 import styles from 'components/search/MobileSorting/styles.css';
 
 export default compose(
+  pure,
   setDisplayName('MobileSorting'),
   withTheme(styles),
   connectSort,
-  withPropsOnChange(['config', 'selected'], ({ config, selected }) => {
+  withProps(({ config, meta }) => {
+    const selected = meta.getIn(['sort', 0]);
     const labels = config.getIn(['sorting', 'i18n', 'options']);
     const items = config.getIn(['sorting', 'options']).map(i => i
       .set('label',
@@ -29,6 +36,5 @@ export default compose(
   withHandlers({
     setSorting: ({ items, onChangeSort }) => index =>
       onChangeSort(items.getIn([index, 'field']), items.getIn([index, 'order'])),
-    hideModal: ({ hideModal }) => () => hideModal('Sorting')
   })
 )(view)

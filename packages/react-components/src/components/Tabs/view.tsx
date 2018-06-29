@@ -1,11 +1,23 @@
+/**
+ * @module components/Tabs
+ */
+
 import React from 'react'
-import { withHandlers } from 'recompose';
+import { withHandlers, withPropsOnChange, compose } from 'recompose';
 import cx from 'classnames';
+import Dropdown from 'components/Dropdown';
+import { fromJS } from 'immutable';
+import { ThemedSFCProps } from 'types';
 
-interface ITabsProps {
+export interface ITabsProps extends ThemedSFCProps {
   /** Currently selected tab. Keep it empty if you want to use Tabs in self-controlled mode */
-  selectedIndex?: number
-
+  selectedIndex?: number;
+  /** Flag to render Tabs in mobile mode */
+  isMobile?: boolean;
+  /** Tab click event handler */
+  onTabClick: (evt: Event) => any
+  /** Current tab body */
+  body: React.ReactChildren;
 }
 
 const Item = withHandlers({
@@ -21,12 +33,38 @@ const Item = withHandlers({
   >
     {label}
   </li>
+);
+
+const MobileDropdown = compose(
+  withHandlers({
+    onChange: ({ onChange }) => item => onChange(item.get('index'))
+  }),
+  withPropsOnChange(['children'], ({ children, selectedIndex }) => ({
+    items: fromJS(React.Children.toArray(children).map((i, index) => ({
+      index,
+      label: i.props.label,
+    })))
+  }))
+)(({ items, selectedIndex, onChange, className }: any) =>
+  <Dropdown
+    className={className}
+    selectedItem={items.get(selectedIndex)}
+    onChange={onChange}
+    items={items}
+  />
 )
 
-export default ({ theme, children, onTabClick, body, selectedIndex }) =>
+const TabsView = ({
+  theme,
+  children,
+  onTabClick,
+  body,
+  selectedIndex,
+  isMobile = false
+}: ITabsProps) =>
   <React.Fragment>
-    <ul className={theme.list}>
-      { 
+    <ul className={theme.list} display-if={!isMobile}>
+      {
         React.Children.map(children, (child, idx) =>
           <Item
             {...child.props}
@@ -38,7 +76,15 @@ export default ({ theme, children, onTabClick, body, selectedIndex }) =>
         )
       }
     </ul>
+    <MobileDropdown
+      display-if={isMobile}
+      children={children}
+      selectedIndex={selectedIndex}
+      className={theme.dropdown}
+      onChange={onTabClick} />
     <div className={theme.body}>
       { body }
     </div>
   </React.Fragment>
+
+export default TabsView

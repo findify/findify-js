@@ -1,23 +1,48 @@
+/**
+ * @module components/autocomplete/SearchSuggestions
+ */
+
 import React from 'react'
 import MapArray from 'components/common/MapArray';
 import SuggestionItem from 'components/autocomplete/SuggestionItem';
+import { ThemedSFCProps, WidgetAwareProps, SuggestionsConnectedProps, ISuggestion, IQuery } from 'types';
+import { List } from 'immutable'
 
-export default ({ theme, suggestions, query, selectedSuggestion, widgetKey, getSuggestionProps, ...rest }) => (
-  <div className={theme.list} display-if={suggestions && query}>
-    <ul>
-      <MapArray
-        array={suggestions}
-        key={(item, index) => item.hashCode() + index + selectedSuggestion === index}
-        factory={
-          ({ item, index, key }) => (
-            <SuggestionItem
-              item={item}
-              index={index}
-              highlighted={selectedSuggestion === index}
-              query={query}
-              {...getSuggestionProps(index, widgetKey || '')} />
-          )
-        } />
-    </ul>
-  </div>
+/** Props that SearchSuggestionsView accept */
+export interface ISearchSuggestionsProps extends ThemedSFCProps, WidgetAwareProps, SuggestionsConnectedProps {
+  /** Query currently entered in the autocomplete */
+  query: IQuery;
+  /** Any other props that come through here to SuggestionItem */
+  [x: string]: any
+}
+
+/**
+ * Actual view
+ */
+const SearchSuggestionsView: React.SFC<ISearchSuggestionsProps> = ({
+  theme,
+  suggestions,
+  query,
+  selectedSuggestion,
+  widgetKey,
+  getSuggestionProps,
+  ...rest
+}: ISearchSuggestionsProps) => (
+  <ul className={theme.list} display-if={suggestions && query}>
+    <MapArray
+      array={suggestions}
+      factory={({ item, index }) =>
+        <SuggestionItem
+          item={item}
+          index={index}
+          highlighted={selectedSuggestion === index}
+          query={query}
+          {...getSuggestionProps(index, widgetKey || '')}
+          {...rest}
+        />
+      } />
+  </ul>
 )
+
+
+export default SearchSuggestionsView;

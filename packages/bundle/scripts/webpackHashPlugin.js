@@ -33,25 +33,31 @@ class HashedPlugin {
 							const id = module.libIdent({
 								context: this.options.context || compiler.options.context
 							});
-
-							if (id.includes('.css')) continue;
 	
+							if (id.includes('.css') && id.includes('css-loader')) continue;
 							if (cache.has(id)) {
 								module.id = cache.get(id);
 								continue;
 							}
-							
 
               const _path = getPath('react-components/src/', id) ||
                             getPath('node_modules/', id) ||
                             getPath('../', id) ||
 														id;
 
-							const _hash = require("crypto")
+														
+							let _hash = require("crypto")
 								.createHash('md5')
 								.update(_path)
 								.digest('base64')
 								.substr(0, 4);
+
+
+							// Keep package hashes
+							if (id.includes('recompose')) _hash = 'Hs7U';
+							if (id.includes('react-spring')) _hash = 'uVbu';
+							if (_hash === 'T/88') console.log(id);
+							// Hotfix for path to modules;
 							cache.set(id, _hash);
 
               module.id = _hash;

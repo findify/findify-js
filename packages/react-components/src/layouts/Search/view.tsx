@@ -1,3 +1,6 @@
+/**
+ * @module layouts/Search
+ */
 import cx from 'classnames'
 import React from 'react';
 import Grid from 'components/common/Grid';
@@ -7,15 +10,40 @@ import DesktopFacets from 'components/search/DesktopFacets';
 import MobileActions from 'components/search/MobileActions';
 import DesktopActions from 'components/search/DesktopActions';
 import Branch from 'components/common/Branch';
+import Banner from 'components/Banner';
+import { List } from 'immutable'
+import { MJSConfiguration, ThemedSFCProps, IProduct } from 'types';
 
-export default ({ config, meta, isMobile, mobileFacetsOpened, filtersOnRight, theme }) =>
+/** Props that search layout accepts */
+export interface ISearchProps extends ThemedSFCProps {
+  /** MJS Configuration */
+  config: MJSConfiguration;
+  /** Flag that switches Search to mobile layout */
+  isMobile?: boolean;
+  /** Flag to turn on Smart Collection display mode */
+  isCollection?: boolean;
+  /** Flag to render mobile facets */
+  mobileFacetsOpened?: boolean;
+  /** Flag to show filters on the right side of desktop search */
+  filtersOnRight?: boolean;
+  /** Items list */
+  items: List<IProduct>;
+}
+
+const SearchLayout = ({ config, meta, isMobile, isCollection, mobileFacetsOpened, filtersOnRight, theme, items }) =>
   <div className={theme.root}>
     <DesktopFacets display-if={!isMobile && !filtersOnRight} />
     <div className={theme.content}>
-      <Branch condition={isMobile} left={MobileActions} right={DesktopActions} />
+      <Branch
+        isCollection={isCollection}
+        condition={isMobile}
+        left={MobileActions}
+        right={DesktopActions} />
+      <Banner />
       <Branch left={LazyResults} right={StaticResults} condition={config.getIn(['view', 'infinite'])} />
     </div>
     <DesktopFacets display-if={!isMobile && filtersOnRight} />
   </div>
 
 
+export default SearchLayout;

@@ -8,7 +8,7 @@
 
 .item{
   $font-size: $font-size-medium;
-  $padding: 5px 0;
+  $padding: 3px 0;
   width: 100%;
   border: 0;
   background: transparent;
@@ -33,7 +33,11 @@
     vertical-align: -2px;
   }
 }
-
+.content{
+  font-size: calc($facet-item-font-size * $font-size-medium);
+  font-family: $facet-item-font-family;
+  color: $facet-item-color;
+}
 .search{
   position: relative;
   $padding-bottom: 11px;
@@ -45,18 +49,19 @@
     top: 50%;
     margin-top: -13px;
     pointer-events: none;
-    color: $color-grey-2;
+    color: $color-black;
   }
 }
 
 .input{
+  background: $color-white;
   width: 100%;
   height: 40px;
   padding-right: 34px;
   padding-left: 11px;
   box-sizing: border-box;
   font-family: $font-base;
-  font-size: $font-size-small;
+  font-size: $font-size-large;
   border: 1px solid $color-grey-2;
   transition: border-color .1s linear;
   outline: none;

@@ -6,15 +6,16 @@ exports[`ProductCard view renders correctly 1`] = `
   href="https://foo.bar"
 >
   <div
-    className="imageWrap imageWrap"
+    className="imageWrap"
   >
-    <SizeMe(Image)
+    <Image
       alt="Product Title"
-      className="image image"
+      aspectRatio={1}
+      className="image"
       src="https://lorempicsum.net/100/100"
       thumbnail="https://lorempicsum.net/50/50"
     />
-    <React.Fragment>
+    <div>
       <Component
         className="discountSticker"
         config={
@@ -38,7 +39,7 @@ exports[`ProductCard view renders correctly 1`] = `
           }
         }
       />
-    </React.Fragment>
+    </div>
   </div>
   <div
     className="rating"
@@ -46,13 +47,20 @@ exports[`ProductCard view renders correctly 1`] = `
     <Rating />
   </div>
   <div
-    className="content content"
+    className="variants"
+  >
+    Available in  variants
+  </div>
+  <div
+    className="content"
   >
     <Title
       text="Product Title"
+      theme={null}
     />
     <Description
       text="A description for item"
+      theme={null}
     />
     <Price
       className="priceWrapper"

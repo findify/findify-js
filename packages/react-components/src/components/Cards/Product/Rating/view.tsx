@@ -1,15 +1,25 @@
+/**
+ * @module components/Cards/Product/Rating
+ */
+import 'core-js/fn/array/from';
 import cx from 'classnames'
 import React from 'react'
 import Icon from 'components/Icon'
 import Text from 'components/Text'
+import { ThemedSFCProps } from 'types';
 
+/** Array of empty stars */
 const itemsArray = Array.from(Array(5).keys())
 
-const RatingView: ThemedSFC<
-  {
-    value: number,
-    count: number,
-  }> = ({ value, count, theme }) => (
+/** List of props that Rating component accepts */
+export interface IRatingProps extends ThemedSFCProps {
+  /** Rating value */
+  value: number,
+  /** Total reviews */
+  count: number,
+}
+
+const RatingView: React.SFC<IRatingProps> = ({ value, count, theme }: IRatingProps) => (
   <div className={theme.rating}>
     <div className={theme.stars}>
       {itemsArray.map((index:number) => (

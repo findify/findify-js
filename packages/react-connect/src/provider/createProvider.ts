@@ -1,5 +1,5 @@
 import { Component, Children } from "react";
-import { Map } from 'immutable';
+import { Map, is } from 'immutable';
 import * as Agents from '@findify/agent';
 import analytics from '@findify/analytics';
 import { $findify, $analytics, $config } from '../symbols';
@@ -23,7 +23,8 @@ export const createProvider = (type, onCreate?: (agent) => void) => {
       options: object,
       config: object,
       onChangeQuery: func,
-      storeKey: oneOfType([string, number])
+      storeKey: oneOfType([string, number]),
+      query: object
     }
 
     static contextTypes = {
@@ -39,9 +40,9 @@ export const createProvider = (type, onCreate?: (agent) => void) => {
     constructor(props, context) {
       super(props, context);
       const { apiKey, agent, options, defaults, config } = props;
-      const analyticsConfig: any = { key: apiKey };
+      const analyticsConfig: any = { key: apiKey, events: config.get('analytics', Map()).toJS(), ...config.get('platform', Map()).toJS() };
       this.nested = context[$findify];
-    
+
       if (agent && !agent.config.immutable) {
         throw new Error(`
           Agent should be in "immutable" mode, to work with connectors.
@@ -58,7 +59,7 @@ export const createProvider = (type, onCreate?: (agent) => void) => {
         immutable: true,
         ...options
       });
-  
+
       if (this.storeKey) agents[this.storeKey] = this.agent;
       if (onCreate) onCreate(this.agent)
       if (defaults) this.agent.defaults(defaults);
@@ -76,6 +77,25 @@ export const createProvider = (type, onCreate?: (agent) => void) => {
       }
     }
 
+    componentWillReceiveProps(next){
+      if (
+        typeof next.query !== 'object' ||
+        this.props.query === next.query ||
+        Object.keys(next.query).every(k =>
+          is(this.props.query[k], next.query[k])
+        )
+      ) return;
+      this.setQuery(next.query);
+      if (!!next.agent && next.agent !== this.agent) {
+        this.agent = next.agent
+        this.forceUpdate()
+      }
+    }
+
+    setQuery = (query) => {
+      for (const key in query) this.agent.set(key, query[key]);
+    }
+
     componentDidMount() {
       if (this.props.onChangeQuery) {
         this.agent.on('change:query', this.props.onChangeMeta)
@@ -83,14 +103,14 @@ export const createProvider = (type, onCreate?: (agent) => void) => {
     }
 
     componentWillUnmount() {
-      this.agent.off()
+      if (this.props.onChangeMeta) this.agent.off(this.props.onChangeMeta)
       if (this.storeKey) agents[this.storeKey] = null;
     }
 
     update = (...args) => {
       this.agent.update(...args);
     }
-  
+
     render() {
       return this.props.children;
     }

@@ -1,22 +1,13 @@
-import { Component, createElement } from 'react';
+import React from 'react';
+import { Component, createFactory } from 'react';
 import { is, List, Map } from 'immutable';
 import { compose, withPropsOnChange, setDisplayName } from 'recompose';
-import sizeMe from 'react-sizeme';
-
 
 const isStateEqual = (prev, next) => ['filters', 'q', 'sort'].every(k =>
   is(prev.get(k), next.get(k))
 );
 
-const hasRange = (ranges, offset) => !!ranges.find(r => r.valueSeq().includes(offset));
-
-const countProductsToShow = width => {
-  if (width > 1000) return 2;
-  if (width > 800) return 3;
-  if (width > 600) return 4;
-  if (width > 400) return 6;
-  return 12;
-};
+const hasRange = (ranges, offset) => !!ranges.find(r => r.get('from') === offset);
 
 const createRange = meta => Map({
   from: meta.get('offset'),
@@ -33,24 +24,43 @@ const addItems = ({ ranges, items }, nextItems, meta) => {
   }
 }
 
-
+/**
+ * withLazy() returns a HOC for wrapping around component you want to include lazy loading to
+ * @returns HOC, accepting a view you want to add lazy loading to
+ */
 export default function withLazy() {
-  return LazyView => {
-    class Lazy extends Component<any, any>{
+  /**
+   * withLazy HOC allows you to add LazyLoading functionality to your Search views, for example.
+   * It controls items displaying correct range in the LazyView and automatically requests for more data if needed
+   * @param LazyView view you will be adding lazy loading to
+   * @returns LazyLoading HOC
+   */
+  return BaseComponent => {
+    const factory = createFactory(BaseComponent);
+    return class Lazy extends Component<any, any>{
+      container: any;
+      autoLoadCount = 0;
 
       constructor(props) {
         super(props);
+        this.autoLoadCount = props.disableAutoLoad ? 0 : 2;
         this.state = {
           items: props.items,
           ranges:  List([createRange(props.meta)]),
-          columns: '3',
+          columns: props.columns || '3',
+          pending: false
         };
+      }
+
+      registerContainer = (ref) => {
+        if (!ref) return;
+        this.container = ref;
       }
 
       onLoadNext = () => {
         const { update, meta } = this.props;
         const { ranges } = this.state;
-        return update('offset', ranges.last().get('to') + meta.get('limit'));
+        return update('offset', ranges.last().get('to'));
       }
 
       onLoadPrev = () => {
@@ -59,19 +69,56 @@ export default function withLazy() {
         return update('offset', ranges.first().get('from') - meta.get('limit'));
       }
 
-      componentWillReceiveProps({ items, meta, size, config }) {
+      get lessAllowed() {
+        const { ranges } = this.state;
+        const firstRange = ranges.first();
+        return firstRange && firstRange.get('from') > 0
+      }
 
-        if (size.width !== this.props.size.width) {
-          this.setState({ columns: String(config.get('columns') || countProductsToShow(size.width)) })
-        }
+      get moreAllowed() {
+        const { meta } = this.props;
+        const { ranges } = this.state;
+        const lastRange = ranges.last();
+        return lastRange && lastRange.get('to') < meta.get('total')
+      }
 
+      trackPosition = () =>
+      !this.state.pending &&
+      !!this.autoLoadCount &&
+      window.requestAnimationFrame(() => {
+        const offset = 300;
+        const { bottom } = this.container.getBoundingClientRect();
+        const height = window.innerHeight || document.documentElement.clientHeight;
+        const inView = bottom - height <= offset;
+        if (!inView || this.state.pending || !this.autoLoadCount || !this.moreAllowed) return;
+        this.autoLoadCount -= 1
+        this.setState({ pending: true });
+        this.onLoadNext();
+      })
+
+      componentDidMount() {
+        if (this.props.disableAutoLoad) return;
+        window.addEventListener('scroll', this.trackPosition);
+      }
+
+      componentWillUnmount() {
+        if (this.props.disableAutoLoad) return;
+        window.removeEventListener('scroll', this.trackPosition);
+      }
+
+      componentWillReceiveProps({ items, meta, config }) {
         // Do nothing if items are equal
         if (items.equals(this.props.items)) return;
+
+        this.setState({ pending: false });
 
         // Prepend or append new items
         if (isStateEqual(meta, this.props.meta) && !hasRange(this.state.ranges, meta.get('offset'))) {
           return this.setState({ ...addItems(this.state, items, meta) });
         }
+
+        // Reset number of loads
+        if (!this.props.disableAutoLoad) this.autoLoadCount = 2;
 
         // Reset items
         return this.setState({
@@ -81,31 +128,28 @@ export default function withLazy() {
       }
 
       shouldComponentUpdate(props, state) {
-        return this.state.columns !== state.columns || !this.state.items.equals(state.items);
+        return (
+          this.state.pending !== state.pending ||
+          !this.state.items.equals(state.items) ||
+          !!Object.keys(props).find(k => !is(this.props[k], props[k]))
+        )
       }
 
       render () {
-        const { ranges, items, columns } = this.state;
+        const { ranges, items, columns, pending } = this.state;
         const { meta } = this.props;
-        const firstRange = ranges.first();
-        const lastRange = ranges.last();
 
-        return createElement(LazyView, {
+        const content = factory({
           ...this.props,
           items,
-          columns,
-          displayPrevButton: firstRange && firstRange.get('from') > 0,
-          displayNextButton: lastRange && lastRange.get('to') < meta.get('total'),
+          displayPrevButton: this.lessAllowed,
+          displayNextButton: !pending && this.moreAllowed,
           onLoadNext: this.onLoadNext,
           onLoadPrev: this.onLoadPrev,
-        })
+        });
+
+        return <div ref={this.registerContainer}>{content}</div>
       }
     };
-
-    return compose(
-      setDisplayName('withLazy'),
-      sizeMe()
-    )(Lazy)
-
   }
 }

@@ -1,3 +1,7 @@
+/**
+ * @module layouts/Autocomplete/Dropdown
+ */
+
 import React from 'react';
 import Drawer from 'components/common/Drawer'
 import Tip from 'components/autocomplete/Tip'
@@ -7,59 +11,128 @@ import MapArray from 'components/common/MapArray';
 import Branch from 'components/common/Branch'
 import { connectSuggestions, connectItems } from '@findify/react-connect';
 import { withDrawer } from 'helpers/withDrawer';
-import Rating from 'components/productcard/Rating'
+import cx from 'classnames';
+import { ThemedSFCProps, MJSConfiguration, ISuggestion, MJSValue } from 'types';
+import { List } from 'immutable';
 
-const LayoutColumns = {
-  SearchSuggestions: ({ config, theme, ...rest }) => (
-    <div className={theme.suggestionsContainer}>
-      <h4 className={theme.typeTitle}>{config.getIn(['i18n', 'suggestionsTitle'])}</h4>
-      <SearchSuggestions className={theme.searchSuggestions} widgetKey={config.get('widgetKey')} {...rest} />
-    </div>
-  ),
-  ProductMatches: ({ config, theme, showModal, ...rest}) => (
-    <div className={theme.productMatchesContainer}>
-      <h4 className={theme.typeTitle} onClick={() => showModal('sup')}>{config.getIn(['i18n', 'productMatchesTitle'])}</h4>
-      <ProductMatches className={theme.productMatches} config={config} {...rest} />
-    </div>
-  )
+export interface IAutocompletePanel extends ThemedSFCProps {
+  config: MJSConfiguration;
+  isTrendingSearches?: boolean;
+  [x: string]: any;
 }
 
-const NotFoundView = ({ theme }) => (
-  <h4 className={theme.notFound}>Nothing found... Maybe these items will interest you?</h4>
-)
+/** Layout column mapping */
+const LayoutColumns = {
+  SearchSuggestions: ((({ config, theme, isTrendingSearches, ...rest }: IAutocompletePanel) => (
+    <div className={theme.suggestionsContainer}>
+      <h4 className={cx(theme.typeTitle, theme.suggestionsTitle, {[theme.trendingTitle]: isTrendingSearches})}>{config.getIn(['i18n', isTrendingSearches ? 'trendingSearches'  : 'suggestionsTitle'])}</h4>
+      <SearchSuggestions
+        className={theme.searchSuggestions}
+        widgetKey={config.get('widgetKey')}
+        isTrendingSearches={isTrendingSearches}
+        {...rest} />
+    </div>
+  )) as React.SFC<IAutocompletePanel>),
+  ProductMatches: ((({ config, theme, isTrendingSearches, ...rest}: IAutocompletePanel) => (
+    <div className={theme.productMatchesContainer}>
+      <h4 className={cx(theme.typeTitle, {[theme.trendingTitle]: isTrendingSearches})}>{config.getIn(['i18n', isTrendingSearches ? 'trendingProducts' : 'productMatchesTitle'])}</h4>
+      <ProductMatches className={theme.productMatches} config={config} {...rest} />
+    </div>
+  )) as React.SFC<IAutocompletePanel>)
+}
 
-const StartTypingView = ({ theme }) => (
-  <h4 className={theme.startTyping}>What are you looking for?</h4>
-)
+/** Props that SearchOrZero component accepts */
+export interface ISearchOrZeroProps {
+  /** List of search suggestions */
+  suggestions: List<ISuggestion>;
+  /** MJS Configuration */
+  config: MJSConfiguration;
+  /** MJS API Request Meta */
+  meta: Map<string, MJSValue>;
+  /** Selected suggestion index. -1 means no suggestion is selected on keyboard */
+  selectedSuggestion: number;
+  /** Flag that shows if autocomplete is running in TrendingSearches mode */
+  isTrendingSearches: boolean;
+  /** Rest of the props passed down to panels */
+  [x: string]: any;
+}
 
-const SearchOrZero = ({ suggestions, config, theme, meta, selectedSuggestion, ...rest }) => (
+const SearchOrZero: React.SFC<ISearchOrZeroProps> = ({
+  suggestions,
+  config,
+  theme,
+  meta,
+  selectedSuggestion,
+  isTrendingSearches,
+  ...rest
+}: ISearchOrZeroProps) => (
   <Branch
     condition={suggestions && suggestions.size > 0}
     left={() => (
       <MapArray
         array={config.get('viewOrder', ["SearchSuggestions", "ProductMatches"])}
-        keyAccessor={item => (item + selectedSuggestion)}
+        keyAccessor={item => item}
         factory={({ item }: ({ item: 'SearchSuggestions' | 'ProductMatches' })) =>
-          React.createElement(LayoutColumns[item], { config, theme, meta, selectedSuggestion, ...rest })
+          React.createElement(
+            LayoutColumns[item],
+            {
+              config,
+              theme,
+              isTrendingSearches,
+              meta,
+              ...(item === 'SearchSuggestions' ? {selectedSuggestion, icon: isTrendingSearches ? 'Fire' : undefined} : {}),
+              ...rest })
         } />
-    )}
-    right={() => (
-      <Branch
-        condition={meta && meta.get('q') && meta.get('q') !== ''}
-        left={() => <NotFoundView theme={theme} />}
-        right={() => <StartTypingView theme={theme} />} />
     )} />
 )
 
-export default ({ config, theme, meta, ...rest }) => (
-  <React.Fragment display-if={meta && meta.get('q') && meta.get('q') !== ''}>
-    <div className={theme.overlay} display-if={config.get('showOverlay')}></div>
-    <div className={theme.root} data-findify-autocomplete={true}>
-      <Tip className={theme.tip} title={config.getIn(['i18n', 'tipTitle'])} />
-      <div className={theme.container}>
-        <SearchOrZero theme={theme} meta={meta} config={config} {...rest} />
-      </div>
+export interface IAutocompleteDropdownProps {
+  /** List of search suggestions */
+  suggestions: List<ISuggestion>;
+  /** MJS Configuration */
+  config: MJSConfiguration;
+  /** MJS API Request Meta */
+  meta: Map<string, MJSValue>;
+  /** Selected suggestion index. -1 means no suggestion is selected on keyboard */
+  selectedSuggestion: number;
+  /** Flag that shows if autocomplete is running in TrendingSearches mode */
+  isTrendingSearches: boolean;
+  /** Rest of the props passed down to panels */
+  [x: string]: any;
+}
+
+const AutocompleteDropdownView: React.SFC<IAutocompleteDropdownProps> = ({
+  config,
+  theme,
+  meta,
+  suggestions,
+  position,
+  innerRef,
+  closeAutocomplete,
+  ...rest
+}: IAutocompleteDropdownProps) =>
+<div display-if={suggestions && suggestions.size > 0} className={theme.wrapper}>
+  <div className={theme.overlay} display-if={config.get('showOverlay')} onClick={closeAutocomplete}></div>
+  <div
+    className={theme.root}
+    data-findify-autocomplete={true}
+    tabIndex={0}
+    ref={innerRef}
+    style={{ [position]: 0 }}>
+    <Tip
+      className={theme.tip}
+      title={config.getIn(['i18n', 'tipResults'])}
+      widgetKey={config.get('widgetKey')} />
+    <div className={theme.container}>
+      <SearchOrZero
+        theme={theme}
+        meta={meta}
+        config={config}
+        suggestions={suggestions}
+        {...rest} />
     </div>
-  </React.Fragment>
-);
+  </div>
+</div>
+
+export default AutocompleteDropdownView;
 

@@ -1,4 +1,8 @@
-import React from 'react';
+/**
+ * @module components/RangeFacet
+ */
+
+import React, { InputHTMLAttributes } from 'react';
 import cx from 'classnames';
 import NumberInput from 'react-numeric-input';
 
@@ -6,13 +10,39 @@ import MapArray from 'components/common/MapArray';
 import Item from 'components/RangeFacet/Item';
 import Button from 'components/Button';
 import Text from 'components/Text';
+import { ThemedSFCProps, IFacet, IFacetValue, MJSConfiguration } from 'types';
+import { List } from 'immutable';
 
+/** Input default styling parameters */
 const inputDefaults = {
   style: false,
   mobile: false,
 };
 
-export default ({
+export interface IRangeFacetProps extends ThemedSFCProps {
+  /** Facet to extract values from */
+  facet: IFacet;
+  /** Facet values */
+  items: List<IFacetValue>;
+  /** MJS Configuration */
+  config: MJSConfiguration;
+  /** Currency symbol */
+  currencySymbol: string;
+  /** Minimum possible price */
+  from: number;
+  /** Maximum possible price */
+  to: number;
+  /** Invoked when maximum range is changed */
+  onChangeMax: (evt?: React.ChangeEvent<any>) => any;
+  /** Invoked when minimum range is changed */
+  onChangeMin: (evt?: React.ChangeEvent<any>) => any;
+  /** Invoked when any key in any input is pressed, used to react to Enter */
+  onKeypress: (evt: any) => any
+  /** Invoked when Go button is pressed */
+  onCommit: () => any
+}
+
+const RangeFacetView: React.SFC<IRangeFacetProps> = ({
   theme,
   facet,
   items,
@@ -24,9 +54,10 @@ export default ({
 
   onChangeMax,
   onChangeMin,
+  onKeypress,
   onCommit
 
-}) =>
+}: IRangeFacetProps) =>
 <div className={theme.root}>
 
   <MapArray
@@ -42,7 +73,7 @@ export default ({
     config={config}
     theme={theme} />
 
-  <div className={theme.range}>
+  <div className={cx(theme.range, theme.inputBlock)}>
     <div className={theme.inputWrap}>
       <span className={theme.currency}>{currencySymbol}</span>
       <NumberInput
@@ -53,6 +84,7 @@ export default ({
         max={to || facet.get('max')}
         min={facet.get('min')}
         onBlur={onChangeMin}
+        onKeyPress={onKeypress}
       />
     </div>
     <div className={theme.divider}>-</div>
@@ -66,6 +98,7 @@ export default ({
         min={from || facet.get('min')}
         max={facet.get('max')}
         onBlur={onChangeMax}
+        onKeyPress={onKeypress}
       />
     </div>
     <Button onClick={onCommit} className={theme.submit}>
@@ -77,3 +110,4 @@ export default ({
 
 </div>
 
+export default RangeFacetView;

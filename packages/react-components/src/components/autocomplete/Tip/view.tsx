@@ -1,10 +1,29 @@
+/**
+ * @module components/autocomplete/Tip
+ */
+
 import React from 'react'
 import classnames from 'classnames'
 
 import styles from 'components/autocomplete/Tip/styles.css';
+import { List } from 'immutable'
+import { ThemedSFCProps, ClassnamedProps, WidgetAwareProps, SuggestionsConnectedProps } from 'types';
 
-export default ({ suggestions, className, title, theme, getSuggestionProps }) => {
-  const suggestionProps = suggestions && suggestions.size > 0 && getSuggestionProps(0) || { onClick: () => {} }
+/** List of props that Tip accepts */
+export interface ITipProps extends ThemedSFCProps, ClassnamedProps, WidgetAwareProps, SuggestionsConnectedProps {
+  /** Custom title to display in a Tip */
+  title: string;
+}
+
+const TipView: React.SFC<ITipProps> = ({
+  suggestions,
+  className,
+  title,
+  theme,
+  getSuggestionProps,
+  widgetKey
+}: ITipProps) => {
+  const suggestionProps = suggestions && suggestions.size > 0 && getSuggestionProps(0, widgetKey) || { onClick: () => {} }
   return (
     <div
       display-if={suggestions && suggestions.size > 0}
@@ -19,3 +38,5 @@ export default ({ suggestions, className, title, theme, getSuggestionProps }) =>
     </div>
   )
 }
+
+export default TipView;

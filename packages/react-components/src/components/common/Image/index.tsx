@@ -1,12 +1,15 @@
+/**
+ * @module components/common/Image
+ */
+
+import 'core-js/fn/array/includes';
 import React from 'react'
 import Branch from 'components/common/Branch'
 import classNames from 'classnames'
-import sizeMe from 'react-sizeme'
+import styles from 'components/common/Image/styles.css';
 
 import {
   compose,
-  pure,
-  lifecycle,
   onlyUpdateForKeys,
   withProps,
   mapProps,
@@ -15,22 +18,22 @@ import {
   setDisplayName
 } from 'recompose';
 
-import styles from 'components/common/Image/styles.css';
 
-const prefetchedImages = {}
+const cache = [];
 
 const prefetchImage = (src: string) =>
   new Promise(resolve => {
+    if (cache.includes(src)) return resolve(src);
     const img = new Image();
     img.addEventListener('load', () => {
-      prefetchedImages[src] = true
-      resolve(src)
+      cache.push(src)
+      resolve(src);
     }, false);
     img.src = src;
   });
 
 /** This is a list of props which Image component accepts */
-interface ImageProps {
+export interface ImageProps {
   /** Custom classname */
   className?: string,
   /** Source to original image */
@@ -45,12 +48,11 @@ interface ImageProps {
   isFixedRatio: boolean
 }
 
-export default compose(
-  sizeMe(),
+export default compose<ImageProps, ImageProps>(
   setDisplayName('Image'),
   onlyUpdateForKeys(['src', 'thumbnail']),
   withPropsOnChange(['src'], ({ src, size }) => {
-    return { src: prefetchedImages[src] ? src : void 0, original: src, }
+    return { src: cache.includes(src) ? src : void 0, original: src, }
   }),
   withStateHandlers(
     ({ src, original }) => ({ src, stage: src === original ? 2 : 0 }),
@@ -74,7 +76,10 @@ export default compose(
     }
   ),
   withProps(({ aspectRatio }) => ({
-    isFixedRatio: aspectRatio && typeof aspectRatio === 'number' && !isNaN(aspectRatio) &&isFinite(aspectRatio),
+    isFixedRatio: aspectRatio
+      && typeof aspectRatio === 'number'
+      && !isNaN(aspectRatio)
+      && isFinite(aspectRatio),
   })),
   withProps(({ className, stage, isFixedRatio }) => ({
     className: classNames(
@@ -87,13 +92,13 @@ export default compose(
         [styles.original]: stage === 2,
       }
     )
-  })),
-)(({ src, aspectRatio, size: { width }, className, isFixedRatio }: ImageProps) => console.log('size is', isFixedRatio, aspectRatio, width) || (
-  <div className={className} style={isFixedRatio ? {
-    height: 1 / aspectRatio * width,
-    backgroundImage: `url(${src})`,
-    backgroundSize: 'cover',
-  }: {}}>
-    <img display-if={!isFixedRatio} src={src} />
-  </div>
-))
+  }))
+)(({ src, className, isFixedRatio, aspectRatio }: ImageProps) =>
+  isFixedRatio
+  ? <div className={className} style={{
+      backgroundImage: `url(${src})`,
+      paddingBottom: `${100 * aspectRatio}%`,
+      backgroundPosition: 'center center'
+    }} />
+  : <img className={className} src={src} />
+)

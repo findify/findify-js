@@ -1,3 +1,7 @@
+/**
+ * @module components/RangeFacet
+ */
+
 import unescape from 'lodash/unescape';
 import formatCurrency from 'helpers/formatCurrency';
 

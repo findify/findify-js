@@ -1,3 +1,7 @@
+/**
+ * @module layouts/Autocomplete/Fullscreen
+ */
+
 import React from 'react'
 import { compose, setDisplayName } from 'recompose'
 import withTheme from 'helpers/withTheme'
@@ -9,4 +13,4 @@ export default compose(
   setDisplayName('Fullscreen'),
   withTheme(styles),
   withAutocompleteLogic,
-)((props) => console.log('props', props) || React.createElement(view, props))
+)(view)

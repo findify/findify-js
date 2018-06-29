@@ -2,6 +2,7 @@ export { createProvider } from './provider/createProvider';
 export { Autocomplete as AutocompleteProvider } from './provider/index';
 export { Search as SearchProvider } from './provider/index';
 export { Recommendation as RecommendationProvider } from './provider/index';
+export { Content as ContentProvider } from './provider/index';
 export { SmartCollection as SmartCollectionProvider } from './provider/index';
 
 export { default as createConnect } from './connect/createConnect';
@@ -13,3 +14,4 @@ export { default as connectPagination } from './connect/connectPagination';
 export { default as connectSort } from './connect/connectSort';
 export { default as connectQuery } from './connect/connectQuery';
 export { default as connectConfig } from './connect/connectConfig';
+export { default as connectBanner } from './connect/connectBanner';

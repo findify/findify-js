@@ -1,3 +1,7 @@
+/**
+ * @module components/autocomplete/ProductMatches
+ */
+
 import React from 'react';
 import {
   compose,
@@ -5,14 +9,18 @@ import {
   setDisplayName,
   defaultProps,
   withPropsOnChange,
+  pure
 } from 'recompose';
 import { connectItems, connectSuggestions } from '@findify/react-connect';
 import sizeMe from 'react-sizeme';
-import ProductCard from 'components/autocomplete/ProductCard';
 import view from 'components/autocomplete/ProductMatches/view';
 import styles from 'components/autocomplete/ProductMatches/styles.css';
 import withTheme from 'helpers/withTheme';
 
+
+/**
+ * @deprecated
+ */
 const countColumns = width => {
   if (width > 1900) return 8;
   if (width > 1100) return 6;
@@ -22,7 +30,7 @@ const countColumns = width => {
 };
 
 
-const ProductMatches = compose(
+export default compose(
   setDisplayName('ProductMatches'),
   defaultProps({ columns: 3 }),
   withTheme(styles),
@@ -33,6 +41,5 @@ const ProductMatches = compose(
   })),*/
   connectSuggestions,
   connectItems,
+  pure,
 )(view);
-
-export default ProductMatches

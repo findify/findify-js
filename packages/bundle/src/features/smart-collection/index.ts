@@ -4,13 +4,10 @@ import { getQuery, setQuery, collectionPath, listenHistory } from '../../core/lo
 import { Events } from '../../core/events';
 import emitter from '../../core/emitter';
 import { Items } from '../../test.components';
-import { hideFallback, showFallback } from '../../helpers/fallbackNode';
-import { Search, ZeroResults } from '@findify/react-components/src';
+import { scrollTo } from '../../helpers/scrollTo';
+import { hideFallback, showFallback, hideLoader } from '../../helpers/fallbackNode';
+import { Search, ZeroResults } from '@findify/react-components/src/';
 
-const applyState = (state, agent) => {
-  agent.reset();
-  for (const key in state) agent.set(key, state[key]);
-}
 
 export default (widget, render) => {
   const { agent, config, node } = widget;
@@ -18,40 +15,52 @@ export default (widget, render) => {
   const props = { agent, apiKey, config };
   const state = getQuery();
 
-   /** Listen to location back/fwd */
-   const stopListenLocation = listenHistory((_, action) => {
+  /** Listen to location back/fwd */
+  const stopListenLocation = listenHistory((_, action) => {
     if (action !== 'POP') return;
-    applyState(getQuery(), agent);
+    agent.applyState(getQuery());
     render('initial');
   });
 
-  const handleFirstResponse = (items) => {
-    agent.off(handleFirstResponse);
+  /** Switch to recommendation if query not present */
+  agent.on('change:items', (items) => {
     if (!items.isEmpty()) {
       hideFallback(node);
+      hideLoader(node);
+      if (!config.getIn(['view', 'infinite']) && config.get('scrollTop') !== false) {
+        scrollTo(config.get('cssSelector'), config.get('scrollTop'))
+      }
       render('initial');
     } else {
       showFallback(node);
-      emitter.emit(Events.detach, widget);
+      hideLoader(node);
+      __root.emit(Events.collectionNotFound, widget);
+      render();
     }
-  }
+  })
+
+  agent.on('error', () => {
+    showFallback(node);
+    hideLoader(node);
+    render();
+  })
 
   /** Setup initial request */
   agent.defaults({ slot: collectionPath() });
-  applyState(state, agent);
+  agent.applyState(state);
   /** Listen to changes */
   agent.on('change:query', q => setQuery(q.toJS()));
 
   /** Switch to recommendation if query not present */
-  agent.on('change:items', handleFirstResponse);
+  // agent.on('change:items', handleFirstResponse);
 
   /** Unsubscribe from events on instance destroy  */
   const unsubscribe = __root.listen((event, prop, ...args) => {
     if (event !== Events.detach || prop !== widget) return;
     stopListenLocation();
     unsubscribe();
-  })
+  });
 
   /** Render */
-  return createElement(SmartCollectionProvider, props, createElement(Search));
+  return createElement(SmartCollectionProvider, props, createElement(Search, { isCollection: true }));
 }

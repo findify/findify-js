@@ -1,4 +1,8 @@
-import { createElement } from 'react';
+/**
+ * @module layouts/ContentSearch
+ */
+
+import React, { createElement } from 'react';
 import { hot } from 'react-hot-loader';
 import { compose, withProps, withStateHandlers, setDisplayName, branch, withHandlers, renderNothing } from 'recompose';
 import { connectItems } from '@findify/react-connect';
@@ -12,7 +16,8 @@ import MobileSorting from 'components/search/MobileSorting';
 import view from 'layouts/ContentSearch/view';
 import styles from 'layouts/ContentSearch/styles.css';
 
-const Search = compose(
+/** React component encapsulating most of UI logic inside ContentSearch */
+const ContentSearch = compose(
   setDisplayName('ContentSearch'),
 
   withTheme(styles),
@@ -47,4 +52,4 @@ const Search = compose(
   )
 )(view);
 
-export default hot(module)(Search)
+export default hot(module)(ContentSearch)

@@ -1,8 +1,7 @@
 .modal{
-  bottom: 0;
-  width: 100%;
+  width: 90vw;
+  height: 100%;
   background: white;
-
   display: flex;
   flex-direction: column;
 }
@@ -77,6 +76,10 @@
   box-sizing: border-box;
   overflow: hidden;
   overflow-y: auto;
+}
+
+.rating {
+  flex-direction: column;
 }
 
 .expand{

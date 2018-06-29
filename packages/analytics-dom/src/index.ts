@@ -30,13 +30,13 @@ const initialize = (config = {events: {}}) => {
   // Always send view-page event if it was not previously defined on the page
   if (
     eventsConfig[EventName.viewPage] !== false &&
-    !analyticsInstance.state[EventName.viewPage]
+    !analyticsInstance.state.events[EventName.viewPage]
   ) {
     analyticsInstance.sendEvent(EventName.viewPage, {});
   }
 }
 
-export default (props, context: any = document) => {
+const analyticsDOM = (props, context: any = document) => {
   if (typeof props === 'function') return analytics(props);
   if (analyticsInstance) return analyticsInstance;
   analyticsInstance = analytics(props);
@@ -49,3 +49,7 @@ export default (props, context: any = document) => {
 
   return analyticsInstance;
 }
+
+analyticsDOM.prototype.__analytics = analytics;
+
+export default analyticsDOM;
