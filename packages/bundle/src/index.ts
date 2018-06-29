@@ -1,4 +1,6 @@
+import './polyfill';
 import 'core-js/es6/promise';
+
 import loadJs from 'load-js';
 import loadCss from './helpers/loadCss';
 /**
@@ -37,10 +39,10 @@ if(process.env.NODE_ENV !== 'development') {
 /* Load components */
 deps.push(import(/* webpackChunkName: "components" */ '@findify/react-components/src'));
 
-/** Load polyfill only for specific merchants */
-if (process.env.NODE_ENV !== 'development' && __INCLUDE_POLYFILL__) {
-  deps.push(loadJs(__webpack_require__.p + 'polyfill.js'));
-}
+// /** Load polyfill only for specific merchants */
+// if (process.env.NODE_ENV !== 'development' && __INCLUDE_POLYFILL__) {
+//   deps.push(loadJs(__webpack_require__.p + 'polyfill.js'));
+// }
 
 /** Load styles */
 if (process.env.NODE_ENV !== 'development') {
@@ -51,6 +53,20 @@ if (process.env.NODE_ENV !== 'development') {
   })(__MERCHANT_CSS__);
 }
 
-Promise.all(deps).then(([initialize]) =>
-  initialize.default({ key: __MERCHANT_API_KEY__ })
-);
+Promise
+.all(deps)
+.then(([initialize]) => initialize.default({ key: __MERCHANT_API_KEY__ }))
+.catch(e => {
+  console.error('Findify initialization failed x_x');
+  console.error(e.stack);
+  console.warn('...trying to reinitialize...');
+  Promise
+  .all(deps)
+  .then(([initialize]) => {
+    initialize.default({ key: __MERCHANT_API_KEY__ });
+    console.warn('Hooray! Findify is alive now!');
+  })
+  .catch(e => {
+    console.warn('nope... seems like it doesn\'t helps, please contact Findify developers :(');
+  })
+});

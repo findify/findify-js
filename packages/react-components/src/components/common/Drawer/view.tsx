@@ -3,7 +3,7 @@
  */
 
 import React from 'react';
-import { Spring, config } from '../../../vendor/react-spring';
+import { Spring, config } from 'react-spring';
 import cx from 'classnames';
 import { ThemedSFCProps } from 'types';
 
