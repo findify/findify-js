@@ -38,3 +38,11 @@
 .active{
   font-weight: bold;
 }
+
+.expand{
+  margin-top: 10px;
+  svg{
+    vertical-align: -3px;
+    padding-right: 5px;
+  }
+}
