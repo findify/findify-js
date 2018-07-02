@@ -13,7 +13,14 @@ export default compose(
 
   withTheme(styles),
 
-  withProps(({ facet }) => ({
+  withStateHandlers(
+    ({ isExpanded }) => ({ isExpanded }),
+    {
+      onToggle: (s) => () => ({ ...s, isExpanded: !s.isExpanded })
+    }
+  ),
+
+  withProps(({ facet, isExpanded }) => ({
     items: facet.get('values'),
     total: facet.get('values').reduce((acc, v) => acc + v.get('count'), 0)
   }))
