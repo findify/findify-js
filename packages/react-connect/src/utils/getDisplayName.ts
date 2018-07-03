@@ -1,3 +1,4 @@
+// tslint:disable-next-line:variable-name
 export const getDisplayName = Component => {
   if (typeof Component === 'string') return Component;
   if (!Component) return undefined;

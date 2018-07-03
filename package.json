@@ -1,6 +1,9 @@
 {
   "private": true,
   "author": "Findify <yourfriends@findify.io>",
+  "workspaces": [
+    "packages/*"
+  ],
   "devDependencies": {
     "@types/tapable": "1.0.2",
     "commitizen": "^2.10.1",
@@ -13,9 +16,8 @@
     "husky": "^0.14.3",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^23.1.0",
-    "lerna": "^2.11.0",
+    "lerna": "^3.0.0-beta.20",
     "lerna-changelog": "^0.8.0",
-    "lerna-semantic-release": "^9.1.0",
     "lint-staged": "^7.2.0",
     "mini-css-extract-plugin": "^0.4.0",
     "npm-check-updates": "^2.14.2",
@@ -34,7 +36,7 @@
     "tslint-config-airbnb": "^5.9.2",
     "tslint-config-prettier": "^1.13.0",
     "typedoc": "^0.11.1",
-    "typescript": "2.9.2",
+    "typescript": "2.8.3",
     "uglifyjs-webpack-plugin": "^1.2.6",
     "webpack": "^4.1.1",
     "webpack-bundle-analyzer": "^2.13.1",
@@ -49,14 +51,13 @@
     "webpack-dev-server": "^3.1.4"
   },
   "scripts": {
-    "postinstall": "run-s bootstrap postinstall:pkgs",
-    "postinstall:pkgs": "lerna run prepare --parallel",
-    "bootstrap": "lerna bootstrap --hoist",
+    "postinstall": "run-s build:lib build:dist",
     "upgrade": "npm-run-all --parallel upgrade:root upgrade:pkgs --serial bootstrap",
     "upgrade:root": "ncu -u",
     "upgrade:pkgs": "lerna exec -- ncu -a",
     "clean": "lerna run clean --parallel",
-    "build": "lerna run build",
+    "build:lib": "lerna run build:lib",
+    "build:dist": "lerna run build:dist",
     "build:tdd": "run-s --continue-on-error build:test build:test:watch",
     "build:test": "lerna run build:test",
     "build:test:watch": "lerna run build:test:watch --parallel",
@@ -75,9 +76,7 @@
     "release:post": "lerna-semantic-release post",
     "release:perform": "lerna-semantic-release perform"
   },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-lerna-changelog"
-    }
+  "resolutions": {
+    "debug": "2.6.9"
   }
 }

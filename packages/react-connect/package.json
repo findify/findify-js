@@ -1,6 +1,6 @@
 {
   "name": "@findify/react-connect",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "author": "Findify <yourfriends@findify.io>",
   "bugs": {
     "url": "https://github.com/findify/findify-js/issues"
@@ -9,10 +9,10 @@
     "access": "public"
   },
   "dependencies": {
-    "@findify/agent": "^1.2.7",
-    "@findify/analytics": "^3.2.1",
-    "react": "^16.4.1",
-    "immutable": "^4.0.0-rc.9"
+    "@findify/agent": "^1.2.8",
+    "@findify/analytics": "^3.2.2",
+    "immutable": "^4.0.0-rc.9",
+    "react": "^16.4.1"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0-beta.51",
@@ -40,10 +40,10 @@
     "tslint-config-airbnb": "^5.9.2",
     "tslint-config-prettier": "^1.13.0",
     "typedoc": "^0.11.1",
-    "typescript": "2.9.2",
+    "typescript": "2.8.3",
     "webpack": "^4.12.0",
-    "webpack-cli": "^3.0.8",
-    "webpack-bundle-analyzer": "^2.13.1"
+    "webpack-bundle-analyzer": "^2.13.1",
+    "webpack-cli": "^3.0.8"
   },
   "homepage": "https://github.com/findify/findify-js/packages/agent",
   "keywords": [
@@ -57,13 +57,13 @@
   },
   "scripts": {
     "build": "run-p build:lib build:dist",
-    "build:dist": "webpack",
+    "build:dist": "webpack --mode production",
     "build:dist:analyze": "npm run build:dist -- --env.analyze",
     "build:lib": "tsc --project tsconfig.lib.json",
-    "build:types": "tsc --project tsconfig.lib.json  --declaration --declarationDir types",
+    "build:types": "tsc --project tsconfig.lib.json --declaration --declarationDir types",
     "build:test": "npm run build:lib -- --project tsconfig.test.json --module commonjs",
     "build:test:watch": "npm run build:test -- --watch",
-    "clean": "del lib types",
+    "clean": "del lib types dist",
     "docs": "typedoc --name 'Findify Agent' --hideGenerator --target es5 --theme default --out doc src",
     "lint": "tslint --project tsconfig.json --type-check --format codeFrame src/**/*.ts",
     "lint:fix": "npm run lint -- --fix",

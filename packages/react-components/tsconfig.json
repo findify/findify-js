@@ -3,5 +3,6 @@
   "compilerOptions": {
     "baseUrl": "src",
     "rootDirs": ["src", "dev"],
+    "types" : ["node", "lodash", "webpack", "jest", "@findify/sdk", "immutable", "react-spring"]
   }
 }

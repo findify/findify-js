@@ -1,17 +1,24 @@
 {
-  "lerna": "2.11.0",
+  "lerna": "2.6.0",
+  "npmClient": "yarn",
+  "useWorkspaces": true,
   "version": "independent",
-  "packages": [
-    "packages/*"
-  ],
-  "lifecycle": {
-    "prepare": "prepare"
+  "changelog": {
+    "repo": "findify/findify-js",
+    "labels": {
+      "tag: new feature": ":rocket: New Feature",
+      "tag: breaking change": ":boom: Breaking Change",
+      "tag: bug fix": ":bug: Bug Fix",
+      "tag: enhancement": ":nail_care: Enhancement",
+      "tag: documentation": ":memo: Documentation",
+      "tag: internal": ":house: Internal"
+    },
+    "cacheDir": ".changelog"
   },
-  "commands": {
+  "command": {
     "publish": {
-      "ignore": [
-        "*.md"
-       ]
+      "conventionalCommits": true,
+      "changelogPreset": "./node_modules/cz-lerna-changelog"
     }
   }
 }

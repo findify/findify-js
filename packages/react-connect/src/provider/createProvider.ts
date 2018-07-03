@@ -1,15 +1,16 @@
-import { Component, Children } from "react";
+// tslint:disable-next-line:import-name
+import React from "react";
 import { Map, is } from 'immutable';
 import * as Agents from '@findify/agent';
 import analytics from '@findify/analytics';
-import { $findify, $analytics, $config } from '../symbols';
+import { $analytics, $findify, $config } from '../symbols';
 
 import { object, string, number, oneOfType, func, any } from 'prop-types';
 
 const agents = {};
 
 export const createProvider = (type, onCreate?: (agent) => void) => {
-  return class Provider extends Component<any, any>{
+  return class Provider extends React.Component<any, any>{
     type: string;
     storeKey: string;
     analytics: any;
