@@ -1,7 +1,7 @@
 {
   "name": "@findify/react-components",
   "description": "Findify react UI components",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "author": "Findify <yourfriends@findify.io>",
   "dependencies": {
     "@findify/agent": "^1.2.9",
