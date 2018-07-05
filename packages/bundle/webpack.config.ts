@@ -19,7 +19,6 @@ interface WebpackEnvArgs {
   findify_env?: 'staging'
 }
 
-
 const componentsPath = path.resolve(__dirname, '../react-components');
 const createGlobals = (isDevelopment) => [
   '__MERCHANT_CONFIG_URL__',
