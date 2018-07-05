@@ -5,6 +5,7 @@ export { Recommendation as RecommendationProvider } from './provider/index';
 export { Content as ContentProvider } from './provider/index';
 export { SmartCollection as SmartCollectionProvider } from './provider/index';
 
+
 export { default as createConnect } from './connect/createConnect';
 export { default as connectSuggestions } from './connect/connectSuggestions';
 export { default as connectItems } from './connect/connectItems';
