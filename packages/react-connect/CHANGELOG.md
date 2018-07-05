@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.1.12"></a>
+## [0.1.12](https://github.com/findify/findify-js/compare/@findify/react-connect@0.1.3...@findify/react-connect@0.1.12) (2018-07-05)
+
+
+### Bug Fixes
+
+* **bundle:** fix SC and Search render logic ([92812d4](https://github.com/findify/findify-js/commit/92812d4))
+* **bundle, react-components, react-connect:** add banner and redirect ([7dfe633](https://github.com/findify/findify-js/commit/7dfe633))
+
+
+
+
+
 <a name="0.1.11"></a>
 ## [0.1.11](https://github.com/findify/findify-js/compare/@findify/react-connect@0.1.10...@findify/react-connect@0.1.11) (2018-07-05)
 

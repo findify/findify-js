@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="3.2.3"></a>
+## [3.2.3](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/analytics@3.2.0...@findify/analytics@3.2.3) (2018-07-05)
+
+**Note:** Version bump only for package @findify/analytics
+
+
+
+
+
 <a name="3.2.2"></a>
 ## <small>3.2.2 (2018-07-03)</small>
 

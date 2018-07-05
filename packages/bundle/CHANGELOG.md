@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="6.3.0"></a>
+# [6.3.0](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.0.18...@findify/bundle@6.3.0) (2018-07-05)
+
+
+### Bug Fixes
+
+* **bundle:** bump version ([eb56e5d](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/eb56e5d))
+* **bundle:** fix SC and Search render logic ([92812d4](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/92812d4))
+* **bundle:** include polyfill in bundle coz of weird runtime in IE11 ([ce3106d](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/ce3106d))
+* **bundle:** render search content on change query while 0results shown ([e1ab1f5](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/e1ab1f5))
+* **bundle, react-components, react-connect:** add banner and redirect ([7dfe633](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/7dfe633))
+* **react-components:** collapse/expand category filter by providing maxItemsCount via config ([e35362b](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/e35362b))
+
+
+### Features
+
+* **react-components:** remove multiple export from Grid component ([02ad225](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/02ad225))
+
+
+
+
+
 <a name="6.2.2"></a>
 ## [6.2.2](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.2.0...@findify/bundle@6.2.2) (2018-07-05)
 
