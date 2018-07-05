@@ -14,7 +14,7 @@ async function getAllPackages () {
   return await collectPackages(process.cwd());
 }
 
-async function getChangedPackages (pkgs) {
+function getChangedPackages (pkgs) {
   const changedFiles = shell.exec('git diff --cached --name-only', {silent: true})
     .stdout
     .split('\n');
@@ -63,8 +63,6 @@ const prompter = function(cz, commit) {
   getAllPackages().then(pkgs => {
     const allPackages = pkgs.map((pkg) => pkg.name);
     const changedPackages = getChangedPackages(pkgs);
-
-    console.log(changedPackages);
     const defaultQuestions = makeDefaultQuestions(allPackages, changedPackages);
     const customQuestions = [];
     const questions = mergeQuestions(defaultQuestions, customQuestions);
