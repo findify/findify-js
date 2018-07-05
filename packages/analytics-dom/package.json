@@ -1,7 +1,7 @@
 {
   "name": "@findify/analytics-dom",
   "description": "Findify analytics DOM bindings",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "main": "lib/index.js",
   "tags": [
     "findify",
@@ -32,7 +32,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@findify/analytics": "^3.2.2",
+    "@findify/analytics": "^3.2.3",
     "element-dataset": "2.2.6"
   },
   "devDependencies": {

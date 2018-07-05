@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="2.2.0"></a>
+# [2.2.0](https://github.com/findify/findify-js/compare/@findify/sdk@2.0.1...@findify/sdk@2.2.0) (2018-07-05)
+
+
+### Bug Fixes
+
+* **bundle:** fix SC and Search render logic ([92812d4](https://github.com/findify/findify-js/commit/92812d4))
+
+
+### Features
+
+* **bundle, sdk, react-connect, agent, react-components, analytics:** add content search, change Pro ([a813241](https://github.com/findify/findify-js/commit/a813241))
+
+
+
+
+
 <a name="2.1.0"></a>
 ## 2.1.0 (2018-07-03)
 

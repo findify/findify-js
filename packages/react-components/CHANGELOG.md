@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.2.0"></a>
+# 0.2.0 (2018-07-05)
+
+
+### Bug Fixes
+
+* **bundle:** fix SC and Search render logic ([92812d4](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/92812d4))
+* **bundle:** include polyfill in bundle coz of weird runtime in IE11 ([ce3106d](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/ce3106d))
+* **bundle, react-components, react-connect:** add banner and redirect ([7dfe633](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/7dfe633))
+* **react-components:** collapse/expand category filter by providing maxItemsCount via config ([e35362b](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/e35362b))
+
+
+### Features
+
+* **bundle, sdk, react-connect, agent, react-components, analytics:** add content search, change Pro ([a813241](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/a813241))
+* **react-components:** remove multiple export from Grid component ([02ad225](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/02ad225))
+
+
+
+
+
 <a name="0.1.1"></a>
 ## [0.1.1](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.1.0...@findify/react-components@0.1.1) (2018-07-05)
 
