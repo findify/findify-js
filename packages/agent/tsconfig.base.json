@@ -6,16 +6,16 @@
     "lib": ["es6", "es2017"],
     "sourceMap": true,
     "allowSyntheticDefaultImports": true,
-    "removeComments": true,
+    "removeComments": false,
     "noImplicitAny": false,
-    "noEmitOnError": false,
+    "noEmitOnError": true,
     "strictNullChecks": true,
     "pretty": true,
     "baseUrl": "src",
     "rootDirs": ["src"],
     "allowJs": false,
     "outDir": "lib",
-    "types" : ["node", "lodash", "webpack", "jest", "@findify/sdk"]
+    "types" : ["node", "lodash", "webpack", "jest", "@findify/sdk", "immutable"]
   },
   "compileOnSave": false,
   "buildOnSave": false

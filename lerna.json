@@ -1,17 +1,12 @@
 {
-  "lerna": "2.11.0",
+  "lerna": "2.6.0",
+  "npmClient": "yarn",
+  "useWorkspaces": true,
   "version": "independent",
-  "packages": [
-    "packages/*"
-  ],
-  "lifecycle": {
-    "prepare": "prepare"
-  },
-  "commands": {
+  "command": {
     "publish": {
-      "ignore": [
-        "*.md"
-       ]
+      "conventionalCommits": true,
+      "changelog-preset": "cz-conventional-changelog"
     }
   }
 }

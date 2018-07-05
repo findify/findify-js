@@ -218,6 +218,7 @@ export {};
 }
 declare module 'components/Cards/Product/Rating/view' {
 /// <reference types="react" />
+import 'core-js/fn/array/from';
 import React from 'react';
 import { ThemedSFCProps } from 'types';
 export interface IRatingProps extends ThemedSFCProps {
@@ -241,9 +242,9 @@ export const DiscountSticker: {
             theme: any;
             children?: React.ReactNode;
         }, React.ComponentState, any>>;
-        setState<K extends never>(state: {} | ((prevState: Readonly<{}>, props: {}) => {} | Pick<{}, K> | null) | Pick<{}, K> | null, callback?: (() => void) | undefined): void;
+        setState<K extends never>(state: {} | ((prevState: Readonly<{}>, props: Readonly<{}>) => {} | Pick<{}, K> | null) | Pick<{}, K> | null, callback?: (() => void) | undefined): void;
         forceUpdate(callBack?: (() => void) | undefined): void;
-        props: Readonly<{
+        readonly props: Readonly<{
             children?: React.ReactNode;
         }> & Readonly<{}>;
         state: Readonly<{}>;
@@ -263,9 +264,9 @@ export const OutOfStockSticker: {
             theme: any;
             children?: React.ReactNode;
         }, React.ComponentState, any>>;
-        setState<K extends never>(state: {} | ((prevState: Readonly<{}>, props: {}) => {} | Pick<{}, K> | null) | Pick<{}, K> | null, callback?: (() => void) | undefined): void;
+        setState<K extends never>(state: {} | ((prevState: Readonly<{}>, props: Readonly<{}>) => {} | Pick<{}, K> | null) | Pick<{}, K> | null, callback?: (() => void) | undefined): void;
         forceUpdate(callBack?: (() => void) | undefined): void;
-        props: Readonly<{
+        readonly props: Readonly<{
             children?: React.ReactNode;
         }> & Readonly<{}>;
         state: Readonly<{}>;
@@ -330,8 +331,10 @@ export interface ICategoryFacetProps extends ThemedSFCProps {
     items: List<Map<string, string | boolean | number>>;
     total: number;
     config: MJSConfiguration;
+    isExpanded?: boolean;
+    onToggle: (evt: Event) => any;
 }
-const CategoryFacetView: ({ theme, items, config, facet, total }: ICategoryFacetProps) => JSX.Element;
+const CategoryFacetView: ({ theme, items, config, facet, total, isExpanded, onToggle }: ICategoryFacetProps) => JSX.Element;
 export default CategoryFacetView;
 
 }
@@ -466,6 +469,7 @@ export default class DrawerView extends React.Component<IDrawerViewProps, IDrawe
         open: boolean;
     };
     mounted: boolean;
+    originalScrollTop: number;
     static defaultProps: {
         options: {
             from: {
@@ -533,6 +537,7 @@ export {};
 }
 declare module 'components/common/MapArray' {
 /// <reference types="react" />
+import 'core-js/fn/array/from';
 import React from 'react';
 export type MapCallback = (item: any, index: number, arrayLike: ArrayLike) => any;
 export type KeyAccessor = (item: any, index: number) => string;
@@ -575,9 +580,9 @@ const _default: {
             theme: any;
             children?: React.ReactNode;
         }, React.ComponentState, any>>;
-        setState<K extends never>(state: {} | ((prevState: Readonly<{}>, props: {}) => {} | Pick<{}, K> | null) | Pick<{}, K> | null, callback?: (() => void) | undefined): void;
+        setState<K extends never>(state: {} | ((prevState: Readonly<{}>, props: Readonly<{}>) => {} | Pick<{}, K> | null) | Pick<{}, K> | null, callback?: (() => void) | undefined): void;
         forceUpdate(callBack?: (() => void) | undefined): void;
-        props: Readonly<{
+        readonly props: Readonly<{
             children?: React.ReactNode;
         }> & Readonly<{}>;
         state: Readonly<{}>;
@@ -922,6 +927,7 @@ export interface IRangeFacetProps extends ThemedSFCProps {
     to: number;
     onChangeMax: (evt?: React.ChangeEvent<any>) => any;
     onChangeMin: (evt?: React.ChangeEvent<any>) => any;
+    onKeypress: (evt: any) => any;
     onCommit: () => any;
 }
 const RangeFacetView: React.SFC<IRangeFacetProps>;
@@ -1072,6 +1078,8 @@ declare module 'components/search/MobileActions/view' {
 import React from 'react';
 import { MJSConfiguration, ThemedSFCProps } from 'types';
 export interface IMobileActionsProps extends ThemedSFCProps {
+    isCollection?: boolean;
+    total: number;
     showFacets?: boolean;
     showSort?: boolean;
     config: MJSConfiguration;
@@ -1283,6 +1291,10 @@ export class Portal extends Component<any> {
 export const portal: (children: any, extraProps?: {}) => React.ComponentElement<any, Portal>;
 
 }
+declare module 'helpers/debounce' {
+export const debounce: (fn: any, wait?: any) => () => void;
+
+}
 declare module 'helpers/emmiter' {
 export const emit: (...args: any[]) => any;
 export const listen: (...args: any[]) => any;
@@ -1313,7 +1325,6 @@ export default _default;
 
 }
 declare module 'helpers/pure' {
-/// <reference types="recompose" />
 import { ComponentEnhancer } from 'recompose';
 const _default: ComponentEnhancer<{}, {}>;
 export default _default;
@@ -1337,15 +1348,31 @@ declare module 'helpers/withErrorHandler' {
 /// <reference types="react" />
 import React from 'react';
 const _default: (BaseComponent: any) => {
+    new (props: Readonly<{}>): {
+        state: {
+            error: boolean;
+        };
+        componentDidCatch(error: any, info: any): void;
+        render(): React.ComponentElement<{}, React.Component<{}, React.ComponentState, any>> | null;
+        setState<K extends never>(state: {} | ((prevState: Readonly<{}>, props: Readonly<{}>) => {} | Pick<{}, K> | null) | Pick<{}, K> | null, callback?: (() => void) | undefined): void;
+        forceUpdate(callBack?: (() => void) | undefined): void;
+        readonly props: Readonly<{
+            children?: React.ReactNode;
+        }> & Readonly<{}>;
+        context: any;
+        refs: {
+            [key: string]: React.ReactInstance;
+        };
+    };
     new (props: {}, context?: any): {
         state: {
             error: boolean;
         };
         componentDidCatch(error: any, info: any): void;
         render(): React.ComponentElement<{}, React.Component<{}, React.ComponentState, any>> | null;
-        setState<K extends never>(state: {} | ((prevState: Readonly<{}>, props: {}) => {} | Pick<{}, K> | null) | Pick<{}, K> | null, callback?: (() => void) | undefined): void;
+        setState<K extends never>(state: {} | ((prevState: Readonly<{}>, props: Readonly<{}>) => {} | Pick<{}, K> | null) | Pick<{}, K> | null, callback?: (() => void) | undefined): void;
         forceUpdate(callBack?: (() => void) | undefined): void;
-        props: Readonly<{
+        readonly props: Readonly<{
             children?: React.ReactNode;
         }> & Readonly<{}>;
         context: any;
@@ -1362,15 +1389,32 @@ declare module 'helpers/withEvents' {
 /// <reference types="react" />
 import React from 'react';
 const _default: (events?: any) => (BaseComponent: any) => {
+    new (props: Readonly<{}>): {
+        removeListener: any;
+        handler: (event: any, ...args: any[]) => void;
+        componentDidMount(): void;
+        componentWillUnmount(): void;
+        render(): any;
+        setState<K extends never>(state: {} | ((prevState: Readonly<{}>, props: Readonly<{}>) => {} | Pick<{}, K> | null) | Pick<{}, K> | null, callback?: (() => void) | undefined): void;
+        forceUpdate(callBack?: (() => void) | undefined): void;
+        readonly props: Readonly<{
+            children?: React.ReactNode;
+        }> & Readonly<{}>;
+        state: Readonly<{}>;
+        context: any;
+        refs: {
+            [key: string]: React.ReactInstance;
+        };
+    };
     new (props: {}, context?: any): {
         removeListener: any;
         handler: (event: any, ...args: any[]) => void;
         componentDidMount(): void;
         componentWillUnmount(): void;
         render(): any;
-        setState<K extends never>(state: {} | ((prevState: Readonly<{}>, props: {}) => {} | Pick<{}, K> | null) | Pick<{}, K> | null, callback?: (() => void) | undefined): void;
+        setState<K extends never>(state: {} | ((prevState: Readonly<{}>, props: Readonly<{}>) => {} | Pick<{}, K> | null) | Pick<{}, K> | null, callback?: (() => void) | undefined): void;
         forceUpdate(callBack?: (() => void) | undefined): void;
-        props: Readonly<{
+        readonly props: Readonly<{
             children?: React.ReactNode;
         }> & Readonly<{}>;
         state: Readonly<{}>;
@@ -1408,7 +1452,7 @@ export default function withLazy(): (BaseComponent: any) => {
         render(): JSX.Element;
         setState<K extends string>(state: any, callback?: (() => void) | undefined): void;
         forceUpdate(callBack?: (() => void) | undefined): void;
-        props: Readonly<{
+        readonly props: Readonly<{
             children?: React.ReactNode;
         }> & Readonly<any>;
         state: Readonly<any>;
@@ -1418,6 +1462,12 @@ export default function withLazy(): (BaseComponent: any) => {
         };
     };
 };
+
+}
+declare module 'helpers/withMinResultsToShow' {
+/// <reference types="react" />
+import React from 'react';
+export default function withMinResultsToShow(): (BaseComponent: React.Component<{}, {}, any>) => React.ComponentClass<{}>;
 
 }
 declare module 'helpers/withTheme' {
@@ -1433,9 +1483,9 @@ export default function withTheme(defaultTheme: any): (Component: any) => {
             theme: any;
             children?: React.ReactNode;
         }, React.ComponentState, any>>;
-        setState<K extends never>(state: {} | ((prevState: Readonly<{}>, props: {}) => {} | Pick<{}, K> | null) | Pick<{}, K> | null, callback?: (() => void) | undefined): void;
+        setState<K extends never>(state: {} | ((prevState: Readonly<{}>, props: Readonly<{}>) => {} | Pick<{}, K> | null) | Pick<{}, K> | null, callback?: (() => void) | undefined): void;
         forceUpdate(callBack?: (() => void) | undefined): void;
-        props: Readonly<{
+        readonly props: Readonly<{
             children?: React.ReactNode;
         }> & Readonly<{}>;
         state: Readonly<{}>;
@@ -1467,7 +1517,7 @@ const _default: (BaseComponent: any) => {
         render(): any;
         setState<K extends string>(state: any, callback?: (() => void) | undefined): void;
         forceUpdate(callBack?: (() => void) | undefined): void;
-        props: Readonly<{
+        readonly props: Readonly<{
             children?: React.ReactNode;
         }> & Readonly<any>;
         state: Readonly<any>;
@@ -1571,7 +1621,6 @@ export default class Sidebar extends React.Component {
 
 }
 declare module 'layouts/Autocomplete/withAutocompleteLogic' {
-/// <reference types="recompose" />
 import { ComponentEnhancer } from 'recompose';
 const _default: ComponentEnhancer<{}, {}>;
 export default _default;
@@ -1587,7 +1636,6 @@ export default _default;
 declare module 'layouts/ContentSearch/view' {
 /// <reference types="react" />
 import { MJSConfiguration, MJSValue, ThemedSFCProps } from 'types';
-import { Map } from 'immutable';
 export interface IContentSearchProps extends ThemedSFCProps {
     config: MJSConfiguration;
     meta: Map<string, MJSValue>;
@@ -1756,5 +1804,355 @@ export interface IZeroResultsProps extends ThemedSFCProps {
 }
 const ZeroResultsLayout: ({ items, title, theme, columns, config }: IZeroResultsProps) => JSX.Element;
 export default ZeroResultsLayout;
+
+}
+declare module 'vendor/react-spring' {
+const assignToFn: (target: any, source: any) => any;
+function _interopDefault(ex: any): any;
+var _extends: any;
+var _inheritsLoose: any;
+var React: any;
+var ReactDOM: any;
+var _objectWithoutProperties: any;
+var _assertThisInitialized: any;
+var bugfixes: undefined;
+var applyAnimatedValues: undefined;
+var colorNames: never[];
+var requestFrame: (cb: any) => any;
+var cancelFrame: (cb: any) => any;
+var interpolation: undefined;
+var injectApplyAnimatedValues: (fn: any, transform: any) => {
+    fn: any;
+    transform: any;
+};
+var injectColorNames: (names: any) => any;
+var injectBugfixes: (fn: any) => any;
+var injectInterpolation: (cls: any) => any;
+var injectFrame: (raf: any, caf: any) => any;
+var Globals: Readonly<{
+    readonly bugfixes: undefined;
+    readonly applyAnimatedValues: undefined;
+    readonly colorNames: never[];
+    readonly requestFrame: (cb: any) => any;
+    readonly cancelFrame: (cb: any) => any;
+    readonly interpolation: undefined;
+    injectApplyAnimatedValues: (fn: any, transform: any) => {
+        fn: any;
+        transform: any;
+    };
+    injectColorNames: (names: any) => any;
+    injectBugfixes: (fn: any) => any;
+    injectInterpolation: (cls: any) => any;
+    injectFrame: (raf: any, caf: any) => any;
+}>;
+var colors: {
+    transparent: number;
+    aliceblue: number;
+    antiquewhite: number;
+    aqua: number;
+    aquamarine: number;
+    azure: number;
+    beige: number;
+    bisque: number;
+    black: number;
+    blanchedalmond: number;
+    blue: number;
+    blueviolet: number;
+    brown: number;
+    burlywood: number;
+    burntsienna: number;
+    cadetblue: number;
+    chartreuse: number;
+    chocolate: number;
+    coral: number;
+    cornflowerblue: number;
+    cornsilk: number;
+    crimson: number;
+    cyan: number;
+    darkblue: number;
+    darkcyan: number;
+    darkgoldenrod: number;
+    darkgray: number;
+    darkgreen: number;
+    darkgrey: number;
+    darkkhaki: number;
+    darkmagenta: number;
+    darkolivegreen: number;
+    darkorange: number;
+    darkorchid: number;
+    darkred: number;
+    darksalmon: number;
+    darkseagreen: number;
+    darkslateblue: number;
+    darkslategray: number;
+    darkslategrey: number;
+    darkturquoise: number;
+    darkviolet: number;
+    deeppink: number;
+    deepskyblue: number;
+    dimgray: number;
+    dimgrey: number;
+    dodgerblue: number;
+    firebrick: number;
+    floralwhite: number;
+    forestgreen: number;
+    fuchsia: number;
+    gainsboro: number;
+    ghostwhite: number;
+    gold: number;
+    goldenrod: number;
+    gray: number;
+    green: number;
+    greenyellow: number;
+    grey: number;
+    honeydew: number;
+    hotpink: number;
+    indianred: number;
+    indigo: number;
+    ivory: number;
+    khaki: number;
+    lavender: number;
+    lavenderblush: number;
+    lawngreen: number;
+    lemonchiffon: number;
+    lightblue: number;
+    lightcoral: number;
+    lightcyan: number;
+    lightgoldenrodyellow: number;
+    lightgray: number;
+    lightgreen: number;
+    lightgrey: number;
+    lightpink: number;
+    lightsalmon: number;
+    lightseagreen: number;
+    lightskyblue: number;
+    lightslategray: number;
+    lightslategrey: number;
+    lightsteelblue: number;
+    lightyellow: number;
+    lime: number;
+    limegreen: number;
+    linen: number;
+    magenta: number;
+    maroon: number;
+    mediumaquamarine: number;
+    mediumblue: number;
+    mediumorchid: number;
+    mediumpurple: number;
+    mediumseagreen: number;
+    mediumslateblue: number;
+    mediumspringgreen: number;
+    mediumturquoise: number;
+    mediumvioletred: number;
+    midnightblue: number;
+    mintcream: number;
+    mistyrose: number;
+    moccasin: number;
+    navajowhite: number;
+    navy: number;
+    oldlace: number;
+    olive: number;
+    olivedrab: number;
+    orange: number;
+    orangered: number;
+    orchid: number;
+    palegoldenrod: number;
+    palegreen: number;
+    paleturquoise: number;
+    palevioletred: number;
+    papayawhip: number;
+    peachpuff: number;
+    peru: number;
+    pink: number;
+    plum: number;
+    powderblue: number;
+    purple: number;
+    rebeccapurple: number;
+    red: number;
+    rosybrown: number;
+    royalblue: number;
+    saddlebrown: number;
+    salmon: number;
+    sandybrown: number;
+    seagreen: number;
+    seashell: number;
+    sienna: number;
+    silver: number;
+    skyblue: number;
+    slateblue: number;
+    slategray: number;
+    slategrey: number;
+    snow: number;
+    springgreen: number;
+    steelblue: number;
+    tan: number;
+    teal: number;
+    thistle: number;
+    tomato: number;
+    turquoise: number;
+    violet: number;
+    wheat: number;
+    white: number;
+    whitesmoke: number;
+    yellow: number;
+    yellowgreen: number;
+};
+var linear: (t: any) => any;
+var Interpolation: () => void;
+function interpolate(input: any, inputMin: any, inputMax: any, outputMin: any, outputMax: any, easing: any, extrapolateLeft: any, extrapolateRight: any, map: any): any;
+function findRange(input: any, inputRange: any): number;
+function normalizeColor(color: any): any;
+function hue2rgb(p: any, q: any, t: any): any;
+function hslToRgb(h: any, s: any, l: any): number;
+var NUMBER: string;
+var PERCENTAGE: string;
+function toArray(arrayLike: any): any;
+function call(): string;
+var matchers: {
+    rgb: RegExp;
+    rgba: RegExp;
+    hsl: RegExp;
+    hsla: RegExp;
+    hex3: RegExp;
+    hex4: RegExp;
+    hex6: RegExp;
+    hex8: RegExp;
+};
+function parse255(str: any): number;
+function parse360(str: any): number;
+function parse1(str: any): number;
+function parsePercentage(str: any): number;
+function colorToRgba(input: any): any;
+var stringShapeRegex: RegExp;
+function createInterpolation(config: any): (input: any) => any;
+var Animated: () => void;
+var AnimatedTracking: (value: any, parent: any, animationClass: any, animationConfig: any, callback: any) => any;
+function throttle(callback: any, limit: any): () => void;
+var AnimatedWithChildren: () => any;
+var AnimatedInterpolation: (parents: any, config: any) => any;
+var interpolate$1: (parents: any, config: any) => any;
+var _uniqueId: number;
+function findAnimatedStyles(node: any, styles: any): void;
+var AnimatedValue: (value: any) => any;
+var getValues: (object: any) => any[];
+var check: (value: any) => boolean;
+var overwrite: (width: any, height: any) => (acc: any, _ref2: any) => any;
+function fixAuto(spring: any, props: any): any;
+var isUnitlessNumber: {
+    animationIterationCount: boolean;
+    borderImageOutset: boolean;
+    borderImageSlice: boolean;
+    borderImageWidth: boolean;
+    boxFlex: boolean;
+    boxFlexGroup: boolean;
+    boxOrdinalGroup: boolean;
+    columnCount: boolean;
+    columns: boolean;
+    flex: boolean;
+    flexGrow: boolean;
+    flexPositive: boolean;
+    flexShrink: boolean;
+    flexNegative: boolean;
+    flexOrder: boolean;
+    gridRow: boolean;
+    gridRowEnd: boolean;
+    gridRowSpan: boolean;
+    gridRowStart: boolean;
+    gridColumn: boolean;
+    gridColumnEnd: boolean;
+    gridColumnSpan: boolean;
+    gridColumnStart: boolean;
+    fontWeight: boolean;
+    lineClamp: boolean;
+    lineHeight: boolean;
+    opacity: boolean;
+    order: boolean;
+    orphans: boolean;
+    tabSize: boolean;
+    widows: boolean;
+    zIndex: boolean;
+    zoom: boolean;
+    fillOpacity: boolean;
+    floodOpacity: boolean;
+    stopOpacity: boolean;
+    strokeDasharray: boolean;
+    strokeDashoffset: boolean;
+    strokeMiterlimit: boolean;
+    strokeOpacity: boolean;
+    strokeWidth: boolean;
+};
+var prefixKey: (prefix: any, key: any) => any;
+var prefixes: string[];
+function dangerousStyleValue(name: any, value: any, isCustomProperty: any): string;
+var Animation: {
+    new (effect?: AnimationEffectReadOnly | undefined, timeline?: AnimationTimeline | undefined): Animation;
+    prototype: Animation;
+};
+var withDefault: (value: any, defaultValue: any) => any;
+var tensionFromOrigamiValue: (oValue: any) => number;
+var frictionFromOrigamiValue: (oValue: any) => number;
+var fromOrigamiTensionAndFriction: (tension: any, friction: any) => {
+    tension: number;
+    friction: number;
+};
+var SpringAnimation: (config: any) => any;
+var AnimatedArray: (array: any) => any;
+function maybeVectorAnim(array: any, _ref: any, anim: any, impl: any): {
+    start: (callback: any) => any;
+    stop: () => void;
+} | null;
+function parallel(animations: any, config: any): {
+    start: (callback: any) => any;
+    stop: () => void;
+};
+function controller(value: any, config: any, impl: any): {
+    start: (callback: any) => any;
+    stop: () => void;
+};
+var AnimatedStyle: (style: any) => any;
+var AnimatedProps: (props: any, callback: any) => any;
+function createAnimatedComponent(Component: any): () => any;
+function shallowDiff(a: any, b: any): boolean;
+var config: {
+    default: {
+        tension: number;
+        friction: number;
+    };
+    gentle: {
+        tension: number;
+        friction: number;
+    };
+    wobbly: {
+        tension: number;
+        friction: number;
+    };
+    stiff: {
+        tension: number;
+        friction: number;
+    };
+    slow: {
+        tension: number;
+        friction: number;
+    };
+};
+var callProp: (p: any, n: any) => any;
+var convert$1: (acc: any, _ref: any) => any;
+var Spring: () => any;
+var empty: () => null;
+var ref: (object: any, key: any) => any;
+var get: (props: any) => any;
+var Transition: (prevProps: any) => any;
+var Trail: () => any;
+var Keyframes: () => any;
+var AnimatedDiv: () => any;
+var _React$createContext: any, Provider: any, Consumer: any;
+function getScrollType(horizontal: any): "scrollLeft" | "scrollTop";
+var START_TRANSLATE_3D: string;
+var START_TRANSLATE: string;
+var ParallaxLayer: () => any;
+var Parallax: () => any;
+var domElements: string[];
+var elements: any;
+var createAnimatedComponent$1: (comp: any) => () => any;
 
 }
