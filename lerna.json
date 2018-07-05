@@ -6,7 +6,8 @@
   "command": {
     "publish": {
       "conventionalCommits": true,
-      "changelog-preset": "cz-conventional-changelog"
+      "changelog-preset": "cz-conventional-changelog",
+      "message": "chore(release): publish %s [ci skip]"
     }
   }
 }
