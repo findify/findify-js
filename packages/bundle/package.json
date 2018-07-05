@@ -1,7 +1,7 @@
 {
   "name": "@findify/bundle",
   "description": "Findify Out Of Box solution",
-  "version": "6.2.1",
+  "version": "6.2.2",
   "main": "lib/index.js",
   "tags": [
     "findify",
@@ -41,8 +41,8 @@
     "@findify/agent": "^1.2.8",
     "@findify/analytics-dom": "^0.0.7",
     "@findify/change-emitter": "^1.0.0",
-    "@findify/react-components": "^0.1.0",
-    "@findify/react-connect": "^0.1.10",
+    "@findify/react-components": "^0.1.1",
+    "@findify/react-connect": "^0.1.11",
     "core-js": "^2.5.7",
     "jump.js": "^1.0.2",
     "load-js": "^3.0.2",
