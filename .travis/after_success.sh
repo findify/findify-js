@@ -100,7 +100,7 @@ if [[ $TRAVIS_BRANCH == 'master' ]]; then
 fi
 
 if [[ $TRAVIS_BRANCH == 'develop' ]]; then
-  lerna publish --skip-npm
+  lerna publish --skip-npm --yes
   echo "deploying to AWS S3"
   for pkg in ${PKGS[@]}
   do
