@@ -64,6 +64,7 @@ const prompter = function(cz, commit) {
     const allPackages = pkgs.map((pkg) => pkg.name);
     const changedPackages = getChangedPackages(pkgs);
 
+    console.log(changedPackages);
     const defaultQuestions = makeDefaultQuestions(allPackages, changedPackages);
     const customQuestions = [];
     const questions = mergeQuestions(defaultQuestions, customQuestions);
