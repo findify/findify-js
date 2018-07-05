@@ -1,6 +1,6 @@
 {
   "name": "@findify/processors",
-  "version": "1.0.0",
+  "version": "1.1.1",
   "description": "",
   "main": "styles.v6.js",
   "scripts": {
@@ -10,11 +10,11 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "core-js": "^2.5.7",
     "@babel/core": "^7.0.0-beta.51",
     "@babel/preset-env": "^7.0.0-beta.51",
     "babel-loader": "^8.0.0-beta.2",
     "compression-webpack-plugin": "^1.1.11",
+    "core-js": "^2.5.7",
     "cssnano": "^3.10.0",
     "cssnano-browser": "^4.0.0-rc.2",
     "flat": "^4.0.0",
@@ -22,5 +22,11 @@
     "postcss": "^6.0.22",
     "postcss-custom-properties": "^7.0.0",
     "webpack-cli": "^3.0.8"
+  },
+  "dependencies": {
+    "@findify/agent": "^1.2.8",
+    "@findify/react-connect": "^0.1.11",
+    "bundle": "^2.1.0",
+    "react-components": "^0.5.1"
   }
 }

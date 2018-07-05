@@ -1,5 +1,4 @@
 import { getFacetType } from './filters';
-import { isArray, isObject } from './helpers';
 import { Map, List, isImmutable } from 'immutable';
 import deepMerge from './deepMerge';
 

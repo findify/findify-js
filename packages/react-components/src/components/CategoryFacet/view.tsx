@@ -11,6 +11,7 @@ import Button from 'components/Button';
 import Text from 'components/Text';
 import { IFacet, ThemedSFCProps, MJSConfiguration } from 'types';
 import { List, Map } from 'immutable';
+import Icon from 'components/Icon';
 
 /** CategoryFacet props */
 export interface ICategoryFacetProps extends ThemedSFCProps {
@@ -22,6 +23,10 @@ export interface ICategoryFacetProps extends ThemedSFCProps {
   total: number;
   /** MJS Configuration */
   config: MJSConfiguration;
+  /** Flag shows whether search functionality is enabled */
+  isExpanded?: boolean;
+  /** Callback invoked on request to expand list completely */
+  onToggle: (evt: Event) => any;
 }
 
 const CategoryFacetView = ({
@@ -29,7 +34,9 @@ const CategoryFacetView = ({
   items,
   config,
   facet,
-  total
+  total,
+  isExpanded,
+  onToggle
 }: ICategoryFacetProps) =>
 <div className={theme.root}>
   <Button
@@ -46,7 +53,18 @@ const CategoryFacetView = ({
     config={config}
     array={items}
     factory={Item}
+    limit={!isExpanded && config.get('maxItemsCount', 6)}
     theme={theme} />
+
+  <Button
+    className={theme.expand}
+    onClick={onToggle}
+    display-if={items.size > config.get('maxItemsCount', 6)}>
+    <Text primary uppercase>
+      <Icon name={isExpanded ? 'Minus' : 'Plus'} />
+      { isExpanded ? config.getIn(['i18n', 'less']) : config.getIn(['i18n', 'more']) }
+    </Text>
+  </Button>
 </div>
 
 export default CategoryFacetView;

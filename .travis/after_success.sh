@@ -100,10 +100,12 @@ if [[ $TRAVIS_BRANCH == 'develop' ]]; then
   echo "$PROJECT_NAME : $PUBLIC_PATH"
 fi
 
-if [[ $TRAVIS_BRANCH == 'master' || $TRAVIS_BRANCH == 'develop' ]]; then
-  echo "building"
-  npm run build
+if [[ $TRAVIS_BRANCH == 'master' ]]; then
+  echo "Publishing to NPM"
+  lerna publish --conventional-commits --yes
+fi
 
+if [[ $TRAVIS_BRANCH == 'develop' ]]; then
   echo "deploying to AWS S3"
   for pkg in ${PKGS[@]}
   do
@@ -112,14 +114,4 @@ if [[ $TRAVIS_BRANCH == 'master' || $TRAVIS_BRANCH == 'develop' ]]; then
     echo "tag: $LATEST_GIT_TAG"
     deploy_to_s3 $LATEST_GIT_TAG
   done
-else
-  echo "branch is neither master nor develop, skipping"
-fi
-
-if [[ $TRAVIS_BRANCH == 'master' ]]; then
-  echo "publishing new versions to npm"
-  run-s release:perform release:post
-
-  echo "changelogs"
-  find packages -maxdepth 2 -name 'CHANGELOG.md' -print0 | xargs -0 -I % sh -c 'echo %; cat %'
 fi

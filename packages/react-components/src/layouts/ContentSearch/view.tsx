@@ -18,7 +18,6 @@ import { Tabs, Tab } from 'components/Tabs';
 import { fromJS } from 'immutable'
 
 import { IProduct, MJSConfiguration, MJSValue, ThemedSFCProps } from 'types';
-import { List, Map } from 'immutable';
 
 /** This is a list of props ContentSearchLayout accepts */
 export interface IContentSearchProps extends ThemedSFCProps {

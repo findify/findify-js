@@ -1,6 +1,6 @@
 import { Record, Map } from 'immutable';
 
-const key = '__immutable';
+export const key = '__immutable';
 const empty = Map();
 
 export default (name) => class ExtendableRecord extends Record({ [key]: void 0 }, name){
