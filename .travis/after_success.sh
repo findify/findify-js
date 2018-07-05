@@ -69,12 +69,6 @@ function deploy_to_s3() {
   fi
 }
 
-if [[ $TRAVIS_BRANCH == 'master' ]]; then
-  echo "creating new versions"
-  npm run release:pre
-  # new tags are created by lerna-semantic-release
-fi
-
 PKGS=(analytics analytics-dom sdk agent react-connect react-components bundle)
 export GIT_SHA=$(git rev-parse HEAD)
 
@@ -102,10 +96,11 @@ fi
 
 if [[ $TRAVIS_BRANCH == 'master' ]]; then
   echo "Publishing to NPM"
-  lerna publish --conventional-commits --yes
+  lerna publish --yes
 fi
 
 if [[ $TRAVIS_BRANCH == 'develop' ]]; then
+  lerna publish --skip-npm
   echo "deploying to AWS S3"
   for pkg in ${PKGS[@]}
   do
