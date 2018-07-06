@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.2.10"></a>
+## [1.2.10](https://github.com/findify/findify-js/compare/@findify/agent@1.2.9...@findify/agent@1.2.10) (2018-07-06)
+
+**Note:** Version bump only for package @findify/agent
+
+
+
+
+
 <a name="1.2.9"></a>
 ## [1.2.9](https://github.com/findify/findify-js/compare/@findify/agent@1.2.4...@findify/agent@1.2.9) (2018-07-05)
 

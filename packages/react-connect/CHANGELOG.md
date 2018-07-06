@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.1.13"></a>
+## [0.1.13](https://github.com/findify/findify-js/compare/@findify/react-connect@0.1.12...@findify/react-connect@0.1.13) (2018-07-06)
+
+
+### Bug Fixes
+
+* **react-connect:** fix incorrect React import ([2a4739b](https://github.com/findify/findify-js/commit/2a4739b))
+
+
+
+
+
 <a name="0.1.12"></a>
 ## [0.1.12](https://github.com/findify/findify-js/compare/@findify/react-connect@0.1.3...@findify/react-connect@0.1.12) (2018-07-05)
 

@@ -1,7 +1,7 @@
 {
   "name": "@findify/analytics",
   "description": "Findify analytics",
-  "version": "3.2.3",
+  "version": "3.2.4",
   "main": "lib/index.js",
   "tags": [
     "findify",
@@ -23,7 +23,7 @@
     "test": "# jest",
     "test:ci": "jest --ci",
     "test:watch": "jest --watch",
-    "prepare": "npm run build:lib"
+    "prepare": "# npm run build:lib"
   },
   "author": "Findify <yourfriends@findify.io>",
   "license": "MIT",

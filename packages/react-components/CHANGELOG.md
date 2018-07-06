@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.2.8"></a>
+## [0.2.8](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.2.7...@findify/react-components@0.2.8) (2018-07-06)
+
+
+### Bug Fixes
+
+* **react-connect:** fix incorrect React import ([2a4739b](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/2a4739b))
+
+
+
+
+
+<a name="0.2.7"></a>
+## [0.2.7](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.2.6...@findify/react-components@0.2.7) (2018-07-06)
+
+**Note:** Version bump only for package @findify/react-components
+
+
+
+
+
 <a name="0.2.6"></a>
 ## [0.2.6](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.2.5...@findify/react-components@0.2.6) (2018-07-05)
 
