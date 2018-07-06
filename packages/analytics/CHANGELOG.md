@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="3.2.4"></a>
+## [3.2.4](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/analytics@3.2.3...@findify/analytics@3.2.4) (2018-07-06)
+
+
+### Bug Fixes
+
+* **react-connect:** fix incorrect React import ([2a4739b](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/2a4739b))
+
+
+
+
+
 <a name="3.2.3"></a>
 ## [3.2.3](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/analytics@3.2.0...@findify/analytics@3.2.3) (2018-07-05)
 
