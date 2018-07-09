@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="3.2.5"></a>
+## [3.2.5](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/analytics@3.2.4...@findify/analytics@3.2.5) (2018-07-09)
+
+
+### Bug Fixes
+
+* **analytics:** fix analytics initial state values ([fbce64f](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/fbce64f)), closes [#MERCHANT-JS-V6-2](https://github.com/findify/findify-js/tree/master/packages/analytics/issues/MERCHANT-JS-V6-2)
+
+
+
+
+
 <a name="3.2.4"></a>
 ## [3.2.4](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/analytics@3.2.3...@findify/analytics@3.2.4) (2018-07-06)
 
