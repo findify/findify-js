@@ -18,7 +18,11 @@ import {
 } from './types';
 
 const emitter = createChangeEmitter();
-let state: any = {};
+
+let state: any = {
+  events: {},
+  filters: {}
+};
 
 const getUser = () => ({
   uid: storage.uid,
