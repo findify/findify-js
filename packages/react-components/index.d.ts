@@ -232,48 +232,44 @@ export default RatingView;
 declare module 'components/Cards/Product/Stickers' {
 /// <reference types="react" />
 import React from 'react';
-export const DiscountSticker: {
-    new (props: any): {
-        componentWillReceiveProps(nextProps: any): void;
-        render(): React.ComponentElement<{
-            theme: any;
-            children?: React.ReactNode;
-        }, React.Component<{
-            theme: any;
-            children?: React.ReactNode;
-        }, React.ComponentState, any>>;
-        setState<K extends never>(state: {} | ((prevState: Readonly<{}>, props: Readonly<{}>) => {} | Pick<{}, K> | null) | Pick<{}, K> | null, callback?: (() => void) | undefined): void;
-        forceUpdate(callBack?: (() => void) | undefined): void;
-        readonly props: Readonly<{
-            children?: React.ReactNode;
-        }> & Readonly<{}>;
-        state: Readonly<{}>;
-        context: any;
-        refs: {
-            [key: string]: React.ReactInstance;
-        };
+export const DiscountSticker: new (props: any) => {
+    componentWillReceiveProps(nextProps: any): void;
+    render(): React.ComponentElement<{
+        theme: any;
+        children?: React.ReactNode;
+    }, React.Component<{
+        theme: any;
+        children?: React.ReactNode;
+    }, React.ComponentState, any>>;
+    setState<K extends never>(state: {} | Pick<{}, K> | ((prevState: Readonly<{}>, props: Readonly<{}>) => {} | Pick<{}, K> | null) | null, callback?: (() => void) | undefined): void;
+    forceUpdate(callBack?: (() => void) | undefined): void;
+    readonly props: Readonly<{
+        children?: React.ReactNode;
+    }> & Readonly<{}>;
+    state: Readonly<{}>;
+    context: any;
+    refs: {
+        [key: string]: React.ReactInstance;
     };
 };
-export const OutOfStockSticker: {
-    new (props: any): {
-        componentWillReceiveProps(nextProps: any): void;
-        render(): React.ComponentElement<{
-            theme: any;
-            children?: React.ReactNode;
-        }, React.Component<{
-            theme: any;
-            children?: React.ReactNode;
-        }, React.ComponentState, any>>;
-        setState<K extends never>(state: {} | ((prevState: Readonly<{}>, props: Readonly<{}>) => {} | Pick<{}, K> | null) | Pick<{}, K> | null, callback?: (() => void) | undefined): void;
-        forceUpdate(callBack?: (() => void) | undefined): void;
-        readonly props: Readonly<{
-            children?: React.ReactNode;
-        }> & Readonly<{}>;
-        state: Readonly<{}>;
-        context: any;
-        refs: {
-            [key: string]: React.ReactInstance;
-        };
+export const OutOfStockSticker: new (props: any) => {
+    componentWillReceiveProps(nextProps: any): void;
+    render(): React.ComponentElement<{
+        theme: any;
+        children?: React.ReactNode;
+    }, React.Component<{
+        theme: any;
+        children?: React.ReactNode;
+    }, React.ComponentState, any>>;
+    setState<K extends never>(state: {} | Pick<{}, K> | ((prevState: Readonly<{}>, props: Readonly<{}>) => {} | Pick<{}, K> | null) | null, callback?: (() => void) | undefined): void;
+    forceUpdate(callBack?: (() => void) | undefined): void;
+    readonly props: Readonly<{
+        children?: React.ReactNode;
+    }> & Readonly<{}>;
+    state: Readonly<{}>;
+    context: any;
+    refs: {
+        [key: string]: React.ReactInstance;
     };
 };
 
@@ -570,26 +566,24 @@ export interface IStickyProps {
     offset?: number;
     minHeight?: number;
 }
-const _default: {
-    new (props: any): {
-        componentWillReceiveProps(nextProps: any): void;
-        render(): React.ComponentElement<{
-            theme: any;
-            children?: React.ReactNode;
-        }, React.Component<{
-            theme: any;
-            children?: React.ReactNode;
-        }, React.ComponentState, any>>;
-        setState<K extends never>(state: {} | ((prevState: Readonly<{}>, props: Readonly<{}>) => {} | Pick<{}, K> | null) | Pick<{}, K> | null, callback?: (() => void) | undefined): void;
-        forceUpdate(callBack?: (() => void) | undefined): void;
-        readonly props: Readonly<{
-            children?: React.ReactNode;
-        }> & Readonly<{}>;
-        state: Readonly<{}>;
-        context: any;
-        refs: {
-            [key: string]: React.ReactInstance;
-        };
+const _default: new (props: any) => {
+    componentWillReceiveProps(nextProps: any): void;
+    render(): React.ComponentElement<{
+        theme: any;
+        children?: React.ReactNode;
+    }, React.Component<{
+        theme: any;
+        children?: React.ReactNode;
+    }, React.ComponentState, any>>;
+    setState<K extends never>(state: {} | Pick<{}, K> | ((prevState: Readonly<{}>, props: Readonly<{}>) => {} | Pick<{}, K> | null) | null, callback?: (() => void) | undefined): void;
+    forceUpdate(callBack?: (() => void) | undefined): void;
+    readonly props: Readonly<{
+        children?: React.ReactNode;
+    }> & Readonly<{}>;
+    state: Readonly<{}>;
+    context: any;
+    refs: {
+        [key: string]: React.ReactInstance;
     };
 };
 export default _default;

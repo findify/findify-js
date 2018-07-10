@@ -82,8 +82,8 @@ export default class DrawerView extends React.Component<IDrawerViewProps, IDrawe
       {
         ({ opacity, ...style }) =>
           <>
-            <div className={theme.backdrop} onClick={this.close} style={{ opacity }} />
-            <div className={cx(theme.content, options.className)} style={style}>
+            <div className={cx('findify-container', theme.backdrop)} onClick={this.close} style={{ opacity }} />
+            <div className={cx('findify-container', theme.content, options.className)} style={style}>
               {
                 children instanceof Function
                 ? children({ ...rest, hideModal: this.close })

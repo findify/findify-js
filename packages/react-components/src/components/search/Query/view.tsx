@@ -7,7 +7,7 @@ import escape from 'lodash/escape';
 import template from 'helpers/template';
 import Text from 'components/Text';
 import { IQuery, MJSConfiguration, MJSValue, ThemedSFCProps } from 'types';
-import { Map } from 'immutable'
+import { Map } from 'immutable';
 
 /** Props that getContent method uses to build query text at the top of Search page */
 export interface IGetContentProps {
@@ -20,14 +20,32 @@ export interface IGetContentProps {
 }
 
 const getContent = ({ query, config, meta }: IGetContentProps) => {
-  const hasFilters = !!query.get('filters');
-  if (!query.get('q') && !hasFilters) return config.getIn(['breadcrumbs', 'i18n', 'noQuery']);
-  if (hasFilters && (!query.get('q') || query.get('q') === '')) return template(config.getIn(['breadcrumbs', 'i18n', 'showingEmpty']))(meta.get('total'));
-  const total = template(config.getIn(['breadcrumbs', 'i18n', !query.get('q') || query.get('q') === '' ? 'showingEmpty' : 'showing']))(meta.get('total'));
-  if (query.get('corrected_q')) {
-    return <Text primary uppercase html={total + ' "' + escape(query.get('q') as string) + '". ' + config.getIn(['i18n', 'partialMatch'])} />
+  const hasFilters = !!meta.get('filters');
+  const tpls = config.getIn(['breadcrumbs', 'i18n']);
+  const q = escape(meta.get('q') as string);
+  const total = meta.get('total');
+  if (!q && !hasFilters) {
+    return tpls.get('noQuery');
   }
-  return <Text primary uppercase html={total + ' "' + escape(query.get('q') as string) + '"'} />
+  
+  if (hasFilters && !q) {
+    return template(tpls.get('showingEmpty'))(total);
+  }
+  
+  if (meta.get('corrected_q')) {
+    const text = template(tpls.get('showing'))(total);
+    return <Text primary uppercase html={
+        `${text} "${escape(query.get('corrected_q') as string)}". ${tpls.get('zeroResultsFor')} "${q}".`
+      } />
+  }
+
+  if (meta.get('query_type') === 'or') {
+    const text = template(tpls.get('showing'))(total);
+    return <Text primary uppercase html={`${text} "${q}". ${tpls.get('partialMatch')}`} />
+  }
+  
+  const text = template(tpls.get('showing'))(total);
+  return <Text primary uppercase html={`${text} "${q}".`} />
 }
 
 const QueryView = ({ theme, ...props}: ThemedSFCProps & IGetContentProps) =>
