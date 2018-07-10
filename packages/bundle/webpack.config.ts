@@ -64,6 +64,9 @@ export default (env: WebpackEnvArgs, { mode }) => {
         immutable: path.resolve(__dirname, '../../node_modules/immutable'),
       }
     },
+    optimization: {
+      concatenateModules: false,
+    },
     module: {
       rules: [
         {
