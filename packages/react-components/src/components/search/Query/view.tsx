@@ -40,7 +40,7 @@ const getContent = ({ query, config, meta }: IGetContentProps) => {
   }
 
   if (meta.get('query_type') === 'or') {
-    const text = template(tpls.get('showing'))(total);
+    const text = template(tpls.get('showing'))(0);
     return <Text primary uppercase html={`${text} "${q}". ${tpls.get('partialMatch')}`} />
   }
   
