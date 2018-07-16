@@ -9,13 +9,16 @@ import classNames from 'classnames'
 import styles from 'components/common/Image/styles.css';
 
 import {
+  branch,
   compose,
   onlyUpdateForKeys,
   withProps,
   mapProps,
   withStateHandlers,
   withPropsOnChange,
-  setDisplayName
+  setDisplayName,
+  renderNothing,
+  renderComponent,
 } from 'recompose';
 
 
@@ -48,6 +51,16 @@ export interface ImageProps {
   isFixedRatio: boolean
 }
 
+const ImageRenderer = ({ src, className, isFixedRatio, aspectRatio }: ImageProps) =>
+isFixedRatio
+? <div className={className} style={{
+    backgroundImage: `url(${src})`,
+    paddingBottom: `${100 * aspectRatio!}%`,
+    backgroundPosition: 'center center'
+  }} />
+: <img className={className} src={src} />
+
+// FIXME: Why does it ignore thumbnail now?
 export default compose<ImageProps, ImageProps>(
   setDisplayName('Image'),
   onlyUpdateForKeys(['src', 'thumbnail']),
@@ -92,13 +105,10 @@ export default compose<ImageProps, ImageProps>(
         [styles.original]: stage === 2,
       }
     )
-  }))
-)(({ src, className, isFixedRatio, aspectRatio }: ImageProps) =>
-  isFixedRatio
-  ? <div className={className} style={{
-      backgroundImage: `url(${src})`,
-      paddingBottom: `${100 * aspectRatio}%`,
-      backgroundPosition: 'center center'
-    }} />
-  : <img className={className} src={src} />
-)
+  })),
+  branch(
+    ({ src }) => !!src,
+    renderComponent(ImageRenderer),
+    renderNothing
+  )
+)(renderNothing)

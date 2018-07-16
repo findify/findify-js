@@ -1,13 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Image /> renders correctly 1`] = `
-<img
-  class="root loading"
-/>
-`;
+exports[`<Image /> renders correctly 1`] = `null`;
 
-exports[`<Image /> renders correctly 2`] = `
-<img
-  class="qux root loading"
-/>
-`;
+exports[`<Image /> renders correctly 2`] = `null`;
