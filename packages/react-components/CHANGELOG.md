@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.2.12"></a>
+## [0.2.12](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.2.11...@findify/react-components@0.2.12) (2018-07-16)
+
+
+### Bug Fixes
+
+* **react-components:** fix null value in query template ([deabfc1](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/deabfc1))
+
+
+
+
+
 <a name="0.2.11"></a>
 ## [0.2.11](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.2.10...@findify/react-components@0.2.11) (2018-07-13)
 
