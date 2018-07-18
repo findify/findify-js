@@ -15,6 +15,8 @@ export interface IFacetProps extends ThemedSFCProps {
   FacetComponent: React.Component<any>;
   /** Flag to show open / closed state of facet */
   isOpen?: boolean;
+  /** Flag to show if facet is opened on mobile */
+  isMobile?: boolean;
   /** Title of facet */
   title: string;
   /** Facet object */
@@ -46,7 +48,8 @@ const FacetView = ({
       display-if={isOpen}
       facet={item}
       config={config}
-      theme={{ root: theme.body }} />
+      theme={{ root: theme.body }}
+      isMobile={true} />
   </div>
 )
 
