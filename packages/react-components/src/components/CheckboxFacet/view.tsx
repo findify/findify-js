@@ -25,6 +25,8 @@ export interface ICheckboxFacetProps extends ThemedSFCProps {
   search?: string;
   /** Flag shows whether search functionality is enabled */
   isExpanded?: boolean;
+  /** Flag to show if facet is opened on mobile */
+  isMobile?: boolean;
   /** Callback invoked on search input change */
   onSearch: (evt: ChangeEvent<HTMLInputElement>) => any;
   /** Callback invoked on request to expand list completely */
@@ -38,9 +40,10 @@ const CheckboxFacetView =  ({
   search,
   isExpanded,
   onSearch,
-  onToggle
+  onToggle,
+  isMobile
 }: ICheckboxFacetProps) =>
-<div className={theme.root}>
+<div className={cx(theme.root, { [theme.mobile]: isMobile })}>
 
   <div className={theme.search} display-if={isExpanded}>
     <input

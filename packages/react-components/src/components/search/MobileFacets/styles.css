@@ -31,6 +31,8 @@
 
 .body{
   flex: 1;
+  /* This is due to iOS 10 flexbox bug */
+  height: calc(100% - 60px);
   overflow: hidden;
   overflow-y: auto;
 }
@@ -72,7 +74,7 @@
 .container{
   padding: 17px;
   display: flex;
-  height: 100%;
+  height: calc(100% - 60px);
   box-sizing: border-box;
   overflow: hidden;
   overflow-y: auto;
@@ -87,7 +89,7 @@
 }
 
 .expanded-list{
-  height: 100%;
+  height: calc(100% - 40px);
 }
 
 .range{
