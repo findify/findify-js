@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.1.15"></a>
+## [0.1.15](https://github.com/findify/findify-js/compare/@findify/react-connect@0.1.14...@findify/react-connect@0.1.15) (2018-07-19)
+
+
+### Bug Fixes
+
+* **analytics, agent:** fix analytics initialization in SPA; Simplify provider initialization ([1b00871](https://github.com/findify/findify-js/commit/1b00871))
+
+
+
+
+
 <a name="0.1.14"></a>
 ## [0.1.14](https://github.com/findify/findify-js/compare/@findify/react-connect@0.1.13...@findify/react-connect@0.1.14) (2018-07-09)
 
