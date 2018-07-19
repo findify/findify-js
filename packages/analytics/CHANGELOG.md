@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="3.2.7"></a>
+## [3.2.7](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/analytics@3.2.6...@findify/analytics@3.2.7) (2018-07-19)
+
+
+### Bug Fixes
+
+* **analytics, react-components:** fix server side rendering ([205a76c](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/205a76c))
+
+
+
+
+
 <a name="3.2.6"></a>
 ## [3.2.6](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/analytics@3.2.5...@findify/analytics@3.2.6) (2018-07-19)
 

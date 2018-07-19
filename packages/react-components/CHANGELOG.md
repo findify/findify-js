@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.2.14"></a>
+## [0.2.14](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.2.13...@findify/react-components@0.2.14) (2018-07-19)
+
+
+### Bug Fixes
+
+* **analytics, react-components:** fix server side rendering ([205a76c](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/205a76c))
+
+
+
+
+
 <a name="0.2.13"></a>
 ## [0.2.13](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.2.12...@findify/react-components@0.2.13) (2018-07-19)
 
