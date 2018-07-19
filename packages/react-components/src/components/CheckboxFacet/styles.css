@@ -6,6 +6,11 @@
   height: 300px;
 }
 
+
+.mobile {
+  height: 100%;
+}
+
 .item{
   $font-size: $font-size-medium;
   $padding: 3px 0;

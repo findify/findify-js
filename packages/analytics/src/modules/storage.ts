@@ -13,7 +13,7 @@ const keys = {
 };
 
 function generateId() {
-  if (!!~document.cookie.indexOf('findify_optout=1')) return '0';
+  if (!!~window.document.cookie.indexOf('findify_optout=1')) return '0';
   let str = '';
   for (let i = 0; i < 16; i++) {
     str += symbols[(Math.random() * symbols.length) | 0];
@@ -49,11 +49,11 @@ const persist = !!(read(uniqKey) && read(visitKey));
 
 export default {
   get uid() {
-    if (!!~document.cookie.indexOf('findify_optout=1')) return '0';
+    if (!!~window.document.cookie.indexOf('findify_optout=1')) return '0';
     return read(uniqKey) || createUid();
   },
   get sid() {
-    if (!!~document.cookie.indexOf('findify_optout=1')) return '0';
+    if (!!~window.document.cookie.indexOf('findify_optout=1')) return '0';
     return read(visitKey) || createSid();
   },
   get cart() {

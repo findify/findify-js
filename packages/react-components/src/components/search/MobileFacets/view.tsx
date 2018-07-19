@@ -24,7 +24,7 @@ export interface IFacetContentProps extends ThemedSFCProps {
 }
 
 const FacetContent = ({ active, config, theme }: IFacetContentProps) => (
-  <div className={cx(theme.container, theme[active.get('type')])}>
+  <div className={cx(theme.container, theme[active.get('type') as string])}>
     <Component
       isExpanded
       type={active.get('type')}
@@ -35,6 +35,7 @@ const FacetContent = ({ active, config, theme }: IFacetContentProps) => (
         expand: theme.expand,
         expandedList: theme.expandedList,
       }}
+      isMobile={true}
     />
   </div>
 );
