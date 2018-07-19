@@ -3,6 +3,10 @@ import * as expire from 'store/plugins/expire';
 
 store.addPlugin(expire);
 
+declare var global: {
+  document: any
+};
+
 const symbols = '0123456789acbdefghijklmnopqrstuvwxyzABCDEFGHIJKLMOPQRSTUVWXYZ';
 
 const keys = {
@@ -13,7 +17,7 @@ const keys = {
 };
 
 function generateId() {
-  if (!!~window.document.cookie.indexOf('findify_optout=1')) return '0';
+  if (global.document && !!~global.document.cookie.indexOf('findify_optout=1')) return '0';
   let str = '';
   for (let i = 0; i < 16; i++) {
     str += symbols[(Math.random() * symbols.length) | 0];
@@ -49,11 +53,11 @@ const persist = !!(read(uniqKey) && read(visitKey));
 
 export default {
   get uid() {
-    if (!!~window.document.cookie.indexOf('findify_optout=1')) return '0';
+    if (global.document && !!~global.document.cookie.indexOf('findify_optout=1')) return '0';
     return read(uniqKey) || createUid();
   },
   get sid() {
-    if (!!~window.document.cookie.indexOf('findify_optout=1')) return '0';
+    if (global.document && !!~global.document.cookie.indexOf('findify_optout=1')) return '0';
     return read(visitKey) || createSid();
   },
   get cart() {

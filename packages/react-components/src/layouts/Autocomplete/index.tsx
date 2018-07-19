@@ -3,7 +3,6 @@
  */
 
 import React, { createElement } from 'react';
-import { hot } from 'react-hot-loader';
 import { connectSuggestions, connectConfig } from '@findify/react-connect';
 import { portal } from 'helpers/createPortal';
 
@@ -48,4 +47,4 @@ const Autocomplete = connectConfig(({ config, isTrendingSearches,...rest }) => {
   return renderView(viewType, { ...rest, config, isMobile, isTrendingSearches })
 });
 
-export default hot(module)(Autocomplete);
+export default process.env.HOT ? require('react-hot-loader').hot(module)(Autocomplete) : Autocomplete;
