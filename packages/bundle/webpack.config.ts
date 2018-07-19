@@ -125,6 +125,7 @@ export default (env: WebpackEnvArgs, { mode }) => {
         __COMMITHASH__: JSON.stringify(new GitRevisionPlugin().commithash()),
         __PUBLIC_PATH__: JSON.stringify(process.env.PUBLIC_PATH),
         'process.env': {
+          HOT: mode === 'development',
           BROWSER: true,
           NODE_ENV: JSON.stringify(mode),
           FINDIFY_ENV: JSON.stringify(process.env.FINDIFY_ENV || 'production')

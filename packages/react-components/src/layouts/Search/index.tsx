@@ -3,7 +3,6 @@
  */
 
 import React, { createElement } from 'react';
-import { hot } from 'react-hot-loader';
 import { compose, withProps, withStateHandlers, setDisplayName, branch, withHandlers, renderNothing, lifecycle } from 'recompose';
 import { connectItems } from '@findify/react-connect';
 import withTheme from 'helpers/withTheme';
@@ -81,4 +80,4 @@ const Search = compose(
   )
 )(view);
 
-export default hot(module)(Search)
+export default process.env.HOT ? require('react-hot-loader').hot(module)(Search) : Search;
