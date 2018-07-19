@@ -6,6 +6,7 @@ import analytics from '@findify/analytics';
 import { $analytics, $findify, $config } from '../symbols';
 
 import { object, string, number, oneOfType, func, any } from 'prop-types';
+import { config } from 'react-spring';
 
 const agents = {};
 
@@ -18,7 +19,7 @@ export const createProvider = (type, onCreate?: (agent) => void) => {
     nested: any;
 
     static propTypes = {
-      apiKey: string.isRequired,
+      apiKey: string,
       agent: object,
       defaults: object,
       options: object,
@@ -41,7 +42,14 @@ export const createProvider = (type, onCreate?: (agent) => void) => {
     constructor(props, context) {
       super(props, context);
       const { apiKey, agent, options, defaults, config } = props;
-      const analyticsConfig: any = { key: apiKey, events: config.get('analytics', Map()).toJS(), ...config.get('platform', Map()).toJS() };
+      const _key = agent && agent.config.key || apiKey;
+      const _config = config || Map();
+      const analyticsConfig: any = {
+        key: _key,
+        events: _config.get('analytics', Map()).toJS(),
+        ..._config.get('platform', Map()).toJS()
+      };
+    
       this.nested = context[$findify];
 
       if (agent && !agent.config.immutable) {
@@ -53,9 +61,9 @@ export const createProvider = (type, onCreate?: (agent) => void) => {
 
       this.storeKey = this.props.storeKey;
       this.analytics = analytics(analyticsConfig);
-      this.state = { config: config || Map() };
+      this.state = { config: _config };
       this.agent = agent || new Agents[type]({
-        key: apiKey,
+        key: _key,
         user: this.analytics.user,
         immutable: true,
         ...options
