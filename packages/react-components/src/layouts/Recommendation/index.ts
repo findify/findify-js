@@ -3,7 +3,6 @@
  */
 
 import { createElement } from 'react';
-import { hot } from 'react-hot-loader';
 import { connectConfig } from '@findify/react-connect';
 
 import Grid from 'layouts/Recommendation/Grid';
@@ -21,4 +20,4 @@ const Recommendation = connectConfig(({ config }) => {
   return null;
 });
 
-export default hot(module)(Recommendation);
+export default process.env.HOT ? require('react-hot-loader').hot(module)(Recommendation) : Recommendation;

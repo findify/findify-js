@@ -1,14 +1,11 @@
 import React from 'react';
-import { withStateHandlers, lifecycle, compose, setDisplayName, withProps, ComponentEnhancer } from 'recompose'
+import { branch, withStateHandlers, lifecycle, compose, setDisplayName, withProps, ComponentEnhancer } from 'recompose'
 import { connectSuggestions, connectQuery } from '@findify/react-connect';
 
-
-export default compose(
-  setDisplayName('withAutocompleteLogic'),
-  connectSuggestions,
+const autocompleteLogic = compose(
   withStateHandlers({ selectedSuggestion: -1, }, {
     changeSuggestionIndex: ({ selectedSuggestion }, { config, suggestions, getSuggestionProps }) => {
-      const node: HTMLInputElement = config.get('node')!;
+      const node: HTMLInputElement = config.get('node');
       return (evt) => {
         const arrowCodes = ['ArrowUp', 'ArrowDown']
         if (evt.target !== node) return;
@@ -51,4 +48,13 @@ export default compose(
   withProps(({ config }) => ({
     closeAutocomplete: () => (window as any).findify.emit('autocompleteFocusLost', config.get('widgetKey'))
   }))
+);
+
+export default compose(
+  setDisplayName('withAutocompleteLogic'),
+  connectSuggestions,
+  branch(
+    ({ config }) => config.get('node'),
+    autocompleteLogic
+  )
 )

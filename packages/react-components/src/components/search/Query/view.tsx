@@ -21,7 +21,7 @@ export interface IGetContentProps {
 
 const getContent = ({ query, config, meta }: IGetContentProps) => {
   const hasFilters = !!meta.get('filters');
-  const tpls = config.getIn(['breadcrumbs', 'i18n']);
+  const tpls = config.getIn(['breadcrumbs', 'i18n'], Map());
   const q = escape(meta.get('q') as string);
   const total = meta.get('total');
   if (!q && !hasFilters) {
