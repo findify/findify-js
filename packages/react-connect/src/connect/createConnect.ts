@@ -8,6 +8,11 @@ import { $findify, $analytics, $config } from '../symbols';
 
 const capitalize = s => s.charAt(0).toUpperCase() + s.slice(1);
 
+/**
+ * Used to create a Connector HOC, enhancing given BaseComponent with connector configuration-specific
+ * props, which it will extract from provider located higher in the React tree
+ * @param param0 Connector configuration
+ */
 const createComponent = ({
   field,
   feature,

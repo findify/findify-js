@@ -1,5 +1,9 @@
 import createConnect from './createConnect';
 
+/**
+ * Used to extract search suggestions from Search API response, enhance it with
+ * analytics & MJS-specific click-handling logic and pass it down further
+ */
 export default createConnect({
   field: 'suggestions',
   handlers: {
@@ -11,7 +15,7 @@ export default createConnect({
           onClick: (e) => {
             if (e) e.preventDefault();
             update('q', value);
-            analytics.sendEvent('suggestion-click', {
+            analytics.sendEvent('click-suggestion', {
               value,
               rid: meta.get('rid'),
             });

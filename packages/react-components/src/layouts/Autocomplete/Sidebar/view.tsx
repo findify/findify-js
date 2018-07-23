@@ -2,7 +2,6 @@ import React from 'react'
 import Drawer from 'components/common/Drawer'
 import Icon from 'components/Icon'
 import SearchSuggestions from 'components/autocomplete/SearchSuggestions'
-import * as events from 'helpers/emmiter';
 
 export default class Sidebar extends React.Component {
   state = { isOpen: false };
@@ -43,7 +42,7 @@ export default class Sidebar extends React.Component {
   }
 
   handleExited = () => {
-    events.emit('autocompleteFocusLost', this.props.config.get('widgetKey'))
+    (window as any).findify.emit('autocompleteFocusLost', this.props.config.get('widgetKey'))
   }
 
   getInputRef = (el) => {
@@ -51,7 +50,7 @@ export default class Sidebar extends React.Component {
   }
 
   handleSubmit = () => {
-    (window as any).findify.emit('search', this.props.config.get('widgetKey'));
+    (window as any).findify.emit('search', this.props.config.get('widgetKey'), this.input.value);
     this.handleExited()
   }
 
