@@ -1,5 +1,9 @@
 import createConnect from './createConnect';
 
+/**
+ * Used to extract sorting information from Search API response and provide the handler,
+ * to modify it further in components
+ */
 export default createConnect({
   field: 'meta:sort',
   mapProps: (props) => ({

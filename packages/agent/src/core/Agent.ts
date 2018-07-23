@@ -19,6 +19,13 @@ const pickConfigProps = ({ debounce, onError, immutable = false }) =>
  */
 const _initial = fromJS({ filters: {} });
 
+
+/**
+ * Agent is a stateful event-based interface to Findify SDK, providing it
+ * with features like automated request cancellation, request throttling,
+ * efficient updating of inner state & providing a simple API to express transitions
+ * from one request to another (things like adding / removing filters, changing sorting, etc.)
+ */
 export class Agent {
   type: Types.RequestType = Types.RequestType.Search;
   _defaults: Map<any, any> = _initial;
@@ -97,7 +104,7 @@ export class Agent {
   }
 
   /**
-   * Apply query to agent
+   * Apply desired request state to agent
    * @param state next query parameters
    */
   public applyState(state: any) {
@@ -172,6 +179,11 @@ export class Agent {
     this.response = response;
   }
 
+
+  /**
+   * Creates map of parameters to pass to SDK, depending on agent type & current request state
+   * @param cache Cache instance to extract request state from
+   */
   public createRequestBody (cache) {
     this.state = deepMerge(this.state, cache);
     const merge = this._defaults.mergeDeep(this.state);
@@ -181,7 +193,8 @@ export class Agent {
   }
 
   /**
-   * This function will fire after next tick after last .set or .default call
+   * This function will fire after next tick after last .set or .default call,
+   * or, if debounce option is specified in config, after debouncer calls it
    * @param cache [{any}] - established values
    */
   public request(cache) {
@@ -198,7 +211,7 @@ export class Agent {
   }
 
   /**
-   * Will convert value to pure JS structure
+   * Converts value to pure JS structure
    * @param value
    */
   private format(value) {
