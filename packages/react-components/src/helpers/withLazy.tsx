@@ -43,7 +43,7 @@ export default function withLazy() {
 
       constructor(props) {
         super(props);
-        this.autoLoadCount = props.disableAutoLoad ? 0 : 2;
+        this.autoLoadCount = props.disableAutoLoad ? 0 : props.config.getIn(['loadMore', 'lazyLoadCount'], 2);
         this.state = {
           items: props.items,
           ranges:  List([createRange(props.meta)]),
@@ -83,18 +83,18 @@ export default function withLazy() {
       }
 
       trackPosition = () =>
-      !this.state.pending &&
-      !!this.autoLoadCount &&
-      window.requestAnimationFrame(() => {
-        const offset = 300;
-        const { bottom } = this.container.getBoundingClientRect();
-        const height = window.innerHeight || document.documentElement.clientHeight;
-        const inView = bottom - height <= offset;
-        if (!inView || this.state.pending || !this.autoLoadCount || !this.moreAllowed) return;
-        this.autoLoadCount -= 1
-        this.setState({ pending: true });
-        this.onLoadNext();
-      })
+        !this.state.pending &&
+        !!this.autoLoadCount &&
+        window.requestAnimationFrame(() => {
+          const offset = 300;
+          const { bottom } = this.container.getBoundingClientRect();
+          const height = window.innerHeight || document.documentElement.clientHeight;
+          const inView = bottom - height <= offset;
+          if (!inView || this.state.pending || !this.autoLoadCount || !this.moreAllowed) return;
+          this.autoLoadCount -= 1
+          this.setState({ pending: true });
+          this.onLoadNext();
+        })
 
       componentDidMount() {
         if (this.props.disableAutoLoad) return;
@@ -118,7 +118,7 @@ export default function withLazy() {
         }
 
         // Reset number of loads
-        if (!this.props.disableAutoLoad) this.autoLoadCount = 2;
+        if (!this.props.disableAutoLoad) this.autoLoadCount = config.getIn(['loadMore', 'lazyLoadCount'], 2);
 
         // Reset items
         return this.setState({
