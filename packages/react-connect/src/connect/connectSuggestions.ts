@@ -15,7 +15,7 @@ export default createConnect({
           onClick: (e) => {
             if (e) e.preventDefault();
             update('q', value);
-            analytics.sendEvent('suggestion-click', {
+            analytics.sendEvent('click-suggestion', {
               value,
               rid: meta.get('rid'),
             });
