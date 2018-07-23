@@ -1,6 +1,10 @@
 import { Range } from 'immutable';
 import createConnect from './createConnect';
 
+/**
+ * Used to extract pagination information from Search API response metadata
+ * and pass it down further
+ */
 export default createConnect({
   field: 'meta',
   mapProps: (meta) => ({

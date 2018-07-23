@@ -10,6 +10,11 @@ import { config } from 'react-spring';
 
 const agents = {};
 
+/**
+ * Used to create a Provider Component to be rendered with React to further pass down Agent data to Connectors
+ * @param type Provider data type. Autocomplete, Search, SmartCollection, Content
+ * @param onCreate Callback to be called with Agent instance once the provider has been initialized
+ */
 export const createProvider = (type, onCreate?: (agent) => void) => {
   return class Provider extends PureComponent<any, any>{
     type: string;

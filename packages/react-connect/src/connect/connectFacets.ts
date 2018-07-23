@@ -3,11 +3,15 @@ import { Facet, FacetValue } from '../immutable/facets';
 import { Map } from 'immutable';
 
 // 0.0014s overhead
-export const patchFacets = (facets, updater) => 
+export const patchFacets = (facets, updater) =>
   facets
   && facets.map(facet => new Facet(facet, updater))
   || Map();
 
+/**
+ * Used to connect to facets field of Search API response and transform it into
+ * internal MJS structure
+ */
 export default createConnect({
   field: 'facets',
   mapProps: (facets, _, update) => ({
