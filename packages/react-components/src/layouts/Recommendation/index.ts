@@ -7,7 +7,7 @@ import { connectConfig } from '@findify/react-connect';
 
 import Grid from 'layouts/Recommendation/Grid';
 import Slider from 'layouts/Recommendation/Slider';
-
+import { hot } from 'react-hot-loader';
 
 /**
  * HOC that decides, which style recommendation to use,
@@ -20,4 +20,4 @@ const Recommendation = connectConfig(({ config }) => {
   return null;
 });
 
-export default process.env.HOT ? require('react-hot-loader').hot(module)(Recommendation) : Recommendation;
+export default hot(module)(Recommendation);

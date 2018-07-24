@@ -9,7 +9,7 @@ import { portal } from 'helpers/createPortal';
 import Dropdown from 'layouts/Autocomplete/Dropdown';
 import Sidebar from 'layouts/Autocomplete/Sidebar';
 import Fullscreen from 'layouts/Autocomplete/Fullscreen';
-
+import { hot } from 'react-hot-loader';
 /** View type to View component mapping */
 const LayoutTypes = {
   dropdown: Dropdown,
@@ -47,4 +47,4 @@ const Autocomplete = connectConfig(({ config, isTrendingSearches,...rest }) => {
   return renderView(viewType, { ...rest, config, isMobile, isTrendingSearches })
 });
 
-export default process.env.HOT ? require('react-hot-loader').hot(module)(Autocomplete) : Autocomplete;
+export default hot(module)(Autocomplete);
