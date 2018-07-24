@@ -63,7 +63,7 @@ isFixedRatio
 // FIXME: Why does it ignore thumbnail now?
 export default compose<ImageProps, ImageProps>(
   setDisplayName('Image'),
-  onlyUpdateForKeys(['src', 'thumbnail']),
+  withProps(({ src }) => ({ key: src })), // <- Force update component on change src
   withPropsOnChange(['src'], ({ src, size }) => {
     return { src: cache.includes(src) ? src : void 0, original: src, }
   }),

@@ -61,9 +61,9 @@ const ProductCardView: React.SFC<IProductCardProps> = ({
           className={theme.discountSticker}
           discount={item.get('discount')}
           display-if={
-            ((item.get('discount') && typeof item.get('discount').size !== 'undefined')
-            ? item.get('discount').size > 0
-            : item.get('discount')) && item.getIn(['stickers', 'discount'])
+            config.getIn(['product', 'stickers', 'display']) &&
+            item.get('discount', List()).size &&
+            item.getIn(['stickers', 'discount'])
           } />
       </div>
     </div>
