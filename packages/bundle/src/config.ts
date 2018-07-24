@@ -452,7 +452,7 @@ export default process.env.NODE_ENV !== 'development'
                            "display": true
                        },
                        "stickers": {
-                           "display": true
+                           "display": false
                        },
                        "variants": {
                            "display": false
@@ -489,7 +489,7 @@ export default process.env.NODE_ENV !== 'development'
                            "display": true
                        },
                        "stickers": {
-                           "display": true
+                           "display": false
                        },
                        "variants": {
                            "display": false
@@ -526,7 +526,7 @@ export default process.env.NODE_ENV !== 'development'
                            "display": true
                        },
                        "stickers": {
-                           "display": true
+                           "display": false
                        },
                        "variants": {
                            "display": false
@@ -563,7 +563,7 @@ export default process.env.NODE_ENV !== 'development'
                            "display": true
                        },
                        "stickers": {
-                           "display": true
+                           "display": false
                        },
                        "variants": {
                            "display": false
@@ -600,7 +600,7 @@ export default process.env.NODE_ENV !== 'development'
                            "display": true
                        },
                        "stickers": {
-                           "display": true
+                           "display": false
                        },
                        "variants": {
                            "display": false
@@ -637,7 +637,7 @@ export default process.env.NODE_ENV !== 'development'
                            "display": true
                        },
                        "stickers": {
-                           "display": true
+                           "display": false
                        },
                        "variants": {
                            "display": false
@@ -674,7 +674,7 @@ export default process.env.NODE_ENV !== 'development'
                            "display": true
                        },
                        "stickers": {
-                           "display": true
+                           "display": false
                        },
                        "variants": {
                            "display": false
@@ -748,7 +748,7 @@ export default process.env.NODE_ENV !== 'development'
                            "display": true
                        },
                        "stickers": {
-                           "display": true
+                           "display": false
                        },
                        "variants": {
                            "display": false
@@ -785,7 +785,7 @@ export default process.env.NODE_ENV !== 'development'
                            "display": true
                        },
                        "stickers": {
-                           "display": true
+                           "display": false
                        },
                        "variants": {
                            "display": false
