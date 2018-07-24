@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.0.15"></a>
+## [0.0.15](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/analytics-dom@0.0.7...@findify/analytics-dom@0.0.15) (2018-07-24)
+
+
+### Bug Fixes
+
+* **react-components, analytics-dom:** fix banner without url; Fix filters parsing ([a7567f9](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/a7567f9))
+
+
+
+
 <a name="0.0.12"></a>
 ## [0.0.12](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/analytics-dom@0.0.11...@findify/analytics-dom@0.0.12) (2018-07-19)
 

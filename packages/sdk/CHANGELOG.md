@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="2.2.2"></a>
+## [2.2.2](https://github.com/findify/findify-js/compare/@findify/sdk@2.1.0...@findify/sdk@2.2.2) (2018-07-24)
+
+
+### Bug Fixes
+
+* **react-connect:** fix incorrect React import ([2a4739b](https://github.com/findify/findify-js/commit/2a4739b))
+
+
+
+
 <a name="2.2.1"></a>
 ## [2.2.1](https://github.com/findify/findify-js/compare/@findify/sdk@2.2.0...@findify/sdk@2.2.1) (2018-07-06)
 

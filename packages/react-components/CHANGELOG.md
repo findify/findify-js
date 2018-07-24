@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.2.15"></a>
+## [0.2.15](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.1.1...@findify/react-components@0.2.15) (2018-07-24)
+
+
+### Bug Fixes
+
+* **analytics, react-components:** fix server side rendering ([205a76c](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/205a76c))
+* **react-components:** apply lazyLoadCount config property to withLazy ([724575d](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/724575d))
+* **react-components:** change number of partial matched results ([918e796](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/918e796))
+* **react-components:** fix checkbox facet not displaying items on ios 10 ([13baba6](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/13baba6))
+* **react-components:** fix null value in query template ([deabfc1](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/deabfc1))
+* **react-components:** fix Sidebar autocomplete not submitting entered query ([95d653e](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/95d653e))
+* **react-components:** increase deep of css styles to avoid overwriting ([927c3a3](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/927c3a3))
+* **react-components:** minor fixes ([7883646](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/7883646))
+* **react-components:** return hmr import ([135bb5a](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/135bb5a))
+* **react-components, analytics-dom:** fix banner without url; Fix filters parsing ([a7567f9](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/a7567f9))
+* **react-connect:** fix incorrect React import ([2a4739b](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/2a4739b))
+
+
+
+
 <a name="0.2.14"></a>
 ## [0.2.14](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.2.13...@findify/react-components@0.2.14) (2018-07-19)
 

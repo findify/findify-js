@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="3.2.8"></a>
+## [3.2.8](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/analytics@3.2.2...@findify/analytics@3.2.8) (2018-07-24)
+
+
+### Bug Fixes
+
+* **analytics:** fix analytics initial state values ([fbce64f](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/fbce64f)), closes [#MERCHANT-JS-V6-2](https://github.com/findify/findify-js/tree/master/packages/analytics/issues/MERCHANT-JS-V6-2)
+* **analytics, agent:** fix analytics initialization in SPA; Simplify provider initialization ([1b00871](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/1b00871))
+* **analytics, react-components:** fix server side rendering ([205a76c](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/205a76c))
+* **react-connect:** fix incorrect React import ([2a4739b](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/2a4739b))
+
+
+
+
 <a name="3.2.7"></a>
 ## [3.2.7](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/analytics@3.2.6...@findify/analytics@3.2.7) (2018-07-19)
 
