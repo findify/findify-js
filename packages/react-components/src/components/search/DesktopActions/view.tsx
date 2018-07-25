@@ -38,7 +38,7 @@ const DesktopActionsView: React.SFC<IDesktopActionsProps> = ({
       onClick={showFacets}>
       <Text secondary uppercase>
         <Icon name='Filters' className={theme.icon} />
-        { config.getIn(['facets', 'i18n', 'hide'], 'show') }
+        { config.getIn(['facets', 'i18n', 'showDesktopFacets'], 'show') }
       </Text>
     </Button>
     <Query display-if={!isCollection} theme={{ root: theme.query }} />
