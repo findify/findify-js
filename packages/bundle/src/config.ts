@@ -371,6 +371,8 @@ export default process.env.NODE_ENV !== 'development'
                        }
                    },
                    "i18n": {
+                       "showDesktopFacets": "Show",
+                       "hideDesktopFacets": "Hide",
                        "showMobileFacets": "Filters",
                        "more": "More",
                        "less": "Less",

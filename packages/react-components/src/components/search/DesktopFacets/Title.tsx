@@ -74,7 +74,7 @@ export const hidable: React.SFC<IHidableProps> = ({
     className={theme.hide}
     onClick={onHide}>
     <Text secondary uppercase>
-      { config.getIn(['facets', 'i18n', 'hide'], 'hide') }
+      { config.getIn(['facets', 'i18n', 'hideDesktopFacets'], 'Hide') }
       <Icon name='XDark' />
     </Text>
   </Button>
