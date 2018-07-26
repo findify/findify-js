@@ -39,9 +39,9 @@ export const DiscountSticker = withTheme(theme)(({ className, discount, theme, c
     <div className={cx(theme.discountSticker, className)}>
       <Text bold>
         <Branch
-          condition={isImmutable(discount)}
+          condition={discount.size > 1}
           left={() => realConfig.getIn(['template', 'multiple']).replace('%s', Math.max.apply(Math, discount.toJS()))}
-          right={() => realConfig.getIn(['template', 'single']).replace('%s', discount)} />
+          right={() => realConfig.getIn(['template', 'single']).replace('%s', Math.max.apply(Math, discount.toJS()))} />
       </Text>
     </div>
   )
