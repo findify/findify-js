@@ -702,6 +702,13 @@
     reflect-metadata "^0.1.12"
     tslib "^1.8.1"
 
+"@findify/analytics-dom@^0.0.12":
+  version "0.0.12"
+  resolved "https://registry.yarnpkg.com/@findify/analytics-dom/-/analytics-dom-0.0.12.tgz#a68e992001b2bbde264f5093622f5908aa9feee8"
+  dependencies:
+    "@findify/analytics" "^3.2.7"
+    element-dataset "2.2.6"
+
 "@findify/babel-plugin-css-modules-transform@^2.0.3":
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/@findify/babel-plugin-css-modules-transform/-/babel-plugin-css-modules-transform-2.0.3.tgz#07c4499aa6d6f9ae3477b1933cd22a1e619b328b"
