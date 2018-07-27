@@ -57,7 +57,6 @@ deps.push(import(/* webpackChunkName: "components" */ '@findify/react-components
 /** Load styles */
 if (process.env.NODE_ENV !== 'development') {
   ((path) => {
-    if (path === false) return;
     if (!path) return loadCss(__webpack_require__.p + 'styles.css');
     return loadCss(path);
   })(__MERCHANT_CSS__);
