@@ -15,7 +15,13 @@ const updateFilters = (filterName: string, _value: any, isSelected:boolean, type
     const value = type === 'category' ? List([_value]) : _value;
     if (isSelected) {
       const index = filters.get(filterName).indexOf(value);
-      return filters.removeIn([filterName, index]);
+      if (type !== 'category') return filters.removeIn([filterName, index]);
+      const [key, n] = filterName.split(/(?=\d+)/);
+      filters.forEach((_, _fName) => {
+        if (!_fName.includes(key) || Number(_fName.split(/(?=\d+)/)[1]) < Number(n)) return;
+        return filters.remove(_fName)
+      })
+      return filters;
     }
     if (filters.has(filterName)) {
       /** Direct set value for category facet coz
