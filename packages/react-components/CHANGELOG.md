@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.3.0"></a>
+# [0.3.0](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.2.15...@findify/react-components@0.3.0) (2018-07-30)
+
+
+### Bug Fixes
+
+* **analytics-dom, bundle:** fix event tracking and Default css load ([f652852](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/f652852))
+* **bundle,react-components:** add localized strings for showing & hiding facets ([c7c5126](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/c7c5126))
+* **react-components:** export Tabs component ([633590a](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/633590a))
+* **react-components:** fix discount sticker rendering ([e5c124a](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/e5c124a))
+* **react-connect, react-components:** fix category facet ([a0fadc4](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/a0fadc4))
+
+
+### Features
+
+* bump version ([a80c96a](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/a80c96a))
+
+
+
+
 <a name="0.2.15"></a>
 ## [0.2.15](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.1.1...@findify/react-components@0.2.15) (2018-07-24)
 

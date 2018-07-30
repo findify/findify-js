@@ -1,6 +1,6 @@
 {
   "name": "@findify/react-connect",
-  "version": "0.1.17",
+  "version": "0.1.18",
   "author": "Findify <yourfriends@findify.io>",
   "bugs": {
     "url": "https://github.com/findify/findify-js/issues"
@@ -9,8 +9,8 @@
     "access": "public"
   },
   "dependencies": {
-    "@findify/agent": "^1.2.13",
-    "@findify/analytics": "^3.2.8",
+    "@findify/agent": "^1.3.0",
+    "@findify/analytics": "^3.3.0",
     "immutable": "^4.0.0-rc.9",
     "react": "^16.4.1"
   },

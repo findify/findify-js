@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.1.0"></a>
+# [0.1.0](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/analytics-dom@0.0.15...@findify/analytics-dom@0.1.0) (2018-07-30)
+
+
+### Bug Fixes
+
+* **analytics-dom, bundle:** fix event tracking and Default css load ([f652852](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/f652852))
+
+
+### Features
+
+* bump version ([a80c96a](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/a80c96a))
+
+
+
+
 <a name="0.0.15"></a>
 ## [0.0.15](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/analytics-dom@0.0.7...@findify/analytics-dom@0.0.15) (2018-07-24)
 
