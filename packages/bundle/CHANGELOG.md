@@ -3,6 +3,40 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="6.4.0"></a>
+# [6.4.0](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.3.22...@findify/bundle@6.4.0) (2018-07-30)
+
+
+### Bug Fixes
+
+* return modules mode back ([1bc08e2](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/1bc08e2))
+* **analytics-dom, bundle:** fix event tracking and Default css load ([f652852](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/f652852))
+* **bundle,react-components:** add localized strings for showing & hiding facets ([c7c5126](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/c7c5126))
+* **react-components:** export Tabs component ([633590a](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/633590a))
+* **react-connect, react-components:** fix category facet ([a0fadc4](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/a0fadc4))
+
+
+### Features
+
+* **bundle:** send request to extention from bundle and use pure modules to reduce bundle size ([180ae28](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/180ae28))
+
+
+
+
+<a name="6.3.22"></a>
+## [6.3.22](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.2.2...@findify/bundle@6.3.22) (2018-07-24)
+
+
+### Bug Fixes
+
+* **analytics, react-components:** fix server side rendering ([205a76c](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/205a76c))
+* **bundle:** fic incorrect filters field in recommendations ([88d87b5](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/88d87b5))
+* **react-components:** minor fixes ([7883646](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/7883646))
+* **react-components:** return hmr import ([135bb5a](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/135bb5a))
+
+
+
+
 <a name="6.3.14"></a>
 ## [6.3.14](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.3.13...@findify/bundle@6.3.14) (2018-07-19)
 

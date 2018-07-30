@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.1.18"></a>
+## [0.1.18](https://github.com/findify/findify-js/compare/@findify/react-connect@0.1.17...@findify/react-connect@0.1.18) (2018-07-30)
+
+
+### Bug Fixes
+
+* **react-connect:** bump version ([04da846](https://github.com/findify/findify-js/commit/04da846))
+* **react-connect, react-components:** fix category facet ([a0fadc4](https://github.com/findify/findify-js/commit/a0fadc4))
+
+
+
+
+<a name="0.1.17"></a>
+## [0.1.17](https://github.com/findify/findify-js/compare/@findify/react-connect@0.1.11...@findify/react-connect@0.1.17) (2018-07-24)
+
+
+### Bug Fixes
+
+* **analytics, agent:** fix analytics initialization in SPA; Simplify provider initialization ([1b00871](https://github.com/findify/findify-js/commit/1b00871))
+* **react-connect:** fix incorrect event name when click on suggestion ([b8d220a](https://github.com/findify/findify-js/commit/b8d220a))
+* **react-connect:** fix incorrect React import ([2a4739b](https://github.com/findify/findify-js/commit/2a4739b))
+
+
+
+
 <a name="0.1.16"></a>
 ## [0.1.16](https://github.com/findify/findify-js/compare/@findify/react-connect@0.1.15...@findify/react-connect@0.1.16) (2018-07-19)
 
