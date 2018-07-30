@@ -35,7 +35,6 @@ export type State = {
   offset?: number,
   limit?: number
 }
-
 export type ActionHandler = (state: any, meta?:any) => any
 
 export type Handler = {

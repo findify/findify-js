@@ -46,7 +46,6 @@ const analyticsDOM = (props, context: any = document) => {
   } else {
     document.addEventListener('DOMContentLoaded', () => initialize(props), false);
   }
-
   return analyticsInstance;
 }
 
