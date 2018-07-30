@@ -54,6 +54,7 @@ deps.push(import(/* webpackChunkName: "components" */ '@findify/react-components
 //   deps.push(loadJs(__webpack_require__.p + 'polyfill.js'));
 // }
 
+
 /** Load styles */
 if (process.env.NODE_ENV !== 'development') {
   ((path) => {
