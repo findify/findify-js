@@ -3,7 +3,8 @@ const webpack = require('webpack');
 const pkg = require('../package.json');
 const WebpackHashPlugin = require('./webpackHashPlugin');
 const ignore = [
-  "@findify/react-components"
+  "@findify/react-components",
+  "@findify/react-connect"
 ];
 
 const include = [

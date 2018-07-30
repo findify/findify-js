@@ -102,7 +102,6 @@ export default (props: Config | (() => void)): Client => {
   const sendEvent = sendEventCreator(config);
   const invalidate = createInvalidator(sendEvent, config);
   invalidate(storage.memorized);
-
   return {
     sendEvent,
     invalidate,

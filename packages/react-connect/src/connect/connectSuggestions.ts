@@ -16,7 +16,7 @@ export default createConnect({
             if (e) e.preventDefault();
             update('q', value);
             analytics.sendEvent('click-suggestion', {
-              value,
+              suggestion: value,
               rid: meta.get('rid'),
             });
             (window as any).findify.emit('autocompleteFocusLost', widgetKey);

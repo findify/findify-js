@@ -30,7 +30,7 @@ const createGlobals = (isDevelopment) => [
   '__CONFIG__',
   '__DISABLE_SENTRY__',
 ].reduce((acc, name) =>
-  ({ ...acc, [name]: isDevelopment ? 'false' : `(${name}||false)` }), {}
+  ({ ...acc, [name]: isDevelopment ? 'false' : name }), {}
 )
 
 export default (env: WebpackEnvArgs, { mode }) => {
@@ -63,6 +63,9 @@ export default (env: WebpackEnvArgs, { mode }) => {
         debug: path.resolve(__dirname, '../../node_modules/debug'),
         immutable: path.resolve(__dirname, '../../node_modules/immutable'),
       }
+    },
+    optimization: {
+      concatenateModules: false,
     },
     module: {
       rules: [
