@@ -68,8 +68,15 @@ const ProductCardView: React.SFC<IProductCardProps> = ({
           } />
       </div>
     </div>
-    <div display-if={config.getIn(['product', 'reviews', 'display']) && !!item.getIn(['reviews', 'count'])} className={theme.rating}>
-      <Rating value={item.getIn(['reviews', 'average_score'])} count={item.getIn(['reviews', 'count'])} />
+    <div
+      display-if={
+        config.getIn(['product', 'reviews', 'display']) &&
+        (!!item.getIn(['reviews', 'count']) || !!item.getIn(['reviews', 'total_reviews']))
+      }
+      className={theme.rating}>
+      <Rating
+        value={item.getIn(['reviews', 'average_score'])}
+        count={item.getIn(['reviews', 'count']) || item.getIn(['reviews', 'total_reviews'])} />
     </div>
     <div
       className={theme.variants}

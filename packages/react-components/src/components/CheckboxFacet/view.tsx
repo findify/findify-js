@@ -66,17 +66,20 @@ const CheckboxFacetView =  ({
     theme={theme}
     className={theme.expandedList}
     height={config.get('expandedHeight')}
-    array={(
+    array={
       config.get('pullSelected')
         ? items.filter(i => !i.get('selected'))
         : items
-      ).sortBy(i => i.get('value'))
     }
     config={config} />
 
   <MapArray
     display-if={!isExpanded}
-    array={config.get('pullSelected') ? items.filter(i => !i.get('selected')) : items}
+    array={
+      config.get('pullSelected')
+        ? items.filter(i => !i.get('selected'))
+        : items
+    }
     factory={Item}
     theme={theme}
     limit={config.get('maxItemsCount')} />
