@@ -51,4 +51,6 @@ const ContentSearch = compose(
   )
 )(view);
 
-export default process.env.HOT ? require('react-hot-loader').hot(module)(ContentSearch) : ContentSearch;
+export default process.env.HOT
+  ? require('react-hot-loader').hot(module)(ContentSearch)
+  : ContentSearch;

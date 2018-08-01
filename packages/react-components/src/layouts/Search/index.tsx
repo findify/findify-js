@@ -11,7 +11,6 @@ import withErrorHandler from 'helpers/withErrorHandler';
 import { withDrawer } from "helpers/withDrawer";
 import MobileFacets from 'components/search/MobileFacets';
 import MobileSorting from 'components/search/MobileSorting';
-import { hot } from 'react-hot-loader';
 import view from 'layouts/Search/view';
 import styles from 'layouts/Search/styles.css';
 import { debounce } from 'helpers/debounce';
@@ -80,4 +79,6 @@ const Search = compose(
   )
 )(view);
 
-export default hot(module)(Search);
+export default process.env.HOT
+  ? require('react-hot-loader').hot(module)(Search)
+  : Search;
