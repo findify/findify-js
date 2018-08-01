@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.3.2"></a>
+## [0.3.2](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.3.1...@findify/react-components@0.3.2) (2018-08-01)
+
+
+### Bug Fixes
+
+* **react-components, bundle:** make hot-loader optional, use pure modules ([6fa3c4e](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/6fa3c4e))
+
+
+
+
+
 <a name="0.3.1"></a>
 ## [0.3.1](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.3.0...@findify/react-components@0.3.1) (2018-07-30)
 
