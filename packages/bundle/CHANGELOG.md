@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="6.5.0"></a>
+# [6.5.0](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.4.2...@findify/bundle@6.5.0) (2018-08-02)
+
+
+### Features
+
+* **bundle:** use commonjs modules ([d1a87a5](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/d1a87a5))
+
+
+
+
+
 <a name="6.4.2"></a>
 ## [6.4.2](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.4.1...@findify/bundle@6.4.2) (2018-08-01)
 
