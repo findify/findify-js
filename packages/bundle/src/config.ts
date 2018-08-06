@@ -2,7 +2,7 @@ export default process.env.NODE_ENV !== 'development'
 ? __CONFIG__
 : {
        // Merchant API KEY
-       "key": "680d373d-06b3-442b-bebc-d35a5b0868b3",
+       "key": "fdc1aead-e0db-4fc8-9c9e-55f53667a01d",
 
        // Show/Hide "Powered by findify badge"
        "poweredByFindify": true,
