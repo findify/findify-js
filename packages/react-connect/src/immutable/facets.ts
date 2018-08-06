@@ -12,24 +12,38 @@ const getFacetValue = (_this, type) => {
 const updateFilters = (filterName: string, _value: any, isSelected:boolean, type) =>
 (f: Map<any, any> = Map()) =>
   f.withMutations(filters => {
-    const value = type === 'category' ? List([_value]) : _value;
+    const isCategory = type === 'category';
+    const value = isCategory ? List([_value]) : _value;
+    const [key, n] = filterName.split(/(?=\d+)/);
+
     if (isSelected) {
       const index = filters.get(filterName).indexOf(value);
-      if (type !== 'category') return filters.removeIn([filterName, index]);
-      const [key, n] = filterName.split(/(?=\d+)/);
+      
+      if (!isCategory) return filters.removeIn([filterName, index]);
+  
       filters.forEach((_, _fName) => {
         if (!_fName.includes(key) || Number(_fName.split(/(?=\d+)/)[1]) < Number(n)) return;
-        return filters.remove(_fName)
-      })
+        return filters.remove(_fName);
+      });
+  
       return filters;
     }
-    if (filters.has(filterName)) {
+
+    if (filters.has(filterName) || (isCategory && filters.find((_, k) => k.includes(key)))) {
       /** Direct set value for category facet coz
        *  just one category could be selected in the same time 
        */
-      if (type === 'category') return filters.set(filterName, fromJS([value]));
+      if (isCategory) {
+        filters.forEach((_, _fName) => {
+          if (!_fName.includes(key) || Number(_fName.split(/(?=\d+)/)[1]) < Number(n)) return;
+          return filters.remove(_fName);
+        });
+        return filters.set(filterName, fromJS([value]));
+      };
+  
       return filters.set(filterName, filters.get(filterName).push(value));
     }
+  
     return filters.set(filterName, fromJS([value]));
   })
 
