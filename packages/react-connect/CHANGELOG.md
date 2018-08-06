@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.1.19"></a>
+## [0.1.19](https://github.com/findify/findify-js/compare/@findify/react-connect@0.1.18...@findify/react-connect@0.1.19) (2018-08-06)
+
+
+### Bug Fixes
+
+* **react-connect:** fix incorrect category filters update ([f334330](https://github.com/findify/findify-js/commit/f334330))
+
+
+
+
+
 <a name="0.1.18"></a>
 ## [0.1.18](https://github.com/findify/findify-js/compare/@findify/react-connect@0.1.17...@findify/react-connect@0.1.18) (2018-07-30)
 

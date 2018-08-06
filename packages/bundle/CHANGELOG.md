@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="6.5.1"></a>
+## [6.5.1](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.5.0...@findify/bundle@6.5.1) (2018-08-06)
+
+
+### Bug Fixes
+
+* **react-connect:** fix incorrect category filters update ([f334330](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/f334330))
+
+
+
+
+
 <a name="6.5.0"></a>
 # [6.5.0](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.4.2...@findify/bundle@6.5.0) (2018-08-02)
 
