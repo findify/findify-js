@@ -24,6 +24,8 @@
           i am fallback
         </div>
       </div>
+      <div id='bundle' data-findify-key="bundle">
+      </div>
       <!-- <div>
 
       </div> -->
@@ -36,7 +38,20 @@
   </div>
     <script>
       (window.findifyCallbacks = window.findifyCallbacks || []).push(function(findify) {
-        console.log(findify)
+        findify.analytics.state = {
+          ...findify.analytics.state,
+          events: { 'view-page': { item_id: '8714871495' } },
+        }
+        findify.widgets.attach(
+          '#bundle',
+          'recommendation',
+          {
+            template: 'grid',
+            type: 'purchasedTogether',
+            meta: { limit: 3 },
+            bundle: true
+          }
+        );
       })
     </script>
     <div id='attacher'></div>

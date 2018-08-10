@@ -8,6 +8,21 @@ exports[`ProductCard view renders correctly 1`] = `
   <div
     className="imageWrap"
   >
+    <BundleAction
+      item={
+        Immutable.Map {
+          "product_url": "https://foo.bar",
+          "image_url": "https://lorempicsum.net/100/100",
+          "description": "A description for item",
+          "thumbnail_url": "https://lorempicsum.net/50/50",
+          "title": "Product Title",
+          "price": "9.99",
+          "reviews": Immutable.Map {
+            "average_rating": 0,
+          },
+        }
+      }
+    />
     <Image
       alt="Product Title"
       aspectRatio={1}

@@ -11,8 +11,9 @@ import Rating from 'components/Cards/Product/Rating';
 import Price from 'components/Cards/Product/Price';
 import template from 'helpers/template';
 import { DiscountSticker, OutOfStockSticker  } from 'components/Cards/Product/Stickers';
-import { Map, List } from 'immutable'
-import { IProduct, MJSConfiguration, ThemedSFCProps } from 'types';
+import { List } from 'immutable'
+import { IProduct, MJSConfiguration, ThemedSFCProps } from 'types/index';
+import BundleAction from 'components/Cards/Product/BundleAction';
 
 const Title: any = ({ text, theme, ...rest }) => (
   <Text display-if={!!text} className={theme.title} {...rest}>{text}</Text>
@@ -27,6 +28,7 @@ const Description: any = ({ text, theme, ...rest }) => (
     <Truncate>{text}</Truncate>
   </p>
 );
+
 
 export interface IProductCardProps extends ThemedSFCProps {
   item: IProduct;
@@ -48,6 +50,7 @@ const ProductCardView: React.SFC<IProductCardProps> = ({
     )}
   >
     <div className={classNames(theme.imageWrap)}>
+      <BundleAction display-if={config.get('bundle')} item={item} />
       <Image
         className={classNames(theme.image)}
         aspectRatio={config.getIn(['product', 'image', 'aspectRatio'], 1)}
