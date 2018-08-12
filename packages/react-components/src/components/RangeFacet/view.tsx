@@ -84,6 +84,7 @@ const RangeFacetView: React.SFC<IRangeFacetProps> = ({
         max={to || facet.get('max')}
         min={facet.get('min')}
         onBlur={onChangeMin}
+        onChange={onChangeMin}
         onKeyPress={onKeypress}
       />
     </div>
@@ -98,6 +99,7 @@ const RangeFacetView: React.SFC<IRangeFacetProps> = ({
         min={from || facet.get('min')}
         max={facet.get('max')}
         onBlur={onChangeMax}
+        onChange={onChangeMax}
         onKeyPress={onKeypress}
       />
     </div>
