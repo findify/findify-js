@@ -21,7 +21,7 @@ import {
   renderComponent,
 } from 'recompose';
 
-
+/** FIXME: Possible memory leak on huge pages, maybe employ something like LRU? */
 const cache = [];
 
 const prefetchImage = (src: string) =>
@@ -76,15 +76,15 @@ export default compose<ImageProps, ImageProps>(
   ),
   withPropsOnChange(
     ['thumbnail', 'original'],
-    ({ setSrc, setThumbnail, thumbnail, original, src, stage }) => {
+    ({ setSrc, setThumbnail, thumbnail, original, src, stage, fetchImage = prefetchImage }) => {
       if (stage === 2) return;
       if (thumbnail) {
-        prefetchImage(thumbnail)
+        fetchImage(thumbnail)
           .then(setThumbnail)
-          .then(() => prefetchImage(original))
+          .then(() => fetchImage(original))
           .then(setSrc);
       } else {
-        prefetchImage(original).then(setSrc);
+        fetchImage(original).then(setSrc);
       }
     }
   ),
