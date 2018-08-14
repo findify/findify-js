@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="6.6.0"></a>
+# [6.6.0](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.5.1...@findify/bundle@6.6.0) (2018-08-14)
+
+
+### Features
+
+* **react-components:** add bundles ([5595b9d](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/5595b9d))
+
+
+
+
+
 <a name="6.5.1"></a>
 ## [6.5.1](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.5.0...@findify/bundle@6.5.1) (2018-08-06)
 

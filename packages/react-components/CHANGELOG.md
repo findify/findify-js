@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.4.0"></a>
+# [0.4.0](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.3.4...@findify/react-components@0.4.0) (2018-08-14)
+
+
+### Bug Fixes
+
+* **react-components:** fix range facet not updating values ([3aef2f9](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/3aef2f9))
+
+
+### Features
+
+* **react-components:** add bundles ([5595b9d](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/5595b9d))
+
+
+
+
+
 <a name="0.3.4"></a>
 ## [0.3.4](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.3.3...@findify/react-components@0.3.4) (2018-08-06)
 
