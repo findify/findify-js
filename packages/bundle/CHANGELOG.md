@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="6.6.2"></a>
+## [6.6.2](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.6.1...@findify/bundle@6.6.2) (2018-08-14)
+
+
+### Bug Fixes
+
+* **bundle:** option to disable initial reqest in recommendations ([0f314a5](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/0f314a5))
+
+
+
+
+
 <a name="6.6.1"></a>
 ## [6.6.1](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.6.0...@findify/bundle@6.6.1) (2018-08-14)
 
