@@ -14,7 +14,7 @@ import styles from 'components/search/LazyResults/styles.css';
 export default compose(
   setDisplayName('LazyResults'),
   withTheme(styles),
-  connectItems,
   withColumns(),
+  connectItems,
   withLazy(),
 )(view);

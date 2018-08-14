@@ -176,6 +176,12 @@ const ButtonView: React.SFC<IButtonProps>;
 export default ButtonView;
 
 }
+declare module 'components/Cards/Product/BundleAction/view' {
+/// <reference types="react" />
+const _default: ({ theme, onClick, selected }: any) => JSX.Element;
+export default _default;
+
+}
 declare module 'components/Cards/Product' {
 const ProductCard: any;
 export default ProductCard;
