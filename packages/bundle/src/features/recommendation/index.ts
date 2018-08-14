@@ -8,7 +8,10 @@ import { Recommendation } from '@findify/react-components/src/';
 export default (widget) => {
   const { node, agent, config } = widget;
   const props = { agent, config, apiKey: config.get('key') };
-  agent.defaults(getPayload(config, __root.analytics.state));
+
+  if (!config.get('disableAutoRequest')) {
+    agent.defaults(getPayload(config, __root.analytics.state));
+  }
 
   /** Remove entity and instance if nothing was found */
   agent.on('change:items', items => {
