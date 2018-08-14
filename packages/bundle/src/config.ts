@@ -2,7 +2,7 @@ export default process.env.NODE_ENV !== 'development'
 ? __CONFIG__
 : {
        // Merchant API KEY
-       "key": "fdc1aead-e0db-4fc8-9c9e-55f53667a01d",
+       "key": "a1c78ac3-1240-4ba4-a707-5a299a775d2d",
 
        // Show/Hide "Powered by findify badge"
        "poweredByFindify": true,
@@ -468,6 +468,46 @@ export default process.env.NODE_ENV !== 'development'
                    },
                    "title": "Our Most Popular Products"
                },
+               "#cart-findify-rec-4": {
+                    "enabled": true,
+                    "slot": "cart-findify-rec-4",
+                    "type": "purchasedTogether",
+                    "template": "grid",
+                    "meta": {
+                        "limit": 3
+                    },
+                    "limit": 3,
+                    "multipleIds": false,
+                    "minResultsToShow": 1,
+                    "product": {
+                        "title": {
+                            "display": true,
+                            "lines": 3
+                        },
+                        "rating": {
+                            "display": true
+                        },
+                        "description": {
+                            "display": false
+                        },
+                        "price": {
+                            "display": true
+                        },
+                        "stickers": {
+                            "display": true
+                        },
+                        "variants": {
+                            "display": false
+                        },
+                        "availability": {
+                            "display": false
+                        },
+                        "i18n": {
+                            "colorsAvailable": "Colors available"
+                        }
+                    },
+                    "title": "Test bundles"
+                },
                "#product-findify-rec-1": {
                    "enabled": true,
                    "slot": "product-findify-rec-1",
