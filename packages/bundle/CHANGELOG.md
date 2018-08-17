@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="6.6.3"></a>
+## [6.6.3](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.6.2...@findify/bundle@6.6.3) (2018-08-17)
+
+
+### Bug Fixes
+
+* **bundle:** fix incorrect custom widget key ([bb369e4](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/bb369e4))
+
+
+
+
+
 <a name="6.6.2"></a>
 ## [6.6.2](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.6.1...@findify/bundle@6.6.2) (2018-08-14)
 
