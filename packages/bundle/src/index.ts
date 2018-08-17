@@ -3,6 +3,7 @@ import 'core-js/es6/promise';
 
 import loadJs from 'load-js';
 import loadCss from './helpers/loadCss';
+import log from './helpers/log';
 
 /**
  * Setup webpack public path, so bundle could be used with different versions
@@ -74,19 +75,19 @@ Promise
       whitelistUrls: [__webpack_require__.p]
     }).install()
   }
-  initialize.default({ key: __MERCHANT_API_KEY__ })
+  initialize.default({ key: __MERCHANT_API_KEY__ });
+  log('ready', 'color: #3DBC88');
+  log(`version: ${__MERCHANT_VERSION__}`);
 })
 .catch(e => {
-  console.error('Findify initialization failed x_x');
-  console.error(e.stack);
-  console.warn('...trying to reinitialize...');
+  log('error', 'color: #D9463F');
+  log(e.stack);
   Promise
   .all(deps)
   .then(([initialize]) => {
     initialize.default({ key: __MERCHANT_API_KEY__ });
-    console.warn('Hooray! Findify is alive now!');
   })
   .catch(e => {
-    console.warn('nope... seems like it doesn\'t helps, please contact Findify developers :(');
+    log('Please contact support team', 'color: #D9463F');
   })
 });
