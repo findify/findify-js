@@ -9,6 +9,7 @@ import emitter from './core/emitter';
 import resolveCallback from './helpers/resolveCallback';
 import setupPlatforms from './helpers/setupPlatforms';
 import { Events } from './core/events';
+import log from './helpers/log';
 
 /**
  * Create global namespace
@@ -72,6 +73,8 @@ export default async (
     bulkAddWidgets(cfg.selectors);
     renderWidgets(__root.widgets);
   }
+
+  log('widgets:', '' , __root.widgets.list());
 
   /**
    * Notify devtools about installation

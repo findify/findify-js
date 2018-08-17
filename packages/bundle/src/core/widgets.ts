@@ -53,7 +53,7 @@ const getEntity = (selector, _type?, _config?) =>
 )
 .map(node => {
   let type = getType(_type || node.getAttribute(attrSelector));
-  const key = node.getAttribute(keySelector) || ++index;
+  const key = (_config && _config.get('widgetKey')) || node.getAttribute(keySelector) || ++index;
 
   let config = createConfig(type, node, key, _config);
 
