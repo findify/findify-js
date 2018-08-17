@@ -24,7 +24,6 @@ class Portal extends Component<any>{
   constructor(props) {
     super(props);
     const { widget } = props;
-
     this.element = document.createElement('div');
     this.element.className = `findify-container ${widget.config.get('cssSelector')}`;
     this.parent = getParentNode(widget);
@@ -33,7 +32,6 @@ class Portal extends Component<any>{
 
   componentDidMount() {
     const { widget } = this.props;
-    const renderTo = widget.config.get('renderTo');
     this.parent.appendChild(this.element);
   }
 
