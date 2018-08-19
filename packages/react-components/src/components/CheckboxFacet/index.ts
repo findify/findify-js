@@ -5,6 +5,7 @@
 import React from 'react';
 import { compose, setDisplayName, withStateHandlers, withProps } from 'recompose';
 import withTheme from 'helpers/withTheme';
+import { escapeRegExp } from 'lodash';
 
 import view from 'components/CheckboxFacet/view';
 import styles from 'components/CheckboxFacet/styles.css';
@@ -24,7 +25,7 @@ export default compose(
 
   withProps(({ search, isExpanded, facet, theme }) => {
     if (isExpanded && search) {
-      const regexp = new RegExp(search, 'gi');
+      const regexp = new RegExp(escapeRegExp(search), 'gi');
       return { items: facet.get('values').filter(i => regexp.test(i.get('value'))) }
     }
     return { items: facet.get('values') };
