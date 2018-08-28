@@ -6,6 +6,7 @@ import React from 'react'
 import classnames from 'classnames'
 import Icon from 'components/Icon'
 import { ISuggestion, ISuggestionProps, IQuery, ThemedSFCProps } from 'types';
+import { escapeRegExp } from 'lodash';
 
 /**
  * Function used to return HTML markup for highlighting matching query in SearchSuggestion
@@ -14,7 +15,7 @@ import { ISuggestion, ISuggestionProps, IQuery, ThemedSFCProps } from 'types';
  * @param theme theme used by SuggestionItem
  */
 function highlightSuggestion(value: string, highlighted: string, theme: Theme) {
-  const regexp = new RegExp(`(${highlighted})`, 'i');
+  const regexp = new RegExp(`(${escapeRegExp(highlighted)})`, 'i');
   return value.replace(
     regexp,
     `<span class="${theme.highlightedText}">$1</span>`,
