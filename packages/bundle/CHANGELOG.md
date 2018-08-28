@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="6.6.4"></a>
+## [6.6.4](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.6.3...@findify/bundle@6.6.4) (2018-08-28)
+
+
+### Bug Fixes
+
+* **bundle, agent, react-connect:** disable initial request for search and SC ([18f4da7](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/18f4da7))
+
+
+
+
+
 <a name="6.6.3"></a>
 ## [6.6.3](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.6.2...@findify/bundle@6.6.3) (2018-08-17)
 
