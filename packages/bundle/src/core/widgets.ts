@@ -21,12 +21,19 @@ const getType = type => ({
 const createAgent = (type, config) => {
   const agent = Agents[camelize(type)];
   if (!agent) throw new Error(`Feature ${type} is not exists!`);
-  return new agent({
+  const instance = new agent({
     key: config.get('key'),
     user: __root.analytics.user,
     immutable: true,
-    ...(config.get('slot') && {slot: config.get('slot') } || {})
-  }).defaults(config.get('meta', Map()), true);
+    ...(config.get('slot') && { slot: config.get('slot') } || {})
+  });
+
+  // Setup initial request
+  if (!config.get('disableAutoRequest')) {
+    instance.defaults(config.get('meta', Map()), true);
+  }
+
+  return instance;
 }
 
 const createConfig = (type, node, key, customs = Map()) => {

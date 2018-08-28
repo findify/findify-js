@@ -10,7 +10,8 @@ import resolveCallback from './helpers/resolveCallback';
 import setupPlatforms from './helpers/setupPlatforms';
 import { Events } from './core/events';
 import log from './helpers/log';
-
+import { scrollTo } from './helpers/scrollTo';
+import * as location from './core/location';
 /**
  * Create global namespace
  */
@@ -66,6 +67,9 @@ export default async (
   if (widgetsRenderNeeded) {
     __root.widgets = createWidgets(__root.config);
   }
+
+  /** Expose utils */
+  __root.utils = { ...location, scrollTo };
 
   await resolveCallback(__root);
 
