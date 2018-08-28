@@ -42,7 +42,9 @@ export default (widget, render) => {
   }
 
   /** Setup initial request */
-  agent.applyState(state);
+  if (!config.get('disableAutoRequest')) {
+    agent.applyState(state);
+  }
 
   /** Listen to changes */
   agent.on('change:query', (q, meta) => {

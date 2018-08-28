@@ -122,6 +122,7 @@ export default process.env.NODE_ENV !== 'development'
            },
 
            "search": {
+            //    "disableAutoRequest": true,
                // Fallback recommendation type
                "zeroResultsType": "trending",
 

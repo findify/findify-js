@@ -46,8 +46,11 @@ export default (widget, render) => {
   })
 
   /** Setup initial request */
-  agent.defaults({ slot: collectionPath() });
-  agent.applyState(state);
+  if (!config.get('disableAutoRequest')) {
+    agent.defaults({ slot: collectionPath() });
+    agent.applyState(state);
+  }
+
   /** Listen to changes */
   agent.on('change:query', q => setQuery(q.toJS()));
 
