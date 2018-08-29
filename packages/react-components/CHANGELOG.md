@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.4.6"></a>
+## [0.4.6](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.4.5...@findify/react-components@0.4.6) (2018-08-29)
+
+
+### Bug Fixes
+
+* **react-components:** set min/max values to rage facet ([92d00dc](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/92d00dc))
+
+
+
+
+
 <a name="0.4.5"></a>
 ## [0.4.5](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.4.4...@findify/react-components@0.4.5) (2018-08-29)
 
