@@ -12,6 +12,7 @@ const registerNode = (string) => {
 export const scrollTo: any = debounce((selector, offset = 0) => {
   if (!document) return;
   const node = nodes.get(selector) || registerNode(selector);
+  if (!node) return;
   const { top } = node.getBoundingClientRect();
   if (top > 0) return;
   return jump(node, { offset });
