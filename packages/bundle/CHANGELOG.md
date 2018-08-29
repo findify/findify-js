@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="6.6.5"></a>
+## [6.6.5](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.6.4...@findify/bundle@6.6.5) (2018-08-29)
+
+
+### Bug Fixes
+
+* **bundle:** check for not is exist on page in scrollTo ([63ab000](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/63ab000))
+
+
+
+
+
 <a name="6.6.4"></a>
 ## [6.6.4](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.6.3...@findify/bundle@6.6.4) (2018-08-28)
 
