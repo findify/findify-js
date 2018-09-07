@@ -76,9 +76,11 @@ export default async (
   if (widgetsRenderNeeded) {
     bulkAddWidgets(cfg.selectors);
     renderWidgets(__root.widgets);
+    log('widgets:', '' , __root.widgets.list());
+  } else {
+    log(`findify ${__root.config.get('status')}`, 'color: #D9463F');
   }
 
-  log('widgets:', '' , __root.widgets.list());
 
   /**
    * Notify devtools about installation
