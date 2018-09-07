@@ -39,7 +39,7 @@ export interface IRangeFacetProps extends ThemedSFCProps {
   /** Invoked when any key in any input is pressed, used to react to Enter */
   onKeypress: (evt: any) => any
   /** Invoked when Go button is pressed */
-  onCommit: () => any
+  onPressButton: () => any
 }
 
 const RangeFacetView: React.SFC<IRangeFacetProps> = ({
@@ -55,7 +55,7 @@ const RangeFacetView: React.SFC<IRangeFacetProps> = ({
   onChangeMax,
   onChangeMin,
   onKeypress,
-  onCommit
+  onPressButton,
 
 }: IRangeFacetProps) =>
 <div className={theme.root}>
@@ -84,7 +84,6 @@ const RangeFacetView: React.SFC<IRangeFacetProps> = ({
         max={to || facet.get('max')}
         min={facet.get('min')}
         onBlur={onChangeMin}
-        onChange={onChangeMin}
         onKeyPress={onKeypress}
       />
     </div>
@@ -99,11 +98,10 @@ const RangeFacetView: React.SFC<IRangeFacetProps> = ({
         min={from || facet.get('min')}
         max={facet.get('max')}
         onBlur={onChangeMax}
-        onChange={onChangeMax}
         onKeyPress={onKeypress}
       />
     </div>
-    <Button onClick={onCommit} className={theme.submit}>
+    <Button onClick={onPressButton} className={theme.submit}>
       <Text primary uppercase>
         { config.getIn(['i18n', 'submit']) }
       </Text>
