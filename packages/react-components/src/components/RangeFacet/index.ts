@@ -9,6 +9,7 @@ import template from 'helpers/template';
 
 import view from 'components/RangeFacet/view';
 import styles from 'components/RangeFacet/styles.css';
+import { withHandlers } from 'recompose';
 
 const createKey = (...args) => args.join('_');
 
@@ -30,37 +31,46 @@ export default compose(
   withStateHandlers<any, any, any>(
     ({ facet }) => ({ from: undefined, to: undefined }),
     {
-      onCommit: ({ from, to }, { config, facet }) => e => {
-        if (!from && !to) return;
-        const key = [from, to].join('_');
-        facet.setValue({ from, to });
-        return { from: void 0, to: void 0 };
-      },
+      onReset: () => e => ({ from: void 0, to: void 0}),
 
       onChangeMin: ({ from, to }, { facet }) => e => {
-        const val = (e && e.target ? parseFloat(e.target.value) : e) || from || facet.get('min');
-        if (isNaN(val)) return { from: void 0 };
-        const normalizedValue = val > to
+        const value = parseFloat(e.target.value) || from || facet.get('min');
+        if (isNaN(value)) return { from: void 0 };
+        const normalizedValue = value > to
           ? to
-          : val < facet.get('min')
+          : value < facet.get('min')
             ? facet.get('min')
-            : val;
+            : value;
         return { from: normalizedValue };
       },
 
       onChangeMax: ({ from, to }, { facet }) => e => {
-        const val = (e && e.target ? parseFloat(e.target.value) : e) || to || facet.get('max');
-        if (isNaN(val)) return { to: void 0 };
+        const value = parseFloat(e.target.value) || to || facet.get('max');
+        if (isNaN(value)) return { to: void 0 };
         const normalizedValue =
-          val < from
-          ? from
-          : val > facet.get('max')
-            ? facet.get('max')
-            : val;
+          value < from
+            ? from
+            : value > facet.get('max')
+              ? facet.get('max')
+              : value;
         return { to: normalizedValue };
+      },
+
+      onCommit: ({ from, to }, { facet }) => () => {
+        if (!from && !to) return;
+        const key = [from, to].join('_');
+        facet.setValue({ from, to });
+        return { from: void 0, to: void 0};
       },
     },
   ),
+  withHandlers({
+    onPressButton: ({ onCommit }) => e => {
+      e.preventDefault();
+      Promise.resolve().then(() => onCommit());
+    },
+  }),
+
   withProps(({ onCommit }) => ({
     onKeypress: ({ key }) => key === 'Enter' && onCommit()
   }))
