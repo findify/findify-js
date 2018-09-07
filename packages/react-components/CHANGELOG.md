@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.4.7"></a>
+## [0.4.7](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.4.6...@findify/react-components@0.4.7) (2018-09-07)
+
+
+### Bug Fixes
+
+* **bundle, react-component:** fix range facet change event, add debugger when findify is paused ([b797590](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/b797590))
+
+
+
+
+
 <a name="0.4.6"></a>
 ## [0.4.6](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.4.5...@findify/react-components@0.4.6) (2018-08-29)
 
