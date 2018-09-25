@@ -67,6 +67,9 @@ export default (env: WebpackEnvArgs, { mode }) => {
     module: {
       rules: [
         {
+          parser: { amd: false }
+        },
+        {
           test: /\.css$/,
           include: [
             path.resolve(componentsPath, 'src')
@@ -198,7 +201,7 @@ export default (env: WebpackEnvArgs, { mode }) => {
       context: __dirname,
       manifest: require(path.join(__dirname, 'node_modules/dll/vendor-manifest.json'))
     }));
-  
+
     config.plugins.push(new AddAssetHtmlPlugin({
       filepath: require.resolve(path.join(__dirname, 'node_modules/dll/vendor.dll.js'))
     }));
