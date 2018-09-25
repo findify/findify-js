@@ -26,19 +26,38 @@ export interface IMobileFacetsLabelProps extends ThemedSFCProps {
   onClick: (evt?: React.MouseEvent<any>) => any
 }
 
+
+/** TODO: Not sure this is really needed, but find a way to show selected filters count,
+ *  when filters are overflowing, which is not hacky
+ */
 const FacetLabel = compose(
   withClickHandler,
   withPropsOnChange(['item'], ({ item }) => ({
-    filterCount: item && item.get('values').filter(item => item.get('selected')).size
+    isTextFacet: item && ['category', 'text'].includes(item.get('type')),
+    selectedValues: item && item.get('values').filter(item => item.get('selected')) || List(),
   }))
-)(({ item, theme, onClick, filterCount, config }: any) =>
+)(({ item, isTextFacet, theme, onClick, selectedValues, config }: any) =>
   <Button raw className={theme.facetTitle} onClick={onClick}>
-    <Text primary uppercase inlineBlock>
-    { config.getIn(['facets', 'labels', item.get('name')], item.get('name')) }
-    </Text>
-    <Text secondary uppercase inlineBlock display-if={filterCount} className={theme.filterCount}>
-      ({ filterCount })
-    </Text>
+    <div className={theme.flexFix}>
+      <Text primary uppercase inlineBlock>
+      { config.getIn(['facets', 'labels', item.get('name')], item.get('name')) }
+      </Text>
+      <Text
+        display-if={isTextFacet}
+        secondary
+        inlineBlock
+        className={theme.selectedValues}>
+        {selectedValues.map(item => item.get('value')).join(', ')}
+      </Text>
+      <Text
+        display-if={selectedValues.size > 0 && !isTextFacet}
+        className={theme.filterCount}
+        secondary
+        uppercase
+        inlineBlock>
+        ({ selectedValues.size })
+      </Text>
+    </div>
   </Button>
 )
 
