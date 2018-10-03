@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="6.6.12"></a>
+## [6.6.12](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.6.11...@findify/bundle@6.6.12) (2018-10-03)
+
+
+### Bug Fixes
+
+* **bundle:** prevent scripts loading for initialized findify ([c644675](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/c644675))
+* **bundle:** update logs ([6688e63](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/6688e63))
+
+
+
+
+
 <a name="6.6.11"></a>
 ## [6.6.11](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.6.10...@findify/bundle@6.6.11) (2018-10-03)
 
