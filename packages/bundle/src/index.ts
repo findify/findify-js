@@ -20,6 +20,10 @@ if (process.env.NODE_ENV !== 'development' && __MERCHANT_VERSION__) {
 /**
  * Load Dependencies
  */
+(() => {
+if ((global as any).findify_initialized) return;
+(global as any).findify_initialized = true;
+
 const deps: Promise<any>[] = [];
 
 /** Main initialization file */
@@ -90,4 +94,5 @@ Promise
   .catch(e => {
     log('Please contact support team', 'color: #D9463F');
   })
-});
+})
+})();

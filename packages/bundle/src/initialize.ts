@@ -22,9 +22,7 @@ const isReady = (() => {
   __root.emit = emitter.emit;
   __root.addListeners = emitter.addListeners;
   __root.invalidate = () =>  {
-    log('Before webpack cache purge:', '', __webpack_require__.c);
     for (const key in __webpack_require__.c) { delete __webpack_require__.c[key] }
-    log('After webpack cache purge:', '', __webpack_require__.c);
     emitter.emit(Events.invalidate);
   };
   return true;
@@ -50,9 +48,8 @@ export default async (
       }), {}
     )
     __root.invalidate();
-    log('After invalidation:', '',__webpack_require__);
     window.findifyJsonp.push([['extra'], extra]);
-    log('After components inject:', '', __webpack_require__)
+    delete cfg.components;
   }
 
 
