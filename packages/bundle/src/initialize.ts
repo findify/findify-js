@@ -28,6 +28,8 @@ const isReady = (() => {
   return true;
 })();
 
+const isString = (value) => typeof value === 'string' || value instanceof String;
+
 export default async (
   _config
 ) => {
@@ -40,7 +42,10 @@ export default async (
   // Register custom components
   if (cfg.components) {
     const extra = Object.keys(cfg.components).reduce(
-      (acc, k) => ({ ...acc, [k]: eval(cfg.components[k]) }), {}
+      (acc, k) => ({
+        ...acc,
+        [k]: isString(cfg.components[k]) ? eval(cfg.components[k]) : cfg.components[k]
+      }), {}
     )
     __root.invalidate();
     window.findifyJsonp.push([['extra'], extra]);
