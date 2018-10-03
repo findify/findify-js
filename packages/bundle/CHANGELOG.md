@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="6.6.9"></a>
+## [6.6.9](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.6.8...@findify/bundle@6.6.9) (2018-10-03)
+
+
+### Bug Fixes
+
+* **bundle:** allow to inject raw functions in components ([2803fba](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/2803fba))
+
+
+
+
+
 <a name="6.6.8"></a>
 ## [6.6.8](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.6.7...@findify/bundle@6.6.8) (2018-09-25)
 
