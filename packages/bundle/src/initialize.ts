@@ -49,7 +49,6 @@ export default async (
     )
     __root.invalidate();
     window.findifyJsonp.push([['extra'], extra]);
-    delete cfg.components;
   }
 
 
