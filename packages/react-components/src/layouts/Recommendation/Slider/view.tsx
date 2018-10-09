@@ -3,7 +3,7 @@
  */
 
 import React, { ReactChildren, ReactElement } from 'react';
-import Slider from 'react-slick';
+import SlickSlider from 'react-slick';
 
 import ProductCard from 'components/Cards/Product'
 import Text from 'components/Text';
@@ -75,13 +75,56 @@ export interface ISliderProps extends ThemedSFCProps {
   _mountSlider: React.RefObject<any>
 }
 
+
+class Slider extends React.Component{
+  touchState: any = {}
+  slider = void 0
+
+  componentDidMount(){
+    window.addEventListener('touchstart', this.touchStart);
+    window.addEventListener('touchmove', this.preventTouch, { passive: false });
+  }
+
+  componentWillUnmount(){
+    window.removeEventListener('touchstart', this.touchStart);
+    window.removeEventListener('touchmove', this.preventTouch);
+  }
+
+  touchStart = (e) => {
+    this.touchState.firstClientX = e.touches[0].clientX;
+    this.touchState.firstClientY = e.touches[0].clientY;
+  }
+
+  preventTouch = (e) => {
+    const minValue = 5; // threshold
+
+    this.touchState.clientX = e.touches[0].clientX - this.touchState.firstClientX;
+    this.touchState.clientY = e.touches[0].clientY - this.touchState.firstClientY;
+
+    // Vertical scrolling does not work when you start swiping horizontally.
+    if(Math.abs(this.touchState.clientX) > minValue){ 
+      e.preventDefault();
+      e.returnValue = false;
+      return false;
+    }
+  }
+
+  render() {
+    return (
+      <>
+        <SlickSlider {...this.props} ref={this.props.provideRef} />
+      </>
+    )
+  }
+}
+
 const SliderRecommendationLayout = ({ items, config, theme, sliderOptions, _mountSlider }: ISliderProps) =>
 <React.Fragment display-if={items && items.size > 0}>
   <Text title className={theme.title}>
     { config.get('title') }
   </Text>
 
-  <Slider {...sliderOptions} ref={_mountSlider}>
+  <Slider {...sliderOptions} provideRef={_mountSlider}>
     {
       items
         .map(item =>
