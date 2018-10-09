@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="6.6.13"></a>
+## [6.6.13](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.6.12...@findify/bundle@6.6.13) (2018-10-09)
+
+
+### Bug Fixes
+
+* **react-components:** add Swiper as third recommendation template ([5e22c0d](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/5e22c0d))
+* **react-components:** fix window scroll issue in react-slick ([42767db](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/42767db))
+
+
+
+
+
 <a name="6.6.12"></a>
 ## [6.6.12](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.6.11...@findify/bundle@6.6.12) (2018-10-03)
 

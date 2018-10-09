@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.5.5"></a>
+## [0.5.5](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.5.4...@findify/react-components@0.5.5) (2018-10-09)
+
+
+### Bug Fixes
+
+* **react-components:** add Swiper as third recommendation template ([5e22c0d](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/5e22c0d))
+* **react-components:** fix window scroll issue in react-slick ([42767db](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/42767db))
+
+
+
+
+
 <a name="0.5.4"></a>
 ## [0.5.4](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.5.3...@findify/react-components@0.5.4) (2018-10-03)
 
