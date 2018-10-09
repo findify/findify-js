@@ -8,11 +8,11 @@ import sizeMe from 'react-sizeme';
 import withTheme from 'helpers/withTheme';
 import withMinResultsToShow from 'helpers/withMinResultsToShow';
 import { renderArrow } from 'layouts/Recommendation/Slider/Arrow';
-import view from 'layouts/Recommendation/Slider/view';
+import view from 'layouts/Recommendation/Swiper/view';
+import { Map } from 'immutable';
 
-import './styles.global.css';
-import styles from 'layouts/Recommendation/Slider/styles.css';
-
+import 'layouts/Recommendation/Swiper/styles.global.css';
+import styles from 'layouts/Recommendation/Swiper/styles.css';
 
 /**
  * This function is used to calculate products to show in a line of a Slider according to its width
@@ -31,7 +31,6 @@ const countProductsToShow = width => {
 export default compose(
   withTheme(styles),
 
-
   sizeMe(),
 
   withStateHandlers(
@@ -42,24 +41,14 @@ export default compose(
   connectItems,
   withMinResultsToShow(),
 
-  withHandlers({
-    scrollToLast: ({ instance, items, size }) => () =>
-      items.length > countProductsToShow(size.width) && instance.slickGoTo(items.length),
-    scrollToFirst: ({ instance, items, size }) => () => {
-      items.length > countProductsToShow(size.width) && instance.slickGoTo(0);
-    }
-  }),
-
-  withPropsOnChange(['config', 'size'], ({ config, size, scrollToFirst, scrollToLast }) => ({
+  withPropsOnChange(['config', 'size'], ({ config, size }) => ({
     sliderOptions: {
-      swipeToSlide: true,
-      infinite: false,
-      slidesToScroll: 1,
-      arrows: true,
-      slidesToShow: countProductsToShow(size.width),
-      nextArrow: renderArrow('right' , scrollToFirst),
-      prevArrow: renderArrow('left', scrollToLast),
-      ...config.get('sliderOptions'),
+      slidesPerView: countProductsToShow(size.width),
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      ...config.get('sliderOptions', Map()).toJS(),
     }
   }))
 )(view);
