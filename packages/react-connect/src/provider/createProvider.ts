@@ -1,14 +1,13 @@
 // tslint:disable-next-line:import-name
-import { PureComponent } from "react";
+import { PureComponent, createContext, createElement } from "react";
 import { Map, is } from 'immutable';
 import * as Agents from '@findify/agent';
 import analytics from '@findify/analytics';
 import { $analytics, $findify, $config } from '../symbols';
-
 import { object, string, number, oneOfType, func, any } from 'prop-types';
-import { config } from 'react-spring';
 
-const agents = {};
+// tslint:disable-next-line:variable-name
+export const Context = createContext({});
 
 /**
  * Used to create a Provider Component to be rendered with React to further pass down Agent data to Connectors
@@ -21,7 +20,7 @@ export const createProvider = (type, onCreate?: (agent) => void) => {
     storeKey: string;
     analytics: any;
     agent: any;
-    nested: any;
+    data: any;
 
     static propTypes = {
       apiKey: string,
@@ -33,20 +32,9 @@ export const createProvider = (type, onCreate?: (agent) => void) => {
       storeKey: oneOfType([string, number]),
       query: object
     }
-
-    static contextTypes = {
-      [$findify]: object,
-    };
-
-    static childContextTypes = {
-      [$findify]: object.isRequired,
-      [$analytics]: object.isRequired,
-      [$config]: object.isRequired
-    }
-
-    constructor(props, context) {
-      super(props, context);
-      const { apiKey, agent, options, defaults, config } = props;
+    constructor(props) {
+      super(props);
+      const { apiKey, agent, options, defaults, config, storeKey } = props;
       const _key = agent && agent.config.key || apiKey;
       const _config = config || Map();
       const analyticsConfig: any = {
@@ -54,8 +42,6 @@ export const createProvider = (type, onCreate?: (agent) => void) => {
         events: _config.get('analytics', Map()).toJS(),
         ..._config.get('platform', Map()).toJS()
       };
-    
-      this.nested = context[$findify];
 
       if (agent && !agent.config.immutable) {
         throw new Error(`
@@ -63,32 +49,19 @@ export const createProvider = (type, onCreate?: (agent) => void) => {
           Add "immutable: true" to your Agent initializer
         `)
       }
-
-      this.storeKey = this.props.storeKey;
+  
+      this.storeKey = storeKey || 'default';
       this.analytics = analytics(analyticsConfig);
-      this.state = { config: _config };
       this.agent = agent || new Agents[type]({
         key: _key,
         user: this.analytics.user,
         immutable: true,
         ...options
       });
-
-      if (this.storeKey) agents[this.storeKey] = this.agent;
+      this.data = { analytics: this.analytics, config: _config, agent: this.agent };
+    
       if (onCreate) onCreate(this.agent)
       if (defaults) this.agent.defaults(defaults);
-    }
-
-    getChildContext() {
-      return {
-        [$analytics]: this.analytics,
-        [$config]: this.state.config,
-        [$findify]: {
-          ...agents,
-          ...this.nested,
-          ...(!this.storeKey && { default: this.agent })
-        },
-      }
     }
 
     componentWillReceiveProps(next){
@@ -118,7 +91,6 @@ export const createProvider = (type, onCreate?: (agent) => void) => {
 
     componentWillUnmount() {
       if (this.props.onChangeMeta) this.agent.off(this.props.onChangeMeta)
-      if (this.storeKey) agents[this.storeKey] = null;
     }
 
     update = (...args) => {
@@ -126,7 +98,14 @@ export const createProvider = (type, onCreate?: (agent) => void) => {
     }
 
     render() {
-      return this.props.children;
+      return (
+        createElement(Context.Consumer, null, (agents) =>
+          createElement(Context.Provider,
+            { value: { ...agents, [this.storeKey]: this.data } },
+            this.props.children
+          )
+        )
+      );
     }
   }
 }

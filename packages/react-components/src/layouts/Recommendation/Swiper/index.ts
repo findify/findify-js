@@ -30,7 +30,7 @@ const countProductsToShow = width => {
 
 export default compose(
   withTheme(styles),
-
+  connectItems,
   sizeMe(),
 
   withStateHandlers(
@@ -38,7 +38,6 @@ export default compose(
     { _mountSlider: (initial) => (instance = initial) => ({ instance }) }
   ),
 
-  connectItems,
   withMinResultsToShow(),
 
   withPropsOnChange(['config', 'size'], ({ config, size }) => ({
