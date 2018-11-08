@@ -32,7 +32,11 @@ class Portal extends Component<any>{
 
   componentDidMount() {
     const { widget } = this.props;
-    this.parent.appendChild(this.element);
+    if (widget.type === 'tabs') {
+      this.parent.insertBefore(this.element, this.parent.firstChild);
+    } else {
+      this.parent.appendChild(this.element);
+    }
   }
 
   componentWillUnmount() {

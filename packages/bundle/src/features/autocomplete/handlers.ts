@@ -4,7 +4,7 @@ import { addEventListeners } from '../../helpers/addEventListeners';
 import { findClosestElement } from '../../helpers/findClosestElement';
 import { isSearch, setQuery, buildQuery, redirectToSearch } from '../../core/location';
 import { Events } from '../../core/events';
-import { debounce } from 'lodash';
+import { debounce } from '../../helpers/debounce';
 
 const findClosestForm = findClosestElement('form');
 
@@ -46,10 +46,32 @@ export const registerHandlers = (widget, combinator) => {
     });
   })
 
+  const resetReferencedAgentsLogging = debounce((value) => {
+    __root.widgets
+      .findByType('search', 'smart-collection', 'content')
+      .forEach(({ agent }) => agent.reset().defaults({ log: true }).set('q', value || ''));
+  }, 1000);
+
+  const updateReferencedAgents = (value, noLogs?) =>
+    __root.widgets
+      .findByType('search', 'smart-collection', 'content')
+      .forEach(({ agent }) => {
+        agent.reset();
+        if (noLogs) {
+          agent.defaults({ log: false });
+          resetReferencedAgentsLogging(value);
+        }
+        agent.set('q', value || '')
+      });
+
   /** Handle input change */
   const handleInputChange = (e) => {
     const value = e.target.value || '';
     if (config.get('renderIn') === 'body') handleWindowScroll();
+    if (config.get('instant') && isSearch()) {
+      
+      return updateReferencedAgents(value, true);
+    }
     agent.set('q', value);
     combinator.signal('visible', true);
     combinator.signal('query', value);
@@ -80,9 +102,9 @@ export const registerHandlers = (widget, combinator) => {
   const search = (_value?) => {
     const value = _value || agent.state.get('q') || '';
     if (!isSearch()) return redirectToSearch(value);
-    __root.widgets
-      .findByType('search', 'smart-collection')
-      .forEach(({ agent }) => agent.reset().set('q', value || ''));
+
+    updateReferencedAgents(value);
+
     __root.widgets
       .findByType('autocomplete')
       .forEach(({ node }) => node.value = value);
@@ -105,6 +127,7 @@ export const registerHandlers = (widget, combinator) => {
   subscribers.push(addEventListeners(
     ['focus'],
     (e) => {
+      if (config.get('instant') && isSearch()) return;
       findifyElementFocused = true;
       if (!agent.state.get('q')) {
         agent.set('q', e.target.value);

@@ -1,5 +1,5 @@
 /**
- * @module components/contentsearch/ContentCard
+ * @module components/Cards/Content
  */
 
 import React from 'react'
