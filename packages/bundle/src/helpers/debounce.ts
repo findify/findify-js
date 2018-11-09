@@ -1,4 +1,4 @@
-export const debounce = (fn, wait?) => {
+export const debounce: any = (fn, wait?) => {
 	let timeout;
 	return function () {
     const ctx = this;

@@ -1,11 +1,12 @@
 /**
- * @module components/contentsearch/ContentCard
+ * @module components/Cards/Content
  */
+
 import React from 'react';
 import { compose, setDisplayName } from 'recompose'
 import withTheme from 'helpers/withTheme'
-import styles from 'components/contentsearch/ContentCard/styles.css'
-import view from 'components/contentsearch/ContentCard/view'
+import styles from 'components/Cards/Content/styles.css'
+import view from 'components/Cards/Content/view'
 
 export default compose(
   setDisplayName('ContentCard'),

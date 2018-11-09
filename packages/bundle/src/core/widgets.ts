@@ -20,7 +20,7 @@ const getType = type => ({
 
 const createAgent = (type, config) => {
   const agent = Agents[camelize(type)];
-  if (!agent) throw new Error(`Feature ${type} is not exists!`);
+  if (!agent) return null;
   const instance = new agent({
     key: config.get('key'),
     user: __root.analytics.user,
@@ -105,7 +105,7 @@ const widgets = {
   },
 
   findByType(...types) {
-    return cache.filter(({ agent }) => types.includes(agent.type));
+    return cache.filter(({ agent }) => agent && types.includes(agent.type));
   }
 };
 

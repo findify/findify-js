@@ -36,6 +36,7 @@ const LazyResultsView = ({
   items,
   config,
   theme,
+  card = ProductCard,
   columns,
   onLoadNext,
   onLoadPrev,
@@ -55,7 +56,7 @@ const LazyResultsView = ({
         ...rest,
         config,
         array: (items as ArrayLike),
-        factory: ProductCard
+        factory: card
       })
     }
   </Grid>

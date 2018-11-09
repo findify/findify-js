@@ -1,0 +1,48 @@
+.root{
+  text-align: center;
+  margin: 10px 0 40px 0;
+  width: 100%;
+}
+
+.item{
+  position: relative;
+  margin-right: 10px;
+  padding: 5px;
+  font-size: 12px;
+  text-transform: uppercase;
+  cursor: pointer;
+  color: $color-grey-5;
+  &:last-child{
+    margin-right: 0;
+  }
+  &:disabled{
+    opacity: .4;
+    pointer-events: none;
+    cursor: default;
+  }
+  &.active{
+    pointer-events: none;
+    color: $color-black;
+    cursor: default;
+    &:after{
+      content: ' ';
+      position: absolute;
+      bottom: -2px;
+      left: 50%;
+      margin-left: -20px;
+      width: 40px;
+      height: 2px;
+      background: $color-black;
+    }
+  }
+}
+
+.count{
+  display: inline-block;
+  margin-left: 5px;
+  border-radius: 5px / 5px;
+  background: $color-grey-2;
+  padding: 2px 4px;
+  font-size: 8px;
+  vertical-align: 1px;
+}

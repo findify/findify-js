@@ -1,11 +1,10 @@
-import { Component, createFactory, createElement } from "react";
-import * as PropTypes from 'prop-types';
+import { createFactory, Component, createElement } from "react";
 import { Map, is } from 'immutable';
 import { getDisplayName } from '../utils/getDisplayName';
 import { shallowEqual } from '../utils/shallowEqual';
 import mapValues from '../utils/mapValues';
-import { $findify, $analytics, $config } from '../symbols';
-
+import { Context } from '../provider/createProvider';
+import memoizeOne from 'memoize-one';
 const capitalize = s => s.charAt(0).toUpperCase() + s.slice(1);
 
 /**
@@ -23,26 +22,19 @@ const createComponent = ({
 }: any) => {
   const storeKey = !!key && key || 'default';
   const displayName = `Connect${capitalize(field)}(${getDisplayName(BaseComponent)})`;
-  // const factory: any = createFactory(BaseComponent);
+  const factory: any = createFactory(BaseComponent);
 
   class Connect extends Component<any, any>{
     displayName: string;
     changeAction: any
     cachedHandlers = {}
 
-    static contextTypes = {
-      [$findify]: PropTypes.object.isRequired,
-      [$analytics]: PropTypes.object.isRequired,
-      [$config]: PropTypes.object.isRequired
-    };
-
-    constructor(props, context){
-      super(props, context);
-      const $store = context[$findify][storeKey];
-
+    constructor(props){
+      super(props);
+      const $store = props.agent;
       if (!$store) {
         throw new Error(`
-          Can't find Provider "${key ? ' with key '+ key : ''},
+          Can't find Provider "${storeKey ? ' with key '+ storeKey : ''},
           You should create provider with correct Agent, or set "storeKey"
         `);
       }
@@ -55,14 +47,14 @@ const createComponent = ({
     }
 
     handleUpdate = (changes, meta = Map(), direct = false) => {
-      const config = this.context[$config];
+      const { analytics } = this.props;
       const mapped = mapProps && mapProps(
         changes,
         meta,
         this.changeAction,
-        this.context[$analytics]
+        analytics
       );
-      const state = { meta, config, ...(mapped || { [field]: changes }) }
+      const state = { meta, ...(mapped || { [field]: changes }) }
       direct ? this.state = state : this.setState(state);
     }
 
@@ -74,7 +66,7 @@ const createComponent = ({
 
         const handler = createHandler({
           update: this.changeAction,
-          analytics: this.context[$analytics],
+          analytics: this.props.analytics,
           ...this.state
         });
 
@@ -84,11 +76,11 @@ const createComponent = ({
     )
 
     componentWillMount() {
-      this.context[$findify][storeKey].on(`change:${field}`, this.handleUpdate);
+      this.props.agent.on(`change:${field}`, this.handleUpdate);
     }
 
     componentWillUnmount() {
-      this.context[$findify][storeKey].off(this.handleUpdate);
+      this.props.agent.off(this.handleUpdate);
     }
 
     shouldComponentUpdate(nextProps, nextState) {
@@ -102,49 +94,39 @@ const createComponent = ({
       this.cachedHandlers = {}
     }
 
-    makeHandlers() {
+    makeHandlers = memoizeOne(state => {
+      const { analytics } = this.props;
       return mapValues(
         handlers,
         (createHandler, handlerName) => (...args) => {
-          // const cachedHandler = this.cachedHandlers[handlerName];
-          // if (cachedHandler) return cachedHandler(...args);
-
           const handler = createHandler({
+            analytics,
             update: this.changeAction,
-            analytics: this.context[$analytics],
-            ...this.state
+            ...state
           });
 
-          this.cachedHandlers[handlerName] = handler;
           return handler(...args);
         }
       )
-    }
+    })
 
     render() {
-      return createElement(
-        BaseComponent,
+      return factory(
         {
-          ...this.props,
-          ...this.makeHandlers(),
           ...this.state,
-          config: this.context[$config],
+          ...this.props,
+          ...this.makeHandlers(this.state),
           update: this.changeAction
         }
       )
-      /*
-      return factory({
-        ...this.props,
-        ...this.handlers,
-        ...this.state,
-        config: this.context[$config],
-        update: this.changeAction,
-      });*/
     }
   }
 
   Connect.prototype.displayName = displayName;
-  return Connect;
+
+  return (props) => createElement(Context.Consumer, null, (agents) =>
+    createElement(Connect, { ...agents[storeKey], ...props })
+  )
 }
 
 export default ({

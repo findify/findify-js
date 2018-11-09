@@ -14,6 +14,12 @@ export enum Events {
   detach = 'detachWidget',
 
   /**
+   * Will rerender component
+   * @prop [entity: object] - widget to hydrate
+  */
+  hydrate = 'hydrate',
+
+  /**
    * Will navigate to search page with passed value as search query
    * @prop [value: string] - search query
   */

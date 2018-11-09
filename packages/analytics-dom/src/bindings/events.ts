@@ -1,5 +1,5 @@
-import { decamelize } from 'humps';
 import { EventName } from '@findify/analytics/lib/types';
+import { decamelize } from '../helpers/decamelize';
 
 const nodeToArray = node => Array.prototype.slice.call(node);
 
@@ -10,7 +10,7 @@ const nodeToArray = node => Array.prototype.slice.call(node);
 const normalizeKeys = (obj = {}): any =>
   Object.keys(obj).reduce((acc, key) => ({
     ...acc,
-    [decamelize(key, { separator: '_' }).replace('findify_', '')]: obj[key]
+    [decamelize(key).replace('findify_', '')]: obj[key]
   }), {});
 
 /**
