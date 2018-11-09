@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.2.0"></a>
+# [0.2.0](https://github.com/findify/findify-js/compare/@findify/react-connect@0.1.20...@findify/react-connect@0.2.0) (2018-11-09)
+
+
+### Features
+
+* **react-connect:** migrate to new React Context API ([acb96a3](https://github.com/findify/findify-js/commit/acb96a3))
+
+
+
+
+
 <a name="0.1.20"></a>
 ## [0.1.20](https://github.com/findify/findify-js/compare/@findify/react-connect@0.1.19...@findify/react-connect@0.1.20) (2018-08-28)
 

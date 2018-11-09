@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.6.0"></a>
+# [0.6.0](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.5.5...@findify/react-components@0.6.0) (2018-11-09)
+
+
+### Bug Fixes
+
+* **bundle, analytics-dom, react-components:** add Custom Layout, Replace Humps with simple function ([8c9073c](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/8c9073c))
+
+
+### Features
+
+* **bundle, react-components:** tabs layout, Content Search, Instant search ([7c0c5f4](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/7c0c5f4))
+* **react-connect:** migrate to new React Context API ([acb96a3](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/acb96a3))
+
+
+
+
+
 <a name="0.5.5"></a>
 ## [0.5.5](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.5.4...@findify/react-components@0.5.5) (2018-10-09)
 

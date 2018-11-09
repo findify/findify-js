@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="6.7.0"></a>
+# [6.7.0](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.6.13...@findify/bundle@6.7.0) (2018-11-09)
+
+
+### Bug Fixes
+
+* **bundle, analytics-dom, react-components:** add Custom Layout, Replace Humps with simple function ([8c9073c](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/8c9073c))
+
+
+### Features
+
+* **bundle, react-components:** tabs layout, Content Search, Instant search ([7c0c5f4](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/7c0c5f4))
+
+
+
+
+
 <a name="6.6.13"></a>
 ## [6.6.13](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.6.12...@findify/bundle@6.6.13) (2018-10-09)
 
