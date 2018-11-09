@@ -64,6 +64,9 @@ export default process.env.NODE_ENV !== 'development'
        // Features configuration will be pulled and marged with the root lvl
        "features": {
            "autocomplete": {
+
+                "instant": true,
+
                // Disable listening for closest form submit
                "disableFormSubmit": false,
 
@@ -128,8 +131,8 @@ export default process.env.NODE_ENV !== 'development'
 
                // Search results setup
                "view": {
-                   "pagination": false,
-                   "infinite": true,
+                   "pagination": true,
+                   "infinite": false,
                    "stickyFilters": false
                },
 
@@ -436,7 +439,7 @@ export default process.env.NODE_ENV !== 'development'
                    "enabled": true,
                    "slot": "home-findify-rec-2",
                    "type": "trending",
-                   "template": "swiper",
+                   "template": "slider",
                    "limit": 10,
                    "multipleIds": false,
                    "minResultsToShow": 4,
@@ -513,7 +516,7 @@ export default process.env.NODE_ENV !== 'development'
                    "enabled": true,
                    "slot": "product-findify-rec-1",
                    "type": "latest",
-                   "template": "swiper",
+                   "template": "slider",
                    "limit": 10,
                    "multipleIds": false,
                    "minResultsToShow": 3,
@@ -550,7 +553,7 @@ export default process.env.NODE_ENV !== 'development'
                    "enabled": true,
                    "slot": "category-findify-rec-1",
                    "type": "latest",
-                   "template": "swiper",
+                   "template": "slider",
                    "limit": 10,
                    "multipleIds": false,
                    "minResultsToShow": 3,
@@ -587,7 +590,7 @@ export default process.env.NODE_ENV !== 'development'
                    "enabled": true,
                    "slot": "product-findify-rec-4",
                    "type": "purchasedTogether",
-                   "template": "swiper",
+                   "template": "slider",
                    "limit": 10,
                    "multipleIds": false,
                    "minResultsToShow": 3,
@@ -624,7 +627,7 @@ export default process.env.NODE_ENV !== 'development'
                    "enabled": true,
                    "slot": "product-findify-rec-2",
                    "type": "viewed",
-                   "template": "swiper",
+                   "template": "slider",
                    "limit": 10,
                    "multipleIds": false,
                    "minResultsToShow": 3,
@@ -661,7 +664,7 @@ export default process.env.NODE_ENV !== 'development'
                    "enabled": true,
                    "slot": "cart-findify-rec-1",
                    "type": "latest",
-                   "template": "swiper",
+                   "template": "slider",
                    "limit": 10,
                    "multipleIds": false,
                    "minResultsToShow": 3,
@@ -698,7 +701,7 @@ export default process.env.NODE_ENV !== 'development'
                    "enabled": true,
                    "slot": "cart-findify-rec-2",
                    "type": "trending",
-                   "template": "swiper",
+                   "template": "slider",
                    "limit": 10,
                    "multipleIds": false,
                    "minResultsToShow": 3,
@@ -735,7 +738,7 @@ export default process.env.NODE_ENV !== 'development'
                    "enabled": true,
                    "slot": "cart-findify-rec-3",
                    "type": "purchasedTogether",
-                   "template": "swiper",
+                   "template": "slider",
                    "limit": 10,
                    "multipleIds": true,
                    "minResultsToShow": 3,
@@ -772,7 +775,7 @@ export default process.env.NODE_ENV !== 'development'
                    "enabled": true,
                    "slot": "home-findify-rec-3",
                    "type": "newest",
-                   "template": "swiper",
+                   "template": "slider",
                    "limit": 10,
                    "multipleIds": false,
                    "minResultsToShow": 4,
@@ -809,7 +812,7 @@ export default process.env.NODE_ENV !== 'development'
                    "enabled": true,
                    "slot": "product-findify-rec-5",
                    "type": "trending",
-                   "template": "swiper",
+                   "template": "slider",
                    "limit": 999,
                    "multipleIds": false,
                    "minResultsToShow": 1,

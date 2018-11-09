@@ -176,6 +176,23 @@ const ButtonView: React.SFC<IButtonProps>;
 export default ButtonView;
 
 }
+declare module 'components/Cards/Content' {
+/// <reference types="react" />
+import React from 'react';
+const _default: React.ComponentClass<{}>;
+export default _default;
+
+}
+declare module 'components/Cards/Content/view' {
+/// <reference types="react" />
+const _default: ({ item, config, theme }: {
+    item: any;
+    config: any;
+    theme: any;
+}) => JSX.Element;
+export default _default;
+
+}
 declare module 'components/Cards/Product/BundleAction/view' {
 /// <reference types="react" />
 const _default: ({ theme, onClick, selected }: any) => JSX.Element;
@@ -1626,6 +1643,24 @@ const _default: ComponentEnhancer<{}, {}>;
 export default _default;
 
 }
+declare module 'layouts/Content' {
+const _default: any;
+export default _default;
+
+}
+declare module 'layouts/Content/view' {
+/// <reference types="react" />
+import { MJSConfiguration, MJSValue, ThemedSFCProps } from 'types';
+export interface IContentSearchProps extends ThemedSFCProps {
+    config: MJSConfiguration;
+    meta: Map<string, MJSValue>;
+    isMobile?: boolean;
+    filtersOnRight?: boolean;
+}
+const _default: ({ config, theme }: IContentSearchProps) => JSX.Element;
+export default _default;
+
+}
 declare module 'layouts/ContentSearch' {
 /// <reference types="react" />
 import React from 'react';
@@ -1753,6 +1788,25 @@ const SliderRecommendationLayout: ({ items, config, theme, sliderOptions, _mount
 export default SliderRecommendationLayout;
 
 }
+declare module 'layouts/Recommendation/Swiper' {
+/// <reference types="react" />
+import React from 'react';
+import 'layouts/Recommendation/Swiper/styles.global.css';
+const _default: React.ComponentClass<{}>;
+export default _default;
+
+}
+declare module 'layouts/Recommendation/Swiper/view' {
+/// <reference types="react" />
+const _default: ({ items, config, theme, sliderOptions }: {
+    items: any;
+    config: any;
+    theme: any;
+    sliderOptions: any;
+}) => JSX.Element;
+export default _default;
+
+}
 declare module 'layouts/Search' {
 /// <reference types="react" />
 import React from 'react';
@@ -1783,6 +1837,21 @@ const SearchLayout: ({ config, meta, isMobile, isCollection, mobileFacetsOpened,
     items: any;
 }) => JSX.Element;
 export default SearchLayout;
+
+}
+declare module 'layouts/Tabs' {
+const _default: any;
+export default _default;
+
+}
+declare module 'layouts/Tabs/view' {
+/// <reference types="react" />
+const _default: ({ onClick, widgets, theme }: {
+    onClick: any;
+    widgets: any;
+    theme: any;
+}) => JSX.Element;
+export default _default;
 
 }
 declare module 'layouts/ZeroResults' {

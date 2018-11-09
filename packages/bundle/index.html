@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Webpack App</title>
-<link href="https://fonts.googleapis.com/css?family=Karla:400,700" rel="stylesheet">    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Karla:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css">
+  </head>
   <body>
     <div>
     <header style='height: 90px; padding: 0 20px; background-color:#475971; display: flex; align-items: center'>
@@ -19,20 +21,11 @@
       </div>-->
     </header>
     <div style='padding: 20px'>
-      <div id='home-findify-rec-3'>
-        <div class='findify-fallback'>
-          i am fallback
-        </div>
-      </div>
-      <div id='bundle' data-findify-key="bundle">
-      </div>
-      <!-- <div>
-
-      </div> -->
-      <div data-findify="search">
-        <div class='findify-fallback'>
-          i am fallback too
-        </div>
+      <div data-findify='tabs'>
+        <div data-findify="search" data-title='Search results'></div>
+        <div data-findify="content" data-type='custom' data-title='Content'></div>
+        <div id='bundle' data-findify-key="bundle" data-title='Bundle'></div>
+        <div id='home-findify-rec-3' data-title='Recommendations'></div>
       </div>
     </div>
   </div>
