@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="6.7.3"></a>
+## [6.7.3](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.7.2...@findify/bundle@6.7.3) (2018-11-13)
+
+
+### Bug Fixes
+
+* **bundle:** bump components version ([2152ab4](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/2152ab4))
+* **bundle:** replace Raven with Sentry sdk ([73d2867](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/73d2867))
+* **bundle:** rollback polyfill ([9ff8bd7](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/9ff8bd7))
+
+
+
+
+
 <a name="6.7.2"></a>
 ## [6.7.2](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.7.1...@findify/bundle@6.7.2) (2018-11-13)
 
