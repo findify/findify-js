@@ -5,7 +5,7 @@
 import React from 'react';
 import { compose, setDisplayName, withStateHandlers, withProps } from 'recompose';
 import withTheme from 'helpers/withTheme';
-import { escapeRegExp } from 'helpers/escapeRegExp';
+import escapeRegExp from 'lodash/escapeRegExp';
 
 import view from 'components/CheckboxFacet/view';
 import styles from 'components/CheckboxFacet/styles.css';

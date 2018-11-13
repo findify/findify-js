@@ -6,7 +6,7 @@ import React from 'react'
 import classnames from 'classnames'
 import Icon from 'components/Icon'
 import { ISuggestion, ISuggestionProps, IQuery, ThemedSFCProps } from 'types';
-import { escapeRegExp } from 'helpers/escapeRegExp';
+import escapeRegExp from 'lodash/escapeRegExp';
 
 /**
  * Function used to return HTML markup for highlighting matching query in SearchSuggestion
