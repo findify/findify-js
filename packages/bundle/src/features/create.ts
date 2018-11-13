@@ -1,5 +1,4 @@
 import { Component, createElement } from 'react';
-import { debounce } from 'lodash';
 import { Events } from '../core/events';
 
 class FeatureCreator extends Component<any>{
