@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.6.1"></a>
+## [0.6.1](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.6.0...@findify/react-components@0.6.1) (2018-11-13)
+
+
+### Bug Fixes
+
+* **bundle, react-components:** replace Lodash with simple functions ([d767775](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/d767775))
+
+
+
+
+
 <a name="0.6.0"></a>
 # [0.6.0](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.5.5...@findify/react-components@0.6.0) (2018-11-09)
 

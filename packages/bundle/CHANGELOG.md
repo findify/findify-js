@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="6.7.1"></a>
+## [6.7.1](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.7.0...@findify/bundle@6.7.1) (2018-11-13)
+
+
+### Bug Fixes
+
+* **bundle, react-components:** replace Lodash with simple functions ([d767775](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/d767775))
+
+
+
+
+
 <a name="6.7.0"></a>
 # [6.7.0](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.6.13...@findify/bundle@6.7.0) (2018-11-09)
 
