@@ -55,9 +55,9 @@ if(process.env.NODE_ENV !== 'development') {
 deps.push(import(/* webpackChunkName: "components" */ '@findify/react-components/src'));
 
 // /** Load polyfill only for specific merchants */
-if (process.env.NODE_ENV !== 'development' && __INCLUDE_POLYFILL__) {
-  deps.push(loadJs(__webpack_require__.p + 'polyfill.js'));
-}
+// if (process.env.NODE_ENV !== 'development' && __INCLUDE_POLYFILL__) {
+//   deps.push(loadJs(__webpack_require__.p + 'polyfill.js'));
+// }
 
 
 /** Load styles */
