@@ -3,6 +3,240 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.6.2"></a>
+## [0.6.2](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.6.1...@findify/react-components@0.6.2) (2018-11-13)
+
+
+### Bug Fixes
+
+* **bundle, react-components:** import lodash commonjs lodash function ([9a7e584](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/9a7e584))
+
+
+
+
+
+<a name="0.6.1"></a>
+## [0.6.1](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.6.0...@findify/react-components@0.6.1) (2018-11-13)
+
+
+### Bug Fixes
+
+* **bundle, react-components:** replace Lodash with simple functions ([d767775](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/d767775))
+
+
+
+
+
+<a name="0.6.0"></a>
+# [0.6.0](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.5.5...@findify/react-components@0.6.0) (2018-11-09)
+
+
+### Bug Fixes
+
+* **bundle, analytics-dom, react-components:** add Custom Layout, Replace Humps with simple function ([8c9073c](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/8c9073c))
+
+
+### Features
+
+* **bundle, react-components:** tabs layout, Content Search, Instant search ([7c0c5f4](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/7c0c5f4))
+* **react-connect:** migrate to new React Context API ([acb96a3](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/acb96a3))
+
+
+
+
+
+<a name="0.5.5"></a>
+## [0.5.5](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.5.4...@findify/react-components@0.5.5) (2018-10-09)
+
+
+### Bug Fixes
+
+* **react-components:** add Swiper as third recommendation template ([5e22c0d](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/5e22c0d))
+* **react-components:** fix window scroll issue in react-slick ([42767db](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/42767db))
+
+
+
+
+
+<a name="0.5.4"></a>
+## [0.5.4](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.5.3...@findify/react-components@0.5.4) (2018-10-03)
+
+**Note:** Version bump only for package @findify/react-components
+
+
+
+
+
+<a name="0.5.3"></a>
+## [0.5.3](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.5.2...@findify/react-components@0.5.3) (2018-10-03)
+
+**Note:** Version bump only for package @findify/react-components
+
+
+
+
+
+<a name="0.5.2"></a>
+## [0.5.2](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.5.1...@findify/react-components@0.5.2) (2018-10-03)
+
+**Note:** Version bump only for package @findify/react-components
+
+
+
+
+
+<a name="0.5.1"></a>
+## [0.5.1](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.5.0...@findify/react-components@0.5.1) (2018-10-03)
+
+**Note:** Version bump only for package @findify/react-components
+
+
+
+
+
+<a name="0.5.0"></a>
+# [0.5.0](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.4.7...@findify/react-components@0.5.0) (2018-09-25)
+
+
+### Features
+
+* **react-components:** add displaying of selected categories on mobile facet landing ([27cd082](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/27cd082))
+
+
+
+
+
+<a name="0.4.7"></a>
+## [0.4.7](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.4.6...@findify/react-components@0.4.7) (2018-09-07)
+
+
+### Bug Fixes
+
+* **bundle, react-component:** fix range facet change event, add debugger when findify is paused ([b797590](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/b797590))
+
+
+
+
+
+<a name="0.4.6"></a>
+## [0.4.6](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.4.5...@findify/react-components@0.4.6) (2018-08-29)
+
+
+### Bug Fixes
+
+* **react-components:** set min/max values to rage facet ([92d00dc](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/92d00dc))
+
+
+
+
+
+<a name="0.4.5"></a>
+## [0.4.5](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.4.4...@findify/react-components@0.4.5) (2018-08-29)
+
+**Note:** Version bump only for package @findify/react-components
+
+
+
+
+
+<a name="0.4.4"></a>
+## [0.4.4](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.4.3...@findify/react-components@0.4.4) (2018-08-28)
+
+
+### Bug Fixes
+
+* **react-components:** fix regexp unescaped symbols crashing search ([893847d](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/893847d))
+
+
+
+
+
+<a name="0.4.3"></a>
+## [0.4.3](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.4.2...@findify/react-components@0.4.3) (2018-08-17)
+
+**Note:** Version bump only for package @findify/react-components
+
+
+
+
+
+<a name="0.4.2"></a>
+## [0.4.2](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.4.1...@findify/react-components@0.4.2) (2018-08-14)
+
+**Note:** Version bump only for package @findify/react-components
+
+
+
+
+
+<a name="0.4.1"></a>
+## [0.4.1](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.4.0...@findify/react-components@0.4.1) (2018-08-14)
+
+
+### Bug Fixes
+
+* **react-components:** fix error when removing everything from range facet ([82db0f2](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/82db0f2))
+
+
+
+
+
+<a name="0.4.0"></a>
+# [0.4.0](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.3.4...@findify/react-components@0.4.0) (2018-08-14)
+
+
+### Bug Fixes
+
+* **react-components:** fix range facet not updating values ([3aef2f9](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/3aef2f9))
+
+
+### Features
+
+* **react-components:** add bundles ([5595b9d](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/5595b9d))
+
+
+
+
+
+<a name="0.3.4"></a>
+## [0.3.4](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.3.3...@findify/react-components@0.3.4) (2018-08-06)
+
+**Note:** Version bump only for package @findify/react-components
+
+
+
+
+
+<a name="0.3.3"></a>
+## [0.3.3](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.3.2...@findify/react-components@0.3.3) (2018-08-02)
+
+**Note:** Version bump only for package @findify/react-components
+
+
+
+
+
+<a name="0.3.2"></a>
+## [0.3.2](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.3.1...@findify/react-components@0.3.2) (2018-08-01)
+
+
+### Bug Fixes
+
+* **react-components, bundle:** make hot-loader optional, use pure modules ([6fa3c4e](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/6fa3c4e))
+
+
+
+
+
+<a name="0.3.1"></a>
+## [0.3.1](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.3.0...@findify/react-components@0.3.1) (2018-07-30)
+
+**Note:** Version bump only for package @findify/react-components
+
+
+
+
+
 <a name="0.3.0"></a>
 # [0.3.0](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.2.15...@findify/react-components@0.3.0) (2018-07-30)
 
