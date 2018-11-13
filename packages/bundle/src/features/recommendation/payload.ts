@@ -1,17 +1,8 @@
-const path = (obj, paths, defaultValue?) => {
-  let val = obj;
-  let idx = 0;
-  while (idx < paths.length) {
-    if (val == null) return;
-    val = val[paths[idx]];
-    idx += 1;
-  }
-  return val || defaultValue;
-}
+import get from 'lodash/get';
 
 const getIdsFromEvents = events => ({
-  item_id: path(events, ['view-page', 'item_id']),
-  item_ids: path(events, ['update-cart', 'line_items'], []).map(
+  item_id: get(events, ['view-page', 'item_id']),
+  item_ids: get(events, ['update-cart', 'line_items'], []).map(
     i => i.item_id || i.product_id
   ),
 });
