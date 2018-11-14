@@ -22,7 +22,7 @@ export interface IContentSearchProps extends ThemedSFCProps {
 
 export default ({
   config,
-  theme
+  theme,
 }: IContentSearchProps) => (
   <LazyResults card={ContentCard} />
 )

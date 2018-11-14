@@ -28,6 +28,7 @@ import ArrowLeftBig from './icons/Arrow/Left-Big.svg';
 import ArrowRightBig from './icons/Arrow/Right-Big.svg';
 import CheckboxFilled from 'components/Icon/icons/Checkbox/Filled.svg';
 import CheckboxEmpty from 'components/Icon/icons/Checkbox/Empty.svg';
+import ExternalLink from 'components/Icon/icons/ExternalLink.svg';
 
 /** Possible icon types */
 export const icons = {
@@ -51,7 +52,8 @@ export const icons = {
   ArrowLeftBig,
   ArrowRightBig,
   CheckboxFilled,
-  CheckboxEmpty
+  CheckboxEmpty,
+  ExternalLink
 }
 
 /** Props that Icon accepts */

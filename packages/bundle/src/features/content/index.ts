@@ -14,7 +14,7 @@ export default (widget, render) => {
   const { type } = node.dataset;
   const props = { agent, apiKey, config };
 
-  agent.defaults({ type });
+  agent.defaults({ type: [type] });
   agent.set('q', q);
 
   /** Listen to changes */
