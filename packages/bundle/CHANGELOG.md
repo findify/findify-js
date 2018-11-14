@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="6.7.4"></a>
+## [6.7.4](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.7.3...@findify/bundle@6.7.4) (2018-11-14)
+
+
+### Bug Fixes
+
+* **react-components:** update Content card ([90e9485](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/90e9485))
+
+
+
+
+
 <a name="6.7.3"></a>
 ## [6.7.3](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.7.2...@findify/bundle@6.7.3) (2018-11-13)
 

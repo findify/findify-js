@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.6.4"></a>
+## [0.6.4](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.6.3...@findify/react-components@0.6.4) (2018-11-14)
+
+
+### Bug Fixes
+
+* **react-components:** update Content card ([90e9485](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/90e9485))
+
+
+
+
+
 <a name="0.6.3"></a>
 ## [0.6.3](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.6.2...@findify/react-components@0.6.3) (2018-11-13)
 
