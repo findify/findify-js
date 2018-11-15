@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="6.7.6"></a>
+## [6.7.6](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.7.5...@findify/bundle@6.7.6) (2018-11-15)
+
+
+### Bug Fixes
+
+* **bundle:** delay send Devtools init event coz there is no idle event in chome tabs API ([f152869](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/f152869))
+
+
+
+
+
 <a name="6.7.5"></a>
 ## [6.7.5](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.7.4...@findify/bundle@6.7.5) (2018-11-15)
 
