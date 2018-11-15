@@ -43,7 +43,7 @@ const CategoryFacetView = ({
     className={theme.item}
     onClick={facet.resetValues}>
     <Text lowercase primary bold={!items.find(i => i.get('selected') as boolean)}>
-       All categories
+       { config.getIn(['facets', 'i18n', 'allCategories'], 'All categories') }
     </Text>
     <Text secondary uppercase>
       ({ total })

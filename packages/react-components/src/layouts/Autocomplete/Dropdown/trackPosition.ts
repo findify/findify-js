@@ -12,9 +12,9 @@ export default BaseComponent => {
   
     registerComponent = (ref) => {
       if (!ref) return;
-      const { x, width } = ref.getBoundingClientRect();
+      const { left, width } = ref.getBoundingClientRect();
       const windowWidth = window.innerWidth;
-      this.setState({ position: windowWidth < (x + width) ? 'right' : 'left' })
+      this.setState({ position: windowWidth < (left + width) ? 'right' : 'left' })
     }
   
     render() {
