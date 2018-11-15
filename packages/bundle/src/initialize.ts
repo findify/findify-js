@@ -91,10 +91,12 @@ export default async (
    * Notify devtools about installation
    */
   if (/Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor)) {
-    window.postMessage(
-      { type: 'init', key: cfg.key, __findify: true },
-      window.location.origin
-    );
+    setTimeout(() => {
+      window.postMessage(
+        { type: 'init', key: cfg.key, __findify: true },
+        window.location.origin
+      );
+    }, 1500);
   }
 
   (global as any).FindifyAnalytics = Analytics;
