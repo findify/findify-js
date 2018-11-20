@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.7.2"></a>
+## [0.7.2](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.7.1...@findify/react-components@0.7.2) (2018-11-20)
+
+
+### Bug Fixes
+
+* **react-components:** fix IE11 range facet input width ([907d643](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/907d643))
+
+
+
+
+
 <a name="0.7.1"></a>
 ## [0.7.1](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.7.0...@findify/react-components@0.7.1) (2018-11-20)
 
