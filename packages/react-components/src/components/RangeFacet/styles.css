@@ -55,6 +55,7 @@ $height: 30px;
   display: flex;
   position: relative;
   white-space: nowrap;
+  width: 100%;
   :global(.react-numeric-input){
     display: inline-block;
     position: relative;
@@ -114,6 +115,7 @@ $height: 30px;
   border-radius: 0;
   width: 100%;
   height: $height;
+  line-height: $height;
   padding: 0 8px;
   cursor: pointer;
   &:hover{
