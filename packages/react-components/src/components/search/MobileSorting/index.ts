@@ -24,10 +24,9 @@ export default compose(
         labels.get([i.get('field'), i.get('order')].filter(i => i).join('|'))
       )
       .set('selected',
-        (!selected && i.get('field') === 'default') ||
-        !!selected &&
-        is(i.get('order'), selected.get('order')) &&
-        is(i.get('field'), selected.get('field'))
+        !!selected
+        ? is(i.get('order'), selected.get('order')) && is(i.get('field'), selected.get('field'))
+        : i.get('field') === 'default'
       )
     );
     return { items }
@@ -35,6 +34,6 @@ export default compose(
 
   withHandlers({
     setSorting: ({ items, onChangeSort }) => index =>
-      onChangeSort(items.getIn([index, 'field']), items.getIn([index, 'order'])),
+      onChangeSort(items.getIn([index, 'field'], 'default'), items.getIn([index, 'order'], '')),
   })
 )(view)

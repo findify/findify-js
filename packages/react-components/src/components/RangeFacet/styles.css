@@ -36,12 +36,14 @@ $height: 30px;
 
 .range{
   display: table;
+  display: flex;
   width: 1%;
   padding-top: 10px;
   padding-left: 25px;
 }
 
 .input-block {
+  display: table;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -50,10 +52,13 @@ $height: 30px;
 
 .input-wrap{
   display: table-cell;
+  display: flex;
   position: relative;
   white-space: nowrap;
   :global(.react-numeric-input){
     display: inline-block;
+    position: relative;
+    z-index: 1;
   }
 }
 
@@ -64,8 +69,10 @@ $height: 30px;
   width: $width;
   box-sizing: border-box;
   height: $height;
+  line-height: $height;
   padding: 0 8px;
   padding-left: calc(8px + $indent);
+  background: transparent;
   color: $color-black;
   font-family: $font-base;
   font-size: $font-size-large;
@@ -87,16 +94,19 @@ $height: 30px;
 
 .currency{
   $font-size: $font-size-medium;
-  display: inline-block;
-  position: relative;
+  position: absolute;
   font-size: $font-size;
+  top: 50%;
+  margin-top: calc($font-size / -2);
   left: 9px;
   width: 0;
+  z-index: 0;
 }
 
 .submit{
   $font-size: $font-size-medium;
   display: table-cell;
+  display: flex;
   border: 0;
   background: transparent;
   outline: 0;
@@ -109,7 +119,6 @@ $height: 30px;
   &:hover{
     text-decoration: underline;
   }
-
   span {
     font-size: $font-size-small;
   }
@@ -117,7 +126,7 @@ $height: 30px;
 
 .divider{
   display: table-cell;
+  display: flex;
   padding: 0 6px;
   width: 1%;
 }
-
