@@ -2,28 +2,37 @@ $padding: 25px;
 
 .root{
   display: table;
+  display: flex;
   width: 100%;
   padding-bottom: 24px;
+  flex-direction: row;
+  align-items: center;
 }
 
 .block{
   display: table;
+  display: flex;
   width: 100%;
+  flex-direction: row;
+  align-items: center;
+  flex-flow: row wrap;
 }
 
 .sorting{
   display: table-cell;
+  display: flex;
   position: relative;
 }
 
 .query{
   display: table-cell;
+  display: flex;
   white-space: nowrap;
-  width: 1%;
 }
 
 .breadcrumbs{
   display: table-cell;
+  display: flex;
 }
 
 .show-facets{
@@ -44,30 +53,5 @@ $padding: 25px;
   }
   &:hover *{
     color: $color-grey-4;
-  }
-}
-
-@supports(display: flex){
-  .root{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-  }
-  .block{
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    align-items: center;
-    flex-flow: row wrap;
-  }
-  .sorting{
-    display: block;
-  }
-  .query{
-    display: block;
-    width: auto;
-  }
-  .breadcrumbs{
-    display: block;
   }
 }
