@@ -11,7 +11,7 @@ export default createConnect({
   }),
   handlers: {
     onChangeSort: ({ update }) => (field?: string, order?: string) =>
-      !field || field === 'default'
+      !field
       ? update('sort')
       : update('sort', [{ field, order }])
   }
