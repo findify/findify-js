@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.7.1"></a>
+## [0.7.1](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.7.0...@findify/react-components@0.7.1) (2018-11-20)
+
+
+### Bug Fixes
+
+* **react-components:** fix IE10 styling of facets and change mobile sort to match new default value ([50efb82](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/50efb82))
+
+
+
+
+
 <a name="0.7.0"></a>
 # [0.7.0](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.6.6...@findify/react-components@0.7.0) (2018-11-20)
 
