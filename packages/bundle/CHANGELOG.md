@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="6.7.7"></a>
+## [6.7.7](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.7.6...@findify/bundle@6.7.7) (2018-11-20)
+
+
+### Bug Fixes
+
+* **oos-sticker:** add translations to oos sticker ([c5c6d55](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/c5c6d55))
+
+
+
+
+
 <a name="6.7.6"></a>
 ## [6.7.6](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.7.5...@findify/bundle@6.7.6) (2018-11-15)
 

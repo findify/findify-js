@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.7.0"></a>
+# [0.7.0](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.6.6...@findify/react-components@0.7.0) (2018-11-20)
+
+
+### Bug Fixes
+
+* **oos-sticker:** add translations to oos sticker ([c5c6d55](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/c5c6d55))
+
+
+### Features
+
+* **react-components, react-connect:** fix smartcollection ignoring default sort order ([6ba2cd4](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/6ba2cd4))
+
+
+
+
+
 <a name="0.6.6"></a>
 ## [0.6.6](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.6.5...@findify/react-components@0.6.6) (2018-11-15)
 
