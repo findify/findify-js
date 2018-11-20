@@ -848,9 +848,11 @@ export default process.env.NODE_ENV !== 'development'
            }
        },
        "stickers": {
-           "out-of-stock": {
-               "template": "Temporarily out of stock"
-           }
+          "out-of-stock": {
+            "template": {
+              "single": "Temporarily out of stock"
+            }
+          }
        },
        "frameDisabled": true,
        "useSimpleLoader": false,
