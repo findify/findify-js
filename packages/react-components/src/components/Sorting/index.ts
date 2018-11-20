@@ -30,10 +30,7 @@ export default compose(
     )
   })),
   withHandlers({
-    onChangeSort: ({ onChangeSort }) => item =>
-      item.get('field') === 'default'
-      ? onChangeSort()
-      : onChangeSort(item.get('field'), item.get('order'))
+    onChangeSort: ({ onChangeSort }) => item => onChangeSort(item.get('field', 'default'), item.get('order', ''))
   }),
 
   branch(

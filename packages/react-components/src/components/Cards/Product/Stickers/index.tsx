@@ -13,15 +13,15 @@ import { isImmutable, fromJS } from 'immutable'
 const defaultDiscountConfig = fromJS({
   "position": "top-right",
   "template": {
-      "single": "%s% OFF",
-      "multiple": "Up to %s% off"
+    "single": "%s% OFF",
+    "multiple": "Up to %s% off"
   },
   "styles": {
-      "background": "#c483b3",
-      "color": "#ffffff",
-      "fontFamily": "'Helvetica Neue', Helvetica, Arial, sans-serif;",
-      "fontSize": "14",
-      "fontWeight": "700"
+    "background": "#c483b3",
+    "color": "#ffffff",
+    "fontFamily": "'Helvetica Neue', Helvetica, Arial, sans-serif;",
+    "fontSize": "14",
+    "fontWeight": "700"
   }
 })
 
@@ -48,9 +48,7 @@ export const DiscountSticker = withTheme(theme)(({ className, discount, theme, c
 })
 
 export const OutOfStockSticker = withTheme(theme)(({ className, theme, config }) => {
-  let realConfig = config.get('stickers')
-  if (!realConfig || !realConfig.get('outOfStock')) realConfig = defaultOutOfStockConfig
-  else realConfig = realConfig.get('outOfStock')
+  const realConfig = config.getIn(['stickers', 'out-of-stock'], defaultOutOfStockConfig)
   return (
     <div className={cx(theme.outOfStockSticker, className)}>
       <Text>
