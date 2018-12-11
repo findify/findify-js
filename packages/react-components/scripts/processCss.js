@@ -14,7 +14,7 @@ fs.readFile('lib/raw.css', (err, css) =>{
   postcss([hoist, duplicates, empty, perfectionist])
     .process(css, { from: 'lib/raw.css' })
     .then(result => fs.writeFile('lib/raw.css', result.css, () => true))
-  
+
   postcss([
     properties,
     nested,
@@ -26,6 +26,7 @@ fs.readFile('lib/raw.css', (err, css) =>{
         '.findify-container',
         '.findify-components-common--drawer__backdrop',
         '.findify-components-common--drawer__content',
+        '.findify-components-common--drawer__body-no-scroll'
       ]
     })
   ])
