@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.2.11"></a>
+## [1.2.11](https://github.com/findify/findify-js/compare/@findify/processors@1.2.10...@findify/processors@1.2.11) (2018-12-11)
+
+**Note:** Version bump only for package @findify/processors
+
+
+
+
+
 <a name="1.2.10"></a>
 ## [1.2.10](https://github.com/findify/findify-js/compare/@findify/processors@1.2.9...@findify/processors@1.2.10) (2018-11-20)
 

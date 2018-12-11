@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.7.3"></a>
+## [0.7.3](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.7.2...@findify/react-components@0.7.3) (2018-12-11)
+
+
+### Bug Fixes
+
+* **react-components:** add noscroll to non-wrapped css classes ([3ed5860](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/3ed5860))
+
+
+
+
+
 <a name="0.7.2"></a>
 ## [0.7.2](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.7.1...@findify/react-components@0.7.2) (2018-11-20)
 
