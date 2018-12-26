@@ -32,6 +32,7 @@ export const createProvider = (type, onCreate?: (agent) => void) => {
       storeKey: oneOfType([string, number]),
       query: object
     }
+
     constructor(props) {
       super(props);
       const { apiKey, agent, options, defaults, config, storeKey } = props;
@@ -56,6 +57,7 @@ export const createProvider = (type, onCreate?: (agent) => void) => {
         key: _key,
         user: this.analytics.user,
         immutable: true,
+        retryCount: type === 'Autocomplete' ? 0 : void 0,
         ...options
       });
       this.data = { analytics: this.analytics, config: _config, agent: this.agent };

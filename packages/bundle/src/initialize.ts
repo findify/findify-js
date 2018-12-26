@@ -91,6 +91,9 @@ export default async (
    * Notify devtools about installation
    */
   if (/Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor)) {
+    if (typeof window.__findify_devtools_init === 'function') {
+      window.__findify_devtools_init(cfg.key);
+    }
     setTimeout(() => {
       window.postMessage(
         { type: 'init', key: cfg.key, __findify: true },
