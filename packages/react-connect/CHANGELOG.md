@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.3.2"></a>
+## [0.3.2](https://github.com/findify/findify-js/compare/@findify/react-connect@0.3.1...@findify/react-connect@0.3.2) (2018-12-26)
+
+
+### Bug Fixes
+
+* **bundle, react-connect:** add new devtools callback, add variant_id on on item click, remove retry ([2a52d9d](https://github.com/findify/findify-js/commit/2a52d9d))
+
+
+
+
+
 <a name="0.3.1"></a>
 ## [0.3.1](https://github.com/findify/findify-js/compare/@findify/react-connect@0.3.0...@findify/react-connect@0.3.1) (2018-12-11)
 

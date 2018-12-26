@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="6.7.11"></a>
+## [6.7.11](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.7.10...@findify/bundle@6.7.11) (2018-12-26)
+
+
+### Bug Fixes
+
+* **bundle, react-connect:** add new devtools callback, add variant_id on on item click, remove retry ([2a52d9d](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/2a52d9d))
+
+
+
+
+
 <a name="6.7.10"></a>
 ## [6.7.10](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.7.9...@findify/bundle@6.7.10) (2018-12-11)
 
