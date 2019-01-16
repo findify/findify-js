@@ -12,6 +12,7 @@ import { Events } from './core/events';
 import log from './helpers/log';
 import { scrollTo } from './helpers/scrollTo';
 import * as location from './core/location';
+import config from 'config';
 /**
  * Create global namespace
  */
@@ -91,15 +92,9 @@ export default async (
    * Notify devtools about installation
    */
   if (/Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor)) {
-    if (typeof window.__findify_devtools_init === 'function') {
-      window.__findify_devtools_init(cfg.key);
-    }
-    setTimeout(() => {
-      window.postMessage(
-        { type: 'init', key: cfg.key, __findify: true },
-        window.location.origin
-      );
-    }, 1500);
+    window.postMessage({
+      type: 'init', __findify: true, store: { version: cfg.mjs_version, id: cfg.merchant_id }
+    }, window.location.origin);
   }
 
   (global as any).FindifyAnalytics = Analytics;

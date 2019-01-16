@@ -29,6 +29,7 @@ const createGlobals = (isDevelopment) => [
   '__ENVIRONMENT__',
   '__CONFIG__',
   '__DISABLE_SENTRY__',
+  '__MERCHANT_ID__',
 ].reduce((acc, name) =>
   ({ ...acc, [name]: isDevelopment ? 'false' : name }), {}
 )
