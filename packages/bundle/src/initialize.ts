@@ -12,7 +12,7 @@ import { Events } from './core/events';
 import log from './helpers/log';
 import { scrollTo } from './helpers/scrollTo';
 import * as location from './core/location';
-import config from 'config';
+
 /**
  * Create global namespace
  */
