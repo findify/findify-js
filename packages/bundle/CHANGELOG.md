@@ -3,6 +3,121 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="6.8.0"></a>
+# [6.8.0](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.7.11...@findify/bundle@6.8.0) (2019-01-16)
+
+
+### Bug Fixes
+
+* **bundle:** fix unnecessary config import ([a44bc99](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/a44bc99))
+
+
+### Features
+
+* **bundle:** update devtools initialization process ([e7232d2](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/e7232d2))
+
+
+
+
+
+<a name="6.7.11"></a>
+## [6.7.11](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.7.10...@findify/bundle@6.7.11) (2018-12-26)
+
+
+### Bug Fixes
+
+* **bundle, react-connect:** add new devtools callback, add variant_id on on item click, remove retry ([2a52d9d](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/2a52d9d))
+
+
+
+
+
+<a name="6.7.10"></a>
+## [6.7.10](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.7.9...@findify/bundle@6.7.10) (2018-12-11)
+
+**Note:** Version bump only for package @findify/bundle
+
+
+
+
+
+<a name="6.7.9"></a>
+## [6.7.9](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.7.8...@findify/bundle@6.7.9) (2018-11-20)
+
+**Note:** Version bump only for package @findify/bundle
+
+
+
+
+
+<a name="6.7.8"></a>
+## [6.7.8](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.7.7...@findify/bundle@6.7.8) (2018-11-20)
+
+**Note:** Version bump only for package @findify/bundle
+
+
+
+
+
+<a name="6.7.7"></a>
+## [6.7.7](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.7.6...@findify/bundle@6.7.7) (2018-11-20)
+
+
+### Bug Fixes
+
+* **oos-sticker:** add translations to oos sticker ([c5c6d55](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/c5c6d55))
+
+
+
+
+
+<a name="6.7.6"></a>
+## [6.7.6](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.7.5...@findify/bundle@6.7.6) (2018-11-15)
+
+
+### Bug Fixes
+
+* **bundle:** delay send Devtools init event coz there is no idle event in chome tabs API ([f152869](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/f152869))
+
+
+
+
+
+<a name="6.7.5"></a>
+## [6.7.5](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.7.4...@findify/bundle@6.7.5) (2018-11-15)
+
+**Note:** Version bump only for package @findify/bundle
+
+
+
+
+
+<a name="6.7.4"></a>
+## [6.7.4](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.7.3...@findify/bundle@6.7.4) (2018-11-14)
+
+
+### Bug Fixes
+
+* **react-components:** update Content card ([90e9485](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/90e9485))
+
+
+
+
+
+<a name="6.7.3"></a>
+## [6.7.3](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.7.2...@findify/bundle@6.7.3) (2018-11-13)
+
+
+### Bug Fixes
+
+* **bundle:** bump components version ([2152ab4](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/2152ab4))
+* **bundle:** replace Raven with Sentry sdk ([73d2867](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/73d2867))
+* **bundle:** rollback polyfill ([9ff8bd7](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/9ff8bd7))
+
+
+
+
+
 <a name="6.7.2"></a>
 ## [6.7.2](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.7.1...@findify/bundle@6.7.2) (2018-11-13)
 

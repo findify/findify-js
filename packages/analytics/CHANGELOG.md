@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="3.3.1"></a>
+## [3.3.1](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/analytics@3.3.0...@findify/analytics@3.3.1) (2018-12-11)
+
+
+### Bug Fixes
+
+* **react-components:** add noscroll to non-wrapped css classes ([3ed5860](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/3ed5860))
+
+
+
+
+
 <a name="3.3.0"></a>
 # [3.3.0](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/analytics@3.2.8...@findify/analytics@3.3.0) (2018-07-30)
 

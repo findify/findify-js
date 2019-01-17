@@ -3,6 +3,119 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.7.5"></a>
+## [0.7.5](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.7.4...@findify/react-components@0.7.5) (2019-01-16)
+
+**Note:** Version bump only for package @findify/react-components
+
+
+
+
+
+<a name="0.7.4"></a>
+## [0.7.4](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.7.3...@findify/react-components@0.7.4) (2018-12-26)
+
+**Note:** Version bump only for package @findify/react-components
+
+
+
+
+
+<a name="0.7.3"></a>
+## [0.7.3](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.7.2...@findify/react-components@0.7.3) (2018-12-11)
+
+
+### Bug Fixes
+
+* **react-components:** add noscroll to non-wrapped css classes ([3ed5860](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/3ed5860))
+
+
+
+
+
+<a name="0.7.2"></a>
+## [0.7.2](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.7.1...@findify/react-components@0.7.2) (2018-11-20)
+
+
+### Bug Fixes
+
+* **react-components:** fix IE11 range facet input width ([907d643](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/907d643))
+
+
+
+
+
+<a name="0.7.1"></a>
+## [0.7.1](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.7.0...@findify/react-components@0.7.1) (2018-11-20)
+
+
+### Bug Fixes
+
+* **react-components:** fix IE10 styling of facets and change mobile sort to match new default value ([50efb82](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/50efb82))
+
+
+
+
+
+<a name="0.7.0"></a>
+# [0.7.0](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.6.6...@findify/react-components@0.7.0) (2018-11-20)
+
+
+### Bug Fixes
+
+* **oos-sticker:** add translations to oos sticker ([c5c6d55](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/c5c6d55))
+
+
+### Features
+
+* **react-components, react-connect:** fix smartcollection ignoring default sort order ([6ba2cd4](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/6ba2cd4))
+
+
+
+
+
+<a name="0.6.6"></a>
+## [0.6.6](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.6.5...@findify/react-components@0.6.6) (2018-11-15)
+
+**Note:** Version bump only for package @findify/react-components
+
+
+
+
+
+<a name="0.6.5"></a>
+## [0.6.5](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.6.4...@findify/react-components@0.6.5) (2018-11-15)
+
+
+### Bug Fixes
+
+* **react-components:** fix IE autocomplete position ([2ab2362](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/2ab2362))
+
+
+
+
+
+<a name="0.6.4"></a>
+## [0.6.4](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.6.3...@findify/react-components@0.6.4) (2018-11-14)
+
+
+### Bug Fixes
+
+* **react-components:** update Content card ([90e9485](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/90e9485))
+
+
+
+
+
+<a name="0.6.3"></a>
+## [0.6.3](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.6.2...@findify/react-components@0.6.3) (2018-11-13)
+
+**Note:** Version bump only for package @findify/react-components
+
+
+
+
+
 <a name="0.6.2"></a>
 ## [0.6.2](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.6.1...@findify/react-components@0.6.2) (2018-11-13)
 
