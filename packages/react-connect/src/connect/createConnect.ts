@@ -125,7 +125,7 @@ const createComponent = ({
   Connect.prototype.displayName = displayName;
 
   return (props) => createElement(Context.Consumer, null, (agents) =>
-    createElement(Connect, { ...agents[storeKey], ...props })
+    createElement(Connect, { ...props, ...agents[storeKey] })
   )
 }
 

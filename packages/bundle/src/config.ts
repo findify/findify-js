@@ -8,7 +8,7 @@ export default process.env.NODE_ENV !== 'development'
        "poweredByFindify": true,
 
        hidableFacets: true,
-
+        "merchant_id": 3806,
        // Specific platform code
        "platform": {
            "shopify": true,
