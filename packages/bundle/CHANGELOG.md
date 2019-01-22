@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="6.8.1"></a>
+## [6.8.1](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.8.0...@findify/bundle@6.8.1) (2019-01-22)
+
+
+### Bug Fixes
+
+* **react-connect:** fix provider nesting to overwrite top-lvl agent ([dad83a1](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/dad83a1))
+
+
+
+
+
 <a name="6.8.0"></a>
 # [6.8.0](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.7.11...@findify/bundle@6.8.0) (2019-01-16)
 

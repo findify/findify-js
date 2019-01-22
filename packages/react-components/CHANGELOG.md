@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.7.6"></a>
+## [0.7.6](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.7.5...@findify/react-components@0.7.6) (2019-01-22)
+
+
+### Bug Fixes
+
+* **react-connect:** fix provider nesting to overwrite top-lvl agent ([dad83a1](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/dad83a1))
+
+
+
+
+
 <a name="0.7.5"></a>
 ## [0.7.5](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.7.4...@findify/react-components@0.7.5) (2019-01-16)
 

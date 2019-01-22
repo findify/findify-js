@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.3.3"></a>
+## [0.3.3](https://github.com/findify/findify-js/compare/@findify/react-connect@0.3.2...@findify/react-connect@0.3.3) (2019-01-22)
+
+
+### Bug Fixes
+
+* **react-connect:** fix provider nesting to overwrite top-lvl agent ([dad83a1](https://github.com/findify/findify-js/commit/dad83a1))
+
+
+
+
+
 <a name="0.3.2"></a>
 ## [0.3.2](https://github.com/findify/findify-js/compare/@findify/react-connect@0.3.1...@findify/react-connect@0.3.2) (2018-12-26)
 
