@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="6.8.2"></a>
+## [6.8.2](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.8.1...@findify/bundle@6.8.2) (2019-01-22)
+
+
+### Bug Fixes
+
+* **bundle:** add redicrect to sc feature ([c8e6f36](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/c8e6f36))
+
+
+
+
+
 <a name="6.8.1"></a>
 ## [6.8.1](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.8.0...@findify/bundle@6.8.1) (2019-01-22)
 
