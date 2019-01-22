@@ -39,6 +39,15 @@ export default (widget, render) => {
     }
   })
 
+  agent.on('change:redirect', async (redirect, meta) => {
+    await __root.analytics.sendEvent('redirect', {
+      ...redirect.toJS(),
+      rid: meta.get('rid'),
+      suggestion: meta.get('q')
+    });
+    document.location.href = redirect.get('url');
+  });
+
   agent.on('error', () => {
     showFallback(node);
     hideLoader(node);
