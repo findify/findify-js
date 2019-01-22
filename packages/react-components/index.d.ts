@@ -1317,6 +1317,10 @@ export const emit: (...args: any[]) => any;
 export const listen: (...args: any[]) => any;
 
 }
+declare module 'helpers/escapeRegExp' {
+export const escapeRegExp: (s: any) => any;
+
+}
 declare module 'helpers/formatCurrency' {
 export interface ICurrencyData {
     code?: string;
@@ -1680,6 +1684,14 @@ export interface IContentSearchProps extends ThemedSFCProps {
 }
 const ContentSearchLayout: ({ config, meta, isMobile, mobileFacetsOpened, filtersOnRight, theme }: IContentSearchProps) => JSX.Element;
 export default ContentSearchLayout;
+
+}
+declare module 'layouts/Custom/view' {
+/// <reference types="react" />
+const _default: ({ theme }: {
+    theme: any;
+}) => JSX.Element;
+export default _default;
 
 }
 declare module 'layouts/Recommendation/Grid' {
