@@ -8,7 +8,6 @@ import { scrollTo } from '../../helpers/scrollTo';
 import { hideFallback, showFallback, hideLoader } from '../../helpers/fallbackNode';
 import { Search, ZeroResults } from '@findify/react-components/src/';
 
-
 export default (widget, render) => {
   const { agent, config, node } = widget;
   const apiKey = config.get('key');
@@ -56,7 +55,10 @@ export default (widget, render) => {
 
   /** Setup initial request */
   if (!config.get('disableAutoRequest')) {
-    agent.defaults({ slot: collectionPath() });
+    agent.defaults({
+      slot: collectionPath(),
+      rules: config.get('includeRulesInCollection') ? __root.analytics.state.filters : void 0
+    });
     agent.applyState(state);
   }
 
