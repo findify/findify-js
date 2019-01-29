@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="6.8.4"></a>
+## [6.8.4](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.8.3...@findify/bundle@6.8.4) (2019-01-29)
+
+
+### Bug Fixes
+
+* **bundle:** update sentry version ([feeb660](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/feeb660))
+
+
+
+
+
 <a name="6.8.3"></a>
 ## [6.8.3](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.8.2...@findify/bundle@6.8.3) (2019-01-24)
 
