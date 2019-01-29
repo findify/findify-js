@@ -43,12 +43,11 @@
     "@findify/change-emitter": "^1.0.0",
     "@findify/react-components": "^0.7.8",
     "@findify/react-connect": "^0.3.3",
-    "@sentry/browser": "^4.3.0",
+    "@sentry/browser": "^4.5.3",
     "core-js": "^2.5.7",
     "jump.js": "^1.0.2",
     "load-js": "^3.0.2",
     "raf": "^3.4.0",
-    "raven-js": "^3.26.3",
     "react": "^16.4.1"
   },
   "devDependencies": {
