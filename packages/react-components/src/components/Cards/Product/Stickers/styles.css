@@ -16,7 +16,7 @@
   }
 }
 
-.out-of-stock-sticker {
+.outOfStockSticker, .out-of-stock-sticker {
   width: 100%;
   text-align: center;
   span {
