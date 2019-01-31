@@ -41,7 +41,7 @@ export const DiscountSticker = withTheme(theme)(({ className, discount, theme, c
         <Branch
           condition={discount.size > 1}
           left={() => realConfig.getIn(['template', 'multiple']).replace('%s', Math.max.apply(Math, discount.toJS()))}
-          right={() => realConfig.getIn(['template', 'single']).replace('%s', Math.max.apply(Math, discount.toJS()))} />
+          right={() => (realConfig.getIn(['template', 'single']) || realConfig.get('template')).replace('%s', Math.max.apply(Math, discount.toJS()))} />
       </Text>
     </div>
   )
@@ -52,7 +52,9 @@ export const OutOfStockSticker = withTheme(theme)(({ className, theme, config })
   return (
     <div className={cx(theme.outOfStockSticker, className)}>
       <Text>
-        {realConfig.getIn(['template', 'single'])}
+        {
+          realConfig.getIn(['template', 'single']) || realConfig.get('template')
+        }
       </Text>
     </div>
   )
