@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.8.0"></a>
+# [0.8.0](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.7.10...@findify/react-components@0.8.0) (2019-02-08)
+
+
+### Features
+
+* **bundle, react-components:** update build process of modules and fix issue with function export ([a35eaa3](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/a35eaa3))
+
+
+
+
+
 <a name="0.7.10"></a>
 ## [0.7.10](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.7.9...@findify/react-components@0.7.10) (2019-01-31)
 
