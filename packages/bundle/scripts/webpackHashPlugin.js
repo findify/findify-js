@@ -8,6 +8,25 @@ const getPath = (base, path) => {
 
 const cache = new Map();
 
+const findModulePath = (path, module) => {
+	const { rawRequest, context } = module;
+	if (
+		module.issuer &&
+		rawRequest &&
+		module.issuer.context &&
+		!module.issuer.context.includes('node_modules') &&
+		path.includes('node_modules') &&
+		!['!', '.'].includes(rawRequest[0])
+	){
+		return rawRequest;
+	}
+
+	return getPath('react-components/src/', path) ||
+		getPath('node_modules/', path) ||
+		getPath('../', path) ||
+		path;
+}
+
 class HashedPlugin {
 	constructor(options) {
 		this.options = Object.assign(
@@ -35,28 +54,20 @@ class HashedPlugin {
 							});
 	
 							if (id.includes('.css') && id.includes('css-loader')) continue;
+
 							if (cache.has(id)) {
 								module.id = cache.get(id);
 								continue;
 							}
 
-              const _path = getPath('react-components/src/', id) ||
-                            getPath('node_modules/', id) ||
-                            getPath('../', id) ||
-														id;
+              const _path = findModulePath(id, module);
 
-														
 							let _hash = require("crypto")
 								.createHash('md5')
 								.update(_path)
 								.digest('base64')
 								.substr(0, 4);
 
-
-							// Keep package hashes
-							if (id.includes('recompose')) _hash = 'Hs7U';
-							if (id.includes('react-spring')) _hash = 'uVbu';
-							// Hotfix for path to modules;
 							cache.set(id, _hash);
 
               module.id = _hash;

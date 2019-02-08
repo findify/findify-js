@@ -28,7 +28,7 @@ const addItems = ({ ranges, items }, nextItems, meta) => {
  * withLazy() returns a HOC for wrapping around component you want to include lazy loading to
  * @returns HOC, accepting a view you want to add lazy loading to
  */
-export default function withLazy() {
+export default () => {
   /**
    * withLazy HOC allows you to add LazyLoading functionality to your Search views, for example.
    * It controls items displaying correct range in the LazyView and automatically requests for more data if needed

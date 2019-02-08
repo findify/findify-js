@@ -41,11 +41,11 @@
     "webpack": "^4.1.1",
     "webpack-bundle-analyzer": "^2.13.1",
     "webpack-cli": "^3.0.8",
-    "yarn": "^1.7.0"
+    "yarn": "^1.7.0",
+    "jscodeshift": "^0.5.1"
   },
   "dependencies": {
     "@findify/analytics": "^3.2.1",
-    "jscodeshift": "^0.5.1",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "webpack-dev-server": "^3.1.4"
