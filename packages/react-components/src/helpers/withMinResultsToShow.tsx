@@ -6,7 +6,7 @@ import { branch, compose, withPropsOnChange, setDisplayName } from 'recompose';
  * withLazy() returns a HOC for wrapping around component you want to add minimum results to show functionality to
  * @returns HOC, accepting a view you want to add minimum results to show functionality to
  */
-export default function withMinResultsToShow() {
+export default () => {
 
   /**
    * withMinResultsToShow allows you to only show component,

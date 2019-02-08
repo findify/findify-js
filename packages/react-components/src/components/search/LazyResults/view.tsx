@@ -43,7 +43,7 @@ const LazyResultsView = ({
   displayNextButton,
   displayPrevButton,
   ...rest
-}: ILazyResultsProps) => console.log(items) ||
+}: ILazyResultsProps) =>
 <div className={theme.root}>
   <Button display-if={displayPrevButton} className={theme.prevButton} onClick={onLoadPrev}>
     <Text primary lowercase>

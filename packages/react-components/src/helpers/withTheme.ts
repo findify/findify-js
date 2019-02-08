@@ -12,7 +12,7 @@ const getTheme = (props, defaultTheme) => {
   return Object.assign({}, defaultTheme, themeFilter(props.theme || {}))
 }
 
-export default function withTheme(defaultTheme) {
+export default (defaultTheme) => {
   return Component => {
     return class extends React.Component {
       constructor(props) {

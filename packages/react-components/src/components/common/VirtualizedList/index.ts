@@ -6,7 +6,7 @@ import view from 'components/common/VirtualizedList/view';
 import styles from 'components/common/VirtualizedList/styles.css';
 const viewFactory: any = createFactory(view);
 
-export default class List extends Component<any, any>{
+class List extends Component<any, any>{
   autoSizer: any;
   list: any;
   cache = new CellMeasurerCache({ fixedWidth: true });
@@ -61,3 +61,5 @@ export default class List extends Component<any, any>{
     })
   }
 };
+
+export default List;
