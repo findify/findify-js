@@ -3,7 +3,7 @@ import Drawer from 'components/common/Drawer'
 import Icon from 'components/Icon'
 import SearchSuggestions from 'components/autocomplete/SearchSuggestions'
 
-export default class Sidebar extends React.Component {
+class Sidebar extends React.Component {
   state = { isOpen: false };
   suggestionsContainer: any;
   input: any;
@@ -96,3 +96,5 @@ export default class Sidebar extends React.Component {
     )
   }
 }
+
+export default Sidebar;

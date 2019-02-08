@@ -30,7 +30,7 @@ export interface IDrawerViewProps extends ThemedSFCProps {
   [x: string]: any;
 }
 
-export default class DrawerView extends React.Component<IDrawerViewProps, IDrawerViewState> {
+class DrawerView extends React.Component<IDrawerViewProps, IDrawerViewState> {
   state = { open: false };
   mounted = false;
   originalScrollTop: number = 0;
@@ -96,3 +96,5 @@ export default class DrawerView extends React.Component<IDrawerViewProps, IDrawe
     )
   }
 }
+
+export default DrawerView;
