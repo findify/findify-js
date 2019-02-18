@@ -2,7 +2,7 @@ const NAME_SELECTOR = 'data-findify-filter';
 const VALUE_SELECTOR = 'data-findify-filter-value';
 
 import { FiltersData } from '@findify/analytics';
-
+console.log('HUI');
 export const getFiltersOnPage = (root): FiltersData[] =>
   Array.prototype.slice
     .call(root.querySelectorAll(`[data-findify-filter]`))
