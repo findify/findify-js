@@ -12,10 +12,14 @@ describe('Events', () => {
     expect(founded).toEqual(
       {
         "update-cart": {
-          "item_id": "PRODUCT_ID_1",
-          "quantity": "1",
-          "unit_price": "1",
-          "variant_item_id": "VARIANT_ID_1"
+          "line_items": [
+            {
+              "item_id": "PRODUCT_ID_1",
+              "quantity": "1",
+              "unit_price": "1",
+              "variant_item_id": "VARIANT_ID_1"
+            }
+          ]
         }
       }
     );
