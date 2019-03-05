@@ -38,7 +38,12 @@ export default async (
 
   // We loading config independently from webpack and this promise is always resolved
   const asyncConfig = await import(/* webpackMode: "weak" */'./config');
-  const cfg = { ..._config, ...asyncConfig.default };
+
+  const cfg = {
+    ..._config,
+    ...asyncConfig.default,
+    currency: asyncConfig.default.currency_config
+  };
 
   // Register custom components
   if (cfg.components) {
