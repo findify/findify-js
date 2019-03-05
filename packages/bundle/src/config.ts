@@ -61,6 +61,16 @@ export default process.env.NODE_ENV !== 'development'
            // decimalDigits: 2
        },
 
+       "currency_config": {
+            "code": "USD",
+            "symbol": "Ж",
+            "thousandsSeparator": ",",
+            "decimalSeparator": ".",
+            "symbolOnLeft": false,
+            "spaceBetweenAmountAndSymbol": false,
+            "decimalDigits": 3
+       },
+
        // Features configuration will be pulled and marged with the root lvl
        "features": {
            "autocomplete": {
