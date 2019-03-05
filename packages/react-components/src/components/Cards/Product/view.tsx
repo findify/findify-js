@@ -111,7 +111,7 @@ const ProductCardView: React.SFC<IProductCardProps> = ({
         price={item.get('price')}
         oldPrice={item.get('compare_at')}
         discount={item.get('discount')}
-        currency={config.get('currency').toJS()} />
+        currency={config.get('currency_config').toJS()} />
       <OutOfStockSticker
         display-if={item.getIn(['stickers', 'out-of-stock'])}
         config={config} />

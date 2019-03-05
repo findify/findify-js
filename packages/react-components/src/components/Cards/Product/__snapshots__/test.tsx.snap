@@ -48,8 +48,14 @@ exports[`ProductCard view renders correctly 1`] = `
                 "display": true,
               },
             },
-            "currency": Immutable.Map {
-              "code": "GBP",
+            "currency_config": Immutable.Map {
+              "code": "USD",
+              "symbol": "$",
+              "thousandsSeparator": ",",
+              "decimalSeparator": ".",
+              "symbolOnLeft": true,
+              "spaceBetweenAmountAndSymbol": false,
+              "decimalDigits": 2,
             },
           }
         }
@@ -81,7 +87,13 @@ exports[`ProductCard view renders correctly 1`] = `
       className="priceWrapper"
       currency={
         Object {
-          "code": "GBP",
+          "code": "USD",
+          "decimalDigits": 2,
+          "decimalSeparator": ".",
+          "spaceBetweenAmountAndSymbol": false,
+          "symbol": "$",
+          "symbolOnLeft": true,
+          "thousandsSeparator": ",",
         }
       }
       price="9.99"
@@ -102,8 +114,14 @@ exports[`ProductCard view renders correctly 1`] = `
               "display": true,
             },
           },
-          "currency": Immutable.Map {
-            "code": "GBP",
+          "currency_config": Immutable.Map {
+            "code": "USD",
+            "symbol": "$",
+            "thousandsSeparator": ",",
+            "decimalSeparator": ".",
+            "symbolOnLeft": true,
+            "spaceBetweenAmountAndSymbol": false,
+            "decimalDigits": 2,
           },
         }
       }

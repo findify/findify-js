@@ -29,7 +29,15 @@ const configMock = fromJS({
       display: true
     },
   },
-  currency: { code: 'GBP' },
+  currency_config: { 
+    code: "USD",
+    symbol: '$',
+    thousandsSeparator: ',',
+    decimalSeparator: '.',
+    symbolOnLeft: true,
+    spaceBetweenAmountAndSymbol: false,
+    decimalDigits: 2
+  },
 })
 
 describe('ProductCard view', () => {
