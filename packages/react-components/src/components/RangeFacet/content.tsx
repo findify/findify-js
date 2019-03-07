@@ -17,6 +17,6 @@ export default ({ item, config }) => createLabel(
   item.get('to'),
   config,
   item.get('name') === 'price'
-    && formatCurrency(config.get('currency').toJS())
+    && formatCurrency(config.get('currency_config').toJS())
     || identity
 )

@@ -1,30 +1,72 @@
-import { format, findCurrency, defaultCurrency } from 'currency-formatter';
+import accounting from 'accounting';
 
 export interface ICurrencyData {
-  code?: string;
   symbol?: string;
   thousandsSeparator?: string;
   decimalSeparator?: string;
   symbolOnLeft?: boolean;
   decimalDigits?: number;
-  format?: string;
+  spaceBetweenAmountAndSymbol?: boolean;
+  format?: {
+    pos: string,
+    neg: string,
+    zero: string
+  };
 }
 
-const mapConfigToAccountingFormat = (config: ICurrencyData) => ({
-  symbol: config.symbol,
-  thousand: config.thousandsSeparator,
-  decimal: config.decimalSeparator,
-  precision: config.decimalDigits,
-  format: config.format || (config.symbolOnLeft ? '%s%v' : '%v%s')
+const formatMapping = [
+  {
+    symbolOnLeft: true,
+    spaceBetweenAmountAndSymbol: false,
+    format: {
+      pos: '%s%v',
+      neg: '-%s%v',
+      zero: '%s%v'
+    }
+  },
+  {
+    symbolOnLeft: true,
+    spaceBetweenAmountAndSymbol: true,
+    format: {
+      pos: '%s %v',
+      neg: '-%s %v',
+      zero: '%s %v'
+    }
+  },
+  {
+    symbolOnLeft: false,
+    spaceBetweenAmountAndSymbol: false,
+    format: {
+      pos: '%v%s',
+      neg: '-%v%s',
+      zero: '%v%s'
+    }
+  },
+  {
+    symbolOnLeft: false,
+    spaceBetweenAmountAndSymbol: true,
+    format: {
+      pos: '%v %s',
+      neg: '-%v %s',
+      zero: '%v %s'
+    }
+  }
+];
+
+const defaultCurrency = {
+  symbol: '',
+  thousandsSeparator: ',',
+  decimalSeparator: '.',
+  symbolOnLeft: true,
+  spaceBetweenAmountAndSymbol: false,
+  decimalDigits: 2
+}
+
+export default (currency: ICurrencyData = defaultCurrency) => (value: string) =>
+accounting.formatMoney(value, {
+  ...currency,
+  format: currency.format || (formatMapping as any).find(f =>
+      f.symbolOnLeft === currency.symbolOnLeft &&
+      f.spaceBetweenAmountAndSymbol === currency.spaceBetweenAmountAndSymbol
+    ).format
 })
-
-const USD = findCurrency('USD')
-
-export default (currency: ICurrencyData) => (value: string) => format(
-  value,
-  mapConfigToAccountingFormat(Object.assign(
-    {},
-    findCurrency(currency.code) || defaultCurrency,
-    currency,
-  ))
-)
