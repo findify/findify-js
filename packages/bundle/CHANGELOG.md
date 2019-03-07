@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="6.9.2"></a>
+## [6.9.2](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.9.1...@findify/bundle@6.9.2) (2019-03-07)
+
+
+### Bug Fixes
+
+* **bundle:** rename currency in config to easy migration for old customers ([f2ccf1d](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/f2ccf1d))
+* **react-components:** use accounting.js to format currency ([e452bee](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/e452bee))
+
+
+
+
+
 <a name="6.9.1"></a>
 ## [6.9.1](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.9.0...@findify/bundle@6.9.1) (2019-02-18)
 

@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.8.2"></a>
+## [0.8.2](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.8.1...@findify/react-components@0.8.2) (2019-03-07)
+
+
+### Bug Fixes
+
+* **react-components:** use accounting.js to format currency ([e452bee](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/e452bee))
+
+
+
+
+
 <a name="0.8.1"></a>
 ## [0.8.1](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.8.0...@findify/react-components@0.8.1) (2019-02-18)
 
