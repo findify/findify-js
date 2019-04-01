@@ -95,7 +95,6 @@ export class FacetValue extends createRecord('FacetValue'){
 
   toggle = debounce(e => {
     preventEvents(e);
-    console.log('debounced HUI huuuuui');
     const value = getFacetValue(this, this.type);
     this.updater('filters', updateFilters(this.index, value, this.get('selected'), this.type));
     return this;
