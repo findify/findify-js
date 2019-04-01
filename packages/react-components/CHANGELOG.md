@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.8.4"></a>
+## [0.8.4](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.8.3...@findify/react-components@0.8.4) (2019-04-01)
+
+
+### Bug Fixes
+
+* **react-connect:** added debounce to facet item toggle method ([624316f](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/624316f))
+
+
+
+
+
 <a name="0.8.3"></a>
 ## [0.8.3](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.8.2...@findify/react-components@0.8.3) (2019-03-14)
 

@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.3.4"></a>
+## [0.3.4](https://github.com/findify/findify-js/compare/@findify/react-connect@0.3.3...@findify/react-connect@0.3.4) (2019-04-01)
+
+
+### Bug Fixes
+
+* **react-connect:** added debounce to facet item toggle method ([624316f](https://github.com/findify/findify-js/commit/624316f))
+* **react-connect:** removed uncecessary logs ([31bcfe6](https://github.com/findify/findify-js/commit/31bcfe6))
+
+
+
+
+
 <a name="0.3.3"></a>
 ## [0.3.3](https://github.com/findify/findify-js/compare/@findify/react-connect@0.3.2...@findify/react-connect@0.3.3) (2019-01-22)
 
