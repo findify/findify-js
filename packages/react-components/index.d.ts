@@ -185,11 +185,10 @@ export default _default;
 }
 declare module 'components/Cards/Content/view' {
 /// <reference types="react" />
-const _default: ({ item, config, theme }: {
-    item: any;
-    config: any;
-    theme: any;
-}) => JSX.Element;
+import React from 'react';
+const _default: React.ComponentType<Pick<{
+    onClick: (e: any) => void;
+}, never>>;
 export default _default;
 
 }
@@ -304,7 +303,7 @@ export {};
 declare module 'components/Cards/Product/view' {
 /// <reference types="react" />
 import React from 'react';
-import { IProduct, MJSConfiguration, ThemedSFCProps } from 'types';
+import { IProduct, MJSConfiguration, ThemedSFCProps } from 'types/index';
 export interface IProductCardProps extends ThemedSFCProps {
     item: IProduct;
     config: MJSConfiguration;
@@ -395,10 +394,11 @@ export interface ICheckboxFacetProps extends ThemedSFCProps {
     config: MJSConfiguration;
     search?: string;
     isExpanded?: boolean;
+    isMobile?: boolean;
     onSearch: (evt: ChangeEvent<HTMLInputElement>) => any;
     onToggle: (evt: Event) => any;
 }
-const CheckboxFacetView: ({ theme, items, config, search, isExpanded, onSearch, onToggle }: ICheckboxFacetProps) => JSX.Element;
+const CheckboxFacetView: ({ theme, items, config, search, isExpanded, onSearch, onToggle, isMobile }: ICheckboxFacetProps) => JSX.Element;
 export default CheckboxFacetView;
 
 }
@@ -483,7 +483,7 @@ export interface IDrawerViewProps extends ThemedSFCProps {
     };
     [x: string]: any;
 }
-export default class DrawerView extends React.Component<IDrawerViewProps, IDrawerViewState> {
+class DrawerView extends React.Component<IDrawerViewProps, IDrawerViewState> {
     state: {
         open: boolean;
     };
@@ -505,6 +505,7 @@ export default class DrawerView extends React.Component<IDrawerViewProps, IDrawe
     handleEscapeKeypress: (evt: any) => void;
     render(): JSX.Element;
 }
+export default DrawerView;
 
 }
 declare module 'components/common/Grid/Column' {
@@ -637,7 +638,7 @@ declare module 'components/common/VirtualizedList' {
 /// <reference types="react" />
 import { Component } from 'react';
 import { CellMeasurerCache } from 'react-virtualized/dist/commonjs/CellMeasurer';
-export default class List extends Component<any, any> {
+class List extends Component<any, any> {
     autoSizer: any;
     list: any;
     cache: CellMeasurerCache;
@@ -656,6 +657,7 @@ export default class List extends Component<any, any> {
     }) => any;
     render(): any;
 }
+export default List;
 
 }
 declare module 'components/common/VirtualizedList/view' {
@@ -669,63 +671,6 @@ const _default: ({ initAutoSizer, initList, array, cache, handleScroll, rowRende
     rowRenderer: any;
     className: any;
     theme: any;
-}) => JSX.Element;
-export default _default;
-
-}
-declare module 'components/contentsearch/ContentCard' {
-/// <reference types="react" />
-import React from 'react';
-const _default: React.ComponentClass<{}>;
-export default _default;
-
-}
-declare module 'components/contentsearch/ContentCard/view' {
-/// <reference types="react" />
-const _default: ({ item, config, theme }: {
-    item: any;
-    config: any;
-    theme: any;
-}) => JSX.Element;
-export default _default;
-
-}
-declare module 'components/contentsearch/LazyContentSearchResults' {
-/// <reference types="react" />
-import React from 'react';
-const _default: React.ComponentClass<{}>;
-export default _default;
-
-}
-declare module 'components/contentsearch/LazyContentSearchResults/view' {
-/// <reference types="react" />
-const _default: ({ items, config, theme, columns, onLoadNext, onLoadPrev, displayNextButton, displayPrevButton, ...rest }: {
-    [x: string]: any;
-    items: any;
-    config: any;
-    theme: any;
-    columns: any;
-    onLoadNext: any;
-    onLoadPrev: any;
-    displayNextButton: any;
-    displayPrevButton: any;
-}) => JSX.Element;
-export default _default;
-
-}
-declare module 'components/contentsearch/Trends' {
-/// <reference types="react" />
-import React from 'react';
-const _default: React.ComponentClass<{}>;
-export default _default;
-
-}
-declare module 'components/contentsearch/Trends/view' {
-/// <reference types="react" />
-const _default: ({ theme, config, text }: {
-    theme: any;
-    config: any;
-    text: any;
 }) => JSX.Element;
 export default _default;
 
@@ -783,6 +728,7 @@ import { ThemedSFCProps, IFacet, MJSConfiguration } from 'types';
 export interface IFacetProps extends ThemedSFCProps {
     FacetComponent: React.Component<any>;
     isOpen?: boolean;
+    isMobile?: boolean;
     title: string;
     item: IFacet;
     config: MJSConfiguration;
@@ -818,6 +764,7 @@ export const icons: {
     ArrowRightBig: any;
     CheckboxFilled: any;
     CheckboxEmpty: any;
+    ExternalLink: any;
 };
 export type IIconProps = {
     name: keyof typeof icons;
@@ -945,7 +892,7 @@ export interface IRangeFacetProps extends ThemedSFCProps {
     onChangeMax: (evt?: React.ChangeEvent<any>) => any;
     onChangeMin: (evt?: React.ChangeEvent<any>) => any;
     onKeypress: (evt: any) => any;
-    onCommit: () => any;
+    onPressButton: () => any;
 }
 const RangeFacetView: React.SFC<IRangeFacetProps>;
 export default RangeFacetView;
@@ -1079,7 +1026,7 @@ export interface ILazyResultsProps extends ThemedSFCProps {
     displayPrevButton: boolean;
     [x: string]: any;
 }
-const LazyResultsView: ({ items, config, theme, columns, onLoadNext, onLoadPrev, displayNextButton, displayPrevButton, ...rest }: ILazyResultsProps) => JSX.Element;
+const LazyResultsView: ({ items, config, theme, card, columns, onLoadNext, onLoadPrev, displayNextButton, displayPrevButton, ...rest }: ILazyResultsProps) => JSX.Element;
 export default LazyResultsView;
 
 }
@@ -1323,15 +1270,19 @@ export const escapeRegExp: (s: any) => any;
 }
 declare module 'helpers/formatCurrency' {
 export interface ICurrencyData {
-    code?: string;
     symbol?: string;
     thousandsSeparator?: string;
     decimalSeparator?: string;
     symbolOnLeft?: boolean;
     decimalDigits?: number;
-    format?: string;
+    spaceBetweenAmountAndSymbol?: boolean;
+    format?: {
+        pos: string;
+        neg: string;
+        zero: string;
+    };
 }
-const _default: (currency: ICurrencyData) => (value: string) => any;
+const _default: (currency?: ICurrencyData) => (value: string) => any;
 export default _default;
 
 }
@@ -1452,7 +1403,7 @@ export default _default;
 declare module 'helpers/withLazy' {
 /// <reference types="react" />
 import React from 'react';
-export default function withLazy(): (BaseComponent: any) => {
+const _default: () => (BaseComponent: any) => {
     new (props: any): {
         container: any;
         autoLoadCount: number;
@@ -1483,18 +1434,20 @@ export default function withLazy(): (BaseComponent: any) => {
         };
     };
 };
+export default _default;
 
 }
 declare module 'helpers/withMinResultsToShow' {
 /// <reference types="react" />
 import React from 'react';
-export default function withMinResultsToShow(): (BaseComponent: React.Component<{}, {}, any>) => React.ComponentClass<{}>;
+const _default: () => (BaseComponent: React.Component<{}, {}, any>) => React.ComponentClass<{}>;
+export default _default;
 
 }
 declare module 'helpers/withTheme' {
 /// <reference types="react" />
 import React from 'react';
-export default function withTheme(defaultTheme: any): (Component: any) => {
+const _default: (defaultTheme: any) => (Component: any) => {
     new (props: any): {
         componentWillReceiveProps(nextProps: any): void;
         render(): React.ComponentElement<{
@@ -1516,6 +1469,7 @@ export default function withTheme(defaultTheme: any): (Component: any) => {
         };
     };
 };
+export default _default;
 
 }
 declare module 'helpers/withTheme.test' {
@@ -1617,7 +1571,7 @@ export default _default;
 declare module 'layouts/Autocomplete/Sidebar/view' {
 /// <reference types="react" />
 import React from 'react';
-export default class Sidebar extends React.Component {
+class Sidebar extends React.Component {
     state: {
         isOpen: boolean;
     };
@@ -1639,6 +1593,7 @@ export default class Sidebar extends React.Component {
     handleSubmit: () => void;
     render(): JSX.Element;
 }
+export default Sidebar;
 
 }
 declare module 'layouts/Autocomplete/withAutocompleteLogic' {
@@ -1661,29 +1616,8 @@ export interface IContentSearchProps extends ThemedSFCProps {
     isMobile?: boolean;
     filtersOnRight?: boolean;
 }
-const _default: ({ config, theme }: IContentSearchProps) => JSX.Element;
+const _default: ({ config, theme, }: IContentSearchProps) => JSX.Element;
 export default _default;
-
-}
-declare module 'layouts/ContentSearch' {
-/// <reference types="react" />
-import React from 'react';
-const _default: React.ComponentClass<{}>;
-export default _default;
-
-}
-declare module 'layouts/ContentSearch/view' {
-/// <reference types="react" />
-import { MJSConfiguration, MJSValue, ThemedSFCProps } from 'types';
-export interface IContentSearchProps extends ThemedSFCProps {
-    config: MJSConfiguration;
-    meta: Map<string, MJSValue>;
-    isMobile?: boolean;
-    mobileFacetsOpened?: boolean;
-    filtersOnRight?: boolean;
-}
-const ContentSearchLayout: ({ config, meta, isMobile, mobileFacetsOpened, filtersOnRight, theme }: IContentSearchProps) => JSX.Element;
-export default ContentSearchLayout;
 
 }
 declare module 'layouts/Custom/view' {
@@ -1703,13 +1637,14 @@ export default _default;
 }
 declare module 'layouts/Recommendation/Grid/view' {
 /// <reference types="react" />
-import { IProduct, MJSConfiguration, ThemedSFCProps } from 'types';
+import { IProduct, MJSConfiguration, ThemedSFCProps } from 'types/index';
 import { List } from 'immutable';
 export interface IGridProps extends ThemedSFCProps {
     items: List<IProduct>;
     config: MJSConfiguration;
+    columns: string;
 }
-const GridRecommendationLayout: ({ items, config, theme }: IGridProps) => JSX.Element;
+const GridRecommendationLayout: ({ items, config, theme, columns }: IGridProps) => JSX.Element;
 export default GridRecommendationLayout;
 
 }
@@ -1820,9 +1755,7 @@ export default _default;
 
 }
 declare module 'layouts/Search' {
-/// <reference types="react" />
-import React from 'react';
-const _default: React.ComponentClass<{}>;
+const _default: any;
 export default _default;
 
 }
@@ -1885,355 +1818,5 @@ export interface IZeroResultsProps extends ThemedSFCProps {
 }
 const ZeroResultsLayout: ({ items, title, theme, columns, config }: IZeroResultsProps) => JSX.Element;
 export default ZeroResultsLayout;
-
-}
-declare module 'vendor/react-spring' {
-const assignToFn: (target: any, source: any) => any;
-function _interopDefault(ex: any): any;
-var _extends: any;
-var _inheritsLoose: any;
-var React: any;
-var ReactDOM: any;
-var _objectWithoutProperties: any;
-var _assertThisInitialized: any;
-var bugfixes: undefined;
-var applyAnimatedValues: undefined;
-var colorNames: never[];
-var requestFrame: (cb: any) => any;
-var cancelFrame: (cb: any) => any;
-var interpolation: undefined;
-var injectApplyAnimatedValues: (fn: any, transform: any) => {
-    fn: any;
-    transform: any;
-};
-var injectColorNames: (names: any) => any;
-var injectBugfixes: (fn: any) => any;
-var injectInterpolation: (cls: any) => any;
-var injectFrame: (raf: any, caf: any) => any;
-var Globals: Readonly<{
-    readonly bugfixes: undefined;
-    readonly applyAnimatedValues: undefined;
-    readonly colorNames: never[];
-    readonly requestFrame: (cb: any) => any;
-    readonly cancelFrame: (cb: any) => any;
-    readonly interpolation: undefined;
-    injectApplyAnimatedValues: (fn: any, transform: any) => {
-        fn: any;
-        transform: any;
-    };
-    injectColorNames: (names: any) => any;
-    injectBugfixes: (fn: any) => any;
-    injectInterpolation: (cls: any) => any;
-    injectFrame: (raf: any, caf: any) => any;
-}>;
-var colors: {
-    transparent: number;
-    aliceblue: number;
-    antiquewhite: number;
-    aqua: number;
-    aquamarine: number;
-    azure: number;
-    beige: number;
-    bisque: number;
-    black: number;
-    blanchedalmond: number;
-    blue: number;
-    blueviolet: number;
-    brown: number;
-    burlywood: number;
-    burntsienna: number;
-    cadetblue: number;
-    chartreuse: number;
-    chocolate: number;
-    coral: number;
-    cornflowerblue: number;
-    cornsilk: number;
-    crimson: number;
-    cyan: number;
-    darkblue: number;
-    darkcyan: number;
-    darkgoldenrod: number;
-    darkgray: number;
-    darkgreen: number;
-    darkgrey: number;
-    darkkhaki: number;
-    darkmagenta: number;
-    darkolivegreen: number;
-    darkorange: number;
-    darkorchid: number;
-    darkred: number;
-    darksalmon: number;
-    darkseagreen: number;
-    darkslateblue: number;
-    darkslategray: number;
-    darkslategrey: number;
-    darkturquoise: number;
-    darkviolet: number;
-    deeppink: number;
-    deepskyblue: number;
-    dimgray: number;
-    dimgrey: number;
-    dodgerblue: number;
-    firebrick: number;
-    floralwhite: number;
-    forestgreen: number;
-    fuchsia: number;
-    gainsboro: number;
-    ghostwhite: number;
-    gold: number;
-    goldenrod: number;
-    gray: number;
-    green: number;
-    greenyellow: number;
-    grey: number;
-    honeydew: number;
-    hotpink: number;
-    indianred: number;
-    indigo: number;
-    ivory: number;
-    khaki: number;
-    lavender: number;
-    lavenderblush: number;
-    lawngreen: number;
-    lemonchiffon: number;
-    lightblue: number;
-    lightcoral: number;
-    lightcyan: number;
-    lightgoldenrodyellow: number;
-    lightgray: number;
-    lightgreen: number;
-    lightgrey: number;
-    lightpink: number;
-    lightsalmon: number;
-    lightseagreen: number;
-    lightskyblue: number;
-    lightslategray: number;
-    lightslategrey: number;
-    lightsteelblue: number;
-    lightyellow: number;
-    lime: number;
-    limegreen: number;
-    linen: number;
-    magenta: number;
-    maroon: number;
-    mediumaquamarine: number;
-    mediumblue: number;
-    mediumorchid: number;
-    mediumpurple: number;
-    mediumseagreen: number;
-    mediumslateblue: number;
-    mediumspringgreen: number;
-    mediumturquoise: number;
-    mediumvioletred: number;
-    midnightblue: number;
-    mintcream: number;
-    mistyrose: number;
-    moccasin: number;
-    navajowhite: number;
-    navy: number;
-    oldlace: number;
-    olive: number;
-    olivedrab: number;
-    orange: number;
-    orangered: number;
-    orchid: number;
-    palegoldenrod: number;
-    palegreen: number;
-    paleturquoise: number;
-    palevioletred: number;
-    papayawhip: number;
-    peachpuff: number;
-    peru: number;
-    pink: number;
-    plum: number;
-    powderblue: number;
-    purple: number;
-    rebeccapurple: number;
-    red: number;
-    rosybrown: number;
-    royalblue: number;
-    saddlebrown: number;
-    salmon: number;
-    sandybrown: number;
-    seagreen: number;
-    seashell: number;
-    sienna: number;
-    silver: number;
-    skyblue: number;
-    slateblue: number;
-    slategray: number;
-    slategrey: number;
-    snow: number;
-    springgreen: number;
-    steelblue: number;
-    tan: number;
-    teal: number;
-    thistle: number;
-    tomato: number;
-    turquoise: number;
-    violet: number;
-    wheat: number;
-    white: number;
-    whitesmoke: number;
-    yellow: number;
-    yellowgreen: number;
-};
-var linear: (t: any) => any;
-var Interpolation: () => void;
-function interpolate(input: any, inputMin: any, inputMax: any, outputMin: any, outputMax: any, easing: any, extrapolateLeft: any, extrapolateRight: any, map: any): any;
-function findRange(input: any, inputRange: any): number;
-function normalizeColor(color: any): any;
-function hue2rgb(p: any, q: any, t: any): any;
-function hslToRgb(h: any, s: any, l: any): number;
-var NUMBER: string;
-var PERCENTAGE: string;
-function toArray(arrayLike: any): any;
-function call(): string;
-var matchers: {
-    rgb: RegExp;
-    rgba: RegExp;
-    hsl: RegExp;
-    hsla: RegExp;
-    hex3: RegExp;
-    hex4: RegExp;
-    hex6: RegExp;
-    hex8: RegExp;
-};
-function parse255(str: any): number;
-function parse360(str: any): number;
-function parse1(str: any): number;
-function parsePercentage(str: any): number;
-function colorToRgba(input: any): any;
-var stringShapeRegex: RegExp;
-function createInterpolation(config: any): (input: any) => any;
-var Animated: () => void;
-var AnimatedTracking: (value: any, parent: any, animationClass: any, animationConfig: any, callback: any) => any;
-function throttle(callback: any, limit: any): () => void;
-var AnimatedWithChildren: () => any;
-var AnimatedInterpolation: (parents: any, config: any) => any;
-var interpolate$1: (parents: any, config: any) => any;
-var _uniqueId: number;
-function findAnimatedStyles(node: any, styles: any): void;
-var AnimatedValue: (value: any) => any;
-var getValues: (object: any) => any[];
-var check: (value: any) => boolean;
-var overwrite: (width: any, height: any) => (acc: any, _ref2: any) => any;
-function fixAuto(spring: any, props: any): any;
-var isUnitlessNumber: {
-    animationIterationCount: boolean;
-    borderImageOutset: boolean;
-    borderImageSlice: boolean;
-    borderImageWidth: boolean;
-    boxFlex: boolean;
-    boxFlexGroup: boolean;
-    boxOrdinalGroup: boolean;
-    columnCount: boolean;
-    columns: boolean;
-    flex: boolean;
-    flexGrow: boolean;
-    flexPositive: boolean;
-    flexShrink: boolean;
-    flexNegative: boolean;
-    flexOrder: boolean;
-    gridRow: boolean;
-    gridRowEnd: boolean;
-    gridRowSpan: boolean;
-    gridRowStart: boolean;
-    gridColumn: boolean;
-    gridColumnEnd: boolean;
-    gridColumnSpan: boolean;
-    gridColumnStart: boolean;
-    fontWeight: boolean;
-    lineClamp: boolean;
-    lineHeight: boolean;
-    opacity: boolean;
-    order: boolean;
-    orphans: boolean;
-    tabSize: boolean;
-    widows: boolean;
-    zIndex: boolean;
-    zoom: boolean;
-    fillOpacity: boolean;
-    floodOpacity: boolean;
-    stopOpacity: boolean;
-    strokeDasharray: boolean;
-    strokeDashoffset: boolean;
-    strokeMiterlimit: boolean;
-    strokeOpacity: boolean;
-    strokeWidth: boolean;
-};
-var prefixKey: (prefix: any, key: any) => any;
-var prefixes: string[];
-function dangerousStyleValue(name: any, value: any, isCustomProperty: any): string;
-var Animation: {
-    new (effect?: AnimationEffectReadOnly | undefined, timeline?: AnimationTimeline | undefined): Animation;
-    prototype: Animation;
-};
-var withDefault: (value: any, defaultValue: any) => any;
-var tensionFromOrigamiValue: (oValue: any) => number;
-var frictionFromOrigamiValue: (oValue: any) => number;
-var fromOrigamiTensionAndFriction: (tension: any, friction: any) => {
-    tension: number;
-    friction: number;
-};
-var SpringAnimation: (config: any) => any;
-var AnimatedArray: (array: any) => any;
-function maybeVectorAnim(array: any, _ref: any, anim: any, impl: any): {
-    start: (callback: any) => any;
-    stop: () => void;
-} | null;
-function parallel(animations: any, config: any): {
-    start: (callback: any) => any;
-    stop: () => void;
-};
-function controller(value: any, config: any, impl: any): {
-    start: (callback: any) => any;
-    stop: () => void;
-};
-var AnimatedStyle: (style: any) => any;
-var AnimatedProps: (props: any, callback: any) => any;
-function createAnimatedComponent(Component: any): () => any;
-function shallowDiff(a: any, b: any): boolean;
-var config: {
-    default: {
-        tension: number;
-        friction: number;
-    };
-    gentle: {
-        tension: number;
-        friction: number;
-    };
-    wobbly: {
-        tension: number;
-        friction: number;
-    };
-    stiff: {
-        tension: number;
-        friction: number;
-    };
-    slow: {
-        tension: number;
-        friction: number;
-    };
-};
-var callProp: (p: any, n: any) => any;
-var convert$1: (acc: any, _ref: any) => any;
-var Spring: () => any;
-var empty: () => null;
-var ref: (object: any, key: any) => any;
-var get: (props: any) => any;
-var Transition: (prevProps: any) => any;
-var Trail: () => any;
-var Keyframes: () => any;
-var AnimatedDiv: () => any;
-var _React$createContext: any, Provider: any, Consumer: any;
-function getScrollType(horizontal: any): "scrollLeft" | "scrollTop";
-var START_TRANSLATE_3D: string;
-var START_TRANSLATE: string;
-var ParallaxLayer: () => any;
-var Parallax: () => any;
-var domElements: string[];
-var elements: any;
-var createAnimatedComponent$1: (comp: any) => () => any;
 
 }
