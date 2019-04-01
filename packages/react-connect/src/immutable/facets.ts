@@ -1,6 +1,7 @@
 import { Map, List, fromJS, isImmutable } from 'immutable';
 import createRecord from './createRecord';
 import { preventEvents } from '../utils/preventEvents';
+import debounce from '../utils/debounce';
 
 const getFacetValue = (_this, type) => {
   if (type === 'range') {
@@ -92,10 +93,10 @@ export class FacetValue extends createRecord('FacetValue'){
     this.type = facet.get('type');
   }
 
-  toggle = (e) => {
+  toggle = debounce(e => {
     preventEvents(e);
     const value = getFacetValue(this, this.type);
     this.updater('filters', updateFilters(this.index, value, this.get('selected'), this.type));
     return this;
-  }
+  }, 500, true)
 }
