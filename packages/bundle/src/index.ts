@@ -11,10 +11,9 @@ import log from './helpers/log';
  * */
 if (process.env.NODE_ENV !== 'development' && __MERCHANT_VERSION__) {
   // HACK: Uglify.js removes strict matches
-  __webpack_require__.p =
-  (__ENVIRONMENT__).length === 'prod'.length
-  ? `https://cdn.jsdelivr.net/npm/@findify/bundle@${__MERCHANT_VERSION__}/dist/`
-  : `https://findify-assets-2bveeb6u8ag.netdna-ssl.com/bundle/${__ENVIRONMENT__}/${__MERCHANT_VERSION__}/`;
+  __webpack_require__.p = (__ENVIRONMENT__).length === 'prod'.length
+    ? `cdn.jsdelivr.net/npm/@findify/bundle@${__MERCHANT_VERSION__}/dist`
+    : `findify-assets-2bveeb6u8ag.netdna-ssl.com/bundle/${__ENVIRONMENT__}/${__MERCHANT_VERSION__}`;
 }
 
 /**
@@ -54,16 +53,10 @@ if(process.env.NODE_ENV !== 'development') {
 /* Load components */
 deps.push(import(/* webpackChunkName: "components" */ '@findify/react-components/src'));
 
-// /** Load polyfill only for specific merchants */
-// if (process.env.NODE_ENV !== 'development' && __INCLUDE_POLYFILL__) {
-//   deps.push(loadJs(__webpack_require__.p + 'polyfill.js'));
-// }
-
-
 /** Load styles */
 if (process.env.NODE_ENV !== 'development') {
   ((path) => {
-    if (!path) return loadCss(__webpack_require__.p + 'styles.css');
+    if (!path) return loadCss(`https://${__webpack_require__.p}/styles.css`);
     return loadCss(path);
   })(__MERCHANT_CSS__);
 }
