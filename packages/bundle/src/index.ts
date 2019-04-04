@@ -32,9 +32,7 @@ deps.push(import(/* webpackChunkName: "initializer" */ './initialize'));
 /**
  * Setup Sentry errors monitoring
  */
-if (process.env.NODE_ENV !== 'development' && __SENTRY_ENABLED__) {
-  deps.push(import(/* webpackChunkName: "sentry" */ '@sentry/browser'));
-}
+deps.push(import(/* webpackChunkName: "sentry" */ '@sentry/browser'));
 
 
 /**
@@ -70,7 +68,7 @@ if (process.env.NODE_ENV !== 'development') {
 Promise
 .all(deps)
 .then(([initialize, sentry]) => {
-  if (sentry && sentry.init) {
+  if (process.env.NODE_ENV !== 'development' && __SENTRY_ENABLED__ && sentry && sentry.init) {
     sentry.init({
       dsn: 'https://1db8972d9612483b96430ad56611be6e@sentry.io/1234846',
       version: __MERCHANT_VERSION__,
