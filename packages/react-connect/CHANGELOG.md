@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.3.5"></a>
+## [0.3.5](https://github.com/findify/findify-js/compare/@findify/react-connect@0.3.4...@findify/react-connect@0.3.5) (2019-04-04)
+
+
+### Bug Fixes
+
+* **bundle, react-connect:** update version of [@sentry](https://github.com/sentry)/browser, decreased debounce for facet item tog ([a6bbce4](https://github.com/findify/findify-js/commit/a6bbce4))
+
+
+
+
+
 <a name="0.3.4"></a>
 ## [0.3.4](https://github.com/findify/findify-js/compare/@findify/react-connect@0.3.3...@findify/react-connect@0.3.4) (2019-04-01)
 

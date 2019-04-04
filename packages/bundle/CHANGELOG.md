@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="6.9.5"></a>
+## [6.9.5](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.9.4...@findify/bundle@6.9.5) (2019-04-04)
+
+
+### Bug Fixes
+
+* **bundle:** updated assets url ([5fefb7d](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/5fefb7d))
+* **bundle, react-connect:** update version of [@sentry](https://github.com/sentry)/browser, decreased debounce for facet item tog ([a6bbce4](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/a6bbce4))
+
+
+
+
+
 <a name="6.9.4"></a>
 ## [6.9.4](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.9.3...@findify/bundle@6.9.4) (2019-04-01)
 
