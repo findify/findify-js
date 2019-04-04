@@ -11,10 +11,9 @@ import log from './helpers/log';
  * */
 if (process.env.NODE_ENV !== 'development' && __MERCHANT_VERSION__) {
   // HACK: Uglify.js removes strict matches
-  __webpack_require__.p =
-  (__ENVIRONMENT__).length === 'prod'.length
-  ? `https://cdn.jsdelivr.net/npm/@findify/bundle@${__MERCHANT_VERSION__}/dist/`
-  : `https://findify-assets-2bveeb6u8ag.netdna-ssl.com/bundle/${__ENVIRONMENT__}/${__MERCHANT_VERSION__}/`;
+  __webpack_require__.p = (__ENVIRONMENT__).length === 'prod'.length
+    ? `https://cdn.jsdelivr.net/npm/@findify/bundle@${__MERCHANT_VERSION__}/dist/`
+    : `https://findify-assets-2bveeb6u8ag.netdna-ssl.com/bundle/${__ENVIRONMENT__}/${__MERCHANT_VERSION__}/`;
 }
 
 /**
