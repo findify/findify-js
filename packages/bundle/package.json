@@ -43,7 +43,7 @@
     "@findify/change-emitter": "^1.0.0",
     "@findify/react-components": "^0.8.4",
     "@findify/react-connect": "^0.3.4",
-    "@sentry/browser": "^5.0.3",
+    "@sentry/browser": "^4.6.5",
     "core-js": "^2.5.7",
     "jump.js": "^1.0.2",
     "load-js": "^3.0.2",
