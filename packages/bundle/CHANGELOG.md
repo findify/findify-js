@@ -3,6 +3,82 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="6.9.4"></a>
+## [6.9.4](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.9.3...@findify/bundle@6.9.4) (2019-04-01)
+
+**Note:** Version bump only for package @findify/bundle
+
+
+
+
+
+<a name="6.9.3"></a>
+## [6.9.3](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.9.2...@findify/bundle@6.9.3) (2019-03-14)
+
+
+### Bug Fixes
+
+* **bundle:** fallback currency ([c0f2229](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/c0f2229))
+
+
+
+
+
+<a name="6.9.2"></a>
+## [6.9.2](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.9.1...@findify/bundle@6.9.2) (2019-03-07)
+
+
+### Bug Fixes
+
+* **bundle:** rename currency in config to easy migration for old customers ([f2ccf1d](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/f2ccf1d))
+* **react-components:** use accounting.js to format currency ([e452bee](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/e452bee))
+
+
+
+
+
+<a name="6.9.1"></a>
+## [6.9.1](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.9.0...@findify/bundle@6.9.1) (2019-02-18)
+
+**Note:** Version bump only for package @findify/bundle
+
+
+
+
+
+<a name="6.9.0"></a>
+# [6.9.0](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.8.5...@findify/bundle@6.9.0) (2019-02-08)
+
+
+### Features
+
+* **bundle, react-components:** update build process of modules and fix issue with function export ([a35eaa3](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/a35eaa3))
+
+
+
+
+
+<a name="6.8.5"></a>
+## [6.8.5](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.8.4...@findify/bundle@6.8.5) (2019-01-31)
+
+**Note:** Version bump only for package @findify/bundle
+
+
+
+
+
+<a name="6.8.4"></a>
+## [6.8.4](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.8.3...@findify/bundle@6.8.4) (2019-01-29)
+
+
+### Bug Fixes
+
+* **bundle:** update sentry version ([feeb660](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/feeb660))
+
+
+
+
+
 <a name="6.8.3"></a>
 ## [6.8.3](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.8.2...@findify/bundle@6.8.3) (2019-01-24)
 

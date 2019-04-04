@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.1.3"></a>
+## [0.1.3](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/analytics-dom@0.1.2...@findify/analytics-dom@0.1.3) (2019-02-18)
+
+
+### Bug Fixes
+
+* **analytics-dom:** added ability to add filters type in dom ([c8110dd](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/c8110dd))
+* **analytics-dom:** fixed analytics-dom events test, added ability to add type to the dom filters ([578ff48](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/578ff48))
+
+
+
+
+
 <a name="0.1.2"></a>
 ## [0.1.2](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/analytics-dom@0.1.1...@findify/analytics-dom@0.1.2) (2018-12-11)
 

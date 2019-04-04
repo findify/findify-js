@@ -3,6 +3,81 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.8.4"></a>
+## [0.8.4](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.8.3...@findify/react-components@0.8.4) (2019-04-01)
+
+
+### Bug Fixes
+
+* **react-connect:** added debounce to facet item toggle method ([624316f](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/624316f))
+
+
+
+
+
+<a name="0.8.3"></a>
+## [0.8.3](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.8.2...@findify/react-components@0.8.3) (2019-03-14)
+
+**Note:** Version bump only for package @findify/react-components
+
+
+
+
+
+<a name="0.8.2"></a>
+## [0.8.2](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.8.1...@findify/react-components@0.8.2) (2019-03-07)
+
+
+### Bug Fixes
+
+* **react-components:** use accounting.js to format currency ([e452bee](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/e452bee))
+
+
+
+
+
+<a name="0.8.1"></a>
+## [0.8.1](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.8.0...@findify/react-components@0.8.1) (2019-02-18)
+
+**Note:** Version bump only for package @findify/react-components
+
+
+
+
+
+<a name="0.8.0"></a>
+# [0.8.0](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.7.10...@findify/react-components@0.8.0) (2019-02-08)
+
+
+### Features
+
+* **bundle, react-components:** update build process of modules and fix issue with function export ([a35eaa3](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/a35eaa3))
+
+
+
+
+
+<a name="0.7.10"></a>
+## [0.7.10](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.7.9...@findify/react-components@0.7.10) (2019-01-31)
+
+
+### Bug Fixes
+
+* **react-components:** fix oos sticket styles and value ([efbe073](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/efbe073))
+
+
+
+
+
+<a name="0.7.9"></a>
+## [0.7.9](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.7.8...@findify/react-components@0.7.9) (2019-01-29)
+
+**Note:** Version bump only for package @findify/react-components
+
+
+
+
+
 <a name="0.7.8"></a>
 ## [0.7.8](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.7.7...@findify/react-components@0.7.8) (2019-01-24)
 

@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.2.15"></a>
+## [1.2.15](https://github.com/findify/findify-js/compare/@findify/processors@1.2.14...@findify/processors@1.2.15) (2019-04-01)
+
+**Note:** Version bump only for package @findify/processors
+
+
+
+
+
+<a name="1.2.14"></a>
+## [1.2.14](https://github.com/findify/findify-js/compare/@findify/processors@1.2.13...@findify/processors@1.2.14) (2019-02-08)
+
+
+### Bug Fixes
+
+* **processors:** update critical dep ([2493efb](https://github.com/findify/findify-js/commit/2493efb))
+
+
+
+
+
 <a name="1.2.13"></a>
 ## [1.2.13](https://github.com/findify/findify-js/compare/@findify/processors@1.2.12...@findify/processors@1.2.13) (2019-01-22)
 
