@@ -98,5 +98,5 @@ export class FacetValue extends createRecord('FacetValue'){
     const value = getFacetValue(this, this.type);
     this.updater('filters', updateFilters(this.index, value, this.get('selected'), this.type));
     return this;
-  }, 500, true)
+  }, 300, true)
 }
