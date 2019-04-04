@@ -1209,50 +1209,50 @@
   dependencies:
     conventional-changelog "0.0.17"
 
-"@sentry/browser@^4.5.3":
-  version "4.5.3"
-  resolved "https://registry.yarnpkg.com/@sentry/browser/-/browser-4.5.3.tgz#69744d13b01c490f366cbf2676790624b9f7c0a0"
+"@sentry/browser@^5.0.3":
+  version "5.0.5"
+  resolved "https://registry.yarnpkg.com/@sentry/browser/-/browser-5.0.5.tgz#6ef7a9a53aa28081d3b7dcab211de317dac0072e"
   dependencies:
-    "@sentry/core" "4.5.3"
-    "@sentry/types" "4.5.3"
-    "@sentry/utils" "4.5.3"
+    "@sentry/core" "5.0.5"
+    "@sentry/types" "5.0.5"
+    "@sentry/utils" "5.0.5"
     tslib "^1.9.3"
 
-"@sentry/core@4.5.3":
-  version "4.5.3"
-  resolved "https://registry.yarnpkg.com/@sentry/core/-/core-4.5.3.tgz#e55a42c694deec903aec2479e4a282d5a7a43878"
+"@sentry/core@5.0.5":
+  version "5.0.5"
+  resolved "https://registry.yarnpkg.com/@sentry/core/-/core-5.0.5.tgz#415f61c2d0ef442e5cce1e1ab60321d115daea40"
   dependencies:
-    "@sentry/hub" "4.5.3"
-    "@sentry/minimal" "4.5.3"
-    "@sentry/types" "4.5.3"
-    "@sentry/utils" "4.5.3"
+    "@sentry/hub" "5.0.5"
+    "@sentry/minimal" "5.0.5"
+    "@sentry/types" "5.0.5"
+    "@sentry/utils" "5.0.5"
     tslib "^1.9.3"
 
-"@sentry/hub@4.5.3":
-  version "4.5.3"
-  resolved "https://registry.yarnpkg.com/@sentry/hub/-/hub-4.5.3.tgz#54ce5988ac6dedbe9bba99e2c00f8f26eb677dfe"
+"@sentry/hub@5.0.5":
+  version "5.0.5"
+  resolved "https://registry.yarnpkg.com/@sentry/hub/-/hub-5.0.5.tgz#a6697d0b303ee10908514d16b2930b22bd27f08e"
   dependencies:
-    "@sentry/types" "4.5.3"
-    "@sentry/utils" "4.5.3"
+    "@sentry/types" "5.0.5"
+    "@sentry/utils" "5.0.5"
     tslib "^1.9.3"
 
-"@sentry/minimal@4.5.3":
-  version "4.5.3"
-  resolved "https://registry.yarnpkg.com/@sentry/minimal/-/minimal-4.5.3.tgz#7b69481df2d61e4b935d067be62a52824190f616"
+"@sentry/minimal@5.0.5":
+  version "5.0.5"
+  resolved "https://registry.yarnpkg.com/@sentry/minimal/-/minimal-5.0.5.tgz#cf0141c92244daf1083122750fa10170b20c1ce1"
   dependencies:
-    "@sentry/hub" "4.5.3"
-    "@sentry/types" "4.5.3"
+    "@sentry/hub" "5.0.5"
+    "@sentry/types" "5.0.5"
     tslib "^1.9.3"
 
-"@sentry/types@4.5.3":
-  version "4.5.3"
-  resolved "https://registry.yarnpkg.com/@sentry/types/-/types-4.5.3.tgz#3350dce2b7f9b936a8c327891c12e3aef7bd8852"
+"@sentry/types@5.0.5":
+  version "5.0.5"
+  resolved "https://registry.yarnpkg.com/@sentry/types/-/types-5.0.5.tgz#03a7e2db3b187262433982174614e116dcc958c4"
 
-"@sentry/utils@4.5.3":
-  version "4.5.3"
-  resolved "https://registry.yarnpkg.com/@sentry/utils/-/utils-4.5.3.tgz#6893fca9fde230b230360779362752e9b5570852"
+"@sentry/utils@5.0.5":
+  version "5.0.5"
+  resolved "https://registry.yarnpkg.com/@sentry/utils/-/utils-5.0.5.tgz#0623b4df088e96c3d48fb0ec6cb8b44a89a22529"
   dependencies:
-    "@sentry/types" "4.5.3"
+    "@sentry/types" "5.0.5"
     tslib "^1.9.3"
 
 "@storybook/addon-knobs@^3.4.6":
