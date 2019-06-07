@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.8.8"></a>
+## [0.8.8](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.8.7...@findify/react-components@0.8.8) (2019-06-07)
+
+
+### Bug Fixes
+
+* **bundle, react-components:** fix double render of sidebar autocomplete ([d24e780](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/d24e780))
+
+
+
+
+
 <a name="0.8.7"></a>
 ## [0.8.7](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.8.6...@findify/react-components@0.8.7) (2019-04-04)
 

@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="6.9.10"></a>
+## [6.9.10](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.9.9...@findify/bundle@6.9.10) (2019-06-07)
+
+
+### Bug Fixes
+
+* **bundle, react-components:** fix double render of sidebar autocomplete ([d24e780](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/d24e780))
+
+
+
+
+
 <a name="6.9.9"></a>
 ## [6.9.9](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.9.8...@findify/bundle@6.9.9) (2019-04-04)
 
