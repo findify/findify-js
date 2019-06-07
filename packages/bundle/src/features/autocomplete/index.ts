@@ -16,11 +16,13 @@ const createTrendingSearchesAgent = (config) => new AutocompleteAgent({
 })
 .defaults({ ...config.get('meta').toJS() })
 
+const autocompleteComponent = createElement(Autocomplete);
+const autocompleteTrendingComponent = createElement(Autocomplete, { isTrendingSearches: true });
+
 export default (widget, rerender) => {
   const { node, agent, config } = widget;
   const state: any = getQuery();
   const apiKey = config.get('key');
-
   let trendingSearchesAgent;
 
   if (state.q) node.value = state.q;
@@ -57,7 +59,7 @@ export default (widget, rerender) => {
     rerender(
       AutocompleteProvider,
       { apiKey, config, agent: trendingSearchesAgent, isTrendingSearches: true },
-      createElement(Autocomplete, { isTrendingSearches: true })
+      autocompleteTrendingComponent
     )
   }
 
@@ -71,5 +73,5 @@ export default (widget, rerender) => {
 
   const props = { apiKey, agent, config, key: 'normalAutocomplete' };
   /** Render */
-  return createElement(AutocompleteProvider, props, createElement(Autocomplete));
+  return createElement(AutocompleteProvider, props, autocompleteComponent);
 }
