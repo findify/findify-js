@@ -1,4 +1,6 @@
 /* Slider */
+
+:global(.findify-recommendation){
 :global(.slick-slider)
 {
     position: relative;
@@ -288,4 +290,5 @@
 {
     opacity: .75;
     color: black;
+}
 }
