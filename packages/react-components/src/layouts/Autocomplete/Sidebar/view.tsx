@@ -55,7 +55,8 @@ class Sidebar extends React.Component {
   }
 
   render() {
-    const { theme, meta, isMobile, suggestions, config, ...rest } = this.props
+    const { theme, meta, isMobile, suggestions, config, ...rest } = this.props;
+    
     return (
       <Drawer hideModal={this.handleExited}>
         <div className={theme.root} data-findify-autocomplete={true} tabIndex={0}>
