@@ -71,7 +71,7 @@ export default async (
   __root.config = fromJS(cfg);
 
   /** Setup analytics */
-  __root.analytics = AnalyticsDOM({ ...cfg.platform, key: cfg.key, events: cfg.analytics || {} });
+  __root.analytics = AnalyticsDOM({ platform: cfg.platform, key: cfg.key, events: cfg.analytics || {} });
   if (cfg.platform) setupPlatforms(cfg.platform, cfg.removeFindifyID);
 
   await documentReady;
