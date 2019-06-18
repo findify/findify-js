@@ -38,7 +38,7 @@
     "docs": "typedoc --name 'Findify SDK' --hideGenerator --target es5 --theme default --out doc src"
   },
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.19.0",
     "bundle": "^2.1.0",
     "core-js": "^2.5.7",
     "debug": "^3.1.0",
