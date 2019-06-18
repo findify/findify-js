@@ -61,6 +61,7 @@ export default (env: WebpackEnvArgs, { mode }) => {
     resolve: {
       extensions: ['.ts', '.tsx', '.js', '.css'],
       alias: {
+        'react-spring': 'react-spring/renderprops',
         'lodash.throttle': 'lodash/throttle',
         'lodash.debounce': 'lodash/debounce',
         debug: path.resolve(__dirname, '../../node_modules/debug'),
