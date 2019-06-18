@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.8.9"></a>
+## [0.8.9](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.8.8...@findify/react-components@0.8.9) (2019-06-18)
+
+
+### Bug Fixes
+
+* **analytics:** update: react*, webpack*, babel*, axios ([80439c9](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/80439c9))
+* **react-components:** dismiss tests for this release ([ee058e1](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/ee058e1))
+
+
+
+
+
 <a name="0.8.8"></a>
 ## [0.8.8](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.8.7...@findify/react-components@0.8.8) (2019-06-07)
 

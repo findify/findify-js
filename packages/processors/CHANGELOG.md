@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.2.17"></a>
+## [1.2.17](https://github.com/findify/findify-js/compare/@findify/processors@1.2.16...@findify/processors@1.2.17) (2019-06-18)
+
+
+### Bug Fixes
+
+* **analytics:** update: react*, webpack*, babel*, axios ([80439c9](https://github.com/findify/findify-js/commit/80439c9))
+
+
+
+
+
 <a name="1.2.16"></a>
 ## [1.2.16](https://github.com/findify/findify-js/compare/@findify/processors@1.2.15...@findify/processors@1.2.16) (2019-04-04)
 

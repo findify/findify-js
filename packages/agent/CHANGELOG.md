@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.3.1"></a>
+## [1.3.1](https://github.com/findify/findify-js/compare/@findify/agent@1.3.0...@findify/agent@1.3.1) (2019-06-18)
+
+
+### Bug Fixes
+
+* **analytics:** update: react*, webpack*, babel*, axios ([80439c9](https://github.com/findify/findify-js/commit/80439c9))
+
+
+
+
+
 <a name="1.3.0"></a>
 # [1.3.0](https://github.com/findify/findify-js/compare/@findify/agent@1.2.13...@findify/agent@1.3.0) (2018-07-30)
 

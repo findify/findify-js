@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="2.2.3"></a>
+## [2.2.3](https://github.com/findify/findify-js/compare/@findify/sdk@2.2.1...@findify/sdk@2.2.3) (2019-06-18)
+
+
+### Bug Fixes
+
+* **analytics:** update: react*, webpack*, babel*, axios ([80439c9](https://github.com/findify/findify-js/commit/80439c9))
+
+
+
+
+
 <a name="2.2.2"></a>
 ## [2.2.2](https://github.com/findify/findify-js/compare/@findify/sdk@2.1.0...@findify/sdk@2.2.2) (2018-07-24)
 

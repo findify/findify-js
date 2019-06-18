@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.1.4"></a>
+## [0.1.4](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/analytics-dom@0.1.3...@findify/analytics-dom@0.1.4) (2019-06-18)
+
+
+### Bug Fixes
+
+* **analytics:** update: react*, webpack*, babel*, axios ([80439c9](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/80439c9))
+
+
+
+
+
 <a name="0.1.3"></a>
 ## [0.1.3](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/analytics-dom@0.1.2...@findify/analytics-dom@0.1.3) (2019-02-18)
 
