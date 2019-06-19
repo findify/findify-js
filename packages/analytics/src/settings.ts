@@ -1,12 +1,12 @@
 export const env = {
   staging:{
     searchApiUrl: 'https://search-staging.findify.io/v3',
-    bigcommerceTrackingUrl: 'https://order.findify.io/bigcommerce',
+    bigcommerceTrackingUrl: 'https://order.findify.io/bigcommerce-staging',
   },
 
   production: {
     searchApiUrl: 'https://api-v3.findify.io/v3',
-    bigcommerceTrackingUrl: 'https://order.findify.io/bigcommerce-staging',
+    bigcommerceTrackingUrl: 'https://order.findify.io/bigcommerce',
   }
 }
 
