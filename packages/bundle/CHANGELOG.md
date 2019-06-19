@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="6.9.13"></a>
+## [6.9.13](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.9.12...@findify/bundle@6.9.13) (2019-06-19)
+
+
+### Bug Fixes
+
+* **bundle:** fix path to react-spring ([52c0881](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/52c0881))
+
+
+
+
+
 <a name="6.9.12"></a>
 ## [6.9.12](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.9.11...@findify/bundle@6.9.12) (2019-06-19)
 
