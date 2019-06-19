@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="3.3.3"></a>
+## [3.3.3](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/analytics@3.3.2...@findify/analytics@3.3.3) (2019-06-19)
+
+
+### Bug Fixes
+
+* **analytics:** fix incorrect bigcommerce url ([da7820b](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/da7820b))
+
+
+
+
+
 <a name="3.3.2"></a>
 ## [3.3.2](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/analytics@3.3.1...@findify/analytics@3.3.2) (2019-06-18)
 
