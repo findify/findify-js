@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.8.11"></a>
+## [0.8.11](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.8.10...@findify/react-components@0.8.11) (2019-07-15)
+
+
+### Bug Fixes
+
+* **react-components:** add props Lazy and Offset to load images only when they are in viewport ([fab5b1f](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/fab5b1f))
+
+
+
+
+
 <a name="0.8.10"></a>
 ## [0.8.10](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.8.9...@findify/react-components@0.8.10) (2019-06-19)
 
