@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="6.9.15"></a>
+## [6.9.15](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.9.14...@findify/bundle@6.9.15) (2019-07-16)
+
+
+### Bug Fixes
+
+* **bundle:** removed history object from public access ([522bf70](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/522bf70))
+
+
+
+
+
 <a name="6.9.14"></a>
 ## [6.9.14](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.9.13...@findify/bundle@6.9.14) (2019-07-15)
 
