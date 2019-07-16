@@ -542,6 +542,8 @@ export interface ImageProps {
     src: string;
     thumbnail?: string;
     aspectRatio?: number;
+    lazy?: boolean;
+    offset?: number;
     size: {
         width: number;
     };

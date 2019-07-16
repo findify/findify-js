@@ -4,7 +4,18 @@ import { parse, stringify } from 'qs';
 
 const isIE9 = !('pushState' in window.location);
 
-export const history = createBrowserHistory();
+const history = createBrowserHistory();
+
+const pushHistory = (props) => {
+  const isAllPropsSame = Object
+    .keys(props)
+    .reduce((acc, key) => acc && props[key] === history.location[key], true);
+
+  /* Special for IE9: prevent page reload if query is the same */
+  if (isIE9 && isAllPropsSame) return;
+
+  return history.push(props);
+};
 
 export const collectionPath = () => history
   .location
@@ -59,7 +70,9 @@ export const redirectToSearch = (q) => {
 export const setQuery = (query) => {
   const search = buildQuery(query);
 
-  /* Special for IE9: prevent page reload if query is the same */
-  if (isIE9 && search === history.location.search) return;
-  return history.push({ search });
+  return pushHistory({ search });
 };
+
+export const setPathname = (pathname) => pushHistory({ pathname });
+
+export const getLocation = () => history.location;
