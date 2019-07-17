@@ -35,12 +35,10 @@ const deps: Promise<any>[] = [];
 /** Main initialization file */
 deps.push(import(/* webpackChunkName: "initializer" */ './initialize'));
 
-
 /**
  * Setup Sentry errors monitoring
  */
 deps.push(import(/* webpackChunkName: "sentry" */ '@sentry/browser'));
-
 
 /**
  * Split configuration to separated chunk
@@ -55,7 +53,7 @@ if(process.env.NODE_ENV !== 'development') {
   deps.push(loadConfig());
 }
 
-/* Load components */
+/* Preload components */
 import(
   /* webpackChunkName: "Search"*/
   /* webpackPrefetch: true  */
