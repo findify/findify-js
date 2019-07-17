@@ -1,5 +1,5 @@
 
-import 'core-js/fn/array/includes';
+import 'core-js/features/array/includes';
 import * as Agents from '@findify/agent';
 import { fromJS, isImmutable, Map } from 'immutable';
 import { camelize } from '../helpers/capitalize';

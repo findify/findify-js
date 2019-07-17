@@ -2,14 +2,11 @@
  * @module components/RangeFacet
  */
 import React from 'react';
-import { compose, withStateHandlers, withProps, setDisplayName, withPropsOnChange } from 'recompose';
-import { findCurrency } from 'currency-formatter';
+import { compose, withStateHandlers, withProps, setDisplayName, withPropsOnChange, withHandlers } from 'recompose';
 import withTheme from 'helpers/withTheme';
-import template from 'helpers/template';
 
 import view from 'components/RangeFacet/view';
 import styles from 'components/RangeFacet/styles.css';
-import { withHandlers } from 'recompose';
 
 const createKey = (...args) => args.join('_');
 
@@ -24,8 +21,7 @@ export default compose(
   })),
 
   withPropsOnChange(['config'], ({ config }) => ({
-    currencySymbol: config.getIn(['currency', 'symbol']) ||
-      findCurrency(config.getIn(['currency', 'code'])).symbol
+    currencySymbol: config.getIn(['currency', 'symbol']) || config.getIn(['currency_setup', 'code'])
   })),
 
   withStateHandlers<any, any, any>(

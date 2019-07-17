@@ -1,4 +1,4 @@
-import 'core-js/fn/array/includes';
+import 'core-js/features/array/includes';
 import analytics, { Client } from '@findify/analytics';
 import { getEventsOnPage, getDeprecatedEvents, getEventData } from './bindings/events';
 import { getFiltersOnPage } from './bindings/filters';

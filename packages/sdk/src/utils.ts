@@ -1,5 +1,5 @@
-import 'core-js/fn/array/includes';
-import 'core-js/es6/promise';
+import 'core-js/features/array/includes';
+import 'core-js/features/promise';
 
 export const omit = <TR>(ks: string[], original: object) =>
   Object.keys(original)

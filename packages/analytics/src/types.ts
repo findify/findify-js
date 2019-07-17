@@ -100,7 +100,7 @@ export interface Client {
     request?: any,
     useCookie?: boolean,
     endpoint?: string,
-  ): void | Promise<{}>;
+  ): void | Promise<any>;
   listen(callback?): void;
   state: any;
   invalidate: any

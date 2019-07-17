@@ -2,11 +2,11 @@ import { createElement } from 'react';
 import { SmartCollectionProvider } from "@findify/react-connect";
 import { getQuery, setQuery, collectionPath, listenHistory } from '../../core/location';
 import { Events } from '../../core/events';
-import emitter from '../../core/emitter';
-import { Items } from '../../test.components';
 import { scrollTo } from '../../helpers/scrollTo';
 import { hideFallback, showFallback, hideLoader } from '../../helpers/fallbackNode';
-import { Search, ZeroResults } from '@findify/react-components/src/';
+import lazy from '../../helpers/renderLazyComponent';
+
+const lazySearch = lazy(() => import(/* webpackChunkName: "Search" */ '@findify/react-components/src/layouts/Search'));
 
 export default (widget, render) => {
   const { agent, config, node } = widget;
@@ -76,5 +76,5 @@ export default (widget, render) => {
   });
 
   /** Render */
-  return createElement(SmartCollectionProvider, props, createElement(Search, { isCollection: true }));
+  return createElement(SmartCollectionProvider, props, lazySearch({ isCollection: true }));
 }

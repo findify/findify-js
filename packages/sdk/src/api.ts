@@ -1,4 +1,4 @@
-import 'core-js/fn/promise';
+import 'core-js/features/promise';
 
 import debug from 'debug';
 import axios, { AxiosRequestConfig as AxiosOptions } from 'axios';

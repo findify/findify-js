@@ -5,7 +5,10 @@ import { getQuery, setQuery, isSearch, listenHistory } from '../../core/location
 import { hideFallback, showFallback, hideLoader } from '../../helpers/fallbackNode';
 import { Events } from '../../core/events';
 import { scrollTo } from '../../helpers/scrollTo';
-import { Search, ZeroResults } from '@findify/react-components/src/';
+import ZeroResults from '@findify/react-components/src/layouts/ZeroResults';
+import lazy from '../../helpers/renderLazyComponent';
+
+const lazySearch = lazy(() => import(/* webpackChunkName: "Search" */ '@findify/react-components/src/layouts/Search'));
 
 const createFallbackAgent = (config, node) => new RecommendationAgent({
   key: config.get('key'),
@@ -93,5 +96,5 @@ export default (widget, render) => {
 
   /** Render */
 
-  return createElement(SearchProvider, props, createElement(Search))
+  return createElement(SearchProvider, props, lazySearch())
 }

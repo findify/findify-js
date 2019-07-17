@@ -19,12 +19,20 @@ export const getPayload = (config, { events, filters }) => {
     payload.rules = filters;
   }
 
+  if (config.get('rules')) {
+    payload.rules = config.get('rules').toJS()
+  }
+
   if (['bought', 'viewed'].includes(type)) {
     payload.item_ids = [item_id];
   }
 
   if (type === 'purchasedTogether') {
     payload.item_ids = multipleIds ? item_ids : [item_id];
+  }
+
+  if (config.get('item_ids')) {
+    payload.item_ids = config.get('item_ids').toJS()
   }
 
   return payload;
