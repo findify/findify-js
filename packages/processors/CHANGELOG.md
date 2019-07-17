@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.3.0"></a>
+# [1.3.0](https://github.com/findify/findify-js/compare/@findify/processors@1.2.18...@findify/processors@1.3.0) (2019-07-17)
+
+
+### Features
+
+* **bundle:** update core-js and build process ([387e81b](https://github.com/findify/findify-js/commit/387e81b))
+
+
+
+
 <a name="1.2.18"></a>
 ## [1.2.18](https://github.com/findify/findify-js/compare/@findify/processors@1.2.17...@findify/processors@1.2.18) (2019-06-19)
 

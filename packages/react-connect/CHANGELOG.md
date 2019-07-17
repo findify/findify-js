@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.4.0"></a>
+# [0.4.0](https://github.com/findify/findify-js/compare/@findify/react-connect@0.3.7...@findify/react-connect@0.4.0) (2019-07-17)
+
+
+### Features
+
+* **bundle:** update core-js and build process ([387e81b](https://github.com/findify/findify-js/commit/387e81b))
+
+
+
+
 <a name="0.3.7"></a>
 ## [0.3.7](https://github.com/findify/findify-js/compare/@findify/react-connect@0.3.6...@findify/react-connect@0.3.7) (2019-06-19)
 
