@@ -2,7 +2,6 @@
 {
   "extends": "../../.babelrc",
   "plugins": [
-    ["lodash", { "id": ["lodash", "recompose"] }],
     "@babel/plugin-syntax-dynamic-import"
   ]
 }

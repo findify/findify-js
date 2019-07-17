@@ -1,7 +1,7 @@
 /**
  * @module components/Cards/Product/Rating
  */
-import 'core-js/fn/array/from';
+import 'core-js/features/array/from';
 import cx from 'classnames'
 import React from 'react'
 import Icon from 'components/Icon'

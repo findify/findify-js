@@ -1,5 +1,5 @@
-import 'core-js/fn/object/values';
-import 'core-js/fn/array/includes';
+import 'core-js/features/object/values';
+import 'core-js/features/array/includes';
 
 import { Filter, Sort, SortingOrder, LineItem } from '../common';
 import * as Request from '../request';

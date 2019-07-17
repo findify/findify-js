@@ -1,4 +1,4 @@
-import 'core-js/fn/array/includes';
+import 'core-js/features/array/includes';
 
 import debug from 'debug';
 import { Config, Client } from './client';

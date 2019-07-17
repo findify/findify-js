@@ -3,4 +3,5 @@
  * @babel/preset-env will replace this require with 'core-js'
  * imports to reduce the size
  */
-require('@babel/polyfill');
+import 'core-js/stable';
+import 'regenerator-runtime/runtime';

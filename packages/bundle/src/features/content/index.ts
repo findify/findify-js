@@ -1,11 +1,10 @@
 import { createElement } from 'react';
 import { ContentProvider } from "@findify/react-connect";
-import { Recommendation as RecommendationAgent } from "@findify/agent";
 import { getQuery, setQuery, isSearch, listenHistory } from '../../core/location';
 import { hideFallback, hideLoader } from '../../helpers/fallbackNode';
 import { Events } from '../../core/events';
 import { scrollTo } from '../../helpers/scrollTo';
-import { Content } from '@findify/react-components/src/';
+import Content from '@findify/react-components/src/layouts/Content';
 
 export default (widget, render) => {
   const { agent, config, node } = widget;

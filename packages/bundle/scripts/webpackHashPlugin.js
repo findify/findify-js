@@ -10,6 +10,7 @@ const cache = new Map();
 
 const findModulePath = (path, module) => {
 	const { rawRequest, context } = module;
+
 	if (
 		module.issuer &&
 		rawRequest &&
@@ -60,11 +61,11 @@ class HashedPlugin {
 								continue;
 							}
 
-              const _path = findModulePath(id, module);
+							const _path = findModulePath(id, module);
 
 							let _hash = require("crypto")
 								.createHash('md5')
-								.update(_path)
+								.update(options.mapping[_path] || _path)
 								.digest('base64')
 								.substr(0, 4);
 

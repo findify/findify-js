@@ -1,11 +1,10 @@
 import { createElement } from 'react';
 import { AutocompleteProvider } from "@findify/react-connect";
 import { getQuery, setQuery } from '../../core/location';
-import { Items } from '../../test.components';
 import { registerHandlers } from './handlers';
 import SignalCombinator from '../../helpers/SignalCombinator';
-import { Autocomplete } from '@findify/react-components/src/';
 import { Autocomplete as AutocompleteAgent } from "@findify/agent";
+import Autocomplete from '@findify/react-components/src/layouts/Autocomplete';
 
 const empty = () => null
 
@@ -16,7 +15,7 @@ const createTrendingSearchesAgent = (config) => new AutocompleteAgent({
 })
 .defaults({ ...config.get('meta').toJS() })
 
-const autocompleteComponent = createElement(Autocomplete);
+const autocompleteComponent = createElement(Autocomplete)
 const autocompleteTrendingComponent = createElement(Autocomplete, { isTrendingSearches: true });
 
 export default (widget, rerender) => {

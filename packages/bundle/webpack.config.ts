@@ -37,8 +37,7 @@ const createGlobals = (isDevelopment) => [
 export default (env: WebpackEnvArgs, { mode }) => {
   const config = {
     entry: {
-      'bundle': path.resolve(__dirname, 'src/index'),
-      'polyfill': path.resolve(__dirname, 'src/polyfill'),
+      'bundle': path.resolve(__dirname, 'src/index')
     },
     devtool: 'source-map',
     output: {
@@ -48,7 +47,6 @@ export default (env: WebpackEnvArgs, { mode }) => {
       publicPath: process.env.PUBLIC_PATH || '/',
       path: path.resolve(__dirname, 'dist'),
     },
-
     devServer: {
       contentBase: path.resolve(__dirname, 'dist'),
       port: 3000,
@@ -56,17 +54,38 @@ export default (env: WebpackEnvArgs, { mode }) => {
       historyApiFallback: true,
       hot: true
     },
+    optimization: {
+      splitChunks: {
+        name (module, chunks, cacheGroupKey) {
+          const allChunksNames = chunks.map((item) => item.name).join('~');
+          const res = cacheGroupKey + allChunksNames;
+          return `chunk-${require("crypto").createHash('md5').update(res).digest('base64').substr(0, 4)}`;
+        }
+      }
+    },
     stats: 'minimal',
     bail: true,
     resolve: {
       extensions: ['.ts', '.tsx', '.js', '.css'],
       alias: {
+        'react-dom': mode === 'development' && '@hot-loader/react-dom' || 'react-dom',
+
         'react-spring': 'react-spring/renderprops.cjs',
         'lodash.throttle': 'lodash/throttle',
         'lodash.debounce': 'lodash/debounce',
+      
         debug: path.resolve(__dirname, '../../node_modules/debug'),
         immutable: path.resolve(__dirname, '../../node_modules/immutable'),
-      }
+        
+        'babel-runtime/core-js/object/get-prototype-of': 'core-js/features/object/get-prototype-of',
+        'babel-runtime/core-js/object/get-own-property-descriptor': 'core-js/features/object/get-own-property-descriptor',
+        'babel-runtime/core-js/object/assign': 'core-js/features/object/assign',
+        'babel-runtime/core-js/object/create': 'core-js/features/object/create',
+        'babel-runtime/core-js/promise': 'core-js/features/promise',
+        'babel-runtime/core-js/object/keys': 'core-js/features/object/keys',
+        'babel-runtime/core-js/object/define-property': 'core-js/features/object/define-property',
+        'babel-runtime': '@babel/runtime',
+      },
     },
     module: {
       rules: [
@@ -150,7 +169,13 @@ export default (env: WebpackEnvArgs, { mode }) => {
         inject: 'head'
       }),
 
-      new WebpackHashPlugin()
+      new WebpackHashPlugin({
+        mapping: {
+          'immutable/dist/immutable.es': 'immutable',
+          '@hot-loader/react-dom': 'react-dom',
+          'recompose/dist/Recompose.esm': 'recompose',
+        }
+      })
     ],
 
   };

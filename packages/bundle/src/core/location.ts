@@ -1,5 +1,5 @@
-import 'core-js/fn/array/includes';
-import createBrowserHistory from 'history/createBrowserHistory';
+import 'core-js/features/array/includes';
+import { createBrowserHistory } from 'history';
 import { parse, stringify } from 'qs';
 
 const isIE9 = !('pushState' in window.location);
