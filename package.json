@@ -7,7 +7,7 @@
   "devDependencies": {
     "@types/tapable": "1.0.2",
     "commitizen": "^2.10.1",
-    "core-js": "^2.5.7",
+    "core-js": "^3.1.4",
     "cz-lerna-changelog": "^1.2.1",
     "del-cli": "^1.1.0",
     "enzyme": "^3.3.0",
@@ -16,6 +16,7 @@
     "husky": "^0.14.3",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^23.1.0",
+    "jscodeshift": "^0.5.1",
     "lerna": "^3.0.0-beta.20",
     "lerna-changelog": "^0.8.0",
     "lint-staged": "^7.2.0",
@@ -36,16 +37,16 @@
     "tslint-config-airbnb": "^5.9.2",
     "tslint-config-prettier": "^1.13.0",
     "typedoc": "^0.11.1",
-    "typescript": "2.8.3",
+    "typescript": "3.5.3",
     "uglifyjs-webpack-plugin": "^1.2.6",
     "webpack": "^4.1.1",
-    "webpack-bundle-analyzer": "^2.13.1",
-    "webpack-cli": "^3.0.8",
-    "yarn": "^1.7.0",
-    "jscodeshift": "^0.5.1"
+    "webpack-bundle-analyzer": "^3.3.2",
+    "webpack-cli": "^3.3.6",
+    "yarn": "^1.7.0"
   },
   "dependencies": {
     "@findify/analytics": "^3.2.1",
+    "@lerna/collect-packages": "^3.0.0-beta.17",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "webpack-dev-server": "^3.1.4"
@@ -77,10 +78,7 @@
     "release:perform": "lerna-semantic-release perform"
   },
   "resolutions": {
-    "debug": "2.6.9",
-    "hoist-non-react-statics": "3.3.0",
-    "lodash": "4.17.11",
-    "prop-types": "15.7.2"
+    "hoist-non-react-statics": "3.3.0"
   },
   "config": {
     "commitizen": {

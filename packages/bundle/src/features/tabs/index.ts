@@ -1,5 +1,6 @@
-import { TabsLayout } from '@findify/react-components/src/';
 import { Events } from '../../core/events';
+import Tabs from '@findify/react-components/src/layouts/Tabs';
+
 
 const getNestedWidgets = root => {
   const children = Array.from(root.children);
@@ -30,7 +31,7 @@ const createState = (_widgets, render) => {
       widget.active = widget.key === state.active;
       widget.node.style.display = widget.key ===  state.active ? 'block' : 'none';
     });
-    render(TabsLayout, getProps(widgets, state, toggle))
+    render(Tabs, getProps(widgets, state, toggle))
   }
 
   const toggle = (key) => {

@@ -1,5 +1,12 @@
-import './polyfill';
-import 'core-js/es6/promise';
+/**
+ * The set of polyfills with support of IE 9+
+ * @babel/preset-env will replace this require with 'core-js'
+ * imports to reduce the size
+ */
+import 'core-js/stable';
+import 'regenerator-runtime/runtime';
+
+import 'core-js/features/promise';
 
 import loadJs from 'load-js';
 import loadCss from './helpers/loadCss';
@@ -49,13 +56,16 @@ if(process.env.NODE_ENV !== 'development') {
 }
 
 /* Load components */
-deps.push(import(/* webpackChunkName: "components" */ '@findify/react-components/src'));
-
-// /** Load polyfill only for specific merchants */
-// if (process.env.NODE_ENV !== 'development' && __INCLUDE_POLYFILL__) {
-//   deps.push(loadJs(__webpack_require__.p + 'polyfill.js'));
-// }
-
+import(
+  /* webpackChunkName: "Search"*/
+  /* webpackPrefetch: true  */
+  '@findify/react-components/src/layouts/Search'
+);
+import(
+  /* webpackChunkName: "Recommendation"*/
+  /* webpackPrefetch: true  */
+  '@findify/react-components/src/layouts/Recommendation'
+);
 
 /** Load styles */
 if (process.env.NODE_ENV !== 'development') {

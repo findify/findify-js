@@ -192,6 +192,12 @@ const _default: React.ComponentType<Pick<{
 export default _default;
 
 }
+declare module 'components/Cards/Product/BundleAction' {
+/// <reference types="react" />
+const _default: import("react").ComponentClass<unknown, any>;
+export default _default;
+
+}
 declare module 'components/Cards/Product/BundleAction/view' {
 /// <reference types="react" />
 const _default: ({ theme, onClick, selected }: any) => JSX.Element;
@@ -1241,6 +1247,64 @@ const TextView: ({ component, className, children, mode, theme, bold, style, inl
 export default TextView;
 
 }
+declare module 'helpers/bundle' {
+import React from 'react';
+import { List } from 'immutable';
+export const provideBundle: (getInitialItems?: (i: any) => any) => (BaseComponent: any) => {
+    new (props: Readonly<{}>): {
+        state: {
+            inBundle: List<any>;
+        };
+        getChildContext(): {
+            inBundle: List<any>;
+            updateBundle: (inBundle: any) => void;
+        };
+        updateBundle: (inBundle: any) => void;
+        componentWillReceiveProps(next: any): void;
+        render(): JSX.Element;
+        context: any;
+        setState<K extends never>(state: {} | ((prevState: Readonly<{}>, props: Readonly<{}>) => {} | Pick<{}, K> | null) | Pick<{}, K> | null, callback?: (() => void) | undefined): void;
+        forceUpdate(callBack?: (() => void) | undefined): void;
+        readonly props: Readonly<{}> & Readonly<{
+            children?: React.ReactNode;
+        }>;
+        refs: {
+            [key: string]: React.ReactInstance;
+        };
+    };
+    new (props: {}, context?: any): {
+        state: {
+            inBundle: List<any>;
+        };
+        getChildContext(): {
+            inBundle: List<any>;
+            updateBundle: (inBundle: any) => void;
+        };
+        updateBundle: (inBundle: any) => void;
+        componentWillReceiveProps(next: any): void;
+        render(): JSX.Element;
+        context: any;
+        setState<K extends never>(state: {} | ((prevState: Readonly<{}>, props: Readonly<{}>) => {} | Pick<{}, K> | null) | Pick<{}, K> | null, callback?: (() => void) | undefined): void;
+        forceUpdate(callBack?: (() => void) | undefined): void;
+        readonly props: Readonly<{}> & Readonly<{
+            children?: React.ReactNode;
+        }>;
+        refs: {
+            [key: string]: React.ReactInstance;
+        };
+    };
+    childContextTypes: {
+        inBundle: import("prop-types").Validator<object>;
+        updateBundle: import("prop-types").Validator<(...args: any[]) => any>;
+    };
+    contextType?: React.Context<any> | undefined;
+};
+export const connectBundle: import("recompose").InferableComponentEnhancerWithProps<{
+    inBundle: object;
+    updateBundle: (...args: any[]) => any;
+}, {}>;
+
+}
 declare module 'helpers/createPortal' {
 /// <reference types="react" />
 import React, { Component } from 'react';
@@ -1617,6 +1681,12 @@ export interface IContentSearchProps extends ThemedSFCProps {
     filtersOnRight?: boolean;
 }
 const _default: ({ config, theme, }: IContentSearchProps) => JSX.Element;
+export default _default;
+
+}
+declare module 'layouts/Custom' {
+/// <reference types="react" />
+const _default: import("react").ComponentClass<unknown, any>;
 export default _default;
 
 }

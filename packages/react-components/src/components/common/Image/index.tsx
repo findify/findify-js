@@ -2,7 +2,7 @@
  * @module components/common/Image
  */
 
-import 'core-js/fn/array/includes';
+import 'core-js/features/array/includes';
 import React from 'react'
 import classNames from 'classnames'
 import styles from 'components/common/Image/styles.css';

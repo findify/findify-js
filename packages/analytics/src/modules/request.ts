@@ -1,4 +1,4 @@
-import 'core-js/es6/promise';
+import 'core-js/features/promise';
 
 import { stringify } from 'qs';
 import { User, EventName, PublicEventRequest } from '../types';
