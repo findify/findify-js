@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="6.10.1"></a>
+## [6.10.1](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.10.0...@findify/bundle@6.10.1) (2019-07-17)
+
+
+### Bug Fixes
+
+* **bundle:** fix prefetch url ([dcc8a2f](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/dcc8a2f))
+
+
+
+
 <a name="6.10.0"></a>
 # [6.10.0](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.9.15...@findify/bundle@6.10.0) (2019-07-17)
 
