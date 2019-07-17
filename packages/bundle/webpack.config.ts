@@ -59,7 +59,8 @@ export default (env: WebpackEnvArgs, { mode }) => {
         name (module, chunks, cacheGroupKey) {
           const allChunksNames = chunks.map((item) => item.name).join('~');
           const res = cacheGroupKey + allChunksNames;
-          return `chunk-${require("crypto").createHash('md5').update(res).digest('base64').substr(0, 4)}`;
+          const hash = require("crypto").createHash('md5').update(res).digest('base64').substr(0, 6).replace('/', '00');
+          return `chunk-${hash}`;
         }
       }
     },
