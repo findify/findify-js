@@ -8,7 +8,11 @@ import { scrollTo } from '../../helpers/scrollTo';
 import ZeroResults from '@findify/react-components/src/layouts/ZeroResults';
 import lazy from '../../helpers/renderLazyComponent';
 
-const lazySearch = lazy(() => import(/* webpackChunkName: "Search" */ '@findify/react-components/src/layouts/Search'));
+const lazySearch = lazy(() => import(
+  /* webpackChunkName: "Search" */
+  /* webpackPrefetch: true  */
+  '@findify/react-components/src/layouts/Search'
+));
 
 const createFallbackAgent = (config, node) => new RecommendationAgent({
   key: config.get('key'),

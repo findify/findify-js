@@ -3,9 +3,6 @@
  * @babel/preset-env will replace this require with 'core-js'
  * imports to reduce the size
  */
-import 'core-js/stable';
-import 'regenerator-runtime/runtime';
-
 import 'core-js/features/promise';
 
 import loadJs from 'load-js';
@@ -30,6 +27,11 @@ deps.push(import(/* webpackChunkName: "initializer" */ './initialize'));
 deps.push(import(/* webpackChunkName: "sentry" */ '@sentry/browser'));
 
 /**
+ * Import polyfills
+ */
+deps.push(import(/* webpackChunkName: "polyfill" */ './polyfill'));
+
+/**
  * Split configuration to separated chunk
  * The real merchant configuration will be added there on Findify Compilation server
  * So we will load it by load.js ~_~
@@ -41,18 +43,6 @@ if(process.env.NODE_ENV !== 'development') {
 } else {
   deps.push(loadConfig());
 }
-
-/* Preload components */
-import(
-  /* webpackChunkName: "Search"*/
-  /* webpackPrefetch: true  */
-  '@findify/react-components/src/layouts/Search'
-);
-import(
-  /* webpackChunkName: "Recommendation"*/
-  /* webpackPrefetch: true  */
-  '@findify/react-components/src/layouts/Recommendation'
-);
 
 /** Load styles */
 if (process.env.NODE_ENV !== 'development') {

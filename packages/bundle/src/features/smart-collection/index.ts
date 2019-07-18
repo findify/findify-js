@@ -6,7 +6,11 @@ import { scrollTo } from '../../helpers/scrollTo';
 import { hideFallback, showFallback, hideLoader } from '../../helpers/fallbackNode';
 import lazy from '../../helpers/renderLazyComponent';
 
-const lazySearch = lazy(() => import(/* webpackChunkName: "Search" */ '@findify/react-components/src/layouts/Search'));
+const lazySearch = lazy(() => import(
+  /* webpackChunkName: "Search" */
+  /* webpackPrefetch: true  */
+  '@findify/react-components/src/layouts/Search'
+));
 
 export default (widget, render) => {
   const { agent, config, node } = widget;
