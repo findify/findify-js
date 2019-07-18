@@ -4,7 +4,11 @@ import { hideFallback, hideLoader } from '../../helpers/fallbackNode';
 import { getPayload } from './payload';
 import lazy from '../../helpers/renderLazyComponent';
 
-const lazyRecommendation = lazy(() => import(/* webpackChunkName: "Recommendation" */ '@findify/react-components/src/layouts/Recommendation'));
+const lazyRecommendation = lazy(() => import(
+  /* webpackChunkName: "Recommendation" */
+  /* webpackPrefetch: true  */
+  '@findify/react-components/src/layouts/Recommendation'
+));
 
 export default (widget) => {
   const { node, agent, config } = widget;
