@@ -34,7 +34,7 @@ const createGlobals = (isDevelopment) => [
   ({ ...acc, [name]: isDevelopment ? 'false' : name }), {}
 )
 
-export default (env: WebpackEnvArgs, { mode, origin }) => {
+export default (env: WebpackEnvArgs, { mode, origin = 'prod' }) => {
   const config = {
     entry: {
       'bundle': path.resolve(__dirname, 'src/index')
