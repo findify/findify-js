@@ -34,7 +34,7 @@ const createGlobals = (isDevelopment) => [
   ({ ...acc, [name]: isDevelopment ? 'false' : name }), {}
 )
 
-export default (env: WebpackEnvArgs, { mode }) => {
+export default (env: WebpackEnvArgs, { mode, origin = 'prod' }) => {
   const config = {
     entry: {
       'bundle': path.resolve(__dirname, 'src/index')
@@ -44,8 +44,12 @@ export default (env: WebpackEnvArgs, { mode }) => {
       jsonpFunction: 'findifyJsonp',
       filename: '[name].js',
       chunkFilename: '[name].js',
-      publicPath: process.env.PUBLIC_PATH || '/',
       path: path.resolve(__dirname, 'dist'),
+      publicPath: mode === 'development'
+      ? process.env.PUBLIC_PATH || '/'
+      : origin === 'prod'
+        ? 'https://cdn.jsdelivr.net/npm/@findify/bundle@__MERCHANT_VERSION__/dist/'
+        : 'https://findify-assets-2bveeb6u8ag.netdna-ssl.com/bundle/__ENVIRONMENT__/__MERCHANT_VERSION__/'
     },
     devServer: {
       contentBase: path.resolve(__dirname, 'dist'),
