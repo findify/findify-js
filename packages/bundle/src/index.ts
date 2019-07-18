@@ -1,4 +1,15 @@
 /**
+ * Setup webpack public path, so bundle could be used with different versions
+ * WARNING: If this file will be changed you need to upload new bundle.js to compilation server
+ * */
+if (process.env.NODE_ENV !== 'development' && __MERCHANT_VERSION__) {
+  // HACK: Uglify.js removes strict matches
+  __webpack_public_path__ = (__ENVIRONMENT__).length === 'prod'.length
+    ? `https://cdn.jsdelivr.net/npm/@findify/bundle@${__MERCHANT_VERSION__}/dist/`
+    : `https://findify-assets-2bveeb6u8ag.netdna-ssl.com/bundle/${__ENVIRONMENT__}/${__MERCHANT_VERSION__}/`;
+}
+
+/**
  * The set of polyfills with support of IE 9+
  * @babel/preset-env will replace this require with 'core-js'
  * imports to reduce the size
