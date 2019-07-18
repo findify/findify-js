@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="6.10.2"></a>
+## [6.10.2](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.10.1...@findify/bundle@6.10.2) (2019-07-18)
+
+
+### Bug Fixes
+
+* **bundle:** change webpack base url ([662b528](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/662b528))
+* **bundle:** set default origin to prod ([b2c9acb](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/b2c9acb))
+
+
+
+
 <a name="6.10.1"></a>
 ## [6.10.1](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.10.0...@findify/bundle@6.10.1) (2019-07-17)
 
