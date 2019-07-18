@@ -31,7 +31,13 @@ module.exports = (env = {}) => ({
   },
 
   plugins: [
-    new WebpackHashPlugin(),
+    new WebpackHashPlugin({
+      mapping: {
+        'immutable/dist/immutable.es': 'immutable',
+        '@hot-loader/react-dom': 'react-dom',
+        'recompose/dist/Recompose.esm': 'recompose',
+      }
+    }),
 
     new webpack.DefinePlugin({
       __DEVELOPMENT__: false,
