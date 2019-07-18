@@ -45,11 +45,7 @@ export default (env: WebpackEnvArgs, { mode, origin = 'prod' }) => {
       filename: '[name].js',
       chunkFilename: '[name].js',
       path: path.resolve(__dirname, 'dist'),
-      publicPath: mode === 'development'
-      ? process.env.PUBLIC_PATH || '/'
-      : origin === 'prod'
-        ? 'https://cdn.jsdelivr.net/npm/@findify/bundle@" + __MERCHANT_VERSION__ + "/dist/'
-        : 'https://findify-assets-2bveeb6u8ag.netdna-ssl.com/bundle/" + __ENVIRONMENT__ + "/" + __MERCHANT_VERSION__ "/'
+      publicPath: process.env.PUBLIC_PATH || '/'
     },
     devServer: {
       contentBase: path.resolve(__dirname, 'dist'),
