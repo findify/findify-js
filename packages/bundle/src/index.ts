@@ -18,6 +18,12 @@ if ((global as any).findify_initialized) return;
 
 const deps: Promise<any>[] = [];
 
+import(
+  /* webpackChunkName: "autocomplete" */
+  /* webpackPrefetch: true */
+  '@findify/react-components/src/layouts/Autocomplete'
+);
+
 deps.push(import(/* webpackChunkName: "polyfill" */ './polyfill'));
 
 /** Main initialization file */
