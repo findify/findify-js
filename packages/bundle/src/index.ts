@@ -16,8 +16,9 @@ import log from './helpers/log';
 if ((global as any).findify_initialized) return;
 (global as any).findify_initialized = true;
 
-const test = Array.from([1, 2, 3, 4]);
 const deps: Promise<any>[] = [];
+
+deps.push(import(/* webpackChunkName: "polyfill" */ './polyfill'));
 
 /** Main initialization file */
 deps.push(import(/* webpackChunkName: "initializer" */ './initialize'));
@@ -59,7 +60,7 @@ if (process.env.NODE_ENV !== 'development') {
 
 Promise
 .all(deps)
-.then(([initialize, sentry]) => {
+.then(([_, initialize, sentry]) => {
   if (process.env.NODE_ENV !== 'development' && __SENTRY_ENABLED__ && sentry && sentry.init) {
     sentry.init({
       dsn: 'https://1db8972d9612483b96430ad56611be6e@sentry.io/1234846',
