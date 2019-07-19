@@ -10,7 +10,7 @@ import lazy from '../../helpers/renderLazyComponent';
 
 const lazySearch = lazy(() => import(
   /* webpackChunkName: "search" */
-  /* webpackPreload: true */
+  /* webpackPrefetch: true */
   '@findify/react-components/src/layouts/Search'
 ));
 
