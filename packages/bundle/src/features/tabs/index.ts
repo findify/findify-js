@@ -1,7 +1,6 @@
 import { Events } from '../../core/events';
 import Tabs from '@findify/react-components/src/layouts/Tabs';
 
-
 const getNestedWidgets = root => {
   const children = Array.from(root.children);
   return __root.widgets.list()
