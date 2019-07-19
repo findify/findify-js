@@ -8,7 +8,7 @@ import lazy from '../../helpers/renderLazyComponent';
 
 const lazyAutocomplete = lazy(() => import(
   /* webpackChunkName: "autocomplete" */
-  /* webpackPreload: true */
+  /* webpackPrefetch: true */
   '@findify/react-components/src/layouts/Autocomplete'
 ));
 
@@ -20,9 +20,6 @@ const createTrendingSearchesAgent = (config) => new AutocompleteAgent({
   user: __root.analytics.user
 })
 .defaults({ ...config.get('meta').toJS() })
-
-const autocompleteComponent = lazyAutocomplete()
-const autocompleteTrendingComponent = lazyAutocomplete({ isTrendingSearches: true });
 
 export default (widget, rerender) => {
   const { node, agent, config } = widget;
@@ -64,7 +61,7 @@ export default (widget, rerender) => {
     rerender(
       AutocompleteProvider,
       { apiKey, config, agent: trendingSearchesAgent, isTrendingSearches: true },
-      autocompleteTrendingComponent
+      lazyAutocomplete({ isTrendingSearches: true })
     )
   }
 
@@ -78,5 +75,5 @@ export default (widget, rerender) => {
 
   const props = { apiKey, agent, config, key: 'normalAutocomplete' };
   /** Render */
-  return createElement(AutocompleteProvider, props, autocompleteComponent);
+  return createElement(AutocompleteProvider, props, lazyAutocomplete());
 }
