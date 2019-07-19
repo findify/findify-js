@@ -10,7 +10,7 @@
     "@babel/preset-typescript",
     ["@babel/preset-env", {
       "modules": false,
-      "useBuiltIns": "usage",
+      "useBuiltIns": "entry",
       "corejs": { "version": 3, "proposals": true },
       "targets": ["last 2 versions", "ie > 8"]
     }]

@@ -1,6 +1,3 @@
-import 'regenerator-runtime/runtime';
-import 'raf/polyfill';
-
 // tslint:disable-next-line:import-name
 import AnalyticsDOM from '@findify/analytics-dom';
 // tslint:disable-next-line:import-name
