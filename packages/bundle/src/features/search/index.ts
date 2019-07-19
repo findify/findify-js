@@ -9,8 +9,8 @@ import ZeroResults from '@findify/react-components/src/layouts/ZeroResults';
 import lazy from '../../helpers/renderLazyComponent';
 
 const lazySearch = lazy(() => import(
-  /* webpackChunkName: "Search" */
-  /* webpackPrefetch: true  */
+  /* webpackChunkName: "search" */
+  /* webpackPreload: true */
   '@findify/react-components/src/layouts/Search'
 ));
 

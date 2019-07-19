@@ -4,7 +4,13 @@ import { getQuery, setQuery } from '../../core/location';
 import { registerHandlers } from './handlers';
 import SignalCombinator from '../../helpers/SignalCombinator';
 import { Autocomplete as AutocompleteAgent } from "@findify/agent";
-import Autocomplete from '@findify/react-components/src/layouts/Autocomplete';
+import lazy from '../../helpers/renderLazyComponent';
+
+const lazyAutocomplete = lazy(() => import(
+  /* webpackChunkName: "autocomplete" */
+  /* webpackPreload: true */
+  '@findify/react-components/src/layouts/Autocomplete'
+));
 
 const empty = () => null
 
@@ -15,8 +21,8 @@ const createTrendingSearchesAgent = (config) => new AutocompleteAgent({
 })
 .defaults({ ...config.get('meta').toJS() })
 
-const autocompleteComponent = createElement(Autocomplete)
-const autocompleteTrendingComponent = createElement(Autocomplete, { isTrendingSearches: true });
+const autocompleteComponent = lazyAutocomplete()
+const autocompleteTrendingComponent = lazyAutocomplete({ isTrendingSearches: true });
 
 export default (widget, rerender) => {
   const { node, agent, config } = widget;
