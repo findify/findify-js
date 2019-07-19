@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="6.10.9"></a>
+## [6.10.9](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.10.8...@findify/bundle@6.10.9) (2019-07-19)
+
+
+### Bug Fixes
+
+* **bundle:** fix autocomplete rerender ([d3af231](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/d3af231))
+
+
+
+
 <a name="6.10.8"></a>
 ## [6.10.8](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.10.7...@findify/bundle@6.10.8) (2019-07-19)
 
