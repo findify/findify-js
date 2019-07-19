@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="6.10.7"></a>
+## [6.10.7](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.10.6...@findify/bundle@6.10.7) (2019-07-19)
+
+
+### Bug Fixes
+
+* **bundle:** test code spiting ([a31477a](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/a31477a))
+
+
+
+
 <a name="6.10.6"></a>
 ## [6.10.6](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.10.5...@findify/bundle@6.10.6) (2019-07-18)
 
