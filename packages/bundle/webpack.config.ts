@@ -60,6 +60,9 @@ export default (env: WebpackEnvArgs, { mode, origin = 'prod' }) => {
     },
     optimization: {
       splitChunks: {
+        maxAsyncRequests: 7,
+        maxInitialRequests: 5,
+        minChunks: 2,
         name (module, chunks, cacheGroupKey) {
           const allChunksNames = chunks.map((item) => item.name).join('~');
           const res = cacheGroupKey + allChunksNames;

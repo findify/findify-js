@@ -16,6 +16,7 @@ import log from './helpers/log';
 if ((global as any).findify_initialized) return;
 (global as any).findify_initialized = true;
 
+const test = Array.from([1, 2, 3, 4]);
 const deps: Promise<any>[] = [];
 
 /** Main initialization file */
@@ -27,9 +28,13 @@ deps.push(import(/* webpackChunkName: "initializer" */ './initialize'));
 deps.push(import(/* webpackChunkName: "sentry" */ '@sentry/browser'));
 
 /**
+ * Preload large libs
+ */
+deps.push(import(/* webpackChunkName: "agent" */ '@findify/agent'));
+
+/**
  * Import polyfills
  */
-deps.push(import(/* webpackChunkName: "polyfill" */ './polyfill'));
 
 /**
  * Split configuration to separated chunk
