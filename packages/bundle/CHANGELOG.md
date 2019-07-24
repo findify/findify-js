@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="6.10.11"></a>
+## [6.10.11](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.10.10...@findify/bundle@6.10.11) (2019-07-24)
+
+
+### Bug Fixes
+
+* **bundle:** fix history module cache prune if customizations presents ([02da976](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/02da976))
+
+
+
+
 <a name="6.10.10"></a>
 ## [6.10.10](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.10.9...@findify/bundle@6.10.10) (2019-07-19)
 
