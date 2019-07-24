@@ -8,7 +8,6 @@ import setupPlatforms from './helpers/setupPlatforms';
 import { Events } from './core/events';
 import log from './helpers/log';
 import { scrollTo } from './helpers/scrollTo';
-import * as location from './core/location';
 
 /**
  * Create global namespace
@@ -80,7 +79,7 @@ export default async (
   }
 
   /** Expose utils */
-  __root.utils = { ...location, scrollTo };
+  __root.utils = { ...require('./core/location'), scrollTo };
 
   await resolveCallback(__root);
 

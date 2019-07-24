@@ -2,20 +2,9 @@ import 'core-js/features/array/includes';
 import { createBrowserHistory } from 'history';
 import { parse, stringify } from 'qs';
 
-const isIE9 = !('pushState' in window.location);
+export const isIE9 = !('pushState' in window.location);
 
-const history = createBrowserHistory();
-
-const pushHistory = (props) => {
-  const isAllPropsSame = Object
-    .keys(props)
-    .reduce((acc, key) => acc && props[key] === history.location[key], true);
-
-   /* Special for IE9: prevent page reload if query is the same */
-  if (isIE9 && isAllPropsSame) return;
-
-   return history.push(props);
-};
+export const history = createBrowserHistory();
 
 export const collectionPath = () => history
   .location
@@ -70,9 +59,7 @@ export const redirectToSearch = (q) => {
 export const setQuery = (query) => {
   const search = buildQuery(query);
 
-  return pushHistory({ search });
+  /* Special for IE9: prevent page reload if query is the same */
+  if (isIE9 && search === history.location.search) return;
+  return history.push({ search });
 };
-
-export const setPathname = (pathname) => pushHistory({ pathname });
-
-export const getLocation = () => history.location;
