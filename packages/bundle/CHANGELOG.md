@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="6.10.15"></a>
+## [6.10.15](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.10.14...@findify/bundle@6.10.15) (2019-07-25)
+
+
+### Bug Fixes
+
+* **bundle, react-components:** prevent module export names to be mangled ([dc0a8cc](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/dc0a8cc))
+
+
+
+
 <a name="6.10.14"></a>
 ## [6.10.14](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.10.13...@findify/bundle@6.10.14) (2019-07-25)
 

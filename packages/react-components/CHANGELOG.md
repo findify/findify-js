@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.9.15"></a>
+## [0.9.15](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.9.14...@findify/react-components@0.9.15) (2019-07-25)
+
+
+### Bug Fixes
+
+* **bundle, react-components:** prevent module export names to be mangled ([dc0a8cc](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/dc0a8cc))
+
+
+
+
 <a name="0.9.14"></a>
 ## [0.9.14](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.9.13...@findify/react-components@0.9.14) (2019-07-25)
 
