@@ -99,6 +99,7 @@ export default (env: WebpackEnvArgs, { mode, origin = 'prod' }) => {
         'lodash.throttle': 'lodash/throttle',
         'lodash.debounce': 'lodash/debounce',
       
+        'hoist-non-react-statics': path.resolve(__dirname, '../../node_modules/hoist-non-react-statics'),
         debug: path.resolve(__dirname, '../../node_modules/debug'),
         immutable: path.resolve(__dirname, '../../node_modules/immutable'),
         
