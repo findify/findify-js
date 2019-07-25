@@ -17,28 +17,36 @@ import log from './helpers/log';
 if ((global as any).findify_initialized) return;
 (global as any).findify_initialized = true;
 
-const deps: Promise<any>[] = [];
+const deps: Promise<any>[] = [
+  import(/* webpackChunkName: "polyfill" */ './polyfill'),
 
-import(
-  /* webpackChunkName: "autocomplete" */
-  /* webpackPrefetch: true */
-  '@findify/react-components/src/layouts/Autocomplete'
-);
+  /** Main initialization file */
+  import(/* webpackChunkName: "initializer" */ './initialize'),
 
-deps.push(import(/* webpackChunkName: "polyfill" */ './polyfill'));
+  /**  Setup Sentry errors monitoring */
+  import(/* webpackChunkName: "sentry" */ '@sentry/browser'),
 
-/** Main initialization file */
-deps.push(import(/* webpackChunkName: "initializer" */ './initialize'));
+  import(/* webpackChunkName: "agent" */ '@findify/agent'),
 
-/**
- * Setup Sentry errors monitoring
- */
-deps.push(import(/* webpackChunkName: "sentry" */ '@sentry/browser'));
+  /**  Prefetch components */
+  import(
+    /* webpackChunkName: "autocomplete" */
+    /* webpackPrefetch: true */
+    '@findify/react-components/src/layouts/Autocomplete'
+  ),
 
-/**
- * Preload large libs
- */
-deps.push(import(/* webpackChunkName: "agent" */ '@findify/agent'));
+  import(
+    /* webpackChunkName: "search" */
+    /* webpackPrefetch: true */
+    '@findify/react-components/src/layouts/Search'
+  ),
+
+  import(
+    /* webpackChunkName: "recommendation" */
+    /* webpackPrefetch: true */
+    '@findify/react-components/src/layouts/Recommendation'
+  )
+];
 
 /**
  * Import polyfills
