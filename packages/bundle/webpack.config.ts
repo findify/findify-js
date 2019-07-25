@@ -59,6 +59,7 @@ export default (env: WebpackEnvArgs, { mode, origin = 'prod' }) => {
       hot: true
     },
     optimization: {
+      concatenateModules: false,
       splitChunks: {
         maxAsyncRequests: 7,
         maxInitialRequests: 5,
