@@ -12,6 +12,7 @@ const WebpackHashPlugin = require('./scripts/webpackHashPlugin');
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const TerserPlugin = require('terser-webpack-plugin');
 
 interface WebpackEnvArgs {
   analyze?: boolean;
@@ -59,6 +60,26 @@ export default (env: WebpackEnvArgs, { mode, origin = 'prod' }) => {
       hot: true
     },
     optimization: {
+      minimizer: [
+        new TerserPlugin({
+          extractComments: true,
+          cache: true,
+          parallel: true,
+          sourceMap: true, // Must be set to true if using source-maps in production
+          terserOptions: {
+            keep_fnames: true,
+            keep_classnames: true,
+            extractComments: 'all',
+            mangle: {
+              keep_fnames: true,
+              keep_classnames: true,
+            },
+            compress: {
+              pure_funcs: ['console.info', 'console.debug', 'console.warn']
+            },
+          }
+        }),
+      ],  
       concatenateModules: false,
       splitChunks: {
         maxAsyncRequests: 7,
@@ -220,16 +241,6 @@ export default (env: WebpackEnvArgs, { mode, origin = 'prod' }) => {
       from: path.resolve(__dirname,'../react-components/lib/tree.json'),
       to: 'tree.json',
     }]));
-    config.plugins.push(new UglifyJSPlugin({
-      cache: true,
-      parallel: true,
-      sourceMap: true,
-      uglifyOptions: {
-        compress: {
-          pure_funcs: ['console.log', 'console.info']
-        }
-      }
-    }));
   }
 
   if (mode === 'development') {
