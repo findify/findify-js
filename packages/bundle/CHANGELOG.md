@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="6.10.14"></a>
+## [6.10.14](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.10.13...@findify/bundle@6.10.14) (2019-07-25)
+
+
+### Bug Fixes
+
+* **bundle:** import recompose as cjs module ([f4c917e](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/f4c917e))
+
+
+
+
 <a name="6.10.13"></a>
 ## [6.10.13](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.10.12...@findify/bundle@6.10.13) (2019-07-25)
 
