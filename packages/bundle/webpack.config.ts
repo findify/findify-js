@@ -60,6 +60,7 @@ export default (env: WebpackEnvArgs, { mode, origin = 'prod' }) => {
       hot: true
     },
     optimization: {
+      usedExports: false,
       minimizer: [
         new TerserPlugin({
           extractComments: true,
@@ -93,7 +94,7 @@ export default (env: WebpackEnvArgs, { mode, origin = 'prod' }) => {
       extensions: ['.ts', '.tsx', '.js', '.css'],
       alias: {
         'react-dom': mode === 'development' && '@hot-loader/react-dom' || 'react-dom',
-        'recompose': 'recompose/dist/Recompose.cjs',
+        // 'recompose': 'recompose/dist/Recompose.cjs',
         'react-spring': 'react-spring/renderprops.cjs',
         'lodash.throttle': 'lodash/throttle',
         'lodash.debounce': 'lodash/debounce',
