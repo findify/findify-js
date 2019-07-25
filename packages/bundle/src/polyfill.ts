@@ -4,6 +4,5 @@
  * imports to reduce the size
  */
 import 'core-js';
-import 'regenerator-runtime/runtime';
 import 'raf/polyfill';
 

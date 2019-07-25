@@ -3,6 +3,7 @@
  * @babel/preset-env will replace this require with 'core-js'
  * imports to reduce the size
  */
+import 'regenerator-runtime/runtime';
 import 'core-js/features/promise';
 
 import loadJs from 'load-js';
