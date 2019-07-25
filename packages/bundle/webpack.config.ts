@@ -67,13 +67,7 @@ export default (env: WebpackEnvArgs, { mode, origin = 'prod' }) => {
           parallel: true,
           sourceMap: true, // Must be set to true if using source-maps in production
           terserOptions: {
-            keep_fnames: true,
-            keep_classnames: true,
             extractComments: 'all',
-            mangle: {
-              keep_fnames: true,
-              keep_classnames: true,
-            },
             compress: {
               pure_funcs: ['console.info', 'console.debug', 'console.warn']
             },
@@ -99,7 +93,7 @@ export default (env: WebpackEnvArgs, { mode, origin = 'prod' }) => {
       extensions: ['.ts', '.tsx', '.js', '.css'],
       alias: {
         'react-dom': mode === 'development' && '@hot-loader/react-dom' || 'react-dom',
-
+        'recompose': 'recompose/dist/Recompose.cjs',
         'react-spring': 'react-spring/renderprops.cjs',
         'lodash.throttle': 'lodash/throttle',
         'lodash.debounce': 'lodash/debounce',
@@ -204,6 +198,7 @@ export default (env: WebpackEnvArgs, { mode, origin = 'prod' }) => {
           'immutable/dist/immutable.es': 'immutable',
           '@hot-loader/react-dom': 'react-dom',
           'recompose/dist/Recompose.esm': 'recompose',
+          'recompose/dist/Recompose.cjs': 'recompose',
         }
       })
     ],
