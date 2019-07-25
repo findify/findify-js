@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="6.10.17"></a>
+## [6.10.17](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.10.16...@findify/bundle@6.10.17) (2019-07-25)
+
+
+### Bug Fixes
+
+* **bundle:** prefetch components ([709fb74](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/709fb74))
+
+
+
+
 <a name="6.10.16"></a>
 ## [6.10.16](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.10.15...@findify/bundle@6.10.16) (2019-07-25)
 
