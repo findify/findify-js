@@ -8,7 +8,6 @@ import lazy from '../../helpers/renderLazyComponent';
 
 const lazyAutocomplete = lazy(() => import(
   /* webpackChunkName: "autocomplete" */
-  /* webpackPrefetch: true */
   '@findify/react-components/src/layouts/Autocomplete'
 ));
 
