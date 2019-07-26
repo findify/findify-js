@@ -3,12 +3,17 @@
  * @babel/preset-env will replace this require with 'core-js'
  * imports to reduce the size
  */
+
 import 'regenerator-runtime/runtime';
 import 'core-js/features/promise';
 
 import loadJs from 'load-js';
 import loadCss from './helpers/loadCss';
 import log from './helpers/log';
+
+if (window.__FINFIDY_PATH__) {
+  __webpack_public_path__ = window.__FINFIDY_PATH__
+}
 
 /**
  * Load Dependencies
@@ -31,19 +36,16 @@ const deps: Promise<any>[] = [
   /**  Prefetch components */
   import(
     /* webpackChunkName: "autocomplete" */
-    /* webpackPrefetch: true */
     '@findify/react-components/src/layouts/Autocomplete'
   ),
 
   import(
     /* webpackChunkName: "search" */
-    /* webpackPrefetch: true */
     '@findify/react-components/src/layouts/Search'
   ),
 
   import(
     /* webpackChunkName: "recommendation" */
-    /* webpackPrefetch: true */
     '@findify/react-components/src/layouts/Recommendation'
   )
 ];
