@@ -6,7 +6,6 @@ import lazy from '../../helpers/renderLazyComponent';
 
 const lazyRecommendation = lazy(() => import(
   /* webpackChunkName: "recommendation" */
-  /* webpackPrefetch: true */
   '@findify/react-components/src/layouts/Recommendation'
 ));
 
