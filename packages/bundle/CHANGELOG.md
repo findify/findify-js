@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="6.10.19"></a>
+## [6.10.19](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.10.18...@findify/bundle@6.10.19) (2019-08-09)
+
+
+### Bug Fixes
+
+* **bundle:** use slot from config to check if search widget is collection or not ([95cc322](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/95cc322))
+
+
+
+
 <a name="6.10.18"></a>
 ## [6.10.18](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.10.17...@findify/bundle@6.10.18) (2019-07-26)
 
