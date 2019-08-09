@@ -12,9 +12,10 @@ export const collectionPath = () => history
   .replace(/^\/|\/$/g, '')
   .toLowerCase();
 
-export const isCollection = (collections) => collections && collections.includes(
-  collectionPath()
-);
+export const isCollection = (collections, slot?) =>
+  collections && collections.includes(
+    slot || collectionPath()
+  );
 
 export const isSearch = () =>
   history.location.pathname === __root.config.getIn(['location', 'searchUrl']);

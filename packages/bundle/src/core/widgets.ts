@@ -65,7 +65,7 @@ const getEntity = (selector, _type?, _config?) =>
   let config = createConfig(type, node, key, _config);
 
   /** Change feature type to collection if we are on collection page */
-  if (type === 'search' && isCollection(config.get('collections'))) {
+  if (type === 'search' && isCollection(config.get('collections'), config.get('slot'))) {
     type = 'smart-collection';
     config = config.set('type', type);
   }
