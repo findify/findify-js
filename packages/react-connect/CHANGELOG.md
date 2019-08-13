@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.4.1"></a>
+## [0.4.1](https://github.com/findify/findify-js/compare/@findify/react-connect@0.4.0...@findify/react-connect@0.4.1) (2019-08-13)
+
+
+### Bug Fixes
+
+* **bundle:** change history to location to check if its search page ([822fadd](https://github.com/findify/findify-js/commit/822fadd))
+
+
+
+
 <a name="0.4.0"></a>
 # [0.4.0](https://github.com/findify/findify-js/compare/@findify/react-connect@0.3.7...@findify/react-connect@0.4.0) (2019-07-17)
 
