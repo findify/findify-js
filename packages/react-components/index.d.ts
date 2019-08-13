@@ -1,12 +1,10 @@
 declare module 'components/autocomplete/ProductMatches' {
-/// <reference types="react" />
 import React from 'react';
-const _default: React.ComponentClass<{}>;
+const _default: React.ComponentClass<unknown, any>;
 export default _default;
 
 }
 declare module 'components/autocomplete/ProductMatches/view' {
-/// <reference types="react" />
 import React from 'react';
 import { List } from 'immutable';
 import { ThemedSFCProps, IProduct, MJSConfiguration, WidgetAwareProps, SuggestionsConnectedProps } from 'types';
@@ -23,9 +21,8 @@ export default ProductMatchesView;
 
 }
 declare module 'components/autocomplete/SearchSuggestions' {
-/// <reference types="react" />
 import React from 'react';
-const _default: React.ComponentClass<{}>;
+const _default: React.ComponentClass<unknown, any>;
 export default _default;
 
 }
@@ -34,7 +31,6 @@ export {};
 
 }
 declare module 'components/autocomplete/SearchSuggestions/view' {
-/// <reference types="react" />
 import React from 'react';
 import { ThemedSFCProps, WidgetAwareProps, SuggestionsConnectedProps, IQuery } from 'types';
 export interface ISearchSuggestionsProps extends ThemedSFCProps, WidgetAwareProps, SuggestionsConnectedProps {
@@ -46,9 +42,8 @@ export default SearchSuggestionsView;
 
 }
 declare module 'components/autocomplete/SuggestionItem' {
-/// <reference types="react" />
 import React from 'react';
-const _default: React.ComponentClass<{}>;
+const _default: React.ComponentClass<unknown, any>;
 export default _default;
 
 }
@@ -57,7 +52,6 @@ export {};
 
 }
 declare module 'components/autocomplete/SuggestionItem/view' {
-/// <reference types="react" />
 import React from 'react';
 import { ISuggestion, ISuggestionProps, IQuery, ThemedSFCProps } from 'types';
 export interface ISuggestionItemProps extends ThemedSFCProps, ISuggestionProps {
@@ -73,9 +67,8 @@ export default SuggestionItemView;
 
 }
 declare module 'components/autocomplete/Tip' {
-/// <reference types="react" />
 import React from 'react';
-const _default: React.ComponentClass<{}>;
+const _default: React.ComponentClass<unknown, any>;
 export default _default;
 
 }
@@ -84,7 +77,6 @@ export {};
 
 }
 declare module 'components/autocomplete/Tip/view' {
-/// <reference types="react" />
 import React from 'react';
 import { ThemedSFCProps, ClassnamedProps, WidgetAwareProps, SuggestionsConnectedProps } from 'types';
 export interface ITipProps extends ThemedSFCProps, ClassnamedProps, WidgetAwareProps, SuggestionsConnectedProps {
@@ -95,14 +87,12 @@ export default TipView;
 
 }
 declare module 'components/Banner' {
-/// <reference types="react" />
 import React from 'react';
-const _default: React.ComponentClass<{}>;
+const _default: React.ComponentClass<unknown, any>;
 export default _default;
 
 }
 declare module 'components/Banner/view' {
-/// <reference types="react" />
 import React from 'react';
 import { ThemedSFCProps, IBanner } from 'types';
 export interface IBannerProps extends ThemedSFCProps {
@@ -114,7 +104,6 @@ export default BannerView;
 
 }
 declare module 'components/Breadcrumbs/createBreadcrumb' {
-/// <reference types="react" />
 import React from 'react';
 import { FilterType, ThemedSFCProps, IFacet, MJSConfiguration } from 'types';
 export type FilterMapping = {
@@ -135,14 +124,12 @@ export default _default;
 
 }
 declare module 'components/Breadcrumbs' {
-/// <reference types="react" />
 import React from 'react';
-const _default: React.ComponentClass<{}>;
+const _default: React.ComponentClass<unknown, any>;
 export default _default;
 
 }
 declare module 'components/Breadcrumbs/view' {
-/// <reference types="react" />
 import React from 'react';
 import { IFacet, MJSConfiguration, ThemedSFCProps } from 'types';
 import { List } from 'immutable';
@@ -155,14 +142,12 @@ export default BreadcrumbsView;
 
 }
 declare module 'components/Button' {
-/// <reference types="react" />
 import React from 'react';
-const _default: React.ComponentClass<any>;
+const _default: React.ComponentClass<any, any>;
 export default _default;
 
 }
 declare module 'components/Button/view' {
-/// <reference types="react" />
 import React from 'react';
 import { ClassnamedProps, ThemedSFCProps } from 'types';
 export interface IButtonProps extends ThemedSFCProps, ClassnamedProps {
@@ -177,14 +162,12 @@ export default ButtonView;
 
 }
 declare module 'components/Cards/Content' {
-/// <reference types="react" />
 import React from 'react';
-const _default: React.ComponentClass<{}>;
+const _default: React.ComponentClass<unknown, any>;
 export default _default;
 
 }
 declare module 'components/Cards/Content/view' {
-/// <reference types="react" />
 import React from 'react';
 const _default: React.ComponentType<Pick<{
     onClick: (e: any) => void;
@@ -210,14 +193,12 @@ export default ProductCard;
 
 }
 declare module 'components/Cards/Product/Price' {
-/// <reference types="react" />
 import React from 'react';
-const _default: React.ComponentClass<{}>;
+const _default: React.ComponentClass<unknown, any>;
 export default _default;
 
 }
 declare module 'components/Cards/Product/Price/view' {
-/// <reference types="react" />
 import React from 'react';
 import { List } from 'immutable';
 import { ClassnamedProps, ThemedSFCProps } from 'types';
@@ -234,9 +215,8 @@ export default PriceView;
 
 }
 declare module 'components/Cards/Product/Rating' {
-/// <reference types="react" />
 import React from 'react';
-const _default: React.ComponentClass<{}>;
+const _default: React.ComponentClass<unknown, any>;
 export default _default;
 
 }
@@ -245,8 +225,7 @@ export {};
 
 }
 declare module 'components/Cards/Product/Rating/view' {
-/// <reference types="react" />
-import 'core-js/fn/array/from';
+import 'core-js/features/array/from';
 import React from 'react';
 import { ThemedSFCProps } from 'types';
 export interface IRatingProps extends ThemedSFCProps {
@@ -258,7 +237,6 @@ export default RatingView;
 
 }
 declare module 'components/Cards/Product/Stickers' {
-/// <reference types="react" />
 import React from 'react';
 export const DiscountSticker: new (props: any) => {
     componentWillReceiveProps(nextProps: any): void;
@@ -268,7 +246,7 @@ export const DiscountSticker: new (props: any) => {
     }, React.Component<{
         theme: any;
         children?: React.ReactNode;
-    }, React.ComponentState, any>>;
+    }, any, any>>;
     setState<K extends never>(state: {} | Pick<{}, K> | ((prevState: Readonly<{}>, props: Readonly<{}>) => {} | Pick<{}, K> | null) | null, callback?: (() => void) | undefined): void;
     forceUpdate(callBack?: (() => void) | undefined): void;
     readonly props: Readonly<{
@@ -288,7 +266,7 @@ export const OutOfStockSticker: new (props: any) => {
     }, React.Component<{
         theme: any;
         children?: React.ReactNode;
-    }, React.ComponentState, any>>;
+    }, any, any>>;
     setState<K extends never>(state: {} | Pick<{}, K> | ((prevState: Readonly<{}>, props: Readonly<{}>) => {} | Pick<{}, K> | null) | null, callback?: (() => void) | undefined): void;
     forceUpdate(callBack?: (() => void) | undefined): void;
     readonly props: Readonly<{
@@ -307,7 +285,6 @@ export {};
 
 }
 declare module 'components/Cards/Product/view' {
-/// <reference types="react" />
 import React from 'react';
 import { IProduct, MJSConfiguration, ThemedSFCProps } from 'types/index';
 export interface IProductCardProps extends ThemedSFCProps {
@@ -326,9 +303,8 @@ export default extractContent;
 
 }
 declare module 'components/CategoryFacet' {
-/// <reference types="react" />
 import React from 'react';
-const _default: React.ComponentClass<{}>;
+const _default: React.ComponentClass<unknown, any>;
 export default _default;
 
 }
@@ -370,9 +346,8 @@ export default extractContent;
 
 }
 declare module 'components/CheckboxFacet' {
-/// <reference types="react" />
 import React from 'react';
-const _default: React.ComponentClass<{}>;
+const _default: React.ComponentClass<unknown, any>;
 export default _default;
 
 }
@@ -391,7 +366,6 @@ export default Item;
 
 }
 declare module 'components/CheckboxFacet/view' {
-/// <reference types="react" />
 import { ChangeEvent } from 'react';
 import { IFacetValue, ThemedSFCProps, MJSConfiguration } from 'types';
 import { List } from 'immutable';
@@ -419,9 +393,8 @@ export default _default;
 
 }
 declare module 'components/ColorFacet' {
-/// <reference types="react" />
 import React from 'react';
-const _default: React.ComponentClass<{}>;
+const _default: React.ComponentClass<unknown, any>;
 export default _default;
 
 }
@@ -449,7 +422,6 @@ export default ColorFacetView;
 
 }
 declare module 'components/common/Branch' {
-/// <reference types="react" />
 import React from 'react';
 export interface IBranchProps {
     'display-if'?: boolean;
@@ -463,14 +435,12 @@ export default Branch;
 
 }
 declare module 'components/common/Drawer' {
-/// <reference types="react" />
 import React from 'react';
-const _default: React.ComponentClass<{}>;
+const _default: React.ComponentClass<unknown, any>;
 export default _default;
 
 }
 declare module 'components/common/Drawer/view' {
-/// <reference types="react" />
 import React from 'react';
 import { ThemedSFCProps } from 'types';
 export interface IDrawerViewState {
@@ -515,7 +485,6 @@ export default DrawerView;
 
 }
 declare module 'components/common/Grid/Column' {
-/// <reference types="react" />
 import React from 'react';
 export interface IGridColumnProps {
     className?: string;
@@ -523,37 +492,37 @@ export interface IGridColumnProps {
     columnStyle?: React.CSSProperties;
     children?: React.ReactChild;
 }
-const GridColumn: React.ComponentClass<{}>;
+const GridColumn: React.ComponentClass<unknown, any>;
 export default GridColumn;
 
 }
 declare module 'components/common/Grid' {
-/// <reference types="react" />
 import React from 'react';
 import { ThemedSFCProps } from 'types';
 export interface IGridProps extends ThemedSFCProps {
     columns: string;
     style?: React.StyleHTMLAttributes<any>;
 }
-const _default: React.ComponentClass<IGridProps>;
+const _default: React.ComponentClass<IGridProps, any>;
 export default _default;
 
 }
 declare module 'components/common/Image' {
-/// <reference types="react" />
-import 'core-js/fn/array/includes';
+import 'core-js/features/array/includes';
 import React from 'react';
 export interface ImageProps {
     className?: string;
     src: string;
     thumbnail?: string;
     aspectRatio?: number;
+    lazy?: boolean;
+    offset?: number;
     size: {
         width: number;
     };
     isFixedRatio: boolean;
 }
-const _default: React.ComponentClass<ImageProps>;
+const _default: React.ComponentClass<ImageProps, any>;
 export default _default;
 
 }
@@ -562,8 +531,7 @@ export {};
 
 }
 declare module 'components/common/MapArray' {
-/// <reference types="react" />
-import 'core-js/fn/array/from';
+import 'core-js/features/array/from';
 import React from 'react';
 export type MapCallback = (item: any, index: number, arrayLike: ArrayLike) => any;
 export type KeyAccessor = (item: any, index: number) => string;
@@ -590,7 +558,6 @@ export {};
 
 }
 declare module 'components/common/Sticky' {
-/// <reference types="react" />
 import React from 'react';
 export interface IStickyProps {
     offset?: number;
@@ -604,7 +571,7 @@ const _default: new (props: any) => {
     }, React.Component<{
         theme: any;
         children?: React.ReactNode;
-    }, React.ComponentState, any>>;
+    }, any, any>>;
     setState<K extends never>(state: {} | Pick<{}, K> | ((prevState: Readonly<{}>, props: Readonly<{}>) => {} | Pick<{}, K> | null) | null, callback?: (() => void) | undefined): void;
     forceUpdate(callBack?: (() => void) | undefined): void;
     readonly props: Readonly<{
@@ -641,7 +608,6 @@ export default _default;
 
 }
 declare module 'components/common/VirtualizedList' {
-/// <reference types="react" />
 import { Component } from 'react';
 import { CellMeasurerCache } from 'react-virtualized/dist/commonjs/CellMeasurer';
 class List extends Component<any, any> {
@@ -682,9 +648,8 @@ export default _default;
 
 }
 declare module 'components/Dropdown' {
-/// <reference types="react" />
 import React from 'react';
-const _default: React.ComponentClass<{}>;
+const _default: React.ComponentClass<unknown, any>;
 export default _default;
 
 }
@@ -712,23 +677,20 @@ export default DropdownView;
 
 }
 declare module 'components/Facet/Component' {
-/// <reference types="react" />
 import React from 'react';
 import { FilterType } from 'types';
-export const getComponent: (type: FilterType) => React.ComponentClass<{}>;
-const _default: React.ComponentClass<any>;
+export const getComponent: (type: FilterType) => React.ComponentClass<{}, any>;
+const _default: React.ComponentClass<any, any>;
 export default _default;
 
 }
 declare module 'components/Facet' {
-/// <reference types="react" />
 import React from 'react';
-const _default: React.ComponentClass<{}>;
+const _default: React.ComponentClass<unknown, any>;
 export default _default;
 
 }
 declare module 'components/Facet/view' {
-/// <reference types="react" />
 import React from 'react';
 import { ThemedSFCProps, IFacet, MJSConfiguration } from 'types';
 export interface IFacetProps extends ThemedSFCProps {
@@ -746,7 +708,6 @@ export default FacetView;
 
 }
 declare module 'components/Icon' {
-/// <reference types="react" />
 import React from 'react';
 export const icons: {
     Filters: any;
@@ -787,19 +748,17 @@ const Icon: ({ name, width, height, className, ...rest }: IIconProps) => React.C
     width: number | undefined;
     height: number | undefined;
     className: any;
-}, React.ComponentState, any>>;
+}, any, any>>;
 export default Icon;
 
 }
 declare module 'components/ItemsList' {
-/// <reference types="react" />
 import React from 'react';
-const _default: React.ComponentClass<{}>;
+const _default: React.ComponentClass<unknown, any>;
 export default _default;
 
 }
 declare module 'components/ItemsList/view' {
-/// <reference types="react" />
 import React from 'react';
 import { MapArrayProps } from 'components/common/MapArray';
 export interface IItemsListProps extends MapArrayProps {
@@ -811,9 +770,8 @@ export default _default;
 
 }
 declare module 'components/Pagination' {
-/// <reference types="react" />
 import React from 'react';
-const _default: React.ComponentClass<{}>;
+const _default: React.ComponentClass<unknown, any>;
 export default _default;
 
 }
@@ -840,9 +798,8 @@ export default _default;
 
 }
 declare module 'components/PoweredBy' {
-/// <reference types="react" />
 import React from 'react';
-const _default: React.ComponentClass<{}>;
+const _default: React.ComponentClass<unknown, any>;
 export default _default;
 
 }
@@ -864,14 +821,12 @@ export default _default;
 
 }
 declare module 'components/RangeFacet' {
-/// <reference types="react" />
 import React from 'react';
-const _default: React.ComponentClass<{}>;
+const _default: React.ComponentClass<unknown, any>;
 export default _default;
 
 }
 declare module 'components/RangeFacet/Item' {
-/// <reference types="react" />
 import React from 'react';
 import { ThemedSFCProps, IFacetValue, MJSConfiguration } from 'types';
 export interface IRangeFacetItemProps extends ThemedSFCProps {
@@ -884,7 +839,6 @@ export default RangeFacetItem;
 
 }
 declare module 'components/RangeFacet/view' {
-/// <reference types="react" />
 import React from 'react';
 import { ThemedSFCProps, IFacet, IFacetValue, MJSConfiguration } from 'types';
 import { List } from 'immutable';
@@ -915,14 +869,12 @@ export default _default;
 
 }
 declare module 'components/RatingFacet' {
-/// <reference types="react" />
 import React from 'react';
-const _default: React.ComponentClass<{}>;
+const _default: React.ComponentClass<unknown, any>;
 export default _default;
 
 }
 declare module 'components/RatingFacet/Item' {
-/// <reference types="react" />
 import React from 'react';
 import { IFacetValue, ThemedSFCProps, MJSConfiguration } from 'types';
 export interface IRatingFacetItemProps extends ThemedSFCProps {
@@ -935,7 +887,6 @@ export default RatingFacetItem;
 
 }
 declare module 'components/RatingFacet/view' {
-/// <reference types="react" />
 import React from 'react';
 import { IFacet, IFacetValue, MJSConfiguration, ThemedSFCProps } from 'types';
 import { List } from 'immutable';
@@ -949,14 +900,12 @@ export default RatingFacet;
 
 }
 declare module 'components/search/DesktopActions' {
-/// <reference types="react" />
 import React from 'react';
-const _default: React.ComponentClass<{}>;
+const _default: React.ComponentClass<unknown, any>;
 export default _default;
 
 }
 declare module 'components/search/DesktopActions/view' {
-/// <reference types="react" />
 import React from 'react';
 import { ThemedSFCProps, MJSConfiguration } from 'types';
 export interface IDesktopActionsProps extends ThemedSFCProps {
@@ -970,14 +919,12 @@ export default DesktopActionsView;
 
 }
 declare module 'components/search/DesktopFacets' {
-/// <reference types="react" />
 import React from 'react';
-const _default: React.ComponentClass<{}>;
+const _default: React.ComponentClass<unknown, any>;
 export default _default;
 
 }
 declare module 'components/search/DesktopFacets/Title' {
-/// <reference types="react" />
 import React from 'react';
 import { ThemedSFCProps, MJSConfiguration, MJSValue } from 'types';
 import { Map } from 'immutable';
@@ -995,7 +942,6 @@ export const hidable: React.SFC<IHidableProps>;
 
 }
 declare module 'components/search/DesktopFacets/view' {
-/// <reference types="react" />
 import React from 'react';
 import { MJSConfiguration, ThemedSFCProps, IFacet, MJSValue } from 'types';
 import { List, Map } from 'immutable';
@@ -1012,9 +958,8 @@ export default DesktopFacetsView;
 
 }
 declare module 'components/search/LazyResults' {
-/// <reference types="react" />
 import React from 'react';
-const _default: React.ComponentClass<{}>;
+const _default: React.ComponentClass<unknown, any>;
 export default _default;
 
 }
@@ -1037,14 +982,12 @@ export default LazyResultsView;
 
 }
 declare module 'components/search/MobileActions' {
-/// <reference types="react" />
 import React from 'react';
-const _default: React.ComponentClass<{}>;
+const _default: React.ComponentClass<unknown, any>;
 export default _default;
 
 }
 declare module 'components/search/MobileActions/view' {
-/// <reference types="react" />
 import React from 'react';
 import { MJSConfiguration, ThemedSFCProps } from 'types';
 export interface IMobileActionsProps extends ThemedSFCProps {
@@ -1060,14 +1003,12 @@ export default MobileActionsView;
 
 }
 declare module 'components/search/MobileFacets' {
-/// <reference types="react" />
 import React from 'react';
-const _default: React.ComponentClass<{}>;
+const _default: React.ComponentClass<unknown, any>;
 export default _default;
 
 }
 declare module 'components/search/MobileFacets/Titles' {
-/// <reference types="react" />
 import React from 'react';
 import { ThemedSFCProps, IFacet, MJSConfiguration } from 'types';
 import { List } from 'immutable';
@@ -1110,14 +1051,12 @@ export default _default;
 
 }
 declare module 'components/search/MobileSorting' {
-/// <reference types="react" />
 import React from 'react';
-const _default: React.ComponentClass<{}>;
+const _default: React.ComponentClass<unknown, any>;
 export default _default;
 
 }
 declare module 'components/search/MobileSorting/view' {
-/// <reference types="react" />
 import React from 'react';
 import { ThemedSFCProps, ISortingItem, MJSConfiguration } from 'types';
 import { List } from 'immutable';
@@ -1138,9 +1077,8 @@ export default MobileSortingView;
 
 }
 declare module 'components/search/Query' {
-/// <reference types="react" />
 import React from 'react';
-const _default: React.ComponentClass<{}>;
+const _default: React.ComponentClass<unknown, any>;
 export default _default;
 
 }
@@ -1158,9 +1096,8 @@ export default QueryView;
 
 }
 declare module 'components/search/StaticResults' {
-/// <reference types="react" />
 import React from 'react';
-const _default: React.ComponentClass<{}>;
+const _default: React.ComponentClass<unknown, any>;
 export default _default;
 
 }
@@ -1176,9 +1113,8 @@ export default StaticResultsView;
 
 }
 declare module 'components/Sorting' {
-/// <reference types="react" />
 import React from 'react';
-const _default: React.ComponentClass<{}>;
+const _default: React.ComponentClass<unknown, any>;
 export default _default;
 
 }
@@ -1197,9 +1133,8 @@ export default Sorting;
 
 }
 declare module 'components/Tabs' {
-/// <reference types="react" />
 import React from 'react';
-export const Tabs: React.ComponentClass<{}>;
+export const Tabs: React.ComponentClass<unknown, any>;
 export const Tab: () => null;
 
 }
@@ -1208,7 +1143,6 @@ export {};
 
 }
 declare module 'components/Tabs/view' {
-/// <reference types="react" />
 import React from 'react';
 import { ThemedSFCProps } from 'types';
 export interface ITabsProps extends ThemedSFCProps {
@@ -1222,14 +1156,12 @@ export default TabsView;
 
 }
 declare module 'components/Text' {
-/// <reference types="react" />
 import React from 'react';
-const _default: React.ComponentClass<any>;
+const _default: React.ComponentClass<any, any>;
 export default _default;
 
 }
 declare module 'components/Text/view' {
-/// <reference types="react" />
 import { Component } from 'react';
 import { ThemedSFCProps, ClassnamedProps } from 'types';
 export interface ITextProps extends ThemedSFCProps, ClassnamedProps {
@@ -1306,7 +1238,6 @@ export const connectBundle: import("recompose").InferableComponentEnhancerWithPr
 
 }
 declare module 'helpers/createPortal' {
-/// <reference types="react" />
 import React, { Component } from 'react';
 export class Portal extends Component<any> {
     element: any;
@@ -1362,7 +1293,7 @@ export default _default;
 }
 declare module 'helpers/pure' {
 import { ComponentEnhancer } from 'recompose';
-const _default: ComponentEnhancer<{}, {}>;
+const _default: ComponentEnhancer<unknown, unknown>;
 export default _default;
 
 }
@@ -1381,7 +1312,6 @@ export const withDrawer: (modalName: any, modalComponent: any, { renderTo, ...op
 
 }
 declare module 'helpers/withErrorHandler' {
-/// <reference types="react" />
 import React from 'react';
 const _default: (BaseComponent: any) => {
     new (props: Readonly<{}>): {
@@ -1389,13 +1319,13 @@ const _default: (BaseComponent: any) => {
             error: boolean;
         };
         componentDidCatch(error: any, info: any): void;
-        render(): React.ComponentElement<{}, React.Component<{}, React.ComponentState, any>> | null;
+        render(): any;
+        context: any;
         setState<K extends never>(state: {} | ((prevState: Readonly<{}>, props: Readonly<{}>) => {} | Pick<{}, K> | null) | Pick<{}, K> | null, callback?: (() => void) | undefined): void;
         forceUpdate(callBack?: (() => void) | undefined): void;
-        readonly props: Readonly<{
+        readonly props: Readonly<{}> & Readonly<{
             children?: React.ReactNode;
-        }> & Readonly<{}>;
-        context: any;
+        }>;
         refs: {
             [key: string]: React.ReactInstance;
         };
@@ -1405,24 +1335,24 @@ const _default: (BaseComponent: any) => {
             error: boolean;
         };
         componentDidCatch(error: any, info: any): void;
-        render(): React.ComponentElement<{}, React.Component<{}, React.ComponentState, any>> | null;
+        render(): any;
+        context: any;
         setState<K extends never>(state: {} | ((prevState: Readonly<{}>, props: Readonly<{}>) => {} | Pick<{}, K> | null) | Pick<{}, K> | null, callback?: (() => void) | undefined): void;
         forceUpdate(callBack?: (() => void) | undefined): void;
-        readonly props: Readonly<{
+        readonly props: Readonly<{}> & Readonly<{
             children?: React.ReactNode;
-        }> & Readonly<{}>;
-        context: any;
+        }>;
         refs: {
             [key: string]: React.ReactInstance;
         };
     };
     displayName: string;
+    contextType?: React.Context<any> | undefined;
 };
 export default _default;
 
 }
 declare module 'helpers/withEvents' {
-/// <reference types="react" />
 import React from 'react';
 const _default: (events?: any) => (BaseComponent: any) => {
     new (props: Readonly<{}>): {
@@ -1431,13 +1361,13 @@ const _default: (events?: any) => (BaseComponent: any) => {
         componentDidMount(): void;
         componentWillUnmount(): void;
         render(): any;
+        context: any;
         setState<K extends never>(state: {} | ((prevState: Readonly<{}>, props: Readonly<{}>) => {} | Pick<{}, K> | null) | Pick<{}, K> | null, callback?: (() => void) | undefined): void;
         forceUpdate(callBack?: (() => void) | undefined): void;
-        readonly props: Readonly<{
+        readonly props: Readonly<{}> & Readonly<{
             children?: React.ReactNode;
-        }> & Readonly<{}>;
+        }>;
         state: Readonly<{}>;
-        context: any;
         refs: {
             [key: string]: React.ReactInstance;
         };
@@ -1448,24 +1378,24 @@ const _default: (events?: any) => (BaseComponent: any) => {
         componentDidMount(): void;
         componentWillUnmount(): void;
         render(): any;
+        context: any;
         setState<K extends never>(state: {} | ((prevState: Readonly<{}>, props: Readonly<{}>) => {} | Pick<{}, K> | null) | Pick<{}, K> | null, callback?: (() => void) | undefined): void;
         forceUpdate(callBack?: (() => void) | undefined): void;
-        readonly props: Readonly<{
+        readonly props: Readonly<{}> & Readonly<{
             children?: React.ReactNode;
-        }> & Readonly<{}>;
+        }>;
         state: Readonly<{}>;
-        context: any;
         refs: {
             [key: string]: React.ReactInstance;
         };
     };
     displayName: string;
+    contextType?: React.Context<any> | undefined;
 };
 export default _default;
 
 }
 declare module 'helpers/withLazy' {
-/// <reference types="react" />
 import React from 'react';
 const _default: () => (BaseComponent: any) => {
     new (props: any): {
@@ -1486,30 +1416,29 @@ const _default: () => (BaseComponent: any) => {
         }): void;
         shouldComponentUpdate(props: any, state: any): boolean;
         render(): JSX.Element;
-        setState<K extends string>(state: any, callback?: (() => void) | undefined): void;
-        forceUpdate(callBack?: (() => void) | undefined): void;
-        readonly props: Readonly<{
-            children?: React.ReactNode;
-        }> & Readonly<any>;
-        state: Readonly<any>;
         context: any;
+        setState<K extends string | number | symbol>(state: any, callback?: (() => void) | undefined): void;
+        forceUpdate(callBack?: (() => void) | undefined): void;
+        readonly props: Readonly<any> & Readonly<{
+            children?: React.ReactNode;
+        }>;
+        state: Readonly<any>;
         refs: {
             [key: string]: React.ReactInstance;
         };
     };
+    contextType?: React.Context<any> | undefined;
 };
 export default _default;
 
 }
 declare module 'helpers/withMinResultsToShow' {
-/// <reference types="react" />
 import React from 'react';
-const _default: () => (BaseComponent: React.Component<{}, {}, any>) => React.ComponentClass<{}>;
+const _default: () => (BaseComponent: React.Component<{}, {}, any>) => React.ComponentClass<unknown, any>;
 export default _default;
 
 }
 declare module 'helpers/withTheme' {
-/// <reference types="react" />
 import React from 'react';
 const _default: (defaultTheme: any) => (Component: any) => {
     new (props: any): {
@@ -1520,18 +1449,19 @@ const _default: (defaultTheme: any) => (Component: any) => {
         }, React.Component<{
             theme: any;
             children?: React.ReactNode;
-        }, React.ComponentState, any>>;
+        }, any, any>>;
+        context: any;
         setState<K extends never>(state: {} | ((prevState: Readonly<{}>, props: Readonly<{}>) => {} | Pick<{}, K> | null) | Pick<{}, K> | null, callback?: (() => void) | undefined): void;
         forceUpdate(callBack?: (() => void) | undefined): void;
-        readonly props: Readonly<{
+        readonly props: Readonly<{}> & Readonly<{
             children?: React.ReactNode;
-        }> & Readonly<{}>;
+        }>;
         state: Readonly<{}>;
-        context: any;
         refs: {
             [key: string]: React.ReactInstance;
         };
     };
+    contextType?: React.Context<any> | undefined;
 };
 export default _default;
 
@@ -1541,36 +1471,34 @@ export {};
 
 }
 declare module 'layouts/Autocomplete/Dropdown' {
-/// <reference types="react" />
 import React from 'react';
-const _default: React.ComponentClass<{}>;
+const _default: React.ComponentClass<unknown, any>;
 export default _default;
 
 }
 declare module 'layouts/Autocomplete/Dropdown/trackPosition' {
-/// <reference types="react" />
 import React from "react";
 const _default: (BaseComponent: any) => {
     new (props: any): {
         registerComponent: (ref: any) => void;
         render(): any;
-        setState<K extends string>(state: any, callback?: (() => void) | undefined): void;
-        forceUpdate(callBack?: (() => void) | undefined): void;
-        readonly props: Readonly<{
-            children?: React.ReactNode;
-        }> & Readonly<any>;
-        state: Readonly<any>;
         context: any;
+        setState<K extends string | number | symbol>(state: any, callback?: (() => void) | undefined): void;
+        forceUpdate(callBack?: (() => void) | undefined): void;
+        readonly props: Readonly<any> & Readonly<{
+            children?: React.ReactNode;
+        }>;
+        state: Readonly<any>;
         refs: {
             [key: string]: React.ReactInstance;
         };
     };
+    contextType?: React.Context<any> | undefined;
 };
 export default _default;
 
 }
 declare module 'layouts/Autocomplete/Dropdown/view' {
-/// <reference types="react" />
 import React from 'react';
 import { ThemedSFCProps, MJSConfiguration, ISuggestion, MJSValue } from 'types';
 import { List } from 'immutable';
@@ -1600,9 +1528,8 @@ export default AutocompleteDropdownView;
 
 }
 declare module 'layouts/Autocomplete/Fullscreen' {
-/// <reference types="react" />
 import React from 'react';
-const _default: React.ComponentClass<{}>;
+const _default: React.ComponentClass<unknown, any>;
 export default _default;
 
 }
@@ -1626,14 +1553,12 @@ export default _default;
 
 }
 declare module 'layouts/Autocomplete/Sidebar' {
-/// <reference types="react" />
 import React from 'react';
-const _default: React.ComponentClass<{}>;
+const _default: React.ComponentClass<unknown, any>;
 export default _default;
 
 }
 declare module 'layouts/Autocomplete/Sidebar/view' {
-/// <reference types="react" />
 import React from 'react';
 class Sidebar extends React.Component {
     state: {
@@ -1662,7 +1587,7 @@ export default Sidebar;
 }
 declare module 'layouts/Autocomplete/withAutocompleteLogic' {
 import { ComponentEnhancer } from 'recompose';
-const _default: ComponentEnhancer<{}, {}>;
+const _default: ComponentEnhancer<unknown, unknown>;
 export default _default;
 
 }
@@ -1699,9 +1624,8 @@ export default _default;
 
 }
 declare module 'layouts/Recommendation/Grid' {
-/// <reference types="react" />
 import React from 'react';
-const _default: React.ComponentClass<{}>;
+const _default: React.ComponentClass<unknown, any>;
 export default _default;
 
 }
@@ -1727,23 +1651,21 @@ declare module 'layouts/Recommendation/Slider/Arrow' {
 /// <reference types="react" />
 export interface IArrowProps {
     dir: 'left' | 'right';
-    onClick?: (evt) => null;
-    defaultOnClick: (evt) => null;
+    onClick?: (evt: any) => null;
+    defaultOnClick: (evt: any) => null;
     [x: string]: any;
 }
 export const renderArrow: (dir: any, handler: any) => JSX.Element;
 
 }
 declare module 'layouts/Recommendation/Slider' {
-/// <reference types="react" />
 import React from 'react';
 import './styles.global.css';
-const _default: React.ComponentClass<{}>;
+const _default: React.ComponentClass<unknown, any>;
 export default _default;
 
 }
 declare module 'layouts/Recommendation/Slider/view' {
-/// <reference types="react" />
 import React, { ReactChildren } from 'react';
 import { IProduct, ThemedSFCProps, MJSConfiguration } from 'types';
 import { List } from 'immutable';
@@ -1806,10 +1728,9 @@ export default SliderRecommendationLayout;
 
 }
 declare module 'layouts/Recommendation/Swiper' {
-/// <reference types="react" />
 import React from 'react';
 import 'layouts/Recommendation/Swiper/styles.global.css';
-const _default: React.ComponentClass<{}>;
+const _default: React.ComponentClass<unknown, any>;
 export default _default;
 
 }
@@ -1870,9 +1791,8 @@ export default _default;
 
 }
 declare module 'layouts/ZeroResults' {
-/// <reference types="react" />
 import React from "react";
-const _default: React.ComponentClass<{}>;
+const _default: React.ComponentClass<unknown, any>;
 export default _default;
 
 }

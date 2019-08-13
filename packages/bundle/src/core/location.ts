@@ -6,7 +6,7 @@ export const isIE9 = !('pushState' in window.location);
 
 export const history = createBrowserHistory();
 
-export const collectionPath = () => history
+export const collectionPath = () => window
   .location
   .pathname
   .replace(/^\/|\/$/g, '')
@@ -18,7 +18,7 @@ export const isCollection = (collections, slot?) =>
   );
 
 export const isSearch = () =>
-  history.location.pathname === __root.config.getIn(['location', 'searchUrl']);
+  window.location.pathname === __root.config.getIn(['location', 'searchUrl']);
 
 export const listenHistory = history.listen;
 
