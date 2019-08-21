@@ -19,7 +19,9 @@ const isReady = (() => {
   __root.emit = emitter.emit;
   __root.addListeners = emitter.addListeners;
   __root.invalidate = () =>  {
-    for (const key in __webpack_require__.c) { delete __webpack_require__.c[key] }
+    for (const key in __webpack_require__.c) {
+      if (key !== 'Jmof') delete __webpack_require__.c[key]
+    }
     emitter.emit(Events.invalidate);
   };
   return true;
