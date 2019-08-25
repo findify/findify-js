@@ -1,17 +1,34 @@
 
- const createTest = fx => async (feature, merchant, { virtualConsole, findify, dom }) => {
+const jsdom = require("jsdom");
+
+const createDescriptor = results => async (task, value) => {
+  if (typeof value === 'boolean') return results.push([task, value]);
+  try {
+    return results.push([task, await value()]);
+  } catch (e) {
+    return results.push([task, false, e])
+  }
+}
+
+const createTest = fx => async (feature, merchant, { findify, dom, getError }) => {
   const res = { feature };
+
+  if (!findify.widgets) {
+    res.status = 'disabled';
+    return res;
+  }
 
   dom.reconfigure({ url: "https://example.com" });
 
-  virtualConsole.on('error', (error) => {
-    console.log(error);
-  })
+  findify.widgets && findify.widgets.detach('test');
 
   try {
-    const results = await fx(merchant, findify, dom);
-    res.status = results.every(r => r.status === 'ok') ? 'ok' : 'error';
-    res.results = JSON.stringify(results);
+    const results = [];
+    await fx(createDescriptor(results))(merchant, findify, dom);
+    res.status = results.every(([_, value]) => value) ? 'ok' : 'error';
+    res.results = results;
+    const error = getError();
+    if (error) res.error = error;
   } catch (e) {
     res.status = 'error';
     res.error = e;
@@ -20,6 +37,6 @@
   return res;
 }
 
-const describe = (...tasks) => tasks.map(([task, value]) => ({ task, status: value && 'ok' || 'error' }))
+const eq = (a, b) => a === b;
 
-module.exports = { createTest, describe }
+module.exports = { createTest, eq }
