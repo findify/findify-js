@@ -2,6 +2,7 @@
  * [--login][required]
  * [--password][required]
  * [--merchants][optional] eq: 123,321,222
+ * [--token][optional] token to fetch merchants without auth
  * [--v][optional] version on MJS to test on, if no present then *local build* will be used
  */
 
@@ -36,7 +37,7 @@ const test = ({ v: version }) => async (merchant, index) => {
   let hasError = false;
   try {
     const environment = await createEnvironment(version, merchant);
-    for(const feature of ['search', 'autocomplete']) {
+    for(const feature of ['search', 'autocomplete', 'recommendation']) {
       const status = await runTest(merchant, environment)(feature);
       statuses.push(status);
     }

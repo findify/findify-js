@@ -28,19 +28,74 @@ const search = createTest(describe => async (merchant, findify, dom) => {
 const autocomplete = createTest(describe => async (merchant, findify, dom) => {
   const { window } = dom;
   const input = window.document.createElement('input');
+  window.innerWidth = 1400;
   window.document.body.appendChild(input);
   findify.widgets.attach(input, 'autocomplete', { widgetKey: 'test' });
   const agent = findify.widgets.get('test').agent;
-
+  
   input.value = 'a';
+
   input.dispatchEvent(new window.Event('input'));
 
   const [suggestions, meta] = await new Promise(resolve => agent.on('change:suggestions', (...args) => resolve(args)));
 
-  describe('Have suggestions', !!suggestions.size)
+  await new Promise(resolve => window.requestAnimationFrame(resolve));
+
+  input.dispatchEvent(new window.Event('focus'));
+
+  const els = window.document.querySelectorAll('.findify-components-autocomplete--suggestion-item__suggestion');
+
+  describe(
+    'Have suggestions',
+    !!els.length
+  )
+
+  if (!els.length) return;
+
+  describe(
+    'Same amount of rendered suggestions',
+    suggestions.size === els.length
+  );
+
+  els[0].click();
+
+  await new Promise(resolve => window.requestAnimationFrame(resolve));
+
+  describe(
+    'Click should update state',
+    agent.state.get('q') === suggestions.getIn([0, 'value'])
+  );
+})
+
+
+const recommendation = createTest(describe => async (merchant, findify, dom) => {
+  const { window } = dom;
+  const div = window.document.createElement('div');
+  window.innerWidth = 1400;
+  window.document.body.appendChild(div);
+
+  const config = findify.config.getIn(['features', 'recommendations']);
+  const _rec = config && config.find(i => i.get('type') === "trending" && i.get('enabled'));
+
+  if (!_rec) return;
+
+  findify.widgets.attach(div, 'recommendation', { ..._rec.toJS(), widgetKey: 'test' });
+
+  const agent = findify.widgets.get('test').agent;
+
+  const [items] = await new Promise(resolve => agent.on('change:items', (...args) => resolve(args)));
+
+  await new Promise(resolve => window.requestAnimationFrame(resolve));
+
+  describe(
+    'Have rendered items',
+    !!div.querySelectorAll('.findify-components--cards--product').length
+  )
+
 })
 
 module.exports = (...args) => (feature) => ({
   search,
-  autocomplete
+  autocomplete,
+  recommendation
 }[feature](feature, ...args));

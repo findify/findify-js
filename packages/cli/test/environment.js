@@ -69,10 +69,7 @@ const getVariables = ({ merchantName, merchantID, apiKeys }) => {
 const createHTML = (merchant, bundle) => `
 <html>
   <head>
-    <script
-      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-      integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
-      crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
     <script>${getVariables(merchant)}</script>
     <script>window.matchMedia = function(){ return { matches: true }}</script>
     <script>${bundle}</script>
