@@ -20,3 +20,8 @@ const retry = (i: number, fn: RetryCallback) =>
     if (i <= 0) throw err;
     return retry(i - 1, fn);
   });
+
+export const generateRID = (() => {
+  let rid = 1;
+  return () => rid++ && String(rid)
+})()
