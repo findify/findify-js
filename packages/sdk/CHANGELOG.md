@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="2.3.2"></a>
+## [2.3.2](https://github.com/findify/findify-js/compare/@findify/sdk@2.3.1...@findify/sdk@2.3.2) (2019-08-28)
+
+
+### Bug Fixes
+
+* **sdk:** fix latestRequestID getter in sdk ([0871319](https://github.com/findify/findify-js/commit/0871319))
+
+
+
+
 <a name="2.3.1"></a>
 ## [2.3.1](https://github.com/findify/findify-js/compare/@findify/sdk@2.3.0...@findify/sdk@2.3.1) (2019-08-28)
 
