@@ -1,0 +1,19 @@
+{
+  "name": "cli",
+  "version": "0.0.1",
+  "description": "CLI tools",
+  "main": "index.js",
+  "scripts": {
+    "test": "#"
+  },
+  "author": "bitaru <yourfriend@findify.io>",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.19.0",
+    "chalk": "^2.4.2",
+    "cheerio": "^1.0.0-rc.3",
+    "jsdom": "^15.1.1",
+    "signale": "^1.4.0",
+    "yargs": "^14.0.0"
+  }
+}

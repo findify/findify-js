@@ -6,6 +6,7 @@ import { validateUser } from '../validation';
 import * as Req from '../request';
 import * as Res from '../response';
 import { Config } from './Config';
+import nanoid from 'nanoid';
 
 /**
  * API endpoint.
@@ -26,13 +27,18 @@ export class Client {
     debug('sdk:client:config')(config);
   }
 
+  private latestRequestID = '';
+
+  private getLatestRequestID() {
+    return this.latestRequestID;
+  }
   /**
    * Make a request.
    */
   public send(req: Req.Request, opts: API.Options = {}): Promise<Res.Body> {
     const request = this.buildRequest(req, opts);
     debug('sdk:client:request')(request);
-    return API.send(request) as Promise<Res.Body>;
+    return API.send(request, this.getLatestRequestID) as Promise<Res.Body>;
   }
 
   private buildRequest(req: Req.Request, opts: API.Options): API.Request {
@@ -42,7 +48,8 @@ export class Client {
     const method = this.config.method!;
     const retryCount = this.config.retryCount!;
     const options = this.getOptions(req, opts);
-    return { url, body, method, retryCount, options };
+    const id = this.latestRequestID = nanoid();
+    return { url, body, method, retryCount, options, id };
   }
 
   /**

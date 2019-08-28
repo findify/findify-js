@@ -17,6 +17,7 @@ export interface Request {
   body: Body;
   options: Options;
   retryCount: number;
+  id?: string;
 }
 
 /**
@@ -35,13 +36,14 @@ export interface JSONPOptions {
  */
 export type Options = AxiosOptions | JSONPOptions;
 
-const sendJSONP = (req: Request) => {
+const sendJSONP = (req: Request, getLatestRequestID) => {
   const query = qs.stringify(req.body, { addQueryPrefix: true });
   const url = `${req.url}${query}`;
   return new Promise((resolve, reject) => {
     debug('sdk:api:jsonp')('url: ', url);
     debug('sdk:api:jsonp')('options: ', req.options);
     jsonp(url, req.options, (err: Error | null, data: any) => {
+      if (getLatestRequestID() !== req.id) return;
       if (err) {
         reject(err);
       } else if (typeof data === 'object' && !(data instanceof Array)) {
@@ -79,5 +81,5 @@ const request = {
  * Send a request to Findify JSON API.
  * @param req Request parameters.
  */
-export const send = (req: Request) =>
-  retryTimes(req.retryCount, () => request[req.method](req));
+export const send = (req: Request, getLatestRequestID) =>
+  retryTimes(req.retryCount, () => request[req.method](req, getLatestRequestID));
