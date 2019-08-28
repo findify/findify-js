@@ -28,9 +28,8 @@ export class Client {
 
   private latestRequestID: any = undefined;
 
-  private getLatestRequestID() {
-    return this.latestRequestID;
-  }
+  private getLatestRequestID = () => this.latestRequestID;
+
   /**
    * Make a request.
    */
