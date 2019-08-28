@@ -51,10 +51,6 @@ const deps: Promise<any>[] = [
 ];
 
 /**
- * Import polyfills
- */
-
-/**
  * Split configuration to separated chunk
  * The real merchant configuration will be added there on Findify Compilation server
  * So we will load it by load.js ~_~
