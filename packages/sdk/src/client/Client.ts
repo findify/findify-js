@@ -1,12 +1,11 @@
 import debug from 'debug';
 import { User } from '../common';
-import { omit } from '../utils';
+import { omit, generateRID } from '../utils';
 import * as API from '../api';
 import { validateUser } from '../validation';
 import * as Req from '../request';
 import * as Res from '../response';
 import { Config } from './Config';
-import nanoid from 'nanoid';
 
 /**
  * API endpoint.
@@ -27,7 +26,7 @@ export class Client {
     debug('sdk:client:config')(config);
   }
 
-  private latestRequestID = '';
+  private latestRequestID: any = undefined;
 
   private getLatestRequestID() {
     return this.latestRequestID;
@@ -48,7 +47,7 @@ export class Client {
     const method = this.config.method!;
     const retryCount = this.config.retryCount!;
     const options = this.getOptions(req, opts);
-    const id = this.latestRequestID = nanoid();
+    const id = this.latestRequestID = generateRID();
     return { url, body, method, retryCount, options, id };
   }
 

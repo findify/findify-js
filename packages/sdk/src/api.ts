@@ -17,7 +17,7 @@ export interface Request {
   body: Body;
   options: Options;
   retryCount: number;
-  id?: string;
+  id?: string|0;
 }
 
 /**
