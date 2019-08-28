@@ -13,6 +13,7 @@
   "ignoreChanges": [
     "**/__fixtures__/**",
     "**/__tests__/**",
-    "**/*.md"
+    "**/*.md",
+    "packages/cli"
   ]
 }
