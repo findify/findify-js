@@ -1,5 +1,5 @@
 {
-  "name": "cli",
+  "name": "@findify/cli",
   "version": "0.0.1",
   "description": "CLI tools",
   "main": "index.js",
