@@ -14,7 +14,14 @@ import styles from 'components/search/LazyResults/styles.css';
 export default compose(
   setDisplayName('LazyResults'),
   withTheme(styles),
+
+  /**
+   * Connect columns count
+   * To customize column count pass mapper to withColumns
+   * @param {Function} [columnsMapper] - maps search layout width to columns count
+  */
   withColumns(),
+  
   connectItems,
   withLazy(),
 )(view);
