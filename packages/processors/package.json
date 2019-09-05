@@ -21,7 +21,7 @@
     "lodash": "^4.17.11",
     "postcss": "^6.0.22",
     "postcss-custom-properties": "^7.0.0",
-    "webpack-cli": "^3.3.6"
+    "webpack-cli": "^3.3.7"
   },
   "dependencies": {
     "@findify/agent": "^1.4.2",
