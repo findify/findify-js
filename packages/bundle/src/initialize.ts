@@ -18,10 +18,9 @@ const isReady = (() => {
   __root.listen = emitter.listen;
   __root.emit = emitter.emit;
   __root.addListeners = emitter.addListeners;
-  __root.invalidate = () =>  {
-    for (const key in __webpack_require__.c) {
-      if (key !== 'Jmof') delete __webpack_require__.c[key]
-    }
+  __root.invalidate = async () =>  {
+    for (const key in __webpack_require__.c) if (key !== 'Jmof') __webpack_require__.c[key] = null;
+    await new Promise(resolve => window.requestAnimationFrame(resolve));
     emitter.emit(Events.invalidate);
   };
   return true;
@@ -54,7 +53,7 @@ export default async (
         [k]: isString(cfg.components[k]) ? eval(cfg.components[k]) : cfg.components[k]
       }), {}
     )
-    __root.invalidate();
+    await __root.invalidate();
     window.findifyJsonp.push([['extra'], extra]);
     delete cfg.components;
   }

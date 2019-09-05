@@ -49,7 +49,7 @@
     "jump.js": "^1.0.2",
     "load-js": "^3.0.2",
     "raf": "^3.4.0",
-    "react": "^16.8.6"
+    "react": "^16.9.0"
   },
   "devDependencies": {
     "@babel/core": "^7.5.4",
@@ -74,9 +74,9 @@
     "ts-node": "^6.1.2",
     "tslint": "^5.10.0",
     "typescript": "3.5.3",
-    "webpack-cli": "^3.3.6",
-    "webpack-dev-server": "^3.1.4",
-    "webpack": "^4.35.3"
+    "webpack-cli": "^3.3.7",
+    "webpack-dev-server": "^3.8.0",
+    "webpack": "^4.39.3"
   },
   "resolutions": {
     "hoist-non-react-statics": "3.3.0"
