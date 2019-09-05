@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.2.0"></a>
+# [0.2.0](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/analytics-dom@0.1.5...@findify/analytics-dom@0.2.0) (2019-07-17)
+
+
+### Features
+
+* **bundle:** update core-js and build process ([387e81b](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/387e81b))
+
+
+
+
 <a name="0.1.5"></a>
 ## [0.1.5](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/analytics-dom@0.1.4...@findify/analytics-dom@0.1.5) (2019-06-19)
 

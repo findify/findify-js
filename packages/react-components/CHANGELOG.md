@@ -3,6 +3,207 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.9.23"></a>
+## [0.9.23](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.9.22...@findify/react-components@0.9.23) (2019-08-28)
+
+
+
+
+**Note:** Version bump only for package @findify/react-components
+
+<a name="0.9.22"></a>
+## [0.9.22](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.9.21...@findify/react-components@0.9.22) (2019-08-28)
+
+
+
+
+**Note:** Version bump only for package @findify/react-components
+
+<a name="0.9.21"></a>
+## [0.9.21](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.9.20...@findify/react-components@0.9.21) (2019-08-21)
+
+
+
+
+**Note:** Version bump only for package @findify/react-components
+
+<a name="0.9.20"></a>
+## [0.9.20](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.9.19...@findify/react-components@0.9.20) (2019-08-13)
+
+
+### Bug Fixes
+
+* **bundle:** change history to location to check if its search page ([822fadd](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/822fadd))
+
+
+
+
+<a name="0.9.19"></a>
+## [0.9.19](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.9.18...@findify/react-components@0.9.19) (2019-08-09)
+
+
+
+
+**Note:** Version bump only for package @findify/react-components
+
+<a name="0.9.18"></a>
+## [0.9.18](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.9.17...@findify/react-components@0.9.18) (2019-07-26)
+
+
+
+
+**Note:** Version bump only for package @findify/react-components
+
+<a name="0.9.17"></a>
+## [0.9.17](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.9.16...@findify/react-components@0.9.17) (2019-07-25)
+
+
+
+
+**Note:** Version bump only for package @findify/react-components
+
+<a name="0.9.16"></a>
+## [0.9.16](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.9.15...@findify/react-components@0.9.16) (2019-07-25)
+
+
+
+
+**Note:** Version bump only for package @findify/react-components
+
+<a name="0.9.15"></a>
+## [0.9.15](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.9.14...@findify/react-components@0.9.15) (2019-07-25)
+
+
+### Bug Fixes
+
+* **bundle, react-components:** prevent module export names to be mangled ([dc0a8cc](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/dc0a8cc))
+
+
+
+
+<a name="0.9.14"></a>
+## [0.9.14](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.9.13...@findify/react-components@0.9.14) (2019-07-25)
+
+
+
+
+**Note:** Version bump only for package @findify/react-components
+
+<a name="0.9.13"></a>
+## [0.9.13](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.9.12...@findify/react-components@0.9.13) (2019-07-25)
+
+
+
+
+**Note:** Version bump only for package @findify/react-components
+
+<a name="0.9.12"></a>
+## [0.9.12](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.9.11...@findify/react-components@0.9.12) (2019-07-25)
+
+
+
+
+**Note:** Version bump only for package @findify/react-components
+
+<a name="0.9.11"></a>
+## [0.9.11](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.9.10...@findify/react-components@0.9.11) (2019-07-24)
+
+
+
+
+**Note:** Version bump only for package @findify/react-components
+
+<a name="0.9.10"></a>
+## [0.9.10](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.9.9...@findify/react-components@0.9.10) (2019-07-19)
+
+
+
+
+**Note:** Version bump only for package @findify/react-components
+
+<a name="0.9.9"></a>
+## [0.9.9](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.9.8...@findify/react-components@0.9.9) (2019-07-19)
+
+
+
+
+**Note:** Version bump only for package @findify/react-components
+
+<a name="0.9.8"></a>
+## [0.9.8](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.9.7...@findify/react-components@0.9.8) (2019-07-19)
+
+
+
+
+**Note:** Version bump only for package @findify/react-components
+
+<a name="0.9.7"></a>
+## [0.9.7](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.9.6...@findify/react-components@0.9.7) (2019-07-19)
+
+
+
+
+**Note:** Version bump only for package @findify/react-components
+
+<a name="0.9.6"></a>
+## [0.9.6](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.9.5...@findify/react-components@0.9.6) (2019-07-18)
+
+
+
+
+**Note:** Version bump only for package @findify/react-components
+
+<a name="0.9.5"></a>
+## [0.9.5](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.9.4...@findify/react-components@0.9.5) (2019-07-18)
+
+
+
+
+**Note:** Version bump only for package @findify/react-components
+
+<a name="0.9.4"></a>
+## [0.9.4](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.9.3...@findify/react-components@0.9.4) (2019-07-18)
+
+
+
+
+**Note:** Version bump only for package @findify/react-components
+
+<a name="0.9.3"></a>
+## [0.9.3](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.9.2...@findify/react-components@0.9.3) (2019-07-18)
+
+
+
+
+**Note:** Version bump only for package @findify/react-components
+
+<a name="0.9.2"></a>
+## [0.9.2](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.9.1...@findify/react-components@0.9.2) (2019-07-18)
+
+
+
+
+**Note:** Version bump only for package @findify/react-components
+
+<a name="0.9.1"></a>
+## [0.9.1](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.9.0...@findify/react-components@0.9.1) (2019-07-17)
+
+
+
+
+**Note:** Version bump only for package @findify/react-components
+
+<a name="0.9.0"></a>
+# [0.9.0](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.8.12...@findify/react-components@0.9.0) (2019-07-17)
+
+
+### Features
+
+* **bundle:** update core-js and build process ([387e81b](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/387e81b))
+
+
+
+
 <a name="0.8.12"></a>
 ## [0.8.12](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.8.11...@findify/react-components@0.8.12) (2019-07-16)
 
