@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.10.0"></a>
+# [0.10.0](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.9.23...@findify/react-components@0.10.0) (2019-09-05)
+
+
+### Bug Fixes
+
+* **react-components:** chande image size based on width of container ([235a0b3](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/235a0b3))
+
+
+### Features
+
+* **react-connect:** migrate connectors and providers to hooks ([d2aabc9](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/d2aabc9))
+
+
+
+
 <a name="0.9.23"></a>
 ## [0.9.23](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.9.22...@findify/react-components@0.9.23) (2019-08-28)
 

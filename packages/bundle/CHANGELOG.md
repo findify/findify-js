@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="6.11.0"></a>
+# [6.11.0](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.10.23...@findify/bundle@6.11.0) (2019-09-05)
+
+
+### Features
+
+* **react-connect:** migrate connectors and providers to hooks ([d2aabc9](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/d2aabc9))
+
+
+
+
 <a name="6.10.23"></a>
 ## [6.10.23](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.10.22...@findify/bundle@6.10.23) (2019-08-28)
 

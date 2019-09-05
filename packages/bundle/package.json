@@ -1,7 +1,7 @@
 {
   "name": "@findify/bundle",
   "description": "Findify Out Of Box solution",
-  "version": "6.10.23",
+  "version": "6.11.0",
   "main": "lib/index.js",
   "tags": [
     "findify",
@@ -38,11 +38,11 @@
     "access": "public"
   },
   "dependencies": {
-    "@findify/agent": "^1.4.2",
-    "@findify/analytics-dom": "^0.2.0",
+    "@findify/agent": "^1.5.0",
+    "@findify/analytics-dom": "^0.3.0",
     "@findify/change-emitter": "^1.0.0",
-    "@findify/react-components": "^0.9.23",
-    "@findify/react-connect": "^0.4.3",
+    "@findify/react-components": "^0.10.0",
+    "@findify/react-connect": "^0.5.0",
     "@hot-loader/react-dom": "^16.8.6",
     "@sentry/browser": "^5.5.0",
     "core-js": "^3.1.4",
@@ -74,9 +74,9 @@
     "ts-node": "^6.1.2",
     "tslint": "^5.10.0",
     "typescript": "3.5.3",
+    "webpack": "^4.39.3",
     "webpack-cli": "^3.3.7",
-    "webpack-dev-server": "^3.8.0",
-    "webpack": "^4.39.3"
+    "webpack-dev-server": "^3.8.0"
   },
   "resolutions": {
     "hoist-non-react-statics": "3.3.0"

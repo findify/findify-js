@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.5.0"></a>
+# [0.5.0](https://github.com/findify/findify-js/compare/@findify/react-connect@0.4.3...@findify/react-connect@0.5.0) (2019-09-05)
+
+
+### Features
+
+* **react-connect:** migrate connectors and providers to hooks ([d2aabc9](https://github.com/findify/findify-js/commit/d2aabc9))
+
+
+
+
 <a name="0.4.3"></a>
 ## [0.4.3](https://github.com/findify/findify-js/compare/@findify/react-connect@0.4.2...@findify/react-connect@0.4.3) (2019-08-28)
 

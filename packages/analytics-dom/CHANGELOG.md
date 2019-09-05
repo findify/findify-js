@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.3.0"></a>
+# [0.3.0](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/analytics-dom@0.2.0...@findify/analytics-dom@0.3.0) (2019-09-05)
+
+
+### Features
+
+* **react-connect:** migrate connectors and providers to hooks ([d2aabc9](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/d2aabc9))
+
+
+
+
 <a name="0.2.0"></a>
 # [0.2.0](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/analytics-dom@0.1.5...@findify/analytics-dom@0.2.0) (2019-07-17)
 
