@@ -75,7 +75,7 @@ export default process.env.NODE_ENV !== 'development'
        "features": {
            "autocomplete": {
 
-                "instant": true,
+                "instant": false,
 
                // Disable listening for closest form submit
                "disableFormSubmit": false,
