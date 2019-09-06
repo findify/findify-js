@@ -2,7 +2,7 @@
  * @module components/autocomplete/ProductMatches
  */
 
-import React from 'react'
+import React, { useEffect } from 'react'
 import ProductCard from 'components/Cards/Product'
 import Grid from 'components/common/Grid';
 import MapArray from 'components/common/MapArray';
@@ -63,8 +63,10 @@ const ProductMatchesView: React.SFC<IProductMatchesProps> = ({
       columnClass={theme.gridColumnClass}
       className={className}
       limit={config.getIn(['meta', 'item_limit'])}
-      factory={(props) => productCardFactory({...props, columnClass, config, theme })}
-      />
+      theme={theme}
+      config={config}
+      factory={ProductCard}
+    />
     <Button
       display-if={suggestions && suggestions.size > 0 && config.get('showViewMoreButton')}
       className={theme.viewMoreButton}

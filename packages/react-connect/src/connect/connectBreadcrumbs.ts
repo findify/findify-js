@@ -9,7 +9,7 @@ export const createFilters = (filters, updater) =>
  * Used to connect to query field of Search API response
  * and create usable search filters from it
  */
-export default createConnect({
+const [hook, connect] =  createConnect({
   field: 'query',
   mapProps: (query, meta, update) => ({
     filters: meta && meta.has('filters')
@@ -23,3 +23,5 @@ export default createConnect({
     },
   }
 })
+
+export { hook, connect };

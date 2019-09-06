@@ -39,7 +39,4 @@ export default compose(
   withPropsOnChange(['size'], ({ size }) => ({
     columns: countColumns(size.width),
   })),*/
-  connectSuggestions,
-  connectItems,
-  pure,
 )(view);

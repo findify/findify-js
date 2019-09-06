@@ -85,26 +85,10 @@ const LazyRenderer = withHandlers({
   !!lazy && <div className={className} ref={registerComponent} />
 )
 
-const mapWidthToImage = (width) =>
-  width < 50 && 'thumb' ||
-  width < 100 &&'small' ||
-  width < 160 && 'compact' ||
-  width < 240 && 'medium' ||
-  width < 480 && 'large' ||
-  'grande'
-
-const getImagePath = (src, { width }) => {
-  if (!window.findify.config.getIn(['platform', 'shopify'])) return;
-  return src.replace(/_thumb|_small|_medium|_large/, () =>
-    '_' + mapWidthToImage(window.devicePixelRatio > 1 ? width * 2 : width)
-  )
-}
-
 export default compose<ImageProps, ImageProps>(
   setDisplayName('Image'),
-  withSize(),
-  withPropsOnChange(['src'], ({ src, size }) => {
-    const path = getImagePath(src, size);
+  withPropsOnChange(['src'], ({ src, getSrc = i => i }) => {
+    const path: string = getSrc(src, window && window.innerWidth);
     return {
       src: cache.includes(path) ? path : void 0,
       original: path,

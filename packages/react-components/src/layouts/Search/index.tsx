@@ -2,8 +2,8 @@
  * @module layouts/Search
  */
 
-import React, { createElement } from 'react';
-import { compose, withProps, withStateHandlers, setDisplayName, branch, withHandlers, renderNothing, lifecycle } from 'recompose';
+import React from 'react';
+import { compose, withProps, setDisplayName, branch, renderNothing } from 'recompose';
 import { connectItems } from '@findify/react-connect';
 import withTheme from 'helpers/withTheme';
 import withEvents from 'helpers/withEvents';

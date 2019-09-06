@@ -1,9 +1,7 @@
 /**
  * @module layouts/Search
  */
-import cx from 'classnames'
 import React from 'react';
-import Grid from 'components/common/Grid';
 import StaticResults from 'components/search/StaticResults';
 import LazyResults from 'components/search/LazyResults';
 import DesktopFacets from 'components/search/DesktopFacets';
@@ -30,7 +28,7 @@ export interface ISearchProps extends ThemedSFCProps {
   items: List<IProduct>;
 }
 
-const SearchLayout = ({ config, meta, isMobile, isCollection, mobileFacetsOpened, filtersOnRight, theme, items }) =>
+const SearchLayout = ({ config, isMobile, isCollection, filtersOnRight, theme }) =>
   <div className={theme.root}>
     <DesktopFacets display-if={!isMobile && !filtersOnRight} />
     <div className={theme.content}>

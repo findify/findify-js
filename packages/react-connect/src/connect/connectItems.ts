@@ -8,9 +8,11 @@ const patchItems = (analytics, meta) => item => new Item(item, meta, analytics);
  * Used to connect to items field of response, which is subset of products,
  * enhance it with Analytics and pass down further the modified products
  */
-export default createConnect({
+const [hook, connect] = createConnect({
   field: 'items',
   mapProps: (items, meta, change, analytics) => ({
     items: items && items.map(patchItems(analytics, meta)) || Map()
   }),
 })
+
+export { hook, connect }

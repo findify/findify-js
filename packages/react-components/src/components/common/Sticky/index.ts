@@ -2,7 +2,7 @@
  * @module components/common/Sticky
  */
 
-import React, { Component, createFactory } from 'react';
+import React, { Component, createFactory, useRef, useState, useEffect } from 'react';
 import withTheme from 'helpers/withTheme';
 
 import view from 'components/common/Sticky/view';
@@ -25,79 +25,62 @@ export interface IStickyProps {
   offset?: number;
   /** Minimal height */
   minHeight?: number;
+
+  stickToTop?: boolean;
 }
 
-class Sticky extends Component<IStickyProps>{
-  root: any;
-  container: any;
-  sizer: any;
-  state = { state: initial };
+const Sticky = ({ offset = 25, minHeight = 0, stickToTop, ...props }: IStickyProps) => {
+  const root = useRef(null);
+  const sizer = useRef(null);
+  const container = useRef(null);
+  const [state, setState] = useState(initial);
 
-  static displayName = 'Sticky';
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!container.current || !root.current) return;
+      const rootBound = root.current.getBoundingClientRect();
+      const containerBound = container.current.getBoundingClientRect();
+      const { width } = sizer.current.getBoundingClientRect();
+  
+      const shouldStick = stickToTop
+        ? (rootBound.top - offset) < 0
+        : containerBound.height < rootBound.height && (rootBound.top - offset) < 0;
+  
+      if (!shouldStick) {
+        if (stickToTop) applyStyles(root.current);
+        applyStyles(container.current);
+        return setState(initial);
+      }
 
-  componentDidMount() {
-    document.addEventListener('scroll', this.handleScroll, true)
-  }
-
-  componentWillUnmount() {
-    document.removeEventListener('scroll', this.handleScroll, true)
-  }
-
-  registerRoot = (r) => {
-    if (!r || this.root) return;
-    this.root = r;
-  }
-
-  registerSizer = (r) => {
-    if (!r || this.sizer) return;
-    this.sizer = r;
-  }
-
-  registerContainer = (r) => {
-    if (!r || this.container) return;
-    this.container = r;
-  }
-
-  handleScroll = (e) => {
-    if (!this.container || !this.root) return;
-    const { offset = 25, minHeight = 500 } = this.props;
-    const rootBound = this.root.getBoundingClientRect();
-    const containerBound = this.container.getBoundingClientRect();
-    const { width } = this.sizer.getBoundingClientRect();
-
-    const shouldStick =
-      containerBound.height < rootBound.height &&
-      (rootBound.top - offset) < 0;
-
-    if (!shouldStick) {
-      applyStyles(this.container);
-      return this.setState({ state: initial });
-    }
-    if (rootBound.bottom <= minHeight) {
-      applyStyles(this.container, { width, maxHeight: minHeight });
-      return this.setState({ state: stuck });
-    };
-
-    const height = rootBound.bottom - offset;
-    applyStyles(this.container, {
+      if (!stickToTop && rootBound.bottom <= minHeight) {
+        applyStyles(container.current, { width, maxHeight: minHeight });
+        return setState(stuck);
+      };
+  
+      const height = rootBound.bottom - offset;
+      const styles = {
         width,
         maxHeight: height > window.innerHeight && window.innerHeight - offset || height,
         top: offset
-    })
-    return this.setState({ state: sticky });
-  }
+      }
+      if (stickToTop) applyStyles(root.current, { height: rootBound.height })
+      applyStyles(container.current, styles)
+      return setState(sticky);
+    };
 
-  render() {
-    const { children } = this.props;
+    document.addEventListener('scroll', handleScroll, true);
+    return () => {
+      document.removeEventListener('scroll', handleScroll, true)
+    }
+  }, [])
 
-    return factory({
-      ...this.state,
-      ...this.props,
-      registerRoot: this.registerRoot,
-      registerSizer: this.registerSizer,
-      registerContainer: this.registerContainer
-    })
-  }
+  return factory({
+    ...props,
+    state,
+    registerRoot: root,
+    registerSizer: sizer,
+    registerContainer: container
+  })
 }
 
 export default withTheme(styles)(Sticky);
