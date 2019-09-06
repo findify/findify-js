@@ -1,4 +1,4 @@
-import { Component, createElement } from 'react';
+import { Component, createElement, useState, useEffect, useMemo } from 'react';
 import { render, createPortal } from 'react-dom';
 import { createFeature } from '../features/create';
 import { getParentNode } from '../helpers/getParentNode';
@@ -13,69 +13,44 @@ const createRoot = () => {
   return div;
 }
 
-class Portal extends Component<any>{
-  element: HTMLElement;
-  component: any;
-  parent: any;
+const Portal = ({ widget }) => {
+  const [element, component, parent] = useMemo(() => {
+    const element = document.createElement('div');
+    element.className = `findify-container ${widget.config.get('cssSelector')}`;;
+    return [
+      element,
+      createFeature(widget),
+      getParentNode(widget)
+    ]
+  }, [])
 
-  static displayName = 'Container'
-  state = { component: null }
-
-  constructor(props) {
-    super(props);
-    const { widget } = props;
-    this.element = document.createElement('div');
-    this.element.className = `findify-container ${widget.config.get('cssSelector')}`;
-    this.parent = getParentNode(widget);
-    this.component = createFeature(widget)
-  }
-
-  componentDidMount() {
-    const { widget } = this.props;
+  useEffect(() => {
     if (widget.type === 'tabs') {
-      this.parent.insertBefore(this.element, this.parent.firstChild);
+      parent.insertBefore(element, parent.firstChild);
     } else {
-      this.parent.appendChild(this.element);
+      parent.appendChild(element);
     }
-  }
+    return () => parent.removeChild(element)
+  }, [widget])
 
-  componentWillUnmount() {
-    this.parent.removeChild(this.element);
-  }
-
-  render() {
-    return createPortal(this.component, this.element)
-  }
+  return useMemo(() => createPortal(component, element), []);
 }
 
-class RootElement extends Component{
-  state = { widgets: [] }
-
-  static displayName = 'Findify'
-
-  constructor(props){
-    super(props);
-    this.state = { widgets: props.widgets.list() };
+const RootElement = ({ widgets }) => {
+  const [state, setState] = useState(widgets.list());
+  useEffect(() => {
     __root.listen((event, widget) => {
       if (event === Events.attach) {
-        this.setState(({ widgets }: any) =>
-          ({ widgets: [...widgets, widget] })
-        )
+        setState([...state, widget])
       }
       if (event === Events.detach) {
-        this.setState(({ widgets }: any) =>
-          ({ widgets: widgets.filter(({ key }) => key !== widget.key) })
-        )
+        setState(state.filter(({ key }) => key !== widget.key))
       }
     })
-  }
-
-  render() {
-    const { widgets } = this.state;
-    return widgets.map((widget: any) => 
-      createElement(Portal, { widget, key: widget.key })
-    );
-  }
+  }, [])
+  return useMemo(() => state.map((widget: any) => 
+    createElement(Portal, { widget, key: widget.key })
+  ), [state]);
 }
 
 export const renderWidgets = debounce((widgets) =>

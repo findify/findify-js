@@ -19,7 +19,7 @@ const stylesUpdater = (ghost, styles: any) => {
   return cache = styles;
 }
 
-export const registerHandlers = (widget, combinator) => {
+export const registerHandlers = (widget, rerender) => {
   const { node, config, agent } = widget;
   const subscribers: any = [];
   let container: any;
@@ -73,9 +73,7 @@ export const registerHandlers = (widget, combinator) => {
       return updateReferencedAgents(value, true);
     }
     agent.set('q', value);
-    combinator.signal('visible', true);
-    combinator.signal('query', value);
-    combinator.transition()
+    rerender('initial')
   };
 
   const insideAutocomplete = (node: HTMLElement) => {
@@ -108,8 +106,7 @@ export const registerHandlers = (widget, combinator) => {
     __root.widgets
       .findByType('autocomplete')
       .forEach(({ node }) => node.value = value);
-    combinator.signal('visible', false);
-    combinator.transition();
+    rerender()
   };
 
   const handleFormSubmit = e => {
@@ -131,10 +128,8 @@ export const registerHandlers = (widget, combinator) => {
       findifyElementFocused = true;
       if (!agent.state.get('q')) {
         agent.set('q', e.target.value);
-        combinator.signal('query', e.target.value);
       }
-      combinator.signal('visible', true);
-      combinator.transition();
+      rerender('initial')
     },
     node
   ));
@@ -222,8 +217,7 @@ export const registerHandlers = (widget, combinator) => {
   const unsubscribe = __root.listen((event, prop, ...args) => {
     if (event === Events.search && prop === widget.key) return search(...args);
     if (event === Events.autocompleteFocusLost && prop === widget.key) {
-      combinator.signal('visible', false);
-      combinator.transition();
+      rerender()
     }
     if (event !== Events.detach || prop !== widget) return;
     subscribers.forEach(fn => fn());
@@ -231,8 +225,7 @@ export const registerHandlers = (widget, combinator) => {
   })
 
   window.requestAnimationFrame(() => {
-    combinator.signal('visible', false)
-    combinator.transition();
+    rerender()
   })
   return;
 }

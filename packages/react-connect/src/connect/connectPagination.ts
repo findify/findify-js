@@ -5,7 +5,7 @@ import createConnect from './createConnect';
  * Used to extract pagination information from Search API response metadata
  * and pass it down further
  */
-export default createConnect({
+const [hook, connect] = createConnect({
   field: 'meta',
   mapProps: (meta) => ({
     pages: meta && Range(1, Math.ceil(meta.get('total') / meta.get('limit'))),
@@ -21,3 +21,5 @@ export default createConnect({
     })
   }
 })
+
+export { hook, connect };

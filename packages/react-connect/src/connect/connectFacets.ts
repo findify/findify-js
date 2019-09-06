@@ -12,9 +12,11 @@ export const patchFacets = (facets, updater) =>
  * Used to connect to facets field of Search API response and transform it into
  * internal MJS structure
  */
-export default createConnect({
+const [hook, connect] = createConnect({
   field: 'facets',
   mapProps: (facets, _, update) => ({
     facets: patchFacets(facets, update)
   })
 })
+
+export { hook, connect };

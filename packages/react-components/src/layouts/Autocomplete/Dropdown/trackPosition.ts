@@ -1,6 +1,19 @@
-import React, { createFactory, Component } from "react";
-import { basename } from "path";
+import React, { createFactory, Component, useRef, useState, useEffect } from "react";
 
+const getPosition = (element) => {
+  const { left, width } = element.getBoundingClientRect()
+  return window.innerWidth < (left + width) ? 'right' : 'left';
+}
+
+export const usePosition = (config) => {
+  const element = useRef(null);
+  const [position, setPosition] = useState(config.get('position') || 'left');
+  useEffect(() => {
+    if (!element.current) return;
+    setPosition(getPosition(element.current))
+  }, [element]);
+  return [position, config.get('position') ? element : undefined];
+}
 
 export default BaseComponent => {
   const factory: any = createFactory(BaseComponent);
@@ -12,9 +25,7 @@ export default BaseComponent => {
   
     registerComponent = (ref) => {
       if (!ref) return;
-      const { left, width } = ref.getBoundingClientRect();
-      const windowWidth = window.innerWidth;
-      this.setState({ position: windowWidth < (left + width) ? 'right' : 'left' })
+      this.setState({ position: getPosition(ref) })
     }
   
     render() {

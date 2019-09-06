@@ -143,7 +143,7 @@ export default process.env.NODE_ENV !== 'development'
                "view": {
                    "pagination": true,
                    "infinite": false,
-                   "stickyFilters": false
+                   "stickyFilters": true
                },
 
                // Should scroll to value after new data was received

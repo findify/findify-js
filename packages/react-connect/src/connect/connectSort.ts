@@ -4,7 +4,7 @@ import createConnect from './createConnect';
  * Used to extract sorting information from Search API response and provide the handler,
  * to modify it further in components
  */
-export default createConnect({
+const [hook, connect] = createConnect({
   field: 'meta:sort',
   mapProps: (props) => ({ selected: props && props.get(0) }),  // field: string, order: string
   handlers: {
@@ -14,3 +14,5 @@ export default createConnect({
       : update('sort', [{ field, order }])
   }
 })
+
+export { hook, connect }
