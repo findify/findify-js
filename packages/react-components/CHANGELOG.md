@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.10.2"></a>
+## [0.10.2](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.1...@findify/react-components@0.10.2) (2019-09-06)
+
+
+### Bug Fixes
+
+* **react-components:** fix incorrect position handling in trackPosition hook ([fcdc8e5](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/fcdc8e5))
+
+
+
+
 <a name="0.10.1"></a>
 ## [0.10.1](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.0...@findify/react-components@0.10.1) (2019-09-06)
 
