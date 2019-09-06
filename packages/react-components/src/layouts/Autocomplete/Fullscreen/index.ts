@@ -12,5 +12,4 @@ import withAutocompleteLogic from 'layouts/Autocomplete/withAutocompleteLogic';
 export default compose(
   setDisplayName('Fullscreen'),
   withTheme(styles),
-  withAutocompleteLogic,
 )(view)

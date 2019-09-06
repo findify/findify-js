@@ -4,7 +4,7 @@ import createConnect from './createConnect';
  * Used to extract search suggestions from Search API response, enhance it with
  * analytics & MJS-specific click-handling logic and pass it down further
  */
-export default createConnect({
+const [ hook, connect ] = createConnect({
   field: 'suggestions',
   handlers: {
     getSuggestionProps: ({ update, analytics, meta, suggestions }) =>
@@ -26,3 +26,5 @@ export default createConnect({
       }
   }
 })
+
+export { hook, connect }

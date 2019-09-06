@@ -1,24 +1,31 @@
-import { createElement, useContext, useMemo, useState, useEffect, createFactory } from "react";
-import { Map } from 'immutable';
+import { useContext, useMemo, useState, useEffect, useCallback, createFactory } from "react";
+import { Map, is } from 'immutable';
 import mapValues from '../utils/mapValues';
 import { Context } from '../provider/createProvider';
 
-const createHook = (handlers, mapProps, field) => (key = 'default') => {
+const getContext = (key) => {
   const context = useContext(Context);
-  const { agent, analytics, config } = context[key];
+  return useMemo(() => context[key], [context, key]);
+}
 
-  const createUpdater = (setState?) => (changes, meta) => {
+const useImmutableState = (initialValue) => {
+  const [state, setState] = useState(initialValue);
+  const updateState = (next) => Object.keys(state).find(k => !is(state[k], next[k])) && setState(next);
+  return useMemo(() => [state, updateState], [state]);
+}
+
+const createHook = (handlers, mapProps, field) => (key = 'default') => {
+  const { agent, analytics, config } = getContext(key);
+
+  const getState = useCallback((
+    changes = field !== 'query' ? agent.response.get(field) : agent.state,
+    meta = agent.response.get('meta') || Map()
+  ) => {
     const mapped = mapProps && mapProps(changes, meta, agent.set, analytics, config);
-    const state = { meta, ...(mapped || { [field]: changes }) };
-    return setState ? setState(state) : state;
-  }
+    return { meta, ...(mapped || { [field]: changes }) };
+  }, []);
 
-  const getState = () => createUpdater()(
-    field !== 'query' ? agent.response.get(field) : agent.state,
-    agent.response.get('meta') || Map()
-  );
-
-  const [state, setState] = useState(getState());
+  const [state, setState] = useImmutableState(getState());
 
   const _handlers = useMemo(() =>
     mapValues(
@@ -27,20 +34,18 @@ const createHook = (handlers, mapProps, field) => (key = 'default') => {
     )
   , [state])
 
-  const _updater = createUpdater(setState);
-
   useEffect(() => {
+    const _updater = (...args) => setState(getState(...args));
     agent.on(`change:${field}`, _updater);
-    window.requestAnimationFrame(() => setState(getState()))
+    window.requestAnimationFrame(() => _updater());
     return () => agent.off(_updater)
   }, []);
 
-  return [state, _handlers, agent.set, analytics, config];
+  return useMemo(() => [state, _handlers, agent.set, analytics, config], [state]);
 }
 
-const getContext = (key = 'default') => {
-  const context = useContext(Context);
-  const { agent, analytics, config } = context[key];
+const useFeatureContext = (key = 'default') => {
+  const { agent, analytics, config } = getContext(key);
   return [void 0, void 0, agent.set, analytics, config];
 }
 
@@ -50,17 +55,11 @@ const getContext = (key = 'default') => {
  * @param param0 Connector configuration
  */
 const createComponent = ({
-  field,
-  handlers,
-  mapProps,
   BaseComponent,
+  hook,
   key
 }: any) => {
   const factory = createFactory(BaseComponent);
-  const hook = field === 'config'
-    ? getContext
-    : createHook(handlers, mapProps, field)
-
   return (props) => {
     const [state, handlers, update, analytics, config] = hook(key);
     return factory({ ...state, ...props, ...handlers, update, analytics, config });
@@ -75,21 +74,22 @@ export default ({
   field: string,
   handlers?: any,
   mapProps?: (field, meta, update, analytics) => void
-}) =>
-  (connector: any | { feature?: string, key?: string | number }): any =>
-    typeof connector === 'function'
-    ? createComponent({
-        field,
-        handlers,
-        mapProps,
-        BaseComponent: connector
-      })
-      // tslint:disable-next-line:variable-name
-    : BaseComponent =>
-      createComponent({
-        field,
-        handlers,
-        mapProps,
-        BaseComponent,
-        ...connector
-      })
+  }) => {
+  const hook = field === 'config' ? useFeatureContext : createHook(handlers, mapProps, field);
+  return [
+    hook,
+    (connector: any | { feature?: string, key?: string | number }): any =>
+      typeof connector === 'function'
+        ? createComponent({
+          hook,
+          BaseComponent: connector
+        })
+        // tslint:disable-next-line:variable-name
+        : BaseComponent =>
+          createComponent({
+            BaseComponent,
+            hook,
+            ...connector
+          })
+    ]
+}

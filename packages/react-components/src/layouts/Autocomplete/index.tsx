@@ -28,7 +28,9 @@ type AutocompleteType = keyof typeof LayoutTypes;
  * @param props Props for React component
  */
 const layoutFactory = (type: AutocompleteType, props) => () => (
-  <div data-findify-autocomplete-wrapper="true">{createElement(LayoutTypes[type] || Fullscreen, props)}</div>
+  <div data-findify-autocomplete-wrapper="true">
+    {createElement(LayoutTypes[type] || Fullscreen, props)}
+  </div>
 )
 
 /**
@@ -40,7 +42,7 @@ const renderView = (type: AutocompleteType, props) => (
   (type === 'sidebar' ? portal : createElement)(layoutFactory(type, props))
 )
 
-const Autocomplete = connectConfig(({ config, isTrendingSearches,...rest }) => {
+const Autocomplete = connectConfig(({ config, isTrendingSearches, ...rest }) => {
   const isMobile = window.innerWidth < config.get('mobileBreakpoint')
   const viewType: AutocompleteType = isMobile && config.get('mobileViewType', 'sidebar') || config.get('viewType', 'simple')
   return renderView(viewType, { ...rest, config, isMobile, isTrendingSearches })
