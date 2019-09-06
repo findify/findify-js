@@ -10,9 +10,9 @@ export const usePosition = (config) => {
   const [position, setPosition] = useState(config.get('position') || 'left');
   useEffect(() => {
     if (!element.current) return;
-    setPosition(getPosition(element.current))
+    window.requestAnimationFrame(() => setPosition(getPosition(element.current)))
   }, [element]);
-  return [position, config.get('position') ? element : undefined];
+  return [position, !config.get('position') ? element : undefined];
 }
 
 export default BaseComponent => {
