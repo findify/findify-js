@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.10.1"></a>
+## [0.10.1](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.0...@findify/react-components@0.10.1) (2019-09-06)
+
+
+### Bug Fixes
+
+* **react-connect, react-components:** replace some classes with hooks ([7e8f916](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/7e8f916))
+
+
+
+
 <a name="0.10.0"></a>
 # [0.10.0](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.9.23...@findify/react-components@0.10.0) (2019-09-05)
 
