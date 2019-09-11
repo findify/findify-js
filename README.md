@@ -1,9 +1,12 @@
 [![Build Status](https://travis-ci.org/findify/findify-js.svg?branch=master)](https://travis-ci.org/findify/findify-js)
 [![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lernajs.io/)
 
+
+<img src="https://res.cloudinary.com/teamtailor/image/upload/c_limit,dpr_2.0,f_auto,h_65,q_80,w_200/v1550068434/aeznhl3cfbpkus7xsvzh.png" alt="react atomic builder" align="center" />
+
 # Findify monorepo
 
-## Install and use components ??
+## Install and use components
 
 [findify-js](https://github.com/findify/findify-js) is a mono-repo,
 which means it is built out of multiple packages.
@@ -15,7 +18,7 @@ For example, getting the [SDK](https://github.com/findify/findify-js/tree/master
 $ npm install @findify/sdk
 ```
 
-## A list of all packages ??
+## A list of all packages
 
 
 | Package                                                                                            | Description                                      |
@@ -30,7 +33,7 @@ $ npm install @findify/sdk
 | [@findify/cli](https://github.com/findify/findify-js/tree/master/packages/cli)             | [Set of node.js utils](https://github.com/findify/findify-js/tree/master/packages/cli) |
 
 
-## Development ?? 
+## Development 
 
 > In our setup [lerna](https://lernajs.io/) uses [yarn](https://yarnpkg.com/lang/en/) to control package dependencies and workspaces, it means you need to have yarn installed
 
@@ -47,4 +50,4 @@ Afterwards you will be able to develop every single package locally, the depende
 
 *Note:* `react-components` are always "hot", so you don't need to rebuild it after change.
 
-## License (MIT) ??
+## License (MIT)
