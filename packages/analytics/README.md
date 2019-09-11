@@ -1,4 +1,6 @@
-# Findify Analytics [![npm (scoped)](https://img.shields.io/npm/v/@findify/analytics.svg)](https://www.npmjs.com/package/@findify/analytics)
+[![npm (scoped)](https://img.shields.io/npm/v/@findify/analytics.svg)](https://www.npmjs.com/package/@findify/analytics)
+
+# @findify/analytics
 
 ## Overview
 
