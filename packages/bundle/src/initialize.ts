@@ -18,8 +18,8 @@ const isReady = (() => {
   __root.listen = emitter.listen;
   __root.emit = emitter.emit;
   __root.addListeners = emitter.addListeners;
-  __root.invalidate = async () =>  {
-    for (const key in __webpack_require__.c) if (key !== 'Jmof') __webpack_require__.c[key] = null;
+  __root.invalidate = async () => {
+    __webpack_require__.invalidate();
     await new Promise(resolve => window.requestAnimationFrame(resolve));
     emitter.emit(Events.invalidate);
   };
