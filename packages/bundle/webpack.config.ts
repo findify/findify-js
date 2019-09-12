@@ -57,7 +57,7 @@ export default (env: WebpackEnvArgs, { mode, origin = 'prod' }) => {
       port: 3000,
       stats: 'minimal',
       historyApiFallback: true,
-      hot: true
+      hot: false
     },
     optimization: {
       usedExports: false,
@@ -201,7 +201,8 @@ export default (env: WebpackEnvArgs, { mode, origin = 'prod' }) => {
           '@hot-loader/react-dom': 'react-dom',
           'recompose/dist/Recompose.esm': 'recompose',
           'recompose/dist/Recompose.cjs': 'recompose',
-        }
+        },
+        ignoreModulesCache: ['Jmof']
       })
     ],
 
