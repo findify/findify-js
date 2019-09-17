@@ -14,7 +14,7 @@ import { withDrawer } from 'helpers/withDrawer';
 import cx from 'classnames';
 import { ThemedSFCProps, MJSConfiguration, ISuggestion, MJSValue } from 'types';
 import { List } from 'immutable';
-import { usePosition } from './trackPosition';
+import { usePosition } from 'layouts/Autocomplete/Dropdown/trackPosition';
 
 export interface IAutocompletePanel extends ThemedSFCProps {
   config: MJSConfiguration;
