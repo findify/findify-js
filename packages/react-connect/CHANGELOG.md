@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.5.3"></a>
+## [0.5.3](https://github.com/findify/findify-js/compare/@findify/react-connect@0.5.2...@findify/react-connect@0.5.3) (2019-09-17)
+
+
+### Bug Fixes
+
+* **react-components, react-connect:** update autocomplete logic ([7b44956](https://github.com/findify/findify-js/commit/7b44956))
+
+
+
+
 <a name="0.5.2"></a>
 ## [0.5.2](https://github.com/findify/findify-js/compare/@findify/react-connect@0.5.1...@findify/react-connect@0.5.2) (2019-09-11)
 

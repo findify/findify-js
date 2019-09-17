@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.10.5"></a>
+## [0.10.5](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.4...@findify/react-components@0.10.5) (2019-09-17)
+
+
+### Bug Fixes
+
+* **react-components, react-connect:** update autocomplete logic ([7b44956](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/7b44956))
+
+
+
+
 <a name="0.10.4"></a>
 ## [0.10.4](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.3...@findify/react-components@0.10.4) (2019-09-12)
 
