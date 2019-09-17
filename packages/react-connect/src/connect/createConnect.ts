@@ -41,12 +41,12 @@ const createHook = (handlers, mapProps, field) => (key = 'default') => {
     return () => agent.off(_updater)
   }, []);
 
-  return useMemo(() => [state, _handlers, agent.set, analytics, config], [state]);
+  return useMemo(() => ({ ...state, ..._handlers, update: agent.set, analytics, config }), [state]);
 }
 
 const useFeatureContext = (key = 'default') => {
   const { agent, analytics, config } = getContext(key);
-  return [void 0, void 0, agent.set, analytics, config];
+  return ({ update: agent.set, analytics, config });
 }
 
 /**
@@ -61,8 +61,8 @@ const createComponent = ({
 }: any) => {
   const factory = createFactory(BaseComponent);
   return (props) => {
-    const [state, handlers, update, analytics, config] = hook(key);
-    return factory({ ...state, ...props, ...handlers, update, analytics, config });
+    const data = hook(key);
+    return factory({ ...props, ...data });
   }
 }
 
