@@ -25,6 +25,7 @@ const createAgent = (type, config) => {
     key: config.get('key'),
     user: __root.analytics.user,
     immutable: true,
+    method: config.getIn(['api', 'method'], 'jsonp'),
     ...(config.get('slot') && { slot: config.get('slot') } || {})
   });
 
