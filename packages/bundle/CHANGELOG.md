@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="6.11.6"></a>
+## [6.11.6](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.11.5...@findify/bundle@6.11.6) (2019-09-23)
+
+
+### Bug Fixes
+
+* **bundle:** add bility to send POST request ([f0bee17](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/f0bee17))
+
+
+
+
 <a name="6.11.5"></a>
 ## [6.11.5](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.11.4...@findify/bundle@6.11.5) (2019-09-17)
 
