@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="6.11.7"></a>
+## [6.11.7](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.11.6...@findify/bundle@6.11.7) (2019-09-24)
+
+
+### Bug Fixes
+
+* **bundle:** single autocomplete agent ([b133c6b](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/b133c6b))
+
+
+
+
 <a name="6.11.6"></a>
 ## [6.11.6](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.11.5...@findify/bundle@6.11.6) (2019-09-23)
 
