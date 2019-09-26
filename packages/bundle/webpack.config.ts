@@ -13,6 +13,7 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const TerserPlugin = require('terser-webpack-plugin');
+const ManifestPlugin = require('webpack-manifest-plugin');
 
 interface WebpackEnvArgs {
   analyze?: boolean;
@@ -221,37 +222,38 @@ export default (env: WebpackEnvArgs, { mode, origin = 'prod' }) => {
   }
 
   if (mode === 'production') {
-    config.plugins.push(new MiniCssExtractPlugin({
-      filename: "[name].css",
-    }));
-    config.plugins.push(new CompressionPlugin({
-      exclude: /\.map/,
-    }));
-    config.plugins.push(new CopyWebpackPlugin([{
-      from: path.resolve(__dirname,'../react-components/lib/raw.css'),
-      to: 'raw.css',
-    }]));
-    config.plugins.push(new CopyWebpackPlugin([{
-      from: path.resolve(__dirname,'../react-components/lib/styles.css'),
-      to: 'styles.css',
-    }]));
-    config.plugins.push(new CopyWebpackPlugin([{
-      from: path.resolve(__dirname,'../react-components/lib/tree.json'),
-      to: 'tree.json',
-    }]));
+    config.plugins.push(
+      new MiniCssExtractPlugin({ filename: "[name].css" }),
+      new CompressionPlugin({ exclude: /\.map/ }),
+      new CopyWebpackPlugin([{
+        from: path.resolve(__dirname,'../react-components/lib/raw.css'),
+        to: 'raw.css',
+      }]),
+      new CopyWebpackPlugin([{
+        from: path.resolve(__dirname,'../react-components/lib/styles.css'),
+        to: 'styles.css',
+      }]),
+      new CopyWebpackPlugin([{
+        from: path.resolve(__dirname,'../react-components/lib/tree.json'),
+        to: 'tree.json',
+      }]),
+      new ManifestPlugin({
+        filter: f => f.path.split('.').pop() === 'js'
+      })
+    )
   }
 
   if (mode === 'development') {
-    config.plugins.push(new webpack.HotModuleReplacementPlugin());
-
-    config.plugins.push(new webpack.DllReferencePlugin({
-      context: __dirname,
-      manifest: require(path.join(__dirname, 'node_modules/dll/vendor-manifest.json'))
-    }));
-
-    config.plugins.push(new AddAssetHtmlPlugin({
-      filepath: require.resolve(path.join(__dirname, 'node_modules/dll/vendor.dll.js'))
-    }));
+    config.plugins.push(
+      new webpack.HotModuleReplacementPlugin(),
+      new webpack.DllReferencePlugin({
+        context: __dirname,
+        manifest: require(path.join(__dirname, 'node_modules/dll/vendor-manifest.json'))
+      }),
+      new AddAssetHtmlPlugin({
+        filepath: require.resolve(path.join(__dirname, 'node_modules/dll/vendor.dll.js'))
+      })
+    )
   }
 
   return config;

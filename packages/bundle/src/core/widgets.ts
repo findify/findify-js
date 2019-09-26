@@ -59,7 +59,9 @@ const getEntity = (selector, _type?, _config?) =>
   ? getNodes(selector)
   : [selector]
 )
+.filter(node => !cache.find(w => w.node === node))
 .map(node => {
+  
   let type = getType(_type || node.getAttribute(attrSelector));
   const key = (_config && _config.get('widgetKey')) || node.getAttribute(keySelector) || ++index;
 
