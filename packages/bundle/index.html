@@ -11,9 +11,9 @@
     <div>
     <header style='height: 90px; padding: 0 20px; background-color:#475971; display: flex; align-items: center'>
       <form>
+        <!-- <input data-findify='autocomplete' data-key='autocomplete' type='text' />
         <input data-findify='autocomplete' data-key='autocomplete' type='text' />
-        <input data-findify='autocomplete' data-key='autocomplete' type='text' />
-        <input data-findify='autocomplete' data-key='autocomplete' type='text' />
+        <input data-findify='autocomplete' data-key='autocomplete' type='text' /> -->
       </form>
       <!--<div style='margin-left: auto'>
 
@@ -22,6 +22,24 @@
         
       </div>-->
     </header>
+    <script>
+      document.addEventListener("animationstart", function(e) {
+        if (e.animationName !== "findify") return;
+        (window.findifyCallbacks = window.findifyCallbacks || []).push(findify => 
+          console.log('attaching') || findify.widgets.attach(e.target)
+        )
+      }, false);
+    </script>
+    <style>
+      [data-findify]{
+        animation-name: findify;
+        animation-duration: 0.001s;
+      }
+      @keyframes findify {  
+        from { clip: rect(1px, auto, auto, auto); }
+        to { clip: rect(0px, auto, auto, auto); }  
+      }
+    </style>
     <div style='padding: 20px'>
       <div data-findify='tabs'>
         <div data-findify="search" data-title='Search results'></div>

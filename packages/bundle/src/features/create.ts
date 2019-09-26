@@ -1,4 +1,4 @@
-import { Component, createElement } from 'react';
+import { Component, createElement, useCallback, useMemo, useState, useEffect } from 'react';
 import { Events } from '../core/events';
 
 class FeatureCreator extends Component<any>{
@@ -13,6 +13,7 @@ class FeatureCreator extends Component<any>{
     const { widget, updater, key } = props;
     this.initial = updater(widget, this.callback);
     this.state = { component: this.initial };
+
     this.unsubscribeForceUpdate = __root.listen((type, key, nextConfig) => {
 
       // Listen to modules invalidation
@@ -53,6 +54,8 @@ class FeatureCreator extends Component<any>{
     return this.state.component;
   }
 }
+
+
 
 export const createFeature = (widget) => {
   const updater = require(`./${widget.type}`).default;

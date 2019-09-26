@@ -71,22 +71,22 @@ export default async (
   __root.analytics = AnalyticsDOM({ platform: cfg.platform, key: cfg.key, events: cfg.analytics || {} });
   if (cfg.platform) setupPlatforms(cfg.platform, cfg.removeFindifyID);
 
-  await documentReady;
-
   const widgetsRenderNeeded = !['paused', 'disabled'].includes(__root.config.get('status'));
 
   if (widgetsRenderNeeded) {
     __root.widgets = createWidgets(__root.config);
+    renderWidgets(__root.widgets);
   }
 
   /** Expose utils */
   __root.utils = { ...require('./core/location'), scrollTo };
 
   await resolveCallback(__root);
+  
+  await documentReady;
 
   if (widgetsRenderNeeded) {
     bulkAddWidgets(cfg.selectors);
-    renderWidgets(__root.widgets);
     log('widgets:', '' , __root.widgets.list());
   } else {
     log(`findify ${__root.config.get('status')}`, 'color: #D9463F');
