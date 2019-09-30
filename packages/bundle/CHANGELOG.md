@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="6.12.1"></a>
+## [6.12.1](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.12.0...@findify/bundle@6.12.1) (2019-09-30)
+
+
+### Bug Fixes
+
+* **bundle:** prevent autocomplete position check before document ready ([f51e51a](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/f51e51a))
+
+
+
+
 <a name="6.12.0"></a>
 # [6.12.0](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.11.7...@findify/bundle@6.12.0) (2019-09-26)
 

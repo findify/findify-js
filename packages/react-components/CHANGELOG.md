@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.10.9"></a>
+## [0.10.9](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.8...@findify/react-components@0.10.9) (2019-09-30)
+
+
+### Bug Fixes
+
+* **bundle:** prevent autocomplete position check before document ready ([f51e51a](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/f51e51a))
+
+
+
+
 <a name="0.10.8"></a>
 ## [0.10.8](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.7...@findify/react-components@0.10.8) (2019-09-26)
 
