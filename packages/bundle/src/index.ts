@@ -92,7 +92,7 @@ Promise
   log(e.stack);
   Promise
   .all(deps)
-  .then(([initialize]) => {
+  .then(([_, initialize]) => {
     initialize.default({ key: __MERCHANT_API_KEY__ });
   })
   .catch(e => {
