@@ -55,12 +55,10 @@ const deps: Promise<any>[] = [
  * The real merchant configuration will be added there on Findify Compilation server
  * So we will load it by load.js ~_~
  */
-const loadConfig = () => import(/* webpackChunkName: "config" */ './config');
-
 if(process.env.NODE_ENV !== 'development') {
   deps.push(loadJs(__MERCHANT_CONFIG_URL__));
 } else {
-  deps.push(loadConfig());
+  deps.push(import(/* webpackChunkName: "config" */ './config'));
 }
 
 /** Load styles */

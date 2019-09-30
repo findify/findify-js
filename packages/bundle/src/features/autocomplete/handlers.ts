@@ -5,6 +5,7 @@ import { findClosestElement } from '../../helpers/findClosestElement';
 import { isSearch, setQuery, buildQuery, redirectToSearch } from '../../core/location';
 import { Events } from '../../core/events';
 import { debounce } from '../../helpers/debounce';
+import { documentReady } from '../../helpers/documentReady';
 
 const findClosestForm = findClosestElement('form');
 
@@ -29,7 +30,7 @@ export const registerHandlers = (widget, rerender) => {
   /** Track input position and update container styles */
   const handleWindowScroll = debounce(() => {
     container = container || document.querySelector(`.findify-widget-${widget.key}`);
-    if (!container.childNodes.length) return;
+    if (!container || !container.childNodes.length) return;
 
     const { width, top, left, height } = node.getBoundingClientRect();
     const _top = top + (window.scrollY || document.documentElement.scrollTop);
@@ -224,8 +225,9 @@ export const registerHandlers = (widget, rerender) => {
     unsubscribe();
   })
 
-  window.requestAnimationFrame(() => {
-    rerender()
-  })
+  documentReady.then(() => handleWindowScroll())
+
+  window.requestAnimationFrame(() => rerender())
+
   return;
 }
