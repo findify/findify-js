@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="6.12.2"></a>
+## [6.12.2](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.12.1...@findify/bundle@6.12.2) (2019-09-30)
+
+
+### Bug Fixes
+
+* **bundle:** listen for autocomplete form submit after dom ready ([be24ef6](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/be24ef6))
+
+
+
+
 <a name="6.12.1"></a>
 ## [6.12.1](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.12.0...@findify/bundle@6.12.1) (2019-09-30)
 
