@@ -20,7 +20,6 @@ const isReady = (() => {
   __root.addListeners = emitter.addListeners;
   __root.invalidate = async () => {
     __webpack_require__.invalidate();
-    await new Promise(resolve => window.requestAnimationFrame(resolve));
     emitter.emit(Events.invalidate);
   };
   return true;
@@ -32,6 +31,8 @@ export default async (
   _config
 ) => {
   if (!isReady) return;
+
+  await new Promise(resolve => window.requestAnimationFrame(resolve));
 
   // We loading config independently from webpack and this promise is always resolved
   const { default: asyncConfig } = await import(/* webpackMode: "weak" */'./config');

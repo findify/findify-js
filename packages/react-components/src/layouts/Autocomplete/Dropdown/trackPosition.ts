@@ -1,4 +1,6 @@
-import React, { createFactory, Component, useRef, useState, useEffect } from "react";
+import { createFactory, useRef, useState, useEffect } from "react";
+
+const cache = {};
 
 const getPosition = (element) => {
   const { left, width } = element.getBoundingClientRect()
@@ -7,33 +9,27 @@ const getPosition = (element) => {
 
 export const usePosition = (config) => {
   const element = useRef(null);
-  const [position, setPosition] = useState(config.get('position') || 'left');
+  const [position, setPosition] = useState(cache[config.get('widgetKey')] || config.get('position') || 'left');
   useEffect(() => {
     if (!element.current) return;
-    window.requestAnimationFrame(() => setPosition(getPosition(element.current)))
+    window.requestAnimationFrame(() => {
+      if (!element.current) return;
+      const p = getPosition(element.current);
+      cache[config.get('widgetKey')] = p;
+      setPosition(p)
+    })
   }, [element]);
   return [position, !config.get('position') ? element : undefined];
 }
 
 export default BaseComponent => {
   const factory: any = createFactory(BaseComponent);
-  return class Tracker extends Component<any, any>{
-    constructor(props) {
-      super(props);
-      this.state = { position: props.config.get('position') || 'left' }
-    }
-  
-    registerComponent = (ref) => {
-      if (!ref) return;
-      this.setState({ position: getPosition(ref) })
-    }
-  
-    render() {
-      return factory({
-        ...this.props,
-        position: this.state.position,
-        innerRef: !this.props.config.get('position') ? this.registerComponent : undefined
-      })
-    }
+  return (props) => {
+    const [position, innerRef] = usePosition(props.config);
+    return factory({
+      ...props,
+      position,
+      innerRef
+    })
   }
 }

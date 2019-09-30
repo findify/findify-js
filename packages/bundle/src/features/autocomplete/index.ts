@@ -20,7 +20,7 @@ export default (widget, rerender) => {
   const state: any = getQuery();
   const apiKey = config.get('key');
 
-  if (!initialRequested) {
+  if (!config.get('disableAutoRequest') && !initialRequested) {
     agent.set('q', state.q);
     initialRequested = true;
   }
