@@ -127,7 +127,7 @@ export const registerHandlers = (widget, rerender) => {
     (e) => {
       if (config.get('instant') && isSearch()) return;
       findifyElementFocused = true;
-      if (!agent.state.get('q')) {
+      if (!agent.state.get('q') || agent.state.get('q') !== e.target.value) {
         agent.set('q', e.target.value);
       }
       rerender('initial')
