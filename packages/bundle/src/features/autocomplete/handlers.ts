@@ -149,18 +149,6 @@ export const registerHandlers = (widget, rerender) => {
     false
   ))
 
-  /** Listen for form submit */
-  if (!config.get('disableFormSubmit')) {
-    const form = findClosestForm(node);
-    if (form) {
-      subscribers.push(addEventListeners(
-        ['submit'],
-        handleFormSubmit,
-        form
-      ))
-    }
-  }
-
   /** Update container position  */
   if (config.get('renderIn') === 'body') {
     subscribers.push(addEventListeners(
@@ -225,7 +213,21 @@ export const registerHandlers = (widget, rerender) => {
     unsubscribe();
   })
 
-  documentReady.then(() => handleWindowScroll())
+  documentReady.then(() => {
+    handleWindowScroll();
+
+    /** Listen for form submit */
+    if (!config.get('disableFormSubmit')) {
+      const form = findClosestForm(node);
+      if (form) {
+        subscribers.push(addEventListeners(
+          ['submit'],
+          handleFormSubmit,
+          form
+        ))
+      }
+    }
+  })
 
   window.requestAnimationFrame(() => rerender())
 
