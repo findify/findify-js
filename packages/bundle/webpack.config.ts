@@ -45,8 +45,9 @@ export default (env: WebpackEnvArgs, { mode, origin = 'prod' }) => {
     output: {
       jsonpFunction: 'findifyJsonp',
       filename: '[name].js',
-      chunkFilename: '[name].js',
+      chunkFilename: '[name]-[chunkhash].js',
       path: path.resolve(__dirname, 'dist'),
+      hashDigestLength: 4,
       publicPath: mode === 'development'
         ? process.env.PUBLIC_PATH || '/'
         : origin === 'prod'
@@ -78,8 +79,8 @@ export default (env: WebpackEnvArgs, { mode, origin = 'prod' }) => {
       ],  
       concatenateModules: false,
       splitChunks: {
-        maxAsyncRequests: 7,
-        maxInitialRequests: 5,
+        maxAsyncRequests: 20,
+        maxInitialRequests: 20,
         minChunks: 2,
         name (module, chunks, cacheGroupKey) {
           const allChunksNames = chunks.map((item) => item.name).join('~');
