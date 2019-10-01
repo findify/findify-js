@@ -45,9 +45,8 @@ export default (env: WebpackEnvArgs, { mode, origin = 'prod' }) => {
     output: {
       jsonpFunction: 'findifyJsonp',
       filename: '[name].js',
-      chunkFilename: '[name]-[chunkhash].js',
+      chunkFilename: '[name].js',
       path: path.resolve(__dirname, 'dist'),
-      hashDigestLength: 4,
       publicPath: mode === 'development'
         ? process.env.PUBLIC_PATH || '/'
         : origin === 'prod'
