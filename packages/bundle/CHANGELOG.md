@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="6.12.4"></a>
+## [6.12.4](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.12.3...@findify/bundle@6.12.4) (2019-10-01)
+
+
+### Bug Fixes
+
+* **bundle:** change limit of requests and hash normal chunks ([131fcb1](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/131fcb1))
+
+
+
+
 <a name="6.12.3"></a>
 ## [6.12.3](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.12.2...@findify/bundle@6.12.3) (2019-09-30)
 
