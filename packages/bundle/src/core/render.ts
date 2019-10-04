@@ -16,13 +16,12 @@ const createRoot = () => {
 const Portal = ({ widget }) => {
   const [domReady, setDomReady] = useState(false);
 
-  const [element, component, parent] = useMemo(() => {
+  const [element, component] = useMemo(() => {
     const element = document.createElement('div');
-    element.className = `findify-container ${widget.config.get('cssSelector')}`;;
+    element.className = `findify-container ${widget.config.get('cssSelector')}`;
     return [
       element,
       createFeature(widget),
-      getParentNode(widget)
     ]
   }, [])
 
@@ -30,6 +29,8 @@ const Portal = ({ widget }) => {
     documentReady.then(() => setDomReady(true));
 
     if (!domReady) return;
+
+    const parent = getParentNode(widget);
   
     if (widget.type === 'tabs') {
       parent.insertBefore(element, parent.firstChild);
