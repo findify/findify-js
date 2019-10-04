@@ -46,11 +46,19 @@ class HashedPlugin {
 
 		compiler.hooks.compilation.tap("HashedPlugin", compilation => {
 			const mainTemplate = compilation.mainTemplate;
+
 			mainTemplate.hooks.requireExtensions.tap("HashedPlugin", (source, chunk, hash) => {
+
+				const scripts = Object.keys(chunk.getChunkMaps().name)
+					.map(c => `${mainTemplate.requireFn}.e('${c}')`)
+					.join(',')
+				
 				const ignoredModules = (options.ignoreModulesCache || [])
 					.map(key => `['${key}']: __cache['${key}']`)
 					.join(',')
+				
 				return source + `
+					${mainTemplate.requireFn}.chunks = [${scripts}];
 					${mainTemplate.requireFn}.invalidate = function() {
 						var __cache = installedModules;
 						installedModules = {${ignoredModules}};
