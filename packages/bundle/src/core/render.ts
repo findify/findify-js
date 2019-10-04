@@ -24,7 +24,7 @@ const Portal = ({ widget }) => {
       createFeature(widget),
       getParentNode(widget)
     ]
-  }, [])
+  }, [domReady])
 
   useEffect(() => {
     documentReady.then(() => setDomReady(true));
