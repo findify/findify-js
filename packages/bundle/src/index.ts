@@ -18,7 +18,9 @@ if (window.__FINFIDY_PATH__) {
 /**
  * Load Dependencies
  */
-(() => {
+
+Promise.all(__webpack_require__.chunks).then(() => {
+
 if ((global as any).findify_initialized) return;
 (global as any).findify_initialized = true;
 
@@ -70,33 +72,33 @@ if (process.env.NODE_ENV !== 'development') {
 }
 
 Promise
-.all(deps)
-.then(([_, initialize, sentry]) => {
-  if (process.env.NODE_ENV !== 'development' && __SENTRY_ENABLED__ && sentry && sentry.init) {
-    sentry.init({
-      dsn: 'https://1db8972d9612483b96430ad56611be6e@sentry.io/1234846',
-      version: __MERCHANT_VERSION__,
-      environment: __ENVIRONMENT__,
-      whitelistUrls: [__webpack_require__.p]
-    })
-    sentry.configureScope(scope => 
-      scope.setExtra('version', __MERCHANT_VERSION__)
-    );
-  }
-  initialize.default({ key: __MERCHANT_API_KEY__ });
-  log('ready', 'color: #3DBC88');
-  log(`version: ${__MERCHANT_VERSION__}`);
-})
-.catch(e => {
-  log('error', 'color: #D9463F');
-  log(e.stack);
-  Promise
   .all(deps)
-  .then(([_, initialize]) => {
+  .then(([_, initialize, sentry]) => {
+    if (process.env.NODE_ENV !== 'development' && __SENTRY_ENABLED__ && sentry && sentry.init) {
+      sentry.init({
+        dsn: 'https://1db8972d9612483b96430ad56611be6e@sentry.io/1234846',
+        version: __MERCHANT_VERSION__,
+        environment: __ENVIRONMENT__,
+        whitelistUrls: [__webpack_require__.p]
+      })
+      sentry.configureScope(scope => 
+        scope.setExtra('version', __MERCHANT_VERSION__)
+      );
+    }
     initialize.default({ key: __MERCHANT_API_KEY__ });
+    log('ready', 'color: #3DBC88');
+    log(`version: ${__MERCHANT_VERSION__}`);
   })
   .catch(e => {
-    log('Please contact support team', 'color: #D9463F');
+    log('error', 'color: #D9463F');
+    log(e.stack);
+    Promise
+    .all(deps)
+    .then(([_, initialize]) => {
+      initialize.default({ key: __MERCHANT_API_KEY__ });
+    })
+    .catch(e => {
+      log('Please contact support team', 'color: #D9463F');
+    })
   })
-})
-})();
+});
