@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="6.12.7"></a>
+## [6.12.7](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.12.6...@findify/bundle@6.12.7) (2019-10-04)
+
+
+### Bug Fixes
+
+* **bundle:** fix issue when component rendered before dom ready ([5e8626c](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/5e8626c))
+* **bundle:** simplify memoization of getting parent ([68a5609](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/68a5609))
+
+
+
+
 <a name="6.12.6"></a>
 ## [6.12.6](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.12.5...@findify/bundle@6.12.6) (2019-10-04)
 
