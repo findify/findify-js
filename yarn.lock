@@ -926,6 +926,32 @@
     reflect-metadata "^0.1.12"
     tslib "^1.8.1"
 
+"@findify/agent@^1.5.1":
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/@findify/agent/-/agent-1.5.1.tgz#ba8cba53d42aa2de47404944e27aedb16901317d"
+  integrity sha512-svZkV6DzfwOVPoXrO0IdWqTQWp872i+R/gWb0Rqm9AcpSamS9ixKnCpPlBQVLAwUheQUaZzA8dvldkGMrKJNEg==
+  dependencies:
+    "@findify/sdk" "^2.4.0"
+    core-js "^3.1.4"
+    immutable "^4.0.0-rc.9"
+
+"@findify/analytics-dom@^0.3.1":
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/@findify/analytics-dom/-/analytics-dom-0.3.1.tgz#0a2a2c2c1772c67fe2f1d268d2123f25dc74d93d"
+  integrity sha512-PLt6a4ZCFSS7Po6okhBDCsH/k3prHvBr15t2Z0jaU8ZdEcLlwf+ExjN9VrRrP5DeMuwnQ3OcKU/H/XyOWzRZ2g==
+  dependencies:
+    "@findify/analytics" "^3.5.1"
+    element-dataset "2.2.6"
+
+"@findify/analytics@^3.5.1":
+  version "3.5.1"
+  resolved "https://registry.yarnpkg.com/@findify/analytics/-/analytics-3.5.1.tgz#8493a8c6eb371653b939c294fc16c8d8af30586d"
+  integrity sha512-/5s7RMUK1FuiAPawMFHhdhFyHc0e94nRnJaiXT3F9b2ZdUKhuOePeOc2UQWEJNXcORiPisCPk1pM4/24kvMiiw==
+  dependencies:
+    core-js "^3.1.4"
+    qs "^6.5.2"
+    store "^2.0.12"
+
 "@findify/babel-plugin-css-modules-transform@^2.0.3":
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/@findify/babel-plugin-css-modules-transform/-/babel-plugin-css-modules-transform-2.0.3.tgz#07c4499aa6d6f9ae3477b1933cd22a1e619b328b"
@@ -939,6 +965,30 @@
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@findify/change-emitter/-/change-emitter-1.0.0.tgz#d14e91e6fbe01972fc88f37915c34f853232a58b"
   integrity sha1-0U6R5vvgGXL8iPN5FcNPhTIypYs=
+
+"@findify/react-connect@^0.5.3":
+  version "0.5.3"
+  resolved "https://registry.yarnpkg.com/@findify/react-connect/-/react-connect-0.5.3.tgz#cf504aa6fcb676d641e0deaeafa389832a2b8743"
+  integrity sha512-IP/90sUQLAAk9ygA7AJ/y8b5UrONgf8hjTW9WAtL4tPeZJSbqfjL1j7Pd8mrH0ZZ2nUQc/kCi0WI1FBSX/Z0rw==
+  dependencies:
+    "@findify/agent" "^1.5.1"
+    "@findify/analytics" "^3.5.1"
+    immutable "^4.0.0-rc.9"
+    memoize-one "^5.0.5"
+    react "^16.9.0"
+
+"@findify/sdk@^2.4.0":
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/@findify/sdk/-/sdk-2.4.0.tgz#4b580cdd452b904292f4aa14f1d4bd96aa9de07a"
+  integrity sha512-wtwGzUk7A/IirvcGWF/ocjifWdlwE8mc33GdZWugmltTjxjjg8vUNutoUe9eLVBF/hkfzwejvkuT1HGQd1C40w==
+  dependencies:
+    axios "^0.19.0"
+    bundle "^2.1.0"
+    core-js "^3.1.4"
+    debug "^3.1.0"
+    jsonp "^0.2.1"
+    nanoid "^2.0.4"
+    qs "^6.5.2"
 
 "@hot-loader/react-dom@^16.9.0":
   version "16.9.0"
@@ -1775,6 +1825,11 @@ ansi-html@0.0.7:
   version "0.0.7"
   resolved "https://registry.yarnpkg.com/ansi-html/-/ansi-html-0.0.7.tgz#813584021962a9e9e6fd039f940d12f56ca7859e"
   integrity sha1-gTWEAhliqenm/QOflA0S9WynhZ4=
+
+ansi-regex@*:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/ansi-regex/-/ansi-regex-5.0.0.tgz#388539f55179bf39339c81af30a654d69f87cb75"
+  integrity sha512-bY6fj56OUQ0hU1KjFNDQuJFezqKdrAyFdIevADiqrWHwSlbmBNMHp5ak2f40Pm8JTFyM2mqxkG6ngkHO11f/lg==
 
 ansi-regex@^2.0.0:
   version "2.1.1"
@@ -5345,7 +5400,7 @@ debug@^4.0.0, debug@^4.1.0, debug@^4.1.1, debug@~4.1.0:
   dependencies:
     ms "^2.1.1"
 
-debuglog@^1.0.1:
+debuglog@*, debuglog@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/debuglog/-/debuglog-1.0.1.tgz#aa24ffb9ac3df9a2351837cfb2d279360cd78492"
   integrity sha1-qiT/uaw9+aI1GDfPstJ5NgzXhJI=
@@ -8600,7 +8655,7 @@ import-local@^1.0.0:
     pkg-dir "^2.0.0"
     resolve-cwd "^2.0.0"
 
-imurmurhash@^0.1.4:
+imurmurhash@*, imurmurhash@^0.1.4:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/imurmurhash/-/imurmurhash-0.1.4.tgz#9218b9b2b928a238b13dc4fb6b6d576f231453ea"
   integrity sha1-khi5srkoojixPcT7a21XbyMUU+o=
@@ -10266,6 +10321,13 @@ jsonfile@^4.0.0:
   optionalDependencies:
     graceful-fs "^4.1.6"
 
+jsonp@^0.2.1:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/jsonp/-/jsonp-0.2.1.tgz#a65b4fa0f10bda719a05441ea7b94c55f3e15bae"
+  integrity sha1-pltPoPEL2nGaBUQep7lMVfPhW64=
+  dependencies:
+    debug "^2.1.3"
+
 jsonparse@^1.2.0:
   version "1.3.1"
   resolved "https://registry.yarnpkg.com/jsonparse/-/jsonparse-1.3.1.tgz#3f4dae4a91fac315f71062f8521cc239f1366280"
@@ -10678,6 +10740,11 @@ lockfile@~1.0.2:
   dependencies:
     signal-exit "^3.0.2"
 
+lodash._baseindexof@*:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/lodash._baseindexof/-/lodash._baseindexof-3.1.0.tgz#fe52b53a1c6761e42618d654e4a25789ed61822c"
+  integrity sha1-/lK1OhxnYeQmGNZU5KJXie1hgiw=
+
 lodash._baseuniq@~4.6.0:
   version "4.6.0"
   resolved "https://registry.yarnpkg.com/lodash._baseuniq/-/lodash._baseuniq-4.6.0.tgz#0ebb44e456814af7905c6212fa2c9b2d51b841e8"
@@ -10686,10 +10753,32 @@ lodash._baseuniq@~4.6.0:
     lodash._createset "~4.0.0"
     lodash._root "~3.0.0"
 
+lodash._bindcallback@*:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/lodash._bindcallback/-/lodash._bindcallback-3.0.1.tgz#e531c27644cf8b57a99e17ed95b35c748789392e"
+  integrity sha1-5THCdkTPi1epnhftlbNcdIeJOS4=
+
+lodash._cacheindexof@*:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/lodash._cacheindexof/-/lodash._cacheindexof-3.0.2.tgz#3dc69ac82498d2ee5e3ce56091bafd2adc7bde92"
+  integrity sha1-PcaayCSY0u5ePOVgkbr9Ktx73pI=
+
+lodash._createcache@*:
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/lodash._createcache/-/lodash._createcache-3.1.2.tgz#56d6a064017625e79ebca6b8018e17440bdcf093"
+  integrity sha1-VtagZAF2JeeevKa4AY4XRAvc8JM=
+  dependencies:
+    lodash._getnative "^3.0.0"
+
 lodash._createset@~4.0.0:
   version "4.0.3"
   resolved "https://registry.yarnpkg.com/lodash._createset/-/lodash._createset-4.0.3.tgz#0f4659fbb09d75194fa9e2b88a6644d363c9fe26"
   integrity sha1-D0ZZ+7CddRlPqeK4imZE02PJ/iY=
+
+lodash._getnative@*, lodash._getnative@^3.0.0:
+  version "3.9.1"
+  resolved "https://registry.yarnpkg.com/lodash._getnative/-/lodash._getnative-3.9.1.tgz#570bc7dede46d61cdcde687d65d3eecbaa3aaff5"
+  integrity sha1-VwvH3t5G1hzc3mh9ZdPuy6o6r/U=
 
 lodash._reinterpolate@^3.0.0:
   version "3.0.0"
@@ -10745,6 +10834,11 @@ lodash.memoize@^4.1.2:
   version "4.1.2"
   resolved "https://registry.yarnpkg.com/lodash.memoize/-/lodash.memoize-4.1.2.tgz#bcc6c49a42a2840ed997f323eada5ecd182e0bfe"
   integrity sha1-vMbEmkKihA7Zl/Mj6tpezRguC/4=
+
+lodash.restparam@*:
+  version "3.6.1"
+  resolved "https://registry.yarnpkg.com/lodash.restparam/-/lodash.restparam-3.6.1.tgz#936a4e309ef330a7645ed4145986c85ae5b20805"
+  integrity sha1-k2pOMJ7zMKdkXtQUWYbIWuWyCAU=
 
 lodash.sortby@^4.7.0:
   version "4.7.0"
@@ -14569,7 +14663,7 @@ react-virtualized@^9.21.1:
     prop-types "^15.6.0"
     react-lifecycles-compat "^3.0.4"
 
-react@^16.10.2, react@^16.8.3:
+react@^16.10.2, react@^16.8.3, react@^16.9.0:
   version "16.10.2"
   resolved "https://registry.yarnpkg.com/react/-/react-16.10.2.tgz#a5ede5cdd5c536f745173c8da47bda64797a4cf0"
   integrity sha512-MFVIq0DpIhrHFyqLU0S3+4dIcBhhOvBE8bJ/5kHPVOVaGdo0KuiQzpcjCPsf585WvhypqtrMILyoE2th6dT+Lw==
@@ -14753,7 +14847,7 @@ readable-stream@~2.1.5:
     string_decoder "~0.10.x"
     util-deprecate "~1.0.1"
 
-readdir-scoped-modules@^1.0.0:
+readdir-scoped-modules@*, readdir-scoped-modules@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/readdir-scoped-modules/-/readdir-scoped-modules-1.1.0.tgz#8d45407b4f870a0dcaebc0e28670d18e74514309"
   integrity sha512-asaikDeqAQg7JifRsZn1NJZXo9E+VwlyCfbkZhwyISinqk5zNS6266HS5kah6P0SaQKGF6SkNnZVHUzHFYxYDw==
@@ -17772,7 +17866,7 @@ v8-compile-cache@2.0.3:
   resolved "https://registry.yarnpkg.com/v8-compile-cache/-/v8-compile-cache-2.0.3.tgz#00f7494d2ae2b688cfe2899df6ed2c54bef91dbe"
   integrity sha512-CNmdbwQMBjwr9Gsmohvm0pbL954tJrNzf6gWL3K+QMQf00PF7ERGrEiLgjuU3mKreLC2MeGhUsNV9ybTbLgd3w==
 
-validate-npm-package-license@^3.0.1:
+validate-npm-package-license@*, validate-npm-package-license@^3.0.1:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/validate-npm-package-license/-/validate-npm-package-license-3.0.4.tgz#fc91f6b9c7ba15c857f4cb2c5defeec39d4f410a"
   integrity sha512-DpKm2Ui/xN7/HQKCtpZxoRWBhZ9Z0kqtygG8XCgNQ8ZlDnxuQmWhj566j8fN4Cu3/JmbhsDo7fcAJq4s9h27Ew==
