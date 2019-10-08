@@ -1,5 +1,6 @@
 import { Events } from '../../core/events';
 import Tabs from '@findify/react-components/src/layouts/Tabs';
+import { documentReady } from '../../helpers/documentReady';
 
 const getNestedWidgets = root => {
   const children = Array.from(root.children);
@@ -52,13 +53,15 @@ const createState = (_widgets, render) => {
 
 export default (widget, render) => {
   const { node } = widget;
-  const widgets = getNestedWidgets(node);
-  const { updateCount, getState } = createState(widgets, render);
-  
 
-  widgets.forEach(({ type, agent }, index) => agent.on('change:meta', (meta) => {
-    updateCount(index, type === 'recommendation' ? meta.get('limit') : meta.get('total'));
-  }));
+  documentReady.then(() => {
+    const widgets = getNestedWidgets(node);
+    const { updateCount } = createState(widgets, render);
+    
+    widgets.forEach(({ type, agent }, index) => agent.on('change:meta', (meta) => {
+      updateCount(index, type === 'recommendation' ? meta.get('limit') : meta.get('total'));
+    }));
+  })
 
   const unsubscribe = __root.listen((event, prop) => {
     if (event !== Events.detach || prop !== widget) return;
