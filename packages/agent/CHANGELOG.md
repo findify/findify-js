@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.5.2"></a>
+## [1.5.2](https://github.com/findify/findify-js/compare/@findify/agent@1.5.1...@findify/agent@1.5.2) (2019-10-08)
+
+
+### Bug Fixes
+
+* **bundle:** fix issue with non-updated widgets state in render ([f5ff5ce](https://github.com/findify/findify-js/commit/f5ff5ce))
+* **rect-components:** tMP disable swiper ([233ecc4](https://github.com/findify/findify-js/commit/233ecc4))
+
+
+
+
 <a name="1.5.1"></a>
 ## [1.5.1](https://github.com/findify/findify-js/compare/@findify/agent@1.5.0...@findify/agent@1.5.1) (2019-09-11)
 

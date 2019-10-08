@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="6.12.8"></a>
+## [6.12.8](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.12.7...@findify/bundle@6.12.8) (2019-10-08)
+
+
+### Bug Fixes
+
+* **bundle:** fix issue with non-updated widgets state in render ([f5ff5ce](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/f5ff5ce))
+* **rect-components:** tMP disable swiper ([233ecc4](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/233ecc4))
+
+
+
+
 <a name="6.12.7"></a>
 ## [6.12.7](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.12.6...@findify/bundle@6.12.7) (2019-10-04)
 

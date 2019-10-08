@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="2.4.1"></a>
+## [2.4.1](https://github.com/findify/findify-js/compare/@findify/sdk@2.4.0...@findify/sdk@2.4.1) (2019-10-08)
+
+
+### Bug Fixes
+
+* **bundle:** fix issue with non-updated widgets state in render ([f5ff5ce](https://github.com/findify/findify-js/commit/f5ff5ce))
+
+
+
+
 <a name="2.4.0"></a>
 # [2.4.0](https://github.com/findify/findify-js/compare/@findify/sdk@2.3.2...@findify/sdk@2.4.0) (2019-09-05)
 

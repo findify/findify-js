@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.3.2"></a>
+## [0.3.2](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/analytics-dom@0.3.1...@findify/analytics-dom@0.3.2) (2019-10-08)
+
+
+### Bug Fixes
+
+* **bundle:** fix issue with non-updated widgets state in render ([f5ff5ce](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/f5ff5ce))
+
+
+
+
 <a name="0.3.1"></a>
 ## [0.3.1](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/analytics-dom@0.3.0...@findify/analytics-dom@0.3.1) (2019-09-11)
 

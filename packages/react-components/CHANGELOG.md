@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.10.16"></a>
+## [0.10.16](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.15...@findify/react-components@0.10.16) (2019-10-08)
+
+
+### Bug Fixes
+
+* **bundle:** fix issue with non-updated widgets state in render ([f5ff5ce](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/f5ff5ce))
+* **react-components:** bump version ([bef0fcb](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/bef0fcb))
+* **rect-components:** tMP disable swiper ([233ecc4](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/233ecc4))
+
+
+
+
 <a name="0.10.15"></a>
 ## [0.10.15](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.14...@findify/react-components@0.10.15) (2019-10-04)
 
