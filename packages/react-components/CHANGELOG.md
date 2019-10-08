@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.10.17"></a>
+## [0.10.17](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.16...@findify/react-components@0.10.17) (2019-10-08)
+
+
+### Bug Fixes
+
+* **react-components:** rollback Swiper ([d45648b](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/d45648b))
+
+
+
+
 <a name="0.10.16"></a>
 ## [0.10.16](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.15...@findify/react-components@0.10.16) (2019-10-08)
 
