@@ -1734,6 +1734,9 @@ const _default: React.ComponentClass<unknown, any>;
 export default _default;
 
 }
+declare module 'layouts/Recommendation/Swiper/Swiper' {
+
+}
 declare module 'layouts/Recommendation/Swiper/view' {
 /// <reference types="react" />
 const _default: ({ items, config, theme, sliderOptions }: {
