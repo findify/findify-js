@@ -3,6 +3,174 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="6.12.7"></a>
+## [6.12.7](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.12.6...@findify/bundle@6.12.7) (2019-10-04)
+
+
+### Bug Fixes
+
+* **bundle:** fix issue when component rendered before dom ready ([5e8626c](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/5e8626c))
+* **bundle:** simplify memoization of getting parent ([68a5609](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/68a5609))
+
+
+
+
+<a name="6.12.6"></a>
+## [6.12.6](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.12.5...@findify/bundle@6.12.6) (2019-10-04)
+
+
+### Bug Fixes
+
+* **bundle:** prefetch all modules before initialization ([0e227f1](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/0e227f1))
+
+
+
+
+<a name="6.12.5"></a>
+## [6.12.5](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.12.4...@findify/bundle@6.12.5) (2019-10-01)
+
+
+### Bug Fixes
+
+* **bundle:** remove chunk hash ([150ac69](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/150ac69))
+
+
+
+
+<a name="6.12.4"></a>
+## [6.12.4](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.12.3...@findify/bundle@6.12.4) (2019-10-01)
+
+
+### Bug Fixes
+
+* **bundle:** change limit of requests and hash normal chunks ([131fcb1](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/131fcb1))
+
+
+
+
+<a name="6.12.3"></a>
+## [6.12.3](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.12.2...@findify/bundle@6.12.3) (2019-09-30)
+
+
+### Bug Fixes
+
+* **bundle:** fix second initialization on error ([295a1d9](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/295a1d9))
+
+
+
+
+<a name="6.12.2"></a>
+## [6.12.2](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.12.1...@findify/bundle@6.12.2) (2019-09-30)
+
+
+### Bug Fixes
+
+* **bundle:** listen for autocomplete form submit after dom ready ([be24ef6](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/be24ef6))
+
+
+
+
+<a name="6.12.1"></a>
+## [6.12.1](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.12.0...@findify/bundle@6.12.1) (2019-09-30)
+
+
+### Bug Fixes
+
+* **bundle:** prevent autocomplete position check before document ready ([f51e51a](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/f51e51a))
+
+
+
+
+<a name="6.12.0"></a>
+# [6.12.0](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.11.7...@findify/bundle@6.12.0) (2019-09-26)
+
+
+### Features
+
+* **bundle:** async react render ([4f42323](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/4f42323))
+
+
+
+
+<a name="6.11.7"></a>
+## [6.11.7](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.11.6...@findify/bundle@6.11.7) (2019-09-24)
+
+
+### Bug Fixes
+
+* **bundle:** single autocomplete agent ([b133c6b](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/b133c6b))
+
+
+
+
+<a name="6.11.6"></a>
+## [6.11.6](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.11.5...@findify/bundle@6.11.6) (2019-09-23)
+
+
+### Bug Fixes
+
+* **bundle:** add bility to send POST request ([f0bee17](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/f0bee17))
+
+
+
+
+<a name="6.11.5"></a>
+## [6.11.5](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.11.4...@findify/bundle@6.11.5) (2019-09-17)
+
+
+
+
+**Note:** Version bump only for package @findify/bundle
+
+<a name="6.11.4"></a>
+## [6.11.4](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.11.3...@findify/bundle@6.11.4) (2019-09-12)
+
+
+### Bug Fixes
+
+* **bundle:** change modules cache purege mechanism ([dc16612](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/dc16612))
+
+
+
+
+<a name="6.11.3"></a>
+## [6.11.3](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.11.2...@findify/bundle@6.11.3) (2019-09-11)
+
+
+
+
+**Note:** Version bump only for package @findify/bundle
+
+<a name="6.11.2"></a>
+## [6.11.2](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.11.1...@findify/bundle@6.11.2) (2019-09-06)
+
+
+
+
+**Note:** Version bump only for package @findify/bundle
+
+<a name="6.11.1"></a>
+## [6.11.1](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.11.0...@findify/bundle@6.11.1) (2019-09-06)
+
+
+### Bug Fixes
+
+* **react-connect, react-components:** replace some classes with hooks ([7e8f916](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/7e8f916))
+
+
+
+
+<a name="6.11.0"></a>
+# [6.11.0](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.10.23...@findify/bundle@6.11.0) (2019-09-05)
+
+
+### Features
+
+* **react-connect:** migrate connectors and providers to hooks ([d2aabc9](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/d2aabc9))
+
+
+
+
 <a name="6.10.23"></a>
 ## [6.10.23](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.10.22...@findify/bundle@6.10.23) (2019-08-28)
 

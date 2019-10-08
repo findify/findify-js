@@ -3,6 +3,47 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.5.3"></a>
+## [0.5.3](https://github.com/findify/findify-js/compare/@findify/react-connect@0.5.2...@findify/react-connect@0.5.3) (2019-09-17)
+
+
+### Bug Fixes
+
+* **react-components, react-connect:** update autocomplete logic ([7b44956](https://github.com/findify/findify-js/commit/7b44956))
+
+
+
+
+<a name="0.5.2"></a>
+## [0.5.2](https://github.com/findify/findify-js/compare/@findify/react-connect@0.5.1...@findify/react-connect@0.5.2) (2019-09-11)
+
+
+
+
+**Note:** Version bump only for package @findify/react-connect
+
+<a name="0.5.1"></a>
+## [0.5.1](https://github.com/findify/findify-js/compare/@findify/react-connect@0.5.0...@findify/react-connect@0.5.1) (2019-09-06)
+
+
+### Bug Fixes
+
+* **react-connect, react-components:** replace some classes with hooks ([7e8f916](https://github.com/findify/findify-js/commit/7e8f916))
+
+
+
+
+<a name="0.5.0"></a>
+# [0.5.0](https://github.com/findify/findify-js/compare/@findify/react-connect@0.4.3...@findify/react-connect@0.5.0) (2019-09-05)
+
+
+### Features
+
+* **react-connect:** migrate connectors and providers to hooks ([d2aabc9](https://github.com/findify/findify-js/commit/d2aabc9))
+
+
+
+
 <a name="0.4.3"></a>
 ## [0.4.3](https://github.com/findify/findify-js/compare/@findify/react-connect@0.4.2...@findify/react-connect@0.4.3) (2019-08-28)
 

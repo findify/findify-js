@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.5.1"></a>
+## [1.5.1](https://github.com/findify/findify-js/compare/@findify/agent@1.5.0...@findify/agent@1.5.1) (2019-09-11)
+
+
+
+
+**Note:** Version bump only for package @findify/agent
+
+<a name="1.5.0"></a>
+# [1.5.0](https://github.com/findify/findify-js/compare/@findify/agent@1.4.2...@findify/agent@1.5.0) (2019-09-05)
+
+
+### Features
+
+* **react-connect:** migrate connectors and providers to hooks ([d2aabc9](https://github.com/findify/findify-js/commit/d2aabc9))
+
+
+
+
 <a name="1.4.2"></a>
 ## [1.4.2](https://github.com/findify/findify-js/compare/@findify/agent@1.4.1...@findify/agent@1.4.2) (2019-08-28)
 

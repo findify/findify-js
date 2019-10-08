@@ -3,6 +3,154 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.10.15"></a>
+## [0.10.15](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.14...@findify/react-components@0.10.15) (2019-10-04)
+
+
+
+
+**Note:** Version bump only for package @findify/react-components
+
+<a name="0.10.14"></a>
+## [0.10.14](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.13...@findify/react-components@0.10.14) (2019-10-04)
+
+
+
+
+**Note:** Version bump only for package @findify/react-components
+
+<a name="0.10.13"></a>
+## [0.10.13](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.12...@findify/react-components@0.10.13) (2019-10-01)
+
+
+
+
+**Note:** Version bump only for package @findify/react-components
+
+<a name="0.10.12"></a>
+## [0.10.12](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.11...@findify/react-components@0.10.12) (2019-10-01)
+
+
+
+
+**Note:** Version bump only for package @findify/react-components
+
+<a name="0.10.11"></a>
+## [0.10.11](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.10...@findify/react-components@0.10.11) (2019-09-30)
+
+
+
+
+**Note:** Version bump only for package @findify/react-components
+
+<a name="0.10.10"></a>
+## [0.10.10](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.9...@findify/react-components@0.10.10) (2019-09-30)
+
+
+
+
+**Note:** Version bump only for package @findify/react-components
+
+<a name="0.10.9"></a>
+## [0.10.9](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.8...@findify/react-components@0.10.9) (2019-09-30)
+
+
+### Bug Fixes
+
+* **bundle:** prevent autocomplete position check before document ready ([f51e51a](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/f51e51a))
+
+
+
+
+<a name="0.10.8"></a>
+## [0.10.8](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.7...@findify/react-components@0.10.8) (2019-09-26)
+
+
+
+
+**Note:** Version bump only for package @findify/react-components
+
+<a name="0.10.7"></a>
+## [0.10.7](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.6...@findify/react-components@0.10.7) (2019-09-24)
+
+
+
+
+**Note:** Version bump only for package @findify/react-components
+
+<a name="0.10.6"></a>
+## [0.10.6](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.5...@findify/react-components@0.10.6) (2019-09-23)
+
+
+
+
+**Note:** Version bump only for package @findify/react-components
+
+<a name="0.10.5"></a>
+## [0.10.5](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.4...@findify/react-components@0.10.5) (2019-09-17)
+
+
+### Bug Fixes
+
+* **react-components, react-connect:** update autocomplete logic ([7b44956](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/7b44956))
+
+
+
+
+<a name="0.10.4"></a>
+## [0.10.4](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.3...@findify/react-components@0.10.4) (2019-09-12)
+
+
+
+
+**Note:** Version bump only for package @findify/react-components
+
+<a name="0.10.3"></a>
+## [0.10.3](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.2...@findify/react-components@0.10.3) (2019-09-11)
+
+
+
+
+**Note:** Version bump only for package @findify/react-components
+
+<a name="0.10.2"></a>
+## [0.10.2](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.1...@findify/react-components@0.10.2) (2019-09-06)
+
+
+### Bug Fixes
+
+* **react-components:** fix incorrect position handling in trackPosition hook ([fcdc8e5](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/fcdc8e5))
+
+
+
+
+<a name="0.10.1"></a>
+## [0.10.1](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.0...@findify/react-components@0.10.1) (2019-09-06)
+
+
+### Bug Fixes
+
+* **react-connect, react-components:** replace some classes with hooks ([7e8f916](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/7e8f916))
+
+
+
+
+<a name="0.10.0"></a>
+# [0.10.0](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.9.23...@findify/react-components@0.10.0) (2019-09-05)
+
+
+### Bug Fixes
+
+* **react-components:** chande image size based on width of container ([235a0b3](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/235a0b3))
+
+
+### Features
+
+* **react-connect:** migrate connectors and providers to hooks ([d2aabc9](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/d2aabc9))
+
+
+
+
 <a name="0.9.23"></a>
 ## [0.9.23](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.9.22...@findify/react-components@0.9.23) (2019-08-28)
 
