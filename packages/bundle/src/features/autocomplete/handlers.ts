@@ -20,8 +20,8 @@ const stylesUpdater = (ghost, styles: any) => {
   return cache = styles;
 }
 
-export const registerHandlers = (widget, rerender) => {
-  const { node, config, agent } = widget;
+export const registerHandlers = (widget, agent, rerender) => {
+  const { node, config } = widget;
   const subscribers: any = [];
   let container: any;
   let findifyElementFocused = true;

@@ -1,5 +1,5 @@
-import { Component, createElement, useState, useEffect, useMemo } from 'react';
-import { render, createPortal } from 'react-dom';
+import { Component, createElement, useState, useReducer, useEffect, useMemo } from 'react';
+import { render, hydrate, createPortal } from 'react-dom';
 import { createFeature } from '../features/create';
 import { getParentNode } from '../helpers/getParentNode';
 import { debounce } from '../helpers/debounce';
@@ -44,23 +44,33 @@ const Portal = ({ widget }) => {
   return useMemo(() => createPortal(component, element), [domReady]);
 }
 
+const reduceWidgets = (state, action) => {
+  switch (action.type) {
+    case 'attach':
+      return [...state, action.widget];
+    case 'detach':
+      return state.filter(({ key }) => key !== action.key)
+  }
+}
+
 const RootElement = ({ widgets }) => {
-  const [state, setState] = useState(widgets.list());
-  useEffect(() => {
+  const [state, dispatch] = useReducer(reduceWidgets, widgets.list());
+  useMemo(() => {
     __root.listen((event, widget) => {
       if (event === Events.attach) {
-        setState([...state, widget])
+        dispatch({ type: 'attach', widget })
       }
       if (event === Events.detach) {
-        setState(state.filter(({ key }) => key !== widget.key))
+        dispatch({ type: 'detach', key: widget.key })
       }
     })
   }, [])
+
   return useMemo(() => state.map((widget: any) => 
     createElement(Portal, { widget, key: widget.key })
   ), [state]);
 }
 
-export const renderWidgets = debounce((widgets) =>
-  render(createElement(RootElement, { widgets }), createRoot())
-);
+export const renderWidgets = (widgets) => {
+  render(createElement(RootElement, { widgets }), createRoot());
+};

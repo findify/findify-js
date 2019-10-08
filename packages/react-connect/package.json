@@ -11,16 +11,16 @@
   "dependencies": {
     "@findify/agent": "^1.5.1",
     "@findify/analytics": "^3.5.1",
-    "immutable": "^4.0.0-rc.9",
+    "immutable": "^4.0.0-rc.12",
     "memoize-one": "^5.0.5",
-    "react": "^16.9.0"
+    "react": "^16.10.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.5.4",
-    "@babel/plugin-proposal-class-properties": "^7.5.0",
-    "@babel/plugin-proposal-object-rest-spread": "^7.5.4",
-    "@babel/preset-env": "^7.5.4",
-    "@babel/preset-typescript": "^7.3.3",
+    "@babel/core": "^7.6.2",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/plugin-proposal-object-rest-spread": "^7.6.2",
+    "@babel/preset-env": "^7.6.2",
+    "@babel/preset-typescript": "^7.6.0",
     "@types/jest": "^24.0.15",
     "@types/node": "^12.6.3",
     "@types/react": "^16.4.1",
@@ -33,7 +33,7 @@
     "jest": "^23.1.0",
     "npm-check-updates": "^2.14.2",
     "npm-run-all": "^4.1.3",
-    "react-test-renderer": "^16.9.0",
+    "react-test-renderer": "^16.10.2",
     "ts-jest": "^22.4.6",
     "ts-node": "^6.1.2",
     "tslint": "^5.10.0",
@@ -41,9 +41,9 @@
     "tslint-config-prettier": "^1.13.0",
     "typedoc": "^0.11.1",
     "typescript": "3.5.3",
-    "webpack": "^4.39.3",
-    "webpack-bundle-analyzer": "^3.4.1",
-    "webpack-cli": "^3.3.7"
+    "webpack": "^4.41.0",
+    "webpack-bundle-analyzer": "^3.5.2",
+    "webpack-cli": "^3.3.9"
   },
   "homepage": "https://github.com/findify/findify-js/packages/agent",
   "keywords": [
