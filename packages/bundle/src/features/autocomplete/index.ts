@@ -11,12 +11,18 @@ const lazyAutocomplete = lazy(() => import(
 
 const autocompleteComponent = lazyAutocomplete();
 
-let agentCache;
+let _cache;
 let initialRequested = false;
+
+const getAgent = (agent) => {
+  if (_cache) return _cache;
+  _cache = agent;
+  return _cache;
+}
 
 export default (widget, rerender) => {
   const { node, agent: _agent, config } = widget;
-  const agent = agentCache || (agentCache = _agent);
+  const agent = getAgent(_agent);
   const state: any = getQuery();
   const apiKey = config.get('key');
 
@@ -27,7 +33,7 @@ export default (widget, rerender) => {
 
   if (state.q) node.value = state.q;
 
-  registerHandlers(widget, rerender);
+  registerHandlers(widget, agent, rerender);
 
   const props = { apiKey, agent, config, key: 'normalAutocomplete' };
 
