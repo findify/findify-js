@@ -28,8 +28,9 @@ class FeatureCreator extends Component<any>{
   }
 
   invalidate = async () => {
+    const { widget } = this.props;
     const updater = require(`./${widget.type}`).default;
-    this.initial = updater(this.callback);
+    this.initial = updater(widget)(this.callback);
     return this.setState({ component: this.initial });
   }
 
