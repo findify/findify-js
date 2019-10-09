@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="6.12.11"></a>
+## [6.12.11](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.12.10...@findify/bundle@6.12.11) (2019-10-09)
+
+
+### Bug Fixes
+
+* **bundle:** fix widgets invalidate ([803756d](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/803756d))
+
+
+
+
 <a name="6.12.10"></a>
 ## [6.12.10](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.12.9...@findify/bundle@6.12.10) (2019-10-09)
 
