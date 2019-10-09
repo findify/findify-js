@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="6.12.10"></a>
+## [6.12.10](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.12.9...@findify/bundle@6.12.10) (2019-10-09)
+
+
+### Bug Fixes
+
+* **bundle:** request data before dom ready, but render protalf after ([07927aa](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/07927aa))
+
+
+
+
 <a name="6.12.9"></a>
 ## [6.12.9](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.12.8...@findify/bundle@6.12.9) (2019-10-08)
 
