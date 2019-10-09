@@ -1,4 +1,4 @@
-import { Component, createElement, useCallback, useMemo, useState, useEffect } from 'react';
+import { Component, createElement, useCallback, useMemo, useState, useEffect, createFactory } from 'react';
 import { Events } from '../core/events';
 
 class FeatureCreator extends Component<any>{
@@ -10,8 +10,8 @@ class FeatureCreator extends Component<any>{
 
   constructor(props) {
     super(props);
-    const { widget, updater, key } = props;
-    this.initial = updater(widget, this.callback);
+    const { widget, updater } = props;
+    this.initial = updater(this.callback);
     this.state = { component: this.initial };
 
     this.unsubscribeForceUpdate = __root.listen((type, key, nextConfig) => {
@@ -22,15 +22,14 @@ class FeatureCreator extends Component<any>{
       // Listen to config change
       if (type !== Events.updateConfig || key !== widget.key) return;
       widget.config = nextConfig;
-      this.initial = updater(widget, this.callback);
+      this.initial = updater(this.callback);
       this.setState({ component: this.initial });
     });
   }
 
   invalidate = async () => {
-    const { widget } = this.props;
     const updater = require(`./${widget.type}`).default;
-    this.initial = updater(widget, this.callback);
+    this.initial = updater(this.callback);
     return this.setState({ component: this.initial });
   }
 
@@ -56,8 +55,7 @@ class FeatureCreator extends Component<any>{
 }
 
 
-
 export const createFeature = (widget) => {
-  const updater = require(`./${widget.type}`).default;
+  const updater = require(`./${widget.type}`).default(widget);
   return createElement(FeatureCreator, { widget, updater })
 };

@@ -50,17 +50,20 @@ const createState = (_widgets, render) => {
   return { updateCount, toggle, getState }
 }
 
+const getCount = (data, type) => type === 'recommendation' ? data.get('limit') : data.get('total')
 
-export default (widget, render) => {
+export default (widget) => (render) =>{
   const { node } = widget;
 
   documentReady.then(() => {
     const widgets = getNestedWidgets(node);
-    const { updateCount } = createState(widgets, render);
-    
-    widgets.forEach(({ type, agent }, index) => agent.on('change:meta', (meta) => {
-      updateCount(index, type === 'recommendation' ? meta.get('limit') : meta.get('total'));
-    }));
+    const { updateCount, getState } = createState(widgets, render);
+    widgets.forEach(({ type, agent }, index) => {
+      if (agent.response.get('meta')) updateCount(index, getCount(agent.response.get('meta'), type));
+      agent.on('change:meta', (meta) => {
+        updateCount(index, getCount(meta, type));
+      })
+    });
   })
 
   const unsubscribe = __root.listen((event, prop) => {
