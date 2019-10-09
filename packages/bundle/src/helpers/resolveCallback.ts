@@ -2,8 +2,8 @@ declare module window {
   const findifyCallback: Promise<any> | undefined | any
 }
 
-export default root => new Promise(resolve => {
-  const callbacks = window.findifyCallbacks = window.findifyCallbacks || [];
+export default (root, name) => new Promise(resolve => {
+  const callbacks = window[name] = window[name] || [];
   window.findifyCallbacks.push = (cb) => cb(root);
   if (!callbacks) return resolve();
   const promises = [];
