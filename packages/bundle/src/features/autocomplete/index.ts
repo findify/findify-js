@@ -20,7 +20,7 @@ const getAgent = (agent) => {
   return _cache;
 }
 
-export default (widget, rerender) => {
+export default (widget) => {
   const { node, agent: _agent, config } = widget;
   const agent = getAgent(_agent);
   const state: any = getQuery();
@@ -33,10 +33,13 @@ export default (widget, rerender) => {
 
   if (state.q) node.value = state.q;
 
-  registerHandlers(widget, agent, rerender);
+  return (rerender) => {
 
-  const props = { apiKey, agent, config, key: 'normalAutocomplete' };
+    registerHandlers(widget, agent, rerender);
 
-  /** Render */
-  return createElement(AutocompleteProvider, props, autocompleteComponent);
+    const props = { apiKey, agent, config, key: 'normalAutocomplete' };
+
+    /** Render */
+    return createElement(AutocompleteProvider, props, autocompleteComponent);
+  }
 }

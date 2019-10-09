@@ -24,80 +24,84 @@ const createFallbackAgent = (config, node) => new RecommendationAgent({
   hideLoader(node);
 });
 
-export default (widget, render) => {
+export default (widget) => {
   const { agent, config, node } = widget;
   const state = getQuery();
   const apiKey = config.get('key');
   const props = { agent, apiKey, config };
-  let fallbackAgent;
-
-  const renderZeroResults = () => {
-    if (!fallbackAgent) fallbackAgent = createFallbackAgent(config, node);
-    return render(
-      RecommendationProvider,
-      { agent: fallbackAgent, apiKey, config },
-      createElement(ZeroResults, getQuery())
-    )
-  }
-
-  if (!isSearch()) {
-    showFallback(node);
-    hideLoader(node);
-    __root.emit(Events.collectionNotFound, widget);
-    return null;
-  }
 
   /** Setup initial request */
   if (!config.get('disableAutoRequest')) {
     agent.applyState(state);
   }
 
-  /** Listen to changes */
-  agent.on('change:query', (q, meta) => {
-    setQuery(q.toJS())
-    if (!meta.get('total')) return renderZeroResults();
-    render('initial');
-  });
+  return (render) => {
 
-  agent.on('change:redirect', async (redirect, meta) => {
-    render();
-    await __root.analytics.sendEvent('redirect', {
-      ...redirect.toJS(),
-      rid: meta.get('rid'),
-      suggestion: meta.get('q')
-    });
-    document.location.href = redirect.get('url');
-  });
+    let fallbackAgent;
 
-  /** Listen to location back/fwd */
-  const stopListenLocation = listenHistory((_, action) => {
-    if (action !== 'POP') return;
-    agent.applyState(getQuery());
-    render('initial');
-  });
-
-  /** Switch to recommendation if query not present */
-  agent.on('change:items', (items) => {
-    if (!items.isEmpty()) {
-      hideFallback(node);
-      hideLoader(node);
-      if (!config.getIn(['view', 'infinite']) && config.get('scrollTop') !== false) {
-        scrollTo(config.get('cssSelector'), config.get('scrollTop'))
-      }
-      return render('initial');
+    const renderZeroResults = () => {
+      if (!fallbackAgent) fallbackAgent = createFallbackAgent(config, node);
+      return render(
+        RecommendationProvider,
+        { agent: fallbackAgent, apiKey, config },
+        createElement(ZeroResults, getQuery())
+      )
     }
-    hideLoader(node);
-    return renderZeroResults();
-  })
 
-  /** Unsubscribe from events on instance destroy  */
-  const unsubscribe = __root.listen((event, prop, ...args) => {
-    if (event !== Events.detach || prop !== widget) return;
-    stopListenLocation();
-    unsubscribe();
-  })
+    if (!isSearch()) {
+      showFallback(node);
+      hideLoader(node);
+      __root.emit(Events.collectionNotFound, widget);
+      return null;
+    }
 
-  /** Render */
+    /** Listen to changes */
+    agent.on('change:query', (q, meta) => {
+      setQuery(q.toJS())
+      if (!meta.get('total')) return renderZeroResults();
+      render('initial');
+    });
 
-  return createElement(SearchProvider, props, lazySearch())
+    agent.on('change:redirect', async (redirect, meta) => {
+      render();
+      await __root.analytics.sendEvent('redirect', {
+        ...redirect.toJS(),
+        rid: meta.get('rid'),
+        suggestion: meta.get('q')
+      });
+      document.location.href = redirect.get('url');
+    });
+
+    /** Listen to location back/fwd */
+    const stopListenLocation = listenHistory((_, action) => {
+      if (action !== 'POP') return;
+      agent.applyState(getQuery());
+      render('initial');
+    });
+
+    /** Switch to recommendation if query not present */
+    agent.on('change:items', (items) => {
+      if (!items.isEmpty()) {
+        hideFallback(node);
+        hideLoader(node);
+        if (!config.getIn(['view', 'infinite']) && config.get('scrollTop') !== false) {
+          scrollTo(config.get('cssSelector'), config.get('scrollTop'))
+        }
+        return render('initial');
+      }
+      hideLoader(node);
+      return renderZeroResults();
+    })
+
+    /** Unsubscribe from events on instance destroy  */
+    const unsubscribe = __root.listen((event, prop, ...args) => {
+      if (event !== Events.detach || prop !== widget) return;
+      stopListenLocation();
+      unsubscribe();
+    })
+
+    console.log('Search rendered')
+    /** Render */
+    return createElement(SearchProvider, props, lazySearch())
+  }
 }

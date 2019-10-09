@@ -17,13 +17,15 @@ export default (widget) => {
     agent.defaults(getPayload(config, __root.analytics.state));
   }
 
-  /** Remove entity and instance if nothing was found */
-  agent.on('change:items', items => {
-    if (items.isEmpty()) return __root.widgets.detach(widget.key);
-    hideFallback(node);
-    hideLoader(node);
-  })
+  return () => {
+    /** Remove entity and instance if nothing was found */
+    agent.on('change:items', items => {
+      if (items.isEmpty()) return __root.widgets.detach(widget.key);
+      hideFallback(node);
+      hideLoader(node);
+    })
 
-  /** Render */
-  return createElement(RecommendationProvider, props, lazyRecommendation());
+    /** Render */
+    return createElement(RecommendationProvider, props, lazyRecommendation());
+  }
 }
