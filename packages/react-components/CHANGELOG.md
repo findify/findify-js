@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.10.20"></a>
+## [0.10.20](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.19...@findify/react-components@0.10.20) (2019-10-09)
+
+
+
+
+**Note:** Version bump only for package @findify/react-components
+
 <a name="0.10.19"></a>
 ## [0.10.19](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.18...@findify/react-components@0.10.19) (2019-10-09)
 
