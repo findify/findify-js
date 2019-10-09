@@ -4,7 +4,7 @@ declare module window {
 
 export default (root, name) => new Promise(resolve => {
   const callbacks = window[name] = window[name] || [];
-  window.findifyCallbacks.push = (cb) => cb(root);
+  window[name].push = (cb) => cb(root);
   if (!callbacks) return resolve();
   const promises = [];
   for (let index = 0; index < callbacks.length; index++) {
