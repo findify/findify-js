@@ -82,16 +82,17 @@ export default async (
   /** Expose utils */
   __root.utils = { ...require('./core/location'), scrollTo };
 
-  await resolveCallback(__root);
-  
-  await documentReady;
+  await resolveCallback(__root, 'findifyForceCallbacks');
 
+  await documentReady;
+  
   if (widgetsRenderNeeded) {
     bulkAddWidgets(cfg.selectors);
     log('widgets:', '' , __root.widgets.list());
   } else {
     log(`findify ${__root.config.get('status')}`, 'color: #D9463F');
   }
+  await resolveCallback(__root, 'findifyCallbacks');
 
 
   /**
