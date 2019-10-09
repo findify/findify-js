@@ -1,4 +1,4 @@
-import { Component, createElement, useState, useReducer, useEffect, useMemo } from 'react';
+import { Component, createFactory, createElement, useState, useReducer, useEffect, useMemo } from 'react';
 import { render, hydrate, createPortal } from 'react-dom';
 import { createFeature } from '../features/create';
 import { getParentNode } from '../helpers/getParentNode';
@@ -41,7 +41,7 @@ const Portal = ({ widget }) => {
     return () => parent.removeChild(element)
   }, [widget, domReady])
 
-  return useMemo(() => createPortal(component, element), [domReady]);
+  return useMemo(() => domReady && createPortal(component, element), [domReady]);
 }
 
 const reduceWidgets = (state, action) => {
