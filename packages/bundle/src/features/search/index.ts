@@ -31,7 +31,7 @@ export default (widget) => {
   const props = { agent, apiKey, config };
 
   /** Setup initial request */
-  if (!config.get('disableAutoRequest')) {
+  if (!config.get('disableAutoRequest') && isSearch()) {
     agent.applyState(state);
   }
 
