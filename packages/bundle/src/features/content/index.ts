@@ -6,14 +6,26 @@ import { Events } from '../../core/events';
 import { scrollTo } from '../../helpers/scrollTo';
 import Content from '@findify/react-components/src/layouts/Content';
 
+const parseSortHTMLAttribute = sort => {
+  try {
+    if (!sort) {
+      return [];
+    }
+    const parsedSort = JSON.parse(sort);
+    return [parsedSort];
+  } catch (err) {
+    return [];
+  }
+}
+
 export default (widget) => {
   const { agent, config, node } = widget;
   const apiKey = config.get('key');
   const { q } = getQuery();
-  const { type } = node.dataset;
+  const { type, sort } = node.dataset;
   const props = { agent, apiKey, config };
 
-  agent.defaults({ type: [type] });
+  agent.defaults({ type: [type], sort: parseSortHTMLAttribute(sort) });
   agent.set('q', q);
 
   return (render) => {
