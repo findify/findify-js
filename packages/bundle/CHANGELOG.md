@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="6.13.0"></a>
+# [6.13.0](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.12.13...@findify/bundle@6.13.0) (2019-10-15)
+
+
+### Features
+
+* **bundle:** allow to pass sorting to the content widgets ([b292f1a](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/b292f1a))
+
+
+
+
 <a name="6.12.13"></a>
 ## [6.12.13](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.12.12...@findify/bundle@6.12.13) (2019-10-09)
 
