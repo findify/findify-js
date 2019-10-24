@@ -2,8 +2,8 @@
  * @module components/common/Drawer
  */
 
-import React from 'react';
-import { Spring, config } from 'react-spring';
+import React, { useState, useEffect, useCallback } from 'react';
+import { useSpring, config, animated } from 'react-spring';
 import cx from 'classnames';
 import { ThemedSFCProps } from 'types';
 
@@ -30,71 +30,59 @@ export interface IDrawerViewProps extends ThemedSFCProps {
   [x: string]: any;
 }
 
-class DrawerView extends React.Component<IDrawerViewProps, IDrawerViewState> {
-  state = { open: false };
-  mounted = false;
-  originalScrollTop: number = 0;
+const defaultOptions = {
+  from: { transform: `translate3d(-100%, 0, 0)` },
+  to: { transform: `translate3d(0%, 0, 0)` },
+};
 
-  static defaultProps = {
-    options: {
-      from: { transform: `translate3d(-100%, 0, 0)` },
-      to: { transform: `translate3d(0%, 0, 0)` },
+let _scrollTop = 0;
+
+const Drawer = ({ hideModal, name, theme, options = defaultOptions, children, ...rest }:IDrawerViewProps) => {
+  const [open, setOpen] = useState(false);
+
+  const { opacity, ...style } = useSpring({
+    from: { opacity: 0 },
+    to: { ...(open ? options.to : options.from), opacity: open ? 1 : 0 },
+    config: config[options.easing || 'default']
+  });
+
+  const close = useCallback(() => {
+    setOpen(false)
+    setTimeout(() => hideModal(name), 400);
+  }, []);
+
+  useEffect(() => {
+    const handleEscape = (e) => {
+      if (e.key !== 'Escape') return;
+      close()
+    };
+
+    _scrollTop = window.scrollY;
+  
+    document.querySelector('body')!.classList.add(theme.bodyNoScroll);
+    document.addEventListener('keydown', handleEscape);
+
+    requestAnimationFrame(() => setOpen(true));
+  
+    return () => {
+      document.querySelector('body')!.classList.remove(theme.bodyNoScroll)
+      document.removeEventListener('keydown', handleEscape);
+      window.scrollTo(0, _scrollTop);
+      _scrollTop = 0;
     }
-  }
+  }, [])
 
-  componentDidMount() {
-    this.originalScrollTop = window.scrollY;
-    document.querySelector('body')!.classList.add(this.props.theme.bodyNoScroll);
-    document.addEventListener('keydown', this.handleEscapeKeypress);
-    this.mounted = true;
-    requestAnimationFrame(() => {
-      if (this.mounted) this.setState({ open: true })
-    })
-  }
-
-  componentWillUnmount() {
-    document.querySelector('body')!.classList.remove(this.props.theme.bodyNoScroll)
-    document.removeEventListener('keydown', this.handleEscapeKeypress);
-    window.scrollTo(0, this.originalScrollTop);
-    this.originalScrollTop = 0;
-    this.mounted = false;
-  }
-
-  close = () => {
-    const { hideModal, name } = this.props;
-    this.setState({ open: false }, () => setTimeout(() => hideModal(name), 400));
-  }
-
-  handleEscapeKeypress = (evt) => {
-    if (evt.key !== 'Escape') return;
-    this.close()
-  }
-
-  render() {
-    const { open } = this.state;
-    const { theme, options, children, ...rest } = this.props;
-    return (
-      <Spring
-        from={{ opacity: 0 }}
-        to={{ ...(open ? options.to : options.from), opacity: open ? 1 : 0  }}
-        config={config[options.easing || 'default']}
-      >
-      {
-        ({ opacity, ...style }) =>
-          <>
-            <div className={cx('findify-container', theme.backdrop)} onClick={this.close} style={{ opacity }} />
-            <div className={cx('findify-container', theme.content, options.className)} style={style}>
-              {
-                children instanceof Function
-                ? children({ ...rest, hideModal: this.close })
-                : children
-              }
-            </div>
-          </>
-      }
-      </Spring>
-    )
-  }
+  return (
+    <>
+      <animated.div className={cx('findify-container', theme.backdrop)} onClick={close} style={{ opacity }} />
+      <animated.div className={cx('findify-container', theme.content, options.className)} style={style}>
+        {
+          children instanceof Function
+          ? children({ ...rest, hideModal: close })
+          : children
+        }
+      </animated.div>
+    </>
+  )
 }
-
-export default DrawerView;
+export default Drawer;

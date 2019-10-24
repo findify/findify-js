@@ -106,7 +106,7 @@ export default () => {
         window.removeEventListener('scroll', this.trackPosition);
       }
 
-      componentWillReceiveProps({ items, meta, config }) {
+      UNSAFE_componentWillReceiveProps({ items, meta, config }) {
         // Do nothing if items are equal
         if (items.equals(this.props.items)) return;
 

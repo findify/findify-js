@@ -1281,6 +1281,11 @@ const _default: (currency?: ICurrencyData) => (value: string) => any;
 export default _default;
 
 }
+declare module 'helpers/getBreakpoint' {
+const _default: (breakpoints: any) => any;
+export default _default;
+
+}
 declare module 'helpers/getPrice' {
 export const priceIsSampleArray: (price: any) => boolean;
 export const getPrice: (maybeImmutablePrice: any, currency: any) => any;
@@ -1662,6 +1667,15 @@ declare module 'layouts/Recommendation/Slider' {
 import React from 'react';
 import './styles.global.css';
 const _default: React.ComponentClass<unknown, any>;
+export default _default;
+
+}
+declare module 'layouts/Recommendation/Slider/Swiper' {
+/// <reference types="react" />
+const _default: ({ children, ...props }: {
+    [x: string]: any;
+    children: any;
+}) => JSX.Element;
 export default _default;
 
 }

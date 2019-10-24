@@ -7,7 +7,6 @@ import { connectConfig } from '@findify/react-connect';
 
 import Grid from 'layouts/Recommendation/Grid';
 import Slider from 'layouts/Recommendation/Slider';
-import Swiper from 'layouts/Recommendation/Swiper';
 
 /**
  * HOC that decides, which style recommendation to use,
@@ -15,7 +14,7 @@ import Swiper from 'layouts/Recommendation/Swiper';
  */
 const Recommendation = connectConfig(({ config }) => {
   const template = config.get('template');
-  if (template === 'swiper') return createElement(Swiper);
+  if (template === 'swiper') return createElement(Slider);
   if (template === 'grid') return createElement(Grid);
   if (template === 'slider') return createElement(Slider);
   return null;

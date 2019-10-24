@@ -18,7 +18,7 @@ const createHook = (handlers, mapProps, field) => (key = 'default') => {
   const { agent, analytics, config } = getContext(key);
 
   const getState = useCallback((
-    changes = field !== 'query' ? agent.response.get(field) : agent.state,
+    changes = field !== 'query' ? agent.response.getIn(field.split(':')) : agent.state,
     meta = agent.response.get('meta') || Map()
   ) => {
     const mapped = mapProps && mapProps(changes, meta, agent.set, analytics, config);

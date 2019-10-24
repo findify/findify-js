@@ -2,13 +2,13 @@ export default process.env.NODE_ENV !== 'development'
 ? __CONFIG__
 : {
        // Merchant API KEY
-       "key": "680d373d-06b3-442b-bebc-d35a5b0868b3",
+       "key": "23b909e1-6a37-46f1-b375-f72f22cb5c7c",
 
        // Show/Hide "Powered by findify badge"
        "poweredByFindify": true,
 
        hidableFacets: true,
-        "merchant_id": 3806,
+        "merchant_id": 6825,
        // Specific platform code
        "platform": {
            "shopify": true,
