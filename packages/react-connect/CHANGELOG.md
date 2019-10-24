@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.5.5"></a>
+## [0.5.5](https://github.com/findify/findify-js/compare/@findify/react-connect@0.5.4...@findify/react-connect@0.5.5) (2019-10-24)
+
+
+### Bug Fixes
+
+* **react-components:** update components to support hooks ([1252ff6](https://github.com/findify/findify-js/commit/1252ff6))
+* **react-connect:** fix getting initial value of sorting ([8d5c9c2](https://github.com/findify/findify-js/commit/8d5c9c2))
+
+
+
+
 <a name="0.5.4"></a>
 ## [0.5.4](https://github.com/findify/findify-js/compare/@findify/react-connect@0.5.3...@findify/react-connect@0.5.4) (2019-10-08)
 

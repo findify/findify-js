@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.10.23"></a>
+## [0.10.23](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.22...@findify/react-components@0.10.23) (2019-10-24)
+
+
+### Bug Fixes
+
+* **react-components:** update components to support hooks ([1252ff6](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/1252ff6))
+* **react-connect:** fix getting initial value of sorting ([8d5c9c2](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/8d5c9c2))
+
+
+
+
 <a name="0.10.22"></a>
 ## [0.10.22](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.21...@findify/react-components@0.10.22) (2019-10-15)
 

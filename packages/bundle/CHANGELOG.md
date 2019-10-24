@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="6.13.1"></a>
+## [6.13.1](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.13.0...@findify/bundle@6.13.1) (2019-10-24)
+
+
+### Bug Fixes
+
+* **react-components:** update components to support hooks ([1252ff6](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/1252ff6))
+
+
+
+
 <a name="6.13.0"></a>
 # [6.13.0](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.12.13...@findify/bundle@6.13.0) (2019-10-15)
 
