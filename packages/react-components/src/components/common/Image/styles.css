@@ -6,19 +6,20 @@
     display: block;
     width: 100%;
   }
-  &.aspect img{
-    width: auto;
-    position: absolute;
-    top: -9999px;
-    right: -9999px;
-    bottom: -9999px;
-    left: -9999px;
-    margin: auto;
-  }
 }
 
-@supports(object-fit: contain){
-  .root.aspect img{
+.aspect img{
+  width: auto;
+  position: absolute;
+  top: -9999px;
+  right: -9999px;
+  bottom: -9999px;
+  left: -9999px;
+  margin: auto;
+}
+
+@supports(object-fit: cover){
+  .aspect img{
     position: absolute;
     top: 0;
     right: 0;
@@ -26,7 +27,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover;
   }
 }
 
