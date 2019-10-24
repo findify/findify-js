@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.4.4"></a>
+## [1.4.4](https://github.com/findify/findify-js/compare/@findify/processors@1.4.3...@findify/processors@1.4.4) (2019-10-08)
+
+
+### Bug Fixes
+
+* **bundle:** fix issue with non-updated widgets state in render ([f5ff5ce](https://github.com/findify/findify-js/commit/f5ff5ce))
+
+
+
+
 <a name="1.4.3"></a>
 ## [1.4.3](https://github.com/findify/findify-js/compare/@findify/processors@1.4.2...@findify/processors@1.4.3) (2019-09-17)
 

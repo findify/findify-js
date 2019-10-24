@@ -3,6 +3,81 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="6.13.0"></a>
+# [6.13.0](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.12.13...@findify/bundle@6.13.0) (2019-10-15)
+
+
+### Features
+
+* **bundle:** allow to pass sorting to the content widgets ([b292f1a](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/b292f1a))
+
+
+
+
+<a name="6.12.13"></a>
+## [6.12.13](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.12.12...@findify/bundle@6.12.13) (2019-10-09)
+
+
+### Bug Fixes
+
+* **bundle:** fix callback creator ([1be9a5c](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/1be9a5c))
+
+
+
+
+<a name="6.12.12"></a>
+## [6.12.12](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.12.11...@findify/bundle@6.12.12) (2019-10-09)
+
+
+### Bug Fixes
+
+* **bundle:** move findifyCallbacks after dom ready ([6b69de2](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/6b69de2))
+
+
+
+
+<a name="6.12.11"></a>
+## [6.12.11](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.12.10...@findify/bundle@6.12.11) (2019-10-09)
+
+
+### Bug Fixes
+
+* **bundle:** fix widgets invalidate ([803756d](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/803756d))
+
+
+
+
+<a name="6.12.10"></a>
+## [6.12.10](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.12.9...@findify/bundle@6.12.10) (2019-10-09)
+
+
+### Bug Fixes
+
+* **bundle:** request data before dom ready, but render protalf after ([07927aa](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/07927aa))
+
+
+
+
+<a name="6.12.9"></a>
+## [6.12.9](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.12.8...@findify/bundle@6.12.9) (2019-10-08)
+
+
+
+
+**Note:** Version bump only for package @findify/bundle
+
+<a name="6.12.8"></a>
+## [6.12.8](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.12.7...@findify/bundle@6.12.8) (2019-10-08)
+
+
+### Bug Fixes
+
+* **bundle:** fix issue with non-updated widgets state in render ([f5ff5ce](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/f5ff5ce))
+* **rect-components:** tMP disable swiper ([233ecc4](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/233ecc4))
+
+
+
+
 <a name="6.12.7"></a>
 ## [6.12.7](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.12.6...@findify/bundle@6.12.7) (2019-10-04)
 
