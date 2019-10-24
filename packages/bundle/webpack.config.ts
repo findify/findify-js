@@ -96,7 +96,6 @@ export default (env: WebpackEnvArgs, { mode, origin = 'prod' }) => {
       alias: {
         'react-dom': mode === 'development' && '@hot-loader/react-dom' || 'react-dom',
         // 'recompose': 'recompose/dist/Recompose.cjs',
-        'react-spring': 'react-spring/renderprops.cjs',
         'lodash.throttle': 'lodash/throttle',
         'lodash.debounce': 'lodash/debounce',
       

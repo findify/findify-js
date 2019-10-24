@@ -1,6 +1,6 @@
 {
   "name": "@findify/agent",
-  "version": "1.5.1",
+  "version": "1.5.2",
   "author": "Findify <yourfriends@findify.io>",
   "bugs": {
     "url": "https://github.com/findify/findify-js/issues"
@@ -9,7 +9,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@findify/sdk": "^2.4.0",
+    "@findify/sdk": "^2.4.1",
     "core-js": "^3.2.1",
     "immutable": "^4.0.0-rc.12"
   },

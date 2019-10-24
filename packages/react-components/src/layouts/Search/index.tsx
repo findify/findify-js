@@ -14,6 +14,7 @@ import MobileSorting from 'components/search/MobileSorting';
 import view from 'layouts/Search/view';
 import styles from 'layouts/Search/styles.css';
 import { debounce } from 'helpers/debounce';
+import withMobile from 'helpers/withMobile';
 
 
 const transform = {
@@ -35,33 +36,7 @@ const Search = compose(
     renderNothing
   ),
 
-  Base => class extends React.Component<any, any> {
-    constructor(props) {
-      super(props);
-      this.state = { whatever: -1 };
-      this.update = debounce(this.update, 100);
-    }
-
-    componentDidMount() {
-      window.addEventListener('resize', this.update)
-    }
-
-    componentWillUnmount() {
-      window.removeEventListener('resize', this.update)
-    }
-
-    update = () =>
-      this.setState({ whatever: Math.random() })
-
-    render() {
-      return <Base {...this.props} />
-    }
-  },
-
-  withProps(({ config }) => ({
-    isMobile: config.get('forceMobile') || window.innerWidth <= config.get('mobileBreakpoint'),
-    filtersOnRight: config.get('filtersOnRight')
-  })),
+  withMobile,
 
   branch(
     ({ isMobile }) => isMobile,
