@@ -4,7 +4,7 @@
 
 import React from 'react'
 import classNames from 'classnames'
-import Image from 'components/common/Image'
+import Image from 'components/common/Picture'
 import Truncate from 'components/common/Truncate'
 import Text from 'components/Text'
 import Rating from 'components/Cards/Product/Rating';

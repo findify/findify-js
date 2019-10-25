@@ -3,63 +3,144 @@
  */
 
 import 'core-js/features/array/includes';
-import React, { useRef, useState, useEffect, useMemo } from 'react'
-import cx from 'classnames'
+import React from 'react'
+import classNames from 'classnames'
 import styles from 'components/common/Image/styles.css';
+import { withSize } from 'react-sizeme';
+import {
+  branch,
+  compose,
+  withProps,
+  withStateHandlers,
+  withPropsOnChange,
+  setDisplayName,
+  renderNothing,
+  renderComponent,
+  withHandlers,
+} from 'recompose';
 
-const useViewPort = (lazy, offset) => {
-  if (!lazy) return [true];
+/** FIXME: Possible memory leak on huge pages, maybe employ something like LRU? */
+const cache = [];
 
-  const [ready, setReady] = useState(false);
-  const element = useRef(null);
+const prefetchImage = (src: string) =>
+  new Promise(resolve => {
+    if (cache.includes(src)) return resolve(src);
+    const img = new Image();
+    img.addEventListener('load', () => {
+      cache.push(src)
+      resolve(src);
+    }, false);
+    img.src = src;
+  });
 
-  useEffect(() => {
-    if (!element.current || ready) return;
-    const callback = () => {
-      if (!element.current) return;
-      const rect = element.current.getBoundingClientRect();
-      const isInView =
-        rect.top >= 0 &&
-        rect.left >= 0 &&
-        rect.bottom - offset <= (window.innerHeight || document.documentElement.clientHeight) &&
-        rect.right - offset <= (window.innerWidth || document.documentElement.clientWidth);
+/** This is a list of props which Image component accepts */
+export interface ImageProps {
+  /** Custom classname */
+  className?: string,
+  /** Source to original image */
+  src: string,
+  /** Source to thumbnail, which will be showed blurred during loading */
+  thumbnail?: string,
+  /** Width / height ratio, to which image will conform */
+  aspectRatio?: number,
+  /** Render image only when it is in viewport */
+  lazy?: boolean,
+  /** Distance to image when it should start render [default: 100px] */
+  offset?: number,
+  /** @hidden */
+  size: { width: number },
+  /** @hidden */
+  isFixedRatio: boolean
+}
 
-      if (!isInView) return;
-      setReady(true);
-      document.removeEventListener('scroll', callback);
+const waitForViewPort = (node, offset = 100) => new Promise(resolve => {
+  const callback = () => {
+    const rect = node.getBoundingClientRect();
+    const isInView =
+      rect.top >= 0 &&
+      rect.left >= 0 &&
+      rect.bottom - offset <= (window.innerHeight || document.documentElement.clientHeight) &&
+      rect.right - offset <= (window.innerWidth || document.documentElement.clientWidth);
+    if (!isInView) return;
+    document.removeEventListener('scroll', callback);
+    resolve(true);
+  }
+  document.addEventListener('scroll', callback);
+  callback();
+}) 
+
+const ImageRenderer = ({ src, className, isFixedRatio, aspectRatio }: ImageProps) =>
+isFixedRatio
+? <div className={className} style={{
+    backgroundImage: `url(${src})`,
+    paddingBottom: `${100 * aspectRatio!}%`,
+    backgroundPosition: 'center center'
+  }} />
+: <img className={className} src={src} />
+
+const LazyRenderer = withHandlers({
+  registerComponent: ({ setReady, offset }) => (ref) =>
+    ref && waitForViewPort(ref, offset).then(setReady)
+})(({ registerComponent, lazy, className }) =>
+  !!lazy && <div className={className} ref={registerComponent} />
+)
+
+export default compose<ImageProps, ImageProps>(
+  setDisplayName('Image'),
+  withPropsOnChange(['src'], ({ src, getSrc = i => i }) => {
+    const path: string = getSrc(src, window && window.innerWidth);
+    return {
+      src: cache.includes(path) ? path : void 0,
+      original: path,
+      key: path
     }
-    callback();
-    document.addEventListener('scroll', callback, true);
-    return () => document.removeEventListener('scroll', callback);
-  }, [element])
-
-  return [ready, element];
-}
-
-export default ({ aspectRatio, lazy, offset = 100, getSrc, getThumbnail, src, alt, thumbnail }) => {
-  const aspect = aspectRatio > 0;
-  const _src = useMemo(() => getSrc && getSrc(src, window.innerWidth) || src, [src]);
-  const _thumbnail = useMemo(() => getThumbnail && getThumbnail(thumbnail, window.innerWidth) || thumbnail, [thumbnail]);
-  const [isInViewPort, register] = useViewPort(lazy, offset);
-  const [srcLoaded, setLoaded] = useState(false);
-
-  return (
-    <div
-      ref={register}
-      className={cx(styles.root, aspect && styles.aspect || styles.static, srcLoaded && styles.ready)}
-      style={{ paddingBottom: aspect && `${aspectRatio * 100}%` }}
-    >
-      <img
-        src={_src}
-        alt={alt}
-        display-if={isInViewPort}
-        onLoad={() => setLoaded(true)} />
-      <img
-        src={_thumbnail}
-        alt={alt}
-        display-if={isInViewPort && thumbnail}
-        className={styles.thumbnail} />
-
-    </div>
+  }),
+  withStateHandlers(
+    ({ src, original, lazy }) => ({
+      src,
+      ready: !lazy || !!src,
+      stage: src === original ? 2 : 0
+    }),
+    {
+      setSrc: (state) => src => ({ ...state, src, stage: 2 }),
+      setThumbnail: (state) => src => ({ ...state, src, stage: 1 }),
+      setReady: (state) => ready => ({ ...state, ready })
+    }
+  ),
+  withPropsOnChange(
+    ['thumbnail', 'original', 'ready'],
+    ({ setSrc, setThumbnail, thumbnail, original, src, stage, fetchImage = prefetchImage, ready }) => {
+      if (!ready) return;
+      if (stage === 2) return;
+      if (thumbnail) {
+        fetchImage(thumbnail)
+          .then(setThumbnail)
+          .then(() => fetchImage(original))
+          .then(setSrc);
+      } else {
+        fetchImage(original).then(setSrc);
+      }
+    }
+  ),
+  withProps(({ aspectRatio, className, stage, isFixedRatio }) => ({
+    isFixedRatio: aspectRatio
+      && typeof aspectRatio === 'number'
+      && !isNaN(aspectRatio)
+      && isFinite(aspectRatio),
+    className: classNames(
+      className,
+      {
+        [styles.root]: !isFixedRatio,
+        [styles.croppedRoot]: isFixedRatio,
+        [styles.loading]: stage === 0,
+        [styles.thumbnail]: stage === 1,
+        [styles.original]: stage === 2,
+      }
+    )
+  })),
+  branch(
+    ({ ready, src }) => ready && src,
+    renderComponent(ImageRenderer),
+    renderComponent(LazyRenderer)
   )
-}
+)(renderNothing);
