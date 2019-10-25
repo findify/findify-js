@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Image /> renders correctly for only src image 1`] = `null`;
+
+exports[`<Image /> renders correctly for only src image 2`] = `"<img class=\\"root original\\" src=\\"foo.png\\">"`;
+
+exports[`<Image /> renders correctly for only src image respecting aspect ratio 1`] = `null`;
+
+exports[`<Image /> renders correctly for only src image respecting aspect ratio 2`] = `"<div class=\\"croppedRoot original\\" style=\\"background-image: url(foo.png); padding-bottom: 50%; background-position: center center;\\"></div>"`;
+
+exports[`<Image /> renders correctly for src and thumbnail 1`] = `null`;
+
+exports[`<Image /> renders correctly for src and thumbnail 2`] = `"<img class=\\"root thumbnail\\" src=\\"baz.png\\">"`;
+
+exports[`<Image /> renders correctly for src and thumbnail 3`] = `"<img class=\\"root original\\" src=\\"foo.png\\">"`;
+
+exports[`<Image /> renders correctly for src and thumbnail respecting aspect ratio 1`] = `null`;
+
+exports[`<Image /> renders correctly for src and thumbnail respecting aspect ratio 2`] = `"<div class=\\"croppedRoot thumbnail\\" style=\\"background-image: url(baz.png); padding-bottom: 80%; background-position: center center;\\"></div>"`;
+
+exports[`<Image /> renders correctly for src and thumbnail respecting aspect ratio 3`] = `"<div class=\\"croppedRoot original\\" style=\\"background-image: url(foo.png); padding-bottom: 80%; background-position: center center;\\"></div>"`;
