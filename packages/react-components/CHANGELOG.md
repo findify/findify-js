@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.10.24"></a>
+## [0.10.24](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.23...@findify/react-components@0.10.24) (2019-10-25)
+
+
+### Bug Fixes
+
+* **react-components:** rollback Image component and create Picture to avoid hard migration ([c33f910](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/c33f910))
+
+
+
+
 <a name="0.10.23"></a>
 ## [0.10.23](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.22...@findify/react-components@0.10.23) (2019-10-24)
 
