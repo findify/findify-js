@@ -1,6 +1,6 @@
 import { createElement } from 'react';
 import { SmartCollectionProvider } from "@findify/react-connect";
-import { getQuery, setQuery, collectionPath, listenHistory } from '../../core/location';
+import { getQuery, setQuery, collectionPath, listenHistory, redirectToPage } from '../../core/location';
 import { Events } from '../../core/events';
 import { scrollTo } from '../../helpers/scrollTo';
 import { hideFallback, showFallback, hideLoader } from '../../helpers/fallbackNode';
@@ -52,14 +52,7 @@ export default (widget) => {
       }
     })
 
-    agent.on('change:redirect', async (redirect, meta) => {
-      await __root.analytics.sendEvent('redirect', {
-        ...redirect.toJS(),
-        rid: meta.get('rid'),
-        suggestion: meta.get('q')
-      });
-      document.location.href = redirect.get('url');
-    });
+    agent.on('change:redirect', redirectToPage);
 
     agent.on('error', () => {
       showFallback(node);

@@ -64,3 +64,13 @@ export const setQuery = (query) => {
   if (isIE9 && search === history.location.search) return;
   return history.push({ search });
 };
+
+
+export const redirectToPage = async (redirect, meta) => {
+  await __root.analytics.sendEvent('redirect', {
+    ...redirect.toJS(),
+    rid: meta.get('rid'),
+    suggestion: meta.get('q')
+  });
+  document.location.href = redirect.get('url');
+}
