@@ -1,8 +1,8 @@
 import { findDomNode } from 'react-dom';
-import { List } from 'immutable'
+import { List, isImmutable } from 'immutable'
 import { addEventListeners } from '../../helpers/addEventListeners';
 import { findClosestElement } from '../../helpers/findClosestElement';
-import { isSearch, setQuery, buildQuery, redirectToSearch } from '../../core/location';
+import { isSearch, setQuery, buildQuery, redirectToSearch, redirectToPage } from '../../core/location';
 import { Events } from '../../core/events';
 import { debounce } from '../../helpers/debounce';
 import { documentReady } from '../../helpers/documentReady';
@@ -100,13 +100,22 @@ export const registerHandlers = (widget, agent, rerender) => {
   /** search for the value */
   const search = (_value?) => {
     const value = _value || agent.state.get('q') || '';
-    if (!isSearch()) return redirectToSearch(value);
+    
+    const [query, redirect] = isImmutable(value)
+      ? [value.get('value'), value.get('redirect')]
+      : [value, agent.response.get('redirect')];
 
-    updateReferencedAgents(value);
+    if (redirect) {
+      return redirectToPage(redirect, agent.response.get('meta'));
+    }
+
+    if (!isSearch()) return redirectToSearch(query);
+
+    updateReferencedAgents(query);
 
     __root.widgets
       .findByType('autocomplete')
-      .forEach(({ node }) => node.value = value);
+      .forEach(({ node }) => node.value = query);
     rerender()
   };
 

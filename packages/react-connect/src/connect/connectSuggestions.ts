@@ -9,7 +9,8 @@ const [ hook, connect ] = createConnect({
   handlers: {
     getSuggestionProps: ({ update, analytics, meta, suggestions }) =>
       (index, widgetKey = '') => {
-        const value = suggestions.getIn([index, 'value']);
+        const suggestion = suggestions.get(index);
+        const value = suggestion.get('value');
         return {
           key: value,
           onClick: (e) => {
@@ -20,7 +21,7 @@ const [ hook, connect ] = createConnect({
               rid: meta.get('rid'),
             });
             (window as any).findify.emit('autocompleteFocusLost', widgetKey);
-            (window as any).findify.emit('search', widgetKey, value);
+            (window as any).findify.emit('search', widgetKey, suggestion);
           }
         }
       }

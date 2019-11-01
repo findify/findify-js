@@ -1,7 +1,7 @@
 import { createElement } from 'react';
 import { SearchProvider, RecommendationProvider, ContentProvider } from "@findify/react-connect";
 import { Recommendation as RecommendationAgent } from "@findify/agent";
-import { getQuery, setQuery, isSearch, listenHistory } from '../../core/location';
+import { getQuery, setQuery, isSearch, listenHistory, redirectToPage } from '../../core/location';
 import { hideFallback, showFallback, hideLoader } from '../../helpers/fallbackNode';
 import { Events } from '../../core/events';
 import { scrollTo } from '../../helpers/scrollTo';
@@ -61,16 +61,8 @@ export default (widget) => {
       if (!meta.get('total')) return renderZeroResults();
       render('initial');
     });
-
-    agent.on('change:redirect', async (redirect, meta) => {
-      render();
-      await __root.analytics.sendEvent('redirect', {
-        ...redirect.toJS(),
-        rid: meta.get('rid'),
-        suggestion: meta.get('q')
-      });
-      document.location.href = redirect.get('url');
-    });
+ 
+    agent.on('change:redirect', redirectToPage);
 
     /** Listen to location back/fwd */
     const stopListenLocation = listenHistory((_, action) => {
