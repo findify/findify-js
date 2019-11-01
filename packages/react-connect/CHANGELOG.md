@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.6.0"></a>
+# [0.6.0](https://github.com/findify/findify-js/compare/@findify/react-connect@0.5.5...@findify/react-connect@0.6.0) (2019-11-01)
+
+
+### Features
+
+* **bundle, react-connect:** added redirect feature to the autocomplete ([4c2d75a](https://github.com/findify/findify-js/commit/4c2d75a))
+
+
+
+
 <a name="0.5.5"></a>
 ## [0.5.5](https://github.com/findify/findify-js/compare/@findify/react-connect@0.5.4...@findify/react-connect@0.5.5) (2019-10-24)
 

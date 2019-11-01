@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="6.14.0"></a>
+# [6.14.0](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.13.2...@findify/bundle@6.14.0) (2019-11-01)
+
+
+### Features
+
+* **bundle, react-connect:** added redirect feature to the autocomplete ([4c2d75a](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/4c2d75a))
+
+
+
+
 <a name="6.13.2"></a>
 ## [6.13.2](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.13.1...@findify/bundle@6.13.2) (2019-10-25)
 
