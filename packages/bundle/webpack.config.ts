@@ -151,6 +151,7 @@ export default (env: WebpackEnvArgs, { mode, origin = 'prod' }) => {
             path.resolve(__dirname, 'src'),
             path.resolve(__dirname, '../../node_modules'),
           ],
+          exclude: /@babel(?:\/|\\{1,2})runtime|core-js/,
           use: [
             {
               loader: 'babel-loader',
