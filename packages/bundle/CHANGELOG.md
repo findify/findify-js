@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="6.14.3"></a>
+## [6.14.3](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.14.2...@findify/bundle@6.14.3) (2019-11-05)
+
+
+### Bug Fixes
+
+* **bundle:** fix symbol pofifyll ([1e2153e](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/1e2153e))
+
+
+
+
 <a name="6.14.2"></a>
 ## [6.14.2](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.14.1...@findify/bundle@6.14.2) (2019-11-05)
 
