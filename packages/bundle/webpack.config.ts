@@ -146,11 +146,19 @@ export default (env: WebpackEnvArgs, { mode, origin = 'prod' }) => {
           ]
         },
         {
-          test: /\.ts$/,
+          test: /\.(j|t)s$/,
           include: [
             path.resolve(__dirname, 'src'),
+            path.resolve(__dirname, '../../node_modules'),
           ],
-          use: ['babel-loader']
+          use: [
+            {
+              loader: 'babel-loader',
+              options: {
+                rootMode: "upward",
+              }
+            }
+          ]
         },
         {
           test: /\.tsx?$/,
@@ -161,9 +169,10 @@ export default (env: WebpackEnvArgs, { mode, origin = 'prod' }) => {
             {
               loader: 'babel-loader',
               options: {
+                rootMode: "upward",
                 envName: mode,
                 babelrc: false,
-                extends: path.resolve(componentsPath, '.babelrc')
+                extends: path.resolve(componentsPath, 'babel.config.js')
               }
             }
           ]
