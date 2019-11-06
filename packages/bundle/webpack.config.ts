@@ -196,9 +196,6 @@ export default (env: WebpackEnvArgs, { mode, origin = 'prod' }) => {
           ? 'base => props => { console.log(props); return base(props) }'
           : ''
       }),
-      new webpack.ProvidePlugin({
-        Promise: 'core-js/features/promise',
-      }),
 
       new DuplicatePackageCheckerPlugin(),
 
