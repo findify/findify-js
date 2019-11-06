@@ -4,8 +4,8 @@
  * imports to reduce the size
  */
 
-import 'regenerator-runtime/runtime';
 import 'core-js/features/promise';
+import 'regenerator-runtime/runtime';
 
 import loadJs from 'load-js';
 import loadCss from './helpers/loadCss';
