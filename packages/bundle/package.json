@@ -45,6 +45,7 @@
     "@findify/react-connect": "^0.6.0",
     "@sentry/browser": "^5.6.3",
     "core-js": "^3.2.1",
+    "es6-promise-promise": "^1.0.0",
     "jump.js": "^1.0.2",
     "load-js": "^3.0.2",
     "raf": "^3.4.0",
