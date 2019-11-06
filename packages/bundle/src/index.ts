@@ -1,5 +1,4 @@
 import 'core-js/features/promise';
-import 'regenerator-runtime/runtime';
 
 import loadJs from 'load-js';
 import loadCss from './helpers/loadCss';
@@ -8,8 +7,6 @@ import log from './helpers/log';
 if (window.__FINFIDY_PATH__) {
   __webpack_public_path__ = window.__FINFIDY_PATH__
 }
-
-console.log(Promise);
 
 // /**
 //  * Load Dependencies
