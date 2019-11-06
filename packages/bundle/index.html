@@ -23,12 +23,12 @@
       </div>-->
     </header>
     <script>
-      document.addEventListener("animationstart", function(e) {
-        if (e.animationName !== "findify") return;
-        (window.findifyCallbacks = window.findifyCallbacks || []).push(findify => 
-          console.log('attaching') || findify.widgets.attach(e.target)
-        )
-      }, false);
+      // document.addEventListener("animationstart", function(e) {
+      //   if (e.animationName !== "findify") return;
+      //   (window.findifyCallbacks = window.findifyCallbacks || []).push(findify => 
+      //     console.log('attaching') || findify.widgets.attach(e.target)
+      //   )
+      // }, false);
     </script>
     <style>
       [data-findify]{
@@ -51,23 +51,23 @@
     <div id='home-findify-rec-3' data-title='Recommendations'></div>
   </div>
     <script>
-      (window.findifyCallbacks = window.findifyCallbacks || []).push(function(findify) {
-        findify.analytics.state = {
-          ...findify.analytics.state,
-          events: { 'view-page': { item_id: '8714871495' } },
-        }
-        findify.widgets.attach(
-          '#bundle',
-          'recommendation',
-          {
-            key: 'bundle',
-            template: 'grid',
-            type: 'purchasedTogether',
-            meta: { limit: 3 },
-            bundle: true
-          }
-        );
-      })
+      // (window.findifyCallbacks = window.findifyCallbacks || []).push(function(findify) {
+      //   findify.analytics.state = {
+      //     ...findify.analytics.state,
+      //     events: { 'view-page': { item_id: '8714871495' } },
+      //   }
+      //   findify.widgets.attach(
+      //     '#bundle',
+      //     'recommendation',
+      //     {
+      //       key: 'bundle',
+      //       template: 'grid',
+      //       type: 'purchasedTogether',
+      //       meta: { limit: 3 },
+      //       bundle: true
+      //     }
+      //   );
+      // })
     </script>
     <div id='attacher'></div>
   </body>

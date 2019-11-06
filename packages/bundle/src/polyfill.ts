@@ -5,4 +5,5 @@
  */
 import 'core-js/stable';
 import 'raf/polyfill';
+import 'regenerator-runtime/runtime';
 

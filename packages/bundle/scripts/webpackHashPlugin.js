@@ -50,11 +50,11 @@ class HashedPlugin {
 			mainTemplate.hooks.requireExtensions.tap("HashedPlugin", (source, chunk, hash) => {
 
 				const scripts = Object.keys(chunk.getChunkMaps().name)
-					.map(c => `${mainTemplate.requireFn}.e('${c}')`)
+					.map(c => `'${c}'`)
 					.join(',')
 				
 				const ignoredModules = (options.ignoreModulesCache || [])
-					.map(key => `['${key}']: __cache['${key}']`)
+					.map(key => `'${key}': __cache['${key}']`)
 					.join(',')
 				
 				return source + `
