@@ -1,9 +1,3 @@
-/**
- * The set of polyfills with support of IE 9+
- * @babel/preset-env will replace this require with 'core-js'
- * imports to reduce the size
- */
-
 import 'core-js/features/promise';
 import 'regenerator-runtime/runtime';
 
@@ -15,14 +9,16 @@ if (window.__FINFIDY_PATH__) {
   __webpack_public_path__ = window.__FINFIDY_PATH__
 }
 
-/**
- * Load Dependencies
- */
+console.log(Promise);
 
-Promise.all(__webpack_require__.chunks).then(() => {
+// /**
+//  * Load Dependencies
+//  */
 
-if ((global as any).findify_initialized) return;
-(global as any).findify_initialized = true;
+Promise.all(__webpack_require__.chunks.map(__webpack_require__.e)).then(() => {
+
+// if ((global as any).findify_initialized) return;
+// (global as any).findify_initialized = true;
 
 const deps: Promise<any>[] = [
   import(/* webpackChunkName: "polyfill" */ './polyfill'),
