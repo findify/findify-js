@@ -557,6 +557,25 @@ declare module 'components/common/MapArray/test' {
 export {};
 
 }
+declare module 'components/common/Picture' {
+/// <reference types="react" />
+const _default: ({ aspectRatio, lazy, offset, getSrc, getThumbnail, src, alt, thumbnail }: {
+    aspectRatio: any;
+    lazy: any;
+    offset?: number | undefined;
+    getSrc: any;
+    getThumbnail: any;
+    src: any;
+    alt: any;
+    thumbnail: any;
+}) => JSX.Element;
+export default _default;
+
+}
+declare module 'components/common/Picture/test' {
+export {};
+
+}
 declare module 'components/common/Sticky' {
 import React from 'react';
 export interface IStickyProps {
@@ -1440,6 +1459,13 @@ export default _default;
 declare module 'helpers/withMinResultsToShow' {
 import React from 'react';
 const _default: () => (BaseComponent: React.Component<{}, {}, any>) => React.ComponentClass<unknown, any>;
+export default _default;
+
+}
+declare module 'helpers/withMobile' {
+/// <reference types="react" />
+export const useIsMobile: () => boolean;
+const _default: (BaseComponent: any) => (props: any) => import("react").ComponentElement<any, import("react").Component<any, any, any>>;
 export default _default;
 
 }

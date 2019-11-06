@@ -13,7 +13,7 @@ module.exports = (api) => {
         "modules": false,
         "useBuiltIns": "entry",
         "corejs": { "version": 3, "proposals": true },
-        "targets": ["last 2 versions", "ie > 8"]
+        "targets": "> 0.25%, not ie <= 9"
       }]
     ]
   }
