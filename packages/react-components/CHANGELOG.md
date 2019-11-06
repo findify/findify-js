@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.10.30"></a>
+## [0.10.30](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.29...@findify/react-components@0.10.30) (2019-11-06)
+
+
+### Bug Fixes
+
+* **bundle:** fix IE Promise ([b818b3c](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/b818b3c))
+
+
+
+
 <a name="0.10.29"></a>
 ## [0.10.29](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.28...@findify/react-components@0.10.29) (2019-11-05)
 
