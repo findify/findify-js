@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="6.14.7"></a>
+## [6.14.7](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.14.6...@findify/bundle@6.14.7) (2019-11-06)
+
+
+### Bug Fixes
+
+* **bundle:** disable double initialization ([1930749](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/1930749))
+
+
+
+
 <a name="6.14.6"></a>
 ## [6.14.6](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.14.5...@findify/bundle@6.14.6) (2019-11-06)
 
