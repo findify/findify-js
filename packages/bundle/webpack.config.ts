@@ -77,6 +77,17 @@ export default (env: WebpackEnvArgs, { mode, origin = 'prod' }) => {
         }),
       ],  
       concatenateModules: false,
+      splitChunks: {
+        maxAsyncRequests: 20,
+        maxInitialRequests: 20,
+        minChunks: 2,
+        name (module, chunks, cacheGroupKey) {
+          const allChunksNames = chunks.map((item) => item.name).join('~');
+          const res = cacheGroupKey + allChunksNames;
+          const hash = require("crypto").createHash('md5').update(res).digest('base64').substr(0, 6).replace('/', '00');
+          return `chunk-${hash}`;
+        }
+      }
     },
     stats: 'minimal',
     bail: true,
