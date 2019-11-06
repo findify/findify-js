@@ -11,11 +11,10 @@ if (window.__FINFIDY_PATH__) {
 // /**
 //  * Load Dependencies
 //  */
-
 Promise.all(__webpack_require__.chunks.map(__webpack_require__.e)).then(() => {
 
-// if ((global as any).findify_initialized) return;
-// (global as any).findify_initialized = true;
+if ((global as any).findify_initialized) return;
+(global as any).findify_initialized = true;
 
 const deps: Promise<any>[] = [
   import(/* webpackChunkName: "polyfill" */ './polyfill'),
