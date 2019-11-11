@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="6.14.9"></a>
+## [6.14.9](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.14.8...@findify/bundle@6.14.9) (2019-11-11)
+
+
+### Bug Fixes
+
+* **bundle:** fix scroll if no option present in config ([e263493](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/e263493))
+
+
+
+
 <a name="6.14.8"></a>
 ## [6.14.8](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.14.7...@findify/bundle@6.14.8) (2019-11-06)
 
