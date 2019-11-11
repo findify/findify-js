@@ -7,6 +7,7 @@ import { Events } from '../../core/events';
 import { scrollTo } from '../../helpers/scrollTo';
 import ZeroResults from '@findify/react-components/src/layouts/ZeroResults';
 import lazy from '../../helpers/renderLazyComponent';
+import isNumeric from '../../helpers/isNumeric';
 
 const lazySearch = lazy(() => import(
   /* webpackChunkName: "search" */
@@ -76,7 +77,7 @@ export default (widget) => {
       if (!items.isEmpty()) {
         hideFallback(node);
         hideLoader(node);
-        if (!config.getIn(['view', 'infinite']) && config.get('scrollTop') !== false) {
+        if (!config.getIn(['view', 'infinite']) && isNumeric(config.get('scrollTop'))) {
           scrollTo(config.get('cssSelector'), config.get('scrollTop'))
         }
         return render('initial');
