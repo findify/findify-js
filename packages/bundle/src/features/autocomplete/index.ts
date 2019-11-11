@@ -30,6 +30,7 @@ export default (widget) => {
     agent.set('q', !state.q ? '' : state.q);
     initialRequested = true;
   }
+  
 
   if (state.q) node.value = state.q;
 

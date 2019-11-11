@@ -5,6 +5,7 @@ import { hideFallback, hideLoader } from '../../helpers/fallbackNode';
 import { Events } from '../../core/events';
 import { scrollTo } from '../../helpers/scrollTo';
 import Content from '@findify/react-components/src/layouts/Content';
+import isNumeric from '../../helpers/isNumeric';
 
 const parseSortHTMLAttribute = sort => {
   try {
@@ -48,7 +49,7 @@ export default (widget) => {
       if (!items.isEmpty()) {
         hideFallback(node);
         hideLoader(node);
-        if (!config.getIn(['view', 'infinite']) && config.get('scrollTop') !== false) {
+        if (!config.getIn(['view', 'infinite']) && isNumeric(config.get('scrollTop'))) {
           scrollTo(config.get('cssSelector'), config.get('scrollTop'))
         }
         return render('initial');
