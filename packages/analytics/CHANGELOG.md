@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="3.5.3"></a>
+## [3.5.3](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/analytics@3.5.2...@findify/analytics@3.5.3) (2019-11-18)
+
+
+### Bug Fixes
+
+* **analytics:** bump version ([95c7dde](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/95c7dde))
+* **analytics:** return dist to npm ([eb54702](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/eb54702))
+
+
+
+
 <a name="3.5.2"></a>
 ## [3.5.2](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/analytics@3.5.1...@findify/analytics@3.5.2) (2019-10-08)
 
