@@ -95,6 +95,7 @@ const createInvalidator = (sendEvent, { platform, events }: Config) => eventsToF
  * Initialize analytics or subscribe to events
  * @param props Configuration or Listener
  */
+
 export default (props: Config | (() => void)): Client => {
   if (isFunction(props)) return emitter.listen(props);
 
