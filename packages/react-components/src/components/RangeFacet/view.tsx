@@ -37,7 +37,8 @@ export interface IRangeFacetProps extends ThemedSFCProps {
   /** Invoked when minimum range is changed */
   onChangeMin: (evt?: React.ChangeEvent<any>) => any;
   /** Invoked when any key in any input is pressed, used to react to Enter */
-  onKeypress: (evt: any) => any
+  onKeypressMin: (evt: any) => any
+  onKeypressMax: (evt: any) => any
   /** Invoked when Go button is pressed */
   onPressButton: () => any
 }
@@ -54,7 +55,8 @@ const RangeFacetView: React.SFC<IRangeFacetProps> = ({
 
   onChangeMax,
   onChangeMin,
-  onKeypress,
+  onKeypressMin,
+  onKeypressMax,
   onPressButton,
 
 }: IRangeFacetProps) =>
@@ -84,7 +86,7 @@ const RangeFacetView: React.SFC<IRangeFacetProps> = ({
         max={to || facet.get('max')}
         min={facet.get('min')}
         onBlur={onChangeMin}
-        onKeyPress={onKeypress}
+        onKeyPress={onKeypressMin}
       />
     </div>
     <div className={theme.divider}>-</div>
@@ -98,7 +100,7 @@ const RangeFacetView: React.SFC<IRangeFacetProps> = ({
         min={from || facet.get('min')}
         max={facet.get('max')}
         onBlur={onChangeMax}
-        onKeyPress={onKeypress}
+        onKeyPress={onKeypressMax}
       />
     </div>
     <Button onClick={onPressButton} className={theme.submit}>

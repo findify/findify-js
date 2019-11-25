@@ -65,9 +65,15 @@ export default compose(
       e.preventDefault();
       Promise.resolve().then(() => onCommit());
     },
+    onKeypressMin: ({ onCommit, onChangeMin }) =>(e) => {
+      if (e.key !== 'Enter') return;
+      onChangeMin(e)
+      Promise.resolve().then(() => onCommit());
+    },
+    onKeypressMax: ({ onCommit, onChangeMax }) => (e) => {
+      if (e.key !== 'Enter') return;
+      onChangeMax(e)
+      Promise.resolve().then(() => onCommit());
+    }
   }),
-
-  withProps(({ onCommit }) => ({
-    onKeypress: ({ key }) => key === 'Enter' && onCommit()
-  }))
 )(view);
