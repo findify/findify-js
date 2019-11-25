@@ -2,7 +2,7 @@ declare module window {
   const findifyCallback: Promise<any> | undefined | any
 }
 
-export default (root, name) => new Promise(resolve => {
+export default (root, name) => new Promise(resolve => requestAnimationFrame(() => {
   const callbacks = window[name] = window[name] || [];
   window[name].push = (cb) => cb(root);
   if (!callbacks) return resolve();
@@ -16,4 +16,4 @@ export default (root, name) => new Promise(resolve => {
     }
   }
   return Promise.all(promises).then(resolve);
-});
+}));

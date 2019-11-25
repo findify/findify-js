@@ -2,10 +2,10 @@ import accounting from 'accounting';
 
 export interface ICurrencyData {
   symbol?: string;
-  thousandsSeparator?: string;
-  decimalSeparator?: string;
+  thousand?: string;
+  decimal?: string;
+  precision?: number;
   symbolOnLeft?: boolean;
-  decimalDigits?: number;
   spaceBetweenAmountAndSymbol?: boolean;
   format?: {
     pos: string,
@@ -55,11 +55,11 @@ const formatMapping = [
 
 const defaultCurrency = {
   symbol: '',
-  thousandsSeparator: ',',
-  decimalSeparator: '.',
+  thousand: ',',
+  decimal: '.',
+  precision: 2,
   symbolOnLeft: true,
   spaceBetweenAmountAndSymbol: false,
-  decimalDigits: 2
 }
 
 export default (currency: ICurrencyData = defaultCurrency) => (value: string) =>
