@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="6.14.11"></a>
+## [6.14.11](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.14.10...@findify/bundle@6.14.11) (2019-11-25)
+
+
+### Bug Fixes
+
+* **bundle, react-components:** fix range input to get value on enter click ([bcfb08d](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/bcfb08d))
+
+
+
+
 <a name="6.14.10"></a>
 ## [6.14.10](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.14.9...@findify/bundle@6.14.10) (2019-11-18)
 

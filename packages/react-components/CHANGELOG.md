@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.10.36"></a>
+## [0.10.36](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.35...@findify/react-components@0.10.36) (2019-11-25)
+
+
+### Bug Fixes
+
+* **bundle, react-components:** fix range input to get value on enter click ([bcfb08d](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/bcfb08d))
+
+
+
+
 <a name="0.10.35"></a>
 ## [0.10.35](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.34...@findify/react-components@0.10.35) (2019-11-18)
 
