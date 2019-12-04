@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.10.38"></a>
+## [0.10.38](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.37...@findify/react-components@0.10.38) (2019-12-04)
+
+
+### Bug Fixes
+
+* **react-components:** fix mission styles because of new babel ([0ba02fd](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/0ba02fd))
+
+
+
+
 <a name="0.10.37"></a>
 ## [0.10.37](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.36...@findify/react-components@0.10.37) (2019-12-04)
 
