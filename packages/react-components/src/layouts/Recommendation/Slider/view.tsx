@@ -1,9 +1,7 @@
 import React from 'react';
-import Swiper from './Swiper';
+import Swiper from 'layouts/Recommendation/Slider/Swiper';
 import ProductCard from 'components/Cards/Product'
 import Text from 'components/Text';
-import { IProduct, ThemedSFCProps, MJSConfiguration } from 'types';
-import { List } from 'immutable';
 
 export default ({ items, config, theme, sliderOptions }) =>
 <React.Fragment display-if={items && items.size > 0}>

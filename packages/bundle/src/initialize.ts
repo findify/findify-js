@@ -8,6 +8,7 @@ import setupPlatforms from './helpers/setupPlatforms';
 import { Events } from './core/events';
 import log from './helpers/log';
 import { scrollTo } from './helpers/scrollTo';
+import { showFallback } from './helpers/fallbackNode';
 
 /**
  * Create global namespace
@@ -91,7 +92,9 @@ export default async (
     log('widgets:', '' , __root.widgets.list());
   } else {
     log(`findify ${__root.config.get('status')}`, 'color: #D9463F');
+    showFallback();
   }
+
   await resolveCallback(__root, 'findifyCallbacks');
 
 
