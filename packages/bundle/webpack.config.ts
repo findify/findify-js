@@ -210,7 +210,8 @@ export default (env: WebpackEnvArgs, { mode, origin = 'prod' }) => {
           'immutable/dist/immutable.es': 'immutable',
           '@hot-loader/react-dom': 'react-dom',
           'recompose/dist/Recompose.esm': 'recompose',
-          'recompose/dist/Recompose.cjs': 'recompose',
+          'swiper/js/swiper.esm.js': 'swiper/js/swiper.esm',
+          'react-id-swiper/lib/ReactIdSwiper.custom': 'react-id-swiper/lib/ReactIdSwiper',
         },
         ignoreModulesCache: ['Jmof']
       })
