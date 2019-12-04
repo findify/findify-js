@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="6.14.12"></a>
+## [6.14.12](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.14.11...@findify/bundle@6.14.12) (2019-12-04)
+
+
+### Bug Fixes
+
+* **bundle, react-components:** update Swiper deps and paths, show fallback without creating feature ([1ac2ce3](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/1ac2ce3))
+
+
+
+
 <a name="6.14.11"></a>
 ## [6.14.11](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.14.10...@findify/bundle@6.14.11) (2019-11-25)
 

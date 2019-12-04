@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.10.37"></a>
+## [0.10.37](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.36...@findify/react-components@0.10.37) (2019-12-04)
+
+
+### Bug Fixes
+
+* **bundle, react-components:** update Swiper deps and paths, show fallback without creating feature ([1ac2ce3](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/1ac2ce3))
+
+
+
+
 <a name="0.10.36"></a>
 ## [0.10.36](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.35...@findify/react-components@0.10.36) (2019-11-25)
 
