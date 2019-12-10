@@ -41,7 +41,7 @@ const createHook = (handlers, mapProps, field) => (key = 'default') => {
     return () => agent.off(_updater)
   }, []);
 
-  return useMemo(() => ({ ...state, ..._handlers, update: agent.set, analytics, config }), [state]);
+  return useMemo(() => ({ ...state, ..._handlers, update: agent.set, analytics, config, agent }), [state]);
 }
 
 const useFeatureContext = (key = 'default') => {
