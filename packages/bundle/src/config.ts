@@ -862,7 +862,12 @@ export default process.env.NODE_ENV !== 'development'
             "template": {
               "single": "Temporarily out of stock"
             }
-          }
+           },
+           discount: {
+            "position": "top-left",
+            "template": { "single": "%s% off!", "multiple": "up to %s off!" },
+            "styles": { "background": "white", "color": "black", "fontFamily": "Arial, 'Helvetica Neue', Helvetica, sans-serif;", "fontSize": "14", "fontWeight": "400" }
+           }
        },
        "frameDisabled": true,
        "useSimpleLoader": false,

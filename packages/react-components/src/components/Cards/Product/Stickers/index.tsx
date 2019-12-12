@@ -20,24 +20,45 @@ const defaultDiscountConfig = fromJS({
     "background": "#c483b3",
     "color": "#ffffff",
     "fontFamily": "'Helvetica Neue', Helvetica, Arial, sans-serif;",
-    "fontSize": "14",
+    "fontSize": "14px",
     "fontWeight": "700"
   }
-})
+});
+const formatStyle = (key, value) => {
+  if (key === 'fontFamily') return value.replace(';', '');
+  return isNaN(Number(value)) ? value : Number(value);
+}
 
+const format = (obj) => Object.keys(obj).reduce((acc, key) => ({ ...acc, [key]: formatStyle(key, obj[key]) }), {})
+
+const getPositionStyle = (position) => {
+  if (!position) return;
+  const [vertical, horizontal] = position.split('-');
+  return {
+    top: 'auto',
+    right: 'auto',
+    [vertical === 'center' ? 'top' : vertical]: vertical === 'center' ? '50%' : '4%',
+    [horizontal === 'center' ? 'left' : horizontal]: horizontal === 'center' ? '50%' : '4%',
+    transform: `translate(${horizontal === 'center' ? '-50%' : '0'}, ${vertical === 'center' ? '-50%' : '0'})`
+  }
+}
 const defaultOutOfStockConfig = fromJS({
   "template": {
     "single": "Out of stock"
   },
-})
+});
+
+
 
 export const DiscountSticker = withTheme(theme)(({ className, discount, theme, config }) => {
   let realConfig = config.get('stickers')
   if (!realConfig || !realConfig.get('discount')) realConfig = defaultDiscountConfig
-  else realConfig = realConfig.get('discount')
+  else realConfig = realConfig.get('discount');
+  const style = realConfig.get('styles') && format(realConfig.get('styles').toJS());
+  const position = getPositionStyle(realConfig.get('position'));
   return (
-    <div className={cx(theme.discountSticker, className)}>
-      <Text bold>
+    <div className={cx(theme.discountSticker, className)} style={{ ...style, ...position }}>
+      <Text bold style={{ color: style && style.color }}>
         <Branch
           condition={discount.size > 1}
           left={() => realConfig.getIn(['template', 'multiple']).replace('%s', Math.max.apply(Math, discount.toJS()))}
