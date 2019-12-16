@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.10.39"></a>
+## [0.10.39](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.38...@findify/react-components@0.10.39) (2019-12-16)
+
+
+### Bug Fixes
+
+* **react-components:** fix missed swiper styles ([f0f71a7](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/f0f71a7))
+
+
+
+
 <a name="0.10.38"></a>
 ## [0.10.38](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.37...@findify/react-components@0.10.38) (2019-12-04)
 
