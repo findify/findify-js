@@ -1,3 +1,87 @@
+:root {
+  --swiper-theme-color: #333;
+  --swiper-navigation-size: 44px;
+}
+
 .root{
   
+}
+
+:global(.swiper-container) {
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  overflow: hidden;
+  list-style: none;
+  padding: 0;
+  /* Fix of Webkit flickering */
+  z-index:1;
+}
+
+:global(.swiper-container-vertical > .swiper-wrapper) {
+  flex-direction: column;
+}
+
+:global(.swiper-wrapper) {
+  position:relative;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  display: flex;
+  transition-property:transform;
+  box-sizing: content-box;
+}
+
+:global(.swiper-container-android .swiper-slide), :global(.swiper-wrapper) {
+  transform:translate3d(0px,0,0);
+}
+
+:global(.swiper-container-free-mode > .swiper-wrapper) {
+  transition-timing-function: ease-out;
+  margin: 0 auto;
+}
+
+:global(.swiper-slide) {
+  flex-shrink: 0;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transition-property: transform;
+}
+
+:global(.swiper-slide-invisible-blank) {
+  visibility: hidden;
+}
+
+:global(.swiper-button-prev), :global(.swiper-button-next) {
+  position: absolute;
+  top: 10px;
+  bottom: 10px;
+  z-index: 10;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 10px;
+  background: transparent;
+  border: none;
+  color: var(--swiper-navigation-color, var(--swiper-theme-color));
+}
+
+:global(.swiper-button-disabled) {
+  display: none;
+}
+
+:global(.swiper-button-prev) {
+  left: 0;
+  right: auto;
+}
+
+:global(.swiper-button-next) {
+  right: 0;
+  left: auto;
+}
+
+:global(.swiper-button-lock) {
+  display: none;
 }
