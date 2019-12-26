@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="6.15.0"></a>
+# [6.15.0](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.14.14...@findify/bundle@6.15.0) (2019-12-26)
+
+
+### Bug Fixes
+
+* **bundle:** remove uneccessary spaces ([44a7499](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/44a7499))
+
+
+### Features
+
+* **bundle:** added ability to pass recommendations rules via data attributes of the recommendation ([5f66b87](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/5f66b87))
+
+
+
+
 <a name="6.14.14"></a>
 ## [6.14.14](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.14.13...@findify/bundle@6.14.14) (2019-12-16)
 
