@@ -51,10 +51,10 @@ const getBundle = async version => {
   return normalized;
 }
 
-const getVariables = ({ merchantName, merchantID, apiKeys }) => {
+const getVariables = ({ merchantName, merchantID, apiKey }) => {
   const config = {
     __MERCHANT_CONFIG_URL__: `https://findify-assets-2bveeb6u8ag.netdna-ssl.com/search/prod/${merchantName}-config.min.js`,
-    __MERCHANT_API_KEY__: apiKeys[0].apiKey,
+    __MERCHANT_API_KEY__: apiKey,
     __MERCHANT_VERSION__: 'test',
     __MERCHANT_CSS__: `https://findify-assets-2bveeb6u8ag.netdna-ssl.com/search/prod/${merchantName}.min.css`,
     __INCLUDE_POLYFILL__: true,

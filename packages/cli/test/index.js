@@ -25,8 +25,9 @@ const auth = async ({ login, password, token }) => {
       && await axios.get('https://admin.findify.io/v1/merchants', { headers: { 'x-token': token } })
       || await axios.post('https://admin.findify.io/v1/accounts/login', { login, password: String(password) })
     );
+    const { data: merchants } = await axios.get('https://admin.findify.io/v1/merchants-with-customizations', { headers: { 'x-token': token || data.token }})
     interactive.success(`Authorized as ${!token && data.user.name || data.name}`);
-    return !!token && data.merchants || data.user.merchants;
+    return merchants;
   } catch (e) {
     interactive.error(e.response.data, 4);
   }
@@ -61,7 +62,7 @@ const pickMerchants = (merchants, { merchants: m }) => {
 
 const program = async () => {
   const merchants = await auth(argv);
-  const stores = pickMerchants(merchants, argv).filter(({ feConfig }) => feConfig.hasCustomizations && Number(feConfig.mjsVersion.split('.')[0]) > 5)
+  const stores = pickMerchants(merchants, argv)
   signale.success(`Testing ${stores.length} stores`);
   const statuses = await Promise.all(stores.map(test(argv)));
 }

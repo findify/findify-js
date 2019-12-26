@@ -7,7 +7,16 @@ const getIdsFromEvents = events => ({
   ),
 });
 
-export const getPayload = (config, { events, filters }) => {
+const getRulesFromNode = node => {
+  try {
+    const rules = node.getAttribute('data-findify-rules');
+    return JSON.parse(rules);
+  } catch (err) {
+    return null;
+  }
+};
+
+export const getPayload = (config, node, { events, filters }) => {
   const { item_id, item_ids } = getIdsFromEvents(events)
   const type = config.get('type');
   const slot = config.get('slot');
@@ -15,8 +24,10 @@ export const getPayload = (config, { events, filters }) => {
 
   const payload: any = { slot, type };
 
-  if (filters && !!filters.length) {
-    payload.rules = filters;
+  const rulesToApply = getRulesFromNode(node) || filters;
+
+  if (rulesToApply && !!rulesToApply.length) {
+    payload.rules = rulesToApply;
   }
 
   if (config.get('rules')) {
