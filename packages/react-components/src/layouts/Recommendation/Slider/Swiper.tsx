@@ -8,7 +8,7 @@ const defaultProps = {
   modules: [Navigation, Pagination],
   renderPrevButton: () => <button className="swiper-button-prev"><Icon name='ArrowLeftBig' /></button>,
   renderNextButton: () => <button className="swiper-button-next" ><Icon name='ArrowRightBig' /></button>,
-  getSwiper: (swiper) => swiper.on('slideChangeTransitionEnd', () => {
+  getSwiper: (swiper) => swiper && swiper.on('slideChangeTransitionEnd', () => {
     window.scrollTo(window.scrollX, window.scrollY - 1);
     window.scrollTo(window.scrollX, window.scrollY + 1);
   })
