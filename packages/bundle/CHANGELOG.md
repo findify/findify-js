@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="6.15.1"></a>
+## [6.15.1](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.15.0...@findify/bundle@6.15.1) (2020-01-21)
+
+
+### Bug Fixes
+
+* **bundle, react-components:** update custom layout and trigger page scroll on slider slide ([b2658d6](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/b2658d6))
+
+
+
+
 <a name="6.15.0"></a>
 # [6.15.0](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.14.14...@findify/bundle@6.15.0) (2019-12-26)
 

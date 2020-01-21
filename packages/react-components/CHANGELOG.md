@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.10.41"></a>
+## [0.10.41](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.40...@findify/react-components@0.10.41) (2020-01-21)
+
+
+### Bug Fixes
+
+* **bundle, react-components:** update custom layout and trigger page scroll on slider slide ([b2658d6](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/b2658d6))
+
+
+
+
 <a name="0.10.40"></a>
 ## [0.10.40](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.39...@findify/react-components@0.10.40) (2019-12-26)
 
