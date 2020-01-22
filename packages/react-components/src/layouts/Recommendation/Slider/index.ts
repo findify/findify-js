@@ -13,6 +13,7 @@ import 'layouts/Recommendation/Slider/styles.global.css';
 import view from 'layouts/Recommendation/Slider/view';
 import styles from 'layouts/Recommendation/Slider/styles.css';
 import getBreakpoint from 'helpers/getBreakpoint';
+import withEvents from 'helpers/withEvents';
 
 /**
  * This function is used to calculate products to show in a line of a Slider according to its width
@@ -44,6 +45,16 @@ export default compose(
   connectItems,
 
   withMinResultsToShow(),
+
+  /**
+   * Recompute layout width after tab changed
+   */
+  withEvents({
+    hydrate: ({ config }) => (key) => {
+      if (key !== config.get('widgetKey')) return;
+      requestAnimationFrame(() => window.dispatchEvent(new Event('resize')));
+    }
+  }),
 
   withPropsOnChange(['config'], ({ config, size }) => ({
     sliderOptions: {
