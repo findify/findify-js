@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.10.42"></a>
+## [0.10.42](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.41...@findify/react-components@0.10.42) (2020-01-22)
+
+
+### Bug Fixes
+
+* **react-components:** fix swiper scroll callback ([e156e5a](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/e156e5a))
+
+
+
+
 <a name="0.10.41"></a>
 ## [0.10.41](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.40...@findify/react-components@0.10.41) (2020-01-21)
 
