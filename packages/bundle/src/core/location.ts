@@ -22,28 +22,78 @@ export const isSearch = () =>
 
 export const listenHistory = history.listen;
 
-export const getQuery = () => {
-  const str = history.location.search;
+const getPrefix = (): string => {
   const prefix = __root.config.getIn(['location', 'prefix']);
-  const elements = parse(str,
-    { decoder: (value) => decodeURIComponent(value.replace(/\+/g, ' ')), ignoreQueryPrefix: true }
-  );
+  const formattedPrefix = !!prefix ? `${prefix}_` : '';
+  return formattedPrefix;
+}
+
+const normalizeQueryValue = (() => {
+  const numberKeys = {
+    limit: true,
+    offset: true
+  };
+
+  return (key: string, value: string): string | number =>
+    numberKeys[key] ? Number(value) : value;
+})();
+
+const parseQueryElement = (): { [key: string]: string } => {
+  const str = history.location.search;
+  const elements = parse(str, {
+    decoder: (value) => decodeURIComponent(value.replace(/\+/g, ' ')),
+    ignoreQueryPrefix: true
+  });
+  return elements;
+}
+
+const isFindifyQueryElement = (() => {
+  const findifyQueryElements = {
+    limit: true,
+    offset: true,
+    q: true,
+    filters: true,
+    sort: true,
+    rules: true
+  }
+
+  return key => !!findifyQueryElements[key];
+})();
+
+export const getQuery = () => {
+  const elements = parseQueryElement();
+  const prefix = getPrefix();
   return Object.keys(elements).reduce((acc, key) => {
-    const _key = prefix ? key.replace(`${prefix}_`, '') : key;
+    const formattedKey = key.replace(prefix, '');
+    const value = normalizeQueryValue(formattedKey, elements[key]);
     return {
       ...acc,
-      [_key]: ['limit', 'offset'].includes(_key)
-        ? Number(elements[key])
-        : elements[key]
+      [formattedKey]: value
     }
   }, {});
 };
 
+const getNotFindifyQueryElements = () => {
+  const elements = parseQueryElement();
+  const prefix = getPrefix();
+  return Object.keys(elements).reduce((acc, key) => {
+    const formattedKey = key.replace(prefix, '');
+    if (!isFindifyQueryElement(formattedKey)) {
+      return {
+        ...acc,
+        [formattedKey]: elements[key]
+      };
+    }
+    return acc;
+  }, {});
+};
+
 export const buildQuery = (_query = {}) => {
-  const prefix = __root.config.getIn(['location', 'prefix']);
-  const query = Object.keys(_query).reduce((acc, key) =>
-    ({ ...acc, [`${!!prefix ? prefix + '_' : ''}${key}`]: _query[key] })
-  , {});
+  const prefix = getPrefix();
+  const query = Object.keys(_query).reduce((acc, key) => ({
+    ...acc,
+    [isFindifyQueryElement(key) ? `${prefix}${key}` : key]: _query[key]
+  }), {});
   return stringify(query, {
     encoder: encodeURIComponent,
     addQueryPrefix: true,
@@ -58,7 +108,12 @@ export const redirectToSearch = (q) => {
 };
 
 export const setQuery = (query) => {
-  const search = buildQuery(query);
+  const notFindifyQuery = getNotFindifyQueryElements();
+
+  const search = buildQuery({
+    ...query,
+    ...notFindifyQuery
+  });
 
   /* Special for IE9: prevent page reload if query is the same */
   if (isIE9 && search === history.location.search) return;
