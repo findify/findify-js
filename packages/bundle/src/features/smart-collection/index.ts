@@ -1,6 +1,6 @@
 import { createElement } from 'react';
 import { SmartCollectionProvider } from "@findify/react-connect";
-import { getQuery, setQuery, collectionPath, listenHistory, redirectToPage } from '../../core/location';
+import { getQuery, setQuery, buildQuery, collectionPath, listenHistory, redirectToPage } from '../../core/location';
 import { Events } from '../../core/events';
 import { scrollTo } from '../../helpers/scrollTo';
 import { hideFallback, showFallback, hideLoader } from '../../helpers/fallbackNode';
@@ -62,7 +62,17 @@ export default (widget) => {
     })
 
     /** Listen to changes */
-    agent.on('change:query', q => setQuery(q.toJS()));
+    agent.on('change:query', q => {
+      // We are not applying new state if something else in URL QUERY and response from
+      // our Server do not contains extra meta
+      // FIX for: UTM Tags
+      if (
+        !buildQuery(q.toJS()) &&
+        !Object.keys(state).filter(k => k.includes(config.getIn(['location', 'prefix']))).length
+      ) return;
+
+      setQuery(q.toJS())
+    });
 
     /** Switch to recommendation if query not present */
     // agent.on('change:items', handleFirstResponse);
