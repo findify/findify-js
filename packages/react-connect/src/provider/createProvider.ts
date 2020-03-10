@@ -35,21 +35,22 @@ export const createProvider = (type, onCreate?: (agent) => void) => ({
     ]
   }, []);
 
-  const [_analytics, _agent] = useMemo(() => [
-    analytics({
+  const [_analytics, _agent] = useMemo(() => {
+    const _analytics = analytics({
       key: _key,
       events: _config.get('analytics', Map()).toJS(),
       ..._config.get('platform', Map()).toJS()
-    }),
+    });
 
-    agent || new Agents[type]({
+    const _agent = agent || new Agents[type]({
       key: _key,
-      user: this.analytics.user,
+      user: _analytics.user,
       immutable: true,
       retryCount: type === 'Autocomplete' ? 0 : void 0,
       ...options
     })
-  ], [storeKey]);
+    return [_analytics, _agent];
+  }, [storeKey]);
 
   useEffect(() => {
     for (const key in query) _agent.set(key, query[key]);

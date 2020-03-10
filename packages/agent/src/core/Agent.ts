@@ -76,6 +76,20 @@ export class Agent {
   }
 
   /**
+   * Listen to single change in specific response field
+   * eq: change:items
+   * @param key [string]: [action]:[...[:fields]]
+   * @param handler [function(state, meta)]: callback function
+   */
+  public once(key: string, handler: Types.ActionHandler) {
+    const _handler = (...res) => {
+      handler(res);
+      this.off(_handler)
+    };
+    return this.on(key, _handler);
+  }
+
+  /**
    * Remove change listeners
    * eq: .off(someCallback) - will remove listeners with callback function "someCallback"
    * eq: .off('change:items') - will remove all listeners who listen to changes in items
