@@ -1,6 +1,6 @@
 {
   "name": "@findify/processors",
-  "version": "1.4.7",
+  "version": "1.4.8",
   "description": "",
   "main": "styles.v6.js",
   "scripts": {
@@ -24,8 +24,8 @@
     "webpack-cli": "^3.3.9"
   },
   "dependencies": {
-    "@findify/agent": "^1.5.2",
-    "@findify/react-connect": "^0.6.1",
+    "@findify/agent": "^1.5.3",
+    "@findify/react-connect": "^0.6.2",
     "bundle": "^2.1.0",
     "react-components": "^0.5.1"
   }

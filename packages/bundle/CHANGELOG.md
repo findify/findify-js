@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="6.15.3"></a>
+## [6.15.3](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.15.2...@findify/bundle@6.15.3) (2020-03-10)
+
+
+### Bug Fixes
+
+* **bundle, agent, react-connect:** fix issue with overwrite of UTM tags(minor), affed .once function ([aa9a138](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/aa9a138))
+
+
+
+
 <a name="6.15.2"></a>
 ## [6.15.2](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.15.1...@findify/bundle@6.15.2) (2020-01-22)
 
