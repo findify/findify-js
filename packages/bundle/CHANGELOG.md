@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="6.15.4"></a>
+## [6.15.4](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.15.3...@findify/bundle@6.15.4) (2020-03-17)
+
+
+### Bug Fixes
+
+* **bundle:** update sentry project ID and whitelistUrls ([d766ea0](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/d766ea0))
+* **bundle:** use sentry test url ([2ac9aa9](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/2ac9aa9))
+
+
+
+
 <a name="6.15.3"></a>
 ## [6.15.3](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.15.2...@findify/bundle@6.15.3) (2020-03-10)
 
