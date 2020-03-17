@@ -46,6 +46,10 @@ class FeatureCreator extends Component<any>{
     return next.component !== this.state.component;
   }
 
+  componentDidCatch(e) {
+    __root.sentry && __root.sentry.captureException(e)
+  }
+
   componentWillUnmount() {
     this.unsubscribeForceUpdate();
   }

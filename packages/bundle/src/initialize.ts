@@ -50,19 +50,15 @@ export default async (
 
   // Register custom components
   if (cfg.components) {
-    try {
-      const extra = Object.keys(cfg.components).reduce(
-        (acc, k) => ({
-          ...acc,
-          [k]: isString(cfg.components[k]) ? eval(cfg.components[k]) : cfg.components[k]
-        }), {}
-      )
-      await __root.invalidate();
-      window.findifyJsonp.push([['extra'], extra]);
-      delete cfg.components;
-    } catch (e) {
-      sentry.captureException(e);
-    }
+    const extra = Object.keys(cfg.components).reduce(
+      (acc, k) => ({
+        ...acc,
+        [k]: isString(cfg.components[k]) ? eval(cfg.components[k]) : cfg.components[k]
+      }), {}
+    )
+    await __root.invalidate();
+    window.findifyJsonp.push([['extra'], extra]);
+    delete cfg.components;
   }
 
 
