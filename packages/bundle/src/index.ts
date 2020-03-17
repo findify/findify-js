@@ -78,7 +78,7 @@ Promise
         scope.setExtra('version', __MERCHANT_VERSION__)
       );
     }
-    initialize.default({ key: __MERCHANT_API_KEY__ });
+    initialize.default({ key: __MERCHANT_API_KEY__ }, sentry);
     log('ready', 'color: #3DBC88');
     log(`version: ${__MERCHANT_VERSION__}`);
   })
@@ -87,8 +87,8 @@ Promise
     log(e.stack);
     Promise
     .all(deps)
-    .then(([_, initialize]) => {
-      initialize.default({ key: __MERCHANT_API_KEY__ });
+    .then(([_, initialize, sentry]) => {
+      initialize.default({ key: __MERCHANT_API_KEY__ }, sentry);
     })
     .catch(e => {
       log('Please contact support team', 'color: #D9463F');

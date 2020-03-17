@@ -29,7 +29,8 @@ const isReady = (() => {
 const isString = (value) => typeof value === 'string' || value instanceof String;
 
 export default async (
-  _config
+  _config,
+  sentry
 ) => {
   if (!isReady) return;
 
@@ -49,15 +50,19 @@ export default async (
 
   // Register custom components
   if (cfg.components) {
-    const extra = Object.keys(cfg.components).reduce(
-      (acc, k) => ({
-        ...acc,
-        [k]: isString(cfg.components[k]) ? eval(cfg.components[k]) : cfg.components[k]
-      }), {}
-    )
-    await __root.invalidate();
-    window.findifyJsonp.push([['extra'], extra]);
-    delete cfg.components;
+    try {
+      const extra = Object.keys(cfg.components).reduce(
+        (acc, k) => ({
+          ...acc,
+          [k]: isString(cfg.components[k]) ? eval(cfg.components[k]) : cfg.components[k]
+        }), {}
+      )
+      await __root.invalidate();
+      window.findifyJsonp.push([['extra'], extra]);
+      delete cfg.components;
+    } catch (e) {
+      sentry.captureException(e);
+    }
   }
 
 
@@ -68,6 +73,7 @@ export default async (
   const { renderWidgets } = require('./core/render');
 
   __root.config = fromJS(cfg);
+  __root.sentry = sentry;
 
   /** Setup analytics */
   __root.analytics = AnalyticsDOM({ platform: cfg.platform, key: cfg.key, events: cfg.analytics || {} });

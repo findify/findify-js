@@ -7,6 +7,7 @@ declare module __root {
   let widgets: any; // Widgets manager (list, attach, detach, find)
   let invalidate: () => void; // Will invalidate module,
   let utils: any  // Additional helpers
+  let sentry: any // Sentry module
 }
 
 declare module __webpack_require__ {
