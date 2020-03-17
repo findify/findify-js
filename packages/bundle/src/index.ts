@@ -69,7 +69,7 @@ Promise
   .then(([_, initialize, sentry]) => {
     if (process.env.NODE_ENV !== 'development' && __SENTRY_ENABLED__ && sentry && sentry.init) {
       sentry.init({
-        dsn: 'https://1db8972d9612483b96430ad56611be6e@sentry.io/5001329',
+        dsn: 'https://bc8f25a4c385416288ce1a76b8a32f49@sentry.io/5001329',
         version: __MERCHANT_VERSION__,
         environment: __ENVIRONMENT__,
         whitelistUrls: [__webpack_require__.p, 'https://findify-assets-2bveeb6u8ag.netdna-ssl.com']
