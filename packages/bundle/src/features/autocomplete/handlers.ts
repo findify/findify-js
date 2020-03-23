@@ -151,12 +151,14 @@ export const registerHandlers = (widget, agent, rerender) => {
     document.body
   ));
 
-  subscribers.push(addEventListeners(
-    ['keydown'],
-    handleKeydown,
-    node,
-    false
-  ))
+  if (!config.get('disableFormSubmit')) {
+    subscribers.push(addEventListeners(
+      ['keydown'],
+      handleKeydown,
+      node,
+      false
+    ))
+  }
 
   /** Update container position  */
   if (config.get('renderIn') === 'body') {
