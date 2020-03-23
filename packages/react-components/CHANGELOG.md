@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.10.49"></a>
+## [0.10.49](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.48...@findify/react-components@0.10.49) (2020-03-23)
+
+
+### Bug Fixes
+
+* **bundle, react-components:** minor updates ([7b84d4d](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/7b84d4d))
+* **react-components:** update style of currency symbol in range facet ([bd99a9c](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/bd99a9c))
+
+
+
+
 <a name="0.10.48"></a>
 ## [0.10.48](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.47...@findify/react-components@0.10.48) (2020-03-17)
 
