@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.10.50"></a>
+## [0.10.50](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.49...@findify/react-components@0.10.50) (2020-03-23)
+
+
+### Bug Fixes
+
+* **react-components:** fix product image size in autocomplete ([e2c50e4](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/e2c50e4))
+
+
+
+
 <a name="0.10.49"></a>
 ## [0.10.49](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.48...@findify/react-components@0.10.49) (2020-03-23)
 
