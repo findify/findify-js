@@ -1,5 +1,5 @@
 .root {
-  //width: 355px;
+  /* width: 355px; */
 }
 
 .product-card {
@@ -7,6 +7,7 @@
   padding-left: 0;
   padding-bottom: 16px;
   .imageWrap {
+    display: table-cell;
     min-width: 60px;
   }
   .content {
