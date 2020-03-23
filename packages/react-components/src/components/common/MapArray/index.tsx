@@ -1,8 +1,8 @@
 /**
  * @module components/common/MapArray
  */
-import 'core-js/features/array/from';
-import React from 'react'
+import React from 'react';
+import { isImmutable } from 'immutable';
 
 /** MapCallback is a type signature for array.map(), immutable.List().map() callback */
 export type MapCallback = (item: any, index: number, arrayLike: ArrayLike) => any
@@ -35,7 +35,7 @@ export type MapArrayProps = {
 }
 
 /** Default key accessor, used in case no keyAccessor is provided */
-const defaultKeyAccessor = (item, index) => item.hashCode();
+const defaultKeyAccessor = (item, index) => !!item.hashCode ? item.hashCode() : index;
 
 export default ({
   array,
@@ -45,9 +45,9 @@ export default ({
   ...rest
 }: MapArrayProps) => {
   const f = React.createFactory(factory);
-  const res: any = Array.from(
-    array.slice(0, limit || array.length)
-      .map((item, index) => f({ ...rest, item, index, key: keyAccessor(item, index) }))
-  );
-  return res;
+  const res = array
+    .slice(0, limit || array.length)
+    .map((item, index) => f({ ...rest, item, index, key: keyAccessor(item, index) }))
+
+  return isImmutable(res) ? res.toArray() : res;
 }
