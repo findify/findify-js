@@ -77,8 +77,8 @@ export default (widget) => {
       if (!items.isEmpty()) {
         hideFallback(node);
         hideLoader(node);
-        if (!config.getIn(['view', 'infinite']) && isNumeric(config.get('scrollTop'))) {
-          scrollTo(config.get('cssSelector'), config.get('scrollTop'))
+        if (!config.getIn(['view', 'infinite']) && !config.get('disableScroll')) {
+          scrollTo(config.get('cssSelector'), config.get('scrollOffset'))
         }
         return render('initial');
       }
