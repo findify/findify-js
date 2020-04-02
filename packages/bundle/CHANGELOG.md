@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="6.15.12"></a>
+## [6.15.12](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.15.11...@findify/bundle@6.15.12) (2020-04-02)
+
+
+### Bug Fixes
+
+* **bundle:** change config props for scroll ([3700b2e](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/3700b2e))
+
+
+
+
 <a name="6.15.11"></a>
 ## [6.15.11](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.15.10...@findify/bundle@6.15.11) (2020-03-23)
 
