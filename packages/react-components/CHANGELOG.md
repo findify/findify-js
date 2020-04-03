@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.10.53"></a>
+## [0.10.53](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.52...@findify/react-components@0.10.53) (2020-04-03)
+
+
+### Bug Fixes
+
+* **react-components:** fix default property key in sorting ([263ad54](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/263ad54))
+
+
+
+
 <a name="0.10.52"></a>
 ## [0.10.52](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.51...@findify/react-components@0.10.52) (2020-04-02)
 
