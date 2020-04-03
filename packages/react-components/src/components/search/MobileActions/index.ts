@@ -21,7 +21,7 @@ export default compose(
   }),
   withPropsOnChange(['selected'], ({ selected, config }) => ({
     sorting: config.getIn(['sorting', 'i18n', 'options', !!selected
-      && [selected.get('field'), selected.get('order')].join('|')
+      && [selected.get('field'), selected.get('order')].filter(k => !!k).join('|')
       || 'default'
     ])
   })),
