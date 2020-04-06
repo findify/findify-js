@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="6.15.14"></a>
+## [6.15.14](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.15.13...@findify/bundle@6.15.14) (2020-04-06)
+
+
+### Bug Fixes
+
+* **bundle:** throw Error for disabled sentry users, showFallback fix ([62758d2](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/62758d2))
+
+
+
+
 <a name="6.15.13"></a>
 ## [6.15.13](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.15.12...@findify/bundle@6.15.13) (2020-04-03)
 
