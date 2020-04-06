@@ -94,7 +94,7 @@ export default async (
     log('widgets:', '' , __root.widgets.list());
   } else {
     log(`findify ${__root.config.get('status')}`, 'color: #D9463F');
-    showFallback();
+    showFallback(document);
   }
 
   await resolveCallback(__root, 'findifyCallbacks');
