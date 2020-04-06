@@ -93,5 +93,7 @@ Promise
     .catch(e => {
       log('Please contact support team', 'color: #D9463F');
     })
+
+    throw e;
   })
 });
