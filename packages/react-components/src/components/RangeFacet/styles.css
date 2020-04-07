@@ -68,6 +68,7 @@ $height: 30px;
   $indent: 8px;
   display: block;
   width: $width;
+  margin: 0;
   box-sizing: border-box;
   height: $height;
   line-height: $height;
