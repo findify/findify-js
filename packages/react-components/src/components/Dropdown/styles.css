@@ -48,7 +48,7 @@ $padding: 0 11px;
   $height: 40px;
   display: block;
   text-align: left;
-  font-size: $font-size-normal;
+  font-size: $font-size-medium;
   background: transparent;
   border: none;
   border-radius: 0;
