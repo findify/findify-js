@@ -41,6 +41,7 @@
   $font-family: $font-base;
   $color: $color-black;
   $text-transform: none;
+  $text-align:left;
   width: 100%;
   color: $color;
   font-family: $font-family;
