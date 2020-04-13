@@ -89,6 +89,6 @@ module.exports = async (version, merchant) => {
 
   const dom = new jsdom.JSDOM(createHTML(merchant, bundle), { ..._config, virtualConsole });
   const findify = await waitForFindify(dom.window);
-
+  
   return { findify, dom, getError: () => error };
 }
