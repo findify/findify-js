@@ -20,7 +20,7 @@ const createTest = fx => async (feature, merchant, { findify, dom, getError }) =
 
   dom.reconfigure({ url: "https://example.com" });
 
-  findify.widgets && findify.widgets.detach('test');
+  findify.widgets && findify.widgets.get('test') && findify.widgets.detach('test');
 
   try {
     const results = [];

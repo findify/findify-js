@@ -5,6 +5,7 @@ const search = createTest(describe => async (merchant, findify, dom) => {
   const div = window.document.createElement('div');
   window.document.body.appendChild(div);
   window.innerWidth = 1400;
+
   findify.utils.history.push(findify.config.getIn(['location', 'searchUrl']));
   findify.widgets.attach(div, 'search', { widgetKey: 'test' });
 
@@ -55,15 +56,6 @@ const autocomplete = createTest(describe => async (merchant, findify, dom) => {
   describe(
     'Same amount of rendered suggestions',
     suggestions.size === els.length
-  );
-
-  els[0].click();
-
-  await new Promise(resolve => window.requestAnimationFrame(resolve));
-
-  describe(
-    'Click should update state',
-    agent.state.get('q') === suggestions.getIn([0, 'value'])
   );
 })
 

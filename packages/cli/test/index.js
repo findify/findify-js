@@ -45,7 +45,7 @@ const test = ({ v: version }) => async (merchant, index) => {
     hasError = !statuses.every(s => s.status === 'ok');
   } catch (e) {
     hasError = true
-    statuses = error;
+    statuses = e;
   }
 
   signale[hasError ? 'error' : 'success'](`${merchant.merchantName} - ${merchant.merchantID} - #${index}`);
