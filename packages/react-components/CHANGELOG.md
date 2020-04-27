@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.10.57"></a>
+## [0.10.57](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.56...@findify/react-components@0.10.57) (2020-04-27)
+
+
+### Bug Fixes
+
+* **bundle, react-components:** disable global errors tracking in Sentry ([6b37996](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/6b37996))
+
+
+
+
 <a name="0.10.56"></a>
 ## [0.10.56](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.55...@findify/react-components@0.10.56) (2020-04-10)
 
