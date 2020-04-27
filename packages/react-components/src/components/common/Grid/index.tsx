@@ -23,7 +23,7 @@ export default compose<IGridProps, IGridProps>(
   setDisplayName('Grid'),
   defaultProps({ theme: styles }),
   withPropsOnChange(['columns', 'children'], ({ columns, children, theme }) => {
-    const classNames: string[] = getClassName(columns, theme);
+    const classNames: string[] = getClassName(columns, { ...styles, ...theme });
     return {
       children: React.Children.map(
         children,

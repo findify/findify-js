@@ -9,6 +9,8 @@ import { documentReady } from '../../helpers/documentReady';
 
 const findClosestForm = findClosestElement('form');
 
+const isAutocompleteNode = node => node.hasAttribute && node.hasAttribute('data-findify-autocomplete');
+
 const stylesUpdater = (ghost, styles: any) => {
   let cache: any = {};
   if (!ghost.childNodes.length) return;
@@ -18,6 +20,23 @@ const stylesUpdater = (ghost, styles: any) => {
     ghost.style[key] = type === 'string' ? styles[key] : styles[key] + 'px';
   }
   return cache = styles;
+}
+
+const getEventPath = (event) => {
+  const _path = event.path || (event.composedPath && event.composedPath());
+  if (_path) return _path; // Chrome only, for now
+  // (Semi)-Polyfill for other browsers, like Edge & IE
+  // Semi, because originally path keeps the original DOM before mutations,
+  // that could've occured after event was dispatched but before it was received
+  // Recursion might be more beatiful, but in that case we will need more speed
+  const path: any[] = [];
+  let currentElement = event.target;
+  while (currentElement) {
+    path.push(currentElement);
+    currentElement = currentElement.tagName !== 'HTML' ? currentElement.parentElement : null;
+  }
+  path.push(document, window);
+  return path;
 }
 
 export const registerHandlers = (widget, agent, rerender) => {
@@ -79,7 +98,7 @@ export const registerHandlers = (widget, agent, rerender) => {
 
   const insideAutocomplete = (node: HTMLElement) => {
     if (!node || !node.parentElement) return false;
-    if (node.hasAttribute && node.hasAttribute('data-findify-autocomplete')) return true;
+    if (isAutocompleteNode(node)) return true;
     return insideAutocomplete(node.parentElement);
   }
 
@@ -185,26 +204,10 @@ export const registerHandlers = (widget, agent, rerender) => {
     ))
   }
 
-  const getEventPath = (evt) => {
-    if (evt.path) return evt.path; // Chrome only, for now
-    // (Semi)-Polyfill for other browsers, like Edge & IE
-    // Semi, because originally path keeps the original DOM before mutations,
-    // that could've occured after event was dispatched but before it was received
-    // Recursion might be more beatiful, but in that case we will need more speed
-    const path: any[] = [];
-    let currentElement = evt.target;
-    while (currentElement) {
-      path.push(currentElement);
-      currentElement = currentElement.tagName !== 'HTML' ? currentElement.parentElement : null;
-    }
-    path.push(document);
-    path.push(window);
-    return path;
-
-  }
-
   const handleActiveElementChange = (evt) => {
-    findifyElementFocused = !!((getEventPath(evt)).find(item => item.hasAttribute && item.hasAttribute('data-findify-autocomplete')))
+    const path = getEventPath(evt);
+    if (!path || !path.find) return;
+    findifyElementFocused = !!path.find(isAutocompleteNode)
   }
 
   subscribers.push(addEventListeners(
