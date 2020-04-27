@@ -17,6 +17,9 @@ Promise.all(__webpack_require__.chunks.map(__webpack_require__.e)).then(() => {
 if ((global as any).findify_initialized) return;
 (global as any).findify_initialized = true;
 
+  
+let __sentry;
+
 const deps: Promise<any>[] = [
   import(/* webpackChunkName: "polyfill" */ './polyfill'),
 
@@ -72,17 +75,22 @@ Promise
         dsn: 'https://0815ca0746cb49a4abdc89a6d3821eb3@sentry.io/4580512',
         version: __MERCHANT_VERSION__,
         environment: __ENVIRONMENT__,
-        whitelistUrls: [__webpack_require__.p, 'https://findify-assets-2bveeb6u8ag.netdna-ssl.com']
+        whitelistUrls: [__webpack_require__.p, 'https://findify-assets-2bveeb6u8ag.netdna-ssl.com'],
+        defaultIntegrations: false
       })
       sentry.configureScope(scope => 
         scope.setExtra('version', __MERCHANT_VERSION__)
       );
     }
+
+    __sentry = sentry;
+
     initialize.default({ key: __MERCHANT_API_KEY__ }, sentry);
     log('ready', 'color: #3DBC88');
     log(`version: ${__MERCHANT_VERSION__}`);
   })
   .catch(e => {
+    __sentry.captureException(e);
     log('error', 'color: #D9463F');
     log(e.stack);
     Promise
