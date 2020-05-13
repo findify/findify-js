@@ -146,7 +146,7 @@ export const registerHandlers = (widget, agent, rerender) => {
   /** Listen for input change */
   subscribers.push(addEventListeners(
     ['input', 'cut', 'paste'],
-    handleInputChange,
+    debounce(handleInputChange, 250),
     node
   ));
 
