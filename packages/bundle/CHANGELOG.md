@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="6.15.18"></a>
+## [6.15.18](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.15.17...@findify/bundle@6.15.18) (2020-05-13)
+
+
+### Bug Fixes
+
+* **bundle:** add debounce to autocomplete ([70a2533](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/70a2533))
+
+
+
+
 <a name="6.15.17"></a>
 ## [6.15.17](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.15.16...@findify/bundle@6.15.17) (2020-04-27)
 
