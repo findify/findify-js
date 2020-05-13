@@ -75,7 +75,13 @@ const Drawer = ({ hideModal, name, theme, options = defaultOptions, children, ..
   return (
     <>
       <animated.div className={cx('findify-container', theme.backdrop)} onClick={close} style={{ opacity }} />
-      <animated.div className={cx('findify-container', theme.content, options.className)} style={style}>
+      <animated.div
+        className={cx('findify-container', theme.content, options.className)}
+        style={style}
+        role='region'
+        aria-live='polite'
+        area-modal='true'
+        ref={r => r && r.focus()}>
         {
           children instanceof Function
           ? children({ ...rest, hideModal: close })
