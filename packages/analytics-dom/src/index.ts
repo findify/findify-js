@@ -19,7 +19,7 @@ declare module document {
 
 let analyticsInstance: Client;
 
-const initialize = (config = {events: {}}) => {
+const initialize = (config = {events: {}}, onReady) => {
   const eventsConfig = config && config.events || {};
 
   analyticsInstance.state = { ...analyticsInstance.state, filters: getFiltersOnPage(document) };
@@ -34,17 +34,18 @@ const initialize = (config = {events: {}}) => {
   ) {
     analyticsInstance.sendEvent(EventName.viewPage, {});
   }
+  if (!!onReady) onReady();
 }
 
-const analyticsDOM = (props, context: any = document) => {
+const analyticsDOM = (props, context: any = document, onReady: any = undefined) => {
   if (typeof props === 'function') return analytics(props);
   if (analyticsInstance) return analyticsInstance;
   analyticsInstance = analytics(props);
 
   if (['complete', 'loaded', 'interactive'].includes(document.readyState) && document.body) {
-    initialize(props);
+    initialize(props, onReady);
   } else {
-    document.addEventListener('DOMContentLoaded', () => initialize(props), false);
+    document.addEventListener('DOMContentLoaded', () => initialize(props, onReady), false);
   }
   return analyticsInstance;
 }
