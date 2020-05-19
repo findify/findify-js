@@ -22,5 +22,5 @@ const getStyles = (item: IFacetValue, config: MJSConfiguration) => {
 
 export default ({ item, config, theme }) => {
   const styles = getStyles(item, config);
-  return <span style={styles.ball} className={theme.ball}/>
+  return <a title={item.get('value')} style={styles.ball} className={theme.ball}/>
 }
