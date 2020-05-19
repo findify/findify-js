@@ -27,6 +27,11 @@ const isReady = (() => {
 })();
 
 const isString = (value) => typeof value === 'string' || value instanceof String;
+const _analyticsPromise = (() => {
+  let resolve;
+  const promise = new Promise(_resolve => resolve = _resolve);
+  return { promise, resolve };
+})();
 
 export default async (
   _config,
@@ -72,7 +77,11 @@ export default async (
   __root.sentry = sentry;
 
   /** Setup analytics */
-  __root.analytics = AnalyticsDOM({ platform: cfg.platform, key: cfg.key, events: cfg.analytics || {} });
+  __root.analytics = AnalyticsDOM(
+    { platform: cfg.platform, key: cfg.key, events: cfg.analytics || {} },
+    undefined,
+    _analyticsPromise.resolve
+  );
   if (cfg.platform) setupPlatforms(cfg.platform, cfg.removeFindifyID);
 
   const widgetsRenderNeeded = !['paused', 'disabled'].includes(__root.config.get('status'));
@@ -87,7 +96,7 @@ export default async (
 
   await resolveCallback(__root, 'findifyForceCallbacks');
 
-  await documentReady;
+  await _analyticsPromise.promise;
   
   if (widgetsRenderNeeded) {
     bulkAddWidgets(cfg.selectors);
