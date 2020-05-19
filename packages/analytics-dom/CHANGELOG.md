@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.3.5"></a>
+## [0.3.5](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/analytics-dom@0.3.4...@findify/analytics-dom@0.3.5) (2020-05-19)
+
+
+### Bug Fixes
+
+* **bundle, analytics-dom:** fix issue when widgets renders before analytics ready ([70fab69](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/70fab69))
+
+
+
+
 <a name="0.3.4"></a>
 ## [0.3.4](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/analytics-dom@0.3.3...@findify/analytics-dom@0.3.4) (2020-04-03)
 

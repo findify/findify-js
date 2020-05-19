@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.10.59"></a>
+## [0.10.59](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.58...@findify/react-components@0.10.59) (2020-05-19)
+
+
+### Bug Fixes
+
+* **react-components:** add area-* and focus to modal to make it visible for screen readers ([0f7f562](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/0f7f562))
+
+
+
+
 <a name="0.10.58"></a>
 ## [0.10.58](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.57...@findify/react-components@0.10.58) (2020-05-13)
 
