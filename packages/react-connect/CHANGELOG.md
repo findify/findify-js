@@ -3,6 +3,48 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.6.2"></a>
+## [0.6.2](https://github.com/findify/findify-js/compare/@findify/react-connect@0.6.1...@findify/react-connect@0.6.2) (2020-03-10)
+
+
+### Bug Fixes
+
+* **bundle, agent, react-connect:** fix issue with overwrite of UTM tags(minor), affed .once function ([aa9a138](https://github.com/findify/findify-js/commit/aa9a138))
+
+
+
+
+<a name="0.6.1"></a>
+## [0.6.1](https://github.com/findify/findify-js/compare/@findify/react-connect@0.6.0...@findify/react-connect@0.6.1) (2019-11-18)
+
+
+
+
+**Note:** Version bump only for package @findify/react-connect
+
+<a name="0.6.0"></a>
+# [0.6.0](https://github.com/findify/findify-js/compare/@findify/react-connect@0.5.5...@findify/react-connect@0.6.0) (2019-11-01)
+
+
+### Features
+
+* **bundle, react-connect:** added redirect feature to the autocomplete ([4c2d75a](https://github.com/findify/findify-js/commit/4c2d75a))
+
+
+
+
+<a name="0.5.5"></a>
+## [0.5.5](https://github.com/findify/findify-js/compare/@findify/react-connect@0.5.4...@findify/react-connect@0.5.5) (2019-10-24)
+
+
+### Bug Fixes
+
+* **react-components:** update components to support hooks ([1252ff6](https://github.com/findify/findify-js/commit/1252ff6))
+* **react-connect:** fix getting initial value of sorting ([8d5c9c2](https://github.com/findify/findify-js/commit/8d5c9c2))
+
+
+
+
 <a name="0.5.4"></a>
 ## [0.5.4](https://github.com/findify/findify-js/compare/@findify/react-connect@0.5.3...@findify/react-connect@0.5.4) (2019-10-08)
 

@@ -3,6 +3,387 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="6.15.19"></a>
+## [6.15.19](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.15.18...@findify/bundle@6.15.19) (2020-05-19)
+
+
+### Bug Fixes
+
+* **bundle, analytics-dom:** fix issue when widgets renders before analytics ready ([70fab69](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/70fab69))
+
+
+
+
+<a name="6.15.18"></a>
+## [6.15.18](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.15.17...@findify/bundle@6.15.18) (2020-05-13)
+
+
+### Bug Fixes
+
+* **bundle:** add debounce to autocomplete ([70a2533](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/70a2533))
+
+
+
+
+<a name="6.15.17"></a>
+## [6.15.17](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.15.16...@findify/bundle@6.15.17) (2020-04-27)
+
+
+### Bug Fixes
+
+* **bundle, react-components:** disable global errors tracking in Sentry ([6b37996](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/6b37996))
+
+
+
+
+<a name="6.15.16"></a>
+## [6.15.16](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.15.15...@findify/bundle@6.15.16) (2020-04-10)
+
+
+
+
+**Note:** Version bump only for package @findify/bundle
+
+<a name="6.15.15"></a>
+## [6.15.15](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.15.14...@findify/bundle@6.15.15) (2020-04-07)
+
+
+
+
+**Note:** Version bump only for package @findify/bundle
+
+<a name="6.15.14"></a>
+## [6.15.14](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.15.13...@findify/bundle@6.15.14) (2020-04-06)
+
+
+### Bug Fixes
+
+* **bundle:** throw Error for disabled sentry users, showFallback fix ([62758d2](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/62758d2))
+
+
+
+
+<a name="6.15.13"></a>
+## [6.15.13](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.15.12...@findify/bundle@6.15.13) (2020-04-03)
+
+
+
+
+**Note:** Version bump only for package @findify/bundle
+
+<a name="6.15.12"></a>
+## [6.15.12](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.15.11...@findify/bundle@6.15.12) (2020-04-02)
+
+
+### Bug Fixes
+
+* **bundle:** change config props for scroll ([3700b2e](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/3700b2e))
+
+
+
+
+<a name="6.15.11"></a>
+## [6.15.11](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.15.10...@findify/bundle@6.15.11) (2020-03-23)
+
+
+
+
+**Note:** Version bump only for package @findify/bundle
+
+<a name="6.15.10"></a>
+## [6.15.10](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.15.9...@findify/bundle@6.15.10) (2020-03-23)
+
+
+
+
+**Note:** Version bump only for package @findify/bundle
+
+<a name="6.15.9"></a>
+## [6.15.9](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.15.8...@findify/bundle@6.15.9) (2020-03-23)
+
+
+### Bug Fixes
+
+* **bundle, react-components:** minor updates ([7b84d4d](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/7b84d4d))
+
+
+
+
+<a name="6.15.8"></a>
+## [6.15.8](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.15.7...@findify/bundle@6.15.8) (2020-03-17)
+
+
+### Bug Fixes
+
+* **bundle:** release Sentry ([ce7e9e7](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/ce7e9e7))
+
+
+
+
+<a name="6.15.7"></a>
+## [6.15.7](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.15.6...@findify/bundle@6.15.7) (2020-03-17)
+
+
+### Bug Fixes
+
+* **bundle:** handle customization errors on top component ([62e8aa6](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/62e8aa6))
+
+
+
+
+<a name="6.15.6"></a>
+## [6.15.6](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.15.5...@findify/bundle@6.15.6) (2020-03-17)
+
+
+### Bug Fixes
+
+* **bundle:** try to catch customization exaption ([9f13272](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/9f13272))
+
+
+
+
+<a name="6.15.5"></a>
+## [6.15.5](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.15.4...@findify/bundle@6.15.5) (2020-03-17)
+
+
+### Bug Fixes
+
+* **bundle:** update sentry url ([cb36dec](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/cb36dec))
+
+
+
+
+<a name="6.15.4"></a>
+## [6.15.4](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.15.3...@findify/bundle@6.15.4) (2020-03-17)
+
+
+### Bug Fixes
+
+* **bundle:** update sentry project ID and whitelistUrls ([d766ea0](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/d766ea0))
+* **bundle:** use sentry test url ([2ac9aa9](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/2ac9aa9))
+
+
+
+
+<a name="6.15.3"></a>
+## [6.15.3](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.15.2...@findify/bundle@6.15.3) (2020-03-10)
+
+
+### Bug Fixes
+
+* **bundle, agent, react-connect:** fix issue with overwrite of UTM tags(minor), affed .once function ([aa9a138](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/aa9a138))
+
+
+
+
+<a name="6.15.2"></a>
+## [6.15.2](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.15.1...@findify/bundle@6.15.2) (2020-01-22)
+
+
+
+
+**Note:** Version bump only for package @findify/bundle
+
+<a name="6.15.1"></a>
+## [6.15.1](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.15.0...@findify/bundle@6.15.1) (2020-01-21)
+
+
+### Bug Fixes
+
+* **bundle, react-components:** update custom layout and trigger page scroll on slider slide ([b2658d6](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/b2658d6))
+
+
+
+
+<a name="6.15.0"></a>
+# [6.15.0](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.14.14...@findify/bundle@6.15.0) (2019-12-26)
+
+
+### Bug Fixes
+
+* **bundle:** remove uneccessary spaces ([44a7499](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/44a7499))
+
+
+### Features
+
+* **bundle:** added ability to pass recommendations rules via data attributes of the recommendation ([5f66b87](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/5f66b87))
+
+
+
+
+<a name="6.14.14"></a>
+## [6.14.14](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.14.13...@findify/bundle@6.14.14) (2019-12-16)
+
+
+
+
+**Note:** Version bump only for package @findify/bundle
+
+<a name="6.14.13"></a>
+## [6.14.13](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.14.12...@findify/bundle@6.14.13) (2019-12-04)
+
+
+
+
+**Note:** Version bump only for package @findify/bundle
+
+<a name="6.14.12"></a>
+## [6.14.12](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.14.11...@findify/bundle@6.14.12) (2019-12-04)
+
+
+### Bug Fixes
+
+* **bundle, react-components:** update Swiper deps and paths, show fallback without creating feature ([1ac2ce3](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/1ac2ce3))
+
+
+
+
+<a name="6.14.11"></a>
+## [6.14.11](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.14.10...@findify/bundle@6.14.11) (2019-11-25)
+
+
+### Bug Fixes
+
+* **bundle, react-components:** fix range input to get value on enter click ([bcfb08d](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/bcfb08d))
+
+
+
+
+<a name="6.14.10"></a>
+## [6.14.10](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.14.9...@findify/bundle@6.14.10) (2019-11-18)
+
+
+
+
+**Note:** Version bump only for package @findify/bundle
+
+<a name="6.14.9"></a>
+## [6.14.9](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.14.8...@findify/bundle@6.14.9) (2019-11-11)
+
+
+### Bug Fixes
+
+* **bundle:** fix scroll if no option present in config ([e263493](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/e263493))
+
+
+
+
+<a name="6.14.8"></a>
+## [6.14.8](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.14.7...@findify/bundle@6.14.8) (2019-11-06)
+
+
+### Bug Fixes
+
+* **bundle:** fix regenerator runtime import ([dfad5bd](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/dfad5bd))
+
+
+
+
+<a name="6.14.7"></a>
+## [6.14.7](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.14.6...@findify/bundle@6.14.7) (2019-11-06)
+
+
+### Bug Fixes
+
+* **bundle:** disable double initialization ([1930749](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/1930749))
+
+
+
+
+<a name="6.14.6"></a>
+## [6.14.6](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.14.5...@findify/bundle@6.14.6) (2019-11-06)
+
+
+### Bug Fixes
+
+* **bundle:** fix IE ([ecfe436](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/ecfe436))
+* **bundle:** move runtime to polyfill ([d558e3e](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/d558e3e))
+
+
+
+
+<a name="6.14.5"></a>
+## [6.14.5](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.14.4...@findify/bundle@6.14.5) (2019-11-06)
+
+
+### Bug Fixes
+
+* **bundle:** fix IE Promise ([b818b3c](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/b818b3c))
+
+
+
+
+<a name="6.14.4"></a>
+## [6.14.4](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.14.3...@findify/bundle@6.14.4) (2019-11-05)
+
+
+### Bug Fixes
+
+* **bundle:** fix promise import ([3a4589a](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/3a4589a))
+
+
+
+
+<a name="6.14.3"></a>
+## [6.14.3](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.14.2...@findify/bundle@6.14.3) (2019-11-05)
+
+
+### Bug Fixes
+
+* **bundle:** fix symbol pofifyll ([1e2153e](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/1e2153e))
+
+
+
+
+<a name="6.14.2"></a>
+## [6.14.2](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.14.1...@findify/bundle@6.14.2) (2019-11-05)
+
+
+### Bug Fixes
+
+* **bundle:** compile node modules ([8c87870](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/8c87870))
+
+
+
+
+<a name="6.14.1"></a>
+## [6.14.1](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.14.0...@findify/bundle@6.14.1) (2019-11-01)
+
+
+
+
+**Note:** Version bump only for package @findify/bundle
+
+<a name="6.14.0"></a>
+# [6.14.0](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.13.2...@findify/bundle@6.14.0) (2019-11-01)
+
+
+### Features
+
+* **bundle, react-connect:** added redirect feature to the autocomplete ([4c2d75a](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/4c2d75a))
+
+
+
+
+<a name="6.13.2"></a>
+## [6.13.2](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.13.1...@findify/bundle@6.13.2) (2019-10-25)
+
+
+
+
+**Note:** Version bump only for package @findify/bundle
+
+<a name="6.13.1"></a>
+## [6.13.1](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.13.0...@findify/bundle@6.13.1) (2019-10-24)
+
+
+### Bug Fixes
+
+* **react-components:** update components to support hooks ([1252ff6](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/1252ff6))
+
+
+
+
 <a name="6.13.0"></a>
 # [6.13.0](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.12.13...@findify/bundle@6.13.0) (2019-10-15)
 

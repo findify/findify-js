@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.5.3"></a>
+## [1.5.3](https://github.com/findify/findify-js/compare/@findify/agent@1.5.2...@findify/agent@1.5.3) (2020-03-10)
+
+
+### Bug Fixes
+
+* **bundle, agent, react-connect:** fix issue with overwrite of UTM tags(minor), affed .once function ([aa9a138](https://github.com/findify/findify-js/commit/aa9a138))
+
+
+
+
 <a name="1.5.2"></a>
 ## [1.5.2](https://github.com/findify/findify-js/compare/@findify/agent@1.5.1...@findify/agent@1.5.2) (2019-10-08)
 

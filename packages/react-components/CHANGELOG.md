@@ -3,6 +3,358 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.10.59"></a>
+## [0.10.59](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.58...@findify/react-components@0.10.59) (2020-05-19)
+
+
+### Bug Fixes
+
+* **react-components:** add area-* and focus to modal to make it visible for screen readers ([0f7f562](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/0f7f562))
+
+
+
+
+<a name="0.10.58"></a>
+## [0.10.58](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.57...@findify/react-components@0.10.58) (2020-05-13)
+
+
+
+
+**Note:** Version bump only for package @findify/react-components
+
+<a name="0.10.57"></a>
+## [0.10.57](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.56...@findify/react-components@0.10.57) (2020-04-27)
+
+
+### Bug Fixes
+
+* **bundle, react-components:** disable global errors tracking in Sentry ([6b37996](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/6b37996))
+
+
+
+
+<a name="0.10.56"></a>
+## [0.10.56](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.55...@findify/react-components@0.10.56) (2020-04-10)
+
+
+### Bug Fixes
+
+* **react-components:** fix missed styles variables ([2f03095](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/2f03095))
+
+
+
+
+<a name="0.10.55"></a>
+## [0.10.55](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.54...@findify/react-components@0.10.55) (2020-04-07)
+
+
+### Bug Fixes
+
+* **react-components:** fix missed color of pagination and reset margin of number input ([f11cbaf](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/f11cbaf))
+
+
+
+
+<a name="0.10.54"></a>
+## [0.10.54](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.53...@findify/react-components@0.10.54) (2020-04-06)
+
+
+
+
+**Note:** Version bump only for package @findify/react-components
+
+<a name="0.10.53"></a>
+## [0.10.53](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.52...@findify/react-components@0.10.53) (2020-04-03)
+
+
+### Bug Fixes
+
+* **react-components:** fix default property key in sorting ([263ad54](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/263ad54))
+
+
+
+
+<a name="0.10.52"></a>
+## [0.10.52](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.51...@findify/react-components@0.10.52) (2020-04-02)
+
+
+
+
+**Note:** Version bump only for package @findify/react-components
+
+<a name="0.10.51"></a>
+## [0.10.51](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.50...@findify/react-components@0.10.51) (2020-03-23)
+
+
+### Bug Fixes
+
+* **react-components:** fix missed style ([454304c](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/454304c))
+
+
+
+
+<a name="0.10.50"></a>
+## [0.10.50](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.49...@findify/react-components@0.10.50) (2020-03-23)
+
+
+### Bug Fixes
+
+* **react-components:** fix product image size in autocomplete ([e2c50e4](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/e2c50e4))
+
+
+
+
+<a name="0.10.49"></a>
+## [0.10.49](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.48...@findify/react-components@0.10.49) (2020-03-23)
+
+
+### Bug Fixes
+
+* **bundle, react-components:** minor updates ([7b84d4d](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/7b84d4d))
+* **react-components:** update style of currency symbol in range facet ([bd99a9c](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/bd99a9c))
+
+
+
+
+<a name="0.10.48"></a>
+## [0.10.48](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.47...@findify/react-components@0.10.48) (2020-03-17)
+
+
+
+
+**Note:** Version bump only for package @findify/react-components
+
+<a name="0.10.47"></a>
+## [0.10.47](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.46...@findify/react-components@0.10.47) (2020-03-17)
+
+
+
+
+**Note:** Version bump only for package @findify/react-components
+
+<a name="0.10.46"></a>
+## [0.10.46](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.45...@findify/react-components@0.10.46) (2020-03-17)
+
+
+
+
+**Note:** Version bump only for package @findify/react-components
+
+<a name="0.10.45"></a>
+## [0.10.45](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.44...@findify/react-components@0.10.45) (2020-03-17)
+
+
+
+
+**Note:** Version bump only for package @findify/react-components
+
+<a name="0.10.44"></a>
+## [0.10.44](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.43...@findify/react-components@0.10.44) (2020-03-17)
+
+
+
+
+**Note:** Version bump only for package @findify/react-components
+
+<a name="0.10.43"></a>
+## [0.10.43](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.42...@findify/react-components@0.10.43) (2020-03-10)
+
+
+
+
+**Note:** Version bump only for package @findify/react-components
+
+<a name="0.10.42"></a>
+## [0.10.42](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.41...@findify/react-components@0.10.42) (2020-01-22)
+
+
+### Bug Fixes
+
+* **react-components:** fix swiper scroll callback ([e156e5a](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/e156e5a))
+
+
+
+
+<a name="0.10.41"></a>
+## [0.10.41](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.40...@findify/react-components@0.10.41) (2020-01-21)
+
+
+### Bug Fixes
+
+* **bundle, react-components:** update custom layout and trigger page scroll on slider slide ([b2658d6](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/b2658d6))
+
+
+
+
+<a name="0.10.40"></a>
+## [0.10.40](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.39...@findify/react-components@0.10.40) (2019-12-26)
+
+
+
+
+**Note:** Version bump only for package @findify/react-components
+
+<a name="0.10.39"></a>
+## [0.10.39](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.38...@findify/react-components@0.10.39) (2019-12-16)
+
+
+### Bug Fixes
+
+* **react-components:** fix missed swiper styles ([f0f71a7](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/f0f71a7))
+
+
+
+
+<a name="0.10.38"></a>
+## [0.10.38](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.37...@findify/react-components@0.10.38) (2019-12-04)
+
+
+### Bug Fixes
+
+* **react-components:** fix mission styles because of new babel ([0ba02fd](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/0ba02fd))
+
+
+
+
+<a name="0.10.37"></a>
+## [0.10.37](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.36...@findify/react-components@0.10.37) (2019-12-04)
+
+
+### Bug Fixes
+
+* **bundle, react-components:** update Swiper deps and paths, show fallback without creating feature ([1ac2ce3](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/1ac2ce3))
+
+
+
+
+<a name="0.10.36"></a>
+## [0.10.36](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.35...@findify/react-components@0.10.36) (2019-11-25)
+
+
+### Bug Fixes
+
+* **bundle, react-components:** fix range input to get value on enter click ([bcfb08d](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/bcfb08d))
+
+
+
+
+<a name="0.10.35"></a>
+## [0.10.35](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.34...@findify/react-components@0.10.35) (2019-11-18)
+
+
+
+
+**Note:** Version bump only for package @findify/react-components
+
+<a name="0.10.34"></a>
+## [0.10.34](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.33...@findify/react-components@0.10.34) (2019-11-11)
+
+
+
+
+**Note:** Version bump only for package @findify/react-components
+
+<a name="0.10.33"></a>
+## [0.10.33](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.32...@findify/react-components@0.10.33) (2019-11-06)
+
+
+
+
+**Note:** Version bump only for package @findify/react-components
+
+<a name="0.10.32"></a>
+## [0.10.32](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.31...@findify/react-components@0.10.32) (2019-11-06)
+
+
+
+
+**Note:** Version bump only for package @findify/react-components
+
+<a name="0.10.31"></a>
+## [0.10.31](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.30...@findify/react-components@0.10.31) (2019-11-06)
+
+
+
+
+**Note:** Version bump only for package @findify/react-components
+
+<a name="0.10.30"></a>
+## [0.10.30](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.29...@findify/react-components@0.10.30) (2019-11-06)
+
+
+### Bug Fixes
+
+* **bundle:** fix IE Promise ([b818b3c](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/b818b3c))
+
+
+
+
+<a name="0.10.29"></a>
+## [0.10.29](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.28...@findify/react-components@0.10.29) (2019-11-05)
+
+
+
+
+**Note:** Version bump only for package @findify/react-components
+
+<a name="0.10.28"></a>
+## [0.10.28](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.27...@findify/react-components@0.10.28) (2019-11-05)
+
+
+
+
+**Note:** Version bump only for package @findify/react-components
+
+<a name="0.10.27"></a>
+## [0.10.27](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.26...@findify/react-components@0.10.27) (2019-11-05)
+
+
+### Bug Fixes
+
+* **bundle:** compile node modules ([8c87870](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/8c87870))
+
+
+
+
+<a name="0.10.26"></a>
+## [0.10.26](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.25...@findify/react-components@0.10.26) (2019-11-01)
+
+
+
+
+**Note:** Version bump only for package @findify/react-components
+
+<a name="0.10.25"></a>
+## [0.10.25](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.24...@findify/react-components@0.10.25) (2019-11-01)
+
+
+
+
+**Note:** Version bump only for package @findify/react-components
+
+<a name="0.10.24"></a>
+## [0.10.24](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.23...@findify/react-components@0.10.24) (2019-10-25)
+
+
+### Bug Fixes
+
+* **react-components:** rollback Image component and create Picture to avoid hard migration ([c33f910](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/c33f910))
+
+
+
+
+<a name="0.10.23"></a>
+## [0.10.23](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.22...@findify/react-components@0.10.23) (2019-10-24)
+
+
+### Bug Fixes
+
+* **react-components:** update components to support hooks ([1252ff6](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/1252ff6))
+* **react-connect:** fix getting initial value of sorting ([8d5c9c2](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/8d5c9c2))
+
+
+
+
 <a name="0.10.22"></a>
 ## [0.10.22](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.21...@findify/react-components@0.10.22) (2019-10-15)
 
