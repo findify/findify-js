@@ -72,14 +72,17 @@ var client = FindifySDK.init({
 });
 
 // After library initialized, we can send requests to server with `client` instance. Let's perform autocomplete request:
-client.autocomplete({
-  q: 'Red jacket',
-  // If you are using this library on server, you will need to deal with multiple users objects.
-  // In this case, you need to provide `user` object on each request. If you provided `user` on init, it will be overrided:
-  user: {
-    uid: 'user_id',
-    sid: 'session_id'
-  }
+client.send({
+  type: 'autocomplete',
+  params: {
+    q: 'Red jacket',
+    // If you are using this library on server, you will need to deal with multiple users objects.
+    // In this case, you need to provide `user` object on each request. If you provided `user` on init, it will be overrided:
+    user: {
+      uid: 'user_id',
+      sid: 'session_id'
+    }
+   }
 }).then(function(response) {
   // `response` variable will contain all response data from server, which could be later provided to the view layer.
 });
