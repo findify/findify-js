@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.10.61"></a>
+## [0.10.61](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.60...@findify/react-components@0.10.61) (2020-06-17)
+
+
+### Bug Fixes
+
+* **react-components:** add color title to color ball ([3e509ff](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/3e509ff))
+
+
+
+
 <a name="0.10.60"></a>
 ## [0.10.60](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.59...@findify/react-components@0.10.60) (2020-06-03)
 
