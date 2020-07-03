@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.10.62"></a>
+## [0.10.62](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.61...@findify/react-components@0.10.62) (2020-07-03)
+
+
+### Bug Fixes
+
+* **react-components:** fix inconsistent autocomplete position tracking logic ([269eea8](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/269eea8))
+* **react-components, sdk:** change autocomplete tooltip view logic; Small fix in SDK JSONP ([e6f22a3](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/e6f22a3))
+
+
+
+
 <a name="0.10.61"></a>
 ## [0.10.61](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.60...@findify/react-components@0.10.61) (2020-06-17)
 
