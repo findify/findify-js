@@ -2,12 +2,13 @@
  * @module components/autocomplete/Tip
  */
 
-import React from 'react'
+import React, { useCallback } from 'react'
 import classnames from 'classnames'
-
+import { useQuery } from '@findify/react-connect';
 import styles from 'components/autocomplete/Tip/styles.css';
 import { List } from 'immutable'
 import { ThemedSFCProps, ClassnamedProps, WidgetAwareProps, SuggestionsConnectedProps } from 'types';
+import { emit } from 'helpers/emmiter';
 
 /** List of props that Tip accepts */
 export interface ITipProps extends ThemedSFCProps, ClassnamedProps, WidgetAwareProps, SuggestionsConnectedProps {
@@ -16,24 +17,26 @@ export interface ITipProps extends ThemedSFCProps, ClassnamedProps, WidgetAwareP
 }
 
 const TipView: React.SFC<ITipProps> = ({
-  suggestions,
   className,
   title,
   theme,
-  getSuggestionProps,
   widgetKey
 }: ITipProps) => {
-  const suggestionProps = suggestions && suggestions.size > 0 && getSuggestionProps(0, widgetKey) || { onClick: () => {} }
+  const {query} = useQuery();
+  const onClick = useCallback(() =>
+    emit('search', widgetKey, query.get('q')),
+    [query]
+  );
   return (
     <div
-      display-if={suggestions && suggestions.size > 0}
+      display-if={query.get('q')}
       className={classnames(theme.tip, className)}
-      onClick={suggestionProps.onClick}
+      onClick={onClick}
       >
       {title}
       {' '}
       {
-        <span className={theme.highlight}>{suggestions.getIn([0, 'value'])}</span>
+        <span className={theme.highlight}>{query.get('q')}</span>
       }
     </div>
   )

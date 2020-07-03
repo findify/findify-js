@@ -1,7 +1,6 @@
 import { createFactory, useRef, useState, useEffect } from "react";
 
-const cache = {};
-
+let cache = {};
 const getPosition = (element) => {
   const { left, width } = element.getBoundingClientRect()
   return window.innerWidth < (left + width) ? 'right' : 'left';
@@ -11,7 +10,7 @@ export const usePosition = (config) => {
   const element = useRef(null);
   const [position, setPosition] = useState(cache[config.get('widgetKey')] || config.get('position') || 'left');
   useEffect(() => {
-    if (!element.current) return;
+    if (!element.current || !!cache[config.get('widgetKey')]) return;
     window.requestAnimationFrame(() => {
       if (!element.current) return;
       const p = getPosition(element.current);

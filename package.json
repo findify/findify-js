@@ -52,6 +52,7 @@
     "webpack-dev-server": "^3.1.4"
   },
   "scripts": {
+    "bootstrap": "lerna bootstrap",
     "postinstall": "run-s build:lib build:dist",
     "upgrade": "npm-run-all --parallel upgrade:root upgrade:pkgs --serial bootstrap",
     "upgrade:root": "ncu -u",
