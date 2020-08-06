@@ -1,9 +1,4 @@
 .root {
-  /*width: 561px;*/
-  /*
-  height: 541px;
-  max-height: 541px;*/
-  //padding: 15px 10px 10px;
   background: white;
   border: 1px solid $color-grey-2;
   box-shadow: 0 5px 10px 0 rgba(71,89,113,0.5);
@@ -92,6 +87,7 @@
   vertical-align: top;
   padding: 0;
   background: #fff;
+  width: 200px;
   min-width: 200px;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;

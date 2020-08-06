@@ -30,6 +30,7 @@
 
 .icon {
   margin-right: 16px;
+  min-width: 14px;
 }
 
 .withIcon {
