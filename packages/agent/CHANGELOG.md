@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.5.6"></a>
+## [1.5.6](https://github.com/findify/findify-js/compare/@findify/agent@1.5.5...@findify/agent@1.5.6) (2020-08-06)
+
+
+### Bug Fixes
+
+* **react-components, agent:** fix type check of facets & autocomplete style fixes ([4edee25](https://github.com/findify/findify-js/commit/4edee25))
+
+
+
+
 <a name="1.5.5"></a>
 ## [1.5.5](https://github.com/findify/findify-js/compare/@findify/agent@1.5.4...@findify/agent@1.5.5) (2020-07-03)
 

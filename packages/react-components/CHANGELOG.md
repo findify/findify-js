@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.10.63"></a>
+## [0.10.63](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.62...@findify/react-components@0.10.63) (2020-08-06)
+
+
+### Bug Fixes
+
+* **react-components, agent:** fix type check of facets & autocomplete style fixes ([4edee25](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/4edee25))
+
+
+
+
 <a name="0.10.62"></a>
 ## [0.10.62](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.61...@findify/react-components@0.10.62) (2020-07-03)
 
