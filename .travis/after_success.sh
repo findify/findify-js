@@ -81,20 +81,6 @@ if [[ $LAST_MJS_TAG =~ ^@findify\/(.+)\@([0-9]+\.[0-9]+\.[0-9]+) ]]; then
 fi
 
 if [[ $TRAVIS_BRANCH == 'master' ]]; then
-  export PUBLIC_PATH="https://cdn.jsdelivr.net/npm/@findify/bundle"
-  export PROJECT_NAME='bundle-production'
-  export FINDIFY_ENV="production"
-  echo "$PROJECT_NAME : $PUBLIC_PATH"
-fi
-
-if [[ $TRAVIS_BRANCH == 'develop' ]]; then
-  export PUBLIC_PATH="https://findify-assets-2bveeb6u8ag.netdna-ssl.com/bundle/"
-  export PROJECT_NAME='bundle-staging'
-  export FINDIFY_ENV="staging"
-  echo "$PROJECT_NAME : $PUBLIC_PATH"
-fi
-
-if [[ $TRAVIS_BRANCH == 'master' ]]; then
   echo "Publishing to NPM"
   lerna publish --yes
 fi
