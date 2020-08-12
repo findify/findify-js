@@ -52,17 +52,16 @@ aws_secret_access_key = ${AWS_S3_SECRET_KEY}
 EOL
 
 function deploy_to_s3() {
-    local PKG_NAME=bundle  # pkg name
+  local PKG_NAME=bundle  # pkg name
 
-    local PKG_BUNDLE_DIR=${SRC_MAP[$PKG_NAME]}
-    local DST_BUNDLE_DIR=${DST_MAP[$PKG_NAME]}/$S3_ENV/$TRAVIS_COMMIT
+  local PKG_BUNDLE_DIR=${SRC_MAP[$PKG_NAME]}
+  local DST_BUNDLE_DIR=${DST_MAP[$PKG_NAME]}/$S3_ENV/$TRAVIS_COMMIT
 
-    local SRC_BUNDLE_PATH=packages/$PKG_NAME/$PKG_BUNDLE_DIR
-    local DST_BUNDLE_PATH=$S3_BUCKET_PATH/$DST_BUNDLE_DIR
+  local SRC_BUNDLE_PATH=packages/$PKG_NAME/$PKG_BUNDLE_DIR
+  local DST_BUNDLE_PATH=$S3_BUCKET_PATH/$DST_BUNDLE_DIR
 
-    echo "deploying $SRC_BUNDLE_PATH to s3://$DST_BUNDLE_PATH"
-    aws s3 cp --recursive $SRC_BUNDLE_PATH s3://$DST_BUNDLE_PATH
-  fi
+  echo "deploying $SRC_BUNDLE_PATH to s3://$DST_BUNDLE_PATH"
+  aws s3 cp --recursive $SRC_BUNDLE_PATH s3://$DST_BUNDLE_PATH
 }
 
 PKGS=(analytics analytics-dom sdk agent react-connect react-components bundle)
