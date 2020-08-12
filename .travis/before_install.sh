@@ -41,4 +41,20 @@ if [[ $TRAVIS_BRANCH == 'master' || $TRAVIS_BRANCH == 'develop' ]]; then
   npm whoami #debug
   echo "git config --list"
   git config --list #debug
+
+  if [[ $TRAVIS_BRANCH == 'master' ]]; then
+    export PUBLIC_PATH="https://cdn.jsdelivr.net/npm/@findify/bundle"
+    export PROJECT_NAME='bundle-production'
+    export FINDIFY_ENV="production"
+    export NODE_ENV="production"
+    echo "$PROJECT_NAME : $PUBLIC_PATH"
+  fi
+
+  if [[ $TRAVIS_BRANCH == 'develop' ]]; then
+    export PUBLIC_PATH="https://findify-assets-2bveeb6u8ag.netdna-ssl.com/bundle/"
+    export PROJECT_NAME='bundle-staging'
+    export FINDIFY_ENV="staging"
+    export NODE_ENV="production"
+    echo "$PROJECT_NAME : $PUBLIC_PATH"
+  fi
 fi
