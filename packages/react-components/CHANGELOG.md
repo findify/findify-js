@@ -3,6 +3,48 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.10.63"></a>
+## [0.10.63](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.62...@findify/react-components@0.10.63) (2020-08-06)
+
+
+### Bug Fixes
+
+* **react-components, agent:** fix type check of facets & autocomplete style fixes ([4edee25](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/4edee25))
+
+
+
+
+<a name="0.10.62"></a>
+## [0.10.62](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.61...@findify/react-components@0.10.62) (2020-07-03)
+
+
+### Bug Fixes
+
+* **react-components:** fix inconsistent autocomplete position tracking logic ([269eea8](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/269eea8))
+* **react-components, sdk:** change autocomplete tooltip view logic; Small fix in SDK JSONP ([e6f22a3](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/e6f22a3))
+
+
+
+
+<a name="0.10.61"></a>
+## [0.10.61](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.60...@findify/react-components@0.10.61) (2020-06-17)
+
+
+### Bug Fixes
+
+* **react-components:** add color title to color ball ([3e509ff](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/3e509ff))
+
+
+
+
+<a name="0.10.60"></a>
+## [0.10.60](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.59...@findify/react-components@0.10.60) (2020-06-03)
+
+
+
+
+**Note:** Version bump only for package @findify/react-components
+
 <a name="0.10.59"></a>
 ## [0.10.59](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.58...@findify/react-components@0.10.59) (2020-05-19)
 

@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="2.4.3"></a>
+## [2.4.3](https://github.com/findify/findify-js/compare/@findify/sdk@2.4.2...@findify/sdk@2.4.3) (2020-07-03)
+
+
+### Bug Fixes
+
+* **react-components, sdk:** change autocomplete tooltip view logic; Small fix in SDK JSONP ([e6f22a3](https://github.com/findify/findify-js/commit/e6f22a3))
+
+
+
+
+<a name="2.4.2"></a>
+## [2.4.2](https://github.com/findify/findify-js/compare/@findify/sdk@2.4.1...@findify/sdk@2.4.2) (2020-06-03)
+
+
+
+
+**Note:** Version bump only for package @findify/sdk
+
 <a name="2.4.1"></a>
 ## [2.4.1](https://github.com/findify/findify-js/compare/@findify/sdk@2.4.0...@findify/sdk@2.4.1) (2019-10-08)
 

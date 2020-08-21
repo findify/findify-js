@@ -3,6 +3,41 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="6.15.23"></a>
+## [6.15.23](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.15.22...@findify/bundle@6.15.23) (2020-08-06)
+
+
+
+
+**Note:** Version bump only for package @findify/bundle
+
+<a name="6.15.22"></a>
+## [6.15.22](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.15.21...@findify/bundle@6.15.22) (2020-07-03)
+
+
+### Bug Fixes
+
+* **react-components:** fix inconsistent autocomplete position tracking logic ([269eea8](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/269eea8))
+
+
+
+
+<a name="6.15.21"></a>
+## [6.15.21](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.15.20...@findify/bundle@6.15.21) (2020-06-17)
+
+
+
+
+**Note:** Version bump only for package @findify/bundle
+
+<a name="6.15.20"></a>
+## [6.15.20](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.15.19...@findify/bundle@6.15.20) (2020-06-03)
+
+
+
+
+**Note:** Version bump only for package @findify/bundle
+
 <a name="6.15.19"></a>
 ## [6.15.19](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.15.18...@findify/bundle@6.15.19) (2020-05-19)
 
