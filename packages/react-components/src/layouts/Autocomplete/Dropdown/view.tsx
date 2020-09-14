@@ -99,6 +99,7 @@ const AutocompleteDropdownView: React.SFC<IAutocompleteDropdownProps> = ({
         <Tip
           className={theme.tip}
           title={config.getIn(['i18n', 'tipResults'])}
+          zeroResultsTitle={config.getIn(['i18n', 'tipTrendingResults'], 'View All Results')}
           widgetKey={config.get('widgetKey')} />
         <div className={theme.container}>
           <Suggestions
