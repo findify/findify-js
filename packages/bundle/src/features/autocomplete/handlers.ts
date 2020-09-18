@@ -45,6 +45,16 @@ export const registerHandlers = (widget, agent, rerender) => {
   let container: any;
   let findifyElementFocused = true;
   if (node.getAttribute('autocomplete') !== 'off') node.setAttribute('autocomplete', 'off')
+  
+  /** ACCESSIBILITY */
+  node.setAttribute('role', 'combobox')
+  node.setAttribute('aria-autocomplete', 'list')
+  node.setAttribute('aria-haspopup', 'true')
+  node.setAttribute('aria-owns', 'FindifyAutocompleteSuggestions')
+  node.setAttribute('aria-expanded', 'false')
+  node.setAttribute('aria-activedescendant', '')
+  node.setAttribute('aria-describedby', 'FindifyAutocompleteDescription')
+  /** === */
 
   /** Track input position and update container styles */
   const handleWindowScroll = debounce(() => {
