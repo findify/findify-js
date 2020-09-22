@@ -44,7 +44,7 @@ const LazyResultsView = ({
   displayPrevButton,
   ...rest
 }: ILazyResultsProps) =>
-<div className={theme.root}>
+<div className={theme.root} role='main' aria-label='Search results' aria-live='polite' tabIndex={0}>
   <Button display-if={displayPrevButton} className={theme.prevButton} onClick={onLoadPrev}>
     <Text primary lowercase>
       { config.getIn(['i18n', 'loadPrev'], 'Load previous') }

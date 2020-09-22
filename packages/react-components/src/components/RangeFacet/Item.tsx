@@ -19,7 +19,7 @@ export interface IRangeFacetItemProps extends ThemedSFCProps {
 }
 
 const RangeFacetItem: React.SFC<IRangeFacetItemProps> = ({ item, theme, style, config }) =>
-<Button style={style} className={theme.item} onClick={item.toggle}>
+<Button style={style} className={theme.item} onClick={item.toggle} role="listitem" tabIndex={0}>
   <Text primary lowercase bold={item.get('selected')} className={theme.content}>
     <Icon name={item.get('selected') ? 'CheckboxFilled' : 'CheckboxEmpty'} />
     { content({ item, config }) }

@@ -51,28 +51,32 @@ export default ({
 
   visiblePages,
 }: IPaginationProps) => (
-  <div className={theme.root}>
-    <Button display-if={showPrev} {...getPageProps(current - 1)} className={theme.prev}>
+  <div className={theme.root} role="navigation" aria-label="Pagination Navigation">
+    <Button display-if={showPrev} {...getPageProps(current - 1)} className={theme.prev} >
       <Icon name='ArrowLeft' />
       { config.getIn(['pagination', 'i18n', 'previous'], 'previous') }
     </Button>
-    <Button display-if={showFirst} {...getPageProps(1)} className={theme.first}>
+    <Button display-if={showFirst} {...getPageProps(1)} className={theme.first} aria-label={`Goto Page 1`}>
       1
     </Button>
-    <Button display-if={showFirstDots} className={theme.dots}>
+    <Button display-if={showFirstDots} className={theme.dots} tabIndex={-1}>
       ...
     </Button>
     {
       visiblePages.map(page =>
-        <Button {...getPageProps(page)} className={cx(theme.page, current === page && theme.active)}>
+        <Button
+          {...getPageProps(page)}
+          className={cx(theme.page, current === page && theme.active)}
+          aria-label={`Goto Page ${page}`}
+        >
           { page }
         </Button>
       )
     }
-    <Button display-if={showLastDots} className={theme.dots}>
+    <Button display-if={showLastDots} className={theme.dots} tabIndex={-1}>
       ...
     </Button>
-    <Button display-if={showLast} {...getPageProps(total)} className={theme.last}>
+    <Button display-if={showLast} {...getPageProps(total)} className={theme.last} aria-label={`Goto Page ${total}`}>
       {total}
     </Button>
     <Button display-if={showNext} {...getPageProps(current +1)} className={theme.next}>

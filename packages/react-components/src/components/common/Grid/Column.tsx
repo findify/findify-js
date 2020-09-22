@@ -25,7 +25,7 @@ const getClassName = (props: IGridColumnProps) =>
   cx(styles.column, props.className, props.columnClass);
 
 const GridColumn = setDisplayName('GridColumn')((props: IGridColumnProps) => (
-  <div className={getClassName(props)} style={props.columnStyle}>
+  <div className={getClassName(props)} style={props.columnStyle} role='listitem' tabIndex={0}>
     {props.children}
   </div>
 ));

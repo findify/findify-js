@@ -54,36 +54,37 @@ const CheckboxFacetView =  ({
     <Icon name='Search' className={theme.icon} />
   </div>
 
-  <MapArray
-    display-if={config.get('pullSelected')}
-    array={items.filter(i => i.get('selected'))}
-    factory={Item}
-    theme={theme} />
+  <ul>
+    <MapArray
+      display-if={config.get('pullSelected')}
+      array={items.filter(i => i.get('selected'))}
+      factory={Item}
+      theme={theme} />
 
-  <VirtualizedList
-    display-if={isExpanded}
-    factory={(props) => Item({ ...props, onItemClick: () => onSearch('') })}
-    theme={theme}
-    className={theme.expandedList}
-    height={config.get('expandedHeight')}
-    array={
-      config.get('pullSelected')
-        ? items.filter(i => !i.get('selected'))
-        : items
-    }
-    config={config} />
+    <VirtualizedList
+      display-if={isExpanded}
+      factory={(props) => Item({ ...props, onItemClick: () => onSearch('') })}
+      theme={theme}
+      className={theme.expandedList}
+      height={config.get('expandedHeight')}
+      array={
+        config.get('pullSelected')
+          ? items.filter(i => !i.get('selected'))
+          : items
+      }
+      config={config} />
 
-  <MapArray
-    display-if={!isExpanded}
-    array={
-      config.get('pullSelected')
-        ? items.filter(i => !i.get('selected'))
-        : items
-    }
-    factory={Item}
-    theme={theme}
-    limit={config.get('maxItemsCount')} />
-
+    <MapArray
+      display-if={!isExpanded}
+      array={
+        config.get('pullSelected')
+          ? items.filter(i => !i.get('selected'))
+          : items
+      }
+      factory={Item}
+      theme={theme}
+      limit={config.get('maxItemsCount')} />
+  </ul>
   <Button
     className={theme.expand}
     onClick={onToggle}

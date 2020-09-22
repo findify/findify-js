@@ -58,11 +58,12 @@ export const hidable: React.SFC<IHidableProps> = ({
   onReset,
   onHide
 }: IHidableProps) =>
-<div className={theme.header} display-if={!config.get('showFacetsTitle')}>
+<div className={theme.header} display-if={!config.get('showFacetsTitle')} tabIndex={-1}>
   <Icon name='Filters' className={theme.icon} />
   <Text primary uppercase className={theme.title}>
     { config.getIn(['facets', 'i18n', 'filters'], 'Filters') }
     <Button
+      tabIndex={-1}
       display-if={meta.get('filters') && (meta.get('filters')! as List<any>).size}
       onClick={onReset}>
       <Text secondary uppercase style={{ marginLeft: 5 }}>
@@ -71,6 +72,7 @@ export const hidable: React.SFC<IHidableProps> = ({
     </Button>
   </Text>
   <Button
+    tabIndex={-1}
     className={theme.hide}
     onClick={onHide}>
     <Text secondary uppercase>
