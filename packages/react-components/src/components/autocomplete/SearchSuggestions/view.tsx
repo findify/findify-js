@@ -69,7 +69,7 @@ const SearchSuggestionsView: React.SFC<ISearchSuggestionsProps> = ({
       <span style={{ display: 'none' }} id="FindifyAutocompleteDescription">
         {
           rest.config.getIn(
-            ['i18n', 'accessibilityAutocompleteNote'],
+            ['a11y', 'autocompleteNote'],
             'Use up and down arrows to review and enter to select.'
           )
         }

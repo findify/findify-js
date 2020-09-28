@@ -41,7 +41,7 @@ export default compose<IGridProps, IGridProps>(
     };
   })
 )(({ children, theme, style }) => (
-  <div className={theme.root} style={style}>
+  <div className={theme.root} style={style} role='list'>
     {children}
   </div>
 ));

@@ -54,7 +54,7 @@ const CheckboxFacetView =  ({
     <Icon name='Search' className={theme.icon} />
   </div>
 
-  <ul>
+  <section role="list">
     <MapArray
       display-if={config.get('pullSelected')}
       array={items.filter(i => i.get('selected'))}
@@ -83,8 +83,9 @@ const CheckboxFacetView =  ({
       }
       factory={Item}
       theme={theme}
-      limit={config.get('maxItemsCount')} />
-  </ul>
+        limit={config.get('maxItemsCount')} />
+  </section>
+
   <Button
     className={theme.expand}
     onClick={onToggle}

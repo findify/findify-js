@@ -56,7 +56,12 @@ export default ({
       <Icon name='ArrowLeft' />
       { config.getIn(['pagination', 'i18n', 'previous'], 'previous') }
     </Button>
-    <Button display-if={showFirst} {...getPageProps(1)} className={theme.first} aria-label={`Goto Page 1`}>
+    <Button
+      display-if={showFirst}
+      {...getPageProps(1)}
+      className={theme.first}
+      aria-label={`${config.getIn(['a11y', 'goToPage'])} 1`}
+    >
       1
     </Button>
     <Button display-if={showFirstDots} className={theme.dots} tabIndex={-1}>
@@ -67,7 +72,7 @@ export default ({
         <Button
           {...getPageProps(page)}
           className={cx(theme.page, current === page && theme.active)}
-          aria-label={`Goto Page ${page}`}
+          aria-label={`${config.getIn(['a11y', 'goToPage'])} ${page}`}
         >
           { page }
         </Button>
@@ -76,7 +81,12 @@ export default ({
     <Button display-if={showLastDots} className={theme.dots} tabIndex={-1}>
       ...
     </Button>
-    <Button display-if={showLast} {...getPageProps(total)} className={theme.last} aria-label={`Goto Page ${total}`}>
+    <Button
+      display-if={showLast}
+      {...getPageProps(total)}
+      className={theme.last}
+      aria-label={`${config.getIn(['a11y', 'goToPage'])} ${total}`}
+    >
       {total}
     </Button>
     <Button display-if={showNext} {...getPageProps(current +1)} className={theme.next}>

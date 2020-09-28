@@ -112,19 +112,15 @@ export const registerHandlers = (widget, agent, rerender) => {
     return insideAutocomplete(node.parentElement);
   }
 
-  const isAutocompleteRelated = (e) => (
-    e.relatedTarget && insideAutocomplete(e.relatedTarget)
-  )
+  const isAutocompleteRelated = (e) => e.relatedTarget && insideAutocomplete(e.relatedTarget);
 
   /** Handle input blur */
   const handleInputBlur = (e) =>
-    (!findifyElementFocused && !isAutocompleteRelated(e)) &&
-    e.target === node &&
-    __root.emit(Events.autocompleteFocusLost, widget.key)
+    (!findifyElementFocused && !isAutocompleteRelated(e))
+    && e.target === node
+    && __root.emit(Events.autocompleteFocusLost, widget.key);
 
-  const handleKeydown = ({ key, target }) => {
-    return key === 'Enter' && search(target.value)
-  }
+  const handleKeydown = ({ key, target }) => key === 'Enter' && search(target.value);
 
   /** search for the value */
   const search = (_value?) => {
@@ -216,12 +212,17 @@ export const registerHandlers = (widget, agent, rerender) => {
 
   const handleActiveElementChange = (evt) => {
     const path = getEventPath(evt);
+    const _focused = findifyElementFocused;
     if (!path || !path.find) return;
-    findifyElementFocused = !!path.find(isAutocompleteNode)
+    findifyElementFocused = !!path.find(isAutocompleteNode);
+    if (evt.type === 'focus' && _focused && !(evt.target === node || findifyElementFocused)) {
+      __root.emit(Events.autocompleteFocusLost, widget.key)
+    }
+
   }
 
   subscribers.push(addEventListeners(
-    ['mousemove', 'touchmove'],
+    ['mousemove', 'touchmove', 'focus'],
     debounce(handleActiveElementChange),
     document
   ))

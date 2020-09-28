@@ -36,7 +36,8 @@ export interface IDesktopFacetsProps extends ThemedSFCProps {
 
 const DesktopFacetsView: React.SFC<IDesktopFacetsProps> =  ({
   config,
-  facets, theme, onReset, meta, hideFacets, visible }: IDesktopFacetsProps) =>
+  facets, theme, onReset, meta, hideFacets, visible
+}: IDesktopFacetsProps) =>
 <Branch
   display-if={!config.get('hidableFacets') || visible}
   theme={theme}
