@@ -2,7 +2,7 @@
  * @module components/CheckboxFacet
  */
 
-import React from 'react';
+import React, { useCallback } from 'react';
 import content from 'components/CheckboxFacet/content';
 import Button from 'components/Button';
 import Text from 'components/Text';
@@ -19,23 +19,33 @@ export interface ICheckboxFacetItemProps extends ThemedSFCProps {
   style: { [x: string]: string | number };
 }
 
-const Item = ({ item, theme, style, onItemClick }: ICheckboxFacetItemProps) =>
-
-  <Button style={style} role="listitem" tabIndex={0} className={theme.item} onClick={(evt) => {
+const Item = ({ item, theme, style, onItemClick }: ICheckboxFacetItemProps) => {
+  const onClick = useCallback((evt) => {
     item.toggle(evt)
     onItemClick && onItemClick(evt);
-  }}>
-    <Icon name={item.get('selected') ? 'CheckboxFilled' : 'CheckboxEmpty'} />
-    <Text
-      primary
-      lowercase
-      className={theme.content}
-      bold={item.get('selected')}>
-      { content({ item }) }
-    </Text>
-    <Text secondary uppercase>
-      ({item.get('count')})
-    </Text>
-  </Button>
+  }, [item, onItemClick]);
+
+  return (
+    <Button
+      style={style}
+      role="listitem"
+      area-checked={item.get('selected') ? 'true' : 'false'}
+      tabIndex={0}
+      className={theme.item}
+      onClick={onClick}>
+      <Icon name={item.get('selected') ? 'CheckboxFilled' : 'CheckboxEmpty'} />
+      <Text
+        primary
+        lowercase
+        className={theme.content}
+        bold={item.get('selected')}>
+        { content({ item }) }
+      </Text>
+      <Text secondary uppercase>
+        ({item.get('count')})
+      </Text>
+    </Button>
+  )
+}
 
 export default Item;
