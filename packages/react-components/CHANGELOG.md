@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.10.64"></a>
+## [0.10.64](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.63...@findify/react-components@0.10.64) (2020-10-12)
+
+
+### Bug Fixes
+
+* **react-components:** prevent chrome to keep position of scroll when new content is added ([21f02fa](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/21f02fa))
+
+
+
+
 <a name="0.10.63"></a>
 ## [0.10.63](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.62...@findify/react-components@0.10.63) (2020-08-06)
 
