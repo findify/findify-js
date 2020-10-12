@@ -17,9 +17,15 @@ export interface IColorFacetItemProps extends ThemedSFCProps {
 }
 
 const Item = ({ item, theme, config }: IColorFacetItemProps) =>
-<button className={cx(theme.item, (item.get('selected') as boolean) && theme.active)} onClick={item.toggle}>
-  { content({ item, config, theme }) }
-  <Icon display-if={item.get('selected')} name='CheckmarkDark' className={theme.check} />
-</button>
+  <button
+    role="listitem"
+    area-checked={item.get('selected') ? 'true' : 'false'}
+    tabIndex={0}
+    className={cx(theme.item, (item.get('selected') as boolean) && theme.active)}
+    onClick={item.toggle}
+  >
+    { content({ item, config, theme }) }
+    <Icon display-if={item.get('selected')} name='CheckmarkDark' className={theme.check} />
+  </button>
 
 export default Item;
