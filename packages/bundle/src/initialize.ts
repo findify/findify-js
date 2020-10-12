@@ -70,8 +70,9 @@ export default async (
   /* Load Dependencies in closure to support polyfills */
   const { fromJS } = require('immutable');
   const { documentReady } = require('./helpers/documentReady');
-  const { createWidgets, bulkAddWidgets } = require('./core/widgets');
+  const { createWidgets, bulkAddWidgets, listenDomChange } = require('./core/widgets');
   const { renderWidgets } = require('./core/render');
+  const { observeDomNodes } = require('./helpers/observeDomNodes');
 
   __root.config = fromJS(cfg);
   __root.sentry = sentry;
@@ -100,7 +101,8 @@ export default async (
   
   if (widgetsRenderNeeded) {
     bulkAddWidgets(cfg.selectors);
-    log('widgets:', '' , __root.widgets.list());
+    log('widgets:', '', __root.widgets.list());
+    if (__root.config.get('observeDomChanges')) observeDomNodes(cfg.selectors);
   } else {
     log(`findify ${__root.config.get('status')}`, 'color: #D9463F');
     showFallback(document);

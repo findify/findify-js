@@ -52,21 +52,16 @@ aws_secret_access_key = ${AWS_S3_SECRET_KEY}
 EOL
 
 function deploy_to_s3() {
-  if [[ $1 =~ ^@findify\/(.+)\@([0-9]+\.[0-9]+\.[0-9]+) ]]; then
-    local GIT_TAG=${BASH_REMATCH[0]}    # the whole thing
-    local PKG_NAME=${BASH_REMATCH[1]}   # pkg name
-    local PKG_SEMVER=${BASH_REMATCH[2]} # pkg semver
+  local PKG_NAME=bundle  # pkg name
 
-    local VER_PREFIX=
-    local PKG_BUNDLE_DIR=${SRC_MAP[$PKG_NAME]}
-    local DST_BUNDLE_DIR=${DST_MAP[$PKG_NAME]}/$S3_ENV/$VER_PREFIX$PKG_SEMVER
+  local PKG_BUNDLE_DIR=${SRC_MAP[$PKG_NAME]}
+  local DST_BUNDLE_DIR=${DST_MAP[$PKG_NAME]}/$S3_ENV/$TRAVIS_COMMIT
 
-    local SRC_BUNDLE_PATH=packages/$PKG_NAME/$PKG_BUNDLE_DIR
-    local DST_BUNDLE_PATH=$S3_BUCKET_PATH/$DST_BUNDLE_DIR
+  local SRC_BUNDLE_PATH=packages/$PKG_NAME/$PKG_BUNDLE_DIR
+  local DST_BUNDLE_PATH=$S3_BUCKET_PATH/$DST_BUNDLE_DIR
 
-    echo "deploying $SRC_BUNDLE_PATH to s3://$DST_BUNDLE_PATH"
-    aws s3 cp --recursive $SRC_BUNDLE_PATH s3://$DST_BUNDLE_PATH
-  fi
+  echo "deploying $SRC_BUNDLE_PATH to s3://$DST_BUNDLE_PATH"
+  aws s3 cp --recursive $SRC_BUNDLE_PATH s3://$DST_BUNDLE_PATH
 }
 
 PKGS=(analytics analytics-dom sdk agent react-connect react-components bundle)
@@ -81,31 +76,12 @@ if [[ $LAST_MJS_TAG =~ ^@findify\/(.+)\@([0-9]+\.[0-9]+\.[0-9]+) ]]; then
 fi
 
 if [[ $TRAVIS_BRANCH == 'master' ]]; then
-  export PUBLIC_PATH="https://cdn.jsdelivr.net/npm/@findify/bundle"
-  export PROJECT_NAME='bundle-production'
-  export FINDIFY_ENV="production"
-  echo "$PROJECT_NAME : $PUBLIC_PATH"
-fi
-
-if [[ $TRAVIS_BRANCH == 'develop' ]]; then
-  export PUBLIC_PATH="https://findify-assets-2bveeb6u8ag.netdna-ssl.com/bundle/"
-  export PROJECT_NAME='bundle-staging'
-  export FINDIFY_ENV="staging"
-  echo "$PROJECT_NAME : $PUBLIC_PATH"
-fi
-
-if [[ $TRAVIS_BRANCH == 'master' ]]; then
   echo "Publishing to NPM"
   lerna publish --yes
 fi
 
 if [[ $TRAVIS_BRANCH == 'develop' ]]; then
-  echo "deploying to AWS S3"
-  for pkg in ${PKGS[@]}
-  do
-    echo "pkg: $pkg"
-    LATEST_GIT_TAG=$(git describe --always --tags --match "@findify/${pkg}@*" --abbrev=0)
-    echo "tag: $LATEST_GIT_TAG"
-    deploy_to_s3 $LATEST_GIT_TAG
-  done
+  echo "deploying bundle to AWS S3"
+  echo "tag: $TRAVIS_COMMIT"
+  deploy_to_s3 $TRAVIS_COMMIT
 fi
