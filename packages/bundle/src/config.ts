@@ -126,6 +126,7 @@ export default process.env.NODE_ENV !== 'development'
                    "suggestionsTitle": "Suggestions",
                    "productMatchesTitle": "Product matches",
                    "tipResults": "View all results for query",
+                   "tipTrendingResults": "View all results",
                    "tipTrending": "Sorry, we can't find any suggestions. Press enter to search for",
                    "viewMore": "View all",
                    "trendingSearches": "Trending searches",
