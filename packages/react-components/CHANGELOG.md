@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.11.0"></a>
+# [0.11.0](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.64...@findify/react-components@0.11.0) (2020-10-12)
+
+
+### Bug Fixes
+
+* **bundle, react-components:** add translations to a11y and hide autocomplete on tab focus ([6f272b4](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/6f272b4))
+
+
+### Features
+
+* **bundle, react-components:** improve autocomplete to follow A11Y ([8eb2626](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/8eb2626))
+* **react-components:** navigation and iteraction for blind people is improved ([cdbf40c](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/cdbf40c))
+* **react-components:** show "View all results" button even if there is no autocomplete query ([6bd2ca6](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/6bd2ca6))
+
+
+
+
 <a name="0.10.64"></a>
 ## [0.10.64](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.63...@findify/react-components@0.10.64) (2020-10-12)
 
