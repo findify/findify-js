@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.11.1"></a>
+## [0.11.1](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.11.0...@findify/react-components@0.11.1) (2020-10-12)
+
+
+### Bug Fixes
+
+* **react-components:** add area-selected to checkbox facets ([4304d28](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/4304d28))
+
+
+
+
 <a name="0.11.0"></a>
 # [0.11.0](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.64...@findify/react-components@0.11.0) (2020-10-12)
 
