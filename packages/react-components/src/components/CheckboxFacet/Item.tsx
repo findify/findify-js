@@ -20,7 +20,8 @@ export interface ICheckboxFacetItemProps extends ThemedSFCProps {
 }
 
 const Item = ({ item, theme, style, onItemClick }: ICheckboxFacetItemProps) =>
-  <Button style={style} className={theme.item} onClick={(evt) => {
+
+  <Button style={style} role="listitem" tabIndex={0} className={theme.item} onClick={(evt) => {
     item.toggle(evt)
     onItemClick && onItemClick(evt);
   }}>

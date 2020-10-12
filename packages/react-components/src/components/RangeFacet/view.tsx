@@ -60,7 +60,7 @@ const RangeFacetView: React.SFC<IRangeFacetProps> = ({
   onPressButton,
 
 }: IRangeFacetProps) =>
-<div className={theme.root}>
+<div className={theme.root} role="list">
 
   <MapArray
     display-if={config.get('pullSelected')}

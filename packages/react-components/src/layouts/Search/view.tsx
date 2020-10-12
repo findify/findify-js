@@ -31,7 +31,7 @@ export interface ISearchProps extends ThemedSFCProps {
 const SearchLayout = ({ config, isMobile, isCollection, filtersOnRight, theme }) =>
   <div className={theme.root}>
     <DesktopFacets display-if={!isMobile && !config.get('filtersOnRight')} />
-    <div className={theme.content}>
+    <div className={theme.content} >
       <Branch
         isCollection={isCollection}
         condition={isMobile}

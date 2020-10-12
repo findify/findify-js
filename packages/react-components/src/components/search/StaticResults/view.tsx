@@ -18,7 +18,12 @@ export interface IStaticResultsProps extends ThemedSFCProps {
 };
 
 const StaticResultsView = ({ columns, theme, config }: IStaticResultsProps) =>
-<div className={theme.root}>
+<div
+  className={theme.root}
+  role='main'
+  aria-label={`${config.getIn(['a11y', 'searchResults'], 'Search results')}`}
+  tabIndex={0}
+>
   <ItemsList wrapper={Grid} columns={columns} config={config} />
   <Pagination />
   <PoweredBy />

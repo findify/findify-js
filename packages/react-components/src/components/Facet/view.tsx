@@ -39,8 +39,8 @@ const FacetView = ({
   filtersSelected,
   toggleFacet
 }: IFacetProps) => (
-  <div className={theme.root}>
-    <Button className={theme.title} onClick={toggleFacet}>
+  <div className={theme.root} tabIndex={0} role='region' aria-labelledby={title}>
+    <Button className={theme.title} onClick={toggleFacet} aria-expanded={isOpen} tabIndex={-1}>
       <Text primary uppercase className={theme.text}>{ title } {filtersSelected > 0 ? `(${filtersSelected})` : ''}</Text>
       <Icon name={isOpen ? 'Minus' : 'Plus'} className={theme.icon} />
     </Button>

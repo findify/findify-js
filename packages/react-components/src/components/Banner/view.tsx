@@ -23,6 +23,7 @@ const BannerView: React.SFC<IBannerProps> =  ({ banner, theme, ...rest }: IBanne
 <BannerComponent
   display-if={banner && !banner.isEmpty()}
   href={banner.getIn(['products', 'targetUrl'])}
+  role='banner'
   className={theme.root}>
   <img
     src={banner.getIn(['products', 'imageUrl'])}

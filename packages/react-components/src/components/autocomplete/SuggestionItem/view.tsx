@@ -2,7 +2,7 @@
  * @module components/autocomplete/SuggestionItem
  */
 
-import React from 'react'
+import React, { useRef } from 'react'
 import classnames from 'classnames'
 import Icon from 'components/Icon'
 import { ISuggestion, ISuggestionProps, IQuery, ThemedSFCProps } from 'types';
@@ -53,11 +53,15 @@ const SuggestionItemView: React.SFC<ISuggestionItemProps> = ({
     isTrendingSearches,
     ...rest
 }: ISuggestionItemProps) => {
-  const value = (item && item.get('value') as string)
+  const value = (item && item.get('value') as string);
+  const ref = useRef(null);
   return (
     <li
       display-if={value}
       onClick={onClick}
+      role="option"
+      id={item.hashCode()}
+      aria-selected={highlighted}
       className={classnames(theme.suggestion, { [theme.highlighted]: highlighted, [theme.withIcon]: !!icon , [theme.trending]: isTrendingSearches })}>
       <Icon
         display-if={icon}
