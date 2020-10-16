@@ -14,8 +14,9 @@ import { IFacetValue, MJSConfiguration } from 'types';
 const getStyles = (item: IFacetValue, config: MJSConfiguration) => {
   const value = (item.get('value') as string)!.toLowerCase();
   const background = config.getIn(['facets', 'color', 'mapping', value], value);
+  const border = value.toLowerCase() === 'white' ? '1px solid #000' : '1px solid transparent';
   return {
-    ball: { background },
+    ball: { background, border },
     // check: { color: color(background).isDark() ? '#fff' : '#333' }
   }
 };
