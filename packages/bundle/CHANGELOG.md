@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="6.16.3"></a>
+## [6.16.3](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.16.2...@findify/bundle@6.16.3) (2020-10-27)
+
+
+### Bug Fixes
+
+* **bundle:** hot fix to support crypto in IE ([16b37f8](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/16b37f8))
+
+
+
+
 <a name="6.16.2"></a>
 ## [6.16.2](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.16.1...@findify/bundle@6.16.2) (2020-10-27)
 
