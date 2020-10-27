@@ -9,6 +9,10 @@ if (window.__FINFIDY_PATH__) {
   __webpack_public_path__ = window.__FINFIDY_PATH__
 }
 
+if (!window.crypto) {
+  window.crypto = window.msCrypto
+}
+
 // /**
 //  * Load Dependencies
 //  */
