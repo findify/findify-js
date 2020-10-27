@@ -80,7 +80,7 @@ const Drawer = ({ hideModal, name, theme, options = defaultOptions, children, ..
         style={style}
         role='region'
         aria-live='polite'
-        area-modal='true'
+        aria-modal='true'
         ref={r => r && r.focus()}>
         {
           children instanceof Function

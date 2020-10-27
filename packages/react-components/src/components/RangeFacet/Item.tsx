@@ -25,7 +25,7 @@ const RangeFacetItem: React.SFC<IRangeFacetItemProps> = ({ item, theme, style, c
     onClick={item.toggle}
     role="listitem"
     tabIndex={0}
-    area-checked={item.get('selected') ? 'true' : 'false'}
+    aria-checked={item.get('selected') ? 'true' : 'false'}
   >
     <Text primary lowercase bold={item.get('selected')} className={theme.content}>
       <Icon name={item.get('selected') ? 'CheckboxFilled' : 'CheckboxEmpty'} />
