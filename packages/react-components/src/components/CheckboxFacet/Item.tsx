@@ -29,7 +29,7 @@ const Item = ({ item, theme, style, onItemClick }: ICheckboxFacetItemProps) => {
     <Button
       style={style}
       role="listitem"
-      area-checked={item.get('selected') ? 'true' : 'false'}
+      aria-checked={item.get('selected') ? 'true' : 'false'}
       tabIndex={0}
       className={theme.item}
       onClick={onClick}>
