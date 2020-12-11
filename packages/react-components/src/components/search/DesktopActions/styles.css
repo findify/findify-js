@@ -27,7 +27,6 @@ $padding: 25px;
 .query{
   display: table-cell;
   display: flex;
-  white-space: nowrap;
 }
 
 .breadcrumbs{
