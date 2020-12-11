@@ -43,7 +43,7 @@ const renderView = (type: AutocompleteType, props) => (
 )
 
 const Autocomplete = connectConfig(({ config, isTrendingSearches, ...rest }) => {
-  const isMobile = window.innerWidth < config.get('mobileBreakpoint')
+  const isMobile = window.innerWidth <= config.get('mobileBreakpoint')
   const viewType: AutocompleteType = isMobile && config.get('mobileViewType', 'sidebar') || config.get('viewType', 'simple')
   return renderView(viewType, { ...rest, config, isMobile, isTrendingSearches })
 });
