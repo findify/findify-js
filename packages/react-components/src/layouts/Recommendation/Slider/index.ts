@@ -13,6 +13,7 @@ import 'layouts/Recommendation/Slider/styles.global.css';
 import view from 'layouts/Recommendation/Slider/view';
 import styles from 'layouts/Recommendation/Slider/styles.css';
 import getBreakpoint from 'helpers/getBreakpoint';
+import withScrollOnItemsChange from 'helpers/withScrollOnItemsChange';
 
 /**
  * This function is used to calculate products to show in a line of a Slider according to its width
@@ -42,6 +43,8 @@ export default compose(
   withTheme(styles),
 
   connectItems,
+
+  withScrollOnItemsChange,
 
   withMinResultsToShow(),
 
