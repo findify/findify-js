@@ -3,6 +3,37 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.11.3"></a>
+## [0.11.3](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.11.2...@findify/react-components@0.11.3) (2020-10-27)
+
+
+
+
+**Note:** Version bump only for package @findify/react-components
+
+<a name="0.11.2"></a>
+## [0.11.2](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.11.1...@findify/react-components@0.11.2) (2020-10-27)
+
+
+### Bug Fixes
+
+* **react-components:** fix incorrect tag attribute name ([c452cd0](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/c452cd0))
+* **react-components:** this is to add a black border around white color balls for the ColorFacet con ([994e301](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/994e301))
+
+
+
+
+<a name="0.11.1"></a>
+## [0.11.1](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.11.0...@findify/react-components@0.11.1) (2020-10-12)
+
+
+### Bug Fixes
+
+* **react-components:** add area-selected to checkbox facets ([4304d28](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/4304d28))
+
+
+
+
 <a name="0.11.0"></a>
 # [0.11.0](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.10.64...@findify/react-components@0.11.0) (2020-10-12)
 
