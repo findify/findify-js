@@ -91,7 +91,7 @@
 .container{
   padding: 17px;
   display: flex;
-  height: calc(100% - 60px);
+  height: 100%;
   box-sizing: border-box;
   overflow: hidden;
   overflow-y: auto;
@@ -106,7 +106,7 @@
 }
 
 .expanded-list{
-  height: calc(100% - 40px);
+  height: 100%;
 }
 
 .range{

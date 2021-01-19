@@ -31,6 +31,7 @@ const SearchSuggestionsView: React.SFC<ISearchSuggestionsProps> = ({
   /** ACCESSIBILITY */
   const [announcement, setAnnouncement] = useState('');
   useEffect(() => {
+    if (selectedSuggestion === undefined) return;
     rest.config.get('node').setAttribute(
       'aria-activedescendant',
       !!~selectedSuggestion ? suggestions.get(selectedSuggestion).hashCode() : ''

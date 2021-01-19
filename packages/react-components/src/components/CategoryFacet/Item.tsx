@@ -26,7 +26,9 @@ const Item = ({ item, theme, style, config }: ICategoryFacetCategoryProps) =>
   <Button
     style={style}
     className={theme.item}
-    onClick={item.toggle}>
+    onClick={item.toggle}
+    area-checked={item.get('selected') ? 'true' : 'false'}
+  >
     <Text primary lowercase bold={item.get('selected')} className={theme.content}>
       { content({ item }) }
       <Icon
