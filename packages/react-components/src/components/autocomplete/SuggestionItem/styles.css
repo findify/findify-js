@@ -11,6 +11,7 @@
   padding: 10px 17px;
   margin-left: 10px;
   margin-right: 10px;
+  text-transform: capitalize;
   &:before {
     content: ' ';
     display: table;
