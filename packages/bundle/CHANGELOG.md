@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="6.16.6"></a>
+## [6.16.6](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.16.5...@findify/bundle@6.16.6) (2021-01-20)
+
+
+### Bug Fixes
+
+* **bundle:** try to isolate location ([509d298](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/509d298))
+
+
+
+
 <a name="6.16.5"></a>
 ## [6.16.5](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.16.4...@findify/bundle@6.16.5) (2021-01-20)
 
