@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.6.6"></a>
+## [0.6.6](https://github.com/findify/findify-js/compare/@findify/react-connect@0.6.5...@findify/react-connect@0.6.6) (2021-01-20)
+
+
+### Bug Fixes
+
+* **bundle, react-connect:** aPI improvements to simplify integration with SPA ([2af10a2](https://github.com/findify/findify-js/commit/2af10a2))
+
+
+
+
 <a name="0.6.5"></a>
 ## [0.6.5](https://github.com/findify/findify-js/compare/@findify/react-connect@0.6.4...@findify/react-connect@0.6.5) (2020-08-06)
 
