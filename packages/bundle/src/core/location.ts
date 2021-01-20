@@ -5,10 +5,14 @@ import { parse, stringify } from 'qs';
 export const isIE9 = !('pushState' in window.location);
 
 let history = createBrowserHistory();
+let historyChanged = false;
 
-export const setHistory = (h) => history = h;
+export const setHistory = (h) => {
+  historyChanged = true;
+  history = h;
+}
 
-export { history };
+export const getHistory = () => history;
   
 export const collectionPath = () => window
   .location
@@ -24,7 +28,7 @@ export const isCollection = (collections, slot?) =>
 export const isSearch = () =>
   window.location.pathname === __root.config.getIn(['location', 'searchUrl']);
 
-export const listenHistory = history.listen;
+export const listenHistory = (cb) => getHistory().listen(cb);
 
 export const getQuery = () => {
   const str = history.location.search;
@@ -56,6 +60,14 @@ export const buildQuery = (_query = {}) => {
 }
 
 export const redirectToSearch = (q) => {
+  if (historyChanged) {
+    return history.push(
+      {
+        pathname: __root.config.getIn(['location', 'searchUrl']).replace(document.location.origin, ''),
+        search: buildQuery({ q })
+      }
+    )
+  }
   window.location.href =
     __root.config.getIn(['location', 'searchUrl']) +
     buildQuery({ q });
@@ -75,5 +87,8 @@ export const redirectToPage = async (redirect, meta) => {
     rid: meta.get('rid'),
     suggestion: meta.get('q')
   });
+  if (historyChanged) {
+    return history.push(redirect.get('url').replace(document.location.origin, ''))
+  }
   document.location.href = redirect.get('url');
 }
