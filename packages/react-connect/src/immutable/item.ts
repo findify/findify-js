@@ -17,9 +17,7 @@ export class Item extends createRecord('Item'){
     this.analytics = analytics;
   };
 
-  onClick = (e) => {
-    preventEvents(e);
-    const openInNewWindow = e && (e.ctrlKey || e.metaKey);
+  sendAnalytics = (sync = false) => {
     this.analytics.sendEvent(
       'click-item',
       {
@@ -27,8 +25,23 @@ export class Item extends createRecord('Item'){
         item_id: this.get('id'),
         variant_item_id: this.get('selected_variant_id')
       },
-      !openInNewWindow // Save analytics in cookies if locations will be changed
+      sync // Save analytics in cookies if locations will be changed
     );
+  }
+
+  onClick = (e) => {
+    preventEvents(e);
+    const openInNewWindow = e && (e.ctrlKey || e.metaKey);
+    this.sendAnalytics(!openInNewWindow);
     navigate(openInNewWindow, this.get('product_url'))
+  }
+
+  historyPush = (e) => {
+    preventEvents(e);
+    const openInNewWindow = e && (e.ctrlKey || e.metaKey);
+    this.sendAnalytics();
+    if (openInNewWindow) return navigate(openInNewWindow, this.get('product_url'));
+    const url = this.get('product_url').replace(document.location.origin);
+    if (window && (window as any).findify) (window as any).findify.utils.history.push(url)
   }
 }

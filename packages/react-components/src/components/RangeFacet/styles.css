@@ -135,4 +135,5 @@ $height: 30px;
   display: flex;
   padding: 0 6px;
   width: 1%;
+  justify-content: center;
 }

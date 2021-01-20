@@ -15,7 +15,7 @@ import view from 'layouts/Search/view';
 import styles from 'layouts/Search/styles.css';
 import { debounce } from 'helpers/debounce';
 import withMobile from 'helpers/withMobile';
-
+import withScrollOnItemsChange from 'helpers/withScrollOnItemsChange';
 
 const transform = {
   from: { transform: `translate3d(-100%, 0, 0)` },
@@ -31,6 +31,8 @@ const Search = compose(
 
   connectItems,
 
+  withScrollOnItemsChange,
+  
   branch(
     ({ items }) => !items.size,
     renderNothing

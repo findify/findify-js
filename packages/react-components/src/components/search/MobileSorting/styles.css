@@ -55,6 +55,7 @@
   display: flex;
   padding: 0 17px;
   border-bottom: 1px solid $color-grey-2;
+  align-items: center;
   svg{
     vertical-align: -3px;
     padding-right: 15px;
