@@ -4,8 +4,12 @@ import { parse, stringify } from 'qs';
 
 export const isIE9 = !('pushState' in window.location);
 
-export const history = createBrowserHistory();
+let history = createBrowserHistory();
 
+export const setHistory = (h) => history = h;
+
+export { history };
+  
 export const collectionPath = () => window
   .location
   .pathname
@@ -59,7 +63,6 @@ export const redirectToSearch = (q) => {
 
 export const setQuery = (query) => {
   const search = buildQuery(query);
-
   /* Special for IE9: prevent page reload if query is the same */
   if (isIE9 && search === history.location.search) return;
   return history.push({ search });
