@@ -31,7 +31,7 @@ export const isSearch = () =>
 export const listenHistory = (cb) => getHistory().listen(cb);
 
 export const getQuery = () => {
-  const str = history.location.search;
+  const str = getHistory().location.search;
   const prefix = __root.config.getIn(['location', 'prefix']);
   const elements = parse(str,
     { decoder: (value) => decodeURIComponent(value.replace(/\+/g, ' ')), ignoreQueryPrefix: true }
@@ -61,7 +61,7 @@ export const buildQuery = (_query = {}) => {
 
 export const redirectToSearch = (q) => {
   if (historyChanged) {
-    return history.push(
+    return getHistory().push(
       {
         pathname: __root.config.getIn(['location', 'searchUrl']).replace(document.location.origin, ''),
         search: buildQuery({ q })
@@ -76,8 +76,8 @@ export const redirectToSearch = (q) => {
 export const setQuery = (query) => {
   const search = buildQuery(query);
   /* Special for IE9: prevent page reload if query is the same */
-  if (isIE9 && search === history.location.search) return;
-  return history.push({ search });
+  if (isIE9 && search === getHistory().location.search) return;
+  return getHistory().push({ search });
 };
 
 
@@ -88,7 +88,7 @@ export const redirectToPage = async (redirect, meta) => {
     suggestion: meta.get('q')
   });
   if (historyChanged) {
-    return history.push(redirect.get('url').replace(document.location.origin, ''))
+    return getHistory().push(redirect.get('url').replace(document.location.origin, ''))
   }
   document.location.href = redirect.get('url');
 }
