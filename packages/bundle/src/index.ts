@@ -31,18 +31,18 @@ const deps: Promise<any>[] = [
   import(/* webpackChunkName: "initializer" */ './initialize'),
 
   /**  Setup Sentry errors monitoring */
-  import(/* webpackChunkName: "sentry" */ '@sentry/browser'),
+  import(/* webpackChunkName: "initializer" */ '@sentry/browser'),
 
-  import(/* webpackChunkName: "agent" */ '@findify/agent'),
+  import(/* webpackChunkName: "initializer" */ '@findify/agent'),
 
   /**  Prefetch components */
   import(
-    /* webpackChunkName: "autocomplete" */
+    /* webpackChunkName: "components" */
     '@findify/react-components/src/layouts/Autocomplete'
   ),
 
   import(
-    /* webpackChunkName: "search" */
+    /* webpackChunkName: "components" */
     '@findify/react-components/src/layouts/Search'
   ),
 

@@ -5,7 +5,7 @@ import { registerHandlers } from './handlers';
 import lazy from '../../helpers/renderLazyComponent';
 
 const lazyAutocomplete = lazy(() => import(
-  /* webpackChunkName: "autocomplete" */
+  /* webpackChunkName: "components" */
   '@findify/react-components/src/layouts/Autocomplete'
 ));
 
