@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="6.16.7"></a>
+## [6.16.7](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.16.6...@findify/bundle@6.16.7) (2021-01-21)
+
+
+### Bug Fixes
+
+* **bundle:** reduce amount of chunks by mergins search and autocomplete ([66835e4](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/66835e4))
+
+
+
+
 <a name="6.16.6"></a>
 ## [6.16.6](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.16.5...@findify/bundle@6.16.6) (2021-01-20)
 
