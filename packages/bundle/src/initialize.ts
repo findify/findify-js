@@ -92,18 +92,10 @@ export default async (
     renderWidgets(__root.widgets);
   }
 
-  const location = require('./core/location');
-
   /** Expose utils */
   __root.utils = {
     ...require('./core/location'),
     scrollTo,
-    get history() {
-      return location.getHistory()
-    },
-    set history(history) {
-      location.setHistory(history)
-    }
   };
 
   await resolveCallback(__root, 'findifyForceCallbacks');
