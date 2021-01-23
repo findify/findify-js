@@ -5,7 +5,7 @@ import { parse, stringify } from 'qs';
 export const isIE9 = !('pushState' in window.location);
 
 let historyMode = false;
-const history = createBrowserHistory();
+export const history = createBrowserHistory();
 export const useHistory = () => historyMode = true;
 
 export const collectionPath = () => window
