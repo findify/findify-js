@@ -93,9 +93,16 @@ export default async (
   }
 
   /** Expose utils */
+  const location = require('./core/location');
   __root.utils = {
-    ...require('./core/location'),
+    ...location,
     scrollTo,
+    get history() {
+      return location.getHistory()
+    },
+    set history(history) {
+      location.setHistory(history)
+    }
   };
 
   await resolveCallback(__root, 'findifyForceCallbacks');

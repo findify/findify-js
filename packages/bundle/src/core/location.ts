@@ -4,10 +4,16 @@ import { parse, stringify } from 'qs';
 
 export const isIE9 = !('pushState' in window.location);
 
-let historyMode = false;
-export const history = createBrowserHistory();
-export const useHistory = () => historyMode = true;
+let history = createBrowserHistory();
+let historyChanged = false;
 
+export const setHistory = (h) => {
+  historyChanged = true;
+  history = h;
+}
+
+export const getHistory = () => history;
+  
 export const collectionPath = () => window
   .location
   .pathname
@@ -22,10 +28,10 @@ export const isCollection = (collections, slot?) =>
 export const isSearch = () =>
   window.location.pathname === __root.config.getIn(['location', 'searchUrl']);
 
-export const listenHistory = history.listen;
+export const listenHistory = (cb) => getHistory().listen(cb);
 
 export const getQuery = () => {
-  const str = history.location.search;
+  const str = getHistory().location.search;
   const prefix = __root.config.getIn(['location', 'prefix']);
   const elements = parse(str,
     { decoder: (value) => decodeURIComponent(value.replace(/\+/g, ' ')), ignoreQueryPrefix: true }
@@ -54,11 +60,12 @@ export const buildQuery = (_query = {}) => {
 }
 
 export const redirectToSearch = (q) => {
-  if (historyMode) {
-    return history.push(
+  if (historyChanged) {
+    return getHistory().push(
       {
         pathname: __root.config.getIn(['location', 'searchUrl']).replace(document.location.origin, ''),
-        search: buildQuery({ q })
+        search: buildQuery({ q }),
+        state: { type: 'FindifyUpdate'}
       }
     )
   }
@@ -70,8 +77,8 @@ export const redirectToSearch = (q) => {
 export const setQuery = (query) => {
   const search = buildQuery(query);
   /* Special for IE9: prevent page reload if query is the same */
-  if (isIE9 && search === history.location.search) return;
-  return history.push({ search });
+  if (isIE9 && search === getHistory().location.search) return;
+  return getHistory().push({ search, state: { type: 'FindifyUpdate' } });
 };
 
 
@@ -81,8 +88,8 @@ export const redirectToPage = async (redirect, meta) => {
     rid: meta.get('rid'),
     suggestion: meta.get('q')
   });
-  if (historyMode) {
-    return history.push(redirect.get('url').replace(document.location.origin, ''))
+  if (historyChanged) {
+    return getHistory().push(redirect.get('url').replace(document.location.origin, ''), { type: 'FindifyUpdate'} )
   }
   document.location.href = redirect.get('url');
 }
