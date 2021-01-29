@@ -52,8 +52,8 @@ export default compose(
     sliderOptions: {
       breakpoints,
       navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
+        nextEl: `.${config.get('slot')}-next`,
+        prevEl: `.${config.get('slot')}-prev`,
       },
       ...breakpoints[getBreakpoint(breakpoints)],
       ...config.get('sliderOptions', Map()).toJS(),
