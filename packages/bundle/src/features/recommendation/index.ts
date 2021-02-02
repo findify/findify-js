@@ -3,15 +3,16 @@ import { RecommendationProvider } from "@findify/react-connect";
 import { hideFallback, hideLoader } from '../../helpers/fallbackNode';
 import { getPayload } from './payload';
 import lazy from '../../helpers/renderLazyComponent';
- 
+
 const lazyRecommendation = lazy(() => import(
   /* webpackChunkName: "recommendation" */
   '@findify/react-components/src/layouts/Recommendation'
 ));
-
+  
 export default (widget) => {
   const { node, agent, config } = widget;
   const props = { agent, config, apiKey: config.get('key') };
+
   if (!config.get('disableAutoRequest')) {
     agent.defaults(getPayload(config, node, __root.analytics.state));
   }
