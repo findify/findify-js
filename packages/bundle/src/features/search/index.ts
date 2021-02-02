@@ -5,14 +5,8 @@ import { getQuery, setQuery, isSearch, listenHistory, redirectToPage } from '../
 import { hideFallback, showFallback, hideLoader } from '../../helpers/fallbackNode';
 import { Events } from '../../core/events';
 import { scrollTo } from '../../helpers/scrollTo';
-import ZeroResults from '@findify/react-components/src/layouts/ZeroResults';
 import lazy from '../../helpers/renderLazyComponent';
 import isNumeric from '../../helpers/isNumeric';
-
-const lazySearch = lazy(() => import(
-  /* webpackChunkName: "components" */
-  '@findify/react-components/src/layouts/Search'
-));
 
 const createFallbackAgent = (config, node) => new RecommendationAgent({
   key: config.get('key'),
@@ -24,6 +18,17 @@ const createFallbackAgent = (config, node) => new RecommendationAgent({
   hideFallback(node);
   hideLoader(node);
 });
+
+
+const lazySearchZeroResults = lazy(() => import(
+  /* webpackChunkName: "search" */
+  '@findify/react-components/src/layouts/ZeroResults'
+  ));
+  
+const lazySearch = lazy(() => import(
+  /* webpackChunkName: "search" */
+  '@findify/react-components/src/layouts/Search'
+));
 
 export default (widget) => {
   const { agent, config, node } = widget;
@@ -37,7 +42,6 @@ export default (widget) => {
   }
 
   return (render) => {
-
     let fallbackAgent;
 
     const renderZeroResults = () => {
@@ -45,7 +49,7 @@ export default (widget) => {
       return render(
         RecommendationProvider,
         { agent: fallbackAgent, apiKey, config },
-        createElement(ZeroResults, getQuery())
+        createElement(lazySearchZeroResults, getQuery())
       )
     }
 
@@ -55,7 +59,7 @@ export default (widget) => {
       __root.emit(Events.collectionNotFound, widget);
       return null;
     }
-
+  
     /** Listen to changes */
     agent.on('change:query', (q, meta) => {
       setQuery(q.toJS())
@@ -82,7 +86,7 @@ export default (widget) => {
         }
         return render('initial');
       }
-      hideLoader(node);
+      hideLoader(node);1
       return renderZeroResults();
     })
 
@@ -93,7 +97,6 @@ export default (widget) => {
       unsubscribe();
     })
 
-    console.log('Search rendered')
     /** Render */
     return createElement(SearchProvider, props, lazySearch())
   }

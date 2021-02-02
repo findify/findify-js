@@ -27,6 +27,7 @@ const isReady = (() => {
 })();
 
 const isString = (value) => typeof value === 'string' || value instanceof String;
+
 const _analyticsPromise = (() => {
   let resolve;
   const promise = new Promise(_resolve => resolve = _resolve);
@@ -38,8 +39,6 @@ export default async (
   sentry
 ) => {
   if (!isReady) return;
-
-  await new Promise(resolve => window.requestAnimationFrame(resolve));
 
   // We loading config independently from webpack and this promise is always resolved
   const { default: asyncConfig } = await import(/* webpackMode: "weak" */'./config');
@@ -69,10 +68,10 @@ export default async (
 
   /* Load Dependencies in closure to support polyfills */
   const { fromJS } = require('immutable');
-  const { documentReady } = require('./helpers/documentReady');
-  const { createWidgets, bulkAddWidgets, listenDomChange } = require('./core/widgets');
+  const { createWidgets, bulkAddWidgets } = require('./core/widgets');
   const { renderWidgets } = require('./core/render');
   const { observeDomNodes } = require('./helpers/observeDomNodes');
+  const { documentReady } = require('./helpers/documentReady');
 
   __root.config = fromJS(cfg);
   __root.sentry = sentry;
@@ -83,6 +82,7 @@ export default async (
     undefined,
     _analyticsPromise.resolve
   );
+  
   if (cfg.platform) setupPlatforms(cfg.platform, cfg.removeFindifyID);
 
   const widgetsRenderNeeded = !['paused', 'disabled'].includes(__root.config.get('status'));
@@ -94,6 +94,7 @@ export default async (
 
   /** Expose utils */
   const location = require('./core/location');
+
   __root.utils = {
     ...location,
     scrollTo,
@@ -106,10 +107,13 @@ export default async (
   };
 
   await resolveCallback(__root, 'findifyForceCallbacks');
-
-  await _analyticsPromise.promise;
   
   if (widgetsRenderNeeded) {
+    bulkAddWidgets(
+      cfg.selectors,
+      location.isSearch() || location.isCollection(cfg.collections)
+    );
+    await _analyticsPromise.promise;
     bulkAddWidgets(cfg.selectors);
     log('widgets:', '', __root.widgets.list());
     if (__root.config.get('observeDomChanges')) observeDomNodes(cfg.selectors);

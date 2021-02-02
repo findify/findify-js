@@ -14,8 +14,6 @@ const createRoot = () => {
 }
 
 const Portal = ({ widget }) => {
-  const [domReady, setDomReady] = useState(false);
-
   const [element, component] = useMemo(() => {
     const element = document.createElement('div');
     element.className = `findify-container ${widget.config.get('cssSelector')}`;
@@ -26,9 +24,7 @@ const Portal = ({ widget }) => {
   }, [])
 
   useEffect(() => {
-    documentReady.then(() => setDomReady(true));
-
-    if (!domReady) return;
+    if (!widget.node) return;
 
     const parent = getParentNode(widget);
   
@@ -39,15 +35,17 @@ const Portal = ({ widget }) => {
     }
   
     return () => parent.removeChild(element)
-  }, [widget, domReady])
+  }, [widget.node])
 
-  return useMemo(() => domReady && createPortal(component, element), [domReady]);
+  return useMemo(() => widget.node && createPortal(component, element), [widget.node]);
 }
 
 const reduceWidgets = (state, action) => {
   switch (action.type) {
     case 'attach':
       return [...state, action.widget];
+    case 'update':
+      return state.map((widget) => widget.key === action.key ? action.widget : widget)
     case 'detach':
       return state.filter(({ key }) => key !== action.key)
   }
@@ -57,6 +55,9 @@ const RootElement = ({ widgets }) => {
   const [state, dispatch] = useReducer(reduceWidgets, widgets.list());
   useMemo(() => {
     __root.listen((event, widget) => {
+      if (event === Events.update) {
+        dispatch({ type: 'update', widget })
+      }
       if (event === Events.attach) {
         dispatch({ type: 'attach', widget })
       }

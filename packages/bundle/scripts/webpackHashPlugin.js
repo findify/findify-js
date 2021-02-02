@@ -59,12 +59,42 @@ class HashedPlugin {
 				
 				return source + `
 					${mainTemplate.requireFn}.chunks = [${scripts}];
+					${mainTemplate.requireFn}.frozen = false;
 					${mainTemplate.requireFn}.invalidate = function() {
 						var __cache = installedModules;
 						installedModules = {${ignoredModules}};
+						${mainTemplate.requireFn}.frozen = true;
 						__cache = null;
-					}
-				`;
+					};
+					function webpackJsonpCallback(data) {
+						var chunkIds = data[0];
+						var moreModules = data[1];
+					
+						// add "moreModules" to the modules object,
+						// then flag all "chunkIds" as loaded and fire callback
+						var moduleId, chunkId, i = 0, resolves = [];
+						for(;i < chunkIds.length; i++) {
+							chunkId = chunkIds[i];
+							if(Object.prototype.hasOwnProperty.call(installedChunks, chunkId) && installedChunks[chunkId]) {
+								resolves.push(installedChunks[chunkId][0]);
+							}
+							installedChunks[chunkId] = 0;
+						}
+						for(moduleId in moreModules) {
+							if(Object.prototype.hasOwnProperty.call(moreModules, moduleId)) {
+								if (chunkIds[0] === 'extra' || !modules[moduleId] || !${mainTemplate.requireFn}.frozen) {
+									modules[moduleId] = moreModules[moduleId];
+								}
+							}
+						}
+						if(parentJsonpFunction) parentJsonpFunction(data);
+					
+						while(resolves.length) {
+							resolves.shift()();
+						}
+					
+					};
+				`
 			})
 			// const usedIds = new Set();
 			compilation.hooks.beforeModuleIds.tap(

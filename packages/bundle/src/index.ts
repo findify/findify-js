@@ -13,14 +13,14 @@ if (!window.crypto) {
   window.crypto = window.msCrypto
 }
 
+
 // /**
 //  * Load Dependencies
 //  */
-Promise.all(__webpack_require__.chunks.map(__webpack_require__.e)).then(() => {
+const loadDependencies = () => {
 
 if ((global as any).findify_initialized) return;
 (global as any).findify_initialized = true;
-
   
 let __sentry;
 
@@ -30,27 +30,18 @@ const deps: Promise<any>[] = [
   /** Main initialization file */
   import(/* webpackChunkName: "initializer" */ './initialize'),
 
-  /**  Setup Sentry errors monitoring */
-  import(/* webpackChunkName: "initializer" */ '@sentry/browser'),
-
   import(/* webpackChunkName: "initializer" */ '@findify/agent'),
 
   /**  Prefetch components */
   import(
-    /* webpackChunkName: "components" */
+    /* webpackChunkName: "autocomplete" */
     '@findify/react-components/src/layouts/Autocomplete'
   ),
-
-  import(
-    /* webpackChunkName: "components" */
-    '@findify/react-components/src/layouts/Search'
-  ),
-
-  import(
-    /* webpackChunkName: "recommendation" */
-    '@findify/react-components/src/layouts/Recommendation'
-  )
 ];
+
+if (__SENTRY_ENABLED__) {
+  deps.push(import(/* webpackChunkName: "sentry" */ '@sentry/browser'))
+}
 
 /**
  * Split configuration to separated chunk
@@ -63,6 +54,7 @@ if(process.env.NODE_ENV !== 'development') {
   deps.push(import(/* webpackChunkName: "config" */ './config'));
 }
 
+
 /** Load styles */
 if (process.env.NODE_ENV !== 'development') {
   ((path) => {
@@ -73,7 +65,7 @@ if (process.env.NODE_ENV !== 'development') {
 
 Promise
   .all(deps)
-  .then(([_, initialize, sentry]) => {
+  .then(([_, initialize, __, ___, sentry]) => {
     if (process.env.NODE_ENV !== 'development' && __SENTRY_ENABLED__ && sentry && sentry.init) {
       sentry.init({
         dsn: 'https://0815ca0746cb49a4abdc89a6d3821eb3@sentry.io/4580512',
@@ -108,4 +100,10 @@ Promise
 
     throw e;
   })
-});
+};
+
+if (window && /MSIE|Trident/.test(window.navigator.userAgent)) {
+  Promise.all(__webpack_require__.chunks.map(__webpack_require__.e)).then(loadDependencies)
+} else {
+  loadDependencies()
+}

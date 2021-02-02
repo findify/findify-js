@@ -5,7 +5,7 @@ import { documentReady } from '../../helpers/documentReady';
 const getNestedWidgets = root => {
   const children = Array.from(root.children);
   return __root.widgets.list()
-    .filter(({ node }) => node.parentNode === root)
+    .filter(({ node }) => node && node.parentNode === root)
     .sort((prev, next) => children.indexOf(prev.node) - children.indexOf(next.node));
 }
 
@@ -55,7 +55,7 @@ const getCount = (data, type) => type === 'recommendation' ? data.get('limit') :
 export default (widget) => (render) =>{
   const { node } = widget;
 
-  documentReady.then(() => {
+  const process = () => {
     const widgets = getNestedWidgets(node);
     const { updateCount, getState } = createState(widgets, render);
     widgets.forEach(({ type, agent }, index) => {
@@ -64,9 +64,12 @@ export default (widget) => (render) =>{
         updateCount(index, getCount(meta, type));
       })
     });
-  })
+  }
+  
+  documentReady.then(process);
 
   const unsubscribe = __root.listen((event, prop) => {
+    if (event === Events.update) return process();
     if (event !== Events.detach || prop !== widget) return;
     unsubscribe();
     render();

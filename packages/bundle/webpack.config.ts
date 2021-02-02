@@ -32,6 +32,7 @@ const createGlobals = (isDevelopment) => [
   '__CONFIG__',
   '__DISABLE_SENTRY__',
   '__MERCHANT_ID__',
+  '__SENTRY_ENABLED__',
 ].reduce((acc, name) =>
   ({ ...acc, [name]: isDevelopment ? 'false' : name }), {}
 )
@@ -78,14 +79,16 @@ export default (env: WebpackEnvArgs, { mode, origin = 'prod' }) => {
       ],  
       concatenateModules: false,
       splitChunks: {
-        maxAsyncRequests: 20,
-        maxInitialRequests: 20,
+        chunks: "all",
+        maxAsyncRequests: 2,
+        maxInitialRequests: 2,
         minChunks: 2,
-        name (module, chunks, cacheGroupKey) {
-          const allChunksNames = chunks.map((item) => item.name).join('~');
-          const res = cacheGroupKey + allChunksNames;
-          const hash = require("crypto").createHash('md5').update(res).digest('base64').substr(0, 6).replace('/', '00');
-          return `chunk-${hash}`;
+        name(module, chunks, cacheGroupKey) {
+          return cacheGroupKey
+          // const allChunksNames = chunks.map((item) => item.name).join('~');
+          // const res = cacheGroupKey + allChunksNames;
+          // const hash = require("crypto").createHash('md5').update(res).digest('base64').substr(0, 6).replace('/', '00');
+          // return `chunk-${cacheGroupKey}`;
         }
       }
     },

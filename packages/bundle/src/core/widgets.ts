@@ -21,11 +21,12 @@ const getType = type => ({
 const createAgent = (type, config) => {
   const agent = Agents[camelize(type)];
   if (!agent) return null;
+
   const instance = new agent({
     key: config.get('key'),
     user: __root.analytics.user,
     immutable: true,
-    method: config.getIn(['api', 'method'], 'jsonp'),
+    method: 'post',
     ...(config.get('slot') && { slot: config.get('slot') } || {})
   });
 
@@ -51,6 +52,9 @@ const createConfig = (type, node, key, customs = Map()) => {
     );
 };
 
+const isDuplicated = (node, type) => !node && !!cache.find(w => type === w.type);
+const getPredefined = (type) => cache.find(w => !w.node && type === w.type);
+
 const getNodes = selector => [].slice.call(document.querySelectorAll(selector));
 
 const getEntity = (selector, _type?, _config?) =>
@@ -63,7 +67,7 @@ const getEntity = (selector, _type?, _config?) =>
 .map(node => {
   
   let type = getType(_type || node.getAttribute(attrSelector));
-  const key = (_config && _config.get('widgetKey')) || node.getAttribute(keySelector) || ++index;
+  const key = (_config && _config.get('widgetKey')) || (node && node.getAttribute(keySelector)) || ++index;
 
   let config = createConfig(type, node, key, _config);
 
@@ -71,6 +75,15 @@ const getEntity = (selector, _type?, _config?) =>
   if (type === 'search' && isCollection(config.get('collections'), config.get('slot'))) {
     type = 'smart-collection';
     config = config.set('type', type);
+  }
+
+  if (isDuplicated(node, type)) return;
+
+  const predefined = getPredefined(type);
+  if (!!predefined) {
+    predefined.node = node;
+    __root.emit(Events.update, predefined);
+    return;
   }
 
   const agent = createAgent(type, config);
@@ -87,7 +100,9 @@ const widgets = {
   /** Add new widget */
   attach(selector, type?, config?) {
     const cfg = config && !isImmutable(config) ? fromJS(config) : config;
-    cache = [...cache, ...getEntity(selector, type, cfg)];
+    const entity = getEntity(selector, type, cfg);
+    if (!entity.filter(i => i).length) return cache;
+    cache = [...cache, ...entity];
     return cache;
   },
 
@@ -123,7 +138,8 @@ export const createWidgets = (_config) => {
   return widgets;
 }
 
-export const bulkAddWidgets = (selectors = {}) => {
+export const bulkAddWidgets = (selectors = {}, preLoad) => {
+
   /** Attach default nodes */
   widgets.attach(`[${attrSelector}]`);
 
@@ -131,4 +147,6 @@ export const bulkAddWidgets = (selectors = {}) => {
   for (const key in selectors) {
     widgets.attach(key, selectors[key]);
   }
+
+  if (preLoad) widgets.attach(null, 'search');
 }
