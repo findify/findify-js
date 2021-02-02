@@ -8,7 +8,7 @@ import lazy from '../../helpers/renderLazyComponent';
 import isNumeric from '../../helpers/isNumeric';
 
 const lazySearch = lazy(() => import(
-  /* webpackChunkName: "components" */
+  /* webpackChunkName: "search" */
   '@findify/react-components/src/layouts/Search'
 ));
 

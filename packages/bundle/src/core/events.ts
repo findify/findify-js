@@ -7,6 +7,13 @@ export enum Events {
    */
   attach = 'attachWidget',
 
+
+  /**
+   * Updates widget setup
+   * @prop [entity: object] - widget to remove
+  */
+  update = 'update',
+
   /**
    * Removes exist widget
    * @prop [entity: object] - widget to remove
