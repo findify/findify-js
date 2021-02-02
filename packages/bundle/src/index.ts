@@ -86,7 +86,7 @@ Promise
     log(`version: ${__MERCHANT_VERSION__}`);
   })
   .catch(e => {
-    __sentry.captureException(e);
+    __sentry && __sentry.captureException(e);
     log('error', 'color: #D9463F');
     log(e.stack);
     Promise
