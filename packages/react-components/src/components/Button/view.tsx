@@ -29,16 +29,25 @@ const ButtonView: React.SFC<IButtonProps> = ({
   raw,
   className,
   disabled,
+  href,
   ...rest
-}: IButtonProps) => (
-  <button
-    {...rest}
-    onClick={onClick}
-    disabled={disabled}
-    className={cx(theme.root, active && theme.active, raw && theme.raw, className)}
-  >
-  { children }
-  </button>
+}: IButtonProps) => React.createElement(
+  !!href ? 'a' : 'button',
+  {
+    ...rest,
+    onClick,
+    disabled,
+    children,
+    href,
+    className: cx(
+      theme.root,
+      active && theme.active,
+      raw && theme.raw,
+      className,
+      !!href && theme.link
+    )
+  }
 );
+
 
 export default ButtonView;
