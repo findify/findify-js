@@ -31,7 +31,9 @@ export default process.env.NODE_ENV !== 'development'
            "searchUrl": "/pages/search-results",
 
            // Search query prefix eq(?findify_q)
-           "prefix": "findify"
+           "prefix": "findify",
+
+           "keys": ['q', 'limit', 'sort', 'offset', 'filters', 'rules']
        },
 
        // Element:Feature
