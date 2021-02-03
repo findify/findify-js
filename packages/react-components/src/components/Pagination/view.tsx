@@ -58,7 +58,7 @@ export default ({
     return (
       document.location.origin +
       document.location.pathname +
-      window.findify.utils.buildQuery({ ...query, offset: (page - 1) * meta.get('limit') })
+      window.findify.utils.buildQuery({ ...query, offset: (page - 1) * meta.get('limit') }, true)
     )
   }, [query, meta]);
 
