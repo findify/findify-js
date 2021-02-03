@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.11.12"></a>
+## [0.11.12](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.11.11...@findify/react-components@0.11.12) (2021-02-03)
+
+
+### Bug Fixes
+
+* **bundle, react-components:** change component of pagination button ([179276e](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/179276e))
+* **bundle, react-components:** keep non-whitelisted url params in url ([2ed0381](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/2ed0381))
+
+
+
+
 <a name="0.11.11"></a>
 ## [0.11.11](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.11.10...@findify/react-components@0.11.11) (2021-02-02)
 

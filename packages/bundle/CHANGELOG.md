@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="6.16.12"></a>
+## [6.16.12](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.16.11...@findify/bundle@6.16.12) (2021-02-03)
+
+
+### Bug Fixes
+
+* **bundle:** return request method selector ([f829ef0](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/f829ef0))
+* **bundle, react-components:** change component of pagination button ([179276e](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/179276e))
+* **bundle, react-components:** keep non-whitelisted url params in url ([2ed0381](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/2ed0381))
+
+
+
+
 <a name="6.16.11"></a>
 ## [6.16.11](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.16.10...@findify/bundle@6.16.11) (2021-02-02)
 
