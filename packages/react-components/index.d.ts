@@ -81,7 +81,6 @@ import React from 'react';
 import { ThemedSFCProps, ClassnamedProps, WidgetAwareProps, SuggestionsConnectedProps } from 'types';
 export interface ITipProps extends ThemedSFCProps, ClassnamedProps, WidgetAwareProps, SuggestionsConnectedProps {
     title: string;
-    zeroResultsTitle: string;
 }
 const TipView: React.SFC<ITipProps>;
 export default TipView;
@@ -239,51 +238,45 @@ export default RatingView;
 }
 declare module 'components/Cards/Product/Stickers' {
 import React from 'react';
-export const DiscountSticker: {
-    new (props: any): {
-        componentWillReceiveProps(nextProps: any): void;
-        render(): React.ComponentElement<{
-            theme: any;
-            children?: React.ReactNode;
-        }, React.Component<{
-            theme: any;
-            children?: React.ReactNode;
-        }, any, any>>;
-        context: any;
-        setState<K extends never>(state: {} | Pick<{}, K> | ((prevState: Readonly<{}>, props: Readonly<{}>) => {} | Pick<{}, K> | null) | null, callback?: (() => void) | undefined): void;
-        forceUpdate(callBack?: (() => void) | undefined): void;
-        readonly props: Readonly<{}> & Readonly<{
-            children?: React.ReactNode;
-        }>;
-        state: Readonly<{}>;
-        refs: {
-            [key: string]: React.ReactInstance;
-        };
+export const DiscountSticker: new (props: any) => {
+    componentWillReceiveProps(nextProps: any): void;
+    render(): React.ComponentElement<{
+        theme: any;
+        children?: React.ReactNode;
+    }, React.Component<{
+        theme: any;
+        children?: React.ReactNode;
+    }, any, any>>;
+    setState<K extends never>(state: {} | Pick<{}, K> | ((prevState: Readonly<{}>, props: Readonly<{}>) => {} | Pick<{}, K> | null) | null, callback?: (() => void) | undefined): void;
+    forceUpdate(callBack?: (() => void) | undefined): void;
+    readonly props: Readonly<{
+        children?: React.ReactNode;
+    }> & Readonly<{}>;
+    state: Readonly<{}>;
+    context: any;
+    refs: {
+        [key: string]: React.ReactInstance;
     };
-    contextType?: React.Context<any> | undefined;
 };
-export const OutOfStockSticker: {
-    new (props: any): {
-        componentWillReceiveProps(nextProps: any): void;
-        render(): React.ComponentElement<{
-            theme: any;
-            children?: React.ReactNode;
-        }, React.Component<{
-            theme: any;
-            children?: React.ReactNode;
-        }, any, any>>;
-        context: any;
-        setState<K extends never>(state: {} | Pick<{}, K> | ((prevState: Readonly<{}>, props: Readonly<{}>) => {} | Pick<{}, K> | null) | null, callback?: (() => void) | undefined): void;
-        forceUpdate(callBack?: (() => void) | undefined): void;
-        readonly props: Readonly<{}> & Readonly<{
-            children?: React.ReactNode;
-        }>;
-        state: Readonly<{}>;
-        refs: {
-            [key: string]: React.ReactInstance;
-        };
+export const OutOfStockSticker: new (props: any) => {
+    componentWillReceiveProps(nextProps: any): void;
+    render(): React.ComponentElement<{
+        theme: any;
+        children?: React.ReactNode;
+    }, React.Component<{
+        theme: any;
+        children?: React.ReactNode;
+    }, any, any>>;
+    setState<K extends never>(state: {} | Pick<{}, K> | ((prevState: Readonly<{}>, props: Readonly<{}>) => {} | Pick<{}, K> | null) | null, callback?: (() => void) | undefined): void;
+    forceUpdate(callBack?: (() => void) | undefined): void;
+    readonly props: Readonly<{
+        children?: React.ReactNode;
+    }> & Readonly<{}>;
+    state: Readonly<{}>;
+    context: any;
+    refs: {
+        [key: string]: React.ReactInstance;
     };
-    contextType?: React.Context<any> | undefined;
 };
 
 }
@@ -448,7 +441,7 @@ export default _default;
 
 }
 declare module 'components/common/Drawer/view' {
-/// <reference types="react" />
+import React from 'react';
 import { ThemedSFCProps } from 'types';
 export interface IDrawerViewState {
     open: boolean;
@@ -466,8 +459,29 @@ export interface IDrawerViewProps extends ThemedSFCProps {
     };
     [x: string]: any;
 }
-const Drawer: ({ hideModal, name, theme, options, children, ...rest }: IDrawerViewProps) => JSX.Element;
-export default Drawer;
+class DrawerView extends React.Component<IDrawerViewProps, IDrawerViewState> {
+    state: {
+        open: boolean;
+    };
+    mounted: boolean;
+    originalScrollTop: number;
+    static defaultProps: {
+        options: {
+            from: {
+                transform: string;
+            };
+            to: {
+                transform: string;
+            };
+        };
+    };
+    componentDidMount(): void;
+    componentWillUnmount(): void;
+    close: () => void;
+    handleEscapeKeypress: (evt: any) => void;
+    render(): JSX.Element;
+}
+export default DrawerView;
 
 }
 declare module 'components/common/Grid/Column' {
@@ -517,6 +531,7 @@ export {};
 
 }
 declare module 'components/common/MapArray' {
+import 'core-js/features/array/from';
 import React from 'react';
 export type MapCallback = (item: any, index: number, arrayLike: ArrayLike) => any;
 export type KeyAccessor = (item: any, index: number) => string;
@@ -566,44 +581,39 @@ import React from 'react';
 export interface IStickyProps {
     offset?: number;
     minHeight?: number;
-    stickToTop?: boolean;
 }
-const _default: {
-    new (props: any): {
-        componentWillReceiveProps(nextProps: any): void;
-        render(): React.ComponentElement<{
-            theme: any;
-            children?: React.ReactNode;
-        }, React.Component<{
-            theme: any;
-            children?: React.ReactNode;
-        }, any, any>>;
-        context: any;
-        setState<K extends never>(state: {} | Pick<{}, K> | ((prevState: Readonly<{}>, props: Readonly<{}>) => {} | Pick<{}, K> | null) | null, callback?: (() => void) | undefined): void;
-        forceUpdate(callBack?: (() => void) | undefined): void;
-        readonly props: Readonly<{}> & Readonly<{
-            children?: React.ReactNode;
-        }>;
-        state: Readonly<{}>;
-        refs: {
-            [key: string]: React.ReactInstance;
-        };
+const _default: new (props: any) => {
+    componentWillReceiveProps(nextProps: any): void;
+    render(): React.ComponentElement<{
+        theme: any;
+        children?: React.ReactNode;
+    }, React.Component<{
+        theme: any;
+        children?: React.ReactNode;
+    }, any, any>>;
+    setState<K extends never>(state: {} | Pick<{}, K> | ((prevState: Readonly<{}>, props: Readonly<{}>) => {} | Pick<{}, K> | null) | null, callback?: (() => void) | undefined): void;
+    forceUpdate(callBack?: (() => void) | undefined): void;
+    readonly props: Readonly<{
+        children?: React.ReactNode;
+    }> & Readonly<{}>;
+    state: Readonly<{}>;
+    context: any;
+    refs: {
+        [key: string]: React.ReactInstance;
     };
-    contextType?: React.Context<any> | undefined;
 };
 export default _default;
 
 }
 declare module 'components/common/Sticky/view' {
 /// <reference types="react" />
-const _default: ({ theme, registerRoot, registerContainer, registerSizer, children, state, title }: {
+const _default: ({ theme, registerRoot, registerContainer, registerSizer, children, state }: {
     theme: any;
     registerRoot: any;
     registerContainer: any;
     registerSizer: any;
     children: any;
     state: any;
-    title: any;
 }) => JSX.Element;
 export default _default;
 
@@ -688,7 +698,7 @@ export default DropdownView;
 declare module 'components/Facet/Component' {
 import React from 'react';
 import { FilterType } from 'types';
-export const getComponent: (type: FilterType) => React.ComponentClass<unknown, any>;
+export const getComponent: (type: FilterType) => React.ComponentClass<{}, any>;
 const _default: React.ComponentClass<any, any>;
 export default _default;
 
@@ -860,8 +870,7 @@ export interface IRangeFacetProps extends ThemedSFCProps {
     to: number;
     onChangeMax: (evt?: React.ChangeEvent<any>) => any;
     onChangeMin: (evt?: React.ChangeEvent<any>) => any;
-    onKeypressMin: (evt: any) => any;
-    onKeypressMax: (evt: any) => any;
+    onKeypress: (evt: any) => any;
     onPressButton: () => any;
 }
 const RangeFacetView: React.SFC<IRangeFacetProps>;
@@ -1206,7 +1215,7 @@ export const provideBundle: (getInitialItems?: (i: any) => any) => (BaseComponen
         render(): JSX.Element;
         context: any;
         setState<K extends never>(state: {} | ((prevState: Readonly<{}>, props: Readonly<{}>) => {} | Pick<{}, K> | null) | Pick<{}, K> | null, callback?: (() => void) | undefined): void;
-        forceUpdate(callback?: (() => void) | undefined): void;
+        forceUpdate(callBack?: (() => void) | undefined): void;
         readonly props: Readonly<{}> & Readonly<{
             children?: React.ReactNode;
         }>;
@@ -1227,7 +1236,7 @@ export const provideBundle: (getInitialItems?: (i: any) => any) => (BaseComponen
         render(): JSX.Element;
         context: any;
         setState<K extends never>(state: {} | ((prevState: Readonly<{}>, props: Readonly<{}>) => {} | Pick<{}, K> | null) | Pick<{}, K> | null, callback?: (() => void) | undefined): void;
-        forceUpdate(callback?: (() => void) | undefined): void;
+        forceUpdate(callBack?: (() => void) | undefined): void;
         readonly props: Readonly<{}> & Readonly<{
             children?: React.ReactNode;
         }>;
@@ -1276,10 +1285,10 @@ export const escapeRegExp: (s: any) => any;
 declare module 'helpers/formatCurrency' {
 export interface ICurrencyData {
     symbol?: string;
-    thousand?: string;
-    decimal?: string;
-    precision?: number;
+    thousandsSeparator?: string;
+    decimalSeparator?: string;
     symbolOnLeft?: boolean;
+    decimalDigits?: number;
     spaceBetweenAmountAndSymbol?: boolean;
     format?: {
         pos: string;
@@ -1292,7 +1301,7 @@ export default _default;
 
 }
 declare module 'helpers/getBreakpoint' {
-const _default: (breakpoints: any, width?: number) => any;
+const _default: (breakpoints: any) => any;
 export default _default;
 
 }
@@ -1337,7 +1346,7 @@ const _default: (BaseComponent: any) => {
         render(): any;
         context: any;
         setState<K extends never>(state: {} | ((prevState: Readonly<{}>, props: Readonly<{}>) => {} | Pick<{}, K> | null) | Pick<{}, K> | null, callback?: (() => void) | undefined): void;
-        forceUpdate(callback?: (() => void) | undefined): void;
+        forceUpdate(callBack?: (() => void) | undefined): void;
         readonly props: Readonly<{}> & Readonly<{
             children?: React.ReactNode;
         }>;
@@ -1353,7 +1362,7 @@ const _default: (BaseComponent: any) => {
         render(): any;
         context: any;
         setState<K extends never>(state: {} | ((prevState: Readonly<{}>, props: Readonly<{}>) => {} | Pick<{}, K> | null) | Pick<{}, K> | null, callback?: (() => void) | undefined): void;
-        forceUpdate(callback?: (() => void) | undefined): void;
+        forceUpdate(callBack?: (() => void) | undefined): void;
         readonly props: Readonly<{}> & Readonly<{
             children?: React.ReactNode;
         }>;
@@ -1369,7 +1378,44 @@ export default _default;
 }
 declare module 'helpers/withEvents' {
 import React from 'react';
-const _default: (events?: any) => (BaseComponent: any) => (props: any) => React.ComponentElement<any, React.Component<any, any, any>>;
+const _default: (events?: any) => (BaseComponent: any) => {
+    new (props: Readonly<{}>): {
+        removeListener: any;
+        handler: (event: any, ...args: any[]) => void;
+        componentDidMount(): void;
+        componentWillUnmount(): void;
+        render(): any;
+        context: any;
+        setState<K extends never>(state: {} | ((prevState: Readonly<{}>, props: Readonly<{}>) => {} | Pick<{}, K> | null) | Pick<{}, K> | null, callback?: (() => void) | undefined): void;
+        forceUpdate(callBack?: (() => void) | undefined): void;
+        readonly props: Readonly<{}> & Readonly<{
+            children?: React.ReactNode;
+        }>;
+        state: Readonly<{}>;
+        refs: {
+            [key: string]: React.ReactInstance;
+        };
+    };
+    new (props: {}, context?: any): {
+        removeListener: any;
+        handler: (event: any, ...args: any[]) => void;
+        componentDidMount(): void;
+        componentWillUnmount(): void;
+        render(): any;
+        context: any;
+        setState<K extends never>(state: {} | ((prevState: Readonly<{}>, props: Readonly<{}>) => {} | Pick<{}, K> | null) | Pick<{}, K> | null, callback?: (() => void) | undefined): void;
+        forceUpdate(callBack?: (() => void) | undefined): void;
+        readonly props: Readonly<{}> & Readonly<{
+            children?: React.ReactNode;
+        }>;
+        state: Readonly<{}>;
+        refs: {
+            [key: string]: React.ReactInstance;
+        };
+    };
+    displayName: string;
+    contextType?: React.Context<any> | undefined;
+};
 export default _default;
 
 }
@@ -1387,7 +1433,7 @@ const _default: () => (BaseComponent: any) => {
         trackPosition: () => number | false;
         componentDidMount(): void;
         componentWillUnmount(): void;
-        UNSAFE_componentWillReceiveProps({ items, meta, config }: {
+        componentWillReceiveProps({ items, meta, config }: {
             items: any;
             meta: any;
             config: any;
@@ -1396,7 +1442,7 @@ const _default: () => (BaseComponent: any) => {
         render(): JSX.Element;
         context: any;
         setState<K extends string | number | symbol>(state: any, callback?: (() => void) | undefined): void;
-        forceUpdate(callback?: (() => void) | undefined): void;
+        forceUpdate(callBack?: (() => void) | undefined): void;
         readonly props: Readonly<any> & Readonly<{
             children?: React.ReactNode;
         }>;
@@ -1411,8 +1457,8 @@ export default _default;
 
 }
 declare module 'helpers/withMinResultsToShow' {
-/// <reference types="react" />
-const _default: () => (BaseComponent: any) => (props: any) => false | JSX.Element;
+import React from 'react';
+const _default: () => (BaseComponent: React.Component<{}, {}, any>) => React.ComponentClass<unknown, any>;
 export default _default;
 
 }
@@ -1423,16 +1469,36 @@ const _default: (BaseComponent: any) => (props: any) => import("react").Componen
 export default _default;
 
 }
+declare module 'helpers/withScrollOnItemsChange' {
+const _default: import("recompose").ComponentEnhancer<unknown, unknown>;
+export default _default;
+
+}
 declare module 'helpers/withTheme' {
 import React from 'react';
-const _default: (defaultTheme: any) => (Component: any) => ({ theme, ...props }: {
-    [x: string]: any;
-    theme: any;
-}) => React.ComponentElement<{
-    theme: any;
-}, React.Component<{
-    theme: any;
-}, any, any>>;
+const _default: (defaultTheme: any) => (Component: any) => {
+    new (props: any): {
+        componentWillReceiveProps(nextProps: any): void;
+        render(): React.ComponentElement<{
+            theme: any;
+            children?: React.ReactNode;
+        }, React.Component<{
+            theme: any;
+            children?: React.ReactNode;
+        }, any, any>>;
+        context: any;
+        setState<K extends never>(state: {} | ((prevState: Readonly<{}>, props: Readonly<{}>) => {} | Pick<{}, K> | null) | Pick<{}, K> | null, callback?: (() => void) | undefined): void;
+        forceUpdate(callBack?: (() => void) | undefined): void;
+        readonly props: Readonly<{}> & Readonly<{
+            children?: React.ReactNode;
+        }>;
+        state: Readonly<{}>;
+        refs: {
+            [key: string]: React.ReactInstance;
+        };
+    };
+    contextType?: React.Context<any> | undefined;
+};
 export default _default;
 
 }
@@ -1441,14 +1507,30 @@ export {};
 
 }
 declare module 'layouts/Autocomplete/Dropdown' {
-/// <reference types="react" />
-const _default: import("react").ComponentClass<unknown, any>;
+import React from 'react';
+const _default: React.ComponentClass<unknown, any>;
 export default _default;
 
 }
 declare module 'layouts/Autocomplete/Dropdown/trackPosition' {
-export const usePosition: (config: any) => any[];
-const _default: (BaseComponent: any) => (props: any) => any;
+import React from "react";
+const _default: (BaseComponent: any) => {
+    new (props: any): {
+        registerComponent: (ref: any) => void;
+        render(): any;
+        context: any;
+        setState<K extends string | number | symbol>(state: any, callback?: (() => void) | undefined): void;
+        forceUpdate(callBack?: (() => void) | undefined): void;
+        readonly props: Readonly<any> & Readonly<{
+            children?: React.ReactNode;
+        }>;
+        state: Readonly<any>;
+        refs: {
+            [key: string]: React.ReactInstance;
+        };
+    };
+    contextType?: React.Context<any> | undefined;
+};
 export default _default;
 
 }
@@ -1540,17 +1622,8 @@ export default Sidebar;
 
 }
 declare module 'layouts/Autocomplete/withAutocompleteLogic' {
-import React from 'react';
-export const useAutocompleteLogic: ({ config, suggestions, getSuggestionProps, meta }: {
-    config: any;
-    suggestions: any;
-    getSuggestionProps: any;
-    meta: any;
-}) => {
-    selectedSuggestion: any;
-    closeAutocomplete: () => any;
-};
-const _default: (BaseComponent: any) => (props: any) => React.ComponentElement<unknown, React.Component<unknown, any, any>>;
+import { ComponentEnhancer } from 'recompose';
+const _default: ComponentEnhancer<unknown, unknown>;
 export default _default;
 
 }
@@ -1610,9 +1683,20 @@ const _default: any;
 export default _default;
 
 }
+declare module 'layouts/Recommendation/Slider/Arrow' {
+/// <reference types="react" />
+export interface IArrowProps {
+    dir: 'left' | 'right';
+    onClick?: (evt: any) => null;
+    defaultOnClick: (evt: any) => null;
+    [x: string]: any;
+}
+export const renderArrow: (dir: any, handler: any) => JSX.Element;
+
+}
 declare module 'layouts/Recommendation/Slider' {
 import React from 'react';
-import 'layouts/Recommendation/Slider/styles.global.css';
+import './styles.global.css';
 const _default: React.ComponentClass<unknown, any>;
 export default _default;
 
@@ -1627,6 +1711,78 @@ export default _default;
 
 }
 declare module 'layouts/Recommendation/Slider/view' {
+import React, { ReactChildren } from 'react';
+import { IProduct, ThemedSFCProps, MJSConfiguration } from 'types';
+import { List } from 'immutable';
+export interface IReactSlickProps {
+    accessibility?: boolean;
+    adaptiveHeight?: boolean;
+    afterChange?: (index: number) => any;
+    appendDots: (dots: ReactChildren) => React.ReactElement<any>;
+    arrows?: boolean;
+    asNavFor?: (ref: React.Ref<any>) => any;
+    autoplaySpeed?: number;
+    autoplay?: boolean;
+    beforeChange?: (oldIndex: number, newIndex: number) => any;
+    centerMode?: boolean;
+    centerPadding?: string;
+    className?: string;
+    customPaging?: (index: number) => React.ReactElement<any>;
+    dotsClass?: string;
+    dots?: boolean;
+    draggable?: boolean;
+    easing?: string;
+    fade?: boolean;
+    focusOnSelect?: boolean;
+    infinite?: boolean;
+    initialSlide?: number;
+    lazyLoad?: 'ondemand' | 'progressive';
+    onEdge?: (direction: string) => any;
+    onInit?: () => void;
+    onLazyLoad?: () => any;
+    onReInit?: () => void;
+    onSwipe?: () => any;
+    pauseOnDotsHover?: boolean;
+    pauseOnFocus?: boolean;
+    pauseOnHover?: boolean;
+    responsive?: string[];
+    rows?: number;
+    rtl?: boolean;
+    slide?: string;
+    slidesPerRow?: number;
+    slidesToScroll?: number;
+    slidesToShow?: number;
+    speed?: number;
+    swipeToSlide?: boolean;
+    swipe?: boolean;
+    touchMove?: boolean;
+    touchThreshold?: number;
+    useCSS?: boolean;
+    useTransform?: boolean;
+    variableWidth?: boolean;
+    vertical?: boolean;
+}
+export interface ISliderProps extends ThemedSFCProps {
+    items: List<IProduct>;
+    config: MJSConfiguration;
+    sliderOptions: IReactSlickProps;
+    _mountSlider: React.RefObject<any>;
+}
+const SliderRecommendationLayout: ({ items, config, theme, sliderOptions, _mountSlider }: ISliderProps) => JSX.Element;
+export default SliderRecommendationLayout;
+
+}
+declare module 'layouts/Recommendation/Swiper' {
+import React from 'react';
+import 'layouts/Recommendation/Swiper/styles.global.css';
+const _default: React.ComponentClass<unknown, any>;
+export default _default;
+
+}
+declare module 'layouts/Recommendation/Swiper/Swiper' {
+
+}
+declare module 'layouts/Recommendation/Swiper/view' {
 /// <reference types="react" />
 const _default: ({ items, config, theme, sliderOptions }: {
     items: any;
@@ -1654,12 +1810,15 @@ export interface ISearchProps extends ThemedSFCProps {
     filtersOnRight?: boolean;
     items: List<IProduct>;
 }
-const SearchLayout: ({ config, isMobile, isCollection, filtersOnRight, theme }: {
+const SearchLayout: ({ config, meta, isMobile, isCollection, mobileFacetsOpened, filtersOnRight, theme, items }: {
     config: any;
+    meta: any;
     isMobile: any;
     isCollection: any;
+    mobileFacetsOpened: any;
     filtersOnRight: any;
     theme: any;
+    items: any;
 }) => JSX.Element;
 export default SearchLayout;
 

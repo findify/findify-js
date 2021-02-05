@@ -86,8 +86,8 @@ export default (widget) => {
         }
         return render('initial');
       }
-      hideLoader(node);1
-      return renderZeroResults();
+      hideLoader(node);
+      if (!config.get('disableZeroResults')) renderZeroResults();
     })
 
     /** Unsubscribe from events on instance destroy  */
