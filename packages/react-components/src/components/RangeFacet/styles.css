@@ -122,6 +122,7 @@ $height: 30px;
   line-height: $height;
   padding: 0 8px;
   cursor: pointer;
+  align-items: center;
   &:hover{
     text-decoration: underline;
   }
