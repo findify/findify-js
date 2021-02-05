@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.11.13"></a>
+## [0.11.13](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.11.12...@findify/react-components@0.11.13) (2021-02-05)
+
+
+### Bug Fixes
+
+* **bundle:** disable seroresults by config ([a68f256](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/a68f256))
+
+
+
+
 <a name="0.11.12"></a>
 ## [0.11.12](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.11.11...@findify/react-components@0.11.12) (2021-02-03)
 

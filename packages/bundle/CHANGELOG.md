@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="6.16.13"></a>
+## [6.16.13](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.16.12...@findify/bundle@6.16.13) (2021-02-05)
+
+
+### Bug Fixes
+
+* **bundle:** disable seroresults by config ([a68f256](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/a68f256))
+
+
+
+
 <a name="6.16.12"></a>
 ## [6.16.12](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.16.11...@findify/bundle@6.16.12) (2021-02-03)
 
