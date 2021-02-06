@@ -1,10 +1,8 @@
-import { Component, createFactory, createElement, useState, useReducer, useEffect, useMemo } from 'react';
-import { render, hydrate, createPortal } from 'react-dom';
+import { createElement, useReducer, useEffect, useMemo } from 'react';
+import { render, createPortal } from 'react-dom';
 import { createFeature } from '../features/create';
 import { getParentNode } from '../helpers/getParentNode';
-import { debounce } from '../helpers/debounce';
 import { Events } from './events';
-import { documentReady } from '../helpers/documentReady';
 
 const createRoot = () => {
   const meta = document.createElement('meta');
@@ -15,6 +13,7 @@ const createRoot = () => {
 
 const Portal = ({ widget }) => {
   const [element, component] = useMemo(() => {
+
     const element = document.createElement('div');
     element.className = `findify-container ${widget.config.get('cssSelector')}`;
     return [

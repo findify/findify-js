@@ -40,7 +40,7 @@
   "dependencies": {
     "axios": "^0.19.0",
     "bundle": "^2.1.0",
-    "core-js": "^3.2.1",
+    "core-js": "^3.8.3",
     "debug": "^4.1.1",
     "nanoid": "^3.1.10",
     "qs": "^6.5.2"
