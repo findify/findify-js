@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="3.5.4"></a>
+## [3.5.4](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/analytics@3.5.3...@findify/analytics@3.5.4) (2021-02-06)
+
+
+### Bug Fixes
+
+* **bundle:** optimize build ([0205890](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/0205890))
+
+
+
+
 <a name="3.5.3"></a>
 ## [3.5.3](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/analytics@3.5.2...@findify/analytics@3.5.3) (2019-11-18)
 
