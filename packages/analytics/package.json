@@ -33,7 +33,7 @@
     "access": "public"
   },
   "dependencies": {
-    "core-js": "^3.2.1",
+    "core-js": "^3.8.3",
     "qs": "^6.5.2",
     "store": "^2.0.12"
   },

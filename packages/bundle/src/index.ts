@@ -1,59 +1,63 @@
 import 'core-js/features/promise';
-import 'regenerator-runtime/runtime';
 
 import loadJs from 'load-js';
 import loadCss from './helpers/loadCss';
 import log from './helpers/log';
 
-if (window.__FINFIDY_PATH__) {
-  __webpack_public_path__ = window.__FINFIDY_PATH__
-}
+/**
+ * Development setup
+ */
+if (process.env.HOT) require('react-hot-loader')
+if (window.__FINFIDY_PATH__) __webpack_public_path__ = window.__FINFIDY_PATH__;
 
-if (!window.crypto) {
-  window.crypto = window.msCrypto
-}
+/**
+ *  Crypto Support in IE (required in many places)
+ */
+if (!window.crypto) window.crypto = window.msCrypto;
 
-
-// /**
-//  * Load Dependencies
-//  */
+/**
+ * Load Dependencies
+ */
 const loadDependencies = () => {
 
+// Do not initialize App twice
 if ((global as any).findify_initialized) return;
 (global as any).findify_initialized = true;
   
 let __sentry;
 
 const deps: Promise<any>[] = [
-  import(/* webpackChunkName: "polyfill" */ './polyfill'),
-
   /** Main initialization file */
   import(/* webpackChunkName: "initializer" */ './initialize'),
-
-  import(/* webpackChunkName: "initializer" */ '@findify/agent'),
-
-  /**  Prefetch components */
-  import(
-    /* webpackChunkName: "autocomplete" */
-    '@findify/react-components/src/layouts/Autocomplete'
-  ),
 ];
 
+/** Optional sentry */
 if (__SENTRY_ENABLED__) {
   deps.push(import(/* webpackChunkName: "sentry" */ '@sentry/browser'))
 }
+  
+if (typeof Symbol == "undefined") {
+  deps.push(import(/* webpackChunkName: "polyfill" */ './polyfill'))
+}
+  
+deps.push(
+  import(/* webpackChunkName: "vendors" */ 'react'),
+  import(/* webpackChunkName: "vendors" */ 'react-dom'),
+  import(/* webpackChunkName: "vendors" */ 'immutable'),
+  import(/* webpackChunkName: "vendors" */ 'recompose'),
+)
+
 
 /**
  * Split configuration to separated chunk
  * The real merchant configuration will be added there on Findify Compilation server
- * So we will load it by load.js ~_~
+ * So we will load it by load.js
  */
 if(process.env.NODE_ENV !== 'development') {
   deps.push(loadJs(__MERCHANT_CONFIG_URL__));
 } else {
   deps.push(import(/* webpackChunkName: "config" */ './config'));
 }
-
 
 /** Load styles */
 if (process.env.NODE_ENV !== 'development') {
@@ -65,7 +69,7 @@ if (process.env.NODE_ENV !== 'development') {
 
 Promise
   .all(deps)
-  .then(([_, initialize, __, ___, sentry]) => {
+  .then(([initialize, __, sentry]) => {
     if (process.env.NODE_ENV !== 'development' && __SENTRY_ENABLED__ && sentry && sentry.init) {
       sentry.init({
         dsn: 'https://0815ca0746cb49a4abdc89a6d3821eb3@sentry.io/4580512',
@@ -86,9 +90,11 @@ Promise
     log(`version: ${__MERCHANT_VERSION__}`);
   })
   .catch(e => {
-    __sentry.captureException(e);
+    if (__sentry) __sentry.captureException(e);
+  
     log('error', 'color: #D9463F');
     log(e.stack);
+
     Promise
     .all(deps)
     .then(([_, initialize, sentry]) => {
