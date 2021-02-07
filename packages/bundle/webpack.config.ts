@@ -125,9 +125,7 @@ export default (env: WebpackEnvArgs, { mode, origin = 'prod' }) => {
           test: /\.css$/,
           include: [
             path.resolve(componentsPath, 'src'),
-            path.resolve(__dirname, '../../node_modules'),
           ],
-          exclude: /@babel(?:\/|\\{1,2})runtime|core-js/,
           use: [
             ...(mode === 'development' ? ["style-loader"] : []),
             {
@@ -154,6 +152,7 @@ export default (env: WebpackEnvArgs, { mode, origin = 'prod' }) => {
           test: /\.(j|t)s$/,
           include: [
             path.resolve(__dirname, 'src'),
+            path.resolve(__dirname, '../../node_modules'),
           ],
           exclude: /@babel(?:\/|\\{1,2})runtime|core-js/,
           use: [
