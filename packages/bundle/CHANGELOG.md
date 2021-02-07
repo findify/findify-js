@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="6.16.16"></a>
+## [6.16.16](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.16.15...@findify/bundle@6.16.16) (2021-02-07)
+
+
+### Bug Fixes
+
+* **bundle:** fix issue with node_modules compilation ([e72b7a9](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/e72b7a9))
+
+
+
+
 <a name="6.16.15"></a>
 ## [6.16.15](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.16.14...@findify/bundle@6.16.15) (2021-02-07)
 
