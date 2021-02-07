@@ -8,6 +8,7 @@ module.exports = (api) => {
       "@babel/plugin-syntax-object-rest-spread",
       "@babel/plugin-transform-runtime"
     ],
+    "sourceType": "unambiguous",
     "presets": [
       "@babel/preset-typescript",
       ["@babel/preset-env", {
