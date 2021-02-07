@@ -39,14 +39,6 @@ if (__SENTRY_ENABLED__) {
 if (typeof Symbol == "undefined") {
   deps.push(import(/* webpackChunkName: "polyfill" */ './polyfill'))
 }
-  
-deps.push(
-  import(/* webpackChunkName: "vendors" */ 'react'),
-  import(/* webpackChunkName: "vendors" */ 'react-dom'),
-  import(/* webpackChunkName: "vendors" */ 'immutable'),
-  import(/* webpackChunkName: "vendors" */ 'recompose'),
-)
-
 
 /**
  * Split configuration to separated chunk
@@ -66,6 +58,14 @@ if (process.env.NODE_ENV !== 'development') {
     return loadCss(path);
   })(__MERCHANT_CSS__);
 }
+  
+    
+deps.push(
+  import(/* webpackChunkName: "vendors" */ 'react'),
+  import(/* webpackChunkName: "vendors" */ 'react-dom'),
+  import(/* webpackChunkName: "vendors" */ 'immutable'),
+  import(/* webpackChunkName: "vendors" */ 'recompose'),
+)
 
 Promise
   .all(deps)
@@ -97,7 +97,7 @@ Promise
 
     Promise
     .all(deps)
-    .then(([_, initialize, sentry]) => {
+    .then(([initialize, sentry]) => {
       initialize.default({ key: __MERCHANT_API_KEY__ }, sentry);
     })
     .catch(e => {
