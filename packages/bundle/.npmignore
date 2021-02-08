@@ -2,4 +2,6 @@ npm-debug.log
 src
 script
 node_modules
+store.config.example.js
+store.config.js
 .DS_Store

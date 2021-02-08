@@ -35,10 +35,6 @@ const deps: Promise<any>[] = [
 if (__SENTRY_ENABLED__) {
   deps.push(import(/* webpackChunkName: "sentry" */ '@sentry/browser'))
 }
-  
-if (typeof Symbol == "undefined") {
-  deps.push(import(/* webpackChunkName: "polyfill" */ './polyfill'))
-}
 
 /**
  * Split configuration to separated chunk
@@ -108,8 +104,13 @@ Promise
   })
 };
 
-if (window && /MSIE|Trident/.test(window.navigator.userAgent)) {
-  Promise.all(__webpack_require__.chunks.map(__webpack_require__.e)).then(loadDependencies)
+const init = () => 
+  window && /MSIE|Trident/.test(window.navigator.userAgent)
+  ? Promise.all(__webpack_require__.chunks.map(__webpack_require__.e)).then(loadDependencies)
+  : loadDependencies()
+
+if (typeof Symbol === "undefined" || typeof Map === "undefined") {
+  import(/* webpackChunkName: "polyfill" */ './polyfill').then(init)
 } else {
-  loadDependencies()
+  init()
 }

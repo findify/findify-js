@@ -15,6 +15,8 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const TerserPlugin = require('terser-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 
+require('dotenv').config();
+
 interface WebpackEnvArgs {
   analyze?: boolean;
   generateStatsFile?: boolean;
@@ -22,7 +24,8 @@ interface WebpackEnvArgs {
 }
 
 const componentsPath = path.resolve(__dirname, '../react-components');
-const createGlobals = (isDevelopment) => [
+
+const createGlobals = (isDevelopment, isLocal) => [
   '__MERCHANT_CONFIG_URL__',
   '__MERCHANT_API_KEY__',
   '__MERCHANT_VERSION__',
@@ -34,7 +37,14 @@ const createGlobals = (isDevelopment) => [
   '__MERCHANT_ID__',
   '__SENTRY_ENABLED__',
 ].reduce((acc, name) =>
-  ({ ...acc, [name]: isDevelopment ? 'false' : name }), {}
+({
+  ...acc,
+  [name]: isDevelopment
+    ? 'false'
+    : isLocal
+      ? (process.env[name] && JSON.stringify(process.env[name]) || name)
+      : name
+}), {}
 )
 
 export default (env: WebpackEnvArgs, { mode, origin = 'prod' }) => {
@@ -48,7 +58,7 @@ export default (env: WebpackEnvArgs, { mode, origin = 'prod' }) => {
       filename: '[name].js',
       chunkFilename: '[name].js',
       path: path.resolve(__dirname, 'dist'),
-      publicPath: mode === 'development'
+      publicPath: mode === 'development' || origin === 'local'
         ? process.env.PUBLIC_PATH || '/'
         : origin === 'prod'
           ? 'https://cdn.jsdelivr.net/npm/@findify/bundle@__MERCHANT_VERSION_RAW__/dist/'
@@ -185,7 +195,7 @@ export default (env: WebpackEnvArgs, { mode, origin = 'prod' }) => {
     },
     plugins: [
       new webpack.DefinePlugin({
-        ...createGlobals(mode === 'development'),
+        ...createGlobals(mode === 'development', origin === 'local'),
         __root: 'window.findify',
         __COMMITHASH__: JSON.stringify(new GitRevisionPlugin().commithash()),
         __PUBLIC_PATH__: JSON.stringify(process.env.PUBLIC_PATH),
@@ -193,6 +203,7 @@ export default (env: WebpackEnvArgs, { mode, origin = 'prod' }) => {
           HOT: mode === 'development',
           BROWSER: true,
           NODE_ENV: JSON.stringify(mode),
+          IS_TEST: origin === 'test',
           FINDIFY_ENV: JSON.stringify(process.env.FINDIFY_ENV || 'production')
         },
         __DEBUG__: mode === 'development'
