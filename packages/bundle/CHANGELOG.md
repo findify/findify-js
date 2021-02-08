@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="6.16.17"></a>
+## [6.16.17](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.16.16...@findify/bundle@6.16.17) (2021-02-08)
+
+
+### Bug Fixes
+
+* **bundle:** initially load polyfill if required ([6e2f781](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/6e2f781))
+
+
+
+
 <a name="6.16.16"></a>
 ## [6.16.16](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.16.15...@findify/bundle@6.16.16) (2021-02-07)
 
