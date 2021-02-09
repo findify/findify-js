@@ -44,7 +44,7 @@ const reduceWidgets = (state, action) => {
     case 'attach':
       return [...state, action.widget];
     case 'update':
-      return state.map((widget) => widget.key === action.key ? action.widget : widget)
+      return state.map((widget) => widget.key === action._key ? action.widget : widget)
     case 'detach':
       return state.filter(({ key }) => key !== action.key)
   }
