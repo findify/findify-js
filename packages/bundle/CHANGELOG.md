@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="6.16.18"></a>
+## [6.16.18](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.16.17...@findify/bundle@6.16.18) (2021-02-09)
+
+
+### Bug Fixes
+
+* **bundle:** fix SPA rendering ([6fcae84](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/6fcae84))
+
+
+
+
 <a name="6.16.17"></a>
 ## [6.16.17](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.16.16...@findify/bundle@6.16.17) (2021-02-08)
 
