@@ -82,6 +82,9 @@ const getEntity = (selector, _type?, _config?) =>
   const predefined = getPredefined(type);
   if (!!predefined) {
     predefined.node = node;
+    predefined.config = config;
+    predefined._key = predefined.key;
+    predefined.key = key;
     __root.emit(Events.update, predefined);
     return;
   }

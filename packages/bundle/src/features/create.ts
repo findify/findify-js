@@ -47,7 +47,11 @@ class FeatureCreator extends Component<any>{
   }
 
   componentDidCatch(e) {
-    __root.sentry && __root.sentry.captureException(e)
+    if (__root.sentry && !!__root.sentry.captureException) {
+      __root.sentry.captureException(e)
+    } else {
+      console.warn(e)
+    }
   }
 
   componentWillUnmount() {
