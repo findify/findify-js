@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="6.17.0"></a>
+# [6.17.0](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.16.18...@findify/bundle@6.17.0) (2021-02-10)
+
+
+### Features
+
+* **bundle:** disable zero results by flag ([5054bed](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/5054bed))
+
+
+
+
 <a name="6.16.18"></a>
 ## [6.16.18](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.16.17...@findify/bundle@6.16.18) (2021-02-09)
 
