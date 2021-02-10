@@ -45,6 +45,7 @@ export default (widget) => {
     let fallbackAgent;
 
     const renderZeroResults = () => {
+      if (config.get('disableZeroResults')) return;
       if (!fallbackAgent) fallbackAgent = createFallbackAgent(config, node);
       return render(
         RecommendationProvider,
@@ -87,7 +88,7 @@ export default (widget) => {
         return render('initial');
       }
       hideLoader(node);
-      if (!config.get('disableZeroResults')) renderZeroResults();
+      renderZeroResults();
     })
 
     /** Unsubscribe from events on instance destroy  */
