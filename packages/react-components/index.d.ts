@@ -1326,6 +1326,13 @@ const _default: (template?: string, selector?: RegExp) => (...args: any[]) => st
 export default _default;
 
 }
+declare module 'helpers/useTheme' {
+const _default: (theme?: {}, styles?: {}) => {
+    [className: string]: string;
+};
+export default _default;
+
+}
 declare module 'helpers/withColumns' {
 const _default: (columnsMapper?: (width: any, props?: any) => 12 | 3 | 6 | 4) => (baseComponent: any) => any;
 export default _default;

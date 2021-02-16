@@ -1,11 +1,10 @@
 import { createElement } from 'react';
 import { SmartCollectionProvider } from "@findify/react-connect";
-import { getQuery, setQuery, buildQuery, collectionPath, listenHistory, redirectToPage } from '../../core/location';
+import { getQuery, setQuery, collectionPath, listenHistory, redirectToPage } from '../../core/location';
 import { Events } from '../../core/events';
 import { scrollTo } from '../../helpers/scrollTo';
 import { hideFallback, showFallback, hideLoader } from '../../helpers/fallbackNode';
 import lazy from '../../helpers/renderLazyComponent';
-import isNumeric from '../../helpers/isNumeric';
 
 const lazySearch = lazy(() => import(
   /* webpackChunkName: "search" */

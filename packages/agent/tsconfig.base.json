@@ -15,7 +15,7 @@
     "rootDirs": ["src"],
     "allowJs": false,
     "outDir": "lib",
-    "types" : ["node", "lodash", "webpack", "jest", "@findify/sdk", "immutable"]
+    "types" : ["node", "webpack", "jest", "immutable"]
   },
   "compileOnSave": false,
   "buildOnSave": false

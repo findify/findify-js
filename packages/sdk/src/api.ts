@@ -1,5 +1,3 @@
-import 'core-js/features/promise';
-
 import debug from 'debug';
 import axios, { AxiosRequestConfig as AxiosOptions } from 'axios';
 import * as qs from 'qs';
@@ -49,7 +47,7 @@ const sendJSONP = (req: Request, getLatestRequestID) => {
       } else if (typeof data === 'object' && !(data instanceof Array)) {
         resolve(data);
       } else {
-        resolve();
+        resolve(undefined);
       }
     });
   });

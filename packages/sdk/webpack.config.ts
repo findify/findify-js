@@ -2,6 +2,7 @@ import * as path from 'path';
 import * as webpack from 'webpack';
 import * as GitRevisionPlugin from 'git-revision-webpack-plugin';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
+import * as TerserPlugin from 'terser-webpack-plugin';
 
 interface WebpackEnvArgs {
   analyze?: boolean;
@@ -27,21 +28,48 @@ export default (env: WebpackEnvArgs) => {
     },
     stats: 'minimal',
     bail: true,
-    target: 'web',
+    target: ['web', 'es5'],
     resolve: {
       extensions: ['.ts', '.js'],
       symlinks: false,
+    },
+    optimization: {
+      mergeDuplicateChunks: true,
+      usedExports: true,
+      mangleExports: 'size',
+      concatenateModules: true,
+      minimizer: [
+        new TerserPlugin({
+          extractComments: true,
+          parallel: true,
+        }),
+      ],  
     },
     module: {
       rules: [
         {
           test: /\.ts$/,
-          loader: 'ts-loader',
-          options: {
-            silent: true,
-            configFile: path.resolve(__dirname, 'tsconfig.lib.json'),
-            compilerOptions: { target: 'es5' },
-          },
+          use: [
+            {
+              loader: 'babel-loader',
+              options: {
+                babelrc: false,
+                plugins: [
+                  "@babel/plugin-proposal-object-rest-spread",
+                  "@babel/plugin-proposal-class-properties",
+                ],
+                presets: [
+                  "@babel/preset-typescript",
+                  ["@babel/preset-env", {
+                    "modules": false,
+                    "corejs": 3,
+                    "useBuiltIns": "usage",
+                    "targets": { "browsers": ["last 2 versions", "ie >= 10"] },
+                  }]
+                ]
+              }
+            }
+          ]
         },
       ],
     },

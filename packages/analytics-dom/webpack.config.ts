@@ -2,9 +2,9 @@ import * as path from 'path';
 import * as webpack from 'webpack';
 import * as GitRevisionPlugin from 'git-revision-webpack-plugin';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
-import * as UglifyJSPlugin from 'uglifyjs-webpack-plugin';
 import * as DuplicatePackageCheckerPlugin from 'duplicate-package-checker-webpack-plugin';
-import * as  CompressionPlugin from 'compression-webpack-plugin';
+import * as CompressionPlugin from 'compression-webpack-plugin';
+import * as TerserPlugin from 'terser-webpack-plugin';
 
 interface WebpackEnvArgs {
   analyze?: boolean;
@@ -40,6 +40,19 @@ export default (env: WebpackEnvArgs) => {
     resolve: {
       extensions: ['.ts', '.js'],
     },
+    target: ['web', 'es5'],
+    optimization: {
+      mergeDuplicateChunks: true,
+      usedExports: true,
+      mangleExports: 'size',
+      concatenateModules: true,
+      minimizer: [
+        new TerserPlugin({
+          extractComments: true,
+          parallel: true,
+        }),
+      ],
+    },
     module: {
       rules: [
         {
@@ -58,7 +71,9 @@ export default (env: WebpackEnvArgs) => {
                   "@babel/preset-typescript",
                   ["@babel/preset-env", {
                     "modules": false,
-                    "targets": { "browsers": ["last 2 versions", "ie > 8"] },
+                    "corejs": 3,
+                    "useBuiltIns": "usage",
+                    "targets": { "browsers": ["last 2 versions", "ie >= 10"] },
                   }]
                 ]
               }
@@ -75,8 +90,6 @@ export default (env: WebpackEnvArgs) => {
           BROWSER: true
         },
       }),
-      // enable scope hoisting
-      new webpack.optimize.ModuleConcatenationPlugin(),
 
       new webpack.LoaderOptionsPlugin({
         debug: false,
@@ -84,21 +97,6 @@ export default (env: WebpackEnvArgs) => {
       }),
   
       new DuplicatePackageCheckerPlugin(),
-  
-      new UglifyJSPlugin({
-        test: /\.min\.js($|\?)/i,
-        cache: true,
-        parallel: true,
-        sourceMap: true,
-        uglifyOptions: {
-          output: {
-            beautify: false,
-          },
-          compress: {
-            drop_debugger: true,
-          }
-        }
-      }),
 
       new CompressionPlugin({
         exclude: /\.map/,

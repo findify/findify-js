@@ -1,6 +1,11 @@
 import { Events } from '../../core/events';
-import Tabs from '@findify/react-components/src/layouts/Tabs';
 import { documentReady } from '../../helpers/documentReady';
+import lazy from '../../helpers/renderLazyComponent';
+
+const lazyTabs = lazy(() => import(
+  /* webpackChunkName: "additional" */
+  '@findify/react-components/src/layouts/Tabs'
+));
 
 const getNestedWidgets = root => {
   const children = Array.from(root.children);
@@ -12,15 +17,17 @@ const getNestedWidgets = root => {
 const getProps = (widgets, state, updateCount) => ({
   onClick: updateCount,
   widgets: widgets.map(({ node, key }, index) => ({
-    key,
-    active: state.active === key,
-    title: node.dataset.title,
-    count: state.counter[index]
-  }))
+      key,
+      active: state.active === key,
+      title: node.dataset.title,
+      count: state.counter[index]
+    })
+  )
 });
 
 const createState = (_widgets, render) => {
   const widgets = [..._widgets];
+
   const state = {
     counter: {},
     active: widgets[0] && widgets[0].key
@@ -31,13 +38,14 @@ const createState = (_widgets, render) => {
       widget.active = widget.key === state.active;
       widget.node.style.display = widget.key ===  state.active ? 'block' : 'none';
     });
-    render(Tabs, getProps(widgets, state, toggle))
+
+    return render(lazyTabs, getProps(widgets, state, toggle));
   }
 
   const toggle = (key) => {
     state.active = key;
     __root.emit(Events.hydrate, key);
-    hydrate()
+    hydrate();
   };
 
   const updateCount = (index, count) => {
@@ -47,17 +55,17 @@ const createState = (_widgets, render) => {
 
   const getState = () => state;
 
-  return { updateCount, toggle, getState }
+  return { updateCount, toggle, getState };
 }
 
-const getCount = (data, type) => type === 'recommendation' ? data.get('limit') : data.get('total')
+const getCount = (data, type) => type === 'recommendation' ? data.get('limit') : data.get('total');
 
-export default (widget) => (render) =>{
+export default (widget) => (render) => {
   const { node } = widget;
 
   const process = () => {
     const widgets = getNestedWidgets(node);
-    const { updateCount, getState } = createState(widgets, render);
+    const { updateCount } = createState(widgets, render);
     widgets.forEach(({ type, agent }, index) => {
       if (agent.response.get('meta')) updateCount(index, getCount(agent.response.get('meta'), type));
       agent.on('change:meta', (meta) => {

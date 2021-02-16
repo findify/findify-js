@@ -1,15 +1,13 @@
-import 'core-js/features/array/includes';
 import analytics, { Client } from '@findify/analytics';
-import { getEventsOnPage, getDeprecatedEvents, getEventData } from './bindings/events';
+import { getEventsOnPage, getDeprecatedEvents } from './bindings/events';
 import { getFiltersOnPage } from './bindings/filters';
 import { startDOMListeners } from './bindings/dom';
 
 import elementDataset from 'element-dataset';
 import { EventName } from '@findify/analytics/lib/types';
+
 // Support data-* in IE9
-
 elementDataset();
-
 
 declare module document {
   const readyState: any;

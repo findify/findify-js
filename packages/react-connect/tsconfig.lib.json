@@ -3,8 +3,8 @@
   "exclude": ["node_modules", "src/**/__tests__/*"],
   "include": ["src/**/*"],
   "compilerOptions": {
-    "target": "es5",
     "module": "commonjs",
+    "target": "es2015",
     "skipLibCheck": true
   }
 }

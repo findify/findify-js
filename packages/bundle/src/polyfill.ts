@@ -4,5 +4,4 @@
  * imports to reduce the size
  */
 import 'core-js';
-import 'raf/polyfill';
 

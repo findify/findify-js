@@ -1,4 +1,4 @@
-export enum SortingOrder {
+enum SortingOrder {
   Asc = 'asc',
   Desc = 'desc',
 }
