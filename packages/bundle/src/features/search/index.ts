@@ -1,12 +1,11 @@
 import { createElement } from 'react';
-import { SearchProvider, RecommendationProvider, ContentProvider } from "@findify/react-connect";
+import { SearchProvider, RecommendationProvider } from "@findify/react-connect";
 import { Recommendation as RecommendationAgent } from "@findify/agent";
 import { getQuery, setQuery, isSearch, listenHistory, redirectToPage } from '../../core/location';
 import { hideFallback, showFallback, hideLoader } from '../../helpers/fallbackNode';
 import { Events } from '../../core/events';
 import { scrollTo } from '../../helpers/scrollTo';
 import lazy from '../../helpers/renderLazyComponent';
-import isNumeric from '../../helpers/isNumeric';
 
 const createFallbackAgent = (config, node) => new RecommendationAgent({
   key: config.get('key'),
@@ -18,7 +17,6 @@ const createFallbackAgent = (config, node) => new RecommendationAgent({
   hideFallback(node);
   hideLoader(node);
 });
-
 
 const lazySearchZeroResults = lazy(() => import(
   /* webpackChunkName: "search" */

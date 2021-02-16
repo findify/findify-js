@@ -1,6 +1,6 @@
 import { createElement } from 'react';
 import { AutocompleteProvider } from "@findify/react-connect";
-import { getQuery, setQuery } from '../../core/location';
+import { getQuery } from '../../core/location';
 import { registerHandlers } from './handlers';
 import lazy from '../../helpers/renderLazyComponent';
 
@@ -8,8 +8,6 @@ const lazyAutocomplete = lazy(() => import(
   /* webpackChunkName: "autocomplete" */
   '@findify/react-components/src/layouts/Autocomplete'
 ));
-
-const autocompleteComponent = lazyAutocomplete();
 
 let _cache;
 let initialRequested = false;
@@ -30,7 +28,6 @@ export default (widget) => {
     agent.set('q', !state.q ? '' : state.q);
     initialRequested = true;
   }
-  
 
   if (state.q) node.value = state.q;
 
@@ -41,6 +38,6 @@ export default (widget) => {
     const props = { apiKey, agent, config, key: 'normalAutocomplete' };
 
     /** Render */
-    return createElement(AutocompleteProvider, props, autocompleteComponent);
+    return createElement(AutocompleteProvider, props, lazyAutocomplete());
   }
 }

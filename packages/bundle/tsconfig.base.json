@@ -16,7 +16,7 @@
     "rootDirs": ["src"],
     "allowJs": false,
     "outDir": "lib",
-    "types" : ["node", "webpack", "jest", "@findify/analytics"]
+    "types" : ["node", "jest", "@findify/analytics"]
   },
   "compileOnSave": false,
   "buildOnSave": false

@@ -1,7 +1,5 @@
-import 'core-js/features/promise';
-
 import { stringify } from 'qs';
-import { User, EventName, PublicEventRequest } from '../types';
+import { User, PublicEventRequest } from '../types';
 import settings from '../settings';
 
 declare module global {
@@ -17,7 +15,7 @@ const makeQuery = (query) => stringify({ ...query, t_client: Date.now() });
 
 // tslint:disable-next-line:variable-name
 const ImageRequest = (data: any, endpoint?: string) =>
-  new Promise((resolve, reject) => {
+  new Promise((resolve) => {
     const image = global.document.createElement('img');
     image.onload = resolve;
     image.onerror = resolve;
@@ -26,13 +24,13 @@ const ImageRequest = (data: any, endpoint?: string) =>
 
 // tslint:disable-next-line:variable-name
 const BeaconRequest = (data: any, endpoint?: string) =>
-  new Promise((resolve, reject) => {
+  new Promise((resolve) => {
     const { key, ...rest } = data;
     global.navigator.sendBeacon(
       `${getEndpoint(endpoint)}?key=${key}`,
       JSON.stringify({ ...rest, t_client: Date.now() })
     );
-    resolve();
+    resolve(true);
   });
 
 export const request = (function() {
@@ -43,7 +41,7 @@ export const request = (function() {
       new Promise((resolve, reject) => {
         const http = require('http');
         http.get(`${getEndpoint(endpoint).replace('https', 'http')}?${makeQuery(data)}`)
-        resolve()
+        resolve(true)
       });
   }
   throw new Error('Can not determinate request type');

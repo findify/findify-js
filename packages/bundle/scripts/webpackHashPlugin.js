@@ -8,14 +8,14 @@ const getPath = (base, path) => {
 
 const cache = new Map();
 
-const findModulePath = (path, module) => {
+const findModulePath = (path, issuer, module) => {
 	const { rawRequest, context } = module;
 
 	if (
-		module.issuer &&
+		issuer &&
 		rawRequest &&
-		module.issuer.context &&
-		!module.issuer.context.includes('node_modules') &&
+		issuer.context &&
+		!issuer.context.includes('node_modules') &&
 		path.includes('node_modules') &&
 		!['!', '.'].includes(rawRequest[0])
 	){
@@ -58,73 +58,74 @@ class HashedPlugin {
 					.join(',')
 				
 				return source + `
-					${mainTemplate.requireFn}.chunks = [${scripts}];
-					${mainTemplate.requireFn}.frozen = false;
-					${mainTemplate.requireFn}.invalidate = function() {
-						var __cache = installedModules;
-						installedModules = {${ignoredModules}};
-						${mainTemplate.requireFn}.frozen = true;
+						__webpack_require__.chunks = [${scripts}];
+						__webpack_require__.frozen = false;
+						__webpack_require__.invalidate = function() {
+						var __cache = __webpack_module_cache__;
+						__webpack_module_cache__ = {${ignoredModules}};
+						__webpack_require__.frozen = true;
 						__cache = null;
 					};
-					function webpackJsonpCallback(data) {
-						var chunkIds = data[0];
-						var moreModules = data[1];
-					
-						// add "moreModules" to the modules object,
-						// then flag all "chunkIds" as loaded and fire callback
-						var moduleId, chunkId, i = 0, resolves = [];
-						for(;i < chunkIds.length; i++) {
-							chunkId = chunkIds[i];
-							if(Object.prototype.hasOwnProperty.call(installedChunks, chunkId) && installedChunks[chunkId]) {
-								resolves.push(installedChunks[chunkId][0]);
-							}
-							installedChunks[chunkId] = 0;
-						}
-						for(moduleId in moreModules) {
+
+					var webpackJsonpCallback = (parentChunkLoadingFunction, data) => {
+			 			var [chunkIds, moreModules, runtime] = data;
+			 			// add "moreModules" to the modules object,
+			 			// then flag all "chunkIds" as loaded and fire callback
+			 			var moduleId, chunkId, i = 0, resolves = [];
+			 			for(;i < chunkIds.length; i++) {
+			 				chunkId = chunkIds[i];
+			 				if(__webpack_require__.o(installedChunks, chunkId) && installedChunks[chunkId]) {
+			 					resolves.push(installedChunks[chunkId][0]);
+			 				}
+			 				installedChunks[chunkId] = 0;
+			 			}
+			 			for(moduleId in moreModules) {
 							if(Object.prototype.hasOwnProperty.call(moreModules, moduleId)) {
-								if (chunkIds[0] === 'extra' || !modules[moduleId] || !${mainTemplate.requireFn}.frozen) {
+								if (chunkIds[0] === 'extra' || !modules[moduleId] || !__webpack_require__.frozen) {
 									modules[moduleId] = moreModules[moduleId];
 								}
 							}
 						}
-						if(parentJsonpFunction) parentJsonpFunction(data);
-					
-						while(resolves.length) {
-							resolves.shift()();
-						}
-					
-					};
+			 			if(runtime) runtime(__webpack_require__);
+			 			if(parentChunkLoadingFunction) parentChunkLoadingFunction(data);
+			 			while(resolves.length) {
+			 				resolves.shift()();
+			 			}
+					 
+			 		}
 				`
 			})
-			// const usedIds = new Set();
+
 			compilation.hooks.beforeModuleIds.tap(
 				"HashedPlugin",
 				modules => {
+					const { moduleGraph, chunkGraph } = compilation;
+
 					for (const module of modules) {
-						if (module.libIdent) {
-							const id = module.libIdent({
-								context: this.options.context || compiler.options.context
-							});
-	
-							if (id.includes('.css') && id.includes('css-loader')) continue;
+						if (!module.libIdent) continue;
+		
+						const id = module.libIdent({
+							context: this.options.context || compiler.options.context
+						});
 
-							if (cache.has(id)) {
-								module.id = cache.get(id);
-								continue;
-							}
+						if (id.includes('.css') && id.includes('css-loader')) continue;
 
-							const _path = findModulePath(id, module);
-
-							let _hash = require("crypto")
-								.createHash('md5')
-								.update(options.mapping[_path] || _path)
-								.digest('base64')
-								.substr(0, 4);
-
-							cache.set(id, _hash);
-
-              module.id = _hash;
+						if (cache.has(id)) {
+							chunkGraph.setModuleId(module, cache.get(id))
+							continue;
 						}
+
+						const _path = findModulePath(id, moduleGraph.getIssuer(module), module);
+
+						let _hash = require("crypto")
+							.createHash('md5')
+							.update(options.mapping[_path] || _path)
+							.digest('base64')
+							.substr(0, 4);
+
+						cache.set(id, _hash);
+
+						chunkGraph.setModuleId(module, _hash);
 					}
 				}
 			);

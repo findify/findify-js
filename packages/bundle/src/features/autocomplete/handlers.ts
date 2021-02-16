@@ -1,8 +1,7 @@
-import { findDomNode } from 'react-dom';
-import { List, isImmutable } from 'immutable'
+import { isImmutable } from 'immutable';
 import { addEventListeners } from '../../helpers/addEventListeners';
 import { findClosestElement } from '../../helpers/findClosestElement';
-import { isSearch, setQuery, buildQuery, redirectToSearch, redirectToPage } from '../../core/location';
+import { isSearch, redirectToSearch, redirectToPage } from '../../core/location';
 import { Events } from '../../core/events';
 import { debounce } from '../../helpers/debounce';
 import { documentReady } from '../../helpers/documentReady';

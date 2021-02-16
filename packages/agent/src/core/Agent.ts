@@ -5,8 +5,7 @@ import { fromJS, Map, isImmutable } from 'immutable';
 import { Cache } from './Cache';
 import { getChangedFields } from '../utils/changes';
 import { stateToQuery, queryToState } from '../utils/format';
-import { getFacetType } from '../utils/filters';
-import { isFunction, isObject, debounce } from '../utils/helpers';
+import { isFunction, debounce } from '../utils/helpers';
 import deepMerge from '../utils/deepMerge';
 
 const pickConfigProps = ({ debounce, onError, immutable = false }) =>

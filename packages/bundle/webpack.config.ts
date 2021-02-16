@@ -1,26 +1,24 @@
 const path = require('path')
-const { compact } = require('lodash');
 const webpack = require('webpack')
 const GitRevisionPlugin = require('git-revision-webpack-plugin')
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
 const DuplicatePackageCheckerPlugin = require('duplicate-package-checker-webpack-plugin')
 const CompressionPlugin = require('compression-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin')
 const WebpackHashPlugin = require('./scripts/webpackHashPlugin');
 const CopyWebpackPlugin = require("copy-webpack-plugin");
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const TerserPlugin = require('terser-webpack-plugin');
-const ManifestPlugin = require('webpack-manifest-plugin');
+const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
+const DeadCodePlugin = require('webpack-deadcode-plugin');
 
 require('dotenv').config();
 
 interface WebpackEnvArgs {
   analyze?: boolean;
   generateStatsFile?: boolean;
-  findify_env?: 'staging'
+  findify_env?: 'staging',
+  origin?: 'prod' | 'local' | 'test'
 }
 
 const componentsPath = path.resolve(__dirname, '../react-components');
@@ -47,14 +45,17 @@ const createGlobals = (isDevelopment, isLocal) => [
 }), {}
 )
 
-export default (env: WebpackEnvArgs, { mode, origin = 'prod' }) => {
+export default (env: WebpackEnvArgs, { mode, ...rest }) => {
+  const origin = env.origin || 'prod';
+
   const config = {
     entry: {
       'bundle': path.resolve(__dirname, 'src/index')
     },
     devtool: 'source-map',
+    target: ['web', 'es5'],
     output: {
-      jsonpFunction: 'findifyJsonp',
+      chunkLoadingGlobal: 'findifyJsonp',
       filename: '[name].js',
       chunkFilename: '[name].js',
       path: path.resolve(__dirname, 'dist'),
@@ -72,45 +73,44 @@ export default (env: WebpackEnvArgs, { mode, origin = 'prod' }) => {
       hot: false
     },
     optimization: {
-      usedExports: false,
+      mergeDuplicateChunks: true,
+      usedExports: true,
+      mangleExports: false,
+      concatenateModules: false,
+      splitChunks: {
+        minChunks: 1,
+        maxAsyncRequests: 1,
+        cacheGroups: {
+          defaultVendors: {
+            test: /[\\/]node_modules[\\/](react|react-dom|immutable)[\\/]/,
+            name: 'vendor',
+            chunks: 'all',
+            reuseExistingChunk: true,
+          },
+        },
+      },
       minimizer: [
         new TerserPlugin({
           extractComments: true,
-          cache: true,
           parallel: true,
-          sourceMap: true, // Must be set to true if using source-maps in production
-          terserOptions: {
-            extractComments: 'all',
-            compress: {
-              pure_funcs: ['console.info', 'console.debug', 'console.warn']
-            },
-          }
         }),
       ],  
-      concatenateModules: false,
-      splitChunks: {
-        chunks: "all",
-        maxAsyncRequests: 2,
-        maxInitialRequests: 2,
-        minChunks: 2,
-        name(module, chunks, cacheGroupKey) {
-          return cacheGroupKey
-          // const allChunksNames = chunks.map((item) => item.name).join('~');
-          // const res = cacheGroupKey + allChunksNames;
-          // const hash = require("crypto").createHash('md5').update(res).digest('base64').substr(0, 6).replace('/', '00');
-          // return `chunk-${cacheGroupKey}`;
-        }
-      }
     },
     stats: 'minimal',
     bail: true,
     resolve: {
       extensions: ['.ts', '.tsx', '.js', '.css'],
       alias: {
+        'axios': path.resolve(__dirname, '../../node_modules/axios'),
         'react-dom': mode === 'development' && '@hot-loader/react-dom' || 'react-dom',
+        'react': path.resolve(__dirname, '../../node_modules/react'),
+        'react-is': path.resolve(__dirname, '../../node_modules/react-is'),
+        '@babel/runtime': path.resolve(__dirname, '../../node_modules/@babel/runtime'),
+
         // 'recompose': 'recompose/dist/Recompose.cjs',
         'lodash.throttle': 'lodash/throttle',
         'lodash.debounce': 'lodash/debounce',
+        'lodash': path.resolve(__dirname, '../../node_modules/lodash'),
       
         'hoist-non-react-statics': path.resolve(__dirname, '../../node_modules/hoist-non-react-statics'),
         debug: path.resolve(__dirname, '../../node_modules/debug'),
@@ -164,7 +164,10 @@ export default (env: WebpackEnvArgs, { mode, origin = 'prod' }) => {
             path.resolve(__dirname, 'src'),
             path.resolve(__dirname, '../../node_modules'),
           ],
-          exclude: /@babel(?:\/|\\{1,2})runtime|core-js/,
+          exclude: [
+            /@babel(?:\/|\\{1,2})runtime|core-js/,
+            path.resolve(__dirname, componentsPath),
+          ],
           use: [
             {
               loader: 'babel-loader',
@@ -183,10 +186,8 @@ export default (env: WebpackEnvArgs, { mode, origin = 'prod' }) => {
             {
               loader: 'babel-loader',
               options: {
-                rootMode: "upward",
-                envName: mode,
                 babelrc: false,
-                extends: path.resolve(componentsPath, 'babel.config.js')
+                configFile: path.resolve(__dirname, componentsPath, 'babel.config.js'),
               }
             }
           ]
@@ -249,20 +250,32 @@ export default (env: WebpackEnvArgs, { mode, origin = 'prod' }) => {
     config.plugins.push(
       new MiniCssExtractPlugin({ filename: "[name].css" }),
       new CompressionPlugin({ exclude: /\.map/ }),
-      new CopyWebpackPlugin([{
-        from: path.resolve(__dirname,'../react-components/lib/raw.css'),
-        to: 'raw.css',
-      }]),
-      new CopyWebpackPlugin([{
-        from: path.resolve(__dirname,'../react-components/lib/styles.css'),
-        to: 'styles.css',
-      }]),
-      new CopyWebpackPlugin([{
-        from: path.resolve(__dirname,'../react-components/lib/tree.json'),
-        to: 'tree.json',
-      }]),
-      new ManifestPlugin({
+      new CopyWebpackPlugin({
+        patterns: [
+          {
+            from: path.resolve(__dirname, '../react-components/lib/raw.css'),
+            to: 'raw.css',
+          },
+          {
+            from: path.resolve(__dirname, '../react-components/lib/styles.css'),
+            to: 'styles.css',
+          },
+          {
+            from: path.resolve(__dirname, '../react-components/lib/tree.json'),
+            to: 'tree.json',
+          }
+        ]
+      }),
+      new WebpackManifestPlugin({
         filter: f => f.path.split('.').pop() === 'js'
+      }),
+      new DeadCodePlugin({
+        patterns: [
+          'src/**/*.(js|jsx|css)',
+        ],
+        exclude: [
+          '**/*.(stories|spec).(js|jsx)',
+        ],
       })
     )
   }

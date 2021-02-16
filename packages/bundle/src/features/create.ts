@@ -1,4 +1,4 @@
-import { Component, createElement, useCallback, useMemo, useState, useEffect, createFactory } from 'react';
+import { Component, createElement } from 'react';
 import { Events } from '../core/events';
 
 class FeatureCreator extends Component<any>{

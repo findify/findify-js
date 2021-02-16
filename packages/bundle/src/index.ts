@@ -54,14 +54,6 @@ if (process.env.NODE_ENV !== 'development') {
     return loadCss(path);
   })(__MERCHANT_CSS__);
 }
-  
-    
-deps.push(
-  import(/* webpackChunkName: "vendors" */ 'react'),
-  import(/* webpackChunkName: "vendors" */ 'react-dom'),
-  import(/* webpackChunkName: "vendors" */ 'immutable'),
-  import(/* webpackChunkName: "vendors" */ 'recompose'),
-)
 
 Promise
   .all(deps)

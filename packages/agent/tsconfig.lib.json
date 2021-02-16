@@ -5,8 +5,8 @@
   "noImplicitAny": true,
   "removeComments": true,
   "compilerOptions": {
-    "target": "es5",
     "module": "commonjs",
+    "target": "es2015",
     "outDir": "lib"
   }
 }

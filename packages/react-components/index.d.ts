@@ -1566,6 +1566,13 @@ const _default: (theme?: {}, styles?: {}) => {
 export default _default;
 
 }
+declare module 'helpers/useTheme' {
+const _default: (theme?: {}, styles?: {}) => {
+    [className: string]: string;
+};
+export default _default;
+
+}
 declare module 'helpers/withColumns' {
 import sizeMe from 'react-sizeme';
 const _default: (columnsMapper?: (width: any, props?: any) => 3 | 4 | 6 | 12) => (baseComponent: any) => import("react").ComponentType<Pick<{}, never> & sizeMe.WithSizeProps>;

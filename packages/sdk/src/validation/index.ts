@@ -1,6 +1,3 @@
-import 'core-js/features/object/values';
-import 'core-js/features/array/includes';
-
 import { User } from '../common';
 import * as Request from '../request';
 import { Config } from '../client';

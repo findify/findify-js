@@ -1,11 +1,17 @@
 import { createElement } from 'react';
 import { ContentProvider } from "@findify/react-connect";
-import { getQuery, setQuery, isSearch, listenHistory } from '../../core/location';
+import { getQuery, setQuery, listenHistory } from '../../core/location';
 import { hideFallback, hideLoader } from '../../helpers/fallbackNode';
 import { Events } from '../../core/events';
 import { scrollTo } from '../../helpers/scrollTo';
-import Content from '@findify/react-components/src/layouts/Content';
 import isNumeric from '../../helpers/isNumeric';
+
+import lazy from '../../helpers/renderLazyComponent';
+
+const lazyComponent = lazy(() => import(
+  /* webpackChunkName: "additional" */
+  '@findify/react-components/src/layouts/Content'
+));
 
 const parseSortHTMLAttribute = sort => {
   try {
@@ -65,6 +71,6 @@ export default (widget) => {
 
     /** Render */
 
-    return createElement(ContentProvider, props, createElement(Content))
+    return createElement(ContentProvider, props, lazyComponent())
   }
 }
