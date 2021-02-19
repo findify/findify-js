@@ -55,7 +55,7 @@ function deploy_to_s3() {
   local PKG_NAME=bundle  # pkg name
 
   local PKG_BUNDLE_DIR=${SRC_MAP[$PKG_NAME]}
-  local DST_BUNDLE_DIR=${DST_MAP[$PKG_NAME]}/$S3_ENV/$TRAVIS_COMMIT
+  local DST_BUNDLE_DIR=${DST_MAP[$PKG_NAME]}/$TRAVIS_BRANCH
 
   local SRC_BUNDLE_PATH=packages/$PKG_NAME/$PKG_BUNDLE_DIR
   local DST_BUNDLE_PATH=$S3_BUCKET_PATH/$DST_BUNDLE_DIR
@@ -80,7 +80,7 @@ if [[ $TRAVIS_BRANCH == 'master' ]]; then
   lerna publish --yes
 fi
 
-if [[ $TRAVIS_BRANCH == 'develop' ]]; then
+if [[ $TRAVIS_BRANCH =~ ^([0-9]+\.[0-9]+\.[0-9]+) ]]; then
   echo "deploying bundle to AWS S3"
   echo "tag: $TRAVIS_COMMIT"
   deploy_to_s3 $TRAVIS_COMMIT
