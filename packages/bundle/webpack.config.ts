@@ -63,7 +63,7 @@ export default (env: WebpackEnvArgs, { mode, ...rest }) => {
         ? process.env.PUBLIC_PATH || '/'
         : origin === 'prod'
           ? 'https://cdn.jsdelivr.net/npm/@findify/bundle@__MERCHANT_VERSION_RAW__/dist/'
-          : `https://findify-assets-2bveeb6u8ag.netdna-ssl.com/bundle/${origin}/__MERCHANT_VERSION_RAW__/`
+          : `https://findify-assets-2bveeb6u8ag.netdna-ssl.com/bundle/${process.env.FINDIFY_ENV}/__MERCHANT_VERSION_RAW__/`
     },
     devServer: {
       contentBase: path.resolve(__dirname, 'dist'),

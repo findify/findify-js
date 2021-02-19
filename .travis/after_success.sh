@@ -55,7 +55,7 @@ function deploy_to_s3() {
   local PKG_NAME=bundle  # pkg name
 
   local PKG_BUNDLE_DIR=${SRC_MAP[$PKG_NAME]}
-  local DST_BUNDLE_DIR=${DST_MAP[$PKG_NAME]}/$TRAVIS_BRANCH
+  local DST_BUNDLE_DIR=${DST_MAP[$PKG_NAME]}/staging/$TRAVIS_BRANCH
 
   local SRC_BUNDLE_PATH=packages/$PKG_NAME/$PKG_BUNDLE_DIR
   local DST_BUNDLE_PATH=$S3_BUCKET_PATH/$DST_BUNDLE_DIR
