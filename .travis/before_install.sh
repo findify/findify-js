@@ -11,7 +11,7 @@ if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
   exit 0
 fi
 
-if [[ $TRAVIS_BRANCH == 'master' || $TRAVIS_BRANCH == 'develop' ]]; then
+if [[ $TRAVIS_BRANCH == 'master' || $TRAVIS_BRANCH == 'develop' || $TRAVIS_BRANCH =~ ^([0-9]+\.[0-9]+\.[0-9]+) ]]; then
   # install AWS CLI tools so we can upload pkg bundles to S3
   pip install --user awscli
   export PATH=$PATH:$HOME/.local/bin
@@ -50,7 +50,7 @@ if [[ $TRAVIS_BRANCH == 'master' || $TRAVIS_BRANCH == 'develop' ]]; then
     echo "$PROJECT_NAME : $PUBLIC_PATH"
   fi
 
-  if [[ $TRAVIS_BRANCH == 'develop' ]]; then
+  if [[ $TRAVIS_BRANCH == 'develop' || $TRAVIS_BRANCH =~ ^([0-9]+\.[0-9]+\.[0-9]+) ]]; then
     export PUBLIC_PATH="https://findify-assets-2bveeb6u8ag.netdna-ssl.com/bundle/"
     export PROJECT_NAME='bundle-staging'
     export FINDIFY_ENV="staging"
