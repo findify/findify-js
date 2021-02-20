@@ -2,15 +2,11 @@
  * @module layouts/Autocomplete/Dropdown
  */
 
-import React, { useEffect } from 'react';
-import Drawer from 'components/common/Drawer'
+import React from 'react';
 import Tip from 'components/autocomplete/Tip'
 import ProductMatches from 'components/autocomplete/ProductMatches'
 import SearchSuggestions from 'components/autocomplete/SearchSuggestions'
-import MapArray from 'components/common/MapArray';
-import Branch from 'components/common/Branch'
-import { connectSuggestions, connectItems } from '@findify/react-connect';
-import { withDrawer } from 'helpers/withDrawer';
+import { useSuggestions } from '@findify/react-connect';
 import cx from 'classnames';
 import { ThemedSFCProps, MJSConfiguration, ISuggestion, MJSValue } from 'types';
 import { List } from 'immutable';
@@ -77,16 +73,15 @@ export interface IAutocompleteDropdownProps {
 }
 
 const AutocompleteDropdownView: React.SFC<IAutocompleteDropdownProps> = ({
-  config,
   theme,
-  meta,
-  suggestions,
   innerRef,
   closeAutocomplete,
   ...rest
 }: IAutocompleteDropdownProps) => {
+  const { suggestions, meta, config } = useSuggestions();
   const isTrendingSearches = !meta.get('q');
   const [position, register] = usePosition(config);
+
   return (
     <div display-if={suggestions && suggestions.size > 0} className={theme.wrapper}>
       <div className={theme.overlay} display-if={config.get('showOverlay')} onClick={closeAutocomplete}></div>

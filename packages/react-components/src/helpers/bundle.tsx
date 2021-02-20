@@ -1,7 +1,6 @@
 import React from 'react';
-import { compose, branch, withStateHandlers, withContext, getContext } from "recompose";
+import { getContext } from "recompose";
 import { object, func } from 'prop-types';
-import pure from './pure';
 import { List, is } from 'immutable';
 
 const identity = i => i;

@@ -15,8 +15,6 @@ export default compose(
 
   withTheme(styles),
 
-  connectConfig,
-
   withColumns()
 
 )(view);

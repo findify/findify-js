@@ -2,18 +2,17 @@
  * @module layouts/Autocomplete
  */
 
-import React, { createElement } from 'react';
-import { connectConfig } from '@findify/react-connect';
+import React, { createElement, useMemo } from 'react';
+import { useConfig } from '@findify/react-connect';
 import { portal } from 'helpers/createPortal';
+import Loadable from 'react-loadable';
+import chunks from 'helpers/chunks';
 
-import Dropdown from 'layouts/Autocomplete/Dropdown';
-import Sidebar from 'layouts/Autocomplete/Sidebar';
-import Fullscreen from 'layouts/Autocomplete/Fullscreen';
 /** View type to View component mapping */
 const LayoutTypes = {
-  dropdown: Dropdown,
-  sidebar: Sidebar,
-  fullscreen: Fullscreen
+  sidebar: chunks.autocomplete.sidebar,
+  dropdown: chunks.autocomplete.dropdown,
+  fullscreen: chunks.autocomplete.fullscreen
 }
 
 /** Possible Autocomplete view types */
@@ -27,11 +26,14 @@ type AutocompleteType = keyof typeof LayoutTypes;
  * @param type View type needed
  * @param props Props for React component
  */
-const layoutFactory = (type: AutocompleteType, props) => () => (
-  <div data-findify-autocomplete-wrapper="true">
-    {createElement(LayoutTypes[type] || Fullscreen, props)}
-  </div>
-)
+const layoutFactory = (type: AutocompleteType, props) => () => {
+  const Component = useMemo(() => Loadable({ loader: LayoutTypes[type], loading: () => null }), []);
+  return (
+    <div data-findify-autocomplete-wrapper="true">
+      <Component { ...props} />
+    </div>
+  )
+}
 
 /**
  * Used to render view either in a portal or in place
@@ -42,11 +44,16 @@ const renderView = (type: AutocompleteType, props) => (
   (type === 'sidebar' ? portal : createElement)(layoutFactory(type, props))
 )
 
-const Autocomplete = connectConfig(({ config, isTrendingSearches, ...rest }) => {
-  const isMobile = window.innerWidth <= config.get('mobileBreakpoint')
-  const viewType: AutocompleteType = isMobile && config.get('mobileViewType', 'sidebar') || config.get('viewType', 'simple')
+const Autocomplete = ({ isTrendingSearches, ...rest }) => {
+  const { config } = useConfig();
+  const isMobile = window.innerWidth <= config.get('mobileBreakpoint');
+
+  const viewType: AutocompleteType = isMobile
+    ? config.get('mobileViewType', 'sidebar')
+    : config.get('viewType', 'dropdown');
+
   return renderView(viewType, { ...rest, config, isMobile, isTrendingSearches })
-});
+};
 
 export default process.env.HOT
   ? require('react-hot-loader').hot(module)(Autocomplete)

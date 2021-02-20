@@ -3,7 +3,7 @@
  */
 
 import { createElement } from 'react';
-import { connectConfig } from '@findify/react-connect';
+import { useConfig } from '@findify/react-connect';
 
 import Grid from 'layouts/Recommendation/Grid';
 import Slider from 'layouts/Recommendation/Slider';
@@ -12,13 +12,13 @@ import Slider from 'layouts/Recommendation/Slider';
  * HOC that decides, which style recommendation to use,
  * based on configuration
  */
-const Recommendation = connectConfig(({ config }) => {
+const Recommendation = () => {
+  const { config } = useConfig();
   const template = config.get('template');
-  if (template === 'swiper') return createElement(Slider);
+  if (template === 'swiper' || template === 'slider') return createElement(Slider);
   if (template === 'grid') return createElement(Grid);
-  if (template === 'slider') return createElement(Slider);
   return null;
-});
+};
 
 export default process.env.HOT
   ? require('react-hot-loader').hot(module)(Recommendation)

@@ -5,12 +5,15 @@
 import React from 'react';
 
 import Grid from 'components/common/Grid';
-import ItemsList from 'components/ItemsList';
 import Text from 'components/Text';
-
+import MapArray from 'components/common/MapArray';
+import ProductCard from 'components/Cards/Product';
 import { List } from 'immutable';
 import { IProduct, ThemedSFCProps, MJSConfiguration } from 'types';
-
+/**
+ * @deprecated
+ */
+import ItemsList from 'components/ItemsList';
 
 /** Props that ZeroResults layout accepts */
 export interface IZeroResultsProps extends ThemedSFCProps {
@@ -45,7 +48,15 @@ const ZeroResultsLayout = ({ items, title, theme, columns, config }: IZeroResult
         </Text>
       </div>
     </div>
-    <ItemsList wrapper={Grid} columns={columns} />
+    <Grid columns={columns}>
+      {
+        MapArray({
+          array: items,
+          factory: ProductCard,
+          config
+        })
+      }
+    </Grid>
   </div>
 )
 

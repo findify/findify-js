@@ -5,12 +5,15 @@
 import React from 'react';
 
 import Grid from 'components/common/Grid';
-import ItemsList from 'components/ItemsList';
 import Text from 'components/Text';
 import { IProduct, MJSConfiguration, ThemedSFCProps } from 'types/index';
 import { List } from 'immutable';
 import Product from 'components/Cards/Product'
 import MapArray from 'components/common/MapArray';
+/**
+ * @deprecated
+ */
+import ItemsList from 'components/ItemsList';
 
 /** This is a list of props Grid layout for Recommendations accepts */
 export interface IGridProps extends ThemedSFCProps {
