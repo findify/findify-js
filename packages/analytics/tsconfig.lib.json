@@ -3,7 +3,7 @@
   "include": ["src/**/*"],
   "exclude": ["node_modules", "src/**/__tests__/*"],
   "compilerOptions": {
-    "target": "es5",
+    "target": "ES5",
     "module": "commonjs"
   }
 }

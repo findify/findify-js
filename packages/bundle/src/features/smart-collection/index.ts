@@ -11,69 +11,57 @@ const lazySearch = lazy(() => import(
   '@findify/react-components/src/layouts/Search'
 ));
 
-export default (widget) => {
+export default (render, widget) => {
   const { agent, config, node } = widget;
   const apiKey = config.get('key');
   const props = { agent, apiKey, config };
-  const state = getQuery();
 
-  /** Setup initial request */
-  if (!config.get('disableAutoRequest')) {
-    agent.defaults({
-      slot: collectionPath(),
-      rules: config.get('includeRulesInCollection') ? __root.analytics.state.filters : void 0
-    });
-    agent.applyState(state);
-  }
 
-  return render => {
+  /** Listen to location back/fwd */
+  const stopListenLocation = listenHistory((_, action) => {
+    if (action !== 'POP') return;
+    agent.applyState(getQuery());
+    render('initial');
+  });
 
-    /** Listen to location back/fwd */
-    const stopListenLocation = listenHistory((_, action) => {
-      if (action !== 'POP') return;
-      agent.applyState(getQuery());
-      render('initial');
-    });
-
-    /** Switch to recommendation if query not present */
-    agent.on('change:items', (items) => {
-      if (!items.isEmpty()) {
-        hideFallback(node);
-        hideLoader(node);
-        if (!config.getIn(['view', 'infinite']) && !config.get('disableScroll')) {
-          scrollTo(config.get('cssSelector'), config.get('scrollOffset'))
-        }
-        render('initial');
-      } else {
-        showFallback(node);
-        hideLoader(node);
-        __root.emit(Events.collectionNotFound, widget);
-        render();
+  /** Switch to recommendation if query not present */
+  agent.on('change:items', (items) => {
+    if (!items.isEmpty()) {
+      hideFallback(node);
+      hideLoader(node);
+      if (!config.getIn(['view', 'infinite']) && !config.get('disableScroll')) {
+        scrollTo(config.get('cssSelector'), config.get('scrollOffset'))
       }
-    })
-
-    agent.on('change:redirect', redirectToPage);
-
-    agent.on('error', () => {
+      render('initial');
+    } else {
       showFallback(node);
       hideLoader(node);
+      __root.emit(Events.collectionNotFound, widget);
       render();
-    })
+    }
+  })
 
-    /** Listen to changes */
-    agent.on('change:query', q => setQuery(q.toJS()));
+  agent.on('change:redirect', redirectToPage);
 
-    /** Switch to recommendation if query not present */
-    // agent.on('change:items', handleFirstResponse);
+  agent.on('error', () => {
+    showFallback(node);
+    hideLoader(node);
+    render();
+  })
 
-    /** Unsubscribe from events on instance destroy  */
-    const unsubscribe = __root.listen((event, prop, ...args) => {
-      if (event !== Events.detach || prop !== widget) return;
-      stopListenLocation();
-      unsubscribe();
-    });
+  /** Listen to changes */
+  agent.on('change:query', q => setQuery(q.toJS()));
 
-    /** Render */
-    return createElement(SmartCollectionProvider, props, lazySearch({ isCollection: true }));
-  }
+  /** Switch to recommendation if query not present */
+  // agent.on('change:items', handleFirstResponse);
+
+  /** Unsubscribe from events on instance destroy  */
+  const unsubscribe = __root.listen((event, prop, ...args) => {
+    if (event !== Events.detach || prop !== widget) return;
+    stopListenLocation();
+    unsubscribe();
+  });
+
+  /** Render */
+  return createElement(SmartCollectionProvider, props, lazySearch({ isCollection: true }));
 }

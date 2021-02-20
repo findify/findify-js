@@ -50,7 +50,8 @@ export default (env: WebpackEnvArgs, { mode, ...rest }) => {
 
   const config = {
     entry: {
-      'bundle': path.resolve(__dirname, 'src/index')
+      'bundle': path.resolve(__dirname, 'src/index'),
+      'polyfill': path.resolve(__dirname, 'src/polyfill')
     },
     devtool: 'source-map',
     target: ['web', 'es5'],
@@ -80,14 +81,6 @@ export default (env: WebpackEnvArgs, { mode, ...rest }) => {
       splitChunks: {
         minChunks: 1,
         maxAsyncRequests: 1,
-        cacheGroups: {
-          defaultVendors: {
-            test: /[\\/]node_modules[\\/](react|react-dom|immutable)[\\/]/,
-            name: 'vendor',
-            chunks: 'all',
-            reuseExistingChunk: true,
-          },
-        },
       },
       minimizer: [
         new TerserPlugin({
@@ -163,10 +156,11 @@ export default (env: WebpackEnvArgs, { mode, ...rest }) => {
           include: [
             path.resolve(__dirname, 'src'),
             path.resolve(__dirname, '../../node_modules'),
+            path.resolve(__dirname, './node_modules'),
+            /@findify.*$/,
           ],
           exclude: [
             /@babel(?:\/|\\{1,2})runtime|core-js/,
-            path.resolve(__dirname, componentsPath),
           ],
           use: [
             {
@@ -217,7 +211,7 @@ export default (env: WebpackEnvArgs, { mode, ...rest }) => {
       new HtmlWebpackPlugin({
         hash: true,
         template:  path.resolve(__dirname, 'index.html'),
-        inject: 'head'
+        inject: false
       }),
 
       new WebpackHashPlugin({

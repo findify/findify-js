@@ -9,23 +9,16 @@ const lazyRecommendation = lazy(() => import(
   '@findify/react-components/src/layouts/Recommendation'
 ));
   
-export default (widget) => {
+export default (_, widget) => {
   const { node, agent, config } = widget;
   const props = { agent, config, apiKey: config.get('key') };
-
-  if (!config.get('disableAutoRequest')) {
-    agent.defaults(getPayload(config, node, __root.analytics.state));
-  }
-
-  return () => {
     /** Remove entity and instance if nothing was found */
-    agent.on('change:items', items => {
-      if (items.isEmpty()) return __root.widgets.detach(widget.key);
-      hideFallback(node);
-      hideLoader(node);
-    })
+  agent.on('change:items', items => {
+    if (items.isEmpty()) return __root.widgets.detach(widget.key);
+    hideFallback(node);
+    hideLoader(node);
+  })
 
-    /** Render */
-    return createElement(RecommendationProvider, props, lazyRecommendation());
-  }
+  /** Render */
+  return createElement(RecommendationProvider, props, lazyRecommendation());
 }
