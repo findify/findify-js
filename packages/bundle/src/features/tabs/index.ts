@@ -3,7 +3,6 @@ import { documentReady } from '../../helpers/documentReady';
 import lazy from '../../helpers/renderLazyComponent';
 
 const lazyTabs = lazy(() => import(
-  /* webpackChunkName: "additional" */
   '@findify/react-components/src/layouts/Tabs'
 ));
 
@@ -60,7 +59,7 @@ const createState = (_widgets, render) => {
 
 const getCount = (data, type) => type === 'recommendation' ? data.get('limit') : data.get('total');
 
-export default (widget) => (render) => {
+export default (render, widget) => {
   const { node } = widget;
 
   const process = () => {

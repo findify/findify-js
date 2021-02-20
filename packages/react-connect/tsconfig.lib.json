@@ -4,7 +4,7 @@
   "include": ["src/**/*"],
   "compilerOptions": {
     "module": "commonjs",
-    "target": "es2015",
+    "target": "ES5",
     "skipLibCheck": true
   }
 }

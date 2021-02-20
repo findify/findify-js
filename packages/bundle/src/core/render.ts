@@ -3,6 +3,7 @@ import { render, createPortal } from 'react-dom';
 import { createFeature } from '../features/create';
 import { getParentNode } from '../helpers/getParentNode';
 import { Events } from './events';
+import { createWidgetCreator } from '../helpers/createWidgetCreator';
 
 const createRoot = () => {
   const meta = document.createElement('meta');
@@ -13,7 +14,6 @@ const createRoot = () => {
 
 const Portal = ({ widget }) => {
   const [element, component] = useMemo(() => {
-
     const element = document.createElement('div');
     element.className = `findify-container ${widget.config.get('cssSelector')}`;
     return [
@@ -42,16 +42,19 @@ const Portal = ({ widget }) => {
 const reduceWidgets = (state, action) => {
   switch (action.type) {
     case 'attach':
-      return [...state, action.widget];
+      return [...state, createWidgetCreator(action.widget)];
     case 'update':
-      return state.map((widget) => widget.key === action._key ? action.widget : widget)
+      console.log(state);
+      return state.map((widget) =>
+        widget.key === action.widget._key ? action.widget : widget
+      )
     case 'detach':
       return state.filter(({ key }) => key !== action.key)
   }
 }
 
 const RootElement = ({ widgets }) => {
-  const [state, dispatch] = useReducer(reduceWidgets, widgets.list());
+  const [state, dispatch] = useReducer(reduceWidgets, widgets);
   useMemo(() => {
     __root.listen((event, widget) => {
       if (event === Events.update) {
@@ -71,6 +74,9 @@ const RootElement = ({ widgets }) => {
   ), [state]);
 }
 
+let isRendered = false;
 export const renderWidgets = (widgets) => {
+  if (isRendered) return;
   render(createElement(RootElement, { widgets }), createRoot());
+  isRendered = true;
 };

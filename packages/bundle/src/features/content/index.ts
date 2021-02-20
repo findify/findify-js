@@ -9,7 +9,6 @@ import isNumeric from '../../helpers/isNumeric';
 import lazy from '../../helpers/renderLazyComponent';
 
 const lazyComponent = lazy(() => import(
-  /* webpackChunkName: "additional" */
   '@findify/react-components/src/layouts/Content'
 ));
 
@@ -35,7 +34,7 @@ export default (widget) => {
   agent.defaults({ type: [type], sort: parseSortHTMLAttribute(sort) });
   agent.set('q', q);
 
-  return (render) => {
+  return async (render) => {
     /** Listen to changes */
     agent.on('change:query', (q, meta) => {
       setQuery(q.toJS())

@@ -69,9 +69,8 @@ export default async (
   /* Load Dependencies in closure to support polyfills */
   const { fromJS } = require('immutable');
   const { createWidgets, bulkAddWidgets } = require('./core/widgets');
-  const { renderWidgets } = require('./core/render');
+  const { renderWidgets } = require('./helpers/renderWidgets');
   const { observeDomNodes } = require('./helpers/observeDomNodes');
-  const { documentReady } = require('./helpers/documentReady');
 
   __root.config = fromJS(cfg);
   __root.sentry = sentry;

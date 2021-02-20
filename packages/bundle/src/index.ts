@@ -1,6 +1,3 @@
-import 'core-js/features/promise';
-
-import loadJs from 'load-js';
 import loadCss from './helpers/loadCss';
 import log from './helpers/log';
 
@@ -42,7 +39,7 @@ if (__SENTRY_ENABLED__) {
  * So we will load it by load.js
  */
 if(process.env.NODE_ENV !== 'development') {
-  deps.push(loadJs(__MERCHANT_CONFIG_URL__));
+  deps.push(new Promise(resolve =>__webpack_require__.l(__MERCHANT_CONFIG_URL__, resolve, 'config')));
 } else {
   deps.push(import(/* webpackChunkName: "config" */ './config'));
 }
@@ -101,8 +98,16 @@ const init = () =>
   ? Promise.all(__webpack_require__.chunks.map(__webpack_require__.e)).then(loadDependencies)
   : loadDependencies()
 
-if (typeof Symbol === "undefined" || typeof Map === "undefined") {
-  import(/* webpackChunkName: "polyfill" */ './polyfill').then(init)
+if (
+  typeof Symbol === "undefined" ||
+  typeof Map === "undefined" ||
+  typeof Promise === "undefined"
+) {
+  __webpack_require__.l(
+    __webpack_require__.p + 'polyfill.js',
+    init,
+    'polyfill'
+  );
 } else {
   init()
 }

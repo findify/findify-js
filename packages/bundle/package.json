@@ -16,7 +16,7 @@
     "build:dev": "npx webpack --mode development",
     "build:dist": "npx webpack --mode production --env origin=prod",
     "build:dist:local": "npx webpack --mode production --env origin=local",
-    "build:dist:analyze": "npm run build:dist -- --env.analyze",
+    "build:dist:analyze": "npm run build:dist -- --env analyze",
     "build:test": "npm run build:lib -- --project tsconfig.test.json --module commonjs",
     "build:test:watch": "npm run build:test -- --watch",
     "clean": "del lib types dist",
