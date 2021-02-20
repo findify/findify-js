@@ -1,8 +1,10 @@
 import React, { useCallback, useEffect, createFactory, useMemo, useState, useReducer } from 'react';
+import { useSuggestions } from '@findify/react-connect';
 
 const arrowCodes = ['ArrowUp', 'ArrowDown'];
 
-export const useAutocompleteLogic = ({ config, suggestions, getSuggestionProps, meta }) => {
+export const useAutocompleteLogic = () => {
+  const { suggestions, getSuggestionProps, config,  meta } = useSuggestions();
   const node: HTMLInputElement = config.get('node');
 
   const reduceIndex = (state, e) => {

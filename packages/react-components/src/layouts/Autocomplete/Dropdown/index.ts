@@ -11,6 +11,5 @@ import styles from 'layouts/Autocomplete/Dropdown/styles.css';
 export default compose(
   setDisplayName('Dropdown'),
   withTheme(styles),
-  connectSuggestions,
   withAutocompleteLogic
 )(view);

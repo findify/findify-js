@@ -8,12 +8,13 @@ import cx from 'classnames';
 import MapArray from 'components/common/MapArray';
 import Item from 'components/CheckboxFacet/Item';
 import Button from 'components/Button';
-import VirtualizedList from 'components/common/VirtualizedList';
 import Text from 'components/Text';
 import Icon from 'components/Icon';
+import Loadable from 'react-loadable';
 
 import { IFacetValue, ThemedSFCProps, MJSConfiguration } from 'types';
 import { List } from 'immutable'
+import chunks from 'helpers/chunks';
 
 /** Props that CheckboxFacet accepts */
 export interface ICheckboxFacetProps extends ThemedSFCProps {
@@ -32,6 +33,11 @@ export interface ICheckboxFacetProps extends ThemedSFCProps {
   /** Callback invoked on request to expand list completely */
   onToggle: (evt: Event) => any;
 }
+
+const VirtualizedList = Loadable({
+  loader: chunks.components.virtualizedList,
+  loading: () => null
+})
 
 const CheckboxFacetView =  ({
   theme,

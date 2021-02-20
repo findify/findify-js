@@ -1,6 +1,5 @@
 import { createFactory } from 'react';
 import sizeMe from 'react-sizeme';
-import { compose, setDisplayName } from 'recompose';
 
 
 /**
