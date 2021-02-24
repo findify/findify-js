@@ -42,7 +42,7 @@ const BreadcrumbsView: React.SFC<IBreadcrumbProps> = ({ filters, theme, config }
     config={config}
     array={filters}
     factory={Breadcrumb}
-    />
+  />
 )
 
 export default BreadcrumbsView;

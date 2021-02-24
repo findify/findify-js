@@ -10,6 +10,7 @@ import Button from 'components/Button';
 import Text from 'components/Text';
 import Icon from 'components/Icon';
 import { ThemedSFCProps, MJSConfiguration } from 'types';
+import Grid from 'components/common/Grid';
 
 /** Props that DesktopActions view accepts */
 export interface IDesktopActionsProps extends ThemedSFCProps {
@@ -23,30 +24,30 @@ export interface IDesktopActionsProps extends ThemedSFCProps {
   config: MJSConfiguration
 }
 
-const DesktopActionsView: React.SFC<IDesktopActionsProps> = ({
+const DesktopActionsView: React.FunctionComponent<IDesktopActionsProps> = ({
   showFacets,
   theme,
   facetsVisible,
   isCollection,
   config
-}: IDesktopActionsProps) =>
-<div className={theme.root}>
-  <div className={theme.block}>
-    <Button
-      display-if={config.get('hidableFacets') && !facetsVisible}
-      className={theme.showFacets}
-      onClick={showFacets}>
-      <Text secondary uppercase>
-        <Icon name='Filters' className={theme.icon} />
-        { config.getIn(['facets', 'i18n', 'showDesktopFacets'], 'show') }
-      </Text>
-    </Button>
-    <Query display-if={!isCollection} theme={{ root: theme.query }} />
-    <Breadcrumbs theme={{ root: theme.breadcrumbs }} />
-  </div>
-  <div className={theme.sorting}>
-    <Sorting />
-  </div>
-</div>
+}: IDesktopActionsProps) => (
+  <Grid className={theme.root} columns='auto|fit'>
+    <div className={theme.block}>
+      <Button
+        display-if={config.get('hidableFacets') && !facetsVisible}
+        className={theme.showFacets}
+        onClick={showFacets}
+      >
+        <Text secondary uppercase>
+          <Icon name='Filters' className={theme.icon} />
+          { config.getIn(['facets', 'i18n', 'showDesktopFacets'], 'show') }
+        </Text>
+      </Button>
+      <Query display-if={!isCollection} theme={{ root: theme.query }} />
+      <Breadcrumbs theme={{ root: theme.breadcrumbs }} />
+    </div>
+    <Sorting columnClass={theme.sorting} />
+  </Grid>
+)
 
 export default DesktopActionsView;

@@ -1,7 +1,13 @@
-import Drawer from 'components/common/Drawer'
-import { createFactory, Fragment } from 'react'
+import { createFactory } from 'react'
 import { createPortal } from 'react-dom'
-import { withStateHandlers, defaultProps, compose, setDisplayName } from 'recompose'
+import { withStateHandlers, compose, setDisplayName } from 'recompose'
+import Loadable from 'react-loadable';
+import chunks from 'helpers/chunks';
+
+const Drawer = Loadable({
+  loader: chunks.components.drawer,
+  loading: () => null 
+})
 
 const drawer = createFactory(Drawer);
 

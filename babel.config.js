@@ -16,8 +16,6 @@ module.exports = (api) => {
         "useBuiltIns": "entry",
         'corejs': '3',
         "targets": {
-          // browserlist combined by OR clause
-          // https://github.com/ai/browserslist
           "browsers": ["last 2 versions", " ie >= 10"],
         },
       }]
