@@ -3,8 +3,18 @@
   --swiper-navigation-size: 44px;
 }
 
-.root{
-  
+/* Hide default Slider previous & next buttons */
+:global(.swiper-button-next),
+:global(.swiper-button-prev) {
+  display: none !important;
+}
+
+:global(.findify-recommendation) {
+  padding: 0 30px;
+}
+
+:global(.findify-swiper-wrapper) {
+  position: relative;
 }
 
 :global(.swiper-container) {
@@ -53,6 +63,7 @@
   visibility: hidden;
 }
 
+:global(.findify-swiper-button-prev), :global(.findify-swiper-button-next),
 :global(.swiper-button-prev), :global(.swiper-button-next) {
   position: absolute;
   top: 10px;
@@ -72,14 +83,35 @@
   display: none;
 }
 
+:global(.findify-swiper-button-prev),
 :global(.swiper-button-prev) {
   left: 0;
   right: auto;
+  outline: none;
 }
 
+:global(.findify-swiper-button-next),
 :global(.swiper-button-next) {
   right: 0;
   left: auto;
+  outline: none;
+}
+
+:global(.findify-swiper-button-prev), :global(.findify-swiper-button-next) {
+  height: 100%;
+}
+
+:global(.findify-swiper-button-prev) {
+  left: -30px;
+}
+
+:global(.findify-swiper-button-next) {
+  right: -30px;
+}
+
+:global(.findify-swiper-button-prev svg),
+:global(.findify-swiper-button-next svg) {
+  overflow: visible;
 }
 
 :global(.swiper-button-lock) {
