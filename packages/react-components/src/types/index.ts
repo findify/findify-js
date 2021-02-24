@@ -37,11 +37,12 @@ export interface ThemedSFCProps {
    * when it is false - hidden
    */
   'display-if'?: boolean,
+
   children?: React.ReactNode,
   /**
    *  Theme is a raw - generated class mapping
    */
-  theme: Theme,
+  theme?: Theme | any,
 }
 
 /** Props that every component that can apply custom classname to itself accepts */

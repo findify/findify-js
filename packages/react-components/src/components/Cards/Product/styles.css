@@ -1,42 +1,20 @@
 $text-align: center;
 
 .root {
-  padding-left: 9px;
-  padding-right: 9px;
-  padding-bottom: 51px;
-  width: calc(100% - 18px);
+  padding-bottom: 50px;
+  width: 100%;
   display: table;
   background-color: transparent;
   transition: background-color .35s ease-in-out;
   text-decoration: none;
   user-select: none;
   border: none!important;
+  box-sizing: border-box;
   &.simple{
     padding: 0 8px 15px 8px;
   }
   vertical-align: bottom;
 }
-
-/*
-.root {
-  font-size: 14px;
-  padding: 6%!important;
-  display: flex;
-  background-color: transparent;
-  transition: background-color .35s ease-in-out;
-  text-decoration: none;
-  user-select: none;
-  border: none!important;
-  &.simple{
-    padding: 0 8px 15px 8px;
-  }
-  &:hover {
-    background-color: #f7f7f7;
-  }
-  &.simple:hover{
-    background-color: initial;
-  }
-}*/
 
 :global(.findify-widget--products-carousel) .root:hover{
   background-color: inherit;

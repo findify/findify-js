@@ -1,36 +1,28 @@
-$gutter: 20px;
-
 .root{
-  font-size: 0;
-  line-height: 0;
-  width: 100%;
+  display: flex;
+  list-style: none;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.container{
+  overflow: hidden;
 }
 
 .column{
-  display: inline-block;
-  box-sizing: border-box;
-  min-height: 1px;
-  font-size: $font-size-medium;
-  line-height: $line-height;
-  vertical-align: top;
+  box-sizing: content-box;
 }
 
-@supports(display: flex) {
-  .root{
-    display: flex;
-    flex-direction: row;
-    align-items: top;
-    font-size: inherit;
-    line-height: inherit;
-    flex-wrap: wrap;
-  }
-  .column{
-    display: block;
-  }
+.column-auto{
+  flex: 1;
 }
 
-@for $i from 1 to 12 {
+.column-fit{
+  width: auto;
+}
+
+/* @for $i from 1 to 12 {
   .column-$i {
-    width: calc(100 / 12 * $i)%;
+    flex: 0 0 calc(100 / 12 * $i)%;
   }
-}
+} */

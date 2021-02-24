@@ -2,9 +2,8 @@
  * @module components/common/Grid
  */
 
-import React from 'react';
+import React, { useMemo } from 'react';
 import cx from 'classnames';
-import { setDisplayName } from 'recompose';
 
 import styles from 'components/common/Grid/styles.css';
 
@@ -12,22 +11,56 @@ import styles from 'components/common/Grid/styles.css';
 export interface IGridColumnProps {
   /** Custom className for column */
   className?: string;
-  /** Column className */
-  columnClass?: string;
   /** Column inline style */
   columnStyle?: React.CSSProperties;
   /** Contents of the column */
   children?: React.ReactChild;
+
+  gutter?: string | number;
+
+  size: string;
+
+  order?: number
 }
 
-/** Used to concatenate & build complete className from props */
-const getClassName = (props: IGridColumnProps) =>
-  cx(styles.column, props.className, props.columnClass);
+export default ({
+  className,
+  columnStyle,
+  children,
+  gutter,
+  order: _order,
+  size: _size
+}: IGridColumnProps) => {
+  const composedClassName = useMemo(() =>
+    cx(styles.column, className, styles[`column-${_size}`]),
+    [className, _size]
+  );
 
-const GridColumn = setDisplayName('GridColumn')((props: IGridColumnProps) => (
-  <div className={getClassName(props)} style={props.columnStyle} role='listitem' tabIndex={0}>
-    {props.children}
-  </div>
-));
+  const order = useMemo(() => !_order ? {} : ({
+    webkitBoxOrdinalGroup: _order,
+    mozBoxOrdinalGroup: _order,
+    msFlexOrder: _order,
+    webkitOrder: _order,
+    order: _order
+  }), [_order]);
 
-export default GridColumn;
+  const size = useMemo(() => ({
+    flex: `0 0 calc(${100 / 12 * Number(_size)}% - ${gutter})`
+  }), [_size]);
+
+  return (
+    <div
+      role='listitem'
+      tabIndex={0}
+      className={composedClassName}
+      style={{
+        padding: `${gutter} 0 0 ${gutter}`,
+        ...size,
+        ...order,
+        ...columnStyle
+      }}
+    >
+      {children}
+    </div>
+  )
+};

@@ -11,6 +11,7 @@ import cx from 'classnames';
 import { ThemedSFCProps, MJSConfiguration, ISuggestion, MJSValue } from 'types';
 import { List } from 'immutable';
 import { usePosition } from 'layouts/Autocomplete/Dropdown/trackPosition';
+import { useAutocompleteLogic } from 'layouts/Autocomplete/withAutocompleteLogic';
 
 export interface IAutocompletePanel extends ThemedSFCProps {
   config: MJSConfiguration;
@@ -75,16 +76,20 @@ export interface IAutocompleteDropdownProps {
 const AutocompleteDropdownView: React.SFC<IAutocompleteDropdownProps> = ({
   theme,
   innerRef,
-  closeAutocomplete,
   ...rest
 }: IAutocompleteDropdownProps) => {
   const { suggestions, meta, config } = useSuggestions();
+  const { selectedSuggestion, closeAutocomplete } = useAutocompleteLogic();
+  const [position, register] = usePosition();
   const isTrendingSearches = !meta.get('q');
-  const [position, register] = usePosition(config);
 
   return (
     <div display-if={suggestions && suggestions.size > 0} className={theme.wrapper}>
-      <div className={theme.overlay} display-if={config.get('showOverlay')} onClick={closeAutocomplete}></div>
+      <div
+        display-if={config.get('showOverlay')}
+        className={theme.overlay}
+        onClick={closeAutocomplete}
+      />
       <div
         className={theme.root}
         data-findify-autocomplete={true}
@@ -99,6 +104,7 @@ const AutocompleteDropdownView: React.SFC<IAutocompleteDropdownProps> = ({
         <div className={theme.container}>
           <Suggestions
             {...rest}
+            selectedSuggestion={selectedSuggestion}
             theme={theme}
             config={config}
             icon={isTrendingSearches && 'Fire'}

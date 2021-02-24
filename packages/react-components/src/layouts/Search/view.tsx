@@ -11,6 +11,7 @@ import Branch from 'components/common/Branch';
 import Banner from 'components/Banner';
 import { List } from 'immutable'
 import { MJSConfiguration, ThemedSFCProps, IProduct } from 'types';
+import Grid from 'components/common/Grid';
 
 /** Props that search layout accepts */
 export interface ISearchProps extends ThemedSFCProps {
@@ -28,20 +29,30 @@ export interface ISearchProps extends ThemedSFCProps {
   items: List<IProduct>;
 }
 
-const SearchLayout = ({ config, isMobile, isCollection, theme }) =>
-  <div className={theme.root}>
-    <DesktopFacets display-if={!isMobile && !config.get('filtersOnRight')} />
-    <div className={theme.content} >
-      <Branch
-        isCollection={isCollection}
-        condition={isMobile}
-        left={MobileActions}
-        right={DesktopActions} />
-      <Banner />
-      <Branch left={LazyResults} right={StaticResults} condition={config.getIn(['view', 'infinite'])} />
-    </div>
-    <DesktopFacets display-if={!isMobile && config.get('filtersOnRight')} />
-  </div>
+const SearchLayout = ({ config, isMobile, isCollection, theme }) => {
+  return (
+    <Grid className={theme.root} columns='fit|auto' gutter={40}>
+      <DesktopFacets
+        display-if={!isMobile}
+        order={config.get('filtersOnRight') && 2}
+      />
+      <div className={theme.content}>
+        <Branch
+          isCollection={isCollection}
+          condition={isMobile}
+          left={MobileActions}
+          right={DesktopActions}
+        />
+        <Banner />
+        <Branch
+          condition={!config.getIn(['view', 'infinite'])}
+          left={LazyResults}
+          right={StaticResults}
+        />
+      </div>
+    </Grid>
+  )
+}
 
 
 export default SearchLayout;

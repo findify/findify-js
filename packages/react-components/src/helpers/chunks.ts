@@ -19,5 +19,6 @@ export default {
 
   components: {
     virtualizedList: () => import('components/common/VirtualizedList'),
+    drawer: () => import('components/common/Drawer'),
   }
 }

@@ -18,8 +18,6 @@ const LayoutTypes = {
 /** Possible Autocomplete view types */
 type AutocompleteType = keyof typeof LayoutTypes;
 
-
-// TODO: possibly migrate data-findify-autocomplete=true there as well
 /**
  * Layout factory is used to wrap Autocomplete layout in a div, containing data-findify-autocomplete-wrapper attribute,
  * which it requires in order to work correctly

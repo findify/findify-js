@@ -1,37 +1,26 @@
 $padding: 25px;
 
 .root{
-  display: table;
-  display: flex;
-  width: 100%;
   padding-bottom: 24px;
-  flex-direction: row;
-  align-items: center;
 }
 
 .block{
-  display: table;
   display: flex;
-  width: 100%;
-  flex-direction: row;
+  height: 100%;
   align-items: center;
-  flex-flow: row wrap;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .sorting{
-  display: table-cell;
-  display: flex;
-  position: relative;
+  margin-left: auto;
 }
 
 .query{
-  display: table-cell;
-  display: flex;
+  white-space: nowrap;
 }
 
 .breadcrumbs{
-  display: table-cell;
-  display: flex;
 }
 
 .show-facets{

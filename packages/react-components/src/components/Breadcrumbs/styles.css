@@ -5,6 +5,7 @@
 .breadcrumb{
   display: inline-block;
   font-size: $font-size-small;
+  white-space: nowrap;
   padding: 0;
   margin-left: 12px;
   position: relative;

@@ -60,7 +60,7 @@ export const useAutocompleteLogic = () => {
 export default BaseComponent => {
   const factory = createFactory(BaseComponent);
   return (props) => {
-    const logic = useAutocompleteLogic(props);
+    const logic = useAutocompleteLogic();
     return factory({ ...props, ...logic });
   }
 }

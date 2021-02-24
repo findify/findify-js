@@ -16,6 +16,7 @@ import ProductCard from 'components/Cards/Product';
  */
 import ItemsList from 'components/ItemsList';
 
+
 /** Props that StaticResults accepts */
 export interface IStaticResultsProps extends ThemedSFCProps {
   /** MJS Configuration */
@@ -24,16 +25,16 @@ export interface IStaticResultsProps extends ThemedSFCProps {
   columns: number;
 };
 
-const StaticResultsView = ({ columns, theme }: IStaticResultsProps) => {
+const StaticResultsView = ({ theme }: IStaticResultsProps) => {
   const { items, config } = useItems();
   return (
     <div
       className={theme.root}
       role='main'
-      aria-label={`${config.getIn(['a11y', 'searchResults'], 'Search results')}`}
+      aria-label={config.getIn(['a11y', 'searchResults'], 'Search results')}
       tabIndex={0}
     >
-      <Grid columns={columns}>
+      <Grid columns={config.getIn(['grid', 'items'], { 400: 6, 600: 4, 1000: 3 })}>
         {
           MapArray({
             array: items,
@@ -42,7 +43,6 @@ const StaticResultsView = ({ columns, theme }: IStaticResultsProps) => {
           })
         }
       </Grid>
-    
       <Pagination />
       <PoweredBy />
     </div>
