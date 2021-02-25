@@ -1,18 +1,24 @@
 import { useEffect, useRef, useState } from "react";
+import { connectConfig } from '@findify/react-connect';
 
+const cache = {};
 
-export default (...media: number[]): boolean[] => {
-  const keys = useRef(media.sort().reverse());
+export default (..._breakpoints: number[]): boolean[] => {
+  const breakpoints: number[] = !!_breakpoints.length
+    ? _breakpoints
+    : connectConfig().config.get('breakpoints');
 
-  const mediaQueryLists = keys.current
-    .map(k => window.matchMedia(`(min-width: ${k}px)`));
-  
+  const keys = useRef(breakpoints.sort().reverse());
+
+  keys.current.forEach(k => {
+    if (cache[k]) return;
+    cache[k] = window.matchMedia(`(min-width: ${k}px)`);
+  })
+
   const getValue = () => {
-    // Get index of first media query that matches
-    const index = mediaQueryLists.findIndex(mql => mql.matches);
-
-    const matched = media.map(m => m <= keys.current[index]);
-    return [typeof keys.current[index] !== 'undefined', ...matched.reverse()]
+    const match = keys.current.find(k => cache[k].matches);
+    const matched = keys.current.map((k) => match === k);
+    return [!match, ...matched.reverse()]
   };
   
     // State and setter for matched value
@@ -25,9 +31,9 @@ export default (...media: number[]): boolean[] => {
       // ... current values of hook args (as this hook callback is created once on mount).
       const handler = () => setValue(getValue);
       // Set a listener for each media query with above handler as callback.
-      mediaQueryLists.forEach(mql => mql.addListener(handler));
+      keys.current.forEach(k => cache[k].addListener(handler));
       // Remove listeners on cleanup
-      return () => mediaQueryLists.forEach(mql => mql.removeListener(handler));
+      return () => keys.current.forEach(k => cache[k].removeListener(handler));
     },
     []
   );

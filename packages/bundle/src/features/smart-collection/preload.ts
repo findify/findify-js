@@ -8,6 +8,7 @@ export default (widget) => {
   /** Setup initial request */
   if (!config.get('disableAutoRequest')) {
     agent.defaults({
+      offset: 0,
       slot: collectionPath(),
       rules: config.get('includeRulesInCollection') ? __root.analytics.state.filters : void 0
     });

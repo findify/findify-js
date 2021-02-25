@@ -3,7 +3,7 @@
  */
 
 import React from 'react';
-import content from 'components/ColorFacet/content';
+import Content from 'components/ColorFacet/content';
 import Icon from 'components/Icon';
 import cx from 'classnames';
 /** Props that ColorFacet Item accepts */
@@ -24,8 +24,9 @@ const Item = ({ item, theme, config }: IColorFacetItemProps) =>
     className={cx(theme.item, (item.get('selected') as boolean) && theme.active)}
     onClick={item.toggle}
   >
-    { content({ item, config, theme }) }
-    <Icon display-if={item.get('selected')} name='CheckmarkDark' className={theme.check} />
+    <Content item={item} config={config} theme={theme}>
+      <Icon display-if={item.get('selected')} name='CheckmarkDark' className={theme.check} />
+    </Content>
   </button>
 
 export default Item;

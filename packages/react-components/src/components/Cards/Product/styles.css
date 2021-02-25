@@ -4,16 +4,17 @@ $text-align: center;
   padding-bottom: 50px;
   width: 100%;
   display: table;
+  min-width: 200px;
   background-color: transparent;
   transition: background-color .35s ease-in-out;
   text-decoration: none;
   user-select: none;
   border: none!important;
   box-sizing: border-box;
+  vertical-align: bottom;
   &.simple{
     padding: 0 8px 15px 8px;
   }
-  vertical-align: bottom;
 }
 
 :global(.findify-widget--products-carousel) .root:hover{

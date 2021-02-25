@@ -28,5 +28,6 @@ export default compose(
       'We can\'t seem to find any products that match your search for "%s"')
     )(escape(q)),
   })),
+
   withColumns(),
 )(view);
