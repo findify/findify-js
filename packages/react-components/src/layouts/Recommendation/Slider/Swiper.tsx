@@ -1,19 +1,15 @@
 import React, { useState } from 'react';
-import { Swiper, Navigation, Pagination } from 'swiper/js/swiper.esm.js';
-import ReactIdSwiper from 'react-id-swiper/lib/ReactIdSwiper.custom';
-import Icon from 'components/Icon';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import SwiperCore, { Navigation, Pagination } from 'swiper';
 
-const defaultProps = {
-  Swiper,
-  modules: [Navigation, Pagination],
-  getSwiper: (swiper) => swiper && swiper.on('slideChangeTransitionEnd', () => {
-    window.scrollTo(window.scrollX, window.scrollY - 1);
-    window.scrollTo(window.scrollX, window.scrollY + 1);
-  })
-}
+SwiperCore.use([Navigation, Pagination]);
 
 export default ({ children, ...props }) => (
-  <ReactIdSwiper {...defaultProps} {...props }>
-    {children}
-  </ReactIdSwiper>
+  <Swiper {...props}>
+    {
+      React.Children.map(children, (child) => (
+        <SwiperSlide>{child}</SwiperSlide>
+      ))
+    }
+  </Swiper>
 )

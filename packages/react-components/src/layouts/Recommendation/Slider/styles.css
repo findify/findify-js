@@ -1,17 +1,39 @@
 .root{
-  
+  position: relative;
 }
 
 .title{
 
 }
 
-.prev{
-
+.prev, .next{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 10;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 10px;
+  background: transparent;
+  border: none;
+  height: 100%;
+  color: $color-black;
 }
 
-.next{
+.prev {
+  left: 0;
+  right: auto;
+  outline: none;
+  left: -30px;
+}
 
+.next {
+  right: 0;
+  left: auto;
+  outline: none;
+  right: -30px;
 }
 
 .arrow{
