@@ -6,19 +6,14 @@ import Icon from 'components/Icon';
 const defaultProps = {
   Swiper,
   modules: [Navigation, Pagination],
-  renderPrevButton: () => <button className="swiper-button-prev"><Icon name='ArrowLeftBig' /></button>,
-  renderNextButton: () => <button className="swiper-button-next" ><Icon name='ArrowRightBig' /></button>,
   getSwiper: (swiper) => swiper && swiper.on('slideChangeTransitionEnd', () => {
     window.scrollTo(window.scrollX, window.scrollY - 1);
     window.scrollTo(window.scrollX, window.scrollY + 1);
   })
 }
 
-export default ({ children, ...props }) => {
-  const swiperProps = { ...defaultProps, ...props };
-  return (
-    <ReactIdSwiper {...swiperProps}>
-      {children}
-    </ReactIdSwiper>
-  )
-}
+export default ({ children, ...props }) => (
+  <ReactIdSwiper {...defaultProps} {...props }>
+    {children}
+  </ReactIdSwiper>
+)
