@@ -54,7 +54,7 @@
   },
   "scripts": {
     "bootstrap": "lerna bootstrap",
-    "postinstall": "yarn build:lib & yarn build:dist",
+    "postinstall": "run-s build:lib build:dist",
     "upgrade": "npm-run-all --parallel upgrade:root upgrade:pkgs --serial bootstrap",
     "upgrade:root": "ncu -u",
     "upgrade:pkgs": "lerna exec -- ncu '/^react.*$/' -a",
