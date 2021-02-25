@@ -12,64 +12,45 @@ const lazyComponent = lazy(() => import(
   '@findify/react-components/src/layouts/Content'
 ));
 
-const parseSortHTMLAttribute = sort => {
-  try {
-    if (!sort) {
-      return [];
-    }
-    const parsedSort = JSON.parse(sort);
-    return [parsedSort];
-  } catch (err) {
-    return [];
-  }
-}
-
-export default (widget) => {
+export default (render, widget) => {
   const { agent, config, node } = widget;
   const apiKey = config.get('key');
-  const { q } = getQuery();
-  const { type, sort } = node.dataset;
   const props = { agent, apiKey, config };
 
-  agent.defaults({ type: [type], sort: parseSortHTMLAttribute(sort) });
-  agent.set('q', q);
+  /** Listen to changes */
+  agent.on('change:query', (q, meta) => {
+    setQuery(q.toJS())
+    render('initial');
+  });
 
-  return async (render) => {
-    /** Listen to changes */
-    agent.on('change:query', (q, meta) => {
-      setQuery(q.toJS())
-      render('initial');
-    });
+  /** Listen to location back/fwd */
+  const stopListenLocation = listenHistory((_, action) => {
+    if (action !== 'POP') return;
+    const { q } = getQuery();
+    agent.applyState({ q });
+    render('initial');
+  });
 
-    /** Listen to location back/fwd */
-    const stopListenLocation = listenHistory((_, action) => {
-      if (action !== 'POP') return;
-      const { q } = getQuery();
-      agent.applyState({ q });
-      render('initial');
-    });
-
-    /** Switch to recommendation if query not present */
-    agent.on('change:items', (items) => {
-      if (!items.isEmpty()) {
-        hideFallback(node);
-        hideLoader(node);
-        if (!config.getIn(['view', 'infinite']) && isNumeric(config.get('scrollTop'))) {
-          scrollTo(config.get('cssSelector'), config.get('scrollTop'))
-        }
-        return render('initial');
+  /** Switch to recommendation if query not present */
+  agent.on('change:items', (items) => {
+    if (!items.isEmpty()) {
+      hideFallback(node);
+      hideLoader(node);
+      if (!config.getIn(['view', 'infinite']) && isNumeric(config.get('scrollTop'))) {
+        scrollTo(config.get('cssSelector'), config.get('scrollTop'))
       }
-    })
+      return render('initial');
+    }
+  })
 
-    /** Unsubscribe from events on instance destroy  */
-    const unsubscribe = __root.listen((event, prop, ...args) => {
-      if (event !== Events.detach || prop !== widget) return;
-      stopListenLocation();
-      unsubscribe();
-    })
+  /** Unsubscribe from events on instance destroy  */
+  const unsubscribe = __root.listen((event, prop, ...args) => {
+    if (event !== Events.detach || prop !== widget) return;
+    stopListenLocation();
+    unsubscribe();
+  })
 
-    /** Render */
+  /** Render */
 
-    return createElement(ContentProvider, props, lazyComponent())
-  }
+  return createElement(ContentProvider, props, lazyComponent())
 }

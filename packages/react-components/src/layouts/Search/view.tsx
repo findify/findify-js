@@ -12,6 +12,7 @@ import Banner from 'components/Banner';
 import { List } from 'immutable'
 import { MJSConfiguration, ThemedSFCProps, IProduct } from 'types';
 import Grid from 'components/common/Grid';
+import { useMobile } from 'helpers/withMobile';
 
 /** Props that search layout accepts */
 export interface ISearchProps extends ThemedSFCProps {
@@ -29,14 +30,15 @@ export interface ISearchProps extends ThemedSFCProps {
   items: List<IProduct>;
 }
 
-const SearchLayout = ({ config, isMobile, isCollection, theme }) => {
+const SearchLayout = ({ config, isCollection, theme }) => {
+  const isMobile = useMobile();
   return (
     <Grid className={theme.root} columns='fit|auto' gutter={40}>
       <DesktopFacets
         display-if={!isMobile}
         order={config.get('filtersOnRight') && 2}
       />
-      <div className={theme.content}>
+      <>
         <Branch
           isCollection={isCollection}
           condition={isMobile}
@@ -45,11 +47,11 @@ const SearchLayout = ({ config, isMobile, isCollection, theme }) => {
         />
         <Banner />
         <Branch
-          condition={!config.getIn(['view', 'infinite'])}
+          condition={config.getIn(['view', 'infinite'])}
           left={LazyResults}
           right={StaticResults}
         />
-      </div>
+      </>
     </Grid>
   )
 }

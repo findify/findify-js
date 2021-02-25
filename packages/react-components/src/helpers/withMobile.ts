@@ -1,7 +1,7 @@
 import { useState, useEffect, createElement, useRef } from "react"
 import { useConfig } from '@findify/react-connect';
 
-export const useIsMobile = () => {
+export const useMobile = () => {
   const { config } = useConfig();
   const mql = useRef(window.matchMedia(`(min-width: ${config.get('mobileBreakpoint')}px)`));
 
@@ -18,6 +18,6 @@ export const useIsMobile = () => {
 }
 
 export default BaseComponent => props => {
-  const isMobile = useIsMobile();
+  const isMobile = useMobile();
   return createElement(BaseComponent, { ...props, isMobile })
 }

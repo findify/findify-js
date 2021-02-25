@@ -2,7 +2,7 @@ export default process.env.NODE_ENV !== 'development'
 ? __CONFIG__
 : {
        // Merchant API KEY
-       "key": "9a3fbd99-4382-4c51-885f-69ee76e89c6f",
+       "key": "680d373d-06b3-442b-bebc-d35a5b0868b3",
 
        // Show/Hide "Powered by findify badge"
        "poweredByFindify": true,
@@ -406,43 +406,21 @@ export default process.env.NODE_ENV !== 'development'
                    },
                    "color": {
                        "mapping": {
-                           "dark yellow": "#FF0",
-                           "beige": "#E9E1D6",
-                           "black": "#111",
-                           "cream": "#F5EFD3",
-                           "dark brown": "#7E6645",
-                           "dark green": "#466534",
-                           "dark grey": "#777",
-                           "dark orange": "#ff7f00",
-                           "dark pink": "#ff6eb4",
-                           "dark purple": "#8b4789",
-                           "dark red": "#cd0000",
-                           "gold": "#FED466",
-                           "ivory": "#FCFFEE",
-                           "light green": "#C8DCBC",
-                           "light orange": "#FFB973",
-                           "light pink": "#ffb6c1",
-                           "light purple": "#c9b1f9",
-                           "medium blue": "#BAC6DE",
-                           "medium brown": "#cd661d",
-                           "light yellow": "#FFFFBF",
-                           "white": "#FFF",
-                           "clear": "#F9F9F9",
-                           "light red": "#ff4c4c",
-                           "medium green": "#7EAD63",
-                           "medium grey": "#7f7f7f",
-                           "medium orange": "#FF8000",
-                           "medium purple": "#8E89C9",
-                           "medium red": "#FF2626",
-                           "medium yellow": "#FFFF73",
-                           "multicolor": "multicolor",
-                           "navy blue": "#3F5585",
-                           "other": "#000",
-                           "pink": "#FFC0CB",
-                           "silver": "#EEE",
-                           "teal": "#008080",
-                           "turquoise": "#03B8AF",
-                           "wine": "#600"
+                        beige: "#ffa500",
+                        black: "#000000",
+                        blue: "no-repeat center/100% url(https://png.pngtree.com/thumb_back/fw800/back_our/20190628/ourmid/pngtree-polygonal-triangle-blue-wallpaper-background-image_264998.jpg)",
+                        brown: "#A08A64",
+                        gray: "#d5eaf7",
+                        green: "linear-gradient(125deg, red, rgb(255, 255, 0), green, blue, violet)",
+                        maroon: "#892357",
+                        mint: "#23963d",
+                        multicolor: "no-repeat center/100% url(https://img4.goodfon.ru/wallpaper/nbig/d/33/volosy-rainbow-colorful-texture-colors-raduga-hair.jpg)",
+                        orange: "#bb0000",
+                        pink: "#808080",
+                        purple: "#ff0000",
+                        red: "#D01D42",
+                        white: "#fff",
+                        yellow: "#FFF169",
                        }
                    }
                }
