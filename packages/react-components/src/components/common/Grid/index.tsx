@@ -3,7 +3,7 @@
  */
 
 import React, { useMemo } from 'react';
-import _Column, { IGridColumnProps } from 'components/common/Grid/Column';
+import { Column, Placeholder } from 'components/common/Grid/Column';
 import cx from 'classnames';
 import { ThemedSFCProps } from 'types';
 import useTheme from 'helpers/useTheme';
@@ -15,12 +15,20 @@ export interface IGridProps extends ThemedSFCProps {
   columns: string | { [x: number]: string | number };
   className?: string;
   style?: React.CSSProperties;
-  gutter?: number;
+  /**  */
+  gutter?: number | string;
   columnClass?: string;
   columnStyle?: React.CSSProperties;
 }
 
-export const Column = _Column;
+const usePlaceholders = (columns, gutter) => {
+  if (columns.length !== 1) return null;
+  return useMemo(() => Array.from(Array(Number(columns[0])).keys())
+    .map(i =>
+      <Placeholder key={i} size={columns[0]} gutter={gutter} />
+    )
+  , [columns]);
+}
 
 export default ({
   children: _children,
@@ -31,16 +39,13 @@ export default ({
   className,
   style,
 
-  columnClass,
   columnStyle
 }: IGridProps) => {
   const computedColumns = typeof _columns === 'string' ? _columns : useColumns(_columns);
   const theme = useTheme(_theme, styles);
   const columns = useMemo(() => computedColumns.split('|'), [computedColumns]);
-  const gutter = useMemo(() => {
-    const g = _gutter || 12;
-    return isNaN(Number(g)) ? g : `${g}px`
-  }, [_gutter]);
+  const gutter = useMemo(() => _gutter && (isNaN(Number(_gutter)) ? _gutter : `${_gutter}px`), [_gutter]);
+  const placeholders = usePlaceholders(columns, gutter);
   
   const children = useMemo(() => React.Children.map(
     _children,
@@ -50,7 +55,7 @@ export default ({
         key={child.key || index}
         gutter={gutter}
         order={child.props.order}
-        size={child.props.size ||columns[index] || columns[0]}
+        size={child.props.size || columns[index] || columns[0]}
         className={child.props.columnClass}
         columnStyle={columnStyle}
       >
@@ -62,10 +67,11 @@ export default ({
     <div className={cx(theme.container, className)}>
       <div
         className={theme.root}
-        style={{ ...style, margin: `-${gutter} 0 0 -${gutter}` }}
+        style={{ ...style, marginLeft: `-${gutter}` }}
         role='list'
       >
-      {children}
+        {children}
+        {placeholders}
       </div>
     </div>
   )

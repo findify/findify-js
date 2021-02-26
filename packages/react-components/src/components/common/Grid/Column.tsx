@@ -22,8 +22,14 @@ export interface IGridColumnProps {
 
   order?: number
 }
+const getWidth = (size, gutter) => {
+  const percents = 100 / 12 * Number(size);
+  return !!gutter
+    ? `calc(${percents}%${gutter ? ' - ' + gutter : ''})`
+    : `${percents}%`
+};
 
-export default ({
+export const Column = ({
   className,
   columnStyle,
   children,
@@ -44,9 +50,13 @@ export default ({
     order: _order
   }), [_order]);
 
-  const size = useMemo(() => ({
-    flex: `0 0 calc(${100 / 12 * Number(_size)}% - ${gutter})`
-  }), [_size]);
+  const size = useMemo(() => {
+    const isFixed = !isNaN(Number(_size));
+    return {
+      flexBasis: isFixed && getWidth(_size, gutter),
+      paddingLeft: `${gutter}`
+    }
+  }, [_size]);
 
   return (
     <div
@@ -54,7 +64,6 @@ export default ({
       tabIndex={0}
       className={composedClassName}
       style={{
-        padding: `${gutter} 0 0 ${gutter}`,
         ...size,
         ...order,
         ...columnStyle
@@ -64,3 +73,10 @@ export default ({
     </div>
   )
 };
+
+export const Placeholder = ({ size, gutter }) => (
+  <div
+    className={styles.placeholder}
+    style={{ flexBasis: getWidth(size, gutter) }}
+  />
+)
