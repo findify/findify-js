@@ -18,12 +18,12 @@ export interface IRangeFacetItemProps extends ThemedSFCProps {
   config: MJSConfiguration;
 }
 
-const RangeFacetItem: React.SFC<IRangeFacetItemProps> = ({ item, theme, style, config }) =>
+export default ({ item, theme, style, config }: IRangeFacetItemProps) => (
   <Button
     style={style}
     className={theme.item}
     onClick={item.toggle}
-    role="listitem"
+    role="checkbox"
     tabIndex={0}
     aria-checked={item.get('selected') ? 'true' : 'false'}
   >
@@ -35,5 +35,4 @@ const RangeFacetItem: React.SFC<IRangeFacetItemProps> = ({ item, theme, style, c
       ({ item.get('count') })
     </Text>
   </Button>
-
-export default RangeFacetItem;
+)

@@ -80,7 +80,7 @@ const DesktopFacetsView: React.SFC<IDesktopFacetsProps> = ({
       />
 
       <MapArray
-        theme={{ root: theme.facet }}
+        theme={{ root: theme.facetRoot, title: theme.facetTitle }}
         array={facets}
         factory={Facet}
         config={config}

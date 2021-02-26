@@ -28,13 +28,14 @@ export interface IStaticResultsProps extends ThemedSFCProps {
 const StaticResultsView = ({ theme }: IStaticResultsProps) => {
   const { items, config } = useItems();
   return (
-    <div
-      className={theme.root}
-      role='main'
-      aria-label={config.getIn(['a11y', 'searchResults'], 'Search results')}
-      tabIndex={0}
-    >
-      <Grid columns={config.getIn(['grid', 'items'], { 400: 6, 600: 4, 1000: 3 })} gutter={12}>
+    <div className={theme.root}>
+      <Grid
+        tabIndex={0}
+        role='main'
+        aria-label={config.getIn(['a11y', 'searchResults'], 'Search results')}
+        columns={config.getIn(['grid', 'items'], { 400: 6, 600: 4, 1000: 3 })}
+        gutter={12}
+      >
         {
           MapArray({
             array: items,

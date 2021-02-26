@@ -1,10 +1,12 @@
 $padding: 25px;
 
-.root{
-  padding-bottom: 24px;
-}
+.root{}
 
 .block{
+  padding-bottom: $padding;
+}
+
+.blockInner{
   display: flex;
   height: 100%;
   align-items: center;
@@ -12,12 +14,15 @@ $padding: 25px;
   flex-wrap: wrap;
 }
 
+
 .sorting{
   margin-left: auto;
+  padding-bottom: $padding;
 }
 
 .query{
   white-space: nowrap;
+  text-overflow: elipsis;
 }
 
 .breadcrumbs{

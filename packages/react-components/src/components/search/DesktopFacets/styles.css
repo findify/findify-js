@@ -21,22 +21,22 @@ $gutter: 40px;
   }
 }
 
-
 .header{
   padding: 13px $padding 20px $padding;
-  clear: fix;
+  display: flex;
+  flex-direction: row;
   .horizontal &{
     display: none;
   }
 }
 
+.title{
+
+}
+
 .icon{
   float: left;
   padding-right: 10px;
-}
-
-.title{
-  float: left;
 }
 
 .reset{
@@ -48,7 +48,7 @@ $gutter: 40px;
 }
 
 .hide{
-  float: right;
+  margin-left: auto;
   padding: 0px;
   &:hover *{
     color: $color-grey-4
@@ -58,11 +58,17 @@ $gutter: 40px;
   }
 }
 
-.facet{
-  padding: 20px $padding;
+/* Facets style overload */
+.facetRoot{
   border-top: 1px solid $color-grey-2;
-  clear: fix;
   .horizontal &{
     background: white;
   }
+}
+
+.facetTitle{
+  padding: $padding;
+  width: 100%;
+  text-align: left;
+  display: flex;
 }

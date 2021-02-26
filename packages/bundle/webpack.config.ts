@@ -69,7 +69,7 @@ export default (env: WebpackEnvArgs, { mode, ...rest }) => {
       port: 3000,
       stats: 'minimal',
       historyApiFallback: true,
-      hot: false
+      hot: true
     },
     optimization: {
       mergeDuplicateChunks: true,

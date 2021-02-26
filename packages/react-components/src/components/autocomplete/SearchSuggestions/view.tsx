@@ -7,6 +7,7 @@ import MapArray from 'components/common/MapArray';
 import SuggestionItem from 'components/autocomplete/SuggestionItem';
 import { ThemedSFCProps, WidgetAwareProps, SuggestionsConnectedProps, ISuggestion, IQuery } from 'types';
 import { List } from 'immutable'
+import { useAnnouncement } from 'components/common/Announcement';
 
 /** Props that SearchSuggestionsView accept */
 export interface ISearchSuggestionsProps extends ThemedSFCProps, WidgetAwareProps, SuggestionsConnectedProps {
@@ -29,7 +30,7 @@ const SearchSuggestionsView: React.SFC<ISearchSuggestionsProps> = ({
   ...rest
 }: ISearchSuggestionsProps) => {
   /** ACCESSIBILITY */
-  const [announcement, setAnnouncement] = useState('');
+  const [announcement, setAnnouncement] = useAnnouncement();
   useEffect(() => {
     if (selectedSuggestion === undefined) return;
     rest.config.get('node').setAttribute(
@@ -38,7 +39,6 @@ const SearchSuggestionsView: React.SFC<ISearchSuggestionsProps> = ({
     );
     if (!!~selectedSuggestion) {
       setAnnouncement(suggestions.get(selectedSuggestion).get('value'))
-      setTimeout(() => setAnnouncement(''), 1000)
     }
   }, [selectedSuggestion]);
   /** === */
@@ -58,7 +58,7 @@ const SearchSuggestionsView: React.SFC<ISearchSuggestionsProps> = ({
           array={suggestions}
           factory={({ item, index }) =>
             <SuggestionItem
-              tab-index={0}
+              tabindex={0}
               item={item}
               index={index}
               highlighted={selectedSuggestion === index}
@@ -76,9 +76,7 @@ const SearchSuggestionsView: React.SFC<ISearchSuggestionsProps> = ({
           )
         }
       </span>
-      <div aria-live="assertive" className={theme.readerText}>
-        { announcement }
-      </div>
+      { announcement }
     </>
   )
 }

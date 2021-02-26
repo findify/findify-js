@@ -9,6 +9,7 @@ $height: 30px;
   font-size: calc($facet-item-font-size * $font-size-medium);
   font-family: $facet-item-font-family;
   color: $facet-item-color;
+  flex: 1 1 auto;
 }
 
 .item{
@@ -24,14 +25,13 @@ $height: 30px;
   padding: $padding;
   height: auto;
   cursor: pointer;
-  display: table;
-  & > span{
-    display: table-cell;
-    width: 100%;
-  }
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   svg {
     padding-right: 14px;
     vertical-align: -2px;
+    flex: 0 0 auto;
   }
 }
 
@@ -108,11 +108,9 @@ $height: 30px;
   font-size: $font-size;
   border-radius: 0;
   width: 100%;
-  height: $height;
-  line-height: $height;
   padding: 0 8px;
   cursor: pointer;
-  text-align: center;
+  justify-content: space-around;
   &:hover{
     text-decoration: underline;
   }

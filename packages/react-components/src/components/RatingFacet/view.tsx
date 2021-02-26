@@ -3,7 +3,6 @@
  */
 
 import React from 'react';
-import cx from 'classnames';
 
 import MapArray from 'components/common/MapArray';
 import Item from 'components/RatingFacet/Item';
@@ -18,6 +17,8 @@ export interface IRatingFacetProps extends ThemedSFCProps {
   items: List<IFacetValue>;
   /** MJS Configuration */
   config: MJSConfiguration;
+
+  hidden: boolean;
 }
 
 const RatingFacet: React.SFC<IRatingFacetProps> = ({
@@ -25,20 +26,22 @@ const RatingFacet: React.SFC<IRatingFacetProps> = ({
   facet,
   items,
   config,
-}: IRatingFacetProps) =>
-<>
-  <MapArray
-    display-if={config.get('pullSelected')}
-    array={config.get('pullSelected') ? items.filter(i => i.get('selected')) : items}
-    factory={Item}
-    config={config}
-    theme={theme} />
+  hidden,
+}: IRatingFacetProps) => (
+  <div className={theme.root}  id={`facet-${facet.get('name')}`} role="region" hidden={hidden}>
+    <MapArray
+      display-if={config.get('pullSelected')}
+      array={config.get('pullSelected') ? items.filter(i => i.get('selected')) : items}
+      factory={Item}
+      config={config}
+      theme={theme} />
 
-  <MapArray
-    array={config.get('pullSelected') ? items.filter(i => !i.get('selected')) : items}
-    factory={Item}
-    config={config}
-    theme={theme} />
-</>
+    <MapArray
+      array={config.get('pullSelected') ? items.filter(i => !i.get('selected')) : items}
+      factory={Item}
+      config={config}
+      theme={theme} />
+  </div>
+)
 
 export default RatingFacet;

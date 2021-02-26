@@ -29,7 +29,7 @@ const RatingFacetItem: React.SFC<IRatingFacetItemProps> = ({
     style={style}
     className={theme.item}
     onClick={item.toggle}
-    role="listitem"
+    role="checkbox"
     aria-checked={item.get('selected') ? 'true' : 'false'}
     tabIndex={0}
   >
