@@ -15,7 +15,7 @@ export interface IGridProps extends ThemedSFCProps {
   columns: string | { [x: number]: string | number };
   className?: string;
   style?: React.CSSProperties;
-  /**  */
+  /** eq: 12 = 12px | 1em = 1em */
   gutter?: number | string;
   columnClass?: string;
   columnStyle?: React.CSSProperties;
@@ -39,7 +39,9 @@ export default ({
   className,
   style,
 
-  columnStyle
+  columnStyle,
+
+  ...rest
 }: IGridProps) => {
   const computedColumns = typeof _columns === 'string' ? _columns : useColumns(_columns);
   const theme = useTheme(_theme, styles);
@@ -64,15 +66,12 @@ export default ({
   ), [_children, columns]);
 
   return (
-    <div className={cx(theme.container, className)}>
-      <div
-        className={theme.root}
-        style={{ ...style, marginLeft: `-${gutter}` }}
-        role='list'
-      >
-        {children}
-        {placeholders}
-      </div>
+    <div
+      className={cx(theme.root, className)}
+      style={{ ...style, marginLeft: `-${gutter}` }}
+    >
+      {children}
+      {placeholders}
     </div>
   )
 }
