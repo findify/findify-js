@@ -41,7 +41,9 @@ export interface IRangeFacetProps extends ThemedSFCProps {
   onKeypressMin: (evt: any) => any
   onKeypressMax: (evt: any) => any
   /** Invoked when Go button is pressed */
-  onPressButton: () => any
+  onPressButton: () => any;
+
+  hidden: boolean;
 }
 
 const PriceInput = ({
@@ -87,6 +89,7 @@ export default ({
   onKeypressMax,
   onPressButton,
 
+  hidden
 }: IRangeFacetProps) => {
   const [selectedItems, notSelectedItems] = useMemo(() => [
     config.get('pullSelected')
@@ -98,7 +101,7 @@ export default ({
   ], []);
 
   return (
-    <div className={theme.root} role="list">
+    <div className={theme.root} id={`facet-${facet.get('name')}`} role="region" hidden={hidden}>
 
       <MapArray
         display-if={config.get('pullSelected')}

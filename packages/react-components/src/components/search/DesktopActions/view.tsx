@@ -32,7 +32,7 @@ const DesktopActionsView: React.FunctionComponent<IDesktopActionsProps> = ({
   config
 }: IDesktopActionsProps) => (
   <Grid className={theme.root} columns='auto|fit'>
-    <div className={theme.block}>
+    <div columnClass={theme.block} className={theme.blockInner}>
       <Button
         display-if={config.get('hidableFacets') && !facetsVisible}
         className={theme.showFacets}

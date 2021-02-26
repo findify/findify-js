@@ -25,20 +25,23 @@ const Item = ({ item, theme, style, onItemClick }: ICheckboxFacetItemProps) => {
     onItemClick && onItemClick(evt);
   }, [item, onItemClick]);
 
+  const isSelected = item.get('selected');
   return (
     <Button
       style={style}
-      role="listitem"
-      aria-checked={item.get('selected') ? 'true' : 'false'}
-      tabIndex={0}
+      role="checkbox"
+      aria-checked={isSelected ? 'true' : 'false'}
+      tabindex={0}
       className={theme.item}
-      onClick={onClick}>
-      <Icon name={item.get('selected') ? 'CheckboxFilled' : 'CheckboxEmpty'} />
+      onClick={onClick}
+    >
+      <Icon name={isSelected ? 'CheckboxFilled' : 'CheckboxEmpty'} />
       <Text
         primary
         lowercase
         className={theme.content}
-        bold={item.get('selected')}>
+        bold={isSelected}
+      >
         { content({ item }) }
       </Text>
       <Text secondary uppercase>

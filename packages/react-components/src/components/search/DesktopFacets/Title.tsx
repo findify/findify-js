@@ -32,22 +32,24 @@ const defaultTitles: React.SFC<ITitlesProps> = ({
   config,
   meta,
   onReset
-}: ITitlesProps) =>
-<div className={theme.header} display-if={!config.get('showFacetsTitle')}>
-  <Icon name='Filters' className={theme.icon} />
-  <Text primary uppercase className={theme.title}>
-    { config.getIn(['facets', 'i18n', 'filters'], 'Filters') }
-  </Text>
-
-  <Button
-    display-if={meta.get('filters') && (meta.get('filters')! as List<any>).size}
-    className={theme.reset}
-    onClick={onReset}>
-    <Text secondary uppercase>
-      { config.getIn(['facets', 'i18n', 'clearAll'], 'Clear all') }
+}: ITitlesProps) => (
+  <div className={theme.header} display-if={!config.get('showFacetsTitle')}>
+    <Icon name='Filters' className={theme.icon} />
+    <Text primary uppercase className={theme.title}>
+      { config.getIn(['facets', 'i18n', 'filters'], 'Filters') }
     </Text>
-  </Button>
-</div>
+
+    <Button
+      display-if={meta.get('filters') && (meta.get('filters')! as List<any>).size}
+      className={theme.reset}
+      onClick={onReset}
+    >
+      <Text secondary uppercase>
+        { config.getIn(['facets', 'i18n', 'clearAll'], 'Clear all') }
+      </Text>
+    </Button>
+  </div>
+)
 
 export default defaultTitles
 
@@ -57,7 +59,7 @@ export const hidable: React.SFC<IHidableProps> = ({
   meta,
   onReset,
   onHide
-}: IHidableProps) =>
+}: IHidableProps) => (
 <div className={theme.header} display-if={!config.get('showFacetsTitle')} tabIndex={-1}>
   <Icon name='Filters' className={theme.icon} />
   <Text primary uppercase className={theme.title}>
@@ -80,4 +82,5 @@ export const hidable: React.SFC<IHidableProps> = ({
       <Icon name='XDark' />
     </Text>
   </Button>
-</div>
+  </div>
+)

@@ -8,7 +8,7 @@
 .title{
   width: 100%;
   text-align: left;
-  display: table;
+  display: flex;
 }
 
 .text {
@@ -18,8 +18,7 @@
   font-size: calc($font-size-small * $font-size);
   font-family: $font-family;
   color: $color;
-  display: inline-block;
-  width: calc(100% - 15px);
+  flex: 1 1 0%;
 }
 
 .icon {
@@ -27,6 +26,10 @@
 }
 
 .body{
-  $padding: 14px 0 0 0;
+  $padding: 0 25px 25px 25px;
+  margin-top: -15px;
   padding: $padding;
+  &[hidden]{
+    display: none;
+  }
 }
