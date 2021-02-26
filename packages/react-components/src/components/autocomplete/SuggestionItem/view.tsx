@@ -27,7 +27,7 @@ function highlightSuggestion(value: string, highlighted: string, theme: Theme) {
  */
 export interface ISuggestionItemProps extends ThemedSFCProps, ISuggestionProps {
   /** Suggestion item */
-  item?: ISuggestion;
+  item: ISuggestion;
   /** Query, used to highlight matches */
   query: IQuery;
   /** Flag indicating whether current suggestion is in focus over keyboard arrows */
@@ -40,21 +40,17 @@ export interface ISuggestionItemProps extends ThemedSFCProps, ISuggestionProps {
   [x: string]: any
 }
 
-/**
- * Actual view
- */
 const SuggestionItemView: React.SFC<ISuggestionItemProps> = ({
-    item,
-    query,
-    theme,
-    highlighted,
-    onClick,
-    icon,
-    isTrendingSearches,
-    ...rest
+  item,
+  query,
+  theme,
+  highlighted,
+  onClick,
+  icon,
+  isTrendingSearches,
+  ...rest
 }: ISuggestionItemProps) => {
   const value = (item && item.get('value') as string);
-  const ref = useRef(null);
   return (
     <li
       display-if={value}
@@ -69,9 +65,9 @@ const SuggestionItemView: React.SFC<ISuggestionItemProps> = ({
         className={theme.icon}
         width={14}
         height={14} />
-      <span dangerouslySetInnerHTML={{
-      __html: highlightSuggestion(value!, query.get('q') as string, theme)
-    }}></span>
+      <span
+        dangerouslySetInnerHTML={{ __html: highlightSuggestion(value!, query.get('q') as string, theme) }}
+      />
     </li>
   )
 }

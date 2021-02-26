@@ -12,7 +12,7 @@ export interface IGridColumnProps {
   /** Custom className for column */
   className?: string;
   /** Column inline style */
-  columnStyle?: React.CSSProperties;
+  style?: React.CSSProperties;
   /** Contents of the column */
   children?: React.ReactChild;
 
@@ -20,22 +20,27 @@ export interface IGridColumnProps {
 
   size: string;
 
-  order?: number
+  order?: number,
+
+  component: React.ComponentType<any> | string
 }
-const getWidth = (size, gutter) => {
+const getWidth = (size, gutter?) => {
   const percents = 100 / 12 * Number(size);
   return !!gutter
-    ? `calc(${percents}%${gutter ? ' - ' + gutter : ''})`
+    ? `calc(${percents}% - ${gutter})`
     : `${percents}%`
 };
 
 export const Column = ({
   className,
-  columnStyle,
+  style,
   children,
   gutter,
   order: _order,
-  size: _size
+  size: _size,
+
+  component: Component = 'div'
+
 }: IGridColumnProps) => {
   const composedClassName = useMemo(() =>
     cx(styles.column, className, styles[`column-${_size}`]),
@@ -54,28 +59,28 @@ export const Column = ({
     const isFixed = !isNaN(Number(_size));
     return {
       flexBasis: isFixed && getWidth(_size, gutter),
+      msFlexPreferredSize: isFixed && getWidth(_size, gutter),
       paddingLeft: `${gutter}`
     }
-  }, [_size]);
+  }, [_size, gutter]);
 
   return (
-    <div
-      tabIndex={0}
+    <Component
       className={composedClassName}
       style={{
         ...size,
         ...order,
-        ...columnStyle
+        ...style
       }}
     >
       {children}
-    </div>
+    </Component>
   )
 };
 
-export const Placeholder = ({ size, gutter }) => (
+export const Placeholder = ({ size }) => (
   <div
     className={styles.placeholder}
-    style={{ flexBasis: getWidth(size, gutter) }}
+    style={{ flexBasis: getWidth(size) }}
   />
 )

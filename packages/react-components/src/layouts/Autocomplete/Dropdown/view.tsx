@@ -12,6 +12,7 @@ import { ThemedSFCProps, MJSConfiguration, ISuggestion, MJSValue } from 'types';
 import { List } from 'immutable';
 import { usePosition } from 'layouts/Autocomplete/Dropdown/trackPosition';
 import { useAutocompleteLogic } from 'layouts/Autocomplete/withAutocompleteLogic';
+import Grid from 'components/common/Grid';
 
 export interface IAutocompletePanel extends ThemedSFCProps {
   config: MJSConfiguration;
@@ -101,7 +102,7 @@ const AutocompleteDropdownView: React.SFC<IAutocompleteDropdownProps> = ({
           title={config.getIn(['i18n', 'tipResults'])}
           zeroResultsTitle={config.getIn(['i18n', 'tipTrendingResults'], 'View All Results')}
           widgetKey={config.get('widgetKey')} />
-        <div className={theme.container}>
+        <Grid className={theme.container} columns='auto|3'>
           <Suggestions
             {...rest}
             selectedSuggestion={selectedSuggestion}
@@ -116,7 +117,7 @@ const AutocompleteDropdownView: React.SFC<IAutocompleteDropdownProps> = ({
             config={config}
             isTrendingSearches={isTrendingSearches}
           />
-        </div>
+        </Grid>
       </section>
     </div>
   )

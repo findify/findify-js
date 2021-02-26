@@ -34,7 +34,7 @@ const StaticResultsView = ({ theme }: IStaticResultsProps) => {
       aria-label={config.getIn(['a11y', 'searchResults'], 'Search results')}
       tabIndex={0}
     >
-      <Grid columns={config.getIn(['grid', 'items'], { 400: 6, 600: 4, 1000: 3 })}>
+      <Grid columns={config.getIn(['grid', 'items'], { 400: 6, 600: 4, 1000: 3 })} gutter={12}>
         {
           MapArray({
             array: items,

@@ -19,6 +19,9 @@ export interface IGridProps extends ThemedSFCProps {
   gutter?: number | string;
   columnClass?: string;
   columnStyle?: React.CSSProperties;
+
+  wrapperComponent: React.ComponentType<any> | string
+  columnComponent: React.ComponentType<any> | string
 }
 
 const usePlaceholders = (columns, gutter) => {
@@ -40,6 +43,9 @@ export default ({
   style,
 
   columnStyle,
+  
+  wrapperComponent: WrapperComponent = 'div',
+  columnComponent,
 
   ...rest
 }: IGridProps) => {
@@ -59,19 +65,21 @@ export default ({
         order={child.props.order}
         size={child.props.size || columns[index] || columns[0]}
         className={child.props.columnClass}
-        columnStyle={columnStyle}
+        style={columnStyle}
+        component={columnComponent}
       >
         { child }
       </Column>
   ), [_children, columns]);
 
   return (
-    <div
+    <WrapperComponent
       className={cx(theme.root, className)}
       style={{ ...style, marginLeft: `-${gutter}` }}
+      {...rest}
     >
       {children}
       {placeholders}
-    </div>
+    </WrapperComponent>
   )
 }

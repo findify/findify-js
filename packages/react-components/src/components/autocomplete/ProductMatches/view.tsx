@@ -54,9 +54,7 @@ const ProductMatchesView: React.SFC<IProductMatchesProps> = ({
   const { items, config } = useItems();
   return (
     <div className={styles.root}>
-      <Grid
-        columns={String(12 / 1)}
-      >
+      <Grid columns={config.getIn(['grid', 'items'], '12')}>
         {
           MapArray({
             array: items,
