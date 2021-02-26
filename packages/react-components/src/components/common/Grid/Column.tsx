@@ -60,7 +60,6 @@ export const Column = ({
 
   return (
     <div
-      role='listitem'
       tabIndex={0}
       className={composedClassName}
       style={{

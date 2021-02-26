@@ -90,7 +90,7 @@ const AutocompleteDropdownView: React.SFC<IAutocompleteDropdownProps> = ({
         className={theme.overlay}
         onClick={closeAutocomplete}
       />
-      <div
+      <section
         className={theme.root}
         data-findify-autocomplete={true}
         tabIndex={0}
@@ -117,7 +117,7 @@ const AutocompleteDropdownView: React.SFC<IAutocompleteDropdownProps> = ({
             isTrendingSearches={isTrendingSearches}
           />
         </div>
-      </div>
+      </section>
     </div>
   )
 }
