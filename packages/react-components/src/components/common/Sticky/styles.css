@@ -1,29 +1,24 @@
-.container{
-  max-height: auto;
+.wrapper{
+  
 }
 
-@supports(display: flex) {
-  .wrapper{
-    
-  }
+.container{
+  overflow: hidden;
+  overflow-y: auto;
+  max-height: auto;
+  will-change: max-height;
+}
 
-  .container{
-    overflow: hidden;
-    overflow-y: auto;
-    will-change: max-height;
-  }
-  
-  .static{
-    position: static;
-  }
-  
-  .stuck{
-    bottom: 0;
-    position: absolute;
-  }
-  
-  .sticky{
-    position: fixed;
-    top: 0;
-  }
+.static{
+  position: static;
+}
+
+.stuck{
+  bottom: 0;
+  position: absolute;
+}
+
+.sticky{
+  position: fixed;
+  top: 0;
 }

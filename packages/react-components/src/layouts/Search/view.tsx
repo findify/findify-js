@@ -33,7 +33,11 @@ export interface ISearchProps extends ThemedSFCProps {
 const SearchLayout = ({ config, isCollection, theme }) => {
   const isMobile = useMobile();
   return (
-    <Grid className={theme.root} columns='fit|auto' gutter={40}>
+    <Grid
+      className={theme.root}
+      columns={config.getIn(['view', 'horizontalFilters']) ? 'full' : 'fit|auto'}
+      gutter={40}
+    >
       <DesktopFacets
         display-if={!isMobile}
         order={config.get('filtersOnRight') && 2}

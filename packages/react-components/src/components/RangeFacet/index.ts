@@ -10,7 +10,6 @@ import styles from 'components/RangeFacet/styles.css';
 
 const createKey = (...args) => args.join('_');
 
-
 export default compose(
   setDisplayName('RangeFacet'),
 

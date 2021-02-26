@@ -24,6 +24,7 @@ export interface IGridColumnProps {
 
   component: React.ComponentType<any> | string
 }
+
 const getWidth = (size, gutter?) => {
   const percents = 100 / 12 * Number(size);
   return !!gutter
@@ -56,10 +57,10 @@ export const Column = ({
   }), [_order]);
 
   const size = useMemo(() => {
-    const isFixed = !isNaN(Number(_size));
+    const basis = !isNaN(Number(_size)) && getWidth(_size, gutter);
     return {
-      flexBasis: isFixed && getWidth(_size, gutter),
-      msFlexPreferredSize: isFixed && getWidth(_size, gutter),
+      flexBasis: basis,
+      msFlexPreferredSize: basis,
       paddingLeft: `${gutter}`
     }
   }, [_size, gutter]);
