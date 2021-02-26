@@ -2,7 +2,7 @@
  * @module components/RangeFacet
  */
 
-import React, { InputHTMLAttributes } from 'react';
+import React, { InputHTMLAttributes, useMemo } from 'react';
 import cx from 'classnames';
 import NumberInput from 'react-numeric-input';
 
@@ -12,6 +12,7 @@ import Button from 'components/Button';
 import Text from 'components/Text';
 import { ThemedSFCProps, IFacet, IFacetValue, MJSConfiguration } from 'types';
 import { List } from 'immutable';
+import Grid from 'components/common/Grid';
 
 /** Input default styling parameters */
 const inputDefaults = {
@@ -43,7 +44,34 @@ export interface IRangeFacetProps extends ThemedSFCProps {
   onPressButton: () => any
 }
 
-const RangeFacetView: React.SFC<IRangeFacetProps> = ({
+const PriceInput = ({
+  theme,
+  currency,
+  value,
+  min,
+  max,
+  onBlur,
+  onKeyPress,
+  precision
+}) => {
+  return (
+    <div className={theme.inputWrap}>
+      <span className={theme.currency}>{currency}</span>
+      <NumberInput
+        {...inputDefaults}
+        className={theme.input}
+        precision={precision}
+        value={value}
+        max={max}
+        min={min}
+        onBlur={onBlur}
+        onKeyPress={onKeyPress}
+      />
+    </div>
+  )
+}
+
+export default ({
   theme,
   facet,
   items,
@@ -59,57 +87,60 @@ const RangeFacetView: React.SFC<IRangeFacetProps> = ({
   onKeypressMax,
   onPressButton,
 
-}: IRangeFacetProps) =>
-<div className={theme.root} role="list">
+}: IRangeFacetProps) => {
+  const [selectedItems, notSelectedItems] = useMemo(() => [
+    config.get('pullSelected')
+      ? items.filter(i => i.get('selected'))
+      : items,
+    config.get('pullSelected')
+      ? items.filter(i => !i.get('selected'))
+      : items
+  ], []);
 
-  <MapArray
-    display-if={config.get('pullSelected')}
-    array={config.get('pullSelected') ? items.filter(i => i.get('selected')) : items}
-    factory={Item}
-    config={config}
-    theme={theme} />
+  return (
+    <div className={theme.root} role="list">
 
-  <MapArray
-    array={config.get('pullSelected') ? items.filter(i => !i.get('selected')) : items}
-    factory={Item}
-    config={config}
-    theme={theme} />
+      <MapArray
+        display-if={config.get('pullSelected')}
+        array={selectedItems}
+        factory={Item}
+        config={config}
+        theme={theme} />
 
-  <div className={cx(theme.range, theme.inputBlock)}>
-    <div className={theme.inputWrap}>
-      <span className={theme.currency}>{currencySymbol}</span>
-      <NumberInput
-        {...inputDefaults}
-        className={theme.input}
-        precision={config.get('precision', 0)}
-        value={from}
-        max={to || facet.get('max')}
-        min={facet.get('min')}
-        onBlur={onChangeMin}
-        onKeyPress={onKeypressMin}
-      />
+      <MapArray
+        array={notSelectedItems}
+        factory={Item}
+        config={config}
+        theme={theme} />
+
+      <Grid columns='3|fit|3|auto' className={cx(theme.range, theme.inputBlock)}>
+        <PriceInput
+          theme={theme}
+          currency={currencySymbol}
+          precision={config.get('precision', 0)}
+          value={from}
+          max={to || facet.get('max')}
+          min={facet.get('min')}
+          onBlur={onChangeMin}
+          onKeyPress={onKeypressMin}
+        />
+        <div className={theme.divider}>-</div>
+        <PriceInput
+          theme={theme}
+          currency={currencySymbol}
+          precision={config.get('precision', 0)}
+          value={to}
+          min={from || facet.get('min')}
+          max={facet.get('max')}
+          onBlur={onChangeMax}
+          onKeyPress={onKeypressMax}
+        />
+        <Button onClick={onPressButton} className={theme.submit}>
+          <Text primary uppercase>
+            {config.getIn(['i18n', 'submit'])}
+          </Text>
+        </Button>
+      </Grid>
     </div>
-    <div className={theme.divider}>-</div>
-    <div className={theme.inputWrap}>
-      <span className={theme.currency}>{currencySymbol}</span>
-      <NumberInput
-        {...inputDefaults}
-        className={theme.input}
-        precision={config.get('precision', 0)}
-        value={to}
-        min={from || facet.get('min')}
-        max={facet.get('max')}
-        onBlur={onChangeMax}
-        onKeyPress={onKeypressMax}
-      />
-    </div>
-    <Button onClick={onPressButton} className={theme.submit}>
-      <Text primary uppercase>
-        { config.getIn(['i18n', 'submit']) }
-      </Text>
-    </Button>
-  </div>
-
-</div>
-
-export default RangeFacetView;
+  )
+}

@@ -2,14 +2,32 @@ $padding: 25px;
 $gutter: 40px;
 
 .root{
-  min-width: 300px;
-  max-width: 350px;
+  width: 300px;
   height: 100%;
+  & .container{
+    overflow: hidden;
+    overflow-y: auto;
+    max-height: auto;
+    will-change: max-height;
+  }
 }
 
+.horizontal{
+  .container{
+    display: flex;
+    flex-direction: row;
+    z-index: 3;
+    background: white;
+  }
+}
+
+
 .header{
-  padding: 13px $padding;
+  padding: 13px $padding 20px $padding;
   clear: fix;
+  .horizontal &{
+    display: none;
+  }
 }
 
 .icon{
@@ -41,14 +59,10 @@ $gutter: 40px;
 }
 
 .facet{
-  padding: 0 $padding;
-  padding-top: 20px;
-  margin-top: 20px;
+  padding: 20px $padding;
   border-top: 1px solid $color-grey-2;
-}
-
-@supports(display: flex) {
-  .root{
-    display: block;
+  clear: fix;
+  .horizontal &{
+    background: white;
   }
 }

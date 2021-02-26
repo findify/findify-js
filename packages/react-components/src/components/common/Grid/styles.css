@@ -21,6 +21,12 @@
   flex-basis: 0%;
 }
 
+.column-full{
+  flex-grow: 0;
+  flex-shrink: 1;
+  flex-basis: 100%;
+}
+
 .column-fit{
   flex-grow: 0;
   flex-shrink: 1;

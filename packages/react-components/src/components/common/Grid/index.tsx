@@ -25,10 +25,11 @@ export interface IGridProps extends ThemedSFCProps {
 }
 
 const usePlaceholders = (columns, gutter) => {
-  if (columns.length !== 1) return null;
+  console.log(columns.length)
+  if (columns.length !== 1 || isNaN(Number(columns[0]))) return null;
   return useMemo(() => Array.from(Array(Number(columns[0])).keys())
     .map(i =>
-      <Placeholder key={i} size={columns[0]} gutter={gutter} />
+      <Placeholder key={i} size={columns[0]} />
     )
   , [columns]);
 }
