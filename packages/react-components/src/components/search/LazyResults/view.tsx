@@ -56,7 +56,7 @@ const LazyResultsView = ({
       { config.getIn(['i18n', 'loadPrev'], 'Load previous') }
     </Text>
   </Button>
-  <Grid columns={columns}>
+  <Grid columns={columns} gutter={12}>
     {
       MapArray({
         ...rest,

@@ -3,6 +3,7 @@ $gutter: 40px;
 
 .root{
   min-width: 300px;
+  max-width: 350px;
   height: 100%;
 }
 

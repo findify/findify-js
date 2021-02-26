@@ -7,13 +7,12 @@ import { connectItems } from '@findify/react-connect';
 import withTheme from 'helpers/withTheme';
 import withMinResultsToShow from 'helpers/withMinResultsToShow';
 import { Map } from 'immutable';
-
-import 'layouts/Recommendation/Slider/styles.global.css';
-
 import view from 'layouts/Recommendation/Slider/view';
-import styles from 'layouts/Recommendation/Slider/styles.css';
 import getBreakpoint from 'helpers/getBreakpoint';
 import withScrollOnItemsChange from 'helpers/withScrollOnItemsChange';
+
+import 'layouts/Recommendation/Slider/styles.global.css';
+import styles from 'layouts/Recommendation/Slider/styles.css';
 
 /**
  * This function is used to calculate products to show in a line of a Slider according to its width
