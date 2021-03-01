@@ -1,51 +1,55 @@
 import { Record, Map } from 'immutable';
 
-export const key = '__immutable';
+export const key: '__immutable' = '__immutable';
 const empty = Map();
 
-export default (name) => class ExtendableRecord extends Record({ [key]: void 0 }, name){
+// Typescript complained about creating declaration files here when using [key], so I had to hardcode it
+// Types will still be checked properly as static property 'key' is of type '__immutable' and not string
+export default (name) => class ExtendableRecord extends Record({ '__immutable': void 0 }, name){
+  static key = key;
+
   constructor(immutable){
-    super({ [key]: immutable });
+    super({ [ExtendableRecord.key]: immutable });
     return this;
   };
 
   get(...args) {
-    return (super.get as any)(key, empty).get(...args)
+    return (super.get as any)(ExtendableRecord.key, empty).get(...args)
   }
 
   set(...args) {
-    const _immutable = (super.get as any)(key, empty);
+    const _immutable = (super.get as any)(ExtendableRecord.key, empty);
     const upd = _immutable.set(...args)
-    return super.set(key, upd)
+    return super.set(ExtendableRecord.key, upd)
   }
 
   update(...args) {
-    const _immutable = (super.get as any)(key, empty);
+    const _immutable = (super.get as any)(ExtendableRecord.key, empty);
     const upd = _immutable.update(...args);
-    return super.set(key, upd);
+    return super.set(ExtendableRecord.key, upd);
   }
 
   equals(...args) {
-    const _immutable = (super.get as any)(key, empty);
+    const _immutable = (super.get as any)(ExtendableRecord.key, empty);
     return _immutable.equals(...args);
   }
 
   hashCode() {
-    const _immutable = (super.get as any)(key, empty);
+    const _immutable = (super.get as any)(ExtendableRecord.key, empty);
     return _immutable.hashCode();
   }
 
   toJS(){
-    const _immutable = (super.get as any)(key, empty);
+    const _immutable = (super.get as any)(ExtendableRecord.key, empty);
     return _immutable.toJS();
   }
 
   toObject(){
-    return (super.get as any)(key, empty).toObject();
+    return (super.get as any)(ExtendableRecord.key, empty).toObject();
   }
 
   filter(...args) {
-    const _immutable = (super.get as any)(key, empty);
+    const _immutable = (super.get as any)(ExtendableRecord.key, empty);
     return _immutable.filter(...args);
   }
 }
