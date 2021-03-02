@@ -28,7 +28,10 @@ export default ({ item, theme, style, config }: IRangeFacetItemProps) => (
     aria-checked={item.get('selected') ? 'true' : 'false'}
   >
     <Text primary lowercase bold={item.get('selected')} className={theme.content}>
-      <Icon name={item.get('selected') ? 'CheckboxFilled' : 'CheckboxEmpty'} />
+      <Icon
+        name={item.get('selected') ? 'CheckboxFilled' : 'CheckboxEmpty'}
+        title={item.get('selected') ? 'Selected' : 'Not selected'}
+      />
       { content({ item, config }) }
     </Text>
     <Text secondary uppercase>

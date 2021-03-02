@@ -1,6 +1,5 @@
 declare module 'components/autocomplete/ProductMatches' {
-import React from 'react';
-const _default: React.ComponentClass<unknown, any>;
+const _default: import("react").ComponentClass<unknown, any>;
 export default _default;
 
 }
@@ -21,8 +20,7 @@ export default ProductMatchesView;
 
 }
 declare module 'components/autocomplete/SearchSuggestions' {
-import React from 'react';
-const _default: React.ComponentClass<unknown, any>;
+const _default: import("react").ComponentClass<unknown, any>;
 export default _default;
 
 }
@@ -42,8 +40,7 @@ export default SearchSuggestionsView;
 
 }
 declare module 'components/autocomplete/SuggestionItem' {
-import React from 'react';
-const _default: React.ComponentClass<unknown, any>;
+const _default: import("react").ComponentClass<unknown, any>;
 export default _default;
 
 }
@@ -55,7 +52,7 @@ declare module 'components/autocomplete/SuggestionItem/view' {
 import React from 'react';
 import { ISuggestion, ISuggestionProps, IQuery, ThemedSFCProps } from 'types';
 export interface ISuggestionItemProps extends ThemedSFCProps, ISuggestionProps {
-    item?: ISuggestion;
+    item: ISuggestion;
     query: IQuery;
     highlighted: boolean;
     icon: string;
@@ -67,8 +64,7 @@ export default SuggestionItemView;
 
 }
 declare module 'components/autocomplete/Tip' {
-import React from 'react';
-const _default: React.ComponentClass<unknown, any>;
+const _default: import("react").ComponentClass<unknown, any>;
 export default _default;
 
 }
@@ -81,14 +77,14 @@ import React from 'react';
 import { ThemedSFCProps, ClassnamedProps, WidgetAwareProps, SuggestionsConnectedProps } from 'types';
 export interface ITipProps extends ThemedSFCProps, ClassnamedProps, WidgetAwareProps, SuggestionsConnectedProps {
     title: string;
+    zeroResultsTitle: string;
 }
 const TipView: React.SFC<ITipProps>;
 export default TipView;
 
 }
 declare module 'components/Banner' {
-import React from 'react';
-const _default: React.ComponentClass<unknown, any>;
+const _default: import("react").ComponentClass<unknown, any>;
 export default _default;
 
 }
@@ -124,8 +120,7 @@ export default _default;
 
 }
 declare module 'components/Breadcrumbs' {
-import React from 'react';
-const _default: React.ComponentClass<unknown, any>;
+const _default: import("react").ComponentClass<unknown, any>;
 export default _default;
 
 }
@@ -142,8 +137,7 @@ export default BreadcrumbsView;
 
 }
 declare module 'components/Button' {
-import React from 'react';
-const _default: React.ComponentClass<any, any>;
+const _default: import("react").ComponentClass<any, any>;
 export default _default;
 
 }
@@ -162,27 +156,23 @@ export default ButtonView;
 
 }
 declare module 'components/Cards/Content' {
-import React from 'react';
-const _default: React.ComponentClass<unknown, any>;
+const _default: import("react").ComponentClass<unknown, any>;
 export default _default;
 
 }
 declare module 'components/Cards/Content/view' {
-import React from 'react';
-const _default: React.ComponentType<Pick<{
+const _default: import("react").ComponentClass<Pick<{
     onClick: (e: any) => void;
-}, never>>;
+}, never>, any>;
 export default _default;
 
 }
 declare module 'components/Cards/Product/BundleAction' {
-/// <reference types="react" />
 const _default: import("react").ComponentClass<unknown, any>;
 export default _default;
 
 }
 declare module 'components/Cards/Product/BundleAction/view' {
-/// <reference types="react" />
 const _default: ({ theme, onClick, selected }: any) => JSX.Element;
 export default _default;
 
@@ -193,8 +183,7 @@ export default ProductCard;
 
 }
 declare module 'components/Cards/Product/Price' {
-import React from 'react';
-const _default: React.ComponentClass<unknown, any>;
+const _default: import("react").ComponentClass<unknown, any>;
 export default _default;
 
 }
@@ -215,8 +204,7 @@ export default PriceView;
 
 }
 declare module 'components/Cards/Product/Rating' {
-import React from 'react';
-const _default: React.ComponentClass<unknown, any>;
+const _default: import("react").ComponentClass<unknown, any>;
 export default _default;
 
 }
@@ -238,45 +226,51 @@ export default RatingView;
 }
 declare module 'components/Cards/Product/Stickers' {
 import React from 'react';
-export const DiscountSticker: new (props: any) => {
-    componentWillReceiveProps(nextProps: any): void;
-    render(): React.ComponentElement<{
-        theme: any;
-        children?: React.ReactNode;
-    }, React.Component<{
-        theme: any;
-        children?: React.ReactNode;
-    }, any, any>>;
-    setState<K extends never>(state: {} | Pick<{}, K> | ((prevState: Readonly<{}>, props: Readonly<{}>) => {} | Pick<{}, K> | null) | null, callback?: (() => void) | undefined): void;
-    forceUpdate(callBack?: (() => void) | undefined): void;
-    readonly props: Readonly<{
-        children?: React.ReactNode;
-    }> & Readonly<{}>;
-    state: Readonly<{}>;
-    context: any;
-    refs: {
-        [key: string]: React.ReactInstance;
+export const DiscountSticker: {
+    new (props: any): {
+        componentWillReceiveProps(nextProps: any): void;
+        render(): React.ComponentElement<{
+            theme: any;
+            children?: React.ReactNode;
+        }, React.Component<{
+            theme: any;
+            children?: React.ReactNode;
+        }, any, any>>;
+        context: any;
+        setState<K extends never>(state: {} | Pick<{}, K> | ((prevState: Readonly<{}>, props: Readonly<{}>) => {} | Pick<{}, K> | null) | null, callback?: (() => void) | undefined): void;
+        forceUpdate(callBack?: (() => void) | undefined): void;
+        readonly props: Readonly<{}> & Readonly<{
+            children?: React.ReactNode;
+        }>;
+        state: Readonly<{}>;
+        refs: {
+            [key: string]: React.ReactInstance;
+        };
     };
+    contextType?: React.Context<any> | undefined;
 };
-export const OutOfStockSticker: new (props: any) => {
-    componentWillReceiveProps(nextProps: any): void;
-    render(): React.ComponentElement<{
-        theme: any;
-        children?: React.ReactNode;
-    }, React.Component<{
-        theme: any;
-        children?: React.ReactNode;
-    }, any, any>>;
-    setState<K extends never>(state: {} | Pick<{}, K> | ((prevState: Readonly<{}>, props: Readonly<{}>) => {} | Pick<{}, K> | null) | null, callback?: (() => void) | undefined): void;
-    forceUpdate(callBack?: (() => void) | undefined): void;
-    readonly props: Readonly<{
-        children?: React.ReactNode;
-    }> & Readonly<{}>;
-    state: Readonly<{}>;
-    context: any;
-    refs: {
-        [key: string]: React.ReactInstance;
+export const OutOfStockSticker: {
+    new (props: any): {
+        componentWillReceiveProps(nextProps: any): void;
+        render(): React.ComponentElement<{
+            theme: any;
+            children?: React.ReactNode;
+        }, React.Component<{
+            theme: any;
+            children?: React.ReactNode;
+        }, any, any>>;
+        context: any;
+        setState<K extends never>(state: {} | Pick<{}, K> | ((prevState: Readonly<{}>, props: Readonly<{}>) => {} | Pick<{}, K> | null) | null, callback?: (() => void) | undefined): void;
+        forceUpdate(callBack?: (() => void) | undefined): void;
+        readonly props: Readonly<{}> & Readonly<{
+            children?: React.ReactNode;
+        }>;
+        state: Readonly<{}>;
+        refs: {
+            [key: string]: React.ReactInstance;
+        };
     };
+    contextType?: React.Context<any> | undefined;
 };
 
 }
@@ -303,13 +297,11 @@ export default extractContent;
 
 }
 declare module 'components/CategoryFacet' {
-import React from 'react';
-const _default: React.ComponentClass<unknown, any>;
+const _default: import("react").ComponentClass<unknown, any>;
 export default _default;
 
 }
 declare module 'components/CategoryFacet/Item' {
-/// <reference types="react" />
 import { ThemedSFCProps, MJSConfiguration } from 'types';
 export interface ICategoryFacetCategoryProps extends ThemedSFCProps {
     item: any;
@@ -323,7 +315,6 @@ export default Item;
 
 }
 declare module 'components/CategoryFacet/view' {
-/// <reference types="react" />
 import { IFacet, ThemedSFCProps, MJSConfiguration } from 'types';
 import { List, Map } from 'immutable';
 export interface ICategoryFacetProps extends ThemedSFCProps {
@@ -333,8 +324,9 @@ export interface ICategoryFacetProps extends ThemedSFCProps {
     config: MJSConfiguration;
     isExpanded?: boolean;
     onToggle: (evt: Event) => any;
+    hidden: boolean;
 }
-const CategoryFacetView: ({ theme, items, config, facet, total, isExpanded, onToggle }: ICategoryFacetProps) => JSX.Element;
+const CategoryFacetView: ({ theme, items, config, facet, total, isExpanded, onToggle, hidden }: ICategoryFacetProps) => JSX.Element;
 export default CategoryFacetView;
 
 }
@@ -346,13 +338,11 @@ export default extractContent;
 
 }
 declare module 'components/CheckboxFacet' {
-import React from 'react';
-const _default: React.ComponentClass<unknown, any>;
+const _default: import("react").ComponentClass<unknown, any>;
 export default _default;
 
 }
 declare module 'components/CheckboxFacet/Item' {
-/// <reference types="react" />
 import { IFacetValue, ThemedSFCProps } from 'types';
 export interface ICheckboxFacetItemProps extends ThemedSFCProps {
     item: IFacetValue;
@@ -367,39 +357,35 @@ export default Item;
 }
 declare module 'components/CheckboxFacet/view' {
 import { ChangeEvent } from 'react';
-import { IFacetValue, ThemedSFCProps, MJSConfiguration } from 'types';
+import { IFacetValue, ThemedSFCProps, MJSConfiguration, IFacet } from 'types';
 import { List } from 'immutable';
 export interface ICheckboxFacetProps extends ThemedSFCProps {
     items: List<IFacetValue>;
+    facet: IFacet;
     config: MJSConfiguration;
     search?: string;
     isExpanded?: boolean;
     isMobile?: boolean;
     onSearch: (evt: ChangeEvent<HTMLInputElement>) => any;
     onToggle: (evt: Event) => any;
+    hidden: boolean;
 }
-const CheckboxFacetView: ({ theme, items, config, search, isExpanded, onSearch, onToggle, isMobile }: ICheckboxFacetProps) => JSX.Element;
+const CheckboxFacetView: ({ theme, items, config, search, isExpanded, onSearch, onToggle, isMobile, facet, hidden, }: ICheckboxFacetProps) => JSX.Element;
 export default CheckboxFacetView;
 
 }
 declare module 'components/ColorFacet/content' {
-/// <reference types="react" />
-const _default: ({ item, config, theme }: {
-    item: any;
-    config: any;
-    theme: any;
-}) => JSX.Element;
+import React from 'react';
+const _default: React.NamedExoticComponent<object>;
 export default _default;
 
 }
 declare module 'components/ColorFacet' {
-import React from 'react';
-const _default: React.ComponentClass<unknown, any>;
+const _default: import("react").ComponentClass<unknown, any>;
 export default _default;
 
 }
 declare module 'components/ColorFacet/Item' {
-/// <reference types="react" />
 import { IFacetValue, MJSConfiguration, ThemedSFCProps } from 'types';
 export interface IColorFacetItemProps extends ThemedSFCProps {
     item: IFacetValue;
@@ -410,15 +396,24 @@ export default Item;
 
 }
 declare module 'components/ColorFacet/view' {
-/// <reference types="react" />
-import { ThemedSFCProps, MJSConfiguration, IFacetValue } from 'types';
+import { ThemedSFCProps, MJSConfiguration, IFacetValue, IFacet } from 'types';
 import { List } from 'immutable';
 export interface IColorFacetProps extends ThemedSFCProps {
     config: MJSConfiguration;
     items: List<IFacetValue>;
+    facet: IFacet;
+    hidden: boolean;
 }
-const ColorFacetView: ({ theme, items, config, }: IColorFacetProps) => JSX.Element;
+const ColorFacetView: ({ theme, items, config, facet, hidden }: IColorFacetProps) => JSX.Element;
 export default ColorFacetView;
+
+}
+declare module 'components/common/Announcement' {
+export const Component: ({ text }: {
+    text: any;
+}) => JSX.Element;
+export const useAnnouncement: () => [JSX.Element, (text: any) => void];
+export default Component;
 
 }
 declare module 'components/common/Branch' {
@@ -435,13 +430,11 @@ export default Branch;
 
 }
 declare module 'components/common/Drawer' {
-import React from 'react';
-const _default: React.ComponentClass<unknown, any>;
+const _default: import("react").ComponentClass<unknown, any>;
 export default _default;
 
 }
 declare module 'components/common/Drawer/view' {
-import React from 'react';
 import { ThemedSFCProps } from 'types';
 export interface IDrawerViewState {
     open: boolean;
@@ -459,57 +452,48 @@ export interface IDrawerViewProps extends ThemedSFCProps {
     };
     [x: string]: any;
 }
-class DrawerView extends React.Component<IDrawerViewProps, IDrawerViewState> {
-    state: {
-        open: boolean;
-    };
-    mounted: boolean;
-    originalScrollTop: number;
-    static defaultProps: {
-        options: {
-            from: {
-                transform: string;
-            };
-            to: {
-                transform: string;
-            };
-        };
-    };
-    componentDidMount(): void;
-    componentWillUnmount(): void;
-    close: () => void;
-    handleEscapeKeypress: (evt: any) => void;
-    render(): JSX.Element;
-}
-export default DrawerView;
+const Drawer: ({ hideModal, name, theme, options, children, ...rest }: IDrawerViewProps) => JSX.Element;
+export default Drawer;
 
 }
 declare module 'components/common/Grid/Column' {
 import React from 'react';
 export interface IGridColumnProps {
     className?: string;
-    columnClass?: string;
-    columnStyle?: React.CSSProperties;
+    style?: React.CSSProperties;
     children?: React.ReactChild;
+    gutter?: string | number;
+    size: string;
+    order?: number;
+    component: React.ComponentType<any> | string;
 }
-const GridColumn: React.ComponentClass<unknown, any>;
-export default GridColumn;
+export const Column: ({ className, style, children, gutter, order: _order, size: _size, component: Component }: IGridColumnProps) => JSX.Element;
+export const Placeholder: ({ size }: {
+    size: any;
+}) => JSX.Element;
 
 }
 declare module 'components/common/Grid' {
 import React from 'react';
 import { ThemedSFCProps } from 'types';
 export interface IGridProps extends ThemedSFCProps {
-    columns: string;
-    style?: React.StyleHTMLAttributes<any>;
+    columns: string | {
+        [x: number]: string | number;
+    };
+    className?: string;
+    style?: React.CSSProperties;
+    gutter?: number | string;
+    columnClass?: string;
+    columnStyle?: React.CSSProperties;
+    wrapperComponent: React.ComponentType<any> | string;
+    columnComponent: React.ComponentType<any> | string;
 }
-const _default: React.ComponentClass<IGridProps, any>;
+const _default: ({ children: _children, theme: _theme, columns: _columns, gutter: _gutter, className, style, columnStyle, wrapperComponent: WrapperComponent, columnComponent, ...rest }: IGridProps) => JSX.Element;
 export default _default;
 
 }
 declare module 'components/common/Image' {
 import 'core-js/features/array/includes';
-import React from 'react';
 export interface ImageProps {
     className?: string;
     src: string;
@@ -522,7 +506,7 @@ export interface ImageProps {
     };
     isFixedRatio: boolean;
 }
-const _default: React.ComponentClass<ImageProps, any>;
+const _default: import("react").ComponentClass<ImageProps, any>;
 export default _default;
 
 }
@@ -531,7 +515,6 @@ export {};
 
 }
 declare module 'components/common/MapArray' {
-import 'core-js/features/array/from';
 import React from 'react';
 export type MapCallback = (item: any, index: number, arrayLike: ArrayLike) => any;
 export type KeyAccessor = (item: any, index: number) => string;
@@ -558,7 +541,6 @@ export {};
 
 }
 declare module 'components/common/Picture' {
-/// <reference types="react" />
 const _default: ({ aspectRatio, lazy, offset, getSrc, getThumbnail, src, alt, thumbnail }: {
     aspectRatio: any;
     lazy: any;
@@ -581,45 +563,48 @@ import React from 'react';
 export interface IStickyProps {
     offset?: number;
     minHeight?: number;
+    stickToTop?: boolean;
 }
-const _default: new (props: any) => {
-    componentWillReceiveProps(nextProps: any): void;
-    render(): React.ComponentElement<{
-        theme: any;
-        children?: React.ReactNode;
-    }, React.Component<{
-        theme: any;
-        children?: React.ReactNode;
-    }, any, any>>;
-    setState<K extends never>(state: {} | Pick<{}, K> | ((prevState: Readonly<{}>, props: Readonly<{}>) => {} | Pick<{}, K> | null) | null, callback?: (() => void) | undefined): void;
-    forceUpdate(callBack?: (() => void) | undefined): void;
-    readonly props: Readonly<{
-        children?: React.ReactNode;
-    }> & Readonly<{}>;
-    state: Readonly<{}>;
-    context: any;
-    refs: {
-        [key: string]: React.ReactInstance;
+const _default: {
+    new (props: any): {
+        componentWillReceiveProps(nextProps: any): void;
+        render(): React.ComponentElement<{
+            theme: any;
+            children?: React.ReactNode;
+        }, React.Component<{
+            theme: any;
+            children?: React.ReactNode;
+        }, any, any>>;
+        context: any;
+        setState<K extends never>(state: {} | Pick<{}, K> | ((prevState: Readonly<{}>, props: Readonly<{}>) => {} | Pick<{}, K> | null) | null, callback?: (() => void) | undefined): void;
+        forceUpdate(callBack?: (() => void) | undefined): void;
+        readonly props: Readonly<{}> & Readonly<{
+            children?: React.ReactNode;
+        }>;
+        state: Readonly<{}>;
+        refs: {
+            [key: string]: React.ReactInstance;
+        };
     };
+    contextType?: React.Context<any> | undefined;
 };
 export default _default;
 
 }
 declare module 'components/common/Sticky/view' {
-/// <reference types="react" />
-const _default: ({ theme, registerRoot, registerContainer, registerSizer, children, state }: {
+const _default: ({ theme, registerRoot, registerContainer, registerSizer, children, state, title }: {
     theme: any;
     registerRoot: any;
     registerContainer: any;
     registerSizer: any;
     children: any;
     state: any;
+    title: any;
 }) => JSX.Element;
 export default _default;
 
 }
 declare module 'components/common/Truncate' {
-/// <reference types="react" />
 const _default: ({ children }: {
     children: any;
 }) => JSX.Element;
@@ -645,14 +630,13 @@ class List extends Component<any, any> {
         key: any;
         parent: any;
         style: any;
-    }) => any;
+    }) => import("react").DetailedReactHTMLElement<import("react").InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>;
     render(): any;
 }
 export default List;
 
 }
 declare module 'components/common/VirtualizedList/view' {
-/// <reference types="react" />
 const _default: ({ initAutoSizer, initList, array, cache, handleScroll, rowRenderer, className, theme, }: {
     initAutoSizer: any;
     initList: any;
@@ -667,13 +651,11 @@ export default _default;
 
 }
 declare module 'components/Dropdown' {
-import React from 'react';
-const _default: React.ComponentClass<unknown, any>;
+const _default: import("react").ComponentClass<unknown, any>;
 export default _default;
 
 }
 declare module 'components/Dropdown/view' {
-/// <reference types="react" />
 import { MJSValue, ThemedSFCProps, ClassnamedProps } from 'types';
 import { List, Map } from 'immutable';
 export interface IDropdownItemProps extends ThemedSFCProps {
@@ -698,14 +680,13 @@ export default DropdownView;
 declare module 'components/Facet/Component' {
 import React from 'react';
 import { FilterType } from 'types';
-export const getComponent: (type: FilterType) => React.ComponentClass<{}, any>;
-const _default: React.ComponentClass<any, any>;
+export const getComponent: (type: FilterType) => React.ComponentClass<unknown, any>;
+const _default: import("react").ComponentClass<any, any>;
 export default _default;
 
 }
 declare module 'components/Facet' {
-import React from 'react';
-const _default: React.ComponentClass<unknown, any>;
+const _default: import("react").ComponentClass<unknown, any>;
 export default _default;
 
 }
@@ -759,7 +740,7 @@ export type IIconProps = {
     className?: string;
     [x: string]: any;
 };
-const Icon: ({ name, width, height, className, ...rest }: IIconProps) => React.ComponentElement<{
+const Icon: ({ name, width, height, className, ...rest }: IIconProps) => React.CElement<{
     width: number | undefined;
     height: number | undefined;
     className: any;
@@ -772,8 +753,7 @@ export default Icon;
 
 }
 declare module 'components/ItemsList' {
-import React from 'react';
-const _default: React.ComponentClass<unknown, any>;
+const _default: import("react").ComponentClass<unknown, any>;
 export default _default;
 
 }
@@ -789,13 +769,11 @@ export default _default;
 
 }
 declare module 'components/Pagination' {
-import React from 'react';
-const _default: React.ComponentClass<unknown, any>;
+const _default: import("react").ComponentClass<unknown, any>;
 export default _default;
 
 }
 declare module 'components/Pagination/view' {
-/// <reference types="react" />
 import { ThemedSFCProps, MJSConfiguration } from 'types';
 export interface IPaginationProps extends ThemedSFCProps {
     config: MJSConfiguration;
@@ -812,18 +790,16 @@ export interface IPaginationProps extends ThemedSFCProps {
         [x: string]: any;
     };
 }
-const _default: ({ theme, config, current, getPageProps, total, showPrev, showFirst, showFirstDots, showLastDots, showLast, showNext, visiblePages, }: IPaginationProps) => JSX.Element;
+const _default: ({ theme, config, current, getPageProps, total, meta, showPrev, showFirst, showFirstDots, showLastDots, showLast, showNext, visiblePages, }: IPaginationProps) => JSX.Element;
 export default _default;
 
 }
 declare module 'components/PoweredBy' {
-import React from 'react';
-const _default: React.ComponentClass<unknown, any>;
+const _default: import("react").ComponentClass<unknown, any>;
 export default _default;
 
 }
 declare module 'components/PoweredBy/view' {
-/// <reference types="react" />
 const _default: ({ config, theme }: {
     config: any;
     theme: any;
@@ -835,13 +811,12 @@ declare module 'components/RangeFacet/content' {
 const _default: ({ item, config }: {
     item: any;
     config: any;
-}) => string;
+}) => any;
 export default _default;
 
 }
 declare module 'components/RangeFacet' {
-import React from 'react';
-const _default: React.ComponentClass<unknown, any>;
+const _default: import("react").ComponentClass<unknown, any>;
 export default _default;
 
 }
@@ -853,8 +828,8 @@ export interface IRangeFacetItemProps extends ThemedSFCProps {
     style: React.CSSProperties;
     config: MJSConfiguration;
 }
-const RangeFacetItem: React.SFC<IRangeFacetItemProps>;
-export default RangeFacetItem;
+const _default: ({ item, theme, style, config }: IRangeFacetItemProps) => JSX.Element;
+export default _default;
 
 }
 declare module 'components/RangeFacet/view' {
@@ -870,15 +845,16 @@ export interface IRangeFacetProps extends ThemedSFCProps {
     to: number;
     onChangeMax: (evt?: React.ChangeEvent<any>) => any;
     onChangeMin: (evt?: React.ChangeEvent<any>) => any;
-    onKeypress: (evt: any) => any;
+    onKeypressMin: (evt: any) => any;
+    onKeypressMax: (evt: any) => any;
     onPressButton: () => any;
+    hidden: boolean;
 }
-const RangeFacetView: React.SFC<IRangeFacetProps>;
-export default RangeFacetView;
+const _default: ({ theme, facet, items, config, currencySymbol, from, to, onChangeMax, onChangeMin, onKeypressMin, onKeypressMax, onPressButton, hidden }: IRangeFacetProps) => JSX.Element;
+export default _default;
 
 }
 declare module 'components/RatingFacet/content' {
-/// <reference types="react" />
 const _default: ({ item, theme, config }: {
     item: any;
     theme: any;
@@ -888,8 +864,7 @@ export default _default;
 
 }
 declare module 'components/RatingFacet' {
-import React from 'react';
-const _default: React.ComponentClass<unknown, any>;
+const _default: import("react").ComponentClass<unknown, any>;
 export default _default;
 
 }
@@ -913,14 +888,14 @@ export interface IRatingFacetProps extends ThemedSFCProps {
     facet: IFacet;
     items: List<IFacetValue>;
     config: MJSConfiguration;
+    hidden: boolean;
 }
 const RatingFacet: React.SFC<IRatingFacetProps>;
 export default RatingFacet;
 
 }
 declare module 'components/search/DesktopActions' {
-import React from 'react';
-const _default: React.ComponentClass<unknown, any>;
+const _default: import("react").ComponentClass<unknown, any>;
 export default _default;
 
 }
@@ -933,13 +908,12 @@ export interface IDesktopActionsProps extends ThemedSFCProps {
     isCollection: boolean;
     config: MJSConfiguration;
 }
-const DesktopActionsView: React.SFC<IDesktopActionsProps>;
+const DesktopActionsView: React.FunctionComponent<IDesktopActionsProps>;
 export default DesktopActionsView;
 
 }
 declare module 'components/search/DesktopFacets' {
-import React from 'react';
-const _default: React.ComponentClass<unknown, any>;
+const _default: import("react").ComponentClass<unknown, any>;
 export default _default;
 
 }
@@ -977,13 +951,11 @@ export default DesktopFacetsView;
 
 }
 declare module 'components/search/LazyResults' {
-import React from 'react';
-const _default: React.ComponentClass<unknown, any>;
+const _default: import("react").ComponentClass<unknown, any>;
 export default _default;
 
 }
 declare module 'components/search/LazyResults/view' {
-/// <reference types="react" />
 import { ThemedSFCProps, IProduct, MJSConfiguration } from 'types';
 import { List } from 'immutable';
 export interface ILazyResultsProps extends ThemedSFCProps {
@@ -1001,8 +973,7 @@ export default LazyResultsView;
 
 }
 declare module 'components/search/MobileActions' {
-import React from 'react';
-const _default: React.ComponentClass<unknown, any>;
+const _default: import("react").ComponentClass<unknown, any>;
 export default _default;
 
 }
@@ -1022,8 +993,7 @@ export default MobileActionsView;
 
 }
 declare module 'components/search/MobileFacets' {
-import React from 'react';
-const _default: React.ComponentClass<unknown, any>;
+const _default: import("react").ComponentClass<unknown, any>;
 export default _default;
 
 }
@@ -1047,7 +1017,6 @@ export default MobileFacetsTitlesView;
 
 }
 declare module 'components/search/MobileFacets/view' {
-/// <reference types="react" />
 import { ThemedSFCProps, IFacet, MJSConfiguration, MJSValue } from 'types';
 import { List } from 'immutable';
 export interface IFacetContentProps extends ThemedSFCProps {
@@ -1070,8 +1039,7 @@ export default _default;
 
 }
 declare module 'components/search/MobileSorting' {
-import React from 'react';
-const _default: React.ComponentClass<unknown, any>;
+const _default: import("react").ComponentClass<unknown, any>;
 export default _default;
 
 }
@@ -1096,13 +1064,11 @@ export default MobileSortingView;
 
 }
 declare module 'components/search/Query' {
-import React from 'react';
-const _default: React.ComponentClass<unknown, any>;
+const _default: import("react").ComponentClass<unknown, any>;
 export default _default;
 
 }
 declare module 'components/search/Query/view' {
-/// <reference types="react" />
 import { IQuery, MJSConfiguration, MJSValue, ThemedSFCProps } from 'types';
 import { Map } from 'immutable';
 export interface IGetContentProps {
@@ -1115,30 +1081,26 @@ export default QueryView;
 
 }
 declare module 'components/search/StaticResults' {
-import React from 'react';
-const _default: React.ComponentClass<unknown, any>;
+const _default: import("react").ComponentClass<unknown, any>;
 export default _default;
 
 }
 declare module 'components/search/StaticResults/view' {
-/// <reference types="react" />
 import { ThemedSFCProps, MJSConfiguration } from 'types';
 export interface IStaticResultsProps extends ThemedSFCProps {
     config: MJSConfiguration;
     columns: number;
 }
-const StaticResultsView: ({ columns, theme, config }: IStaticResultsProps) => JSX.Element;
+const StaticResultsView: ({ theme }: IStaticResultsProps) => JSX.Element;
 export default StaticResultsView;
 
 }
 declare module 'components/Sorting' {
-import React from 'react';
-const _default: React.ComponentClass<unknown, any>;
+const _default: import("react").ComponentClass<unknown, any>;
 export default _default;
 
 }
 declare module 'components/Sorting/view' {
-/// <reference types="react" />
 import { MJSConfiguration, ISortingItem, ThemedSFCProps } from 'types';
 import { List } from 'immutable';
 export interface ISortingProps extends ThemedSFCProps {
@@ -1152,8 +1114,7 @@ export default Sorting;
 
 }
 declare module 'components/Tabs' {
-import React from 'react';
-export const Tabs: React.ComponentClass<unknown, any>;
+export const Tabs: import("react").ComponentClass<unknown, any>;
 export const Tab: () => null;
 
 }
@@ -1175,8 +1136,7 @@ export default TabsView;
 
 }
 declare module 'components/Text' {
-import React from 'react';
-const _default: React.ComponentClass<any, any>;
+const _default: import("react").ComponentClass<any, any>;
 export default _default;
 
 }
@@ -1194,15 +1154,16 @@ export interface ITextProps extends ThemedSFCProps, ClassnamedProps {
     size?: string;
     html?: string;
 }
-const TextView: ({ component, className, children, mode, theme, bold, style, inlineBlock, size, html: __html, }: ITextProps) => any;
+const TextView: ({ component, className, children, mode, theme, bold, style, inlineBlock, size, html: __html, }: ITextProps) => import("react").DetailedReactHTMLElement<import("react").InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>;
 export default TextView;
 
 }
 declare module 'helpers/bundle' {
+/// <reference types="recompose" />
 import React from 'react';
 import { List } from 'immutable';
 export const provideBundle: (getInitialItems?: (i: any) => any) => (BaseComponent: any) => {
-    new (props: Readonly<{}>): {
+    new (props: {} | Readonly<{}>): {
         state: {
             inBundle: List<any>;
         };
@@ -1215,15 +1176,26 @@ export const provideBundle: (getInitialItems?: (i: any) => any) => (BaseComponen
         render(): JSX.Element;
         context: any;
         setState<K extends never>(state: {} | ((prevState: Readonly<{}>, props: Readonly<{}>) => {} | Pick<{}, K> | null) | Pick<{}, K> | null, callback?: (() => void) | undefined): void;
-        forceUpdate(callBack?: (() => void) | undefined): void;
+        forceUpdate(callback?: (() => void) | undefined): void;
         readonly props: Readonly<{}> & Readonly<{
             children?: React.ReactNode;
         }>;
         refs: {
             [key: string]: React.ReactInstance;
         };
+        componentDidMount?(): void;
+        shouldComponentUpdate?(nextProps: Readonly<{}>, nextState: Readonly<{}>, nextContext: any): boolean;
+        componentWillUnmount?(): void;
+        componentDidCatch?(error: Error, errorInfo: React.ErrorInfo): void;
+        getSnapshotBeforeUpdate?(prevProps: Readonly<{}>, prevState: Readonly<{}>): any;
+        componentDidUpdate?(prevProps: Readonly<{}>, prevState: Readonly<{}>, snapshot?: any): void;
+        componentWillMount?(): void;
+        UNSAFE_componentWillMount?(): void;
+        UNSAFE_componentWillReceiveProps?(nextProps: Readonly<{}>, nextContext: any): void;
+        componentWillUpdate?(nextProps: Readonly<{}>, nextState: Readonly<{}>, nextContext: any): void;
+        UNSAFE_componentWillUpdate?(nextProps: Readonly<{}>, nextState: Readonly<{}>, nextContext: any): void;
     };
-    new (props: {}, context?: any): {
+    new (props: {}, context: any): {
         state: {
             inBundle: List<any>;
         };
@@ -1236,13 +1208,24 @@ export const provideBundle: (getInitialItems?: (i: any) => any) => (BaseComponen
         render(): JSX.Element;
         context: any;
         setState<K extends never>(state: {} | ((prevState: Readonly<{}>, props: Readonly<{}>) => {} | Pick<{}, K> | null) | Pick<{}, K> | null, callback?: (() => void) | undefined): void;
-        forceUpdate(callBack?: (() => void) | undefined): void;
+        forceUpdate(callback?: (() => void) | undefined): void;
         readonly props: Readonly<{}> & Readonly<{
             children?: React.ReactNode;
         }>;
         refs: {
             [key: string]: React.ReactInstance;
         };
+        componentDidMount?(): void;
+        shouldComponentUpdate?(nextProps: Readonly<{}>, nextState: Readonly<{}>, nextContext: any): boolean;
+        componentWillUnmount?(): void;
+        componentDidCatch?(error: Error, errorInfo: React.ErrorInfo): void;
+        getSnapshotBeforeUpdate?(prevProps: Readonly<{}>, prevState: Readonly<{}>): any;
+        componentDidUpdate?(prevProps: Readonly<{}>, prevState: Readonly<{}>, snapshot?: any): void;
+        componentWillMount?(): void;
+        UNSAFE_componentWillMount?(): void;
+        UNSAFE_componentWillReceiveProps?(nextProps: Readonly<{}>, nextContext: any): void;
+        componentWillUpdate?(nextProps: Readonly<{}>, nextState: Readonly<{}>, nextContext: any): void;
+        UNSAFE_componentWillUpdate?(nextProps: Readonly<{}>, nextState: Readonly<{}>, nextContext: any): void;
     };
     childContextTypes: {
         inBundle: import("prop-types").Validator<object>;
@@ -1250,13 +1233,14 @@ export const provideBundle: (getInitialItems?: (i: any) => any) => (BaseComponen
     };
     contextType?: React.Context<any> | undefined;
 };
-export const connectBundle: import("recompose").InferableComponentEnhancerWithProps<{
+export const connectBundle: import("recompose").InferableComponentEnhancer<{
     inBundle: object;
     updateBundle: (...args: any[]) => any;
-}, {}>;
+}>;
 
 }
 declare module 'helpers/chunks' {
+/// <reference path="../../index.d.ts" />
 const _default: {
     views: {
         search: () => Promise<typeof import("../layouts/Search")>;
@@ -1268,13 +1252,13 @@ const _default: {
         tabs: () => Promise<typeof import("../layouts/Tabs")>;
     };
     autocomplete: {
-        sidebar: () => Promise<typeof import("../layouts/Autocomplete/Sidebar")>;
-        dropdown: () => Promise<typeof import("../layouts/Autocomplete/Dropdown")>;
-        fullscreen: () => Promise<typeof import("../layouts/Autocomplete/Fullscreen")>;
+        sidebar: () => Promise<typeof import("layouts/Autocomplete/Sidebar")>;
+        dropdown: () => Promise<typeof import("layouts/Autocomplete/Dropdown")>;
+        fullscreen: () => Promise<typeof import("layouts/Autocomplete/Fullscreen")>;
     };
     components: {
-        virtualizedList: () => Promise<typeof import("../components/common/VirtualizedList")>;
-        drawer: () => Promise<typeof import("../components/common/Drawer")>;
+        virtualizedList: () => Promise<typeof import("components/common/VirtualizedList")>;
+        drawer: () => Promise<typeof import("components/common/Drawer")>;
     };
 };
 export default _default;
@@ -1290,7 +1274,7 @@ export class Portal extends Component<any> {
     componentWillUnmount(): void;
     render(): any;
 }
-export const portal: (children: any, extraProps?: {}) => React.ComponentElement<any, Portal>;
+export const portal: (children: any, extraProps?: {}) => React.CElement<any, Portal>;
 
 }
 declare module 'helpers/debounce' {
@@ -1315,10 +1299,10 @@ export const escapeRegExp: (s: any) => any;
 declare module 'helpers/formatCurrency' {
 export interface ICurrencyData {
     symbol?: string;
-    thousandsSeparator?: string;
-    decimalSeparator?: string;
+    thousand?: string;
+    decimal?: string;
+    precision?: number;
     symbolOnLeft?: boolean;
-    decimalDigits?: number;
     spaceBetweenAmountAndSymbol?: boolean;
     format?: {
         pos: string;
@@ -1331,7 +1315,7 @@ export default _default;
 
 }
 declare module 'helpers/getBreakpoint' {
-const _default: (breakpoints: any) => any;
+const _default: (breakpoints: any, width?: number) => any;
 export default _default;
 
 }
@@ -1352,7 +1336,7 @@ export default _default;
 
 }
 declare module 'helpers/template' {
-const _default: (template?: string, selector?: RegExp) => (...args: any[]) => string;
+const _default: (template?: string, selector?: RegExp) => (...args: any[]) => any;
 export default _default;
 
 }
@@ -1377,7 +1361,8 @@ export default _default;
 
 }
 declare module 'helpers/withColumns' {
-const _default: (columnsMapper?: (width: any, props?: any) => 12 | 3 | 6 | 4) => (baseComponent: any) => any;
+import sizeMe from 'react-sizeme';
+const _default: (columnsMapper?: (width: any, props?: any) => 3 | 4 | 6 | 12) => (baseComponent: any) => import("react").ComponentType<Pick<{}, never> & sizeMe.WithSizeProps>;
 export default _default;
 
 }
@@ -1388,37 +1373,59 @@ export const withDrawer: (modalName: any, modalComponent: any, { renderTo, ...op
 declare module 'helpers/withErrorHandler' {
 import React from 'react';
 const _default: (BaseComponent: any) => {
-    new (props: Readonly<{}>): {
+    new (props: {} | Readonly<{}>): {
         state: {
             error: boolean;
         };
         componentDidCatch(error: any, info: any): void;
-        render(): any;
+        render(): React.CElement<unknown, React.Component<unknown, any, any>> | null;
         context: any;
         setState<K extends never>(state: {} | ((prevState: Readonly<{}>, props: Readonly<{}>) => {} | Pick<{}, K> | null) | Pick<{}, K> | null, callback?: (() => void) | undefined): void;
-        forceUpdate(callBack?: (() => void) | undefined): void;
+        forceUpdate(callback?: (() => void) | undefined): void;
         readonly props: Readonly<{}> & Readonly<{
             children?: React.ReactNode;
         }>;
         refs: {
             [key: string]: React.ReactInstance;
         };
+        componentDidMount?(): void;
+        shouldComponentUpdate?(nextProps: Readonly<{}>, nextState: Readonly<{}>, nextContext: any): boolean;
+        componentWillUnmount?(): void;
+        getSnapshotBeforeUpdate?(prevProps: Readonly<{}>, prevState: Readonly<{}>): any;
+        componentDidUpdate?(prevProps: Readonly<{}>, prevState: Readonly<{}>, snapshot?: any): void;
+        componentWillMount?(): void;
+        UNSAFE_componentWillMount?(): void;
+        componentWillReceiveProps?(nextProps: Readonly<{}>, nextContext: any): void;
+        UNSAFE_componentWillReceiveProps?(nextProps: Readonly<{}>, nextContext: any): void;
+        componentWillUpdate?(nextProps: Readonly<{}>, nextState: Readonly<{}>, nextContext: any): void;
+        UNSAFE_componentWillUpdate?(nextProps: Readonly<{}>, nextState: Readonly<{}>, nextContext: any): void;
     };
-    new (props: {}, context?: any): {
+    new (props: {}, context: any): {
         state: {
             error: boolean;
         };
         componentDidCatch(error: any, info: any): void;
-        render(): any;
+        render(): React.CElement<unknown, React.Component<unknown, any, any>> | null;
         context: any;
         setState<K extends never>(state: {} | ((prevState: Readonly<{}>, props: Readonly<{}>) => {} | Pick<{}, K> | null) | Pick<{}, K> | null, callback?: (() => void) | undefined): void;
-        forceUpdate(callBack?: (() => void) | undefined): void;
+        forceUpdate(callback?: (() => void) | undefined): void;
         readonly props: Readonly<{}> & Readonly<{
             children?: React.ReactNode;
         }>;
         refs: {
             [key: string]: React.ReactInstance;
         };
+        componentDidMount?(): void;
+        shouldComponentUpdate?(nextProps: Readonly<{}>, nextState: Readonly<{}>, nextContext: any): boolean;
+        componentWillUnmount?(): void;
+        getSnapshotBeforeUpdate?(prevProps: Readonly<{}>, prevState: Readonly<{}>): any;
+        componentDidUpdate?(prevProps: Readonly<{}>, prevState: Readonly<{}>, snapshot?: any): void;
+        componentWillMount?(): void;
+        UNSAFE_componentWillMount?(): void;
+        componentWillReceiveProps?(nextProps: Readonly<{}>, nextContext: any): void;
+        UNSAFE_componentWillReceiveProps?(nextProps: Readonly<{}>, nextContext: any): void;
+        componentWillUpdate?(nextProps: Readonly<{}>, nextState: Readonly<{}>, nextContext: any): void;
+        UNSAFE_componentWillUpdate?(nextProps: Readonly<{}>, nextState: Readonly<{}>, nextContext: any): void;
     };
     displayName: string;
     contextType?: React.Context<any> | undefined;
@@ -1428,44 +1435,7 @@ export default _default;
 }
 declare module 'helpers/withEvents' {
 import React from 'react';
-const _default: (events?: any) => (BaseComponent: any) => {
-    new (props: Readonly<{}>): {
-        removeListener: any;
-        handler: (event: any, ...args: any[]) => void;
-        componentDidMount(): void;
-        componentWillUnmount(): void;
-        render(): any;
-        context: any;
-        setState<K extends never>(state: {} | ((prevState: Readonly<{}>, props: Readonly<{}>) => {} | Pick<{}, K> | null) | Pick<{}, K> | null, callback?: (() => void) | undefined): void;
-        forceUpdate(callBack?: (() => void) | undefined): void;
-        readonly props: Readonly<{}> & Readonly<{
-            children?: React.ReactNode;
-        }>;
-        state: Readonly<{}>;
-        refs: {
-            [key: string]: React.ReactInstance;
-        };
-    };
-    new (props: {}, context?: any): {
-        removeListener: any;
-        handler: (event: any, ...args: any[]) => void;
-        componentDidMount(): void;
-        componentWillUnmount(): void;
-        render(): any;
-        context: any;
-        setState<K extends never>(state: {} | ((prevState: Readonly<{}>, props: Readonly<{}>) => {} | Pick<{}, K> | null) | Pick<{}, K> | null, callback?: (() => void) | undefined): void;
-        forceUpdate(callBack?: (() => void) | undefined): void;
-        readonly props: Readonly<{}> & Readonly<{
-            children?: React.ReactNode;
-        }>;
-        state: Readonly<{}>;
-        refs: {
-            [key: string]: React.ReactInstance;
-        };
-    };
-    displayName: string;
-    contextType?: React.Context<any> | undefined;
-};
+const _default: (events?: any) => (BaseComponent: any) => (props: any) => React.CElement<any, React.Component<any, any, any>>;
 export default _default;
 
 }
@@ -1478,12 +1448,12 @@ const _default: () => (BaseComponent: any) => {
         registerContainer: (ref: any) => void;
         onLoadNext: () => any;
         onLoadPrev: () => any;
-        readonly lessAllowed: boolean;
-        readonly moreAllowed: boolean;
+        readonly lessAllowed: any;
+        readonly moreAllowed: any;
         trackPosition: () => number | false;
         componentDidMount(): void;
         componentWillUnmount(): void;
-        componentWillReceiveProps({ items, meta, config }: {
+        UNSAFE_componentWillReceiveProps({ items, meta, config }: {
             items: any;
             meta: any;
             config: any;
@@ -1492,7 +1462,7 @@ const _default: () => (BaseComponent: any) => {
         render(): JSX.Element;
         context: any;
         setState<K extends string | number | symbol>(state: any, callback?: (() => void) | undefined): void;
-        forceUpdate(callBack?: (() => void) | undefined): void;
+        forceUpdate(callback?: (() => void) | undefined): void;
         readonly props: Readonly<any> & Readonly<{
             children?: React.ReactNode;
         }>;
@@ -1500,6 +1470,14 @@ const _default: () => (BaseComponent: any) => {
         refs: {
             [key: string]: React.ReactInstance;
         };
+        componentDidCatch?(error: Error, errorInfo: React.ErrorInfo): void;
+        getSnapshotBeforeUpdate?(prevProps: Readonly<any>, prevState: Readonly<any>): any;
+        componentDidUpdate?(prevProps: Readonly<any>, prevState: Readonly<any>, snapshot?: any): void;
+        componentWillMount?(): void;
+        UNSAFE_componentWillMount?(): void;
+        componentWillReceiveProps?(nextProps: Readonly<any>, nextContext: any): void;
+        componentWillUpdate?(nextProps: Readonly<any>, nextState: Readonly<any>, nextContext: any): void;
+        UNSAFE_componentWillUpdate?(nextProps: Readonly<any>, nextState: Readonly<any>, nextContext: any): void;
     };
     contextType?: React.Context<any> | undefined;
 };
@@ -1507,48 +1485,33 @@ export default _default;
 
 }
 declare module 'helpers/withMinResultsToShow' {
-import React from 'react';
-const _default: () => (BaseComponent: React.Component<{}, {}, any>) => React.ComponentClass<unknown, any>;
+const _default: () => (BaseComponent: any) => (props: any) => any;
 export default _default;
 
 }
 declare module 'helpers/withMobile' {
 /// <reference types="react" />
-export const useIsMobile: () => boolean;
-const _default: (BaseComponent: any) => (props: any) => import("react").ComponentElement<any, import("react").Component<any, any, any>>;
+export const useMobile: () => boolean;
+const _default: (BaseComponent: any) => (props: any) => import("react").CElement<any, import("react").Component<any, any, any>>;
 export default _default;
 
 }
 declare module 'helpers/withScrollOnItemsChange' {
+/// <reference types="recompose" />
 const _default: import("recompose").ComponentEnhancer<unknown, unknown>;
 export default _default;
 
 }
 declare module 'helpers/withTheme' {
 import React from 'react';
-const _default: (defaultTheme: any) => (Component: any) => {
-    new (props: any): {
-        componentWillReceiveProps(nextProps: any): void;
-        render(): React.ComponentElement<{
-            theme: any;
-            children?: React.ReactNode;
-        }, React.Component<{
-            theme: any;
-            children?: React.ReactNode;
-        }, any, any>>;
-        context: any;
-        setState<K extends never>(state: {} | ((prevState: Readonly<{}>, props: Readonly<{}>) => {} | Pick<{}, K> | null) | Pick<{}, K> | null, callback?: (() => void) | undefined): void;
-        forceUpdate(callBack?: (() => void) | undefined): void;
-        readonly props: Readonly<{}> & Readonly<{
-            children?: React.ReactNode;
-        }>;
-        state: Readonly<{}>;
-        refs: {
-            [key: string]: React.ReactInstance;
-        };
-    };
-    contextType?: React.Context<any> | undefined;
-};
+const _default: (defaultTheme: any) => (Component: any) => ({ theme, ...props }: {
+    [x: string]: any;
+    theme: any;
+}) => React.CElement<{
+    theme: any;
+}, React.Component<{
+    theme: any;
+}, any, any>>;
 export default _default;
 
 }
@@ -1557,30 +1520,13 @@ export {};
 
 }
 declare module 'layouts/Autocomplete/Dropdown' {
-import React from 'react';
-const _default: React.ComponentClass<unknown, any>;
+const _default: import("react").ComponentClass<unknown, any>;
 export default _default;
 
 }
 declare module 'layouts/Autocomplete/Dropdown/trackPosition' {
-import React from "react";
-const _default: (BaseComponent: any) => {
-    new (props: any): {
-        registerComponent: (ref: any) => void;
-        render(): any;
-        context: any;
-        setState<K extends string | number | symbol>(state: any, callback?: (() => void) | undefined): void;
-        forceUpdate(callBack?: (() => void) | undefined): void;
-        readonly props: Readonly<any> & Readonly<{
-            children?: React.ReactNode;
-        }>;
-        state: Readonly<any>;
-        refs: {
-            [key: string]: React.ReactInstance;
-        };
-    };
-    contextType?: React.Context<any> | undefined;
-};
+export const usePosition: () => any[];
+const _default: (BaseComponent: any) => (props: any) => any;
 export default _default;
 
 }
@@ -1614,13 +1560,11 @@ export default AutocompleteDropdownView;
 
 }
 declare module 'layouts/Autocomplete/Fullscreen' {
-import React from 'react';
-const _default: React.ComponentClass<unknown, any>;
+const _default: import("react").ComponentClass<unknown, any>;
 export default _default;
 
 }
 declare module 'layouts/Autocomplete/Fullscreen/view' {
-/// <reference types="react" />
 const _default: ({ config, theme, meta, suggestions, innerRef, position, ...rest }: {
     [x: string]: any;
     config: any;
@@ -1639,8 +1583,7 @@ export default _default;
 
 }
 declare module 'layouts/Autocomplete/Sidebar' {
-import React from 'react';
-const _default: React.ComponentClass<unknown, any>;
+const _default: import("react").ComponentClass<unknown, any>;
 export default _default;
 
 }
@@ -1672,8 +1615,12 @@ export default Sidebar;
 
 }
 declare module 'layouts/Autocomplete/withAutocompleteLogic' {
-import { ComponentEnhancer } from 'recompose';
-const _default: ComponentEnhancer<unknown, unknown>;
+import React from 'react';
+export const useAutocompleteLogic: () => {
+    selectedSuggestion: any;
+    closeAutocomplete: () => any;
+};
+const _default: (BaseComponent: any) => (props: any) => React.CElement<unknown, React.Component<unknown, any, any>>;
 export default _default;
 
 }
@@ -1683,7 +1630,6 @@ export default _default;
 
 }
 declare module 'layouts/Content/view' {
-/// <reference types="react" />
 import { MJSConfiguration, MJSValue, ThemedSFCProps } from 'types';
 export interface IContentSearchProps extends ThemedSFCProps {
     config: MJSConfiguration;
@@ -1696,13 +1642,11 @@ export default _default;
 
 }
 declare module 'layouts/Custom' {
-/// <reference types="react" />
 const _default: import("react").ComponentClass<unknown, any>;
 export default _default;
 
 }
 declare module 'layouts/Custom/view' {
-/// <reference types="react" />
 const _default: ({ theme }: {
     theme: any;
 }) => JSX.Element;
@@ -1710,13 +1654,11 @@ export default _default;
 
 }
 declare module 'layouts/Recommendation/Grid' {
-import React from 'react';
-const _default: React.ComponentClass<unknown, any>;
+const _default: import("react").ComponentClass<unknown, any>;
 export default _default;
 
 }
 declare module 'layouts/Recommendation/Grid/view' {
-/// <reference types="react" />
 import { IProduct, MJSConfiguration, ThemedSFCProps } from 'types/index';
 import { List } from 'immutable';
 export interface IGridProps extends ThemedSFCProps {
@@ -1733,26 +1675,13 @@ const _default: any;
 export default _default;
 
 }
-declare module 'layouts/Recommendation/Slider/Arrow' {
-/// <reference types="react" />
-export interface IArrowProps {
-    dir: 'left' | 'right';
-    onClick?: (evt: any) => null;
-    defaultOnClick: (evt: any) => null;
-    [x: string]: any;
-}
-export const renderArrow: (dir: any, handler: any) => JSX.Element;
-
-}
 declare module 'layouts/Recommendation/Slider' {
-import React from 'react';
-import './styles.global.css';
-const _default: React.ComponentClass<unknown, any>;
+import 'layouts/Recommendation/Slider/styles.global.css';
+const _default: import("react").ComponentClass<unknown, any>;
 export default _default;
 
 }
 declare module 'layouts/Recommendation/Slider/Swiper' {
-/// <reference types="react" />
 const _default: ({ children, ...props }: {
     [x: string]: any;
     children: any;
@@ -1761,79 +1690,6 @@ export default _default;
 
 }
 declare module 'layouts/Recommendation/Slider/view' {
-import React, { ReactChildren } from 'react';
-import { IProduct, ThemedSFCProps, MJSConfiguration } from 'types';
-import { List } from 'immutable';
-export interface IReactSlickProps {
-    accessibility?: boolean;
-    adaptiveHeight?: boolean;
-    afterChange?: (index: number) => any;
-    appendDots: (dots: ReactChildren) => React.ReactElement<any>;
-    arrows?: boolean;
-    asNavFor?: (ref: React.Ref<any>) => any;
-    autoplaySpeed?: number;
-    autoplay?: boolean;
-    beforeChange?: (oldIndex: number, newIndex: number) => any;
-    centerMode?: boolean;
-    centerPadding?: string;
-    className?: string;
-    customPaging?: (index: number) => React.ReactElement<any>;
-    dotsClass?: string;
-    dots?: boolean;
-    draggable?: boolean;
-    easing?: string;
-    fade?: boolean;
-    focusOnSelect?: boolean;
-    infinite?: boolean;
-    initialSlide?: number;
-    lazyLoad?: 'ondemand' | 'progressive';
-    onEdge?: (direction: string) => any;
-    onInit?: () => void;
-    onLazyLoad?: () => any;
-    onReInit?: () => void;
-    onSwipe?: () => any;
-    pauseOnDotsHover?: boolean;
-    pauseOnFocus?: boolean;
-    pauseOnHover?: boolean;
-    responsive?: string[];
-    rows?: number;
-    rtl?: boolean;
-    slide?: string;
-    slidesPerRow?: number;
-    slidesToScroll?: number;
-    slidesToShow?: number;
-    speed?: number;
-    swipeToSlide?: boolean;
-    swipe?: boolean;
-    touchMove?: boolean;
-    touchThreshold?: number;
-    useCSS?: boolean;
-    useTransform?: boolean;
-    variableWidth?: boolean;
-    vertical?: boolean;
-}
-export interface ISliderProps extends ThemedSFCProps {
-    items: List<IProduct>;
-    config: MJSConfiguration;
-    sliderOptions: IReactSlickProps;
-    _mountSlider: React.RefObject<any>;
-}
-const SliderRecommendationLayout: ({ items, config, theme, sliderOptions, _mountSlider }: ISliderProps) => JSX.Element;
-export default SliderRecommendationLayout;
-
-}
-declare module 'layouts/Recommendation/Swiper' {
-import React from 'react';
-import 'layouts/Recommendation/Swiper/styles.global.css';
-const _default: React.ComponentClass<unknown, any>;
-export default _default;
-
-}
-declare module 'layouts/Recommendation/Swiper/Swiper' {
-
-}
-declare module 'layouts/Recommendation/Swiper/view' {
-/// <reference types="react" />
 const _default: ({ items, config, theme, sliderOptions }: {
     items: any;
     config: any;
@@ -1849,7 +1705,6 @@ export default _default;
 
 }
 declare module 'layouts/Search/view' {
-/// <reference types="react" />
 import { List } from 'immutable';
 import { MJSConfiguration, ThemedSFCProps, IProduct } from 'types';
 export interface ISearchProps extends ThemedSFCProps {
@@ -1860,13 +1715,9 @@ export interface ISearchProps extends ThemedSFCProps {
     filtersOnRight?: boolean;
     items: List<IProduct>;
 }
-const SearchLayout: ({ config, meta, isMobile, isCollection, mobileFacetsOpened, filtersOnRight, theme, items }: {
+const SearchLayout: ({ config, isCollection, theme, items }: {
     config: any;
-    meta: any;
-    isMobile: any;
     isCollection: any;
-    mobileFacetsOpened: any;
-    filtersOnRight: any;
     theme: any;
     items: any;
 }) => JSX.Element;
@@ -1879,7 +1730,6 @@ export default _default;
 
 }
 declare module 'layouts/Tabs/view' {
-/// <reference types="react" />
 const _default: ({ onClick, widgets, theme }: {
     onClick: any;
     widgets: any;
@@ -1889,13 +1739,11 @@ export default _default;
 
 }
 declare module 'layouts/ZeroResults' {
-import React from "react";
-const _default: React.ComponentClass<unknown, any>;
+const _default: import("react").ComponentClass<unknown, any>;
 export default _default;
 
 }
 declare module 'layouts/ZeroResults/view' {
-/// <reference types="react" />
 import { List } from 'immutable';
 import { IProduct, ThemedSFCProps, MJSConfiguration } from 'types';
 export interface IZeroResultsProps extends ThemedSFCProps {

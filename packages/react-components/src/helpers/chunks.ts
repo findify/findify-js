@@ -1,5 +1,5 @@
 export default {
-/** Views */
+  /** Views */
   views: {
     search: () => import(/* webpackChunkName: "search" */ '@findify/react-components/src/layouts/Search'),
     autocomplete: () => import(/* webpackChunkName: "autocomplete" */ '@findify/react-components/src/layouts/Autocomplete'),

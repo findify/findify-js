@@ -34,7 +34,7 @@ const defaultTitles: React.SFC<ITitlesProps> = ({
   onReset
 }: ITitlesProps) => (
   <div className={theme.header} display-if={!config.get('showFacetsTitle')}>
-    <Icon name='Filters' className={theme.icon} />
+    <Icon name='Filters' title='Filters' className={theme.icon} />
     <Text primary uppercase className={theme.title}>
       { config.getIn(['facets', 'i18n', 'filters'], 'Filters') }
     </Text>
@@ -61,7 +61,7 @@ export const hidable: React.SFC<IHidableProps> = ({
   onHide
 }: IHidableProps) => (
 <div className={theme.header} display-if={!config.get('showFacetsTitle')} tabIndex={-1}>
-  <Icon name='Filters' className={theme.icon} />
+  <Icon name='Filters' title='Filters' className={theme.icon} />
   <Text primary uppercase className={theme.title}>
     { config.getIn(['facets', 'i18n', 'filters'], 'Filters') }
     <Button
@@ -79,7 +79,7 @@ export const hidable: React.SFC<IHidableProps> = ({
     onClick={onHide}>
     <Text secondary uppercase>
       { config.getIn(['facets', 'i18n', 'hideDesktopFacets'], 'Hide') }
-      <Icon name='XDark' />
+      <Icon name='XDark' title='Hide filters' />
     </Text>
   </Button>
   </div>

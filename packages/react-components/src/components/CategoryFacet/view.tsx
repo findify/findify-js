@@ -71,7 +71,10 @@ const CategoryFacetView = ({
       onClick={onToggle}
       display-if={items.size > config.get('maxItemsCount', 6)}>
       <Text primary uppercase>
-        <Icon name={isExpanded ? 'Minus' : 'Plus'} />
+        <Icon
+          name={isExpanded ? 'Minus' : 'Plus'}
+          title={isExpanded ? 'Expanded' : 'Collapsed'}
+        />
         { isExpanded ? config.getIn(['i18n', 'less']) : config.getIn(['i18n', 'more']) }
       </Text>
   </Button>

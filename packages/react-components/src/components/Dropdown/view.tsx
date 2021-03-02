@@ -56,7 +56,11 @@ const DropdownView = ({ onChange, items, selectedItem, theme, className }: IDrop
           <Text primary lowercase>
             { selectedItem.get('label') }
           </Text>
-          <Icon name='ArrowDown' className={theme.arrow}/>
+          <Icon
+            name='ArrowDown'
+            className={theme.arrow}
+            title='Expand list'
+          />
         </Button>
         <div className={cx(theme.dropdown, { [theme.open]: isOpen })} >
           <MapArray

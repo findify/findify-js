@@ -70,7 +70,7 @@ export default ({
         {...getPageProps(current - 1)}
         className={theme.prev}
       >
-        <Icon name='ArrowLeft' />
+        <Icon name='ArrowLeft' title='Previous' />
         {config.getIn(['pagination', 'i18n', 'previous'], 'previous')}
       </Button>
       <Button
@@ -116,7 +116,7 @@ export default ({
         className={theme.next}
       >
         {config.getIn(['pagination', 'i18n', 'next'], 'next')}
-        <Icon name='ArrowRight' />
+        <Icon name='ArrowRight' title='Next' />
       </Button>
     </div>
   )

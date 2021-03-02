@@ -6,29 +6,29 @@ import React from 'react';
 import cx from 'classnames';
 import styles from 'components/Icon/styles.css';
 
-import Filters from 'components/Icon/icons/Filters.svg';
-import Fire from 'components/Icon/icons/Fire.svg';
-import Minus from 'components/Icon/icons/Minus.svg';
-import Plus from 'components/Icon/icons/Plus.svg';
-import Search from 'components/Icon/icons/Search.svg';
-import Sorting from 'components/Icon/icons/Sorting.svg';
+import Filters from 'components/Icon/icons/Filters';
+import Fire from 'components/Icon/icons/Fire';
+import Minus from 'components/Icon/icons/Minus';
+import Plus from 'components/Icon/icons/Plus';
+import Search from 'components/Icon/icons/Search';
+import Sorting from 'components/Icon/icons/Sorting';
 
-import CheckmarkDark from 'components/Icon/icons/Checkmark/Dark.svg';
-import Star from 'components/Icon/icons/Star.svg';
-import XDark from 'components/Icon/icons/X/Dark.svg';
-import XMobile from 'components/Icon/icons/X/Mobile.svg';
-import RadioEmpty from 'components/Icon/icons/Radio/Empty.svg';
-import RadioFilled from 'components/Icon/icons/Radio/Filled.svg';
-import ArrowBack from 'components/Icon/icons/Arrow/Back.svg';
-import ArrowDown from 'components/Icon/icons/Arrow/Down.svg';
-import ArrowUp from 'components/Icon/icons/Arrow/Up.svg';
-import ArrowLeft from 'components/Icon/icons/Arrow/Left.svg';
-import ArrowRight from 'components/Icon/icons/Arrow/Right.svg';
-import ArrowLeftBig from 'components/Icon/icons/Arrow/Left-Big.svg';
-import ArrowRightBig from 'components/Icon/icons/Arrow/Right-Big.svg';
-import CheckboxFilled from 'components/Icon/icons/Checkbox/Filled.svg';
-import CheckboxEmpty from 'components/Icon/icons/Checkbox/Empty.svg';
-import ExternalLink from 'components/Icon/icons/ExternalLink.svg';
+import CheckmarkDark from 'components/Icon/icons/Checkmark/Dark';
+import Star from 'components/Icon/icons/Star';
+import XDark from 'components/Icon/icons/X/Dark';
+import XMobile from 'components/Icon/icons/X/Mobile';
+import RadioEmpty from 'components/Icon/icons/Radio/Empty';
+import RadioFilled from 'components/Icon/icons/Radio/Filled';
+import ArrowBack from 'components/Icon/icons/Arrow/Back';
+import ArrowDown from 'components/Icon/icons/Arrow/Down';
+import ArrowUp from 'components/Icon/icons/Arrow/Up';
+import ArrowLeft from 'components/Icon/icons/Arrow/Left';
+import ArrowRight from 'components/Icon/icons/Arrow/Right';
+import ArrowLeftBig from 'components/Icon/icons/Arrow/Left-Big';
+import ArrowRightBig from 'components/Icon/icons/Arrow/Right-Big';
+import CheckboxFilled from 'components/Icon/icons/Checkbox/Filled';
+import CheckboxEmpty from 'components/Icon/icons/Checkbox/Empty';
+import ExternalLink from 'components/Icon/icons/ExternalLink';
 
 /** Possible icon types */
 export const icons = {
@@ -66,17 +66,19 @@ export type IIconProps = {
   height?: number
   /** Custom className */
   className?: string
+  /** Accessible title for screen readers */
+  title?: string
+  /** Accessible title for screen readers */
+  component?: React.Component
   /** Rest of props to pass to underlying elements */
   [x: string]: any;
 }
 
-const Icon = ({ name, width, height, className, ...rest }: IIconProps) =>
-React.createElement(icons[name], {
-  width,
-  height,
-  className: cx(styles.root, className),
-  ...rest
-})
+const Icon = ({ name, component, className, ...rest }: IIconProps) =>
+  React.createElement(
+    component || icons[name],
+    { className: cx(styles.root, className), ...rest }
+  )
 
 export default Icon;
 

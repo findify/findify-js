@@ -24,13 +24,10 @@ export interface IGridProps extends ThemedSFCProps {
   columnComponent: React.ComponentType<any> | string
 }
 
-const usePlaceholders = (columns, gutter) => {
-  console.log(columns.length)
+const usePlaceholders = (columns) => {
   if (columns.length !== 1 || isNaN(Number(columns[0]))) return null;
   return useMemo(() => Array.from(Array(Number(columns[0])).keys())
-    .map(i =>
-      <Placeholder key={i} size={columns[0]} />
-    )
+    .map(i =><Placeholder key={i} size={columns[0]} />)
   , [columns]);
 }
 
@@ -54,7 +51,7 @@ export default ({
   const theme = useTheme(_theme, styles);
   const columns = useMemo(() => computedColumns.split('|'), [computedColumns]);
   const gutter = useMemo(() => _gutter && (isNaN(Number(_gutter)) ? _gutter : `${_gutter}px`), [_gutter]);
-  const placeholders = usePlaceholders(columns, gutter);
+  const placeholders = usePlaceholders(columns);
   
   const children = useMemo(() => React.Children.map(
     _children,

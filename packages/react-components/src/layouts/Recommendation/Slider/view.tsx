@@ -14,7 +14,7 @@ export default ({ items, config, theme, sliderOptions }) => {
 
       <div className={theme.root}>
         <button aria-label="previous" className={cx(theme.prev, `${config.get('slot')}-prev`)}>
-          <Icon name='ArrowLeftBig' className={theme.arrow} />
+          <Icon name='ArrowLeftBig' title='Previous slide' className={theme.arrow} />
         </button>
         <Swiper {...sliderOptions}>
           {
@@ -28,7 +28,7 @@ export default ({ items, config, theme, sliderOptions }) => {
           }
         </Swiper>
         <button aria-label="next" className={cx(theme.next, `${config.get('slot')}-next`)}>
-          <Icon name='ArrowRightBig' className={theme.arrow} />
+          <Icon name='ArrowRightBig' title='Next slide' className={theme.arrow} />
         </button>
       </div>
     </React.Fragment>

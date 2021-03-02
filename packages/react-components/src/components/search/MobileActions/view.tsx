@@ -44,7 +44,7 @@ const MobileActionsView: React.SFC<IMobileActionsProps> =  ({
   <div className={theme.bottomRow}>
     <Button onClick={showSort} className={theme.button}>
       <Text primary uppercase>
-        <Icon name='Sorting' className={theme.icon} />
+        <Icon name='Sorting' title='Sorting' className={theme.icon} />
         { sorting }
       </Text>
     </Button>
@@ -53,7 +53,7 @@ const MobileActionsView: React.SFC<IMobileActionsProps> =  ({
 
     <Button onClick={showFacets} className={theme.button}>
       <Text primary uppercase>
-        <Icon name='Filters' />
+        <Icon name='Filters' title='Filters' />
         { config.getIn(['facets', 'i18n', 'showMobileFacets'], 'Filter') }
         <span className={theme.facetCount}>
           ({total || 0})

@@ -22,9 +22,16 @@ export interface IRatingProps extends ThemedSFCProps {
 const RatingView: React.SFC<IRatingProps> = ({ value, count, theme }: IRatingProps) => (
   <div className={theme.rating}>
     <div className={theme.stars}>
-      {itemsArray.map((index:number) => (
-        <Icon key={index} name='Star' className={cx(theme.star, { [theme.filled]: index < value })} />
-      ))}
+      {
+        itemsArray.map((index: number) => (
+          <Icon
+            key={index}
+            name='Star'
+            title='Star'
+            className={cx(theme.star, { [theme.filled]: index < value })}
+        />
+        ))
+      }
     </div>
     <Text display-if={!!count} className={theme.count} mode='secondary-uppercase'>({count})</Text>
   </div>

@@ -12,6 +12,8 @@ const defaultEnv = 'production';
 const findifyEnv =
   typeof process !== 'undefined' && process.env && process.env.FINDIFY_ENV;
 
+console.log(process.env.FINDIFY_ENV);
+
 const env = findifyEnv || defaultEnv;
 if (!knownEnvs.includes(env)) {
   throw new Error(`${env} is not supported environment`);

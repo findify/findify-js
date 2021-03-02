@@ -35,7 +35,10 @@ const Item = ({ item, theme, style, onItemClick }: ICheckboxFacetItemProps) => {
       className={theme.item}
       onClick={onClick}
     >
-      <Icon name={isSelected ? 'CheckboxFilled' : 'CheckboxEmpty'} />
+      <Icon
+        name={isSelected ? 'CheckboxFilled' : 'CheckboxEmpty'}
+        title={isSelected ? 'Selected' : 'Not selected'}
+      />
       <Text
         primary
         lowercase

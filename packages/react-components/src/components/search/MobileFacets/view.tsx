@@ -93,7 +93,7 @@ export default ({
     </div>
 
     <Button onClick={activeFacet ? selectFacet : hideModal} className={theme.backButton} >
-      <Icon name='ArrowBack' />
+      <Icon name='ArrowBack' title='Go back' />
     </Button>
 
     <Button

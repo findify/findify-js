@@ -14,7 +14,8 @@ const DeadCodePlugin = require('webpack-deadcode-plugin');
 
 require('dotenv').config();
 
-console.log('BUILD BUNDLE', process.env.PUBLIC_PATH);
+console.log('PUBLIC_PATH:', process.env.PUBLIC_PATH);
+console.log('FINDIFY_ENV:', process.env.FINDIFY_ENV);
 
 interface WebpackEnvArgs {
   analyze?: boolean;

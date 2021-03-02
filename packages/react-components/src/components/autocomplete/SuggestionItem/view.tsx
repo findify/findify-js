@@ -2,8 +2,8 @@
  * @module components/autocomplete/SuggestionItem
  */
 
-import React, { useRef } from 'react'
-import classnames from 'classnames'
+import React from 'react'
+import cx from 'classnames'
 import Icon from 'components/Icon'
 import { ISuggestion, ISuggestionProps, IQuery, ThemedSFCProps } from 'types';
 import escapeRegExp from 'lodash/escapeRegExp';
@@ -58,7 +58,14 @@ const SuggestionItemView: React.SFC<ISuggestionItemProps> = ({
       role="option"
       id={item.hashCode()}
       aria-selected={highlighted}
-      className={classnames(theme.suggestion, { [theme.highlighted]: highlighted, [theme.withIcon]: !!icon , [theme.trending]: isTrendingSearches })}>
+      className={cx(
+        theme.suggestion, {
+          [theme.highlighted]: highlighted,
+          [theme.withIcon]: !!icon,
+          [theme.trending]: isTrendingSearches
+        }
+      )}
+    >
       <Icon
         display-if={icon}
         name={icon}

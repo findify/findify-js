@@ -39,7 +39,7 @@ const DesktopActionsView: React.FunctionComponent<IDesktopActionsProps> = ({
         onClick={showFacets}
       >
         <Text secondary uppercase>
-          <Icon name='Filters' className={theme.icon} />
+          <Icon name='Filters' title='Filters' className={theme.icon} />
           { config.getIn(['facets', 'i18n', 'showDesktopFacets'], 'show') }
         </Text>
       </Button>

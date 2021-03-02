@@ -69,7 +69,7 @@ const CheckboxFacetView =  ({
         className={theme.input}
         onChange={onSearch}
         value={search}/>
-      <Icon name='Search' className={theme.icon} />
+      <Icon name='Search' className={theme.icon} title='Search' />
     </div>
 
     <section role="list">
@@ -110,7 +110,10 @@ const CheckboxFacetView =  ({
       onClick={onToggle}
       display-if={items.size > (config.get('maxItemsCount') as number)}>
       <Text primary uppercase>
-        <Icon name={isExpanded ? 'Minus' : 'Plus'} />
+        <Icon
+          name={isExpanded ? 'Minus' : 'Plus'}
+          title={isExpanded ? 'Expanded' : 'Collapsed'}
+        />
         { isExpanded ? config.getIn(['i18n', 'less']) : config.getIn(['i18n', 'more']) }
       </Text>
     </Button>

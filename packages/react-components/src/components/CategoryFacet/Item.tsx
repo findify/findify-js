@@ -21,7 +21,7 @@ export interface ICategoryFacetCategoryProps extends ThemedSFCProps {
   config: MJSConfiguration;
 }
 
-const Item = ({ item, theme, style, config }: ICategoryFacetCategoryProps) => console.log(theme.content) || (
+const Item = ({ item, theme, style, config }: ICategoryFacetCategoryProps) => (
   <>
     <Button
       style={style}
@@ -35,6 +35,7 @@ const Item = ({ item, theme, style, config }: ICategoryFacetCategoryProps) => co
         <Icon
           display-if={item.get('has_children')}
           name={item.get('selected') ? 'ArrowDown' : 'ArrowRight'}
+          title={item.get('selected') ? 'Extended' : 'Collapsed'}
         />
       </Text>
       <Text secondary uppercase>

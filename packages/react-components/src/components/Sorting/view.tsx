@@ -23,7 +23,7 @@ export interface ISortingProps extends ThemedSFCProps {
 
 const Sorting = ({ onChangeSort, config, theme, items, selectedItem }: ISortingProps) =>
 <div className={theme.root}>
-  <Icon name='Sorting' className={theme.icon} />
+  <Icon name='Sorting' className={theme.icon} title='Sorting'/>
   <Text primary uppercase className={theme.title}>
     { config.getIn(['sorting', 'i18n', 'title']) }:
   </Text>

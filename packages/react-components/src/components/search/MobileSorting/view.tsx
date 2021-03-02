@@ -27,7 +27,10 @@ const Item = withHandlers({
 })(({ item, theme, onClick }: IMobileSortingItemProps) =>
   <Button onClick={onClick} disabled={item.get('selected')} className={theme.item}>
     <Text primary uppercase>
-      <Icon name={item.get('selected') ? 'RadioFilled' : 'RadioEmpty'} />
+      <Icon
+        name={item.get('selected') ? 'RadioFilled' : 'RadioEmpty'}
+        title={item.get('selected') ? 'Selected' : 'Not selected'}
+      />
       { item.get('label') }
     </Text>
   </Button>
@@ -58,7 +61,7 @@ const MobileSortingView = ({ theme, style, hideModal, config, items, setSorting 
     </div>
 
     <Button onClick={hideModal} >
-      <Icon name='ArrowBack' />
+      <Icon name='ArrowBack' title='Go back'/>
     </Button>
   </div>
 

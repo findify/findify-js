@@ -34,7 +34,11 @@ const RatingFacetItem: React.SFC<IRatingFacetItemProps> = ({
     tabIndex={0}
   >
     <Text primary lowercase bold={item.get('selected')}>
-      <Icon className={theme.checkbox} name={item.get('selected') ? 'CheckboxFilled' : 'CheckboxEmpty'} />
+      <Icon
+        className={theme.checkbox}
+        name={item.get('selected') ? 'CheckboxFilled' : 'CheckboxEmpty'}
+        title={item.get('selected') ? 'Selected' : 'Not selected'}
+      />
       { content({ item, config, theme }) }
     </Text>
     <Text secondary uppercase>

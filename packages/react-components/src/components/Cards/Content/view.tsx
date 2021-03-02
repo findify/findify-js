@@ -41,7 +41,7 @@ export default withHandlers({
         src={item.getIn(['image', 'src'])}
         alt={item.get('title')}
       />
-      <Icon name='ExternalLink' className={theme.linkIcon} />
+      <Icon name='ExternalLink' className={theme.linkIcon} title='Open in new window' />
     </div>
     <Title
       theme={theme}

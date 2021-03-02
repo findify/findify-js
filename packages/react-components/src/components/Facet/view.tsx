@@ -50,7 +50,11 @@ const FacetView = ({
       <Text primary uppercase className={theme.text}>
         {title} {filtersSelected > 0 ? `(${filtersSelected})` : ''}
       </Text>
-      <Icon name={isOpen ? 'Minus' : 'Plus'} className={theme.icon} />
+      <Icon
+        name={isOpen ? 'Minus' : 'Plus'}
+        className={theme.icon}
+        title={isOpen ? 'Collapse list' : 'Expand list'}
+      />
     </Button>
     <Component
       hidden={!isOpen}

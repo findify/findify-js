@@ -41,7 +41,7 @@ const Item = compose(
     <Text secondary uppercase className={theme.title}>
       <Content item={item} theme={theme} config={config} />
     </Text>
-    <Icon className={theme.cross} name='XDark' />
+    <Icon className={theme.cross} name='XDark' title='Remove filter' />
   </Button>
 );
 

@@ -25,7 +25,12 @@ const Item = ({ item, theme, config }: IColorFacetItemProps) =>
     onClick={item.toggle}
   >
     <Content item={item} config={config} theme={theme}>
-      <Icon display-if={item.get('selected')} name='CheckmarkDark' className={theme.check} />
+      <Icon
+        display-if={item.get('selected')}
+        name='CheckmarkDark'
+        className={theme.check}
+        title='Selected'
+      />
     </Content>
   </button>
 
