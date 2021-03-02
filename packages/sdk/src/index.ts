@@ -9,10 +9,7 @@ const knownEnvs = ['development', 'staging', 'production'];
 /** Default environment that would be used if nothing is set. */
 const defaultEnv = 'production';
 /** Current environment specified in `process.env.FINDIFY_ENV`. */
-const findifyEnv =
-  typeof process !== 'undefined' && process.env && process.env.FINDIFY_ENV;
-
-console.log(process.env.FINDIFY_ENV);
+const findifyEnv = (() => { try{ return process.env.FINDIFY_ENV } catch { return defaultEnv }})()
 
 const env = findifyEnv || defaultEnv;
 if (!knownEnvs.includes(env)) {

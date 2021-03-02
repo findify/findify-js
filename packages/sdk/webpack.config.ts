@@ -76,7 +76,10 @@ export default (env: WebpackEnvArgs) => {
     plugins: [
       new webpack.DefinePlugin({
         __COMMITHASH__: JSON.stringify(new GitRevisionPlugin().commithash()),
-        'process.env': { NODE_ENV: JSON.stringify('production') },
+        'process.env': {
+          NODE_ENV: JSON.stringify('production'),
+          FINDIFY_ENV: JSON.stringify('production')
+        },
       }),
       // enable scope hoisting
       new webpack.optimize.ModuleConcatenationPlugin(),
