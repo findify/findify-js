@@ -2,17 +2,17 @@
  * @module components/RangeFacet
  */
 
-import React, { InputHTMLAttributes, useMemo } from 'react';
+import React, { useCallback, useMemo, useRef } from 'react';
 import cx from 'classnames';
 import NumberInput from 'react-numeric-input';
 
 import MapArray from 'components/common/MapArray';
-import Item from 'components/RangeFacet/Item';
 import Button from 'components/Button';
 import Text from 'components/Text';
 import { ThemedSFCProps, IFacet, IFacetValue, MJSConfiguration } from 'types';
 import { List } from 'immutable';
 import Grid from 'components/common/Grid';
+import Checkbox from 'components/common/Checkbox';
 
 /** Input default styling parameters */
 const inputDefaults = {
@@ -56,8 +56,13 @@ const PriceInput = ({
   onKeyPress,
   precision
 }) => {
+  const ref = useRef(null);
+  const handleWrapperClick = useCallback(() => {
+    if (ref.current) ref.current.refsInput.focus()
+  }, [ref]);
+
   return (
-    <div className={theme.inputWrap}>
+    <div className={theme.inputWrap} onClick={handleWrapperClick}>
       <span className={theme.currency}>{currency}</span>
       <NumberInput
         {...inputDefaults}
@@ -68,7 +73,9 @@ const PriceInput = ({
         min={min}
         onBlur={onBlur}
         onKeyPress={onKeyPress}
+        ref={ref}
       />
+      <div className={theme.border} />
     </div>
   )
 }
@@ -112,7 +119,7 @@ export default ({
 
       <MapArray
         array={notSelectedItems}
-        factory={Item}
+        factory={Checkbox}
         config={config}
         theme={theme} />
 

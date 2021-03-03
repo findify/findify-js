@@ -48,7 +48,7 @@ export const registerHandlers = (widget, agent, rerender) => {
   /** ACCESSIBILITY */
   node.setAttribute('role', 'combobox')
   node.setAttribute('aria-autocomplete', 'list')
-  node.setAttribute('aria-haspopup', 'true')
+  node.setAttribute('aria-haspopup', 'listbox')
   node.setAttribute('aria-owns', 'FindifyAutocompleteSuggestions')
   node.setAttribute('aria-expanded', 'false')
   node.setAttribute('aria-activedescendant', '')

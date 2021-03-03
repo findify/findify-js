@@ -58,7 +58,7 @@ const SearchSuggestionsView: React.SFC<ISearchSuggestionsProps> = ({
           array={suggestions}
           factory={({ item, index }) =>
             <SuggestionItem
-              tabindex={0}
+              tabIndex={0}
               item={item}
               index={index}
               highlighted={selectedSuggestion === index}

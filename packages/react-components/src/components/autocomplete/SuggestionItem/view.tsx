@@ -56,7 +56,7 @@ const SuggestionItemView: React.SFC<ISuggestionItemProps> = ({
       display-if={value}
       onClick={onClick}
       role="option"
-      id={item.hashCode()}
+      id={`suggestion-${Math.abs(item.hashCode())}`}
       aria-selected={highlighted}
       className={cx(
         theme.suggestion, {
@@ -71,9 +71,12 @@ const SuggestionItemView: React.SFC<ISuggestionItemProps> = ({
         name={icon}
         className={theme.icon}
         width={14}
-        height={14} />
+        height={14}
+      />
       <span
-        dangerouslySetInnerHTML={{ __html: highlightSuggestion(value!, query.get('q') as string, theme) }}
+        dangerouslySetInnerHTML={{
+          __html: highlightSuggestion(value!, query.get('q') as string, theme)
+        }}
       />
     </li>
   )

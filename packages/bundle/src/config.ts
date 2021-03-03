@@ -91,12 +91,12 @@ export default process.env.NODE_ENV !== 'development'
                // sidebar: to use sidebar as search component
                // fullscreen: to use fullscreen view for searching
                "viewType": "dropdown",
-               "mobileViewType": "sidebar",
+               "mobileViewType": "fullscreen",
                // Order of content
                "viewOrder": ["SearchSuggestions", "ProductMatches"],
 
                // Where to align autocomplete: left|right|undefined
-               "position": undefined,
+               "position": 'right',
 
                // Will be added to all requests eq: Agent.defaults(meta)
                "meta": {

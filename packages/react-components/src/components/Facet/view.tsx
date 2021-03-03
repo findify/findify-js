@@ -45,7 +45,7 @@ const FacetView = ({
       onClick={toggleFacet}
       aria-expanded={isOpen}
       aria-controls={`facet-${item.get('name')}`}
-      tabindex={0}
+      tabIndex={0}
     >
       <Text primary uppercase className={theme.text}>
         {title} {filtersSelected > 0 ? `(${filtersSelected})` : ''}

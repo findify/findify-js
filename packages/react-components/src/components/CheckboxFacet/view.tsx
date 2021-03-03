@@ -6,12 +6,11 @@ import React, { ChangeEvent } from 'react';
 import cx from 'classnames';
 
 import MapArray from 'components/common/MapArray';
-import Item from 'components/CheckboxFacet/Item';
+import Checkbox from 'components/common/Checkbox';
 import Button from 'components/Button';
 import Text from 'components/Text';
 import Icon from 'components/Icon';
 import Loadable from 'react-loadable';
-
 import { IFacetValue, ThemedSFCProps, MJSConfiguration, IFacet } from 'types';
 import { List } from 'immutable'
 import chunks from 'helpers/chunks';
@@ -55,7 +54,7 @@ const CheckboxFacetView =  ({
   isMobile,
   facet,
   hidden,
-}: ICheckboxFacetProps) => console.log(hidden) || (
+}: ICheckboxFacetProps) => (
   <div
     className={cx(theme.root, { [theme.mobile]: isMobile })}
     id={`facet-${facet.get('name')}`}
@@ -76,13 +75,12 @@ const CheckboxFacetView =  ({
       <MapArray
         display-if={config.get('pullSelected')}
         array={items.filter(i => i.get('selected'))}
-        factory={Item}
-        theme={theme} />
+        factory={Checkbox}
+      />
 
       <VirtualizedList
         display-if={isExpanded}
-        factory={(props) => Item({ ...props, onItemClick: () => onSearch('') })}
-        theme={theme}
+        factory={(props) => Checkbox({ ...props, onItemClick: () => onSearch('') })}
         config={config} 
         className={theme.expandedList}
         height={config.get('expandedHeight')}
@@ -100,9 +98,9 @@ const CheckboxFacetView =  ({
             ? items.filter(i => !i.get('selected'))
             : items
         }
-        factory={Item}
-        theme={theme}
-          limit={config.get('maxItemsCount')} />
+        factory={Checkbox}
+        limit={config.get('maxItemsCount')}
+      />
     </section>
 
     <Button

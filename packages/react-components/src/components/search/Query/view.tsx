@@ -34,24 +34,21 @@ const getContent = ({ query, config, meta }: IGetContentProps) => {
   
   if (meta.get('corrected_q')) {
     const text = template(tpls.get('showing'))(total);
-    return <Text primary uppercase html={
-        `${text} "${escape(meta.get('corrected_q') as string)}". ${tpls.get('zeroResultsFor')} "${q}".`
-      } />
+    return `${text} "${escape(meta.get('corrected_q') as string)}". ${tpls.get('zeroResultsFor')} "${q}".`
   }
 
   if (meta.get('query_type') === 'or') {
     const text = template(tpls.get('showing'))('0');
-    return <Text primary uppercase html={`${text} "${q}". ${tpls.get('partialMatch')}`} />
+    return `${text} "${q}". ${tpls.get('partialMatch')}`
   }
   
   const text = template(tpls.get('showing'))(total);
-  return <Text primary uppercase html={`${text} "${q}".`} />
+  return `${text} "${q}".`
 }
 
-const QueryView = ({ theme, ...props}: ThemedSFCProps & IGetContentProps) =>
-<Text primary uppercase className={theme.root}>
-  { getContent(props) }
-</Text>
+const QueryView = ({ theme, ...props}: ThemedSFCProps & IGetContentProps) => (
+  <Text primary uppercase className={theme.root} html={getContent(props)} />
+)
 
 export default QueryView;
 
