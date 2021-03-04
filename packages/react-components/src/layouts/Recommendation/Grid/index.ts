@@ -15,6 +15,5 @@ export default compose(
   connectItems,
   withScrollOnItemsChange,
   withMinResultsToShow(),
-  provideBundle(),
-  withColumns()
+  provideBundle()
 )(view);

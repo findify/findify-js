@@ -4,6 +4,7 @@ type MediaObject = {
   [x: number]: number | string
 }
 
+const cache = {};
 const DEFAULT_KEY = 'default';
 
 export default (media: MediaObject) => {
@@ -11,7 +12,7 @@ export default (media: MediaObject) => {
 
   const mediaQueryLists = keys.current
     .filter(k => k !== DEFAULT_KEY)
-    .map(k => window.matchMedia(`(min-width: ${k}px)`));
+    .map(k => cache[k] || (cache[k] = window.matchMedia(`(min-width: ${k}px)`)));
   
   const getValue = () => {
     // Get index of first media query that matches

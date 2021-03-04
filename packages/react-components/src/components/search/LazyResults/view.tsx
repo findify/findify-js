@@ -37,40 +37,41 @@ const LazyResultsView = ({
   config,
   theme,
   card = ProductCard,
-  columns,
   onLoadNext,
   onLoadPrev,
   displayNextButton,
   displayPrevButton,
   ...rest
-}: ILazyResultsProps) =>
-<div
-  className={theme.root}
-  role='main'
-  aria-label={`${config.getIn(['a11y', 'searchResults'], 'Search results')}`}
-  aria-live='polite'
-  tabIndex={0}
->
-  <Button display-if={displayPrevButton} className={theme.prevButton} onClick={onLoadPrev}>
-    <Text primary lowercase>
-      { config.getIn(['i18n', 'loadPrev'], 'Load previous') }
-    </Text>
-  </Button>
-  <Grid columns={columns} gutter={12}>
-    {
-      MapArray({
-        ...rest,
-        config,
-        array: (items as ArrayLike),
-        factory: card
-      })
-    }
-  </Grid>
-  <Button display-if={displayNextButton} className={theme.nextButton} onClick={onLoadNext}>
-    <Text primary lowercase>
-      { config.getIn(['i18n', 'loadNext'], 'Load more') }
-    </Text>
-  </Button>
-</div>
-
+}: ILazyResultsProps) => {
+  return (
+    <div
+      className={theme.root}
+      role='main'
+      aria-label={`${config.getIn(['a11y', 'searchResults'], 'Search results')}`}
+      aria-live='polite'
+      tabIndex={0}
+    >
+      <Button display-if={displayPrevButton} className={theme.prevButton} onClick={onLoadPrev}>
+        <Text primary lowercase>
+          { config.getIn(['i18n', 'loadPrev'], 'Load previous') }
+        </Text>
+      </Button>
+      <Grid columns={config.getIn(['grid', 'items'], { 400: 6, 600: 4, 1000: 3 })} gutter={12}>
+        {
+          MapArray({
+            ...rest,
+            config,
+            array: (items as ArrayLike),
+            factory: card
+          })
+        }
+      </Grid>
+      <Button display-if={displayNextButton} className={theme.nextButton} onClick={onLoadNext}>
+        <Text primary lowercase>
+          { config.getIn(['i18n', 'loadNext'], 'Load more') }
+        </Text>
+      </Button>
+    </div>
+  )
+}
 export default LazyResultsView;

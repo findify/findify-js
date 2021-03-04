@@ -4,8 +4,13 @@ import ProductCard from 'components/Cards/Product'
 import Text from 'components/Text';
 import Icon from 'components/Icon';
 import cx from 'classnames';
+import useColumns from 'helpers/useColumns';
 
 export default ({ items, config, theme, sliderOptions }) => {
+  const slidesPerView = useColumns(
+    config.getIn(['grid', 'items'], { default: 2, 500: 3, 700: 4, 900: 5, 1200: 6 })
+  );
+
   return (
     <React.Fragment display-if={items && items.size > 0}>
       <Text title className={theme.title}>
@@ -16,7 +21,7 @@ export default ({ items, config, theme, sliderOptions }) => {
         <button aria-label="previous" className={cx(theme.prev, `${config.get('slot')}-prev`)}>
           <Icon name='ArrowLeftBig' title='Previous slide' className={theme.arrow} />
         </button>
-        <Swiper {...sliderOptions}>
+        <Swiper {...sliderOptions} slidesPerView={slidesPerView}>
           {
             items
               .map(item =>

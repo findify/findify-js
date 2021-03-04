@@ -3,7 +3,6 @@
  */
 
 import React, { useCallback } from 'react';
-import content from 'components/CheckboxFacet/content';
 import Button from 'components/Button';
 import Text from 'components/Text';
 import Icon from 'components/Icon';
@@ -19,9 +18,11 @@ export interface ICheckboxFacetItemProps extends ThemedSFCProps {
   onItemClick?: (evt: Event) => any;
   /** Custom inline style */
   style: { [x: string]: string | number };
+
+  content: (x: any) => string
 }
 
-export default ({ item, theme: _theme, style, onItemClick }: ICheckboxFacetItemProps) => {
+export default ({ item, theme: _theme, style, onItemClick, content, config }: ICheckboxFacetItemProps) => {
   const theme = useTheme(_theme, styles);
 
   const onClick = useCallback((evt) => {
@@ -51,7 +52,7 @@ export default ({ item, theme: _theme, style, onItemClick }: ICheckboxFacetItemP
         className={theme.content}
         bold={isSelected}
       >
-        { content({ item }) }
+        { content({ item, config }) }
       </Text>
       <Text secondary uppercase>
         ({item.get('count')})

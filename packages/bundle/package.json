@@ -14,9 +14,9 @@
   "scripts": {
     "build": "run-p build:dist",
     "build:dev": "npx webpack --mode development",
-    "build:dist": "npx webpack --mode production --env origin=prod",
-    "build:dist:local": "npx webpack --mode production --env origin=local",
-    "build:dist:analyze": "npm run build:dist -- --env analyze",
+    "build:dist": "NODE_ENV=production npx webpack --mode production --env origin=prod",
+    "build:dist:local": "NODE_ENV=production npx webpack --mode production --env origin=local",
+    "build:dist:analyze": "NODE_ENV=production npm run build:dist -- --env analyze",
     "build:test": "npm run build:lib -- --project tsconfig.test.json --module commonjs",
     "build:test:watch": "npm run build:test -- --watch",
     "clean": "del lib types dist",
@@ -37,7 +37,6 @@
     "access": "public"
   },
   "dependencies": {
-    "@babel/plugin-transform-runtime": "^7.12.15",
     "@findify/agent": "^1.5.7",
     "@findify/analytics-dom": "^0.3.6",
     "@findify/change-emitter": "^1.0.0",
@@ -45,16 +44,11 @@
     "@findify/react-connect": "^0.6.7",
     "@sentry/browser": "^6.1.0",
     "jump.js": "^1.0.2",
-    "load-js": "^3.0.3",
-    "react": "^17.0.1",
-    "webpack-manifest-plugin": "^3.0.0"
+    "react": "^17.0.1"
   },
   "devDependencies": {
     "core-js": "^3.8.3",
     "@babel/core": "^7.12.16",
-    "@babel/plugin-proposal-class-properties": "^7.12.13",
-    "@babel/plugin-proposal-object-rest-spread": "^7.12.13",
-    "@babel/plugin-syntax-dynamic-import": "^7.8.3",
     "@babel/preset-env": "^7.12.16",
     "@babel/preset-typescript": "^7.12.16",
     "@hot-loader/react-dom": "^17.0.1",

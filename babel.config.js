@@ -6,7 +6,12 @@ module.exports = (api) => {
       "@babel/plugin-proposal-object-rest-spread",
       "@babel/plugin-syntax-object-rest-spread",
       "@babel/plugin-proposal-class-properties",
-      "@babel/plugin-transform-runtime"
+      "@babel/plugin-syntax-dynamic-import",
+      ["@babel/plugin-transform-runtime",
+        {
+          absoluteRuntime: true
+        }
+      ],
     ],
     "sourceType": "unambiguous",
     "presets": [

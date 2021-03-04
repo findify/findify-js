@@ -13,6 +13,7 @@ import { ThemedSFCProps, IFacet, IFacetValue, MJSConfiguration } from 'types';
 import { List } from 'immutable';
 import Grid from 'components/common/Grid';
 import Checkbox from 'components/common/Checkbox';
+import content from 'components/RangeFacet/content';
 
 /** Input default styling parameters */
 const inputDefaults = {
@@ -105,7 +106,7 @@ export default ({
     config.get('pullSelected')
       ? items.filter(i => !i.get('selected'))
       : items
-  ], []);
+  ], [items]);
 
   return (
     <div className={theme.root} id={`facet-${facet.get('name')}`} role="region" hidden={hidden}>
@@ -113,13 +114,15 @@ export default ({
       <MapArray
         display-if={config.get('pullSelected')}
         array={selectedItems}
-        factory={Item}
+        factory={Checkbox}
+        content={content}
         config={config}
         theme={theme} />
 
       <MapArray
         array={notSelectedItems}
         factory={Checkbox}
+        content={content}
         config={config}
         theme={theme} />
 

@@ -45,6 +45,32 @@ class HashedPlugin {
 		const options = this.options;
 
 		compiler.hooks.compilation.tap("HashedPlugin", compilation => {
+
+			/**
+			 * Weird fix to support ES modules in old customizations
+			 */
+			compiler.webpack.javascript.JavascriptModulesPlugin
+				.getCompilationHooks(compilation)
+				.renderRequire.tap('HashedPlugin', source => {
+					return source.replace('return module.exports;', `
+						if (module.exports.default) {
+							Object.defineProperty(module.exports, "__esModule", { value: true });
+						}
+						return module.exports;
+					`)
+				});
+			
+			compiler.webpack.javascript.JavascriptModulesPlugin
+				.getCompilationHooks(compilation)
+				.render.tap('HashedPlugin', source => {
+					return source.source().replace(
+						`__webpack_require__.m[moduleId] = moreModules[moduleId];`,
+						`if (chunkIds[0] === 'extra' || !__webpack_require__.m[moduleId] || !__webpack_require__.frozen) {
+								__webpack_require__.m[moduleId] = moreModules[moduleId];
+						}`
+					)
+				});
+		
 			const mainTemplate = compilation.mainTemplate;
 
 			mainTemplate.hooks.requireExtensions.tap("HashedPlugin", (source, chunk, hash) => {
@@ -66,33 +92,6 @@ class HashedPlugin {
 						__webpack_require__.frozen = true;
 						__cache = null;
 					};
-
-					var webpackJsonpCallback = (parentChunkLoadingFunction, data) => {
-			 			var [chunkIds, moreModules, runtime] = data;
-			 			// add "moreModules" to the modules object,
-			 			// then flag all "chunkIds" as loaded and fire callback
-			 			var moduleId, chunkId, i = 0, resolves = [];
-			 			for(;i < chunkIds.length; i++) {
-			 				chunkId = chunkIds[i];
-			 				if(__webpack_require__.o(installedChunks, chunkId) && installedChunks[chunkId]) {
-			 					resolves.push(installedChunks[chunkId][0]);
-			 				}
-			 				installedChunks[chunkId] = 0;
-			 			}
-			 			for(moduleId in moreModules) {
-							if(Object.prototype.hasOwnProperty.call(moreModules, moduleId)) {
-								if (chunkIds[0] === 'extra' || !modules[moduleId] || !__webpack_require__.frozen) {
-									modules[moduleId] = moreModules[moduleId];
-								}
-							}
-						}
-			 			if(runtime) runtime(__webpack_require__);
-			 			if(parentChunkLoadingFunction) parentChunkLoadingFunction(data);
-			 			while(resolves.length) {
-			 				resolves.shift()();
-			 			}
-					 
-			 		}
 				`
 			})
 

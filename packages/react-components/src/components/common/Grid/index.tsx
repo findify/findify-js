@@ -39,8 +39,6 @@ export default ({
 
   className,
   style,
-
-  columnStyle,
   
   wrapperComponent: WrapperComponent = 'div',
   columnComponent,
@@ -55,20 +53,23 @@ export default ({
   
   const children = useMemo(() => React.Children.map(
     _children,
-    (child: React.ReactElement<any>, index: number) =>
-      child &&
-      <Column
-        key={child.key || index}
-        gutter={gutter}
-        order={child.props.order}
-        size={child.props.size || columns[index] || columns[0]}
-        className={child.props.columnClass}
-        style={columnStyle}
-        component={columnComponent}
-      >
-        { child }
-      </Column>
-  ), [_children, columns]);
+    (child: React.ReactElement<any>, index: number) => {
+      if (!child) return null;
+      const { order, size, columnClass, columnStyle, ...props } = child.props; 
+      return (
+        <Column
+          key={child.key || index}
+          gutter={gutter}
+          order={order}
+          size={size || columns[index] || columns[0]}
+          className={columnClass}
+          style={columnStyle}
+          component={columnComponent}
+        >
+          { React.cloneElement(child, props) }
+        </Column>
+      )
+    }), [_children, columns]);
 
   return (
     <WrapperComponent

@@ -10,6 +10,13 @@ import log from './helpers/log';
 import { scrollTo } from './helpers/scrollTo';
 import { showFallback } from './helpers/fallbackNode';
 
+/* Load Dependencies in closure to support polyfills */
+import { fromJS }  from 'immutable';
+import { createWidgets, bulkAddWidgets } from './core/widgets';
+import { renderWidgets } from './helpers/renderWidgets';
+import { observeDomNodes } from './helpers/observeDomNodes';
+import * as location from './core/location';
+
 /**
  * Create global namespace
  */
@@ -57,20 +64,14 @@ export default async (
     const extra = Object.keys(cfg.components).reduce(
       (acc, k) => ({
         ...acc,
-        [k]: isString(cfg.components[k]) ? eval(cfg.components[k]) : cfg.components[k]
+        [k]: isString(cfg.components[k]) ? new Function('return ' + cfg.components[k])() : cfg.components[k]
       }), {}
     )
     await __root.invalidate();
     window.findifyJsonp.push([['extra'], extra]);
+    console.log(__webpack_require__.m, extra);
     delete cfg.components;
   }
-
-
-  /* Load Dependencies in closure to support polyfills */
-  const { fromJS } = require('immutable');
-  const { createWidgets, bulkAddWidgets } = require('./core/widgets');
-  const { renderWidgets } = require('./helpers/renderWidgets');
-  const { observeDomNodes } = require('./helpers/observeDomNodes');
 
   __root.config = fromJS(cfg);
   __root.sentry = sentry;
@@ -92,8 +93,6 @@ export default async (
   }
 
   /** Expose utils */
-  const location = require('./core/location');
-
   __root.utils = {
     ...location,
     scrollTo,

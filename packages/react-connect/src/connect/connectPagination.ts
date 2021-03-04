@@ -15,7 +15,7 @@ const [hook, connect] = createConnect({
   handlers: {
     getPageProps: ({ update, meta }) => (page) => ({
       key: page,
-      'area-current': getCurrent(meta) === page && 'page',
+      'area-current': getCurrent(meta) === page ? 'page' : undefined,
       onClick: (e) => {
         if (e) e.preventDefault();
         update('offset', (page - 1) * meta.get('limit'))

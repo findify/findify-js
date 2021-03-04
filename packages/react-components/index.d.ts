@@ -429,6 +429,20 @@ const Branch: ({ left, right, children, condition, ...props }: IBranchProps) => 
 export default Branch;
 
 }
+declare module 'components/common/Checkbox' {
+import { IFacetValue, ThemedSFCProps } from 'types';
+export interface ICheckboxFacetItemProps extends ThemedSFCProps {
+    item: IFacetValue;
+    onItemClick?: (evt: Event) => any;
+    style: {
+        [x: string]: string | number;
+    };
+    content: (x: any) => string;
+}
+const _default: ({ item, theme: _theme, style, onItemClick, content, config }: ICheckboxFacetItemProps) => JSX.Element;
+export default _default;
+
+}
 declare module 'components/common/Drawer' {
 const _default: import("react").ComponentClass<unknown, any>;
 export default _default;
@@ -705,6 +719,198 @@ export interface IFacetProps extends ThemedSFCProps {
 }
 const FacetView: ({ FacetComponent, isOpen, theme, title, item, config, filtersSelected, toggleFacet }: IFacetProps) => JSX.Element;
 export default FacetView;
+
+}
+declare module 'components/Icon/icons/Arrow/Back' {
+const _default: ({ title, ...rest }: {
+    [x: string]: any;
+    title: any;
+}) => JSX.Element;
+export default _default;
+
+}
+declare module 'components/Icon/icons/Arrow/Down' {
+const _default: ({ title, ...rest }: {
+    [x: string]: any;
+    title: any;
+}) => JSX.Element;
+export default _default;
+
+}
+declare module 'components/Icon/icons/Arrow/Left-Big' {
+const _default: ({ title, ...rest }: {
+    [x: string]: any;
+    title: any;
+}) => JSX.Element;
+export default _default;
+
+}
+declare module 'components/Icon/icons/Arrow/Left' {
+const _default: ({ title, ...rest }: {
+    [x: string]: any;
+    title: any;
+}) => JSX.Element;
+export default _default;
+
+}
+declare module 'components/Icon/icons/Arrow/Right-Big' {
+const _default: ({ title, ...rest }: {
+    [x: string]: any;
+    title: any;
+}) => JSX.Element;
+export default _default;
+
+}
+declare module 'components/Icon/icons/Arrow/Right' {
+const _default: ({ title, ...rest }: {
+    [x: string]: any;
+    title: any;
+}) => JSX.Element;
+export default _default;
+
+}
+declare module 'components/Icon/icons/Arrow/Up' {
+const _default: ({ title, ...rest }: {
+    [x: string]: any;
+    title: any;
+}) => JSX.Element;
+export default _default;
+
+}
+declare module 'components/Icon/icons/Checkbox/Empty-Mobile' {
+const _default: ({ title, ...rest }: {
+    [x: string]: any;
+    title: any;
+}) => JSX.Element;
+export default _default;
+
+}
+declare module 'components/Icon/icons/Checkbox/Empty' {
+const _default: ({ title, ...rest }: {
+    [x: string]: any;
+    title: any;
+}) => JSX.Element;
+export default _default;
+
+}
+declare module 'components/Icon/icons/Checkbox/Filled-Mobile' {
+const _default: ({ title, ...rest }: {
+    [x: string]: any;
+    title: any;
+}) => JSX.Element;
+export default _default;
+
+}
+declare module 'components/Icon/icons/Checkbox/Filled' {
+const _default: ({ title, ...rest }: {
+    [x: string]: any;
+    title: any;
+}) => JSX.Element;
+export default _default;
+
+}
+declare module 'components/Icon/icons/Checkmark/Dark' {
+const _default: ({ title, ...rest }: {
+    [x: string]: any;
+    title: any;
+}) => JSX.Element;
+export default _default;
+
+}
+declare module 'components/Icon/icons/ExternalLink' {
+const _default: ({ title, ...rest }: {
+    [x: string]: any;
+    title: any;
+}) => JSX.Element;
+export default _default;
+
+}
+declare module 'components/Icon/icons/Filters' {
+const _default: ({ title, ...rest }: {
+    [x: string]: any;
+    title: any;
+}) => JSX.Element;
+export default _default;
+
+}
+declare module 'components/Icon/icons/Fire' {
+const _default: ({ title, ...rest }: {
+    [x: string]: any;
+    title: any;
+}) => JSX.Element;
+export default _default;
+
+}
+declare module 'components/Icon/icons/Minus' {
+const _default: ({ title, ...rest }: {
+    [x: string]: any;
+    title: any;
+}) => JSX.Element;
+export default _default;
+
+}
+declare module 'components/Icon/icons/Plus' {
+const _default: ({ title, ...rest }: {
+    [x: string]: any;
+    title: any;
+}) => JSX.Element;
+export default _default;
+
+}
+declare module 'components/Icon/icons/Radio/Empty' {
+const _default: ({ title, ...rest }: {
+    [x: string]: any;
+    title: any;
+}) => JSX.Element;
+export default _default;
+
+}
+declare module 'components/Icon/icons/Radio/Filled' {
+const _default: ({ title, ...rest }: {
+    [x: string]: any;
+    title: any;
+}) => JSX.Element;
+export default _default;
+
+}
+declare module 'components/Icon/icons/Search' {
+const _default: ({ title, ...rest }: {
+    [x: string]: any;
+    title: any;
+}) => JSX.Element;
+export default _default;
+
+}
+declare module 'components/Icon/icons/Sorting' {
+const _default: ({ title, ...rest }: {
+    [x: string]: any;
+    title: any;
+}) => JSX.Element;
+export default _default;
+
+}
+declare module 'components/Icon/icons/Star' {
+const _default: ({ title, ...rest }: {
+    [x: string]: any;
+    title: any;
+}) => JSX.Element;
+export default _default;
+
+}
+declare module 'components/Icon/icons/X/Dark' {
+const _default: ({ title, ...rest }: {
+    [x: string]: any;
+    title: any;
+}) => JSX.Element;
+export default _default;
+
+}
+declare module 'components/Icon/icons/X/Mobile' {
+const _default: ({ title, ...rest }: {
+    [x: string]: any;
+    title: any;
+}) => JSX.Element;
+export default _default;
 
 }
 declare module 'components/Icon' {

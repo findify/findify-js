@@ -9,6 +9,8 @@ module.exports = (api) => {
       "root": [path.resolve(__dirname, "src")]
     }],
   ];
+
+  console.log('IS DEV:', api.env("development"))
   if (api.env("lib")) {
     plugins.push(["@findify/babel-plugin-css-modules-transform", {
       "camelCase": true,

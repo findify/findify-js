@@ -14,6 +14,7 @@ import Loadable from 'react-loadable';
 import { IFacetValue, ThemedSFCProps, MJSConfiguration, IFacet } from 'types';
 import { List } from 'immutable'
 import chunks from 'helpers/chunks';
+import content from 'components/CheckboxFacet/content';
 
 /** Props that CheckboxFacet accepts */
 export interface ICheckboxFacetProps extends ThemedSFCProps {
@@ -76,12 +77,14 @@ const CheckboxFacetView =  ({
         display-if={config.get('pullSelected')}
         array={items.filter(i => i.get('selected'))}
         factory={Checkbox}
+        content={content}
       />
 
       <VirtualizedList
         display-if={isExpanded}
         factory={(props) => Checkbox({ ...props, onItemClick: () => onSearch('') })}
-        config={config} 
+        config={config}
+        content={content}
         className={theme.expandedList}
         height={config.get('expandedHeight')}
         array={
@@ -93,13 +96,14 @@ const CheckboxFacetView =  ({
 
       <MapArray
         display-if={!isExpanded}
+        factory={Checkbox}
+        limit={config.get('maxItemsCount')}
+        content={content}
         array={
           config.get('pullSelected')
             ? items.filter(i => !i.get('selected'))
             : items
         }
-        factory={Checkbox}
-        limit={config.get('maxItemsCount')}
       />
     </section>
 

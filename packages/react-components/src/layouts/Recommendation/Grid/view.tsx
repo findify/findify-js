@@ -26,18 +26,22 @@ export interface IGridProps extends ThemedSFCProps {
 }
 
 
-const GridRecommendationLayout = ({ items, config, theme, columns }: IGridProps) =>
-<React.Fragment display-if={items && items.size > 0}>
-  <Text primary lowercase>{ config.get('title') }</Text>
-  <Grid columns={columns}>
-    {
-      MapArray({
-        config,
-        array: items,
-        factory: Product
-      })
-    }
-  </Grid>
-</React.Fragment>
+const GridRecommendationLayout = ({ items, config, columns }: IGridProps) => {
+  if (!items || !items.size) return null;
+  return (
+    <>
+      <Text primary lowercase>{ config.get('title') }</Text>
+      <Grid columns={config.getIn(['grid', 'items'], { 400: 6, 600: 4, 1000: 3 })}>
+        {
+          MapArray({
+            config,
+            array: items,
+            factory: Product
+          })
+        }
+      </Grid>
+    </>
+  )
+}
 
 export default GridRecommendationLayout;
