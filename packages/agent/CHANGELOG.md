@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.5.7"></a>
+## [1.5.7](https://github.com/findify/findify-js/compare/@findify/agent@1.5.6...@findify/agent@1.5.7) (2021-02-06)
+
+
+### Bug Fixes
+
+* **bundle:** optimize build ([0205890](https://github.com/findify/findify-js/commit/0205890))
+
+
+
+
 <a name="1.5.6"></a>
 ## [1.5.6](https://github.com/findify/findify-js/compare/@findify/agent@1.5.5...@findify/agent@1.5.6) (2020-08-06)
 

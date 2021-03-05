@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.4.13"></a>
+## [1.4.13](https://github.com/findify/findify-js/compare/@findify/processors@1.4.12...@findify/processors@1.4.13) (2021-02-06)
+
+
+### Bug Fixes
+
+* **bundle:** optimize build ([0205890](https://github.com/findify/findify-js/commit/0205890))
+
+
+
+
+<a name="1.4.12"></a>
+## [1.4.12](https://github.com/findify/findify-js/compare/@findify/processors@1.4.11...@findify/processors@1.4.12) (2021-01-20)
+
+
+
+
+**Note:** Version bump only for package @findify/processors
+
 <a name="1.4.11"></a>
 ## [1.4.11](https://github.com/findify/findify-js/compare/@findify/processors@1.4.10...@findify/processors@1.4.11) (2020-08-06)
 

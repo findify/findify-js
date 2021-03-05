@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="2.4.4"></a>
+## [2.4.4](https://github.com/findify/findify-js/compare/@findify/sdk@2.4.3...@findify/sdk@2.4.4) (2021-02-06)
+
+
+### Bug Fixes
+
+* **bundle:** optimize build ([0205890](https://github.com/findify/findify-js/commit/0205890))
+
+
+
+
 <a name="2.4.3"></a>
 ## [2.4.3](https://github.com/findify/findify-js/compare/@findify/sdk@2.4.2...@findify/sdk@2.4.3) (2020-07-03)
 

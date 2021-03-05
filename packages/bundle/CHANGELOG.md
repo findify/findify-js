@@ -3,6 +3,185 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="6.17.0"></a>
+# [6.17.0](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.16.18...@findify/bundle@6.17.0) (2021-02-10)
+
+
+### Features
+
+* **bundle:** disable zero results by flag ([5054bed](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/5054bed))
+
+
+
+
+<a name="6.16.18"></a>
+## [6.16.18](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.16.17...@findify/bundle@6.16.18) (2021-02-09)
+
+
+### Bug Fixes
+
+* **bundle:** fix SPA rendering ([6fcae84](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/6fcae84))
+
+
+
+
+<a name="6.16.17"></a>
+## [6.16.17](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.16.16...@findify/bundle@6.16.17) (2021-02-08)
+
+
+### Bug Fixes
+
+* **bundle:** initially load polyfill if required ([6e2f781](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/6e2f781))
+
+
+
+
+<a name="6.16.16"></a>
+## [6.16.16](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.16.15...@findify/bundle@6.16.16) (2021-02-07)
+
+
+### Bug Fixes
+
+* **bundle:** fix issue with node_modules compilation ([e72b7a9](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/e72b7a9))
+
+
+
+
+<a name="6.16.15"></a>
+## [6.16.15](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.16.14...@findify/bundle@6.16.15) (2021-02-07)
+
+
+### Bug Fixes
+
+* **bundle:** return node_modules compilations ([418ffcc](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/418ffcc))
+
+
+
+
+<a name="6.16.14"></a>
+## [6.16.14](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.16.13...@findify/bundle@6.16.14) (2021-02-06)
+
+
+### Bug Fixes
+
+* **bundle:** optimize build ([0205890](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/0205890))
+
+
+
+
+<a name="6.16.13"></a>
+## [6.16.13](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.16.12...@findify/bundle@6.16.13) (2021-02-05)
+
+
+### Bug Fixes
+
+* **bundle:** disable seroresults by config ([a68f256](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/a68f256))
+
+
+
+
+<a name="6.16.12"></a>
+## [6.16.12](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.16.11...@findify/bundle@6.16.12) (2021-02-03)
+
+
+### Bug Fixes
+
+* **bundle:** return request method selector ([f829ef0](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/f829ef0))
+* **bundle, react-components:** change component of pagination button ([179276e](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/179276e))
+* **bundle, react-components:** keep non-whitelisted url params in url ([2ed0381](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/2ed0381))
+
+
+
+
+<a name="6.16.11"></a>
+## [6.16.11](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.16.10...@findify/bundle@6.16.11) (2021-02-02)
+
+
+### Bug Fixes
+
+* **bundle:** send collection and search requests as fast as possible ([e73d0f7](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/e73d0f7))
+
+
+
+
+<a name="6.16.10"></a>
+## [6.16.10](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.16.9...@findify/bundle@6.16.10) (2021-01-24)
+
+
+### Bug Fixes
+
+* **bundle:** roll back history ([09f2798](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/09f2798))
+
+
+
+
+<a name="6.16.9"></a>
+## [6.16.9](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.16.8...@findify/bundle@6.16.9) (2021-01-23)
+
+
+### Bug Fixes
+
+* **bundle:** export history ([fd7a95b](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/fd7a95b))
+
+
+
+
+<a name="6.16.8"></a>
+## [6.16.8](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.16.7...@findify/bundle@6.16.8) (2021-01-23)
+
+
+### Bug Fixes
+
+* **bundle:** revert history changes ([45eaab7](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/45eaab7))
+
+
+
+
+<a name="6.16.7"></a>
+## [6.16.7](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.16.6...@findify/bundle@6.16.7) (2021-01-21)
+
+
+### Bug Fixes
+
+* **bundle:** reduce amount of chunks by mergins search and autocomplete ([66835e4](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/66835e4))
+
+
+
+
+<a name="6.16.6"></a>
+## [6.16.6](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.16.5...@findify/bundle@6.16.6) (2021-01-20)
+
+
+### Bug Fixes
+
+* **bundle:** try to isolate location ([509d298](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/509d298))
+
+
+
+
+<a name="6.16.5"></a>
+## [6.16.5](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.16.4...@findify/bundle@6.16.5) (2021-01-20)
+
+
+### Bug Fixes
+
+* **bundle:** improve history replacement ([61d6ca1](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/61d6ca1))
+
+
+
+
+<a name="6.16.4"></a>
+## [6.16.4](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.16.3...@findify/bundle@6.16.4) (2021-01-20)
+
+
+### Bug Fixes
+
+* **bundle, react-connect:** aPI improvements to simplify integration with SPA ([2af10a2](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/2af10a2))
+* **react-components:** replace border around ball component with pseudo element to avoid cropping ([3248af5](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/3248af5))
+
+
+
+
 <a name="6.16.3"></a>
 ## [6.16.3](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.16.2...@findify/bundle@6.16.3) (2020-10-27)
 
