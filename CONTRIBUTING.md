@@ -3,8 +3,7 @@
 ### Setting Up a Local Copy
 
 1. Clone the repo with `git clone https://github.com/findify/findify-js`
-2. Run `cp packages/sdk/env.example packages/sdk/.env` (required) and change the environment variables there (optional)
-3. Run `npm install` in the root `findify-js` folder.
+3. Run `yarn` in the root `findify-js` folder.
 
 Once it is done, you can start working on the project.
 
