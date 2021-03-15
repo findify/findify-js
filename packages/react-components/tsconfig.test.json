@@ -1,5 +1,5 @@
 {
-  "extends": "../../tsconfig.test.json",
+  "extends": "config/ts/test.json",
   "include": [
     "**/*test.*",
     "**/*mock.*"

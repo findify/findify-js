@@ -23,9 +23,9 @@
   "scripts": {
     "clean": "del lib types dist",
     "build": "run-p build:lib build:dist",
-    "build:dist": "TS_NODE_COMPILER_OPTIONS=\"{\\\"module\\\":\\\"commonjs\\\"}\" webpack-cli --mode=production",
+    "build:dist": "npx webpack --mode production",
     "build:dist:analyze": "npm run build:dist -- --env analyze",
-    "build:lib": "tsc --project tsconfig.lib.json --declaration --declarationDir types",
+    "build:lib": "tsc -p tsconfig.lib.json",
     "build:test": "npm run build:lib -- --module commonjs",
     "build:test:watch": "npm run build:test -- --watch",
     "test": "# jest",
@@ -39,19 +39,15 @@
   },
   "dependencies": {
     "axios": "^0.21.1",
-    "bundle": "^2.1.0",
-    "core-js": "^3.8.3",
     "debug": "^4.3.1",
     "nanoid": "^3.1.20",
     "qs": "^6.9.6"
   },
+  "peerDependencies": {
+    "core-js": "^3"
+  },
   "devDependencies": {
-    "@types/jest": "^26.0.20",
-    "@types/jsonp": "^0.2.0",
-    "@types/nock": "^10.0.3",
-    "@types/node": "^14.14.28",
-    "@types/qs": "^6.9.5",
-    "@types/webpack": "^4.4.35",
+    "config": "*",
     "del-cli": "^3.0.1",
     "dotenv": "^8.2.0",
     "git-revision-webpack-plugin": "^3.0.6",

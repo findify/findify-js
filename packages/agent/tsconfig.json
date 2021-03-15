@@ -1,7 +1,6 @@
 {
-  "extends": "./tsconfig.base.json",
+  "extends": "config/ts/base.json",
   "include": ["src/**/*"],
   "exclude": ["node_modules", "src/**/__tests__/*"],
-  "types" : ["node", "lodash", "webpack", "jest", "immutable.d.ts"],
-  "inlineSources": true
+  "types" : ["node", "lodash", "webpack", "jest", "immutable.d.ts"]
 }

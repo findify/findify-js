@@ -9,7 +9,7 @@ declare module global {
 }
 
 const getEndpoint = (endpoint?: string): string =>
-  !endpoint ? (settings.searchApiUrl + '/feedback') : endpoint;
+  !endpoint ? settings.searchApiUrl + '/feedback' : endpoint;
 
 const makeQuery = (query) => stringify({ ...query, t_client: Date.now() });
 
@@ -33,20 +33,22 @@ const BeaconRequest = (data: any, endpoint?: string) =>
     resolve(true);
   });
 
-export const request = (function() {
-  if (typeof global.navigator !== 'undefined' && global.navigator.sendBeacon) return BeaconRequest;
-  if (typeof global.window !== 'undefined') return ImageRequest;
+export const request = (function () {
+  if (typeof navigator !== 'undefined' && navigator.sendBeacon)
+    return BeaconRequest;
+  if (typeof window !== 'undefined') return ImageRequest;
   if (!process.env.BROWSER) {
     return (data: any, endpoint?: string) =>
       new Promise((resolve, reject) => {
         const http = require('http');
-        http.get(`${getEndpoint(endpoint).replace('https', 'http')}?${makeQuery(data)}`)
-        resolve(true)
+        http.get(
+          `${getEndpoint(endpoint).replace('https', 'http')}?${makeQuery(data)}`
+        );
+        resolve(true);
       });
   }
   throw new Error('Can not determinate request type');
 })();
-
 
 type Data = {
   key: string;

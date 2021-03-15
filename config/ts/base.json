@@ -2,19 +2,13 @@
   "compilerOptions": {
     "moduleResolution": "node",
     "target": "esnext",
-    "module": "esnext",
-    "lib": ["es6", "es2017", "dom"],
-    "sourceMap": true,
-    "jsx": "react",
+    "lib": ["dom"],
+    "jsx": "preserve",
     "allowSyntheticDefaultImports": true,
-    "removeComments": true,
+    "removeComments": false,
     "noImplicitAny": false,
     "noEmitOnError": false,
-    "strictNullChecks": true,
-    "pretty": true,
-    "baseUrl": "src",
-    "rootDirs": ["src"],
-    "allowJs": false
+    "strictNullChecks": true
   },
   "compileOnSave": false,
   "buildOnSave": false,

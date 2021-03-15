@@ -1,8 +1,7 @@
 {
-  "extends": "../../tsconfig.lib.json",
+  "extends": "config/ts/base.json",
   "compilerOptions": {
     "baseUrl": "src",
     "rootDirs": ["src", "dev"],
-    "types" : ["node", "lodash", "webpack", "jest", "@findify/sdk", "immutable", "react-spring"]
   }
 }

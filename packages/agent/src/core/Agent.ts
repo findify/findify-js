@@ -1,3 +1,4 @@
+import { Type as RequestType } from '@findify/sdk/lib/request';
 import * as Types from '../types';
 
 import { init } from '@findify/sdk';
@@ -8,8 +9,11 @@ import { stateToQuery, queryToState } from '../utils/format';
 import { isFunction, debounce } from '../utils/helpers';
 import deepMerge from '../utils/deepMerge';
 
-const pickConfigProps = ({ debounce, onError, immutable = false }) =>
-  ({ debounce, onError, immutable });
+const pickConfigProps = ({ debounce, onError, immutable = false }) => ({
+  debounce,
+  onError,
+  immutable,
+});
 
 /**
  * Empty map of filters is a workaround for Smart Collections which have predefined filters,
@@ -18,7 +22,6 @@ const pickConfigProps = ({ debounce, onError, immutable = false }) =>
  */
 const _initial = fromJS({ filters: {} });
 
-
 /**
  * Agent is a stateful event-based interface to Findify SDK, providing it
  * with features like automated request cancellation, request throttling,
@@ -26,7 +29,7 @@ const _initial = fromJS({ filters: {} });
  * from one request to another (things like adding / removing filters, changing sorting, etc.)
  */
 export class Agent {
-  type: Types.RequestType = Types.RequestType.Search;
+  type: Types.RequestType = RequestType.Search;
   _defaults: Map<any, any> = _initial;
   state: Map<any, any> = _initial;
   response: Map<any, any> = _initial;
@@ -44,9 +47,7 @@ export class Agent {
     this.handleResponse = this.handleResponse.bind(this);
     this.provider = init(config);
     this.cache = new Cache(
-      config.debounce
-      ? debounce(request, config.debounce)
-      : request
+      config.debounce ? debounce(request, config.debounce) : request
     );
   }
 
@@ -58,7 +59,7 @@ export class Agent {
    */
   public defaults(defaults, noInitialRequest = false) {
     this._defaults = deepMerge(this._defaults, fromJS(defaults));
-    if(!noInitialRequest) this.cache.resolve();
+    if (!noInitialRequest) this.cache.resolve();
     return this;
   }
 
@@ -69,7 +70,7 @@ export class Agent {
    * @param handler [function(state, meta)]: callback function
    */
   public on(key: string, handler: Types.ActionHandler) {
-    const [ event, ...path ] = key.split(':');
+    const [event, ...path] = key.split(':');
     this.handlers.push({ handler, key, path, event });
     return this;
   }
@@ -83,7 +84,7 @@ export class Agent {
   public once(key: string, handler: Types.ActionHandler) {
     const _handler = (...res) => {
       handler(res);
-      this.off(_handler)
+      this.off(_handler);
     };
     return this.on(key, _handler);
   }
@@ -140,18 +141,21 @@ export class Agent {
     if (field !== 'offset') this.reset('offset'); // Reset offset on query change
     if (fx && !value) return this; // Skip new value setting if update doesn't returned new value
 
-    const changes = getChangedFields(oldValue, isImmutable(value) ? value : fromJS(value));
+    const changes = getChangedFields(
+      oldValue,
+      isImmutable(value) ? value : fromJS(value)
+    );
     if (changes === false) return this;
     if (isImmutable(changes) ? !changes.isEmpty() : true) {
       this.cache.set(field, changes);
     } else {
       this.reset(field);
     }
-    this.fireEvent('set:' + field, changes, Map())
+    this.fireEvent('set:' + field, changes, Map());
     return this;
-  }
+  };
 
-  private emit(event:string, data) {
+  private emit(event: string, data) {
     const handlers = this.handlers.filter(({ key }) => key === event);
     if (!handlers) return;
     for (let index = 0; index < handlers.length; index++) {
@@ -160,7 +164,7 @@ export class Agent {
     }
   }
 
-  private fireEvent(event:string, changes, meta: Types.ResponseMeta) {
+  private fireEvent(event: string, changes, meta: Types.ResponseMeta) {
     const handlers = this.handlers.filter(({ key }) => key === event);
     if (!handlers) return;
     for (let index = 0; index < handlers.length; index++) {
@@ -183,26 +187,29 @@ export class Agent {
     }
   }
 
-  public handleResponse(res:Types.ResponseBody) {
+  public handleResponse(res: Types.ResponseBody) {
     const response = fromJS(res);
-    const newState = queryToState(this.state, response.get('meta'), this._defaults);
+    const newState = queryToState(
+      this.state,
+      response.get('meta'),
+      this._defaults
+    );
     this.handleChanges(response, response.get('meta'));
     this.fireEvent('change:query', newState, response.get('meta'));
     this.state = newState;
     this.response = response;
   }
 
-
   /**
    * Creates map of parameters to pass to SDK, depending on agent type & current request state
    * @param cache Cache instance to extract request state from
    */
-  public createRequestBody (cache) {
+  public createRequestBody(cache) {
     this.state = deepMerge(this.state, cache);
     const merge = this._defaults.mergeDeep(this.state);
     const params = stateToQuery(merge).toJS();
     const type: any = this.type;
-    return { params, type }
+    return { params, type };
   }
 
   /**
@@ -213,14 +220,12 @@ export class Agent {
   public request(cache) {
     const params = this.createRequestBody(cache);
     return this.provider
-    .send(params)
-    .then(this.handleResponse)
-    .catch(error => {
-      this.emit('error', error);
-      return this.onError
-      ? this.onError(error)
-      : console.warn(error)
-    });
+      .send(params)
+      .then(this.handleResponse)
+      .catch((error) => {
+        this.emit('error', error);
+        return this.onError ? this.onError(error) : console.warn(error);
+      });
   }
 
   /**
@@ -230,6 +235,8 @@ export class Agent {
   private format(value) {
     return this.config.immutable
       ? value
-      : isImmutable(value) ? value.toJS() : value
+      : isImmutable(value)
+      ? value.toJS()
+      : value;
   }
 }

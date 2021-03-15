@@ -1,10 +1,9 @@
 {
   "extends": "config/ts/lib.json",
-  "exclude": ["node_modules", "src/**/__tests__/*"],
-  "include": ["src/**/*"],
   "compilerOptions": {
+    "baseUrl": "src",
+    "rootDirs": ["src", "dev"],
     "outDir": "lib",
-    "declaration": true,
     "declarationDir": "types"
   }
 }

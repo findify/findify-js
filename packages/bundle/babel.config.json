@@ -1,0 +1,14 @@
+
+{
+  "extends": "../../babel.config.js",
+  "plugins": [
+    ["@babel/plugin-transform-runtime", { "absoluteRuntime": true }]
+  ],
+  "presets": [
+    ["@babel/preset-env", {
+      "modules": false,
+      "useBuiltIns": "entry",
+      "corejs": 3
+    }]
+  ]
+}

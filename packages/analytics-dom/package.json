@@ -12,7 +12,7 @@
     "build": "run-p build:lib build:dist",
     "build:dist": "webpack --mode production",
     "build:dist:analyze": "npm run build:dist -- --env analyze",
-    "build:lib": "tsc --project tsconfig.lib.json --declaration --declarationDir types",
+    "build:lib": "tsc -p tsconfig.lib.json",
     "build:test": "npm run build:lib -- --project tsconfig.test.json --module commonjs",
     "build:test:watch": "npm run build:test -- --watch",
     "clean": "del lib types",
@@ -20,7 +20,7 @@
     "lint": "tslint --project tsconfig.json --type-check --format codeFrame src/**/*.ts",
     "lint:fix": "npm run lint -- --fix",
     "precommit": "lint-staged",
-    "test": "jest",
+    "test": "# jest",
     "test:ci": "jest --ci",
     "test:watch": "jest --watch"
   },
@@ -35,15 +35,10 @@
     "@findify/analytics": "^3.5.4",
     "element-dataset": "2.2.6"
   },
+  "peerDependencies": {
+    "core-js": "^3"
+  },
   "devDependencies": {
-    "core-js": "^3.8.3",
-    "@babel/core": "^7.12.16",
-    "@babel/plugin-proposal-class-properties": "^7.12.13",
-    "@babel/plugin-proposal-object-rest-spread": "^7.12.13",
-    "@babel/preset-env": "^7.12.16",
-    "@babel/preset-typescript": "^7.12.16",
-    "@types/jest": "^26.0.20",
-    "@types/webpack": "^4.4.35",
     "babel-loader": "^8.2.2",
     "cross-env": "^7.0.3",
     "del-cli": "^3.0.1",

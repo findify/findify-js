@@ -1,10 +1,7 @@
 import * as path from 'path';
 import * as webpack from 'webpack';
-import * as GitRevisionPlugin from 'git-revision-webpack-plugin';
-import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
-import * as DuplicatePackageCheckerPlugin from 'duplicate-package-checker-webpack-plugin';
-import * as CompressionPlugin from 'compression-webpack-plugin';
 import * as TerserPlugin from 'terser-webpack-plugin';
+import * as defaultConfig from 'config/webpack';
 
 interface WebpackEnvArgs {
   analyze?: boolean;
@@ -39,81 +36,37 @@ export default (env: WebpackEnvArgs) => {
     bail: true,
     resolve: {
       extensions: ['.ts', '.js'],
+      modules: ['node_modules'],
     },
     target: ['web', 'es5'],
-    optimization: {
-      mergeDuplicateChunks: true,
-      usedExports: true,
-      mangleExports: 'size',
-      concatenateModules: true,
-      minimizer: [
-        new TerserPlugin({
-          extractComments: true,
-          parallel: true,
-        }),
-      ],
-    },
+    optimization: defaultConfig.optimization,
     module: {
       rules: [
         {
-          test: /\.ts$/,
-          include: path.resolve(__dirname, 'src'),
+          test: /\.(t|j)s$/,
           use: [
             {
               loader: 'babel-loader',
               options: {
-                babelrc: false,
-                plugins: [
-                  "@babel/plugin-proposal-object-rest-spread",
-                  "@babel/plugin-proposal-class-properties",
-                ],
-                presets: [
-                  "@babel/preset-typescript",
-                  ["@babel/preset-env", {
-                    "modules": false,
-                    "corejs": 3,
-                    "useBuiltIns": "usage",
-                    "targets": { "browsers": ["last 2 versions", "ie >= 10"] },
-                  }]
-                ]
-              }
-            }
-          ]
+                rootMode: 'upward',
+              },
+            },
+          ],
         },
       ],
     },
     plugins: [
       new webpack.DefinePlugin({
-        __COMMITHASH__: JSON.stringify(new GitRevisionPlugin().commithash()),
         'process.env': {
           NODE_ENV: JSON.stringify('production'),
-          BROWSER: true
+          BROWSER: true,
         },
       }),
-
-      new webpack.LoaderOptionsPlugin({
-        debug: false,
-        minimize: true
-      }),
-  
-      new DuplicatePackageCheckerPlugin(),
-
-      new CompressionPlugin({
-        exclude: /\.map/,
-      })
     ],
   };
 
-  if (Boolean(env && env.analyze)) {
-    const analyzerPlugin = new BundleAnalyzerPlugin({
-      analyzerMode: 'server',
-      analyzerPort: 8888,
-      openAnalyzer: true,
-      generateStatsFile: Boolean(env.generateStatsFile),
-      reportFilename: 'stats/webpack.stats.html',
-      statsFilename: 'stats/webpack.stats.json',
-    });
-    config.plugins!.push(analyzerPlugin);
+  if (env && env.analyze) {
+    config.plugins?.push(defaultConfig.BundleAnalyzer);
   }
 
   return config;
