@@ -58,7 +58,7 @@
   "scripts": {
     "bootstrap": "lerna bootstrap",
     "build:dist": "lerna run build:dist",
-    "build:lib": "lerna run build:lib --parallel",
+    "build:lib": "lerna run build:lib",
     "build:tdd": "run-s --continue-on-error build:test build:test:watch",
     "build:test": "lerna run build:test",
     "build:test:watch": "lerna run build:test:watch --parallel",
