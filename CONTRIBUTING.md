@@ -7,11 +7,6 @@
 
 Once it is done, you can start working on the project.
 
-### TDD
-
-First, run `npm run build:tdd`, it will watch and rebuild packages for test env.
-Wait until its finished and then run `npm t` in parallel that will watch and run tests.
-
 ## Workflow
 
 - Create a topic branch from where you want to base your work. This is usually `develop`.
@@ -29,9 +24,7 @@ List of tags in lerna.json should match thouse on GitHub.
 
 When creating a pull request, its comment should reference the corresponding issue id.
 
-We use [commitizen](https://github.com/commitizen/cz-cli) +
-[cz-lerna-changelog](https://github.com/atlassian/cz-lerna-changelog) to format commit messages and
-[lerna-semantic-release](https://github.com/atlassian/lerna-semantic-release) to release new versions automatically.
+We use [commitizen](https://github.com/commitizen/cz-cli).
 
 Use `make commit` `npm run c` instead of `git commit`.
 Read: https://github.com/angular/angular.js/blob/master/CONTRIBUTING.md
@@ -57,3 +50,32 @@ Commits that have [ci skip] or [skip ci] anywhere in the commit messages are ign
 * hotfix/something
 * chore/something
 * refactoring/something
+
+### Flows:
+>Install dependencies
+```
+[yarn install] > install packages in workspace
+|-[postinstall hook] > build libs from packages
+```
+>Commit
+```
+[git add] > add changes to stage
+[make commit / yarn c] > start commit stage
+|-[commitizen] > run commit prompter
+| |-[changelog-plugin] > generate commit message
+|-[precommit hook]
+| |-[lerna test] > test changed packages
+| |-[husky pre-commit] > lint staged files
+| | |-[git add] > all fixes to commit
+[git push]
+```
+>Publish
+```
+[lerna publish] > run lerna publisher
+|-[conventional commit plugin] > parse commits
+|-[lerna diff] > find changed packages
+|-[lerna version] > bump versions
+|-[lerna changelog] > generate changelog
+|-[npm publish] > publish packages to npm
+|-[git commit] > commit and push changelog
+```
