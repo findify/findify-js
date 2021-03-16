@@ -50,7 +50,7 @@ const createGlobals = (isDevelopment, isLocal) =>
     {}
   );
 
-export default (env: WebpackEnvArgs, { mode, ...rest }) => {
+export default (env: WebpackEnvArgs, { mode }) => {
   const origin = env.origin || 'prod';
 
   const config = {
@@ -97,36 +97,20 @@ export default (env: WebpackEnvArgs, { mode, ...rest }) => {
       alias: {
         axios: path.resolve(__dirname, '../../node_modules/axios'),
         'react-dom':
-          (mode === 'development' && '@hot-loader/react-dom') || 'react-dom',
+          mode === 'development' ? '@hot-loader/react-dom' : 'react-dom',
         react: path.resolve(__dirname, '../../node_modules/react'),
         'react-is': path.resolve(__dirname, '../../node_modules/react-is'),
+
         '@babel/runtime': path.resolve(
           __dirname,
           '../../node_modules/@babel/runtime'
         ),
-
-        // 'recompose': 'recompose/dist/Recompose.cjs',
         'lodash.throttle': 'lodash/throttle',
         'lodash.debounce': 'lodash/debounce',
         lodash: path.resolve(__dirname, '../../node_modules/lodash'),
-
-        'hoist-non-react-statics': path.resolve(
-          __dirname,
-          '../../node_modules/hoist-non-react-statics'
-        ),
         debug: path.resolve(__dirname, '../../node_modules/debug'),
-        immutable: path.resolve(__dirname, '../../node_modules/immutable'),
-
-        'babel-runtime/core-js/object/get-prototype-of':
-          'core-js/features/object/get-prototype-of',
-        'babel-runtime/core-js/object/get-own-property-descriptor':
-          'core-js/features/object/get-own-property-descriptor',
-        'babel-runtime/core-js/object/assign': 'core-js/features/object/assign',
-        'babel-runtime/core-js/object/create': 'core-js/features/object/create',
         'babel-runtime/core-js/promise': 'core-js/features/promise',
-        'babel-runtime/core-js/object/keys': 'core-js/features/object/keys',
-        'babel-runtime/core-js/object/define-property':
-          'core-js/features/object/define-property',
+        'babel-runtime/core-js/object': 'core-js/features/object',
         'babel-runtime': '@babel/runtime',
       },
     },

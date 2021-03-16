@@ -22,6 +22,7 @@ module.exports = {
     "ordered-imports": 0,
     "interface-name": 0,
     "switch-default": 0,
-    "explicit-module-boundary-types": 0,
+    "@typescript-eslint/explicit-module-boundary-types": 0,
+    "@typescript-eslint/no-var-requires": 0,
   }
 }; 
