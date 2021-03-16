@@ -57,7 +57,9 @@ export default (env: WebpackEnvArgs): webpack.Configuration => {
     ],
   };
 
-  if (env && env.analyze) config.plugins?.push(defaultConfig.BundleAnalyzer);
+  if (env && env.analyze) {
+    config.plugins.push(defaultConfig.BundleAnalyzer);
+  }
 
   return config;
 };

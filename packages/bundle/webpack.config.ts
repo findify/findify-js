@@ -260,16 +260,7 @@ export default (env: WebpackEnvArgs, { mode, ...rest }) => {
   }
 
   if (mode === 'development') {
-    config.plugins.push(
-      new webpack.HotModuleReplacementPlugin()
-      // new webpack.DllReferencePlugin({
-      //   context: __dirname,
-      //   manifest: require(path.join(__dirname, 'node_modules/dll/vendor-manifest.json'))
-      // }),
-      // new AddAssetHtmlPlugin({
-      //   filepath: require.resolve(path.join(__dirname, 'node_modules/dll/vendor.dll.js'))
-      // })
-    );
+    config.plugins.push(new webpack.HotModuleReplacementPlugin());
   }
 
   return config;
