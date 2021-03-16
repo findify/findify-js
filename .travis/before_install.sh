@@ -28,7 +28,6 @@ if [[ $TRAVIS_BRANCH == 'master' || $TRAVIS_BRANCH == 'develop' || $TRAVIS_BRANC
   echo "https://${RELEASE_GH_USERNAME}:${RELEASE_GH_TOKEN}@github.com/findify/findify-js.git" > ~/.git-credentials
 
   npm config set //registry.npmjs.org/:_authToken=$NPM_TOKEN -q
-  npm prune
 
   git config --global user.email "yourfriends@findify.io"
   git config --global user.name "Findify"
@@ -36,9 +35,6 @@ if [[ $TRAVIS_BRANCH == 'master' || $TRAVIS_BRANCH == 'develop' || $TRAVIS_BRANC
 
   git fetch --tags
   git branch -u origin/$TRAVIS_BRANCH
-  git fsck --full #debug
   echo "npm whoami"
   npm whoami #debug
-  echo "git config --list"
-  git config --list #debug
 fi

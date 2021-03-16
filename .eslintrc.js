@@ -21,6 +21,7 @@ module.exports = {
     "object-literal-sort-keys": 0,
     "ordered-imports": 0,
     "interface-name": 0,
-    "switch-default": 0
+    "switch-default": 0,
+    "explicit-module-boundary-types": 0,
   }
 }; 
