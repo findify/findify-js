@@ -41,7 +41,7 @@
     "directory-tree": "^2.2.6",
     "dts-generator": "^3.0.0",
     "enzyme": "3.11.0",
-    "enzyme-adapter-react-16": "1.15.6",
+    "@wojtekmaj/enzyme-adapter-react-17": "0.4.1",
     "enzyme-to-json": "^3.6.1",
     "html-webpack-plugin": "^5.1.0",
     "image-webpack-loader": "^7.0.1",
