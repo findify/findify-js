@@ -17,6 +17,7 @@ cache:
   directories:
     - node_modules
 install:
-  - yarn install && yarn build:dist
+  - yarn
+  - yarn build:dist
 before_install: ./.travis/before_install.sh
 after_success: ./.travis/after_success.sh
