@@ -45,10 +45,7 @@ export default (env: WebpackEnvArgs): webpack.Configuration => {
             {
               loader: 'babel-loader',
               options: {
-                babelrc: false,
-                options: {
-                  rootMode: 'upward',
-                },
+                rootMode: 'upward',
               },
             },
           ],
