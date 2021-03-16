@@ -43,7 +43,14 @@ export default (env: WebpackEnvArgs): webpack.Configuration => {
         {
           test: /\.ts$/,
           include: path.resolve(__dirname, 'src'),
-          use: ['babel-loader'],
+          use: [
+            {
+              loader: 'babel-loader',
+              options: {
+                rootMode: 'upward',
+              },
+            },
+          ],
         },
       ],
     },
