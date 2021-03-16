@@ -80,9 +80,6 @@
     "style-loader": "^2.0.0",
     "ts-jest": "^26.5.1",
     "tslint": "^5.20.1",
-    "typedoc": "^0.20.25",
-    "typedoc-plugin-external-module-name": "^4.0.6",
-    "typedoc-plugin-respect-name-tag": "^1.0.0",
     "typescript": "4.1.5",
     "webpack": "^5.22.0",
     "webpack-bundle-analyzer": "^4.4.0"
@@ -108,7 +105,6 @@
     "build:js": "BABEL_ENV=lib babel src --out-dir lib --root-mode upward --extensions \".ts,.tsx\"",
     "build:tree": "node scripts/makeModulesTree.js",
     "build:css": "node scripts/processCss.js",
-    "build:doc": "typedoc --plugin typedoc-plugin-external-module-name --ignoreCompilerErrors --out doc src",
     "build:ts": "node scripts/compile-ts.js",
     "build:types": "run-s build:ts merge:types",
     "merge:types": "node scripts/combineTypes.js",
