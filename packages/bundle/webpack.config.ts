@@ -163,31 +163,13 @@ export default (env: WebpackEnvArgs, { mode, ...rest }) => {
           ],
         },
         {
-          test: /\.(j|t)s$/,
-          include: [path.resolve(__dirname, 'src')],
+          test: /\.(j|t)sx?$/,
           exclude: [/@babel(?:\/|\\{1,2})runtime|core-js/],
           use: [
             {
               loader: 'babel-loader',
               options: {
                 rootMode: 'upward',
-              },
-            },
-          ],
-        },
-        {
-          test: /\.(j|t)sx?$/,
-          include: [path.resolve(componentsPath, 'src')],
-          use: [
-            {
-              loader: 'babel-loader',
-              options: {
-                babelrc: false,
-                configFile: path.resolve(
-                  __dirname,
-                  componentsPath,
-                  'babel.config.js'
-                ),
               },
             },
           ],

@@ -75,8 +75,7 @@
     "webpack-manifest-plugin": "^3.0.0",
     "webpack-dev-server": "^3.11.2",
     "copy-webpack-plugin": "^6.4.1",
-    "react-hot-loader": "^4.13.0",
-    "config": "*"
+    "react-hot-loader": "^4.13.0"
   },
   "resolutions": {
     "hoist-non-react-statics": "3.3.0"

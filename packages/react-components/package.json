@@ -85,8 +85,7 @@
     "typedoc-plugin-respect-name-tag": "^1.0.0",
     "typescript": "4.1.5",
     "webpack": "^5.22.0",
-    "webpack-bundle-analyzer": "^4.4.0",
-    "config": "*"
+    "webpack-bundle-analyzer": "^4.4.0"
   },
   "engines": {
     "npm": ">=4",
@@ -106,7 +105,7 @@
   "scripts": {
     "build": "run-s build:js build:css build:tree",
     "build:lib": "run-p build build:types",
-    "build:js": "BABEL_ENV=lib babel src --out-dir lib --extensions \".ts,.tsx\"",
+    "build:js": "BABEL_ENV=lib babel src --out-dir lib --root-mode upward --extensions \".ts,.tsx\"",
     "build:tree": "node scripts/makeModulesTree.js",
     "build:css": "node scripts/processCss.js",
     "build:doc": "typedoc --plugin typedoc-plugin-external-module-name --ignoreCompilerErrors --out doc src",

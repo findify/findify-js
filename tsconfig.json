@@ -1,3 +1,18 @@
 {
-  "extends": "./config/ts/base.json"
+  "compilerOptions": {
+    "moduleResolution": "node",
+    "target": "esnext",
+    "lib": ["dom"],
+    "jsx": "preserve",
+    "allowSyntheticDefaultImports": true,
+    "removeComments": false,
+    "noImplicitAny": false,
+    "noEmitOnError": false,
+    "strictNullChecks": true
+  },
+  "compileOnSave": false,
+  "buildOnSave": false,
+  "exclude": [
+    "node_modules"
+  ]
 }
