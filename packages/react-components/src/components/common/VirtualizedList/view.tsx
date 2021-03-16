@@ -19,15 +19,13 @@ export default ({
         <List
           className={theme.list}
           ref={initList}
-          width={width}
           height={height}
+          width={width}
           rowCount={array.size}
           overscanRowCount={2}
           rowHeight={cache.rowHeight}
           rowRenderer={rowRenderer}
-          style={{
-            overflowX: false,
-          }}
+          style={{ overflowX: 'hidden' }}
         />
       )}
     </AutoSizer>
