@@ -20,14 +20,15 @@ export type Config = {
     [key in keyof typeof enums.Platform]?: boolean
   }
 
+  /** Request method type */
+  api: {
+    method: Method
+  }
+
   /** Disable event tracking in analytics */
   analytics?: {
     [key in keyof typeof enums.AnalyticsEventKey]?: false
   }
-
-  api: {
-		method: Method
-	}
 
   /**
    * Should observe dom change to dynamically attach/detach widgets
