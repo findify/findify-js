@@ -6,3 +6,6 @@ export { Content } from './Content'
 export { Method as RequestMethod } from '@findify/sdk/types/request'
 export { RequestParams } from './BaseFeature'
 export * as Immutable from './Immutable'
+export { Config } from './Config'
+
+export const Direction = ["UP", "DOWN"] as const;

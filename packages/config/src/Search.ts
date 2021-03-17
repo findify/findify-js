@@ -25,7 +25,7 @@ export interface Search extends BaseFeature<'Search'> {
   sorting: {
     options: [{
       field: string | 'default'
-      order: enums.SearchOrder
+      order: keyof typeof enums.SearchOrder
     }]
   }
 
@@ -34,7 +34,7 @@ export interface Search extends BaseFeature<'Search'> {
    */
   pagination: {
     /** Type of pagination */
-    type: enums.PaginationType,
+    type: keyof typeof enums.PaginationType,
     /** How many times will lazy load before show `Load more` button */
     autoLoadTimes: number // <- Lazy only
     /** Step between pages in pagination component eq: `< 1 [step] 3 [step] 5 >` */
@@ -50,7 +50,7 @@ export interface Search extends BaseFeature<'Search'> {
      * `top` - above
      * `right` - next to products (changes flex order)
      */
-    position: enums.FacetsPosition
+    position: keyof typeof enums.FacetsPosition
 
     /**
      * If `true` will stick facets container to top of window
@@ -77,7 +77,7 @@ export interface Search extends BaseFeature<'Search'> {
      * Filter to Facet type mapping
      */
     types: {
-      [filterName: string]: enums.FilterType
+      [filterName: string]: keyof typeof enums.FilterType
     },
 
     /**

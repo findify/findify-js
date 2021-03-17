@@ -5,11 +5,11 @@ type TemplateSetting = {
   /**
    * Specific template setting
    */
-  [key in enums.AutocompleteTemplate]: {
+  [key in keyof typeof enums.AutocompleteTemplate]: {
     /**
      * Autocomplete alignment
      */
-    position?: enums.AutocompletePosition,
+    position?: keyof typeof enums.AutocompletePosition,
   
     /**
      * Suggestions options
@@ -50,12 +50,12 @@ export interface Autocomplete extends BaseFeature<'Autocomplete'>, TemplateSetti
    * - self - Dynamically created widget node
    * - body - Document.Body
   */
-  renderIn: enums.AutocompleteRenderNode,
+  renderIn: keyof typeof enums.AutocompleteRenderNode,
 
 
   template: {
-		mobile: enums.AutocompleteTemplate
-		desktop: enums.AutocompleteTemplate
+		mobile: keyof typeof enums.AutocompleteTemplate
+		desktop: keyof typeof enums.AutocompleteTemplate
   }
 
   /**

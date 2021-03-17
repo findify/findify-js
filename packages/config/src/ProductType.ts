@@ -7,14 +7,14 @@ export type ProductType = {
    * Custom string value could be used in you need to have
    * specific view in widget
    */
-  template: ProductTemplate | string
+  template: keyof typeof ProductTemplate | string
 
   /**
    * Product price component display options
    */
   price: {
     display: boolean
-		template: ProductPriceTemplate
+		template: keyof typeof ProductPriceTemplate
   },
 
   /**
@@ -53,7 +53,7 @@ export type ProductType = {
    */
   variants: {
     display: boolean
-		template: ProductVariantsTemplate
+		template: keyof typeof ProductVariantsTemplate
   },
   
   /**

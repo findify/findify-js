@@ -13,7 +13,7 @@ export type Config = {
   merchant_id: number
 
   /** Store status */
-  status: enums.StoreStatus
+  status: keyof typeof enums.StoreStatus
 
   /** Store platform. Generic by default */
   platform: {
@@ -52,14 +52,14 @@ export type Config = {
 
   /** Custom nodes mapping where widgets will be attached */
   selectors: {
-    [selector: string]: enums.Feature
+    [selector: string]: keyof typeof enums.Feature
   }
 
   /** Currency display setup */
   currency: {
     code: string, 
     symbol: string,
-    thousandsSeparator: boolean,
+    thousandsSeparator: string,
     decimalSeparator: string,
     symbolOnLeft: boolean,
     spaceBetweenAmountAndSymbol: boolean,

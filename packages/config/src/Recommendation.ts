@@ -15,12 +15,12 @@ export interface Recommendation extends BaseFeature<'Recommendations'> {
   /**
    * Recommendation type
    */
-  type: enums.RecommendationType,
+  type: keyof typeof enums.RecommendationType,
 
   /**
    * Recommendation template
    */
-  template: enums.RecommendationTemplate
+  template: keyof typeof enums.RecommendationTemplate
 
   /**
    * Max amount of items in response
