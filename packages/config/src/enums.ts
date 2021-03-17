@@ -26,7 +26,7 @@ export enum AnalyticsEventKey {
   clickItem = 'click-item',
 }
 
-export enum FilterTypes {
+export enum FilterType {
   text = 'text',
   category = 'category',
   range = 'range',

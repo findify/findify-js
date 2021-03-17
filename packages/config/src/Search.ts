@@ -77,7 +77,7 @@ export interface Search extends BaseFeature<'Search'> {
      * Filter to Facet type mapping
      */
     types: {
-      [filterName: string]: enums.FilterTypes
+      [filterName: string]: enums.FilterType
     },
 
     /**

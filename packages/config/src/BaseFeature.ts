@@ -4,7 +4,7 @@ import {
 import { ProductType } from './ProductType';
 import { Breakpoints } from './Breakpoints';
 
-type RequestTypes = {
+export type RequestParams = {
   Autocomplete: Autocomplete.Params,
   Search: Search.Params,
   SmartCollection: SmartCollection.Params,
@@ -12,7 +12,7 @@ type RequestTypes = {
   Content: Content.Params,
 }
 
-export type BaseFeature<T extends keyof RequestTypes> = {
+export type BaseFeature<T extends keyof RequestParams> = {
   /**
    * Should widget send request right after creation
    * Helpful if widget is created manually and you need to set
@@ -23,7 +23,7 @@ export type BaseFeature<T extends keyof RequestTypes> = {
   /**
    * Default widget request params
   */
-  meta: RequestTypes[T]
+  meta: RequestParams[T]
 
   /**
    * Product card setup

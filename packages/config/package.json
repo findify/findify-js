@@ -6,10 +6,12 @@
   "types": "lib/index.d.ts",
   "license": "MIT",
   "devDependencies": {
-    "@findify/sdk": "*"
+    "@findify/sdk": "*",
+    "immutable": "^4.0.0-rc.12"
   },
   "scripts": {
-    "build": "tsc",
+    "build:lib": "tsc",
+    "build:dist": "#s",
     "test": "#"
   }
 }
