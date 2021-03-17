@@ -24,6 +24,7 @@ export enum AnalyticsEventKey {
   purchase = 'purchase',
   updateCart = 'update-cart',
   clickItem = 'click-item',
+  addToCart = 'add-to-cart'
 }
 
 export enum FilterType {
