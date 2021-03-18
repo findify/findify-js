@@ -23,7 +23,7 @@ export type BaseFeature<T extends keyof RequestParams> = {
   /**
    * Default widget request params
   */
-  meta: RequestParams[T]
+  defaultRequestParams: Partial<RequestParams[T]>
 
   /**
    * Product card setup
@@ -31,7 +31,7 @@ export type BaseFeature<T extends keyof RequestParams> = {
   product: ProductType
 
   /**
-   * 
+   * Layout breakpoints definition 
    */
   breakpoints: {
     grid: Breakpoints

@@ -6,7 +6,7 @@ export interface Search extends BaseFeature<'Search'> {
   * If present - will render Recommendation widget with given type
   * if no results has been returned
   */
-  zeroResultsType?: enums.RecommendationType
+  zeroResultsType?: Exclude<keyof typeof enums.RecommendationType, 'bought' | 'purchasedTogether'>
 
   /**
    * Scroll top after items update setting
@@ -62,11 +62,6 @@ export interface Search extends BaseFeature<'Search'> {
      */
     collapsedItemsCount: number
 
-    /**
-     * List of filters needs to be closed by default
-     */
-    initiallyClosedFilters: string[]
-
 
     /**
      * Expand only one facet per time
@@ -74,17 +69,14 @@ export interface Search extends BaseFeature<'Search'> {
     accordion: boolean
 
     /**
-     * Filter to Facet type mapping
+     * Filters setup
      */
-    types: {
-      [filterName: string]: keyof typeof enums.FilterType
+    filters: {
+      [filterName: string]: {
+        type: keyof typeof enums.FilterType
+        label: string,
+        initiallyCollapsed: boolean
+      }
     },
-
-    /**
-     * Filter to label mapping
-    */
-    labels: {
-      [filterName: string]: string
-    }
   }
 }

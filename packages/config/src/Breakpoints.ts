@@ -7,6 +7,5 @@
  * @value Number will be returned 
  */
 export type Breakpoints = {
-  default?: number
   [width: number]: number
 }

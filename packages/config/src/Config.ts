@@ -10,15 +10,13 @@ export type Config = {
   key: string
 
   /** Merchant ID, required to connect Chrome DevTools */
-  merchant_id: number
+  merchantId: number
 
   /** Store status */
   status: keyof typeof enums.StoreStatus
 
   /** Store platform. Generic by default */
-  platform: {
-    [key in keyof typeof enums.Platform]?: boolean
-  }
+  platform: keyof typeof enums.Platform
 
   /** Request method type */
   api: {
@@ -78,11 +76,12 @@ export type Config = {
     },
   }
 
+  /** Translations */
   translations: {
     [key: string]: string
   }
 
-  /** customizations */
+  /** Customizations */
   components: {
     [key: string]: () => void
   }

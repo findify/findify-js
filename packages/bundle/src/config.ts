@@ -39,30 +39,19 @@ const config: Config = {
   selectors: {
     "input[name='fq']": 'autocomplete',
     '#findify_results': 'search',
-    '#home-findify-rec-2': 'recommendations',
-    '#product-findify-rec-1': 'recommendations',
-    '#category-findify-rec-1': 'recommendations',
-    '#product-findify-rec-4': 'recommendations',
-    '#product-findify-rec-2': 'recommendations',
-    '#cart-findify-rec-1': 'recommendations',
-    '#cart-findify-rec-2': 'recommendations',
-    '#cart-findify-rec-3': 'recommendations',
-    '#home-findify-rec-3': 'recommendations',
-    '#product-findify-rec-5': 'recommendations',
+    '#home-findify-rec-2': 'recommendation',
+    '#product-findify-rec-1': 'recommendation',
+    '#category-findify-rec-1': 'recommendation',
+    '#product-findify-rec-4': 'recommendation',
+    '#product-findify-rec-2': 'recommendation',
+    '#cart-findify-rec-1': 'recommendation',
+    '#cart-findify-rec-2': 'recommendation',
+    '#cart-findify-rec-3': 'recommendation',
+    '#home-findify-rec-3': 'recommendation',
+    '#product-findify-rec-5': 'recommendation',
   },
 
-  // Currency setup
   currency: {
-    code: 'GBP',
-    // symbol: '$',
-    // thousandsSeparator: ',',
-    // decimalSeparator: '.',
-    // symbolOnLeft: true,
-    // spaceBetweenAmountAndSymbol: false,
-    // decimalDigits: 2
-  },
-
-  currency_config: {
     code: 'USD',
     symbol: 'Ж',
     thousandsSeparator: ',',
@@ -78,62 +67,76 @@ const config: Config = {
       instant: false,
 
       // Disable listening for closest form submit
-      disableFormSubmit: false,
+      handleFormSubmit: true,
 
-      trendingSearchesDisabled: false,
+      enableTrendingSearches: true,
+
+      disableAutoRequest: false,
 
       // Where it should be rended: parent|self|body
       renderIn: 'parent',
 
-      // dropdown: to invoke usual dropdown behaviour
-      // sidebar: to use sidebar as search component
-      // fullscreen: to use fullscreen view for searching
-      viewType: 'dropdown',
-      mobileViewType: 'fullscreen',
-      // Order of content
-      viewOrder: ['SearchSuggestions', 'ProductMatches'],
+      breakpoints: {
+        grid: {
+          100: 3,
+        },
+      },
+
+      template: {
+        mobile: 'sidebar',
+        desktop: 'dropdown',
+      },
 
       // Where to align autocomplete: left|right|undefined
-      position: 'right',
+      dropdown: {
+        overlay: false,
+        position: 'right',
+        productMatches: {
+          display: true,
+        },
+        suggestions: {
+          display: true,
+        },
+      },
 
       // Will be added to all requests eq: Agent.defaults(meta)
-      meta: {
+      defaultRequestParams: {
         item_limit: 4,
         suggestion_limit: 10,
       },
 
-      // Product setup
       product: {
+        template: 'vertical',
+        description: {
+          display: false,
+          lines: 3,
+        },
+        reviews: {
+          display: false,
+        },
+        variants: {
+          display: false,
+          template: 'text',
+        },
         title: {
           display: true,
           lines: 3,
         },
         price: {
           display: true,
-        },
-        i18n: {
-          colorsAvailable: 'Colours available',
+          template: 'from-min',
         },
         image: {
           // Image aspect ratio
           aspectRatio: 1.2,
+          lazy: false,
+          lazyOffset: 0,
         },
         stickers: {
-          display: false,
+          discount: false,
+          outOfStock: false,
         },
       },
-      i18n: {
-        suggestionsTitle: 'Suggestions',
-        productMatchesTitle: 'Product matches',
-        tipResults: 'View all results for query',
-        tipTrendingResults: 'View all results',
-        tipTrending:
-          "Sorry, we can't find any suggestions. Press enter to search for",
-        viewMore: 'View all',
-        trendingSearches: 'Trending searches',
-        trendingProducts: 'Trending products',
-      },
-      showOverlay: true,
     },
 
     search: {
@@ -149,11 +152,16 @@ const config: Config = {
       },
 
       // Should scroll to value after new data was received
-      scrollTop: 0,
+      scrollTop: {
+        selector: '.site-header',
+        enabled: false,
+        offset: 0,
+      },
+
       cssSelector: '.site-header',
 
       // Will be added to all requests eq: Agent.defaults(meta)
-      meta: {
+      defaultRequestParams: {
         limit: 24,
       },
 

@@ -5,12 +5,17 @@ type TemplateSetting = {
   /**
    * Specific template setting
    */
-  [key in keyof typeof enums.AutocompleteTemplate]: {
+  [key in keyof typeof enums.AutocompleteTemplate]?: {
     /**
      * Autocomplete alignment
      */
     position?: keyof typeof enums.AutocompletePosition,
-  
+    
+    /**
+     * Display clickable background overlay
+     */
+    overlay: boolean,
+
     /**
      * Suggestions options
      */
@@ -57,9 +62,4 @@ export interface Autocomplete extends BaseFeature<'Autocomplete'>, TemplateSetti
 		mobile: keyof typeof enums.AutocompleteTemplate
 		desktop: keyof typeof enums.AutocompleteTemplate
   }
-
-  /**
-   * Display clickable background overlay
-   */
-  showOverlay: boolean,
 }
