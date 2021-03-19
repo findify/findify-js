@@ -2,10 +2,10 @@
  * @module layouts/Autocomplete/Dropdown
  */
 
-import React from 'react';
-import Tip from 'components/autocomplete/Tip'
-import ProductMatches from 'components/autocomplete/ProductMatches'
-import SearchSuggestions from 'components/autocomplete/SearchSuggestions'
+import * as React from 'react';
+import Tip from 'components/autocomplete/Tip';
+import ProductMatches from 'components/autocomplete/ProductMatches';
+import SearchSuggestions from 'components/autocomplete/SearchSuggestions';
 import { useSuggestions } from '@findify/react-connect';
 import cx from 'classnames';
 import { ThemedSFCProps, MJSConfiguration, ISuggestion, MJSValue } from 'types';
@@ -21,25 +21,54 @@ export interface IAutocompletePanel extends ThemedSFCProps {
 }
 
 /** Layout column mapping */
-const Suggestions = ({ config, theme, isTrendingSearches, ...rest }: IAutocompletePanel) => (
+const Suggestions = ({
+  config,
+  theme,
+  isTrendingSearches,
+  ...rest
+}: IAutocompletePanel) => (
   <div className={theme.suggestionsContainer}>
-    <h4 className={cx(theme.typeTitle, theme.suggestionsTitle, { [theme.trendingTitle]: isTrendingSearches })}>
-      {config.getIn(['i18n', isTrendingSearches ? 'trendingSearches' : 'suggestionsTitle'])}
+    <h4
+      className={cx(theme.typeTitle, theme.suggestionsTitle, {
+        [theme.trendingTitle]: isTrendingSearches,
+      })}
+    >
+      {config.getIn([
+        'i18n',
+        isTrendingSearches ? 'trendingSearches' : 'suggestionsTitle',
+      ])}
     </h4>
     <SearchSuggestions
       className={theme.searchSuggestions}
       widgetKey={config.get('widgetKey')}
       isTrendingSearches={isTrendingSearches}
-      {...rest} />
+      {...rest}
+    />
   </div>
 );
 
-const Products = ({ config, theme, isTrendingSearches, ...rest }: IAutocompletePanel) => (
+const Products = ({
+  config,
+  theme,
+  isTrendingSearches,
+  ...rest
+}: IAutocompletePanel) => (
   <div className={theme.productMatchesContainer}>
-    <h4 className={cx(theme.typeTitle, { [theme.trendingTitle]: isTrendingSearches })}>
-      {config.getIn(['i18n', isTrendingSearches ? 'trendingProducts' : 'productMatchesTitle'])}
+    <h4
+      className={cx(theme.typeTitle, {
+        [theme.trendingTitle]: isTrendingSearches,
+      })}
+    >
+      {config.getIn([
+        'i18n',
+        isTrendingSearches ? 'trendingProducts' : 'productMatchesTitle',
+      ])}
     </h4>
-    <ProductMatches className={theme.productMatches} config={config} {...rest} />
+    <ProductMatches
+      className={theme.productMatches}
+      config={config}
+      {...rest}
+    />
   </div>
 );
 
@@ -85,7 +114,10 @@ const AutocompleteDropdownView: React.SFC<IAutocompleteDropdownProps> = ({
   const isTrendingSearches = !meta.get('q');
 
   return (
-    <div display-if={suggestions && suggestions.size > 0} className={theme.wrapper}>
+    <div
+      display-if={suggestions && suggestions.size > 0}
+      className={theme.wrapper}
+    >
       <div
         display-if={config.get('showOverlay')}
         className={theme.overlay}
@@ -96,13 +128,18 @@ const AutocompleteDropdownView: React.SFC<IAutocompleteDropdownProps> = ({
         data-findify-autocomplete={true}
         tabIndex={0}
         ref={register}
-        style={{ [position]: 0 }}>
+        style={{ [position]: 0 }}
+      >
         <Tip
           className={theme.tip}
           title={config.getIn(['i18n', 'tipResults'])}
-          zeroResultsTitle={config.getIn(['i18n', 'tipTrendingResults'], 'View All Results')}
-          widgetKey={config.get('widgetKey')} />
-        <Grid className={theme.container} columns='auto|3'>
+          zeroResultsTitle={config.getIn(
+            ['i18n', 'tipTrendingResults'],
+            'View All Results'
+          )}
+          widgetKey={config.get('widgetKey')}
+        />
+        <Grid className={theme.container} columns="auto|3">
           <Suggestions
             {...rest}
             selectedSuggestion={selectedSuggestion}
@@ -120,8 +157,7 @@ const AutocompleteDropdownView: React.SFC<IAutocompleteDropdownProps> = ({
         </Grid>
       </section>
     </div>
-  )
-}
+  );
+};
 
 export default AutocompleteDropdownView;
-

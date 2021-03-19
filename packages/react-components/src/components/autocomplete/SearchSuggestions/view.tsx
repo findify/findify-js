@@ -2,7 +2,9 @@
  * @module components/autocomplete/SearchSuggestions
  */
 
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
+
+import * as React from 'react';
 import MapArray from 'components/common/MapArray';
 import SuggestionItem from 'components/autocomplete/SuggestionItem';
 import {

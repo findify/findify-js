@@ -2,8 +2,6 @@
  * @module layouts/ZeroResults
  */
 
-import React from 'react';
-
 import Grid from 'components/common/Grid';
 import Text from 'components/Text';
 import MapArray from 'components/common/MapArray';
@@ -27,7 +25,13 @@ export interface IZeroResultsProps extends ThemedSFCProps {
   columns: number;
 }
 
-const ZeroResultsLayout = ({ items, title, theme, columns, config }: IZeroResultsProps) => (
+const ZeroResultsLayout = ({
+  items,
+  title,
+  theme,
+  columns,
+  config,
+}: IZeroResultsProps) => (
   <div className={theme.container}>
     <div className={theme.wrapper}>
       <div className={theme.sorryRow}>
@@ -37,27 +41,40 @@ const ZeroResultsLayout = ({ items, title, theme, columns, config }: IZeroResult
         <Text primary inlineBlock html={title} />
       </div>
       <div className={theme.suggestionsRow} display-if={false}>
-        <Text className={theme.possibleSuggestions} primary bold uppercase inlineBlock>
+        <Text
+          className={theme.possibleSuggestions}
+          primary
+          bold
+          uppercase
+          inlineBlock
+        >
           {config.getIn(['i18n', 'tryOneOfThese'], 'Try one of these instead:')}
           {/* FIXME: add suggestions when trending searches API becomes available */}
         </Text>
       </div>
       <div className={theme.productRecommendationRow}>
-        <Text className={theme.productRecommendation} primary bold uppercase inlineBlock>
-          {config.getIn(['i18n', 'checkOutPopularProducts'], 'Or check out some of these popular products')}
+        <Text
+          className={theme.productRecommendation}
+          primary
+          bold
+          uppercase
+          inlineBlock
+        >
+          {config.getIn(
+            ['i18n', 'checkOutPopularProducts'],
+            'Or check out some of these popular products'
+          )}
         </Text>
       </div>
     </div>
     <Grid columns={columns}>
-      {
-        MapArray({
-          array: items,
-          factory: ProductCard,
-          config
-        })
-      }
+      {MapArray({
+        array: items,
+        factory: ProductCard,
+        config,
+      })}
     </Grid>
   </div>
-)
+);
 
 export default ZeroResultsLayout;

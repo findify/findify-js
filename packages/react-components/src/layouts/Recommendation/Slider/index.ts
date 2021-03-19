@@ -1,7 +1,6 @@
 /**
  * @module layouts/Recommendation/Slider
  */
-import React from 'react';
 import { compose, withPropsOnChange } from 'recompose';
 import { connectItems } from '@findify/react-connect';
 import withTheme from 'helpers/withTheme';
@@ -35,8 +34,8 @@ const breakpoints = {
   },
   1200: {
     slidesPerView: 6,
-  }
-}
+  },
+};
 
 export default compose(
   withTheme(styles),
@@ -56,6 +55,6 @@ export default compose(
       },
       ...breakpoints[getBreakpoint(breakpoints)],
       ...config.get('sliderOptions', Map()).toJS(),
-    }
+    },
   }))
 )(view);

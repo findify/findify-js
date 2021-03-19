@@ -3,7 +3,6 @@
  */
 
 import cx from 'classnames';
-import React from 'react';
 import { List } from 'immutable';
 import { getPrice } from 'helpers/getPrice';
 import { ThemedSFCProps } from 'types';

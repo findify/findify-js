@@ -2,7 +2,6 @@
  * @module components/Cards/Product
  */
 
-import React from 'react';
 import {
   compose,
   defaultProps,

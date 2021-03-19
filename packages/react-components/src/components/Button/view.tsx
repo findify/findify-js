@@ -2,7 +2,7 @@
  * @module components/Button
  */
 
-import React from 'react';
+import * as React from 'react';
 import { compose, withHandlers } from 'recompose';
 import cx from 'classnames';
 import { ClassnamedProps, ThemedSFCProps } from 'types';
@@ -31,9 +31,8 @@ const ButtonView: React.SFC<IButtonProps> = ({
   disabled,
   href,
   ...rest
-}: IButtonProps) => React.createElement(
-  !!href ? 'a' : 'button',
-  {
+}: IButtonProps) =>
+  React.createElement(!!href ? 'a' : 'button', {
     ...rest,
     onClick,
     disabled,
@@ -45,9 +44,7 @@ const ButtonView: React.SFC<IButtonProps> = ({
       raw && theme.raw,
       className,
       !!href && theme.link
-    )
-  }
-);
-
+    ),
+  });
 
 export default ButtonView;

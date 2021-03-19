@@ -2,8 +2,13 @@
  * @module layouts/Search
  */
 
-import React from 'react';
-import { compose, withProps, setDisplayName, branch, renderNothing } from 'recompose';
+import {
+  compose,
+  withProps,
+  setDisplayName,
+  branch,
+  renderNothing,
+} from 'recompose';
 import { connectItems } from '@findify/react-connect';
 import withTheme from 'helpers/withTheme';
 import withErrorHandler from 'helpers/withErrorHandler';
@@ -22,11 +27,8 @@ const Search = compose(
   connectItems,
 
   withScrollOnItemsChange,
-  
-  branch(
-    ({ items }) => !items.size,
-    renderNothing
-  )
+
+  branch(({ items }) => !items.size, renderNothing)
 )(view);
 
 export default process.env.HOT

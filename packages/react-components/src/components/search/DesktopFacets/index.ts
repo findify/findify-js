@@ -1,8 +1,13 @@
 /**
  * @module components/search/DesktopFacets
  */
-import React from 'react';
-import { compose, setDisplayName, withHandlers, withStateHandlers, branch } from 'recompose';
+import {
+  compose,
+  setDisplayName,
+  withHandlers,
+  withStateHandlers,
+  branch,
+} from 'recompose';
 import { connectFacets } from '@findify/react-connect';
 import withTheme from 'helpers/withTheme';
 
@@ -18,7 +23,8 @@ export default compose(
   connectFacets,
 
   withHandlers({
-    onReset: ({ update, meta }) => () =>  update('filters', f => f && f.clear()) // Reset values
+    onReset: ({ update, meta }) => () =>
+      update('filters', (f) => f && f.clear()), // Reset values
   }),
 
   branch(
@@ -28,19 +34,18 @@ export default compose(
         { visible: true },
         {
           hideFacets: () => () => ({ visible: false }),
-          showFacets: () => () => ({ visible: true })
+          showFacets: () => () => ({ visible: true }),
         }
       ),
       withEvents({
-        showFacets: ({ showFacets }) => showFacets
+        showFacets: ({ showFacets }) => showFacets,
       }),
       withHandlers({
         hideFacets: ({ hideFacets, emit }) => () => {
           hideFacets();
           emit('hideFacets');
-        }
+        },
       })
     )
   )
-
 )(view);

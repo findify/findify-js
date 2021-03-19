@@ -2,7 +2,7 @@
  * @module components/Pagination
  */
 
-import React, { useCallback, useMemo } from 'react';
+import { useCallback, useMemo } from 'react';
 import cx from 'classnames';
 
 import Button from 'components/Button';
@@ -30,9 +30,9 @@ export interface IPaginationProps extends ThemedSFCProps {
   /** Show next page button */
   showNext: boolean;
   /** Array of visible page numbers */
-  visiblePages: number[]
+  visiblePages: number[];
   /** Function returning props for each page button */
-  getPageProps: (pageNumber: number) => {[x: string]: any}
+  getPageProps: (pageNumber: number) => { [x: string]: any };
 }
 
 export default ({
@@ -51,26 +51,38 @@ export default ({
 
   visiblePages,
 }: IPaginationProps) => {
-  const query = useMemo(() => window && window.findify.utils.getQuery(), [meta]);
+  const query = useMemo(() => window && window.findify.utils.getQuery(), [
+    meta,
+  ]);
 
-  const getHref = useCallback((page) => {
-    if (!window || !window.findify) return;
-    return (
-      document.location.origin +
-      document.location.pathname +
-      window.findify.utils.buildQuery({ ...query, offset: (page - 1) * meta.get('limit') }, true)
-    )
-  }, [query, meta]);
+  const getHref = useCallback(
+    (page) => {
+      if (!window || !window.findify) return;
+      return (
+        document.location.origin +
+        document.location.pathname +
+        window.findify.utils.buildQuery(
+          { ...query, offset: (page - 1) * meta.get('limit') },
+          true
+        )
+      );
+    },
+    [query, meta]
+  );
 
   return (
-    <div className={theme.root} role="navigation" aria-label="Pagination Navigation">
+    <div
+      className={theme.root}
+      role="navigation"
+      aria-label="Pagination Navigation"
+    >
       <Button
         href={getHref(current - 1)}
         display-if={showPrev}
         {...getPageProps(current - 1)}
         className={theme.prev}
       >
-        <Icon name='ArrowLeft' title='Previous' />
+        <Icon name="ArrowLeft" title="Previous" />
         {config.getIn(['pagination', 'i18n', 'previous'], 'previous')}
       </Button>
       <Button
@@ -81,25 +93,23 @@ export default ({
         aria-label={`${config.getIn(['a11y', 'goToPage'])} 1`}
       >
         1
-    </Button>
+      </Button>
       <Button display-if={showFirstDots} className={theme.dots} tabIndex={-1}>
         ...
-    </Button>
-      {
-        visiblePages.map(page =>
-          <Button
-            href={getHref(page)}
-            {...getPageProps(page)}
-            className={cx(theme.page, current === page && theme.active)}
-            aria-label={`${config.getIn(['a11y', 'goToPage'])} ${page}`}
-          >
-            {page}
-          </Button>
-        )
-      }
+      </Button>
+      {visiblePages.map((page) => (
+        <Button
+          href={getHref(page)}
+          {...getPageProps(page)}
+          className={cx(theme.page, current === page && theme.active)}
+          aria-label={`${config.getIn(['a11y', 'goToPage'])} ${page}`}
+        >
+          {page}
+        </Button>
+      ))}
       <Button display-if={showLastDots} className={theme.dots} tabIndex={-1}>
         ...
-    </Button>
+      </Button>
       <Button
         display-if={showLast}
         href={getHref(total)}
@@ -116,8 +126,8 @@ export default ({
         className={theme.next}
       >
         {config.getIn(['pagination', 'i18n', 'next'], 'next')}
-        <Icon name='ArrowRight' title='Next' />
+        <Icon name="ArrowRight" title="Next" />
       </Button>
     </div>
-  )
-}
+  );
+};

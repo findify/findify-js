@@ -1,8 +1,8 @@
-import React from 'react';
+import { createFactory, Component } from 'react';
 
 export default (BaseComponent) => {
-  const factory = React.createFactory(BaseComponent);
-  return class ErrorBoundary extends React.Component {
+  const factory = createFactory(BaseComponent);
+  return class ErrorBoundary extends Component {
     static displayName = 'ErrorBoundary';
 
     state = { error: false };
@@ -15,5 +15,5 @@ export default (BaseComponent) => {
     render() {
       return this.state.error ? null : factory(this.props);
     }
-  }
-}
+  };
+};

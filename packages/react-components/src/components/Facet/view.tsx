@@ -2,7 +2,7 @@
  * @module components/Facet
  */
 
-import React from 'react';
+import * as React from 'react';
 import Button from 'components/Button';
 import Text from 'components/Text';
 import Icon from 'components/Icon';
@@ -26,7 +26,7 @@ export interface IFacetProps extends ThemedSFCProps {
   /** Filters selected in facet */
   filtersSelected: number;
   /** Function to toggle open / closed state of facet */
-  toggleFacet: () => any
+  toggleFacet: () => any;
 }
 
 const FacetView = ({
@@ -37,7 +37,7 @@ const FacetView = ({
   item,
   config,
   filtersSelected,
-  toggleFacet
+  toggleFacet,
 }: IFacetProps) => (
   <div className={theme.root}>
     <Button
@@ -64,6 +64,6 @@ const FacetView = ({
       isMobile={true}
     />
   </div>
-)
+);
 
 export default FacetView;

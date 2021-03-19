@@ -1,13 +1,12 @@
-import React from 'react'
-import { shallow } from 'enzyme'
-import SuggestionItem from './view'
-import theme from './styles.css'
+import { shallow } from 'enzyme';
+import SuggestionItem from './view';
+import theme from './styles.css';
 
 const createAnyGetMock = (value) => ({
   get() {
-    return value
-  }
-})
+    return value;
+  },
+});
 
 describe('SuggestionItem', () => {
   it('renders correctly', () => {
@@ -17,8 +16,9 @@ describe('SuggestionItem', () => {
           theme={theme}
           key="xxx"
           item={createAnyGetMock('aisaka taiga')}
-          query={createAnyGetMock('aisa')} />
+          query={createAnyGetMock('aisa')}
+        />
       )
-    ).toMatchSnapshot()
-  })
-})
+    ).toMatchSnapshot();
+  });
+});

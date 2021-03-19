@@ -1,9 +1,15 @@
 /**
  * @module components/Pagination
  */
-import React from 'react';
 import range from 'lodash/range';
-import { branch, compose, defaultProps, setDisplayName, renderNothing, withProps } from 'recompose';
+import {
+  branch,
+  compose,
+  defaultProps,
+  setDisplayName,
+  renderNothing,
+  withProps,
+} from 'recompose';
 import { connectPagination } from '@findify/react-connect';
 import withTheme from 'helpers/withTheme';
 
@@ -24,14 +30,11 @@ export default compose(
 
   connectPagination,
 
-  branch(
-    ({ pages }) => !pages,
-    renderNothing
-  ),
+  branch(({ pages }) => !pages, renderNothing),
 
   withProps(({ current, pages, meta, config }: any) => {
     const step = config.getIn(['pagination', 'step']);
-    const total =pages.size + 1;
+    const total = pages.size + 1;
     return {
       total,
       showFirst: current > step + 1,
@@ -42,5 +45,5 @@ export default compose(
       showNext: total - step > current,
       visiblePages: getRange({ current, total, step }),
     };
-  }),
+  })
 )(view);

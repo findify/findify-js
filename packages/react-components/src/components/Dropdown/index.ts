@@ -1,7 +1,6 @@
 /**
  * @module components/Dropdown
  */
-import React from 'react';
 import { compose, setDisplayName, withPropsOnChange } from 'recompose';
 import withTheme from 'helpers/withTheme';
 import view from 'components/Dropdown/view';
@@ -12,6 +11,6 @@ export default compose(
   setDisplayName('Dropdown'),
   withTheme(styles),
   withPropsOnChange(['items'], ({ items }) => ({
-    items: isImmutable(items) ? items : fromJS(items)
+    items: isImmutable(items) ? items : fromJS(items),
   }))
-)(view)
+)(view);

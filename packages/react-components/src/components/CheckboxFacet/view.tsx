@@ -2,7 +2,7 @@
  * @module components/CheckboxFacet
  */
 
-import React, { ChangeEvent } from 'react';
+import { ChangeEvent } from 'react';
 import cx from 'classnames';
 
 import MapArray from 'components/common/MapArray';
@@ -12,7 +12,7 @@ import Text from 'components/Text';
 import Icon from 'components/Icon';
 import Loadable from 'react-loadable';
 import { IFacetValue, ThemedSFCProps, MJSConfiguration, IFacet } from 'types';
-import { List } from 'immutable'
+import { List } from 'immutable';
 import chunks from 'helpers/chunks';
 import content from 'components/CheckboxFacet/content';
 
@@ -36,15 +36,15 @@ export interface ICheckboxFacetProps extends ThemedSFCProps {
   /** Callback invoked on request to expand list completely */
   onToggle: (evt: Event) => any;
 
-  hidden: boolean
+  hidden: boolean;
 }
 
 const VirtualizedList = Loadable({
   loader: chunks.components.virtualizedList,
-  loading: () => null
-})
+  loading: () => null,
+});
 
-const CheckboxFacetView =  ({
+const CheckboxFacetView = ({
   theme,
   items,
   config,
@@ -62,34 +62,36 @@ const CheckboxFacetView =  ({
     role="region"
     hidden={hidden}
   >
-
     <div className={theme.search} display-if={isExpanded}>
       <input
         placeholder={config.getIn(['i18n', 'search']) as string}
         className={theme.input}
         onChange={onSearch}
-        value={search}/>
-      <Icon name='Search' className={theme.icon} title='Search' />
+        value={search}
+      />
+      <Icon name="Search" className={theme.icon} title="Search" />
     </div>
 
     <section role="list">
       <MapArray
         display-if={config.get('pullSelected')}
-        array={items.filter(i => i.get('selected'))}
+        array={items.filter((i) => i.get('selected'))}
         factory={Checkbox}
         content={content}
       />
 
       <VirtualizedList
         display-if={isExpanded}
-        factory={(props) => Checkbox({ ...props, onItemClick: () => onSearch('') })}
+        factory={(props) =>
+          Checkbox({ ...props, onItemClick: () => onSearch('') })
+        }
         config={config}
         content={content}
         className={theme.expandedList}
         height={config.get('expandedHeight')}
         array={
           config.get('pullSelected')
-            ? items.filter(i => !i.get('selected'))
+            ? items.filter((i) => !i.get('selected'))
             : items
         }
       />
@@ -101,7 +103,7 @@ const CheckboxFacetView =  ({
         content={content}
         array={
           config.get('pullSelected')
-            ? items.filter(i => !i.get('selected'))
+            ? items.filter((i) => !i.get('selected'))
             : items
         }
       />
@@ -110,17 +112,19 @@ const CheckboxFacetView =  ({
     <Button
       className={theme.expand}
       onClick={onToggle}
-      display-if={items.size > (config.get('maxItemsCount') as number)}>
+      display-if={items.size > (config.get('maxItemsCount') as number)}
+    >
       <Text primary uppercase>
         <Icon
           name={isExpanded ? 'Minus' : 'Plus'}
           title={isExpanded ? 'Expanded' : 'Collapsed'}
         />
-        { isExpanded ? config.getIn(['i18n', 'less']) : config.getIn(['i18n', 'more']) }
+        {isExpanded
+          ? config.getIn(['i18n', 'less'])
+          : config.getIn(['i18n', 'more'])}
       </Text>
     </Button>
-
   </div>
-)
+);
 
-export default CheckboxFacetView
+export default CheckboxFacetView;

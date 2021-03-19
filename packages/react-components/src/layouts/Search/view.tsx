@@ -1,7 +1,7 @@
 /**
  * @module layouts/Search
  */
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import StaticResults from 'components/search/StaticResults';
 import LazyResults from 'components/search/LazyResults';
 import DesktopFacets from 'components/search/DesktopFacets';

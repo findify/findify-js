@@ -2,22 +2,22 @@
  * @module components/ColorFacet
  */
 
-import React, { memo } from 'react';
+import { memo } from 'react';
 import { IFacetValue, MJSConfiguration } from 'types';
 
 /**
  * Defines if color is light or dark
  * @param hex Color Hex value
  */
-const checkIfLight = hex => {
+const checkIfLight = (hex) => {
   const _hex = hex.replace('#', '');
-  const str = _hex.length < 6 ? (_hex + _hex) : _hex;
+  const str = _hex.length < 6 ? _hex + _hex : _hex;
   const number = Number.parseInt(str, 16);
-	const red = number >> 16;
-	const green = (number >> 8) & 255;
+  const red = number >> 16;
+  const green = (number >> 8) & 255;
   const blue = number & 255;
-  return (red * 299 + green * 587 + blue * 114) / 1000 > 220
-}
+  return (red * 299 + green * 587 + blue * 114) / 1000 > 220;
+};
 /**
  * Used to retrieve CSS styles for each facet
  * @param item Facet value
@@ -30,12 +30,12 @@ const getStyles = (item: IFacetValue, config: MJSConfiguration) => {
   return {
     ball: {
       background: background,
-      color: isLight ? 'black' : 'white'
+      color: isLight ? 'black' : 'white',
     },
     border: {
-      borderColor: isLight ? '#C6C6C6' : 'transparent'
-    }
-  }
+      borderColor: isLight ? '#C6C6C6' : 'transparent',
+    },
+  };
 };
 
 export default memo(({ item, config, theme, children }) => {
@@ -43,7 +43,7 @@ export default memo(({ item, config, theme, children }) => {
   return (
     <a title={item.get('value')} style={styles.ball} className={theme.ball}>
       <span style={styles.border} />
-      { children }
+      {children}
     </a>
-  )
-})
+  );
+});

@@ -2,7 +2,7 @@
  * @module components/Banner
  */
 
-import React from 'react';
+import * as React from 'react';
 import { ThemedSFCProps, IBanner } from 'types';
 import { branch, renderComponent } from 'recompose';
 
@@ -13,23 +13,29 @@ export interface IBannerProps extends ThemedSFCProps {
   [x: string]: any;
 }
 
-const BannerComponent = branch<{ href: any, [x: string]: any }>(
+const BannerComponent = branch<{ href: any; [x: string]: any }>(
   ({ href }) => !!href,
   renderComponent('a'),
   renderComponent('div')
 )(null);
 
-const BannerView: React.SFC<IBannerProps> =  ({ banner, theme, ...rest }: IBannerProps) =>
-<BannerComponent
-  display-if={banner && !banner.isEmpty()}
-  href={banner.getIn(['products', 'targetUrl'])}
-  role='banner'
-  className={theme.root}>
-  <img
-    src={banner.getIn(['products', 'imageUrl'])}
-    alt={banner.getIn(['products', 'title'])}
-    className={theme.image} />
-</BannerComponent>
-
+const BannerView: React.SFC<IBannerProps> = ({
+  banner,
+  theme,
+  ...rest
+}: IBannerProps) => (
+  <BannerComponent
+    display-if={banner && !banner.isEmpty()}
+    href={banner.getIn(['products', 'targetUrl'])}
+    role="banner"
+    className={theme.root}
+  >
+    <img
+      src={banner.getIn(['products', 'imageUrl'])}
+      alt={banner.getIn(['products', 'title'])}
+      className={theme.image}
+    />
+  </BannerComponent>
+);
 
 export default BannerView;

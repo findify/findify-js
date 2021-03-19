@@ -2,7 +2,6 @@
  * @module components/ColorFacet
  */
 
-import React from 'react';
 import Content from 'components/ColorFacet/content';
 import Icon from 'components/Icon';
 import cx from 'classnames';
@@ -16,22 +15,26 @@ export interface IColorFacetItemProps extends ThemedSFCProps {
   config: MJSConfiguration;
 }
 
-const Item = ({ item, theme, config }: IColorFacetItemProps) =>
+const Item = ({ item, theme, config }: IColorFacetItemProps) => (
   <button
     role="checkbox"
     aria-checked={item.get('selected') ? 'true' : 'false'}
     tabIndex={0}
-    className={cx(theme.item, (item.get('selected') as boolean) && theme.active)}
+    className={cx(
+      theme.item,
+      (item.get('selected') as boolean) && theme.active
+    )}
     onClick={item.toggle}
   >
     <Content item={item} config={config} theme={theme}>
       <Icon
         display-if={item.get('selected')}
-        name='CheckmarkDark'
+        name="CheckmarkDark"
         className={theme.check}
-        title='Selected'
+        title="Selected"
       />
     </Content>
   </button>
+);
 
 export default Item;

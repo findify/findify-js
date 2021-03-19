@@ -2,8 +2,13 @@
  * @module layouts/ContentSearch
  */
 
-import React from 'react';
-import { compose, withProps, setDisplayName, branch, renderNothing } from 'recompose';
+import {
+  compose,
+  withProps,
+  setDisplayName,
+  branch,
+  renderNothing,
+} from 'recompose';
 import { connectItems } from '@findify/react-connect';
 import withTheme from 'helpers/withTheme';
 import withErrorHandler from 'helpers/withErrorHandler';
@@ -21,15 +26,13 @@ const Content = compose(
 
   connectItems,
 
-  branch(
-    ({ items }) => !items.size,
-    renderNothing
-  ),
+  branch(({ items }) => !items.size, renderNothing),
 
   withProps(({ config }) => ({
-    isMobile: config.get('forceMobile') || window.innerWidth <= config.get('mobileBreakpoint')
-  })),
-
+    isMobile:
+      config.get('forceMobile') ||
+      window.innerWidth <= config.get('mobileBreakpoint'),
+  }))
 )(view);
 
 export default process.env.HOT

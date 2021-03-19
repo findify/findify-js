@@ -2,7 +2,7 @@
  * @module components/search/DesktopFacets
  */
 
-import React from 'react';
+import * as React from 'react';
 import Branch from 'components/common/Branch';
 import MapArray from 'components/common/MapArray';
 import Facet from 'components/Facet';
@@ -16,15 +16,11 @@ import { MJSConfiguration, ThemedSFCProps, IFacet, MJSValue } from 'types';
 import { List, Map } from 'immutable';
 import cx from 'classnames';
 
-const DefaultContent = ({ theme, children, title }) =>
-  <section
-    className={theme.root}
-    role="region"
-    aria-label={title}
-    tabIndex={0}
-  >
+const DefaultContent = ({ theme, children, title }) => (
+  <section className={theme.root} role="region" aria-label={title} tabIndex={0}>
     {children}
   </section>
+);
 
 /** Props that DesktopFacets view accepts */
 export interface IDesktopFacetsProps extends ThemedSFCProps {
@@ -49,7 +45,7 @@ const DesktopFacetsView: React.SFC<IDesktopFacetsProps> = ({
   onReset,
   meta,
   hideFacets,
-  visible
+  visible,
 }: IDesktopFacetsProps) => {
   const isHorizontal = config.getIn(['view', 'horizontalFilters']);
   return (
@@ -57,7 +53,7 @@ const DesktopFacetsView: React.SFC<IDesktopFacetsProps> = ({
       display-if={!config.get('hidableFacets') || visible}
       theme={{
         ...theme,
-        root: isHorizontal ? theme.horizontal : theme.root
+        root: isHorizontal ? theme.horizontal : theme.root,
       }}
       condition={config.getIn(['view', 'stickyFilters'])}
       title={config.getIn(['facets', 'i18n', 'filters'], 'Filters')}
@@ -66,7 +62,6 @@ const DesktopFacetsView: React.SFC<IDesktopFacetsProps> = ({
       stickToTop={isHorizontal}
       offset={isHorizontal ? 0 : 25}
     >
-
       <Branch
         display-if={!config.get('showFacetsTitle')}
         meta={meta}
@@ -84,10 +79,10 @@ const DesktopFacetsView: React.SFC<IDesktopFacetsProps> = ({
         array={facets}
         factory={Facet}
         config={config}
-        keyAccessor={i => i.get('name')} />
-
+        keyAccessor={(i) => i.get('name')}
+      />
     </Branch>
-  )
-}
+  );
+};
 
 export default DesktopFacetsView;

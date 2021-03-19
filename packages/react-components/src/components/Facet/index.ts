@@ -1,8 +1,12 @@
 /**
  * @module components/Facet
  */
-import React from 'react';
-import { compose, setDisplayName, withStateHandlers, withPropsOnChange } from 'recompose';
+import {
+  compose,
+  setDisplayName,
+  withStateHandlers,
+  withPropsOnChange,
+} from 'recompose';
 import withEvents from 'helpers/withEvents';
 import pure from 'helpers/pure';
 
@@ -19,19 +23,26 @@ export default compose(
   withTheme(styles),
 
   withPropsOnChange(['config'], ({ config, item }) => ({
-    title: config.getIn(['facets', 'labels', item.get('name')], item.get('name')),
+    title: config.getIn(
+      ['facets', 'labels', item.get('name')],
+      item.get('name')
+    ),
   })),
 
   withStateHandlers(
     ({ config, item }: any) => {
-      const facetType = config.getIn(['facets', 'types', item.get('name')]) || item.get('type')
-      const isOpen = config.getIn(['facets', facetType, 'initiallyExpanded'], config.getIn(['facets', 'initiallyExpanded', true]))
-      return { isOpen }
+      const facetType =
+        config.getIn(['facets', 'types', item.get('name')]) || item.get('type');
+      const isOpen = config.getIn(
+        ['facets', facetType, 'initiallyExpanded'],
+        config.getIn(['facets', 'initiallyExpanded', true])
+      );
+      return { isOpen };
     },
     {
       showFacet: () => () => ({ isOpen: true }),
       hideFacet: () => () => ({ isOpen: false }),
-      toggleFacet: ({ isOpen }) => () => ({ isOpen: !isOpen })
+      toggleFacet: ({ isOpen }) => () => ({ isOpen: !isOpen }),
     }
   ),
 
@@ -43,6 +54,7 @@ export default compose(
   }),
 
   withPropsOnChange(['item'], ({ item }) => ({
-    filtersSelected: item.get('values').filter(item => item.get('selected')).size
+    filtersSelected: item.get('values').filter((item) => item.get('selected'))
+      .size,
   }))
 )(view);

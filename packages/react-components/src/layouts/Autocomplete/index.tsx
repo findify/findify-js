@@ -2,7 +2,7 @@
  * @module layouts/Autocomplete
  */
 
-import React, { createElement, useMemo } from 'react';
+import { createElement, useMemo } from 'react';
 import { useConfig } from '@findify/react-connect';
 import { portal } from 'helpers/createPortal';
 import Loadable from 'react-loadable';
@@ -12,8 +12,8 @@ import chunks from 'helpers/chunks';
 const LayoutTypes = {
   sidebar: chunks.autocomplete.sidebar,
   dropdown: chunks.autocomplete.dropdown,
-  fullscreen: chunks.autocomplete.fullscreen
-}
+  fullscreen: chunks.autocomplete.fullscreen,
+};
 
 /** Possible Autocomplete view types */
 type AutocompleteType = keyof typeof LayoutTypes;
@@ -25,22 +25,24 @@ type AutocompleteType = keyof typeof LayoutTypes;
  * @param props Props for React component
  */
 const layoutFactory = (type: AutocompleteType, props) => () => {
-  const Component = useMemo(() => Loadable({ loader: LayoutTypes[type], loading: () => null }), []);
+  const Component = useMemo(
+    () => Loadable({ loader: LayoutTypes[type], loading: () => null }),
+    []
+  );
   return (
     <div data-findify-autocomplete-wrapper="true">
-      <Component { ...props} />
+      <Component {...props} />
     </div>
-  )
-}
+  );
+};
 
 /**
  * Used to render view either in a portal or in place
  * @param type View type needed
  * @param props Props for React component
  */
-const renderView = (type: AutocompleteType, props) => (
-  (type === 'sidebar' ? portal : createElement)(layoutFactory(type, props))
-)
+const renderView = (type: AutocompleteType, props) =>
+  (type === 'sidebar' ? portal : createElement)(layoutFactory(type, props));
 
 const Autocomplete = ({ isTrendingSearches, ...rest }) => {
   const { config } = useConfig();
@@ -50,7 +52,12 @@ const Autocomplete = ({ isTrendingSearches, ...rest }) => {
     ? config.get('mobileViewType', 'sidebar')
     : config.get('viewType', 'dropdown');
 
-  return renderView(viewType, { ...rest, config, isMobile, isTrendingSearches })
+  return renderView(viewType, {
+    ...rest,
+    config,
+    isMobile,
+    isTrendingSearches,
+  });
 };
 
 export default process.env.HOT

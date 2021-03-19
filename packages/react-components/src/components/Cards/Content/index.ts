@@ -2,13 +2,9 @@
  * @module components/Cards/Content
  */
 
-import React from 'react';
-import { compose, setDisplayName } from 'recompose'
-import withTheme from 'helpers/withTheme'
-import styles from 'components/Cards/Content/styles.css'
-import view from 'components/Cards/Content/view'
+import { compose, setDisplayName } from 'recompose';
+import withTheme from 'helpers/withTheme';
+import styles from 'components/Cards/Content/styles.css';
+import view from 'components/Cards/Content/view';
 
-export default compose(
-  setDisplayName('ContentCard'),
-  withTheme(styles)
-)(view)
+export default compose(setDisplayName('ContentCard'), withTheme(styles))(view);

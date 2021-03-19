@@ -2,7 +2,7 @@
  * @module components/Icon
  */
 
-import React from 'react';
+import * as React from 'react';
 import cx from 'classnames';
 import styles from 'components/Icon/styles.css';
 
@@ -53,32 +53,31 @@ export const icons = {
   ArrowRightBig,
   CheckboxFilled,
   CheckboxEmpty,
-  ExternalLink
-}
+  ExternalLink,
+};
 
 /** Props that Icon accepts */
 export type IIconProps = {
   /** Icon name */
-  name: keyof typeof icons
+  name: keyof typeof icons;
   /** Icon width in pixels */
-  width?: number
+  width?: number;
   /** Icon height in pixels */
-  height?: number
+  height?: number;
   /** Custom className */
-  className?: string
+  className?: string;
   /** Accessible title for screen readers */
-  title?: string
+  title?: string;
   /** Accessible title for screen readers */
-  component?: React.Component
+  component?: React.Component;
   /** Rest of props to pass to underlying elements */
   [x: string]: any;
-}
+};
 
 const Icon = ({ name, component, className, ...rest }: IIconProps) =>
-  React.createElement(
-    component || icons[name],
-    { className: cx(styles.root, className), ...rest }
-  )
+  React.createElement(component || icons[name], {
+    className: cx(styles.root, className),
+    ...rest,
+  });
 
 export default Icon;
-

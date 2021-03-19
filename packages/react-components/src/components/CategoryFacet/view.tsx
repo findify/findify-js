@@ -2,7 +2,6 @@
  * @module components/CategoryFacet
  */
 
-import React from 'react';
 import cx from 'classnames';
 
 import MapArray from 'components/common/MapArray';
@@ -18,7 +17,7 @@ export interface ICategoryFacetProps extends ThemedSFCProps {
   /** Categories facet */
   facet: IFacet;
   /** Facet items */
-  items: List<Map<string, string | boolean | number>>
+  items: List<Map<string, string | boolean | number>>;
   /** Total count of selected facets */
   total: number;
   /** MJS Configuration */
@@ -39,23 +38,25 @@ const CategoryFacetView = ({
   total,
   isExpanded,
   onToggle,
-  hidden
+  hidden,
 }: ICategoryFacetProps) => (
-  <div className={theme.root} id={`facet-${facet.get('name')}`} role="region" hidden={hidden}>
-    <Button
-      className={theme.item}
-      onClick={facet.resetValues}
-    >
+  <div
+    className={theme.root}
+    id={`facet-${facet.get('name')}`}
+    role="region"
+    hidden={hidden}
+  >
+    <Button className={theme.item} onClick={facet.resetValues}>
       <Text
         lowercase
         primary
-        bold={!items.find(i => i.get('selected') as boolean)}
+        bold={!items.find((i) => i.get('selected') as boolean)}
         className={theme.content}
       >
-        { config.getIn(['facets', 'i18n', 'allCategories'], 'All categories') }
+        {config.getIn(['facets', 'i18n', 'allCategories'], 'All categories')}
       </Text>
       <Text secondary uppercase>
-        ({ total })
+        ({total})
       </Text>
     </Button>
     <MapArray
@@ -69,16 +70,19 @@ const CategoryFacetView = ({
     <Button
       className={theme.expand}
       onClick={onToggle}
-      display-if={items.size > config.get('maxItemsCount', 6)}>
+      display-if={items.size > config.get('maxItemsCount', 6)}
+    >
       <Text primary uppercase>
         <Icon
           name={isExpanded ? 'Minus' : 'Plus'}
           title={isExpanded ? 'Expanded' : 'Collapsed'}
         />
-        { isExpanded ? config.getIn(['i18n', 'less']) : config.getIn(['i18n', 'more']) }
+        {isExpanded
+          ? config.getIn(['i18n', 'less'])
+          : config.getIn(['i18n', 'more'])}
       </Text>
-  </Button>
+    </Button>
   </div>
-)
+);
 
 export default CategoryFacetView;

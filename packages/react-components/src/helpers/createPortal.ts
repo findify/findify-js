@@ -1,4 +1,4 @@
-import React, { createElement, Component } from 'react';
+import { createElement, Component } from 'react';
 import { createPortal } from 'react-dom';
 
 /**
@@ -10,9 +10,9 @@ const createRoot = (): HTMLDivElement => {
   div.className = 'findify-portal';
   document.body.appendChild(div);
   return div;
-}
+};
 
-export class Portal extends Component<any>{
+export class Portal extends Component<any> {
   element: any;
 
   static displayName = 'BodyRender';
@@ -31,9 +31,9 @@ export class Portal extends Component<any>{
   }
 
   render() {
-    return createPortal(createElement(this.props.children), this.element)
+    return createPortal(createElement(this.props.children), this.element);
   }
 }
 
-
-export const portal = (children, extraProps = {}) => createElement(Portal, { children, ...extraProps });
+export const portal = (children, extraProps = {}) =>
+  createElement(Portal, { children, ...extraProps });

@@ -2,7 +2,6 @@
  * @module components/Cards/Product
  */
 
-import React from 'react';
 import classNames from 'classnames';
 import Image from 'components/common/Picture';
 import Rating from 'components/Cards/Product/Rating';

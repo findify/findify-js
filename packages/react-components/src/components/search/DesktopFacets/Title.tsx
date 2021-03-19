@@ -2,7 +2,7 @@
  * @module components/search/DesktopFacets
  */
 
-import React from 'react';
+import * as React from 'react';
 import Text from 'components/Text';
 import Icon from 'components/Icon';
 import Button from 'components/Button';
@@ -25,62 +25,66 @@ export interface ITitlesProps extends ThemedSFCProps {
   onReset: () => any;
 }
 
-
-
 const defaultTitles: React.SFC<ITitlesProps> = ({
   theme,
   config,
   meta,
-  onReset
+  onReset,
 }: ITitlesProps) => (
   <div className={theme.header} display-if={!config.get('showFacetsTitle')}>
-    <Icon name='Filters' title='Filters' className={theme.icon} />
+    <Icon name="Filters" title="Filters" className={theme.icon} />
     <Text primary uppercase className={theme.title}>
-      { config.getIn(['facets', 'i18n', 'filters'], 'Filters') }
+      {config.getIn(['facets', 'i18n', 'filters'], 'Filters')}
     </Text>
 
     <Button
-      display-if={meta.get('filters') && (meta.get('filters')! as List<any>).size}
+      display-if={
+        meta.get('filters') && (meta.get('filters')! as List<any>).size
+      }
       className={theme.reset}
       onClick={onReset}
     >
       <Text secondary uppercase>
-        { config.getIn(['facets', 'i18n', 'clearAll'], 'Clear all') }
+        {config.getIn(['facets', 'i18n', 'clearAll'], 'Clear all')}
       </Text>
     </Button>
   </div>
-)
+);
 
-export default defaultTitles
+export default defaultTitles;
 
 export const hidable: React.SFC<IHidableProps> = ({
   theme,
   config,
   meta,
   onReset,
-  onHide
+  onHide,
 }: IHidableProps) => (
-<div className={theme.header} display-if={!config.get('showFacetsTitle')} tabIndex={-1}>
-  <Icon name='Filters' title='Filters' className={theme.icon} />
-  <Text primary uppercase className={theme.title}>
-    { config.getIn(['facets', 'i18n', 'filters'], 'Filters') }
-    <Button
-      tabIndex={-1}
-      display-if={meta.get('filters') && (meta.get('filters')! as List<any>).size}
-      onClick={onReset}>
-      <Text secondary uppercase style={{ marginLeft: 5 }}>
-        ({ config.getIn(['facets', 'i18n', 'clearAll'], 'Clear all') })
+  <div
+    className={theme.header}
+    display-if={!config.get('showFacetsTitle')}
+    tabIndex={-1}
+  >
+    <Icon name="Filters" title="Filters" className={theme.icon} />
+    <Text primary uppercase className={theme.title}>
+      {config.getIn(['facets', 'i18n', 'filters'], 'Filters')}
+      <Button
+        tabIndex={-1}
+        display-if={
+          meta.get('filters') && (meta.get('filters')! as List<any>).size
+        }
+        onClick={onReset}
+      >
+        <Text secondary uppercase style={{ marginLeft: 5 }}>
+          ({config.getIn(['facets', 'i18n', 'clearAll'], 'Clear all')})
+        </Text>
+      </Button>
+    </Text>
+    <Button tabIndex={-1} className={theme.hide} onClick={onHide}>
+      <Text secondary uppercase>
+        {config.getIn(['facets', 'i18n', 'hideDesktopFacets'], 'Hide')}
+        <Icon name="XDark" title="Hide filters" />
       </Text>
     </Button>
-  </Text>
-  <Button
-    tabIndex={-1}
-    className={theme.hide}
-    onClick={onHide}>
-    <Text secondary uppercase>
-      { config.getIn(['facets', 'i18n', 'hideDesktopFacets'], 'Hide') }
-      <Icon name='XDark' title='Hide filters' />
-    </Text>
-  </Button>
   </div>
-)
+);

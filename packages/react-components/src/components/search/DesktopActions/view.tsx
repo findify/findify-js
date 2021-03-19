@@ -2,7 +2,7 @@
  * @module components/search/DesktopActions
  */
 
-import React from 'react';
+import * as React from 'react';
 import Breadcrumbs from 'components/Breadcrumbs';
 import Query from 'components/search/Query';
 import Sorting from 'components/Sorting';
@@ -21,7 +21,7 @@ export interface IDesktopActionsProps extends ThemedSFCProps {
   /** Flag to indicate if we're in Smart Collection mode */
   isCollection: boolean;
   /** MJS Configuration */
-  config: MJSConfiguration
+  config: MJSConfiguration;
 }
 
 const DesktopActionsView: React.FunctionComponent<IDesktopActionsProps> = ({
@@ -29,9 +29,9 @@ const DesktopActionsView: React.FunctionComponent<IDesktopActionsProps> = ({
   theme,
   facetsVisible,
   isCollection,
-  config
+  config,
 }: IDesktopActionsProps) => (
-  <Grid className={theme.root} columns='auto|fit'>
+  <Grid className={theme.root} columns="auto|fit">
     <div columnClass={theme.block} className={theme.blockInner}>
       <Button
         display-if={config.get('hidableFacets') && !facetsVisible}
@@ -39,8 +39,8 @@ const DesktopActionsView: React.FunctionComponent<IDesktopActionsProps> = ({
         onClick={showFacets}
       >
         <Text secondary uppercase>
-          <Icon name='Filters' title='Filters' className={theme.icon} />
-          { config.getIn(['facets', 'i18n', 'showDesktopFacets'], 'show') }
+          <Icon name="Filters" title="Filters" className={theme.icon} />
+          {config.getIn(['facets', 'i18n', 'showDesktopFacets'], 'show')}
         </Text>
       </Button>
       <Query display-if={!isCollection} theme={{ root: theme.query }} />
@@ -48,6 +48,6 @@ const DesktopActionsView: React.FunctionComponent<IDesktopActionsProps> = ({
     </div>
     <Sorting columnClass={theme.sorting} />
   </Grid>
-)
+);
 
 export default DesktopActionsView;

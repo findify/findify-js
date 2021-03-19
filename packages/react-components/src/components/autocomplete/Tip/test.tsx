@@ -1,42 +1,42 @@
-import React from 'react'
-import Tip from './view'
-import theme from './styles.css'
-import { shallow } from 'enzyme'
+import Tip from './view';
+import theme from './styles.css';
+import { shallow } from 'enzyme';
 
 const config = {
-  get: () => 'Press Enter to search'
-}
+  get: () => 'Press Enter to search',
+};
 
 const createSuggestionMock = (size, value) => ({
   getIn() {
-    return value
+    return value;
   },
-  size
-})
+  size,
+});
 
 describe('Tip', () => {
   it('renders correctly', () => {
-
     expect(
       shallow(
         <Tip
-          className='test'
-          title='Press Enter to search'
+          className="test"
+          title="Press Enter to search"
           theme={theme}
           suggestions={createSuggestionMock(0)}
-          getSuggestionProps={() => ({ onClick: () => {} })} />
+          getSuggestionProps={() => ({ onClick: () => {} })}
+        />
       )
-    ).toMatchSnapshot()
+    ).toMatchSnapshot();
 
     expect(
       shallow(
         <Tip
-          className='test'
+          className="test"
           suggestions={createSuggestionMock(2, 'evangelion')}
-          title='Press Enter to search'
+          title="Press Enter to search"
           theme={theme}
-          getSuggestionProps={() => ({ onClick: () => {} })} />
+          getSuggestionProps={() => ({ onClick: () => {} })}
+        />
       )
-    ).toMatchSnapshot()
-  })
-})
+    ).toMatchSnapshot();
+  });
+});

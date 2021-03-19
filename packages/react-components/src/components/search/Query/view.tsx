@@ -2,7 +2,6 @@
  * @module components/search/Query
  */
 
-import React from 'react';
 import escape from 'lodash/escape';
 import template from 'helpers/template';
 import Text from 'components/Text';
@@ -27,28 +26,29 @@ const getContent = ({ query, config, meta }: IGetContentProps) => {
   if (!q && !hasFilters) {
     return tpls.get('noQuery');
   }
-  
+
   if (hasFilters && !q) {
     return template(tpls.get('showingEmpty'))(total);
   }
-  
+
   if (meta.get('corrected_q')) {
     const text = template(tpls.get('showing'))(total);
-    return `${text} "${escape(meta.get('corrected_q') as string)}". ${tpls.get('zeroResultsFor')} "${q}".`
+    return `${text} "${escape(meta.get('corrected_q') as string)}". ${tpls.get(
+      'zeroResultsFor'
+    )} "${q}".`;
   }
 
   if (meta.get('query_type') === 'or') {
     const text = template(tpls.get('showing'))('0');
-    return `${text} "${q}". ${tpls.get('partialMatch')}`
+    return `${text} "${q}". ${tpls.get('partialMatch')}`;
   }
-  
-  const text = template(tpls.get('showing'))(total);
-  return `${text} "${q}".`
-}
 
-const QueryView = ({ theme, ...props}: ThemedSFCProps & IGetContentProps) => (
+  const text = template(tpls.get('showing'))(total);
+  return `${text} "${q}".`;
+};
+
+const QueryView = ({ theme, ...props }: ThemedSFCProps & IGetContentProps) => (
   <Text primary uppercase className={theme.root} html={getContent(props)} />
-)
+);
 
 export default QueryView;
-

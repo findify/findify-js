@@ -2,9 +2,9 @@
  * @module components/autocomplete/SuggestionItem
  */
 
-import React from 'react'
-import cx from 'classnames'
-import Icon from 'components/Icon'
+import * as React from 'react';
+import cx from 'classnames';
+import Icon from 'components/Icon';
 import { ISuggestion, ISuggestionProps, IQuery, ThemedSFCProps } from 'types';
 import escapeRegExp from 'lodash/escapeRegExp';
 
@@ -18,7 +18,7 @@ function highlightSuggestion(value: string, highlighted: string, theme: Theme) {
   const regexp = new RegExp(`(${escapeRegExp(highlighted)})`, 'i');
   return value.replace(
     regexp,
-    `<span class="${theme.highlightedText}">$1</span>`,
+    `<span class="${theme.highlightedText}">$1</span>`
   );
 }
 
@@ -37,7 +37,7 @@ export interface ISuggestionItemProps extends ThemedSFCProps, ISuggestionProps {
   /** Flag indicating that this suggestion is used in TrendingSearches layout of Autocomplete */
   isTrendingSearches: boolean;
   /** Rest of the props that may get passed down */
-  [x: string]: any
+  [x: string]: any;
 }
 
 const SuggestionItemView: React.SFC<ISuggestionItemProps> = ({
@@ -50,7 +50,7 @@ const SuggestionItemView: React.SFC<ISuggestionItemProps> = ({
   isTrendingSearches,
   ...rest
 }: ISuggestionItemProps) => {
-  const value = (item && item.get('value') as string);
+  const value = item && (item.get('value') as string);
   return (
     <li
       display-if={value}
@@ -58,13 +58,11 @@ const SuggestionItemView: React.SFC<ISuggestionItemProps> = ({
       role="option"
       id={`suggestion-${Math.abs(item.hashCode())}`}
       aria-selected={highlighted}
-      className={cx(
-        theme.suggestion, {
-          [theme.highlighted]: highlighted,
-          [theme.withIcon]: !!icon,
-          [theme.trending]: isTrendingSearches
-        }
-      )}
+      className={cx(theme.suggestion, {
+        [theme.highlighted]: highlighted,
+        [theme.withIcon]: !!icon,
+        [theme.trending]: isTrendingSearches,
+      })}
     >
       <Icon
         display-if={icon}
@@ -75,11 +73,11 @@ const SuggestionItemView: React.SFC<ISuggestionItemProps> = ({
       />
       <span
         dangerouslySetInnerHTML={{
-          __html: highlightSuggestion(value!, query.get('q') as string, theme)
+          __html: highlightSuggestion(value!, query.get('q') as string, theme),
         }}
       />
     </li>
-  )
-}
+  );
+};
 
-export default SuggestionItemView
+export default SuggestionItemView;

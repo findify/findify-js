@@ -2,8 +2,8 @@
  * @module components/ItemsList
  */
 
-import React from 'react'
-import ProductCard from 'components/Cards/Product'
+import * as React from 'react';
+import ProductCard from 'components/Cards/Product';
 import mapArray, { MapArrayProps } from 'components/common/MapArray';
 
 // Default item factory is using ProductCard
@@ -17,12 +17,21 @@ export interface IItemsListProps extends MapArrayProps {
   [x: string]: any;
 }
 
-
-export default ({ items, wrapper: Wrapper = React.Fragment, ...rest }: IItemsListProps) => {
+export default ({
+  items,
+  wrapper: Wrapper = React.Fragment,
+  ...rest
+}: IItemsListProps) => {
   const { limit, factory, keyAccessor, ...wrapperProps } = rest;
   return (
     <Wrapper {...wrapperProps}>
-      { mapArray({ keyAccessor, limit, array: items, factory: factory || ItemFactory, ...wrapperProps }) }
+      {mapArray({
+        keyAccessor,
+        limit,
+        array: items,
+        factory: factory || ItemFactory,
+        ...wrapperProps,
+      })}
     </Wrapper>
-  )
-}
+  );
+};

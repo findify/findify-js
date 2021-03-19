@@ -2,7 +2,6 @@
  * @module components/Dropdown
  */
 
-import React from 'react';
 import cx from 'classnames';
 import Downshift from 'downshift';
 import MapArray from 'components/common/MapArray';
@@ -10,12 +9,12 @@ import Icon from 'components/Icon';
 import Button from 'components/Button';
 import Text from 'components/Text';
 import { MJSValue, ThemedSFCProps, ClassnamedProps } from 'types';
-import { List, Map } from 'immutable'
+import { List, Map } from 'immutable';
 
 /** Props that Dropdown Item accepts */
 export interface IDropdownItemProps extends ThemedSFCProps {
   /** Item can be basically any immutable.Map(), that has 'label' attribute */
-  item: Map<string, MJSValue>
+  item: Map<string, MJSValue>;
   /** Index is item's current index in array of elements */
   index: number;
   /** Current highlighted index */
@@ -24,12 +23,19 @@ export interface IDropdownItemProps extends ThemedSFCProps {
   getItemProps: (item: { item: Map<string, MJSValue> }) => { [x: string]: any };
 }
 
-const Item = ({ item, index, getItemProps, highlighted, theme }: IDropdownItemProps) => (
+const Item = ({
+  item,
+  index,
+  getItemProps,
+  highlighted,
+  theme,
+}: IDropdownItemProps) => (
   <Button
     className={cx(theme.option, highlighted === index && theme.highlighted)}
-    {...getItemProps({ item })}>
+    {...getItemProps({ item })}
+  >
     <Text primary lowercase>
-      { item.get('label') }
+      {item.get('label')}
     </Text>
   </Button>
 );
@@ -37,42 +43,51 @@ const Item = ({ item, index, getItemProps, highlighted, theme }: IDropdownItemPr
 /** Props that Dropdown accepts */
 export interface IDropdownProps extends ClassnamedProps, ThemedSFCProps {
   /** onChange function for Downshift */
-  onChange: (x: any) => any
+  onChange: (x: any) => any;
   /** List of items */
-  items: List<Map<string, MJSValue>>
+  items: List<Map<string, MJSValue>>;
   /** Currently active item */
-  selectedItem: Map<string, MJSValue>
+  selectedItem: Map<string, MJSValue>;
 }
 
-const DropdownView = ({ onChange, items, selectedItem, theme, className }: IDropdownProps) =>
-<Downshift
-  onChange={onChange}
-  selectedItem={selectedItem || items.get(0)}
-  itemToString={i => i.get('label')}>
-  {
-    ({ isOpen, selectedItem, getToggleButtonProps, getItemProps, highlightedIndex }) => (
+const DropdownView = ({
+  onChange,
+  items,
+  selectedItem,
+  theme,
+  className,
+}: IDropdownProps) => (
+  <Downshift
+    onChange={onChange}
+    selectedItem={selectedItem || items.get(0)}
+    itemToString={(i) => i.get('label')}
+  >
+    {({
+      isOpen,
+      selectedItem,
+      getToggleButtonProps,
+      getItemProps,
+      highlightedIndex,
+    }) => (
       <div className={cx(theme.root, className)}>
         <Button {...getToggleButtonProps()} className={theme.select}>
           <Text primary lowercase>
-            { selectedItem.get('label') }
+            {selectedItem.get('label')}
           </Text>
-          <Icon
-            name='ArrowDown'
-            className={theme.arrow}
-            title='Expand list'
-          />
+          <Icon name="ArrowDown" className={theme.arrow} title="Expand list" />
         </Button>
-        <div className={cx(theme.dropdown, { [theme.open]: isOpen })} >
+        <div className={cx(theme.dropdown, { [theme.open]: isOpen })}>
           <MapArray
             theme={theme}
             highlighted={highlightedIndex}
             getItemProps={getItemProps}
-            array={items.filter(i => !i.equals(selectedItem))}
-            factory={Item} />
+            array={items.filter((i) => !i.equals(selectedItem))}
+            factory={Item}
+          />
         </div>
       </div>
-    )
-  }
+    )}
   </Downshift>
+);
 
 export default DropdownView;

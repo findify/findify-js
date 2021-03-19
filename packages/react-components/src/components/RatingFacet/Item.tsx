@@ -2,7 +2,7 @@
  * @module components/RatingFacet
  */
 
-import React from 'react';
+import * as React from 'react';
 import content from 'components/RatingFacet/content';
 import Button from 'components/Button';
 import Text from 'components/Text';
@@ -23,8 +23,8 @@ const RatingFacetItem: React.SFC<IRatingFacetItemProps> = ({
   item,
   theme,
   style,
-  config
-}: IRatingFacetItemProps) =>
+  config,
+}: IRatingFacetItemProps) => (
   <Button
     style={style}
     className={theme.item}
@@ -39,11 +39,12 @@ const RatingFacetItem: React.SFC<IRatingFacetItemProps> = ({
         name={item.get('selected') ? 'CheckboxFilled' : 'CheckboxEmpty'}
         title={item.get('selected') ? 'Selected' : 'Not selected'}
       />
-      { content({ item, config, theme }) }
+      {content({ item, config, theme })}
     </Text>
     <Text secondary uppercase>
-      ({ item.get('count') })
+      ({item.get('count')})
     </Text>
   </Button>
+);
 
 export default RatingFacetItem;
