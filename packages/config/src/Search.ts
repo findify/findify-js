@@ -8,6 +8,9 @@ export interface Search extends BaseFeature<'Search'> {
   */
   zeroResultsType?: Exclude<keyof typeof enums.RecommendationType, 'bought' | 'purchasedTogether'>
 
+
+  includeRules: boolean
+
   /**
    * Scroll top after items update setting
    */

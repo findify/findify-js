@@ -40,7 +40,7 @@ function validateSendEventParams(name: EventName, request, config: Config) {
       throw new Error('"order_id" param is required');
     }
 
-    if (!config.platform || !config.platform.bigcommerce) {
+    if (!config.platform || config.platform !== 'bigcommerce') {
       if (!('currency' in request)) {
         throw new Error('"currency" param is required');
       }
@@ -53,15 +53,15 @@ function validateSendEventParams(name: EventName, request, config: Config) {
         throw new Error('"line_items" param is required');
       }
 
-      if (!request.line_items.every(item => !!item.item_id)) {
+      if (!request.line_items.every((item) => !!item.item_id)) {
         throw new Error('"line_items[].item_id" param is required');
       }
 
-      if (!request.line_items.every(item => !!item.unit_price)) {
+      if (!request.line_items.every((item) => !!item.unit_price)) {
         throw new Error('"line_items[].unit_price" param is required');
       }
 
-      if (!request.line_items.every(item => !!item.quantity)) {
+      if (!request.line_items.every((item) => !!item.quantity)) {
         throw new Error('"line_items[].quantity" param is required');
       }
     }
@@ -76,15 +76,15 @@ function validateSendEventParams(name: EventName, request, config: Config) {
       throw new Error('"line_items" param is required');
     }
 
-    if (!request.line_items.every(item => !!item.item_id)) {
+    if (!request.line_items.every((item) => !!item.item_id)) {
       throw new Error('"line_items[].item_id" param is required');
     }
 
-    if (!request.line_items.every(item => !!item.unit_price)) {
+    if (!request.line_items.every((item) => !!item.unit_price)) {
       throw new Error('"line_items[].unit_price" param is required');
     }
 
-    if (!request.line_items.every(item => !!item.quantity)) {
+    if (!request.line_items.every((item) => !!item.quantity)) {
       throw new Error('"line_items[].quantity" param is required');
     }
   }

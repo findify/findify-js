@@ -3,7 +3,7 @@ import { Autocomplete } from './Autocomplete'
 import { Recommendation } from './Recommendation'
 import { Search } from './Search'
 import { Content } from './Content'
-import { Method } from '@findify/sdk/types/request'
+import { Method } from '@findify/sdk/lib/request'
 
 export type Config = {
   /** Merchant API key */
@@ -74,6 +74,12 @@ export type Config = {
     recommendations: {
       [key: string]: Recommendation
     },
+  }
+
+  /** Sticker component display options */
+  stickers: {
+    discount: boolean
+    outOfStock: boolean
   }
 
   /** Translations */

@@ -9,7 +9,13 @@ const knownEnvs = ['development', 'staging', 'production'];
 /** Default environment that would be used if nothing is set. */
 const defaultEnv = 'production';
 /** Current environment specified in `process.env.FINDIFY_ENV`. */
-const findifyEnv = (() => { try{ return process.env.FINDIFY_ENV } catch { return defaultEnv }})()
+const findifyEnv = (() => {
+  try {
+    return process.env.FINDIFY_ENV;
+  } catch {
+    return defaultEnv;
+  }
+})();
 
 const env = findifyEnv || defaultEnv;
 if (!knownEnvs.includes(env)) {
@@ -25,7 +31,7 @@ const defaults = settings[env];
  * @returns Client instance, which could be used further
  * for sending requests to the server.
  */
-export function init(config: Config) {
+export function init(config: Config): Client {
   const isBrowserEnv = typeof window !== 'undefined';
   debug('sdk')('env: ', env);
   debug('sdk')('defaults: ', defaults);

@@ -5,38 +5,37 @@ export enum Events {
    *  @prop [type: string] - Type of widget
    *  @prop [config: object] - Config which will extend base config
    */
-  attach = 'attachWidget',
-
+  attach = 'attach',
 
   /**
    * Updates widget setup
    * @prop [entity: object] - widget to remove
-  */
+   */
   update = 'update',
 
   /**
    * Removes exist widget
    * @prop [entity: object] - widget to remove
-  */
-  detach = 'detachWidget',
+   */
+  detach = 'detach',
 
   /**
    * Will rerender component
    * @prop [entity: object] - widget to hydrate
-  */
+   */
   hydrate = 'hydrate',
 
   /**
    * Will navigate to search page with passed value as search query
    * @prop [value: string] - search query
-  */
+   */
   search = 'search',
 
   /**
    *  Will rerender widget with new config
    * @prop [key: string|number] - widget key
    * @prop [config: Immutable.Map] - new config
-  */
+   */
   updateConfig = 'updateConfig',
 
   /**

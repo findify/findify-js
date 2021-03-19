@@ -50,7 +50,7 @@ const createGlobals = (isDevelopment, isLocal) =>
     {}
   );
 
-export default (env: WebpackEnvArgs, { mode }) => {
+module.exports = (env: WebpackEnvArgs, { mode }) => {
   const origin = env.origin || 'prod';
 
   const config = {

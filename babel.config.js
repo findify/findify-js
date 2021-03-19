@@ -40,7 +40,7 @@ module.exports = (api) => {
       {
         test: 'packages/react-components',
         presets: [
-          ['@babel/preset-react', { runtime: 'automatic'}],
+          ['@babel/preset-react', { runtime: 'automatic' }],
         ],
         plugins: [
           'inline-react-svg',

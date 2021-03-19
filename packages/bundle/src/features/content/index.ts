@@ -1,25 +1,28 @@
 import { createElement } from 'react';
-import { ContentProvider } from "@findify/react-connect";
+import { ContentProvider } from '@findify/react-connect';
 import { getQuery, setQuery, listenHistory } from '../../core/location';
 import { hideFallback, hideLoader } from '../../helpers/fallbackNode';
 import { Events } from '../../core/events';
-import { scrollTo } from '../../helpers/scrollTo';
+import { maybeScrollTop, scrollTo } from '../../helpers/scrollTo';
 import isNumeric from '../../helpers/isNumeric';
 
 import lazy from '../../helpers/renderLazyComponent';
+import { Immutable } from '@findify/store-configuration';
+import { Agent } from '@findify/agent/types/core/Agent';
+import { Widget } from '../../core/widgets';
 
-const lazyComponent = lazy(() => import(
-  '@findify/react-components/src/layouts/Content'
-));
+const lazyComponent = lazy(
+  () => import('@findify/react-components/src/layouts/Content')
+);
 
-export default (render, widget) => {
+export default (render, widget: Widget<Immutable.ContentConfig>) => {
   const { agent, config, node } = widget;
   const apiKey = config.get('key');
   const props = { agent, apiKey, config };
 
   /** Listen to changes */
-  agent.on('change:query', (q, meta) => {
-    setQuery(q.toJS())
+  agent.on('change:query', (q) => {
+    setQuery(q.toJS());
     render('initial');
   });
 
@@ -33,24 +36,21 @@ export default (render, widget) => {
 
   /** Switch to recommendation if query not present */
   agent.on('change:items', (items) => {
-    if (!items.isEmpty()) {
-      hideFallback(node);
-      hideLoader(node);
-      if (!config.getIn(['view', 'infinite']) && isNumeric(config.get('scrollTop'))) {
-        scrollTo(config.get('cssSelector'), config.get('scrollTop'))
-      }
-      return render('initial');
-    }
-  })
+    if (items.isEmpty()) return;
+    hideFallback(node);
+    hideLoader(node);
+    maybeScrollTop(config as any);
+    return render('initial');
+  });
 
   /** Unsubscribe from events on instance destroy  */
-  const unsubscribe = __root.listen((event, prop, ...args) => {
+  const unsubscribe = __root.listen((event, prop) => {
     if (event !== Events.detach || prop !== widget) return;
     stopListenLocation();
     unsubscribe();
-  })
+  });
 
   /** Render */
 
-  return createElement(ContentProvider, props, lazyComponent())
-}
+  return createElement(ContentProvider, props, lazyComponent());
+};

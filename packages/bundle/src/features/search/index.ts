@@ -1,34 +1,59 @@
 import { createElement } from 'react';
-import { SearchProvider, RecommendationProvider } from "@findify/react-connect";
-import { Recommendation as RecommendationAgent } from "@findify/agent";
-import { getQuery, setQuery, isSearch, listenHistory, redirectToPage } from '../../core/location';
-import { hideFallback, showFallback, hideLoader } from '../../helpers/fallbackNode';
+import { SearchProvider, RecommendationProvider } from '@findify/react-connect';
+import { Recommendation as RecommendationAgent } from '@findify/agent';
+import {
+  getQuery,
+  setQuery,
+  isSearch,
+  listenHistory,
+  redirectToPage,
+} from '../../core/location';
+import {
+  hideFallback,
+  showFallback,
+  hideLoader,
+} from '../../helpers/fallbackNode';
 import { Events } from '../../core/events';
 import { scrollTo } from '../../helpers/scrollTo';
 import lazy from '../../helpers/renderLazyComponent';
+import { Widget } from '../../core/widgets';
+import { Immutable } from '@findify/store-configuration';
 
-const createFallbackAgent = (config, node) => new RecommendationAgent({
-  key: config.get('key'),
-  immutable: true,
-  user: __root.analytics.user
-})
-.defaults({ ...config.get('meta').toJS(), type: config.get('zeroResultsType') })
-.on('change:items', () => {
-  hideFallback(node);
-  hideLoader(node);
-});
+const createFallbackAgent = ({
+  config,
+  node,
+}: Widget<Immutable.SearchConfig>) =>
+  new RecommendationAgent({
+    key: config.get('key'),
+    immutable: true,
+    user: __root.analytics.user,
+  })
+    .defaults({
+      ...config.get('defaultRequestParams').toJS(),
+      type: config.get('zeroResultsType'),
+    })
+    .on('change:items', () => {
+      hideFallback(node);
+      hideLoader(node);
+    });
 
-const lazySearchZeroResults = lazy(() => import(
-  /* webpackChunkName: "search" */
-  '@findify/react-components/src/layouts/ZeroResults'
-  ));
-  
-const lazySearch = lazy(() => import(
-  /* webpackChunkName: "search" */
-  '@findify/react-components/src/layouts/Search'
-));
+const lazySearchZeroResults = lazy(
+  () =>
+    import(
+      /* webpackChunkName: "search" */
+      '@findify/react-components/src/layouts/ZeroResults'
+    )
+);
 
-export default (render, widget) => {
+const lazySearch = lazy(
+  () =>
+    import(
+      /* webpackChunkName: "search" */
+      '@findify/react-components/src/layouts/Search'
+    )
+);
+
+export default (render, widget: Widget<Immutable.SearchConfig>) => {
   const { agent, config, node } = widget;
   const apiKey = config.get('key');
   const props = { agent, apiKey, config };
@@ -36,14 +61,14 @@ export default (render, widget) => {
   let fallbackAgent;
 
   const renderZeroResults = () => {
-    if (config.get('disableZeroResults')) return;
-    if (!fallbackAgent) fallbackAgent = createFallbackAgent(config, node);
+    if (config.get('zeroResultsType')) return;
+    if (!fallbackAgent) fallbackAgent = createFallbackAgent(widget);
     return render(
       RecommendationProvider,
       { agent: fallbackAgent, apiKey, config },
       createElement(lazySearchZeroResults, getQuery())
-    )
-  }
+    );
+  };
 
   if (!isSearch()) {
     showFallback(node);
@@ -54,7 +79,7 @@ export default (render, widget) => {
 
   /** Listen to changes */
   agent.on('change:query', (q, meta) => {
-    setQuery(q.toJS())
+    setQuery(q.toJS());
     if (!meta.get('total')) return renderZeroResults();
     render('initial');
   });
@@ -73,22 +98,28 @@ export default (render, widget) => {
     if (!items.isEmpty()) {
       hideFallback(node);
       hideLoader(node);
-      if (!config.getIn(['view', 'infinite']) && !config.get('disableScroll')) {
-        scrollTo(config.get('cssSelector'), config.get('scrollOffset'))
+      if (
+        config.getIn(['pagination', 'type']) === 'lazy' &&
+        config.getIn(['scrollTop', 'enabled'])
+      ) {
+        scrollTo(
+          config.getIn(['scrollTop', 'selector']),
+          config.getIn(['scrollTop', 'offset'])
+        );
       }
       return render('initial');
     }
     hideLoader(node);
     renderZeroResults();
-  })
+  });
 
   /** Unsubscribe from events on instance destroy  */
-  const unsubscribe = __root.listen((event, prop, ...args) => {
+  const unsubscribe = __root.listen((event, prop) => {
     if (event !== Events.detach || prop !== widget) return;
     stopListenLocation();
     unsubscribe();
-  })
+  });
 
   /** Render */
-  return createElement(SearchProvider, props, lazySearch())
-}
+  return createElement(SearchProvider, props, lazySearch());
+};

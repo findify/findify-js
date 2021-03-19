@@ -4,28 +4,31 @@ import { Autocomplete } from './Autocomplete'
 import { Search } from './Search'
 import { Recommendation } from './Recommendation'
 import { Content } from './Content'
+import * as enums from './enums'
 
 type Maybe<T> = T | undefined;
 type CopyMaybe<T, U> = Maybe<T> extends T ? Maybe<U> : U;
 type CopyAnyMaybe<T, U, V> = CopyMaybe<T, V> | CopyMaybe<U, V>;
+type MayByPrimitive<T> = T extends Record<string, any> ? Factory<T> : T
 
-export interface Immutable<State> extends Map<keyof State, any>{
+export interface Factory<State> extends Map<keyof State, any>{
   toJS(): State;
-  get<I extends keyof State, D extends any>(key: I, fallback?: D): Immutable<State[I]> | D;
+  get<I extends keyof State>(key: I): MayByPrimitive<State[I]>;
+  get<I extends keyof State, NSV>(key: I, notSetValue: NSV): MayByPrimitive<State[I]> | NSV;
   getIn<K1 extends keyof State, K2 extends keyof NonNullable<State[K1]>>(
     path: [K1, K2]
-  ): CopyMaybe<State[K1], NonNullable<State[K1]>[K2]>;
+  ): MayByPrimitive<CopyMaybe<State[K1], NonNullable<State[K1]>[K2]>>;
   getIn<
     K1 extends keyof State,
     K2 extends keyof NonNullable<State[K1]>,
     K3 extends keyof NonNullable<NonNullable<State[K1]>[K2]>
   >(
     path: [K1, K2, K3]
-  ): CopyAnyMaybe<
+  ): MayByPrimitive<CopyAnyMaybe<
     State[K1],
     NonNullable<State[K1]>[K2],
     NonNullable<NonNullable<State[K1]>[K2]>[K3]
-  >;
+  >>;
   getIn<K1 extends keyof State, NSV>(    // Same stuff but with notSetValue. 
     path: [K1],
     notSetValue: NSV
@@ -33,7 +36,7 @@ export interface Immutable<State> extends Map<keyof State, any>{
   getIn<K1 extends keyof State, K2 extends keyof NonNullable<State[K1]>, NSV>(
     path: [K1, K2],
     notSetValue: NSV
-  ): CopyMaybe<State[K1], NonNullable<State[K1]>[K2]> | NSV;
+  ): MayByPrimitive<CopyMaybe<State[K1], NonNullable<State[K1]>[K2]>> | NSV;
   getIn<
     K1 extends keyof State,
     K2 extends keyof NonNullable<State[K1]>,
@@ -42,15 +45,39 @@ export interface Immutable<State> extends Map<keyof State, any>{
   >(
     path: [K1, K2, K3],
     notSetValue: NSV
-  ): CopyAnyMaybe<
+  ): MayByPrimitive<CopyAnyMaybe<
     State[K1],
     NonNullable<State[K1]>[K2],
     NonNullable<NonNullable<State[K1]>[K2]>[K3] | NSV
-  >;
+  >>;
 }
 
-export type BaseConfig = Immutable<Config>
-export type AutocompleteConfig = Immutable<Config & Autocomplete>
-export type SearchConfig = Immutable<Config & Search>
-export type RecommendationConfig = Immutable<Config & Recommendation>
-export type ContentConfig = Immutable<Config & Content>
+type FEConfig = {
+  widgetKey: string | number,
+  node: HTMLElement,
+  widgetType: enums.Feature,
+  cssSelector?: string
+  slot?: string
+}
+
+export type BaseConfig = Factory<Config & FEConfig>
+export type AutocompleteConfig = Factory<Config & Autocomplete & FEConfig>
+export type SearchConfig = Factory<Config & Search & FEConfig>
+export type ContentConfig = Factory<Config & Content & FEConfig>
+export type RecommendationConfig = Factory<Recommendation & Config & FEConfig>
+
+export type FeatureConfig =
+  | AutocompleteConfig
+  | SearchConfig
+  | RecommendationConfig
+  | ContentConfig
+
+type FeaturesMapping = {
+  autocomplete: AutocompleteConfig,
+  search: SearchConfig
+  recommendation: RecommendationConfig
+  content: ContentConfig
+  custom: ContentConfig
+}
+
+export type SpecificConfig<T extends keyof typeof enums.Feature> = FeaturesMapping[T]

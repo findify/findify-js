@@ -1,17 +1,21 @@
 import { createElement } from 'react';
-import { AutocompleteProvider } from "@findify/react-connect";
+import { AutocompleteProvider } from '@findify/react-connect';
 import { registerHandlers } from './handlers';
 import { getAgent } from './preload';
 import lazy from '../../helpers/renderLazyComponent';
+import { Widget } from '../../core/widgets';
+import { Immutable } from '@findify/store-configuration';
 
-const lazyAutocomplete = lazy(() => import(
-  /* webpackChunkName: "autocomplete" */
-  '@findify/react-components/src/layouts/Autocomplete'
-));
+const lazyAutocomplete = lazy(
+  () =>
+    import(
+      /* webpackChunkName: "autocomplete" */
+      '@findify/react-components/src/layouts/Autocomplete'
+    )
+);
 
-
-export default (render, widget) => {
-  const { node, agent: _agent, config } = widget;
+export default (render, widget: Widget<Immutable.AutocompleteConfig>) => {
+  const { agent: _agent, config } = widget;
   const agent = getAgent(_agent);
   const apiKey = config.get('key');
 
@@ -21,4 +25,4 @@ export default (render, widget) => {
 
   /** Render */
   return createElement(AutocompleteProvider, props, lazyAutocomplete());
-}
+};

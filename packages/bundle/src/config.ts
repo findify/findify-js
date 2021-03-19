@@ -1,20 +1,15 @@
 import { Config } from '@findify/store-configuration';
 
 const config: Config = {
-  // Merchant API KEY
   key: '9a3fbd99-4382-4c51-885f-69ee76e89c6f',
 
-  // Show/Hide "Powered by findify badge"
   poweredByFindify: true,
 
   hidableFacets: true,
-  merchant_id: 6825,
-  // Specific platform code
-  platform: {
-    shopify: true,
-  },
+  merchantId: 6825,
 
-  // Merchant status - will disable features, but send analytics
+  platform: 'shopify',
+
   status: 'live',
 
   analytics: {

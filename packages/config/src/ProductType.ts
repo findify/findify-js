@@ -4,7 +4,7 @@ export type ProductType = {
 
   /**
    * Product template
-   * Custom string value could be used in you need to have
+   * Custom string value could be used if you need to have
    * specific view in widget
    */
   template: keyof typeof ProductTemplate | string
@@ -75,14 +75,6 @@ export type ProductType = {
      * Screen offset when images will start loading
      */
     lazyOffset: number
-  },
-
-  /**
-   * Sticker component display options
-   */
-  stickers: {
-    discount: boolean
-    outOfStock: boolean
   }
 
 }

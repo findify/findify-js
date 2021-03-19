@@ -1,7 +1,7 @@
 import { BaseFeature } from './BaseFeature'
 import * as enums from './enums'
 
-export interface Recommendation extends BaseFeature<'Recommendations'> {
+export interface Recommendation extends BaseFeature<'Recommendation'> {
   /**
    * If recommendation enabled
    */
