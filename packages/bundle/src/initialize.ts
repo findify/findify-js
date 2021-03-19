@@ -28,6 +28,9 @@ const isReady = (() => {
 
   /** Remove modules cache from Webpack */
   __root.invalidate = async () => {
+    if (!__webpack_require__.invalidate) {
+      return debug('bundle')('Invalidation disabled');
+    }
     __webpack_require__.invalidate();
     emitter.emit(Events.invalidate);
   };

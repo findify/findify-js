@@ -34,7 +34,12 @@ module.exports = (api) => {
             "useBuiltIns": "entry",
             "corejs": 3
           }]
-        ]
+        ],
+        env: {
+          development: {
+            plugins: ["react-hot-loader/babel"]
+          }
+        }
       },
 
       {

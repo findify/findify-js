@@ -2,19 +2,28 @@
  * @module components/autocomplete/SearchSuggestions
  */
 
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import MapArray from 'components/common/MapArray';
 import SuggestionItem from 'components/autocomplete/SuggestionItem';
-import { ThemedSFCProps, WidgetAwareProps, SuggestionsConnectedProps, ISuggestion, IQuery } from 'types';
-import { List } from 'immutable'
+import {
+  ThemedSFCProps,
+  WidgetAwareProps,
+  SuggestionsConnectedProps,
+  ISuggestion,
+  IQuery,
+} from 'types';
+import { List } from 'immutable';
 import { useAnnouncement } from 'components/common/Announcement';
 
 /** Props that SearchSuggestionsView accept */
-export interface ISearchSuggestionsProps extends ThemedSFCProps, WidgetAwareProps, SuggestionsConnectedProps {
+export interface ISearchSuggestionsProps
+  extends ThemedSFCProps,
+    WidgetAwareProps,
+    SuggestionsConnectedProps {
   /** Query currently entered in the autocomplete */
   query: IQuery;
   /** Any other props that come through here to SuggestionItem */
-  [x: string]: any
+  [x: string]: any;
 }
 
 /**
@@ -31,14 +40,19 @@ const SearchSuggestionsView: React.SFC<ISearchSuggestionsProps> = ({
 }: ISearchSuggestionsProps) => {
   /** ACCESSIBILITY */
   const [announcement, setAnnouncement] = useAnnouncement();
+
   useEffect(() => {
     if (selectedSuggestion === undefined) return;
-    rest.config.get('node').setAttribute(
-      'aria-activedescendant',
-      !!~selectedSuggestion ? suggestions.get(selectedSuggestion).hashCode() : ''
-    );
+    rest.config
+      .get('node')
+      .setAttribute(
+        'aria-activedescendant',
+        !!~selectedSuggestion
+          ? suggestions.get(selectedSuggestion).hashCode()
+          : ''
+      );
     if (!!~selectedSuggestion) {
-      setAnnouncement(suggestions.get(selectedSuggestion).get('value'))
+      setAnnouncement(suggestions.get(selectedSuggestion).get('value'));
     }
   }, [selectedSuggestion]);
   /** === */
@@ -56,7 +70,7 @@ const SearchSuggestionsView: React.SFC<ISearchSuggestionsProps> = ({
       >
         <MapArray
           array={suggestions}
-          factory={({ item, index }) =>
+          factory={({ item, index }) => (
             <SuggestionItem
               tabIndex={0}
               item={item}
@@ -66,20 +80,18 @@ const SearchSuggestionsView: React.SFC<ISearchSuggestionsProps> = ({
               {...getSuggestionProps(index, widgetKey || '')}
               {...rest}
             />
-          } />
+          )}
+        />
       </ul>
       <span style={{ display: 'none' }} id="FindifyAutocompleteDescription">
-        {
-          rest.config.getIn(
-            ['a11y', 'autocompleteNote'],
-            'Use up and down arrows to review and enter to select.'
-          )
-        }
+        {rest.config.getIn(
+          ['a11y', 'autocompleteNote'],
+          'Use up and down arrows to review and enter to select.'
+        )}
       </span>
-      { announcement }
+      {announcement}
     </>
-  )
-}
-
+  );
+};
 
 export default SearchSuggestionsView;

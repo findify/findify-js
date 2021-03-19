@@ -9,7 +9,7 @@ import MobileActions from 'components/search/MobileActions';
 import DesktopActions from 'components/search/DesktopActions';
 import Branch from 'components/common/Branch';
 import Banner from 'components/Banner';
-import { List } from 'immutable'
+import { List } from 'immutable';
 import { MJSConfiguration, ThemedSFCProps, IProduct } from 'types';
 import Grid from 'components/common/Grid';
 import { useMobile } from 'helpers/withMobile';
@@ -34,13 +34,15 @@ export interface ISearchProps extends ThemedSFCProps {
 const SearchLayout = ({ config, isCollection, theme, items }) => {
   const isMobile = useMobile();
   const [announcement, setAnnouncement] = useAnnouncement();
-  useEffect(() => setAnnouncement('Product matches has been updated'), [items])
+  useEffect(() => setAnnouncement('Product matches has been updated'), [items]);
 
   return (
     <>
       <Grid
         className={theme.root}
-        columns={config.getIn(['view', 'horizontalFilters']) ? 'full' : 'fit|auto'}
+        columns={
+          config.getIn(['view', 'horizontalFilters']) ? 'full' : 'fit|auto'
+        }
         gutter={40}
       >
         <DesktopFacets
@@ -64,8 +66,7 @@ const SearchLayout = ({ config, isCollection, theme, items }) => {
       </Grid>
       {announcement}
     </>
-  )
-}
-
+  );
+};
 
 export default SearchLayout;
