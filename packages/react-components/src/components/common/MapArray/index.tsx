@@ -31,7 +31,7 @@ export type MapArrayProps = {
   /** Function used to extract React rendering key */
   keyAccessor?: KeyAccessor;
   /** React component factory */
-  factory: ReactFactory;
+  factory: React.FC;
   /** Maximum possible limit for iteration */
   limit?: number;
   /** Rest of the props, passed down to children */
@@ -40,7 +40,7 @@ export type MapArrayProps = {
 
 /** Default key accessor, used in case no keyAccessor is provided */
 const defaultKeyAccessor = (item, index) =>
-  !!item.hashCode ? item.hashCode() : index;
+  item.hashCode ? item.hashCode() : index;
 
 export default ({
   array,

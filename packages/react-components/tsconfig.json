@@ -4,5 +4,12 @@
     "baseUrl": "src",
     "skipLibCheck": true,
     "rootDirs": ["src", "dev"],
+    "plugins": [{
+      "name": "typescript-plugin-css-modules",
+      "options": {
+        "customMatcher": "\\.css$",
+        "classnameTransform": "camelCaseOnly"
+      }
+    }]
   }
 }

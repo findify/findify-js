@@ -46,6 +46,10 @@ const config: Config = {
     '#product-findify-rec-5': 'recommendation',
   },
 
+  translations: {
+    'View more': 'View more',
+  },
+
   currency: {
     code: 'USD',
     symbol: 'Ж',
@@ -56,6 +60,38 @@ const config: Config = {
     decimalDigits: 3,
   },
 
+  product: {
+    template: 'vertical',
+    description: {
+      display: false,
+      lines: 3,
+    },
+    reviews: {
+      display: false,
+    },
+    variants: {
+      display: false,
+      template: 'text',
+    },
+    title: {
+      display: true,
+      lines: 3,
+    },
+    price: {
+      display: true,
+      template: 'from-min',
+    },
+    image: {
+      // Image aspect ratio
+      aspectRatio: 1.2,
+      lazy: false,
+      lazyOffset: 0,
+    },
+    stickers: {
+      discount: false,
+      outOfStock: false,
+    },
+  },
   // Features configuration will be pulled and marged with the root lvl
   features: {
     autocomplete: {
@@ -73,7 +109,7 @@ const config: Config = {
 
       breakpoints: {
         grid: {
-          100: 3,
+          0: 12,
         },
       },
 
@@ -101,7 +137,7 @@ const config: Config = {
       },
 
       product: {
-        template: 'vertical',
+        template: 'horizontal',
         description: {
           display: false,
           lines: 3,
@@ -158,32 +194,6 @@ const config: Config = {
       // Will be added to all requests eq: Agent.defaults(meta)
       defaultRequestParams: {
         limit: 24,
-      },
-
-      // Product setup
-      product: {
-        price: {
-          display: true,
-        },
-        title: {
-          display: true,
-          lines: 3,
-        },
-        reviews: {
-          display: true,
-        },
-        i18n: {
-          productVariantsAvailable: 'Available in %s variants',
-        },
-        variants: {
-          display: true,
-        },
-        image: {
-          aspectRatio: 0.75,
-        },
-        stickers: {
-          display: true,
-        },
       },
       sorting: {
         options: [
@@ -466,33 +476,7 @@ const config: Config = {
         limit: 10,
         multipleIds: false,
         minResultsToShow: 4,
-        product: {
-          title: {
-            display: true,
-            lines: 3,
-          },
-          rating: {
-            display: true,
-          },
-          description: {
-            display: false,
-          },
-          price: {
-            display: true,
-          },
-          stickers: {
-            display: false,
-          },
-          variants: {
-            display: false,
-          },
-          availability: {
-            display: false,
-          },
-          i18n: {
-            colorsAvailable: 'Colours available',
-          },
-        },
+
         title: 'Our Most Popular Products',
       },
       '#cart-findify-rec-4': {
@@ -506,33 +490,7 @@ const config: Config = {
         limit: 3,
         multipleIds: false,
         minResultsToShow: 1,
-        product: {
-          title: {
-            display: true,
-            lines: 3,
-          },
-          rating: {
-            display: true,
-          },
-          description: {
-            display: false,
-          },
-          price: {
-            display: true,
-          },
-          stickers: {
-            display: true,
-          },
-          variants: {
-            display: false,
-          },
-          availability: {
-            display: false,
-          },
-          i18n: {
-            colorsAvailable: 'Colors available',
-          },
-        },
+
         title: 'Test bundles',
       },
       '#product-findify-rec-1': {
@@ -543,33 +501,7 @@ const config: Config = {
         limit: 10,
         multipleIds: false,
         minResultsToShow: 3,
-        product: {
-          title: {
-            display: true,
-            lines: 3,
-          },
-          rating: {
-            display: true,
-          },
-          description: {
-            display: false,
-          },
-          price: {
-            display: true,
-          },
-          stickers: {
-            display: false,
-          },
-          variants: {
-            display: false,
-          },
-          availability: {
-            display: false,
-          },
-          i18n: {
-            colorsAvailable: 'Colours available',
-          },
-        },
+
         title: 'Recently Viewed Products',
       },
       '#category-findify-rec-1': {
@@ -580,33 +512,7 @@ const config: Config = {
         limit: 10,
         multipleIds: false,
         minResultsToShow: 3,
-        product: {
-          title: {
-            display: true,
-            lines: 3,
-          },
-          rating: {
-            display: true,
-          },
-          description: {
-            display: false,
-          },
-          price: {
-            display: true,
-          },
-          stickers: {
-            display: false,
-          },
-          variants: {
-            display: false,
-          },
-          availability: {
-            display: false,
-          },
-          i18n: {
-            colorsAvailable: 'Colours available',
-          },
-        },
+
         title: 'Recently Viewed Products',
       },
       '#product-findify-rec-4': {
@@ -617,33 +523,7 @@ const config: Config = {
         limit: 10,
         multipleIds: false,
         minResultsToShow: 3,
-        product: {
-          title: {
-            display: true,
-            lines: 3,
-          },
-          rating: {
-            display: true,
-          },
-          description: {
-            display: false,
-          },
-          price: {
-            display: true,
-          },
-          stickers: {
-            display: false,
-          },
-          variants: {
-            display: false,
-          },
-          availability: {
-            display: false,
-          },
-          i18n: {
-            colorsAvailable: 'Colours available',
-          },
-        },
+
         title: 'Frequently Bought Together',
       },
       '#product-findify-rec-2': {
@@ -654,33 +534,7 @@ const config: Config = {
         limit: 10,
         multipleIds: false,
         minResultsToShow: 3,
-        product: {
-          title: {
-            display: true,
-            lines: 3,
-          },
-          rating: {
-            display: true,
-          },
-          description: {
-            display: false,
-          },
-          price: {
-            display: true,
-          },
-          stickers: {
-            display: false,
-          },
-          variants: {
-            display: false,
-          },
-          availability: {
-            display: false,
-          },
-          i18n: {
-            colorsAvailable: 'Colours available',
-          },
-        },
+
         title: 'Customers Who Viewed This Also Viewed',
       },
       '#cart-findify-rec-1': {
@@ -691,33 +545,7 @@ const config: Config = {
         limit: 10,
         multipleIds: false,
         minResultsToShow: 3,
-        product: {
-          title: {
-            display: true,
-            lines: 3,
-          },
-          rating: {
-            display: true,
-          },
-          description: {
-            display: false,
-          },
-          price: {
-            display: true,
-          },
-          stickers: {
-            display: false,
-          },
-          variants: {
-            display: false,
-          },
-          availability: {
-            display: false,
-          },
-          i18n: {
-            colorsAvailable: 'Colours available',
-          },
-        },
+
         title: 'Recently Viewed Products',
       },
       '#cart-findify-rec-2': {
@@ -728,33 +556,7 @@ const config: Config = {
         limit: 10,
         multipleIds: false,
         minResultsToShow: 3,
-        product: {
-          title: {
-            display: true,
-            lines: 3,
-          },
-          rating: {
-            display: true,
-          },
-          description: {
-            display: false,
-          },
-          price: {
-            display: true,
-          },
-          stickers: {
-            display: false,
-          },
-          variants: {
-            display: false,
-          },
-          availability: {
-            display: false,
-          },
-          i18n: {
-            colorsAvailable: 'Colours available',
-          },
-        },
+
         title: 'Our Most Popular Products',
       },
       '#cart-findify-rec-3': {
@@ -765,33 +567,7 @@ const config: Config = {
         limit: 10,
         multipleIds: true,
         minResultsToShow: 3,
-        product: {
-          title: {
-            display: true,
-            lines: 3,
-          },
-          rating: {
-            display: true,
-          },
-          description: {
-            display: false,
-          },
-          price: {
-            display: true,
-          },
-          stickers: {
-            display: true,
-          },
-          variants: {
-            display: false,
-          },
-          availability: {
-            display: false,
-          },
-          i18n: {
-            colorsAvailable: 'Colours available',
-          },
-        },
+
         title: 'Frequently Bought Together',
       },
       '#home-findify-rec-3': {
@@ -802,33 +578,7 @@ const config: Config = {
         limit: 10,
         multipleIds: false,
         minResultsToShow: 4,
-        product: {
-          title: {
-            display: true,
-            lines: 3,
-          },
-          rating: {
-            display: true,
-          },
-          description: {
-            display: false,
-          },
-          price: {
-            display: true,
-          },
-          stickers: {
-            display: false,
-          },
-          variants: {
-            display: false,
-          },
-          availability: {
-            display: false,
-          },
-          i18n: {
-            colorsAvailable: 'Colours available',
-          },
-        },
+
         title: 'Newest Arrivals',
       },
       '#product-findify-rec-5': {
@@ -839,33 +589,7 @@ const config: Config = {
         limit: 999,
         multipleIds: false,
         minResultsToShow: 1,
-        product: {
-          title: {
-            display: true,
-            lines: 3,
-          },
-          rating: {
-            display: true,
-          },
-          description: {
-            display: false,
-          },
-          price: {
-            display: true,
-          },
-          stickers: {
-            display: false,
-          },
-          variants: {
-            display: false,
-          },
-          availability: {
-            display: false,
-          },
-          i18n: {
-            colorsAvailable: 'Colours available',
-          },
-        },
+
         title: 'Related Patterns',
       },
     },

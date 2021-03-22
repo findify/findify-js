@@ -9,12 +9,12 @@ import useColumns from 'helpers/useColumns';
 export default ({ items, config, theme, sliderOptions }) => {
   const slidesPerView = useColumns(
     config.getIn(['grid', 'items'], {
-      default: 2,
       500: 3,
       700: 4,
       900: 5,
       1200: 6,
-    })
+    }),
+    1
   );
 
   return (
@@ -37,9 +37,11 @@ export default ({ items, config, theme, sliderOptions }) => {
         <Swiper {...sliderOptions} slidesPerView={slidesPerView}>
           {items
             .map((item) => (
-              <div key={item.hashCode()}>
-                <ProductCard item={item} config={config} />
-              </div>
+              <ProductCard
+                key={item.hashCode()}
+                item={item}
+                config={config.get('product')}
+              />
             ))
             .toArray()}
         </Swiper>

@@ -8,7 +8,7 @@ import Grid from 'components/common/Grid';
 import MapArray from 'components/common/MapArray';
 import Button from 'components/Button';
 import styles from 'components/autocomplete/ProductMatches/styles.css';
-import { List, Map } from 'immutable';
+import { List } from 'immutable';
 import {
   ThemedSFCProps,
   IProduct,
@@ -21,19 +21,8 @@ import { useItems, useSuggestions } from '@findify/react-connect';
  * @deprecated
  */
 import ItemsList from 'components/ItemsList';
-
-/**
- * This function extracts key used for rendering in React from Product
- * @name prodkey
- * @param product Product to extract key from
- * @returns Product key used for rendering
- */
-const getProductKey = (product: IProduct): string =>
-  (product.get('position')
-    ? [product.get('hash') || product.get('id'), product.get('position')].join(
-        '_'
-      )
-    : product.get('hash') || product.get('id')) as string;
+import useTranslations from 'helpers/useTranslations';
+import { Immutable } from '@findify/store-configuration';
 
 /** This is a list of props which ProductMatches view for Autocomplete accepts */
 export interface IProductMatchesProps
@@ -57,40 +46,18 @@ export interface IProductMatchesProps
 /**
  * @param param0 Props that ProductMatchesView for Autocomplete accepts
  */
-const ProductMatchesView: React.SFC<IProductMatchesProps> = ({
-  theme,
-  widgetKey,
-}: IProductMatchesProps) => {
-  const { getSuggestionProps, suggestions } = useSuggestions();
-  const { items, config } = useItems();
+export default () => {
+  const { items, config } = useItems<Immutable.AutocompleteConfig>();
   return (
-    <div className={styles.root}>
-      <Grid columns={config.getIn(['grid', 'items'], '12')}>
+    <div className={styles.root} display-if={!!items.size}>
+      <Grid columns={config.getIn(['breakpoints', 'grid'], '12')}>
         {MapArray({
           array: items,
-          limit: config.getIn(['meta', 'item_limit']),
+          limit: config.getIn(['defaultRequestParams', 'item_limit']),
           factory: ProductCard,
-          config,
-          theme,
+          config: config.get('product'),
         })}
       </Grid>
-      <Button
-        display-if={
-          suggestions &&
-          suggestions.size > 0 &&
-          config.get('showViewMoreButton')
-        }
-        className={theme.viewMoreButton}
-        onClick={
-          suggestions &&
-          suggestions.size > 0 &&
-          getSuggestionProps(0, widgetKey).onClick
-        }
-      >
-        {config.getIn(['i18n', 'viewMore'])}
-      </Button>
     </div>
   );
 };
-
-export default ProductMatchesView;

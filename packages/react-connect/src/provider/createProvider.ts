@@ -1,17 +1,12 @@
 // tslint:disable-next-line:import-name
-import React, {
-  createContext,
-  createElement,
-  useMemo,
-  useEffect,
-  useContext,
-} from 'react';
+import { createContext, createElement, useMemo, useEffect } from 'react';
 import { fromJS, isImmutable, Map } from 'immutable';
 import * as Agents from '@findify/agent';
 import analytics from '@findify/analytics';
 
-// tslint:disable-next-line:variable-name
-export const Context = createContext({});
+export const contexts = {
+  default: createContext({}),
+};
 
 export type ProviderProps = {
   /** Store API key */
@@ -110,19 +105,17 @@ export const createProvider = (type, onCreate?: (agent) => void) => ({
     if (onCreate) onCreate(_agent);
   }, [_agent]);
 
-  const context = useContext(Context);
-
   const value = useMemo(
     () => ({
-      ...context,
-      [storeKey]: {
-        analytics: _analytics,
-        agent: _agent,
-        config: _config,
-      },
+      analytics: _analytics,
+      agent: _agent,
+      config: _config,
     }),
-    [context]
+    []
   );
 
-  return createElement(Context.Provider, { value }, children);
+  const context =
+    contexts[storeKey] || (contexts[storeKey] = createContext(null));
+
+  return createElement(context.Provider, { value }, children);
 };

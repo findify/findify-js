@@ -2,7 +2,6 @@
  * @module layouts/Autocomplete/Dropdown
  */
 
-import * as React from 'react';
 import Tip from 'components/autocomplete/Tip';
 import ProductMatches from 'components/autocomplete/ProductMatches';
 import SearchSuggestions from 'components/autocomplete/SearchSuggestions';
@@ -13,6 +12,7 @@ import { List } from 'immutable';
 import { usePosition } from 'layouts/Autocomplete/Dropdown/trackPosition';
 import { useAutocompleteLogic } from 'layouts/Autocomplete/withAutocompleteLogic';
 import Grid from 'components/common/Grid';
+import useTranslations from 'helpers/useTranslations';
 
 export interface IAutocompletePanel extends ThemedSFCProps {
   config: MJSConfiguration;
@@ -26,51 +26,51 @@ const Suggestions = ({
   theme,
   isTrendingSearches,
   ...rest
-}: IAutocompletePanel) => (
-  <div className={theme.suggestionsContainer}>
-    <h4
-      className={cx(theme.typeTitle, theme.suggestionsTitle, {
-        [theme.trendingTitle]: isTrendingSearches,
-      })}
-    >
-      {config.getIn([
-        'i18n',
-        isTrendingSearches ? 'trendingSearches' : 'suggestionsTitle',
-      ])}
-    </h4>
-    <SearchSuggestions
-      className={theme.searchSuggestions}
-      widgetKey={config.get('widgetKey')}
-      isTrendingSearches={isTrendingSearches}
-      {...rest}
-    />
-  </div>
-);
+}: IAutocompletePanel) => {
+  const t = useTranslations();
+  return (
+    <div className={theme.suggestionsContainer}>
+      <h4
+        className={cx(theme.typeTitle, theme.suggestionsTitle, {
+          [theme.trendingTitle]: isTrendingSearches,
+        })}
+      >
+        {isTrendingSearches ? t('trendingSearches') : t('suggestionsTitle')}
+      </h4>
+      <SearchSuggestions
+        className={theme.searchSuggestions}
+        widgetKey={config.get('widgetKey')}
+        isTrendingSearches={isTrendingSearches}
+        {...rest}
+      />
+    </div>
+  );
+};
 
 const Products = ({
   config,
   theme,
   isTrendingSearches,
   ...rest
-}: IAutocompletePanel) => (
-  <div className={theme.productMatchesContainer}>
-    <h4
-      className={cx(theme.typeTitle, {
-        [theme.trendingTitle]: isTrendingSearches,
-      })}
-    >
-      {config.getIn([
-        'i18n',
-        isTrendingSearches ? 'trendingProducts' : 'productMatchesTitle',
-      ])}
-    </h4>
-    <ProductMatches
-      className={theme.productMatches}
-      config={config}
-      {...rest}
-    />
-  </div>
-);
+}: IAutocompletePanel) => {
+  const t = useTranslations();
+  return (
+    <div className={theme.productMatchesContainer}>
+      <h4
+        className={cx(theme.typeTitle, {
+          [theme.trendingTitle]: isTrendingSearches,
+        })}
+      >
+        {isTrendingSearches ? t('trendingProducts') : t('productMatchesTitle')}
+      </h4>
+      <ProductMatches
+        className={theme.productMatches}
+        config={config}
+        {...rest}
+      />
+    </div>
+  );
+};
 
 /** Props that SearchOrZero component accepts */
 export interface ISearchOrZeroProps {
@@ -105,13 +105,13 @@ export interface IAutocompleteDropdownProps {
 
 const AutocompleteDropdownView: React.SFC<IAutocompleteDropdownProps> = ({
   theme,
-  innerRef,
   ...rest
 }: IAutocompleteDropdownProps) => {
   const { suggestions, meta, config } = useSuggestions();
   const { selectedSuggestion, closeAutocomplete } = useAutocompleteLogic();
   const [position, register] = usePosition();
   const isTrendingSearches = !meta.get('q');
+  const t = useTranslations();
 
   return (
     <div
@@ -132,11 +132,8 @@ const AutocompleteDropdownView: React.SFC<IAutocompleteDropdownProps> = ({
       >
         <Tip
           className={theme.tip}
-          title={config.getIn(['i18n', 'tipResults'])}
-          zeroResultsTitle={config.getIn(
-            ['i18n', 'tipTrendingResults'],
-            'View All Results'
-          )}
+          title={t('tipResults')}
+          zeroResultsTitle={t('View All Results')}
           widgetKey={config.get('widgetKey')}
         />
         <Grid className={theme.container} columns="auto|3">

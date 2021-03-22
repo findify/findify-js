@@ -15,3 +15,10 @@ export interface ThemedSFC<P = Record<string, any>, C = Record<string, any>>
   defaultProps?: Partial<P>;
   displayName?: string;
 }
+
+declare namespace Global {
+  declare module '*.css' {
+    const content: Record<string, string>;
+    export default content;
+  }
+}

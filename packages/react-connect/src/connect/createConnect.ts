@@ -8,18 +8,54 @@ import {
 } from 'react';
 import { Map, is } from 'immutable';
 import mapValues from '../utils/mapValues';
-import { Context } from '../provider/createProvider';
+import { contexts } from '../provider/createProvider';
 import { Agent } from '@findify/agent/types/core/Agent';
 import { Client as Analytics } from '@findify/analytics/types/types';
+import { Immutable, Config, BaseFeature } from '@findify/store-configuration';
 
-type ContextState = {
+type ConfigType<T> = T extends Immutable.FeatureConfig
+  ? T
+  : Immutable.Factory<Config & BaseFeature>;
+
+type ContextState<T = undefined> = {
   agent: Agent;
   analytics: Analytics;
-  config: Map<string, any>;
+  config: ConfigType<T>;
 };
-const getContext = (key) => {
-  const context = useContext(Context);
-  return useMemo(() => context[key], [context, key]);
+
+type Handler = (...args: any[]) => any;
+
+type CreatorProps = {
+  field: string;
+  handlers?: {
+    [fnName: string]: Handler;
+  };
+  mapProps?: (
+    field: Map<string, any>,
+    meta: Map<string, any>,
+    update: (field: string, update?: any) => Agent,
+    analytics: Analytics,
+    config: Map<string, any>
+  ) => Record<string, any>;
+};
+
+type HookReturns<T = undefined> = {
+  meta: Map<string, any>;
+  update: Agent['set'];
+  analytics: Analytics;
+  config: ConfigType<T>;
+};
+
+type HookProps = {
+  key?: string;
+  force?: boolean;
+};
+
+const getContext = <T = undefined>(key): ContextState<T> => {
+  if (contexts[key]) return useContext(contexts[key]);
+  throw new Error(
+    `Context ${key} was now found, create Provider with storeKey: ${key}`
+  );
 };
 
 const useImmutableState = (initialValue) => {
@@ -29,8 +65,15 @@ const useImmutableState = (initialValue) => {
   return useMemo(() => [state, updateState], [state]);
 };
 
-const createHook = (handlers, mapProps, field) => (key = 'default') => {
-  const { agent, analytics, config }: ContextState = getContext(key);
+const createHook = <H = undefined>({
+  field,
+  handlers,
+  mapProps,
+}: CreatorProps) => <T = undefined>({
+  key = 'default',
+  force = false,
+}: HookProps = {}): HookReturns<T> & H => {
+  const { agent, analytics, config } = getContext(key);
 
   const getState = useCallback(
     (
@@ -59,26 +102,23 @@ const createHook = (handlers, mapProps, field) => (key = 'default') => {
   useEffect(() => {
     const _updater = (...args) => setState(getState(...args));
     agent.on(`change:${field}`, _updater);
-    window.requestAnimationFrame(() => _updater());
+    Promise.resolve().then(() => _updater());
     return () => agent.off(_updater) as any;
   }, []);
 
   return useMemo(
     () => ({ ...state, ..._handlers, update: agent.set, analytics, config }),
-    [state]
+    [force ? state : state[field]]
   );
 };
 
-const useFeatureContext = (key = 'default') => {
-  const { agent, analytics, config } = getContext(key);
-  return { update: agent.set, analytics, config };
+export const useFeatureContext = <T = undefined>({
+  key = 'default',
+}: HookProps = {}): Pick<HookReturns<T>, 'config' | 'analytics' | 'update'> => {
+  const { agent, analytics, config } = getContext<T>(key);
+  return useMemo(() => ({ update: agent.set, analytics, config }), []);
 };
 
-/**
- * Used to create a Connector HOC, enhancing given BaseComponent with connector configuration-specific
- * props, which it will extract from provider located higher in the React tree
- * @param param0 Connector configuration
- */
 const createComponent = ({ BaseComponent, hook, key }: any) => {
   const factory = createFactory(BaseComponent);
   return (props) => {
@@ -87,40 +127,28 @@ const createComponent = ({ BaseComponent, hook, key }: any) => {
   };
 };
 
-type CreatorProps = {
-  field: string;
-  handlers?: Record<string, (x: any) => void>;
-  mapProps?: (field, meta, update, analytics) => void;
-};
-export default ({
-  field,
-  handlers,
-  mapProps,
-}: CreatorProps): [
-  typeof useFeatureContext | ReturnType<typeof createHook>,
-  (x: {
-    feature?: string;
-    key?: string | number;
-  }) => () => ReturnType<typeof createComponent>
-] => {
-  const hook =
-    field === 'config'
-      ? useFeatureContext
-      : createHook(handlers, mapProps, field);
-  return [
-    hook,
-    (connector: any | { feature?: string; key?: string | number }): any =>
-      typeof connector === 'function'
-        ? createComponent({
+export default <H = undefined>({ field, handlers, mapProps }: CreatorProps) => {
+  const hook = createHook<H>({
+    field,
+    handlers,
+    mapProps,
+  });
+
+  const connect = (
+    connector: any | { feature?: string; key?: string | number }
+  ): any =>
+    typeof connector === 'function'
+      ? createComponent({
+          hook,
+          BaseComponent: connector,
+        })
+      : // tslint:disable-next-line:variable-name
+        (BaseComponent) =>
+          createComponent({
+            BaseComponent,
             hook,
-            BaseComponent: connector,
-          })
-        : // tslint:disable-next-line:variable-name
-          (BaseComponent) =>
-            createComponent({
-              BaseComponent,
-              hook,
-              ...connector,
-            }),
-  ];
+            ...connector,
+          });
+
+  return { hook, connect };
 };

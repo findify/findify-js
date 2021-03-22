@@ -1,33 +1,61 @@
-$text-align: center;
+$text-align-vertical: center;
+$text-align-horizontal: left;
 
 .root {
-  padding-bottom: 50px;
   width: 100%;
-  min-width: 200px;
+  height: 100%;
   background-color: transparent;
   transition: background-color .35s ease-in-out;
-  border: none!important;
   box-sizing: border-box;
-  vertical-align: bottom;
-  text-decoration: none;
-  &.simple{
-    padding: 0 8px 15px 8px;
+  display: flex;
+  position: relative;
+  &.vertical{
+    text-align: $text-align-vertical;
+    flex-direction: column;
+    min-width: 200px;
+    padding-bottom: 50px;
+  }
+  &.horizontal{
+    text-align: $text-align-horizontal;
+    flex-direction: row;
+    padding-bottom: 15px;
+  }
+  &:focus-within{
+    &:after{
+      content: ' ';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      top: 0;
+      border: 2px solid Highlight;
+      border-color: -webkit-focus-ring-color;;
+    }
+    a:focus {
+      text-decoration: none;
+    }
   }
 }
 
-:global(.findify-widget--products-carousel) .root:hover{
-  background-color: inherit;
+.content{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  flex: 1 1 auto;
 }
 
-.image-wrap {
-  position: relative;
-  overflow: hidden;
+.image{
+  cursor: pointer;
   margin-bottom: 12px;
+  order: -1;
+  .horizontal &{
+    min-width: 60px;
+    margin: 0 16px 0 0;
+  }
 }
 
-.image {
-  max-width: 100%;
-  margin: 0 auto;
+.divider{
+  flex: 1 0 auto;
 }
 
 .content{
@@ -37,15 +65,34 @@ $text-align: center;
 .title {
   $font-size: 1;
   $font-family: $font-base;
-  $color: $color-black;
   $text-transform: none;
-  width: 100%;
+
   color: $color;
   font-family: $font-family;
   text-transform: $text-transform;
-  text-align: $text-align;
+
   font-size: calc($font-size-medium * $font-size)!important; /* FIXME: figure out issue with import order of styles */
   line-height: calc($font-size-medium * $font-size * 1.6);
+
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.title-link{
+  color: currentColor;
+  text-decoration: none;
+  &:after{
+    content: ' ';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+  }
+  &:focus{
+    text-decoration: underline;
+  }
 }
 
 .description {
@@ -63,11 +110,6 @@ $text-align: center;
   margin-bottom: 8px;
   width: 100%;
   text-align: center;
-}
-
-.price-wrapper {
-  margin-top: 20px !important;
-  margin-bottom: 12px !important;
 }
 
 .color{

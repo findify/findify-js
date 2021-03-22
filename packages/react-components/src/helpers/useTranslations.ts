@@ -4,7 +4,7 @@ import { useMemo } from 'react';
 import unescape from 'lodash/unescape';
 
 const createTranslator = (
-  strings: Config['translations'],
+  strings: Config['translations'] = {},
   selector: RegExp
 ) => {
   return (key: string, ...args: any[]): string => {

@@ -29,7 +29,7 @@ export interface Theme {
 }
 
 /** Props that every component with applied withTheme() HOC has during render */
-export interface ThemedSFCProps {
+export interface IThemedSFCProps<T> {
   /** Use display-if to hide a component.
    * When property is not defined or is set to true - component is rendered,
    * when it is false - hidden
@@ -40,10 +40,14 @@ export interface ThemedSFCProps {
   /**
    *  Theme is a raw - generated class mapping
    */
-  theme?: Theme | any;
+  theme?: T;
 
   className?: string;
 }
+
+export type ThemedSFCProps<T = undefined> = T extends undefined
+  ? IThemedSFCProps<Theme>
+  : IThemedSFCProps<T>;
 
 /** Props that every component that can apply custom classname to itself accepts */
 export interface ClassnamedProps {
@@ -117,6 +121,9 @@ export interface IProductProps {
   product_url: string;
   /** @prop *price* - array of prices */
   price: number[];
+  /** @prop *oldPrice* - array of prices */
+  /** @deprecated */
+  oldPrice: number[];
   /** @prop *compare_at* - array of price compares */
   compare_at: number[];
   /** @prop *id* - id of the product */

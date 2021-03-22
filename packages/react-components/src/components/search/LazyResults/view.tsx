@@ -63,7 +63,11 @@ const LazyResultsView = ({
         </Text>
       </Button>
       <Grid
-        columns={config.getIn(['grid', 'items'], { 400: 6, 600: 4, 1000: 3 })}
+        columns={config.getIn(['breakpoints', 'grid'], {
+          400: 6,
+          600: 4,
+          1000: 3,
+        })}
         gutter={12}
       >
         {MapArray({

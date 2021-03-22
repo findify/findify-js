@@ -6,32 +6,46 @@ import { useRef, useState, useEffect, useMemo } from 'react';
 import cx from 'classnames';
 import styles from 'components/common/Picture/styles.css';
 
-const useViewPort = (lazy, offset) => {
-  if (!lazy) return [true];
+enum LazyStrategy {
+  native,
+  observer,
+  none,
+}
+
+const lazyStrategy = ((): LazyStrategy => {
+  if ('loading' in HTMLImageElement.prototype) return LazyStrategy.native;
+  if ('IntersectionObserver' in global) return LazyStrategy.observer;
+  return LazyStrategy.none;
+})();
+
+const useViewPort = (lazy) => {
+  const isObservable = lazyStrategy === LazyStrategy.observer;
+  if (!lazy || !isObservable) return [true];
 
   const [ready, setReady] = useState(false);
   const element = useRef(null);
 
   useEffect(() => {
     if (!element.current || ready) return;
-    const callback = () => {
-      if (!element.current) return;
-      const rect = element.current.getBoundingClientRect();
-      const isInView =
-        rect.top >= 0 &&
-        rect.left >= 0 &&
-        rect.bottom - offset <=
-          (window.innerHeight || document.documentElement.clientHeight) &&
-        rect.right - offset <=
-          (window.innerWidth || document.documentElement.clientWidth);
 
-      if (!isInView) return;
-      setReady(true);
-      document.removeEventListener('scroll', callback);
+    const handleIntersect = (entries, observer) => {
+      if (!element.current) return;
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setReady(true);
+          observer.unobserve(entry.target);
+        }
+      });
     };
-    callback();
-    document.addEventListener('scroll', callback, true);
-    return () => document.removeEventListener('scroll', callback);
+
+    const observer = new IntersectionObserver(handleIntersect, {
+      root: null,
+      rootMargin: '0px',
+      threshold: 1,
+    });
+
+    observer.observe(element.current as any);
+    return () => observer && observer.unobserve(element.current as any);
   }, [element]);
 
   return [ready, element];
@@ -48,31 +62,37 @@ export default ({
   thumbnail,
 }) => {
   const aspect = aspectRatio > 0;
+  const isNative = lazyStrategy === LazyStrategy.native;
+
   const _src = useMemo(
     () => (getSrc && getSrc(src, window.innerWidth)) || src,
     [src]
   );
+
   const _thumbnail = useMemo(
     () =>
       (getThumbnail && getThumbnail(thumbnail, window.innerWidth)) || thumbnail,
     [thumbnail]
   );
-  const [isInViewPort, register] = useViewPort(lazy, offset);
-  const [srcLoaded, setLoaded] = useState(false);
+
+  const [isInViewPort, register] = isNative ? [true] : useViewPort(lazy);
+
+  const [srcLoaded, setLoaded] = useState(isNative);
 
   return (
     <div
       ref={register}
+      style={{ paddingBottom: aspect ? `${aspectRatio * 100}%` : 'auto' }}
       className={cx(
         styles.root,
         (aspect && styles.aspect) || styles.static,
         srcLoaded && styles.ready
       )}
-      style={{ paddingBottom: aspect && `${aspectRatio * 100}%` }}
     >
       <img
         src={_src}
         alt={alt}
+        loading="lazy"
         display-if={isInViewPort}
         onLoad={() => setLoaded(true)}
       />

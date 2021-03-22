@@ -1,8 +1,7 @@
 /**
  * @module components/search/StaticResults
  */
-import { compose, setDisplayName, withPropsOnChange } from 'recompose';
-import { connectConfig } from '@findify/react-connect';
+import { compose, setDisplayName } from 'recompose';
 import withTheme from 'helpers/withTheme';
 import withColumns from 'helpers/withColumns';
 

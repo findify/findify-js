@@ -12,9 +12,10 @@ import useTheme from 'helpers/useTheme';
 import useColumns from 'helpers/useColumns';
 
 import styles from 'components/common/Grid/styles.css';
+import { Breakpoints } from '@findify/store-configuration';
 
 export interface IGridProps extends ThemedSFCProps {
-  columns: string | { [x: number]: string | number };
+  columns: Breakpoints | string;
   className?: string;
   style?: React.CSSProperties;
   /** eq: 12 = 12px | 1em = 1em */
@@ -22,8 +23,8 @@ export interface IGridProps extends ThemedSFCProps {
   columnClass?: string;
   columnStyle?: React.CSSProperties;
 
-  wrapperComponent: React.ComponentType<any> | string;
-  columnComponent: React.ComponentType<any> | string;
+  wrapperComponent?: React.ComponentType<any> | string;
+  columnComponent?: React.ComponentType<any> | string;
 }
 
 const usePlaceholders = (columns) => {

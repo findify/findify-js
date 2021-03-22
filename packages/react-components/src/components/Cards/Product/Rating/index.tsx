@@ -1,12 +1,11 @@
 /**
  * @module components/Cards/Product/Rating
  */
-import 'core-js/features/array/from';
 import cx from 'classnames';
-import * as React from 'react';
 import Icon from 'components/Icon';
 import Text from 'components/Text';
 import { ThemedSFCProps } from 'types';
+import styles from 'components/Cards/Product/Rating/styles.css';
 
 /** Array of empty stars */
 const itemsArray = Array.from(Array(5).keys());
@@ -19,12 +18,8 @@ export interface IRatingProps extends ThemedSFCProps {
   count: number;
 }
 
-const RatingView: React.SFC<IRatingProps> = ({
-  value,
-  count,
-  theme,
-}: IRatingProps) => (
-  <div className={theme.rating}>
+export default ({ value, count, theme, className }: IRatingProps) => (
+  <div className={cx(theme.rating, className)}>
     <div className={theme.stars}>
       {itemsArray.map((index: number) => (
         <Icon
@@ -44,5 +39,3 @@ const RatingView: React.SFC<IRatingProps> = ({
     </Text>
   </div>
 );
-
-export default RatingView;
