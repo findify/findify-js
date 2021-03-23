@@ -1,14 +1,27 @@
+$padding: 25px;
+$horizontal-background: white;
+
 .root{
-  margin-bottom: 15px;
+  border-top: 1px solid $color-grey-2;
   &:last-child{
     margin-bottom: 0;
   }
+  &.horizontal{
+    background: $horizontal-background;
+    flex: 1 1 auto;
+    position: relative;
+  }
 }
+
 
 .title{
   width: 100%;
   text-align: left;
   display: flex;
+  padding: $padding;
+  .horizontal &{
+    background: $horizontal-background;
+  }
 }
 
 .text {
@@ -29,6 +42,13 @@
   $padding: 0 25px 25px 25px;
   margin-top: -15px;
   padding: $padding;
+  .horizontal &{
+    background: $horizontal-background;
+    position: absolute;
+    z-index: 3;
+    min-width: 100%;
+    box-sizing: border-box;
+  }
   &[hidden]{
     display: none;
   }

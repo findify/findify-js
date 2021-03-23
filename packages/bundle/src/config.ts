@@ -163,10 +163,6 @@ const config: Config = {
           lazy: false,
           lazyOffset: 0,
         },
-        stickers: {
-          discount: false,
-          outOfStock: false,
-        },
       },
     },
 
@@ -227,18 +223,8 @@ const config: Config = {
 
       pagination: {
         step: 2,
-        i18n: {
-          previous: 'Prev',
-          next: 'Next',
-        },
-      },
-
-      loadMore: {
-        lazyLoadCount: 2,
-        i18n: {
-          loadMore: 'Load more',
-          loadPrev: 'Load previous',
-        },
+        type: 'lazy',
+        autoLoadTimes: 2,
       },
 
       i18n: {
@@ -263,7 +249,19 @@ const config: Config = {
 
       // Facets setup
       facets: {
-        initiallyClosed: true,
+        position: 'top',
+        hidable: true,
+        accordion: true,
+        sticky: true,
+
+        filters: {
+          'custom_fields.material2': {
+            type: 'text',
+            label: 'Material',
+            initiallyCollapsed: false,
+            maxItemsCount: 5,
+          },
+        },
         // Map Facet name to facet type
         types: {
           price: 'price',

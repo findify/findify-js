@@ -11,6 +11,11 @@ type Facets = {
    * List of facets
    */
   facets: List<Facet>;
+
+  /**
+   * Reset all facets
+   */
+  onReset: (e: Event) => void;
 };
 
 /**
@@ -22,5 +27,11 @@ const { hook, connect } = createConnect<Facets>({
   mapProps: (facets, _, update) => ({
     facets: patchFacets(facets, update),
   }),
+  handlers: {
+    onReset: ({ update }) => (e) => {
+      if (e) e.preventDefault();
+      update('filters', (f) => f && f.clear());
+    },
+  },
 });
 export { hook, connect };

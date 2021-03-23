@@ -11,6 +11,7 @@ import Text from 'components/Text';
 import { IFacet, ThemedSFCProps, MJSConfiguration } from 'types';
 import { List, Map } from 'immutable';
 import Icon from 'components/Icon';
+import useTranslations from 'helpers/useTranslations';
 
 /** CategoryFacet props */
 export interface ICategoryFacetProps extends ThemedSFCProps {
@@ -30,7 +31,7 @@ export interface ICategoryFacetProps extends ThemedSFCProps {
   hidden: boolean;
 }
 
-const CategoryFacetView = ({
+export default ({
   theme,
   items,
   config,
@@ -39,50 +40,49 @@ const CategoryFacetView = ({
   isExpanded,
   onToggle,
   hidden,
-}: ICategoryFacetProps) => (
-  <div
-    className={theme.root}
-    id={`facet-${facet.get('name')}`}
-    role="region"
-    hidden={hidden}
-  >
-    <Button className={theme.item} onClick={facet.resetValues}>
-      <Text
-        lowercase
-        primary
-        bold={!items.find((i) => i.get('selected') as boolean)}
-        className={theme.content}
-      >
-        {config.getIn(['facets', 'i18n', 'allCategories'], 'All categories')}
-      </Text>
-      <Text secondary uppercase>
-        ({total})
-      </Text>
-    </Button>
-    <MapArray
-      config={config}
-      array={items}
-      factory={Item}
-      limit={!isExpanded && config.get('maxItemsCount', 6)}
-      theme={theme}
-    />
-
-    <Button
-      className={theme.expand}
-      onClick={onToggle}
-      display-if={items.size > config.get('maxItemsCount', 6)}
+}: ICategoryFacetProps) => {
+  const t = useTranslations();
+  return (
+    <div
+      className={theme.root}
+      id={`facet-${facet.get('name')}`}
+      role="region"
+      hidden={hidden}
     >
-      <Text primary uppercase>
-        <Icon
-          name={isExpanded ? 'Minus' : 'Plus'}
-          title={isExpanded ? 'Expanded' : 'Collapsed'}
-        />
-        {isExpanded
-          ? config.getIn(['i18n', 'less'])
-          : config.getIn(['i18n', 'more'])}
-      </Text>
-    </Button>
-  </div>
-);
+      <Button className={theme.item} onClick={facet.resetValues}>
+        <Text
+          lowercase
+          primary
+          bold={!items.find((i) => i.get('selected') as boolean)}
+          className={theme.content}
+        >
+          {t('All categories')}
+        </Text>
+        <Text secondary uppercase>
+          ({total})
+        </Text>
+      </Button>
+      <MapArray
+        config={config}
+        array={items}
+        factory={Item}
+        limit={!isExpanded && config.get('maxItemsCount', 6)}
+        theme={theme}
+      />
 
-export default CategoryFacetView;
+      <Button
+        className={theme.expand}
+        onClick={onToggle}
+        display-if={items.size > config.get('maxItemsCount', 6)}
+      >
+        <Text primary uppercase>
+          <Icon
+            name={isExpanded ? 'Minus' : 'Plus'}
+            title={isExpanded ? 'Expanded' : 'Collapsed'}
+          />
+          {isExpanded ? t('less') : t('more')}
+        </Text>
+      </Button>
+    </div>
+  );
+};

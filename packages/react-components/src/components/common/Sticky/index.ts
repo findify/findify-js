@@ -13,7 +13,7 @@ const [initial, stuck, sticky] = ['static', 'stuck', 'sticky'];
 
 /** Function used to apply sticky styles */
 const applyStyles = (element, styles?) => {
-  element.removeAttribute('style');
+  if (!styles) element.removeAttribute('style');
   for (const key in styles) {
     element.style[key] = styles[key] + 'px';
   }
@@ -52,8 +52,22 @@ const Sticky = ({
         : containerBound.height < rootBound.height &&
           rootBound.top - offset < 0;
 
+      if (stickToTop) {
+        if (shouldStick) {
+          setState(sticky);
+          applyStyles(root.current, { height: rootBound.height });
+          return applyStyles(container.current, {
+            width,
+            maxHeight: rootBound.height,
+          });
+        } else {
+          setState(initial);
+          applyStyles(root.current);
+          return applyStyles(container.current);
+        }
+      }
+
       if (!shouldStick) {
-        if (stickToTop) applyStyles(root.current);
         applyStyles(container.current);
         return setState(initial);
       }
@@ -71,7 +85,6 @@ const Sticky = ({
           height,
         top: offset,
       };
-      if (stickToTop) applyStyles(root.current, { height: rootBound.height });
       applyStyles(container.current, styles);
       return setState(sticky);
     };

@@ -11,22 +11,20 @@ import DesktopActions from 'components/search/DesktopActions';
 import Branch from 'components/common/Branch';
 import Banner from 'components/Banner';
 import { List } from 'immutable';
-import { MJSConfiguration, ThemedSFCProps, IProduct } from 'types';
-import Grid from 'components/common/Grid';
+import Grid, { Column } from 'components/common/Grid';
 import { useMobile } from 'helpers/withMobile';
 import { useAnnouncement } from 'components/common/Announcement';
 import useScrollOnChange from 'helpers/useScrollOnChange';
 import { useItems } from '@findify/react-connect';
-import styles from 'layouts/Search/styles.css';
 import useTranslations from 'helpers/useTranslations';
+
+import styles from 'layouts/Search/styles.css';
+
 import { Immutable } from '@findify/store-configuration';
-import { SearchConfig } from '@findify/store-configuration/types/Immutable';
+import { ThemedSFCProps, IProduct } from 'types';
 
 /** Props that search layout accepts */
 export interface ISearchProps extends ThemedSFCProps<typeof styles> {
-  /** MJS Configuration */
-  config: Immutable.Factory<SearchConfig>;
-  /** Flag that switches Search to mobile layout */
   isCollection?: boolean;
   /** Items list */
   items: List<IProduct>;
@@ -39,6 +37,7 @@ const Search = ({ isCollection, theme = styles }) => {
   const [announcement, setAnnouncement] = useAnnouncement();
 
   useScrollOnChange(items);
+
   useEffect(() => setAnnouncement(t('Product matches has been updated')), [
     items,
   ]);
@@ -53,10 +52,12 @@ const Search = ({ isCollection, theme = styles }) => {
           config.getIn(['facets', 'position']) === 'top' ? 'full' : 'fit|auto'
         }
       >
-        <DesktopFacets
+        <Column
           display-if={!isMobile}
           order={config.getIn(['facets', 'position']) === 'right' && 2}
-        />
+        >
+          <DesktopFacets />
+        </Column>
         <>
           <Branch
             isCollection={isCollection}

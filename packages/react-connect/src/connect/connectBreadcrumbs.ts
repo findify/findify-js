@@ -1,6 +1,6 @@
 import createConnect from './createConnect';
-import { Filter, FilterValue } from '../immutable/filters';
-import { List, Map } from 'immutable';
+import { Filter } from '../immutable/filters';
+import { List } from 'immutable';
 
 export const createFilters = (filters, updater) =>
   filters && filters.map((filter) => new Filter(filter, updater));
@@ -22,13 +22,9 @@ type Breadcrumbs = {
 };
 
 const { hook, connect } = createConnect<Breadcrumbs>({
-  field: 'query',
-  mapProps: (query, meta, update) => ({
-    filters:
-      (meta &&
-        meta.has('filters') &&
-        createFilters(meta.get('filters'), update)) ||
-      Map(),
+  field: 'meta:filters',
+  mapProps: (filters, meta, update) => ({
+    filters: (filters && createFilters(meta.get('filters'), update)) || List(),
   }),
   handlers: {
     onClearAll: ({ update }) => (e) => {

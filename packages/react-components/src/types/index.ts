@@ -84,9 +84,8 @@ export interface ThemedSFC<P = {}, C = {}> extends React.StatelessComponent<P> {
   displayName?: string;
 }
 
-//FIXME: type should point at itself kinda
 /** MJS value */
-export type MJSValue = List<any> | string | number | boolean;
+export type MJSValue = Map<string, string>;
 
 /** This class is basically just a superset of immutable.Map() */
 export interface MJSConfiguration<K = string, V = MJSValue & undefined>
@@ -207,6 +206,11 @@ export interface IBanner extends Map<string, MJSValue> {}
  */
 export interface IQuery extends Map<string, MJSValue> {}
 
+export type Facet = {
+  name: string;
+  values: List<any>;
+};
+
 /**
  * Facet is an instance of immutable.Map(), containing following keys:
  * @prop *values*
@@ -214,7 +218,7 @@ export interface IQuery extends Map<string, MJSValue> {}
  * @prop *type*
  * @prop
  */
-export interface IFacet extends Map<string, MJSValue> {
+export interface IFacet extends Immutable.Factory<Facet> {
   toggle: (evt: React.MouseEvent<any>) => any;
   resetValues: () => any;
 }

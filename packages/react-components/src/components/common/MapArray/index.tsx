@@ -34,6 +34,12 @@ export type MapArrayProps = {
   factory: React.FC;
   /** Maximum possible limit for iteration */
   limit?: number;
+
+  mapProps?: (
+    items: any
+  ) => {
+    [key: string]: any;
+  };
   /** Rest of the props, passed down to children */
   [key: string]: any;
 };
@@ -42,19 +48,26 @@ export type MapArrayProps = {
 const defaultKeyAccessor = (item, index) =>
   item.hashCode ? item.hashCode() : index;
 
+const defaultPropsMapper = () => ({});
+
 export default ({
   array,
   keyAccessor = defaultKeyAccessor,
+  mapProps = defaultPropsMapper,
   factory,
   limit,
   ...rest
 }: MapArrayProps) => {
   const f = React.createFactory(factory);
-  const res = array
-    .slice(0, limit || array.length)
-    .map((item, index) =>
-      f({ ...rest, item, index, key: keyAccessor(item, index) })
-    );
+  const res = array.slice(0, limit || array.length).map((item, index) =>
+    f({
+      ...rest,
+      ...mapProps(item),
+      item,
+      index,
+      key: keyAccessor(item, index),
+    })
+  );
 
   return isImmutable(res) ? res.toArray() : res;
 };

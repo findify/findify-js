@@ -30,7 +30,10 @@ export {
   connect as connectQuery,
   hook as useQuery,
 } from './connect/connectQuery';
-export { hook as useConfig } from './connect/connectConfig';
+export {
+  hook as useConfig,
+  connect as connectConfig,
+} from './connect/connectConfig';
 export {
   connect as connectBanner,
   hook as useBanner,

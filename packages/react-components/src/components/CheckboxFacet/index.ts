@@ -20,15 +20,18 @@ export default compose(
 
   withTheme(styles),
 
-  withStateHandlers(({ isExpanded }) => ({ isExpanded, search: '' }), {
-    onSearch: (s) => (e: React.FormEvent<HTMLInputElement> | string) => ({
-      ...s,
-      search: e.target ? e.target.value : e,
-    }),
-    onToggle: (s) => () => ({ ...s, isExpanded: !s.isExpanded }),
-  }),
+  withStateHandlers(
+    { isExpanded: false, search: '' },
+    {
+      onSearch: (s) => (e: React.FormEvent<HTMLInputElement> | string) => ({
+        ...s,
+        search: e.target ? e.target.value : e,
+      }),
+      onToggle: (s) => () => ({ ...s, isExpanded: !s.isExpanded }),
+    }
+  ),
 
-  withProps(({ search, isExpanded, facet, theme }) => {
+  withProps(({ search, isExpanded, facet }) => {
     if (isExpanded && search) {
       const regexp = new RegExp(escapeRegExp(search), 'gi');
       return {

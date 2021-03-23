@@ -60,17 +60,17 @@ export interface Search extends BaseFeature<'Search'> {
      */
     sticky: boolean
 
-    /**
-     * Number of visible facet options before "show more" button clicked
-     */
-    collapsedItemsCount: number
-
 
     /**
      * Expand only one facet per time
      */
     accordion: boolean
 
+    /**
+     * Defines if facets could be hidden or not
+     */
+    hidable: boolean
+    
     /**
      * Filters setup
      */
@@ -79,6 +79,12 @@ export interface Search extends BaseFeature<'Search'> {
         type: keyof typeof enums.FilterType
         label: string,
         initiallyCollapsed: boolean
+
+        /**
+         * CheckboxFacet specific option
+         * Number of visible facet options before "show more" button clicked
+         */
+        maxItemsCount: number
       }
     },
   }

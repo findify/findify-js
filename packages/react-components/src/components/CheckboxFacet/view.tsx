@@ -15,6 +15,7 @@ import { IFacetValue, ThemedSFCProps, MJSConfiguration, IFacet } from 'types';
 import { List } from 'immutable';
 import chunks from 'helpers/chunks';
 import content from 'components/CheckboxFacet/content';
+import useTranslations from 'helpers/useTranslations';
 
 /** Props that CheckboxFacet accepts */
 export interface ICheckboxFacetProps extends ThemedSFCProps {
@@ -55,76 +56,77 @@ const CheckboxFacetView = ({
   isMobile,
   facet,
   hidden,
-}: ICheckboxFacetProps) => (
-  <div
-    className={cx(theme.root, { [theme.mobile]: isMobile })}
-    id={`facet-${facet.get('name')}`}
-    role="region"
-    hidden={hidden}
-  >
-    <div className={theme.search} display-if={isExpanded}>
-      <input
-        placeholder={config.getIn(['i18n', 'search']) as string}
-        className={theme.input}
-        onChange={onSearch}
-        value={search}
-      />
-      <Icon name="Search" className={theme.icon} title="Search" />
-    </div>
-
-    <section role="list">
-      <MapArray
-        display-if={config.get('pullSelected')}
-        array={items.filter((i) => i.get('selected'))}
-        factory={Checkbox}
-        content={content}
-      />
-
-      <VirtualizedList
-        display-if={isExpanded}
-        factory={(props) =>
-          Checkbox({ ...props, onItemClick: () => onSearch('') })
-        }
-        config={config}
-        content={content}
-        className={theme.expandedList}
-        height={config.get('expandedHeight')}
-        array={
-          config.get('pullSelected')
-            ? items.filter((i) => !i.get('selected'))
-            : items
-        }
-      />
-
-      <MapArray
-        display-if={!isExpanded}
-        factory={Checkbox}
-        limit={config.get('maxItemsCount')}
-        content={content}
-        array={
-          config.get('pullSelected')
-            ? items.filter((i) => !i.get('selected'))
-            : items
-        }
-      />
-    </section>
-
-    <Button
-      className={theme.expand}
-      onClick={onToggle}
-      display-if={items.size > (config.get('maxItemsCount') as number)}
+}: ICheckboxFacetProps) => {
+  const t = useTranslations();
+  return (
+    <div
+      className={cx(theme.root, { [theme.mobile]: isMobile })}
+      id={`facet-${facet.get('name')}`}
+      role="region"
+      hidden={hidden}
     >
-      <Text primary uppercase>
-        <Icon
-          name={isExpanded ? 'Minus' : 'Plus'}
-          title={isExpanded ? 'Expanded' : 'Collapsed'}
+      <div className={theme.search} display-if={isExpanded}>
+        <input
+          placeholder={t('search')}
+          className={theme.input}
+          onChange={onSearch}
+          value={search}
         />
-        {isExpanded
-          ? config.getIn(['i18n', 'less'])
-          : config.getIn(['i18n', 'more'])}
-      </Text>
-    </Button>
-  </div>
-);
+        <Icon name="Search" className={theme.icon} title={t('Search')} />
+      </div>
+
+      <section role="list">
+        <MapArray
+          display-if={config.get('pullSelected')}
+          array={items.filter((i) => i.get('selected'))}
+          factory={Checkbox}
+          content={content}
+        />
+
+        <VirtualizedList
+          display-if={isExpanded}
+          factory={(props) => (
+            <Checkbox {...props} onItemClick={() => onSearch('')} />
+          )}
+          config={config}
+          content={content}
+          limit={config.get('maxItemsCount', 6)}
+          className={theme.expandedList}
+          array={
+            config.get('pullSelected')
+              ? items.filter((i) => !i.get('selected'))
+              : items
+          }
+        />
+
+        <MapArray
+          display-if={!isExpanded}
+          factory={Checkbox}
+          limit={config.get('maxItemsCount', 6)}
+          content={content}
+          array={
+            config.get('pullSelected')
+              ? items.filter((i) => !i.get('selected'))
+              : items
+          }
+        />
+      </section>
+
+      <Button
+        className={theme.expand}
+        onClick={onToggle}
+        display-if={items.size > config.get('maxItemsCount', 6)}
+      >
+        <Text primary uppercase>
+          <Icon
+            name={isExpanded ? 'Minus' : 'Plus'}
+            title={t(isExpanded ? 'Expanded' : 'Collapsed')}
+          />
+          {isExpanded ? t('less') : t('more')}
+        </Text>
+      </Button>
+    </div>
+  );
+};
 
 export default CheckboxFacetView;

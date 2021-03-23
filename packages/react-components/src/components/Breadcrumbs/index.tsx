@@ -9,8 +9,7 @@ import CheckboxContent from 'components/CheckboxFacet/content';
 import RangeContent from 'components/RangeFacet/content';
 import RatingContent from 'components/RatingFacet/content';
 import ColorContent from 'components/ColorFacet/content';
-import { IFacet, MJSConfiguration, ThemedSFCProps } from 'types';
-import { List } from 'immutable';
+import { ThemedSFCProps } from 'types';
 import { useBreadcrumbs } from '@findify/react-connect';
 import styles from 'components/Breadcrumbs/styles.css';
 
@@ -27,16 +26,8 @@ const Breadcrumb = createBreadcrumb({
   rating: RatingContent,
 });
 
-/** Props that Breadcrumbs component accepts */
-export interface IBreadcrumbProps extends ThemedSFCProps {
-  /* List of active filters for current query */
-  filters: List<IFacet>;
-  /* MJS configuration */
-  config: MJSConfiguration;
-}
-
-export default ({ theme = styles }: IBreadcrumbProps) => {
-  const { filters, config } = useBreadcrumbs();
+export default ({ theme = styles }: ThemedSFCProps) => {
+  const { config, filters } = useBreadcrumbs();
   return (
     <MapArray
       theme={theme}

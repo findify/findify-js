@@ -108,7 +108,7 @@ const createHook = <H = undefined>({
 
   return useMemo(
     () => ({ ...state, ..._handlers, update: agent.set, analytics, config }),
-    [force ? state : state[field]]
+    [state]
   );
 };
 

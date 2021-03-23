@@ -25,6 +25,7 @@ export default ({ q, theme = styles }: IZeroResultsProps) => {
   const columns = useColumns(
     config.getIn(['breakpoints', 'grid'], { 400: 6, 600: 4, 1000: 3 })
   );
+
   return (
     <div className={theme.container}>
       <div className={theme.wrapper}>

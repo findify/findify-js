@@ -8,31 +8,20 @@ import { ThemedSFCProps, MJSConfiguration } from 'types';
 import { useItems } from '@findify/react-connect';
 import MapArray from 'components/common/MapArray';
 import ProductCard from 'components/Cards/Product';
-
-/**
- * @deprecated
- */
-import ItemsList from 'components/ItemsList';
 import useTranslations from 'helpers/useTranslations';
 import { Immutable } from '@findify/store-configuration';
+import styles from 'components/search/StaticResults/styles.css';
 
-/** Props that StaticResults accepts */
-export interface IStaticResultsProps extends ThemedSFCProps {
-  /** MJS Configuration */
-  config: MJSConfiguration;
-  /** Number of columns that one item occupies in 12-col grid */
-  columns: number;
-}
-
-const StaticResultsView = ({ theme }: IStaticResultsProps) => {
+export default ({ theme = styles }) => {
   const { items, config } = useItems<Immutable.SearchConfig>();
   const t = useTranslations();
   return (
     <div className={theme.root}>
       <Grid
-        tabIndex={0}
         role="main"
         aria-label={t('Search results')}
+        wrapperComponent="ul"
+        columnComponent="li"
         columns={config.getIn(['breakpoints', 'grid'], {
           400: 6,
           600: 4,
@@ -50,5 +39,3 @@ const StaticResultsView = ({ theme }: IStaticResultsProps) => {
     </div>
   );
 };
-
-export default StaticResultsView;

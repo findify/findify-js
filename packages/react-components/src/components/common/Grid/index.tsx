@@ -5,7 +5,7 @@
 import { useMemo } from 'react';
 
 import * as React from 'react';
-import { Column, Placeholder } from 'components/common/Grid/Column';
+import { Column as _Column, Placeholder } from 'components/common/Grid/Column';
 import cx from 'classnames';
 import { ThemedSFCProps } from 'types';
 import useTheme from 'helpers/useTheme';
@@ -38,6 +38,8 @@ const usePlaceholders = (columns) => {
   );
 };
 
+export const Column = _Column;
+
 export default ({
   children: _children,
   theme: _theme,
@@ -68,6 +70,7 @@ export default ({
         _children,
         (child: React.ReactElement<any>, index: number) => {
           if (!child) return null;
+
           const {
             order,
             size,
@@ -75,6 +78,17 @@ export default ({
             columnStyle,
             ...props
           } = child.props;
+
+          if (child.type === Column) {
+            return React.cloneElement(child, {
+              ...child.props,
+              size: size || columns[index] || columns[0],
+              component: columnComponent,
+              key: child.key || index,
+              gutter,
+            });
+          }
+
           return (
             <Column
               key={child.key || index}

@@ -20,16 +20,16 @@ export interface IGridColumnProps {
 
   gutter?: string | number;
 
-  size: string;
+  size?: string;
 
-  order?: number;
+  order?: number | false;
 
-  component: React.ComponentType<any> | string;
+  component?: React.ComponentType<any> | string;
 }
 
 const getWidth = (size, gutter?) => {
   const percents = (100 / 12) * Number(size);
-  return !!gutter ? `calc(${percents}% - ${gutter})` : `${percents}%`;
+  return gutter ? `calc(${percents}% - ${gutter})` : `${percents}%`;
 };
 
 export const Column = ({
@@ -52,10 +52,10 @@ export const Column = ({
       !_order
         ? {}
         : {
-            webkitBoxOrdinalGroup: _order,
-            mozBoxOrdinalGroup: _order,
-            msFlexOrder: _order,
-            webkitOrder: _order,
+            WebkitBoxOrdinalGroup: _order,
+            MozBoxOrdinalGroup: _order,
+            MsFlexOrder: _order,
+            WebkitOrder: _order,
             order: _order,
           },
     [_order]

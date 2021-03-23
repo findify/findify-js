@@ -1,55 +1,33 @@
 /**
  * @module components/search/LazyResults
  */
-
+import { useConfig } from '@findify/react-connect';
 import MapArray from 'components/common/MapArray';
 import Grid from 'components/common/Grid';
 import ProductCard from 'components/Cards/Product';
 import Button from 'components/Button';
 import Text from 'components/Text';
-import { ThemedSFCProps, IProduct, MJSConfiguration } from 'types';
-import { List } from 'immutable';
 import { ArrayLike } from 'components/common/MapArray';
+import useTranslations from 'helpers/useTranslations';
 
-/** Props that LazyResultsView accepts */
-export interface ILazyResultsProps extends ThemedSFCProps {
-  /** List of Products */
-  items: List<IProduct>;
-  /** MJS Configuration */
-  config: MJSConfiguration;
-  /** Number of columns that one item occupies in a 12-col grid */
-  columns: string;
-  /** Method to load next page */
-  onLoadNext: () => any;
-  /** Method to load previous page */
-  onLoadPrev: () => any;
-  /** Flag whether to display next button */
-  displayNextButton: boolean;
-  /** Flag whether to display previous button */
-  displayPrevButton: boolean;
-  /** Rest of the props get passed down to ProductCard */
-  [x: string]: any;
-}
+import styles from 'components/search/LazyResults/styles.css';
 
-const LazyResultsView = ({
-  items,
-  config,
-  theme,
+export default ({
+  theme = styles,
   card = ProductCard,
-  onLoadNext,
+  displayPrevButton,
   onLoadPrev,
   displayNextButton,
-  displayPrevButton,
-  ...rest
-}: ILazyResultsProps) => {
+  onLoadNext,
+  items,
+}) => {
+  const { config } = useConfig();
+  const t = useTranslations();
   return (
     <div
       className={theme.root}
       role="main"
-      aria-label={`${config.getIn(
-        ['a11y', 'searchResults'],
-        'Search results'
-      )}`}
+      aria-label={t('Search results')}
       aria-live="polite"
       tabIndex={0}
     >
@@ -59,10 +37,14 @@ const LazyResultsView = ({
         onClick={onLoadPrev}
       >
         <Text primary lowercase>
-          {config.getIn(['i18n', 'loadPrev'], 'Load previous')}
+          {t('Load previous')}
         </Text>
       </Button>
       <Grid
+        role="main"
+        aria-label={t('Search results')}
+        wrapperComponent="ul"
+        columnComponent="li"
         columns={config.getIn(['breakpoints', 'grid'], {
           400: 6,
           600: 4,
@@ -71,8 +53,7 @@ const LazyResultsView = ({
         gutter={12}
       >
         {MapArray({
-          ...rest,
-          config,
+          config: config.get('product'),
           array: items as ArrayLike,
           factory: card,
         })}
@@ -83,10 +64,9 @@ const LazyResultsView = ({
         onClick={onLoadNext}
       >
         <Text primary lowercase>
-          {config.getIn(['i18n', 'loadNext'], 'Load more')}
+          {t('Load more')}
         </Text>
       </Button>
     </div>
   );
 };
-export default LazyResultsView;

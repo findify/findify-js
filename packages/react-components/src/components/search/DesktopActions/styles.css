@@ -6,7 +6,7 @@ $padding: 25px;
   padding-bottom: $padding;
 }
 
-.blockInner{
+.block-inner{
   display: flex;
   height: 100%;
   align-items: center;

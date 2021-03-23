@@ -13,6 +13,7 @@ import withTheme from 'helpers/withTheme';
 
 import view from 'components/RangeFacet/view';
 import styles from 'components/RangeFacet/styles.css';
+import { connectConfig } from '@findify/react-connect';
 
 const createKey = (...args) => args.join('_');
 
@@ -21,9 +22,11 @@ export default compose(
 
   withTheme(styles),
 
-  withProps(({ facet, config }) => ({
+  withProps(({ facet }) => ({
     items: facet.get('values'),
   })),
+
+  connectConfig(),
 
   withPropsOnChange(['config'], ({ config }) => ({
     currencySymbol:
@@ -32,7 +35,7 @@ export default compose(
   })),
 
   withStateHandlers<any, any, any>(
-    ({ facet }) => ({ from: undefined, to: undefined }),
+    { from: undefined, to: undefined },
     {
       onReset: () => (e) => ({ from: void 0, to: void 0 }),
 

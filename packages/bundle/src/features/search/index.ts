@@ -99,7 +99,7 @@ export default (render, widget: Widget<Immutable.SearchConfig>) => {
       hideFallback(node);
       hideLoader(node);
       if (
-        config.getIn(['pagination', 'type']) === 'lazy' &&
+        config.getIn(['pagination', 'type']) === 'static' &&
         config.getIn(['scrollTop', 'enabled'])
       ) {
         scrollTo(
