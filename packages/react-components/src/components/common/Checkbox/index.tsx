@@ -2,7 +2,7 @@
  * @module components/CheckboxFacet
  */
 
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
 import Button from 'components/Button';
 import Text from 'components/Text';
 import Icon from 'components/Icon';
@@ -19,16 +19,26 @@ export interface ICheckboxFacetItemProps extends ThemedSFCProps {
   /** Custom inline style */
   style: { [x: string]: string | number };
 
-  content: (x: any) => string
+  content: (x: any) => string;
 }
 
-export default ({ item, theme: _theme, style, onItemClick, content, config }: ICheckboxFacetItemProps) => {
+export default ({
+  item,
+  theme: _theme,
+  style,
+  onItemClick,
+  content,
+  config,
+}: ICheckboxFacetItemProps) => {
   const theme = useTheme(_theme, styles);
 
-  const onClick = useCallback((evt) => {
-    item.toggle(evt)
-    onItemClick && onItemClick(evt);
-  }, [item, onItemClick]);
+  const onClick = useCallback(
+    (evt) => {
+      item.toggle(evt);
+      onItemClick && onItemClick(evt);
+    },
+    [item, onItemClick]
+  );
 
   const isSelected = item.get('selected');
 
@@ -46,17 +56,12 @@ export default ({ item, theme: _theme, style, onItemClick, content, config }: IC
         name={isSelected ? 'CheckboxFilled' : 'CheckboxEmpty'}
         title={isSelected ? 'Selected' : 'Not selected'}
       />
-      <Text
-        primary
-        lowercase
-        className={theme.content}
-        bold={isSelected}
-      >
-        { content({ item, config }) }
+      <Text primary lowercase className={theme.content} bold={isSelected}>
+        {content({ item, config })}
       </Text>
       <Text secondary uppercase>
         ({item.get('count')})
       </Text>
     </Button>
-  )
-}
+  );
+};

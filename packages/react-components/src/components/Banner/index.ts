@@ -1,7 +1,6 @@
 /**
  * @module components/Banner
  */
-import React from 'react';
 import { connectBanner } from '@findify/react-connect';
 import { compose, setDisplayName } from 'recompose';
 import withTheme from 'helpers/withTheme';

@@ -2,7 +2,6 @@
  * @module components/Sorting
  */
 
-import React from 'react';
 import Icon from 'components/Icon';
 import Text from 'components/Text';
 import Dropdown from 'components/Dropdown';
@@ -12,7 +11,7 @@ import { List } from 'immutable';
 /** List of props Sorting view accepts */
 export interface ISortingProps extends ThemedSFCProps {
   /** Callback called when sorting is changed */
-  onChangeSort?: (value: any) => void
+  onChangeSort?: (value: any) => void;
   /** MJS configuration */
   config: MJSConfiguration;
   /** List of Sorting configurations */
@@ -21,17 +20,25 @@ export interface ISortingProps extends ThemedSFCProps {
   selectedItem: ISortingItem;
 }
 
-const Sorting = ({ onChangeSort, config, theme, items, selectedItem }: ISortingProps) =>
-<div className={theme.root}>
-  <Icon name='Sorting' className={theme.icon} title='Sorting'/>
-  <Text primary uppercase className={theme.title}>
-    { config.getIn(['sorting', 'i18n', 'title']) }:
-  </Text>
-  <Dropdown
-    theme={{ root: theme.dropdown }}
-    items={items}
-    onChange={onChangeSort}
-    selectedItem={selectedItem} />
-</div>
+const Sorting = ({
+  onChangeSort,
+  config,
+  theme,
+  items,
+  selectedItem,
+}: ISortingProps) => (
+  <div className={theme.root}>
+    <Icon name="Sorting" className={theme.icon} title="Sorting" />
+    <Text primary uppercase className={theme.title}>
+      {config.getIn(['sorting', 'i18n', 'title'])}:
+    </Text>
+    <Dropdown
+      theme={{ root: theme.dropdown }}
+      items={items}
+      onChange={onChangeSort}
+      selectedItem={selectedItem}
+    />
+  </div>
+);
 
 export default Sorting;

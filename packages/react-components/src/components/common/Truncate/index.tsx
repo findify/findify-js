@@ -2,10 +2,8 @@
  * @module components/common/Truncate
  */
 
-
-import React from 'react'
+import { Fragment } from 'react';
 
 // TODO: implement actual truncation
 
-
-export default ({ children }) => <React.Fragment>{children}</React.Fragment>
+export default ({ children }) => <Fragment>{children}</Fragment>;

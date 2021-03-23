@@ -2,121 +2,117 @@
  * @module components/Cards/Product
  */
 
-import React from 'react'
-import classNames from 'classnames'
-import Image from 'components/common/Picture'
-import Truncate from 'components/common/Truncate'
-import Text from 'components/Text'
+import cx from 'classnames';
+import Image from 'components/common/Picture';
 import Rating from 'components/Cards/Product/Rating';
 import Price from 'components/Cards/Product/Price';
-import template from 'helpers/template';
-import { DiscountSticker, OutOfStockSticker  } from 'components/Cards/Product/Stickers';
-import { List } from 'immutable'
-import { IProduct, MJSConfiguration, ThemedSFCProps } from 'types/index';
-import BundleAction from 'components/Cards/Product/BundleAction';
+import Title from 'components/Cards/Product/Title';
+import Description from 'components/Cards/Product/Description';
+import Variants from 'components/Cards/Product/Variants';
 
-const Title: any = ({ text, theme, ...rest }) => (
-  <Text display-if={!!text} className={theme.title} {...rest}>{text}</Text>
-);
+import {
+  DiscountSticker,
+  OutOfStockSticker,
+} from 'components/Cards/Product/Stickers';
+import { List } from 'immutable';
 
-const Description: any = ({ text, theme, ...rest }) => (
-  <p
-    display-if={!!text}
-    className={theme.description}
-    {...rest}
-  >
-    <Truncate>{text}</Truncate>
-  </p>
-);
-
+import { IProduct, ThemedSFCProps } from 'types';
+import { Immutable, Product } from '@findify/store-configuration';
 
 export interface IProductCardProps extends ThemedSFCProps {
   item: IProduct;
-  config: MJSConfiguration;
+  config: Immutable.Factory<Product>;
+  Container?: React.ElementType;
 }
 
-const ProductCardView: React.SFC<IProductCardProps> = ({
+export default ({
   item,
   config,
   theme,
-}: any) => (
-  <a
-    onClick={item.onClick}
-    href={item.get('product_url')}
-    className={classNames(
-      theme.root,
-      config.get('simple') && theme.simple,
-      theme.productCard,
-    )}
-  >
-    <div className={classNames(theme.imageWrap)}>
-      <BundleAction display-if={config.get('bundle')} item={item} />
-      <Image
-        className={classNames(theme.image)}
-        aspectRatio={config.getIn(['product', 'image', 'aspectRatio'], 1)}
-        thumbnail={item.get('thumbnail_url')}
-        src={item.get('image_url') || item.get('thumbnail_url')}
-        alt={item.get('title')}
-      />
-      <div display-if={config.getIn(['product', 'stickers', 'display'])}>
+  className,
+  Container = 'div',
+}: IProductCardProps) => {
+  return (
+    <Container
+      className={cx(theme.root, theme[config.get('template')], className)}
+    >
+      <div className={theme.content}>
+        <Rating
+          className={theme.rating}
+          value={item.getIn(['reviews', 'average_score'])}
+          count={
+            item.getIn(['reviews', 'count']) ||
+            item.getIn(['reviews', 'total_reviews'])
+          }
+          display-if={
+            config.getIn(['reviews', 'display']) &&
+            (!!item.getIn(['reviews', 'count']) ||
+              !!item.getIn(['reviews', 'total_reviews']))
+          }
+        />
+
+        <Variants config={config} item={item} theme={theme} />
+
+        {/*
+          Link hack:
+          Title's "a" contains :after element with absolute position
+          what makes provide link effect to the rest of card
+          - To remove element from the effect set `position:relative`
+          - Or `z-index: 1`, but it may have side effects
+        */}
+        <Title
+          display-if={config.getIn(['title', 'display'])}
+          theme={theme}
+          onClick={item.onClick}
+          href={item.get('product_url')}
+          text={item.get('title')}
+        />
+
+        <Description
+          display-if={config.getIn(['description', 'display'])}
+          theme={theme}
+          text={item.get('description')}
+        />
+
+        <div className={theme.divider} />
+
+        <Price
+          display-if={config.getIn(['price', 'display'])}
+          className={theme.priceWrapper}
+          item={item}
+        />
+
+        <OutOfStockSticker
+          display-if={item.getIn(['stickers', 'out-of-stock'])}
+          config={config}
+        />
+      </div>
+
+      {/*
+        ADA specific hack:
+        We need to make image belong to content, so we move it under the title.
+        - flex order set to -1
+      */}
+      <div className={theme.image} onClick={item.onClick}>
+        <Image
+          aspectRatio={config.getIn(['product', 'image', 'aspectRatio'])}
+          thumbnail={item.get('thumbnail_url')}
+          src={item.get('image_url') || item.get('thumbnail_url')}
+          alt={item.get('title')}
+          lazy={config.getIn(['product', 'image', 'lazy'])}
+          offset={config.getIn(['product', 'image', 'lazyOffset'])}
+        />
         <DiscountSticker
           config={config}
           className={theme.discountSticker}
           discount={item.get('discount')}
           display-if={
             config.getIn(['stickers', 'discount']) &&
-            config.getIn(['product', 'stickers', 'display']) &&
             item.get('discount', List()).size &&
             item.getIn(['stickers', 'discount'])
-          } />
+          }
+        />
       </div>
-    </div>
-    <div
-      display-if={
-        config.getIn(['product', 'reviews', 'display']) &&
-        (!!item.getIn(['reviews', 'count']) || !!item.getIn(['reviews', 'total_reviews']))
-      }
-      className={theme.rating}>
-      <Rating
-        value={item.getIn(['reviews', 'average_score'])}
-        count={item.getIn(['reviews', 'count']) || item.getIn(['reviews', 'total_reviews'])} />
-    </div>
-    <div
-      className={theme.variants}
-      display-if={
-        config.getIn(['product', 'variants', 'display']) &&
-        item.get('variants', List()).size > 1
-      }
-      >
-      {
-        template(config.getIn(['product', 'i18n', 'variants'], 'Available in %s variants'))(
-          item.get('variants', List()).size
-        )
-      }
-    </div>
-    <div className={theme.content}>
-      <Title
-        theme={theme}
-        display-if={config.getIn(['product', 'title', 'display'])}
-        text={item.get('title')}
-        config={config.getIn(['product', 'title'])} />
-      <Description
-        theme={theme}
-        display-if={config.getIn(['product', 'description', 'display'])}
-        text={item.get('description')}
-        config={config.getIn(['product', 'description'])} />
-      <Price
-        className={theme.priceWrapper}
-        display-if={config.getIn(['product', 'price', 'display'])}
-        price={item.get('price')}
-        oldPrice={item.get('compare_at')}
-        discount={item.get('discount')}
-        currency={config.get('currency_config').toJS()} />
-      <OutOfStockSticker
-        display-if={item.getIn(['stickers', 'out-of-stock'])}
-        config={config} />
-    </div>
-  </a>
-)
-
-export default ProductCardView;
+    </Container>
+  );
+};

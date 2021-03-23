@@ -34,13 +34,18 @@ module.exports = (api) => {
             "useBuiltIns": "entry",
             "corejs": 3
           }]
-        ]
+        ],
+        env: {
+          development: {
+            plugins: ["react-hot-loader/babel"]
+          }
+        }
       },
 
       {
         test: 'packages/react-components',
         presets: [
-          ['@babel/preset-react', { runtime: 'automatic'}],
+          ['@babel/preset-react', { runtime: 'automatic' }],
         ],
         plugins: [
           'inline-react-svg',

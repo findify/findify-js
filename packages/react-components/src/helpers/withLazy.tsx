@@ -1,28 +1,28 @@
-import React from 'react';
 import { Component, createFactory } from 'react';
 import { is, List, Map } from 'immutable';
 import { compose, withPropsOnChange, setDisplayName } from 'recompose';
 
-const isStateEqual = (prev, next) => ['filters', 'q', 'sort'].every(k =>
-  is(prev.get(k), next.get(k))
-);
+const isStateEqual = (prev, next) =>
+  ['filters', 'q', 'sort'].every((k) => is(prev.get(k), next.get(k)));
 
-const hasRange = (ranges, offset) => !!ranges.find(r => r.get('from') === offset);
+const hasRange = (ranges, offset) =>
+  !!ranges.find((r) => r.get('from') === offset);
 
-const createRange = meta => Map({
-  from: meta.get('offset'),
-  to: meta.get('offset') + meta.get('limit'),
-});
+const createRange = (meta) =>
+  Map({
+    from: meta.get('offset'),
+    to: meta.get('offset') + meta.get('limit'),
+  });
 
 const addItems = ({ ranges, items }, nextItems, meta) => {
-  const append = ranges.find(r => r.get('from') < meta.get('offset'));
+  const append = ranges.find((r) => r.get('from') < meta.get('offset'));
   const newRange = createRange(meta);
-  const _items = nextItems.filter(i => !items.includes(i));
+  const _items = nextItems.filter((i) => !items.includes(i));
   return {
     ranges: append ? ranges.push(newRange) : ranges.insert(0, newRange),
-    items: append ? items.concat(_items) : _items.concat(items)
-  }
-}
+    items: append ? items.concat(_items) : _items.concat(items),
+  };
+};
 
 /**
  * withLazy() returns a HOC for wrapping around component you want to include lazy loading to
@@ -35,51 +35,53 @@ export default () => {
    * @param LazyView view you will be adding lazy loading to
    * @returns LazyLoading HOC
    */
-  return BaseComponent => {
+  return (BaseComponent) => {
     const factory = createFactory(BaseComponent);
-    return class Lazy extends Component<any, any>{
+    return class Lazy extends Component<any, any> {
       container: any;
       autoLoadCount = 0;
 
       constructor(props) {
         super(props);
-        this.autoLoadCount = props.disableAutoLoad ? 0 : props.config.getIn(['loadMore', 'lazyLoadCount'], 2);
+        this.autoLoadCount = props.disableAutoLoad
+          ? 0
+          : props.config.getIn(['loadMore', 'lazyLoadCount'], 2);
         this.state = {
           items: props.items,
-          ranges:  List([createRange(props.meta)]),
+          ranges: List([createRange(props.meta)]),
           columns: props.columns || '3',
-          pending: false
+          pending: false,
         };
       }
 
       registerContainer = (ref) => {
         if (!ref) return;
         this.container = ref;
-      }
+      };
 
       onLoadNext = () => {
         const { update, meta } = this.props;
         const { ranges } = this.state;
         return update('offset', ranges.last().get('to'));
-      }
+      };
 
       onLoadPrev = () => {
         const { update, meta } = this.props;
         const { ranges } = this.state;
         return update('offset', ranges.first().get('from') - meta.get('limit'));
-      }
+      };
 
       get lessAllowed() {
         const { ranges } = this.state;
         const firstRange = ranges.first();
-        return firstRange && firstRange.get('from') > 0
+        return firstRange && firstRange.get('from') > 0;
       }
 
       get moreAllowed() {
         const { meta } = this.props;
         const { ranges } = this.state;
         const lastRange = ranges.last();
-        return lastRange && lastRange.get('to') < meta.get('total')
+        return lastRange && lastRange.get('to') < meta.get('total');
       }
 
       trackPosition = () =>
@@ -88,13 +90,20 @@ export default () => {
         window.requestAnimationFrame(() => {
           const offset = 300;
           const { bottom } = this.container.getBoundingClientRect();
-          const height = window.innerHeight || document.documentElement.clientHeight;
+          const height =
+            window.innerHeight || document.documentElement.clientHeight;
           const inView = bottom - height <= offset;
-          if (!inView || this.state.pending || !this.autoLoadCount || !this.moreAllowed) return;
-          this.autoLoadCount -= 1
+          if (
+            !inView ||
+            this.state.pending ||
+            !this.autoLoadCount ||
+            !this.moreAllowed
+          )
+            return;
+          this.autoLoadCount -= 1;
           this.setState({ pending: true });
           this.onLoadNext();
-        })
+        });
 
       componentDidMount() {
         if (this.props.disableAutoLoad) return;
@@ -113,12 +122,16 @@ export default () => {
         this.setState({ pending: false });
 
         // Prepend or append new items
-        if (isStateEqual(meta, this.props.meta) && !hasRange(this.state.ranges, meta.get('offset'))) {
+        if (
+          isStateEqual(meta, this.props.meta) &&
+          !hasRange(this.state.ranges, meta.get('offset'))
+        ) {
           return this.setState({ ...addItems(this.state, items, meta) });
         }
 
         // Reset number of loads
-        if (!this.props.disableAutoLoad) this.autoLoadCount = config.getIn(['loadMore', 'lazyLoadCount'], 2);
+        if (!this.props.disableAutoLoad)
+          this.autoLoadCount = config.getIn(['loadMore', 'lazyLoadCount'], 2);
 
         // Reset items
         return this.setState({
@@ -131,11 +144,11 @@ export default () => {
         return (
           this.state.pending !== state.pending ||
           !this.state.items.equals(state.items) ||
-          !!Object.keys(props).find(k => !is(this.props[k], props[k]))
-        )
+          !!Object.keys(props).find((k) => !is(this.props[k], props[k]))
+        );
       }
 
-      render () {
+      render() {
         const { ranges, items, columns, pending } = this.state;
         const { meta } = this.props;
 
@@ -148,8 +161,8 @@ export default () => {
           onLoadPrev: this.onLoadPrev,
         });
 
-        return <div ref={this.registerContainer}>{content}</div>
+        return <div ref={this.registerContainer}>{content}</div>;
       }
     };
-  }
-}
+  };
+};

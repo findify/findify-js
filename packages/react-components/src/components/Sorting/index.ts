@@ -1,9 +1,15 @@
 /**
  * @module components/Sorting
  */
-import React from 'react';
 import { connectSort } from '@findify/react-connect';
-import { compose, withPropsOnChange, setDisplayName, withHandlers, branch, renderNothing } from 'recompose';
+import {
+  compose,
+  withPropsOnChange,
+  setDisplayName,
+  withHandlers,
+  branch,
+  renderNothing,
+} from 'recompose';
 import withTheme from 'helpers/withTheme';
 import { is } from 'immutable';
 
@@ -18,23 +24,32 @@ export default compose(
     const labels = config.getIn(['sorting', 'i18n', 'options']);
     if (!labels) return;
 
-    const items = config.getIn(['sorting', 'options']).map(i =>
-      i.set('label', labels.get([i.get('field'), i.get('order')].filter(i => i).join('|')))
-    );
-    return { items }
+    const items = config
+      .getIn(['sorting', 'options'])
+      .map((i) =>
+        i.set(
+          'label',
+          labels.get(
+            [i.get('field'), i.get('order')].filter((i) => i).join('|')
+          )
+        )
+      );
+    return { items };
   }),
   withPropsOnChange(['selected'], ({ items, selected }) => ({
-    selectedItem: selected && items && items.find(i =>
-      is(i.get('order'), selected.get('order')) &&
-      is(i.get('field'), selected.get('field'))
-    )
+    selectedItem:
+      selected &&
+      items &&
+      items.find(
+        (i) =>
+          is(i.get('order'), selected.get('order')) &&
+          is(i.get('field'), selected.get('field'))
+      ),
   })),
   withHandlers({
-    onChangeSort: ({ onChangeSort }) => item => onChangeSort(item.get('field', 'default'), item.get('order', ''))
+    onChangeSort: ({ onChangeSort }) => (item) =>
+      onChangeSort(item.get('field', 'default'), item.get('order', '')),
   }),
 
-  branch(
-    ({ items }) => !items,
-    renderNothing
-  )
+  branch(({ items }) => !items, renderNothing)
 )(view);

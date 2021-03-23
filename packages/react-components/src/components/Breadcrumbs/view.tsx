@@ -2,7 +2,7 @@
  * @module components/Breadcrumbs
  */
 
-import React from 'react';
+import * as React from 'react';
 import Grid from 'components/common/Grid';
 import MapArray from 'components/common/MapArray';
 import createBreadcrumb from 'components/Breadcrumbs/createBreadcrumb';
@@ -12,8 +12,7 @@ import RangeContent from 'components/RangeFacet/content';
 import RatingContent from 'components/RatingFacet/content';
 import ColorContent from 'components/ColorFacet/content';
 import { ThemedSFC, IFacet, MJSConfiguration, ThemedSFCProps } from 'types';
-import { List } from 'immutable'
-
+import { List } from 'immutable';
 
 /**
  * Breadcrumb factory used to automatically initialize breadcrumbs
@@ -36,13 +35,17 @@ export interface IBreadcrumbProps extends ThemedSFCProps {
   config: MJSConfiguration;
 }
 
-const BreadcrumbsView: React.SFC<IBreadcrumbProps> = ({ filters, theme, config }: IBreadcrumbProps) => (
+const BreadcrumbsView: React.SFC<IBreadcrumbProps> = ({
+  filters,
+  theme,
+  config,
+}: IBreadcrumbProps) => (
   <MapArray
     theme={theme}
     config={config}
     array={filters}
     factory={Breadcrumb}
   />
-)
+);
 
 export default BreadcrumbsView;

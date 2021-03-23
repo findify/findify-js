@@ -2,8 +2,6 @@
  * @module components/ColorFacet
  */
 
-import React from 'react';
-
 import MapArray from 'components/common/MapArray';
 import Item from 'components/ColorFacet/Item';
 import { ThemedSFCProps, MJSConfiguration, IFacetValue, IFacet } from 'types';
@@ -17,7 +15,7 @@ export interface IColorFacetProps extends ThemedSFCProps {
 
   facet: IFacet;
 
-  hidden: boolean
+  hidden: boolean;
 }
 
 const ColorFacetView = ({
@@ -25,15 +23,28 @@ const ColorFacetView = ({
   items,
   config,
   facet,
-  hidden
+  hidden,
 }: IColorFacetProps) => (
-  <div className={theme.root} id={`facet-${facet.get('name')}`} role="region" hidden={hidden}>
+  <div
+    className={theme.root}
+    id={`facet-${facet.get('name')}`}
+    role="region"
+    hidden={hidden}
+  >
     <MapArray
       config={config}
-      array={items.filter(item => config.getIn(['facets', 'color', 'mapping', (item.get('value') as string)!.toLocaleLowerCase()]))}
+      array={items.filter((item) =>
+        config.getIn([
+          'facets',
+          'color',
+          'mapping',
+          (item.get('value') as string)!.toLocaleLowerCase(),
+        ])
+      )}
       factory={Item}
-      theme={theme} />
+      theme={theme}
+    />
   </div>
-)
+);
 
 export default ColorFacetView;

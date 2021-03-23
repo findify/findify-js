@@ -1,12 +1,19 @@
 /**
  * @module components/RangeFacet
  */
-import React from 'react';
-import { compose, withStateHandlers, withProps, setDisplayName, withPropsOnChange, withHandlers } from 'recompose';
+import {
+  compose,
+  withStateHandlers,
+  withProps,
+  setDisplayName,
+  withPropsOnChange,
+  withHandlers,
+} from 'recompose';
 import withTheme from 'helpers/withTheme';
 
 import view from 'components/RangeFacet/view';
 import styles from 'components/RangeFacet/styles.css';
+import { connectConfig } from '@findify/react-connect';
 
 const createKey = (...args) => args.join('_');
 
@@ -15,39 +22,40 @@ export default compose(
 
   withTheme(styles),
 
-  withProps(({ facet, config }) => ({
-    items: facet.get('values')
+  withProps(({ facet }) => ({
+    items: facet.get('values'),
   })),
 
+  connectConfig(),
+
   withPropsOnChange(['config'], ({ config }) => ({
-    currencySymbol: config.getIn(['currency', 'symbol']) || config.getIn(['currency_setup', 'code'])
+    currencySymbol:
+      config.getIn(['currency', 'symbol']) ||
+      config.getIn(['currency_setup', 'code']),
   })),
 
   withStateHandlers<any, any, any>(
-    ({ facet }) => ({ from: undefined, to: undefined }),
+    { from: undefined, to: undefined },
     {
-      onReset: () => e => ({ from: void 0, to: void 0}),
+      onReset: () => (e) => ({ from: void 0, to: void 0 }),
 
-      onChangeMin: ({ from, to }, { facet }) => e => {
+      onChangeMin: ({ from, to }, { facet }) => (e) => {
         const value = parseFloat(e.target.value) || from || facet.get('min');
         if (isNaN(value)) return { from: void 0 };
-        const normalizedValue = value > to
-          ? to
-          : value < facet.get('min')
-            ? facet.get('min')
-            : value;
+        const normalizedValue =
+          value > to ? to : value < facet.get('min') ? facet.get('min') : value;
         return { from: normalizedValue };
       },
 
-      onChangeMax: ({ from, to }, { facet }) => e => {
+      onChangeMax: ({ from, to }, { facet }) => (e) => {
         const value = parseFloat(e.target.value) || to || facet.get('max');
         if (isNaN(value)) return { to: void 0 };
         const normalizedValue =
           value < from
             ? from
             : value > facet.get('max')
-              ? facet.get('max')
-              : value;
+            ? facet.get('max')
+            : value;
         return { to: normalizedValue };
       },
 
@@ -55,24 +63,24 @@ export default compose(
         if (!from && !to) return;
         const key = [from, to].join('_');
         facet.setValue({ from, to });
-        return { from: void 0, to: void 0};
+        return { from: void 0, to: void 0 };
       },
-    },
+    }
   ),
   withHandlers({
-    onPressButton: ({ onCommit }) => e => {
+    onPressButton: ({ onCommit }) => (e) => {
       e.preventDefault();
       Promise.resolve().then(() => onCommit());
     },
-    onKeypressMin: ({ onCommit, onChangeMin }) =>(e) => {
+    onKeypressMin: ({ onCommit, onChangeMin }) => (e) => {
       if (e.key !== 'Enter') return;
-      onChangeMin(e)
+      onChangeMin(e);
       Promise.resolve().then(() => onCommit());
     },
     onKeypressMax: ({ onCommit, onChangeMax }) => (e) => {
       if (e.key !== 'Enter') return;
-      onChangeMax(e)
+      onChangeMax(e);
       Promise.resolve().then(() => onCommit());
-    }
-  }),
+    },
+  })
 )(view);

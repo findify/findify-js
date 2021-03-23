@@ -1,4 +1,4 @@
-import { Type as RequestType } from '@findify/sdk/lib/request';
+import { Type as RequestType } from '@findify/sdk/src/request';
 import * as Types from '../types';
 
 import { init } from '@findify/sdk';

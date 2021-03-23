@@ -2,7 +2,6 @@
  * @module components/search/MobileFacets
  */
 
-import React from 'react';
 import { withHandlers } from 'recompose';
 import Branch from 'components/common/Branch';
 import MapArray from 'components/common/MapArray';
@@ -47,15 +46,15 @@ export interface IMobileFacetsProps extends ThemedSFCProps {
   /** Currently active facet */
   activeFacet?: IFacet;
   /** Method used to select a facet */
-  selectFacet: (name?: string) => any
+  selectFacet: (name?: string) => any;
   /** Method used to reset facet */
-  onReset: () => any
+  onReset: () => any;
   /** MJS Configuration */
   config: MJSConfiguration;
   /** MJS API Request Metadata */
   meta: Map<string, MJSValue>;
   /** Method used for hiding modal / drawer */
-  hideModal: (name: string) => any
+  hideModal: (name: string) => any;
   /** Total filters selected */
   total: number;
   /** Filters selected for active facet */
@@ -73,50 +72,70 @@ export default ({
   hideModal,
   total,
   filtersSelected,
-}: IMobileFacetsProps) =>
-<div className={cx(theme.modal, 'mobile')}>
-  <div className={theme.header}>
+}: IMobileFacetsProps) => (
+  <div className={cx(theme.modal, 'mobile')}>
+    <div className={theme.header}>
+      <div className={theme.title}>
+        <Text primary uppercase display-if={!activeFacet}>
+          {config.getIn(['facets', 'i18n', 'filters'], 'Filters')}
+        </Text>
+        <Text
+          secondary
+          uppercase
+          display-if={!activeFacet && total}
+          className={theme.filterCount}
+        >
+          ({total})
+        </Text>
+        <Text primary uppercase display-if={!!activeFacet}>
+          {config.getIn(['facets', 'labels', activeFacet!.get('name')])}
+        </Text>
+        <Text
+          secondary
+          uppercase
+          display-if={!!activeFacet && filtersSelected}
+          className={theme.filterCount}
+        >
+          ({filtersSelected})
+        </Text>
+      </div>
 
-    <div className={theme.title}>
-      <Text primary uppercase display-if={!activeFacet}>
-        { config.getIn(['facets', 'i18n', 'filters'], 'Filters') }
-      </Text>
-      <Text secondary uppercase display-if={!activeFacet && total} className={theme.filterCount}>
-        ({ total })
-      </Text>
-      <Text primary uppercase display-if={!!activeFacet}>
-        { config.getIn(['facets', 'labels', activeFacet!.get('name')]) }
-      </Text>
-      <Text secondary uppercase display-if={!!activeFacet && filtersSelected} className={theme.filterCount}>
-        ({ filtersSelected })
-      </Text>
+      <Button
+        onClick={activeFacet ? selectFacet : hideModal}
+        className={theme.backButton}
+      >
+        <Icon name="ArrowBack" title="Go back" />
+      </Button>
+
+      <Button
+        display-if={meta.get('filters') && meta!.get('filters')!.size}
+        onClick={onReset}
+      >
+        <Text secondary uppercase>
+          {config.getIn(['facets', 'i18n', 'clearAll'], 'Clear All')}
+        </Text>
+      </Button>
     </div>
-
-    <Button onClick={activeFacet ? selectFacet : hideModal} className={theme.backButton} >
-      <Icon name='ArrowBack' title='Go back' />
-    </Button>
-
+    <div className={theme.body}>
+      <Branch
+        config={config}
+        theme={theme}
+        selectFacet={selectFacet}
+        active={activeFacet}
+        facets={facets}
+        condition={!!activeFacet}
+        right={FacetTitles}
+        left={FacetContent}
+      />
+    </div>
     <Button
-      display-if={meta.get('filters') && meta!.get('filters')!.size}
-      onClick={onReset}>
-      <Text secondary uppercase>
-        { config.getIn(['facets', 'i18n', 'clearAll'], 'Clear All')}
-      </Text>
+      className={theme.footer}
+      onClick={activeFacet ? selectFacet : hideModal}
+    >
+      {config.getIn(
+        ['facets', 'i18n', activeFacet ? 'done' : 'showResults'],
+        'See results'
+      )}
     </Button>
-
   </div>
-  <div className={theme.body}>
-    <Branch
-      config={config}
-      theme={theme}
-      selectFacet={selectFacet}
-      active={activeFacet}
-      facets={facets}
-      condition={!!activeFacet}
-      right={FacetTitles}
-      left={FacetContent} />
-  </div>
-  <Button className={theme.footer} onClick={activeFacet ? selectFacet : hideModal}>
-    { config.getIn(['facets', 'i18n', activeFacet ? 'done' : 'showResults'], 'See results')}
-  </Button>
-</div>
+);

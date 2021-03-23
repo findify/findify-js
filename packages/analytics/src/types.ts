@@ -8,10 +8,8 @@ export type User = {
 export type Config = {
   key: string;
   events: {};
-  platform: {
-    bigcommerce?: boolean;
-    shopify?: boolean;
-  };
+  user?: Partial<User>;
+  platform: 'bigcommerce' | 'shopify' | 'generic' | string;
 };
 
 export type LineItemData = {
@@ -35,7 +33,7 @@ export type RedirectPublicEventRequest = {
   suggestion: string;
 };
 
-export  type PurchasePublicEventRequest = {
+export type PurchasePublicEventRequest = {
   order_id: string;
   currency: string;
   revenue: number;
@@ -57,7 +55,7 @@ export type ViewPagePublicEventRequest = {
   item_id?: string;
 };
 
-export  type ViewPageInternalEventRequest = ViewPagePublicEventRequest & {
+export type ViewPageInternalEventRequest = ViewPagePublicEventRequest & {
   url: string;
   ref: string;
   width: number;
@@ -90,8 +88,8 @@ export enum EventName {
   purchase = 'purchase',
   addToCart = 'add-to-cart',
   updateCart = 'update-cart',
-  viewPage = 'view-page'
-};
+  viewPage = 'view-page',
+}
 
 export interface Client {
   user: User;
@@ -99,10 +97,9 @@ export interface Client {
     type: string,
     request?: any,
     useCookie?: boolean,
-    endpoint?: string,
+    endpoint?: string
   ): void | Promise<any>;
   listen(callback?): void;
   state: any;
-  invalidate: any
-};
-
+  invalidate: any;
+}

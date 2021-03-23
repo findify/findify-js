@@ -2,7 +2,7 @@
  * @module components/RatingFacet
  */
 
-import React from 'react';
+import * as React from 'react';
 
 import MapArray from 'components/common/MapArray';
 import Item from 'components/RatingFacet/Item';
@@ -28,20 +28,35 @@ const RatingFacet: React.SFC<IRatingFacetProps> = ({
   config,
   hidden,
 }: IRatingFacetProps) => (
-  <div className={theme.root}  id={`facet-${facet.get('name')}`} role="region" hidden={hidden}>
+  <div
+    className={theme.root}
+    id={`facet-${facet.get('name')}`}
+    role="region"
+    hidden={hidden}
+  >
     <MapArray
       display-if={config.get('pullSelected')}
-      array={config.get('pullSelected') ? items.filter(i => i.get('selected')) : items}
+      array={
+        config.get('pullSelected')
+          ? items.filter((i) => i.get('selected'))
+          : items
+      }
       factory={Item}
       config={config}
-      theme={theme} />
+      theme={theme}
+    />
 
     <MapArray
-      array={config.get('pullSelected') ? items.filter(i => !i.get('selected')) : items}
+      array={
+        config.get('pullSelected')
+          ? items.filter((i) => !i.get('selected'))
+          : items
+      }
       factory={Item}
       config={config}
-      theme={theme} />
+      theme={theme}
+    />
   </div>
-)
+);
 
 export default RatingFacet;

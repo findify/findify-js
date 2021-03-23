@@ -1,8 +1,12 @@
 /**
  * @module components/CategoryFacet
  */
-import React from 'react';
-import { compose, setDisplayName, withStateHandlers, withProps } from 'recompose';
+import {
+  compose,
+  setDisplayName,
+  withStateHandlers,
+  withProps,
+} from 'recompose';
 import withTheme from 'helpers/withTheme';
 
 import view from 'components/CategoryFacet/view';
@@ -14,14 +18,14 @@ export default compose(
   withTheme(styles),
 
   withStateHandlers(
-    ({ isExpanded }) => ({ isExpanded }),
+    { isExpanded: false },
     {
-      onToggle: (s) => () => ({ ...s, isExpanded: !s.isExpanded })
+      onToggle: (s) => () => ({ ...s, isExpanded: !s.isExpanded }),
     }
   ),
 
-  withProps(({ facet, isExpanded }) => ({
+  withProps(({ facet }) => ({
     items: facet.get('values'),
-    total: facet.get('values').reduce((acc, v) => acc + v.get('count'), 0)
+    total: facet.get('values').reduce((acc, v) => acc + v.get('count'), 0),
   }))
 )(view);

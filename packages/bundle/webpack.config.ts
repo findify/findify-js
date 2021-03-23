@@ -50,7 +50,7 @@ const createGlobals = (isDevelopment, isLocal) =>
     {}
   );
 
-export default (env: WebpackEnvArgs, { mode }) => {
+module.exports = (env: WebpackEnvArgs, { mode }) => {
   const origin = env.origin || 'prod';
 
   const config = {
@@ -59,7 +59,7 @@ export default (env: WebpackEnvArgs, { mode }) => {
       polyfill: path.resolve(__dirname, 'src/polyfill'),
     },
     devtool: 'source-map',
-    target: ['web', 'es5'],
+    target: mode === 'development' ? 'web' : ['web', 'es5'],
     output: {
       chunkLoadingGlobal: 'findifyJsonp',
       filename: '[name].js',
@@ -72,6 +72,7 @@ export default (env: WebpackEnvArgs, { mode }) => {
       port: 3000,
       stats: 'minimal',
       historyApiFallback: true,
+      disableHostCheck: true,
       hot: true,
     },
     optimization: {
@@ -95,9 +96,10 @@ export default (env: WebpackEnvArgs, { mode }) => {
     resolve: {
       extensions: ['.ts', '.tsx', '.js', '.css'],
       alias: {
-        axios: path.resolve(__dirname, '../../node_modules/axios'),
         'react-dom':
           mode === 'development' ? '@hot-loader/react-dom' : 'react-dom',
+
+        axios: path.resolve(__dirname, '../../node_modules/axios'),
         react: path.resolve(__dirname, '../../node_modules/react'),
         'react-is': path.resolve(__dirname, '../../node_modules/react-is'),
 
@@ -105,6 +107,7 @@ export default (env: WebpackEnvArgs, { mode }) => {
           __dirname,
           '../../node_modules/@babel/runtime'
         ),
+
         'lodash.throttle': 'lodash/throttle',
         'lodash.debounce': 'lodash/debounce',
         lodash: path.resolve(__dirname, '../../node_modules/lodash'),
@@ -186,18 +189,6 @@ export default (env: WebpackEnvArgs, { mode }) => {
         template: path.resolve(__dirname, 'index.html'),
         inject: false,
       }),
-
-      new WebpackHashPlugin({
-        mapping: {
-          'immutable/dist/immutable.es': 'immutable',
-          '@hot-loader/react-dom': 'react-dom',
-          'recompose/dist/Recompose.esm': 'recompose',
-          'swiper/js/swiper.esm.js': 'swiper/js/swiper.esm',
-          'react-id-swiper/lib/ReactIdSwiper.custom':
-            'react-id-swiper/lib/ReactIdSwiper',
-        },
-        ignoreModulesCache: ['Jmof'],
-      }),
     ],
   };
 
@@ -239,6 +230,17 @@ export default (env: WebpackEnvArgs, { mode }) => {
       new DeadCodePlugin({
         patterns: ['src/**/*.(js|jsx|css)'],
         exclude: ['**/*.(stories|spec).(js|jsx)'],
+      }),
+      new WebpackHashPlugin({
+        mapping: {
+          'immutable/dist/immutable.es': 'immutable',
+          '@hot-loader/react-dom': 'react-dom',
+          'recompose/dist/Recompose.esm': 'recompose',
+          'swiper/js/swiper.esm.js': 'swiper/js/swiper.esm',
+          'react-id-swiper/lib/ReactIdSwiper.custom':
+            'react-id-swiper/lib/ReactIdSwiper',
+        },
+        ignoreModulesCache: ['Jmof'],
       })
     );
   }

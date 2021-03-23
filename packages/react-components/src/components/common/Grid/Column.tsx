@@ -2,7 +2,9 @@
  * @module components/common/Grid
  */
 
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
+
+import * as React from 'react';
 import cx from 'classnames';
 
 import styles from 'components/common/Grid/styles.css';
@@ -18,18 +20,16 @@ export interface IGridColumnProps {
 
   gutter?: string | number;
 
-  size: string;
+  size?: string;
 
-  order?: number,
+  order?: number | false;
 
-  component: React.ComponentType<any> | string
+  component?: React.ComponentType<any> | string;
 }
 
 const getWidth = (size, gutter?) => {
-  const percents = 100 / 12 * Number(size);
-  return !!gutter
-    ? `calc(${percents}% - ${gutter})`
-    : `${percents}%`
+  const percents = (100 / 12) * Number(size);
+  return gutter ? `calc(${percents}% - ${gutter})` : `${percents}%`;
 };
 
 export const Column = ({
@@ -40,29 +40,34 @@ export const Column = ({
   order: _order,
   size: _size,
 
-  component: Component = 'div'
-
+  component: Component = 'div',
 }: IGridColumnProps) => {
-  const composedClassName = useMemo(() =>
-    cx(styles.column, className, styles[`column-${_size}`]),
+  const composedClassName = useMemo(
+    () => cx(styles.column, className, styles[`column-${_size}`]),
     [className, _size]
   );
 
-  const order = useMemo(() => !_order ? {} : ({
-    webkitBoxOrdinalGroup: _order,
-    mozBoxOrdinalGroup: _order,
-    msFlexOrder: _order,
-    webkitOrder: _order,
-    order: _order
-  }), [_order]);
+  const order = useMemo(
+    () =>
+      !_order
+        ? {}
+        : {
+            WebkitBoxOrdinalGroup: _order,
+            MozBoxOrdinalGroup: _order,
+            MsFlexOrder: _order,
+            WebkitOrder: _order,
+            order: _order,
+          },
+    [_order]
+  );
 
   const size = useMemo(() => {
     const basis = !isNaN(Number(_size)) && getWidth(_size, gutter);
     return {
       flexBasis: basis,
       msFlexPreferredSize: basis,
-      paddingLeft: `${gutter}`
-    }
+      paddingLeft: `${gutter}`,
+    };
   }, [_size, gutter]);
 
   return (
@@ -71,17 +76,14 @@ export const Column = ({
       style={{
         ...size,
         ...order,
-        ...style
+        ...style,
       }}
     >
       {children}
     </Component>
-  )
+  );
 };
 
 export const Placeholder = ({ size }) => (
-  <div
-    className={styles.placeholder}
-    style={{ flexBasis: getWidth(size) }}
-  />
-)
+  <div className={styles.placeholder} style={{ flexBasis: getWidth(size) }} />
+);

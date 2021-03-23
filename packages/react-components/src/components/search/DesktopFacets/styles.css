@@ -10,14 +10,23 @@ $gutter: 40px;
     max-height: auto;
     will-change: max-height;
   }
+  &.sticky{
+    position: sticky;
+    top: 0;
+  }
 }
 
 .horizontal{
+  background: $horizontal-background;
+  width: 100%;
+  position: relative;
+  max-width: 100vw;
   .container{
     display: flex;
     flex-direction: row;
     z-index: 3;
     background: white;
+    flex-wrap: wrap;
   }
 }
 
@@ -56,19 +65,4 @@ $gutter: 40px;
   svg{
     vertical-align: -3px;
   }
-}
-
-/* Facets style overload */
-.facetRoot{
-  border-top: 1px solid $color-grey-2;
-  .horizontal &{
-    background: white;
-  }
-}
-
-.facetTitle{
-  padding: $padding;
-  width: 100%;
-  text-align: left;
-  display: flex;
 }

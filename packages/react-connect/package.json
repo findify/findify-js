@@ -22,6 +22,7 @@
     "immutable": "^4.0.0-rc.12"
   },
   "devDependencies": {
+    "@findify/store-configuration": "*",
     "@babel/core": "^7.12.16",
     "@babel/plugin-proposal-class-properties": "^7.12.13",
     "@babel/plugin-proposal-object-rest-spread": "^7.12.13",

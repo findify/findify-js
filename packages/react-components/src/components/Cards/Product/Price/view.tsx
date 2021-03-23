@@ -2,49 +2,47 @@
  * @module components/Cards/Product/Price
  */
 
-import cx from 'classnames'
-import React from 'react'
-import { List } from 'immutable'
-import Text from 'components/Text'
-import { getPrice } from 'helpers/getPrice'
-import { ClassnamedProps, ThemedSFCProps } from 'types';
+import cx from 'classnames';
+import { List } from 'immutable';
+import { getPrice } from 'helpers/getPrice';
+import { ThemedSFCProps } from 'types';
 
 /** List of props that Price component accepts */
-export interface IPriceProps extends ThemedSFCProps, ClassnamedProps {
+export interface IPriceProps extends ThemedSFCProps {
   /** List of current prices */
-  price: List<number>,
+  price: List<number>;
   /** Old price for the item */
-  oldPrice?: number,
+  oldPrice?: number;
   /** Currency */
-  currency: string,
+  currency: string;
   /** Discount percentages for item */
-  discount: List<number>,
+  discount: List<number>;
   /** Flag to show whether item is discounted */
-  hasDiscount: boolean,
+  hasDiscount: boolean;
   /** Flag to show whether prices can be compared */
-  hasCompare: boolean,
+  hasCompare: boolean;
 }
 
-const PriceView: React.SFC<IPriceProps> = ({
+export default ({
   className,
   price,
   theme,
   currency,
   hasDiscount,
   hasCompare,
-  oldPrice
+  oldPrice,
 }: IPriceProps) => (
   <div className={cx(theme.priceWrapper, className)}>
-    <span className={cx(
-      theme.price,
-      (hasDiscount || hasCompare) && theme.salePrice
-    )}>
+    <span
+      className={cx(
+        theme.price,
+        (hasDiscount || hasCompare) && theme.salePrice
+      )}
+    >
       {getPrice(price, currency)}
     </span>
     <span display-if={hasCompare} className={cx(theme.compare)}>
       {getPrice(oldPrice, currency)}
     </span>
   </div>
-)
-
-export default PriceView
+);

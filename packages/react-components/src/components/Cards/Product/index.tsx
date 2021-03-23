@@ -2,17 +2,7 @@
  * @module components/Cards/Product
  */
 
-import React from 'react';
-import {
-  compose,
-  defaultProps,
-  mapProps,
-  setDisplayName,
-  withHandlers,
-  withProps,
-  withPropsOnChange,
-} from 'recompose';
-import pure from 'helpers/pure';
+import { compose, setDisplayName } from 'recompose';
 
 import styles from 'components/Cards/Product/styles.css';
 import view from 'components/Cards/Product/view';

@@ -10,69 +10,72 @@ const createRoot = () => {
   meta.name = 'findify-root';
   document.head.appendChild(meta);
   return meta;
-}
+};
 
 const Portal = ({ widget }) => {
   const [element, component] = useMemo(() => {
     const element = document.createElement('div');
     element.className = `findify-container ${widget.config.get('cssSelector')}`;
-    return [
-      element,
-      createFeature(widget),
-    ]
-  }, [])
+    return [element, createFeature(widget)];
+  }, []);
 
   useEffect(() => {
     if (!widget.node) return;
 
     const parent = getParentNode(widget);
-  
+
     if (widget.type === 'tabs') {
       parent.insertBefore(element, parent.firstChild);
     } else {
       parent.appendChild(element);
     }
-  
-    return () => parent.removeChild(element)
-  }, [widget.node])
 
-  return useMemo(() => widget.node && createPortal(component, element), [widget.node]);
-}
+    return () => parent.removeChild(element);
+  }, [widget.node]);
+
+  return useMemo(() => widget.node && createPortal(component, element), [
+    widget.node,
+  ]);
+};
 
 const reduceWidgets = (state, action) => {
   switch (action.type) {
-    case 'attach':
+    case Events.attach:
       return [...state, createWidgetCreator(action.widget)];
-    case 'update':
+    case Events.update:
       console.log(state);
       return state.map((widget) =>
         widget.key === action.widget._key ? action.widget : widget
-      )
-    case 'detach':
-      return state.filter(({ key }) => key !== action.key)
+      );
+    case Events.detach:
+      return state.filter(({ key }) => key !== action.key);
   }
-}
+};
 
 const RootElement = ({ widgets }) => {
   const [state, dispatch] = useReducer(reduceWidgets, widgets);
   useMemo(() => {
     __root.listen((event, widget) => {
       if (event === Events.update) {
-        dispatch({ type: 'update', widget })
+        dispatch({ type: event, widget });
       }
       if (event === Events.attach) {
-        dispatch({ type: 'attach', widget })
+        dispatch({ type: event, widget });
       }
       if (event === Events.detach) {
-        dispatch({ type: 'detach', key: widget.key })
+        dispatch({ type: event, key: widget.key });
       }
-    })
-  }, [])
+    });
+  }, []);
 
-  return useMemo(() => state.map((widget: any) => 
-    createElement(Portal, { widget, key: widget.key })
-  ), [state]);
-}
+  return useMemo(
+    () =>
+      state.map((widget: any) =>
+        createElement(Portal, { widget, key: widget.key })
+      ),
+    [state]
+  );
+};
 
 let isRendered = false;
 export const renderWidgets = (widgets) => {

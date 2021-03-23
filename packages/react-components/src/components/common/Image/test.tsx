@@ -1,19 +1,19 @@
-import React from 'react';
 import { mount } from 'enzyme';
 import Image from './index';
 
-const createFetcher = function() {
+const createFetcher = function () {
   let lastSrc;
   let lastResolve;
   let lastReject;
   return {
     fetch(src) {
-      if (!!lastSrc) throw new Error('Reject or resolve last fetch before running new one!');
+      if (!!lastSrc)
+        throw new Error('Reject or resolve last fetch before running new one!');
       lastSrc = src;
       return new Promise((resolve, reject) => {
         lastResolve = resolve;
         lastReject = reject;
-      })
+      });
     },
     resolve() {
       lastResolve(lastSrc);
@@ -22,22 +22,22 @@ const createFetcher = function() {
     reject() {
       lastReject(lastSrc);
       lastSrc = null;
-    }
-  }
-}
+    },
+  };
+};
 
-const nextTick = () => new Promise((resolve, reject) => process.nextTick(resolve));
-
+const nextTick = () =>
+  new Promise((resolve, reject) => process.nextTick(resolve));
 
 describe('<Image />', () => {
   let fetcher;
   beforeEach(() => {
     fetcher = createFetcher();
-  })
+  });
 
   it('renders correctly for only src image', async () => {
     const fetcher = createFetcher();
-    const component = mount(<Image fetchImage={fetcher.fetch} src='foo.png' />);
+    const component = mount(<Image fetchImage={fetcher.fetch} src="foo.png" />);
 
     expect(component.html()).toMatchSnapshot();
     fetcher.resolve();
@@ -45,9 +45,10 @@ describe('<Image />', () => {
     expect(component.html()).toMatchSnapshot();
   });
 
-
   it('renders correctly for only src image respecting aspect ratio', async () => {
-    const component = mount(<Image fetchImage={fetcher.fetch} aspectRatio={.5} src='foo.png' />);
+    const component = mount(
+      <Image fetchImage={fetcher.fetch} aspectRatio={0.5} src="foo.png" />
+    );
     expect(component.html()).toMatchSnapshot();
     fetcher.resolve();
     await nextTick();
@@ -55,7 +56,9 @@ describe('<Image />', () => {
   });
 
   it('renders correctly for src and thumbnail', async () => {
-    const component = mount(<Image fetchImage={fetcher.fetch} src='foo.png' thumbnail={'baz.png'} />);
+    const component = mount(
+      <Image fetchImage={fetcher.fetch} src="foo.png" thumbnail={'baz.png'} />
+    );
     expect(component.html()).toMatchSnapshot();
     fetcher.resolve();
     await nextTick();
@@ -66,7 +69,14 @@ describe('<Image />', () => {
   });
 
   it('renders correctly for src and thumbnail respecting aspect ratio', async () => {
-    const component = mount(<Image fetchImage={fetcher.fetch} aspectRatio={.8} src='foo.png' thumbnail={'baz.png'} />);
+    const component = mount(
+      <Image
+        fetchImage={fetcher.fetch}
+        aspectRatio={0.8}
+        src="foo.png"
+        thumbnail={'baz.png'}
+      />
+    );
     expect(component.html()).toMatchSnapshot();
     fetcher.resolve();
     await nextTick();

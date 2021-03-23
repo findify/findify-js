@@ -1,8 +1,12 @@
 /**
  * @module components/ColorFacet
  */
-import React from 'react';
-import { compose, setDisplayName, withStateHandlers, withProps } from 'recompose';
+import {
+  compose,
+  setDisplayName,
+  withStateHandlers,
+  withProps,
+} from 'recompose';
 import withTheme from 'helpers/withTheme';
 
 import view from 'components/ColorFacet/view';
@@ -14,6 +18,6 @@ export default compose(
   withTheme(styles),
 
   withProps(({ facet }) => ({
-    items: facet.get('values')
+    items: facet.get('values'),
   }))
 )(view);

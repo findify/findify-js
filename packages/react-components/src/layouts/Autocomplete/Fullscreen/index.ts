@@ -2,9 +2,8 @@
  * @module layouts/Autocomplete/Fullscreen
  */
 
-import React from 'react'
-import { compose, setDisplayName } from 'recompose'
-import withTheme from 'helpers/withTheme'
+import { compose, setDisplayName } from 'recompose';
+import withTheme from 'helpers/withTheme';
 import view from 'layouts/Autocomplete/Fullscreen/view';
 import styles from 'layouts/Autocomplete/Fullscreen/styles.css';
 import withAutocompleteLogic from 'layouts/Autocomplete/withAutocompleteLogic';
@@ -15,4 +14,4 @@ export default compose(
   withTheme(styles),
   connectSuggestions,
   withAutocompleteLogic
-)(view)
+)(view);

@@ -2,5 +2,8 @@
   "extends": "../../tsconfig.json",
   "include": ["src/**/*"],
   "exclude": ["node_modules", "src/**/__tests__/*"],
-  "types" : ["node", "lodash", "webpack"]
+  "types" : ["node", "lodash", "webpack"],
+  "files": [
+    "src/global.d.ts"
+  ]
 }

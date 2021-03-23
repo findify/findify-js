@@ -6,11 +6,27 @@
   margin-bottom: 15px;
 }
 
+.sorry-container{
+
+}
+
 .sorry {
   margin-right: 8px;
 }
 
-.suggestionsRow {
+.suggestions-container {
   margin-top: 28px;
   margin-bottom: 28px;
+}
+
+.possible-suggestions{
+  
+}
+
+.recommendation{
+
+}
+
+.recommendation-container{
+  
 }

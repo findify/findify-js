@@ -1,27 +1,18 @@
 import { createChangeEmitter } from '@findify/change-emitter';
 import storage from './modules/storage';
 import { request as api } from './modules/request';
-import { validateSendEventParams, validateInitParams } from './validations';
 import { isFunction, shallowEqual } from './utils/helpers';
 import settings from './settings';
 
 export * from './types';
 
-import {
-  Config,
-  Client,
-  User,
-  EventName,
-  PublicEventRequest,
-  IdsData,
-  FiltersData,
-} from './types';
+import { Config, Client, User, EventName } from './types';
 
 const emitter = createChangeEmitter();
 
 let state: any = {
   events: {},
-  filters: {}
+  filters: {},
 };
 
 const getUser = () => ({
@@ -43,18 +34,20 @@ const sendEventCreator = ({ events, key }: Config) => (
   endpoint?: string
 ) => {
   const { force, ...request } = _request;
-  if (!force && typeof events[event] !== 'undefined' && events[event] === false) return;
+  if (!force && typeof events[event] !== 'undefined' && events[event] === false)
+    return;
   if (useCookie) return storage.memoize(event, request);
 
-  const properties = event === EventName.viewPage
-    ? {
-        ...request,
-        url: window.location.href,
-        ref: window.document.referrer,
-        width: window.screen.width,
-        height: window.screen.height,
-      }
-    : request;
+  const properties =
+    event === EventName.viewPage
+      ? {
+          ...request,
+          url: window.location.href,
+          ref: window.document.referrer,
+          width: window.screen.width,
+          height: window.screen.height,
+        }
+      : request;
 
   emitter.emit(event, properties);
 
@@ -66,12 +59,14 @@ const sendEventCreator = ({ events, key }: Config) => (
  * @param sendEvent
  * @param config
  */
-const createInvalidator = (sendEvent, { platform, events }: Config) => eventsToFire => {
+const createInvalidator = (sendEvent, { platform, events }: Config) => (
+  eventsToFire
+) => {
   if (!Object.keys(eventsToFire).length) return;
 
   state.events = {
     ...state.events,
-    ...eventsToFire
+    ...eventsToFire,
   };
 
   return Object.keys(eventsToFire).forEach((key: string) => {
@@ -83,7 +78,7 @@ const createInvalidator = (sendEvent, { platform, events }: Config) => eventsToF
       storage.cart = state.events[key];
     }
 
-    if (key === EventName.purchase && platform.bigcommerce) {
+    if (key === EventName.purchase && platform === 'bigcommerce') {
       endpoint = settings.bigcommerceTrackingUrl;
     }
 
@@ -99,7 +94,7 @@ const createInvalidator = (sendEvent, { platform, events }: Config) => eventsToF
 export default (props: Config | (() => void)): Client => {
   if (isFunction(props)) return emitter.listen(props);
 
-  const config = ({ events: {}, platform: {}, ...props } as Config);
+  const config = { events: {}, platform: {}, ...props } as Config;
   const sendEvent = sendEventCreator(config);
   const invalidate = createInvalidator(sendEvent, config);
   invalidate(storage.memorized);
@@ -107,8 +102,14 @@ export default (props: Config | (() => void)): Client => {
     sendEvent,
     invalidate,
     listen: emitter.listen,
-    get user(): User { return getUser(); },
-    get state(): any { return state; },
-    set state(s) { state = s; }
+    get user(): User {
+      return getUser();
+    },
+    get state(): any {
+      return state;
+    },
+    set state(s) {
+      state = s;
+    },
   };
 };

@@ -2,7 +2,9 @@
  * @module components/RangeFacet
  */
 
-import React, { useCallback, useMemo, useRef } from 'react';
+import { useCallback, useMemo, useRef } from 'react';
+
+import * as React from 'react';
 import cx from 'classnames';
 import NumberInput from 'react-numeric-input';
 
@@ -39,8 +41,8 @@ export interface IRangeFacetProps extends ThemedSFCProps {
   /** Invoked when minimum range is changed */
   onChangeMin: (evt?: React.ChangeEvent<any>) => any;
   /** Invoked when any key in any input is pressed, used to react to Enter */
-  onKeypressMin: (evt: any) => any
-  onKeypressMax: (evt: any) => any
+  onKeypressMin: (evt: any) => any;
+  onKeypressMax: (evt: any) => any;
   /** Invoked when Go button is pressed */
   onPressButton: () => any;
 
@@ -55,11 +57,11 @@ const PriceInput = ({
   max,
   onBlur,
   onKeyPress,
-  precision
+  precision,
 }) => {
   const ref = useRef(null);
   const handleWrapperClick = useCallback(() => {
-    if (ref.current) ref.current.refsInput.focus()
+    if (ref.current) ref.current.refsInput.focus();
   }, [ref]);
 
   return (
@@ -78,8 +80,8 @@ const PriceInput = ({
       />
       <div className={theme.border} />
     </div>
-  )
-}
+  );
+};
 
 export default ({
   theme,
@@ -97,36 +99,48 @@ export default ({
   onKeypressMax,
   onPressButton,
 
-  hidden
+  hidden,
 }: IRangeFacetProps) => {
-  const [selectedItems, notSelectedItems] = useMemo(() => [
-    config.get('pullSelected')
-      ? items.filter(i => i.get('selected'))
-      : items,
-    config.get('pullSelected')
-      ? items.filter(i => !i.get('selected'))
-      : items
-  ], [items]);
+  const [selectedItems, notSelectedItems] = useMemo(
+    () => [
+      config.get('pullSelected')
+        ? items.filter((i) => i.get('selected'))
+        : items,
+      config.get('pullSelected')
+        ? items.filter((i) => !i.get('selected'))
+        : items,
+    ],
+    [items]
+  );
 
   return (
-    <div className={theme.root} id={`facet-${facet.get('name')}`} role="region" hidden={hidden}>
-
+    <div
+      className={theme.root}
+      id={`facet-${facet.get('name')}`}
+      role="region"
+      hidden={hidden}
+    >
       <MapArray
         display-if={config.get('pullSelected')}
         array={selectedItems}
         factory={Checkbox}
         content={content}
         config={config}
-        theme={theme} />
+        theme={theme}
+      />
 
       <MapArray
         array={notSelectedItems}
         factory={Checkbox}
         content={content}
         config={config}
-        theme={theme} />
+        theme={theme}
+      />
 
-      <Grid columns='3|fit|3|auto' className={cx(theme.range, theme.inputBlock)}>
+      <Grid
+        columns="3|fit|3|auto"
+        className={cx(theme.range, theme.inputBlock)}
+      >
         <PriceInput
           theme={theme}
           currency={currencySymbol}
@@ -155,5 +169,5 @@ export default ({
         </Button>
       </Grid>
     </div>
-  )
-}
+  );
+};

@@ -2,10 +2,9 @@
  * @module layouts/ContentSearch
  */
 
-import React from 'react';
 import LazyResults from 'components/search/LazyResults';
 import { IProduct, MJSConfiguration, MJSValue, ThemedSFCProps } from 'types';
-import ContentCard  from 'components/Cards/Content';
+import ContentCard from 'components/Cards/Content';
 
 /** This is a list of props ContentSearchLayout accepts */
 export interface IContentSearchProps extends ThemedSFCProps {
@@ -19,11 +18,6 @@ export interface IContentSearchProps extends ThemedSFCProps {
   filtersOnRight?: boolean;
 }
 
-
-export default ({
-  config,
-  theme,
-}: IContentSearchProps) => (
+export default ({ config, theme }: IContentSearchProps) => (
   <LazyResults card={ContentCard} />
-)
-
+);

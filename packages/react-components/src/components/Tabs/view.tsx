@@ -2,7 +2,7 @@
  * @module components/Tabs
  */
 
-import React from 'react'
+import * as React from 'react';
 import { withHandlers, withPropsOnChange, compose } from 'recompose';
 import cx from 'classnames';
 import Dropdown from 'components/Dropdown';
@@ -15,7 +15,7 @@ export interface ITabsProps extends ThemedSFCProps {
   /** Flag to render Tabs in mobile mode */
   isMobile?: boolean;
   /** Tab click event handler */
-  onTabClick: (evt: Event) => any
+  onTabClick: (evt: Event) => any;
   /** Current tab body */
   body: React.ReactChildren;
 }
@@ -25,34 +25,40 @@ const Item = withHandlers({
     if (disabled) return;
     if (e) e.preventDefault();
     return onClick(index);
-  }
-})(({ onClick, label, theme, active, disabled }) =>
+  },
+})(({ onClick, label, theme, active, disabled }) => (
   <li
-    className={cx(theme.tab, active && theme.active, disabled && theme.disabled)}
+    className={cx(
+      theme.tab,
+      active && theme.active,
+      disabled && theme.disabled
+    )}
     onClick={onClick}
   >
     {label}
   </li>
-);
+));
 
 const MobileDropdown = compose(
   withHandlers({
-    onChange: ({ onChange }) => item => onChange(item.get('index'))
+    onChange: ({ onChange }) => (item) => onChange(item.get('index')),
   }),
   withPropsOnChange(['children'], ({ children, selectedIndex }) => ({
-    items: fromJS(React.Children.toArray(children).map((i, index) => ({
-      index,
-      label: i.props.label,
-    })))
+    items: fromJS(
+      React.Children.toArray(children).map((i, index) => ({
+        index,
+        label: i.props.label,
+      }))
+    ),
   }))
-)(({ items, selectedIndex, onChange, className }: any) =>
+)(({ items, selectedIndex, onChange, className }: any) => (
   <Dropdown
     className={className}
     selectedItem={items.get(selectedIndex)}
     onChange={onChange}
     items={items}
   />
-)
+));
 
 const TabsView = ({
   theme,
@@ -60,31 +66,30 @@ const TabsView = ({
   onTabClick,
   body,
   selectedIndex,
-  isMobile = false
-}: ITabsProps) =>
+  isMobile = false,
+}: ITabsProps) => (
   <React.Fragment>
     <ul className={theme.list} display-if={!isMobile}>
-      {
-        React.Children.map(children, (child, idx) =>
-          <Item
-            {...child.props}
-            index={idx}
-            key={idx}
-            active={idx === selectedIndex}
-            theme={theme}
-            onClick={onTabClick} />
-        )
-      }
+      {React.Children.map(children, (child, idx) => (
+        <Item
+          {...child.props}
+          index={idx}
+          key={idx}
+          active={idx === selectedIndex}
+          theme={theme}
+          onClick={onTabClick}
+        />
+      ))}
     </ul>
     <MobileDropdown
       display-if={isMobile}
       children={children}
       selectedIndex={selectedIndex}
       className={theme.dropdown}
-      onChange={onTabClick} />
-    <div className={theme.body}>
-      { body }
-    </div>
+      onChange={onTabClick}
+    />
+    <div className={theme.body}>{body}</div>
   </React.Fragment>
+);
 
-export default TabsView
+export default TabsView;
