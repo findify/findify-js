@@ -19,15 +19,16 @@
   "dependencies": {
     "@findify/agent": "^1.5.7",
     "@findify/analytics": "^3.5.4",
-    "immutable": "^4.0.0-rc.12"
+    "immutable": "^4.0.0-rc.12",
+    "memoize-one": "^5.1.1"
   },
   "devDependencies": {
-    "@findify/store-configuration": "*",
     "@babel/core": "^7.12.16",
     "@babel/plugin-proposal-class-properties": "^7.12.13",
     "@babel/plugin-proposal-object-rest-spread": "^7.12.13",
     "@babel/preset-env": "^7.12.16",
     "@babel/preset-typescript": "^7.12.16",
+    "@findify/store-configuration": "*",
     "babel-loader": "^8.2.2",
     "del-cli": "^3.0.1",
     "dotenv": "^8.2.0",

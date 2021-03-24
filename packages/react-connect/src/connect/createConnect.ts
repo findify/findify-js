@@ -3,8 +3,8 @@ import {
   useMemo,
   useState,
   useEffect,
-  useCallback,
   createFactory,
+  useRef,
 } from 'react';
 import { Map, is } from 'immutable';
 import mapValues from '../utils/mapValues';
@@ -12,6 +12,7 @@ import { contexts } from '../provider/createProvider';
 import { Agent } from '@findify/agent/types/core/Agent';
 import { Client as Analytics } from '@findify/analytics/types/types';
 import { Immutable, Config, BaseFeature } from '@findify/store-configuration';
+import memoize from 'memoize-one';
 
 type ConfigType<T> = T extends Immutable.FeatureConfig
   ? T
@@ -58,58 +59,80 @@ const getContext = <T = undefined>(key): ContextState<T> => {
   );
 };
 
-const useImmutableState = (initialValue) => {
-  const [state, setState] = useState(initialValue);
-  const updateState = (next) =>
-    Object.keys(state).find((k) => !is(state[k], next[k])) && setState(next);
-  return useMemo(() => [state, updateState], [state]);
-};
+/**
+ * Memoize props
+ */
+const getStateCreator = (agent, analytics, config, field, mapProps) =>
+  memoize(
+    (changes, meta) => {
+      const mapped =
+        mapProps && mapProps(changes, meta, agent.set, analytics, config);
+      return { meta, ...(mapped || { [field]: changes }) };
+    },
+    (a, b) => {
+      return is(a[0], b[0]) && is(a[1], b[1]);
+    }
+  );
+
+/**
+ * Cache content mappers to avoid recalculation in every single connector
+ */
+const cache = (() => {
+  let _cache: any = [];
+  return (agent, analytics, config, field, mapProps) => {
+    const cached = _cache.find((i) => i[0] === mapProps && i[1] === agent);
+    if (cached) return cached[2];
+
+    const entity = [
+      mapProps,
+      agent,
+      getStateCreator(agent, analytics, config, field, mapProps),
+    ];
+
+    _cache = [..._cache, entity];
+    return entity[2];
+  };
+})();
 
 const createHook = <H = undefined>({
   field,
   handlers,
   mapProps,
-}: CreatorProps) => <T = undefined>({
-  key = 'default',
-  force = false,
-}: HookProps = {}): HookReturns<T> & H => {
-  const { agent, analytics, config } = getContext(key);
+}: CreatorProps) => {
+  return <T = undefined>({
+    key = 'default',
+    force = false,
+  }: HookProps = {}): HookReturns<T> & H => {
+    const { agent, analytics, config } = getContext(key);
+    const getState = useRef(cache(agent, analytics, config, field, mapProps));
 
-  const getState = useCallback(
-    (
-      changes = field !== 'query'
-        ? agent.response.getIn(field.split(':'))
-        : agent.state,
-      meta = agent.response.get('meta') || Map()
-    ) => {
-      const mapped =
-        mapProps && mapProps(changes, meta, agent.set, analytics, config);
-      return { meta, ...(mapped || { [field]: changes }) };
-    },
-    []
-  );
+    const getStateProps = () => [
+      field === 'query' ? agent.state : agent.response.getIn(field.split(':')),
+      agent.response.get('meta') || Map(),
+    ];
 
-  const [state, setState] = useImmutableState(getState());
+    const [state, setState] = useState(getState.current(...getStateProps()));
 
-  const _handlers = useMemo(
-    () =>
-      mapValues(handlers, (createHandler) =>
-        createHandler({ analytics, update: agent.set, ...state })
-      ),
-    [state]
-  );
+    const _handlers = useMemo(
+      () =>
+        mapValues(handlers, (createHandler) =>
+          createHandler({ analytics, update: agent.set, ...state })
+        ),
+      [state]
+    );
 
-  useEffect(() => {
-    const _updater = (...args) => setState(getState(...args));
-    agent.on(`change:${field}`, _updater);
-    Promise.resolve().then(() => _updater());
-    return () => agent.off(_updater) as any;
-  }, []);
+    useEffect(() => {
+      const _updater = (...args) => setState(getState.current(...args));
+      agent.on(`change:${field}`, _updater);
+      Promise.resolve().then(() => _updater(...getStateProps()));
+      return () => agent.off(_updater) as any;
+    }, []);
 
-  return useMemo(
-    () => ({ ...state, ..._handlers, update: agent.set, analytics, config }),
-    [state]
-  );
+    return useMemo(
+      () => ({ ...state, ..._handlers, update: agent.set, analytics, config }),
+      [state]
+    );
+  };
 };
 
 export const useFeatureContext = <T = undefined>({

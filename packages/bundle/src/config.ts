@@ -180,7 +180,7 @@ const config: Config = {
 
       // Should scroll to value after new data was received
       scrollTop: {
-        selector: '.site-header',
+        selector: '',
         enabled: false,
         offset: 0,
       },
@@ -249,7 +249,7 @@ const config: Config = {
 
       // Facets setup
       facets: {
-        position: 'top',
+        position: 'left',
         hidable: true,
         accordion: true,
         sticky: true,

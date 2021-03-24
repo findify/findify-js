@@ -14,7 +14,7 @@ import {
   hideLoader,
 } from '../../helpers/fallbackNode';
 import { Events } from '../../core/events';
-import { scrollTo } from '../../helpers/scrollTo';
+import { maybeScrollTop, scrollTo } from '../../helpers/scrollTo';
 import lazy from '../../helpers/renderLazyComponent';
 import { Widget } from '../../core/widgets';
 import { Immutable } from '@findify/store-configuration';
@@ -98,15 +98,7 @@ export default (render, widget: Widget<Immutable.SearchConfig>) => {
     if (!items.isEmpty()) {
       hideFallback(node);
       hideLoader(node);
-      if (
-        config.getIn(['pagination', 'type']) === 'static' &&
-        config.getIn(['scrollTop', 'enabled'])
-      ) {
-        scrollTo(
-          config.getIn(['scrollTop', 'selector']),
-          config.getIn(['scrollTop', 'offset'])
-        );
-      }
+      maybeScrollTop(config);
       return render('initial');
     }
     hideLoader(node);
@@ -115,6 +107,7 @@ export default (render, widget: Widget<Immutable.SearchConfig>) => {
 
   /** Unsubscribe from events on instance destroy  */
   const unsubscribe = __root.listen((event, prop) => {
+    if (event === Events.scrollTop) return maybeScrollTop(config, true);
     if (event !== Events.detach || prop !== widget) return;
     stopListenLocation();
     unsubscribe();

@@ -1,5 +1,5 @@
 import { fromJS } from 'immutable';
-import ProductCardView from './view';
+import ProductCardView from './index';
 import theme from './styles.css';
 import { shallow } from 'enzyme';
 import { get as _get } from 'lodash';

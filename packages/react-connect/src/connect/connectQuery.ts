@@ -6,6 +6,7 @@ import createConnect from './createConnect';
  */
 const { hook, connect } = createConnect({
   field: 'query',
+  mapProps: (_, meta) => ({ query: meta }),
 });
 
 export { hook, connect };

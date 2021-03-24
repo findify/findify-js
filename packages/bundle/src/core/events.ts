@@ -62,4 +62,6 @@ export enum Events {
    * Calls when collection was not set up
    */
   collectionNotFound = 'collectionNotFound',
+
+  scrollTop = 'scrollTop',
 }

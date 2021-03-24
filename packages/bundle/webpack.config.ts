@@ -115,6 +115,10 @@ module.exports = (env: WebpackEnvArgs, { mode }) => {
         'babel-runtime/core-js/promise': 'core-js/features/promise',
         'babel-runtime/core-js/object': 'core-js/features/object',
         'babel-runtime': '@babel/runtime',
+        'hoist-non-react-statics': path.resolve(
+          __dirname,
+          '../../node_modules/hoist-non-react-statics'
+        ),
       },
     },
     module: {

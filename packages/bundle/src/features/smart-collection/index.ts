@@ -68,6 +68,7 @@ export default (render, widget: Widget<Immutable.SearchConfig>) => {
 
   /** Unsubscribe from events on instance destroy  */
   const unsubscribe = __root.listen((event, prop) => {
+    if (event === Events.scrollTop) return maybeScrollTop(config, true);
     if (event !== Events.detach || prop !== widget) return;
     stopListenLocation();
     unsubscribe();

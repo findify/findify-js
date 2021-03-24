@@ -16,6 +16,7 @@ import { List } from 'immutable';
 import chunks from 'helpers/chunks';
 import content from 'components/CheckboxFacet/content';
 import useTranslations from 'helpers/useTranslations';
+import { item } from 'components/common/Checkbox/styles.css';
 
 /** Props that CheckboxFacet accepts */
 export interface ICheckboxFacetProps extends ThemedSFCProps {
@@ -104,6 +105,7 @@ const CheckboxFacetView = ({
           factory={Checkbox}
           limit={config.get('maxItemsCount', 6)}
           content={content}
+          keyAccessor={(i) => i.get('value')}
           array={
             config.get('pullSelected')
               ? items.filter((i) => !i.get('selected'))

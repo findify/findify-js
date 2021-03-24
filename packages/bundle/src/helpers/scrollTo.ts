@@ -5,29 +5,31 @@ import { debounce } from './debounce';
 const nodes = new Map();
 
 const registerNode = (string) => {
-  const node = document.querySelector(
-    string
-      .split(' ')
-      .map((i) => '.' + i)
-      .join('')
-  );
+  const node = document.querySelector(string);
   nodes.set(string, node);
   return node;
 };
 
-export const scrollTo: any = debounce((selector, offset = 0) => {
+export const scrollTo: any = debounce((selectorOrNode, offset = 0) => {
   if (!document) return;
-  const node = nodes.get(selector) || registerNode(selector);
+  const node =
+    selectorOrNode instanceof HTMLElement
+      ? selectorOrNode
+      : nodes.get(selectorOrNode) || registerNode(selectorOrNode);
   if (!node) return;
   const { top } = node.getBoundingClientRect();
   if (top > 0) return;
   return jump(node, { offset });
 }, 200);
 
-export const maybeScrollTop = (config: Immutable.SearchConfig): void =>
-  config.getIn(['scrollTop', 'enabled']) &&
-  config.getIn(['pagination', 'type']) !== 'lazy' &&
+export const maybeScrollTop = (
+  config: Immutable.SearchConfig,
+  force = false
+): void =>
+  (force ||
+    (config.getIn(['scrollTop', 'enabled']) &&
+      config.getIn(['pagination', 'type']) !== 'lazy')) &&
   scrollTo(
-    config.getIn(['scrollTop', 'selector']),
+    config.getIn(['scrollTop', 'selector']) || config.get('node'),
     config.getIn(['scrollTop', 'offset'])
   );

@@ -169,9 +169,9 @@ export interface IProductProps {
   };
   /** @prop *reviews*  */
   reviews: {
-    count?: number;
-    total_reviews?: number;
-    average_score?: number;
+    count: number;
+    total_reviews: number;
+    average_score: number;
   };
 }
 

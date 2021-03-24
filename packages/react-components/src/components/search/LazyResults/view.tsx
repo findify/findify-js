@@ -11,20 +11,22 @@ import { ArrayLike } from 'components/common/MapArray';
 import useTranslations from 'helpers/useTranslations';
 
 import styles from 'components/search/LazyResults/styles.css';
+import useLazy from 'helpers/useLazy';
 
-export default ({
-  theme = styles,
-  card = ProductCard,
-  displayPrevButton,
-  onLoadPrev,
-  displayNextButton,
-  onLoadNext,
-  items,
-}) => {
+export default ({ theme = styles, card = ProductCard }) => {
+  const {
+    container,
+    onLoadNext,
+    onLoadPrev,
+    displayPrevButton,
+    displayNextButton,
+    items,
+  } = useLazy();
   const { config } = useConfig();
   const t = useTranslations();
   return (
     <div
+      ref={container}
       className={theme.root}
       role="main"
       aria-label={t('Search results')}

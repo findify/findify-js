@@ -1,7 +1,8 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { is, List, Map } from 'immutable';
+import { useCallback, useEffect, useMemo, useRef } from 'react';
+import { List, Map } from 'immutable';
 import { useItems } from '@findify/react-connect';
 import { Immutable } from '@findify/store-configuration';
+import { emit } from './emmiter';
 
 const hasRange = (ranges, offset) =>
   !!ranges.find((r) => r.get('from') === offset);
@@ -12,119 +13,121 @@ const createRange = (meta): Map<string, List<any>> =>
     to: meta.get('offset') + meta.get('limit'),
   });
 
-const addItems = ({ ranges, items }, nextItems, meta) => {
+const updateItems = ({ ranges, items }, nextItems, meta) => {
   const append = ranges.find((r) => r.get('from') < meta.get('offset'));
   const newRange = createRange(meta);
   const _items = nextItems.filter((i) => !items.includes(i));
   return {
     ranges: append ? ranges.push(newRange) : ranges.insert(0, newRange),
     items: append ? items.concat(_items) : _items.concat(items),
+    meta: meta,
   };
 };
 
 const initialState = {
   items: List(),
   ranges: List(),
+  meta: Map<string, any>(),
 };
 
 export default (offset = 300) => {
   const { items, meta, update, config } = useItems<Immutable.SearchConfig>();
   const container = useRef(null);
-  const autoLoadCount = useRef(
-    config.getIn(['pagination', 'autoLoadTimes']) || 0
-  );
-
-  /**
-   * State of request
-   * If items has been updated from out of this component
-   * then state will be reset
-   */
   const pending = useRef(true);
-
-  const [state, setState] = useState(initialState);
-
-  const [displayPrevButton, displayNextButton] = useMemo(() => {
-    const firstRange: any = state.ranges.first();
-    const lastRange: any = state.ranges.last();
-    return [
-      firstRange && firstRange.get('from') > 0,
-      lastRange &&
-        lastRange.get('to') < meta.get('total') &&
-        !autoLoadCount.current,
-    ];
-  }, [state]);
+  const state = useRef(initialState);
+  const autoLoad = useRef(config.getIn(['pagination', 'autoLoadTimes']) || 0);
 
   const onLoadNext = useCallback(() => {
     pending.current = true;
-    return update('offset', (state.ranges.last() as any).get('to'));
-  }, [state]);
+    return update('offset', (state.current.ranges.last() as any).get('to'));
+  }, [meta]);
 
   const onLoadPrev = useCallback(() => {
     pending.current = true;
     return update(
       'offset',
-      (state.ranges.first() as any).get('from') - meta.get('limit')
+      (state.current.ranges.first() as any).get('from') - meta.get('limit')
     );
-  }, [state]);
+  }, [meta]);
 
-  const trackPosition = () =>
+  const trackPosition = () => {
+    if (
+      pending.current ||
+      !autoLoad.current ||
+      !state.current.items.size ||
+      state.current.ranges.last().get('to') > state.current.meta.get('total')
+    )
+      return;
+
     Promise.resolve().then(() => {
-      if (pending.current || !autoLoadCount.current) return;
-
       const { bottom } = container.current.getBoundingClientRect();
       const height =
         window.innerHeight || document.documentElement.clientHeight;
+
       const inView = bottom - height <= offset;
 
       if (!inView) return;
 
-      console.log(meta);
-      setState((s) => {
-        autoLoadCount.current -= 1;
-        pending.current = true;
+      autoLoad.current -= 1;
+      pending.current = true;
 
-        if (!s.ranges.last()) return s;
-        console.log(s.ranges.last().get('to'), meta);
-        update('offset', (s.ranges.last() as any).get('to'));
-        return s;
-      });
+      update('offset', (state.current.ranges.last() as any).get('to'));
     });
+  };
 
   useEffect(() => {
     if (container.current === null) return;
     window.addEventListener('scroll', trackPosition, true);
     pending.current = false;
     return () => window.removeEventListener('scroll', trackPosition);
-  });
+  }, [container]);
 
-  useEffect(() => {
-    if (!items.size) return;
+  /**
+   * Handle items change
+   */
+  const getUpdate = () => {
     /**
      * Reset refs if update has come from outside of this component
      */
     if (!pending.current) {
-      autoLoadCount.current =
-        config.getIn(['pagination', 'autoLoadTimes']) || 0;
-      return setState(addItems(initialState, items, meta));
+      const update = updateItems(initialState, items, meta);
+      autoLoad.current = config.getIn(['pagination', 'autoLoadTimes']) || 0;
+      pending.current = true;
+
+      /** Scroll to top on query change */
+      emit('scrollTop');
+      setTimeout(() => (pending.current = false), 1000);
+
+      state.current = update;
+      return update;
     }
     /**
      * Check the new ranges and if there is difference update state
      */
-    if (!hasRange(state.ranges, meta.get('offset'))) {
+    if (!hasRange(state.current.ranges, meta.get('offset'))) {
+      const update = updateItems(state.current, items, meta);
       pending.current = false;
-      setState((s) => addItems(s, items, meta));
+      state.current = update;
+      return update;
     }
-  }, [items]);
 
-  return useMemo(
-    () => ({
+    return state.current;
+  };
+
+  return useMemo(() => {
+    const update = getUpdate();
+    const firstRange: any = update.ranges.first();
+    const lastRange: any = update.ranges.last();
+    return {
       container,
       onLoadNext,
       onLoadPrev,
-      displayPrevButton,
-      displayNextButton,
-      items: state.items,
-    }),
-    [state.items]
-  );
+      items: update.items,
+      displayPrevButton: firstRange && firstRange.get('from') > 0,
+      displayNextButton:
+        lastRange &&
+        lastRange.get('to') < meta.get('total') &&
+        !autoLoad.current,
+    };
+  }, [items]);
 };
