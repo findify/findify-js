@@ -1,11 +1,12 @@
+import { Immutable } from '@findify/store-configuration';
 import createConnect from './createConnect';
 
 type Sort = {
   onChangeSort: (field?: string, order?: string) => void;
-  selected: {
+  selected: Immutable.Factory<{
     field: string;
     order: string;
-  };
+  }>;
 };
 /**
  * Used to extract sorting information from Search API response and provide the handler,

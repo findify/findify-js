@@ -9,7 +9,9 @@ import Icon from 'components/Icon';
 import Button from 'components/Button';
 import Text from 'components/Text';
 import { MJSValue, ThemedSFCProps, ClassnamedProps } from 'types';
-import { List, Map } from 'immutable';
+import { fromJS, isImmutable, List, Map } from 'immutable';
+import styles from 'components/Dropdown/styles.css';
+import { useMemo, useRef } from 'react';
 
 /** Props that Dropdown Item accepts */
 export interface IDropdownItemProps extends ThemedSFCProps {
@@ -21,23 +23,26 @@ export interface IDropdownItemProps extends ThemedSFCProps {
   highlighted: number;
   /** getItemProps is a method passed down to receive additional props for item from Downshift */
   getItemProps: (item: { item: Map<string, MJSValue> }) => { [x: string]: any };
+
+  parentId: string;
 }
 
 const Item = ({
   item,
   index,
+  parentId,
   getItemProps,
   highlighted,
-  theme,
+  theme = styles,
 }: IDropdownItemProps) => (
-  <Button
+  <li
     className={cx(theme.option, highlighted === index && theme.highlighted)}
     {...getItemProps({ item })}
   >
     <Text primary lowercase>
       {item.get('label')}
     </Text>
-  </Button>
+  </li>
 );
 
 /** Props that Dropdown accepts */
@@ -48,46 +53,75 @@ export interface IDropdownProps extends ClassnamedProps, ThemedSFCProps {
   items: List<Map<string, MJSValue>>;
   /** Currently active item */
   selectedItem: Map<string, MJSValue>;
+
+  itemToString?: any;
 }
 
-const DropdownView = ({
+export default ({
   onChange,
-  items,
   selectedItem,
-  theme,
   className,
-}: IDropdownProps) => (
-  <Downshift
-    onChange={onChange}
-    selectedItem={selectedItem || items.get(0)}
-    itemToString={(i) => i.get('label')}
-  >
-    {({
-      isOpen,
-      selectedItem,
-      getToggleButtonProps,
-      getItemProps,
-      highlightedIndex,
-    }) => (
-      <div className={cx(theme.root, className)}>
-        <Button {...getToggleButtonProps()} className={theme.select}>
-          <Text primary lowercase>
-            {selectedItem.get('label')}
-          </Text>
-          <Icon name="ArrowDown" className={theme.arrow} title="Expand list" />
-        </Button>
-        <div className={cx(theme.dropdown, { [theme.open]: isOpen })}>
-          <MapArray
-            theme={theme}
-            highlighted={highlightedIndex}
-            getItemProps={getItemProps}
-            array={items.filter((i) => !i.equals(selectedItem))}
-            factory={Item}
-          />
-        </div>
-      </div>
-    )}
-  </Downshift>
-);
+  items: _items,
+  theme = styles,
+  itemToString = (i) => i.get('label'),
+}: IDropdownProps) => {
+  const items = useMemo(() => (isImmutable(_items) ? _items : fromJS(_items)), [
+    _items,
+  ]);
+  const id = useRef(`dropdown-${items.hashCode()}`);
 
-export default DropdownView;
+  return (
+    <Downshift
+      onChange={onChange}
+      selectedItem={selectedItem || items.get(0)}
+      itemToString={itemToString}
+    >
+      {({
+        isOpen,
+        selectedItem,
+        getToggleButtonProps,
+        getRootProps,
+        getItemProps,
+        getMenuProps,
+        getLabelProps,
+        highlightedIndex,
+      }) => (
+        <div
+          {...getRootProps({}, { suppressRefError: true })}
+          role="listbox"
+          className={cx(theme.root, className)}
+        >
+          <label {...getLabelProps()} className={theme.label}>
+            {selectedItem.get('label')}
+          </label>
+          <Button {...getToggleButtonProps()} className={theme.select}>
+            <Text primary lowercase>
+              {selectedItem.get('label')}
+            </Text>
+            <Icon
+              name="ArrowDown"
+              className={theme.arrow}
+              title="Expand list"
+              aria-hidden="true"
+              focusable="false"
+              role="presentation"
+            />
+          </Button>
+          <ul
+            {...getMenuProps()}
+            className={cx(theme.dropdown, { [theme.open]: isOpen })}
+          >
+            <MapArray
+              theme={theme}
+              parentId={id}
+              highlighted={highlightedIndex}
+              getItemProps={getItemProps}
+              array={items.filter((i) => !i.equals(selectedItem))}
+              factory={Item}
+            />
+          </ul>
+        </div>
+      )}
+    </Downshift>
+  );
+};

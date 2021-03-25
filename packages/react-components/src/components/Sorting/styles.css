@@ -1,33 +1,22 @@
 .root{
-  display: inline-table;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
 }
 
 .icon{
-  display: table-cell;
   min-width: 17px;
   transform: scaleY(-1);
 }
 
 .root .title{
   white-space: nowrap;
-  display: table-cell;
   padding: 0 10px;
 }
 
 .dropdown{
-  display: table-cell;
   width: 240px;
   position: relative;
   min-width: 240px;
 }
-
-@supports(display: flex){
-  .root{
-    display: inline-flex;
-    align-items: center;
-  }
-  .icon, .title, .dropdown{
-    display: block
-  }
-}
-
