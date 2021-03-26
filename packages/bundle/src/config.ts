@@ -249,10 +249,10 @@ const config: Config = {
 
       // Facets setup
       facets: {
-        position: 'left',
+        position: 'top',
         hidable: true,
         accordion: true,
-        sticky: true,
+        sticky: false,
 
         filters: {
           'custom_fields.material2': {

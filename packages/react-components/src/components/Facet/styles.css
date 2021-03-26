@@ -7,8 +7,9 @@ $horizontal-background: white;
     margin-bottom: 0;
   }
   &.horizontal{
+    border-top: none;
     background: $horizontal-background;
-    flex: 1 1 auto;
+    flex: 0 1 auto;
     position: relative;
   }
 }
