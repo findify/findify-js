@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from 'react';
-import { useConfig } from '@findify/react-connect';
 
 const cache = {};
 

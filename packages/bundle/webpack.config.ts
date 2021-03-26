@@ -119,6 +119,10 @@ module.exports = (env: WebpackEnvArgs, { mode }) => {
           __dirname,
           '../../node_modules/hoist-non-react-statics'
         ),
+        'regenerator-runtime': path.resolve(
+          __dirname,
+          '../../node_modules/regenerator-runtime'
+        ),
       },
     },
     module: {

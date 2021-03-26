@@ -1,14 +1,14 @@
-import * as path from 'path';
-import * as webpack from 'webpack';
-import * as defaultConfig from '../../config/webpack';
+const path = require('path');
+const webpack = require('webpack');
+const defaultConfig = require('../../config/webpack');
 
 interface WebpackEnvArgs {
   analyze?: boolean;
   generateStatsFile?: boolean;
 }
 
-export default (env: WebpackEnvArgs): webpack.Configuration => {
-  const config: webpack.Configuration = {
+module.exports = (env: WebpackEnvArgs) => {
+  const config = {
     entry: {
       'findify-sdk': path.resolve(__dirname, 'src/index'),
     },

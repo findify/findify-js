@@ -18,6 +18,9 @@ export type Config = {
   /** Store platform. Generic by default */
   platform: keyof typeof enums.Platform
 
+  /** Breakpoint after reaching that view will switch to desktop mode */
+  mobileBreakpoint: number
+
   /** Request method type */
   api: {
     method: Method
@@ -64,6 +67,7 @@ export type Config = {
     decimalDigits: number
   }
 
+  /** List of collection urls */
   collections: string[]
 
   /** Features setup. On feature level specific config should be merged with the root */

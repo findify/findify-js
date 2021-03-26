@@ -95,5 +95,8 @@
   "workspaces": [
     "packages/*",
     "config"
-  ]
+  ],
+  "dependencies": {
+    "regenerator-runtime": "^0.13.7"
+  }
 }

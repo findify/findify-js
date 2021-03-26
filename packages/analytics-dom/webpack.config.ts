@@ -1,15 +1,15 @@
-import * as path from 'path';
-import * as webpack from 'webpack';
-import * as TerserPlugin from 'terser-webpack-plugin';
-import * as defaultConfig from '../../config/webpack';
+const path = require('path');
+const webpack = require('webpack');
+const defaultConfig = require('../../config/webpack');
+const TerserPlugin = require('terser-webpack-plugin');
 
 interface WebpackEnvArgs {
   analyze?: boolean;
   generateStatsFile?: boolean;
 }
 
-export default (env: WebpackEnvArgs) => {
-  const config: webpack.Configuration = {
+module.exports = (env: WebpackEnvArgs) => {
+  const config = {
     context: path.resolve(process.cwd(), 'src'),
 
     entry: {

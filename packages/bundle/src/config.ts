@@ -223,7 +223,7 @@ const config: Config = {
 
       pagination: {
         step: 2,
-        type: 'lazy',
+        type: 'static',
         autoLoadTimes: 2,
       },
 
