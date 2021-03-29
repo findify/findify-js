@@ -249,7 +249,7 @@ const config: Config = {
 
       // Facets setup
       facets: {
-        position: 'top',
+        position: 'left',
         hidable: true,
         accordion: true,
         sticky: false,

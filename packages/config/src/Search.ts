@@ -8,7 +8,16 @@ export interface Search extends BaseFeature<'Search'> {
   */
   zeroResultsType?: Exclude<keyof typeof enums.RecommendationType, 'bought' | 'purchasedTogether'>
 
+  /**
+   * Collection Only
+   * Show fallback for smart collection if no results was returned or error happened
+   */
+  fallbackEnabled: boolean
 
+  /**
+   * Collection Only
+   * If `true` filters from page will be included as rules
+   */
   includeRules: boolean
 
   /**

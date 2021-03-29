@@ -45,19 +45,23 @@ export default (render, widget: Widget<Immutable.SearchConfig>) => {
       maybeScrollTop(config);
       render('initial');
     } else {
-      showFallback(node);
-      hideLoader(node);
-      __root.emit(Events.collectionNotFound, widget);
-      render();
+      if (config.get('fallbackEnabled')) {
+        showFallback(node);
+        hideLoader(node);
+        __root.emit(Events.collectionNotFound, widget);
+        render();
+      }
     }
   });
 
   agent.on('change:redirect', redirectToPage);
 
   agent.on('error', () => {
-    showFallback(node);
-    hideLoader(node);
-    render();
+    if (config.get('fallbackEnabled')) {
+      showFallback(node);
+      hideLoader(node);
+      render();
+    }
   });
 
   /** Listen to changes */

@@ -10,8 +10,10 @@ export default (widget) => {
     agent.defaults({
       offset: 0,
       slot: collectionPath(),
-      rules: config.get('includeRulesInCollection') ? __root.analytics.state.filters : void 0
+      rules: config.get('includeRules')
+        ? __root.analytics.state.filters
+        : void 0,
     });
     agent.applyState(state);
   }
-}
+};
