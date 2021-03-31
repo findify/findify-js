@@ -2,7 +2,7 @@
  * @module components/Button
  */
 
-import * as React from 'react';
+import { createElement } from 'react';
 import cx from 'classnames';
 import { ClassnamedProps, ThemedSFCProps } from 'types';
 import styles from 'components/Button/styles.css';
@@ -32,7 +32,7 @@ export default ({
   href,
   ...rest
 }: IButtonProps) =>
-  React.createElement(href ? 'a' : 'button', {
+  createElement(href ? 'a' : 'button', {
     ...rest,
     onClick,
     disabled,

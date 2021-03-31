@@ -4,19 +4,16 @@
 
 import { ChangeEvent } from 'react';
 import cx from 'classnames';
-
 import MapArray from 'components/common/MapArray';
 import Checkbox from 'components/common/Checkbox';
 import Button from 'components/Button';
 import Text from 'components/Text';
 import Icon from 'components/Icon';
-import Loadable from 'react-loadable';
 import { IFacetValue, ThemedSFCProps, MJSConfiguration, IFacet } from 'types';
 import { List } from 'immutable';
-import chunks from 'helpers/chunks';
 import content from 'components/CheckboxFacet/content';
 import useTranslations from 'helpers/useTranslations';
-import { item } from 'components/common/Checkbox/styles.css';
+import VirtualizedList from 'components/common/VirtualizedList';
 
 /** Props that CheckboxFacet accepts */
 export interface ICheckboxFacetProps extends ThemedSFCProps {
@@ -40,11 +37,6 @@ export interface ICheckboxFacetProps extends ThemedSFCProps {
 
   hidden: boolean;
 }
-
-const VirtualizedList = Loadable({
-  loader: chunks.components.virtualizedList,
-  loading: () => null,
-});
 
 const CheckboxFacetView = ({
   theme,

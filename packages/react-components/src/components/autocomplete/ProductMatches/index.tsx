@@ -2,16 +2,25 @@
  * @module components/autocomplete/ProductMatches
  */
 
-import {
-  compose,
-  setDisplayName,
-} from 'recompose';
-import view from 'components/autocomplete/ProductMatches/view';
 import styles from 'components/autocomplete/ProductMatches/styles.css';
-import withTheme from 'helpers/withTheme';
+import ProductCard from 'components/Cards/Product';
+import Grid from 'components/common/Grid';
+import MapArray from 'components/common/MapArray';
+import { useItems } from '@findify/react-connect';
+import { Immutable } from '@findify/store-configuration';
 
-
-export default compose(
-  setDisplayName('ProductMatches'),
-  withTheme(styles),
-)(view);
+export default ({ theme = styles }) => {
+  const { items, config } = useItems<Immutable.AutocompleteConfig>();
+  return (
+    <div className={theme.root} display-if={!!items.size}>
+      <Grid columns={config.getIn(['breakpoints', 'grid'], '12')}>
+        {MapArray({
+          array: items,
+          limit: config.getIn(['defaultRequestParams', 'item_limit']),
+          factory: ProductCard,
+          config: config.get('product'),
+        })}
+      </Grid>
+    </div>
+  );
+};

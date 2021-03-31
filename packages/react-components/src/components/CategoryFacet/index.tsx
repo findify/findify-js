@@ -13,6 +13,9 @@ import { List, Map } from 'immutable';
 import Icon from 'components/Icon';
 import useTranslations from 'helpers/useTranslations';
 
+import styles from 'components/CategoryFacet/styles.css';
+import { useMemo, useState } from 'react';
+
 /** CategoryFacet props */
 export interface ICategoryFacetProps extends ThemedSFCProps {
   /** Categories facet */
@@ -32,16 +35,19 @@ export interface ICategoryFacetProps extends ThemedSFCProps {
 }
 
 export default ({
-  theme,
-  items,
+  theme = styles,
   config,
   facet,
-  total,
-  isExpanded,
-  onToggle,
   hidden,
 }: ICategoryFacetProps) => {
   const t = useTranslations();
+  const [isExpanded, setExpanded] = useState(false);
+  const [items, total] = useMemo(() => {
+    const items = facet.get('values');
+    const total = items.reduce((acc, v) => acc + v.get('count'), 0);
+    return [items, total];
+  }, [facet]);
+
   return (
     <div
       className={theme.root}
@@ -72,7 +78,7 @@ export default ({
 
       <Button
         className={theme.expand}
-        onClick={onToggle}
+        onClick={() => setExpanded((exp) => !exp)}
         display-if={items.size > config.get('maxItemsCount', 6)}
       >
         <Text primary uppercase>

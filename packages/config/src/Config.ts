@@ -86,6 +86,11 @@ export type Config = {
     outOfStock: boolean
   }
 
+  /** Map colors from value to hex or url  */
+  colorMapping: {
+    [key: string]: string
+  }
+
   /** Translations */
   translations: {
     [key: string]: string

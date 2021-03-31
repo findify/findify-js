@@ -18,7 +18,7 @@ const getRange = ({ current, total, step }) => {
   return range(min < 1 ? 1 : min, max > total ? total + 1 : max);
 };
 
-export default memo<{ theme: any }>(({ theme = styles }) => {
+export default memo<{ theme?: any }>(({ theme = styles }) => {
   const {
     pages,
     current,

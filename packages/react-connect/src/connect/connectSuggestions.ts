@@ -5,6 +5,7 @@ type Suggestions = {
    * Returns suggestion specific props
    * @property index - index of suggestion
    */
+  suggestions: Map<string, any>;
   getSuggestionProps: (
     index: number,
     widgetKey?: string

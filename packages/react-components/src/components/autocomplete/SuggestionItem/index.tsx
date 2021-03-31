@@ -1,12 +1,11 @@
 /**
  * @module components/autocomplete/SuggestionItem
  */
-
-import * as React from 'react';
 import cx from 'classnames';
 import Icon from 'components/Icon';
 import { ISuggestion, ISuggestionProps, IQuery, ThemedSFCProps } from 'types';
 import escapeRegExp from 'lodash/escapeRegExp';
+import styles from 'components/autocomplete/SuggestionItem/styles.css';
 
 /**
  * Function used to return HTML markup for highlighting matching query in SearchSuggestion
@@ -14,7 +13,7 @@ import escapeRegExp from 'lodash/escapeRegExp';
  * @param highlighted query that is entered in the Autocomplete
  * @param theme theme used by SuggestionItem
  */
-function highlightSuggestion(value: string, highlighted: string, theme: Theme) {
+function highlightSuggestion(value: string, highlighted: string, theme) {
   const regexp = new RegExp(`(${escapeRegExp(highlighted)})`, 'i');
   return value.replace(
     regexp,
@@ -40,15 +39,14 @@ export interface ISuggestionItemProps extends ThemedSFCProps, ISuggestionProps {
   [x: string]: any;
 }
 
-const SuggestionItemView: React.SFC<ISuggestionItemProps> = ({
+export default ({
   item,
   query,
-  theme,
+  theme = styles,
   highlighted,
   onClick,
   icon,
   isTrendingSearches,
-  ...rest
 }: ISuggestionItemProps) => {
   const value = item && (item.get('value') as string);
   return (
@@ -73,11 +71,9 @@ const SuggestionItemView: React.SFC<ISuggestionItemProps> = ({
       />
       <span
         dangerouslySetInnerHTML={{
-          __html: highlightSuggestion(value!, query.get('q') as string, theme),
+          __html: highlightSuggestion(value, query.get('q') as string, theme),
         }}
       />
     </li>
   );
 };
-
-export default SuggestionItemView;

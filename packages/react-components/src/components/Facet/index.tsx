@@ -40,7 +40,7 @@ export interface IFacetProps extends ThemedSFCProps {
   collapsedItemsCount?: number;
 }
 
-const FacetView = ({
+export default ({
   theme = styles,
   item,
   config,
@@ -88,5 +88,3 @@ const FacetView = ({
     </div>
   );
 };
-
-export default FacetView;

@@ -3,6 +3,7 @@
  */
 import * as React from 'react';
 import { isImmutable } from 'immutable';
+import { Immutable } from '@findify/store-configuration';
 
 /** MapCallback is a type signature for array.map(), immutable.List().map() callback */
 export type MapCallback = (
@@ -27,13 +28,13 @@ export type ReactFactory = (props: object) => React.Component;
 /** List of props which MapArray component accepts */
 export type MapArrayProps = {
   /** Array-like object which is mapped over */
-  array: ArrayLike;
+  array: ArrayLike | Immutable.Factory<any>;
   /** Function used to extract React rendering key */
   keyAccessor?: KeyAccessor;
   /** React component factory */
   factory: React.FC;
   /** Maximum possible limit for iteration */
-  limit?: number;
+  limit?: number | false;
 
   mapProps?: (
     items: any

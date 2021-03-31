@@ -2,58 +2,37 @@
  * @module components/autocomplete/SearchSuggestions
  */
 
-import { useEffect, useState } from 'react';
-
-import * as React from 'react';
+import { useEffect } from 'react';
 import MapArray from 'components/common/MapArray';
 import SuggestionItem from 'components/autocomplete/SuggestionItem';
-import {
-  ThemedSFCProps,
-  WidgetAwareProps,
-  SuggestionsConnectedProps,
-  ISuggestion,
-  IQuery,
-} from 'types';
-import { List } from 'immutable';
 import { useAnnouncement } from 'components/common/Announcement';
+import styles from 'components/autocomplete/SearchSuggestions/styles.css';
+import { useQuery, useSuggestions } from '@findify/react-connect';
+import { Immutable } from '@findify/store-configuration';
+import useTranslations from 'helpers/useTranslations';
 
-/** Props that SearchSuggestionsView accept */
-export interface ISearchSuggestionsProps
-  extends ThemedSFCProps,
-    WidgetAwareProps,
-    SuggestionsConnectedProps {
-  /** Query currently entered in the autocomplete */
-  query: IQuery;
-  /** Any other props that come through here to SuggestionItem */
-  [x: string]: any;
-}
+export default ({ selectedSuggestion, theme = styles }) => {
+  const {
+    suggestions,
+    getSuggestionProps,
+    config,
+  } = useSuggestions<Immutable.AutocompleteConfig>();
+  const { query } = useQuery();
+  const t = useTranslations();
 
-/**
- * Actual view
- */
-const SearchSuggestionsView: React.SFC<ISearchSuggestionsProps> = ({
-  theme,
-  suggestions,
-  query,
-  selectedSuggestion,
-  widgetKey,
-  getSuggestionProps,
-  ...rest
-}: ISearchSuggestionsProps) => {
   /** ACCESSIBILITY */
   const [announcement, setAnnouncement] = useAnnouncement();
-
   useEffect(() => {
     if (selectedSuggestion === undefined) return;
-    rest.config
+    config
       .get('node')
       .setAttribute(
         'aria-activedescendant',
-        !!~selectedSuggestion
+        ~selectedSuggestion
           ? suggestions.get(selectedSuggestion).hashCode()
           : ''
       );
-    if (!!~selectedSuggestion) {
+    if (~selectedSuggestion) {
       setAnnouncement(suggestions.get(selectedSuggestion).get('value'));
     }
   }, [selectedSuggestion]);
@@ -79,21 +58,15 @@ const SearchSuggestionsView: React.SFC<ISearchSuggestionsProps> = ({
               index={index}
               highlighted={selectedSuggestion === index}
               query={query}
-              {...getSuggestionProps(index, widgetKey || '')}
-              {...rest}
+              {...getSuggestionProps(index, config.get('widgetKey', ''))}
             />
           )}
         />
       </ul>
       <span style={{ display: 'none' }} id="FindifyAutocompleteDescription">
-        {rest.config.getIn(
-          ['a11y', 'autocompleteNote'],
-          'Use up and down arrows to review and enter to select.'
-        )}
+        {t('Use up and down arrows to review and enter to select.')}
       </span>
       {announcement}
     </>
   );
 };
-
-export default SearchSuggestionsView;

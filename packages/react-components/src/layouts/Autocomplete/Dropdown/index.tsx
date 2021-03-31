@@ -13,9 +13,11 @@ import { usePosition } from 'layouts/Autocomplete/Dropdown/trackPosition';
 import { useAutocompleteLogic } from 'layouts/Autocomplete/withAutocompleteLogic';
 import Grid from 'components/common/Grid';
 import useTranslations from 'helpers/useTranslations';
+import styles from 'layouts/Autocomplete/Dropdown/styles.css';
+import { Immutable } from '@findify/store-configuration';
 
 export interface IAutocompletePanel extends ThemedSFCProps {
-  config: MJSConfiguration;
+  config: Immutable.AutocompleteConfig;
   isTrendingSearches?: boolean;
   [x: string]: any;
 }
@@ -23,7 +25,7 @@ export interface IAutocompletePanel extends ThemedSFCProps {
 /** Layout column mapping */
 const Suggestions = ({
   config,
-  theme,
+  theme = styles,
   isTrendingSearches,
   ...rest
 }: IAutocompletePanel) => {
@@ -49,7 +51,7 @@ const Suggestions = ({
 
 const Products = ({
   config,
-  theme,
+  theme = styles,
   isTrendingSearches,
   ...rest
 }: IAutocompletePanel) => {
@@ -103,11 +105,12 @@ export interface IAutocompleteDropdownProps {
   [x: string]: any;
 }
 
-const AutocompleteDropdownView: React.SFC<IAutocompleteDropdownProps> = ({
-  theme,
-  ...rest
-}: IAutocompleteDropdownProps) => {
-  const { suggestions, meta, config } = useSuggestions();
+export default ({ theme, ...rest }: IAutocompleteDropdownProps) => {
+  const {
+    suggestions,
+    meta,
+    config,
+  } = useSuggestions<Immutable.AutocompleteConfig>();
   const { selectedSuggestion, closeAutocomplete } = useAutocompleteLogic();
   const [position, register] = usePosition();
   const isTrendingSearches = !meta.get('q');
@@ -119,7 +122,7 @@ const AutocompleteDropdownView: React.SFC<IAutocompleteDropdownProps> = ({
       className={theme.wrapper}
     >
       <div
-        display-if={config.get('showOverlay')}
+        display-if={config.getIn(['dropdown', 'overlay'])}
         className={theme.overlay}
         onClick={closeAutocomplete}
       />
@@ -132,8 +135,8 @@ const AutocompleteDropdownView: React.SFC<IAutocompleteDropdownProps> = ({
       >
         <Tip
           className={theme.tip}
-          title={t('tipResults')}
-          zeroResultsTitle={t('View All Results')}
+          title={t('autocomplete.tipResults')}
+          zeroResultsTitle={t('autocomplete.viewAll')}
           widgetKey={config.get('widgetKey')}
         />
         <Grid className={theme.container} columns="auto|3">
@@ -156,5 +159,3 @@ const AutocompleteDropdownView: React.SFC<IAutocompleteDropdownProps> = ({
     </div>
   );
 };
-
-export default AutocompleteDropdownView;

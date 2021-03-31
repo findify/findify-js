@@ -3,20 +3,18 @@
  */
 
 import cx from 'classnames';
-import Image from 'components/common/Picture';
+import Image from 'components/common/Image';
 import Rating from 'components/Cards/Product/Rating';
 import Price from 'components/Cards/Product/Price';
 import Title from 'components/Cards/Product/Title';
 import Description from 'components/Cards/Product/Description';
 import Variants from 'components/Cards/Product/Variants';
 import styles from 'components/Cards/Product/styles.css';
-
 import {
   DiscountSticker,
   OutOfStockSticker,
 } from 'components/Cards/Product/Stickers';
 import { List } from 'immutable';
-
 import { IProduct, ThemedSFCProps } from 'types';
 import { Immutable, Product } from '@findify/store-configuration';
 import { memo } from 'react';
@@ -54,7 +52,7 @@ export default memo(
             }
           />
 
-          <Variants config={config} item={item} theme={theme} />
+          <Variants config={config} item={item} />
 
           {/*
           Link hack:
@@ -98,12 +96,12 @@ export default memo(
       */}
         <div className={theme.image} onClick={item.onClick}>
           <Image
-            aspectRatio={config.getIn(['product', 'image', 'aspectRatio'])}
+            aspectRatio={config.getIn(['image', 'aspectRatio'])}
             thumbnail={item.get('thumbnail_url')}
             src={item.get('image_url') || item.get('thumbnail_url')}
             alt={item.get('title')}
-            lazy={config.getIn(['product', 'image', 'lazy'])}
-            offset={config.getIn(['product', 'image', 'lazyOffset'])}
+            lazy={config.getIn(['image', 'lazy'])}
+            offset={config.getIn(['image', 'lazyOffset'])}
           />
           <DiscountSticker
             config={config}

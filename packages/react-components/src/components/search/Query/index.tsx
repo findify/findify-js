@@ -38,7 +38,7 @@ const getContent = (meta, t) => {
   return `${text} "${q}".`;
 };
 
-export default ({ theme = styles }) => {
+export default ({ theme = styles }: { theme?: Record<string, string> }) => {
   const { meta } = useQuery();
   const t = useTranslations();
   return (

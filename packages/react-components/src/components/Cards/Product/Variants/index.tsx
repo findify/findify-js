@@ -1,16 +1,14 @@
-import useTheme from 'helpers/useTheme';
 import useTranslations from 'helpers/useTranslations';
 import { List } from 'immutable';
-import styles from './styles.css';
+import styles from 'components/Cards/Product/Variants/styles.css';
 
-export default ({ theme, item, config }) => {
-  const _theme = useTheme(theme, styles);
+export default ({ item, config, theme = styles }) => {
   const t = useTranslations();
   return (
     <div
-      className={_theme.variants}
+      className={theme.variants}
       display-if={
-        config.getIn(['product', 'variants', 'display']) &&
+        config.getIn(['variants', 'display']) &&
         item.get('variants', List()).size > 1
       }
     >

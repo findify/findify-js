@@ -4,7 +4,6 @@
 
 import Grid from 'components/common/Grid';
 import Pagination from 'components/Pagination';
-import { ThemedSFCProps, MJSConfiguration } from 'types';
 import { useItems } from '@findify/react-connect';
 import MapArray from 'components/common/MapArray';
 import ProductCard from 'components/Cards/Product';

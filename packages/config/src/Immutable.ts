@@ -9,22 +9,22 @@ import * as enums from './enums'
 type Maybe<T> = T | undefined;
 type CopyMaybe<T, U> = Maybe<T> extends T ? Maybe<U> : U;
 type CopyAnyMaybe<T, U, V> = CopyMaybe<T, V> | CopyMaybe<U, V>;
-type MayByPrimitive<T> = T extends Record<string, any> ? Factory<T> : T
+type MayBePrimitive<T> = T extends Record<string, any> ? Factory<T> : T
 
 export interface Factory<State> extends Map<keyof State, any>{
   toJS(): State;
-  get<I extends keyof State>(key: I): MayByPrimitive<State[I]>;
-  get<I extends keyof State, NSV>(key: I, notSetValue: NSV): MayByPrimitive<State[I]> | NSV;
+  get<I extends keyof State>(key: I): MayBePrimitive<State[I]>;
+  get<I extends keyof State, NSV>(key: I, notSetValue: NSV): MayBePrimitive<State[I]> | NSV;
   getIn<K1 extends keyof State, K2 extends keyof NonNullable<State[K1]>>(
     path: [K1, K2]
-  ): MayByPrimitive<CopyMaybe<State[K1], NonNullable<State[K1]>[K2]>>;
+  ): MayBePrimitive<CopyMaybe<State[K1], NonNullable<State[K1]>[K2]>>;
   getIn<
     K1 extends keyof State,
     K2 extends keyof NonNullable<State[K1]>,
     K3 extends keyof NonNullable<NonNullable<State[K1]>[K2]>
   >(
     path: [K1, K2, K3]
-  ): MayByPrimitive<CopyAnyMaybe<
+  ): MayBePrimitive<CopyAnyMaybe<
     State[K1],
     NonNullable<State[K1]>[K2],
     NonNullable<NonNullable<State[K1]>[K2]>[K3]
@@ -36,7 +36,7 @@ export interface Factory<State> extends Map<keyof State, any>{
   getIn<K1 extends keyof State, K2 extends keyof NonNullable<State[K1]>, NSV>(
     path: [K1, K2],
     notSetValue: NSV
-  ): MayByPrimitive<CopyMaybe<State[K1], NonNullable<State[K1]>[K2]>> | NSV;
+  ): MayBePrimitive<CopyMaybe<State[K1], NonNullable<State[K1]>[K2]>> | NSV;
   getIn<
     K1 extends keyof State,
     K2 extends keyof NonNullable<State[K1]>,
@@ -45,7 +45,7 @@ export interface Factory<State> extends Map<keyof State, any>{
   >(
     path: [K1, K2, K3],
     notSetValue: NSV
-  ): MayByPrimitive<CopyAnyMaybe<
+  ): MayBePrimitive<CopyAnyMaybe<
     State[K1],
     NonNullable<State[K1]>[K2],
     NonNullable<NonNullable<State[K1]>[K2]>[K3] | NSV
@@ -53,7 +53,7 @@ export interface Factory<State> extends Map<keyof State, any>{
 }
 
 type FEConfig = {
-  widgetKey: string | number,
+  widgetKey: string,
   node: HTMLElement,
   widgetType: enums.Feature,
   cssSelector?: string

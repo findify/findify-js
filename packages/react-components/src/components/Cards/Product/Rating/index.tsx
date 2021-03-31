@@ -18,7 +18,7 @@ export interface IRatingProps extends ThemedSFCProps {
   count: number;
 }
 
-export default ({ value, count, theme, className }: IRatingProps) => (
+export default ({ value, count, className, theme = styles }: IRatingProps) => (
   <div className={cx(theme.rating, className)}>
     <div className={theme.stars}>
       {itemsArray.map((index: number) => (

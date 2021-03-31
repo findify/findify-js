@@ -1,20 +1,15 @@
 /**
  * @module components/Sorting
  */
-import { useCallback, useMemo } from 'react';
-import { useSort } from '@findify/react-connect';
 import Icon from 'components/Icon';
 import Text from 'components/Text';
 import Dropdown from 'components/Dropdown';
 import { MJSConfiguration, ISortingItem, ThemedSFCProps } from 'types';
 import { List } from 'immutable';
-import { Immutable } from '@findify/store-configuration';
 import useTranslations from 'helpers/useTranslations';
 
 import styles from 'components/Sorting/styles.css';
-
-const getItemLabel = (i) =>
-  `sorting.${[i.get('field'), i.get('order')].filter((i) => !!i).join(':')}`;
+import useSortingLogic from 'helpers/useSortingLogic';
 
 /** List of props Sorting view accepts */
 export interface ISortingProps extends ThemedSFCProps {
@@ -29,22 +24,8 @@ export interface ISortingProps extends ThemedSFCProps {
 }
 
 export default ({ theme = styles }: ISortingProps) => {
-  const { config, selected, onChangeSort } = useSort<Immutable.SearchConfig>();
+  const [items, selected, onChange] = useSortingLogic();
   const t = useTranslations();
-
-  const items = useMemo(() => {
-    return config
-      .getIn(['sorting', 'options'], List())
-      .map((i) => i.set('label', t(getItemLabel(i))));
-  }, []);
-
-  const selectedItem = useMemo(() => {
-    return items.find((i) => i.delete('label').equals(selected));
-  }, [selected]);
-
-  const onChange = useCallback((item) => {
-    onChangeSort(item.get('field', 'default'), item.get('order', ''));
-  }, []);
 
   return (
     <div className={theme.root}>
@@ -56,7 +37,7 @@ export default ({ theme = styles }: ISortingProps) => {
         className={theme.dropdown}
         items={items}
         onChange={onChange}
-        selectedItem={selectedItem}
+        selectedItem={selected}
       />
     </div>
   );

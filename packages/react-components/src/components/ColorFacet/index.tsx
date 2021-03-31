@@ -1,0 +1,50 @@
+/**
+ * @module components/ColorFacet
+ */
+
+import MapArray from 'components/common/MapArray';
+import Item from 'components/ColorFacet/Item';
+import { ThemedSFCProps, MJSConfiguration, IFacetValue, IFacet } from 'types';
+import { List } from 'immutable';
+import styles from 'components/ColorFacet/styles.css';
+
+export interface IColorFacetProps extends ThemedSFCProps {
+  /** MJS Configuration */
+  config: MJSConfiguration;
+  /** Facet values to render */
+  items: List<IFacetValue>;
+
+  facet: IFacet;
+
+  hidden: boolean;
+}
+
+export default ({
+  config,
+  facet,
+  hidden,
+  theme = styles,
+}: IColorFacetProps) => {
+  return (
+    <div
+      className={theme.root}
+      id={`facet-${facet.get('name')}`}
+      role="region"
+      hidden={hidden}
+    >
+      <MapArray
+        config={config}
+        array={facet
+          .get('values')
+          .filter((item) =>
+            config.getIn([
+              'colorMapping',
+              item.get('value').toLocaleLowerCase(),
+            ])
+          )}
+        factory={Item}
+        theme={theme}
+      />
+    </div>
+  );
+};

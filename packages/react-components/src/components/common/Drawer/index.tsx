@@ -1,11 +1,8 @@
-/**
- * @module components/common/Drawer
- */
-
 import { useState, useEffect, useCallback } from 'react';
 import { useSpring, config, animated } from 'react-spring';
 import cx from 'classnames';
 import { ThemedSFCProps } from 'types';
+import styles from 'components/common/Drawer/style.css';
 
 /** This is a state definition for DrawerView */
 export interface IDrawerViewState {
@@ -16,7 +13,7 @@ export interface IDrawerViewState {
 /** List of props that DrawerView accepts */
 export interface IDrawerViewProps extends ThemedSFCProps {
   /** Additional options for DrawerView */
-  options: {
+  options?: {
     /** Transition from styles */
     from: { [x: string]: string | number };
     /** Transition to styles */
@@ -37,10 +34,10 @@ const defaultOptions = {
 
 let _scrollTop = 0;
 
-const Drawer = ({
+export default ({
   hideModal,
   name,
-  theme,
+  theme = styles,
   options = defaultOptions,
   children,
   ...rest
@@ -66,13 +63,13 @@ const Drawer = ({
 
     _scrollTop = window.scrollY;
 
-    document.querySelector('body')!.classList.add(theme.bodyNoScroll);
+    document.querySelector('body')?.classList.add(theme.bodyNoScroll);
     document.addEventListener('keydown', handleEscape);
 
     requestAnimationFrame(() => setOpen(true));
 
     return () => {
-      document.querySelector('body')!.classList.remove(theme.bodyNoScroll);
+      document.querySelector('body')?.classList.remove(theme.bodyNoScroll);
       document.removeEventListener('keydown', handleEscape);
       window.scrollTo(0, _scrollTop);
       _scrollTop = 0;
@@ -101,4 +98,3 @@ const Drawer = ({
     </>
   );
 };
-export default Drawer;
