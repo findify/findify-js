@@ -99,7 +99,7 @@ export default ({
               {selectedItem.get('label')}
             </Text>
             <Icon
-              name="ArrowDown"
+              name={isOpen ? 'ArrowUp' : 'ArrowDown'}
               className={theme.arrow}
               title="Expand list"
               aria-hidden="true"
