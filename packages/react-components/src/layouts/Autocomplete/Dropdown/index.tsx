@@ -105,7 +105,7 @@ export interface IAutocompleteDropdownProps {
   [x: string]: any;
 }
 
-export default ({ theme, ...rest }: IAutocompleteDropdownProps) => {
+export default ({ theme = styles, ...rest }: IAutocompleteDropdownProps) => {
   const {
     suggestions,
     meta,

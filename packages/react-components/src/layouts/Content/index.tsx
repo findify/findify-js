@@ -1,10 +1,12 @@
 /**
  * @module layouts/ContentSearch
  */
+import styles from 'layouts/Content/styles.css';
 
 import LazyResults from 'components/search/LazyResults';
-import { IProduct, MJSConfiguration, MJSValue, ThemedSFCProps } from 'types';
+import { MJSConfiguration, MJSValue, ThemedSFCProps } from 'types';
 import ContentCard from 'components/Cards/Content';
+import { useItems } from '@findify/react-connect';
 
 /** This is a list of props ContentSearchLayout accepts */
 export interface IContentSearchProps extends ThemedSFCProps {
@@ -18,6 +20,12 @@ export interface IContentSearchProps extends ThemedSFCProps {
   filtersOnRight?: boolean;
 }
 
-export default ({ config, theme }: IContentSearchProps) => (
-  <LazyResults card={ContentCard} />
-);
+const Content = ({ theme = styles }: IContentSearchProps) => {
+  const { items } = useItems();
+  if (!items?.size) return null;
+  return <LazyResults card={ContentCard} />;
+};
+
+export default process.env.HOT
+  ? require('react-hot-loader').hot(module)(Content)
+  : Content;

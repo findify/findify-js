@@ -22,6 +22,16 @@ export default {
     tabs: () => import('@findify/react-components/src/layouts/Tabs'),
   },
 
+  /** Recommendation */
+  recommendation: {
+    grid: () =>
+      import('@findify/react-components/src/layouts/Recommendation/Grid/view'),
+    slider: () =>
+      import(
+        '@findify/react-components/src/layouts/Recommendation/Slider/view'
+      ),
+  },
+
   /** Autocomplete */
   autocomplete: {
     sidebar: () => import('layouts/Autocomplete/Sidebar'),

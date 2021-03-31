@@ -7,15 +7,16 @@ import { useConfig } from '@findify/react-connect';
 
 import Grid from 'layouts/Recommendation/Grid';
 import Slider from 'layouts/Recommendation/Slider';
+import { Immutable } from '@findify/store-configuration';
 
 /**
  * HOC that decides, which style recommendation to use,
  * based on configuration
  */
 const Recommendation = () => {
-  const { config } = useConfig();
+  const { config } = useConfig<Immutable.RecommendationConfig>();
   const template = config.get('template');
-  if (template === 'swiper' || template === 'slider') return createElement(Slider);
+  if (template === 'slider') return createElement(Slider);
   if (template === 'grid') return createElement(Grid);
   return null;
 };

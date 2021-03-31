@@ -32,7 +32,7 @@ export type MapArrayProps = {
   /** Function used to extract React rendering key */
   keyAccessor?: KeyAccessor;
   /** React component factory */
-  factory: React.FC;
+  factory: React.FC<any>;
   /** Maximum possible limit for iteration */
   limit?: number | false;
 

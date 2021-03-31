@@ -1,13 +1,21 @@
-import { Fragment } from 'react';
+import { Fragment, useMemo } from 'react';
 import Swiper from 'layouts/Recommendation/Slider/Swiper';
 import ProductCard from 'components/Cards/Product';
 import Text from 'components/Text';
 import Icon from 'components/Icon';
 import cx from 'classnames';
 import useColumns from 'helpers/useColumns';
+import { useItems } from '@findify/react-connect';
+import { Immutable } from '@findify/store-configuration';
+import useScrollOnChange from 'helpers/useScrollOnChange';
+import styles from 'layouts/Recommendation/Slider/styles.css';
 
-export default ({ items, config, theme, sliderOptions }) => {
-  const slidesPerView = useColumns(
+const getSliderOptions = (config) => ({
+  navigation: {
+    nextEl: `.${config.get('slot')}-next`,
+    prevEl: `.${config.get('slot')}-prev`,
+  },
+  slidesPerView: useColumns(
     config.getIn(['grid', 'items'], {
       500: 3,
       700: 4,
@@ -15,7 +23,14 @@ export default ({ items, config, theme, sliderOptions }) => {
       1200: 6,
     }),
     1
-  );
+  ),
+});
+
+export default ({ theme = styles }) => {
+  const { items, config } = useItems<Immutable.RecommendationConfig>();
+  const options = getSliderOptions(config);
+
+  useScrollOnChange(items);
 
   return (
     <Fragment display-if={items && items.size > 0}>
@@ -34,7 +49,7 @@ export default ({ items, config, theme, sliderOptions }) => {
             className={theme.arrow}
           />
         </button>
-        <Swiper {...sliderOptions} slidesPerView={slidesPerView}>
+        <Swiper {...options}>
           {items
             .map((item) => (
               <ProductCard
