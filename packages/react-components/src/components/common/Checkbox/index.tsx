@@ -7,8 +7,8 @@ import Button from 'components/Button';
 import Text from 'components/Text';
 import Icon from 'components/Icon';
 import { IFacetValue, ThemedSFCProps } from 'types';
-import useTheme from 'helpers/useTheme';
 import styles from 'components/common/Checkbox/styles.css';
+import cx from 'classnames';
 
 /** Props that CheckboxFacet Item accepts */
 export interface ICheckboxFacetItemProps extends ThemedSFCProps {
@@ -20,18 +20,20 @@ export interface ICheckboxFacetItemProps extends ThemedSFCProps {
   style: { [x: string]: string | number };
 
   content: (x: any) => string;
+
+  config: Map<string, any>;
+  isMobile?: boolean;
 }
 
 export default ({
   item,
-  theme: _theme,
+  theme = styles,
   style,
   onItemClick,
   content,
   config,
+  isMobile,
 }: ICheckboxFacetItemProps) => {
-  const theme = useTheme(_theme, styles);
-
   const onClick = useCallback(
     (evt) => {
       item.toggle(evt);
@@ -48,8 +50,8 @@ export default ({
       role="checkbox"
       aria-checked={isSelected ? 'true' : 'false'}
       tabIndex={0}
-      className={theme.item}
       onClick={onClick}
+      className={cx(theme.item, isMobile && theme.mobile)}
     >
       <Icon
         className={theme.icon}

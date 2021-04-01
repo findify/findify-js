@@ -7,7 +7,7 @@ import Text from 'components/Text';
 import Branch from 'components/common/Branch';
 import withTheme from 'helpers/withTheme';
 import theme from 'components/Cards/Product/Stickers/styles.css';
-import { isImmutable, fromJS } from 'immutable';
+import { fromJS } from 'immutable';
 
 const defaultDiscountConfig = fromJS({
   position: 'top-right',

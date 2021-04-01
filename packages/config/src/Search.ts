@@ -94,6 +94,11 @@ export interface Search extends BaseFeature<'Search'> {
          * Number of visible facet options before "show more" button clicked
          */
         maxItemsCount: number
+
+        /**
+         * Step for range input
+         */
+        precision: number
       }
     },
   }

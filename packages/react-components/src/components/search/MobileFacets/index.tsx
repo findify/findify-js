@@ -1,12 +1,8 @@
 /**
  * @module components/search/MobileFacets
  */
-/**
- * @module components/search/MobileFacets
- */
 
 import Branch from 'components/common/Branch';
-import MapArray from 'components/common/MapArray';
 import FacetTitles from 'components/search/MobileFacets/Titles';
 import Component from 'components/Facet/Component';
 import Button from 'components/Button';
@@ -43,11 +39,6 @@ const FacetContent = ({
       type={active.get('type')}
       facet={active}
       config={config}
-      theme={{
-        range: theme.range,
-        expand: theme.expand,
-        expandedList: theme.expandedList,
-      }}
     />
   </div>
 );

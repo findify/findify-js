@@ -263,6 +263,9 @@ const config: Config = {
             initiallyCollapsed: false,
             maxItemsCount: 5,
           },
+          price: {
+            precision: 2,
+          },
         },
         // Map Facet name to facet type
         types: {
@@ -386,9 +389,7 @@ const config: Config = {
             search: 'Search',
           },
         },
-        price: {
-          from: '100',
-        },
+
         rating: {
           i18n: {
             submit: 'go',

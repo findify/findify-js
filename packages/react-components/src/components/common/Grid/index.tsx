@@ -2,13 +2,11 @@
  * @module components/common/Grid
  */
 
-import { useMemo } from 'react';
+import { useMemo, cloneElement, Children } from 'react';
 
-import * as React from 'react';
 import { Column as _Column, Placeholder } from 'components/common/Grid/Column';
 import cx from 'classnames';
 import { ThemedSFCProps } from 'types';
-import useTheme from 'helpers/useTheme';
 import useColumns from 'helpers/useColumns';
 
 import styles from 'components/common/Grid/styles.css';
@@ -42,7 +40,7 @@ export const Column = _Column;
 
 export default ({
   children: _children,
-  theme: _theme,
+  theme = styles,
   columns: _columns,
   gutter: _gutter,
 
@@ -56,17 +54,15 @@ export default ({
 }: IGridProps) => {
   const computedColumns =
     typeof _columns === 'string' ? _columns : useColumns(_columns);
-  const theme = useTheme(_theme, styles);
-  const columns = useMemo(() => computedColumns.split('|'), [computedColumns]);
-  const gutter = useMemo(
-    () => _gutter && (isNaN(Number(_gutter)) ? _gutter : `${_gutter}px`),
-    [_gutter]
-  );
+
+  const columns = computedColumns.split('|');
+  const gutter = _gutter && (isNaN(Number(_gutter)) ? _gutter : `${_gutter}px`);
+
   const placeholders = usePlaceholders(columns);
 
   const children = useMemo(
     () =>
-      React.Children.map(
+      Children.map(
         _children,
         (child: React.ReactElement<any>, index: number) => {
           if (!child) return null;
@@ -80,7 +76,7 @@ export default ({
           } = child.props;
 
           if (child.type === Column) {
-            return React.cloneElement(child, {
+            return cloneElement(child, {
               ...child.props,
               size: size || columns[index] || columns[0],
               component: columnComponent,
@@ -99,7 +95,7 @@ export default ({
               style={columnStyle}
               component={columnComponent}
             >
-              {React.cloneElement(child, props)}
+              {cloneElement(child, props)}
             </Column>
           );
         }

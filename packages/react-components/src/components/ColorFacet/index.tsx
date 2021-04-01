@@ -17,6 +17,8 @@ export interface IColorFacetProps extends ThemedSFCProps {
   facet: IFacet;
 
   hidden: boolean;
+
+  isMobile?: boolean;
 }
 
 export default ({
@@ -24,6 +26,7 @@ export default ({
   facet,
   hidden,
   theme = styles,
+  isMobile,
 }: IColorFacetProps) => {
   return (
     <div

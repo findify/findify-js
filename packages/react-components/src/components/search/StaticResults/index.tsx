@@ -21,12 +21,12 @@ export default ({ theme = styles }) => {
         aria-label={t('Search results')}
         wrapperComponent="ul"
         columnComponent="li"
+        gutter={12}
         columns={config.getIn(['breakpoints', 'grid'], {
           400: 6,
           600: 4,
           1000: 3,
         })}
-        gutter={12}
       >
         {MapArray({
           array: items,

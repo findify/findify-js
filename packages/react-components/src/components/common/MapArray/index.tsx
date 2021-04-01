@@ -1,7 +1,7 @@
 /**
  * @module components/common/MapArray
  */
-import * as React from 'react';
+import { createElement } from 'react';
 import { isImmutable } from 'immutable';
 import { Immutable } from '@findify/store-configuration';
 
@@ -38,7 +38,7 @@ export type MapArrayProps = {
 
   mapProps?: (
     items: any
-  ) => {
+  ) => void | {
     [key: string]: any;
   };
   /** Rest of the props, passed down to children */
@@ -49,7 +49,7 @@ export type MapArrayProps = {
 const defaultKeyAccessor = (item, index) =>
   item.hashCode ? item.hashCode() : index;
 
-const defaultPropsMapper = () => ({});
+const defaultPropsMapper = () => undefined;
 
 export default ({
   array,
@@ -59,9 +59,9 @@ export default ({
   limit,
   ...rest
 }: MapArrayProps) => {
-  const f = React.createFactory(factory);
-  const res = array.slice(0, limit || array.length).map((item, index) =>
-    f({
+  const _array = limit ? array.slice(0, limit || array.length) : array;
+  const res = _array.map((item, index) =>
+    createElement(factory, {
       ...rest,
       ...mapProps(item),
       item,

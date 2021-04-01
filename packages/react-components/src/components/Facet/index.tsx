@@ -50,7 +50,6 @@ export default ({
   onToggle,
 }: IFacetProps) => {
   const title = config.get('label') || item.get('name');
-
   const selectedItemsCount = useMemo(() => {
     return item.get('values').filter((item) => item.get('selected')).size;
   }, [item]);

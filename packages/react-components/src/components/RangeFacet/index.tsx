@@ -8,8 +8,7 @@ import cx from 'classnames';
 import MapArray from 'components/common/MapArray';
 import Button from 'components/Button';
 import Text from 'components/Text';
-import { ThemedSFCProps, IFacet, IFacetValue, MJSConfiguration } from 'types';
-import { List } from 'immutable';
+import { ThemedSFCProps, IFacet, MJSConfiguration } from 'types';
 import Grid from 'components/common/Grid';
 import Checkbox from 'components/common/Checkbox';
 import content from 'components/RangeFacet/content';
@@ -21,27 +20,12 @@ import styles from 'components/RangeFacet/styles.css';
 export interface IRangeFacetProps extends ThemedSFCProps {
   /** Facet to extract values from */
   facet: IFacet;
-  /** Facet values */
-  items: List<IFacetValue>;
-  /** MJS Configuration */
+  /** Facet config */
   config: MJSConfiguration;
-  /** Currency symbol */
-  currencySymbol: string;
-  /** Minimum possible price */
-  from: number;
-  /** Maximum possible price */
-  to: number;
-  /** Invoked when maximum range is changed */
-  onChangeMax: (evt?: React.ChangeEvent<any>) => any;
-  /** Invoked when minimum range is changed */
-  onChangeMin: (evt?: React.ChangeEvent<any>) => any;
-  /** Invoked when any key in any input is pressed, used to react to Enter */
-  onKeypressMin: (evt: any) => any;
-  onKeypressMax: (evt: any) => any;
-  /** Invoked when Go button is pressed */
-  onPressButton: () => any;
 
   hidden: boolean;
+
+  isMobile?: boolean;
 }
 
 const PriceInput = ({
@@ -67,6 +51,16 @@ const PriceInput = ({
     if (ref.current) ref.current.value = null;
   }, [resetOn]);
 
+  const step = useMemo(
+    () =>
+      precision
+        ? `0.${Array.from({ length: precision }, (_, i) =>
+            i + 1 === precision ? '1' : '0'
+          ).join('')}`
+        : '1',
+    []
+  );
+
   return (
     <div className={theme.inputWrap} onClick={handleWrapperClick}>
       <span className={theme.currency}>{currency}</span>
@@ -78,6 +72,7 @@ const PriceInput = ({
         onBlur={onBlur}
         onKeyPress={handleKeyPress}
         ref={ref}
+        step={step}
       />
       <div className={theme.border} />
     </div>
@@ -88,13 +83,13 @@ export default ({
   theme = styles,
   config: facetConfig,
   facet,
-
   hidden,
+  isMobile,
 }: IRangeFacetProps) => {
   const { config } = useConfig<Immutable.RecommendationConfig>();
   const t = useTranslations();
 
-  const [[from, to], setState] = useState<number[]>([]);
+  const [[from, to], setState] = useState<string[]>([]);
 
   const [selectedItems, notSelectedItems] = useMemo(
     () => [
@@ -108,16 +103,19 @@ export default ({
     [facet]
   );
 
+  /** Invoked when minimum range is changed */
   const onChangeMin = useCallback(
     (e) => {
       const _value = parseFloat(e.target.value);
+
       if (isNaN(_value)) return;
-      const value =
+      const value = Number(
         _value > (to || facet.get('max'))
           ? to || facet.get('max')
           : _value < facet.get('min')
           ? facet.get('min')
-          : _value;
+          : _value
+      ).toFixed(facetConfig.get('precision', 0));
 
       e.target.value = value;
       setState([value, to]);
@@ -125,16 +123,19 @@ export default ({
     [from, to]
   );
 
+  /** Invoked when maximum range is changed */
   const onChangeMax = useCallback(
     (e) => {
       const _value = parseFloat(e.target.value);
       if (isNaN(_value)) return;
-      const value =
+      const value = Number(
         _value < (from || facet.get('min'))
           ? from || facet.get('min')
           : _value > facet.get('max')
           ? facet.get('max')
-          : _value;
+          : _value
+      ).toFixed(facetConfig.get('precision', 0));
+
       e.target.value = value;
       setState([from, value]);
     },
@@ -160,7 +161,7 @@ export default ({
         factory={Checkbox}
         content={content}
         config={config}
-        theme={theme}
+        isMobile={isMobile}
       />
 
       <MapArray
@@ -168,7 +169,7 @@ export default ({
         factory={Checkbox}
         content={content}
         config={config}
-        theme={theme}
+        isMobile={isMobile}
       />
 
       <Grid
@@ -182,6 +183,7 @@ export default ({
           min={facet.get('min')}
           resetOn={facet}
           onBlur={onChangeMin}
+          precision={facetConfig.get('precision', 0)}
         />
 
         <div className={theme.divider}>-</div>
@@ -193,6 +195,7 @@ export default ({
           max={facet.get('max')}
           resetOn={facet}
           onBlur={onChangeMax}
+          precision={facetConfig.get('precision', 0)}
         />
         <Button className={theme.submit} onClick={onSubmit}>
           <Text primary uppercase>

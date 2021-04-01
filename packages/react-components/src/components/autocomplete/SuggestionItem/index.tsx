@@ -48,7 +48,7 @@ export default ({
   icon,
   isTrendingSearches,
 }: ISuggestionItemProps) => {
-  const value = item && (item.get('value') as string);
+  const value = item?.get('value');
   return (
     <li
       display-if={value}
@@ -71,7 +71,7 @@ export default ({
       />
       <span
         dangerouslySetInnerHTML={{
-          __html: highlightSuggestion(value, query.get('q') as string, theme),
+          __html: highlightSuggestion(value, query.get('q'), theme),
         }}
       />
     </li>

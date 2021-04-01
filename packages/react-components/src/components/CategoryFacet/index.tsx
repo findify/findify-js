@@ -1,9 +1,6 @@
 /**
  * @module components/CategoryFacet
  */
-
-import cx from 'classnames';
-
 import MapArray from 'components/common/MapArray';
 import Item from 'components/CategoryFacet/Item';
 import Button from 'components/Button';
@@ -32,6 +29,8 @@ export interface ICategoryFacetProps extends ThemedSFCProps {
   onToggle: (evt: Event) => any;
 
   hidden: boolean;
+
+  isMobile?: boolean;
 }
 
 export default ({
@@ -39,6 +38,7 @@ export default ({
   config,
   facet,
   hidden,
+  isMobile,
 }: ICategoryFacetProps) => {
   const t = useTranslations();
   const [isExpanded, setExpanded] = useState(false);
@@ -73,7 +73,7 @@ export default ({
         array={items}
         factory={Item}
         limit={!isExpanded && config.get('maxItemsCount', 6)}
-        theme={theme}
+        isMobile={isMobile}
       />
 
       <Button

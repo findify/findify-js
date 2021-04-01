@@ -58,7 +58,7 @@ export default ({
       return facet.get('values').filter((i) => regexp.test(i.get('value')));
     }
     return facet.get('values');
-  }, [search, isExpanded]);
+  }, [search, isExpanded, facet]);
 
   return (
     <div
@@ -83,13 +83,14 @@ export default ({
           array={items.filter((i) => i.get('selected'))}
           factory={Checkbox}
           content={content}
+          isMobile={isMobile}
         />
 
         <VirtualizedList
           display-if={isExpanded}
-          factory={(props) => (
-            <Checkbox {...props} onItemClick={() => setSearch('')} />
-          )}
+          factory={Checkbox}
+          isMobile={isMobile}
+          onItemClick={() => setSearch('')}
           config={config}
           content={content}
           limit={config.get('maxItemsCount', 6)}
@@ -104,7 +105,8 @@ export default ({
         <MapArray
           display-if={!isExpanded}
           factory={Checkbox}
-          limit={config.get('maxItemsCount', 6)}
+          isMobile={isMobile}
+          limit={!isMobile && config.get('maxItemsCount', 6)}
           content={content}
           keyAccessor={(i) => i.get('value')}
           array={
@@ -118,7 +120,7 @@ export default ({
       <Button
         className={theme.expand}
         onClick={() => setExpanded((exp) => !exp)}
-        display-if={items.size > config.get('maxItemsCount', 6)}
+        display-if={!isMobile && items.size > config.get('maxItemsCount', 6)}
       >
         <Text primary uppercase>
           <Icon

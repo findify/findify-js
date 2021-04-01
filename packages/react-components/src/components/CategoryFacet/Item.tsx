@@ -1,14 +1,14 @@
 /**
  * @module components/CategoryFacet
  */
-
-import cx from 'classnames';
 import MapArray from 'components/common/MapArray';
 import content from 'components/CategoryFacet/content';
 import Button from 'components/Button';
 import Text from 'components/Text';
 import Icon from 'components/Icon';
 import { ThemedSFCProps, MJSConfiguration } from 'types';
+import styles from 'components/CategoryFacet/styles.css';
+import cx from 'classnames';
 
 /** This is a list of props that each individual child of CategoryFacet View accepts */
 export interface ICategoryFacetCategoryProps extends ThemedSFCProps {
@@ -18,13 +18,20 @@ export interface ICategoryFacetCategoryProps extends ThemedSFCProps {
   style: { [x: string]: string | number };
   /** MJS Configuration */
   config: MJSConfiguration;
+  isMobile?: boolean;
 }
 
-const Item = ({ item, theme, style, config }: ICategoryFacetCategoryProps) => (
+const Item = ({
+  item,
+  theme = styles,
+  style,
+  config,
+  isMobile,
+}: ICategoryFacetCategoryProps) => (
   <>
     <Button
       style={style}
-      className={theme.item}
+      className={cx(theme.item, isMobile && theme.mobile)}
       onClick={item.toggle}
       role="checkbox"
       area-checked={item.get('selected') ? 'true' : 'false'}
@@ -52,6 +59,7 @@ const Item = ({ item, theme, style, config }: ICategoryFacetCategoryProps) => (
         array={item.get('children')}
         factory={Item}
         theme={theme}
+        isMobile={isMobile}
       />
     </div>
   </>

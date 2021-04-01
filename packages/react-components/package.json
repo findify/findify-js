@@ -14,8 +14,6 @@
     "immutable": "^4.0.0-rc.12",
     "qs": "^6.9.6",
     "react-loadable": "^5.5.0",
-    "react-numeric-input": "^2.2.3",
-    "react-sizeme": "3.0.1",
     "react-spring": "^8.0.27",
     "react-virtualized": "^9.22.3",
     "recompose": "^0.30.0",
