@@ -97,6 +97,7 @@
     "config"
   ],
   "dependencies": {
+    "babel-plugin-transform-export-default-name": "^2.1.0",
     "regenerator-runtime": "^0.13.7"
   }
 }

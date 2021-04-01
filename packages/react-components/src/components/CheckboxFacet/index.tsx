@@ -2,7 +2,7 @@
  * @module components/CheckboxFacet
  */
 
-import { ChangeEvent } from 'react';
+import { ChangeEvent, useCallback, useMemo, useState } from 'react';
 import cx from 'classnames';
 import MapArray from 'components/common/MapArray';
 import Checkbox from 'components/common/Checkbox';
@@ -14,12 +14,11 @@ import { List } from 'immutable';
 import content from 'components/CheckboxFacet/content';
 import useTranslations from 'helpers/useTranslations';
 import VirtualizedList from 'components/common/VirtualizedList';
+import escapeRegExp from 'lodash/escapeRegExp';
+import styles from 'components/CheckboxFacet/styles.css';
 
 /** Props that CheckboxFacet accepts */
 export interface ICheckboxFacetProps extends ThemedSFCProps {
-  /** List of facet values available for toggling */
-  items: List<IFacetValue>;
-
   facet: IFacet;
 
   /** MJS Configuration */
@@ -38,19 +37,29 @@ export interface ICheckboxFacetProps extends ThemedSFCProps {
   hidden: boolean;
 }
 
-const CheckboxFacetView = ({
-  theme,
-  items,
+export default ({
+  theme = styles,
   config,
-  search,
-  isExpanded,
-  onSearch,
-  onToggle,
   isMobile,
   facet,
   hidden,
 }: ICheckboxFacetProps) => {
+  const [search, setSearch] = useState('');
+  const [isExpanded, setExpanded] = useState(false);
   const t = useTranslations();
+
+  const onSearch = useCallback((e: React.FormEvent<HTMLInputElement>) => {
+    setSearch(e.target ? e.target.value : e);
+  }, []);
+
+  const items = useMemo(() => {
+    if (isExpanded && search) {
+      const regexp = new RegExp(escapeRegExp(search), 'gi');
+      return facet.get('values').filter((i) => regexp.test(i.get('value')));
+    }
+    return facet.get('values');
+  }, [search, isExpanded]);
+
   return (
     <div
       className={cx(theme.root, { [theme.mobile]: isMobile })}
@@ -79,7 +88,7 @@ const CheckboxFacetView = ({
         <VirtualizedList
           display-if={isExpanded}
           factory={(props) => (
-            <Checkbox {...props} onItemClick={() => onSearch('')} />
+            <Checkbox {...props} onItemClick={() => setSearch('')} />
           )}
           config={config}
           content={content}
@@ -108,7 +117,7 @@ const CheckboxFacetView = ({
 
       <Button
         className={theme.expand}
-        onClick={onToggle}
+        onClick={() => setExpanded((exp) => !exp)}
         display-if={items.size > config.get('maxItemsCount', 6)}
       >
         <Text primary uppercase>
@@ -122,5 +131,3 @@ const CheckboxFacetView = ({
     </div>
   );
 };
-
-export default CheckboxFacetView;

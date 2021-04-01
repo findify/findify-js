@@ -9,8 +9,12 @@ const identity = (i) => i;
 
 const createLabel = (from, to, config, fx) =>
   (from && to && `${fx(from)} - ${fx(to)}`) ||
-  (from && !to && `${fx(from)} ${unescape(config.getIn(['i18n', 'up']))}`) ||
-  (!from && to && `${unescape(config.getIn(['i18n', 'under']))} ${fx(to)}`);
+  (from &&
+    !to &&
+    `${fx(from)} ${unescape(config.getIn(['translations', 'range.up']))}`) ||
+  (!from &&
+    to &&
+    `${unescape(config.getIn(['translations', 'range.under']))} ${fx(to)}`);
 
 export default ({ item, config }) =>
   createLabel(

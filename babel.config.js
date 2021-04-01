@@ -59,6 +59,9 @@ module.exports = (api) => {
           ],
         ],
         env: {
+          development: {
+            plugins: ['transform-export-default-name']
+          },
           lib: {
             plugins: [
               ['@findify/babel-plugin-css-modules-transform',

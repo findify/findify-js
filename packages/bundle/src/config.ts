@@ -48,6 +48,8 @@ const config: Config = {
 
   translations: {
     'View more': 'View more',
+    'range.under': 'Under',
+    'range.up': '&amp; up',
   },
 
   currency: {
@@ -385,11 +387,7 @@ const config: Config = {
           },
         },
         price: {
-          i18n: {
-            submit: 'go',
-            under: 'Under',
-            up: '&amp; up',
-          },
+          from: '100',
         },
         rating: {
           i18n: {

@@ -209,6 +209,8 @@ export interface IQuery extends Map<string, MJSValue> {}
 export type Facet = {
   name: string;
   values: List<any>;
+  min: number;
+  max: number;
 };
 
 /**
@@ -221,6 +223,7 @@ export type Facet = {
 export interface IFacet extends Immutable.Factory<Facet> {
   toggle: (evt: React.MouseEvent<any>) => any;
   resetValues: () => any;
+  setValue: (data?: any) => void;
 }
 
 /** Available filter types in MJS */

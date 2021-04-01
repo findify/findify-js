@@ -40,7 +40,7 @@ export default {
   },
 
   components: {
-    virtualizedList: () => import('components/common/VirtualizedList'),
+    virtualizedList: () => import('components/common/VirtualizedList/view'),
     drawer: () => import('components/common/Drawer'),
     dropdown: () => import('components/Dropdown/view'),
   },

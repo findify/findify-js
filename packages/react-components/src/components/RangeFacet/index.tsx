@@ -2,11 +2,8 @@
  * @module components/RangeFacet
  */
 
-import { useCallback, useMemo, useRef } from 'react';
-
-import * as React from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import cx from 'classnames';
-import NumberInput from 'react-numeric-input';
 
 import MapArray from 'components/common/MapArray';
 import Button from 'components/Button';
@@ -16,12 +13,10 @@ import { List } from 'immutable';
 import Grid from 'components/common/Grid';
 import Checkbox from 'components/common/Checkbox';
 import content from 'components/RangeFacet/content';
-
-/** Input default styling parameters */
-const inputDefaults = {
-  style: false,
-  mobile: false,
-};
+import useTranslations from 'helpers/useTranslations';
+import { useConfig } from '@findify/react-connect';
+import { Immutable } from '@findify/store-configuration';
+import styles from 'components/RangeFacet/styles.css';
 
 export interface IRangeFacetProps extends ThemedSFCProps {
   /** Facet to extract values from */
@@ -52,30 +47,36 @@ export interface IRangeFacetProps extends ThemedSFCProps {
 const PriceInput = ({
   theme,
   currency,
-  value,
   min,
   max,
   onBlur,
-  onKeyPress,
+  resetOn,
   precision,
 }) => {
   const ref = useRef(null);
+
   const handleWrapperClick = useCallback(() => {
-    if (ref.current) ref.current.refsInput.focus();
+    if (ref.current) ref.current?.focus();
   }, [ref]);
+
+  const handleKeyPress = useCallback((e) => {
+    if (e.key === 'Enter') onBlur(e);
+  }, []);
+
+  useEffect(() => {
+    if (ref.current) ref.current.value = null;
+  }, [resetOn]);
 
   return (
     <div className={theme.inputWrap} onClick={handleWrapperClick}>
       <span className={theme.currency}>{currency}</span>
-      <NumberInput
-        {...inputDefaults}
+      <input
+        type="number"
         className={theme.input}
-        precision={precision}
-        value={value}
         max={max}
         min={min}
         onBlur={onBlur}
-        onKeyPress={onKeyPress}
+        onKeyPress={handleKeyPress}
         ref={ref}
       />
       <div className={theme.border} />
@@ -84,34 +85,67 @@ const PriceInput = ({
 };
 
 export default ({
-  theme,
+  theme = styles,
+  config: facetConfig,
   facet,
-  items,
-  config,
-  currencySymbol,
-
-  from,
-  to,
-
-  onChangeMax,
-  onChangeMin,
-  onKeypressMin,
-  onKeypressMax,
-  onPressButton,
 
   hidden,
 }: IRangeFacetProps) => {
+  const { config } = useConfig<Immutable.RecommendationConfig>();
+  const t = useTranslations();
+
+  const [[from, to], setState] = useState<number[]>([]);
+
   const [selectedItems, notSelectedItems] = useMemo(
     () => [
-      config.get('pullSelected')
-        ? items.filter((i) => i.get('selected'))
-        : items,
-      config.get('pullSelected')
-        ? items.filter((i) => !i.get('selected'))
-        : items,
+      facetConfig.get('pullSelected')
+        ? facet.get('values').filter((i) => i.get('selected'))
+        : facet.get('values'),
+      facetConfig.get('pullSelected')
+        ? facet.get('values').filter((i) => !i.get('selected'))
+        : facet.get('values'),
     ],
-    [items]
+    [facet]
   );
+
+  const onChangeMin = useCallback(
+    (e) => {
+      const _value = parseFloat(e.target.value);
+      if (isNaN(_value)) return;
+      const value =
+        _value > (to || facet.get('max'))
+          ? to || facet.get('max')
+          : _value < facet.get('min')
+          ? facet.get('min')
+          : _value;
+
+      e.target.value = value;
+      setState([value, to]);
+    },
+    [from, to]
+  );
+
+  const onChangeMax = useCallback(
+    (e) => {
+      const _value = parseFloat(e.target.value);
+      if (isNaN(_value)) return;
+      const value =
+        _value < (from || facet.get('min'))
+          ? from || facet.get('min')
+          : _value > facet.get('max')
+          ? facet.get('max')
+          : _value;
+      e.target.value = value;
+      setState([from, value]);
+    },
+    [from, to]
+  );
+
+  const onSubmit = useCallback(() => {
+    if (!from && !to) return;
+    facet.setValue({ from, to });
+    setState([]);
+  }, [from, to]);
 
   return (
     <div
@@ -121,7 +155,7 @@ export default ({
       hidden={hidden}
     >
       <MapArray
-        display-if={config.get('pullSelected')}
+        display-if={facetConfig.get('pullSelected')}
         array={selectedItems}
         factory={Checkbox}
         content={content}
@@ -143,28 +177,26 @@ export default ({
       >
         <PriceInput
           theme={theme}
-          currency={currencySymbol}
-          precision={config.get('precision', 0)}
-          value={from}
-          max={to || facet.get('max')}
+          currency={config.getIn(['currency', 'symbol'])}
+          max={to}
           min={facet.get('min')}
+          resetOn={facet}
           onBlur={onChangeMin}
-          onKeyPress={onKeypressMin}
         />
+
         <div className={theme.divider}>-</div>
+
         <PriceInput
           theme={theme}
-          currency={currencySymbol}
-          precision={config.get('precision', 0)}
-          value={to}
-          min={from || facet.get('min')}
+          currency={config.getIn(['currency', 'symbol'])}
+          min={from}
           max={facet.get('max')}
+          resetOn={facet}
           onBlur={onChangeMax}
-          onKeyPress={onKeypressMax}
         />
-        <Button onClick={onPressButton} className={theme.submit}>
+        <Button className={theme.submit} onClick={onSubmit}>
           <Text primary uppercase>
-            {config.getIn(['i18n', 'submit'])}
+            {t('submit')}
           </Text>
         </Button>
       </Grid>

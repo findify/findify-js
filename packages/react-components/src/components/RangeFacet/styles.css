@@ -18,21 +18,10 @@ $height: 30px;
   align-items: center;
   padding: 0 8px;
   cursor: text;
-  :global(.react-numeric-input){
-    flex: 1 1 auto;
-    z-index: 1;
-    width: 100%;
-    & b{
-      position: absolute;
-      z-index: 0;
-      left: 0;
-      right: 0;
-      top: 0;
-      bottom: 0;
-      border: 1px solid $color-grey-2;
-      transition: border-color .1s linear;
-      display: block;
-    }
+  transition: border-color .1s linear;
+  border: 1px solid $color-grey-1;
+  &:focus-within{
+    border-color: $color-grey-2;
   }
 }
 
@@ -50,14 +39,16 @@ $height: 30px;
   font-family: $font-base;
   font-size: $font-size-large;
   border: none;
-  transition: border-color .1s linear;
   outline: none;
   z-index: 1;
+  -moz-appearance: textfield;
   &:placeholder{
     color: $color-grey-1;
   }
-  &:focus ~ b{
-    border-color: $color-grey-3;
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
   }
 }
 @media screen and (-webkit-min-device-pixel-ratio:0) {
