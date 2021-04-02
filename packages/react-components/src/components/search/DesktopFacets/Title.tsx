@@ -38,9 +38,9 @@ export default ({
   const t = useTranslations();
   return (
     <div className={theme.header} tabIndex={-1}>
-      <Icon name="Filters" title="Filters" className={theme.icon} />
+      <Icon name="Filters" title={t('facets.filters')} className={theme.icon} />
       <Text primary uppercase className={theme.title}>
-        {t('Filters')}
+        {t('facets.filters')}
         <Button
           tabIndex={-1}
           onClick={onReset}
@@ -58,7 +58,7 @@ export default ({
         onClick={onHide}
       >
         <Text secondary uppercase>
-          {t('Hide')}
+          {t('facets.hide')}
           <Icon name="XDark" title="Hide filters" />
         </Text>
       </Button>

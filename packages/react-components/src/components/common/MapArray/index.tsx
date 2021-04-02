@@ -1,8 +1,8 @@
 /**
  * @module components/common/MapArray
  */
-import { createElement } from 'react';
-import { isImmutable } from 'immutable';
+import { createElement, memo, useMemo } from 'react';
+import { is, isImmutable } from 'immutable';
 import { Immutable } from '@findify/store-configuration';
 
 /** MapCallback is a type signature for array.map(), immutable.List().map() callback */
@@ -37,7 +37,8 @@ export type MapArrayProps = {
   limit?: number | false;
 
   mapProps?: (
-    items: any
+    items: any,
+    index: number
   ) => void | {
     [key: string]: any;
   };
@@ -51,24 +52,34 @@ const defaultKeyAccessor = (item, index) =>
 
 const defaultPropsMapper = () => undefined;
 
+const Item = ({ Component, mapProps, ...rest }) => {
+  const extraProps = mapProps
+    ? useMemo(() => mapProps(rest.item, rest.index), [rest.item, rest.index])
+    : undefined;
+
+  return <Component {...rest} {...extraProps} />;
+};
+
 export default ({
   array,
   keyAccessor = defaultKeyAccessor,
   mapProps = defaultPropsMapper,
+  container,
   factory,
   limit,
   ...rest
 }: MapArrayProps) => {
   const _array = limit ? array.slice(0, limit || array.length) : array;
-  const res = _array.map((item, index) =>
-    createElement(factory, {
-      ...rest,
-      ...mapProps(item),
-      item,
-      index,
-      key: keyAccessor(item, index),
-    })
-  );
+  const res = _array.map((item, index) => (
+    <Item
+      key={keyAccessor(item, index)}
+      Component={factory}
+      index={index}
+      item={item}
+      mapProps={mapProps}
+      {...rest}
+    />
+  ));
 
-  return isImmutable(res) ? res.toArray() : res;
+  return isImmutable(res) ? res.valueSeq() : res;
 };

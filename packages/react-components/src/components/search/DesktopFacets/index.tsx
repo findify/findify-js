@@ -7,13 +7,14 @@ import Facet from 'components/Facet';
 import Sticky from 'components/common/Sticky';
 import Title from 'components/search/DesktopFacets/Title';
 
-import { useConfig, useFacets } from '@findify/react-connect';
+import { useFacets } from '@findify/react-connect';
 import { Immutable } from '@findify/store-configuration';
-import { useCallback, useMemo, useReducer, useState } from 'react';
+import { memo, useCallback, useMemo, useState } from 'react';
 import useTranslations from 'helpers/useTranslations';
 import { useEvents, emit } from 'helpers/emmiter';
 
 import styles from 'components/search/DesktopFacets/styles.css';
+import { Map } from 'immutable';
 
 const DefaultContent = ({ theme, children, title }) => (
   <section className={theme.root} role="region" aria-label={title} tabIndex={0}>
@@ -21,7 +22,7 @@ const DefaultContent = ({ theme, children, title }) => (
   </section>
 );
 
-export default ({ theme = styles }) => {
+export default memo(({ theme = styles }) => {
   const { facets, meta, onReset, config } = useFacets<Immutable.SearchConfig>();
   const t = useTranslations();
 
@@ -71,7 +72,7 @@ export default ({ theme = styles }) => {
         root: isHorizontal ? theme.horizontal : theme.root,
       }}
       condition={isSticky}
-      title={t('Filters')}
+      title={t('facets.filters')}
       left={Sticky}
       right={DefaultContent}
       stickToTop={isHorizontal}
@@ -91,12 +92,12 @@ export default ({ theme = styles }) => {
         config={config}
         isHorizontal={isHorizontal}
         onToggle={toggleFacet}
+        openFacets={openFacets}
         keyAccessor={(i) => i.get('name')}
         mapProps={(i) => ({
-          config: config.getIn(['facets', 'filters', i.get('name')], new Map()),
-          isOpen: openFacets.includes(i.get('name')),
+          config: config.getIn(['facets', 'filters', i.get('name')], Map()),
         })}
       />
     </Branch>
   );
-};
+});

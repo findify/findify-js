@@ -2,7 +2,7 @@
  * @module components/autocomplete/SearchSuggestions
  */
 
-import { useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 import MapArray from 'components/common/MapArray';
 import SuggestionItem from 'components/autocomplete/SuggestionItem';
 import { useAnnouncement } from 'components/common/Announcement';
@@ -19,6 +19,11 @@ export default ({ selectedSuggestion, theme = styles }) => {
   } = useSuggestions<Immutable.AutocompleteConfig>();
   const { query } = useQuery();
   const t = useTranslations();
+
+  const suggestionProps = useCallback(
+    (item, index) => getSuggestionProps(index, config.get('widgetKey', '')),
+    []
+  );
 
   /** ACCESSIBILITY */
   const [announcement, setAnnouncement] = useAnnouncement();
@@ -51,16 +56,11 @@ export default ({ selectedSuggestion, theme = styles }) => {
       >
         <MapArray
           array={suggestions}
-          factory={({ item, index }) => (
-            <SuggestionItem
-              tabIndex={0}
-              item={item}
-              index={index}
-              highlighted={selectedSuggestion === index}
-              query={query}
-              {...getSuggestionProps(index, config.get('widgetKey', ''))}
-            />
-          )}
+          factory={SuggestionItem}
+          tabIndex={0}
+          selectedSuggestion={selectedSuggestion}
+          query={query}
+          mapProps={suggestionProps}
         />
       </ul>
       <span style={{ display: 'none' }} id="FindifyAutocompleteDescription">

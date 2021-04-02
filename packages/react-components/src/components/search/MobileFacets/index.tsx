@@ -14,7 +14,7 @@ import { List } from 'immutable';
 
 import styles from 'components/search/MobileFacets/styles.css';
 import { useFacets, useQuery } from '@findify/react-connect';
-import { useCallback, useMemo, useState } from 'react';
+import { memo, useCallback, useMemo, useState } from 'react';
 import { Immutable } from '@findify/store-configuration';
 import useTranslations from 'helpers/useTranslations';
 import { Facet } from '@findify/react-connect/types/immutable/facets';
@@ -65,7 +65,7 @@ export interface IMobileFacetsProps extends ThemedSFCProps {
   filtersSelected: number;
 }
 
-export default ({ theme = styles, hideModal }: IMobileFacetsProps) => {
+export default memo(({ theme = styles, hideModal }: IMobileFacetsProps) => {
   const { facets, config, update } = useFacets<Immutable.SearchConfig>();
   const { query } = useQuery();
   const t = useTranslations();
@@ -112,7 +112,7 @@ export default ({ theme = styles, hideModal }: IMobileFacetsProps) => {
       <div className={theme.header}>
         <div className={theme.title}>
           <Text primary uppercase display-if={!activeFacet}>
-            {t('Filters')}
+            {t('facets.filters')}
           </Text>
 
           <Text
@@ -167,8 +167,8 @@ export default ({ theme = styles, hideModal }: IMobileFacetsProps) => {
         className={theme.footer}
         onClick={activeFacet ? selectFacet : hideModal}
       >
-        {activeFacet ? t('Done') : t('See results')}
+        {activeFacet ? t('facets.done') : t('facets.seeResults')}
       </Button>
     </div>
   );
-};
+});

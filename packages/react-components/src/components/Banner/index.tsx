@@ -2,22 +2,15 @@
  * @module components/Banner
  */
 
-import { createElement } from 'react';
-import { ThemedSFCProps, IBanner } from 'types';
+import { createElement, memo } from 'react';
+import { ThemedSFCProps } from 'types';
 import styles from 'components/Banner/styles.css';
 import { useBanner } from '@findify/react-connect';
-
-/** Props that Banner component accepts */
-export interface IBannerProps extends ThemedSFCProps {
-  /** Banner being shown */
-  banner: IBanner;
-  [x: string]: any;
-}
 
 const BannerComponent = ({ href, ...rest }) =>
   createElement(href ? 'a' : 'div', rest);
 
-export default ({ theme = styles }: IBannerProps) => {
+export default memo(({ theme = styles }: ThemedSFCProps) => {
   const { banner } = useBanner();
   return (
     <BannerComponent
@@ -33,4 +26,4 @@ export default ({ theme = styles }: IBannerProps) => {
       />
     </BannerComponent>
   );
-};
+});

@@ -12,6 +12,7 @@ import ColorContent from 'components/ColorFacet/content';
 import { ThemedSFCProps } from 'types';
 import { useBreadcrumbs } from '@findify/react-connect';
 import styles from 'components/Breadcrumbs/styles.css';
+import { memo } from 'react';
 
 /**
  * Breadcrumb factory used to automatically initialize breadcrumbs
@@ -26,7 +27,7 @@ const Breadcrumb = createBreadcrumb({
   rating: RatingContent,
 });
 
-export default ({ theme = styles }: ThemedSFCProps) => {
+export default memo(({ theme = styles }: ThemedSFCProps) => {
   const { config, filters } = useBreadcrumbs();
   return (
     <MapArray
@@ -36,4 +37,4 @@ export default ({ theme = styles }: ThemedSFCProps) => {
       factory={Breadcrumb}
     />
   );
-};
+});

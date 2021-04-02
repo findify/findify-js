@@ -199,7 +199,7 @@ export default ({
         />
         <Button className={theme.submit} onClick={onSubmit}>
           <Text primary uppercase>
-            {t('submit')}
+            {t('facets.submit')}
           </Text>
         </Button>
       </Grid>

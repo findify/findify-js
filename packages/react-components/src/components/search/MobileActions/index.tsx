@@ -14,10 +14,11 @@ import { ThemedSFCProps } from 'types';
 import { useQuery, useSort } from '@findify/react-connect';
 import { Immutable } from '@findify/store-configuration';
 import useTranslations from 'helpers/useTranslations';
-import { useMemo } from 'react';
+import { memo, useMemo } from 'react';
 import { emit, useEvents } from 'helpers/emmiter';
 import styles from 'components/search/MobileActions/styles.css';
 import { getItemLabel } from 'helpers/useSortingLogic';
+
 /** Props that MobileActionsView accepts */
 export interface IMobileActionsProps extends ThemedSFCProps {
   /** Flag, showing whether smart collection or regular searches are opened */
@@ -29,70 +30,72 @@ export interface IMobileActionsProps extends ThemedSFCProps {
 const showFacets = () => emit('showMobileFacets');
 const showSort = () => emit('showMobileSort');
 
-const Sorting = ({
-  isCollection,
-  theme = styles,
-  showModal,
-  hideModal,
-}: IMobileActionsProps) => {
-  const { selected } = useSort<Immutable.SearchConfig>();
-  const { query } = useQuery();
-  const t = useTranslations();
+const MobileActions = memo(
+  ({
+    isCollection,
+    theme = styles,
+    showModal,
+    hideModal,
+  }: IMobileActionsProps) => {
+    const { selected } = useSort<Immutable.SearchConfig>();
+    const { query } = useQuery();
+    const t = useTranslations();
 
-  useEvents({
-    showMobileFacets: () => showModal('Filters'),
-    showMobileSort: () => showModal('Sorting'),
-    hideMobileFacets: () => hideModal('Filters'),
-    hideMobileSort: () => hideModal('Sorting'),
-  });
+    useEvents({
+      showMobileFacets: () => showModal('Filters'),
+      showMobileSort: () => showModal('Sorting'),
+      hideMobileFacets: () => hideModal('Filters'),
+      hideMobileSort: () => hideModal('Sorting'),
+    });
 
-  const currentSort = useMemo(
-    () => (selected ? t(getItemLabel(selected)) : t(`sorting.default`)),
-    [selected]
-  );
+    const currentSort = useMemo(
+      () => (selected ? t(getItemLabel(selected)) : t(`sorting.default`)),
+      [selected]
+    );
 
-  const total = useMemo(
-    () =>
-      query.get('filters')
-        ? query
-            .get('filters')
-            .reduce(
-              (acc, filter) =>
-                acc +
-                (/category[2-9]/.test(filter.get('name'))
-                  ? 0
-                  : filter.get('values').size),
-              0
-            )
-        : 0,
-    [query]
-  );
+    const total = useMemo(
+      () =>
+        query.get('filters')
+          ? query
+              .get('filters')
+              .reduce(
+                (acc, filter) =>
+                  acc +
+                  (/category[2-9]/.test(filter.get('name'))
+                    ? 0
+                    : filter.get('values').size),
+                0
+              )
+          : 0,
+      [query]
+    );
 
-  return (
-    <div className={theme.root}>
-      <Query display-if={!isCollection} theme={{ root: theme.query }} />
+    return (
+      <div className={theme.root}>
+        <Query display-if={!isCollection} theme={{ root: theme.query }} />
 
-      <div className={theme.bottomRow}>
-        <Button onClick={showSort} className={theme.button}>
-          <Text primary uppercase>
-            <Icon name="Sorting" title="Sorting" className={theme.icon} />
-            {currentSort}
-          </Text>
-        </Button>
+        <div className={theme.bottomRow}>
+          <Button onClick={showSort} className={theme.button}>
+            <Text primary uppercase>
+              <Icon name="Sorting" title="Sorting" className={theme.icon} />
+              {currentSort}
+            </Text>
+          </Button>
 
-        <div className={theme.divider} />
+          <div className={theme.divider} />
 
-        <Button onClick={showFacets} className={theme.button}>
-          <Text primary uppercase>
-            <Icon name="Filters" title="Filters" />
-            {t('Filter')}
-            <span className={theme.facetCount}>({total})</span>
-          </Text>
-        </Button>
+          <Button onClick={showFacets} className={theme.button}>
+            <Text primary uppercase>
+              <Icon name="Filters" title="Filters" />
+              {t('actions.filter')}
+              <span className={theme.facetCount}>({total})</span>
+            </Text>
+          </Button>
+        </div>
       </div>
-    </div>
-  );
-};
+    );
+  }
+);
 
 const transform = {
   from: { transform: `translate3d(-100%, 0, 0)` },
@@ -102,4 +105,4 @@ const transform = {
 export default compose(
   withDrawer('Filters', MobileFacets, transform),
   withDrawer('Sorting', MobileSorting, transform)
-)(Sorting);
+)(MobileActions);

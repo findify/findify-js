@@ -1,7 +1,7 @@
 /**
  * @module components/search/DesktopActions
  */
-import { useCallback, useState } from 'react';
+import { memo, useCallback, useState } from 'react';
 import Breadcrumbs from 'components/Breadcrumbs';
 import Query from 'components/search/Query';
 import Sorting from 'components/Sorting';
@@ -47,7 +47,7 @@ export default ({ theme = styles, isCollection }: IDesktopActionsProps) => {
           >
             <Text secondary uppercase>
               <Icon name="Filters" title="Filters" className={theme.icon} />
-              {t('show')}
+              {t('actions.showFilters')}
             </Text>
           </Button>
           <Query display-if={!isCollection} />

@@ -37,7 +37,9 @@ const Suggestions = ({
           [theme.trendingTitle]: isTrendingSearches,
         })}
       >
-        {isTrendingSearches ? t('trendingSearches') : t('suggestionsTitle')}
+        {isTrendingSearches
+          ? t('autocomplete.trendingSearches')
+          : t('autocomplete.suggestionsTitle')}
       </h4>
       <SearchSuggestions
         className={theme.searchSuggestions}
@@ -63,7 +65,9 @@ const Products = ({
           [theme.trendingTitle]: isTrendingSearches,
         })}
       >
-        {isTrendingSearches ? t('trendingProducts') : t('productMatchesTitle')}
+        {isTrendingSearches
+          ? t('autocomplete.trendingProducts')
+          : t('autocomplete.productMatchesTitle')}
       </h4>
       <ProductMatches
         className={theme.productMatches}

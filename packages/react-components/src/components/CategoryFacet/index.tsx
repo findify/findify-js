@@ -86,7 +86,7 @@ export default ({
             name={isExpanded ? 'Minus' : 'Plus'}
             title={isExpanded ? 'Expanded' : 'Collapsed'}
           />
-          {isExpanded ? t('less') : t('more')}
+          {isExpanded ? t('facets.less') : t('facets.more')}
         </Text>
       </Button>
     </div>

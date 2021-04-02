@@ -67,7 +67,7 @@ export default ({ theme = styles, style, hideModal }: IMobileSortingProps) => {
       <div className={theme.header}>
         <div className={theme.title}>
           <Text primary uppercase>
-            {t('Sorting')}
+            {t('actions.sorting')}
           </Text>
         </div>
 

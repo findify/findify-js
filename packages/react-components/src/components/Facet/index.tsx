@@ -15,8 +15,8 @@ import { Immutable, Types } from '@findify/store-configuration';
 export interface IFacetProps extends ThemedSFCProps {
   /** Facet component to render */
   FacetComponent: React.Component<any>;
-  /** Flag to show open / closed state of facet */
-  isOpen?: boolean;
+  /** List of openFacets */
+  openFacets: string[];
   /** Flag to show if facet is opened on mobile */
   isMobile?: boolean;
   /** Flag to show if facets orientation is mobile */
@@ -44,15 +44,17 @@ export default ({
   theme = styles,
   item,
   config,
-  isOpen,
   isMobile,
   isHorizontal,
   onToggle,
+  openFacets,
 }: IFacetProps) => {
   const title = config.get('label') || item.get('name');
   const selectedItemsCount = useMemo(() => {
     return item.get('values').filter((item) => item.get('selected')).size;
   }, [item]);
+
+  const isOpen = openFacets.includes(item.get('name'));
 
   const onClick = useCallback(() => {
     onToggle(item.get('name'));

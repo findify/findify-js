@@ -8,6 +8,7 @@ import styles from 'components/search/Query/styles.css';
 import escape from 'lodash/escape';
 import Text from 'components/Text';
 import useTranslations from 'helpers/useTranslations';
+import { memo } from 'react';
 
 const getContent = (meta, t) => {
   const hasFilters = !!meta.get('filters');
@@ -15,33 +16,40 @@ const getContent = (meta, t) => {
   const total = meta.get('total');
 
   if (!q && !hasFilters) {
-    return t('noQuery');
+    return t('search.noQuery');
   }
 
   if (hasFilters && !q) {
-    return t('showingEmpty', total);
+    return t('search.showingEmpty', total);
   }
 
   if (meta.get('corrected_q')) {
     const text = t('showing', total);
     return `${text} "${escape(meta.get('corrected_q') as string)}". ${t(
-      'zeroResultsFor'
+      'search.zeroResultsFor'
     )} "${q}".`;
   }
 
   if (meta.get('query_type') === 'or') {
     const text = t('showing', '0');
-    return `${text} "${q}". ${t('partialMatch')}`;
+    return `${text} "${q}". ${t('search.partialMatch')}`;
   }
 
   const text = t('showing', total);
   return `${text} "${q}".`;
 };
 
-export default ({ theme = styles }: { theme?: Record<string, string> }) => {
-  const { meta } = useQuery();
-  const t = useTranslations();
-  return (
-    <Text primary uppercase className={theme.root} html={getContent(meta, t)} />
-  );
-};
+export default memo(
+  ({ theme = styles }: { theme?: Record<string, string> }) => {
+    const { meta } = useQuery();
+    const t = useTranslations();
+    return (
+      <Text
+        primary
+        uppercase
+        className={theme.root}
+        html={getContent(meta, t)}
+      />
+    );
+  }
+);

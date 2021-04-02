@@ -2,7 +2,7 @@
  * @module components/Icon
  */
 
-import * as React from 'react';
+import { createElement } from 'react';
 import cx from 'classnames';
 import styles from 'components/Icon/styles.css';
 
@@ -75,7 +75,7 @@ export type IIconProps = {
 };
 
 const Icon = ({ name, component, className, ...rest }: IIconProps) =>
-  React.createElement(component || icons[name], {
+  createElement(component || icons[name], {
     className: cx(styles.root, className),
     ...rest,
   });

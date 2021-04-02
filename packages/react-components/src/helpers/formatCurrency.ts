@@ -1,4 +1,5 @@
 import accounting from 'accounting';
+import memoizeOne from 'memoize-one';
 
 export interface ICurrencyData {
   symbol?: string;
@@ -8,9 +9,9 @@ export interface ICurrencyData {
   symbolOnLeft?: boolean;
   spaceBetweenAmountAndSymbol?: boolean;
   format?: {
-    pos: string,
-    neg: string,
-    zero: string
+    pos: string;
+    neg: string;
+    zero: string;
   };
 }
 
@@ -21,8 +22,8 @@ const formatMapping = [
     format: {
       pos: '%s%v',
       neg: '-%s%v',
-      zero: '%s%v'
-    }
+      zero: '%s%v',
+    },
   },
   {
     symbolOnLeft: true,
@@ -30,8 +31,8 @@ const formatMapping = [
     format: {
       pos: '%s %v',
       neg: '-%s %v',
-      zero: '%s %v'
-    }
+      zero: '%s %v',
+    },
   },
   {
     symbolOnLeft: false,
@@ -39,8 +40,8 @@ const formatMapping = [
     format: {
       pos: '%v%s',
       neg: '-%v%s',
-      zero: '%v%s'
-    }
+      zero: '%v%s',
+    },
   },
   {
     symbolOnLeft: false,
@@ -48,9 +49,9 @@ const formatMapping = [
     format: {
       pos: '%v %s',
       neg: '-%v %s',
-      zero: '%v %s'
-    }
-  }
+      zero: '%v %s',
+    },
+  },
 ];
 
 const defaultCurrency = {
@@ -60,13 +61,19 @@ const defaultCurrency = {
   precision: 2,
   symbolOnLeft: true,
   spaceBetweenAmountAndSymbol: false,
-}
+};
 
-export default (currency: ICurrencyData = defaultCurrency) => (value: string) =>
-accounting.formatMoney(value, {
-  ...currency,
-  format: currency.format || (formatMapping as any).find(f =>
-      f.symbolOnLeft === currency.symbolOnLeft &&
-      f.spaceBetweenAmountAndSymbol === currency.spaceBetweenAmountAndSymbol
-    ).format
-})
+export default memoizeOne(
+  (currency: ICurrencyData = defaultCurrency) => (value: string) =>
+    accounting.formatMoney(value, {
+      ...currency,
+      format:
+        currency.format ||
+        (formatMapping as any).find(
+          (f) =>
+            f.symbolOnLeft === currency.symbolOnLeft &&
+            f.spaceBetweenAmountAndSymbol ===
+              currency.spaceBetweenAmountAndSymbol
+        ).format,
+    })
+);

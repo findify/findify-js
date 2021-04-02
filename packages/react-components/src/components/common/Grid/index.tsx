@@ -2,7 +2,7 @@
  * @module components/common/Grid
  */
 
-import { useMemo, cloneElement, Children } from 'react';
+import { useMemo, cloneElement, Children, memo } from 'react';
 
 import { Column as _Column, Placeholder } from 'components/common/Grid/Column';
 import cx from 'classnames';
@@ -38,79 +38,73 @@ const usePlaceholders = (columns) => {
 
 export const Column = _Column;
 
-export default ({
-  children: _children,
-  theme = styles,
-  columns: _columns,
-  gutter: _gutter,
+export default memo(
+  ({
+    children: _children,
+    theme = styles,
+    columns: _columns,
+    gutter: _gutter,
 
-  className,
-  style,
+    className,
+    style,
 
-  wrapperComponent: WrapperComponent = 'div',
-  columnComponent,
+    wrapperComponent: WrapperComponent = 'div',
+    columnComponent,
 
-  ...rest
-}: IGridProps) => {
-  const computedColumns =
-    typeof _columns === 'string' ? _columns : useColumns(_columns);
+    ...rest
+  }: IGridProps) => {
+    const computedColumns =
+      typeof _columns === 'string' ? _columns : useColumns(_columns);
 
-  const columns = computedColumns.split('|');
-  const gutter = _gutter && (isNaN(Number(_gutter)) ? _gutter : `${_gutter}px`);
+    const columns = computedColumns.split('|');
+    const gutter =
+      _gutter && (isNaN(Number(_gutter)) ? _gutter : `${_gutter}px`);
 
-  const placeholders = usePlaceholders(columns);
+    const placeholders = usePlaceholders(columns);
 
-  const children = useMemo(
-    () =>
-      Children.map(
-        _children,
-        (child: React.ReactElement<any>, index: number) => {
-          if (!child) return null;
+    const children = Children.map(
+      _children,
+      (child: React.ReactElement<any>, index: number) => {
+        if (!child) return null;
 
-          const {
-            order,
-            size,
-            columnClass,
-            columnStyle,
-            ...props
-          } = child.props;
+        const { order, size, columnClass, columnStyle, ...props } = child.props;
 
-          if (child.type === Column) {
-            return cloneElement(child, {
-              ...child.props,
-              size: size || columns[index] || columns[0],
-              component: columnComponent,
-              key: child.key || index,
-              gutter,
-            });
-          }
-
-          return (
-            <Column
-              key={child.key || index}
-              gutter={gutter}
-              order={order}
-              size={size || columns[index] || columns[0]}
-              className={columnClass}
-              style={columnStyle}
-              component={columnComponent}
-            >
-              {cloneElement(child, props)}
-            </Column>
-          );
+        if (child.type === Column) {
+          return cloneElement(child, {
+            ...child.props,
+            size: size || columns[index] || columns[0],
+            component: columnComponent,
+            key: child.key || index,
+            gutter,
+          });
         }
-      ),
-    [_children, columns]
-  );
 
-  return (
-    <WrapperComponent
-      className={cx(theme.root, className)}
-      style={{ ...style, marginLeft: `-${gutter}` }}
-      {...rest}
-    >
-      {children}
-      {placeholders}
-    </WrapperComponent>
-  );
-};
+        return (
+          <Column
+            key={child.key || index}
+            gutter={gutter}
+            order={order}
+            size={size || columns[index] || columns[0]}
+            className={columnClass}
+            style={columnStyle}
+            component={columnComponent}
+          >
+            {cloneElement(child, props)}
+          </Column>
+        );
+      }
+    );
+
+    return (
+      <WrapperComponent
+        className={cx(theme.root, className)}
+        style={{ ...style, marginLeft: `-${gutter}` }}
+        {...rest}
+      >
+        {children}
+        {placeholders}
+      </WrapperComponent>
+    );
+  },
+  (a, b) => a.children === b.children && a.columns === b.columns
+);

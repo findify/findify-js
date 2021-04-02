@@ -21,7 +21,7 @@ export default ({ theme = styles }) => {
       <div className={theme.root} data-findify-autocomplete tabIndex={0}>
         <div className={theme.container}>
           <h4 className={cx(theme.typeTitle, theme.suggestionsTitle)}>
-            {t('suggestionsTitle')}
+            {t('autocomplete.suggestionsTitle')}
           </h4>
           <Suggestions />
         </div>

@@ -4,26 +4,14 @@
 import Icon from 'components/Icon';
 import Text from 'components/Text';
 import Dropdown from 'components/Dropdown';
-import { MJSConfiguration, ISortingItem, ThemedSFCProps } from 'types';
-import { List } from 'immutable';
+import { ThemedSFCProps } from 'types';
 import useTranslations from 'helpers/useTranslations';
 
 import styles from 'components/Sorting/styles.css';
 import useSortingLogic from 'helpers/useSortingLogic';
+import { memo } from 'react';
 
-/** List of props Sorting view accepts */
-export interface ISortingProps extends ThemedSFCProps {
-  /** Callback called when sorting is changed */
-  onChangeSort?: (value: any) => void;
-  /** MJS configuration */
-  config: MJSConfiguration;
-  /** List of Sorting configurations */
-  items: List<ISortingItem>;
-  /** Current selected sorting configuration */
-  selectedItem: ISortingItem;
-}
-
-export default ({ theme = styles }: ISortingProps) => {
+export default memo(({ theme = styles }: ThemedSFCProps) => {
   const [items, selected, onChange] = useSortingLogic();
   const t = useTranslations();
 
@@ -41,4 +29,4 @@ export default ({ theme = styles }: ISortingProps) => {
       />
     </div>
   );
-};
+});

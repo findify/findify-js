@@ -30,7 +30,7 @@ export interface ISuggestionItemProps extends ThemedSFCProps, ISuggestionProps {
   /** Query, used to highlight matches */
   query: IQuery;
   /** Flag indicating whether current suggestion is in focus over keyboard arrows */
-  highlighted: boolean;
+  selectedSuggestion: number;
   /** Icon name to use */
   icon: string;
   /** Flag indicating that this suggestion is used in TrendingSearches layout of Autocomplete */
@@ -43,12 +43,15 @@ export default ({
   item,
   query,
   theme = styles,
-  highlighted,
+  selectedSuggestion,
+  index,
   onClick,
   icon,
   isTrendingSearches,
 }: ISuggestionItemProps) => {
+  const highlighted = selectedSuggestion === index;
   const value = item?.get('value');
+
   return (
     <li
       display-if={value}

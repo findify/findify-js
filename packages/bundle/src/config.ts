@@ -225,7 +225,7 @@ const config: Config = {
 
       pagination: {
         step: 2,
-        type: 'static',
+        type: 'lazy',
         autoLoadTimes: 2,
       },
 
@@ -254,7 +254,7 @@ const config: Config = {
         position: 'left',
         hidable: true,
         accordion: true,
-        sticky: false,
+        sticky: true,
 
         filters: {
           'custom_fields.material2': {

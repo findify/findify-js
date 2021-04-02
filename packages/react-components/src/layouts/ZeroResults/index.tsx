@@ -31,12 +31,17 @@ export default ({ q, theme = styles }: IZeroResultsProps) => {
       <div className={theme.wrapper}>
         <div className={theme.sorryContainer}>
           <Text className={theme.sorry} primary bold uppercase inlineBlock>
-            {t('sorryNoResults')}
+            {t('zeroresults.sorryNoResults')}
           </Text>
           <Text
             primary
             inlineBlock
-            html={t(q ? 'noResultsFound' : 'noResultEmptyQuery', escape(q))}
+            html={t(
+              q
+                ? 'zeroresults.noResultsFound'
+                : 'zeroresults.noResultEmptyQuery',
+              escape(q)
+            )}
           />
         </div>
         <div className={theme.suggestionsContainer} display-if={false}>
@@ -47,7 +52,7 @@ export default ({ q, theme = styles }: IZeroResultsProps) => {
             uppercase
             inlineBlock
           >
-            {t('tryOneOfThese')}
+            {t('zeroresults.tryOneOfThese')}
           </Text>
         </div>
         <div className={theme.recommendationContainer}>
@@ -58,7 +63,7 @@ export default ({ q, theme = styles }: IZeroResultsProps) => {
             uppercase
             inlineBlock
           >
-            {t('checkOutPopularProducts')}
+            {t('zeroresults.checkOutPopularProducts')}
           </Text>
         </div>
       </div>

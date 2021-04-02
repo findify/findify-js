@@ -69,12 +69,12 @@ export default ({
     >
       <div className={theme.search} display-if={isExpanded}>
         <input
-          placeholder={t('search')}
+          placeholder={t('facets.search')}
           className={theme.input}
           onChange={onSearch}
           value={search}
         />
-        <Icon name="Search" className={theme.icon} title={t('Search')} />
+        <Icon name="Search" className={theme.icon} title={t('facets.search')} />
       </div>
 
       <section role="list">
@@ -127,7 +127,7 @@ export default ({
             name={isExpanded ? 'Minus' : 'Plus'}
             title={t(isExpanded ? 'Expanded' : 'Collapsed')}
           />
-          {isExpanded ? t('less') : t('more')}
+          {isExpanded ? t('facets.less') : t('facets.more')}
         </Text>
       </Button>
     </div>

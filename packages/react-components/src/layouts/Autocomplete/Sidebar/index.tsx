@@ -88,7 +88,9 @@ export default ({ theme = styles }) => {
           className={theme.suggestionsWrapper}
         >
           <div className={theme.suggestionsContainer}>
-            <h4 className={theme.typeTitle}>{t('suggestionsTitle')}</h4>
+            <h4 className={theme.typeTitle}>
+              {t('autocomplete.suggestionsTitle')}
+            </h4>
             <SearchSuggestions />
           </div>
         </div>
