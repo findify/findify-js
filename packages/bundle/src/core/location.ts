@@ -1,4 +1,3 @@
-import 'core-js/features/array/includes';
 import { createBrowserHistory } from 'history';
 import { parse, stringify } from 'qs';
 

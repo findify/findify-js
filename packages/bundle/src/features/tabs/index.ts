@@ -21,7 +21,7 @@ const getProps = (widgets, state, updateCount) => ({
   widgets: widgets.map(({ node, key }, index) => ({
     key,
     active: state.active === key,
-    title: node.dataset.title,
+    title: node.dataset?.title,
     count: state.counter[index],
   })),
 });

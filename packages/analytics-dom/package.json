@@ -32,8 +32,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@findify/analytics": "^3.5.4",
-    "element-dataset": "2.2.6"
+    "@findify/analytics": "^3.5.4"
   },
   "peerDependencies": {
     "core-js": "^3"

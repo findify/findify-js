@@ -66,6 +66,8 @@ const PriceInput = ({
       <span className={theme.currency}>{currency}</span>
       <input
         type="number"
+        inputMode="numeric"
+        pattern="[0-9]*"
         className={theme.input}
         max={max}
         min={min}

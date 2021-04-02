@@ -3,11 +3,7 @@ import { getEventsOnPage, getDeprecatedEvents } from './bindings/events';
 import { getFiltersOnPage } from './bindings/filters';
 import { startDOMListeners } from './bindings/dom';
 
-import elementDataset from 'element-dataset';
 import { EventName } from '@findify/analytics/lib/types';
-
-// Support data-* in IE9
-elementDataset();
 
 declare namespace document {
   const readyState: any;

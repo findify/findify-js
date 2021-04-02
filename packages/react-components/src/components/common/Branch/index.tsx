@@ -2,7 +2,7 @@
  * @module components/common/Branch
  */
 
-import * as React from 'react';
+import { Fragment } from 'react';
 
 /** Props that Branch component accepts */
 export interface IBranchProps {
@@ -31,7 +31,7 @@ const Branch = ({
 }: IBranchProps) => {
   const Component = (condition
     ? left
-    : right || React.Fragment) as React.ComponentType;
+    : right || Fragment) as React.ComponentType;
   return <Component {...((condition || right) && props)}>{children}</Component>;
 };
 

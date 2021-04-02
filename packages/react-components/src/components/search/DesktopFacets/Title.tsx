@@ -2,13 +2,11 @@
  * @module components/search/DesktopFacets
  */
 
-import * as React from 'react';
 import Text from 'components/Text';
 import Icon from 'components/Icon';
 import Button from 'components/Button';
-import { ThemedSFCProps, MJSConfiguration, MJSValue } from 'types';
-import { Map, List } from 'immutable';
-import { Immutable } from '@findify/store-configuration';
+import { ThemedSFCProps } from 'types';
+import { Map } from 'immutable';
 import styles from 'components/search/DesktopFacets/styles.css';
 import useTranslations from 'helpers/useTranslations';
 

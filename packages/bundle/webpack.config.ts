@@ -99,30 +99,7 @@ module.exports = (env: WebpackEnvArgs, { mode }) => {
         'react-dom':
           mode === 'development' ? '@hot-loader/react-dom' : 'react-dom',
 
-        axios: path.resolve(__dirname, '../../node_modules/axios'),
-        react: path.resolve(__dirname, '../../node_modules/react'),
         'react-is': path.resolve(__dirname, '../../node_modules/react-is'),
-
-        '@babel/runtime': path.resolve(
-          __dirname,
-          '../../node_modules/@babel/runtime'
-        ),
-
-        'lodash.throttle': 'lodash/throttle',
-        'lodash.debounce': 'lodash/debounce',
-        lodash: path.resolve(__dirname, '../../node_modules/lodash'),
-        debug: path.resolve(__dirname, '../../node_modules/debug'),
-        'babel-runtime/core-js/promise': 'core-js/features/promise',
-        'babel-runtime/core-js/object': 'core-js/features/object',
-        'babel-runtime': '@babel/runtime',
-        'hoist-non-react-statics': path.resolve(
-          __dirname,
-          '../../node_modules/hoist-non-react-statics'
-        ),
-        'regenerator-runtime': path.resolve(
-          __dirname,
-          '../../node_modules/regenerator-runtime'
-        ),
       },
     },
     module: {

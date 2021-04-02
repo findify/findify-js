@@ -2,7 +2,7 @@
  * @module components/Tabs
  */
 
-import * as React from 'react';
+import { Children } from 'react';
 import { withHandlers, withPropsOnChange, compose } from 'recompose';
 import cx from 'classnames';
 import Dropdown from 'components/Dropdown';
@@ -45,7 +45,7 @@ const MobileDropdown = compose(
   }),
   withPropsOnChange(['children'], ({ children, selectedIndex }) => ({
     items: fromJS(
-      React.Children.toArray(children).map((i, index) => ({
+      Children.toArray(children).map((i, index) => ({
         index,
         label: i.props.label,
       }))
@@ -68,9 +68,9 @@ const TabsView = ({
   selectedIndex,
   isMobile = false,
 }: ITabsProps) => (
-  <React.Fragment>
+  <>
     <ul className={theme.list} display-if={!isMobile}>
-      {React.Children.map(children, (child, idx) => (
+      {Children.map(children, (child, idx) => (
         <Item
           {...child.props}
           index={idx}
@@ -89,7 +89,7 @@ const TabsView = ({
       onChange={onTabClick}
     />
     <div className={theme.body}>{body}</div>
-  </React.Fragment>
+  </>
 );
 
 export default TabsView;

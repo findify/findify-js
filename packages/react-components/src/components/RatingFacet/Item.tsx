@@ -1,8 +1,6 @@
 /**
  * @module components/RatingFacet
  */
-
-import * as React from 'react';
 import content from 'components/RatingFacet/content';
 import Button from 'components/Button';
 import Text from 'components/Text';
@@ -19,12 +17,7 @@ export interface IRatingFacetItemProps extends ThemedSFCProps {
   config: MJSConfiguration;
 }
 
-const RatingFacetItem: React.SFC<IRatingFacetItemProps> = ({
-  item,
-  theme,
-  style,
-  config,
-}: IRatingFacetItemProps) => (
+export default ({ item, theme, style, config }: IRatingFacetItemProps) => (
   <Button
     style={style}
     className={theme.item}
@@ -46,5 +39,3 @@ const RatingFacetItem: React.SFC<IRatingFacetItemProps> = ({
     </Text>
   </Button>
 );
-
-export default RatingFacetItem;

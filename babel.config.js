@@ -18,8 +18,6 @@ module.exports = (api) => {
       "@babel/preset-typescript",
       ["@babel/preset-env", {
         "modules": false,
-        "useBuiltIns": "usage",
-        "corejs": 3,
       }]
     ],
     overrides: [
@@ -32,7 +30,7 @@ module.exports = (api) => {
           ["@babel/preset-env", {
             "modules": false,
             "useBuiltIns": "entry",
-            "corejs": 3
+            "corejs": 3,
           }]
         ],
         env: {

@@ -15,7 +15,7 @@ const parseSortHTMLAttribute = (sort) => {
 export default (widget) => {
   const { agent, node } = widget;
   const { q } = getQuery();
-  const { type, sort } = node.dataset;
+  const { type, sort } = node.dataset || {};
 
   agent
     .defaults({ type: [type], sort: parseSortHTMLAttribute(sort) })

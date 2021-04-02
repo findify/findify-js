@@ -779,4 +779,4 @@ const config: Config = {
   components: {},
 };
 
-export default process.env.NODE_ENV !== 'development' ? __CONFIG__ : config;
+export default config;

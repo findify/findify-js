@@ -2,7 +2,6 @@
  * @module types
  */
 
-import * as React from 'react';
 import { Map, List } from 'immutable';
 import { Immutable } from '@findify/store-configuration';
 
