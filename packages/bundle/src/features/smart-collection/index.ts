@@ -46,6 +46,7 @@ export default (widget) => {
         }
         render('initial');
       } else {
+        if (config.get('disableZeroResults')) return;
         showFallback(node);
         hideLoader(node);
         __root.emit(Events.collectionNotFound, widget);
