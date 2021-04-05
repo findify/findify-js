@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.11.21"></a>
+## [0.11.21](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.11.20...@findify/react-components@0.11.21) (2021-04-05)
+
+
+### Bug Fixes
+
+* **bundle:** prevent fallback in Smart collections when optin present ([df27c5f](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/df27c5f))
+
+
+
+
 <a name="0.11.20"></a>
 ## [0.11.20](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.11.19...@findify/react-components@0.11.20) (2021-03-05)
 

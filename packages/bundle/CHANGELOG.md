@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="6.18.1"></a>
+## [6.18.1](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.18.0...@findify/bundle@6.18.1) (2021-04-05)
+
+
+### Bug Fixes
+
+* **bundle:** prevent fallback in Smart collections when optin present ([df27c5f](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/df27c5f))
+
+
+
+
 <a name="6.18.0"></a>
 # [6.18.0](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.16.18...@findify/bundle@6.18.0) (2021-03-05)
 
