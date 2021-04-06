@@ -10,12 +10,12 @@ import { Immutable } from '@findify/store-configuration';
 import useTranslations from 'helpers/useTranslations';
 
 /** TODO: NEED TO REFACTOR  */
-export default ({ theme = styles }) => {
+export default ({ theme = styles, showSuggestions }) => {
   const { suggestions } = useSuggestions<Immutable.AutocompleteConfig>();
   const translate = useTranslations();
   return (
     <div
-      display-if={suggestions && suggestions.size > 0}
+      display-if={showSuggestions &&  suggestions && suggestions.size > 0}
       className={theme.wrapper}
     >
       <div className={theme.root} data-findify-autocomplete tabIndex={0}>
