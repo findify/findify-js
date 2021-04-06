@@ -50,11 +50,13 @@ const Autocomplete = ({ isTrendingSearches, ...rest }) => {
   const { config } = useConfig<Immutable.AutocompleteConfig>();
   const [isMobile, isDesktop] = useMedia([config.get('mobileBreakpoint')]);
 
-  const showSuggestions = !isMobile || config.get('enableMobileAutocompleteSuggestions', true);
-
   const viewType: AutocompleteType = isDesktop
     ? config.getIn(['template', 'desktop'])
     : config.getIn(['template', 'mobile']);
+
+  const templateSetting = config.get(viewType);
+
+  const showSuggestions = !isMobile || !!templateSetting?.getIn(['suggestions', 'display']);
 
   return renderView(viewType, {
     ...rest,

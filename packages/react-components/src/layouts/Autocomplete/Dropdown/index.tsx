@@ -146,16 +146,15 @@ export default ({ theme = styles, showSuggestions, ...rest }: IAutocompleteDropd
           widgetKey={config.get('widgetKey')}
         />
         <Grid className={theme.container} columns="auto|3">
-          {showSuggestions && (
-            <Suggestions
-              {...rest}
-              selectedSuggestion={selectedSuggestion}
-              theme={theme}
-              config={config}
-              icon={isTrendingSearches && 'Fire'}
-              isTrendingSearches={isTrendingSearches}
+          <Suggestions
+            display-if={showSuggestions}
+            {...rest}
+            selectedSuggestion={selectedSuggestion}
+            theme={theme}
+            config={config}
+            icon={isTrendingSearches && 'Fire'}
+            isTrendingSearches={isTrendingSearches}
             />
-          )}
           <Products
             {...rest}
             theme={theme}
