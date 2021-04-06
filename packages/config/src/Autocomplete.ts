@@ -50,11 +50,6 @@ export interface Autocomplete extends BaseFeature<'Autocomplete'>, TemplateSetti
   enableTrendingSearches: boolean
 
   /**
-   * Shows/hides suggestions on mobile autocomplete
-   */
-  enableSuggestionsOnMobileAutocomplete: boolean,
-
-  /**
    * Node where widget should be rendered in
    * - parent - Parent node
    * - self - Dynamically created widget node
