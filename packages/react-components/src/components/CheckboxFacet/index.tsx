@@ -46,7 +46,7 @@ export default ({
 }: ICheckboxFacetProps) => {
   const [search, setSearch] = useState('');
   const [isExpanded, setExpanded] = useState(false);
-  const t = useTranslations();
+  const translate = useTranslations();
 
   const onSearch = useCallback((e: React.FormEvent<HTMLInputElement>) => {
     setSearch(e.target ? e.target.value : e);
@@ -125,9 +125,9 @@ export default ({
         <Text primary uppercase>
           <Icon
             name={isExpanded ? 'Minus' : 'Plus'}
-            title={t(isExpanded ? 'Expanded' : 'Collapsed')}
+            title={translate(isExpanded ? 'facets.expanded' : 'Collapsed')}
           />
-          {isExpanded ? t('facets.less') : t('facets.more')}
+          {isExpanded ? translate('facets.less') : translate('facets.more')}
         </Text>
       </Button>
     </div>

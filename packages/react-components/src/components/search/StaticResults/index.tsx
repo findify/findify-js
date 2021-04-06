@@ -13,12 +13,12 @@ import styles from 'components/search/StaticResults/styles.css';
 
 export default ({ theme = styles }) => {
   const { items, config } = useItems<Immutable.SearchConfig>();
-  const t = useTranslations();
+  const translate = useTranslations();
   return (
     <div className={theme.root}>
       <Grid
         role="main"
-        aria-label={t('Search results')}
+        aria-label={translate('search.title')}
         wrapperComponent="ul"
         columnComponent="li"
         gutter={12}

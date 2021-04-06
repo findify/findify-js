@@ -40,7 +40,7 @@ export default ({
   hidden,
   isMobile,
 }: ICategoryFacetProps) => {
-  const t = useTranslations();
+  const translate = useTranslations();
   const [isExpanded, setExpanded] = useState(false);
   const [items, total] = useMemo(() => {
     const items = facet.get('values');
@@ -62,7 +62,7 @@ export default ({
           bold={!items.find((i) => i.get('selected') as boolean)}
           className={theme.content}
         >
-          {t('All categories')}
+          {translate('facets.allCategories')}
         </Text>
         <Text secondary uppercase>
           ({total})
@@ -86,7 +86,7 @@ export default ({
             name={isExpanded ? 'Minus' : 'Plus'}
             title={isExpanded ? 'Expanded' : 'Collapsed'}
           />
-          {isExpanded ? t('facets.less') : t('facets.more')}
+          {isExpanded ? translate('facets.less') : translate('facets.more')}
         </Text>
       </Button>
     </div>

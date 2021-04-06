@@ -5,15 +5,15 @@ import { useSort } from '@findify/react-connect';
 import { Immutable } from '@findify/store-configuration';
 
 export const getItemLabel = (i) =>
-  `sorting.${[i.get('field'), i.get('order')].filter((i) => !!i).join(':')}`;
+  `sorting.${[i.get('field'), i.get('order')].filter((i) => !!i).join('|')}`;
 
 export default () => {
   const { config, selected, onChangeSort } = useSort<Immutable.SearchConfig>();
-  const t = useTranslations();
+  const translate = useTranslations();
   const items = useMemo(() => {
     return config
       .getIn(['sorting', 'options'], List())
-      .map((i) => i.set('label', t(getItemLabel(i))));
+      .map((i) => i.set('label', translate(getItemLabel(i))));
   }, []);
 
   const selectedItem = useMemo(() => {

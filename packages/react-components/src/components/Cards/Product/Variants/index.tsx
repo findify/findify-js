@@ -3,7 +3,7 @@ import { List } from 'immutable';
 import styles from 'components/Cards/Product/Variants/styles.css';
 
 export default ({ item, config, theme = styles }) => {
-  const t = useTranslations();
+  const translate = useTranslations();
   return (
     <div
       className={theme.variants}
@@ -12,7 +12,10 @@ export default ({ item, config, theme = styles }) => {
         item.get('variants', List()).size > 1
       }
     >
-      {t('Available in %s variants', item.get('variants', List()).size)}
+      {translate(
+        'product.availableInVariants',
+        item.get('variants', List()).size
+      )}
     </div>
   );
 };

@@ -13,13 +13,17 @@ import { memo } from 'react';
 
 export default memo(({ theme = styles }: ThemedSFCProps) => {
   const [items, selected, onChange] = useSortingLogic();
-  const t = useTranslations();
+  const translate = useTranslations();
 
   return (
     <div className={theme.root}>
-      <Icon name="Sorting" className={theme.icon} title="Sorting" />
+      <Icon
+        name="Sorting"
+        className={theme.icon}
+        title={translate('actions.sortBy')}
+      />
       <Text primary uppercase className={theme.title}>
-        {t('sort by')}:
+        {translate('actions.sortBy')}:
       </Text>
       <Dropdown
         className={theme.dropdown}

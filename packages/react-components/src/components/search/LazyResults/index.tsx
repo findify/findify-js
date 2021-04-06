@@ -23,13 +23,13 @@ export default ({ theme = styles, card = ProductCard }) => {
     items,
   } = useLazy();
   const { config } = useConfig();
-  const t = useTranslations();
+  const translate = useTranslations();
   return (
     <div
       ref={container}
       className={theme.root}
       role="main"
-      aria-label={t('Search results')}
+      aria-label={translate('search.title')}
       aria-live="polite"
       tabIndex={0}
     >
@@ -39,12 +39,12 @@ export default ({ theme = styles, card = ProductCard }) => {
         onClick={onLoadPrev}
       >
         <Text primary lowercase>
-          {t('Load previous')}
+          {translate('search.loadPrev')}
         </Text>
       </Button>
       <Grid
         role="main"
-        aria-label={t('Search results')}
+        aria-label={translate('search.title')}
         wrapperComponent="ul"
         columnComponent="li"
         columns={config.getIn(['breakpoints', 'grid'], {
@@ -66,7 +66,7 @@ export default ({ theme = styles, card = ProductCard }) => {
         onClick={onLoadNext}
       >
         <Text primary lowercase>
-          {t('Load more')}
+          {translate('search.loadMore')}
         </Text>
       </Button>
     </div>

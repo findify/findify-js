@@ -25,7 +25,7 @@ export default memo<{ theme?: any }>(({ theme = styles }) => {
     getPageProps,
     config,
   } = usePagination<Immutable.SearchConfig>();
-  const t = useTranslations();
+  const translate = useTranslations();
 
   if (!pages) return null;
 
@@ -50,14 +50,14 @@ export default memo<{ theme?: any }>(({ theme = styles }) => {
         {...getPageProps(current - 1)}
         className={theme.prev}
       >
-        <Icon name="ArrowLeft" title={t('pagination.previous')} />
-        {t('pagination.previous')}
+        <Icon name="ArrowLeft" title={translate('pagination.previous')} />
+        {translate('pagination.previous')}
       </Button>
       <Button
         display-if={showFirst}
         {...getPageProps(1)}
         className={theme.first}
-        aria-label={t('pagination.goTo %s', 1)}
+        aria-label={translate('pagination.goTo', 1)}
       >
         1
       </Button>
@@ -68,7 +68,7 @@ export default memo<{ theme?: any }>(({ theme = styles }) => {
         <Button
           {...getPageProps(page)}
           className={cx(theme.page, current === page && theme.active)}
-          aria-label={t('pagination.goTo %s', page)}
+          aria-label={translate('pagination.goTo', page)}
         >
           {page}
         </Button>
@@ -80,7 +80,7 @@ export default memo<{ theme?: any }>(({ theme = styles }) => {
         display-if={showLast}
         {...getPageProps(total)}
         className={theme.last}
-        aria-label={t('pagination.goTo %s', total)}
+        aria-label={translate('pagination.goTo', total)}
       >
         {total}
       </Button>
@@ -89,8 +89,8 @@ export default memo<{ theme?: any }>(({ theme = styles }) => {
         {...getPageProps(current + 1)}
         className={theme.next}
       >
-        {t('pagination.next')}
-        <Icon name="ArrowRight" title={t('pagination.next')} />
+        {translate('pagination.next')}
+        <Icon name="ArrowRight" title={translate('pagination.next')} />
       </Button>
     </div>
   );

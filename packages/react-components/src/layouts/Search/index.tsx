@@ -32,13 +32,13 @@ export interface ISearchProps extends ThemedSFCProps<typeof styles> {
 
 const Search = ({ isCollection, theme = styles }) => {
   const { items, config } = useItems<Immutable.SearchConfig>();
-  const t = useTranslations();
+  const translate = useTranslations();
   const isMobile = useMobile();
   const [announcement, setAnnouncement] = useAnnouncement();
 
   useScrollOnChange(items);
 
-  useEffect(() => setAnnouncement(t('Product matches has been updated')), [
+  useEffect(() => setAnnouncement(translate('search.accessibleUpdate')), [
     items,
   ]);
 

@@ -60,19 +60,19 @@ export interface IMobileSortingProps extends ThemedSFCProps {
 
 export default ({ theme = styles, style, hideModal }: IMobileSortingProps) => {
   const [items, selected, onChange] = useSortingLogic();
-  const t = useTranslations();
+  const translate = useTranslations();
 
   return (
     <div className={theme.root} style={style}>
       <div className={theme.header}>
         <div className={theme.title}>
           <Text primary uppercase>
-            {t('actions.sorting')}
+            {translate('actions.sorting')}
           </Text>
         </div>
 
         <Button onClick={hideModal}>
-          <Icon name="ArrowBack" title="Go back" />
+          <Icon name="ArrowBack" title={translate('actions.back')} />
         </Button>
       </div>
 
@@ -87,7 +87,7 @@ export default ({ theme = styles, style, hideModal }: IMobileSortingProps) => {
       </div>
 
       <Button className={theme.footer} onClick={hideModal}>
-        {t('See results')}
+        {translate('actions.seeResults')}
       </Button>
     </div>
   );

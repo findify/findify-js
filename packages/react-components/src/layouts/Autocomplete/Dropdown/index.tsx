@@ -29,7 +29,7 @@ const Suggestions = ({
   isTrendingSearches,
   ...rest
 }: IAutocompletePanel) => {
-  const t = useTranslations();
+  const translate = useTranslations();
   return (
     <div className={theme.suggestionsContainer}>
       <h4
@@ -38,8 +38,8 @@ const Suggestions = ({
         })}
       >
         {isTrendingSearches
-          ? t('autocomplete.trendingSearches')
-          : t('autocomplete.suggestionsTitle')}
+          ? translate('autocomplete.trendingSearches')
+          : translate('autocomplete.suggestionsTitle')}
       </h4>
       <SearchSuggestions
         className={theme.searchSuggestions}
@@ -57,7 +57,7 @@ const Products = ({
   isTrendingSearches,
   ...rest
 }: IAutocompletePanel) => {
-  const t = useTranslations();
+  const translate = useTranslations();
   return (
     <div className={theme.productMatchesContainer}>
       <h4
@@ -66,8 +66,8 @@ const Products = ({
         })}
       >
         {isTrendingSearches
-          ? t('autocomplete.trendingProducts')
-          : t('autocomplete.productMatchesTitle')}
+          ? translate('autocomplete.trendingProducts')
+          : translate('autocomplete.productMatchesTitle')}
       </h4>
       <ProductMatches
         className={theme.productMatches}

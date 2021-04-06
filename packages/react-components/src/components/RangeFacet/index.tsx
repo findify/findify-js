@@ -89,7 +89,7 @@ export default ({
   isMobile,
 }: IRangeFacetProps) => {
   const { config } = useConfig<Immutable.RecommendationConfig>();
-  const t = useTranslations();
+  const translate = useTranslations();
 
   const [[from, to], setState] = useState<string[]>([]);
 
@@ -201,7 +201,7 @@ export default ({
         />
         <Button className={theme.submit} onClick={onSubmit}>
           <Text primary uppercase>
-            {t('facets.submit')}
+            {translate('facets.submit')}
           </Text>
         </Button>
       </Grid>

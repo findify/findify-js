@@ -18,7 +18,7 @@ export default ({ selectedSuggestion, theme = styles }) => {
     config,
   } = useSuggestions<Immutable.AutocompleteConfig>();
   const { query } = useQuery();
-  const t = useTranslations();
+  const translate = useTranslations();
 
   const suggestionProps = useCallback(
     (item, index) => getSuggestionProps(index, config.get('widgetKey', '')),
@@ -64,7 +64,7 @@ export default ({ selectedSuggestion, theme = styles }) => {
         />
       </ul>
       <span style={{ display: 'none' }} id="FindifyAutocompleteDescription">
-        {t('Use up and down arrows to review and enter to select.')}
+        {translate('suggestions.accessibleTitle')}
       </span>
       {announcement}
     </>

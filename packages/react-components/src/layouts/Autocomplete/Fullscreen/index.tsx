@@ -12,7 +12,7 @@ import useTranslations from 'helpers/useTranslations';
 /** TODO: NEED TO REFACTOR  */
 export default ({ theme = styles }) => {
   const { suggestions } = useSuggestions<Immutable.AutocompleteConfig>();
-  const t = useTranslations();
+  const translate = useTranslations();
   return (
     <div
       display-if={suggestions && suggestions.size > 0}
@@ -21,7 +21,7 @@ export default ({ theme = styles }) => {
       <div className={theme.root} data-findify-autocomplete tabIndex={0}>
         <div className={theme.container}>
           <h4 className={cx(theme.typeTitle, theme.suggestionsTitle)}>
-            {t('autocomplete.suggestionsTitle')}
+            {translate('autocomplete.suggestionsTitle')}
           </h4>
           <Suggestions />
         </div>

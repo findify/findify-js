@@ -34,7 +34,7 @@ const useFacetsLogic = () => {
 };
 
 export default ({ theme = styles, isCollection }: IDesktopActionsProps) => {
-  const t = useTranslations();
+  const translate = useTranslations();
   const [facetsVisible, showFacets] = useFacetsLogic();
   return (
     <Grid className={theme.root} columns="auto|fit">
@@ -47,7 +47,7 @@ export default ({ theme = styles, isCollection }: IDesktopActionsProps) => {
           >
             <Text secondary uppercase>
               <Icon name="Filters" title="Filters" className={theme.icon} />
-              {t('actions.showFilters')}
+              {translate('actions.showFilters')}
             </Text>
           </Button>
           <Query display-if={!isCollection} />

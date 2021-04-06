@@ -33,19 +33,23 @@ export default ({
   onHide,
   hidable,
 }: IHidableProps) => {
-  const t = useTranslations();
+  const translate = useTranslations();
   return (
     <div className={theme.header} tabIndex={-1}>
-      <Icon name="Filters" title={t('facets.filters')} className={theme.icon} />
+      <Icon
+        name="Filters"
+        title={translate('facets.filters')}
+        className={theme.icon}
+      />
       <Text primary uppercase className={theme.title}>
-        {t('facets.filters')}
+        {translate('facets.filters')}
         <Button
           tabIndex={-1}
           onClick={onReset}
           display-if={meta.get('filters') && meta.get('filters').size}
         >
           <Text secondary uppercase style={{ marginLeft: 5 }}>
-            ({t('Clear all')})
+            ({translate('facets.clearAll')})
           </Text>
         </Button>
       </Text>
@@ -56,7 +60,7 @@ export default ({
         onClick={onHide}
       >
         <Text secondary uppercase>
-          {t('facets.hide')}
+          {translate('facets.hide')}
           <Icon name="XDark" title="Hide filters" />
         </Text>
       </Button>

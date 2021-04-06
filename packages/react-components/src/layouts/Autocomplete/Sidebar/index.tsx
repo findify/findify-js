@@ -14,7 +14,7 @@ export default ({ theme = styles }) => {
     update,
   } = useSuggestions<Immutable.AutocompleteConfig>();
   const { query } = useQuery();
-  const t = useTranslations();
+  const translate = useTranslations();
   const input = useRef<HTMLInputElement>(null);
 
   const onExit = useCallback(() => {
@@ -62,7 +62,7 @@ export default ({ theme = styles }) => {
               className={theme.input}
               ref={input}
               onChange={onInputChange}
-              placeholder={t('What are you looking for?')}
+              placeholder={translate('autocomplete.placeholder')}
             />
           </form>
           <div className={theme.icons}>
@@ -89,7 +89,7 @@ export default ({ theme = styles }) => {
         >
           <div className={theme.suggestionsContainer}>
             <h4 className={theme.typeTitle}>
-              {t('autocomplete.suggestionsTitle')}
+              {translate('autocomplete.suggestionsTitle')}
             </h4>
             <SearchSuggestions />
           </div>

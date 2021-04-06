@@ -4,6 +4,7 @@ import { Recommendation } from './Recommendation'
 import { Search } from './Search'
 import { Content } from './Content'
 import { Method } from '@findify/sdk/lib/request'
+import { Translations } from './Translations';
 
 export type Config = {
   /** Merchant API key */
@@ -92,9 +93,7 @@ export type Config = {
   }
 
   /** Translations */
-  translations: {
-    [key: string]: string
-  }
+  translations: Translations
 
   /** Customizations */
   components: {

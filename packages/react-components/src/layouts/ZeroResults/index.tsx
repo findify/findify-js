@@ -21,7 +21,7 @@ export interface IZeroResultsProps extends ThemedSFCProps<typeof styles> {
 
 export default ({ q, theme = styles }: IZeroResultsProps) => {
   const { items, config } = useItems<Immutable.RecommendationConfig>();
-  const t = useTranslations();
+  const translate = useTranslations();
   const columns = useColumns(
     config.getIn(['breakpoints', 'grid'], { 400: 6, 600: 4, 1000: 3 })
   );
@@ -31,12 +31,12 @@ export default ({ q, theme = styles }: IZeroResultsProps) => {
       <div className={theme.wrapper}>
         <div className={theme.sorryContainer}>
           <Text className={theme.sorry} primary bold uppercase inlineBlock>
-            {t('zeroresults.sorryNoResults')}
+            {translate('zeroresults.sorryNoResults')}
           </Text>
           <Text
             primary
             inlineBlock
-            html={t(
+            html={translate(
               q
                 ? 'zeroresults.noResultsFound'
                 : 'zeroresults.noResultEmptyQuery',
@@ -52,7 +52,7 @@ export default ({ q, theme = styles }: IZeroResultsProps) => {
             uppercase
             inlineBlock
           >
-            {t('zeroresults.tryOneOfThese')}
+            {translate('zeroresults.tryOneOfThese')}
           </Text>
         </div>
         <div className={theme.recommendationContainer}>
@@ -63,7 +63,7 @@ export default ({ q, theme = styles }: IZeroResultsProps) => {
             uppercase
             inlineBlock
           >
-            {t('zeroresults.checkOutPopularProducts')}
+            {translate('zeroresults.checkOutPopularProducts')}
           </Text>
         </div>
       </div>

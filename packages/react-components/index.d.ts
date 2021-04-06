@@ -279,6 +279,16 @@ declare module 'components/Cards/Content/view' {
   >;
   export default _default;
 }
+declare module 'components/Cards/Product/BundleAction' {
+  /// <reference types="react" />
+  const _default: import('react').ComponentClass<unknown, any>;
+  export default _default;
+}
+declare module 'components/Cards/Product/BundleAction/view' {
+  /// <reference types="react" />
+  const _default: ({ theme, onClick, selected }: any) => JSX.Element;
+  export default _default;
+}
 declare module 'components/Cards/Product/Description' {
   /// <reference types="react" />
   const _default: ({
@@ -369,6 +379,17 @@ declare module 'components/Cards/Product/Rating' {
 }
 declare module 'components/Cards/Product/Rating/test' {
   export {};
+}
+declare module 'components/Cards/Product/Rating/view' {
+  import 'core-js/features/array/from';
+  import React from 'react';
+  import { ThemedSFCProps } from 'types';
+  export interface IRatingProps extends ThemedSFCProps {
+    value: number;
+    count: number;
+  }
+  const RatingView: React.SFC<IRatingProps>;
+  export default RatingView;
 }
 declare module 'components/Cards/Product/Stickers' {
   /**
@@ -558,6 +579,24 @@ declare module 'components/CheckboxFacet' {
   import * as React from 'react';
   const _default: React.ComponentClass<unknown, any>;
   export default _default;
+}
+declare module 'components/CheckboxFacet/Item' {
+  /// <reference types="react" />
+  import { IFacetValue, ThemedSFCProps } from 'types';
+  export interface ICheckboxFacetItemProps extends ThemedSFCProps {
+    item: IFacetValue;
+    onItemClick?: (evt: Event) => any;
+    style: {
+      [x: string]: string | number;
+    };
+  }
+  const Item: ({
+    item,
+    theme,
+    style,
+    onItemClick,
+  }: ICheckboxFacetItemProps) => JSX.Element;
+  export default Item;
 }
 declare module 'components/CheckboxFacet/view' {
   /**
@@ -1650,6 +1689,22 @@ declare module 'components/Pagination/view' {
   }: IPaginationProps) => JSX.Element;
   export default _default;
 }
+declare module 'components/PoweredBy' {
+  import React from 'react';
+  const _default: React.ComponentClass<unknown, any>;
+  export default _default;
+}
+declare module 'components/PoweredBy/view' {
+  /// <reference types="react" />
+  const _default: ({
+    config,
+    theme,
+  }: {
+    config: any;
+    theme: any;
+  }) => JSX.Element;
+  export default _default;
+}
 declare module 'components/RangeFacet/content' {
   /**
    * @module components/RangeFacet
@@ -1661,6 +1716,17 @@ declare module 'components/RangeFacet' {
   /// <reference types="react" />
   const _default: import('react').ComponentClass<unknown, any>;
   export default _default;
+}
+declare module 'components/RangeFacet/Item' {
+  import React from 'react';
+  import { ThemedSFCProps, IFacetValue, MJSConfiguration } from 'types';
+  export interface IRangeFacetItemProps extends ThemedSFCProps {
+    item: IFacetValue;
+    style: React.CSSProperties;
+    config: MJSConfiguration;
+  }
+  const RangeFacetItem: React.SFC<IRangeFacetItemProps>;
+  export default RangeFacetItem;
 }
 declare module 'components/RangeFacet/view' {
   /**
@@ -2228,6 +2294,93 @@ declare module 'components/Text/view' {
     | (new (props: any) => import('react').Component<any, any, any>)
   >;
   export default TextView;
+}
+declare module 'helpers/bundle' {
+  /// <reference types="recompose" />
+  import React from 'react';
+  import { List } from 'immutable';
+  export const provideBundle: (
+    getInitialItems?: (i: any) => any
+  ) => (
+    BaseComponent: any
+  ) => {
+    new (props: Readonly<{}>): {
+      state: {
+        inBundle: List<any>;
+      };
+      getChildContext(): {
+        inBundle: List<any>;
+        updateBundle: (inBundle: any) => void;
+      };
+      updateBundle: (inBundle: any) => void;
+      componentWillReceiveProps(next: any): void;
+      render(): JSX.Element;
+      context: any;
+      setState<K extends never>(
+        state:
+          | {}
+          | ((
+              prevState: Readonly<{}>,
+              props: Readonly<{}>
+            ) => {} | Pick<{}, K> | null)
+          | Pick<{}, K>
+          | null,
+        callback?: (() => void) | undefined
+      ): void;
+      forceUpdate(callback?: (() => void) | undefined): void;
+      readonly props: Readonly<{}> &
+        Readonly<{
+          children?: React.ReactNode;
+        }>;
+      refs: {
+        [key: string]: React.ReactInstance;
+      };
+    };
+    new (props: {}, context?: any): {
+      state: {
+        inBundle: List<any>;
+      };
+      getChildContext(): {
+        inBundle: List<any>;
+        updateBundle: (inBundle: any) => void;
+      };
+      updateBundle: (inBundle: any) => void;
+      componentWillReceiveProps(next: any): void;
+      render(): JSX.Element;
+      context: any;
+      setState<K extends never>(
+        state:
+          | {}
+          | ((
+              prevState: Readonly<{}>,
+              props: Readonly<{}>
+            ) => {} | Pick<{}, K> | null)
+          | Pick<{}, K>
+          | null,
+        callback?: (() => void) | undefined
+      ): void;
+      forceUpdate(callback?: (() => void) | undefined): void;
+      readonly props: Readonly<{}> &
+        Readonly<{
+          children?: React.ReactNode;
+        }>;
+      refs: {
+        [key: string]: React.ReactInstance;
+      };
+    };
+    childContextTypes: {
+      inBundle: import('prop-types').Validator<object>;
+      updateBundle: import('prop-types').Validator<(...args: any[]) => any>;
+    };
+    contextType?: React.Context<any> | undefined;
+  };
+  export const connectBundle: import('recompose').InferableComponentEnhancerWithProps<
+    {
+      inBundle: object;
+      updateBundle: (...args: any[]) => any;
+    },
+    {}
+  >;
 }
 declare module 'helpers/chunks' {
   const _default: {
@@ -2971,6 +3124,31 @@ declare module 'layouts/Search' {
   const _default: any;
   export default _default;
 }
+declare module 'layouts/Search/view' {
+  /// <reference types="react" />
+  import { List } from 'immutable';
+  import { MJSConfiguration, ThemedSFCProps, IProduct } from 'types';
+  export interface ISearchProps extends ThemedSFCProps {
+    config: MJSConfiguration;
+    isMobile?: boolean;
+    isCollection?: boolean;
+    mobileFacetsOpened?: boolean;
+    filtersOnRight?: boolean;
+    items: List<IProduct>;
+  }
+  const SearchLayout: ({
+    config,
+    isMobile,
+    isCollection,
+    theme,
+  }: {
+    config: any;
+    isMobile: any;
+    isCollection: any;
+    theme: any;
+  }) => JSX.Element;
+  export default SearchLayout;
+}
 declare module 'layouts/Tabs' {
   const _default: any;
   export default _default;
@@ -3002,4 +3180,23 @@ declare module 'layouts/ZeroResults' {
   }
   const _default: ({ q, theme }: IZeroResultsProps) => JSX.Element;
   export default _default;
+}
+declare module 'layouts/ZeroResults/view' {
+  /// <reference types="react" />
+  import { List } from 'immutable';
+  import { IProduct, ThemedSFCProps, MJSConfiguration } from 'types';
+  export interface IZeroResultsProps extends ThemedSFCProps {
+    items: List<IProduct>;
+    title: string;
+    config: MJSConfiguration;
+    columns: number;
+  }
+  const ZeroResultsLayout: ({
+    items,
+    title,
+    theme,
+    columns,
+    config,
+  }: IZeroResultsProps) => JSX.Element;
+  export default ZeroResultsLayout;
 }

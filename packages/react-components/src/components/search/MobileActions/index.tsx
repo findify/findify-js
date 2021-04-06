@@ -39,7 +39,7 @@ const MobileActions = memo(
   }: IMobileActionsProps) => {
     const { selected } = useSort<Immutable.SearchConfig>();
     const { query } = useQuery();
-    const t = useTranslations();
+    const translate = useTranslations();
 
     useEvents({
       showMobileFacets: () => showModal('Filters'),
@@ -49,7 +49,10 @@ const MobileActions = memo(
     });
 
     const currentSort = useMemo(
-      () => (selected ? t(getItemLabel(selected)) : t(`sorting.default`)),
+      () =>
+        selected
+          ? translate(getItemLabel(selected))
+          : translate(`sorting.default`),
       [selected]
     );
 
@@ -87,7 +90,7 @@ const MobileActions = memo(
           <Button onClick={showFacets} className={theme.button}>
             <Text primary uppercase>
               <Icon name="Filters" title="Filters" />
-              {t('actions.filter')}
+              {translate('actions.filter')}
               <span className={theme.facetCount}>({total})</span>
             </Text>
           </Button>

@@ -68,7 +68,7 @@ export interface IMobileFacetsProps extends ThemedSFCProps {
 export default memo(({ theme = styles, hideModal }: IMobileFacetsProps) => {
   const { facets, config, update } = useFacets<Immutable.SearchConfig>();
   const { query } = useQuery();
-  const t = useTranslations();
+  const translate = useTranslations();
   const [activeFacetName, setActiveFacet] = useState<string | null>(null);
 
   const total = useMemo(
@@ -112,7 +112,7 @@ export default memo(({ theme = styles, hideModal }: IMobileFacetsProps) => {
       <div className={theme.header}>
         <div className={theme.title}>
           <Text primary uppercase display-if={!activeFacet}>
-            {t('facets.filters')}
+            {translate('facets.filters')}
           </Text>
 
           <Text
@@ -142,12 +142,12 @@ export default memo(({ theme = styles, hideModal }: IMobileFacetsProps) => {
           onClick={activeFacet ? selectFacet : hideModal}
           className={theme.backButton}
         >
-          <Icon name="ArrowBack" title="Go back" />
+          <Icon name="ArrowBack" title={translate('facets.back')} />
         </Button>
 
         <Button display-if={query?.get('filters')?.size} onClick={onReset}>
           <Text secondary uppercase>
-            {t('Clear All')}
+            {translate('facets.clearAll')}
           </Text>
         </Button>
       </div>
@@ -167,7 +167,9 @@ export default memo(({ theme = styles, hideModal }: IMobileFacetsProps) => {
         className={theme.footer}
         onClick={activeFacet ? selectFacet : hideModal}
       >
-        {activeFacet ? t('facets.done') : t('facets.seeResults')}
+        {activeFacet
+          ? translate('facets.done')
+          : translate('facets.seeResults')}
       </Button>
     </div>
   );

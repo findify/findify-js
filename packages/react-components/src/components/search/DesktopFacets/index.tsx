@@ -24,7 +24,7 @@ const DefaultContent = ({ theme, children, title }) => (
 
 export default memo(({ theme = styles }) => {
   const { facets, meta, onReset, config } = useFacets<Immutable.SearchConfig>();
-  const t = useTranslations();
+  const translate = useTranslations();
 
   const [isHorizontal, isHidable, isSticky, isAccordion] = useMemo(
     () => [
@@ -72,7 +72,7 @@ export default memo(({ theme = styles }) => {
         root: isHorizontal ? theme.horizontal : theme.root,
       }}
       condition={isSticky}
-      title={t('facets.filters')}
+      title={translate('facets.filters')}
       left={Sticky}
       right={DefaultContent}
       stickToTop={isHorizontal}
