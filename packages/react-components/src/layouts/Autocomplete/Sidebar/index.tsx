@@ -6,8 +6,9 @@ import Icon from 'components/Icon';
 import SearchSuggestions from 'components/autocomplete/SearchSuggestions';
 import { Immutable } from '@findify/store-configuration';
 import useTranslations from 'helpers/useTranslations';
+import { AutocompleteType } from '../types';
 
-export default ({ theme = styles, showSuggestions }) => {
+export default ({ theme = styles, isMobile }) => {
   const {
     suggestions,
     config,
@@ -16,6 +17,14 @@ export default ({ theme = styles, showSuggestions }) => {
   const { query } = useQuery();
   const translate = useTranslations();
   const input = useRef<HTMLInputElement>(null);
+
+  const viewType: AutocompleteType = isMobile
+    ? config.getIn(['template', 'mobile'])
+    : config.getIn(['template', 'desktop']);
+
+  const templateSetting = config.get(viewType);
+
+  const showSuggestions = !isMobile || !!templateSetting?.getIn(['suggestions', 'display']);
 
   const onExit = useCallback(() => {
     (window as any).findify.emit(

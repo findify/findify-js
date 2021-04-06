@@ -15,6 +15,7 @@ import Grid from 'components/common/Grid';
 import useTranslations from 'helpers/useTranslations';
 import styles from 'layouts/Autocomplete/Dropdown/styles.css';
 import { Immutable } from '@findify/store-configuration';
+import { AutocompleteType } from '../types';
 
 export interface IAutocompletePanel extends ThemedSFCProps {
   config: Immutable.AutocompleteConfig;
@@ -111,7 +112,7 @@ export interface IAutocompleteDropdownProps {
   [x: string]: any;
 }
 
-export default ({ theme = styles, showSuggestions, ...rest }: IAutocompleteDropdownProps) => {
+export default ({ theme = styles, isMobile, ...rest }: IAutocompleteDropdownProps) => {
   const {
     suggestions,
     meta,
@@ -121,6 +122,14 @@ export default ({ theme = styles, showSuggestions, ...rest }: IAutocompleteDropd
   const [position, register] = usePosition();
   const isTrendingSearches = !meta.get('q');
   const t = useTranslations();
+
+  const viewType: AutocompleteType = isMobile
+    ? config.getIn(['template', 'mobile'])
+    : config.getIn(['template', 'desktop']);
+
+  const templateSetting = config.get(viewType);
+
+  const showSuggestions = !isMobile || !!templateSetting?.getIn(['suggestions', 'display']);
 
   return (
     <div
