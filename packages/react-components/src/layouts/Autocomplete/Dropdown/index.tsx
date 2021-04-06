@@ -118,7 +118,7 @@ export default ({ theme = styles, ...rest }: IAutocompleteDropdownProps) => {
   const { selectedSuggestion, closeAutocomplete } = useAutocompleteLogic();
   const [position, register] = usePosition();
   const isTrendingSearches = !meta.get('q');
-  const t = useTranslations();
+  const translate = useTranslations();
 
   return (
     <div
@@ -139,8 +139,8 @@ export default ({ theme = styles, ...rest }: IAutocompleteDropdownProps) => {
       >
         <Tip
           className={theme.tip}
-          title={t('autocomplete.tipResults')}
-          zeroResultsTitle={t('autocomplete.viewAll')}
+          title={translate('autocomplete.tipResults')}
+          zeroResultsTitle={translate('autocomplete.viewAll')}
           widgetKey={config.get('widgetKey')}
         />
         <Grid className={theme.container} columns="auto|3">

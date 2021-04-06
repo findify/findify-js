@@ -3,11 +3,8 @@ import { Config } from '@findify/store-configuration';
 import { useMemo } from 'react';
 import unescape from 'lodash/unescape';
 
-const createTranslator = (
-  strings: Config['translations'] = {},
-  selector: RegExp
-) => {
-  return (key: string, ...args: any[]): string => {
+const createTranslator = (strings = {}, selector: RegExp) => {
+  return (key: keyof Config['translations'], ...args: any[]): string => {
     const value = strings[key];
     const isTemplate = selector.test(value);
 
