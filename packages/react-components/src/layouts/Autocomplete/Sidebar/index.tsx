@@ -7,7 +7,7 @@ import SearchSuggestions from 'components/autocomplete/SearchSuggestions';
 import { Immutable } from '@findify/store-configuration';
 import useTranslations from 'helpers/useTranslations';
 
-export default ({ theme = styles }) => {
+export default ({ theme = styles, showSuggestions }) => {
   const {
     suggestions,
     config,
@@ -84,7 +84,7 @@ export default ({ theme = styles }) => {
           </div>
         </div>
         <div
-          display-if={suggestions && suggestions.size > 0}
+          display-if={showSuggestions && suggestions && suggestions.size > 0}
           className={theme.suggestionsWrapper}
         >
           <div className={theme.suggestionsContainer}>

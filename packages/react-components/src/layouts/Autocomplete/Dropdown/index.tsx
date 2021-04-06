@@ -105,11 +105,13 @@ export interface IAutocompleteDropdownProps {
   selectedSuggestion: number;
   /** Flag that shows if autocomplete is running in TrendingSearches mode */
   isTrendingSearches: boolean;
+  /** Flag that tells whether suggestions should be rendered based on configuration settings */
+  showSuggestions: boolean;
   /** Rest of the props passed down to panels */
   [x: string]: any;
 }
 
-export default ({ theme = styles, ...rest }: IAutocompleteDropdownProps) => {
+export default ({ theme = styles, showSuggestions, ...rest }: IAutocompleteDropdownProps) => {
   const {
     suggestions,
     meta,
@@ -144,14 +146,16 @@ export default ({ theme = styles, ...rest }: IAutocompleteDropdownProps) => {
           widgetKey={config.get('widgetKey')}
         />
         <Grid className={theme.container} columns="auto|3">
-          <Suggestions
-            {...rest}
-            selectedSuggestion={selectedSuggestion}
-            theme={theme}
-            config={config}
-            icon={isTrendingSearches && 'Fire'}
-            isTrendingSearches={isTrendingSearches}
-          />
+          {showSuggestions && (
+            <Suggestions
+              {...rest}
+              selectedSuggestion={selectedSuggestion}
+              theme={theme}
+              config={config}
+              icon={isTrendingSearches && 'Fire'}
+              isTrendingSearches={isTrendingSearches}
+            />
+          )}
           <Products
             {...rest}
             theme={theme}
