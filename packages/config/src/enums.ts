@@ -16,7 +16,10 @@ export enum Platform {
   'generic',
   'shopify',
   'bigcommerce',
-  'magento'
+  'magento',
+  'magento2',
+  'neto',
+  'jetshop'
 }
 
 export enum AnalyticsEventKey {
