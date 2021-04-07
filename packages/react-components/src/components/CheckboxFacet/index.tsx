@@ -125,7 +125,9 @@ export default ({
         <Text primary uppercase>
           <Icon
             name={isExpanded ? 'Minus' : 'Plus'}
-            title={translate(isExpanded ? 'facets.expanded' : 'Collapsed')}
+            title={translate(
+              isExpanded ? 'facets.expanded' : 'facets.collapsed'
+            )}
           />
           {isExpanded ? translate('facets.less') : translate('facets.more')}
         </Text>
