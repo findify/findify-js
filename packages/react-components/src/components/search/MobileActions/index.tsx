@@ -17,7 +17,7 @@ import useTranslations from 'helpers/useTranslations';
 import { memo, useMemo } from 'react';
 import { emit, useEvents } from 'helpers/emmiter';
 import styles from 'components/search/MobileActions/styles.css';
-import { getItemLabel } from 'helpers/useSortingLogic';
+import useSortingLogic from 'helpers/useSortingLogic';
 
 /** Props that MobileActionsView accepts */
 export interface IMobileActionsProps extends ThemedSFCProps {
@@ -37,7 +37,7 @@ const MobileActions = memo(
     showModal,
     hideModal,
   }: IMobileActionsProps) => {
-    const { selected } = useSort<Immutable.SearchConfig>();
+    const [sortItems, currentSort] = useSortingLogic();
     const { query } = useQuery();
     const translate = useTranslations();
 
@@ -47,14 +47,6 @@ const MobileActions = memo(
       hideMobileFacets: () => hideModal('Filters'),
       hideMobileSort: () => hideModal('Sorting'),
     });
-
-    const currentSort = useMemo(
-      () =>
-        selected
-          ? translate(getItemLabel(selected))
-          : translate(`sorting.default`),
-      [selected]
-    );
 
     const total = useMemo(
       () =>
@@ -81,7 +73,7 @@ const MobileActions = memo(
           <Button onClick={showSort} className={theme.button}>
             <Text primary uppercase>
               <Icon name="Sorting" title="Sorting" className={theme.icon} />
-              {currentSort}
+              {currentSort.get('label')}
             </Text>
           </Button>
 

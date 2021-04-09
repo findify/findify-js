@@ -44,9 +44,8 @@ export default ({
             item.getIn(['reviews', 'total_reviews'])
           }
           display-if={
-            config.getIn(['reviews', 'display']) &&
-            (!!item.getIn(['reviews', 'count']) ||
-              !!item.getIn(['reviews', 'total_reviews']))
+            !!item.getIn(['reviews', 'count']) ||
+            !!item.getIn(['reviews', 'total_reviews'])
           }
         />
 
@@ -60,7 +59,7 @@ export default ({
         - Or `z-index: 1`, but it may have side effects
       */}
         <Title
-          display-if={config.getIn(['title', 'display'])}
+          display-if={!!item.get('title')}
           theme={theme}
           onClick={item.onClick}
           href={item.get('product_url')}
@@ -68,7 +67,7 @@ export default ({
         />
 
         <Description
-          display-if={config.getIn(['description', 'display'])}
+          display-if={!!item.get('description')}
           theme={theme}
           text={item.get('description')}
         />
@@ -76,7 +75,7 @@ export default ({
         <div className={theme.divider} />
 
         <Price
-          display-if={config.getIn(['price', 'display'])}
+          display-if={!!item.get('price')}
           className={theme.priceWrapper}
           item={item}
         />
