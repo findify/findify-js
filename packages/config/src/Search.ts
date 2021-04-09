@@ -35,10 +35,11 @@ export interface Search extends BaseFeature<'Search'> {
    * Sorting options
    */
   sorting: {
-    options: [{
+    options: {
       field: string | 'default'
-      order: keyof typeof enums.SearchOrder
-    }]
+      order: keyof typeof enums.SearchOrder,
+      label: string
+    }[]
   }
 
   /**

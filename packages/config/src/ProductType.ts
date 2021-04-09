@@ -13,7 +13,6 @@ export type ProductType = {
    * Product price component display options
    */
   price: {
-    display: boolean
 		template: keyof typeof ProductPriceTemplate
   },
 
@@ -21,7 +20,6 @@ export type ProductType = {
    * Title component display options 
    */
   title: {
-    display: boolean
     /**
      * Max number of title lines to be shown
      * the rest of text will be cropped
@@ -33,7 +31,6 @@ export type ProductType = {
    * Description component display options 
    */
   description: {
-    display: boolean
     /**
      * Max number of title lines to be shown
      * the rest of text will be cropped
@@ -41,13 +38,6 @@ export type ProductType = {
     lines: number
   },
   
-  /**
-   * Reviews component display options 
-   */
-  reviews: {
-    display: boolean
-  },
-
   /**
    * Variants component display options
    */
