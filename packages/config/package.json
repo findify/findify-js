@@ -1,6 +1,6 @@
 {
   "name": "@findify/store-configuration",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Default store customization types and options",
   "main": "lib/index.js",
   "types": "types/index.d.ts",
