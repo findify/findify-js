@@ -56,7 +56,7 @@ const Autocomplete = ({ isTrendingSearches, ...rest }) => {
 
   return renderView(viewType, {
     ...rest,
-    config,
+    config: config.get(viewType),
     isMobile,
     isTrendingSearches,
   });
