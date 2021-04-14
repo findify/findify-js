@@ -15,6 +15,7 @@ import Grid from 'components/common/Grid';
 import useTranslations from 'helpers/useTranslations';
 import styles from 'layouts/Autocomplete/Dropdown/styles.css';
 import { Immutable } from '@findify/store-configuration';
+import { AutocompleteType } from '../types';
 
 export interface IAutocompletePanel extends ThemedSFCProps {
   config: Immutable.AutocompleteConfig;
@@ -105,11 +106,13 @@ export interface IAutocompleteDropdownProps {
   selectedSuggestion: number;
   /** Flag that shows if autocomplete is running in TrendingSearches mode */
   isTrendingSearches: boolean;
+  /** Flag that tells if mobileBreakpoint has been triggered */
+  isMobile: boolean;
   /** Rest of the props passed down to panels */
   [x: string]: any;
 }
 
-export default ({ theme = styles, ...rest }: IAutocompleteDropdownProps) => {
+export default ({ theme = styles, isMobile, ...rest }: IAutocompleteDropdownProps) => {
   const {
     suggestions,
     meta,
@@ -119,6 +122,14 @@ export default ({ theme = styles, ...rest }: IAutocompleteDropdownProps) => {
   const [position, register] = usePosition();
   const isTrendingSearches = !meta.get('q');
   const translate = useTranslations();
+
+  const viewType: AutocompleteType = isMobile
+  ? config.getIn(['template', 'mobile'])
+  : config.getIn(['template', 'desktop']);
+
+  const templateSetting = config.get(viewType);
+
+  const showSuggestions = !isMobile || !!templateSetting?.getIn(['suggestions', 'display']);
 
   return (
     <div
@@ -145,6 +156,7 @@ export default ({ theme = styles, ...rest }: IAutocompleteDropdownProps) => {
         />
         <Grid className={theme.container} columns="auto|3">
           <Suggestions
+            display-if={showSuggestions}
             {...rest}
             selectedSuggestion={selectedSuggestion}
             theme={theme}
