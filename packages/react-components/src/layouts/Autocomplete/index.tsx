@@ -6,19 +6,9 @@ import { createElement, useMemo } from 'react';
 import { useConfig } from '@findify/react-connect';
 import { portal } from 'helpers/createPortal';
 import Loadable from 'react-loadable';
-import chunks from 'helpers/chunks';
 import { Immutable } from '@findify/store-configuration';
 import useMedia from 'helpers/useMedia';
-
-/** View type to View component mapping */
-const LayoutTypes = {
-  sidebar: chunks.autocomplete.sidebar,
-  dropdown: chunks.autocomplete.dropdown,
-  fullscreen: chunks.autocomplete.fullscreen,
-};
-
-/** Possible Autocomplete view types */
-type AutocompleteType = keyof typeof LayoutTypes;
+import { AutocompleteType, LayoutTypes } from './types';
 
 /**
  * Layout factory is used to wrap Autocomplete layout in a div, containing data-findify-autocomplete-wrapper attribute,
