@@ -24,7 +24,7 @@ export interface IAutocompletePanel extends ThemedSFCProps {
 }
 
 /** Layout column mapping */
-const Suggestions = ({
+export const Suggestions = ({
   config,
   theme = styles,
   isTrendingSearches,
@@ -52,7 +52,7 @@ const Suggestions = ({
   );
 };
 
-const Products = ({
+export const Products = ({
   config,
   theme = styles,
   isTrendingSearches,
