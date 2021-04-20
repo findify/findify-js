@@ -33,6 +33,11 @@
   }
 }
 
+.ballMobile {
+  width: 40px;
+  height: 40px;
+}
+
 .check{
   position: absolute;
   left: 50%;

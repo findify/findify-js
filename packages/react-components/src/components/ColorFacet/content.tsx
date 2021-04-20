@@ -3,6 +3,7 @@
  */
 
 import { memo } from 'react';
+import cx from 'classnames';
 import { IFacetValue, MJSConfiguration } from 'types';
 
 /**
@@ -38,10 +39,12 @@ const getStyles = (item: IFacetValue, config: MJSConfiguration) => {
   };
 };
 
-export default memo(({ item, config, theme, children }) => {
+export default memo(({ item, config, theme, children, isMobile }) => {
   const styles = getStyles(item, config);
   return (
-    <a title={item.get('value')} style={styles.ball} className={theme.ball}>
+    <a title={item.get('value')} style={styles.ball} className={cx(theme.ball, {
+      [theme.ballMobile]: isMobile,
+    })}>
       <span style={styles.border} />
       {children}
     </a>
