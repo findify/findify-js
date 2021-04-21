@@ -36,7 +36,8 @@ export enum FilterType {
   'category',
   'range',
   'color',
-  'price'
+  'price',
+  'rating'
 }
 
 export enum ProductPriceTemplate {
