@@ -47,6 +47,7 @@ export default ({
           )}
         factory={Item}
         theme={theme}
+        isMobile={isMobile}
       />
     </div>
   );

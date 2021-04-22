@@ -1,7 +1,8 @@
 export enum StoreStatus {
   'live',
   'disabled',
-  'stopped'
+  'paused',
+  'created'
 }
 
 export enum Feature {
@@ -35,7 +36,8 @@ export enum FilterType {
   'category',
   'range',
   'color',
-  'price'
+  'price',
+  'rating'
 }
 
 export enum ProductPriceTemplate {

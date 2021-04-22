@@ -13,9 +13,11 @@ export interface IColorFacetItemProps extends ThemedSFCProps {
   item: IFacetValue;
   /** MJS Configuration */
   config: MJSConfiguration;
+  /** Is mobile breakpoint activated */
+  isMobile?: boolean;
 }
 
-const Item = ({ item, theme, config }: IColorFacetItemProps) => (
+const Item = ({ item, theme, config, isMobile }: IColorFacetItemProps) => (
   <button
     role="checkbox"
     aria-checked={item.get('selected') ? 'true' : 'false'}
@@ -26,7 +28,7 @@ const Item = ({ item, theme, config }: IColorFacetItemProps) => (
     )}
     onClick={item.toggle}
   >
-    <Content item={item} config={config} theme={theme}>
+    <Content item={item} config={config} theme={theme} isMobile={isMobile}>
       <Icon
         display-if={item.get('selected')}
         name="CheckmarkDark"
