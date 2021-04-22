@@ -42,9 +42,6 @@ export type Translations = {
   'zeroresults.tryOneOfThese': string // 'XXX'
   'zeroresults.checkOutPopularProducts': string // 'XXX'
 
-  'sorting.default': string // 'Default'
-  'sorting.popularity|desc': string // 'XXX'
-
   'autocomplete.trendingSearches': string // 'Trending searches'
   'autocomplete.suggestionsTitle': string // 'Search suggestions'
   'autocomplete.trendingProducts': string // 'Trending products'
