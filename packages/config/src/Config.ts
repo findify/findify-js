@@ -97,6 +97,6 @@ export type Config = {
 
   /** Customizations */
   components: {
-    [key: string]: string
+    [key: string]: () => void
   }
 }
