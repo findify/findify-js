@@ -2,6 +2,7 @@
 set -e
 # note: do not do set -x or the passwords will leak!
 
+wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 762E3157
 sudo apt-get -qq update
 sudo apt-get install libgif-dev
