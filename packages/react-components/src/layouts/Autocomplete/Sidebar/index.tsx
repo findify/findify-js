@@ -7,25 +7,29 @@ import SearchSuggestions from 'components/autocomplete/SearchSuggestions';
 import { Immutable } from '@findify/store-configuration';
 import useTranslations from 'helpers/useTranslations';
 import { AutocompleteType } from '../types';
+import { Products } from 'layouts/Autocomplete/Dropdown';
 
-export default ({ theme = styles, isMobile }) => {
+export default ({ theme = styles, isMobile, ...rest }) => {
   const {
     suggestions,
     config,
     update,
+    meta
   } = useSuggestions<Immutable.AutocompleteConfig>();
   const { query } = useQuery();
   const translate = useTranslations();
   const input = useRef<HTMLInputElement>(null);
 
+  const isTrendingSearches = !meta.get('q');
+
 
   const viewType: AutocompleteType = isMobile
-  ? config.getIn(['template', 'mobile'])
-  : config.getIn(['template', 'desktop']);
+    ? config.getIn(['template', 'mobile'])
+    : config.getIn(['template', 'desktop']);
 
-const templateSetting = config.get(viewType);
+  const templateSetting = config.get(viewType);
 
-const showSuggestions = !isMobile || !!templateSetting?.getIn(['suggestions', 'display']);
+  const showSuggestions = !isMobile || !!templateSetting?.getIn(['suggestions', 'display']);
 
   const onExit = useCallback(() => {
     (window as any).findify.emit(
@@ -104,6 +108,13 @@ const showSuggestions = !isMobile || !!templateSetting?.getIn(['suggestions', 'd
             <SearchSuggestions />
           </div>
         </div>
+        <Products
+          {...rest}
+          theme={theme}
+          config={config}
+          isTrendingSearches={isTrendingSearches}
+          padded
+        />
       </div>
     </Drawer>
   );

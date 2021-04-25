@@ -26,3 +26,7 @@
     background: $color-grey-2;
   }
 }
+
+.padded {
+  padding: 0 16px;
+}
