@@ -9,18 +9,19 @@ import MapArray from 'components/common/MapArray';
 import { useItems } from '@findify/react-connect';
 import { Immutable } from '@findify/store-configuration';
 
-export default ({ theme = styles }) => {
+export default ({ theme = styles, config: autocompleteConfig }) => {
   const { items, config } = useItems<Immutable.AutocompleteConfig>();
+  const productTemplate = autocompleteConfig.getIn(['product', 'template']);
   return (
     <div className={theme.root} display-if={!!items.size}>
-      <Grid columns={config.getIn(['breakpoints', 'grid'], '12')}>
+      <Grid columns={productTemplate === 'vertical' ? '4' : config.getIn(['breakpoints', 'grid'], '12')}>
         {MapArray({
           array: items,
           limit: config.getIn(['defaultRequestParams', 'item_limit']),
           factory: ProductCard,
-          config: config.get('product'),
+          config: autocompleteConfig.get('product'),
         })}
       </Grid>
-    </div>
+    </div >
   );
 };
