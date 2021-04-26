@@ -124,8 +124,10 @@ export default ({ theme = styles, isMobile, ...rest }: IAutocompleteDropdownProp
   const translate = useTranslations();
 
   const viewType: AutocompleteType = isMobile
-  ? config.getIn(['template', 'mobile'])
-  : config.getIn(['template', 'desktop']);
+    ? config.getIn(['template', 'mobile'])
+    : config.getIn(['template', 'desktop']);
+
+  const productTemplate = config.getIn(['product', 'template']);
 
   const templateSetting = config.get(viewType);
 
@@ -142,7 +144,9 @@ export default ({ theme = styles, isMobile, ...rest }: IAutocompleteDropdownProp
         onClick={closeAutocomplete}
       />
       <section
-        className={theme.root}
+        className={cx(theme.root, {
+          [theme.vertical]: productTemplate === 'vertical'
+        })}
         data-findify-autocomplete={true}
         tabIndex={0}
         ref={register}
