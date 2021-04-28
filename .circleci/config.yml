@@ -60,7 +60,7 @@ jobs:
       - attach_workspace:
           at: ~/repo
 
-      - deploy-to-s3
+      - deploy-to-s3:
 
 workflows:
   version: 2
