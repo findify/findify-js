@@ -1,0 +1,47 @@
+version: 2.1
+
+defaults: &defaults
+  working_directory: ~/repo
+  docker:
+    - image: findify/circleci-node-container
+
+jobs:
+  build_and_test:
+    <<: *defaults
+
+    steps:
+      - checkout
+
+      - run:
+          name: init command
+          command: echo "Build and Test"
+
+      - persist_to_workspace:
+          root: ~/repo
+          paths:
+            - '*'
+
+  deploy:
+    <<: *defaults
+
+    steps:
+      - attach_workspace:
+          at: ~/repo
+
+      - run:
+          name: init command
+          command: echo "DEPLOY"
+
+workflows:
+  version: 2
+  build_and_deploy:
+    jobs:
+      - build_and_test
+      - deploy:
+          requires:
+            - build_and_test
+          filters:
+            branches:
+              only:
+                - master
+                - /^([0-9]+\.[0-9]+\.[0-9]+)?$/
