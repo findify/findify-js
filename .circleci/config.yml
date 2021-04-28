@@ -18,6 +18,18 @@ jobs:
             - v1-dependencies-{{ checksum "package.json" }}
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
+            
+      - run:
+          name: setup env variables
+          command: |
+            [ "$CIRCLE_BRANCH" = master ] && echo 'export PUBLIC_PATH=https://cdn.jsdelivr.net/npm/@findify/bundle@__MERCHANT_VERSION_RAW__/dist/' >> $BASH_ENV || echo 'export PUBLIC_PATH=https://findify-assets-2bveeb6u8ag.netdna-ssl.com/bundle/staging/__MERCHANT_VERSION_RAW__/' >> $BASH_ENV
+            [ "$CIRCLE_BRANCH" = master ] && echo 'export FINDIFY_ENV=production' >> $BASH_ENV || echo 'export FINDIFY_ENV=staging' >> $BASH_ENV
+
+      - run:
+          name: log custom env vars
+          command: |
+            echo $PUBLIC_PATH
+            echo $FINDIFY_ENV
 
       - run:
           name: install deps
