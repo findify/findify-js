@@ -36,15 +36,15 @@ const loadDependencies = () => {
    * The real merchant configuration will be added there on Findify Compilation server
    * So we will load it by load.js
    */
-  // if (process.env.NODE_ENV !== 'development') {
-  //   deps.push(
-  //     new Promise((resolve) =>
-  //       __webpack_require__.l(__MERCHANT_CONFIG_URL__, resolve, 'config')
-  //     )
-  //   );
-  // } else {
-  deps.push(import(/* webpackChunkName: "config" */ './config'));
-  // }
+  if (process.env.NODE_ENV !== 'development') {
+    deps.push(
+      new Promise((resolve) =>
+        __webpack_require__.l(__MERCHANT_CONFIG_URL__, resolve, 'config')
+      )
+    );
+  } else {
+    deps.push(import(/* webpackChunkName: "config" */ './config'));
+  }
 
   /** Load styles */
   if (process.env.NODE_ENV !== 'development') {
