@@ -9,6 +9,9 @@ jobs:
   build_and_test:
     <<: *defaults
 
+    environment:
+      NODE_ENV: production
+
     steps:
       - checkout
 
