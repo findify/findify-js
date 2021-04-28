@@ -27,12 +27,6 @@ jobs:
             echo 'export NODE_ENV=production' >> $BASH_ENV
 
       - run:
-          name: log custom env vars
-          command: |
-            echo $PUBLIC_PATH
-            echo $FINDIFY_ENV
-
-      - run:
           name: install deps
           command: yarn
 
@@ -40,6 +34,10 @@ jobs:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
+
+      - run:
+          name: setup node env
+          command: echo 'export NODE_ENV=production' >> $BASH_ENV
 
       - run:
           name: build
