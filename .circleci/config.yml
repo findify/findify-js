@@ -5,6 +5,22 @@ defaults: &defaults
   docker:
     - image: findify/circleci-node-container
 
+commands:
+  deploy-to-s3:
+    description: Deploy bundle to s3
+    steps:
+      - run:
+          name: Deploy << parameters.env >>
+          command: |
+            export PKG_NAME=bundle
+            export PKG_BUNDLE_DIR=dist
+            export DST_BUNDLE_DIR=bundle/staging/$CIRCLE_BRANCH
+            export S3_BUCKET_PATH=findify-assets
+            export SRC_BUNDLE_PATH=packages/$PKG_NAME/$PKG_BUNDLE_DIR
+            export DST_BUNDLE_PATH=$S3_BUCKET_PATH/$DST_BUNDLE_DIR
+            echo "deploying $SRC_BUNDLE_PATH to s3://$DST_BUNDLE_PATH"
+            aws s3 cp --recursive $SRC_BUNDLE_PATH s3://$DST_BUNDLE_PATH
+
 jobs:
   build_and_test:
     <<: *defaults
@@ -44,9 +60,7 @@ jobs:
       - attach_workspace:
           at: ~/repo
 
-      - run:
-          name: init command
-          command: echo "DEPLOY"
+      - deploy-to-s3
 
 workflows:
   version: 2
