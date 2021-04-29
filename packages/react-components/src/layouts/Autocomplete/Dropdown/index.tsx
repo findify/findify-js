@@ -124,12 +124,13 @@ export default ({ theme = styles, isMobile, ...rest }: IAutocompleteDropdownProp
   const translate = useTranslations();
 
   const viewType: AutocompleteType = isMobile
-  ? config.getIn(['template', 'mobile'])
-  : config.getIn(['template', 'desktop']);
+    ? config.getIn(['template', 'mobile'])
+    : config.getIn(['template', 'desktop']);
 
   const templateSetting = config.get(viewType);
 
   const showSuggestions = !isMobile || !!templateSetting?.getIn(['suggestions', 'display']);
+  const showProductMatches = templateSetting.getIn(['productMatches', 'display']);
 
   return (
     <div
@@ -165,6 +166,7 @@ export default ({ theme = styles, isMobile, ...rest }: IAutocompleteDropdownProp
             isTrendingSearches={isTrendingSearches}
           />
           <Products
+            display-if={showProductMatches}
             {...rest}
             theme={theme}
             config={config}

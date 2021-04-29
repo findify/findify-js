@@ -27,6 +27,7 @@ export default ({ theme = styles, isMobile, ...rest }) => {
   const templateSetting = config.get(viewType);
 
   const showSuggestions = !isMobile || !!templateSetting?.getIn(['suggestions', 'display']);
+  const showProductMatches = templateSetting.getIn(['productMatches', 'display']);
 
   return (
     <div
@@ -57,6 +58,7 @@ export default ({ theme = styles, isMobile, ...rest }) => {
             isTrendingSearches={isTrendingSearches}
           />
           <Products
+            display-if={showProductMatches}
             {...rest}
             theme={theme}
             config={config}

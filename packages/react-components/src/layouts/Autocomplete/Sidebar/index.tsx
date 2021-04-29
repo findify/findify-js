@@ -65,6 +65,8 @@ export default ({ theme = styles, isMobile, ...rest }) => {
     };
   }, []);
 
+  const showProductMatches = templateSetting.getIn(['productMatches', 'display']);
+
   return (
     <Drawer hideModal={onExit}>
       <div className={theme.root} data-findify-autocomplete={true} tabIndex={0}>
@@ -109,6 +111,7 @@ export default ({ theme = styles, isMobile, ...rest }) => {
           </div>
         </div>
         <Products
+          display-if={showProductMatches}
           {...rest}
           theme={theme}
           config={config}
