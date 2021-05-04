@@ -128,13 +128,14 @@ const config: Config = {
         overlay: true,
         suggestions: {
           display: true,
+          template: 'vertical'
         },
         productMatches: {
           display: true,
         },
       },
       desktop: {
-        template: 'sidebar',
+        template: 'fullscreen',
         breakpoints: {
           grid: {
             '200': 4,
@@ -160,6 +161,7 @@ const config: Config = {
         overlay: true,
         suggestions: {
           display: true,
+          template: 'horizontal'
         },
         productMatches: {
           display: true,

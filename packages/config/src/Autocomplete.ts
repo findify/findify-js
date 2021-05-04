@@ -17,7 +17,8 @@ export type AutocompleteSizeType = {
    * Suggestions options
    */
   suggestions: {
-    display: boolean
+    display: boolean,
+    template: enums.SuggestionTemplate
   }
 
   /**
