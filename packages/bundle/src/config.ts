@@ -129,6 +129,7 @@ const config: Config = {
         },
         suggestions: {
           display: true,
+          template: 'horizontal'
         },
       },
 

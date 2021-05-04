@@ -76,6 +76,11 @@ export enum AutocompletePosition {
   'right'
 }
 
+export enum SuggestionTemplate {
+  'horizontal',
+  'vertical'
+}
+
 /**
  * Recommendation
  */

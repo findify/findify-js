@@ -29,7 +29,7 @@ interface AutocompleteTemplate extends BaseFeature<'Autocomplete'> {
    * Autocomplete alignment
    */
   position?: keyof typeof enums.AutocompletePosition,
-  
+
   /**
    * Display clickable background overlay
    */
@@ -39,7 +39,8 @@ interface AutocompleteTemplate extends BaseFeature<'Autocomplete'> {
    * Suggestions options
    */
   suggestions: {
-    display: boolean
+    display: boolean,
+    template: keyof typeof enums.SuggestionTemplate
   }
 
   /**
@@ -52,8 +53,8 @@ interface AutocompleteTemplate extends BaseFeature<'Autocomplete'> {
 
 export interface Autocomplete {
   template: {
-		mobile: keyof typeof enums.AutocompleteTemplate
-		desktop: keyof typeof enums.AutocompleteTemplate
+    mobile: keyof typeof enums.AutocompleteTemplate
+    desktop: keyof typeof enums.AutocompleteTemplate
   }
 
   dropdown: AutocompleteTemplate,
