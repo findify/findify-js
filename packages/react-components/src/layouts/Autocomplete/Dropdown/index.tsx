@@ -124,12 +124,15 @@ export default ({ theme = styles, isMobile, ...rest }: IAutocompleteDropdownProp
   const translate = useTranslations();
 
   const viewType: AutocompleteType = isMobile
-  ? config.getIn(['template', 'mobile'])
-  : config.getIn(['template', 'desktop']);
+    ? config.getIn(['template', 'mobile'])
+    : config.getIn(['template', 'desktop']);
 
   const templateSetting = config.get(viewType);
 
   const showSuggestions = !isMobile || !!templateSetting?.getIn(['suggestions', 'display']);
+  const suggestionsTemplate = templateSetting.getIn(['suggestions', 'template']);
+
+  const gridColumns = suggestionsTemplate === 'horizontal' ? '12|auto' : 'auto|3';
 
   return (
     <div
@@ -154,7 +157,7 @@ export default ({ theme = styles, isMobile, ...rest }: IAutocompleteDropdownProp
           zeroResultsTitle={translate('autocomplete.viewAll')}
           widgetKey={config.get('widgetKey')}
         />
-        <Grid className={theme.container} columns="auto|3">
+        <Grid className={theme.container} columns={gridColumns}>
           <Suggestions
             display-if={showSuggestions}
             {...rest}
@@ -163,6 +166,7 @@ export default ({ theme = styles, isMobile, ...rest }: IAutocompleteDropdownProp
             config={config}
             icon={isTrendingSearches && 'Fire'}
             isTrendingSearches={isTrendingSearches}
+            template={suggestionsTemplate}
           />
           <Products
             {...rest}
