@@ -117,7 +117,14 @@ const config: Config = {
 
       template: {
         mobile: 'sidebar',
-        desktop: 'dropdown',
+        desktop: 'fullscreen',
+      },
+
+      fullscreen: {
+        suggestions: {
+          display: true,
+          template: 'horizontal'
+        }
       },
 
       // Where to align autocomplete: left|right|undefined

@@ -27,6 +27,9 @@ export default ({ theme = styles, isMobile, ...rest }) => {
   const templateSetting = config.get(viewType);
 
   const showSuggestions = !isMobile || !!templateSetting?.getIn(['suggestions', 'display']);
+  const suggestionsTemplate = templateSetting.getIn(['suggestions', 'template']);
+
+  const gridColumns = suggestionsTemplate === 'horizontal' ? '12|auto' : 'auto|3';
 
   return (
     <div
@@ -48,13 +51,14 @@ export default ({ theme = styles, isMobile, ...rest }) => {
           zeroResultsTitle={translate('autocomplete.viewAll')}
           widgetKey={config.get('widgetKey')}
         />
-        <Grid className={theme.container} columns="auto|3">
+        <Grid className={theme.container} columns={gridColumns}>
           <Suggestions
             {...rest}
             config={config}
             selectedSuggestion={selectedSuggestion}
             theme={theme}
             isTrendingSearches={isTrendingSearches}
+            template={suggestionsTemplate}
           />
           <Products
             {...rest}
