@@ -3,6 +3,7 @@
  */
 
 import { useCallback, useEffect } from 'react';
+import cx from 'classnames';
 import MapArray from 'components/common/MapArray';
 import SuggestionItem from 'components/autocomplete/SuggestionItem';
 import { useAnnouncement } from 'components/common/Announcement';
@@ -11,7 +12,7 @@ import { useQuery, useSuggestions } from '@findify/react-connect';
 import { Immutable } from '@findify/store-configuration';
 import useTranslations from 'helpers/useTranslations';
 
-export default ({ selectedSuggestion = undefined, theme = styles }) => {
+export default ({ selectedSuggestion = undefined, theme = styles, template }) => {
   const {
     suggestions,
     getSuggestionProps,
@@ -47,7 +48,9 @@ export default ({ selectedSuggestion = undefined, theme = styles }) => {
     <>
       <ul
         display-if={suggestions && query}
-        className={theme.list}
+        className={cx(theme.list, {
+          [theme.horizontal]: template === 'horizontal'
+        })}
         tabIndex={0}
         id="FindifyAutocompleteSuggestions"
         role="listbox"
