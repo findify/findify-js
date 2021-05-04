@@ -6,6 +6,7 @@
   z-index: 9999;
   padding-bottom: 0;
   width: 600px;
+  box-sizing: border-box;
 }
 
 .wrapper{
@@ -88,5 +89,14 @@
 .container {
   > *:first-child {
     border-right: 1px solid #e2e2e2;
+  }
+}
+
+.fullscreen{
+  left: 0!important;
+  right: 0!important;
+  width: auto!important;
+  .root{
+    width: 100%;
   }
 }

@@ -68,7 +68,8 @@ export enum AutocompleteRenderNode {
 export enum AutocompleteTemplate {
   'dropdown',
   'sidebar',
-  'fullscreen'
+  'fullscreen',
+  'fullscreen-with-input'
 }
 
 export enum AutocompletePosition {
@@ -82,9 +83,9 @@ export enum AutocompletePosition {
 export enum RecommendationType {
   'trending',
   'newest',
-  'latest',
+  'viewedViewed',
   'viewed',
-  'bought',
+  'viewedBought',
   'purchasedTogether',
   'featured'
 }

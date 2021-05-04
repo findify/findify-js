@@ -147,8 +147,6 @@ export const registerHandlers = (
 
   /** search for the value */
   const search = (_value?) => {
-    console.log('hesrch');
-
     const value = _value || agent.state.get('q') || '';
     const [query, redirect] = isImmutable(value)
       ? [value.get('value'), value.get('redirect')]

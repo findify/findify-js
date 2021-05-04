@@ -7,7 +7,7 @@ import ProductMatches from 'components/autocomplete/ProductMatches';
 import SearchSuggestions from 'components/autocomplete/SearchSuggestions';
 import { useSuggestions } from '@findify/react-connect';
 import cx from 'classnames';
-import { ThemedSFCProps, MJSConfiguration, ISuggestion, MJSValue } from 'types';
+import { ThemedSFCProps, ISuggestion, MJSValue } from 'types';
 import { List } from 'immutable';
 import { usePosition } from 'layouts/Autocomplete/Dropdown/trackPosition';
 import { useAutocompleteLogic } from 'layouts/Autocomplete/withAutocompleteLogic';
@@ -15,7 +15,7 @@ import Grid from 'components/common/Grid';
 import useTranslations from 'helpers/useTranslations';
 import styles from 'layouts/Autocomplete/Dropdown/styles.css';
 import { Immutable } from '@findify/store-configuration';
-import { AutocompleteType } from '../types';
+import { useEffect } from 'react';
 
 export interface IAutocompletePanel extends ThemedSFCProps {
   config: Immutable.AutocompleteConfig;
@@ -68,7 +68,7 @@ export const Products = ({
       >
         {isTrendingSearches
           ? translate('autocomplete.trendingProducts')
-          : translate('autocomplete.productMatchesTitle')}
+          : translate('autocomplete.productMatches')}
       </h4>
       <ProductMatches
         className={theme.productMatches}
@@ -84,7 +84,7 @@ export interface ISearchOrZeroProps {
   /** List of search suggestions */
   suggestions: List<ISuggestion>;
   /** MJS Configuration */
-  config: MJSConfiguration;
+  config: Immutable.AutocompleteConfig;
   /** MJS API Request Meta */
   meta: Map<string, MJSValue>;
   /** Selected suggestion index. -1 means no suggestion is selected on keyboard */
@@ -99,7 +99,7 @@ export interface IAutocompleteDropdownProps {
   /** List of search suggestions */
   suggestions: List<ISuggestion>;
   /** MJS Configuration */
-  config: MJSConfiguration;
+  config: Immutable.AutocompleteConfig;
   /** MJS API Request Meta */
   meta: Map<string, MJSValue>;
   /** Selected suggestion index. -1 means no suggestion is selected on keyboard */
@@ -112,32 +112,36 @@ export interface IAutocompleteDropdownProps {
   [x: string]: any;
 }
 
-export default ({ theme = styles, isMobile, ...rest }: IAutocompleteDropdownProps) => {
-  const {
-    suggestions,
-    meta,
-    config,
-  } = useSuggestions<Immutable.AutocompleteConfig>();
+const getContainer = (config) =>
+  document.querySelector(
+    config
+      .get('cssSelector')
+      ?.split(' ')
+      .map((i) => `.${i}`)
+      .join('')
+  );
+
+export default ({
+  theme = styles,
+  config,
+  isFullScreen,
+  ...rest
+}: IAutocompleteDropdownProps) => {
+  const { suggestions, meta } = useSuggestions();
   const { selectedSuggestion, closeAutocomplete } = useAutocompleteLogic();
-  const [position, register] = usePosition();
+  const [position, register] = usePosition(config);
   const isTrendingSearches = !meta.get('q');
   const translate = useTranslations();
 
-  const viewType: AutocompleteType = isMobile
-  ? config.getIn(['template', 'mobile'])
-  : config.getIn(['template', 'desktop']);
-
-  const templateSetting = config.get(viewType);
-
-  const showSuggestions = !isMobile || !!templateSetting?.getIn(['suggestions', 'display']);
+  useEffect(() => {
+    if (!isFullScreen) return;
+    getContainer(config).classList.add(theme.fullscreen);
+  }, []);
 
   return (
-    <div
-      display-if={suggestions && suggestions.size > 0}
-      className={theme.wrapper}
-    >
+    <div display-if={suggestions?.size > 0} className={theme.wrapper}>
       <div
-        display-if={config.getIn(['dropdown', 'overlay'])}
+        display-if={config.get('overlay')}
         className={theme.overlay}
         onClick={closeAutocomplete}
       />
@@ -154,10 +158,10 @@ export default ({ theme = styles, isMobile, ...rest }: IAutocompleteDropdownProp
           zeroResultsTitle={translate('autocomplete.viewAll')}
           widgetKey={config.get('widgetKey')}
         />
-        <Grid className={theme.container} columns="auto|3">
+        <Grid className={theme.container} columns="fit|auto">
           <Suggestions
-            display-if={showSuggestions}
             {...rest}
+            display-if={config.getIn(['suggestions', 'display'])}
             selectedSuggestion={selectedSuggestion}
             theme={theme}
             config={config}
@@ -166,6 +170,7 @@ export default ({ theme = styles, isMobile, ...rest }: IAutocompleteDropdownProp
           />
           <Products
             {...rest}
+            display-if={config.getIn(['productMatches', 'display'])}
             theme={theme}
             config={config}
             isTrendingSearches={isTrendingSearches}

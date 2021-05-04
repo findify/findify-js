@@ -9,8 +9,9 @@ import MapArray from 'components/common/MapArray';
 import { useItems } from '@findify/react-connect';
 import { Immutable } from '@findify/store-configuration';
 
-export default ({ theme = styles }) => {
-  const { items, config } = useItems<Immutable.AutocompleteConfig>();
+export default ({ theme = styles, config }) => {
+  const { items } = useItems<Immutable.AutocompleteConfig>();
+  console.log(config.getIn(['breakpoints', 'grid']).toJS());
   return (
     <div className={theme.root} display-if={!!items.size}>
       <Grid columns={config.getIn(['breakpoints', 'grid'], '12')}>

@@ -43,7 +43,7 @@ export default memo<{ theme?: any }>(({ theme = styles }) => {
     <div
       className={theme.root}
       role="navigation"
-      aria-label={t('pagination.label')}
+      aria-label={translate('pagination.label')}
     >
       <Button
         display-if={showPrev}

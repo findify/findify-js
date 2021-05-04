@@ -19,7 +19,7 @@ export type ProductType = {
   /**
    * Title component display options 
    */
-  title: {
+  title?: {
     /**
      * Max number of title lines to be shown
      * the rest of text will be cropped
@@ -30,7 +30,7 @@ export type ProductType = {
   /**
    * Description component display options 
    */
-  description: {
+  description?: {
     /**
      * Max number of title lines to be shown
      * the rest of text will be cropped
@@ -49,7 +49,7 @@ export type ProductType = {
   /**
    * Image component display options
    */
-  image: {
+  image?: {
     /** 
      * If number not set images will keep its original aspect
      * To make lazy loading work smoothly we should preserve aspect ratio

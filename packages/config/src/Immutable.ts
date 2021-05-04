@@ -1,6 +1,6 @@
 import { Map } from 'immutable'
 import { Config } from './Config'
-import { Autocomplete } from './Autocomplete'
+import { Autocomplete, AutocompleteSizeType } from './Autocomplete'
 import { Search } from './Search'
 import { Recommendation } from './Recommendation'
 import { Content } from './Content'
@@ -61,7 +61,7 @@ type FEConfig = {
 }
 
 export type BaseConfig = Factory<Config & FEConfig>
-export type AutocompleteConfig = Factory<Config & Autocomplete & FEConfig>
+export type AutocompleteConfig = Factory<Config & Autocomplete & AutocompleteSizeType & FEConfig>
 export type SearchConfig = Factory<Config & Search & FEConfig>
 export type ContentConfig = Factory<Config & Content & FEConfig>
 export type RecommendationConfig = Factory<Recommendation & Config & FEConfig>

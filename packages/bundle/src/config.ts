@@ -2,781 +2,573 @@ import { Config } from '@findify/store-configuration';
 
 const config: Config = {
   key: '9a3fbd99-4382-4c51-885f-69ee76e89c6f',
-
-  poweredByFindify: true,
-
-  hidableFacets: true,
-  merchantId: 6825,
-
-  platform: 'shopify',
-
+  merchantId: 621,
   status: 'live',
-
-  analytics: {
-    'view-page': false,
+  platform: 'shopify',
+  mobileBreakpoint: 768,
+  api: {
+    method: 'post',
   },
-
-  // If window width gte than this number - view will be changed
-  mobileBreakpoint: 700,
-
-  // History setup
+  analytics: {},
+  observeDomChanges: false,
   location: {
-    // Define search url, autocomplete will redirect to this URL
     searchUrl: '/pages/search-results',
-
-    // Search query prefix eq(?findify_q)
-    prefix: 'findify',
-
+    prefix: '',
     keys: ['q', 'limit', 'sort', 'offset', 'filters', 'rules'],
   },
-
-  // Element:Feature
   selectors: {
-    "input[name='fq']": 'autocomplete',
     '#findify_results': 'search',
-    '#home-findify-rec-2': 'recommendation',
-    '#product-findify-rec-1': 'recommendation',
-    '#category-findify-rec-1': 'recommendation',
-    '#product-findify-rec-4': 'recommendation',
-    '#product-findify-rec-2': 'recommendation',
-    '#cart-findify-rec-1': 'recommendation',
-    '#cart-findify-rec-2': 'recommendation',
+    "input[name='q']": 'autocomplete',
+    '#product-findify-rec-6': 'recommendation',
+    '#custom-findify-rec-1': 'recommendation',
+    '#product-findify-rec-7': 'recommendation',
+    '#product-findify-rec-8': 'recommendation',
+    '#home-findify-rec-1': 'recommendation',
     '#cart-findify-rec-3': 'recommendation',
-    '#home-findify-rec-3': 'recommendation',
-    '#product-findify-rec-5': 'recommendation',
   },
-
-  translations: {
-    'View more': 'View more',
-    'range.under': 'Under',
-    'range.up': '&amp; up',
-  },
-
   currency: {
-    code: 'USD',
-    symbol: 'Ж',
-    thousandsSeparator: ',',
-    decimalSeparator: '.',
+    code: 'SEK',
+    decimalDigits: 2,
+    decimalSeparator: ',',
+    spaceBetweenAmountAndSymbol: true,
+    symbol: 'kr',
     symbolOnLeft: false,
-    spaceBetweenAmountAndSymbol: false,
-    decimalDigits: 3,
+    thousandsSeparator: '.',
   },
-
-  product: {
-    template: 'vertical',
-    description: {
-      display: false,
-      lines: 3,
-    },
-    reviews: {
-      display: false,
-    },
-    variants: {
-      display: false,
-      template: 'text',
-    },
-    title: {
-      display: true,
-      lines: 3,
-    },
-    price: {
-      display: true,
-      template: 'from-min',
-    },
-    image: {
-      // Image aspect ratio
-      aspectRatio: 1.2,
-      lazy: false,
-      lazyOffset: 0,
-    },
-    stickers: {
-      discount: false,
-      outOfStock: false,
-    },
+  collections: ['collections/test-col-2000', 'collections/nested-categories'],
+  stickers: {
+    discount: false,
+    outOfStock: false,
   },
-  // Features configuration will be pulled and marged with the root lvl
+  colorMapping: {
+    white: '#awfawf',
+    Blue: '#00a',
+    awfawf: '',
+    awfawffff: '#123123',
+    awfawfawfawff: '#awfaw',
+  },
+  translations: {
+    'suggestions.accessibleTitle':
+      'Use up and down arrows to review and enter to select.',
+    'product.availableInVariants': 'Available in %s variants',
+    'facets.less': 'Less',
+    'facets.more': 'More',
+    'facets.allCategories': 'All Categories',
+    'facets.expanded': 'Expanded',
+    'facets.collapsed': 'Collapsed',
+    'facets.submit': 'go',
+    'facets.filters': 'Filters',
+    'facets.clearAll': 'Clear all',
+    'facets.back': 'Back to menu',
+    'facets.done': 'Done',
+    'facets.seeResults': 'See results',
+    'pagination.previous': 'Prev',
+    'pagination.goTo': 'Go to page',
+    'pagination.next': 'Next',
+    'actions.showFilters': 'Filters',
+    'actions.sorting': 'Sort by',
+    'actions.back': 'Back to menu',
+    'actions.seeResults': 'See results',
+    'actions.sortBy': 'Sort by',
+    'search.title': 'Search Results',
+    'search.loadPrev': 'Load previous',
+    'search.loadMore': 'Load more',
+    'search.noQuery':
+      'Showing all products. Use filters to refine your search.',
+    'search.showingEmpty': 'Showing %s results',
+    'search.showing': 'Showing %s results for',
+    'search.zeroResultsFor': '0 results for',
+    'search.partialMatch': 'Showing results that partially match instead.',
+    'search.accessibleUpdate': 'Products has been updated',
+    'zeroresults.sorryNoResults':
+      "Oh no! Your search for <span class=\"findify-query\"></span> did not match any products.<br/>But don't give up, we're here to help you find what you're looking for.",
+    'zeroresults.noResultsFound':
+      'We can\'t seem to find any products that match your search for \\"%s\\"',
+    'zeroresults.noResultEmptyQuery':
+      "We can't seem to find any products that match your search",
+    'zeroresults.tryOneOfThese': 'Try one of these instead:',
+    'zeroresults.checkOutPopularProducts':
+      'Or check out some of these popular products',
+    'autocomplete.trendingSearches': 'Trending searches',
+    'autocomplete.suggestionsTitle': 'Search suggestions',
+    'autocomplete.trendingProducts': 'Trending products',
+    'autocomplete.productMatches': 'Product matches',
+    'autocomplete.placeholder': 'What are you looking for?',
+  },
   features: {
     autocomplete: {
+      renderIn: 'body',
       instant: false,
-
-      // Disable listening for closest form submit
-      handleFormSubmit: true,
-
+      handleFormSubmit: false,
       enableTrendingSearches: true,
-
-      disableAutoRequest: false,
-
-      // Where it should be rended: parent|self|body
-      renderIn: 'parent',
-
-      breakpoints: {
-        grid: {
-          0: 12,
+      mobile: {
+        template: 'sidebar',
+        position: 'left',
+        breakpoints: {
+          grid: {
+            '200': 3,
+          },
         },
-      },
-
-      template: {
-        mobile: 'sidebar',
-        desktop: 'dropdown',
-      },
-
-      // Where to align autocomplete: left|right|undefined
-      dropdown: {
-        overlay: false,
-        position: 'right',
-        productMatches: {
-          display: true,
+        product: {
+          template: 'vertical',
+          price: {
+            template: 'min-max',
+          },
+          title: {
+            lines: 2,
+          },
+          description: {
+            lines: 2,
+          },
+          variants: {
+            display: false,
+            template: 'text',
+          },
         },
+        overlay: true,
         suggestions: {
           display: true,
         },
-      },
-
-      // Will be added to all requests eq: Agent.defaults(meta)
-      defaultRequestParams: {
-        item_limit: 4,
-        suggestion_limit: 10,
-      },
-
-      product: {
-        template: 'horizontal',
-        description: {
-          display: false,
-          lines: 3,
-        },
-        reviews: {
-          display: false,
-        },
-        variants: {
-          display: false,
-          template: 'text',
-        },
-        title: {
+        productMatches: {
           display: true,
-          lines: 3,
         },
-        price: {
+      },
+      desktop: {
+        template: 'sidebar',
+        breakpoints: {
+          grid: {
+            '200': 4,
+          },
+        },
+        product: {
+          template: 'horizontal',
+          price: {
+            template: 'min-max',
+          },
+          title: {
+            lines: 2,
+          },
+          description: {
+            lines: 2,
+          },
+          variants: {
+            display: false,
+            template: 'text',
+          },
+        },
+        position: 'right',
+        overlay: true,
+        suggestions: {
           display: true,
-          template: 'from-min',
         },
-        image: {
-          // Image aspect ratio
-          aspectRatio: 1.2,
-          lazy: false,
-          lazyOffset: 0,
+        productMatches: {
+          display: true,
         },
       },
     },
-
     search: {
-      //    "disableAutoRequest": true,
-      // Fallback recommendation type
+      disableAutoRequest: false,
+      facets: {
+        position: 'left',
+        sticky: false,
+        accordion: false,
+        hidable: true,
+        filters: {
+          'custom_fields.color_variants': {
+            type: 'text',
+            label: 'color_variants',
+            initiallyCollapsed: false,
+            maxItemsCount: 6,
+            precision: 0,
+          },
+          'custom_fields.type': {
+            type: 'text',
+            label: 'type',
+            initiallyCollapsed: false,
+            maxItemsCount: 6,
+            precision: 0,
+          },
+          'custom_fields.price': {
+            type: 'text',
+            label: 'price',
+            initiallyCollapsed: false,
+            maxItemsCount: 6,
+            precision: 0,
+          },
+          'custom_fields.size': {
+            type: 'text',
+            label: 'size',
+            initiallyCollapsed: false,
+            maxItemsCount: 6,
+            precision: 0,
+          },
+          category: {
+            type: 'category',
+            label: 'category',
+            initiallyCollapsed: false,
+            maxItemsCount: 6,
+            precision: 0,
+          },
+        },
+      },
       zeroResultsType: 'trending',
-
-      // Search results setup
-      view: {
-        pagination: true,
-        infinite: false,
-        stickyFilters: true,
-      },
-
-      // Should scroll to value after new data was received
+      fallbackEnabled: true,
+      includeRules: false,
       scrollTop: {
+        enabled: true,
         selector: '',
-        enabled: false,
         offset: 0,
-      },
-
-      cssSelector: '.site-header',
-
-      // Will be added to all requests eq: Agent.defaults(meta)
-      defaultRequestParams: {
-        limit: 24,
       },
       sorting: {
         options: [
           {
             field: 'default',
-            order: '',
-          },
-          {
-            field: 'price',
-            order: 'desc',
+            order: 'default',
+            label: 'Popularity',
           },
           {
             field: 'price',
             order: 'asc',
+            label: 'Price: Low to high',
+          },
+          {
+            field: 'price',
+            order: 'desc',
+            label: 'Price: High to low',
           },
           {
             field: 'created_at',
             order: 'desc',
+            label: "What's new",
           },
         ],
-        i18n: {
-          title: 'Sort by',
-          options: {
-            default: 'Popularity',
-            'price|desc': 'Price: High to low',
-            'price|asc': 'Price: Low to high',
-            'created_at|desc': "What's new",
-          },
-        },
       },
-
       pagination: {
-        step: 2,
         type: 'lazy',
         autoLoadTimes: 2,
+        step: 2,
       },
-
-      i18n: {
-        sorryNoResults: 'Sorry!',
-        noResultsFound:
-          'We can\'t seem to find any products that match your search for <span class="findify_q">"%s"</span>',
-        noResultEmptyQuery:
-          "We can't seem to find any products that match your search",
-        tryOneOfThese: 'Try one of these instead:',
-        checkOutPopularProducts: 'Or check out some of these popular products',
-      },
-
-      breadcrumbs: {
-        i18n: {
-          showingEmpty: 'Showing %s results',
-          showing: 'Showing %s results for',
-          noQuery: 'Showing all products. Use filters to refine your search.',
-          partialMatch: 'Showing results that partially match instead.',
-          zeroResultsFor: '0 results for',
+      product: {
+        template: 'vertical',
+        price: {
+          template: 'min-max',
+        },
+        title: {
+          lines: 3,
+        },
+        description: {
+          lines: 3,
+        },
+        variants: {
+          display: true,
+          template: 'text',
+        },
+        image: {
+          aspectRatio: 1,
+          lazy: true,
+          lazyOffset: 0,
         },
       },
-
-      // Facets setup
-      facets: {
-        position: 'left',
-        hidable: true,
-        accordion: true,
-        sticky: true,
-
-        filters: {
-          'custom_fields.material2': {
-            type: 'text',
-            label: 'Material',
-            initiallyCollapsed: false,
-            maxItemsCount: 5,
-          },
-          price: {
-            precision: 2,
-          },
+      breakpoints: {
+        grid: {
+          '400': 6,
+          '600': 4,
+          '1000': 3,
         },
-        // Map Facet name to facet type
-        types: {
-          price: 'price',
-          'reviews.average_score': 'rating',
-          color: 'color',
+      },
+      defaultRequestParams: {
+        limit: 24,
+      },
+    },
+    content: {
+      pagination: {
+        type: 'lazy',
+        autoLoadTimes: 2,
+        step: 2,
+      },
+      scrollTop: {
+        enabled: true,
+        selector: '',
+        offset: 0,
+      },
+      disableAutoRequest: false,
+      defaultRequestParams: {
+        limit: 24,
+      },
+      product: {
+        template: 'vertical',
+        price: {
+          template: 'min-max',
         },
-        labels: {
-          'custom_fields.cf_accessory_colour': 'Accessory Colour',
-          'custom_fields.cf_accessory_fibre': 'Accessory Fibre',
-          'custom_fields.cf_accessory_length': 'Accessory Length',
-          'custom_fields.cf_accessory_material': 'Accessory Material',
-          'custom_fields.cf_accessory_size': 'Accessory Size',
-          'custom_fields.cf_accessory_type': 'Accessory Type',
-          'custom_fields.cf_book_pattern_for': 'Book For',
-          'custom_fields.cf_accessory_style': 'Accessory Style',
-          'custom_fields.cf_accessory_width': 'Accessory Width',
-          'custom_fields.cf_book_type': 'Book Type',
-          'custom_fields.cf_button_collection': 'Button Collection',
-          'custom_fields.cf_kit_collection': 'Kit Collection',
-          price: 'Price',
-          'custom_fields.cf_kit_type': 'Kit Type',
-          'custom_fields.cf_minerva_category': 'Minerva Category',
-          'custom_fields.cf_needle_collection': 'Needle Collection',
-          seller: 'Seller',
-          condition: 'Condition',
-          'custom_fields.barcode': 'Barcode',
-          'custom_fields.cf_needle_size': 'Needle Size',
-          'custom_fields.cf_needle_weight': 'Needle Weight',
-          'custom_fields.cf_pattern_collection': 'Pattern Collection',
-          'custom_fields.cf_pattern_pattern_for': 'Pattern For',
-          'custom_fields.cf_pattern_type': 'Pattern Type',
-          'custom_fields.cf_thread_colour': 'Thread Colour',
-          'custom_fields.cf_thread_type': 'Thread Type',
-          'custom_fields.cf_yarn_collection': 'Yarn Collection',
-          'custom_fields.pattern_difficulty': 'pattern_difficulty',
-          'custom_fields.new_brand': 'Brand',
-          'custom_fields.cf_thread_collection': 'Thread Collection',
-          'custom_fields.cf_thread_length': 'Thread Length',
-          'custom_fields.cf_thread_yarn_thickness': 'Thread Thickness',
-          'custom_fields.cf_pattern_style': 'Pattern Style',
-          'custom_fields.cf_kit_colour': 'Kit Colour',
-          'custom_fields.cf_kit_size': 'Kit Size',
-          'custom_fields.custom_created_at': 'Created At',
-          color: 'Colour',
-          size: 'Size',
-          'custom_fields.cf_needle_length': 'Needle Length',
-          'custom_fields.cf_needle_material': 'Needle Material',
-          'custom_fields.cf_pattern_yarn_thickness':
-            'Pattern By Yarn Thickness',
-          'custom_fields.cf_thread_fibre': 'Thread Fibre',
-          'custom_fields.cf_accessory_collection': 'Accessory Collection',
-          'custom_fields.cf_yarn_fibre': 'Yarn Fibre',
-          'custom_fields.cf_accessory_shape': 'Accessory Shape',
-          'custom_fields.cf_accessory_weight': 'Accessory Weight',
-          'custom_fields.cf_book_collection': 'Book Collection',
-          'custom_fields.cf_book_style': 'Book Style',
-          'custom_fields.cf_book_yarn_thickness': 'Book By Yarn Thickness',
-          'custom_fields.cf_button_colour': 'Button Colour',
-          'custom_fields.cf_button_material': 'Button Material',
-          'custom_fields.сf_button_shape': 'Button Shape',
-          'custom_fields.cf_button_size': 'Button Size',
-          'custom_fields.cf_button_type': 'Button Type',
-          'custom_fields.cf_kit_style': 'Kit Style',
-          'custom_fields.cf_kit_pattern_for': 'Kit For',
-          tags: 'Tags',
-          'reviews.average_score': 'Avg. customer rating',
-          brand: 'Vendor',
-          discount: 'Discount',
-          'custom_fields.cf_minerva_subcategory': 'Minerva Sub Category',
-          'custom_fields.cf_sale_tag': 'Sale Tag',
-          'custom_fields.cf_yarn_length': 'Yarn Length',
-          'custom_fields.cf_yarn_weight': 'Yarn Weight',
-          'custom_fields.cf_yarn_type': 'Yarn Type',
-          'custom_fields.cf_yarn_colour': 'Yarn Colour',
-          'custom_fields.old_colors': 'Old Colors',
-          'custom_fields.seasonal_collection': 'seasonal_collection',
-          'custom_fields.length': 'Length',
-          'custom_fields.cf_needle_type': 'Needle Type',
-          'custom_fields.cf_pattern_size': 'Pattern Size',
-          'custom_fields.cf_yarn_thickness': 'Yarn Thickness',
-          availability: 'availability',
-          created_at: 'created_at',
-          sku: 'sku',
-          category: 'Category',
-          material: 'Material',
-          'custom_fields.variant_image_url': 'Variant Image Url',
-          id: 'id',
-          'custom_fields.select pattern format': 'Select Pattern Format',
-          'custom_fields.width': 'Width',
-          'custom_fields.cf_needle_colour': 'Needle Colour',
-          description: 'description',
-          title: 'title',
-          'category.category1': 'category.category1',
-          'category.category2': 'category.category2',
-          'category.category3': 'category.category3',
-          'category.category4': 'category.category4',
-          variants_ids: 'variants_ids',
-          image_url: 'image_url',
-          thumbnail_url: 'thumbnail_url',
-          product_url: 'product_url',
-          category_str: 'category_str',
-          short_description: 'short description',
+        title: {
+          lines: 3,
         },
-        category: {
-          // Should be expanded by default or not
-          // "initiallyClosed": false,
-          i18n: {
-            goBackTitle: 'All Categories',
-            more: 'More',
-            less: 'Less',
-          },
+        description: {
+          lines: 3,
         },
-        text: {
-          // How many item to show when collapsed
-          maxItemsCount: 6,
-          // "initiallyClosed": false,
-          i18n: {
-            more: 'More',
-            less: 'Less',
-            search: 'Search',
-          },
+        variants: {
+          display: true,
+          template: 'text',
         },
-
-        rating: {
-          i18n: {
-            submit: 'go',
-            under: 'Under',
-            up: '&amp; up',
-          },
+        image: {
+          aspectRatio: 1,
+          lazy: true,
+          lazyOffset: 0,
         },
-        range: {
-          i18n: {
-            submit: 'go',
-            under: 'Under',
-            up: '&amp; up',
-          },
-        },
-        i18n: {
-          showDesktopFacets: 'Show',
-          hideDesktopFacets: 'Hide',
-          showMobileFacets: 'Filters',
-          more: 'More',
-          less: 'Less',
-          resetAll: 'Clear all',
-          reset: 'Clear',
-          done: 'Done',
-          showResults: 'See results',
-          hideFilters: 'Exit filters',
-          ok: 'Ok',
-          backToFilters: 'Back to menu',
-          search: 'Search',
-          filters: 'Filters',
-          clearAll: 'Clear all',
-        },
-        color: {
-          mapping: {
-            'dark yellow': '#FF0',
-            beige: '#E9E1D6',
-            black: '#111',
-            cream: '#F5EFD3',
-            'dark brown': '#7E6645',
-            'dark green': '#466534',
-            'dark grey': '#777',
-            'dark orange': '#ff7f00',
-            'dark pink': '#ff6eb4',
-            'dark purple': '#8b4789',
-            'dark red': '#cd0000',
-            gold: '#FED466',
-            ivory: '#FCFFEE',
-            'light green': '#C8DCBC',
-            'light orange': '#FFB973',
-            'light pink': '#ffb6c1',
-            'light purple': '#c9b1f9',
-            'medium blue': '#BAC6DE',
-            'medium brown': '#cd661d',
-            'light yellow': '#FFFFBF',
-            white: '#FFF',
-            clear: '#F9F9F9',
-            'light red': '#ff4c4c',
-            'medium green': '#7EAD63',
-            'medium grey': '#7f7f7f',
-            'medium orange': '#FF8000',
-            'medium purple': '#8E89C9',
-            'medium red': '#FF2626',
-            'medium yellow': '#FFFF73',
-            multicolor: 'multicolor',
-            'navy blue': '#3F5585',
-            other: '#000',
-            pink: '#FFC0CB',
-            silver: '#EEE',
-            teal: '#008080',
-            turquoise: '#03B8AF',
-            wine: '#600',
-          },
+      },
+      breakpoints: {
+        grid: {
+          '400': 6,
+          '600': 4,
+          '1000': 3,
         },
       },
     },
     recommendations: {
-      '#home-findify-rec-2': {
+      'product-findify-rec-6': {
+        disableAutoRequest: false,
+        breakpoints: {
+          grid: {
+            '400': 6,
+            '600': 4,
+            '1000': 3,
+          },
+        },
+        product: {
+          template: 'vertical',
+          price: {
+            template: 'min-max',
+          },
+          title: {
+            lines: 3,
+          },
+          description: {
+            lines: 3,
+          },
+          variants: {
+            display: true,
+            template: 'text',
+          },
+          image: {
+            aspectRatio: 1,
+            lazy: true,
+            lazyOffset: 0,
+          },
+        },
+        defaultRequestParams: {},
         enabled: true,
-        slot: 'home-findify-rec-2',
+        slot: 'product-findify-rec-6',
         type: 'trending',
         template: 'slider',
         limit: 10,
-        multipleIds: false,
-        minResultsToShow: 4,
-
-        title: 'Our Most Popular Products',
-      },
-      '#cart-findify-rec-4': {
-        enabled: true,
-        slot: 'cart-findify-rec-4',
-        type: 'purchasedTogether',
-        template: 'grid',
-        meta: {
-          limit: 3,
-        },
-        limit: 3,
-        multipleIds: false,
         minResultsToShow: 1,
-
-        title: 'Test bundles',
+        title: 'asdf',
+        multipleIds: true,
       },
-      '#product-findify-rec-1': {
+      'custom-findify-rec-1': {
+        disableAutoRequest: false,
+        breakpoints: {
+          grid: {
+            '400': 6,
+            '600': 4,
+            '1000': 3,
+          },
+        },
+        product: {
+          template: 'vertical',
+          price: {
+            template: 'min-max',
+          },
+          title: {
+            lines: 3,
+          },
+          description: {
+            lines: 3,
+          },
+          variants: {
+            display: true,
+            template: 'text',
+          },
+          image: {
+            aspectRatio: 1,
+            lazy: true,
+            lazyOffset: 0,
+          },
+        },
+        defaultRequestParams: {},
         enabled: true,
-        slot: 'product-findify-rec-1',
-        type: 'latest',
+        slot: 'custom-findify-rec-1',
+        type: 'trending',
         template: 'slider',
         limit: 10,
-        multipleIds: false,
-        minResultsToShow: 3,
-
-        title: 'Recently Viewed Products',
+        minResultsToShow: 1,
+        title: 'trending',
+        multipleIds: true,
       },
-      '#category-findify-rec-1': {
+      'product-findify-rec-7': {
+        disableAutoRequest: false,
+        breakpoints: {
+          grid: {
+            '400': 6,
+            '600': 4,
+            '1000': 3,
+          },
+        },
+        product: {
+          template: 'vertical',
+          price: {
+            template: 'min-max',
+          },
+          title: {
+            lines: 3,
+          },
+          description: {
+            lines: 3,
+          },
+          variants: {
+            display: true,
+            template: 'text',
+          },
+          image: {
+            aspectRatio: 1,
+            lazy: true,
+            lazyOffset: 0,
+          },
+        },
+        defaultRequestParams: {},
         enabled: true,
-        slot: 'category-findify-rec-1',
-        type: 'latest',
+        slot: 'product-findify-rec-7',
+        type: 'trending',
         template: 'slider',
         limit: 10,
-        multipleIds: false,
-        minResultsToShow: 3,
-
-        title: 'Recently Viewed Products',
+        minResultsToShow: 1,
+        title: 'fdsa',
+        multipleIds: true,
       },
-      '#product-findify-rec-4': {
+      'product-findify-rec-8': {
+        disableAutoRequest: false,
+        breakpoints: {
+          grid: {
+            '400': 6,
+            '600': 4,
+            '1000': 3,
+          },
+        },
+        product: {
+          template: 'vertical',
+          price: {
+            template: 'min-max',
+          },
+          title: {
+            lines: 3,
+          },
+          description: {
+            lines: 3,
+          },
+          variants: {
+            display: true,
+            template: 'text',
+          },
+          image: {
+            aspectRatio: 1,
+            lazy: true,
+            lazyOffset: 0,
+          },
+        },
+        defaultRequestParams: {},
         enabled: true,
-        slot: 'product-findify-rec-4',
-        type: 'purchasedTogether',
+        slot: 'product-findify-rec-8',
+        type: 'viewedBought',
         template: 'slider',
         limit: 10,
-        multipleIds: false,
-        minResultsToShow: 3,
-
-        title: 'Frequently Bought Together',
+        minResultsToShow: 1,
+        title: 'asedf',
+        multipleIds: true,
       },
-      '#product-findify-rec-2': {
+      'home-findify-rec-1': {
+        disableAutoRequest: false,
+        breakpoints: {
+          grid: {
+            '400': 6,
+            '600': 4,
+            '1000': 3,
+          },
+        },
+        product: {
+          template: 'vertical',
+          price: {
+            template: 'min-max',
+          },
+          title: {
+            lines: 3,
+          },
+          description: {
+            lines: 3,
+          },
+          variants: {
+            display: true,
+            template: 'text',
+          },
+          image: {
+            aspectRatio: 1,
+            lazy: true,
+            lazyOffset: 0,
+          },
+        },
+        defaultRequestParams: {},
         enabled: true,
-        slot: 'product-findify-rec-2',
+        slot: 'home-findify-rec-1',
         type: 'viewed',
         template: 'slider',
-        limit: 10,
-        multipleIds: false,
+        limit: 11,
         minResultsToShow: 3,
-
-        title: 'Customers Who Viewed This Also Viewed',
+        title: 'Products you recently viewed',
+        multipleIds: true,
       },
-      '#cart-findify-rec-1': {
-        enabled: true,
-        slot: 'cart-findify-rec-1',
-        type: 'latest',
-        template: 'slider',
-        limit: 10,
-        multipleIds: false,
-        minResultsToShow: 3,
-
-        title: 'Recently Viewed Products',
-      },
-      '#cart-findify-rec-2': {
-        enabled: true,
-        slot: 'cart-findify-rec-2',
-        type: 'trending',
-        template: 'slider',
-        limit: 10,
-        multipleIds: false,
-        minResultsToShow: 3,
-
-        title: 'Our Most Popular Products',
-      },
-      '#cart-findify-rec-3': {
+      'cart-findify-rec-3': {
+        disableAutoRequest: false,
+        breakpoints: {
+          grid: {
+            '400': 6,
+            '600': 4,
+            '1000': 3,
+          },
+        },
+        product: {
+          template: 'vertical',
+          price: {
+            template: 'min-max',
+          },
+          title: {
+            lines: 3,
+          },
+          description: {
+            lines: 3,
+          },
+          variants: {
+            display: true,
+            template: 'text',
+          },
+          image: {
+            aspectRatio: 1,
+            lazy: true,
+            lazyOffset: 0,
+          },
+        },
+        defaultRequestParams: {},
         enabled: true,
         slot: 'cart-findify-rec-3',
         type: 'purchasedTogether',
         template: 'slider',
         limit: 10,
+        minResultsToShow: 2,
+        title: 'Freq purch together: another widget',
         multipleIds: true,
-        minResultsToShow: 3,
-
-        title: 'Frequently Bought Together',
-      },
-      '#home-findify-rec-3': {
-        enabled: true,
-        slot: 'home-findify-rec-3',
-        type: 'newest',
-        template: 'slider',
-        limit: 10,
-        multipleIds: false,
-        minResultsToShow: 4,
-
-        title: 'Newest Arrivals',
-      },
-      '#product-findify-rec-5': {
-        enabled: true,
-        slot: 'product-findify-rec-5',
-        type: 'trending',
-        template: 'slider',
-        limit: 999,
-        multipleIds: false,
-        minResultsToShow: 1,
-
-        title: 'Related Patterns',
       },
     },
   },
-  stickers: {
-    'out-of-stock': {
-      template: {
-        single: 'Temporarily out of stock',
-      },
-    },
-  },
-  frameDisabled: true,
-  useSimpleLoader: false,
-  collections: [
-    'collections/baseball',
-    'collections/wendy-on-sale',
-    'collections/accessories-on-sale',
-    'collections/merino-yarn',
-    'collections/needles-on-sale',
-    'collections/peter-pan-yarn',
-    'collections/chunky-yarn',
-    'collections/schoppel-wolle-yarn',
-    'collections/2-ply-yarn',
-    'collections/dmc-yarn',
-    'collections/robin-yarn',
-    'collections/sirdar-yarn',
-    'collections/wendy-yarn',
-    'collections/cotton-yarn',
-    'collections/hayfield-yarn',
-    'collections/mohair-yarn',
-    'collections/rico-yarn',
-    'collections/sublime-yarn',
-    'collections/wool-yarn',
-    'collections/myboshi-yarn',
-    'collections/king-cole-yarn',
-    'collections/silk-yarn',
-    'collections/fashion-yarn',
-    'collections/twilleys-of-stamford',
-    'collections/king-cole-on-sale',
-    'collections/aran-yarn',
-    'collections/yarn-on-sale',
-    'collections/nylon-yarn',
-    'collections/polyester-yarn',
-    'collections/linen-yarn',
-    'collections/budget-yarn',
-    'collections/bamboo-yarn',
-    'collections/sparkly-yarn',
-    'collections/scarf-yarn',
-    'collections/variegated-yarn',
-    'collections/sock-yarn',
-    'collections/natural-fibres-yarn',
-    'collections/luxury-yarn',
-    'collections/summer-yarn',
-    'collections/felting-yarn',
-    'collections/crochet-yarn',
-    'collections/colour-packs',
-    'collections/acrylic-yarn',
-    'collections/cashmere-yarn',
-    'collections/llama-yarn',
-    'collections/go-handmade-patterns',
-    'collections/king-cole-patterns',
-    'collections/baby-yarn',
-    'collections/2-ply-patterns',
-    'collections/chunky-patterns',
-    'collections/erika-knight-patterns',
-    'collections/peter-pan-patterns',
-    'collections/sirdar-patterns',
-    'collections/sublime-patterns',
-    'collections/wendy-patterns',
-    'collections/womans-weekly-exclusive-patterns',
-    'collections/welcome10',
-    'collections/lace-patterns',
-    'collections/super-chunky-patterns',
-    'collections/baby-patterns',
-    'collections/childrens-patterns',
-    'collections/home-patterns',
-    'collections/aran-patterns',
-    'collections/3-ply-patterns',
-    'collections/dk-patterns-1',
-    'collections/4-ply-patterns',
-    'collections/mens-patterns',
-    'collections/ladies-patterns',
-    'collections/vintage-patterns',
-    'collections/all-patterns-books',
-    'collections/boye-needles-hooks',
-    'collections/case-needles-hooks',
-    'collections/clover-needles-hooks',
-    'collections/hobby-gift-needles-hooks',
-    'collections/knit-pro-needles-hooks',
-    'collections/pony-needles-hooks',
-    'collections/single-point-needles',
-    'collections/double-point-needles',
-    'collections/crochet-hooks',
-    'collections/cable-needles',
-    'collections/needle-and-hook-sets',
-    'collections/intermediate-patterns-1',
-    'collections/circular-needles',
-    'collections/free-patterns',
-    'collections/beginner-patterns',
-    'collections/bamboo-needles',
-    'collections/advanced-patterns',
-    'collections/addi-needles-hooks',
-    'collections/prym-needles-hooks',
-    'collections/interchangeable-needles',
-    'collections/toy-patterns',
-    'collections/free-knitting-patterns',
-    'collections/storage-bags',
-    'collections/crochet-kits',
-    'collections/needles-hooks',
-    'collections/knitting-kits',
-    'collections/kitazine',
-    'collections/needle-cases',
-    'collections/yarn-holders',
-    'collections/motifs',
-    'collections/patches',
-    'collections/sale',
-    'collections/knitting-patterns-all',
-    'collections/free-crochet-patterns',
-    'collections/wood-needles-hooks',
-    'collections/knitting-buttons',
-    'collections/ribbons-trims',
-    'collections/storage-boxes',
-    'collections/metal-needles-hooks',
-    'collections/plastic-needles-hooks',
-    'collections/knitting-storage',
-    'collections/patterns',
-    'collections/dmc-patterns',
-    'collections/knitting-books',
-    'collections/stylecraft-on-sale',
-    'collections/hayfield-on-sale',
-    'collections/prym-on-sale',
-    'collections/patterns-on-sale',
-    'collections/hooks-on-sale',
-    'collections/alpaca-yarn',
-    'collections/erika-knight-yarn',
-    'collections/lang-yarn',
-    'collections/loweth-yarn',
-    'collections/hayfield-patterns',
-    'collections/pets-patterns',
-    'collections/crochet-threads',
-    'collections/yellow-yarn',
-    'collections/white-yarn',
-    'collections/purple-yarn',
-    'collections/pink-yarn',
-    'collections/red-yarn',
-    'collections/orange-yarn',
-    'collections/multicoloured-yarn',
-    'collections/grey-yarn',
-    'collections/green-yarn',
-    'collections/cream-yarn',
-    'collections/brown-yarn',
-    'collections/blue-yarn',
-    'collections/black-yarn',
-    'collections/knooking',
-    'collections/go-handmade-products',
-    'collections/craft-factory-on-sale',
-    'collections/wendy-products',
-    'collections/sublime-products',
-    'collections/stylecraft-products',
-    'collections/sirdar-products',
-    'collections/king-cole-products',
-    'collections/hayfield-products',
-    'collections/dmc-products',
-    'collections/robin-products',
-    'collections/rico-products',
-    'collections/peter-pan-products',
-    'collections/loweth-products',
-    'collections/erika-knight-products',
-    'collections/sirdar-on-sale',
-    'collections/hobby-gift-on-sale',
-    'collections/sale-50-percent-off',
-    'collections/sale-40-percent-off',
-    'collections/sale-30-percent-off',
-    'collections/sale-20-percent-off',
-    'collections/sale-10-percent-off',
-    'collections/yarn',
-    'collections/christmas',
-    'collections/stylecraft-yarn',
-    'collections/super-chunky-and-chunky-yarns',
-    'collections/all-accessories',
-    'collections/stylecraft-patterns',
-    'collections/super-chunky-yarn',
-    'collections/dk-yarn',
-    'collections/3-ply-yarn',
-    'collections/4-ply-yarn',
-    'collections/lace-yarn',
-    'collections/crochet',
-    'collections/knitting',
-  ],
-  components: {},
+  merchantName: 'marek-test-store.myshopify.com',
+  mjs_version: '7.0.0',
 };
 
 export default config;

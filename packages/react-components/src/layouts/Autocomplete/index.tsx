@@ -39,15 +39,15 @@ const renderView = (type: AutocompleteType, props) =>
 const Autocomplete = ({ isTrendingSearches, ...rest }) => {
   const { config } = useConfig<Immutable.AutocompleteConfig>();
   const [isMobile, isDesktop] = useMedia([config.get('mobileBreakpoint')]);
+  const size = isDesktop ? 'desktop' : 'mobile';
+  const viewType: AutocompleteType = config.getIn([size, 'template']);
+  const isFullScreen = viewType === 'fullscreen';
 
-  const viewType: AutocompleteType = isDesktop
-    ? config.getIn(['template', 'desktop'])
-    : config.getIn(['template', 'mobile']);
-
-  return renderView(viewType, {
+  return renderView(isFullScreen ? 'dropdown' : viewType, {
     ...rest,
-    config: config.get(viewType),
+    config: config.merge(config.get(size)),
     isMobile,
+    isFullScreen,
     isTrendingSearches,
   });
 };

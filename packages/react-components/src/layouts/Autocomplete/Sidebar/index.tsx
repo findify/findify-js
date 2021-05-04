@@ -4,28 +4,13 @@ import { useCallback, useEffect, useRef } from 'react';
 import Drawer from 'components/common/Drawer';
 import Icon from 'components/Icon';
 import SearchSuggestions from 'components/autocomplete/SearchSuggestions';
-import { Immutable } from '@findify/store-configuration';
 import useTranslations from 'helpers/useTranslations';
-import { AutocompleteType } from '../types';
 
-export default ({ theme = styles, isMobile }) => {
-  const {
-    suggestions,
-    config,
-    update,
-  } = useSuggestions<Immutable.AutocompleteConfig>();
+export default ({ theme = styles, config }) => {
+  const { suggestions, update } = useSuggestions();
   const { query } = useQuery();
   const translate = useTranslations();
   const input = useRef<HTMLInputElement>(null);
-
-
-  const viewType: AutocompleteType = isMobile
-  ? config.getIn(['template', 'mobile'])
-  : config.getIn(['template', 'desktop']);
-
-const templateSetting = config.get(viewType);
-
-const showSuggestions = !isMobile || !!templateSetting?.getIn(['suggestions', 'display']);
 
   const onExit = useCallback(() => {
     (window as any).findify.emit(
@@ -94,7 +79,9 @@ const showSuggestions = !isMobile || !!templateSetting?.getIn(['suggestions', 'd
           </div>
         </div>
         <div
-          display-if={showSuggestions && suggestions && suggestions.size > 0}
+          display-if={
+            config.getIn(['suggestions', 'display']) && suggestions?.size > 0
+          }
           className={theme.suggestionsWrapper}
         >
           <div className={theme.suggestionsContainer}>

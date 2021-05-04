@@ -3,9 +3,9 @@ import { Config } from '@findify/store-configuration';
 import { useMemo } from 'react';
 import unescape from 'lodash/unescape';
 
-const createTranslator = (strings = {}, selector: RegExp) => {
+const createTranslator = (strings = Map(), selector: RegExp) => {
   return (key: keyof Config['translations'], ...args: any[]): string => {
-    const value = strings[key];
+    const value = strings.get(key);
     const isTemplate = selector.test(value);
 
     if (!value) return key;

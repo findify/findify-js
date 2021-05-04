@@ -11,7 +11,7 @@ import { useQuery, useSuggestions } from '@findify/react-connect';
 import { Immutable } from '@findify/store-configuration';
 import useTranslations from 'helpers/useTranslations';
 
-export default ({ selectedSuggestion, theme = styles }) => {
+export default ({ selectedSuggestion = undefined, theme = styles }) => {
   const {
     suggestions,
     getSuggestionProps,

@@ -69,12 +69,16 @@ export default ({
     >
       <div className={theme.search} display-if={isExpanded}>
         <input
-          placeholder={t('facets.search')}
+          placeholder={translate('facets.search')}
           className={theme.input}
           onChange={onSearch}
           value={search}
         />
-        <Icon name="Search" className={theme.icon} title={t('facets.search')} />
+        <Icon
+          name="Search"
+          className={theme.icon}
+          title={translate('facets.search')}
+        />
       </div>
 
       <section role="list">

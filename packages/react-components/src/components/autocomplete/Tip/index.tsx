@@ -6,21 +6,13 @@ import { useCallback } from 'react';
 import styles from 'components/autocomplete/Tip/styles.css';
 import classnames from 'classnames';
 import { useQuery } from '@findify/react-connect';
-import {
-  ThemedSFCProps,
-  ClassnamedProps,
-  WidgetAwareProps,
-  SuggestionsConnectedProps,
-} from 'types';
+import { ThemedSFCProps } from 'types';
 import { emit } from 'helpers/emmiter';
 
 /** List of props that Tip accepts */
-export interface ITipProps
-  extends ThemedSFCProps,
-    ClassnamedProps,
-    WidgetAwareProps,
-    SuggestionsConnectedProps {
+export interface ITipProps extends ThemedSFCProps {
   /** Custom title to display in a Tip */
+  widgetKey: string;
   title: string;
   zeroResultsTitle: string;
 }
