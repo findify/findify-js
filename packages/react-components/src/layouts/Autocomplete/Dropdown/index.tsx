@@ -140,11 +140,10 @@ export default ({
     getContainer(config).classList.add(theme.fullscreen);
   }, []);
 
-  const viewType = isMobile ? 'mobile' : 'desktop';
-
-  const suggestionsTemplate = config.getIn([viewType, 'suggestions', 'template'])
-
-  const gridColumns = suggestionsTemplate === 'horizontal' ? '12|auto' : 'fit|auto';
+  const gridColumns =
+    config.getIn(['suggestions', 'template']) === 'horizontal'
+      ? '12|auto'
+      : 'fit|auto';
 
   return (
     <div display-if={suggestions?.size > 0} className={theme.wrapper}>
@@ -175,7 +174,7 @@ export default ({
             config={config}
             icon={isTrendingSearches && 'Fire'}
             isTrendingSearches={isTrendingSearches}
-            template={suggestionsTemplate}
+            template={config.getIn(['suggestions', 'template'])}
           />
           <Products
             {...rest}

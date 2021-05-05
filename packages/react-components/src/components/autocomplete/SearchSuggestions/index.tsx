@@ -12,7 +12,11 @@ import { useQuery, useSuggestions } from '@findify/react-connect';
 import { Immutable } from '@findify/store-configuration';
 import useTranslations from 'helpers/useTranslations';
 
-export default ({ selectedSuggestion = undefined, theme = styles, template }) => {
+export default ({
+  selectedSuggestion = undefined,
+  theme = styles,
+  template = 'vertical',
+}) => {
   const {
     suggestions,
     getSuggestionProps,
@@ -49,7 +53,7 @@ export default ({ selectedSuggestion = undefined, theme = styles, template }) =>
       <ul
         display-if={suggestions && query}
         className={cx(theme.list, {
-          [theme.horizontal]: template === 'horizontal'
+          [theme.horizontal]: template === 'horizontal',
         })}
         tabIndex={0}
         id="FindifyAutocompleteSuggestions"
