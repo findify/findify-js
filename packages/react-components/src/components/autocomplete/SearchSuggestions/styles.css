@@ -6,5 +6,10 @@
   li {
     display: block;
   }
+
+  &.horizontal {
+    display: flex;
+    flex-wrap: wrap;
+  }
 }
 

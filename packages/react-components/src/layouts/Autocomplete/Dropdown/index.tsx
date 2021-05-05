@@ -16,6 +16,7 @@ import useTranslations from 'helpers/useTranslations';
 import styles from 'layouts/Autocomplete/Dropdown/styles.css';
 import { Immutable } from '@findify/store-configuration';
 import { useEffect } from 'react';
+import { AutocompleteType } from '../types';
 
 export interface IAutocompletePanel extends ThemedSFCProps {
   config: Immutable.AutocompleteConfig;
@@ -125,6 +126,7 @@ export default ({
   theme = styles,
   config,
   isFullScreen,
+  isMobile,
   ...rest
 }: IAutocompleteDropdownProps) => {
   const { suggestions, meta } = useSuggestions();
@@ -137,6 +139,12 @@ export default ({
     if (!isFullScreen) return;
     getContainer(config).classList.add(theme.fullscreen);
   }, []);
+
+  const viewType = isMobile ? 'mobile' : 'desktop';
+
+  const suggestionsTemplate = config.getIn([viewType, 'suggestions', 'template'])
+
+  const gridColumns = suggestionsTemplate === 'horizontal' ? '12|auto' : 'fit|auto';
 
   return (
     <div display-if={suggestions?.size > 0} className={theme.wrapper}>
@@ -158,7 +166,7 @@ export default ({
           zeroResultsTitle={translate('autocomplete.viewAll')}
           widgetKey={config.get('widgetKey')}
         />
-        <Grid className={theme.container} columns="fit|auto">
+        <Grid className={theme.container} columns={gridColumns}>
           <Suggestions
             {...rest}
             display-if={config.getIn(['suggestions', 'display'])}
@@ -167,6 +175,7 @@ export default ({
             config={config}
             icon={isTrendingSearches && 'Fire'}
             isTrendingSearches={isTrendingSearches}
+            template={suggestionsTemplate}
           />
           <Products
             {...rest}
