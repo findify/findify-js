@@ -106,11 +106,11 @@ const config: Config = {
         position: 'left',
         breakpoints: {
           grid: {
-            '200': 3,
+            '1000': 3,
           },
         },
         product: {
-          template: 'vertical',
+          template: 'horizontal',
           price: {
             template: 'min-max',
           },
@@ -128,7 +128,7 @@ const config: Config = {
         overlay: true,
         suggestions: {
           display: true,
-          template: 'vertical'
+          template: 'vertical',
         },
         productMatches: {
           display: true,
@@ -161,7 +161,7 @@ const config: Config = {
         overlay: true,
         suggestions: {
           display: true,
-          template: 'horizontal'
+          template: 'horizontal',
         },
         productMatches: {
           display: true,

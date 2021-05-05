@@ -26,8 +26,8 @@ const { hook, connect } = createConnect<Suggestions>({
       index,
       widgetKey = ''
     ) => {
+      if (!suggestions) return {};
       const suggestion = suggestions.get(index);
-      if (!suggestion) return {};
       const value = suggestion.get('value');
       return {
         key: value,

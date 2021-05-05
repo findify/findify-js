@@ -78,6 +78,9 @@
   vertical-align: top;
   padding: 0 38px;
   background: #fff;
+  &.padded {
+    padding: 0 16px;
+  }
 }
 
 .suggestions-container {

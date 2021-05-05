@@ -3,14 +3,15 @@ import { useQuery, useSuggestions } from '@findify/react-connect';
 import { useCallback, useEffect, useRef } from 'react';
 import Drawer from 'components/common/Drawer';
 import Icon from 'components/Icon';
-import SearchSuggestions from 'components/autocomplete/SearchSuggestions';
 import useTranslations from 'helpers/useTranslations';
+import { Products, Suggestions } from 'layouts/Autocomplete/Dropdown';
 
 export default ({ theme = styles, config }) => {
   const { suggestions, update } = useSuggestions();
   const { query } = useQuery();
   const translate = useTranslations();
   const input = useRef<HTMLInputElement>(null);
+  const isTrendingSearches = !query.get('q');
 
   const onExit = useCallback(() => {
     (window as any).findify.emit(
@@ -49,7 +50,7 @@ export default ({ theme = styles, config }) => {
   return (
     <Drawer hideModal={onExit}>
       <div className={theme.root} data-findify-autocomplete={true} tabIndex={0}>
-        <div className={theme.backdrop} />
+        <div display-if={config.get('overlay')} className={theme.backdrop} />
         <div className={theme.header}>
           <form onSubmit={onSubmit}>
             <input
@@ -78,19 +79,29 @@ export default ({ theme = styles, config }) => {
             />
           </div>
         </div>
-        <div
-          display-if={
-            config.getIn(['suggestions', 'display']) && suggestions?.size > 0
-          }
-          className={theme.suggestionsWrapper}
-        >
-          <div className={theme.suggestionsContainer}>
-            <h4 className={theme.typeTitle}>
-              {translate('autocomplete.suggestionsTitle')}
-            </h4>
-            <SearchSuggestions />
+
+        <section className={theme.content}>
+          <div className={theme.suggestions}>
+            <Suggestions
+              display-if={
+                config.getIn(['suggestions', 'display']) &&
+                suggestions?.size > 0
+              }
+              theme={theme}
+              config={config}
+              isTrendingSearches={isTrendingSearches}
+            />
           </div>
-        </div>
+          <div className={theme.products}>
+            <Products
+              display-if={config.getIn(['productMatches', 'display'])}
+              theme={theme}
+              config={config}
+              isTrendingSearches={isTrendingSearches}
+              padded
+            />
+          </div>
+        </section>
       </div>
     </Drawer>
   );

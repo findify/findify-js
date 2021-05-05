@@ -96,14 +96,21 @@
   padding: 25px 27px 17px 27px;
 }
 
-.suggestions-container {
-}
-
-.suggestions-wrapper {
+.suggestions {
   width: 100%;
   background: $color-white;
-  padding-bottom: 40px;
+  padding-bottom: 15px;
 }
+
+.content{
+  display: flex;
+  height: 100%;
+  overflow: hidden;
+  overflow-y: auto;
+  flex-direction: column;
+}
+
+.products{}
 
 .body-noscroll {
   overflow: hidden;

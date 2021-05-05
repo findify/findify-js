@@ -52,9 +52,7 @@ export default ({
     <>
       <ul
         display-if={suggestions && query}
-        className={cx(theme.list, {
-          [theme.horizontal]: template === 'horizontal',
-        })}
+        className={cx(theme.list, theme[template])}
         tabIndex={0}
         id="FindifyAutocompleteSuggestions"
         role="listbox"

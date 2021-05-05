@@ -1,4 +1,7 @@
 .root {
+  &.padded {
+    padding: 0 16px;
+  }
 }
 
 .grid-column-class:not(:last-child) {
