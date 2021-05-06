@@ -105,9 +105,7 @@ const config: Config = {
         template: 'sidebar',
         position: 'left',
         breakpoints: {
-          grid: {
-            '1000': 3,
-          },
+          grid: [[1000, 3]],
         },
         product: {
           template: 'horizontal',
@@ -137,9 +135,7 @@ const config: Config = {
       desktop: {
         template: 'fullscreen',
         breakpoints: {
-          grid: {
-            '200': 4,
-          },
+          grid: [[200, 4]],
         },
         product: {
           template: 'horizontal',
@@ -272,11 +268,11 @@ const config: Config = {
         },
       },
       breakpoints: {
-        grid: {
-          '400': 6,
-          '600': 4,
-          '1000': 3,
-        },
+        grid: [
+          [600, 6],
+          [600, 4],
+          [1000, 3],
+        ],
       },
       defaultRequestParams: {
         limit: 24,
@@ -319,22 +315,22 @@ const config: Config = {
         },
       },
       breakpoints: {
-        grid: {
-          '400': 6,
-          '600': 4,
-          '1000': 3,
-        },
+        grid: [
+          [400, 6],
+          [600, 4],
+          [1000, 3],
+        ],
       },
     },
     recommendations: {
       'product-findify-rec-6': {
         disableAutoRequest: false,
         breakpoints: {
-          grid: {
-            '400': 6,
-            '600': 4,
-            '1000': 3,
-          },
+          grid: [
+            [400, 6],
+            [600, 4],
+            [1000, 3],
+          ],
         },
         product: {
           template: 'vertical',
@@ -370,11 +366,11 @@ const config: Config = {
       'custom-findify-rec-1': {
         disableAutoRequest: false,
         breakpoints: {
-          grid: {
-            '400': 6,
-            '600': 4,
-            '1000': 3,
-          },
+          grid: [
+            [400, 6],
+            [600, 4],
+            [1000, 3],
+          ],
         },
         product: {
           template: 'vertical',
@@ -410,11 +406,11 @@ const config: Config = {
       'product-findify-rec-7': {
         disableAutoRequest: false,
         breakpoints: {
-          grid: {
-            '400': 6,
-            '600': 4,
-            '1000': 3,
-          },
+          grid: [
+            [400, 6],
+            [600, 4],
+            [1000, 3],
+          ],
         },
         product: {
           template: 'vertical',
@@ -450,11 +446,11 @@ const config: Config = {
       'product-findify-rec-8': {
         disableAutoRequest: false,
         breakpoints: {
-          grid: {
-            '400': 6,
-            '600': 4,
-            '1000': 3,
-          },
+          grid: [
+            [400, 6],
+            [600, 4],
+            [1000, 3],
+          ],
         },
         product: {
           template: 'vertical',
@@ -490,11 +486,11 @@ const config: Config = {
       'home-findify-rec-1': {
         disableAutoRequest: false,
         breakpoints: {
-          grid: {
-            '400': 6,
-            '600': 4,
-            '1000': 3,
-          },
+          grid: [
+            [400, 6],
+            [600, 4],
+            [1000, 3],
+          ],
         },
         product: {
           template: 'vertical',
@@ -530,11 +526,11 @@ const config: Config = {
       'cart-findify-rec-3': {
         disableAutoRequest: false,
         breakpoints: {
-          grid: {
-            '400': 6,
-            '600': 4,
-            '1000': 3,
-          },
+          grid: [
+            [400, 6],
+            [600, 4],
+            [1000, 3],
+          ],
         },
         product: {
           template: 'vertical',

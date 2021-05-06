@@ -9,8 +9,9 @@ export default (
   defaultValue = 12
 ): string => {
   const media = isImmutable(_media) ? _media.toJS() : _media;
-  const keys = useRef(Object.keys(media).sort((a, b) => Number(b) - Number(a)));
-
+  const keys = useRef(
+    media.sort((a, b) => Number(b[0]) - Number(a[0])).map(([key]) => key)
+  );
   const mediaQueryLists = keys.current.map(
     (k) => cache[k] || (cache[k] = window.matchMedia(`(min-width: ${k}px)`))
   );
@@ -18,13 +19,10 @@ export default (
   const getValue = () => {
     // Get index of first media query that matches
     const index = mediaQueryLists.findIndex((mql) => mql.matches);
+    if (typeof keys.current[index] === 'undefined') return String(defaultValue);
 
-    const _value =
-      typeof keys.current[index] !== 'undefined'
-        ? media[keys.current[index]]
-        : defaultValue;
-
-    return String(_value);
+    const match = media.find(([key]) => key === keys.current[index]);
+    return String(match ? match[1] : defaultValue);
   };
 
   // State and setter for matched value

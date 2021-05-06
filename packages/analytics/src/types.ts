@@ -102,4 +102,5 @@ export interface Client {
   listen(callback?): void;
   state: any;
   invalidate: any;
+  onLeavePage(callback?): void;
 }

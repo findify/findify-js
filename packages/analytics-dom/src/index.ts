@@ -2,7 +2,6 @@ import analytics, { Client } from '@findify/analytics';
 import { getEventsOnPage, getDeprecatedEvents } from './bindings/events';
 import { getFiltersOnPage } from './bindings/filters';
 import { startDOMListeners } from './bindings/dom';
-
 import { EventName } from '@findify/analytics/lib/types';
 
 declare namespace document {
@@ -20,9 +19,10 @@ const initialize = (config = { events: {} }, onReady) => {
     ...analyticsInstance.state,
     filters: getFiltersOnPage(document),
   };
+
   analyticsInstance.invalidate(getDeprecatedEvents(document));
   analyticsInstance.invalidate(getEventsOnPage(document));
-  startDOMListeners(analyticsInstance.sendEvent, document);
+  startDOMListeners(analyticsInstance, document);
 
   // Always send view-page event if it was not previously defined on the page
   if (
@@ -31,7 +31,7 @@ const initialize = (config = { events: {} }, onReady) => {
   ) {
     analyticsInstance.sendEvent(EventName.viewPage, {});
   }
-  if (!!onReady) onReady();
+  if (onReady) onReady();
 };
 
 const analyticsDOM = (

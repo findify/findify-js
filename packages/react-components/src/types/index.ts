@@ -126,6 +126,8 @@ export interface IProductProps {
   compare_at: number[];
   /** @prop *id* - id of the product */
   id: string;
+  /** @prop *id* - id of the product */
+  selected_variant_id: string;
   /** @prop *title* - title of the product */
   title: string;
   /** @prop *image_url* - url of the main picture */
@@ -177,6 +179,7 @@ export interface IProductProps {
 export interface IProduct extends Immutable.Factory<IProductProps> {
   /** onClick product action, opens product page and sends analytics request by default */
   onClick: (evt: React.MouseEvent<any>) => any;
+  meta: any;
 }
 
 /**

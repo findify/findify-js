@@ -3,7 +3,7 @@ import storage from './modules/storage';
 import { request as api } from './modules/request';
 import { isFunction, shallowEqual } from './utils/helpers';
 import settings from './settings';
-
+import { onLeavePage } from './utils/onLeavePage';
 export * from './types';
 
 import { Config, Client, User, EventName } from './types';
@@ -102,6 +102,7 @@ export default (props: Config | (() => void)): Client => {
     sendEvent,
     invalidate,
     listen: emitter.listen,
+    onLeavePage,
     get user(): User {
       return getUser();
     },

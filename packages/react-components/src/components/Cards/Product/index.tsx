@@ -17,6 +17,7 @@ import {
 import { List } from 'immutable';
 import { IProduct, ThemedSFCProps } from 'types';
 import { Immutable, Product } from '@findify/store-configuration';
+import trackProductPosition from 'helpers/trackProductPosition';
 
 export interface IProductCardProps extends ThemedSFCProps {
   item: IProduct;
@@ -31,8 +32,10 @@ export default ({
   config,
   Container = 'div',
 }: IProductCardProps) => {
+  const container = trackProductPosition(item);
   return (
     <Container
+      ref={container}
       className={cx(theme.root, theme[config.get('template')], className)}
     >
       <div className={theme.content}>
