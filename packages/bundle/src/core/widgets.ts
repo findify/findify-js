@@ -45,11 +45,7 @@ const createConfig = (
 ): Immutable.BaseConfig => {
   const cfg =
     (type === 'recommendation' &&
-      config.getIn([
-        'features',
-        'recommendations',
-        '#' + node.getAttribute('id'),
-      ])) ||
+      config.getIn(['features', 'recommendations', node.getAttribute('id')])) ||
     config.getIn(['features', type]);
 
   return config.withMutations((c) =>

@@ -10,21 +10,17 @@ import { Immutable } from '@findify/store-configuration';
 import useScrollOnChange from 'helpers/useScrollOnChange';
 import styles from 'layouts/Recommendation/Slider/styles.css';
 
-const getSliderOptions = (config) => ({
-  navigation: {
-    nextEl: `.${config.get('slot')}-next`,
-    prevEl: `.${config.get('slot')}-prev`,
-  },
-  slidesPerView: useColumns(
-    config.getIn(['grid', 'items'], {
-      500: 3,
-      700: 4,
-      900: 5,
-      1200: 6,
-    }),
-    1
-  ),
-});
+const getSliderOptions = (config) => {
+  const columns = useColumns(config.getIn(['breakpoints', 'grid']));
+
+  return {
+    navigation: {
+      nextEl: `.${config.get('slot')}-next`,
+      prevEl: `.${config.get('slot')}-prev`,
+    },
+    slidesPerView: 12 / Number(columns),
+  };
+};
 
 export default ({ theme = styles }) => {
   const { items, config } = useItems<Immutable.RecommendationConfig>();

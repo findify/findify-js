@@ -1,7 +1,7 @@
 import { Config } from '@findify/store-configuration';
 
 const config: Config = {
-  key: '9a3fbd99-4382-4c51-885f-69ee76e89c6f',
+  key: '680d373d-06b3-442b-bebc-d35a5b0868b3',
   merchantId: 621,
   status: 'live',
   platform: 'shopify',
@@ -520,12 +520,12 @@ const config: Config = {
         defaultRequestParams: {},
         enabled: true,
         slot: 'home-findify-rec-1',
-        type: 'viewed',
+        type: 'trending',
         template: 'slider',
         limit: 11,
         minResultsToShow: 3,
         title: 'Products you recently viewed',
-        multipleIds: true,
+        multipleIds: false,
       },
       'cart-findify-rec-3': {
         disableAutoRequest: false,

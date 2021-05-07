@@ -29,13 +29,6 @@ type IBaseFeature<T extends keyof RequestParams> = {
    * Product card setup
   */
   product: ProductType
-
-  /**
-   * Layout breakpoints definition 
-   */
-  breakpoints: {
-    grid: Breakpoints
-  }
 }
 
 export type BaseFeature<T = undefined> = T extends keyof RequestParams
