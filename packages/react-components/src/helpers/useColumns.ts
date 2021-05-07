@@ -25,7 +25,7 @@ export default (
 
     const match = media.find(({ width }) => width === keys.current[index]);
     console.log(match);
-    return String(match ? match.size : defaultValue);
+    return String(match ? match.value : defaultValue);
   };
 
   // State and setter for matched value

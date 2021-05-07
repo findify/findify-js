@@ -105,8 +105,8 @@ const config: Config = {
         template: 'sidebar',
         position: 'left',
         breakpoints: {
-          layout: [{ width: 0, size: 'fit|auto' }],
-          grid: [{ width: 0, size: 3 }],
+          layout: [{ width: 0, value: 'fit|auto' }],
+          grid: [{ width: 0, value: 3 }],
         },
         product: {
           template: 'horizontal',
@@ -136,8 +136,8 @@ const config: Config = {
       desktop: {
         template: 'fullscreen',
         breakpoints: {
-          layout: [{ width: 0, size: '12' }],
-          grid: [{ width: 0, size: 3 }],
+          layout: [{ width: 0, value: '12' }],
+          grid: [{ width: 0, value: 3 }],
         },
         product: {
           template: 'horizontal',
@@ -270,11 +270,11 @@ const config: Config = {
         },
       },
       breakpoints: {
-        layout: [{ width: 0, size: 'fit|auto' }],
+        layout: [{ width: 0, value: 'fit|auto' }],
         grid: [
-          { width: 400, size: 6 },
-          { width: 600, size: 4 },
-          { width: 1000, size: 3 },
+          { width: 400, value: 6 },
+          { width: 600, value: 4 },
+          { width: 1000, value: 3 },
         ],
       },
       defaultRequestParams: {
@@ -318,11 +318,11 @@ const config: Config = {
         },
       },
       breakpoints: {
-        layout: [{ width: 0, size: '3|auto' }],
+        layout: [{ width: 0, value: '3|auto' }],
         grid: [
-          { width: 600, size: 6 },
-          { width: 600, size: 4 },
-          { width: 1000, size: 3 },
+          { width: 600, value: 6 },
+          { width: 600, value: 4 },
+          { width: 1000, value: 3 },
         ],
       },
     },
@@ -331,9 +331,9 @@ const config: Config = {
         disableAutoRequest: false,
         breakpoints: {
           grid: [
-            { width: 600, size: 6 },
-            { width: 600, size: 4 },
-            { width: 1000, size: 3 },
+            { width: 600, value: 6 },
+            { width: 600, value: 4 },
+            { width: 1000, value: 3 },
           ],
         },
         product: {
@@ -371,9 +371,9 @@ const config: Config = {
         disableAutoRequest: false,
         breakpoints: {
           grid: [
-            { width: 600, size: 6 },
-            { width: 600, size: 4 },
-            { width: 1000, size: 3 },
+            { width: 600, value: 6 },
+            { width: 600, value: 4 },
+            { width: 1000, value: 3 },
           ],
         },
         product: {
@@ -411,9 +411,9 @@ const config: Config = {
         disableAutoRequest: false,
         breakpoints: {
           grid: [
-            { width: 600, size: 6 },
-            { width: 600, size: 4 },
-            { width: 1000, size: 3 },
+            { width: 600, value: 6 },
+            { width: 600, value: 4 },
+            { width: 1000, value: 3 },
           ],
         },
         product: {
@@ -451,9 +451,9 @@ const config: Config = {
         disableAutoRequest: false,
         breakpoints: {
           grid: [
-            { width: 600, size: 6 },
-            { width: 600, size: 4 },
-            { width: 1000, size: 3 },
+            { width: 600, value: 6 },
+            { width: 600, value: 4 },
+            { width: 1000, value: 3 },
           ],
         },
         product: {
@@ -491,9 +491,9 @@ const config: Config = {
         disableAutoRequest: false,
         breakpoints: {
           grid: [
-            { width: 600, size: 6 },
-            { width: 600, size: 4 },
-            { width: 1000, size: 3 },
+            { width: 600, value: 6 },
+            { width: 600, value: 4 },
+            { width: 1000, value: 3 },
           ],
         },
         product: {
@@ -531,9 +531,9 @@ const config: Config = {
         disableAutoRequest: false,
         breakpoints: {
           grid: [
-            { width: 600, size: 6 },
-            { width: 600, size: 4 },
-            { width: 1000, size: 3 },
+            { width: 600, value: 6 },
+            { width: 600, value: 4 },
+            { width: 1000, value: 3 },
           ],
         },
         product: {
