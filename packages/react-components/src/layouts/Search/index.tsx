@@ -49,7 +49,9 @@ const Search = ({ isCollection, theme = styles }) => {
         className={theme.root}
         gutter={40}
         columns={
-          config.getIn(['facets', 'position']) === 'top' ? 'full' : 'fit|auto'
+          config.getIn(['facets', 'position']) === 'top'
+            ? 'full'
+            : config.getIn(['breakpoints', 'layout'], 'fit|auto')
         }
       >
         <Column

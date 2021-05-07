@@ -105,7 +105,8 @@ const config: Config = {
         template: 'sidebar',
         position: 'left',
         breakpoints: {
-          grid: [[1000, 3]],
+          layout: [{ width: 0, size: 'fit|auto' }],
+          grid: [{ width: 0, size: 3 }],
         },
         product: {
           template: 'horizontal',
@@ -135,7 +136,8 @@ const config: Config = {
       desktop: {
         template: 'fullscreen',
         breakpoints: {
-          grid: [[200, 4]],
+          layout: [{ width: 0, size: '12' }],
+          grid: [{ width: 0, size: 3 }],
         },
         product: {
           template: 'horizontal',
@@ -157,7 +159,7 @@ const config: Config = {
         overlay: true,
         suggestions: {
           display: true,
-          template: 'horizontal',
+          template: 'vertical',
         },
         productMatches: {
           display: true,
@@ -268,10 +270,11 @@ const config: Config = {
         },
       },
       breakpoints: {
+        layout: [{ width: 0, size: 'fit|auto' }],
         grid: [
-          [600, 6],
-          [600, 4],
-          [1000, 3],
+          { width: 400, size: 6 },
+          { width: 600, size: 4 },
+          { width: 1000, size: 3 },
         ],
       },
       defaultRequestParams: {
@@ -315,10 +318,11 @@ const config: Config = {
         },
       },
       breakpoints: {
+        layout: [{ width: 0, size: '3|auto' }],
         grid: [
-          [400, 6],
-          [600, 4],
-          [1000, 3],
+          { width: 600, size: 6 },
+          { width: 600, size: 4 },
+          { width: 1000, size: 3 },
         ],
       },
     },
@@ -327,9 +331,9 @@ const config: Config = {
         disableAutoRequest: false,
         breakpoints: {
           grid: [
-            [400, 6],
-            [600, 4],
-            [1000, 3],
+            { width: 600, size: 6 },
+            { width: 600, size: 4 },
+            { width: 1000, size: 3 },
           ],
         },
         product: {
@@ -367,9 +371,9 @@ const config: Config = {
         disableAutoRequest: false,
         breakpoints: {
           grid: [
-            [400, 6],
-            [600, 4],
-            [1000, 3],
+            { width: 600, size: 6 },
+            { width: 600, size: 4 },
+            { width: 1000, size: 3 },
           ],
         },
         product: {
@@ -407,9 +411,9 @@ const config: Config = {
         disableAutoRequest: false,
         breakpoints: {
           grid: [
-            [400, 6],
-            [600, 4],
-            [1000, 3],
+            { width: 600, size: 6 },
+            { width: 600, size: 4 },
+            { width: 1000, size: 3 },
           ],
         },
         product: {
@@ -447,9 +451,9 @@ const config: Config = {
         disableAutoRequest: false,
         breakpoints: {
           grid: [
-            [400, 6],
-            [600, 4],
-            [1000, 3],
+            { width: 600, size: 6 },
+            { width: 600, size: 4 },
+            { width: 1000, size: 3 },
           ],
         },
         product: {
@@ -487,9 +491,9 @@ const config: Config = {
         disableAutoRequest: false,
         breakpoints: {
           grid: [
-            [400, 6],
-            [600, 4],
-            [1000, 3],
+            { width: 600, size: 6 },
+            { width: 600, size: 4 },
+            { width: 1000, size: 3 },
           ],
         },
         product: {
@@ -527,9 +531,9 @@ const config: Config = {
         disableAutoRequest: false,
         breakpoints: {
           grid: [
-            [400, 6],
-            [600, 4],
-            [1000, 3],
+            { width: 600, size: 6 },
+            { width: 600, size: 4 },
+            { width: 1000, size: 3 },
           ],
         },
         product: {

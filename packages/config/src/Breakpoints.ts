@@ -4,6 +4,6 @@
  * In case window width is smaller then smallest key then default`s key value will be returned
  * If no default value is set, then `1` will be returned
  * @width of Window
- * @amount of elements Number will be returned 
+ * @size will be returned when window width achieved
  */
-export type Breakpoints = { width: number, amount: number }[]
+export type Breakpoints = { width: number, size: number | string }[]

@@ -28,7 +28,7 @@ export default (item) => {
   useEffect(() => {
     if (!container.current || !('IntersectionObserver' in window)) return;
 
-    const handleIntersect = (entries, observer) => {
+    const handleIntersect = (entries) => {
       if (!container.current) return;
       entries.forEach((entry) => {
         handleViewportChange(item, entry.isIntersecting);

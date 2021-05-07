@@ -1,4 +1,5 @@
 import { BaseFeature } from './BaseFeature'
+import { Breakpoints } from './Breakpoints';
 import { PaginationType } from './enums';
 
 export interface Content extends BaseFeature <'Content'> {
@@ -23,5 +24,14 @@ export interface Content extends BaseFeature <'Content'> {
     selector: string
     /** +/- container`s offset */
     offset: number
+  }
+
+
+  /**
+   * Layout breakpoints definition 
+   */
+  breakpoints: {
+    grid: Breakpoints
+    layout: Breakpoints
   }
 }

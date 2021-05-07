@@ -10,7 +10,9 @@ export default (
 ): string => {
   const media = isImmutable(_media) ? _media.toJS() : _media;
   const keys = useRef(
-    media.sort((a, b) => Number(b[0]) - Number(a[0])).map(([key]) => key)
+    media
+      .sort((a, b) => Number(b.width) - Number(a.width))
+      .map(({ width }) => width)
   );
   const mediaQueryLists = keys.current.map(
     (k) => cache[k] || (cache[k] = window.matchMedia(`(min-width: ${k}px)`))
@@ -21,8 +23,9 @@ export default (
     const index = mediaQueryLists.findIndex((mql) => mql.matches);
     if (typeof keys.current[index] === 'undefined') return String(defaultValue);
 
-    const match = media.find(([key]) => key === keys.current[index]);
-    return String(match ? match[1] : defaultValue);
+    const match = media.find(({ width }) => width === keys.current[index]);
+    console.log(match);
+    return String(match ? match.size : defaultValue);
   };
 
   // State and setter for matched value

@@ -10,10 +10,10 @@ import { ThemedSFCProps } from 'types';
 import useColumns from 'helpers/useColumns';
 
 import styles from 'components/common/Grid/styles.css';
-import { Breakpoints } from '@findify/store-configuration';
+import { Breakpoints, Immutable } from '@findify/store-configuration';
 
 export interface IGridProps extends ThemedSFCProps {
-  columns: Breakpoints | string;
+  columns: Immutable.Factory<Breakpoints> | Breakpoints | string;
   className?: string;
   style?: React.CSSProperties;
   /** eq: 12 = 12px | 1em = 1em */

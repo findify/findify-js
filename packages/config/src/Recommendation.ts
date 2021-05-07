@@ -1,4 +1,5 @@
 import { BaseFeature } from './BaseFeature'
+import { Breakpoints } from './Breakpoints'
 import * as enums from './enums'
 
 export interface Recommendation extends BaseFeature<'Recommendation'> {
@@ -43,4 +44,12 @@ export interface Recommendation extends BaseFeature<'Recommendation'> {
    * Widget title
    */
   title: string
+
+
+  /**
+   * Layout breakpoints definition 
+   */
+  breakpoints: {
+    grid: Breakpoints
+  }
 }

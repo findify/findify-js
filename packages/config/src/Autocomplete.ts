@@ -35,9 +35,11 @@ export type AutocompleteSizeType = {
    */
   breakpoints: {
     grid: Breakpoints
+    layout: Breakpoints
   }
 }
-export interface Autocomplete extends Omit<BaseFeature<'Autocomplete'>, 'product' | 'breakpoints'> {
+
+export interface Autocomplete extends Omit<BaseFeature<'Autocomplete'>, 'product'> {
   /**
    * Node where widget should be rendered in
    * - parent - Parent node

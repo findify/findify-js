@@ -126,7 +126,6 @@ export default ({
   theme = styles,
   config,
   isFullScreen,
-  isMobile,
   ...rest
 }: IAutocompleteDropdownProps) => {
   const { suggestions, meta } = useSuggestions();
@@ -139,11 +138,6 @@ export default ({
     if (!isFullScreen) return;
     getContainer(config).classList.add(theme.fullscreen);
   }, []);
-
-  const gridColumns =
-    config.getIn(['suggestions', 'template']) === 'horizontal'
-      ? '12|auto'
-      : 'fit|auto';
 
   return (
     <div display-if={suggestions?.size > 0} className={theme.wrapper}>
@@ -165,7 +159,10 @@ export default ({
           zeroResultsTitle={translate('autocomplete.viewAll')}
           widgetKey={config.get('widgetKey')}
         />
-        <Grid className={theme.container} columns={gridColumns}>
+        <Grid
+          className={theme.container}
+          columns={config.getIn(['breakpoints', 'layout'], 'fit|auto')}
+        >
           <Suggestions
             {...rest}
             display-if={config.getIn(['suggestions', 'display'])}

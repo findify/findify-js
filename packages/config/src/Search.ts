@@ -1,4 +1,5 @@
 import { BaseFeature } from './BaseFeature'
+import { Breakpoints } from './Breakpoints'
 import * as enums from './enums'
 
 export interface Search extends BaseFeature<'Search'> {
@@ -31,6 +32,13 @@ export interface Search extends BaseFeature<'Search'> {
     offset: number
   }
 
+  /**
+   * Layout breakpoints definition 
+   */
+  breakpoints: {
+    grid: Breakpoints
+    layout: Breakpoints
+  }
   /**
    * Sorting options
    */
