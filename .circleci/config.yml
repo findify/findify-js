@@ -66,6 +66,21 @@ jobs:
             echo "deploying $SRC_BUNDLE_PATH to s3://$DST_BUNDLE_PATH"
             aws s3 cp --recursive $SRC_BUNDLE_PATH s3://$DST_BUNDLE_PATH
 
+  publish-to-npm:
+    <<: *defaults
+
+    steps:
+      - attach_workspace:
+          at: ~/repo
+      
+      - run:
+          name: configure npm auth creds
+          command: npm config set //registry.npmjs.org/:_authToken=$NPM_TOKEN -q
+
+      - run:
+          name: Publish bundles to npm
+          command: lerna publish --yes
+
 workflows:
   version: 2
   build_and_deploy:
@@ -80,3 +95,12 @@ workflows:
             branches:
               only:
                 - /^([0-9]+\.[0-9]+\.[0-9]+)?$/
+      - publish-to-npm:
+          requires:
+            - build_and_test
+          context:
+            - backend
+          filters:
+            branches:
+              only:
+                - master
