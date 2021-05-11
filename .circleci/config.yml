@@ -79,7 +79,7 @@ jobs:
 
       - add_ssh_keys:
           fingerprints:
-            - "f3:a5:7e:33:ac:e6:1a:9e:82:29:34:b7:34:37:08:2d"
+            - "b4:60:fd:de:5e:8a:73:db:d7:33:6d:1f:18:e3:1b:a3"
 
       - run:
           name: Publish bundles to npm
