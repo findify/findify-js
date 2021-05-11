@@ -82,12 +82,6 @@ jobs:
             - "f3:a5:7e:33:ac:e6:1a:9e:82:29:34:b7:34:37:08:2d"
 
       - run:
-          name: update git auth creds
-          command: |
-            git config --global user.email "infra@findify.io"
-            git config --global user.name "findify-bot"
-
-      - run:
           name: Publish bundles to npm
           command: npx lerna publish --yes
 
