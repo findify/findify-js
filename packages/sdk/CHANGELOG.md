@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.4.5](https://github.com/findify/findify-js/compare/@findify/sdk@2.4.4...@findify/sdk@2.4.5) (2021-05-11)
+
+
+### Bug Fixes
+
+* **@findify/agent,@findify/analytics,@findify/analytics-dom,@findify/bundle,@findify/store-configuration,@findify/react-components,@findify/react-connect,@findify/sdk:** update pagination component ([be4f3c9](https://github.com/findify/findify-js/commit/be4f3c907b9b2f714cbecba757448baae49b8bcf))
+* **@findify/analytics-dom,@findify/bundle,@findify/cli,@findify/react-components,@findify/sdk:** improve performance ([13f1560](https://github.com/findify/findify-js/commit/13f15603bd16caa94b75d29fdb00a0c239371389))
+* **bundle:** split react and react-dom ([0a6cbd8](https://github.com/findify/findify-js/commit/0a6cbd8ea7041f919008db5335fae8db96a0d406))
+* **react-components, sdk:** fix env variable in SDK; Add title to icons ([915a21a](https://github.com/findify/findify-js/commit/915a21a5dc4d16ad03670630ec7af2160363c319))
+* **sdk:** try/catch env ([d19d9fc](https://github.com/findify/findify-js/commit/d19d9fce912d4bebc59e241c59e1f94e0622ae1d))
+
+
+
+
+
 <a name="2.4.4"></a>
 ## [2.4.4](https://github.com/findify/findify-js/compare/@findify/sdk@2.4.3...@findify/sdk@2.4.4) (2021-02-06)
 

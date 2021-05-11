@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.7](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/analytics-dom@0.3.6...@findify/analytics-dom@0.3.7) (2021-05-11)
+
+
+### Bug Fixes
+
+* **@findify/agent,@findify/analytics,@findify/analytics-dom,@findify/bundle,@findify/store-configuration,@findify/react-components,@findify/react-connect,@findify/sdk:** update pagination component ([be4f3c9](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/be4f3c907b9b2f714cbecba757448baae49b8bcf))
+* **@findify/analytics-dom,@findify/bundle,@findify/cli,@findify/react-components,@findify/sdk:** improve performance ([13f1560](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/13f15603bd16caa94b75d29fdb00a0c239371389))
+* **@findify/analytics,@findify/analytics-dom,@findify/bundle,@findify/store-configuration,@findify/react-components:** add dwell telemetry ([ed5374b](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/ed5374beb87c808e008a0cdac689201fffe628e7))
+* Fix failing tests after TS migration ([fec39d2](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/fec39d2ea67d84baf9c520ceb693b9636da19de9))
+* **bundle:** split react and react-dom ([0a6cbd8](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/0a6cbd8ea7041f919008db5335fae8db96a0d406))
+
+
+
+
+
 <a name="0.3.6"></a>
 ## [0.3.6](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/analytics-dom@0.3.5...@findify/analytics-dom@0.3.6) (2021-02-06)
 

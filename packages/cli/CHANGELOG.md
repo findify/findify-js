@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.6](https://github.com/findify/findify-js/compare/@findify/cli@0.0.5...@findify/cli@0.0.6) (2021-05-11)
+
+
+### Bug Fixes
+
+* **@findify/analytics-dom,@findify/bundle,@findify/cli,@findify/react-components,@findify/sdk:** improve performance ([13f1560](https://github.com/findify/findify-js/commit/13f15603bd16caa94b75d29fdb00a0c239371389))
+
+
+
+
+
 <a name="0.0.5"></a>
 ## [0.0.5](https://github.com/findify/findify-js/compare/@findify/cli@0.0.4...@findify/cli@0.0.5) (2020-04-27)
 

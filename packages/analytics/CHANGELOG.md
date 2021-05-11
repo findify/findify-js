@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.5.5](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/analytics@3.5.4...@findify/analytics@3.5.5) (2021-05-11)
+
+
+### Bug Fixes
+
+* **@findify/agent,@findify/analytics,@findify/analytics-dom,@findify/bundle,@findify/store-configuration,@findify/react-components,@findify/react-connect,@findify/sdk:** update pagination component ([be4f3c9](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/be4f3c907b9b2f714cbecba757448baae49b8bcf))
+* **@findify/analytics,@findify/analytics-dom,@findify/bundle,@findify/store-configuration,@findify/react-components:** add dwell telemetry ([ed5374b](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/ed5374beb87c808e008a0cdac689201fffe628e7))
+* **bundle:** split react and react-dom ([0a6cbd8](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/0a6cbd8ea7041f919008db5335fae8db96a0d406))
+
+
+
+
+
 <a name="3.5.4"></a>
 ## [3.5.4](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/analytics@3.5.3...@findify/analytics@3.5.4) (2021-02-06)
 
