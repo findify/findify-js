@@ -77,6 +77,10 @@ jobs:
           name: configure npm auth creds
           command: npm config set //registry.npmjs.org/:_authToken=$NPM_TOKEN -q
 
+      - add_ssh_keys:
+          fingerprints:
+            - "f3:a5:7e:33:ac:e6:1a:9e:82:29:34:b7:34:37:08:2d"
+
       - run:
           name: Publish bundles to npm
           command: npx lerna publish --yes
