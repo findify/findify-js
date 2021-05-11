@@ -1,42 +1,29 @@
 /**
  * @module components/autocomplete/ProductMatches
  */
-
-import React from 'react';
-import {
-  compose,
-  mapProps,
-  setDisplayName,
-  defaultProps,
-  withPropsOnChange,
-  pure
-} from 'recompose';
-import { connectItems, connectSuggestions } from '@findify/react-connect';
-import sizeMe from 'react-sizeme';
-import view from 'components/autocomplete/ProductMatches/view';
+import cx from 'classnames';
 import styles from 'components/autocomplete/ProductMatches/styles.css';
-import withTheme from 'helpers/withTheme';
+import ProductCard from 'components/Cards/Product';
+import Grid from 'components/common/Grid';
+import MapArray from 'components/common/MapArray';
+import { useItems } from '@findify/react-connect';
+import { Immutable } from '@findify/store-configuration';
 
-
-/**
- * @deprecated
- */
-const countColumns = width => {
-  if (width > 1900) return 8;
-  if (width > 1100) return 6;
-  if (width > 700) return 4;
-  if (width > 400) return 3;
-  return 2;
+export default ({ theme = styles, config, padded = false }) => {
+  const { items } = useItems<Immutable.AutocompleteConfig>();
+  return (
+    <div
+      className={cx(theme.root, padded && theme.padded)}
+      display-if={items.size}
+    >
+      <Grid columns={config.getIn(['breakpoints', 'grid'], '12')}>
+        {MapArray({
+          array: items,
+          limit: config.getIn(['defaultRequestParams', 'item_limit']),
+          factory: ProductCard,
+          config: config.get('product'),
+        })}
+      </Grid>
+    </div>
+  );
 };
-
-
-export default compose(
-  setDisplayName('ProductMatches'),
-  defaultProps({ columns: 3 }),
-  withTheme(styles),
-  /*
-  sizeMe({ refreshRate: 100, refreshMode: 'debounce' }),
-  withPropsOnChange(['size'], ({ size }) => ({
-    columns: countColumns(size.width),
-  })),*/
-)(view);

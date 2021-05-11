@@ -9,6 +9,7 @@
   font-size: calc($facet-item-font-size * $font-size-medium);
   font-family: $facet-item-font-family;
   color: $facet-item-color;
+  flex: 1 1 auto;
 }
 
 .item{
@@ -24,14 +25,15 @@
   padding: $padding;
   height: auto;
   cursor: pointer;
-  display: table;
-  & > span{
-    display: table-cell;
-    width: 100%;
-  }
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   svg {
     vertical-align: -3px;
     padding-left: 7px;
+  }
+  &.mobile{
+    padding: 10px 0;
   }
 }
 
@@ -41,6 +43,7 @@
 
 .expand{
   margin-top: 10px;
+  width: 100%;
   svg{
     vertical-align: -3px;
     padding-right: 5px;

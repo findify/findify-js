@@ -2,32 +2,85 @@
  * @module components/common/Grid
  */
 
-import React from 'react';
+import { useMemo } from 'react';
 import cx from 'classnames';
-import { setDisplayName } from 'recompose';
-
 import styles from 'components/common/Grid/styles.css';
 
 /** List of props that GridColumn accepts */
 export interface IGridColumnProps {
   /** Custom className for column */
   className?: string;
-  /** Column className */
-  columnClass?: string;
   /** Column inline style */
-  columnStyle?: React.CSSProperties;
+  style?: React.CSSProperties;
   /** Contents of the column */
   children?: React.ReactChild;
+
+  gutter?: string | number;
+
+  size?: string;
+
+  order?: number | false;
+
+  component?: React.ComponentType<any> | string;
 }
 
-/** Used to concatenate & build complete className from props */
-const getClassName = (props: IGridColumnProps) =>
-  cx(styles.column, props.className, props.columnClass);
+const getWidth = (size, gutter?) => {
+  const percents = (100 / 12) * Number(size);
+  return gutter ? `calc(${percents}% - ${gutter})` : `${percents}%`;
+};
 
-const GridColumn = setDisplayName('GridColumn')((props: IGridColumnProps) => (
-  <div className={getClassName(props)} style={props.columnStyle} role='listitem' tabIndex={0}>
-    {props.children}
-  </div>
-));
+export const Column = ({
+  className,
+  style,
+  children,
+  gutter,
+  order: _order,
+  size: _size,
 
-export default GridColumn;
+  component: Component = 'div',
+}: IGridColumnProps) => {
+  const composedClassName = useMemo(
+    () => cx(styles.column, className, styles[`column-${_size}`]),
+    [className, _size]
+  );
+
+  const order = useMemo(
+    () =>
+      !_order
+        ? {}
+        : {
+            WebkitBoxOrdinalGroup: _order,
+            MozBoxOrdinalGroup: _order,
+            MsFlexOrder: _order,
+            WebkitOrder: _order,
+            order: _order,
+          },
+    [_order]
+  );
+
+  const size = useMemo(() => {
+    const basis = !isNaN(Number(_size)) && getWidth(_size, gutter);
+    return {
+      flexBasis: basis,
+      msFlexPreferredSize: basis,
+      paddingLeft: `${gutter}`,
+    };
+  }, [_size, gutter]);
+
+  return (
+    <Component
+      className={composedClassName}
+      style={{
+        ...size,
+        ...order,
+        ...style,
+      }}
+    >
+      {children}
+    </Component>
+  );
+};
+
+export const Placeholder = ({ size }) => (
+  <div className={styles.placeholder} style={{ flexBasis: getWidth(size) }} />
+);

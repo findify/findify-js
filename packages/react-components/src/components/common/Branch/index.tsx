@@ -2,15 +2,15 @@
  * @module components/common/Branch
  */
 
-import React from 'react';
+import { Fragment } from 'react';
 
 /** Props that Branch component accepts */
 export interface IBranchProps {
   /**
-    * Use display-if to hide a component.
-    * When property is not defined or is set to true - component is rendered,
-    * when it is false - hidden
-    */
+   * Use display-if to hide a component.
+   * When property is not defined or is set to true - component is rendered,
+   * when it is false - hidden
+   */
   'display-if'?: boolean;
   /** Component to render in case **condition** is true */
   left?: React.ComponentType;
@@ -22,9 +22,17 @@ export interface IBranchProps {
   [x: string]: any;
 }
 
-const Branch = ({ left, right, children, condition, ...props }: IBranchProps) => {
-  const Component = (condition ? left : right || React.Fragment) as React.ComponentType;
-  return <Component {...((condition || right) && props)}>{children}</Component>
-}
+const Branch = ({
+  left,
+  right,
+  children,
+  condition,
+  ...props
+}: IBranchProps) => {
+  const Component = (condition
+    ? left
+    : right || Fragment) as React.ComponentType;
+  return <Component {...((condition || right) && props)}>{children}</Component>;
+};
 
 export default Branch;

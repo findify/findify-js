@@ -98,6 +98,7 @@ $height: 30px;
   height: $height;
   padding: 0 8px;
   cursor: pointer;
+  justify-content: space-around;
   &:hover{
     text-decoration: underline;
   }

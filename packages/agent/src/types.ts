@@ -1,13 +1,13 @@
 import { Client } from '@findify/sdk/lib/client';
 import { Config } from '@findify/sdk/lib/client/Config';
 
-export {
+export type {
   Request,
   Body as RequestBody,
-  Type as RequestType
+  Type as RequestType,
 } from '@findify/sdk/lib/request';
 
-export {
+export type {
   Body as ResponseBody,
   Meta as ResponseMeta,
 } from '@findify/sdk/lib/response';
@@ -29,25 +29,25 @@ export enum Facets {
 }
 
 export type State = {
-  fields?: any[],
-  q?: string,
-  sort?: any[],
-  offset?: number,
-  limit?: number
-}
-export type ActionHandler = (state: any, meta?:any) => any
+  fields?: any[];
+  q?: string;
+  sort?: any[];
+  offset?: number;
+  limit?: number;
+};
+export type ActionHandler = (state: any, meta?: any) => any;
 
 export type Handler = {
-  key: string,
-  handler: ActionHandler
-  path: string[],
-  event: string
-}
+  key: string;
+  handler: ActionHandler;
+  path: string[];
+  event: string;
+};
 
 export type AgentConfig = {
-  debounce?: number | boolean,
-  immutable?: boolean,
-  onError?: () => Error
-}
+  debounce?: number | boolean;
+  immutable?: boolean;
+  onError?: () => Error;
+};
 
-export type Config = Config & AgentConfig
+export type Config = Config & AgentConfig;

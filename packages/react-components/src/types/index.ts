@@ -2,11 +2,8 @@
  * @module types
  */
 
-
-import * as React from 'react';
-import { Map, List } from 'immutable'
-
-
+import { Map, List } from 'immutable';
+import { Immutable } from '@findify/store-configuration';
 
 /** Theme is a mapping of a raw to generated on build time class name */
 export interface Theme {
@@ -27,22 +24,29 @@ export interface Theme {
    *  ```
    **/
 
-  [key: string]: string
+  [key: string]: string;
 }
 
 /** Props that every component with applied withTheme() HOC has during render */
-export interface ThemedSFCProps {
+export interface IThemedSFCProps<T> {
   /** Use display-if to hide a component.
    * When property is not defined or is set to true - component is rendered,
    * when it is false - hidden
    */
-  'display-if'?: boolean,
-  children?: React.ReactNode,
+  'display-if'?: boolean;
+
+  children?: React.ReactNode;
   /**
    *  Theme is a raw - generated class mapping
    */
-  theme: Theme,
+  theme?: T;
+
+  className?: string;
 }
+
+export type ThemedSFCProps<T = undefined> = T extends undefined
+  ? IThemedSFCProps<Theme>
+  : IThemedSFCProps<T>;
 
 /** Props that every component that can apply custom classname to itself accepts */
 export interface ClassnamedProps {
@@ -59,26 +63,32 @@ export interface WidgetAwareProps {
 /** Props that every component connected to suggestions has */
 export interface SuggestionsConnectedProps {
   /** immutable.List of suggestions to display */
-  suggestions: List<ISuggestion>
+  suggestions: List<ISuggestion>;
   /** Function used to get props like onClick for each Suggestion */
-  getSuggestionProps: GetSuggestionPropsFunction
+  getSuggestionProps: GetSuggestionPropsFunction;
 }
 
 export interface ThemedSFC<P = {}, C = {}> extends React.StatelessComponent<P> {
-  (props: P & { 'display-if'?: boolean, children?: React.ReactNode, theme: Theme }, context?: C): React.ReactElement<any> | null;
+  (
+    props: P & {
+      'display-if'?: boolean;
+      children?: React.ReactNode;
+      theme: Theme;
+    },
+    context?: C
+  ): React.ReactElement<any> | null;
   propTypes?: React.ValidationMap<P>;
   contextTypes?: React.ValidationMap<C>;
   defaultProps?: Partial<P>;
   displayName?: string;
 }
 
-//FIXME: type should point at itself kinda
 /** MJS value */
-export type MJSValue = List<any> | string | number | boolean;
-
+export type MJSValue = Map<string, string>;
 
 /** This class is basically just a superset of immutable.Map() */
-export interface MJSConfiguration<K = string, V = MJSValue & undefined> extends Map<K, V> {}
+export interface MJSConfiguration<K = string, V = MJSValue & undefined>
+  extends Map<K, V> {}
 
 /**
  * React props for a specific suggestion
@@ -87,44 +97,89 @@ export interface ISuggestionProps {
   /** Pass to react as rendering key */
   key: string;
   /** onClick handler, that by default runs search with suggestion value */
-  onClick: (evt: React.MouseEvent<any>) => any
+  onClick: (evt: React.MouseEvent<any>) => any;
 }
-
 
 /** Signature for a function which is used to fetch props for specific suggestion
  * @param suggestionIndex Index of the suggestion you are fetching props of
  * @param widgetKey Widget ID that component is connected to
  */
-export type GetSuggestionPropsFunction = (suggestionIndex: number, widgetKey: string) => ISuggestionProps
+export type GetSuggestionPropsFunction = (
+  suggestionIndex: number,
+  widgetKey: string
+) => ISuggestionProps;
 
 /** Suggestion is an instance of immutable.Map(), containing following keys:
  * @prop *value* - string value of the suggestion
  */
 export interface ISuggestion extends Map<string, MJSValue> {}
 
-/** Product is an instance of immutable.Map(), containing following keys:
- * @prop *product_url* - url of the actual product
- * @prop *price* - array of prices
- * @prop *id* - id of the product
- * @prop *title* - title of the product
- * @prop *thumbnail_url* - url of the thumbnail picture
- * @prop *short_description* - short version of the description
- * @prop *variant_ids* - array with ids of variants to products
- * @prop *description* - full description
- * @prop *discount* - array with discounts provided
- * @prop *created_at* - date when the item was created
- * @prop *availability* - boolean, if the item is in stock
- * @prop *delivery_time* - delivery time
- * @prop *sku* - array with SKUs
- * @prop *brand* - item brand
- * @prop *color_variants* - amount of color variants
- * @prop *rating_score* - product rating
- * @prop *tags* - array with product tags
- * @prop *category* - array with categories
- */
-export interface IProduct extends Map<string, MJSValue> {
+export interface IProductProps {
+  /** @prop *product_url* - url of the actual product */
+  product_url: string;
+  /** @prop *price* - array of prices */
+  price: number[];
+  /** @prop *oldPrice* - array of prices */
+  /** @deprecated */
+  oldPrice: number[];
+  /** @prop *compare_at* - array of price compares */
+  compare_at: number[];
+  /** @prop *id* - id of the product */
+  id: string;
+  /** @prop *id* - id of the product */
+  selected_variant_id: string;
+  /** @prop *title* - title of the product */
+  title: string;
+  /** @prop *image_url* - url of the main picture */
+  image_url: string;
+  /** @prop *image_2_url* - url of the second picture */
+  image_2_url: string;
+  /** @prop *thumbnail_url* - url of the thumbnail picture */
+  thumbnail_url: string;
+  /** @prop *short_description* - short version of the description */
+  short_description: string;
+  /** @prop *variant_ids* - array with ids of variants to products */
+  variant_ids: string[];
+  /** @prop *variant* - List of variants */
+  variants: Partial<IProductProps>[];
+  /** @prop *description* - full description */
+  description: string;
+  /** @prop *discount* - array with discounts provided */
+  discount: number[];
+  /** @prop *created_at* - date when the item was created */
+  created_at: number;
+  /** @prop *availability* - boolean, if the item is in stock */
+  availability: boolean;
+  /** @prop *sku* - array with SKUs */
+  sku: string;
+  /** @prop *brand* - item brand */
+  brand: string;
+  /** @prop *color_variants* - amount of color variants */
+  color_variant: number;
+  /** @prop *custom_fields* - number of product in whorehouse */
+  quantity: number;
+  /** @prop *custom_fields* - custom fields*/
+  custom_fields: {
+    [field: string]: {
+      [key: string]: any;
+    };
+  };
+  /** @prop *stickers* - available stickers */
+  stickers: {
+    [sticker: string]: boolean;
+  };
+  /** @prop *reviews*  */
+  reviews: {
+    count: number;
+    total_reviews: number;
+    average_score: number;
+  };
+}
+
+export interface IProduct extends Immutable.Factory<IProductProps> {
   /** onClick product action, opens product page and sends analytics request by default */
-  onClick: (evt: React.MouseEvent<any>) => any
+  onClick: (evt: React.MouseEvent<any>) => any;
+  meta: any;
 }
 
 /**
@@ -144,7 +199,6 @@ export interface ISortingItem extends Map<string, MJSConfiguration> {}
  */
 export interface IBanner extends Map<string, MJSValue> {}
 
-
 /**
  * Query is an instance of immutable.Map(), containing following keys:
  * @prop *q* - query string
@@ -154,6 +208,13 @@ export interface IBanner extends Map<string, MJSValue> {}
  */
 export interface IQuery extends Map<string, MJSValue> {}
 
+export type Facet = {
+  name: string;
+  values: List<any>;
+  min: number;
+  max: number;
+};
+
 /**
  * Facet is an instance of immutable.Map(), containing following keys:
  * @prop *values*
@@ -161,16 +222,23 @@ export interface IQuery extends Map<string, MJSValue> {}
  * @prop *type*
  * @prop
  */
-export interface IFacet extends Map<string, MJSValue> {
-  toggle: (evt: React.MouseEvent<any>) => any
-  resetValues: () => any
+export interface IFacet extends Immutable.Factory<Facet> {
+  toggle: (evt: React.MouseEvent<any>) => any;
+  resetValues: () => any;
+  setValue: (data?: any) => void;
 }
 
 /** Available filter types in MJS */
-export type FilterType = 'text' | 'range' | 'color' | 'category' | 'price' | 'rating';
+export type FilterType =
+  | 'text'
+  | 'range'
+  | 'color'
+  | 'category'
+  | 'price'
+  | 'rating';
 
 export interface IFacetValue extends Map<string, MJSValue> {
-  toggle: (evt: React.MouseEvent<any>) => any
+  toggle: (evt: React.MouseEvent<any>) => any;
 }
 /*
 declare module '@findify/react-components' {

@@ -5,7 +5,7 @@ const empty = Map();
 
 // Typescript complained about creating declaration files here when using [key], so I had to hardcode it
 // Types will still be checked properly as static property 'key' is of type '__immutable' and not string
-export default (name) => class ExtendableRecord extends Record({ '__immutable': undefined }, name){
+export default (name) => class ExtendableRecord extends Record({ '__immutable': void 0 }, name){
   static key = key;
 
   constructor(immutable){

@@ -1,6 +1,19 @@
 {
-  "extends": "./tsconfig.base.json",
   "compilerOptions": {
-    "target": "es5",
-  }
+    "moduleResolution": "node",
+    "target": "esnext",
+    "module": "esnext",
+    "lib": ["dom"],
+    "jsx": "preserve",
+    "allowSyntheticDefaultImports": true,
+    "removeComments": false,
+    "noImplicitAny": false,
+    "noEmitOnError": false,
+    "strictNullChecks": true,
+  },
+  "compileOnSave": false,
+  "buildOnSave": false,
+  "exclude": [
+    "node_modules"
+  ]
 }

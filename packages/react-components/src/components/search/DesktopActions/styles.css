@@ -1,37 +1,31 @@
 $padding: 25px;
 
-.root{
-  display: table;
-  display: flex;
-  width: 100%;
-  padding-bottom: 24px;
-  flex-direction: row;
-  align-items: center;
-}
+.root{}
 
 .block{
-  display: table;
-  display: flex;
-  width: 100%;
-  flex-direction: row;
-  align-items: center;
-  flex-flow: row wrap;
+  padding-bottom: $padding;
 }
 
-.sorting{
-  display: table-cell;
+.block-inner{
   display: flex;
-  position: relative;
+  height: 100%;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+
+.sorting{
+  margin-left: auto;
+  padding-bottom: $padding;
 }
 
 .query{
-  display: table-cell;
-  display: flex;
+  white-space: nowrap;
+  text-overflow: elipsis;
 }
 
 .breadcrumbs{
-  display: table-cell;
-  display: flex;
 }
 
 .show-facets{

@@ -1,29 +1,6 @@
 .root {
-  /* width: 355px; */
-}
-
-.product-card {
-  display: block;
-  padding-left: 0;
-  padding-bottom: 16px;
-  .imageWrap {
-    display: table-cell;
-    min-width: 60px;
-  }
-  .content {
-    padding-left: 10px;
-    display: table-cell;
-    vertical-align: top;
-    p, .price-wrapper, span {
-      text-align: left;
-    }
-    span {
-      font-size: 12px !important;
-      line-height: 17px;
-    }
-    .price-wrapper {
-      margin-top: 20px;
-    }
+  &.padded {
+    padding: 0 16px;
   }
 }
 

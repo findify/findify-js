@@ -1,46 +1,28 @@
 import { createElement } from 'react';
-import { AutocompleteProvider } from "@findify/react-connect";
-import { getQuery, setQuery } from '../../core/location';
+import { AutocompleteProvider } from '@findify/react-connect';
 import { registerHandlers } from './handlers';
+import { getAgent } from './preload';
 import lazy from '../../helpers/renderLazyComponent';
+import { Widget } from '../../core/widgets';
+import { Immutable } from '@findify/store-configuration';
 
-const lazyAutocomplete = lazy(() => import(
-  /* webpackChunkName: "autocomplete" */
-  '@findify/react-components/src/layouts/Autocomplete'
-));
+const lazyAutocomplete = lazy(
+  () =>
+    import(
+      /* webpackChunkName: "autocomplete" */
+      '@findify/react-components/src/layouts/Autocomplete'
+    )
+);
 
-const autocompleteComponent = lazyAutocomplete();
-
-let _cache;
-let initialRequested = false;
-
-const getAgent = (agent) => {
-  if (_cache) return _cache;
-  _cache = agent;
-  return _cache;
-}
-
-export default (widget) => {
-  const { node, agent: _agent, config } = widget;
+export default (render, widget: Widget<Immutable.AutocompleteConfig>) => {
+  const { agent: _agent, config } = widget;
   const agent = getAgent(_agent);
-  const state: any = getQuery();
   const apiKey = config.get('key');
 
-  if (!config.get('disableAutoRequest') && !initialRequested) {
-    agent.set('q', !state.q ? '' : state.q);
-    initialRequested = true;
-  }
-  
+  registerHandlers(widget, agent, render);
 
-  if (state.q) node.value = state.q;
+  const props = { apiKey, agent, config, key: 'normalAutocomplete' };
 
-  return (rerender) => {
-
-    registerHandlers(widget, agent, rerender);
-
-    const props = { apiKey, agent, config, key: 'normalAutocomplete' };
-
-    /** Render */
-    return createElement(AutocompleteProvider, props, autocompleteComponent);
-  }
-}
+  /** Render */
+  return createElement(AutocompleteProvider, props, lazyAutocomplete());
+};

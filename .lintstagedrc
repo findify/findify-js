@@ -1,9 +1,5 @@
 {
   "*.{js,jsx,ts,tsx}": [
-    "prettier --write",
-    "git add"
-  ],
-  "*.test.{js,jsx,ts,tsx}": [
-    "npm run test"
+    "prettier --write"
   ]
 }

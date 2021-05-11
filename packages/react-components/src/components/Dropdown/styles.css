@@ -1,5 +1,5 @@
 
-$padding: 0 11px;
+$padding: 10px 11px;
 
 .root{
   position: relative;
@@ -33,7 +33,8 @@ $padding: 0 11px;
   background: $background;
   z-index: 9999;
   border: 1px solid $color-grey-2;
-  margin-top: 1px;
+  margin: 1px 0 0 0;
+  padding: 0;
   box-sizing: border-box;
   box-shadow: 0 5px 10px -4px rgba(0,0,0,0.07);
   transition: transform .1s ease-in;
@@ -45,17 +46,32 @@ $padding: 0 11px;
 }
 
 .option{
-  $height: 40px;
   display: block;
   text-align: left;
   font-size: $font-size-medium;
   background: transparent;
   border: none;
+  margin: 0;
   border-radius: 0;
   height: $height;
   width: 100%;
   padding: $padding;
   cursor: pointer;
+  box-sizing: border-box;
+}
+
+.label{
+  position: absolute!important;
+  display: block;
+  visibility: visible;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }
 
 .highlighted{

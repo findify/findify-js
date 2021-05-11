@@ -1,8 +1,6 @@
 /**
  * @module components/RatingFacet
  */
-
-import React from 'react';
 import content from 'components/RatingFacet/content';
 import Button from 'components/Button';
 import Text from 'components/Text';
@@ -19,27 +17,25 @@ export interface IRatingFacetItemProps extends ThemedSFCProps {
   config: MJSConfiguration;
 }
 
-const RatingFacetItem: React.SFC<IRatingFacetItemProps> = ({
-  item,
-  theme,
-  style,
-  config
-}: IRatingFacetItemProps) =>
+export default ({ item, theme, style, config }: IRatingFacetItemProps) => (
   <Button
     style={style}
     className={theme.item}
     onClick={item.toggle}
-    role="listitem"
+    role="checkbox"
     aria-checked={item.get('selected') ? 'true' : 'false'}
     tabIndex={0}
   >
     <Text primary lowercase bold={item.get('selected')}>
-      <Icon className={theme.checkbox} name={item.get('selected') ? 'CheckboxFilled' : 'CheckboxEmpty'} />
-      { content({ item, config, theme }) }
+      <Icon
+        className={theme.checkbox}
+        name={item.get('selected') ? 'CheckboxFilled' : 'CheckboxEmpty'}
+        title={item.get('selected') ? 'Selected' : 'Not selected'}
+      />
+      {content({ item, config, theme })}
     </Text>
     <Text secondary uppercase>
-      ({ item.get('count') })
+      ({item.get('count')})
     </Text>
   </Button>
-
-export default RatingFacetItem;
+);

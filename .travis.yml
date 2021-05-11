@@ -1,12 +1,12 @@
 language: node_js
 dist: trusty
-sudo: required
 node_js:
-- 12
+- 15
 branches:
   only:
   - master
   - develop
+  - /^([0-9]+\.[0-9]+\.[0-9]+)?$/
 notifications:
   email: false
   slack:
@@ -16,6 +16,7 @@ cache:
   directories:
     - node_modules
 install:
-- yarn
+  - yarn
+  - yarn build:dist
 before_install: ./.travis/before_install.sh
 after_success: ./.travis/after_success.sh

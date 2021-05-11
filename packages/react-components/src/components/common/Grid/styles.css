@@ -1,36 +1,46 @@
-$gutter: 20px;
-
 .root{
-  font-size: 0;
-  line-height: 0;
-  width: 100%;
+  display: flex;
+  list-style: none;
+  flex-wrap: wrap;
+  flex-direction: row;
+  margin: 0;
+  padding: 0;
 }
 
-.column{
-  display: inline-block;
-  box-sizing: border-box;
-  min-height: 1px;
-  font-size: $font-size-medium;
-  line-height: $line-height;
-  vertical-align: top;
+.container{
 }
 
-@supports(display: flex) {
-  .root{
-    display: flex;
-    flex-direction: row;
-    align-items: top;
-    font-size: inherit;
-    line-height: inherit;
-    flex-wrap: wrap;
-  }
-  .column{
-    display: block;
-  }
+.column, .placeholder{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex-grow: 1;
+  flex-shrink: 0;
+  flex-basis: auto;
+  box-sizing: content-box;
 }
+
+.column-auto{
+  flex-grow: 1;
+  flex-shrink: 0;
+  flex-basis: 0%;
+}
+
+.column-full{
+  flex-grow: 0;
+  flex-shrink: 1;
+  flex-basis: 100%;
+}
+
+.column-fit{
+  flex-grow: 0;
+  flex-shrink: 1;
+  flex-basis: auto;
+}
+
 
 @for $i from 1 to 12 {
   .column-$i {
-    width: calc(100 / 12 * $i)%;
+    flex-basis: calc(100 / 12 * $i)%;
   }
 }

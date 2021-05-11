@@ -4,8 +4,6 @@
   border-radius: 70px;
   background: rgba(208,40,75,0.9);
   display: table;
-
-  text-align: center;
   span {
     color: $color-white;
     display: table-cell;
@@ -16,9 +14,8 @@
   }
 }
 
-.outOfStockSticker, .out-of-stock-sticker {
+.out-of-stock-sticker {
   width: 100%;
-  text-align: center;
   span {
     color: $color-grey-3;
   }

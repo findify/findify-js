@@ -5,6 +5,7 @@
 .breadcrumb{
   display: inline-block;
   font-size: $font-size-small;
+  white-space: nowrap;
   padding: 0;
   margin-left: 12px;
   position: relative;
@@ -62,6 +63,19 @@
   border-radius: 50%;
   display: inline-block;
   vertical-align: -1px;
+  box-sizing: border-box;
+  background-size: cover!important;
+  position: relative;
+  span{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-radius: 50%;
+    background: transparent;
+    border: 1px solid currentColor;
+  }
 }
 
 .cross{

@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
 
 /**
  * withMinResultsToShow allows you to only show component,
@@ -7,10 +7,12 @@ import React, { useMemo } from 'react';
  * @param BaseComponent view you will be adding minResultsToShow functionality to
  * @returns MinResultsToShow-enhanced HOC
  */
-export default () => BaseComponent => props => {
+export default () => (BaseComponent) => (props) => {
   const shouldRender = useMemo(() => {
     const minResultsToShow = props.config.get('minResultsToShow');
-    return !minResultsToShow || props.items && props.items.size >= minResultsToShow
-  }, [props.items])
-  return shouldRender && <BaseComponent {...props} />
-}
+    return (
+      !minResultsToShow || (props.items && props.items.size >= minResultsToShow)
+    );
+  }, [props.items]);
+  return shouldRender && <BaseComponent {...props} />;
+};

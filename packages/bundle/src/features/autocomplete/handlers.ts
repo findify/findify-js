@@ -1,15 +1,22 @@
-import { findDomNode } from 'react-dom';
-import { List, isImmutable } from 'immutable'
+import { isImmutable } from 'immutable';
 import { addEventListeners } from '../../helpers/addEventListeners';
 import { findClosestElement } from '../../helpers/findClosestElement';
-import { isSearch, setQuery, buildQuery, redirectToSearch, redirectToPage } from '../../core/location';
+import {
+  isSearch,
+  redirectToSearch,
+  redirectToPage,
+} from '../../core/location';
 import { Events } from '../../core/events';
 import { debounce } from '../../helpers/debounce';
 import { documentReady } from '../../helpers/documentReady';
+import { Agent } from '@findify/agent/types/core/Agent';
+import { Immutable } from '@findify/store-configuration';
+import { Widget } from '../../core/widgets';
 
 const findClosestForm = findClosestElement('form');
 
-const isAutocompleteNode = node => node.hasAttribute && node.hasAttribute('data-findify-autocomplete');
+const isAutocompleteNode = (node) =>
+  node.hasAttribute && node.hasAttribute('data-findify-autocomplete');
 
 const stylesUpdater = (ghost, styles: any) => {
   let cache: any = {};
@@ -19,8 +26,8 @@ const stylesUpdater = (ghost, styles: any) => {
     const type = typeof styles[key];
     ghost.style[key] = type === 'string' ? styles[key] : styles[key] + 'px';
   }
-  return cache = styles;
-}
+  return (cache = styles);
+};
 
 const getEventPath = (event) => {
   const _path = event.path || (event.composedPath && event.composedPath());
@@ -33,37 +40,46 @@ const getEventPath = (event) => {
   let currentElement = event.target;
   while (currentElement) {
     path.push(currentElement);
-    currentElement = currentElement.tagName !== 'HTML' ? currentElement.parentElement : null;
+    currentElement =
+      currentElement.tagName !== 'HTML' ? currentElement.parentElement : null;
   }
   path.push(document, window);
   return path;
-}
+};
 
-export const registerHandlers = (widget, agent, rerender) => {
+export const registerHandlers = (
+  widget: Widget<Immutable.AutocompleteConfig>,
+  agent: Agent,
+  rerender
+) => {
   const { node, config } = widget;
   const subscribers: any = [];
   let container: any;
   let findifyElementFocused = true;
-  if (node.getAttribute('autocomplete') !== 'off') node.setAttribute('autocomplete', 'off')
-  
+
+  if (node.getAttribute('autocomplete') !== 'off')
+    node.setAttribute('autocomplete', 'off');
+
   /** ACCESSIBILITY */
-  node.setAttribute('role', 'combobox')
-  node.setAttribute('aria-autocomplete', 'list')
-  node.setAttribute('aria-haspopup', 'true')
-  node.setAttribute('aria-owns', 'FindifyAutocompleteSuggestions')
-  node.setAttribute('aria-expanded', 'false')
-  node.setAttribute('aria-activedescendant', '')
-  node.setAttribute('aria-describedby', 'FindifyAutocompleteDescription')
+  node.setAttribute('role', 'combobox');
+  node.setAttribute('aria-autocomplete', 'list');
+  node.setAttribute('aria-haspopup', 'listbox');
+  node.setAttribute('aria-owns', 'FindifyAutocompleteSuggestions');
+  node.setAttribute('aria-expanded', 'false');
+  node.setAttribute('aria-activedescendant', '');
+  node.setAttribute('aria-describedby', 'FindifyAutocompleteDescription');
   /** === */
 
   /** Track input position and update container styles */
   const handleWindowScroll = debounce(() => {
-    container = container || document.querySelector(`.findify-widget-${widget.key}`);
+    container =
+      container || document.querySelector(`.findify-widget-${widget.key}`);
     if (!container || !container.childNodes.length) return;
 
     const { width, top, left, height } = node.getBoundingClientRect();
     const _top = top + (window.scrollY || document.documentElement.scrollTop);
-    const _left = left + (window.scrollX || document.documentElement.scrollLeft);
+    const _left =
+      left + (window.scrollX || document.documentElement.scrollLeft);
     if (top + height < 0 || left < 0) return;
 
     return stylesUpdater(container, {
@@ -72,14 +88,19 @@ export const registerHandlers = (widget, agent, rerender) => {
       top: _top + height,
       left: _left,
       position: 'absolute',
-      'will-change': 'top, left'
+      'will-change': 'top, left',
     });
-  })
+  });
 
   const resetReferencedAgentsLogging = debounce((value) => {
     __root.widgets
       .findByType('search', 'smart-collection', 'content')
-      .forEach(({ agent }) => agent.reset().defaults({ log: true }).set('q', value || ''));
+      .forEach(({ agent }) =>
+        agent
+          .reset()
+          .defaults({ log: true })
+          .set('q', value || '')
+      );
   }, 1000);
 
   const updateReferencedAgents = (value, noLogs?) =>
@@ -91,7 +112,7 @@ export const registerHandlers = (widget, agent, rerender) => {
           agent.defaults({ log: false });
           resetReferencedAgentsLogging(value);
         }
-        agent.set('q', value || '')
+        agent.set('q', value || '');
       });
 
   /** Handle input change */
@@ -99,33 +120,34 @@ export const registerHandlers = (widget, agent, rerender) => {
     const value = e.target.value || '';
     if (config.get('renderIn') === 'body') handleWindowScroll();
     if (config.get('instant') && isSearch()) {
-      
       return updateReferencedAgents(value, true);
     }
     agent.set('q', value);
-    rerender('initial')
+    rerender('initial');
   };
 
   const insideAutocomplete = (node: HTMLElement) => {
     if (!node || !node.parentElement) return false;
     if (isAutocompleteNode(node)) return true;
     return insideAutocomplete(node.parentElement);
-  }
+  };
 
-  const isAutocompleteRelated = (e) => e.relatedTarget && insideAutocomplete(e.relatedTarget);
+  const isAutocompleteRelated = (e) =>
+    e.relatedTarget && insideAutocomplete(e.relatedTarget);
 
   /** Handle input blur */
   const handleInputBlur = (e) =>
-    (!findifyElementFocused && !isAutocompleteRelated(e))
-    && e.target === node
-    && __root.emit(Events.autocompleteFocusLost, widget.key);
+    !findifyElementFocused &&
+    !isAutocompleteRelated(e) &&
+    e.target === node &&
+    __root.emit(Events.autocompleteFocusLost, widget.key);
 
-  const handleKeydown = ({ key, target }) => key === 'Enter' && search(target.value);
+  const handleKeydown = ({ key, target }) =>
+    key === 'Enter' && search(target.value);
 
   /** search for the value */
   const search = (_value?) => {
     const value = _value || agent.state.get('q') || '';
-    
     const [query, redirect] = isImmutable(value)
       ? [value.get('value'), value.get('redirect')]
       : [value, agent.response.get('redirect')];
@@ -140,74 +162,74 @@ export const registerHandlers = (widget, agent, rerender) => {
 
     __root.widgets
       .findByType('autocomplete')
-      .forEach(({ node }) => node.value = query);
-    rerender()
+      .forEach(({ node }) => (node.value = query));
+
+    rerender();
   };
 
-  const handleFormSubmit = e => {
+  const handleFormSubmit = (e) => {
     if (e) e.preventDefault();
     search(node.value);
-  }
+  };
 
   /** Listen for input change */
-  subscribers.push(addEventListeners(
-    ['input', 'cut', 'paste'],
-    debounce(handleInputChange, 250),
-    node
-  ));
+  subscribers.push(
+    addEventListeners(
+      ['input', 'cut', 'paste'],
+      debounce(handleInputChange, 250),
+      node
+    )
+  );
 
-  subscribers.push(addEventListeners(
-    ['focus'],
-    (e) => {
-      if (config.get('instant') && isSearch()) return;
-      findifyElementFocused = true;
-      if (!agent.state.get('q') || agent.state.get('q') !== e.target.value) {
-        agent.set('q', e.target.value);
-      }
-      rerender('initial')
-    },
-    node
-  ));
+  subscribers.push(
+    addEventListeners(
+      ['focus'],
+      (e) => {
+        if (config.get('instant') && isSearch()) return;
+        findifyElementFocused = true;
+        if (!agent.state.get('q') || agent.state.get('q') !== e.target.value) {
+          agent.set('q', e.target.value);
+        }
+        rerender('initial');
+      },
+      node
+    )
+  );
 
   /** Listen for input blur */
-  subscribers.push(addEventListeners(
-    ['focusout'],
-    handleInputBlur,
-    document.body
-  ));
+  subscribers.push(
+    addEventListeners(['focusout'], handleInputBlur, document.body)
+  );
 
-  if (!config.get('disableFormSubmit')) {
-    subscribers.push(addEventListeners(
-      ['keydown'],
-      handleKeydown,
-      node,
-      false
-    ))
+  if (config.get('handleFormSubmit')) {
+    subscribers.push(
+      addEventListeners(['keydown'], handleKeydown, node, false)
+    );
   }
 
   /** Update container position  */
   if (config.get('renderIn') === 'body') {
-    subscribers.push(addEventListeners(
-      [
-        'mousemove',
-        'webkitTransitionEnd',
-        'otransitionend',
-        'oTransitionEnd',
-        'msTransitionEnd',
-        'transitionend',
-        'animationiteration',
-        'webkitAnimationIteration',
-        'oanimationiteration',
-        'MSAnimationIteration'
-      ],
-      handleWindowScroll,
-      document
-    ));
-    subscribers.push(addEventListeners(
-      ['scroll'],
-      debounce(handleWindowScroll),
-      window
-    ))
+    subscribers.push(
+      addEventListeners(
+        [
+          'mousemove',
+          'webkitTransitionEnd',
+          'otransitionend',
+          'oTransitionEnd',
+          'msTransitionEnd',
+          'transitionend',
+          'animationiteration',
+          'webkitAnimationIteration',
+          'oanimationiteration',
+          'MSAnimationIteration',
+        ],
+        handleWindowScroll,
+        document
+      )
+    );
+    subscribers.push(
+      addEventListeners(['scroll'], debounce(handleWindowScroll), window)
+    );
   }
 
   const handleActiveElementChange = (evt) => {
@@ -215,46 +237,48 @@ export const registerHandlers = (widget, agent, rerender) => {
     const _focused = findifyElementFocused;
     if (!path || !path.find) return;
     findifyElementFocused = !!path.find(isAutocompleteNode);
-    if (evt.type === 'focus' && _focused && !(evt.target === node || findifyElementFocused)) {
-      __root.emit(Events.autocompleteFocusLost, widget.key)
+    if (
+      evt.type === 'focus' &&
+      _focused &&
+      !(evt.target === node || findifyElementFocused)
+    ) {
+      __root.emit(Events.autocompleteFocusLost, widget.key);
     }
+  };
 
-  }
+  subscribers.push(
+    addEventListeners(
+      ['mousemove', 'touchmove', 'focus'],
+      debounce(handleActiveElementChange),
+      document
+    )
+  );
 
-  subscribers.push(addEventListeners(
-    ['mousemove', 'touchmove', 'focus'],
-    debounce(handleActiveElementChange),
-    document
-  ))
-
+  console.log(Events.search);
   /** Unsubscribe from events on instance destroy  */
   const unsubscribe = __root.listen((event, prop, ...args) => {
     if (event === Events.search && prop === widget.key) return search(...args);
     if (event === Events.autocompleteFocusLost && prop === widget.key) {
-      rerender()
+      rerender();
     }
     if (event !== Events.detach || prop !== widget) return;
-    subscribers.forEach(fn => fn());
+    subscribers.forEach((fn) => fn());
     unsubscribe();
-  })
+  });
 
   documentReady.then(() => {
     handleWindowScroll();
 
     /** Listen for form submit */
-    if (!config.get('disableFormSubmit')) {
+    if (config.get('handleFormSubmit')) {
       const form = findClosestForm(node);
       if (form) {
-        subscribers.push(addEventListeners(
-          ['submit'],
-          handleFormSubmit,
-          form
-        ))
+        subscribers.push(addEventListeners(['submit'], handleFormSubmit, form));
       }
     }
-  })
+  });
 
-  window.requestAnimationFrame(() => rerender())
+  window.requestAnimationFrame(() => rerender());
 
   return;
-}
+};

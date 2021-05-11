@@ -1,9 +1,8 @@
-
 import _debug from 'debug';
-import { nanoid } from 'nanoid'
+import { nanoid } from 'nanoid';
 
 let count = 0;
-const noop = () => {}
+const noop = () => {};
 const debug = _debug('jsonp');
 
 /**
@@ -34,36 +33,35 @@ export default (url, opts, fn) => {
 
   // use the callback name that was passed if one was provided.
   // otherwise generate a unique name by incrementing our counter.
-  var id = opts.name || (prefix + nanoid(3) + (count++));
+  var id = opts.name || prefix + nanoid(3) + count++;
 
   var param = opts.param || 'callback';
   var timeout = null != opts.timeout ? opts.timeout : 60000;
   var enc = encodeURIComponent;
-  var target:any = document.getElementsByTagName('script')[0] || document.head;
+  var target: any = document.getElementsByTagName('script')[0] || document.head;
   var script;
   var timer;
 
-
   if (timeout) {
-    timer = setTimeout(function(){
+    timer = setTimeout(function () {
       cleanup();
       if (fn) fn(new Error('Timeout'));
     }, timeout);
   }
 
-  function cleanup(){
+  function cleanup() {
     if (script.parentNode) script.parentNode.removeChild(script);
     _root[id] = noop;
     if (timer) clearTimeout(timer);
   }
 
-  function cancel(){
+  function cancel() {
     if (_root[id]) {
       cleanup();
     }
   }
 
-  _root[id] = function(data){
+  _root[id] = function (data) {
     debug('jsonp got', data);
     cleanup();
     if (fn) fn(null, data);
@@ -81,4 +79,4 @@ export default (url, opts, fn) => {
   target.parentNode.insertBefore(script, target);
 
   return cancel;
-}
+};

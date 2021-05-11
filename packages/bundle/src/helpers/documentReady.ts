@@ -1,5 +1,3 @@
-import 'core-js/features/promise';
-
 export const documentReady = new Promise((resolve) => {
   if (
     ['complete', 'loaded', 'interactive'].includes(document.readyState) &&
@@ -9,4 +7,4 @@ export const documentReady = new Promise((resolve) => {
   } else {
     document.addEventListener('DOMContentLoaded', resolve, false);
   }
-})
+});

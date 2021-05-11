@@ -1,70 +1,56 @@
 import { createElement } from 'react';
-import { ContentProvider } from "@findify/react-connect";
-import { getQuery, setQuery, isSearch, listenHistory } from '../../core/location';
+import { ContentProvider } from '@findify/react-connect';
+import { getQuery, setQuery, listenHistory } from '../../core/location';
 import { hideFallback, hideLoader } from '../../helpers/fallbackNode';
 import { Events } from '../../core/events';
-import { scrollTo } from '../../helpers/scrollTo';
-import Content from '@findify/react-components/src/layouts/Content';
+import { maybeScrollTop, scrollTo } from '../../helpers/scrollTo';
 import isNumeric from '../../helpers/isNumeric';
 
-const parseSortHTMLAttribute = sort => {
-  try {
-    if (!sort) {
-      return [];
-    }
-    const parsedSort = JSON.parse(sort);
-    return [parsedSort];
-  } catch (err) {
-    return [];
-  }
-}
+import lazy from '../../helpers/renderLazyComponent';
+import { Immutable } from '@findify/store-configuration';
+import { Agent } from '@findify/agent/types/core/Agent';
+import { Widget } from '../../core/widgets';
 
-export default (widget) => {
+const lazyComponent = lazy(
+  () => import('@findify/react-components/src/layouts/Content')
+);
+
+export default (render, widget: Widget<Immutable.ContentConfig>) => {
   const { agent, config, node } = widget;
   const apiKey = config.get('key');
-  const { q } = getQuery();
-  const { type, sort } = node.dataset;
   const props = { agent, apiKey, config };
 
-  agent.defaults({ type: [type], sort: parseSortHTMLAttribute(sort) });
-  agent.set('q', q);
+  /** Listen to changes */
+  agent.on('change:query', (q) => {
+    setQuery(q.toJS());
+    render('initial');
+  });
 
-  return (render) => {
-    /** Listen to changes */
-    agent.on('change:query', (q, meta) => {
-      setQuery(q.toJS())
-      render('initial');
-    });
+  /** Listen to location back/fwd */
+  const stopListenLocation = listenHistory((_, action) => {
+    if (action !== 'POP') return;
+    const { q } = getQuery();
+    agent.applyState({ q });
+    render('initial');
+  });
 
-    /** Listen to location back/fwd */
-    const stopListenLocation = listenHistory((_, action) => {
-      if (action !== 'POP') return;
-      const { q } = getQuery();
-      agent.applyState({ q });
-      render('initial');
-    });
+  /** Switch to recommendation if query not present */
+  agent.on('change:items', (items) => {
+    if (items.isEmpty()) return;
+    hideFallback(node);
+    hideLoader(node);
+    maybeScrollTop(config as any);
+    return render('initial');
+  });
 
-    /** Switch to recommendation if query not present */
-    agent.on('change:items', (items) => {
-      if (!items.isEmpty()) {
-        hideFallback(node);
-        hideLoader(node);
-        if (!config.getIn(['view', 'infinite']) && isNumeric(config.get('scrollTop'))) {
-          scrollTo(config.get('cssSelector'), config.get('scrollTop'))
-        }
-        return render('initial');
-      }
-    })
+  /** Unsubscribe from events on instance destroy  */
+  const unsubscribe = __root.listen((event, prop) => {
+    if (event !== Events.detach || prop !== widget) return;
+    stopListenLocation();
+    unsubscribe();
+  });
 
-    /** Unsubscribe from events on instance destroy  */
-    const unsubscribe = __root.listen((event, prop, ...args) => {
-      if (event !== Events.detach || prop !== widget) return;
-      stopListenLocation();
-      unsubscribe();
-    })
+  /** Render */
 
-    /** Render */
-
-    return createElement(ContentProvider, props, createElement(Content))
-  }
-}
+  return createElement(ContentProvider, props, lazyComponent());
+};

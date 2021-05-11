@@ -1,56 +1,61 @@
-$text-align: center;
+$text-align-vertical: center;
+$text-align-horizontal: left;
 
 .root {
-  padding-left: 9px;
-  padding-right: 9px;
-  padding-bottom: 51px;
-  width: calc(100% - 18px);
-  display: table;
+  width: 100%;
+  height: 100%;
   background-color: transparent;
   transition: background-color .35s ease-in-out;
-  text-decoration: none;
-  user-select: none;
-  border: none!important;
-  &.simple{
-    padding: 0 8px 15px 8px;
-  }
-  vertical-align: bottom;
-}
-
-/*
-.root {
-  font-size: 14px;
-  padding: 6%!important;
+  box-sizing: border-box;
   display: flex;
-  background-color: transparent;
-  transition: background-color .35s ease-in-out;
-  text-decoration: none;
-  user-select: none;
-  border: none!important;
-  &.simple{
-    padding: 0 8px 15px 8px;
-  }
-  &:hover {
-    background-color: #f7f7f7;
-  }
-  &.simple:hover{
-    background-color: initial;
-  }
-}*/
-
-:global(.findify-widget--products-carousel) .root:hover{
-  background-color: inherit;
-}
-
-.image-wrap {
   position: relative;
-  overflow: hidden;
-  margin-bottom: 12px;
+  &.vertical{
+    text-align: $text-align-vertical;
+    flex-direction: column;
+    min-width: 200px;
+    padding-bottom: 50px;
+  }
+  &.horizontal{
+    text-align: $text-align-horizontal;
+    flex-direction: row;
+    padding-bottom: 15px;
+  }
+  &:focus-within{
+    &:after{
+      content: ' ';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      top: 0;
+      border: 2px solid Highlight;
+      border-color: -webkit-focus-ring-color;;
+    }
+    a:focus {
+      text-decoration: none;
+    }
+  }
 }
 
-.image {
-  max-width: 100%;
-  margin: 0 auto;
+.content{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  flex: 1 1 auto;
+}
+
+.image{
+  cursor: pointer;
+  margin-bottom: 12px;
+  order: -1;
+  .horizontal &{
+    min-width: 60px;
+    margin: 0 16px 0 0;
+  }
+}
+
+.divider{
+  flex: 1 0 auto;
 }
 
 .content{
@@ -60,15 +65,34 @@ $text-align: center;
 .title {
   $font-size: 1;
   $font-family: $font-base;
-  $color: $color-black;
   $text-transform: none;
-  width: 100%;
+
   color: $color;
   font-family: $font-family;
   text-transform: $text-transform;
-  text-align: $text-align;
+
   font-size: calc($font-size-medium * $font-size)!important; /* FIXME: figure out issue with import order of styles */
   line-height: calc($font-size-medium * $font-size * 1.6);
+
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.title-link{
+  color: currentColor;
+  text-decoration: none;
+  &:after{
+    content: ' ';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+  }
+  &:focus{
+    text-decoration: underline;
+  }
 }
 
 .description {
@@ -86,11 +110,6 @@ $text-align: center;
   margin-bottom: 8px;
   width: 100%;
   text-align: center;
-}
-
-.price-wrapper {
-  margin-top: 20px !important;
-  margin-bottom: 12px !important;
 }
 
 .color{

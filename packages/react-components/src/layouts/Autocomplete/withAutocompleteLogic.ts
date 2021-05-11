@@ -1,8 +1,17 @@
-import React, { useCallback, useEffect, createFactory, useMemo, useState, useReducer } from 'react';
+import {
+  useCallback,
+  useEffect,
+  createFactory,
+  useMemo,
+  useState,
+  useReducer,
+} from 'react';
+import { useSuggestions } from '@findify/react-connect';
 
 const arrowCodes = ['ArrowUp', 'ArrowDown'];
 
-export const useAutocompleteLogic = ({ config, suggestions, getSuggestionProps, meta }) => {
+export const useAutocompleteLogic = () => {
+  const { suggestions, getSuggestionProps, config, meta } = useSuggestions();
   const node: HTMLInputElement = config.get('node');
 
   const reduceIndex = (state, e) => {
@@ -20,17 +29,21 @@ export const useAutocompleteLogic = ({ config, suggestions, getSuggestionProps, 
     e.preventDefault();
 
     const newSuggestionIndex = state + (e.key === 'ArrowUp' ? -1 : 1);
-    const totalSuggestions = suggestions && suggestions.size || 0;
+    const totalSuggestions = (suggestions && suggestions.size) || 0;
 
     if (newSuggestionIndex < 0) return totalSuggestions - 1;
     if (totalSuggestions - 1 < newSuggestionIndex) return 0;
     return newSuggestionIndex;
-  }
+  };
 
   const [selectedSuggestion, setSuggestionIndex] = useReducer(reduceIndex, -1);
 
-  const closeAutocomplete = useCallback(() =>
-    (window as any).findify.emit('autocompleteFocusLost', config.get('widgetKey')),
+  const closeAutocomplete = useCallback(
+    () =>
+      (window as any).findify.emit(
+        'autocompleteFocusLost',
+        config.get('widgetKey')
+      ),
     [config.get('widgetKey')]
   );
 
@@ -39,26 +52,32 @@ export const useAutocompleteLogic = ({ config, suggestions, getSuggestionProps, 
 
     const handleButtonClick = (e) => {
       if (e.target !== node) return;
-      if (e.key === "Escape") return closeAutocomplete();
+      if (e.key === 'Escape') return closeAutocomplete();
       setSuggestionIndex(e);
-    }
+    };
 
     // console.log('mount');
-    document.querySelector('body')!.addEventListener('keydown', handleButtonClick, true)
+    document
+      .querySelector('body')!
+      .addEventListener('keydown', handleButtonClick, true);
 
-    return () => document.querySelector('body')!.removeEventListener('keydown', handleButtonClick, true)
-  }, [])
+    return () =>
+      document
+        .querySelector('body')!
+        .removeEventListener('keydown', handleButtonClick, true);
+  }, []);
 
-  useEffect(() => setSuggestionIndex(-1), [meta.get('q')])
-  
+  useEffect(() => setSuggestionIndex(-1), [meta.get('q')]);
 
-  return useMemo(() => ({ selectedSuggestion, closeAutocomplete }), [selectedSuggestion])
-}
+  return useMemo(() => ({ selectedSuggestion, closeAutocomplete }), [
+    selectedSuggestion,
+  ]);
+};
 
-export default BaseComponent => {
+export default (BaseComponent) => {
   const factory = createFactory(BaseComponent);
   return (props) => {
-    const logic = useAutocompleteLogic(props);
+    const logic = useAutocompleteLogic();
     return factory({ ...props, ...logic });
-  }
-}
+  };
+};

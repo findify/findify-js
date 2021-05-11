@@ -2,59 +2,83 @@
  * @module layouts/Search
  */
 
-import React from 'react';
-import { compose, withProps, setDisplayName, branch, renderNothing } from 'recompose';
-import { connectItems } from '@findify/react-connect';
-import withTheme from 'helpers/withTheme';
-import withEvents from 'helpers/withEvents';
-import withErrorHandler from 'helpers/withErrorHandler';
-import { withDrawer } from "helpers/withDrawer";
-import MobileFacets from 'components/search/MobileFacets';
-import MobileSorting from 'components/search/MobileSorting';
-import view from 'layouts/Search/view';
-import styles from 'layouts/Search/styles.css';
-import { debounce } from 'helpers/debounce';
-import withMobile from 'helpers/withMobile';
-import withScrollOnItemsChange from 'helpers/withScrollOnItemsChange';
+import { useEffect } from 'react';
+import StaticResults from 'components/search/StaticResults';
+import LazyResults from 'components/search/LazyResults';
+import DesktopFacets from 'components/search/DesktopFacets';
+import MobileActions from 'components/search/MobileActions';
+import DesktopActions from 'components/search/DesktopActions';
+import Branch from 'components/common/Branch';
+import Banner from 'components/Banner';
+import { List } from 'immutable';
+import Grid, { Column } from 'components/common/Grid';
+import { useMobile } from 'helpers/withMobile';
+import { useAnnouncement } from 'components/common/Announcement';
+import useScrollOnChange from 'helpers/useScrollOnChange';
+import { useItems } from '@findify/react-connect';
+import useTranslations from 'helpers/useTranslations';
 
-const transform = {
-  from: { transform: `translate3d(-100%, 0, 0)` },
-  to: { transform: `translate3d(0%, 0, 0)` },
+import styles from 'layouts/Search/styles.css';
+
+import { Immutable } from '@findify/store-configuration';
+import { ThemedSFCProps, IProduct } from 'types';
+
+/** Props that search layout accepts */
+export interface ISearchProps extends ThemedSFCProps<typeof styles> {
+  isCollection?: boolean;
+  /** Items list */
+  items: List<IProduct>;
 }
 
-const Search = compose(
-  setDisplayName('Search'),
+const Search = ({ isCollection, theme = styles }) => {
+  const { items, config } = useItems<Immutable.SearchConfig>();
+  const translate = useTranslations();
+  const isMobile = useMobile();
+  const [announcement, setAnnouncement] = useAnnouncement();
 
-  withTheme(styles),
+  useScrollOnChange(items);
 
-  withErrorHandler,
+  useEffect(() => setAnnouncement(translate('search.accessibleUpdate')), [
+    items,
+  ]);
 
-  connectItems,
-
-  withScrollOnItemsChange,
-  
-  branch(
-    ({ items }) => !items.size,
-    renderNothing
-  ),
-
-  withMobile,
-
-  branch(
-    ({ isMobile }) => isMobile,
-    compose(
-      withProps({ theme: {} }),
-      withDrawer('Filters', MobileFacets, transform),
-      withDrawer('Sorting', MobileSorting, transform),
-      withEvents({
-        showMobileFacets: ({ showModal }) => () => showModal('Filters'),
-        showMobileSort: ({ showModal }) => () => showModal('Sorting'),
-        hideMobileFacets: ({ hideModal }) => () => hideModal('Filters'),
-        hideMobileSort: ({ hideModal }) => () => hideModal('Sorting'),
-      })
-    )
-  )
-)(view);
+  if (!items.size) return null;
+  return (
+    <>
+      <Grid
+        className={theme.root}
+        gutter={40}
+        columns={
+          config.getIn(['facets', 'position']) === 'top'
+            ? 'full'
+            : config.getIn(['breakpoints', 'layout'], 'fit|auto')
+        }
+      >
+        <Column
+          display-if={!isMobile}
+          order={config.getIn(['facets', 'position']) === 'right' && 2}
+        >
+          <DesktopFacets />
+        </Column>
+        <>
+          <Branch
+            isCollection={isCollection}
+            condition={isMobile}
+            left={MobileActions}
+            right={DesktopActions}
+          />
+          <Banner />
+          <Branch
+            condition={config.getIn(['pagination', 'type']) === 'lazy'}
+            left={LazyResults}
+            right={StaticResults}
+          />
+        </>
+      </Grid>
+      {announcement}
+    </>
+  );
+};
 
 export default process.env.HOT
   ? require('react-hot-loader').hot(module)(Search)

@@ -6,7 +6,8 @@ $text-transform: uppercase;
   padding-top: 30px;
   border-top: 1px solid $color-grey-2;
   margin-top: 22px;
-  text-align: center;
+  display: flex;
+  justify-content: center;
 }
 
 .prev, .next, .first, .last, .page, .dots{

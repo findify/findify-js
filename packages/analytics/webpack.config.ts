@@ -1,18 +1,14 @@
-import * as path from 'path';
-import * as webpack from 'webpack';
-import * as GitRevisionPlugin from 'git-revision-webpack-plugin';
-import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
-import * as UglifyJSPlugin from 'uglifyjs-webpack-plugin';
-import * as DuplicatePackageCheckerPlugin from 'duplicate-package-checker-webpack-plugin';
-import * as  CompressionPlugin from 'compression-webpack-plugin';
+const path = require('path');
+const webpack = require('webpack');
+const defaultConfig = require('../../config/webpack');
 
 interface WebpackEnvArgs {
   analyze?: boolean;
   generateStatsFile?: boolean;
 }
 
-export default (env: WebpackEnvArgs) => {
-  const config: webpack.Configuration = {
+module.exports = (env: WebpackEnvArgs) => {
+  const config = {
     context: path.resolve(process.cwd(), 'src'),
 
     entry: {
@@ -40,6 +36,8 @@ export default (env: WebpackEnvArgs) => {
     resolve: {
       extensions: ['.ts', '.js'],
     },
+    target: ['web', 'es5'],
+    optimization: defaultConfig.optimization,
     module: {
       rules: [
         {
@@ -49,69 +47,25 @@ export default (env: WebpackEnvArgs) => {
             {
               loader: 'babel-loader',
               options: {
-                babelrc: false,
-                plugins: [
-                  "@babel/plugin-proposal-object-rest-spread",
-                  "@babel/plugin-proposal-class-properties",
-                ],
-                presets: [
-                  "@babel/preset-typescript",
-                ]
-              }
-            }
-          ]
+                rootMode: 'upward',
+              },
+            },
+          ],
         },
       ],
     },
     plugins: [
       new webpack.DefinePlugin({
-        __COMMITHASH__: JSON.stringify(new GitRevisionPlugin().commithash()),
         'process.env': {
           NODE_ENV: JSON.stringify('production'),
-          BROWSER: true
+          BROWSER: true,
         },
       }),
-      // enable scope hoisting
-      new webpack.optimize.ModuleConcatenationPlugin(),
-
-      new webpack.LoaderOptionsPlugin({
-        debug: false,
-        minimize: true
-      }),
-  
-      new DuplicatePackageCheckerPlugin(),
-  
-      new UglifyJSPlugin({
-        test: /\.min\.js($|\?)/i,
-        cache: true,
-        parallel: true,
-        sourceMap: true,
-        uglifyOptions: {
-          output: {
-            beautify: false,
-          },
-          compress: {
-            drop_debugger: true,
-          }
-        }
-      }),
-
-      new CompressionPlugin({
-        exclude: /\.map/,
-      })
     ],
   };
 
-  if (Boolean(env && env.analyze)) {
-    const analyzerPlugin = new BundleAnalyzerPlugin({
-      analyzerMode: 'server',
-      analyzerPort: 8888,
-      openAnalyzer: true,
-      generateStatsFile: Boolean(env.generateStatsFile),
-      reportFilename: 'stats/webpack.stats.html',
-      statsFilename: 'stats/webpack.stats.json',
-    });
-    config.plugins!.push(analyzerPlugin);
+  if (env && env.analyze) {
+    config.plugins!.push(defaultConfig.BundleAnalyzer);
   }
 
   return config;

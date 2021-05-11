@@ -1,14 +1,28 @@
+$padding: 25px;
+$horizontal-background: white;
+
 .root{
-  margin-bottom: 15px;
+  border-top: 1px solid $color-grey-2;
   &:last-child{
     margin-bottom: 0;
   }
+  &.horizontal{
+    border-top: none;
+    background: $horizontal-background;
+    flex: 0 1 auto;
+    position: relative;
+  }
 }
+
 
 .title{
   width: 100%;
   text-align: left;
-  display: table;
+  display: flex;
+  padding: $padding;
+  .horizontal &{
+    background: $horizontal-background;
+  }
 }
 
 .text {
@@ -18,8 +32,7 @@
   font-size: calc($font-size-small * $font-size);
   font-family: $font-family;
   color: $color;
-  display: inline-block;
-  width: calc(100% - 15px);
+  flex: 1 1 0%;
 }
 
 .icon {
@@ -27,6 +40,17 @@
 }
 
 .body{
-  $padding: 14px 0 0 0;
+  $padding: 0 25px 25px 25px;
+  margin-top: -15px;
   padding: $padding;
+  .horizontal &{
+    background: $horizontal-background;
+    position: absolute;
+    z-index: 3;
+    min-width: 100%;
+    box-sizing: border-box;
+  }
+  &[hidden]{
+    display: none;
+  }
 }

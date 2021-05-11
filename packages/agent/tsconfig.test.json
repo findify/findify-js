@@ -1,9 +1,5 @@
 {
-  "extends": "./tsconfig.base.json",
+  "extends": "../../tsconfig.test.json",
   "include": ["src/**/*.test.*", "src/**/*.mock.*"],
   "exclude": ["node_modules"],
-  "compilerOptions": {
-    "target": "es5",
-    "module": "commonjs"
-  }
 }

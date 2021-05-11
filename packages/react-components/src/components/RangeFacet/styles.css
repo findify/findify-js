@@ -4,88 +4,51 @@ $height: 30px;
   display: flex;
   flex-direction: column;
 }
-.content{
-  font-size: calc($facet-item-font-size * $font-size-medium);
-  font-family: $facet-item-font-family;
-  color: $facet-item-color;
-}
-
-.item{
-  $font-size: $font-size-medium;
-  $padding: 3px 0;
-  width: 100%;
-  border: 0;
-  background: transparent;
-  outline: 0;
-  font-size: $font-size;
-  border-radius: 0;
-  text-align: left;
-  padding: $padding;
-  height: auto;
-  cursor: pointer;
-  display: table;
-  & > span{
-    display: table-cell;
-    width: 100%;
-  }
-  svg {
-    padding-right: 14px;
-    vertical-align: -2px;
-  }
-}
 
 .range{
-  display: table;
-  display: flex;
-  width: 1%;
-  padding-top: 10px;
-  padding-left: 25px;
 }
 
 .input-block {
-  display: table;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: auto;
+  padding-top: 10px;
 }
 
 .input-wrap{
-  display: table-cell;
-  display: flex;
   position: relative;
-  white-space: nowrap;
-  width: 100%;
-  :global(.react-numeric-input){
-    display: inline-block;
-    position: relative;
-    z-index: 1;
+  display: flex;
+  align-items: center;
+  padding: 0 8px;
+  cursor: text;
+  transition: border-color .1s linear;
+  border: 1px solid $color-grey-1;
+  &:focus-within{
+    border-color: $color-grey-2;
   }
 }
 
 .input{
-  $width: 60px;
-  $indent: 8px;
+  $width: 100%;
   display: block;
   width: $width;
   margin: 0;
   box-sizing: border-box;
   height: $height;
   line-height: $height;
-  padding: 0 8px;
-  padding-left: calc(8px + $indent);
+  padding-left: 8px;
   background: transparent;
   color: $color-black;
   font-family: $font-base;
   font-size: $font-size-large;
-  border: 1px solid $color-grey-2;
-  transition: border-color .1s linear;
+  border: none;
   outline: none;
+  z-index: 1;
+  -moz-appearance: textfield;
   &:placeholder{
     color: $color-grey-1;
   }
-  &:focus{
-    border-color: $color-grey-3;
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
   }
 }
 @media screen and (-webkit-min-device-pixel-ratio:0) {
@@ -96,32 +59,26 @@ $height: 30px;
 
 .currency{
   $font-size: $font-size-medium;
-  position: absolute;
   font-size: $font-size;
-  top: 0;
   height: 100%;
-  line-height: 1;
-  display: flex;
-  align-items: center;
-  left: 9px;
-  width: 0;
   z-index: 0;
 }
 
 .submit{
   $font-size: $font-size-medium;
-  display: table-cell;
   display: flex;
   border: 0;
+  display: flex;
+  align-items: center;
+  height: 100%;
   background: transparent;
   outline: 0;
   font-size: $font-size;
   border-radius: 0;
   width: 100%;
-  height: $height;
-  line-height: $height;
   padding: 0 8px;
   cursor: pointer;
+  justify-content: space-around;
   &:hover{
     text-decoration: underline;
   }
@@ -131,9 +88,8 @@ $height: 30px;
 }
 
 .divider{
-  display: table-cell;
-  display: flex;
   padding: 0 6px;
-  width: 1%;
-  justify-content: center;
+  display: flex;
+  align-items: center;
+  height: 100%;
 }
