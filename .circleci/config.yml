@@ -83,7 +83,7 @@ jobs:
 
       - run:
           name: add github to ssh known hosts
-          command: mkdir ~/.ssh && ssh-keyscan github.com > ~/.ssh/known_hosts
+          command: ssh-keyscan github.com > ~/.ssh/known_hosts
 
       - run:
           name: Publish bundles to npm
