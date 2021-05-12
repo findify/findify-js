@@ -61,7 +61,7 @@ export type Config = {
   currency: {
     code: string, 
     symbol: string,
-    thousandsSeparator: string,
+    thousand: string,
     decimalSeparator: string,
     symbolOnLeft: boolean,
     spaceBetweenAmountAndSymbol: boolean,

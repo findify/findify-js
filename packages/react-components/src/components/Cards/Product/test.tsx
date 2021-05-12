@@ -31,7 +31,7 @@ const configMock = fromJS({
   currency_config: {
     code: 'USD',
     symbol: '$',
-    thousandsSeparator: ',',
+    thousand: ',',
     decimalSeparator: '.',
     symbolOnLeft: true,
     spaceBetweenAmountAndSymbol: false,

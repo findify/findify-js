@@ -33,7 +33,7 @@ const config: Config = {
     spaceBetweenAmountAndSymbol: true,
     symbol: 'kr',
     symbolOnLeft: false,
-    thousandsSeparator: '.',
+    thousand: '.',
   },
   collections: ['collections/test-col-2000', 'collections/nested-categories'],
   stickers: {
