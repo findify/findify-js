@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.0.1](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.0.0...@findify/bundle@7.0.1) (2021-05-12)
+
+
+### Bug Fixes
+
+* **@findify/bundle,@findify/store-configuration,@findify/react-components:** replaced thousandSeparator with thousand in currency settings ([01619e0](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/01619e0ac764fbf743a5028d0b4cbbfabe102a69))
+
+
+
+
+
 # [7.0.0](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@6.19.1...@findify/bundle@7.0.0) (2021-05-12)
 
 

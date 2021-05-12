@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.12.2](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.12.1...@findify/react-components@0.12.2) (2021-05-12)
+
+
+### Bug Fixes
+
+* **@findify/bundle,@findify/store-configuration,@findify/react-components:** replaced thousandSeparator with thousand in currency settings ([01619e0](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/01619e0ac764fbf743a5028d0b4cbbfabe102a69))
+
+
+
+
+
 ## [0.12.1](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.12.0...@findify/react-components@0.12.1) (2021-05-11)
 
 **Note:** Version bump only for package @findify/react-components
