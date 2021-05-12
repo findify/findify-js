@@ -82,6 +82,10 @@ jobs:
             - "b4:60:fd:de:5e:8a:73:db:d7:33:6d:1f:18:e3:1b:a3"
 
       - run:
+          name: add github to ssh known hosts
+          command: mkdir ~/.ssh && ssh-keyscan github.com > ~/.ssh/known_hosts
+
+      - run:
           name: Publish bundles to npm
           command: npx lerna publish --yes
 
