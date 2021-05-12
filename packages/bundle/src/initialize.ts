@@ -48,8 +48,9 @@ const _analyticsPromise = (() => {
 })();
 
 export default async (_config, sentry) => {
-  if (!isReady)
+  if (!isReady) {
     return debug('bundle')('Findify instance already created. Skipping');
+  }
 
   // We are loading config independently from webpack and this promise is always resolved
   const { default: asyncConfig } = await import(
