@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.3](https://github.com/findify/findify-js/compare/@findify/react-connect@0.7.2...@findify/react-connect@0.7.3) (2021-05-12)
+
+
+### Bug Fixes
+
+* **@findify/react-connect:** handle incorrect suggestion index in connector ([f85e3c6](https://github.com/findify/findify-js/commit/f85e3c68b298ae035ac655f8d928b1bf0f60184f))
+
+
+
+
+
 ## [0.7.2](https://github.com/findify/findify-js/compare/@findify/react-connect@0.7.1...@findify/react-connect@0.7.2) (2021-05-12)
 
 **Note:** Version bump only for package @findify/react-connect
