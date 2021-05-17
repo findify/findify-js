@@ -145,7 +145,9 @@ export class Agent {
       oldValue,
       isImmutable(value) ? value : fromJS(value)
     );
+
     if (changes === false) return this;
+
     if (isImmutable(changes) ? !changes.isEmpty() : true) {
       this.cache.set(field, changes);
     } else {
