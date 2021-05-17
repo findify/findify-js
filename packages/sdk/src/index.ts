@@ -18,6 +18,7 @@ const findifyEnv = (() => {
 })();
 
 const env = findifyEnv || defaultEnv;
+
 if (!knownEnvs.includes(env)) {
   throw new Error(`${env} is not supported environment`);
 }
