@@ -42,14 +42,9 @@ Alternatively, you can use UMD builds, by requiring them to the page using `<scr
 To use the analytics in the browser, simply add the following script tag to your HTML pages:
 
 ```
-<script src="https://findify-assets-2bveeb6u8ag.netdna-ssl.com/analytics-js/prod/3.0.2/findify-analytics.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@findify/analytics@latest/dist/findify-analytics.jss"></script>
 ```
 
-if you want unminified version:
-
-```
-<script src="https://findify-assets-2bveeb6u8ag.netdna-ssl.com/analytics-js/prod/3.0.2/findify-analytics.js"></script>
-```
 
 ## :boom: Upgrading from v1.1.x to v2.0.14
 

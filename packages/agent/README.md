@@ -15,7 +15,6 @@ For release notes, see the [CHANGELOG](./CHANGELOG.md).
 
 ## Quickstart
 
-
 Install using [npm](http://npmjs.org):
 
 ```console
