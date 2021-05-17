@@ -36,6 +36,7 @@ const sendEventCreator = ({ events, key }: Config) => (
   const { force, ...request } = _request;
   if (!force && typeof events[event] !== 'undefined' && events[event] === false)
     return;
+
   if (useCookie) return storage.memoize(event, request);
 
   const properties =
