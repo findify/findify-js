@@ -94,7 +94,7 @@ jobs:
 
       - run:
           name: Publish bundles to npm
-          command: git stash && lerna publish --yes
+          command: npx lerna publish --yes
 
 workflows:
   version: 2
