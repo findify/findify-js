@@ -13,3 +13,6 @@ typings
 .npmrc
 .env
 !packages/react-components/src/types
+!packages/config/src/types
+index.d.ts
+
