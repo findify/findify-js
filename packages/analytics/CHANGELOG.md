@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.6.0](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/analytics@3.5.6...@findify/analytics@3.6.0) (2021-05-17)
+
+
+### Features
+
+* **@findify/agent,@findify/analytics,@findify/analytics-dom,@findify/store-configuration,@findify/react-components,@findify/sdk:** major version bumb, export combined config types ([b37a248](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/b37a24840c6626432e18232ef0dc00852c4d597a))
+* **@findify/analytics,@findify/analytics-dom:** bump version ([18ab6f5](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/18ab6f58d3f1aa70d3f2ed00fdea5b89726dc9a2))
+
+
+
+
+
 ## [3.5.6](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/analytics@3.5.5...@findify/analytics@3.5.6) (2021-05-11)
 
 **Note:** Version bump only for package @findify/analytics
