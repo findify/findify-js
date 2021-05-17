@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.13.0](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.12.3...@findify/react-components@0.13.0) (2021-05-17)
+
+
+### Features
+
+* **@findify/agent,@findify/analytics,@findify/analytics-dom,@findify/store-configuration,@findify/react-components,@findify/sdk:** major version bumb, export combined config types ([b37a248](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/b37a24840c6626432e18232ef0dc00852c4d597a))
+
+
+
+
+
 ## [0.12.3](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.12.2...@findify/react-components@0.12.3) (2021-05-12)
 
 **Note:** Version bump only for package @findify/react-components
