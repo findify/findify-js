@@ -3,6 +3,58 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.3](https://github.com/findify/findify-js/compare/@findify/react-connect@0.7.2...@findify/react-connect@0.7.3) (2021-05-12)
+
+
+### Bug Fixes
+
+* **@findify/react-connect:** handle incorrect suggestion index in connector ([f85e3c6](https://github.com/findify/findify-js/commit/f85e3c68b298ae035ac655f8d928b1bf0f60184f))
+
+
+
+
+
+## [0.7.2](https://github.com/findify/findify-js/compare/@findify/react-connect@0.7.1...@findify/react-connect@0.7.2) (2021-05-12)
+
+**Note:** Version bump only for package @findify/react-connect
+
+
+
+
+
+## [0.7.1](https://github.com/findify/findify-js/compare/@findify/react-connect@0.7.0...@findify/react-connect@0.7.1) (2021-05-11)
+
+**Note:** Version bump only for package @findify/react-connect
+
+
+
+
+
+# [0.7.0](https://github.com/findify/findify-js/compare/@findify/react-connect@0.6.8...@findify/react-connect@0.7.0) (2021-05-11)
+
+
+### Bug Fixes
+
+* **@findify/agent,@findify/analytics,@findify/analytics-dom,@findify/bundle,@findify/store-configuration,@findify/react-components,@findify/react-connect,@findify/sdk:** update pagination component ([be4f3c9](https://github.com/findify/findify-js/commit/be4f3c907b9b2f714cbecba757448baae49b8bcf))
+* **@findify/bundle,@findify/react-components,@findify/react-connect:** fix memory leak in connectors & improve lazy results ([d3ad008](https://github.com/findify/findify-js/commit/d3ad00820b6b3b0e252ac09f80e702f3f0ee11d0))
+* **@findify/bundle,@findify/store-configuration,@findify/react-components,@findify/react-connect:** update autocomplete templates ([728dd04](https://github.com/findify/findify-js/commit/728dd04cf39300872e5e38f48d0d34e9a382351c))
+* **@findify/react-components,@findify/react-connect:** improve sort component ([2bc066d](https://github.com/findify/findify-js/commit/2bc066de23b05a00d9c252282ee102349141a2d4))
+* **@findify/store-configuration,@findify/react-components,@findify/react-connect:** update configuration and components structure ([0e34f81](https://github.com/findify/findify-js/commit/0e34f8146a70d973ca0450046208a64359ded067))
+* **bundle:** split react and react-dom ([0a6cbd8](https://github.com/findify/findify-js/commit/0a6cbd8ea7041f919008db5335fae8db96a0d406))
+* **bundle, react-components:** hack webpack bootstrap ([8f7f8e9](https://github.com/findify/findify-js/commit/8f7f8e9dff536591ba19b7b69b1a35be9301c42b))
+* **react-components, react-connect:** fix UI and ADA issues ([2d6558e](https://github.com/findify/findify-js/commit/2d6558e8e43ead0da263ee01ad4570ccc2b2ccbe))
+* **react-connect:** fix missing comma ([b47d36f](https://github.com/findify/findify-js/commit/b47d36ff4ed57844951a078f1ccb556a64bde989))
+* Use internal static key property instead of constant ([5296fd6](https://github.com/findify/findify-js/commit/5296fd68151f4c3531e9ea7b0bc704e3c771b210))
+
+
+### Features
+
+* Build type declarations when building react-connect ([431a6b8](https://github.com/findify/findify-js/commit/431a6b8f462ea0be9fc8f2d0794894187838c5cb))
+
+
+
+
+
 <a name="0.6.8"></a>
 ## [0.6.8](https://github.com/findify/findify-js/compare/@findify/react-connect@0.6.7...@findify/react-connect@0.6.8) (2021-03-05)
 

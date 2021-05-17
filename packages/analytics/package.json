@@ -1,7 +1,7 @@
 {
   "name": "@findify/analytics",
   "description": "Findify analytics",
-  "version": "3.5.4",
+  "version": "3.5.6",
   "main": "lib/index.js",
   "module": "lib/index.js",
   "unpkg": "dist/findify-analytics.js",
@@ -44,9 +44,9 @@
   "devDependencies": {
     "babel-loader": "^8.2.2",
     "cross-env": "^7.0.3",
+    "debug": "^4.3.1",
     "del-cli": "^3.0.1",
     "doctoc": "^2.0.0",
-    "debug": "^4.3.1",
     "npm-run-all": "^4.1.5",
     "ts-node": "^9.1.1",
     "tslint": "^5.20.1",

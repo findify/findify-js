@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.5.9](https://github.com/findify/findify-js/compare/@findify/agent@1.5.8...@findify/agent@1.5.9) (2021-05-11)
+
+**Note:** Version bump only for package @findify/agent
+
+
+
+
+
+## [1.5.8](https://github.com/findify/findify-js/compare/@findify/agent@1.5.7...@findify/agent@1.5.8) (2021-05-11)
+
+
+### Bug Fixes
+
+* **@findify/agent:** fix request type path in sdk ([508c05c](https://github.com/findify/findify-js/commit/508c05c1d1d52bf509caa18c311185200788b759))
+* **@findify/agent,@findify/analytics,@findify/analytics-dom,@findify/bundle,@findify/store-configuration,@findify/react-components,@findify/react-connect,@findify/sdk:** update pagination component ([be4f3c9](https://github.com/findify/findify-js/commit/be4f3c907b9b2f714cbecba757448baae49b8bcf))
+* **@findify/agent,@findify/react-components:** change sdk types path ([1af72a7](https://github.com/findify/findify-js/commit/1af72a7302ff18d87c9f7c59c2bd8f0395e7c281))
+* **bundle:** split react and react-dom ([0a6cbd8](https://github.com/findify/findify-js/commit/0a6cbd8ea7041f919008db5335fae8db96a0d406))
+
+
+
+
+
 <a name="1.5.7"></a>
 ## [1.5.7](https://github.com/findify/findify-js/compare/@findify/agent@1.5.6...@findify/agent@1.5.7) (2021-02-06)
 

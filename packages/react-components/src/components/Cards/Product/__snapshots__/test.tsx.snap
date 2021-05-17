@@ -51,7 +51,7 @@ exports[`ProductCard view renders correctly 1`] = `
             "currency_config": Immutable.Map {
               "code": "USD",
               "symbol": "$",
-              "thousandsSeparator": ",",
+              "thousand": ",",
               "decimalSeparator": ".",
               "symbolOnLeft": true,
               "spaceBetweenAmountAndSymbol": false,
@@ -93,7 +93,7 @@ exports[`ProductCard view renders correctly 1`] = `
           "spaceBetweenAmountAndSymbol": false,
           "symbol": "$",
           "symbolOnLeft": true,
-          "thousandsSeparator": ",",
+          "thousand": ",",
         }
       }
       price="9.99"
@@ -117,7 +117,7 @@ exports[`ProductCard view renders correctly 1`] = `
           "currency_config": Immutable.Map {
             "code": "USD",
             "symbol": "$",
-            "thousandsSeparator": ",",
+            "thousand": ",",
             "decimalSeparator": ".",
             "symbolOnLeft": true,
             "spaceBetweenAmountAndSymbol": false,

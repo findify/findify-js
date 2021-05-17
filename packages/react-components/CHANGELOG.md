@@ -3,6 +3,84 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.12.3](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.12.2...@findify/react-components@0.12.3) (2021-05-12)
+
+**Note:** Version bump only for package @findify/react-components
+
+
+
+
+
+## [0.12.2](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.12.1...@findify/react-components@0.12.2) (2021-05-12)
+
+
+### Bug Fixes
+
+* **@findify/bundle,@findify/store-configuration,@findify/react-components:** replaced thousandSeparator with thousand in currency settings ([01619e0](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/01619e0ac764fbf743a5028d0b4cbbfabe102a69))
+
+
+
+
+
+## [0.12.1](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.12.0...@findify/react-components@0.12.1) (2021-05-11)
+
+**Note:** Version bump only for package @findify/react-components
+
+
+
+
+
+# [0.12.0](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.11.20...@findify/react-components@0.12.0) (2021-05-11)
+
+
+### Bug Fixes
+
+* **@findify/agent,@findify/analytics,@findify/analytics-dom,@findify/bundle,@findify/store-configuration,@findify/react-components,@findify/react-connect,@findify/sdk:** update pagination component ([be4f3c9](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/be4f3c907b9b2f714cbecba757448baae49b8bcf))
+* **@findify/analytics-dom,@findify/bundle,@findify/cli,@findify/react-components,@findify/sdk:** improve performance ([13f1560](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/13f15603bd16caa94b75d29fdb00a0c239371389))
+* **@findify/analytics,@findify/analytics-dom,@findify/bundle,@findify/store-configuration,@findify/react-components:** add dwell telemetry ([ed5374b](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/ed5374beb87c808e008a0cdac689201fffe628e7))
+* **@findify/bundle,@findify/react-components:** change alignment of items in horizontal mode ([33fd7a0](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/33fd7a0c9cbc7bce341044c2744ff8636382324e))
+* **@findify/bundle,@findify/react-components:** improve performance, Fix translations ([2b2c576](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/2b2c576ddd671c58a93091b0d3af2dfef31142b9))
+* **@findify/bundle,@findify/react-components:** update range facet ([f1fe7b8](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/f1fe7b856ffe111da7ca8ba95be850903296a3f8))
+* **@findify/bundle,@findify/react-components,@findify/react-connect:** fix memory leak in connectors & improve lazy results ([d3ad008](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/d3ad00820b6b3b0e252ac09f80e702f3f0ee11d0))
+* **@findify/bundle,@findify/store-configuration,@findify/react-components:** update breakpoint scheme ([794b80c](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/794b80c808c1fc430503e7b222556cfaf7e515ca))
+* **@findify/bundle,@findify/store-configuration,@findify/react-components:** update breakpoints type and add layouts ([06e65e0](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/06e65e027be2acafc58b919109e3fda3f9914aee))
+* **@findify/bundle,@findify/store-configuration,@findify/react-components:** update range facet ([8409d83](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/8409d83882edaabf50c419909d4d0ffaff9ecff5))
+* **@findify/bundle,@findify/store-configuration,@findify/react-components:** update recommendation breakpoints ([1b7d2af](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/1b7d2af2387dda297dac91c8ea04f3e3ddde6859))
+* **@findify/bundle,@findify/store-configuration,@findify/react-components,@findify/react-connect:** update autocomplete templates ([728dd04](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/728dd04cf39300872e5e38f48d0d34e9a382351c))
+* **@findify/react-components:** change arrow icon direction when dropdown is open ([3f153fc](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/3f153fc5aaa1b6afdeace1af99af96bc857736d6))
+* **@findify/react-components:** update components ([011f9d1](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/011f9d1068d79fa18674d30ffb792a51ea41f54b))
+* **@findify/react-components,@findify/react-connect:** improve sort component ([2bc066d](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/2bc066de23b05a00d9c252282ee102349141a2d4))
+* **@findify/store-configuration,@findify/react-components:** add types to translation function & convert transations to types ([50c8d7b](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/50c8d7b4114d0bb9df52bf043e91b1aec7aa6d6c))
+* **@findify/store-configuration,@findify/react-components:** update translations ([5695ef0](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/5695ef051a96ff35e2cac9daaab11326fb6bc0f2))
+* **@findify/store-configuration,@findify/react-components,@findify/react-connect:** update configuration and components structure ([0e34f81](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/0e34f8146a70d973ca0450046208a64359ded067))
+* **bundle, react-components:** better grid ([06758ec](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/06758ec6a59f85af6ed6d64f75871882c1bc4ce0))
+* **bundle, react-components:** hack webpack bootstrap ([8f7f8e9](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/8f7f8e9dff536591ba19b7b69b1a35be9301c42b))
+* **react-components:** add ability to split and load modules; Load not necessary UI libs dynamically ([3b8399d](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/3b8399d08ec784b6420010d2c85894ab588113a9))
+* **react-components:** add horizontal filters option ([6048eba](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/6048eba8b3fb184985e6ef21ce0ada9ea5530e36))
+* **react-components:** fixes issues with multiple rec widgets on one page, ADA for the arrows and ar ([cd00188](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/cd00188e92f68570b1155c1d9dc6f90500ab2ef6))
+* **react-components:** minor updates ([e7b8816](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/e7b88160cb4659a78313a9e829fc648e3e1ea933))
+* **react-components:** remove list from grid ([484b9f7](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/484b9f7cef5f98d6eb25467fd00d6586b79d9dd2))
+* **react-components:** switch to use Icon component ([b33025c](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/b33025c9092a76065ddd71d24a8104f0debb5492))
+* **react-components:** update grid ([369519f](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/369519f94a8d6c96a2d59ad770709d49da4f1e96))
+* **react-components:** update grid to support IE10/IE11 ([3500444](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/3500444bc92d06118422553680e5f4e0eeef6729))
+* **react-components:** update swiper and add custom navigtion ([429d5a3](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/429d5a3d71a6ea1098540b1a9d106420186c2d19))
+* **react-components, bundle:** fix issue with default offset in searh, improve color facets ([c12878d](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/c12878dafdba1627a37f455cd8813d03719d738c))
+* **react-components, react-connect:** fix UI and ADA issues ([2d6558e](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/2d6558e8e43ead0da263ee01ad4570ccc2b2ccbe))
+* **react-components, sdk:** fix env variable in SDK; Add title to icons ([915a21a](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/915a21a5dc4d16ad03670630ec7af2160363c319))
+
+
+### Features
+
+* **@findify/react-components:** add class for mobile styles ([1f39240](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/1f392404703fe16f58201e9168b936c426e355df))
+* **@findify/react-components:** implement new fullscreen autocomplete ([78eaca2](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/78eaca217378ab77e26907df01b26c4b49839a07))
+* **@findify/react-components:** show/hide suggestions based on config flag in autocomplete ([b371aec](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/b371aec8d7e287980de76cd82cb76e0634e694bf))
+* **@findify/react-components:** style autocomplete suggestions based on template setting ([2af4084](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/2af408410054185483fbdd660267b65c7681514e))
+* **@findify/react-components:** use mobile class if mobile breakpoint is active ([89d218f](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/89d218f4bd623fffe849edce5603f4c158d5fa81))
+
+
+
+
+
 <a name="0.11.20"></a>
 ## [0.11.20](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.11.19...@findify/react-components@0.11.20) (2021-03-05)
 
