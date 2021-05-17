@@ -41,6 +41,7 @@ const analyticsDOM = (
 ) => {
   if (typeof props === 'function') return analytics(props);
   if (analyticsInstance) return analyticsInstance;
+
   analyticsInstance = analytics(props);
 
   if (
