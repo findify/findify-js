@@ -12,6 +12,8 @@ typings
 .released-packages
 .npmrc
 .env
+packages/config/index.d.ts
+packages/react-components/index.d.ts
 !packages/react-components/src/types
 !packages/config/src/types
 index.d.ts
