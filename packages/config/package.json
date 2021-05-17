@@ -12,7 +12,6 @@
   "files": [
     "lib/",
     "src/",
-    "types/",
     "index.d.ts"
   ],
   "scripts": {
