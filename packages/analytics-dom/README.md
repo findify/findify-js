@@ -25,5 +25,4 @@ yarn add @findify/analytics-dom
 ```
 
 ## License
-
 MIT

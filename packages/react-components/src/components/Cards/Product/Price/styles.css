@@ -1,6 +1,3 @@
-$font-family: $font-base;
-$font-size: $font-size-medium;
-
 .price-wrapper {
   margin: 5px 0;
   margin-top: 20px;
@@ -27,6 +24,7 @@ $font-size: $font-size-medium;
 
 
 .price, .compare {
+  $font-family: $font-base;
   font-family: $font-family;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -34,6 +32,7 @@ $font-size: $font-size-medium;
 
 .price {
   $color: $color-black;
+  $font-size: $font-size-medium;
   color: $color;
   font-size: $font-size;
   font-weight: bold;
@@ -41,6 +40,7 @@ $font-size: $font-size-medium;
 
 .sale-price {
   $color: $color-red;
+  $font-size: $font-size-medium;
   color: $color;
   font-size: $font-size;
   padding-right: 5px;

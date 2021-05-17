@@ -100,7 +100,7 @@
     "build:css": "node scripts/processCss.js",
     "build:ts": "node scripts/compile-ts.js",
     "build:types": "run-s build:ts merge:types",
-    "merge:types": "node scripts/combineTypes.js",
+    "merge:types": "node ../../scripts/combineTypes.js",
     "clean": "del lib types dist",
     "delete:types": "del types/",
     "lint": "tslint --project .",

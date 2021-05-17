@@ -27,7 +27,7 @@ export default ({
 
   const suggestionProps = useCallback(
     (item, index) => getSuggestionProps(index, config.get('widgetKey', '')),
-    []
+    [getSuggestionProps]
   );
 
   /** ACCESSIBILITY */

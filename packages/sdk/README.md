@@ -29,13 +29,7 @@ To use the SDK in the browser, simply add the following script tag to your
 HTML pages:
 
 ```
-<script src="https://findify-assets-2bveeb6u8ag.netdna-ssl.com/js-sdk/findify-sdk.2.0.0.min.js"></script>
-```
-
-if you want unminified version:
-
-```
-<script src="https://findify-assets-2bveeb6u8ag.netdna-ssl.com/js-sdk/findify-sdk.2.0.0.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@findify/sdk@latest/dist/findify-sdk.js></script>
 ```
 
 ### In Node.js

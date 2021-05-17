@@ -56,7 +56,6 @@ export const useAutocompleteLogic = () => {
       setSuggestionIndex(e);
     };
 
-    // console.log('mount');
     document
       .querySelector('body')!
       .addEventListener('keydown', handleButtonClick, true);

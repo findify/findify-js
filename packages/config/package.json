@@ -9,8 +9,16 @@
     "@findify/sdk": "^2.4.6",
     "immutable": "^4.0.0-rc.12"
   },
+  "files": [
+    "lib/",
+    "src/",
+    "types/",
+    "index.d.ts"
+  ],
   "scripts": {
-    "build:lib": "tsc",
+    "build:lib": "run-s build:ts merge:types",
+    "build:ts": "tsc",
+    "merge:types": "node ../../scripts/combineTypes.js",
     "build:dist": "#",
     "test": "#"
   }
