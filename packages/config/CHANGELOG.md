@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.2](https://github.com/findify/findify-js/compare/@findify/store-configuration@0.2.1...@findify/store-configuration@0.2.2) (2021-05-19)
+
+
+### Bug Fixes
+
+* **@findify/analytics,@findify/bundle,@findify/store-configuration,@findify/react-components,@findify/react-connect:** merge types for devtools, improve autocomplete ([9e66445](https://github.com/findify/findify-js/commit/9e66445a9d614c32204432d53a1854a578038a76))
+
+
+
+
+
 ## [0.2.1](https://github.com/findify/findify-js/compare/@findify/store-configuration@0.2.0...@findify/store-configuration@0.2.1) (2021-05-17)
 
 **Note:** Version bump only for package @findify/store-configuration

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.7](https://github.com/findify/findify-js/compare/@findify/react-connect@0.7.6...@findify/react-connect@0.7.7) (2021-05-19)
+
+
+### Bug Fixes
+
+* **@findify/analytics,@findify/bundle,@findify/store-configuration,@findify/react-components,@findify/react-connect:** merge types for devtools, improve autocomplete ([9e66445](https://github.com/findify/findify-js/commit/9e66445a9d614c32204432d53a1854a578038a76))
+
+
+
+
+
 ## [0.7.6](https://github.com/findify/findify-js/compare/@findify/react-connect@0.7.5...@findify/react-connect@0.7.6) (2021-05-17)
 
 **Note:** Version bump only for package @findify/react-connect

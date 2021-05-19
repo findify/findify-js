@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.6.1](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/analytics@3.6.0...@findify/analytics@3.6.1) (2021-05-19)
+
+
+### Bug Fixes
+
+* **@findify/analytics,@findify/bundle,@findify/store-configuration,@findify/react-components,@findify/react-connect:** merge types for devtools, improve autocomplete ([9e66445](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/9e66445a9d614c32204432d53a1854a578038a76))
+
+
+
+
+
 # [3.6.0](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/analytics@3.5.6...@findify/analytics@3.6.0) (2021-05-17)
 
 
