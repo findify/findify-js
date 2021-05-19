@@ -1,4 +1,4 @@
-export * as enums from './enums'
+export * as Types from './enums'
 export * as Immutable from './Immutable'
 
 export { Autocomplete } from './Autocomplete'
