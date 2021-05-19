@@ -14,7 +14,8 @@
     "dist",
     "lib",
     "src",
-    "types"
+    "types",
+    "index.d.ts"
   ],
   "dependencies": {
     "@findify/agent": "^1.5.9",
