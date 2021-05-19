@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.3](https://github.com/findify/findify-js/compare/@findify/store-configuration@0.2.2...@findify/store-configuration@0.2.3) (2021-05-19)
+
+
+### Bug Fixes
+
+* **@findify/store-configuration:** change enums exporting name ([6d9ab2f](https://github.com/findify/findify-js/commit/6d9ab2fdff4278b2fad786c6b93c562c453fc5ee))
+
+
+
+
+
 ## [0.2.2](https://github.com/findify/findify-js/compare/@findify/store-configuration@0.2.1...@findify/store-configuration@0.2.2) (2021-05-19)
 
 
