@@ -18,6 +18,7 @@ const getSliderOptions = (config) => {
       nextEl: `.${config.get('slot')}-next`,
       prevEl: `.${config.get('slot')}-prev`,
     },
+    spaceBetween: 12,
     slidesPerView: 12 / Number(columns),
   };
 };

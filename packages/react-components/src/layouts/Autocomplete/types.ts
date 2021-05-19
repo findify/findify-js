@@ -4,7 +4,7 @@ import chunks from 'helpers/chunks';
 export const LayoutTypes = {
   sidebar: chunks.autocomplete.sidebar,
   dropdown: chunks.autocomplete.dropdown,
-  'fullscreen-with-input': chunks.autocomplete.FullscreenWithInput,
+  'fullscreen-with-input': chunks.autocomplete.fullscreenWithInput,
 };
 
 /** Possible Autocomplete view types */

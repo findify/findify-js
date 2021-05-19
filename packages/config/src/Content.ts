@@ -1,6 +1,6 @@
 import { BaseFeature } from './BaseFeature'
 import { Breakpoints } from './Breakpoints';
-import { PaginationType } from './enums';
+import * as enums from './enums'
 
 export interface Content extends BaseFeature <'Content'> {
   /**
@@ -8,7 +8,7 @@ export interface Content extends BaseFeature <'Content'> {
    */
    pagination: {
     /** Type of pagination */
-    type: keyof typeof PaginationType,
+    type: keyof typeof enums.PaginationType,
     /** How many times will lazy load before show `Load more` button */
     autoLoadTimes: number // <- Lazy only
     /** Step between pages in pagination component eq: `< 1 [step] 3 [step] 5 >` */

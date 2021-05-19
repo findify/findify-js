@@ -9,9 +9,11 @@
   border-radius: 2px;
   text-align: left;
   padding: 10px 17px;
-  margin-left: 10px;
-  margin-right: 10px;
+  margin: 0 -17px;
   text-transform: capitalize;
+  &.horizontal{
+    margin: 0 2px;
+  }
   &:before {
     content: ' ';
     display: table;

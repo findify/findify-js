@@ -1,7 +1,19 @@
 .root {
-  &.padded {
-    padding: 0 16px;
-  }
+  vertical-align: top;
+  padding: 0 27px;
+  background: #fff;
+  margin-top: 20px;
+}
+
+.title{
+  margin-top: 0;
+  margin-bottom: 17px;
+  color: $color-grey-3;
+  font-size: $font-size-small;
+  line-height: $font-size-small;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-family: $font-base;
 }
 
 .grid-column-class:not(:last-child) {

@@ -11,7 +11,7 @@ type CopyMaybe<T, U> = Maybe<T> extends T ? Maybe<U> : U;
 type CopyAnyMaybe<T, U, V> = CopyMaybe<T, V> | CopyMaybe<U, V>;
 type MayBePrimitive<T> = T extends Record<string, any> ? Factory<T> : T
 
-export interface Factory<State> extends Map<keyof State, any>{
+export interface Factory<State> extends Map<keyof State, any> {
   toJS(): State;
   get<I extends keyof State>(key: I): MayBePrimitive<State[I]>;
   get<I extends keyof State, NSV>(key: I, notSetValue: NSV): MayBePrimitive<State[I]> | NSV;
@@ -81,3 +81,4 @@ type FeaturesMapping = {
 }
 
 export type SpecificConfig<T extends keyof typeof enums.Feature> = FeaturesMapping[T]
+

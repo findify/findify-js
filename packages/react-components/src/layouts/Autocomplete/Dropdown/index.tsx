@@ -6,7 +6,6 @@ import Tip from 'components/autocomplete/Tip';
 import ProductMatches from 'components/autocomplete/ProductMatches';
 import SearchSuggestions from 'components/autocomplete/SearchSuggestions';
 import { useSuggestions } from '@findify/react-connect';
-import cx from 'classnames';
 import { ThemedSFCProps, ISuggestion, MJSValue } from 'types';
 import { List } from 'immutable';
 import { usePosition } from 'layouts/Autocomplete/Dropdown/trackPosition';
@@ -16,69 +15,12 @@ import useTranslations from 'helpers/useTranslations';
 import styles from 'layouts/Autocomplete/Dropdown/styles.css';
 import { Immutable } from '@findify/store-configuration';
 import { useEffect } from 'react';
-import { AutocompleteType } from '../types';
 
 export interface IAutocompletePanel extends ThemedSFCProps {
   config: Immutable.AutocompleteConfig;
   isTrendingSearches?: boolean;
   [x: string]: any;
 }
-
-/** Layout column mapping */
-export const Suggestions = ({
-  config,
-  theme = styles,
-  isTrendingSearches,
-  ...rest
-}: IAutocompletePanel) => {
-  const translate = useTranslations();
-  return (
-    <div className={theme.suggestionsContainer}>
-      <h4
-        className={cx(theme.typeTitle, theme.suggestionsTitle, {
-          [theme.trendingTitle]: isTrendingSearches,
-        })}
-      >
-        {isTrendingSearches
-          ? translate('autocomplete.trendingSearches')
-          : translate('autocomplete.suggestionsTitle')}
-      </h4>
-      <SearchSuggestions
-        className={theme.searchSuggestions}
-        widgetKey={config.get('widgetKey')}
-        isTrendingSearches={isTrendingSearches}
-        {...rest}
-      />
-    </div>
-  );
-};
-
-export const Products = ({
-  config,
-  theme = styles,
-  isTrendingSearches,
-  ...rest
-}: IAutocompletePanel) => {
-  const translate = useTranslations();
-  return (
-    <div className={theme.productMatchesContainer}>
-      <h4
-        className={cx(theme.typeTitle, {
-          [theme.trendingTitle]: isTrendingSearches,
-        })}
-      >
-        {isTrendingSearches
-          ? translate('autocomplete.trendingProducts')
-          : translate('autocomplete.productMatches')}
-      </h4>
-      <ProductMatches
-        className={theme.productMatches}
-        config={config}
-        {...rest}
-      />
-    </div>
-  );
-};
 
 /** Props that SearchOrZero component accepts */
 export interface ISearchOrZeroProps {
@@ -126,7 +68,6 @@ export default ({
   theme = styles,
   config,
   isFullScreen,
-  ...rest
 }: IAutocompleteDropdownProps) => {
   const { suggestions, meta } = useSuggestions();
   const { selectedSuggestion, closeAutocomplete } = useAutocompleteLogic();
@@ -163,20 +104,15 @@ export default ({
           className={theme.container}
           columns={config.getIn(['breakpoints', 'layout'], 'fit|auto')}
         >
-          <Suggestions
-            {...rest}
+          <SearchSuggestions
             display-if={config.getIn(['suggestions', 'display'])}
             selectedSuggestion={selectedSuggestion}
-            theme={theme}
             config={config}
-            icon={isTrendingSearches && 'Fire'}
             isTrendingSearches={isTrendingSearches}
             template={config.getIn(['suggestions', 'template'])}
           />
-          <Products
-            {...rest}
+          <ProductMatches
             display-if={config.getIn(['productMatches', 'display'])}
-            theme={theme}
             config={config}
             isTrendingSearches={isTrendingSearches}
           />

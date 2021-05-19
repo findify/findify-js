@@ -1,3 +1,10 @@
+.root{
+  vertical-align: top;
+  background: #fff;
+  padding: 0 27px;
+  margin-top: 20px;
+}
+
 .list {
   list-style-type: none;
   margin: 0;
@@ -14,3 +21,13 @@
   padding-bottom: 25px;
 }
 
+.title{
+  margin-top: 0;
+  margin-bottom: 17px;
+  color: $color-grey-3;
+  font-size: $font-size-small;
+  line-height: $font-size-small;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-family: $font-base;
+}

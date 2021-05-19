@@ -13,26 +13,6 @@
   position: relative;
 }
 
-.type-title {
-  margin-top: 0;
-  margin-bottom: 17px;
-  color: $color-grey-3;
-  font-size: $font-size-small;
-  line-height: $font-size-small;
-  font-weight: bold;
-  text-transform: uppercase;
-  font-family: $font-base;
-}
-
-.suggestions-title{
-  padding: 0 27px;
-  white-space: nowrap;
-}
-
-.trending-title {
-  font-style: italic;
-}
-
 .overlay {
   position: fixed;
   top: 0;
@@ -70,23 +50,8 @@
 
 .container {
   width: 100%;
-  margin-top: 38px;
+  margin-top: 18px;
   margin-bottom: 38px;
-}
-
-.product-matches-container {
-  vertical-align: top;
-  padding: 0 38px;
-  background: #fff;
-  &.padded {
-    padding: 0 16px;
-  }
-}
-
-.suggestions-container {
-  vertical-align: top;
-  padding: 0;
-  background: #fff;
 }
 
 .container {

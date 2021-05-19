@@ -16,11 +16,12 @@ export default ({
   selectedSuggestion = undefined,
   theme = styles,
   template = 'vertical',
+  config,
+  isTrendingSearches,
 }) => {
   const {
     suggestions,
     getSuggestionProps,
-    config,
   } = useSuggestions<Immutable.AutocompleteConfig>();
   const { query } = useQuery();
   const translate = useTranslations();
@@ -49,7 +50,12 @@ export default ({
   /** === */
 
   return (
-    <>
+    <div className={theme.root}>
+      <h4 className={theme.title}>
+        {isTrendingSearches
+          ? translate('autocomplete.trendingSearches')
+          : translate('autocomplete.suggestionsTitle')}
+      </h4>
       <ul
         display-if={suggestions && query}
         className={cx(theme.list, theme[template])}
@@ -63,6 +69,9 @@ export default ({
           array={suggestions}
           factory={SuggestionItem}
           tabIndex={0}
+          template={template}
+          icon={isTrendingSearches && 'Fire'}
+          isTrendingSearches={isTrendingSearches}
           selectedSuggestion={selectedSuggestion}
           query={query}
           mapProps={suggestionProps}
@@ -72,6 +81,6 @@ export default ({
         {translate('suggestions.accessibleTitle')}
       </span>
       {announcement}
-    </>
+    </div>
   );
 };

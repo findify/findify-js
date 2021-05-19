@@ -1,4 +1,4 @@
-import * as enums from './enums';
+import * as enums from './enums'
 import { Autocomplete } from './Autocomplete'
 import { Recommendation } from './Recommendation'
 import { Search } from './Search'
