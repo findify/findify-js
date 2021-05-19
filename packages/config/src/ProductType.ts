@@ -1,4 +1,4 @@
-import { ProductPriceTemplate, ProductVariantsTemplate, ProductTemplate } from './enums';
+import * as enums from './enums'
 
 export type ProductType = {
 
@@ -7,13 +7,13 @@ export type ProductType = {
    * Custom string value could be used if you need to have
    * specific view in widget
    */
-  template: keyof typeof ProductTemplate | string
+  template: keyof typeof enums.ProductTemplate | string
 
   /**
    * Product price component display options
    */
   price: {
-		template: keyof typeof ProductPriceTemplate
+		template: keyof typeof enums.ProductPriceTemplate
   },
 
   /**
@@ -43,7 +43,7 @@ export type ProductType = {
    */
   variants: {
     display: boolean
-		template: keyof typeof ProductVariantsTemplate
+		template: keyof typeof enums.ProductVariantsTemplate
   },
   
   /**

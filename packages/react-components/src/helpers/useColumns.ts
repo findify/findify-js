@@ -24,7 +24,6 @@ export default (
     if (typeof keys.current[index] === 'undefined') return String(defaultValue);
 
     const match = media.find(({ width }) => width === keys.current[index]);
-    console.log(match);
     return String(match ? match.value : defaultValue);
   };
 

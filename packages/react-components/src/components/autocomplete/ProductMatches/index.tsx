@@ -8,15 +8,19 @@ import Grid from 'components/common/Grid';
 import MapArray from 'components/common/MapArray';
 import { useItems } from '@findify/react-connect';
 import { Immutable } from '@findify/store-configuration';
+import useTranslations from 'helpers/useTranslations';
 
-export default ({ theme = styles, config, padded = false }) => {
+export default ({ theme = styles, config, isTrendingSearches }) => {
   const { items } = useItems<Immutable.AutocompleteConfig>();
+  const translate = useTranslations();
   return (
-    <div
-      className={cx(theme.root, padded && theme.padded)}
-      display-if={items.size}
-    >
-      <Grid columns={config.getIn(['breakpoints', 'grid'], '12')}>
+    <div className={theme.root} display-if={items.size}>
+      <h4 className={theme.title}>
+        {isTrendingSearches
+          ? translate('autocomplete.trendingProducts')
+          : translate('autocomplete.productMatches')}
+      </h4>
+      <Grid columns={config.getIn(['breakpoints', 'grid'], '12')} gutter={12}>
         {MapArray({
           array: items,
           limit: config.getIn(['defaultRequestParams', 'item_limit']),

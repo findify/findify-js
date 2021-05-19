@@ -48,7 +48,11 @@ export default (item) => {
         items: Object.keys(cache).map((k) => cache[k]),
       });
     }, 'list');
-    return () => observer && observer.unobserve(container.current as any);
+
+    return () => {
+      if (observer && container.current)
+        observer.unobserve(container.current as any);
+    };
   }, []);
 
   return container;

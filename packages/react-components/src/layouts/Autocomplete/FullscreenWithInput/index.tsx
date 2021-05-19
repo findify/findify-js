@@ -1,5 +1,5 @@
 /**
- * @module layouts/Autocomplete/Fullscreen
+ * @module layouts/Autocomplete/FullscreenWithInput
  */
 
 import styles from 'layouts/Autocomplete/FullscreenWithInput/styles.css';
@@ -9,8 +9,9 @@ import useTranslations from 'helpers/useTranslations';
 import { useAutocompleteLogic } from 'layouts/Autocomplete/withAutocompleteLogic';
 import React, { useCallback, useEffect, useRef } from 'react';
 import Grid from 'components/common/Grid';
-import { Products, Suggestions } from 'layouts/Autocomplete/Dropdown';
 import Icon from 'components/Icon';
+import SearchSuggestions from 'components/autocomplete/SearchSuggestions';
+import ProductMatches from 'components/autocomplete/ProductMatches';
 
 export interface IAutocompleteDropdownProps {
   /** MJS Configuration */
@@ -102,18 +103,14 @@ export default ({
           </div>
         </div>
         <Grid className={theme.container} columns="fit|auto">
-          <Suggestions
-            {...rest}
+          <SearchSuggestions
             display-if={config.getIn(['suggestions', 'display'])}
             config={config}
             selectedSuggestion={selectedSuggestion}
-            theme={theme}
             isTrendingSearches={isTrendingSearches}
           />
-          <Products
-            {...rest}
+          <ProductMatches
             display-if={config.getIn(['productMatches', 'display'])}
-            theme={theme}
             config={config}
             isTrendingSearches={isTrendingSearches}
           />

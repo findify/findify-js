@@ -45,8 +45,6 @@ export default ({ theme = styles, card = ProductCard }) => {
       <Grid
         role="main"
         aria-label={translate('search.title')}
-        wrapperComponent="ul"
-        columnComponent="li"
         columns={config.getIn(['breakpoints', 'grid'], {
           400: 6,
           600: 4,

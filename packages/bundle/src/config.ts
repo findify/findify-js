@@ -134,13 +134,13 @@ const config: Config = {
         },
       },
       desktop: {
-        template: 'fullscreen',
+        template: 'sidebar',
         breakpoints: {
           layout: [{ width: 0, value: '12' }],
-          grid: [{ width: 0, value: 3 }],
+          grid: [{ width: 0, value: 6 }],
         },
         product: {
-          template: 'horizontal',
+          template: 'vertical',
           price: {
             template: 'min-max',
           },
@@ -159,7 +159,7 @@ const config: Config = {
         overlay: true,
         suggestions: {
           display: true,
-          template: 'vertical',
+          template: 'horizontal',
         },
         productMatches: {
           display: true,
@@ -169,8 +169,8 @@ const config: Config = {
     search: {
       disableAutoRequest: false,
       facets: {
-        position: 'left',
-        sticky: false,
+        position: 'top',
+        sticky: true,
         accordion: false,
         hidable: true,
         filters: {

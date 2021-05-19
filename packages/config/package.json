@@ -17,8 +17,11 @@
   "scripts": {
     "build:lib": "run-s build:ts merge:types",
     "build:ts": "tsc",
-    "merge:types": "node ../../scripts/combineTypes.js",
+    "merge:types": "npx dts-bundle --name @findify/store-configuration --main types/index.d.ts --out ../index.d.ts",
     "build:dist": "#",
     "test": "#"
+  },
+  "dependencies": {
+    "dts-bundle": "^0.7.3"
   }
 }

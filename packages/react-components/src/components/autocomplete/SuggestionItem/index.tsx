@@ -48,6 +48,7 @@ export default ({
   onClick,
   icon,
   isTrendingSearches,
+  template,
 }: ISuggestionItemProps) => {
   const highlighted = selectedSuggestion === index;
   const value = item?.get('value');
@@ -59,7 +60,7 @@ export default ({
       role="option"
       id={`suggestion-${Math.abs(item.hashCode())}`}
       aria-selected={highlighted}
-      className={cx(theme.suggestion, {
+      className={cx(theme.suggestion, theme[template], {
         [theme.highlighted]: highlighted,
         [theme.withIcon]: !!icon,
         [theme.trending]: isTrendingSearches,

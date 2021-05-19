@@ -85,29 +85,10 @@
   }
 }
 
-.type-title {
-  margin: 0;
-  color: $color-grey-3;
-  font-size: $font-size-small;
-  line-height: $font-size-small;
-  font-weight: bold;
-  text-transform: uppercase;
-  font-family: $font-base;
-  padding: 25px 27px 17px 27px;
-}
-
-.suggestions {
-  width: 100%;
-  background: $color-white;
-  padding-bottom: 15px;
-}
 
 .content{
-  display: flex;
-  height: 100%;
   overflow: hidden;
   overflow-y: auto;
-  flex-direction: column;
 }
 
 .products{}

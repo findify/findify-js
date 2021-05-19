@@ -1,15 +1,12 @@
-import {
-  Autocomplete, Search, SmartCollection, Recommendations, Content
-} from '@findify/sdk/lib/request'
+import * as Request from '@findify/sdk/lib/request'
 import { ProductType } from './ProductType';
-import { Breakpoints } from './Breakpoints';
 
 export type RequestParams = {
-  Autocomplete: Autocomplete.Params,
-  Search: Search.Params,
-  SmartCollection: SmartCollection.Params,
-  Recommendation: Recommendations.Slot,
-  Content: Content.Params,
+  Autocomplete: Request.Autocomplete.Params,
+  Search: Request.Search.Params,
+  SmartCollection: Request.SmartCollection.Params,
+  Recommendation: Request.Recommendations.Slot,
+  Content: Request.Content.Params,
 }
 
 type IBaseFeature<T extends keyof RequestParams> = {

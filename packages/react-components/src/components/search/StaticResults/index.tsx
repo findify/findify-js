@@ -19,8 +19,6 @@ export default ({ theme = styles }) => {
       <Grid
         role="main"
         aria-label={translate('search.title')}
-        wrapperComponent="ul"
-        columnComponent="li"
         gutter={12}
         columns={config.getIn(['breakpoints', 'grid'], {
           400: 6,
