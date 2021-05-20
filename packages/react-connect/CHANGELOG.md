@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.9](https://github.com/findify/findify-js/compare/@findify/react-connect@0.7.8...@findify/react-connect@0.7.9) (2021-05-20)
+
+
+### Bug Fixes
+
+* **@findify/react-connect:** push merget types to npm ([aac2305](https://github.com/findify/findify-js/commit/aac23053e9a35d05dae902ca704d9f144a93f707))
+
+
+
+
+
 ## [0.7.8](https://github.com/findify/findify-js/compare/@findify/react-connect@0.7.7...@findify/react-connect@0.7.8) (2021-05-19)
 
 **Note:** Version bump only for package @findify/react-connect
