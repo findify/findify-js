@@ -9,6 +9,7 @@ import Text from 'components/Text';
 import { ThemedSFCProps, IFacet, MJSConfiguration } from 'types';
 import { List } from 'immutable';
 import { useCallback, useMemo } from 'react';
+import { Immutable } from '@findify/store-configuration';
 
 const withClickHandler = withHandlers({
   onClick: ({ selectFacet, item }) => () => selectFacet(item.get('name')),
@@ -21,7 +22,7 @@ export interface IMobileFacetsLabelProps extends ThemedSFCProps {
   /** Count of filters enabled */
   filterCount?: number;
   /** MJS Configuration */
-  config: MJSConfiguration;
+  config: Immutable.SearchConfig;
   /** Click handler to open facet customization menu */
   onClick: (evt?: React.MouseEvent<any>) => any;
 }
@@ -78,7 +79,7 @@ export interface IMobileFacetsTitlesProps extends ThemedSFCProps {
   /** Method to select facet by its name */
   selectFacet: (name: string) => any;
   /** MJS Configuration */
-  config: MJSConfiguration;
+  config: Immutable.SearchConfig;
 }
 
 const MobileFacetsTitlesView = ({

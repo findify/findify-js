@@ -7,7 +7,7 @@ import {
   redirectToPage,
 } from '../../core/location';
 import { Events } from '../../core/events';
-import { maybeScrollTop, scrollTo } from '../../helpers/scrollTo';
+import { maybeScrollTop } from '../../helpers/scrollTo';
 import {
   hideFallback,
   showFallback,
@@ -66,9 +66,6 @@ export default (render, widget: Widget<Immutable.SearchConfig>) => {
 
   /** Listen to changes */
   agent.on('change:query', (q) => setQuery(q.toJS()));
-
-  /** Switch to recommendation if query not present */
-  // agent.on('change:items', handleFirstResponse);
 
   /** Unsubscribe from events on instance destroy  */
   const unsubscribe = __root.listen((event, prop) => {

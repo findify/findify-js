@@ -1,8 +1,8 @@
 import { Config } from '@findify/store-configuration';
 
 const config: Config = {
-  key: '680d373d-06b3-442b-bebc-d35a5b0868b3',
-  merchantId: 621,
+  key: '3f50502d-4c0f-4d90-be7b-d1db0f1ad953',
+  merchantId: 8472,
   status: 'live',
   platform: 'shopify',
   mobileBreakpoint: 768,
@@ -19,38 +19,33 @@ const config: Config = {
   selectors: {
     '#findify_results': 'search',
     "input[name='q']": 'autocomplete',
-    '#product-findify-rec-6': 'recommendation',
-    '#custom-findify-rec-1': 'recommendation',
-    '#product-findify-rec-7': 'recommendation',
-    '#product-findify-rec-8': 'recommendation',
-    '#home-findify-rec-1': 'recommendation',
-    '#cart-findify-rec-3': 'recommendation',
   },
   currency: {
-    code: 'SEK',
+    code: 'USD',
     decimalDigits: 2,
-    decimalSeparator: ',',
-    spaceBetweenAmountAndSymbol: true,
-    symbol: 'kr',
-    symbolOnLeft: false,
-    thousand: '.',
+    decimalSeparator: '.',
+    spaceBetweenAmountAndSymbol: false,
+    symbol: '$',
+    symbolOnLeft: true,
+    thousand: ',',
   },
-  collections: ['collections/test-col-2000', 'collections/nested-categories'],
+  collections: [],
   stickers: {
     discount: false,
     outOfStock: false,
   },
   colorMapping: {
-    white: '#awfawf',
-    Blue: '#00a',
-    awfawf: '',
-    awfawffff: '#123123',
-    awfawfawfawff: '#awfaw',
+    Green: '#00ff00',
+    Blue: '#0000ff',
+    Black: '#000000',
+    White: '#ffffff',
+    Grey: '#cccccc',
+    Red: '#ff0000',
   },
   translations: {
     'suggestions.accessibleTitle':
       'Use up and down arrows to review and enter to select.',
-    'product.availableInVariants': 'Available in %s variants',
+    'product.availableInVariants': 'Available in %s options',
     'facets.less': 'Less',
     'facets.more': 'More',
     'facets.allCategories': 'All Categories',
@@ -59,6 +54,7 @@ const config: Config = {
     'facets.submit': 'go',
     'facets.filters': 'Filters',
     'facets.clearAll': 'Clear all',
+    'facets.hide': 'Hide',
     'facets.back': 'Back to menu',
     'facets.done': 'Done',
     'facets.seeResults': 'See results',
@@ -83,7 +79,7 @@ const config: Config = {
     'zeroresults.sorryNoResults':
       "Oh no! Your search for <span class=\"findify-query\"></span> did not match any products.<br/>But don't give up, we're here to help you find what you're looking for.",
     'zeroresults.noResultsFound':
-      'We can\'t seem to find any products that match your search for \\"%s\\"',
+      'We can\'t seem to find any products that match your search for "%s"',
     'zeroresults.noResultEmptyQuery':
       "We can't seem to find any products that match your search",
     'zeroresults.tryOneOfThese': 'Try one of these instead:',
@@ -93,23 +89,39 @@ const config: Config = {
     'autocomplete.suggestionsTitle': 'Search suggestions',
     'autocomplete.trendingProducts': 'Trending products',
     'autocomplete.productMatches': 'Product matches',
+    'autocomplete.tipResults': 'View all results for',
+    'autocomplete.viewAll': 'View all results for',
     'autocomplete.placeholder': 'What are you looking for?',
   },
   features: {
     autocomplete: {
-      renderIn: 'body',
       instant: false,
-      handleFormSubmit: false,
+      handleFormSubmit: true,
       enableTrendingSearches: true,
+      renderIn: 'body',
+      defaultRequestParams: {
+        suggestion_limit: 10,
+        item_limit: 4,
+      },
       mobile: {
         template: 'sidebar',
         position: 'left',
         breakpoints: {
-          layout: [{ width: 0, value: 'fit|auto' }],
-          grid: [{ width: 0, value: 3 }],
+          grid: [
+            {
+              width: 400,
+              value: 8,
+            },
+          ],
+          layout: [
+            {
+              width: 0,
+              value: 12,
+            },
+          ],
         },
         product: {
-          template: 'horizontal',
+          template: 'vertical',
           price: {
             template: 'min-max',
           },
@@ -120,11 +132,16 @@ const config: Config = {
             lines: 2,
           },
           variants: {
-            display: false,
-            template: 'text',
+            display: true,
+            template: 'select',
+          },
+          image: {
+            aspectRatio: 1,
+            lazy: false,
+            lazyOffset: 0,
           },
         },
-        overlay: true,
+        overlay: false,
         suggestions: {
           display: true,
           template: 'vertical',
@@ -134,10 +151,20 @@ const config: Config = {
         },
       },
       desktop: {
-        template: 'sidebar',
+        template: 'fullscreen',
         breakpoints: {
-          layout: [{ width: 0, value: '12' }],
-          grid: [{ width: 0, value: 6 }],
+          grid: [
+            {
+              width: 1100,
+              value: 3,
+            },
+          ],
+          layout: [
+            {
+              width: 0,
+              value: 'fit|auto',
+            },
+          ],
         },
         product: {
           template: 'vertical',
@@ -151,12 +178,17 @@ const config: Config = {
             lines: 2,
           },
           variants: {
-            display: false,
-            template: 'text',
+            display: true,
+            template: 'select',
+          },
+          image: {
+            aspectRatio: 1,
+            lazy: false,
+            lazyOffset: 0,
           },
         },
-        position: 'right',
-        overlay: true,
+        position: 'left',
+        overlay: false,
         suggestions: {
           display: true,
           template: 'horizontal',
@@ -169,43 +201,43 @@ const config: Config = {
     search: {
       disableAutoRequest: false,
       facets: {
-        position: 'top',
+        position: 'right',
         sticky: true,
-        accordion: false,
+        accordion: true,
         hidable: true,
         filters: {
-          'custom_fields.color_variants': {
+          brand: {
             type: 'text',
-            label: 'color_variants',
-            initiallyCollapsed: false,
+            label: 'Brand',
+            initiallyCollapsed: true,
             maxItemsCount: 6,
             precision: 0,
           },
-          'custom_fields.type': {
-            type: 'text',
-            label: 'type',
-            initiallyCollapsed: false,
+          color: {
+            type: 'color',
+            label: 'Color',
+            initiallyCollapsed: true,
             maxItemsCount: 6,
             precision: 0,
           },
-          'custom_fields.price': {
+          size: {
             type: 'text',
-            label: 'price',
-            initiallyCollapsed: false,
+            label: 'Size',
+            initiallyCollapsed: true,
             maxItemsCount: 6,
             precision: 0,
           },
-          'custom_fields.size': {
-            type: 'text',
-            label: 'size',
-            initiallyCollapsed: false,
+          price: {
+            type: 'price',
+            label: 'Price',
+            initiallyCollapsed: true,
             maxItemsCount: 6,
             precision: 0,
           },
           category: {
             type: 'category',
-            label: 'category',
-            initiallyCollapsed: false,
+            label: 'Category',
+            initiallyCollapsed: true,
             maxItemsCount: 6,
             precision: 0,
           },
@@ -241,17 +273,22 @@ const config: Config = {
             order: 'desc',
             label: "What's new",
           },
+          {
+            field: 'shopify_images_url',
+            order: 'desc',
+            label: 'Test Sorting',
+          },
         ],
       },
       pagination: {
-        type: 'lazy',
+        type: 'static',
         autoLoadTimes: 2,
         step: 2,
       },
       product: {
         template: 'vertical',
         price: {
-          template: 'min-max',
+          template: 'to-max',
         },
         title: {
           lines: 3,
@@ -261,7 +298,7 @@ const config: Config = {
         },
         variants: {
           display: true,
-          template: 'text',
+          template: 'select',
         },
         image: {
           aspectRatio: 1,
@@ -270,11 +307,25 @@ const config: Config = {
         },
       },
       breakpoints: {
-        layout: [{ width: 0, value: 'fit|auto' }],
         grid: [
-          { width: 400, value: 6 },
-          { width: 600, value: 4 },
-          { width: 1000, value: 3 },
+          {
+            width: 400,
+            value: 6,
+          },
+          {
+            width: 600,
+            value: 4,
+          },
+          {
+            width: 1000,
+            value: 3,
+          },
+        ],
+        layout: [
+          {
+            width: 0,
+            value: 'fit|auto',
+          },
         ],
       },
       defaultRequestParams: {
@@ -299,7 +350,7 @@ const config: Config = {
       product: {
         template: 'vertical',
         price: {
-          template: 'min-max',
+          template: 'to-max',
         },
         title: {
           lines: 3,
@@ -309,7 +360,7 @@ const config: Config = {
         },
         variants: {
           display: true,
-          template: 'text',
+          template: 'select',
         },
         image: {
           aspectRatio: 1,
@@ -318,259 +369,209 @@ const config: Config = {
         },
       },
       breakpoints: {
-        layout: [{ width: 0, value: '3|auto' }],
         grid: [
-          { width: 600, value: 6 },
-          { width: 600, value: 4 },
-          { width: 1000, value: 3 },
+          {
+            width: 400,
+            value: 6,
+          },
+          {
+            width: 600,
+            value: 4,
+          },
+          {
+            width: 1000,
+            value: 3,
+          },
+        ],
+        layout: [
+          {
+            width: 0,
+            value: 'fit|auto',
+          },
         ],
       },
     },
-    recommendations: {
-      'product-findify-rec-6': {
-        disableAutoRequest: false,
-        breakpoints: {
-          grid: [
-            { width: 600, value: 6 },
-            { width: 600, value: 4 },
-            { width: 1000, value: 3 },
+    recommendations: {},
+  },
+  merchantName: 'findify-dev-store.myshopify.com',
+  mjs_version: '7.0.7',
+  components: {
+    uW8t: function (m, e, r) {
+      Object.defineProperty(e, '__esModule', {
+        value: true,
+      });
+
+      function _interop(obj) {
+        if (obj && obj.__esModule) {
+          return obj;
+        } else {
+          var newObj = {};
+
+          if (obj != null) {
+            for (var key in obj) {
+              if (Object.prototype.hasOwnProperty.call(obj, key)) {
+                var desc =
+                  Object.defineProperty && Object.getOwnPropertyDescriptor
+                    ? Object.getOwnPropertyDescriptor(obj, key)
+                    : {};
+
+                if (desc.get || desc.set) {
+                  Object.defineProperty(newObj, key, desc);
+                } else {
+                  newObj[key] = obj[key];
+                }
+              }
+            }
+          }
+
+          newObj.default = obj;
+          return newObj;
+        }
+      }
+
+      function __imp(p, n) {
+        try {
+          return _interop(r(p));
+        } catch (e) {
+          console.error('[Devtools]: Module "' + n + '" was not found!');
+        }
+      }
+
+      var _i0 = __imp('JgyH', 'classnames');
+
+      var _i1 = __imp('9SzA', 'components/common/Image');
+
+      var _i2 = __imp('oklL', 'components/Cards/Product/Rating');
+
+      var _i3 = __imp('4jvE', 'components/Cards/Product/Price');
+
+      var _i4 = __imp('iF0m', 'components/Cards/Product/Title');
+
+      var _i5 = __imp('/K0v', 'components/Cards/Product/Description');
+
+      var _i6 = __imp('Pr0S', 'components/Cards/Product/Variants');
+
+      var _i7 = __imp('RkLw', 'components/Cards/Product/styles.css');
+
+      var _i8 = __imp('ObWi', 'components/Cards/Product/Stickers');
+
+      var _i9 = __imp('gNLg', 'immutable');
+
+      var _i10 = __imp('/UHw', 'helpers/trackProductPosition');
+
+      var _i11 = __imp('APSE', 'react/jsx-runtime');
+
+      var _jsx = _i11['jsx'];
+      var _jsxs = _i11['jsxs'];
+
+      /**
+       * @module components/Cards/Product
+       */
+      var cx = _i0.default;
+      var Image = _i1.default;
+      var Rating = _i2.default;
+      var Price = _i3.default;
+      var Title = _i4.default;
+      var Description = _i5.default;
+      var Variants = _i6.default;
+      var styles = _i7.default;
+      var DiscountSticker = _i8['DiscountSticker'];
+      var OutOfStockSticker = _i8['OutOfStockSticker'];
+      var List = _i9['List'];
+      var trackProductPosition = _i10.default;
+      console.log('Product card updated 2');
+
+      e.default = function (_ref) {
+        var item = _ref.item,
+          _ref$theme = _ref.theme,
+          theme = _ref$theme === void 0 ? styles : _ref$theme,
+          className = _ref.className,
+          config = _ref.config,
+          _ref$Container = _ref.Container,
+          Container = _ref$Container === void 0 ? 'div' : _ref$Container;
+        var container = trackProductPosition(item);
+        return; /*#__PURE__*/
+        _jsxs(Container, {
+          ref: container,
+          className: cx(theme.root, theme[config.get('template')], className),
+          children: [
+            /*#__PURE__*/
+            _jsxs('div', {
+              className: theme.content,
+              children: [
+                !!item.getIn(['reviews', 'count']) ||
+                !!item.getIn(['reviews', 'total_reviews']) /*#__PURE__*/
+                  ? _jsx(Rating, {
+                      className: theme.rating,
+                      value: item.getIn(['reviews', 'average_score']),
+                      count:
+                        item.getIn(['reviews', 'count']) ||
+                        item.getIn(['reviews', 'total_reviews']),
+                    })
+                  : null /*#__PURE__*/,
+                _jsx(Variants, {
+                  config: config,
+                  item: item,
+                }),
+                !!item.get('title') /*#__PURE__*/
+                  ? _jsx(Title, {
+                      theme: theme,
+                      onClick: item.onClick,
+                      href: item.get('product_url'),
+                      text: item.get('title'),
+                    })
+                  : null,
+                !!item.get('description') /*#__PURE__*/
+                  ? _jsx(Description, {
+                      theme: theme,
+                      text: item.get('description'),
+                    })
+                  : null /*#__PURE__*/,
+                _jsx('div', {
+                  className: theme.divider,
+                }),
+                !!item.get('price') /*#__PURE__*/
+                  ? _jsx(Price, {
+                      className: theme.priceWrapper,
+                      item: item,
+                    })
+                  : null,
+                item.getIn(['stickers', 'out-of-stock']) /*#__PURE__*/
+                  ? _jsx(OutOfStockSticker, {
+                      config: config,
+                    })
+                  : null,
+              ],
+            }) /*#__PURE__*/,
+            _jsxs('div', {
+              className: theme.image,
+              onClick: item.onClick,
+              children: [
+                /*#__PURE__*/
+                _jsx(Image, {
+                  aspectRatio: config.getIn(['image', 'aspectRatio']),
+                  thumbnail: item.get('thumbnail_url'),
+                  src: item.get('image_url') || item.get('thumbnail_url'),
+                  alt: item.get('title'),
+                  lazy: config.getIn(['image', 'lazy']),
+                  offset: config.getIn(['image', 'lazyOffset']),
+                }),
+                config.getIn(['stickers', 'discount']) &&
+                item.get('discount', List()).size &&
+                item.getIn(['stickers', 'discount']) /*#__PURE__*/
+                  ? _jsx(DiscountSticker, {
+                      config: config,
+                      className: theme.discountSticker,
+                      discount: item.get('discount'),
+                    })
+                  : null,
+              ],
+            }),
           ],
-        },
-        product: {
-          template: 'vertical',
-          price: {
-            template: 'min-max',
-          },
-          title: {
-            lines: 3,
-          },
-          description: {
-            lines: 3,
-          },
-          variants: {
-            display: true,
-            template: 'text',
-          },
-          image: {
-            aspectRatio: 1,
-            lazy: true,
-            lazyOffset: 0,
-          },
-        },
-        defaultRequestParams: {},
-        enabled: true,
-        slot: 'product-findify-rec-6',
-        type: 'trending',
-        template: 'slider',
-        limit: 10,
-        minResultsToShow: 1,
-        title: 'asdf',
-        multipleIds: true,
-      },
-      'custom-findify-rec-1': {
-        disableAutoRequest: false,
-        breakpoints: {
-          grid: [
-            { width: 600, value: 6 },
-            { width: 600, value: 4 },
-            { width: 1000, value: 3 },
-          ],
-        },
-        product: {
-          template: 'vertical',
-          price: {
-            template: 'min-max',
-          },
-          title: {
-            lines: 3,
-          },
-          description: {
-            lines: 3,
-          },
-          variants: {
-            display: true,
-            template: 'text',
-          },
-          image: {
-            aspectRatio: 1,
-            lazy: true,
-            lazyOffset: 0,
-          },
-        },
-        defaultRequestParams: {},
-        enabled: true,
-        slot: 'custom-findify-rec-1',
-        type: 'trending',
-        template: 'slider',
-        limit: 10,
-        minResultsToShow: 1,
-        title: 'trending',
-        multipleIds: true,
-      },
-      'product-findify-rec-7': {
-        disableAutoRequest: false,
-        breakpoints: {
-          grid: [
-            { width: 600, value: 6 },
-            { width: 600, value: 4 },
-            { width: 1000, value: 3 },
-          ],
-        },
-        product: {
-          template: 'vertical',
-          price: {
-            template: 'min-max',
-          },
-          title: {
-            lines: 3,
-          },
-          description: {
-            lines: 3,
-          },
-          variants: {
-            display: true,
-            template: 'text',
-          },
-          image: {
-            aspectRatio: 1,
-            lazy: true,
-            lazyOffset: 0,
-          },
-        },
-        defaultRequestParams: {},
-        enabled: true,
-        slot: 'product-findify-rec-7',
-        type: 'trending',
-        template: 'slider',
-        limit: 10,
-        minResultsToShow: 1,
-        title: 'fdsa',
-        multipleIds: true,
-      },
-      'product-findify-rec-8': {
-        disableAutoRequest: false,
-        breakpoints: {
-          grid: [
-            { width: 600, value: 6 },
-            { width: 600, value: 4 },
-            { width: 1000, value: 3 },
-          ],
-        },
-        product: {
-          template: 'vertical',
-          price: {
-            template: 'min-max',
-          },
-          title: {
-            lines: 3,
-          },
-          description: {
-            lines: 3,
-          },
-          variants: {
-            display: true,
-            template: 'text',
-          },
-          image: {
-            aspectRatio: 1,
-            lazy: true,
-            lazyOffset: 0,
-          },
-        },
-        defaultRequestParams: {},
-        enabled: true,
-        slot: 'product-findify-rec-8',
-        type: 'viewedBought',
-        template: 'slider',
-        limit: 10,
-        minResultsToShow: 1,
-        title: 'asedf',
-        multipleIds: true,
-      },
-      'home-findify-rec-1': {
-        disableAutoRequest: false,
-        breakpoints: {
-          grid: [
-            { width: 600, value: 6 },
-            { width: 600, value: 4 },
-            { width: 1000, value: 3 },
-          ],
-        },
-        product: {
-          template: 'vertical',
-          price: {
-            template: 'min-max',
-          },
-          title: {
-            lines: 3,
-          },
-          description: {
-            lines: 3,
-          },
-          variants: {
-            display: true,
-            template: 'text',
-          },
-          image: {
-            aspectRatio: 1,
-            lazy: true,
-            lazyOffset: 0,
-          },
-        },
-        defaultRequestParams: {},
-        enabled: true,
-        slot: 'home-findify-rec-1',
-        type: 'trending',
-        template: 'slider',
-        limit: 11,
-        minResultsToShow: 3,
-        title: 'Products you recently viewed',
-        multipleIds: false,
-      },
-      'cart-findify-rec-3': {
-        disableAutoRequest: false,
-        breakpoints: {
-          grid: [
-            { width: 600, value: 6 },
-            { width: 600, value: 4 },
-            { width: 1000, value: 3 },
-          ],
-        },
-        product: {
-          template: 'vertical',
-          price: {
-            template: 'min-max',
-          },
-          title: {
-            lines: 3,
-          },
-          description: {
-            lines: 3,
-          },
-          variants: {
-            display: true,
-            template: 'text',
-          },
-          image: {
-            aspectRatio: 1,
-            lazy: true,
-            lazyOffset: 0,
-          },
-        },
-        defaultRequestParams: {},
-        enabled: true,
-        slot: 'cart-findify-rec-3',
-        type: 'purchasedTogether',
-        template: 'slider',
-        limit: 10,
-        minResultsToShow: 2,
-        title: 'Freq purch together: another widget',
-        multipleIds: true,
-      },
+        });
+      };
     },
   },
-  merchantName: 'marek-test-store.myshopify.com',
-  mjs_version: '7.0.0',
 };
 
 export default config;

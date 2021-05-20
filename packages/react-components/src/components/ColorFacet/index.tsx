@@ -37,14 +37,7 @@ export default ({
     >
       <MapArray
         config={config}
-        array={facet
-          .get('values')
-          .filter((item) =>
-            config.getIn([
-              'colorMapping',
-              item.get('value').toLocaleLowerCase(),
-            ])
-          )}
+        array={facet.get('values')}
         factory={Item}
         theme={theme}
         isMobile={isMobile}

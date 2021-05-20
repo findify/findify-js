@@ -19,15 +19,17 @@ const checkIfLight = (hex) => {
   const blue = number & 255;
   return (red * 299 + green * 587 + blue * 114) / 1000 > 220;
 };
+
 /**
  * Used to retrieve CSS styles for each facet
  * @param item Facet value
  * @param config MJS configuration to pull mapping from
  */
-const getStyles = (item: IFacetValue, config: MJSConfiguration) => {
-  const value = (item.get('value') as string)!.toLowerCase();
+const getStyles = (value: string, config: MJSConfiguration) => {
   const background = config.getIn(['facets', 'color', 'mapping', value], value);
-  const isLight = background.startsWith('#') && checkIfLight(background);
+  const isLight =
+    background === 'white' ||
+    (background.startsWith('#') && checkIfLight(background));
   return {
     ball: {
       background: background,
@@ -40,11 +42,19 @@ const getStyles = (item: IFacetValue, config: MJSConfiguration) => {
 };
 
 export default memo(({ item, config, theme, children, isMobile }) => {
-  const styles = getStyles(item, config);
+  const value = (item.get('value') as string)!.toLowerCase();
+  const styles = getStyles(value, config);
+  const hasMapping = config.hasIn(['facets', 'color', 'mapping', value]);
+
   return (
-    <a title={item.get('value')} style={styles.ball} className={cx(theme.ball, {
-      [theme.ballMobile]: isMobile,
-    })}>
+    <a
+      title={value}
+      style={styles.ball}
+      className={cx(theme.ball, {
+        [theme.ballMobile]: isMobile,
+        [theme.notMapped]: !hasMapping,
+      })}
+    >
       <span style={styles.border} />
       {children}
     </a>

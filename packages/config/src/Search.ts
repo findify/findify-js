@@ -1,5 +1,6 @@
 import { BaseFeature } from './BaseFeature'
 import { Breakpoints } from './Breakpoints'
+import { Filter } from './Filter'
 import * as enums from './enums'
 
 export interface Search extends BaseFeature<'Search'> {
@@ -93,22 +94,7 @@ export interface Search extends BaseFeature<'Search'> {
      * Filters setup
      */
     filters: {
-      [filterName: string]: {
-        type: keyof typeof enums.FilterType
-        label: string,
-        initiallyCollapsed: boolean
-
-        /**
-         * CheckboxFacet specific option
-         * Number of visible facet options before "show more" button clicked
-         */
-        maxItemsCount: number
-
-        /**
-         * Step for range input
-         */
-        precision: number
-      }
+      [filterName: string]: Filter
     },
   }
 }
