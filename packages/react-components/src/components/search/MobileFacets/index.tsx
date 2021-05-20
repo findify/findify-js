@@ -15,7 +15,7 @@ import { List } from 'immutable';
 import styles from 'components/search/MobileFacets/styles.css';
 import { useFacets, useQuery } from '@findify/react-connect';
 import { memo, useCallback, useMemo, useState } from 'react';
-import { Immutable } from '@findify/store-configuration';
+import { Immutable, Filter } from '@findify/store-configuration';
 import useTranslations from 'helpers/useTranslations';
 import { Facet } from '@findify/react-connect/types/immutable/facets';
 
@@ -24,24 +24,28 @@ export interface IFacetContentProps extends ThemedSFCProps {
   /** Currently active facet */
   active: Facet;
   /** MJS Configuration */
-  config: MJSConfiguration;
+  config: Immutable.SearchConfig;
 }
 
 const FacetContent = ({
   active,
   config,
   theme = styles,
-}: IFacetContentProps) => (
-  <div className={cx(theme.container, theme[active.get('type') as string])}>
-    <Component
-      isExpanded
-      isMobile
-      type={active.get('type')}
-      facet={active}
-      config={config}
-    />
-  </div>
-);
+}: IFacetContentProps) => {
+  const _config = config.getIn(['facets', 'filters', active.get('name')]);
+  console.log(_config.toJS());
+  return (
+    <div className={cx(theme.container, theme[_config.get('type')])}>
+      <Component
+        isExpanded
+        isMobile
+        type={_config.get('type')}
+        facet={active}
+        config={_config}
+      />
+    </div>
+  );
+};
 
 /** Props that MobileFacets view accepts */
 export interface IMobileFacetsProps extends ThemedSFCProps {
@@ -125,7 +129,9 @@ export default memo(({ theme = styles, hideModal }: IMobileFacetsProps) => {
           </Text>
 
           <Text primary uppercase display-if={activeFacet}>
-            {config.getIn(['facets', activeFacet?.get('name'), 'label'])}
+            {config
+              .getIn(['facets', 'filters', activeFacet?.get('name')])
+              ?.get('label')}
           </Text>
 
           <Text

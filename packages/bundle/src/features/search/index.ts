@@ -14,7 +14,7 @@ import {
   hideLoader,
 } from '../../helpers/fallbackNode';
 import { Events } from '../../core/events';
-import { maybeScrollTop, scrollTo } from '../../helpers/scrollTo';
+import { maybeScrollTop } from '../../helpers/scrollTo';
 import lazy from '../../helpers/renderLazyComponent';
 import { Widget } from '../../core/widgets';
 import { Immutable } from '@findify/store-configuration';
