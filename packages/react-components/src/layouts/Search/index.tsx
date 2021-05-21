@@ -12,14 +12,13 @@ import Branch from 'components/common/Branch';
 import Banner from 'components/Banner';
 import { List } from 'immutable';
 import Grid, { Column } from 'components/common/Grid';
-import { useMobile } from 'helpers/withMobile';
+import { useMobile } from 'helpers/useMobile';
 import { useAnnouncement } from 'components/common/Announcement';
 import useScrollOnChange from 'helpers/useScrollOnChange';
 import { useItems } from '@findify/react-connect';
 import useTranslations from 'helpers/useTranslations';
 
 import styles from 'layouts/Search/styles.css';
-
 import { Immutable } from '@findify/store-configuration';
 import { ThemedSFCProps, IProduct } from 'types';
 

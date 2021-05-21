@@ -15,11 +15,13 @@ export type Translations = {
   'facets.back': string // 'Go back'
   'facets.done': string // 'Done'
   'facets.seeResults': string // 'See results'
+  'facets.search': string // 'Search'
 
   'pagination.previous': string // 'Prev'
   'pagination.goTo': string // 'Go to %'
   'pagination.next': string // 'Next'
 
+  'actions.filter': string // 'Filters'
   'actions.showFilters': string // 'Show filters'
   'actions.sorting': string // 'Sorting'
   'actions.back': string // 'Go back'

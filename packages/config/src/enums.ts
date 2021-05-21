@@ -1,117 +1,117 @@
 export enum StoreStatus {
-  'live',
-  'disabled',
-  'paused',
-  'created'
+  'live' = 'live',
+  'disabled' = 'disabled',
+  'paused' = 'paused',
+  'created' = 'created'
 }
 
 export enum Feature {
-  'autocomplete',
-  'search',
-  'recommendation',
-  'content',
-  'custom',
+  'autocomplete' = 'autocomplete',
+  'search' = 'search',
+  'recommendation' = 'recommendation',
+  'content' = 'content',
+  'custom' = 'custom',
 }
 
 export enum Platform {
-  'generic',
-  'shopify',
-  'bigcommerce',
-  'magento',
-  'magento2',
-  'neto',
-  'jetshop'
+  'generic' = 'generic',
+  'shopify' = 'shopify',
+  'bigcommerce' = 'bigcommerce',
+  'magento' = 'magento',
+  'magento2' = 'magento2',
+  'neto' = 'neto',
+  'jetshop' = 'jetshop'
 }
 
 export enum AnalyticsEventKey {
-  'view-page',
-  'purchase',
-  'update-cart',
-  'click-item',
-  'add-to-cart'
+  'view-page' = 'view-page',
+  'purchase' = 'purchase',
+  'update-cart' = 'update-cart',
+  'click-item' = 'click-item',
+  'add-to-cart' = 'add-to-cart'
 }
 
 export enum FilterType {
-  'text',
-  'category',
-  'range',
-  'color',
-  'price',
-  'rating'
+  'text' = 'text',
+  'category' = 'category',
+  'range' = 'range',
+  'color' = 'color',
+  'price' = 'price',
+  'rating' = 'rating'
 }
 
 export enum ProductPriceTemplate {
-  'min-max',
-  'from-min',
-  'to-max',
+  'min-max' = 'min-max',
+  'from-min' = 'from-min',
+  'to-max' = 'to-max',
 }
 export enum ProductVariantsTemplate {
-  'radio',
-  'select',
-  'text'
+  'radio' = 'radio',
+  'select' = 'select',
+  'text' = 'text'
 }
 
 export enum ProductTemplate {
-  'vertical',
-  'horizontal'
+  'vertical' = 'vertical',
+  'horizontal' = 'horizontal'
 }
 
 /**
  * Autocomplete
  */
 export enum AutocompleteRenderNode {
-  'parent',
-  'self',
-  'body'
+  'parent' = 'parent',
+  'self' = 'self',
+  'body' = 'body'
 }
 
 export enum AutocompleteTemplate {
-  'dropdown',
-  'sidebar',
-  'fullscreen',
-  'fullscreen-with-input'
+  'dropdown' = 'dropdown',
+  'sidebar' = 'sidebar',
+  'fullscreen' = 'fullscreen',
+  'fullscreen-with-input' = 'fullscreen-with-input'
 }
 
 export enum AutocompletePosition {
-  'left',
-  'right'
+  'left' = 'left',
+  'right' = 'right'
 }
 
 export enum SuggestionTemplate {
-  'horizontal',
-  'vertical'
+  'horizontal' = 'horizontal',
+  'vertical' = 'vertical'
 }
 
 /**
  * Recommendation
  */
 export enum RecommendationType {
-  'trending',
-  'newest',
-  'viewedViewed',
-  'viewed',
-  'viewedBought',
-  'purchasedTogether',
-  'featured'
+  'trending' = 'trending',
+  'newest' = 'newest',
+  'viewedViewed' = 'viewedViewed',
+  'viewed' = 'viewed',
+  'viewedBought' = 'viewedBought',
+  'purchasedTogether' = 'purchasedTogether',
+  'featured' = 'featured'
 }
 
 export enum RecommendationTemplate {
-  'slider',
-  'grid'
+  'slider' = 'slider',
+  'grid' = 'grid'
 }
 
 /**
  * Search / Smart Collections
  */
 export enum PaginationType {
-  'lazy',
-  'static'
+  'lazy' = 'lazy',
+  'static' = 'static'
 }
 
 export enum FacetsPosition {
-  'left',
-  'right',
-  'top'
+  'left' = 'left',
+  'right' = 'right',
+  'top' = 'top'
 }
 
 export enum SearchOrder {
