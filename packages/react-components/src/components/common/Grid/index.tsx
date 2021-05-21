@@ -25,12 +25,12 @@ export interface IGridProps extends ThemedSFCProps {
   columnComponent?: React.ComponentType<any> | string;
 }
 
-const usePlaceholders = (columns) => {
+const usePlaceholders = (columns, gutter) => {
   if (columns.length !== 1 || isNaN(Number(columns[0]))) return null;
   return useMemo(
     () =>
       Array.from(Array(Number(columns[0])).keys()).map((i) => (
-        <Placeholder key={i} size={columns[0]} />
+        <Placeholder key={i} size={columns[0]} gutter={gutter} />
       )),
     [columns]
   );
@@ -60,7 +60,7 @@ export default memo(
     const gutter =
       _gutter && (isNaN(Number(_gutter)) ? _gutter : `${_gutter}px`);
 
-    const placeholders = usePlaceholders(columns);
+    const placeholders = usePlaceholders(columns, gutter);
 
     const children = Children.map(
       _children,

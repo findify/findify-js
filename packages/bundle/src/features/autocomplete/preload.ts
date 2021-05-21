@@ -17,6 +17,7 @@ export default (widget: Widget<Immutable.AutocompleteConfig>) => {
   const state: any = getQuery();
 
   if (!config.get('disableAutoRequest') && !initialRequested) {
+    agent.defaults(config.get('defaultRequestParams').toJS());
     agent.set('q', !state.q ? '' : state.q);
     initialRequested = true;
   }

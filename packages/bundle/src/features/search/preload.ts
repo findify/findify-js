@@ -8,7 +8,10 @@ export default (widget: Widget<Immutable.SearchConfig>) => {
 
   /** Setup initial request */
   if (!config.get('disableAutoRequest') && isSearch()) {
-    agent.defaults({ offset: 0 });
+    agent.defaults({
+      ...config.get('defaultRequestParams').toJS(),
+      offset: 0,
+    });
     agent.applyState(state);
   }
 };

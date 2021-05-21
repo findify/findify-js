@@ -46,6 +46,13 @@ export enum Events {
   autocompleteFocusLost = 'autocompleteFocusLost',
 
   /**
+   * Input lost focus
+   * @prop [key: string|number] - widget key
+   * @prop [config: Immutable.Map]
+   */
+  autocompleteFocus = 'autocompleteFocus',
+
+  /**
    * Invalidate widgets
    */
   invalidate = 'invalidate',

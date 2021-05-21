@@ -11,8 +11,7 @@ import Text from 'components/Text';
 import Icon from 'components/Icon';
 
 import { ThemedSFCProps } from 'types';
-import { useQuery, useSort } from '@findify/react-connect';
-import { Immutable } from '@findify/store-configuration';
+import { useQuery } from '@findify/react-connect';
 import useTranslations from 'helpers/useTranslations';
 import { memo, useMemo } from 'react';
 import { emit, useEvents } from 'helpers/emmiter';

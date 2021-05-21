@@ -172,6 +172,16 @@ export const registerHandlers = (
     search(node.value);
   };
 
+  const handleFocus = (e = undefined) => {
+    if (config.get('instant') && isSearch()) return;
+    findifyElementFocused = true;
+    if (!e) return rerender('initial');
+    if (!agent.state.get('q') || agent.state.get('q') !== e.target.value) {
+      agent.set('q', e.target.value);
+    }
+    rerender('initial');
+  };
+
   /** Listen for input change */
   subscribers.push(
     addEventListeners(
@@ -181,20 +191,7 @@ export const registerHandlers = (
     )
   );
 
-  subscribers.push(
-    addEventListeners(
-      ['focus'],
-      (e) => {
-        if (config.get('instant') && isSearch()) return;
-        findifyElementFocused = true;
-        if (!agent.state.get('q') || agent.state.get('q') !== e.target.value) {
-          agent.set('q', e.target.value);
-        }
-        rerender('initial');
-      },
-      node
-    )
-  );
+  subscribers.push(addEventListeners(['focus'], handleFocus, node));
 
   /** Listen for input blur */
   subscribers.push(
@@ -254,13 +251,13 @@ export const registerHandlers = (
     )
   );
 
-  console.log(Events.search);
   /** Unsubscribe from events on instance destroy  */
   const unsubscribe = __root.listen((event, prop, ...args) => {
     if (event === Events.search && prop === widget.key) return search(...args);
-    if (event === Events.autocompleteFocusLost && prop === widget.key) {
+    if (event === Events.autocompleteFocus && prop === widget.key)
+      return handleFocus();
+    if (event === Events.autocompleteFocusLost && prop === widget.key)
       rerender();
-    }
     if (event !== Events.detach || prop !== widget) return;
     subscribers.forEach((fn) => fn());
     unsubscribe();

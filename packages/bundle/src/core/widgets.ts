@@ -89,6 +89,7 @@ const getEntity = (
       let config = createConfig(widgetType, node, key, _config);
 
       /** Change feature type to collection if we are on collection page */
+      console.log(widgetType as any, Types.Feature.search);
       if (
         (widgetType as any) === Types.Feature.search &&
         isCollection(config.get('collections'), config.get('slot'))

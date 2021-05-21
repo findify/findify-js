@@ -2,8 +2,6 @@
 [![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lernajs.io/)
 
 
-<img src="https://res.cloudinary.com/teamtailor/image/upload/c_limit,dpr_2.0,f_auto,h_65,q_80,w_200/v1550068434/aeznhl3cfbpkus7xsvzh.png" alt="react atomic builder" align="center" />
-
 # Findify monorepo
 
 ## Install and use components
@@ -17,6 +15,12 @@ For example, getting the [SDK](https://github.com/findify/findify-js/tree/master
 ```
 $ npm install @findify/sdk
 ```
+
+>Please note! Latest versions of the pages are shipped as esnext-modules that may require additional setup in your bundle or test environment! This change is made to reduce the size of the packages in your bundle and not overload it by (probably) not required polyfills.
+
+- *Babel* setup: use `babel.config.*` instead of `.babelrc` it will make your babel compile node modules
+- *Jest* setup: use `--experimental-modules`
+- Legacy *Webpack*: do not exclude @findify packages in loader `exclude: /node_modules\/(?!(@findify\/.*)\/).*/`
 
 ## A list of all packages
 

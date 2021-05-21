@@ -81,6 +81,9 @@ export const Column = ({
   );
 };
 
-export const Placeholder = ({ size }) => (
-  <div className={styles.placeholder} style={{ flexBasis: getWidth(size) }} />
+export const Placeholder = ({ size, gutter }) => (
+  <div
+    className={styles.placeholder}
+    style={{ flexBasis: getWidth(size, gutter), paddingLeft: `${gutter}` }}
+  />
 );

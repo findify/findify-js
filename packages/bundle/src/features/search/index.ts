@@ -87,7 +87,7 @@ export default (render, widget: Widget<Immutable.SearchConfig>) => {
   agent.on('change:redirect', redirectToPage);
 
   /** Listen to location back/fwd */
-  const stopListenLocation = listenHistory((_, action) => {
+  const stopListenLocation = listenHistory(({ action }) => {
     if (action !== 'POP') return;
     agent.applyState(getQuery());
     render('initial');
