@@ -1,4 +1,5 @@
 $padding: 25px;
+$min-width: 200px;
 $horizontal-background: white;
 
 .root{
@@ -33,6 +34,7 @@ $horizontal-background: white;
   font-family: $font-family;
   color: $color;
   flex: 1 1 0%;
+  padding-right: 10px;
 }
 
 .icon {
@@ -40,17 +42,39 @@ $horizontal-background: white;
 }
 
 .body{
-  $padding: 0 25px 25px 25px;
+  $padding: 0 $padding $padding $padding;
   margin-top: -15px;
   padding: $padding;
   .horizontal &{
     background: $horizontal-background;
     position: absolute;
     z-index: 3;
-    min-width: 200px;
+    padding: $padding;
+    min-width: $min-width;
     box-sizing: border-box;
+    border: 1px solid $color-grey-2;
+    top: 100%;
+    margin: 0;
+    left: -1px;
   }
   &[hidden]{
     display: none;
+  }
+}
+
+.horizontal{
+  margin-right: 1px;
+  &.expanded{
+    outline: 1px solid $color-grey-2;
+    .title:after{
+      content: ' ';
+      position: absolute;
+      top: 100%;
+      z-index: 4;
+      height: 5px;
+      background: $horizontal-background;
+      left: 1px;
+      right: 1px;
+    }
   }
 }
