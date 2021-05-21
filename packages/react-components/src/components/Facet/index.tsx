@@ -65,6 +65,7 @@ export default ({
       className={cx(theme.root, {
         [theme.horizontal]: isHorizontal,
         [theme.mobile]: isMobile,
+        [theme.expanded]: isOpen,
       })}
     >
       <Button

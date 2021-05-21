@@ -41,13 +41,13 @@ $height: 30px;
   border: none;
   outline: none;
   z-index: 1;
-  -moz-appearance: textfield;
+  -moz-appearance: textfield!important;
   &:placeholder{
     color: $color-grey-1;
   }
   &::-webkit-outer-spin-button,
   &::-webkit-inner-spin-button {
-    -webkit-appearance: none;
+    -webkit-appearance: none!important;
     margin: 0;
   }
 }

@@ -47,6 +47,8 @@ export default memo(({ theme = styles }) => {
       .toArray()
   );
 
+  console.log(openFacets);
+
   const toggleFacet = (name) =>
     setFacetsStates((facets) => {
       const isOpen = facets.includes(name);
