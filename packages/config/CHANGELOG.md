@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.5](https://github.com/findify/findify-js/compare/@findify/store-configuration@0.2.4...@findify/store-configuration@0.2.5) (2021-05-21)
+
+
+### Bug Fixes
+
+* **@findify/bundle,@findify/store-configuration,@findify/react-components:** minor bugfix ([4e77605](https://github.com/findify/findify-js/commit/4e77605b1fee8cf255695c2742ab1ee58e4ba388))
+
+
+
+
+
 ## [0.2.4](https://github.com/findify/findify-js/compare/@findify/store-configuration@0.2.3...@findify/store-configuration@0.2.4) (2021-05-20)
 
 
