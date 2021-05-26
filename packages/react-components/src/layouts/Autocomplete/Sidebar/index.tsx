@@ -42,7 +42,9 @@ export default ({ theme = styles, config }) => {
   }, []);
 
   useEffect(() => {
-    if (input.current) input.current?.focus();
+    if (input.current) {
+      setTimeout(() => input.current?.focus(), 100);
+    }
     document.addEventListener('focusout', onFocusOut, true);
     return () => {
       document.removeEventListener('focusout', onFocusOut);

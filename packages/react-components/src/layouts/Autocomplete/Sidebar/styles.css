@@ -3,6 +3,7 @@
   background: white;
   height: 100%;
   width: 90vw;
+  max-height: 100vh;
 }
 
 .backdrop {
@@ -72,6 +73,7 @@
     border: 1px solid $color-grey-2;
     transition: border-color .1s linear;
     outline: none;
+    font-size: 16px;
     &:placeholder {
       color: $color-grey-3;
     }
@@ -89,6 +91,7 @@
 .content{
   overflow: hidden;
   overflow-y: auto;
+  max-height: calc(100vh - 50px);
 }
 
 .products{}

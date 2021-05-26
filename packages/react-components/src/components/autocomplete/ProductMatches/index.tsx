@@ -23,7 +23,7 @@ export default ({ theme = styles, config, isTrendingSearches }) => {
       <Grid columns={config.getIn(['breakpoints', 'grid'], '12')} gutter={12}>
         {MapArray({
           array: items,
-          limit: config.getIn(['defaultRequestParams', 'item_limit']),
+          limit: config.getIn(['productMatches', 'limit']),
           factory: ProductCard,
           config: config.get('product'),
         })}

@@ -6,9 +6,9 @@ import { createElement, useMemo } from 'react';
 import { useConfig } from '@findify/react-connect';
 import { portal } from 'helpers/createPortal';
 import Loadable from 'react-loadable';
-import { Immutable } from '@findify/store-configuration';
+import { Immutable, Types } from '@findify/store-configuration';
 import useMedia from 'helpers/useMedia';
-import { AutocompleteType, LayoutTypes } from './types';
+import { LayoutTypes } from './types';
 
 /**
  * Layout factory is used to wrap Autocomplete layout in a div, containing data-findify-autocomplete-wrapper attribute,
@@ -16,7 +16,7 @@ import { AutocompleteType, LayoutTypes } from './types';
  * @param type View type needed
  * @param props Props for React component
  */
-const layoutFactory = (type: AutocompleteType, props) => () => {
+const layoutFactory = (type: Types.AutocompleteTemplate, props) => () => {
   const Component = useMemo(
     () => Loadable({ loader: LayoutTypes[type], loading: () => null }),
     []
@@ -33,14 +33,14 @@ const layoutFactory = (type: AutocompleteType, props) => () => {
  * @param type View type needed
  * @param props Props for React component
  */
-const renderView = (type: AutocompleteType, props) =>
+const renderView = (type: Types.AutocompleteTemplate, props) =>
   (type === 'sidebar' ? portal : createElement)(layoutFactory(type, props));
 
 const Autocomplete = ({ isTrendingSearches, ...rest }) => {
   const { config } = useConfig<Immutable.AutocompleteConfig>();
   const [isMobile, isDesktop] = useMedia([config.get('mobileBreakpoint')]);
   const size = isDesktop ? 'desktop' : 'mobile';
-  const viewType: AutocompleteType = config.getIn([size, 'template']);
+  const viewType = config.getIn([size, 'template']);
   const isFullScreen = viewType === 'fullscreen';
 
   return renderView(isFullScreen ? 'dropdown' : viewType, {

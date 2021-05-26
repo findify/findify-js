@@ -1,6 +1,7 @@
 $padding: 25px;
 $min-width: 200px;
-$horizontal-background: white;
+$horizontal-padding: 10px 25px;
+$horizontal-background: #F3F3F3;
 
 .root{
   border-top: 1px solid $color-grey-2;
@@ -23,6 +24,7 @@ $horizontal-background: white;
   padding: $padding;
   .horizontal &{
     background: $horizontal-background;
+    padding: $horizontal-padding;
   }
 }
 
@@ -63,7 +65,7 @@ $horizontal-background: white;
 }
 
 .horizontal{
-  margin-right: 1px;
+  margin-right: 5px;
   &.expanded{
     outline: 1px solid $color-grey-2;
     .title:after{
