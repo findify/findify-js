@@ -18,6 +18,7 @@ export type AutocompleteSizeType = {
    */
   suggestions: {
     display: boolean,
+    limit: number,
     template: keyof typeof enums.SuggestionTemplate
   }
 
@@ -26,6 +27,7 @@ export type AutocompleteSizeType = {
    */
   productMatches: {
     display: boolean
+    limit: number
   }
 
   product: ProductType

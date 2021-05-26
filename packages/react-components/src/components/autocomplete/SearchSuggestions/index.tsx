@@ -68,6 +68,7 @@ export default ({
         <MapArray
           array={suggestions}
           factory={SuggestionItem}
+          limit={config.getIn(['suggestions', 'limit'])}
           tabIndex={0}
           template={template}
           icon={isTrendingSearches && 'Fire'}

@@ -3,14 +3,13 @@
  */
 
 import MapArray from 'components/common/MapArray';
-import { compose, withPropsOnChange } from 'recompose';
-import pure from 'helpers/pure';
 import Button from 'components/Button';
 import Text from 'components/Text';
 import Icon from 'components/Icon';
 
 import { FilterType, ThemedSFCProps, IFacet, MJSConfiguration } from 'types';
 import { useMemo } from 'react';
+import { Immutable } from '@findify/store-configuration';
 
 /** Filter mapping type */
 export type FilterMapping = { [x in FilterType]: React.SFC<any> };
@@ -24,19 +23,30 @@ export interface IFilterProps {
   type: FilterType;
   /** Filter name */
   name: string;
+
+  config: Immutable.SearchConfig;
+
+  theme: any;
 }
 
-const Item = ({ mapping, theme, item, config: _config }: any) => {
+const Item = ({
+  mapping,
+  theme,
+  item,
+  name,
+  config: _config,
+}: IFilterProps) => {
+  console.log('eeee', _config.toJS(), name);
   const [Content, config] = useMemo(() => {
-    const _type = _config.getIn(['facets', 'types', name]) || item.get('type');
-    const facetConfig = _config.getIn(['facets', _type]);
+    const facetConfig = _config.getIn(['facets', 'filters', name]);
+    const _type = facetConfig?.get('type') || item.get('type');
     return [mapping[_type], _config.merge(facetConfig)];
   }, [mapping]);
 
   return (
     <Button className={theme.breadcrumb} onClick={item.toggle}>
       <Text secondary uppercase className={theme.title}>
-        <Content item={item} config={config} />
+        <Content item={item} config={config} theme={theme} />
       </Text>
       <Icon className={theme.cross} name="XDark" title="Remove filter" />
     </Button>
@@ -59,9 +69,8 @@ export default (mapping: FilterMapping) => ({
   <MapArray
     array={item.get('values')}
     name={item.get('name')}
-    type={item.get('type')}
-    theme={theme}
     factory={Item}
+    theme={theme}
     mapping={mapping}
     config={config}
   />

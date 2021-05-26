@@ -36,7 +36,7 @@ export default {
   autocomplete: {
     sidebar: () => import('layouts/Autocomplete/Sidebar'),
     dropdown: () => import('layouts/Autocomplete/Dropdown'),
-    'fullscreen-with-input': () =>
+    fullscreenWithInput: () =>
       import('layouts/Autocomplete/FullscreenWithInput'),
   },
 

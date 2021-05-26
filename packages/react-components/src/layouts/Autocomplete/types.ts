@@ -6,6 +6,3 @@ export const LayoutTypes = {
   dropdown: chunks.autocomplete.dropdown,
   'fullscreen-with-input': chunks.autocomplete.fullscreenWithInput,
 };
-
-/** Possible Autocomplete view types */
-export type AutocompleteType = keyof typeof LayoutTypes;
