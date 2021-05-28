@@ -15,7 +15,7 @@ import { List } from 'immutable';
 import styles from 'components/search/MobileFacets/styles.css';
 import { useFacets, useQuery } from '@findify/react-connect';
 import { memo, useCallback, useMemo, useState } from 'react';
-import { Immutable, Filter } from '@findify/store-configuration';
+import { Immutable } from '@findify/store-configuration';
 import useTranslations from 'helpers/useTranslations';
 import { Facet } from '@findify/react-connect/types/immutable/facets';
 
@@ -33,7 +33,6 @@ const FacetContent = ({
   theme = styles,
 }: IFacetContentProps) => {
   const _config = config.getIn(['facets', 'filters', active.get('name')]);
-  console.log(_config.toJS());
   return (
     <div className={cx(theme.container, theme[_config.get('type')])}>
       <Component
