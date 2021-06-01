@@ -1,7 +1,7 @@
 import { Config } from '@findify/store-configuration';
 
 const config: Config = {
-  key: '3f50502d-4c0f-4d90-be7b-d1db0f1ad953',
+  key: '066149dc-4bd3-4051-9618-8c95af01c9f8',
   merchantId: 8472,
   status: 'live',
   platform: 'shopify',
@@ -206,7 +206,7 @@ const config: Config = {
     search: {
       disableAutoRequest: false,
       facets: {
-        position: 'top',
+        position: 'left',
         sticky: true,
         accordion: true,
         hidable: true,
@@ -306,9 +306,10 @@ const config: Config = {
           template: 'select',
         },
         image: {
-          aspectRatio: 1,
+          aspectRatio: 0,
           lazy: true,
           lazyOffset: 0,
+          multiple: true,
         },
       },
       breakpoints: {

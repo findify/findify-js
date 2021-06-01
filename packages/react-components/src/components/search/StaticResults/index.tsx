@@ -18,13 +18,11 @@ export default ({ theme = styles }) => {
     <div className={theme.root}>
       <Grid
         role="main"
+        wrapperComponent="ul"
+        columnComponent="li"
         aria-label={translate('search.title')}
         gutter={12}
-        columns={config.getIn(['breakpoints', 'grid'], {
-          400: 6,
-          600: 4,
-          1000: 3,
-        })}
+        columns={config.getIn(['breakpoints', 'grid'])}
       >
         {MapArray({
           array: items,

@@ -1,6 +1,8 @@
-$padding: 25px;
 $min-width: 200px;
-$horizontal-padding: 10px 25px;
+$vertical-title-padding: 25px;
+$horizontal-title-padding: 10px 25px;
+$vertical-body-padding: 0 25px 25px 25px;
+$horizontal-body-padding: 10px 25px;
 $horizontal-background: #F3F3F3;
 
 .root{
@@ -21,10 +23,10 @@ $horizontal-background: #F3F3F3;
   width: 100%;
   text-align: left;
   display: flex;
-  padding: $padding;
+  padding: $vertical-title-padding;
   .horizontal &{
     background: $horizontal-background;
-    padding: $horizontal-padding;
+    padding: horizontal-title-padding;
   }
 }
 
@@ -44,14 +46,13 @@ $horizontal-background: #F3F3F3;
 }
 
 .body{
-  $padding: 0 $padding $padding $padding;
   margin-top: -15px;
-  padding: $padding;
+  padding: $vertical-body-padding;
   .horizontal &{
     background: $horizontal-background;
     position: absolute;
     z-index: 3;
-    padding: $padding;
+    padding: $horizontal-body-padding;
     min-width: $min-width;
     box-sizing: border-box;
     border: 1px solid $color-grey-2;

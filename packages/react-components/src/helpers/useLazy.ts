@@ -60,6 +60,7 @@ export default (offset = 300) => {
       return;
 
     Promise.resolve().then(() => {
+      if (!container.current) return;
       const { bottom } = container.current.getBoundingClientRect();
       const height =
         window.innerHeight || document.documentElement.clientHeight;

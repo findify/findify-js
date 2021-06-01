@@ -6,6 +6,15 @@
     display: block;
     width: 100%;
   }
+  .next{
+    width: auto;
+    position: absolute;
+    top: -9999px;
+    right: -9999px;
+    bottom: -9999px;
+    left: -9999px;
+    margin: auto;
+  }
 }
 
 .aspect img{
@@ -28,6 +37,24 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+  }
+}
+
+.image{
+  opacity: 0;
+  transition: opacity .3s ease-in-out;
+  transition-delay: .3s;
+  &:first-child{
+    opacity: 1;
+  }
+}
+
+[data-element='card']:hover, [data-element='card']:active {
+   .multiple .image{
+    opacity: 1;
+    &:first-child{
+      opacity: 0;
+    }
   }
 }
 

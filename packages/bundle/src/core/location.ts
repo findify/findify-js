@@ -1,8 +1,6 @@
 import { createBrowserHistory } from 'history';
 import { parse, stringify } from 'qs';
 
-export const isIE9 = !('pushState' in window.location);
-
 let history = createBrowserHistory();
 let historyChanged = false;
 
@@ -15,14 +13,6 @@ export const getHistory = () => history;
 
 export const collectionPath = () =>
   window.location.pathname.replace(/^\/|\/$/g, '').toLowerCase();
-
-// We are not applying new state if something else in URL QUERY and response from
-// our Server do not contains extra meta
-// // FIX for: UTM Tags
-// if (
-//   !buildQuery(q.toJS()) &&
-//   !Object.keys(state).filter(k => k.includes(config.getIn(['location', 'prefix']))).length
-// ) return;
 
 export const isCollection = (collections, slot?) =>
   collections && collections.includes(slot || collectionPath());
@@ -112,8 +102,6 @@ export const redirectToSearch = (q) => {
 
 export const setQuery = (query) => {
   const search = buildQuery(query);
-  /* Special for IE9: prevent page reload if query is the same */
-  if (isIE9 && search === getHistory().location.search) return;
   return getHistory().push({ search, state: { type: 'FindifyUpdate' } });
 };
 

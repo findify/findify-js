@@ -30,7 +30,6 @@ export interface IDropdownItemProps extends ThemedSFCProps {
 const Item = ({
   item,
   index,
-  parentId,
   getItemProps,
   highlighted,
   theme = styles,

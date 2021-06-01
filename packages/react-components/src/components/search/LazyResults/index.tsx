@@ -12,6 +12,7 @@ import useTranslations from 'helpers/useTranslations';
 
 import styles from 'components/search/LazyResults/styles.css';
 import useLazy from 'helpers/useLazy';
+import { Immutable } from '@findify/store-configuration';
 
 export default ({ theme = styles, card = ProductCard }) => {
   const {
@@ -22,7 +23,7 @@ export default ({ theme = styles, card = ProductCard }) => {
     displayNextButton,
     items,
   } = useLazy();
-  const { config } = useConfig();
+  const { config } = useConfig<Immutable.SearchConfig>();
   const translate = useTranslations();
   return (
     <div
@@ -44,12 +45,10 @@ export default ({ theme = styles, card = ProductCard }) => {
       </Button>
       <Grid
         role="main"
+        wrapperComponent="ul"
+        columnComponent="li"
         aria-label={translate('search.title')}
-        columns={config.getIn(['breakpoints', 'grid'], {
-          400: 6,
-          600: 4,
-          1000: 3,
-        })}
+        columns={config.getIn(['breakpoints', 'grid'])}
         gutter={12}
       >
         {MapArray({

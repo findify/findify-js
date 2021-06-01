@@ -36,7 +36,6 @@ const Item = ({
   name,
   config: _config,
 }: IFilterProps) => {
-  console.log('eeee', _config.toJS(), name);
   const [Content, config] = useMemo(() => {
     const facetConfig = _config.getIn(['facets', 'filters', name]);
     const _type = facetConfig?.get('type') || item.get('type');

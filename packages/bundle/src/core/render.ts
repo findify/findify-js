@@ -43,7 +43,6 @@ const reduceWidgets = (state, action) => {
     case Events.attach:
       return [...state, createWidgetCreator(action.widget)];
     case Events.update:
-      console.log(state);
       return state.map((widget) =>
         widget.key === action.widget._key ? action.widget : widget
       );

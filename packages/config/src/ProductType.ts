@@ -65,6 +65,11 @@ export type ProductType = {
      * Screen offset when images will start loading
      */
     lazyOffset: number
+
+    /**
+     * If "true" images will be switching by hover
+     */
+    multiple: boolean
   }
 
 }

@@ -10,10 +10,10 @@ const makeItem = (item) => ({
 });
 
 const handleViewportChange = (item, isInViewport) => {
-  if (!isInViewport && !cache[item.get('id')]) return;
+  const uid = item.get('id') + item.meta.get('rid');
+  if (!isInViewport && !cache[uid]) return;
 
-  const cachedItem = (cache[item.get('id')] =
-    cache[item.get('id')] || makeItem(item));
+  const cachedItem = (cache[uid] = cache[uid] || makeItem(item));
 
   if (isInViewport) {
     cachedItem.visible_at.push([Date.now()]);
