@@ -18,12 +18,12 @@ export default ({ className, theme = styles, item }: IPriceProps) => {
   const { config } = useConfig();
 
   const hasDiscount =
-    (!item.get('compare_at') || item.get('compare_at').size < 0) &&
+    !item.get('compare_at') &&
     item.get('discount') &&
     item.get('discount').size > 0 &&
     priceIsSampleArray(item.get('price'));
 
-  const hasCompare = item.get('compare_at')?.size > 0;
+  const hasCompare = !!item.get('compare_at');
 
   return (
     <div className={cx(theme.priceWrapper, className)}>
