@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.13.9](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.13.8...@findify/react-components@0.13.9) (2021-06-01)
+
+
+### Bug Fixes
+
+* **@findify/bundle,@findify/react-components:** filter styles fixes ([87cf3b2](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/87cf3b232c8a14c462dbc7628ac9f7efe69d46a5))
+* **@findify/bundle,@findify/react-components:** minor bugfix ([64b3ec1](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/64b3ec1cac708fa30cc16c809ee17ba0be0091f5))
+* **@findify/bundle,@findify/store-configuration,@findify/react-components,@findify/react-connect:** add image switch on hover; Use variants in product card ([c9bfff4](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/c9bfff46706b339adf63f7404d2117ce0e0c5619))
+* **@findify/react-components:** do not merge products from different requests in telemetry ([2c42846](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/2c42846f833321ad0df09f3dbdebf1436cc29d19))
+
+
+
+
+
 ## [0.13.8](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.13.7...@findify/react-components@0.13.8) (2021-05-26)
 
 

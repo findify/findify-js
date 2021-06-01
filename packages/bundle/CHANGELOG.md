@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.0.12](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.0.11...@findify/bundle@7.0.12) (2021-06-01)
+
+
+### Bug Fixes
+
+* **@findify/bundle,@findify/react-components:** filter styles fixes ([87cf3b2](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/87cf3b232c8a14c462dbc7628ac9f7efe69d46a5))
+* **@findify/bundle,@findify/react-components:** minor bugfix ([64b3ec1](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/64b3ec1cac708fa30cc16c809ee17ba0be0091f5))
+* **@findify/bundle,@findify/store-configuration,@findify/react-components,@findify/react-connect:** add image switch on hover; Use variants in product card ([c9bfff4](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/c9bfff46706b339adf63f7404d2117ce0e0c5619))
+
+
+
+
+
 ## [7.0.11](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.0.10...@findify/bundle@7.0.11) (2021-05-26)
 
 **Note:** Version bump only for package @findify/bundle

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.12](https://github.com/findify/findify-js/compare/@findify/react-connect@0.7.11...@findify/react-connect@0.7.12) (2021-06-01)
+
+
+### Bug Fixes
+
+* **@findify/bundle,@findify/store-configuration,@findify/react-components,@findify/react-connect:** add image switch on hover; Use variants in product card ([c9bfff4](https://github.com/findify/findify-js/commit/c9bfff46706b339adf63f7404d2117ce0e0c5619))
+
+
+
+
+
 ## [0.7.11](https://github.com/findify/findify-js/compare/@findify/react-connect@0.7.10...@findify/react-connect@0.7.11) (2021-05-26)
 
 **Note:** Version bump only for package @findify/react-connect

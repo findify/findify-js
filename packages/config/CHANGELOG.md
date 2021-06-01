@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.7](https://github.com/findify/findify-js/compare/@findify/store-configuration@0.2.6...@findify/store-configuration@0.2.7) (2021-06-01)
+
+
+### Bug Fixes
+
+* **@findify/bundle,@findify/store-configuration,@findify/react-components,@findify/react-connect:** add image switch on hover; Use variants in product card ([c9bfff4](https://github.com/findify/findify-js/commit/c9bfff46706b339adf63f7404d2117ce0e0c5619))
+
+
+
+
+
 ## [0.2.6](https://github.com/findify/findify-js/compare/@findify/store-configuration@0.2.5...@findify/store-configuration@0.2.6) (2021-05-26)
 
 
