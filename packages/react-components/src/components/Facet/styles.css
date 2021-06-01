@@ -26,7 +26,7 @@ $horizontal-background: #F3F3F3;
   padding: $vertical-title-padding;
   .horizontal &{
     background: $horizontal-background;
-    padding: horizontal-title-padding;
+    padding: $horizontal-title-padding;
   }
 }
 

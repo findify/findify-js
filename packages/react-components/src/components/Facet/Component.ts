@@ -1,12 +1,6 @@
 /**
  * @module components/Facet
  */
-import {
-  compose,
-  withPropsOnChange,
-  componentFromProp,
-  renderComponent,
-} from 'recompose';
 import TextFacet from 'components/CheckboxFacet';
 import RangeFacet from 'components/RangeFacet';
 import RatingFacet from 'components/RatingFacet';
