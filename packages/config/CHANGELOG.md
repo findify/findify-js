@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.8](https://github.com/findify/findify-js/compare/@findify/store-configuration@0.2.7...@findify/store-configuration@0.2.8) (2021-06-01)
+
+
+### Bug Fixes
+
+* **@findify/store-configuration,@findify/react-components,@findify/sdk:** do not retry api call when 4xx has come, six styles ([a109400](https://github.com/findify/findify-js/commit/a109400fd150b0a4931bc8c9e18412e96ca4a571))
+
+
+
+
+
 ## [0.2.7](https://github.com/findify/findify-js/compare/@findify/store-configuration@0.2.6...@findify/store-configuration@0.2.7) (2021-06-01)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.13.10](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.13.9...@findify/react-components@0.13.10) (2021-06-01)
+
+
+### Bug Fixes
+
+* **@findify/store-configuration,@findify/react-components,@findify/sdk:** do not retry api call when 4xx has come, six styles ([a109400](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/a109400fd150b0a4931bc8c9e18412e96ca4a571))
+
+
+
+
+
 ## [0.13.9](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.13.8...@findify/react-components@0.13.9) (2021-06-01)
 
 
