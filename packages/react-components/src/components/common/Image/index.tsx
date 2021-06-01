@@ -51,6 +51,27 @@ const useViewPort = (lazy) => {
   return [ready, element];
 };
 
+const getSource = (src, fx): string[] =>
+  useMemo(() => {
+    const res = (fx && fx(src, window?.innerWidth)) || src;
+    if (!res) return [];
+
+    return (typeof res === 'string' ? [res] : res).filter(
+      (value, index, self) => value && self.indexOf(value) === index
+    );
+  }, [src]);
+
+type ImageProps = {
+  aspectRatio: number;
+  lazy?: boolean;
+  getSrc: (src: string | string[], width: number) => string | string[];
+  getThumbnail: (src: string | string[], width: number) => string | string[];
+  src: string | string[];
+  thumbnail: string;
+  alt: string;
+  multiple: boolean;
+};
+
 export default ({
   aspectRatio,
   lazy,
@@ -59,48 +80,50 @@ export default ({
   src,
   alt,
   thumbnail,
-}) => {
+}: ImageProps) => {
   const aspect = aspectRatio > 0;
   const isNative = lazyStrategy === LazyStrategy.native;
 
-  const _src = useMemo(
-    () => (getSrc && getSrc(src, window.innerWidth)) || src,
-    [src]
-  );
+  const _src = getSource(src, getSrc);
 
-  const _thumbnail = useMemo(
-    () =>
-      (getThumbnail && getThumbnail(thumbnail, window.innerWidth)) || thumbnail,
-    [thumbnail]
-  );
+  const _thumbnail = getSource(thumbnail, getThumbnail);
 
   const [isInViewPort, register] = isNative ? [true] : useViewPort(lazy);
 
   const [srcLoaded, setLoaded] = useState(isNative);
-
   return (
     <div
       ref={register}
-      style={{ paddingBottom: aspect ? `${aspectRatio * 100}%` : 'auto' }}
+      style={{
+        paddingBottom: aspect ? `${aspectRatio * 100}%` : 'auto',
+      }}
       className={cx(
         styles.root,
         (aspect && styles.aspect) || styles.static,
-        srcLoaded && styles.ready
+        srcLoaded && styles.ready,
+        _src.length > 1 && styles.multiple
       )}
     >
-      <img
-        src={_src}
-        alt={alt}
-        loading="lazy"
-        display-if={isInViewPort}
-        onLoad={() => setLoaded(true)}
-      />
-      <img
-        src={_thumbnail}
-        alt={alt}
-        display-if={isInViewPort && thumbnail}
-        className={styles.thumbnail}
-      />
+      {_src.map((src, index) => (
+        <img
+          src={src}
+          key={src}
+          alt={alt}
+          loading="lazy"
+          className={cx(styles.image, index && styles.next)}
+          display-if={isInViewPort}
+          onLoad={() => setLoaded(true)}
+        />
+      ))}
+      {_thumbnail.map((src) => (
+        <img
+          src={src}
+          key={src}
+          alt={alt}
+          display-if={isInViewPort && thumbnail}
+          className={styles.thumbnail}
+        />
+      ))}
     </div>
   );
 };

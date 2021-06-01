@@ -18,6 +18,7 @@ import { List } from 'immutable';
 import { IProduct, ThemedSFCProps } from 'types';
 import { Immutable, Product } from '@findify/store-configuration';
 import trackProductPosition from 'helpers/trackProductPosition';
+import { useMemo, useState } from 'react';
 
 export interface IProductCardProps extends ThemedSFCProps {
   item: IProduct;
@@ -25,6 +26,21 @@ export interface IProductCardProps extends ThemedSFCProps {
   Container?: React.ElementType;
 }
 
+const useVariants = (
+  item
+): [IProduct, React.Dispatch<React.SetStateAction<string>>] => {
+  const [currentVariant, setVariant] = useState<string>(
+    item.get('selected_variant_id')
+  );
+  const variant = useMemo(
+    () =>
+      item.merge(
+        item.get('variants')?.find((i) => i.get('id') === currentVariant)
+      ),
+    [currentVariant]
+  );
+  return [variant, setVariant];
+};
 export default ({
   item,
   theme = styles,
@@ -33,22 +49,25 @@ export default ({
   Container = 'div',
 }: IProductCardProps) => {
   const container = trackProductPosition(item);
+  const [variant, setVariant] = useVariants(item);
+
   return (
     <Container
       ref={container}
+      data-element="card"
       className={cx(theme.root, theme[config.get('template')], className)}
     >
       <div className={theme.content}>
         <Rating
           className={theme.rating}
-          value={item.getIn(['reviews', 'average_score'])}
+          value={variant.getIn(['reviews', 'average_score'])}
           count={
-            item.getIn(['reviews', 'count']) ||
-            item.getIn(['reviews', 'total_reviews'])
+            variant.getIn(['reviews', 'count']) ||
+            variant.getIn(['reviews', 'total_reviews'])
           }
           display-if={
-            !!item.getIn(['reviews', 'count']) ||
-            !!item.getIn(['reviews', 'total_reviews'])
+            !!variant.getIn(['reviews', 'count']) ||
+            !!variant.getIn(['reviews', 'total_reviews'])
           }
         />
 
@@ -62,29 +81,29 @@ export default ({
         - Or `z-index: 1`, but it may have side effects
       */}
         <Title
-          display-if={!!item.get('title')}
+          display-if={!!variant.get('title')}
           theme={theme}
-          onClick={item.onClick}
-          href={item.get('product_url')}
-          text={item.get('title')}
+          onClick={variant.onClick}
+          href={variant.get('product_url')}
+          text={variant.get('title')}
         />
 
         <Description
-          display-if={!!item.get('description')}
+          display-if={!!variant.get('description')}
           theme={theme}
-          text={item.get('description')}
+          text={variant.get('description')}
         />
 
         <div className={theme.divider} />
 
         <Price
-          display-if={!!item.get('price')}
+          display-if={!!variant.get('price')}
           className={theme.priceWrapper}
           item={item}
         />
 
         <OutOfStockSticker
-          display-if={item.getIn(['stickers', 'out-of-stock'])}
+          display-if={variant.getIn(['stickers', 'out-of-stock'])}
           config={config}
         />
       </div>
@@ -97,20 +116,24 @@ export default ({
       <div className={theme.image} onClick={item.onClick}>
         <Image
           aspectRatio={config.getIn(['image', 'aspectRatio'])}
-          thumbnail={item.get('thumbnail_url')}
-          src={item.get('image_url') || item.get('thumbnail_url')}
-          alt={item.get('title')}
+          thumbnail={variant.get('thumbnail_url')}
+          alt={variant.get('title')}
           lazy={config.getIn(['image', 'lazy'])}
           offset={config.getIn(['image', 'lazyOffset'])}
+          src={
+            config.getIn(['image', 'multiple'])
+              ? [variant.get('image_url'), variant.get('image_2_url')]
+              : variant.get('image_url') || variant.get('thumbnail_url')
+          }
         />
         <DiscountSticker
           config={config}
           className={theme.discountSticker}
-          discount={item.get('discount')}
+          discount={variant.get('discount')}
           display-if={
             config.getIn(['stickers', 'discount']) &&
-            item.get('discount', List()).size &&
-            item.getIn(['stickers', 'discount'])
+            variant.get('discount', List()).size &&
+            variant.getIn(['stickers', 'discount'])
           }
         />
       </div>
