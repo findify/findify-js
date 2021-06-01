@@ -3,7 +3,7 @@ export const omit = <TR>(ks: string[], original: object) =>
     .filter((k) => !ks.includes(k))
     .reduce((filtered, k) => Object.assign(original, { [k]: original[k] }), {});
 
-type RetryCallback = () => Promise<object>;
+type RetryCallback = () => Promise<any>;
 
 export const retryTimes = (n: number, fn: RetryCallback) =>
   new Promise((resolve, reject) =>
@@ -14,6 +14,7 @@ export const retryTimes = (n: number, fn: RetryCallback) =>
 
 const retry = (i: number, fn: RetryCallback) =>
   fn().catch((err) => {
+    if (!err) throw err;
     if (i <= 0) throw err;
     return retry(i - 1, fn);
   });

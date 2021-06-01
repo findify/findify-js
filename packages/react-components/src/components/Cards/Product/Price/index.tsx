@@ -18,12 +18,12 @@ export default ({ className, theme = styles, item }: IPriceProps) => {
   const { config } = useConfig();
 
   const hasDiscount =
-    (!item.get('oldPrice') || item.get('oldPrice').size < 0) &&
+    (!item.get('compare_at') || item.get('compare_at').size < 0) &&
     item.get('discount') &&
     item.get('discount').size > 0 &&
     priceIsSampleArray(item.get('price'));
 
-  const hasCompare = item.get('oldPrice') && item.get('oldPrice').size > 0;
+  const hasCompare = item.get('compare_at')?.size > 0;
 
   return (
     <div className={cx(theme.priceWrapper, className)}>
@@ -36,7 +36,7 @@ export default ({ className, theme = styles, item }: IPriceProps) => {
         {getPrice(item.get('price'), config.get('currency'))}
       </span>
       <span display-if={hasCompare} className={cx(theme.compare)}>
-        {getPrice(item.get('oldPrice'), config.get('currency'))}
+        {getPrice(item.get('compare_at'), config.get('currency'))}
       </span>
     </div>
   );

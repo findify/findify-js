@@ -15,7 +15,7 @@ export interface Request {
   body: Body;
   options: Options;
   retryCount: number;
-  id?: string|0;
+  id?: string | 0;
 }
 
 /**
@@ -53,18 +53,28 @@ const sendJSONP = (req: Request, getLatestRequestID) => {
   });
 };
 
-const sendPOST = async (req: Request) => {
-  const headers = {
-    'x-key': req.body.key,
-    'Content-type': 'application/json',
-  };
-  debug('sdk:api:post')('url: ', req.url);
-  debug('sdk:api:post')('body: ', req.body);
-  debug('sdk:api:post')('headers: ', headers);
-  const response = await axios.post(req.url, req.body, { headers });
-  debug('sdk:api:post')('response: ', response);
-  return response.data;
-};
+const sendPOST = (req: Request) =>
+  new Promise((resolve, reject) => {
+    const headers = {
+      'x-key': req.body.key,
+      'Content-type': 'application/json',
+    };
+    debug('sdk:api:post')('url: ', req.url);
+    debug('sdk:api:post')('body: ', req.body);
+    debug('sdk:api:post')('headers: ', headers);
+    axios
+      .post(req.url, req.body, { headers })
+      .then((response) => {
+        console;
+        debug('sdk:api:post')('response: ', response);
+        resolve(response.data);
+      })
+      .catch((err) => {
+        const status = err.response?.status;
+        if (status >= 400 && status < 500) return reject(false);
+        reject(err);
+      });
+  });
 
 /**
  * Send a request to Findify JSON API.
@@ -80,4 +90,6 @@ const request = {
  * @param req Request parameters.
  */
 export const send = (req: Request, getLatestRequestID) =>
-  retryTimes(req.retryCount, () => request[req.method](req, getLatestRequestID));
+  retryTimes(req.retryCount, () =>
+    request[req.method](req, getLatestRequestID)
+  );

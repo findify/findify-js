@@ -62,10 +62,10 @@ export type Config = {
     code: string, 
     symbol: string,
     thousand: string,
-    decimalSeparator: string,
+    decimal: string,
     symbolOnLeft: boolean,
     spaceBetweenAmountAndSymbol: boolean,
-    decimalDigits: number
+    precision: number
   }
 
   /** List of collection urls */
