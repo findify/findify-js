@@ -7,6 +7,7 @@ import Item from 'components/ColorFacet/Item';
 import { ThemedSFCProps, MJSConfiguration, IFacetValue, IFacet } from 'types';
 import { List } from 'immutable';
 import styles from 'components/ColorFacet/styles.css';
+import { useConfig } from '@findify/react-connect';
 
 export interface IColorFacetProps extends ThemedSFCProps {
   /** MJS Configuration */
@@ -28,6 +29,9 @@ export default ({
   theme = styles,
   isMobile,
 }: IColorFacetProps) => {
+  const { config: generalConfig } = useConfig();
+  const mapping = generalConfig.get('colorMapping');
+
   return (
     <div
       className={theme.root}
@@ -36,8 +40,8 @@ export default ({
       hidden={hidden}
     >
       <MapArray
-        config={config}
-        array={facet.get('values')}
+        config={generalConfig}
+        array={facet.get('values').filter((i) => mapping.has(i.get('value')))}
         factory={Item}
         theme={theme}
         isMobile={isMobile}
