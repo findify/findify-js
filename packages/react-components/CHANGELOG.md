@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.13.12](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.13.11...@findify/react-components@0.13.12) (2021-06-01)
+
+
+### Bug Fixes
+
+* **@findify/react-components:** fix color mapping ([6e8efc3](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/6e8efc3ceadc15cbf3064d7643d83d3d09ce8834))
+
+
+
+
+
 ## [0.13.11](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.13.10...@findify/react-components@0.13.11) (2021-06-01)
 
 
