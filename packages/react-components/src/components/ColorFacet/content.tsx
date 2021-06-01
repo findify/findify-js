@@ -26,7 +26,7 @@ const checkIfLight = (hex) => {
  * @param config MJS configuration to pull mapping from
  */
 const getStyles = (value: string, config: MJSConfiguration) => {
-  const background = config.getIn(['facets', 'color', 'mapping', value], value);
+  const background = config.getIn(['colorMapping', value], value);
   const isLight =
     background === 'white' ||
     (background.startsWith('#') && checkIfLight(background));
@@ -42,9 +42,8 @@ const getStyles = (value: string, config: MJSConfiguration) => {
 };
 
 export default memo(({ item, config, theme, children, isMobile }) => {
-  const value = (item.get('value') as string)!.toLowerCase();
+  const value = item.get('value');
   const styles = getStyles(value, config);
-  const hasMapping = config.hasIn(['facets', 'color', 'mapping', value]);
 
   return (
     <a
@@ -52,7 +51,6 @@ export default memo(({ item, config, theme, children, isMobile }) => {
       style={styles.ball}
       className={cx(theme.ball, {
         [theme.ballMobile]: isMobile,
-        [theme.notMapped]: !hasMapping,
       })}
     >
       <span style={styles.border} />
