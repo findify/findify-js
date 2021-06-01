@@ -10,9 +10,6 @@
 
 .price {
   display: inline-block;
-  .simple &{
-    font-weight: bold;
-  }
 }
 
 .compare {
@@ -24,8 +21,7 @@
 
 
 .price, .compare {
-  $font-family: $font-base;
-  font-family: $font-family;
+  font-family: $font-base;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
 }
