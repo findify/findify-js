@@ -32,7 +32,9 @@ const FacetContent = ({
   config,
   theme = styles,
 }: IFacetContentProps) => {
-  const _config = config.getIn(['facets', 'filters', active.get('name')]);
+  const _config = config.merge(
+    config.getIn(['facets', 'filters', active.get('name')])
+  );
   return (
     <div className={cx(theme.container, theme[_config.get('type')])}>
       <Component
@@ -56,8 +58,6 @@ export interface IMobileFacetsProps extends ThemedSFCProps {
   selectFacet: (name?: string) => any;
   /** Method used to reset facet */
   onReset: () => any;
-  /** MJS Configuration */
-  config: MJSConfiguration;
   /** MJS API Request Metadata */
   meta: Map<string, MJSValue>;
   /** Method used for hiding modal / drawer */
@@ -76,18 +76,16 @@ export default memo(({ theme = styles, hideModal }: IMobileFacetsProps) => {
 
   const total = useMemo(
     () =>
-      query.get('filters')
-        ? query
-            .get('filters')
-            .reduce(
-              (acc, filter) =>
-                acc +
-                (/category[2-9]/.test(filter.get('name'))
-                  ? 0
-                  : filter.get('values').size),
-              0
-            )
-        : 0,
+      query
+        .get('filters')
+        ?.reduce(
+          (acc, filter) =>
+            acc +
+            (/category[2-9]/.test(filter.get('name'))
+              ? 0
+              : filter.get('values').size),
+          0
+        ) || 0,
     [query]
   );
 
@@ -107,7 +105,7 @@ export default memo(({ theme = styles, hideModal }: IMobileFacetsProps) => {
   }, []);
 
   const onReset = useCallback(() => {
-    update('filters', (f) => f && f.clear());
+    update('filters', (f) => f?.clear());
   }, []);
 
   return (

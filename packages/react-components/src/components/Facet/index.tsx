@@ -7,9 +7,9 @@ import Text from 'components/Text';
 import Icon from 'components/Icon';
 import Component from 'components/Facet/Component';
 import { ThemedSFCProps, IFacet } from 'types';
-import { useCallback, useMemo } from 'react';
+import { useCallback, useMemo, useRef } from 'react';
 import styles from 'components/Facet/styles.css';
-import { Immutable, Types } from '@findify/store-configuration';
+import { Immutable } from '@findify/store-configuration';
 
 /** Props that Facet view accepts */
 export interface IFacetProps extends ThemedSFCProps {
@@ -26,11 +26,7 @@ export interface IFacetProps extends ThemedSFCProps {
   /** Facet object */
   item: IFacet;
   /** MJS Configuration */
-  config: Immutable.Factory<{
-    label: string;
-    initiallyCollapsed: boolean;
-    type: Types.FilterType;
-  }>;
+  config: Immutable.SearchConfig;
   /** Filters selected in facet */
   filtersSelected: number;
   /** Function to toggle open / closed state of facet */
@@ -43,17 +39,22 @@ export interface IFacetProps extends ThemedSFCProps {
 export default ({
   theme = styles,
   item,
-  config,
+  config: _config,
   isMobile,
   isHorizontal,
   onToggle,
   openFacets,
 }: IFacetProps) => {
-  const title = config.get('label') || item.get('name');
-  const selectedItemsCount = useMemo(() => {
-    return item.get('values').filter((item) => item.get('selected')).size;
-  }, [item]);
+  const { current: config } = useRef(
+    _config.merge(_config.getIn(['facets', 'filters', item.get('name')]))
+  );
 
+  const selectedItemsCount = useMemo(
+    () => item.get('values').filter((item) => item.get('selected')).size,
+    [item]
+  );
+
+  const title = config.get('label') || item.get('name');
   const isOpen = openFacets.includes(item.get('name'));
 
   const onClick = useCallback(() => {

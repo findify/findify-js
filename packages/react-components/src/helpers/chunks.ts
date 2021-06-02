@@ -22,16 +22,6 @@ export default {
     tabs: () => import('@findify/react-components/src/layouts/Tabs'),
   },
 
-  /** Recommendation */
-  recommendation: {
-    grid: () =>
-      import('@findify/react-components/src/layouts/Recommendation/Grid/view'),
-    slider: () =>
-      import(
-        '@findify/react-components/src/layouts/Recommendation/Slider/view'
-      ),
-  },
-
   /** Autocomplete */
   autocomplete: {
     sidebar: () => import('layouts/Autocomplete/Sidebar'),
@@ -44,5 +34,6 @@ export default {
     virtualizedList: () => import('components/common/VirtualizedList/view'),
     drawer: () => import('components/common/Drawer'),
     dropdown: () => import('components/Dropdown/view'),
+    swiper: () => import('components/Swiper/view'),
   },
 };
