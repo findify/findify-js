@@ -14,7 +14,6 @@ import useTranslations from 'helpers/useTranslations';
 import { useEvents, emit } from 'helpers/emmiter';
 
 import styles from 'components/search/DesktopFacets/styles.css';
-import { Map } from 'immutable';
 
 const DefaultContent = ({ theme, children, title }) => (
   <section className={theme.root} role="region" aria-label={title} tabIndex={0}>
@@ -94,9 +93,6 @@ export default memo(({ theme = styles }) => {
         onToggle={toggleFacet}
         openFacets={openFacets}
         keyAccessor={(i) => i.get('name')}
-        mapProps={(i) => ({
-          config: config.getIn(['facets', 'filters', i.get('name')], Map()),
-        })}
       />
     </Branch>
   );

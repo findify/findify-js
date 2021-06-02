@@ -5,6 +5,6 @@ import Loadable from 'react-loadable';
 import chunks from 'helpers/chunks';
 
 export default Loadable({
-  loader: chunks.recommendation.grid,
+  loader: chunks.components.swiper,
   loading: () => null,
 });
