@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.13.13](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.13.12...@findify/react-components@0.13.13) (2021-06-02)
+
+
+### Bug Fixes
+
+* **@findify/react-components:** code style fixes, Swiper moved to separated component ([54cecd3](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/54cecd3040bce659fe9ae3efdbf43f46a8bb2ba4))
+
+
+
+
+
 ## [0.13.12](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.13.11...@findify/react-components@0.13.12) (2021-06-01)
 
 
