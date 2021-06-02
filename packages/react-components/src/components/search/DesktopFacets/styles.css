@@ -21,6 +21,7 @@ $gutter: 40px;
   width: 100%;
   position: relative;
   max-width: 100vw;
+  margin-bottom: 10px;
   .container{
     display: flex;
     flex-direction: row;

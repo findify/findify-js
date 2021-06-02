@@ -19,9 +19,10 @@ $height: 30px;
   padding: 0 8px;
   cursor: text;
   transition: border-color .1s linear;
-  border: 1px solid $color-grey-1;
+  border: 1px solid $color-grey-2;
+  background: white;
   &:focus-within{
-    border-color: $color-grey-2;
+    border-color: $color-grey-3;
   }
 }
 
