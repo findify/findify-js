@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.0.18](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.0.17...@findify/bundle@7.0.18) (2021-06-03)
+
+
+### Bug Fixes
+
+* **@findify/bundle,@findify/react-components:** fix zeroResults view ([984e72f](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/984e72fa85053a72903d28a0d8d37cf947f908dc))
+
+
+
+
+
 ## [7.0.17](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.0.16...@findify/bundle@7.0.17) (2021-06-03)
 
 
