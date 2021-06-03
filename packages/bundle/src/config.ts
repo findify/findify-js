@@ -206,7 +206,7 @@ const config: Config = {
     search: {
       disableAutoRequest: false,
       facets: {
-        position: 'left',
+        position: 'top',
         sticky: true,
         accordion: true,
         hidable: true,
