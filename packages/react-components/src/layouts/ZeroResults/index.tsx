@@ -20,22 +20,23 @@ export interface IZeroResultsProps extends ThemedSFCProps<typeof styles> {
 }
 
 export default ({ q, theme = styles }: IZeroResultsProps) => {
-  const { items, config } = useItems<Immutable.RecommendationConfig>();
+  const { items, config } = useItems<Immutable.SearchConfig>();
   const translate = useTranslations();
-  const columns = useColumns(
-    config.getIn(['breakpoints', 'grid'], { 400: 6, 600: 4, 1000: 3 })
-  );
-
+  console.log(config.toJS());
   return (
     <div className={theme.container}>
       <div className={theme.wrapper}>
         <div className={theme.sorryContainer}>
-          <Text className={theme.sorry} primary bold uppercase inlineBlock>
-            {translate('zeroresults.sorryNoResults')}
-          </Text>
           <Text
+            className={theme.sorry}
             primary
-            inlineBlock
+            bold
+            uppercase
+            html={translate('zeroresults.sorryNoResults')}
+          />
+          <Text
+            style={{ marginTop: 20 }}
+            primary
             html={translate(
               q
                 ? 'zeroresults.noResultsFound'
@@ -44,34 +45,23 @@ export default ({ q, theme = styles }: IZeroResultsProps) => {
             )}
           />
         </div>
-        <div className={theme.suggestionsContainer} display-if={false}>
-          <Text
-            className={theme.possibleSuggestions}
-            primary
-            bold
-            uppercase
-            inlineBlock
-          >
-            {translate('zeroresults.tryOneOfThese')}
-          </Text>
-        </div>
         <div className={theme.recommendationContainer}>
-          <Text
-            className={theme.recommendation}
-            primary
-            bold
-            uppercase
-            inlineBlock
-          >
+          <Text className={theme.recommendation} primary inlineBlock>
             {translate('zeroresults.checkOutPopularProducts')}
           </Text>
         </div>
       </div>
-      <Grid columns={columns}>
+      <Grid
+        role="main"
+        wrapperComponent="ul"
+        columnComponent="li"
+        gutter={12}
+        columns={config.getIn(['breakpoints', 'grid'])}
+      >
         {MapArray({
           array: items,
           factory: ProductCard,
-          config,
+          config: config.get('product'),
         })}
       </Grid>
     </div>
