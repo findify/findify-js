@@ -61,7 +61,7 @@ export default (render, widget: Widget<Immutable.SearchConfig>) => {
   let fallbackAgent;
 
   const renderZeroResults = () => {
-    if (config.get('zeroResultsType')) return;
+    if (!config.get('zeroResultsType')) return;
     if (!fallbackAgent) fallbackAgent = createFallbackAgent(widget);
     return render(
       RecommendationProvider,
