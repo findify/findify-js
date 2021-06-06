@@ -109,7 +109,7 @@ export default ({
           src={src}
           key={src}
           alt={alt}
-          loading="lazy"
+          loading={lazy ? 'lazy' : undefined}
           className={cx(styles.image, index && styles.next)}
           display-if={isInViewPort}
           onLoad={() => setLoaded(true)}
