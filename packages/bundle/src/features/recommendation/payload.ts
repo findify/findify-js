@@ -1,11 +1,10 @@
 import { Immutable } from '@findify/store-configuration';
-import get from 'lodash/get';
 import { Widget } from '../../core/widgets';
 import { Map } from 'immutable';
 
 const getIdsFromEvents = (events) => ({
-  item_id: get(events, ['view-page', 'item_id']),
-  item_ids: get(events, ['update-cart', 'line_items'], []).map(
+  item_id: events?.['view-page']?.['item_id'],
+  item_ids: (events?.['update-cart']?.['line_items'] || []).map(
     (i) => i.item_id || i.product_id
   ),
 });

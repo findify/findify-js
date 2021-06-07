@@ -1,7 +1,6 @@
 /**
  * @module components/Pagination
  */
-import range from 'lodash/range';
 import { memo } from 'react';
 import cx from 'classnames';
 import Button from 'components/Button';
@@ -15,7 +14,9 @@ import useTranslations from 'helpers/useTranslations';
 const getRange = ({ current, total, step }) => {
   const min = current - step;
   const max = current + step + 1;
-  return range(min < 1 ? 1 : min, max > total ? total + 1 : max);
+  const to = max > total ? total + 1 : max;
+  const from = min < 1 ? 1 : min;
+  return [...Array(to - from).keys()].map((k) => from + k);
 };
 
 export default memo<{ theme?: any }>(({ theme = styles }) => {

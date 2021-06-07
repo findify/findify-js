@@ -286,7 +286,7 @@ const config: Config = {
         ],
       },
       pagination: {
-        type: 'lazy',
+        type: 'static',
         autoLoadTimes: 3,
         step: 2,
       },
