@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.13.16](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.13.15...@findify/react-components@0.13.16) (2021-06-07)
+
+
+### Bug Fixes
+
+* **@findify/bundle,@findify/react-components:** remove lodash import ([2d7dd5d](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/2d7dd5dec6db1d516150ed861cb8abd76d556b1c))
+* **@findify/react-components:** update multiple images ([a13bc45](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/a13bc458b6eeecd51319bbe2e3cd7d27aff03ee6))
+
+
+
+
+
 ## [0.13.15](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.13.14...@findify/react-components@0.13.15) (2021-06-03)
 
 

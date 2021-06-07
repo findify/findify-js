@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.0.19](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.0.18...@findify/bundle@7.0.19) (2021-06-07)
+
+
+### Bug Fixes
+
+* **@findify/bundle,@findify/react-components:** remove lodash import ([2d7dd5d](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/2d7dd5dec6db1d516150ed861cb8abd76d556b1c))
+
+
+
+
+
 ## [7.0.18](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.0.17...@findify/bundle@7.0.18) (2021-06-03)
 
 
