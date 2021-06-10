@@ -1,7 +1,6 @@
 /**
  * @module components/search/MobileActions
  */
-import { compose } from 'recompose';
 import { withDrawer } from 'helpers/withDrawer';
 import MobileFacets from 'components/search/MobileFacets';
 import MobileSorting from 'components/search/MobileSorting';
@@ -95,6 +94,12 @@ const transform = {
   from: { transform: `translate3d(-100%, 0, 0)` },
   to: { transform: `translate3d(0%, 0, 0)` },
 };
+
+const compose = (...funcs) =>
+  funcs.reduce(
+    (a, b) => (...args) => a(b(...args)),
+    (arg) => arg
+  );
 
 export default compose(
   withDrawer('Filters', MobileFacets, transform),

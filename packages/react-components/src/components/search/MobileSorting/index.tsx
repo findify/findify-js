@@ -1,7 +1,6 @@
 /**
  * @module components/search/MobileSorting
  */
-import { withHandlers } from 'recompose';
 import Button from 'components/Button';
 import Text from 'components/Text';
 import Icon from 'components/Icon';

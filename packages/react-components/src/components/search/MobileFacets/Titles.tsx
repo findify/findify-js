@@ -2,18 +2,13 @@
  * @module components/search/MobileFacets
  */
 
-import { withHandlers, withPropsOnChange, compose } from 'recompose';
 import MapArray from 'components/common/MapArray';
 import Button from 'components/Button';
 import Text from 'components/Text';
-import { ThemedSFCProps, IFacet, MJSConfiguration } from 'types';
+import { ThemedSFCProps, IFacet } from 'types';
 import { List } from 'immutable';
 import { useCallback, useMemo } from 'react';
 import { Immutable } from '@findify/store-configuration';
-
-const withClickHandler = withHandlers({
-  onClick: ({ selectFacet, item }) => () => selectFacet(item.get('name')),
-});
 
 /** Props that MobileFacets FacetLabel accepts */
 export interface IMobileFacetsLabelProps extends ThemedSFCProps {
