@@ -56,6 +56,11 @@ export enum ProductTemplate {
   'horizontal' = 'horizontal'
 }
 
+export enum ContentTemplate {
+  'vertical' = 'vertical',
+  'horizontal' = 'horizontal'
+}
+
 /**
  * Autocomplete
  */

@@ -50,6 +50,7 @@ type HookReturns<T = undefined> = {
 type HookProps = {
   key?: string;
   force?: boolean;
+  field?: string;
 };
 
 const getContext = <T = undefined>(key): ContextState<T> => {
@@ -95,13 +96,13 @@ const cache = (() => {
 })();
 
 const createHook = <H = undefined>({
-  field,
+  field: _field,
   handlers,
   mapProps,
 }: CreatorProps) => {
   return <T = undefined>({
     key = 'default',
-    force = false,
+    field = _field,
   }: HookProps = {}): HookReturns<T> & H => {
     const { agent, analytics, config } = getContext(key);
     const getState = useRef(cache(agent, analytics, config, field, mapProps));
