@@ -25,7 +25,10 @@ export {
   connect as connectPagination,
   hook as usePagination,
 } from './connect/connectPagination';
-export { connect as connectSort, hook as useSort } from './connect/connectSort';
+export {
+  connect as connectSort,
+  hook as useSort
+} from './connect/connectSort';
 export {
   connect as connectQuery,
   hook as useQuery,
@@ -42,3 +45,7 @@ export {
   connect as connectPromos,
   hook as usePromos,
 } from './connect/connectPromos';
+export {
+  connect as connectContent,
+  hook as useContent,
+} from './connect/connectContent';
