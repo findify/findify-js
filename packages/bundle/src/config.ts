@@ -220,7 +220,7 @@ const config: Config = {
           },
           color: {
             type: 'color',
-            label: 'Color',
+            label: 'Color 2',
             initiallyCollapsed: true,
             maxItemsCount: 4,
             precision: 0,

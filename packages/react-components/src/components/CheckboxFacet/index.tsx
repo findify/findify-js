@@ -99,6 +99,7 @@ export default ({
           content={content}
           limit={config.get('maxItemsCount', 6)}
           className={theme.expandedList}
+          key={items.hashCode()}
           array={
             config.get('pullSelected')
               ? items.filter((i) => !i.get('selected'))

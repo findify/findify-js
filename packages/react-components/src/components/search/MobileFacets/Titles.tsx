@@ -41,7 +41,7 @@ const FacetLabel = ({ item, theme, selectFacet, config }: any) => {
       <div className={theme.flexFix}>
         <Text primary uppercase inlineBlock>
           {config.getIn(
-            ['facets', item.get('name'), 'label'],
+            ['facets', 'filters', item.get('name'), 'label'],
             item.get('name')
           )}
         </Text>
