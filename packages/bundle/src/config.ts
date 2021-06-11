@@ -10,7 +10,7 @@ const config: Config = {
     method: 'post',
   },
   analytics: {},
-  observeDomChanges: false,
+  observeDomChanges: true,
   location: {
     searchUrl: '/pages/search-results',
     prefix: '',
