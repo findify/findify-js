@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.0.20](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.0.19...@findify/bundle@7.0.20) (2021-06-15)
+
+
+### Bug Fixes
+
+* **@findify/bundle,@findify/react-components:** drop recompose ([a7558ed](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/a7558ed897494268dcbd2557b0ff1ccb9a144f03))
+* **@findify/bundle,@findify/react-components:** mobile fasets title fix ([0d736b3](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/0d736b3e9402dca83b1565d3cab5ca2526b59705))
+
+
+
+
+
 ## [7.0.19](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.0.18...@findify/bundle@7.0.19) (2021-06-07)
 
 

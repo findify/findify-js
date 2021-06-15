@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.13.17](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.13.16...@findify/react-components@0.13.17) (2021-06-15)
+
+
+### Bug Fixes
+
+* **@findify/bundle,@findify/react-components:** drop recompose ([a7558ed](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/a7558ed897494268dcbd2557b0ff1ccb9a144f03))
+* **@findify/bundle,@findify/react-components:** mobile fasets title fix ([0d736b3](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/0d736b3e9402dca83b1565d3cab5ca2526b59705))
+* **@findify/react-components:** add search in mobile facets ([b0ecccc](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/b0ecccc6ddef35f13e78590f736c46791794371f))
+
+
+
+
+
 ## [0.13.16](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.13.15...@findify/react-components@0.13.16) (2021-06-07)
 
 
