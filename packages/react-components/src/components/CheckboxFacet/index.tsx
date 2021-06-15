@@ -41,11 +41,12 @@ export default ({
   theme = styles,
   config,
   isMobile,
+  isExpanded: _isExpanded,
   facet,
   hidden,
 }: ICheckboxFacetProps) => {
   const [search, setSearch] = useState('');
-  const [isExpanded, setExpanded] = useState(false);
+  const [isExpanded, setExpanded] = useState(_isExpanded);
   const translate = useTranslations();
 
   const onSearch = useCallback((e: React.FormEvent<HTMLInputElement>) => {
@@ -91,7 +92,7 @@ export default ({
         />
 
         <VirtualizedList
-          display-if={isExpanded}
+          display-if={!isMobile && isExpanded}
           factory={Checkbox}
           isMobile={isMobile}
           onItemClick={() => setSearch('')}
@@ -99,6 +100,7 @@ export default ({
           content={content}
           limit={config.get('maxItemsCount', 6)}
           className={theme.expandedList}
+          key={items.hashCode()}
           array={
             config.get('pullSelected')
               ? items.filter((i) => !i.get('selected'))
@@ -107,7 +109,7 @@ export default ({
         />
 
         <MapArray
-          display-if={!isExpanded}
+          display-if={!isExpanded || isMobile}
           factory={Checkbox}
           isMobile={isMobile}
           limit={!isMobile && config.get('maxItemsCount', 6)}
