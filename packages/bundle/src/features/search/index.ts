@@ -105,6 +105,11 @@ export default (render, widget: Widget<Immutable.SearchConfig>) => {
     renderZeroResults();
   });
 
+  if (!agent.response.get('items')?.isEmpty()) {
+    hideFallback(node);
+    hideLoader(node);
+  }
+
   /** Unsubscribe from events on instance destroy  */
   const unsubscribe = __root.listen((event, prop) => {
     if (event === Events.scrollTop) return maybeScrollTop(config, true);
