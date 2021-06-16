@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.0.21](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.0.20...@findify/bundle@7.0.21) (2021-06-16)
+
+
+### Bug Fixes
+
+* **@findify/bundle:** hide search/sc loader if response recieved before render ([fc09cf5](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/fc09cf5518bda7990fe2b9fc3359d96db8b6840a))
+
+
+
+
+
 ## [7.0.20](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.0.19...@findify/bundle@7.0.20) (2021-06-15)
 
 
