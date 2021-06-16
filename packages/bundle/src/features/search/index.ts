@@ -105,7 +105,7 @@ export default (render, widget: Widget<Immutable.SearchConfig>) => {
     renderZeroResults();
   });
 
-  if (!agent.response.get('items')?.isEmpty()) {
+  if (agent.response.get('items').size) {
     hideFallback(node);
     hideLoader(node);
   }
