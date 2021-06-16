@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.0.22](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.0.21...@findify/bundle@7.0.22) (2021-06-16)
+
+
+### Bug Fixes
+
+* **@findify/bundle:** fix force loader hide ([ca6f483](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/ca6f48300646ffa819202ae8c0fe7dfccb0749a6))
+* **@findify/bundle:** fix force loader hiding ([f92e3ad](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/f92e3addceeff8e032be0095d64fe0368d5e0e27))
+
+
+
+
+
 ## [7.0.21](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.0.20...@findify/bundle@7.0.21) (2021-06-16)
 
 
