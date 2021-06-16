@@ -54,6 +54,11 @@ export default (render, widget: Widget<Immutable.SearchConfig>) => {
     }
   });
 
+  if (!agent.response.get('items')?.isEmpty()) {
+    hideFallback(node);
+    hideLoader(node);
+  }
+
   agent.on('change:redirect', redirectToPage);
 
   agent.on('error', () => {
