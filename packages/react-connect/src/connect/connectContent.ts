@@ -1,19 +1,23 @@
 import createConnect from './createConnect';
-import { List, Map } from 'immutable';
+import { List } from 'immutable';
+import { Content } from '../immutable/content';
+
+const patchItems = (analytics, meta) => (item) =>
+  new Content(item, meta, analytics);
 
 type Items = {
   /** List of items */
-  items: List<Map<any, any>>;
+  items: List<Content>;
 };
 
 /**
- * Used to connect to items field of response, which is subset of products,
- * enhance it with Analytics and pass down further the modified products
+ * Connect content field and return Content Record for each
+ * to use in autocomplete - specify field eq: useContent("content.blogs")
  */
 const { hook, connect } = createConnect<Items>({
   field: 'items',
-  mapProps: (items) => ({
-    items: items?.map(Map) || List(),
+  mapProps: (items, meta, change, analytics) => ({
+    items: (items && items.map(patchItems(analytics, meta))) || List(),
   }),
 });
 
