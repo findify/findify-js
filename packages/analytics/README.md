@@ -131,7 +131,6 @@ Usually, you want to do this on "document ready" event to collect all the data f
 ```javascript
   var findifyAnalytics = require('@findify/analytics');
   var client = findifyAnalytics({ key: 'your_api_key' });
-  client.initialize();
 ```
 
 Where `key` is your Merchant API key that can be found in your Merchant Dashboard.
@@ -171,10 +170,6 @@ var findifyAnalytics = require('@findify/analytics');
 var client = findifyAnalytics({
   key: 'your_api_key',
 });
-
-// Then initialize the client instance.
-// Usually you want to do this on document ready event to collect all data from HTML tags.
-client.initialize();
 
 // After library iis nitialized, you can start sending event requests to server with `client` instance. 
 // Let's perform click-suggestion request:
@@ -229,8 +224,8 @@ contribute, setup the development environment and run tests.
 
 ## Documentation
 
-[API Reference](https://findify.readme.io/reference#analytics-js-introduction)
-
+[API Reference](https://developers.findify.io/page/findify-analytics-reference)
+[Introduction](https://developers.findify.io/page/findify-analytics)
 ## License
 
 MIT
