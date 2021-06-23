@@ -1,5 +1,5 @@
 /**
- * @module components/autocomplete/SearchSuggestions
+ * @module components/autocomplete/Suggestions
  */
 
 import { useCallback, useEffect } from 'react';
@@ -7,7 +7,7 @@ import cx from 'classnames';
 import MapArray from 'components/common/MapArray';
 import SuggestionItem from 'components/autocomplete/SuggestionItem';
 import { useAnnouncement } from 'components/common/Announcement';
-import styles from 'components/autocomplete/SearchSuggestions/styles.css';
+import styles from 'components/autocomplete/Suggestions/styles.css';
 import { useQuery, useSuggestions } from '@findify/react-connect';
 import { Immutable } from '@findify/store-configuration';
 import useTranslations from 'helpers/useTranslations';
@@ -15,7 +15,6 @@ import useTranslations from 'helpers/useTranslations';
 export default ({
   selectedSuggestion = undefined,
   theme = styles,
-  template = 'vertical',
   config,
   isTrendingSearches,
 }) => {
@@ -50,7 +49,7 @@ export default ({
   /** === */
 
   return (
-    <div className={theme.root}>
+    <div className={theme.root} display-if={suggestions.size}>
       <h4 className={theme.title}>
         {isTrendingSearches
           ? translate('autocomplete.trendingSearches')
@@ -58,7 +57,7 @@ export default ({
       </h4>
       <ul
         display-if={suggestions && query}
-        className={cx(theme.list, theme[template])}
+        className={cx(theme.list, theme[config.get('template')])}
         tabIndex={0}
         id="FindifyAutocompleteSuggestions"
         role="listbox"
@@ -68,9 +67,9 @@ export default ({
         <MapArray
           array={suggestions}
           factory={SuggestionItem}
-          limit={config.getIn(['suggestions', 'limit'])}
+          limit={config.get('limit')}
           tabIndex={0}
-          template={template}
+          template={config.get('template')}
           icon={isTrendingSearches && 'Fire'}
           isTrendingSearches={isTrendingSearches}
           selectedSuggestion={selectedSuggestion}
