@@ -10,8 +10,9 @@ import { useAutocompleteLogic } from 'layouts/Autocomplete/withAutocompleteLogic
 import React, { useCallback, useEffect, useRef } from 'react';
 import Grid from 'components/common/Grid';
 import Icon from 'components/Icon';
-import SearchSuggestions from 'components/autocomplete/SearchSuggestions';
-import ProductMatches from 'components/autocomplete/ProductMatches';
+import SearchSuggestions from 'components/autocomplete/Suggestions';
+import ProductMatches from 'components/autocomplete/Products';
+import Layout from 'components/autocomplete/Layout';
 
 export interface IAutocompleteDropdownProps {
   /** MJS Configuration */
@@ -102,19 +103,11 @@ export default ({
             />
           </div>
         </div>
-        <Grid className={theme.container} columns="fit|auto">
-          <SearchSuggestions
-            display-if={config.getIn(['suggestions', 'display'])}
-            config={config}
-            selectedSuggestion={selectedSuggestion}
-            isTrendingSearches={isTrendingSearches}
-          />
-          <ProductMatches
-            display-if={config.getIn(['productMatches', 'display'])}
-            config={config}
-            isTrendingSearches={isTrendingSearches}
-          />
-        </Grid>
+        <Layout
+          className={theme.container}
+          config={config}
+          isTrendingSearches={isTrendingSearches}
+        />
       </section>
     </div>
   );

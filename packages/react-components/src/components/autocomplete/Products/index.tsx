@@ -1,8 +1,7 @@
 /**
- * @module components/autocomplete/ProductMatches
+ * @module components/autocomplete/Products
  */
-import cx from 'classnames';
-import styles from 'components/autocomplete/ProductMatches/styles.css';
+import styles from 'components/autocomplete/Products/styles.css';
 import ProductCard from 'components/Cards/Product';
 import Grid from 'components/common/Grid';
 import MapArray from 'components/common/MapArray';
@@ -20,12 +19,15 @@ export default ({ theme = styles, config, isTrendingSearches }) => {
           ? translate('autocomplete.trendingProducts')
           : translate('autocomplete.productMatches')}
       </h4>
-      <Grid columns={config.getIn(['breakpoints', 'grid'], '12')} gutter={12}>
+      <Grid
+        columns={config.getIn(['breakpoints', 'products'], '12')}
+        gutter={12}
+      >
         {MapArray({
           array: items,
-          limit: config.getIn(['productMatches', 'limit']),
+          limit: config.get('limit'),
           factory: ProductCard,
-          config: config.get('product'),
+          config: config.get('item'),
         })}
       </Grid>
     </div>

@@ -11,12 +11,12 @@
 }
 
 .column, .placeholder{
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
   flex-grow: 1;
   flex-shrink: 0;
   flex-basis: auto;
-  box-sizing: content-box;
   list-style: none;
   .root &{
     list-style: none;

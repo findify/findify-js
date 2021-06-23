@@ -79,7 +79,8 @@ export enum AutocompleteTemplate {
 
 export enum AutocompletePosition {
   'left' = 'left',
-  'right' = 'right'
+  'right' = 'right',
+  'dynamic' = 'dynamic'
 }
 
 export enum SuggestionTemplate {

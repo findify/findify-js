@@ -4,9 +4,7 @@ import { useCallback, useEffect, useRef } from 'react';
 import Drawer from 'components/common/Drawer';
 import Icon from 'components/Icon';
 import useTranslations from 'helpers/useTranslations';
-import ProductMatches from 'components/autocomplete/ProductMatches';
-import SearchSuggestions from 'components/autocomplete/SearchSuggestions';
-import Grid from 'components/common/Grid';
+import Layout from 'components/autocomplete/Layout';
 
 export default ({ theme = styles, config }) => {
   const { suggestions, update } = useSuggestions();
@@ -84,24 +82,11 @@ export default ({ theme = styles, config }) => {
           </div>
         </div>
 
-        <Grid
+        <Layout
           className={theme.content}
-          columns={config.getIn(['breakpoints', 'layout'], '12')}
-        >
-          <SearchSuggestions
-            display-if={
-              config.getIn(['suggestions', 'display']) && suggestions?.size > 0
-            }
-            config={config}
-            isTrendingSearches={isTrendingSearches}
-            template={config.getIn(['suggestions', 'template'])}
-          />
-          <ProductMatches
-            display-if={config.getIn(['productMatches', 'display'])}
-            config={config}
-            isTrendingSearches={isTrendingSearches}
-          />
-        </Grid>
+          config={config}
+          isTrendingSearches={isTrendingSearches}
+        />
       </div>
     </Drawer>
   );

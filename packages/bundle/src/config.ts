@@ -105,6 +105,7 @@ const config: Config = {
         item_limit: 4,
       },
       mobile: {
+        layout: [['suggestions', 'categories'], ['products']],
         template: 'sidebar',
         position: 'left',
         breakpoints: {
@@ -121,40 +122,82 @@ const config: Config = {
             },
           ],
         },
-        product: {
-          template: 'horizontal',
-          price: {
-            template: 'min-max',
-          },
-          title: {
-            lines: 2,
-          },
-          description: {
-            lines: 2,
-          },
-          variants: {
-            display: true,
-            template: 'select',
-          },
-          image: {
-            aspectRatio: 1,
-            lazy: false,
-            lazyOffset: 0,
-          },
-        },
+
         overlay: false,
         suggestions: {
           display: true,
           template: 'horizontal',
         },
-        productMatches: {
+        products: {
           display: true,
+          item: {
+            template: 'horizontal',
+            price: {
+              template: 'min-max',
+            },
+            title: {
+              lines: 2,
+            },
+            description: {
+              lines: 2,
+            },
+            variants: {
+              display: true,
+              template: 'select',
+            },
+            image: {
+              aspectRatio: 1,
+              lazy: false,
+              lazyOffset: 0,
+            },
+          },
         },
       },
       desktop: {
+        position: 'right',
+        overlay: false,
         template: 'fullscreen',
+        layout: [['suggestions', 'categories'], ['products']],
+        content: {
+          categories: {
+            limit: 5,
+            title: 'Categories',
+            item: {
+              template: 'horizontal',
+            },
+          },
+        },
+        suggestions: {
+          limit: 5,
+          template: 'vertical',
+        },
+        products: {
+          limit: 6,
+          item: {
+            template: 'horizontal',
+            price: {
+              template: 'min-max',
+            },
+            title: {
+              lines: 2,
+            },
+            description: {
+              lines: 2,
+            },
+            variants: {
+              display: true,
+              template: 'select',
+            },
+            image: {
+              aspectRatio: 1,
+              lazy: false,
+              lazyOffset: 0,
+              multiple: false,
+            },
+          },
+        },
         breakpoints: {
-          grid: [
+          products: [
             {
               width: 1100,
               value: 2,
@@ -170,36 +213,6 @@ const config: Config = {
               value: 'fit|auto',
             },
           ],
-        },
-        product: {
-          template: 'vertical',
-          price: {
-            template: 'min-max',
-          },
-          title: {
-            lines: 2,
-          },
-          description: {
-            lines: 2,
-          },
-          variants: {
-            display: true,
-            template: 'select',
-          },
-          image: {
-            aspectRatio: 1,
-            lazy: false,
-            lazyOffset: 0,
-          },
-        },
-        position: 'left',
-        overlay: false,
-        suggestions: {
-          display: true,
-          template: 'vertical',
-        },
-        productMatches: {
-          display: true,
         },
       },
     },

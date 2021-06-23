@@ -42,6 +42,17 @@ export type AutocompleteSizeType = {
   }
 
   /**
+   * Content setup
+   */
+  content: {
+    [contentProviderName: string]: {
+      title: string
+      limit: number
+      item: ContentType
+    }
+  }
+
+  /**
    * Layout breakpoints definition 
    */
   breakpoints: {
@@ -49,13 +60,6 @@ export type AutocompleteSizeType = {
     layout: Breakpoints,
     // ???
     [contentProviderName: string]: Breakpoints
-  }
-}
-
-type Content = {
-  [contentProviderName: string]: {
-    limit: number
-    item: ContentType
   }
 }
 
@@ -84,6 +88,6 @@ export interface Autocomplete extends Omit<BaseFeature<'Autocomplete'>, 'product
   */
   enableTrendingSearches: boolean
 
-  mobile: AutocompleteSizeType & Exclude<Content, keyof AutocompleteSizeType>
-  desktop: AutocompleteSizeType & Exclude<Content, keyof AutocompleteSizeType>
+  mobile: AutocompleteSizeType
+  desktop: AutocompleteSizeType
 }

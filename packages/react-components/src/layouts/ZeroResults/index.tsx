@@ -9,7 +9,6 @@ import ProductCard from 'components/Cards/Product';
 import { ThemedSFCProps } from 'types';
 import useTranslations from 'helpers/useTranslations';
 import { useItems } from '@findify/react-connect';
-import useColumns from 'helpers/useColumns';
 import styles from 'layouts/ZeroResults/styles.css';
 import { Immutable } from '@findify/store-configuration';
 
@@ -22,7 +21,6 @@ export interface IZeroResultsProps extends ThemedSFCProps<typeof styles> {
 export default ({ q, theme = styles }: IZeroResultsProps) => {
   const { items, config } = useItems<Immutable.SearchConfig>();
   const translate = useTranslations();
-  console.log(config.toJS());
   return (
     <div className={theme.container}>
       <div className={theme.wrapper}>

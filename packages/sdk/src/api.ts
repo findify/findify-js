@@ -65,7 +65,6 @@ const sendPOST = (req: Request) =>
     axios
       .post(req.url, req.body, { headers })
       .then((response) => {
-        console;
         debug('sdk:api:post')('response: ', response);
         resolve(response.data);
       })
