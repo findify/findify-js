@@ -3,8 +3,7 @@
  */
 
 import Tip from 'components/autocomplete/Tip';
-import ProductMatches from 'components/autocomplete/ProductMatches';
-import SearchSuggestions from 'components/autocomplete/SearchSuggestions';
+import Layout from 'components/autocomplete/Layout';
 import { useSuggestions } from '@findify/react-connect';
 import { ThemedSFCProps, ISuggestion, MJSValue } from 'types';
 import { List } from 'immutable';
@@ -70,7 +69,7 @@ export default ({
   isFullScreen,
 }: IAutocompleteDropdownProps) => {
   const { suggestions, meta } = useSuggestions();
-  const { selectedSuggestion, closeAutocomplete } = useAutocompleteLogic();
+  const { closeAutocomplete } = useAutocompleteLogic();
   const [position, register] = usePosition(config);
   const isTrendingSearches = !meta.get('q');
   const translate = useTranslations();
@@ -92,7 +91,9 @@ export default ({
         data-findify-autocomplete={true}
         tabIndex={0}
         ref={register}
-        style={{ [position]: 0 }}
+        style={{
+          [position]: 0,
+        }}
       >
         <Tip
           className={theme.tip}
@@ -100,23 +101,11 @@ export default ({
           zeroResultsTitle={translate('autocomplete.viewAll')}
           widgetKey={config.get('widgetKey')}
         />
-        <Grid
+        <Layout
           className={theme.container}
-          columns={config.getIn(['breakpoints', 'layout'], 'fit|auto')}
-        >
-          <SearchSuggestions
-            display-if={config.getIn(['suggestions', 'display'])}
-            selectedSuggestion={selectedSuggestion}
-            config={config}
-            isTrendingSearches={isTrendingSearches}
-            template={config.getIn(['suggestions', 'template'])}
-          />
-          <ProductMatches
-            display-if={config.getIn(['productMatches', 'display'])}
-            config={config}
-            isTrendingSearches={isTrendingSearches}
-          />
-        </Grid>
+          config={config}
+          isTrendingSearches={isTrendingSearches}
+        />
       </section>
     </div>
   );

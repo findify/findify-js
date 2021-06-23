@@ -9,7 +9,6 @@ import ProductCard from 'components/Cards/Product';
 import { ThemedSFCProps } from 'types';
 import useTranslations from 'helpers/useTranslations';
 import { useItems } from '@findify/react-connect';
-import useColumns from 'helpers/useColumns';
 import styles from 'layouts/ZeroResults/styles.css';
 import { Immutable } from '@findify/store-configuration';
 
