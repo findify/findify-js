@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.0.23](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.0.22...@findify/bundle@7.0.23) (2021-06-23)
+
+
+### Bug Fixes
+
+* **@findify/bundle:** fix cart analytics for shopify ([d053c59](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/d053c595651d0243b2502c0725f2653789a0d7d7))
+
+
+
+
+
 ## [7.0.22](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.0.21...@findify/bundle@7.0.22) (2021-06-16)
 
 
