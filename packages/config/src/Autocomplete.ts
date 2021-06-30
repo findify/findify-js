@@ -26,10 +26,27 @@ export type AutocompleteSizeType = {
   overlay: boolean,
 
   /**
+   * @deprecated
+   * Product matches options
+   */
+  productMatches?: {
+    display: boolean
+    limit: number
+  }
+
+  /**
+   * @deprecated
+   */
+  product?: ProductType
+
+  /**
    * Suggestions options
    */
   suggestions: {
-    limit: number,
+    /** @deprecated */
+    display: boolean
+  
+    limit: number
     template: keyof typeof enums.SuggestionTemplate
   }
 
@@ -56,9 +73,11 @@ export type AutocompleteSizeType = {
    * Layout breakpoints definition 
    */
   breakpoints: {
+    /** @deprecated */
+    grid: Breakpoints
+
     products: Breakpoints
-    layout: Breakpoints,
-    // ???
+    layout: Breakpoints
     [contentProviderName: string]: Breakpoints
   }
 }
