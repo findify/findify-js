@@ -1,6 +1,10 @@
 {
   "name": "@findify/store-configuration",
+<<<<<<< HEAD
   "version": "0.2.10",
+=======
+  "version": "0.3.0",
+>>>>>>> 102e4a6c (chore(@findify/store-configuration): bump config version)
   "description": "Default store customization types and options",
   "main": "lib/index.js",
   "types": "types/index.d.ts",
