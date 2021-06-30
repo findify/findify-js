@@ -6,6 +6,8 @@
   --swiper-navigation-size: 44px;
 }
 
+
+.root{
 :global(.swiper-container) {
   margin-left: auto;
   margin-right: auto;
@@ -60,7 +62,7 @@
 :global(.findify-recommendation) {
   padding: 0 30px;
 }
-
+}
 /* Component styles */
 
 .root{
