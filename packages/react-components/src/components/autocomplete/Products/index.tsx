@@ -9,9 +9,18 @@ import { useItems } from '@findify/react-connect';
 import { Immutable } from '@findify/store-configuration';
 import useTranslations from 'helpers/useTranslations';
 
-export default ({ theme = styles, config, isTrendingSearches }) => {
-  const { items } = useItems<Immutable.AutocompleteConfig>();
+export default ({
+  theme = styles,
+  config,
+  isTrendingSearches,
+  registerItems,
+  highlightedItem,
+}) => {
+  const { items, meta } = useItems<Immutable.AutocompleteConfig>();
   const translate = useTranslations();
+
+  registerItems(items, config.get('limit'));
+
   return (
     <div className={theme.root} display-if={items.size}>
       <h4 className={theme.title}>
@@ -28,6 +37,10 @@ export default ({ theme = styles, config, isTrendingSearches }) => {
           limit: config.get('limit'),
           factory: ProductCard,
           config: config.get('item'),
+          mapProps: (item) => ({
+            highlighted:
+              highlightedItem && item.hashCode() === highlightedItem.hashCode(),
+          }),
         })}
       </Grid>
     </div>

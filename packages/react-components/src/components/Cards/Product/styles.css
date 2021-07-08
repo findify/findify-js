@@ -19,7 +19,7 @@ $text-align-horizontal: left;
     flex-direction: row;
     padding-bottom: 15px;
   }
-  &:focus-within{
+  &.highlighted, &:focus-within{
     &:after{
       content: ' ';
       position: absolute;

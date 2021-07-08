@@ -18,9 +18,9 @@
     border-radius: 2px;
     padding: 10px 17px;
     margin: 0 -17px;
-    box-sizing: content-box;
+    box-sizing: border-box;
   }
-  &:focus-within{
+  &.highlighted, &:focus-within{
     &:after{
       content: ' ';
       position: absolute;
@@ -29,7 +29,7 @@
       bottom: 0;
       top: 0;
       border: 2px solid Highlight;
-      border-color: -webkit-focus-ring-color;;
+      border-color: -webkit-focus-ring-color;
     }
     a:focus {
       text-decoration: none;
