@@ -1,14 +1,15 @@
 /**
  * @module components/autocomplete/Layout
  */
-import { Fragment, useMemo } from 'react';
+import { Fragment, useEffect, useMemo } from 'react';
 import Products from 'components/autocomplete/Products';
 import Suggestions from 'components/autocomplete/Suggestions';
 import Content from 'components/autocomplete/Content';
-import { useAutocompleteLogic } from 'layouts/Autocomplete/withAutocompleteLogic';
 import Grid from 'components/common/Grid';
 import { Immutable } from '@findify/store-configuration';
 import { useRef } from 'react';
+import { useAnnouncement } from 'components/common/Announcement';
+import useArrowSelection from 'helpers/useArrowSelection';
 
 export interface LayoutProps {
   config: Immutable.AutocompleteConfig;
@@ -29,8 +30,9 @@ const Item = ({
 }: {
   config: Immutable.AutocompleteConfig;
   type: 'products' | 'suggestions' | string;
-  selectedSuggestion: number;
   isTrendingSearches?: boolean;
+  highlightedItem: any;
+  registerItems: (number) => void;
 }) => {
   const [Content, _config] = useMemo(
     () => [
@@ -40,32 +42,48 @@ const Item = ({
     []
   );
 
-  console.log(type);
   return <Content type={type} config={_config} {...rest} />;
 };
 
 export default ({ config, className, isTrendingSearches }: LayoutProps) => {
-  const { selectedSuggestion } = useAutocompleteLogic();
   const { current: layout } = useRef(config.get('layout'));
+  const [highlightedItem, registerItems] = useArrowSelection();
+
+  /** ACCESSIBILITY */
+  const [announcement, setAnnouncement] = useAnnouncement();
+  useEffect(() => {
+    if (!highlightedItem) return;
+    config
+      .get('node')
+      .setAttribute('aria-activedescendant', highlightedItem.hashCode());
+    setAnnouncement(
+      highlightedItem.get('title') || highlightedItem.get('title')
+    );
+  }, [highlightedItem]);
+  /** === */
 
   return (
-    <Grid
-      className={className}
-      columns={config.getIn(['breakpoints', 'layout'])}
-    >
-      {layout.map((content, column) => (
-        <Fragment key={`column-${String(column)}`}>
-          {content.map((type) => (
-            <Item
-              key={type}
-              type={type}
-              config={config}
-              selectedSuggestion={selectedSuggestion}
-              isTrendingSearches={isTrendingSearches}
-            />
-          ))}
-        </Fragment>
-      ))}
-    </Grid>
+    <>
+      <Grid
+        className={className}
+        columns={config.getIn(['breakpoints', 'layout'])}
+      >
+        {layout.map((content, column) => (
+          <Fragment key={`column-${String(column)}`}>
+            {content.map((type) => (
+              <Item
+                key={type}
+                type={type}
+                config={config}
+                registerItems={registerItems}
+                highlightedItem={highlightedItem}
+                isTrendingSearches={isTrendingSearches}
+              />
+            ))}
+          </Fragment>
+        ))}
+      </Grid>
+      {announcement}
+    </>
   );
 };

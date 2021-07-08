@@ -43,16 +43,13 @@ export default ({
   item,
   query,
   theme = styles,
-  selectedSuggestion,
-  index,
+  highlighted,
   onClick,
   icon,
   isTrendingSearches,
   template,
 }: ISuggestionItemProps) => {
-  const highlighted = selectedSuggestion === index;
   const value = item?.get('value');
-
   return (
     <li
       display-if={value}

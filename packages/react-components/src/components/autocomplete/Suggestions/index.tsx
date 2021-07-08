@@ -13,40 +13,17 @@ import { Immutable } from '@findify/store-configuration';
 import useTranslations from 'helpers/useTranslations';
 
 export default ({
-  selectedSuggestion = undefined,
   theme = styles,
   config,
   isTrendingSearches,
+  highlightedItem,
+  registerItems,
 }) => {
-  const {
-    suggestions,
-    getSuggestionProps,
-  } = useSuggestions<Immutable.AutocompleteConfig>();
+  const { suggestions } = useSuggestions<Immutable.AutocompleteConfig>();
   const { query } = useQuery();
   const translate = useTranslations();
 
-  const suggestionProps = useCallback(
-    (item, index) => getSuggestionProps(index, config.get('widgetKey', '')),
-    [getSuggestionProps]
-  );
-
-  /** ACCESSIBILITY */
-  const [announcement, setAnnouncement] = useAnnouncement();
-  useEffect(() => {
-    if (selectedSuggestion === undefined) return;
-    config
-      .get('node')
-      .setAttribute(
-        'aria-activedescendant',
-        ~selectedSuggestion
-          ? suggestions.get(selectedSuggestion).hashCode()
-          : ''
-      );
-    if (~selectedSuggestion) {
-      setAnnouncement(suggestions.get(selectedSuggestion).get('value'));
-    }
-  }, [selectedSuggestion]);
-  /** === */
+  registerItems(suggestions, config.get('limit'));
 
   return (
     <div className={theme.root} display-if={suggestions.size}>
@@ -72,15 +49,16 @@ export default ({
           template={config.get('template')}
           icon={isTrendingSearches && 'Fire'}
           isTrendingSearches={isTrendingSearches}
-          selectedSuggestion={selectedSuggestion}
           query={query}
-          mapProps={suggestionProps}
+          mapProps={(item) => ({
+            highlighted:
+              highlightedItem && item.hashCode() === highlightedItem.hashCode(),
+          })}
         />
       </ul>
       <span style={{ display: 'none' }} id="FindifyAutocompleteDescription">
         {translate('suggestions.accessibleTitle')}
       </span>
-      {announcement}
     </div>
   );
 };

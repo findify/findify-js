@@ -24,11 +24,21 @@ const Description: any = ({ text, theme, ...rest }) => (
   </p>
 );
 
-export default ({ item, config, theme = styles, Container = 'div' }) => {
+export default ({
+  item,
+  config,
+  theme = styles,
+  Container = 'div',
+  highlighted,
+}) => {
   return (
     <Container
       data-element="card"
-      className={cx(theme.root, theme[config.get('template')])}
+      className={cx(
+        theme.root,
+        theme[config.get('template')],
+        highlighted && theme.highlighted
+      )}
     >
       <div className={theme.content}>
         <Title
