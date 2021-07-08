@@ -210,7 +210,7 @@ const config: Config = {
           layout: [
             {
               width: 0,
-              value: 'fit|auto',
+              value: '3|9',
             },
           ],
         },

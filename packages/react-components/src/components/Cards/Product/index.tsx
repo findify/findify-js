@@ -24,6 +24,7 @@ export interface IProductCardProps extends ThemedSFCProps {
   item: IProduct;
   config: Immutable.Factory<Product>;
   Container?: React.ElementType;
+  highlighted: boolean;
 }
 
 const useVariants = (
@@ -47,6 +48,7 @@ export default ({
   className,
   config,
   Container = 'div',
+  highlighted,
 }: IProductCardProps) => {
   const container = trackProductPosition(item);
   const [variant, setVariant] = useVariants(item);
@@ -55,7 +57,12 @@ export default ({
     <Container
       ref={container}
       data-element="card"
-      className={cx(theme.root, theme[config.get('template')], className)}
+      className={cx(
+        theme.root,
+        theme[config.get('template')],
+        highlighted && theme.highlighted,
+        className
+      )}
     >
       <div className={theme.content}>
         <Rating

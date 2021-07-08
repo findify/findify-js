@@ -8,10 +8,19 @@ import MapArray from 'components/common/MapArray';
 import { useContent } from '@findify/react-connect';
 import { Immutable } from '@findify/store-configuration';
 
-export default ({ theme = styles, config, type }) => {
+export default ({
+  theme = styles,
+  config,
+  type,
+  registerItems,
+  highlightedItem,
+}) => {
   const { items } = useContent<Immutable.AutocompleteConfig>({
     field: `content:${type}`,
   });
+
+  registerItems(items, config.get('limit'));
+
   return (
     <div className={theme.root} display-if={items.size}>
       <h4 className={theme.title}>{config.get('title')}</h4>
@@ -21,6 +30,10 @@ export default ({ theme = styles, config, type }) => {
           limit: config.get('limit'),
           factory: ContentCard,
           config: config.get('item'),
+          mapProps: (item) => ({
+            highlighted:
+              highlightedItem && item.hashCode() === highlightedItem.hashCode(),
+          }),
         })}
       </Grid>
     </div>

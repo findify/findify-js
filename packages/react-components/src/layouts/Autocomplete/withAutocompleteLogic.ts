@@ -18,6 +18,7 @@ export const useAutocompleteLogic = () => {
     if (!!e && !e.key) return e;
 
     if (e.key === 'Enter' && state !== -1) {
+      if (e.defaultPrevented) return;
       e.stopPropagation();
       e.preventDefault();
       getSuggestionProps(state, config.get('widgetKey')).onClick();
@@ -48,22 +49,19 @@ export const useAutocompleteLogic = () => {
   );
 
   useEffect(() => {
-    node.autocomplete = 'off';
-
-    const handleButtonClick = (e) => {
-      if (e.target !== node) return;
-      if (e.key === 'Escape') return closeAutocomplete();
-      setSuggestionIndex(e);
-    };
-
-    document
-      .querySelector('body')!
-      .addEventListener('keydown', handleButtonClick, true);
-
-    return () =>
-      document
-        .querySelector('body')!
-        .removeEventListener('keydown', handleButtonClick, true);
+    // node.autocomplete = 'off';
+    // const handleButtonClick = (e) => {
+    //   if (e.target !== node) return;
+    //   if (e.key === 'Escape') return closeAutocomplete();
+    //   setSuggestionIndex(e);
+    // };
+    // document
+    //   .querySelector('body')!
+    //   .addEventListener('keydown', handleButtonClick, true);
+    // return () =>
+    //   document
+    //     .querySelector('body')!
+    //     .removeEventListener('keydown', handleButtonClick, true);
   }, []);
 
   useEffect(() => setSuggestionIndex(-1), [meta.get('q')]);
