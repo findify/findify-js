@@ -1,7 +1,6 @@
 /**
  * @module components/Dropdown
  */
-import { Fragment } from 'react';
 import Swiper from 'components/Swiper';
 import ProductCard from 'components/Cards/Product';
 import Text from 'components/Text';
@@ -29,7 +28,7 @@ export default ({ theme = styles }) => {
   if (!items?.size) return null;
   return (
     <>
-      <Text title className={theme.title}>
+      <Text title component="p" className={theme.title}>
         {config.get('title')}
       </Text>
       <Swiper {...options} slot={config.get('slot')}>

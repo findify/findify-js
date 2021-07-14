@@ -78,7 +78,7 @@ const config: Config = {
     'search.partialMatch': 'Showing results that partially match instead.',
     'search.accessibleUpdate': 'Products has been updated',
     'zeroresults.sorryNoResults':
-      "Oh no! Your search for <span class=\"findify-query\"></span> did not match any products.<br/>But don't give up, we're here to help you find what you're looking for.",
+      "Oh no! Your search for %s did not match any products.<br/>But don't give up, we're here to help you find what you're looking for.",
     'zeroresults.noResultsFound':
       'We can\'t seem to find any products that match your search for "%s"',
     'zeroresults.noResultEmptyQuery':
@@ -91,7 +91,7 @@ const config: Config = {
     'autocomplete.trendingProducts': 'Trending products',
     'autocomplete.productMatches': 'Product matches',
     'autocomplete.tipResults': 'View all results for',
-    'autocomplete.viewAll': 'View all results for',
+    'autocomplete.viewAll': 'View all results',
     'autocomplete.placeholder': 'What are you looking for?',
   },
   features: {
@@ -206,7 +206,7 @@ const config: Config = {
     search: {
       disableAutoRequest: false,
       facets: {
-        position: 'top',
+        position: 'left',
         sticky: true,
         accordion: true,
         hidable: true,

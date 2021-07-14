@@ -22,7 +22,6 @@ export interface IZeroResultsProps extends ThemedSFCProps<typeof styles> {
 export default ({ q, theme = styles }: IZeroResultsProps) => {
   const { items, config } = useItems<Immutable.SearchConfig>();
   const translate = useTranslations();
-  console.log(config.toJS());
   return (
     <div className={theme.container}>
       <div className={theme.wrapper}>
@@ -32,7 +31,7 @@ export default ({ q, theme = styles }: IZeroResultsProps) => {
             primary
             bold
             uppercase
-            html={translate('zeroresults.sorryNoResults')}
+            html={translate('zeroresults.sorryNoResults', escape(q))}
           />
           <Text
             style={{ marginTop: 20 }}

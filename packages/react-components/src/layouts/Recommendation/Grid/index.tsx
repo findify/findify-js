@@ -8,6 +8,7 @@ import { IProduct, MJSConfiguration, ThemedSFCProps } from 'types/index';
 import { List } from 'immutable';
 import Product from 'components/Cards/Product';
 import MapArray from 'components/common/MapArray';
+import styles from 'layouts/Recommendation/Grid/styles.css';
 
 /** This is a list of props Grid layout for Recommendations accepts */
 export interface IGridProps extends ThemedSFCProps {
@@ -19,11 +20,11 @@ export interface IGridProps extends ThemedSFCProps {
   columns: string;
 }
 
-export default ({ items, config, columns }: IGridProps) => {
-  if (!items || !items.size) return null;
+export default ({ items, config, theme = styles }: IGridProps) => {
+  if (!items?.size) return null;
   return (
     <>
-      <Text primary lowercase>
+      <Text title component="p" className={theme.title}>
         {config.get('title')}
       </Text>
       <Grid
