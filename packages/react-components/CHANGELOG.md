@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.13.18](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.13.17...@findify/react-components@0.13.18) (2021-07-14)
+
+
+### Bug Fixes
+
+* **@findify/bundle,@findify/react-components:** minor fixes ([1b36033](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/1b36033fb929bf1ffd454636063af2ad27092b3e))
+* **@findify/react-components:** remove min-width from product card ([88310e0](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/88310e0acca86e0783046c33f3925b39f1c5f090))
+* **@findify/react-components:** wrap swiper classnames with findify ([55b9f82](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/55b9f82378949a214e6fe17051bbf4895bb8834c))
+
+
+
+
+
 ## [0.13.17](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.13.16...@findify/react-components@0.13.17) (2021-06-15)
 
 
