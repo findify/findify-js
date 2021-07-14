@@ -34,6 +34,8 @@ export interface ITextProps extends ThemedSFCProps, ClassnamedProps {
   size?: string;
   /** Custom HTML */
   html?: string;
+
+  title?: boolean;
 }
 
 export default memo<ITextProps>(

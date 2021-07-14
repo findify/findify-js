@@ -32,7 +32,7 @@ export default ({
   return (
     <>
       <div
-        display-if={!!query.get('q')}
+        display-if={query.get('q')}
         className={classnames(theme.tip, className)}
         onClick={onClick}
       >

@@ -35,6 +35,7 @@ $gutter: 40px;
   padding: 13px $padding 20px $padding;
   display: flex;
   flex-direction: row;
+  align-items: center;
   .horizontal &{
     display: none;
   }
