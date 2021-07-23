@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.13.19](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.13.18...@findify/react-components@0.13.19) (2021-07-23)
+
+
+### Bug Fixes
+
+* **@findify/bundle,@findify/react-components:** fix RangeFacet values; Fix Array.from issue in pagination ([1b6db47](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/1b6db4723c58cf83afe1559107629673ffba84d5))
+
+
+
+
+
 ## [0.13.18](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.13.17...@findify/react-components@0.13.18) (2021-07-14)
 
 

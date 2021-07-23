@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.0.25](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.0.24...@findify/bundle@7.0.25) (2021-07-23)
+
+
+### Bug Fixes
+
+* **@findify/bundle,@findify/react-components:** fix RangeFacet values; Fix Array.from issue in pagination ([1b6db47](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/1b6db4723c58cf83afe1559107629673ffba84d5))
+
+
+
+
+
 ## [7.0.24](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.0.23...@findify/bundle@7.0.24) (2021-07-14)
 
 
