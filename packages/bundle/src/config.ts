@@ -320,11 +320,11 @@ const config: Config = {
           },
           {
             width: 600,
-            value: 3,
+            value: 4,
           },
           {
             width: 1000,
-            value: 4,
+            value: 3,
           },
         ],
         layout: [
