@@ -164,6 +164,9 @@ const config: Config = {
             title: 'Categories',
             item: {
               template: 'horizontal',
+              image: {
+                aspectRatio: 1,
+              },
             },
           },
         },
@@ -199,12 +202,8 @@ const config: Config = {
         breakpoints: {
           products: [
             {
-              width: 1100,
-              value: 2,
-            },
-            {
-              width: 1300,
-              value: 4,
+              width: 0,
+              value: 6,
             },
           ],
           layout: [

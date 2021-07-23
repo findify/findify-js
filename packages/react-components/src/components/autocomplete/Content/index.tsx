@@ -24,7 +24,10 @@ export default ({
   return (
     <div className={theme.root} display-if={items.size}>
       <h4 className={theme.title}>{config.get('title')}</h4>
-      <Grid columns={config.getIn(['breakpoints', type], '12')}>
+      <Grid
+        columns={config.getIn(['breakpoints', type], '12')}
+        className={theme.container}
+      >
         {MapArray({
           array: items,
           limit: config.get('limit'),

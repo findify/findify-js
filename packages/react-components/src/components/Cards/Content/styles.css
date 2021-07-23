@@ -17,7 +17,6 @@
     flex-direction: row;
     border-radius: 2px;
     padding: 10px 17px;
-    margin: 0 -17px;
     box-sizing: border-box;
   }
   &.highlighted, &:focus-within{
