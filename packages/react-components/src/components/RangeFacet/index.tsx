@@ -36,19 +36,18 @@ const PriceInput = ({
   onBlur,
   resetOn,
   precision,
+  reference,
 }) => {
-  const ref = useRef(null);
-
   const handleWrapperClick = useCallback(() => {
-    if (ref.current) ref.current?.focus();
-  }, [ref]);
+    if (reference.current) reference.current?.focus();
+  }, [reference]);
 
   const handleKeyPress = useCallback((e) => {
     if (e.key === 'Enter') onBlur(e);
   }, []);
 
   useEffect(() => {
-    if (ref.current) ref.current.value = null;
+    if (reference.current) reference.current.value = null;
   }, [resetOn]);
 
   const step = useMemo(
@@ -73,7 +72,7 @@ const PriceInput = ({
         min={min}
         onBlur={onBlur}
         onKeyPress={handleKeyPress}
-        ref={ref}
+        ref={reference}
         step={step}
       />
       <div className={theme.border} />
@@ -90,6 +89,8 @@ export default ({
 }: IRangeFacetProps) => {
   const { config } = useConfig<Immutable.RecommendationConfig>();
   const translate = useTranslations();
+  const minInput = useRef<HTMLInputElement>(null);
+  const maxInput = useRef<HTMLInputElement>(null);
 
   const [[from, to], setState] = useState<string[]>([]);
 
@@ -120,7 +121,7 @@ export default ({
       ).toFixed(facetConfig.get('precision', 0));
 
       e.target.value = value;
-      setState([value, to]);
+      setState((s) => [value, s[1]]);
     },
     [from, to]
   );
@@ -139,16 +140,23 @@ export default ({
       ).toFixed(facetConfig.get('precision', 0));
 
       e.target.value = value;
-      setState([from, value]);
+      setState((s) => [s[0], value]);
     },
     [from, to]
   );
 
-  const onSubmit = useCallback(() => {
-    if (!from && !to) return;
-    facet.setValue({ from, to });
-    setState([]);
-  }, [from, to]);
+  const onSubmit = useCallback(
+    (e) => {
+      e.preventDefault();
+      if (!from && !to) return;
+      facet.setValue({ from, to });
+      setState([]);
+      if (minInput.current && maxInput.current) {
+        minInput.current.value = maxInput.current.value = '';
+      }
+    },
+    [from, to]
+  );
 
   return (
     <div
@@ -175,6 +183,8 @@ export default ({
       />
 
       <Grid
+        wrapperComponent="form"
+        onSubmit={onSubmit}
         columns="3|fit|3|auto"
         className={cx(theme.range, theme.inputBlock)}
       >
@@ -185,6 +195,7 @@ export default ({
           min={facet.get('min')}
           resetOn={facet}
           onBlur={onChangeMin}
+          reference={minInput}
           precision={facetConfig.get('precision', 0)}
         />
 
@@ -197,9 +208,10 @@ export default ({
           max={facet.get('max')}
           resetOn={facet}
           onBlur={onChangeMax}
+          reference={maxInput}
           precision={facetConfig.get('precision', 0)}
         />
-        <Button className={theme.submit} onClick={onSubmit}>
+        <Button className={theme.submit} type="submit" onClick={onSubmit}>
           <Text primary uppercase>
             {translate('facets.submit')}
           </Text>

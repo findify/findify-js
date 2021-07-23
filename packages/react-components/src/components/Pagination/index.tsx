@@ -16,7 +16,7 @@ const getRange = ({ current, total, step }) => {
   const max = current + step + 1;
   const to = max > total ? total + 1 : max;
   const from = min < 1 ? 1 : min;
-  return [...Array(to - from).keys()].map((k) => from + k);
+  return Array.from(Array(to - from).keys()).map((k) => from + k);
 };
 
 export default memo<{ theme?: any }>(({ theme = styles }) => {
