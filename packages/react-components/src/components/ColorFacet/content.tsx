@@ -32,7 +32,9 @@ const getStyles = (value: string, config: MJSConfiguration) => {
     (background.startsWith('#') && checkIfLight(background));
   return {
     ball: {
-      background: background,
+      background: background.startsWith('http')
+        ? `transparent url(${background})`
+        : background,
       color: isLight ? 'black' : 'white',
     },
     border: {
