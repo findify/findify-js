@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.13.22](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.13.21...@findify/react-components@0.13.22) (2021-08-03)
+
+
+### Bug Fixes
+
+* **@findify/react-components:** change dynamic import path for layouts ([f919bb2](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/f919bb213918fac6200541b1dd6e92e2cff3e14b))
+
+
+
+
+
 ## [0.13.21](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.13.20...@findify/react-components@0.13.21) (2021-08-03)
 
 
