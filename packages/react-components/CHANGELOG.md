@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.13.21](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.13.20...@findify/react-components@0.13.21) (2021-08-03)
+
+
+### Bug Fixes
+
+* **@findify/react-components:** fix components build sequence ([7e29272](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/7e29272f1c809b78f00f0990d08e4762f559df92))
+
+
+
+
+
 ## [0.13.20](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.13.19...@findify/react-components@0.13.20) (2021-08-03)
 
 
