@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.13.20](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.13.19...@findify/react-components@0.13.20) (2021-08-03)
+
+
+### Bug Fixes
+
+* **@findify/react-components:** minor fix for color facets url value ([e8f3856](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/e8f3856268701d49c7fc31bbcc1c7adb50211645))
+
+
+
+
+
 ## [0.13.19](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.13.18...@findify/react-components@0.13.19) (2021-07-23)
 
 
