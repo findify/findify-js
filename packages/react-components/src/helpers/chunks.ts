@@ -1,25 +1,16 @@
 export default {
   /** Views */
   views: {
-    search: () =>
-      import(
-        /* webpackChunkName: "search" */ '@findify/react-components/src/layouts/Search'
-      ),
+    search: () => import(/* webpackChunkName: "search" */ 'layouts/Search'),
     autocomplete: () =>
-      import(
-        /* webpackChunkName: "autocomplete" */ '@findify/react-components/src/layouts/Autocomplete'
-      ),
+      import(/* webpackChunkName: "autocomplete" */ 'layouts/Autocomplete'),
     recommendation: () =>
-      import(
-        /* webpackChunkName: "recommendation" */ '@findify/react-components/src/layouts/Recommendation'
-      ),
+      import(/* webpackChunkName: "recommendation" */ 'layouts/Recommendation'),
     zeroResults: () =>
-      import(
-        /* webpackChunkName: "search" */ '@findify/react-components/src/layouts/ZeroResults'
-      ),
-    custom: () => import('@findify/react-components/src/layouts/Custom'),
-    content: () => import('@findify/react-components/src/layouts/Content'),
-    tabs: () => import('@findify/react-components/src/layouts/Tabs'),
+      import(/* webpackChunkName: "search" */ 'layouts/ZeroResults'),
+    custom: () => import('layouts/Custom'),
+    content: () => import('layouts/Content'),
+    tabs: () => import('layouts/Tabs'),
   },
 
   /** Autocomplete */
