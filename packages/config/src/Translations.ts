@@ -17,6 +17,9 @@ export type Translations = {
   'facets.seeResults': string // 'See results'
   'facets.search': string // 'Search'
 
+  'range.up': string // '& up'
+  'range.under': string // 'under'
+
   'pagination.previous': string // 'Prev'
   'pagination.goTo': string // 'Go to %'
   'pagination.next': string // 'Next'
