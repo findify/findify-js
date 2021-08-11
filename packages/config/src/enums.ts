@@ -19,7 +19,7 @@ export enum Platform {
   'bigcommerce' = 'bigcommerce',
   'magento' = 'magento',
   'magento2' = 'magento2',
-  'neto' = 'neto',
+  'maropost' = 'maropost',
   'jetshop' = 'jetshop'
 }
 
