@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.0.29](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.0.28...@findify/bundle@7.0.29) (2021-08-12)
+
+
+### Bug Fixes
+
+* **@findify/bundle:** send item_id for viwedBought recommendations ([0b6e178](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/0b6e1784cbd3d72f196115f11e3fd7442e992b56))
+
+
+
+
+
 ## [7.0.28](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.0.27...@findify/bundle@7.0.28) (2021-08-03)
 
 **Note:** Version bump only for package @findify/bundle
