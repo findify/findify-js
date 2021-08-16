@@ -9,6 +9,8 @@ import { List } from 'immutable';
 import Product from 'components/Cards/Product';
 import MapArray from 'components/common/MapArray';
 import styles from 'layouts/Recommendation/Grid/styles.css';
+import { useItems } from '@findify/react-connect';
+import { Immutable } from '@findify/store-configuration';
 
 /** This is a list of props Grid layout for Recommendations accepts */
 export interface IGridProps extends ThemedSFCProps {
@@ -20,18 +22,17 @@ export interface IGridProps extends ThemedSFCProps {
   columns: string;
 }
 
-export default ({ items, config, theme = styles }: IGridProps) => {
+export default ({ theme = styles }: IGridProps) => {
+  const { items, config } = useItems<Immutable.RecommendationConfig>();
   if (!items?.size) return null;
   return (
     <>
       <Text title component="p" className={theme.title}>
         {config.get('title')}
       </Text>
-      <Grid
-        columns={config.getIn(['grid', 'items'], { 400: 6, 600: 4, 1000: 3 })}
-      >
+      <Grid gutter={20} columns={config.getIn(['breakpoints', 'grid'])}>
         {MapArray({
-          config,
+          config: config.get('product'),
           array: items,
           factory: Product,
         })}

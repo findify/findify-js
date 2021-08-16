@@ -37,18 +37,26 @@ export default (offset = 300) => {
   const state = useRef(initialState);
   const autoLoad = useRef(config.getIn(['pagination', 'autoLoadTimes']) || 0);
 
-  const onLoadNext = useCallback(() => {
-    pending.current = true;
-    return update('offset', (state.current.ranges.last() as any).get('to'));
-  }, [meta]);
+  const onLoadNext = useCallback(
+    (e) => {
+      e.preventDefault();
+      pending.current = true;
+      return update('offset', (state.current.ranges.last() as any).get('to'));
+    },
+    [meta]
+  );
 
-  const onLoadPrev = useCallback(() => {
-    pending.current = true;
-    return update(
-      'offset',
-      (state.current.ranges.first() as any).get('from') - meta.get('limit')
-    );
-  }, [meta]);
+  const onLoadPrev = useCallback(
+    (e) => {
+      e.preventDefault();
+      pending.current = true;
+      return update(
+        'offset',
+        (state.current.ranges.first() as any).get('from') - meta.get('limit')
+      );
+    },
+    [meta]
+  );
 
   const trackPosition = () => {
     if (
