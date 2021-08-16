@@ -1,7 +1,7 @@
 /**
  * @module components/search/LazyResults
  */
-import { useConfig } from '@findify/react-connect';
+import { useConfig, usePagination } from '@findify/react-connect';
 import MapArray from 'components/common/MapArray';
 import Grid from 'components/common/Grid';
 import ProductCard from 'components/Cards/Product';
@@ -24,6 +24,7 @@ export default ({ theme = styles, card = ProductCard }) => {
     items,
   } = useLazy();
   const { config } = useConfig<Immutable.SearchConfig>();
+  const { getPageProps, current } = usePagination();
   const translate = useTranslations();
   return (
     <div
@@ -34,15 +35,17 @@ export default ({ theme = styles, card = ProductCard }) => {
       aria-live="polite"
       tabIndex={0}
     >
-      <Button
-        display-if={displayPrevButton}
-        className={theme.prevButton}
-        onClick={onLoadPrev}
-      >
-        <Text primary lowercase>
-          {translate('search.loadPrev')}
-        </Text>
-      </Button>
+      <div className={theme.buttonContainer} display-if={displayPrevButton}>
+        <Button
+          className={theme.prevButton}
+          onClick={onLoadPrev}
+          href={getPageProps(current - 1)?.href}
+        >
+          <Text primary lowercase>
+            {translate('search.loadPrev')}
+          </Text>
+        </Button>
+      </div>
       <Grid
         role="main"
         wrapperComponent="ul"
@@ -57,15 +60,17 @@ export default ({ theme = styles, card = ProductCard }) => {
           factory: card,
         })}
       </Grid>
-      <Button
-        display-if={displayNextButton}
-        className={theme.nextButton}
-        onClick={onLoadNext}
-      >
-        <Text primary lowercase>
-          {translate('search.loadMore')}
-        </Text>
-      </Button>
+      <div className={theme.buttonContainer} display-if={displayNextButton}>
+        <Button
+          className={theme.nextButton}
+          onClick={onLoadNext}
+          href={getPageProps(current + 1)?.href}
+        >
+          <Text primary lowercase>
+            {translate('search.loadMore')}
+          </Text>
+        </Button>
+      </div>
     </div>
   );
 };
