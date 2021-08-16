@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.13.24](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.13.23...@findify/react-components@0.13.24) (2021-08-16)
+
+
+### Bug Fixes
+
+* **@findify/react-components:** fix grid template for recommendations & make lazy pagination crowable ([e5ed7b0](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/e5ed7b0d877ed280e0a637a4ecf089c8bfda5001))
+
+
+
+
+
 ## [0.13.23](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.13.22...@findify/react-components@0.13.23) (2021-08-12)
 
 **Note:** Version bump only for package @findify/react-components
