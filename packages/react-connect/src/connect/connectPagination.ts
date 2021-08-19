@@ -32,17 +32,22 @@ type Pagination = {
   };
 };
 
-const buildHref = (page, limit) =>
-  (global as any).findify &&
-  document.location.origin +
-    document.location.pathname +
-    (global as any).findify.utils.buildQuery(
+const buildHref = (page, limit) => {
+  const utils = (global as any).findify?.utils;
+  const { origin, pathname } = document.location;
+  if (!utils) return;
+  return (
+    origin +
+    pathname +
+    utils.buildQuery(
       {
-        ...(global as any).findify.utils.getQuery(),
+        ...utils.getQuery(),
         offset: (page - 1) * limit,
       },
       true
-    );
+    )
+  );
+};
 
 const { hook, connect } = createConnect<Pagination>({
   field: 'meta',
