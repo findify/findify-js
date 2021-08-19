@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.15](https://github.com/findify/findify-js/compare/@findify/react-connect@0.7.14...@findify/react-connect@0.7.15) (2021-08-19)
+
+
+### Bug Fixes
+
+* **@findify/react-connect:** check if OOB while creating urls ([ed141fc](https://github.com/findify/findify-js/commit/ed141fcb5e6beda22133d77feaa5513de038595d))
+
+
+
+
+
 ## [0.7.14](https://github.com/findify/findify-js/compare/@findify/react-connect@0.7.13...@findify/react-connect@0.7.14) (2021-08-12)
 
 **Note:** Version bump only for package @findify/react-connect
