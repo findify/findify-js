@@ -1,7 +1,7 @@
 import { Config } from '@findify/store-configuration';
 
 const config: Config = {
-  key: 'afc48014-1778-4e72-aa47-f6160c30c565',
+  key: '9495ac17-2360-43d3-be46-caf39dbdc04b',
   merchantId: 8472,
   status: 'live',
   platform: 'shopify',

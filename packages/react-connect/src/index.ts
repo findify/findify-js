@@ -38,3 +38,7 @@ export {
   connect as connectBanner,
   hook as useBanner,
 } from './connect/connectBanner';
+export {
+  connect as connectPromos,
+  hook as usePromos,
+} from './connect/connectPromos';
