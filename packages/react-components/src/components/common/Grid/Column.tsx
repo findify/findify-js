@@ -84,6 +84,10 @@ export const Column = ({
 export const Placeholder = ({ size, gutter }) => (
   <div
     className={styles.placeholder}
-    style={{ flexBasis: getWidth(size, gutter), paddingLeft: `${gutter}` }}
+    style={{
+      flexBasis: getWidth(size, gutter),
+      paddingLeft: `${gutter}`,
+      order: 1e5,
+    }}
   />
 );
