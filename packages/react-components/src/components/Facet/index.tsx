@@ -7,7 +7,7 @@ import Text from 'components/Text';
 import Icon from 'components/Icon';
 import Component from 'components/Facet/Component';
 import { ThemedSFCProps, IFacet } from 'types';
-import { useCallback, useMemo, useRef } from 'react';
+import { useCallback, useEffect, useMemo, useRef } from 'react';
 import styles from 'components/Facet/styles.css';
 import { Immutable } from '@findify/store-configuration';
 
@@ -60,6 +60,10 @@ export default ({
   const onClick = useCallback(() => {
     onToggle(item.get('name'));
   }, []);
+
+  useEffect(() => {
+    window.dispatchEvent(new Event('resize'));
+  }, [isOpen]);
 
   return (
     <div

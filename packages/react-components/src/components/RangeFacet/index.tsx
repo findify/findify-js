@@ -14,8 +14,15 @@ import Checkbox from 'components/common/Checkbox';
 import content from 'components/RangeFacet/content';
 import useTranslations from 'helpers/useTranslations';
 import { useConfig } from '@findify/react-connect';
-import { Immutable } from '@findify/store-configuration';
+import { Immutable, Filter } from '@findify/store-configuration';
 import styles from 'components/RangeFacet/styles.css';
+import Loadable from 'react-loadable';
+import chunks from 'helpers/chunks';
+
+const Slider = Loadable({
+  loader: chunks.components.rangeSlider,
+  loading: () => null,
+});
 
 export interface IRangeFacetProps extends ThemedSFCProps {
   /** Facet to extract values from */
@@ -87,7 +94,7 @@ export default ({
   hidden,
   isMobile,
 }: IRangeFacetProps) => {
-  const { config } = useConfig<Immutable.RecommendationConfig>();
+  const { config } = useConfig<Immutable.Factory<Filter>>();
   const translate = useTranslations();
   const minInput = useRef<HTMLInputElement>(null);
   const maxInput = useRef<HTMLInputElement>(null);
@@ -158,6 +165,23 @@ export default ({
     [from, to]
   );
 
+  const onSliderChange = useCallback(([min, max]) => {
+    const range = facet.get('max') - facet.get('min');
+    const minValue = ((range / 100) * min || facet.get('min')).toFixed(
+      facetConfig.get('precision', 0)
+    );
+    const maxValue = ((facet.get('max') / 100) * max).toFixed(
+      facetConfig.get('precision', 0)
+    );
+
+    if (minInput.current && maxInput.current) {
+      minInput.current.value = minValue;
+      maxInput.current.value = maxValue;
+    }
+
+    setState([minValue, maxValue]);
+  }, []);
+
   return (
     <div
       className={theme.root}
@@ -217,6 +241,14 @@ export default ({
           </Text>
         </Button>
       </Grid>
+      <Slider
+        display-if={config.get('slider')}
+        className={theme.slider}
+        thumbClassName={theme.thumb}
+        trackClassName={theme.track}
+        defaultValue={[0, 100]}
+        onChange={onSliderChange}
+      />
     </div>
   );
 };
