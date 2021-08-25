@@ -15,4 +15,9 @@ export type Filter = {
    * Step for range input
    */
   precision: number
+
+  /**
+   * Show slider in range facets
+   */
+  slider: boolean
 }
