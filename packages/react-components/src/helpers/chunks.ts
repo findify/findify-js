@@ -26,5 +26,6 @@ export default {
     drawer: () => import('components/common/Drawer'),
     dropdown: () => import('components/Dropdown/view'),
     swiper: () => import('components/Swiper/view'),
+    rangeSlider: () => import('react-slider'),
   },
 };

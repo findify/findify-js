@@ -63,7 +63,7 @@ export default (offset = 300) => {
       pending.current ||
       !autoLoad.current ||
       !state.current.items.size ||
-      state.current.ranges.last().get('to') > state.current.meta.get('total')
+      state.current.ranges.last().get('to') >= state.current.meta.get('total')
     )
       return;
 
