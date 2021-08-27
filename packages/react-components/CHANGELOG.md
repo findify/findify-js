@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.13.26](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.13.25...@findify/react-components@0.13.26) (2021-08-27)
+
+
+### Bug Fixes
+
+* **@findify/bundle,@findify/react-components:** fix issue with lazy loading and exact same amount of products ([b7dc342](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/b7dc342a074534f8844093be4680a24055607023))
+* **@findify/bundle,@findify/store-configuration,@findify/react-components:** add range slider ([491ce64](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/491ce6462acf27bcfe01aae64a09b22ec1df0204))
+
+
+
+
+
 ## [0.13.25](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.13.24...@findify/react-components@0.13.25) (2021-08-19)
 
 **Note:** Version bump only for package @findify/react-components

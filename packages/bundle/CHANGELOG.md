@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.0.32](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.0.31...@findify/bundle@7.0.32) (2021-08-27)
+
+
+### Bug Fixes
+
+* **@findify/bundle,@findify/react-components:** fix issue with lazy loading and exact same amount of products ([b7dc342](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/b7dc342a074534f8844093be4680a24055607023))
+* **@findify/bundle,@findify/store-configuration,@findify/react-components:** add range slider ([491ce64](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/491ce6462acf27bcfe01aae64a09b22ec1df0204))
+
+
+
+
+
 ## [7.0.31](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.0.30...@findify/bundle@7.0.31) (2021-08-19)
 
 **Note:** Version bump only for package @findify/bundle

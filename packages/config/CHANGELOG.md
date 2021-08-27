@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.10](https://github.com/findify/findify-js/compare/@findify/store-configuration@0.2.9...@findify/store-configuration@0.2.10) (2021-08-27)
+
+
+### Bug Fixes
+
+* **@findify/bundle,@findify/store-configuration,@findify/react-components:** add range slider ([491ce64](https://github.com/findify/findify-js/commit/491ce6462acf27bcfe01aae64a09b22ec1df0204))
+
+
+
+
+
 ## [0.2.9](https://github.com/findify/findify-js/compare/@findify/store-configuration@0.2.8...@findify/store-configuration@0.2.9) (2021-08-12)
 
 **Note:** Version bump only for package @findify/store-configuration
