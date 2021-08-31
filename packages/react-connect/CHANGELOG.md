@@ -3,6 +3,122 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.16](https://github.com/findify/findify-js/compare/@findify/react-connect@0.7.15...@findify/react-connect@0.7.16) (2021-08-27)
+
+**Note:** Version bump only for package @findify/react-connect
+
+
+
+
+
+## [0.7.15](https://github.com/findify/findify-js/compare/@findify/react-connect@0.7.14...@findify/react-connect@0.7.15) (2021-08-19)
+
+
+### Bug Fixes
+
+* **@findify/react-connect:** check if OOB while creating urls ([ed141fc](https://github.com/findify/findify-js/commit/ed141fcb5e6beda22133d77feaa5513de038595d))
+
+
+
+
+
+## [0.7.14](https://github.com/findify/findify-js/compare/@findify/react-connect@0.7.13...@findify/react-connect@0.7.14) (2021-08-12)
+
+**Note:** Version bump only for package @findify/react-connect
+
+
+
+
+
+## [0.7.13](https://github.com/findify/findify-js/compare/@findify/react-connect@0.7.12...@findify/react-connect@0.7.13) (2021-06-01)
+
+**Note:** Version bump only for package @findify/react-connect
+
+
+
+
+
+## [0.7.12](https://github.com/findify/findify-js/compare/@findify/react-connect@0.7.11...@findify/react-connect@0.7.12) (2021-06-01)
+
+
+### Bug Fixes
+
+* **@findify/bundle,@findify/store-configuration,@findify/react-components,@findify/react-connect:** add image switch on hover; Use variants in product card ([c9bfff4](https://github.com/findify/findify-js/commit/c9bfff46706b339adf63f7404d2117ce0e0c5619))
+
+
+
+
+
+## [0.7.11](https://github.com/findify/findify-js/compare/@findify/react-connect@0.7.10...@findify/react-connect@0.7.11) (2021-05-26)
+
+**Note:** Version bump only for package @findify/react-connect
+
+
+
+
+
+## [0.7.10](https://github.com/findify/findify-js/compare/@findify/react-connect@0.7.9...@findify/react-connect@0.7.10) (2021-05-21)
+
+**Note:** Version bump only for package @findify/react-connect
+
+
+
+
+
+## [0.7.9](https://github.com/findify/findify-js/compare/@findify/react-connect@0.7.8...@findify/react-connect@0.7.9) (2021-05-20)
+
+
+### Bug Fixes
+
+* **@findify/react-connect:** push merget types to npm ([aac2305](https://github.com/findify/findify-js/commit/aac23053e9a35d05dae902ca704d9f144a93f707))
+
+
+
+
+
+## [0.7.8](https://github.com/findify/findify-js/compare/@findify/react-connect@0.7.7...@findify/react-connect@0.7.8) (2021-05-19)
+
+**Note:** Version bump only for package @findify/react-connect
+
+
+
+
+
+## [0.7.7](https://github.com/findify/findify-js/compare/@findify/react-connect@0.7.6...@findify/react-connect@0.7.7) (2021-05-19)
+
+
+### Bug Fixes
+
+* **@findify/analytics,@findify/bundle,@findify/store-configuration,@findify/react-components,@findify/react-connect:** merge types for devtools, improve autocomplete ([9e66445](https://github.com/findify/findify-js/commit/9e66445a9d614c32204432d53a1854a578038a76))
+
+
+
+
+
+## [0.7.6](https://github.com/findify/findify-js/compare/@findify/react-connect@0.7.5...@findify/react-connect@0.7.6) (2021-05-17)
+
+**Note:** Version bump only for package @findify/react-connect
+
+
+
+
+
+## [0.7.5](https://github.com/findify/findify-js/compare/@findify/react-connect@0.7.4...@findify/react-connect@0.7.5) (2021-05-17)
+
+**Note:** Version bump only for package @findify/react-connect
+
+
+
+
+
+## [0.7.4](https://github.com/findify/findify-js/compare/@findify/react-connect@0.7.3...@findify/react-connect@0.7.4) (2021-05-17)
+
+**Note:** Version bump only for package @findify/react-connect
+
+
+
+
+
 ## [0.7.3](https://github.com/findify/findify-js/compare/@findify/react-connect@0.7.2...@findify/react-connect@0.7.3) (2021-05-12)
 
 

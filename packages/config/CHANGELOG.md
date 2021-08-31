@@ -3,6 +3,127 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.10](https://github.com/findify/findify-js/compare/@findify/store-configuration@0.2.9...@findify/store-configuration@0.2.10) (2021-08-27)
+
+
+### Bug Fixes
+
+* **@findify/bundle,@findify/store-configuration,@findify/react-components:** add range slider ([491ce64](https://github.com/findify/findify-js/commit/491ce6462acf27bcfe01aae64a09b22ec1df0204))
+
+
+
+
+
+## [0.2.9](https://github.com/findify/findify-js/compare/@findify/store-configuration@0.2.8...@findify/store-configuration@0.2.9) (2021-08-12)
+
+**Note:** Version bump only for package @findify/store-configuration
+
+
+
+
+
+## [0.2.8](https://github.com/findify/findify-js/compare/@findify/store-configuration@0.2.7...@findify/store-configuration@0.2.8) (2021-06-01)
+
+
+### Bug Fixes
+
+* **@findify/store-configuration,@findify/react-components,@findify/sdk:** do not retry api call when 4xx has come, six styles ([a109400](https://github.com/findify/findify-js/commit/a109400fd150b0a4931bc8c9e18412e96ca4a571))
+
+
+
+
+
+## [0.2.7](https://github.com/findify/findify-js/compare/@findify/store-configuration@0.2.6...@findify/store-configuration@0.2.7) (2021-06-01)
+
+
+### Bug Fixes
+
+* **@findify/bundle,@findify/store-configuration,@findify/react-components,@findify/react-connect:** add image switch on hover; Use variants in product card ([c9bfff4](https://github.com/findify/findify-js/commit/c9bfff46706b339adf63f7404d2117ce0e0c5619))
+
+
+
+
+
+## [0.2.6](https://github.com/findify/findify-js/compare/@findify/store-configuration@0.2.5...@findify/store-configuration@0.2.6) (2021-05-26)
+
+
+### Bug Fixes
+
+* **@findify/store-configuration,@findify/react-components:** minor style fixes ([6e19b5f](https://github.com/findify/findify-js/commit/6e19b5fa7b3c730d20cbdddf3a282e03026dd330))
+
+
+
+
+
+## [0.2.5](https://github.com/findify/findify-js/compare/@findify/store-configuration@0.2.4...@findify/store-configuration@0.2.5) (2021-05-21)
+
+
+### Bug Fixes
+
+* **@findify/bundle,@findify/store-configuration,@findify/react-components:** minor bugfix ([4e77605](https://github.com/findify/findify-js/commit/4e77605b1fee8cf255695c2742ab1ee58e4ba388))
+
+
+
+
+
+## [0.2.4](https://github.com/findify/findify-js/compare/@findify/store-configuration@0.2.3...@findify/store-configuration@0.2.4) (2021-05-20)
+
+
+### Bug Fixes
+
+* **@findify/bundle,@findify/store-configuration,@findify/react-components:** minor style fixes ([5041ba1](https://github.com/findify/findify-js/commit/5041ba15dfe47ebb3974bf81587467af85e6be5b))
+
+
+
+
+
+## [0.2.3](https://github.com/findify/findify-js/compare/@findify/store-configuration@0.2.2...@findify/store-configuration@0.2.3) (2021-05-19)
+
+
+### Bug Fixes
+
+* **@findify/store-configuration:** change enums exporting name ([6d9ab2f](https://github.com/findify/findify-js/commit/6d9ab2fdff4278b2fad786c6b93c562c453fc5ee))
+
+
+
+
+
+## [0.2.2](https://github.com/findify/findify-js/compare/@findify/store-configuration@0.2.1...@findify/store-configuration@0.2.2) (2021-05-19)
+
+
+### Bug Fixes
+
+* **@findify/analytics,@findify/bundle,@findify/store-configuration,@findify/react-components,@findify/react-connect:** merge types for devtools, improve autocomplete ([9e66445](https://github.com/findify/findify-js/commit/9e66445a9d614c32204432d53a1854a578038a76))
+
+
+
+
+
+## [0.2.1](https://github.com/findify/findify-js/compare/@findify/store-configuration@0.2.0...@findify/store-configuration@0.2.1) (2021-05-17)
+
+**Note:** Version bump only for package @findify/store-configuration
+
+
+
+
+
+# [0.2.0](https://github.com/findify/findify-js/compare/@findify/store-configuration@0.1.2...@findify/store-configuration@0.2.0) (2021-05-17)
+
+
+### Bug Fixes
+
+* **@findify/store-configuration:** fix config compilation ([14569b0](https://github.com/findify/findify-js/commit/14569b0fa3df3cb94beae944d00477a412b97464))
+* **@findify/store-configuration:** update git publish config ([075ac44](https://github.com/findify/findify-js/commit/075ac44ad5c820bfa4c2a1b572de8b5d0bd5a62b))
+
+
+### Features
+
+* **@findify/agent,@findify/analytics,@findify/analytics-dom,@findify/store-configuration,@findify/react-components,@findify/sdk:** major version bumb, export combined config types ([b37a248](https://github.com/findify/findify-js/commit/b37a24840c6626432e18232ef0dc00852c4d597a))
+
+
+
+
+
 ## [0.1.2](https://github.com/findify/findify-js/compare/@findify/store-configuration@0.1.1...@findify/store-configuration@0.1.2) (2021-05-12)
 
 

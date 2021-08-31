@@ -3,6 +3,302 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.0.32](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.0.31...@findify/bundle@7.0.32) (2021-08-27)
+
+
+### Bug Fixes
+
+* **@findify/bundle,@findify/react-components:** fix issue with lazy loading and exact same amount of products ([b7dc342](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/b7dc342a074534f8844093be4680a24055607023))
+* **@findify/bundle,@findify/store-configuration,@findify/react-components:** add range slider ([491ce64](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/491ce6462acf27bcfe01aae64a09b22ec1df0204))
+
+
+
+
+
+## [7.0.31](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.0.30...@findify/bundle@7.0.31) (2021-08-19)
+
+**Note:** Version bump only for package @findify/bundle
+
+
+
+
+
+## [7.0.30](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.0.29...@findify/bundle@7.0.30) (2021-08-16)
+
+**Note:** Version bump only for package @findify/bundle
+
+
+
+
+
+## [7.0.29](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.0.28...@findify/bundle@7.0.29) (2021-08-12)
+
+
+### Bug Fixes
+
+* **@findify/bundle:** send item_id for viwedBought recommendations ([0b6e178](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/0b6e1784cbd3d72f196115f11e3fd7442e992b56))
+
+
+
+
+
+## [7.0.28](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.0.27...@findify/bundle@7.0.28) (2021-08-03)
+
+**Note:** Version bump only for package @findify/bundle
+
+
+
+
+
+## [7.0.27](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.0.26...@findify/bundle@7.0.27) (2021-08-03)
+
+**Note:** Version bump only for package @findify/bundle
+
+
+
+
+
+## [7.0.26](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.0.25...@findify/bundle@7.0.26) (2021-08-03)
+
+**Note:** Version bump only for package @findify/bundle
+
+
+
+
+
+## [7.0.25](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.0.24...@findify/bundle@7.0.25) (2021-07-23)
+
+
+### Bug Fixes
+
+* **@findify/bundle,@findify/react-components:** fix RangeFacet values; Fix Array.from issue in pagination ([1b6db47](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/1b6db4723c58cf83afe1559107629673ffba84d5))
+
+
+
+
+
+## [7.0.24](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.0.23...@findify/bundle@7.0.24) (2021-07-14)
+
+
+### Bug Fixes
+
+* **@findify/bundle,@findify/react-components:** minor fixes ([1b36033](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/1b36033fb929bf1ffd454636063af2ad27092b3e))
+
+
+
+
+
+## [7.0.23](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.0.22...@findify/bundle@7.0.23) (2021-06-23)
+
+
+### Bug Fixes
+
+* **@findify/bundle:** fix cart analytics for shopify ([d053c59](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/d053c595651d0243b2502c0725f2653789a0d7d7))
+
+
+
+
+
+## [7.0.22](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.0.21...@findify/bundle@7.0.22) (2021-06-16)
+
+
+### Bug Fixes
+
+* **@findify/bundle:** fix force loader hide ([ca6f483](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/ca6f48300646ffa819202ae8c0fe7dfccb0749a6))
+* **@findify/bundle:** fix force loader hiding ([f92e3ad](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/f92e3addceeff8e032be0095d64fe0368d5e0e27))
+
+
+
+
+
+## [7.0.21](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.0.20...@findify/bundle@7.0.21) (2021-06-16)
+
+
+### Bug Fixes
+
+* **@findify/bundle:** hide search/sc loader if response recieved before render ([fc09cf5](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/fc09cf5518bda7990fe2b9fc3359d96db8b6840a))
+
+
+
+
+
+## [7.0.20](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.0.19...@findify/bundle@7.0.20) (2021-06-15)
+
+
+### Bug Fixes
+
+* **@findify/bundle,@findify/react-components:** drop recompose ([a7558ed](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/a7558ed897494268dcbd2557b0ff1ccb9a144f03))
+* **@findify/bundle,@findify/react-components:** mobile fasets title fix ([0d736b3](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/0d736b3e9402dca83b1565d3cab5ca2526b59705))
+
+
+
+
+
+## [7.0.19](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.0.18...@findify/bundle@7.0.19) (2021-06-07)
+
+
+### Bug Fixes
+
+* **@findify/bundle,@findify/react-components:** remove lodash import ([2d7dd5d](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/2d7dd5dec6db1d516150ed861cb8abd76d556b1c))
+
+
+
+
+
+## [7.0.18](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.0.17...@findify/bundle@7.0.18) (2021-06-03)
+
+
+### Bug Fixes
+
+* **@findify/bundle,@findify/react-components:** fix zeroResults view ([984e72f](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/984e72fa85053a72903d28a0d8d37cf947f908dc))
+
+
+
+
+
+## [7.0.17](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.0.16...@findify/bundle@7.0.17) (2021-06-03)
+
+
+### Bug Fixes
+
+* **@findify/bundle,@findify/react-components:** minor style fixes ([57b3819](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/57b3819745d39f6598aba618a3db19bffb6b05f1))
+
+
+
+
+
+## [7.0.16](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.0.15...@findify/bundle@7.0.16) (2021-06-02)
+
+**Note:** Version bump only for package @findify/bundle
+
+
+
+
+
+## [7.0.15](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.0.14...@findify/bundle@7.0.15) (2021-06-01)
+
+**Note:** Version bump only for package @findify/bundle
+
+
+
+
+
+## [7.0.14](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.0.13...@findify/bundle@7.0.14) (2021-06-01)
+
+
+### Bug Fixes
+
+* **@findify/bundle,@findify/react-components:** minor bug fixes ([c146d82](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/c146d82e1f48d49811f0f0f9679ab037e998984b))
+
+
+
+
+
+## [7.0.13](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.0.12...@findify/bundle@7.0.13) (2021-06-01)
+
+**Note:** Version bump only for package @findify/bundle
+
+
+
+
+
+## [7.0.12](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.0.11...@findify/bundle@7.0.12) (2021-06-01)
+
+
+### Bug Fixes
+
+* **@findify/bundle,@findify/react-components:** filter styles fixes ([87cf3b2](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/87cf3b232c8a14c462dbc7628ac9f7efe69d46a5))
+* **@findify/bundle,@findify/react-components:** minor bugfix ([64b3ec1](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/64b3ec1cac708fa30cc16c809ee17ba0be0091f5))
+* **@findify/bundle,@findify/store-configuration,@findify/react-components,@findify/react-connect:** add image switch on hover; Use variants in product card ([c9bfff4](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/c9bfff46706b339adf63f7404d2117ce0e0c5619))
+
+
+
+
+
+## [7.0.11](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.0.10...@findify/bundle@7.0.11) (2021-05-26)
+
+**Note:** Version bump only for package @findify/bundle
+
+
+
+
+
+## [7.0.10](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.0.9...@findify/bundle@7.0.10) (2021-05-21)
+
+
+### Bug Fixes
+
+* **@findify/bundle,@findify/react-components:** minor style fixes ([1cfede4](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/1cfede4f55050b50a6eecc3b50158f5e2de4ea31))
+
+
+
+
+
+## [7.0.9](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.0.8...@findify/bundle@7.0.9) (2021-05-21)
+
+
+### Bug Fixes
+
+* **@findify/bundle,@findify/store-configuration,@findify/react-components:** minor bugfix ([4e77605](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/4e77605b1fee8cf255695c2742ab1ee58e4ba388))
+
+
+
+
+
+## [7.0.8](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.0.7...@findify/bundle@7.0.8) (2021-05-20)
+
+
+### Bug Fixes
+
+* **@findify/bundle,@findify/store-configuration,@findify/react-components:** minor style fixes ([5041ba1](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/5041ba15dfe47ebb3974bf81587467af85e6be5b))
+
+
+
+
+
+## [7.0.7](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.0.6...@findify/bundle@7.0.7) (2021-05-19)
+
+**Note:** Version bump only for package @findify/bundle
+
+
+
+
+
+## [7.0.6](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.0.5...@findify/bundle@7.0.6) (2021-05-19)
+
+
+### Bug Fixes
+
+* **@findify/analytics,@findify/bundle,@findify/store-configuration,@findify/react-components,@findify/react-connect:** merge types for devtools, improve autocomplete ([9e66445](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/9e66445a9d614c32204432d53a1854a578038a76))
+
+
+
+
+
+## [7.0.5](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.0.4...@findify/bundle@7.0.5) (2021-05-17)
+
+**Note:** Version bump only for package @findify/bundle
+
+
+
+
+
+## [7.0.4](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.0.3...@findify/bundle@7.0.4) (2021-05-17)
+
+**Note:** Version bump only for package @findify/bundle
+
+
+
+
+
+## [7.0.3](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.0.2...@findify/bundle@7.0.3) (2021-05-17)
+
+**Note:** Version bump only for package @findify/bundle
+
+
+
+
+
 ## [7.0.2](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.0.1...@findify/bundle@7.0.2) (2021-05-12)
 
 **Note:** Version bump only for package @findify/bundle

@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.5.1](https://github.com/findify/findify-js/compare/@findify/sdk@2.5.0...@findify/sdk@2.5.1) (2021-06-01)
+
+
+### Bug Fixes
+
+* **@findify/store-configuration,@findify/react-components,@findify/sdk:** do not retry api call when 4xx has come, six styles ([a109400](https://github.com/findify/findify-js/commit/a109400fd150b0a4931bc8c9e18412e96ca4a571))
+
+
+
+
+
+# [2.5.0](https://github.com/findify/findify-js/compare/@findify/sdk@2.4.6...@findify/sdk@2.5.0) (2021-05-17)
+
+
+### Features
+
+* **@findify/agent,@findify/analytics,@findify/analytics-dom,@findify/store-configuration,@findify/react-components,@findify/sdk:** major version bumb, export combined config types ([b37a248](https://github.com/findify/findify-js/commit/b37a24840c6626432e18232ef0dc00852c4d597a))
+* **@findify/agent,@findify/sdk:** bump major version ([2e8b007](https://github.com/findify/findify-js/commit/2e8b0075a7038e2ddefe2a4bd76c527fabcd84f6))
+
+
+
+
+
 ## [2.4.6](https://github.com/findify/findify-js/compare/@findify/sdk@2.4.5...@findify/sdk@2.4.6) (2021-05-11)
 
 **Note:** Version bump only for package @findify/sdk
