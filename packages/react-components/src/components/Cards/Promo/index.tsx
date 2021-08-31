@@ -10,6 +10,7 @@ export default ({ item, config, theme = styles }) => {
   const card = item.getIn(['cards', 0]);
   const onClick = useCallback(
     (e) => {
+      if (!card.get('redirect_link')) return;
       e.preventDefault();
       window.open(card.get('redirect_link'), '_blank');
     },
