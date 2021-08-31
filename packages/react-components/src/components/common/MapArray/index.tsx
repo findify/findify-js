@@ -2,7 +2,7 @@
  * @module components/common/MapArray
  */
 import { createElement, memo, useMemo } from 'react';
-import { is, isImmutable } from 'immutable';
+import { is, isImmutable, Map } from 'immutable';
 import { Immutable } from '@findify/store-configuration';
 
 /** MapCallback is a type signature for array.map(), immutable.List().map() callback */
@@ -36,6 +36,9 @@ export type MapArrayProps = {
   /** Maximum possible limit for iteration */
   limit?: number | false;
 
+  /** Set order for grid */
+  order?: (item: Map<string, any>, index: number) => number;
+
   mapProps?: (
     items: any,
     index: number
@@ -64,7 +67,7 @@ export default ({
   array,
   keyAccessor = defaultKeyAccessor,
   mapProps = defaultPropsMapper,
-  container,
+  order,
   factory,
   limit,
   ...rest
@@ -77,6 +80,7 @@ export default ({
       index={index}
       item={item}
       mapProps={mapProps}
+      order={order && order(item, index)}
       {...rest}
     />
   ));
