@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.8.0](https://github.com/findify/findify-js/compare/@findify/react-connect@0.7.16...@findify/react-connect@0.8.0) (2021-09-01)
+
+
+### Features
+
+* **@findify/bundle,@findify/react-components,@findify/react-connect:** add promocards ([be8a1d0](https://github.com/findify/findify-js/commit/be8a1d059957769c207ca9ba0d3404f5f6e5469d))
+
+
+
+
+
 ## [0.7.16](https://github.com/findify/findify-js/compare/@findify/react-connect@0.7.15...@findify/react-connect@0.7.16) (2021-08-27)
 
 **Note:** Version bump only for package @findify/react-connect

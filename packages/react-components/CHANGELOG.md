@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.14.0](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.13.26...@findify/react-components@0.14.0) (2021-09-01)
+
+
+### Bug Fixes
+
+* **@findify/react-components:** add promocard styling ([833c084](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/833c0844c3973d029eb0ddcd950b48b7dd8f4a75))
+* **@findify/react-components:** prevent page redirect if promocard url empty ([85d005c](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/85d005c97008fd027296a7d99136d431379d73c7))
+
+
+### Features
+
+* **@findify/bundle,@findify/react-components,@findify/react-connect:** add promocards ([be8a1d0](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/be8a1d059957769c207ca9ba0d3404f5f6e5469d))
+
+
+
+
+
 ## [0.13.26](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.13.25...@findify/react-components@0.13.26) (2021-08-27)
 
 
