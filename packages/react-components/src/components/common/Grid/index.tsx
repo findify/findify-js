@@ -83,7 +83,7 @@ export default memo(
           <Column
             key={child.key || index}
             gutter={gutter}
-            order={order}
+            order={order || index + 2}
             size={size || columns[index] || columns[0]}
             className={columnClass}
             style={columnStyle}

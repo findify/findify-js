@@ -1,0 +1,75 @@
+.root{
+  display: flex;
+  height: 100%;
+  width: 100%;
+  padding-bottom: 50px;
+  flex-direction: column;
+  box-sizing: border-box;
+  font-family: $font-base;
+  cursor: pointer;
+}
+
+.content{
+  height: 100%;
+  flex: 1;
+	display: flex;
+	flex-direction: column;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+}
+
+.container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: white;
+  flex: 1;
+  margin: 0 12%;
+}
+
+.button{
+  display: block;
+  width: 100%;
+  border: none;
+  background: white;
+  padding: 10px;
+  border-radius: 20px;
+  text-transorm: uppercase;
+  font-size: $font-size-medium;
+  text-transform: uppercase;
+  cursor: pointer;
+  text-decoration: none;
+  &:hover{
+    background-color: $color-grey-2;
+  }
+}
+
+.button-container{
+  text-align: center;
+  padding: 30px 12% 12% 12%;
+}
+
+.title{
+  $font-size: $font-size-huge;
+  margin: 0;
+  margin-bottom: 5px;
+  margin-top: 30px;
+  text-align: center;
+  font-size: $font-size;
+  font-weight: bold;
+  text-decoration: none;
+}
+.description{
+  text-align: center;
+  margin: 0;
+  text-decoration: none;
+}
+
+.footer{
+  margin: 0;
+  padding: 10px 12% 5px 12%;
+  font-size: $font-size-small;
+  text-decoration: none;
+}

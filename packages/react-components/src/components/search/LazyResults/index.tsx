@@ -9,6 +9,8 @@ import Button from 'components/Button';
 import Text from 'components/Text';
 import { ArrayLike } from 'components/common/MapArray';
 import useTranslations from 'helpers/useTranslations';
+import PromoCard from 'components/Cards/Promo';
+import { usePromos } from '@findify/react-connect';
 
 import styles from 'components/search/LazyResults/styles.css';
 import useLazy from 'helpers/useLazy';
@@ -23,6 +25,7 @@ export default ({ theme = styles, card = ProductCard }) => {
     displayNextButton,
     items,
   } = useLazy();
+  const { items: promos } = usePromos();
   const { config } = useConfig<Immutable.SearchConfig>();
   const { getPageProps, current } = usePagination();
   const translate = useTranslations();
@@ -58,6 +61,12 @@ export default ({ theme = styles, card = ProductCard }) => {
           config: config.get('product'),
           array: items as ArrayLike,
           factory: card,
+        })}
+        {MapArray({
+          array: promos,
+          factory: PromoCard,
+          config: config.get('promo'),
+          order: (item) => item.get('position'),
         })}
       </Grid>
       <div className={theme.buttonContainer} display-if={displayNextButton}>
