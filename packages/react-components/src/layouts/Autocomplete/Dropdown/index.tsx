@@ -2,19 +2,16 @@
  * @module layouts/Autocomplete/Dropdown
  */
 
-import Tip from 'components/autocomplete/Tip';
 import Layout from 'components/autocomplete/Layout';
 import { useSuggestions } from '@findify/react-connect';
 import { ThemedSFCProps, ISuggestion, MJSValue } from 'types';
 import { List } from 'immutable';
 import { usePosition } from 'layouts/Autocomplete/Dropdown/trackPosition';
 import { useAutocompleteLogic } from 'layouts/Autocomplete/withAutocompleteLogic';
-import Grid from 'components/common/Grid';
-import useTranslations from 'helpers/useTranslations';
-import styles from 'layouts/Autocomplete/Dropdown/styles.css';
 import { Immutable } from '@findify/store-configuration';
 import { useEffect } from 'react';
 
+import styles from 'layouts/Autocomplete/Dropdown/styles.css';
 export interface IAutocompletePanel extends ThemedSFCProps {
   config: Immutable.AutocompleteConfig;
   isTrendingSearches?: boolean;
@@ -72,15 +69,15 @@ export default ({
   const { closeAutocomplete } = useAutocompleteLogic();
   const [position, register] = usePosition(config);
   const isTrendingSearches = !meta.get('q');
-  const translate = useTranslations();
 
   useEffect(() => {
     if (!isFullScreen) return;
     getContainer(config).classList.add(theme.fullscreen);
   }, []);
 
+  if (!suggestions?.size) return;
   return (
-    <div display-if={suggestions?.size > 0} className={theme.wrapper}>
+    <>
       <div
         display-if={config.get('overlay')}
         className={theme.overlay}
@@ -95,18 +92,12 @@ export default ({
           [position]: 0,
         }}
       >
-        <Tip
-          className={theme.tip}
-          title={translate('autocomplete.tipResults')}
-          zeroResultsTitle={translate('autocomplete.viewAll')}
-          widgetKey={config.get('widgetKey')}
-        />
         <Layout
           className={theme.container}
           config={config}
           isTrendingSearches={isTrendingSearches}
         />
       </section>
-    </div>
+    </>
   );
 };

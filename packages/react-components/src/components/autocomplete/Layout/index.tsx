@@ -10,11 +10,13 @@ import { Immutable } from '@findify/store-configuration';
 import { useRef } from 'react';
 import { useAnnouncement } from 'components/common/Announcement';
 import useArrowSelection from 'helpers/useArrowSelection';
+import styles from 'components/autocomplete/Layout/styles.css';
 
 export interface LayoutProps {
   config: Immutable.AutocompleteConfig;
   className?: string;
   isTrendingSearches?: boolean;
+  theme: Record<string, string>;
 }
 
 const getContent = (type) =>
@@ -45,7 +47,12 @@ const Item = ({
   return <Content type={type} config={_config} {...rest} />;
 };
 
-export default ({ config, className, isTrendingSearches }: LayoutProps) => {
+export default ({
+  config,
+  className,
+  isTrendingSearches,
+  theme = styles,
+}: LayoutProps) => {
   const { current: layout } = useRef(config.get('layout'));
   const [highlightedItem, registerItems] = useArrowSelection();
 
@@ -66,6 +73,7 @@ export default ({ config, className, isTrendingSearches }: LayoutProps) => {
     <>
       <Grid
         className={className}
+        columnClass={theme.column}
         columns={config.getIn(['breakpoints', 'layout'])}
       >
         {layout.map((content, column) => (

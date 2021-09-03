@@ -50,6 +50,7 @@ export default memo(
 
     wrapperComponent: WrapperComponent = 'div',
     columnComponent,
+    columnClass: baseColumnClass,
 
     ...rest
   }: IGridProps) => {
@@ -85,7 +86,7 @@ export default memo(
             gutter={gutter}
             order={order || index + 2}
             size={size || columns[index] || columns[0]}
-            className={columnClass}
+            className={columnClass || baseColumnClass}
             style={columnStyle}
             component={columnComponent}
           >

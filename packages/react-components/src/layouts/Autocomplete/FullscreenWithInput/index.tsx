@@ -1,19 +1,15 @@
 /**
  * @module layouts/Autocomplete/FullscreenWithInput
  */
-
-import styles from 'layouts/Autocomplete/FullscreenWithInput/styles.css';
 import { useSuggestions } from '@findify/react-connect';
 import { Immutable } from '@findify/store-configuration';
 import useTranslations from 'helpers/useTranslations';
 import { useAutocompleteLogic } from 'layouts/Autocomplete/withAutocompleteLogic';
 import React, { useCallback, useEffect, useRef } from 'react';
-import Grid from 'components/common/Grid';
 import Icon from 'components/Icon';
-import SearchSuggestions from 'components/autocomplete/Suggestions';
-import ProductMatches from 'components/autocomplete/Products';
 import Layout from 'components/autocomplete/Layout';
 
+import styles from 'layouts/Autocomplete/FullscreenWithInput/styles.css';
 export interface IAutocompleteDropdownProps {
   /** MJS Configuration */
   config: Immutable.AutocompleteConfig;
@@ -27,15 +23,11 @@ export interface IAutocompleteDropdownProps {
   [x: string]: any;
 }
 
-export default ({
-  theme = styles,
-  config,
-  ...rest
-}: IAutocompleteDropdownProps) => {
+export default ({ theme = styles, config }: IAutocompleteDropdownProps) => {
   const { suggestions, meta, update } = useSuggestions();
   const input = useRef<HTMLInputElement>(null);
   const translate = useTranslations();
-  const { selectedSuggestion, closeAutocomplete } = useAutocompleteLogic();
+  const { closeAutocomplete } = useAutocompleteLogic();
   const isTrendingSearches = !meta.get('q');
 
   const onExit = useCallback(() => {

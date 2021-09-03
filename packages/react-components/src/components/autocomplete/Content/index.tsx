@@ -1,12 +1,13 @@
 /**
  * @module components/autocomplete/Content
  */
-import styles from 'components/autocomplete/Content/styles.css';
 import ContentCard from 'components/Cards/Content';
 import Grid from 'components/common/Grid';
 import MapArray from 'components/common/MapArray';
 import { useContent } from '@findify/react-connect';
 import { Immutable } from '@findify/store-configuration';
+import Title from 'components/autocomplete/Title';
+import styles from 'components/autocomplete/Content/styles.css';
 
 export default ({
   theme = styles,
@@ -15,6 +16,9 @@ export default ({
   registerItems,
   highlightedItem,
 }) => {
+  const isBubble = config.getIn(['item', 'template']) === 'bubble';
+  const Container = isBubble ? 'div' : Grid;
+
   const { items } = useContent<Immutable.AutocompleteConfig>({
     field: `content:${type}`,
   });
@@ -23,9 +27,10 @@ export default ({
 
   return (
     <div className={theme.root} display-if={items.size}>
-      <h4 className={theme.title}>{config.get('title')}</h4>
-      <Grid
-        columns={config.getIn(['breakpoints', type], '12')}
+      <Title>{config.get('title')}</Title>
+      <Container
+        gutter={!isBubble && 12}
+        columns={!isBubble && config.getIn(['breakpoints', type], '12')}
         className={theme.container}
       >
         {MapArray({
@@ -38,7 +43,7 @@ export default ({
               highlightedItem && item.hashCode() === highlightedItem.hashCode(),
           }),
         })}
-      </Grid>
+      </Container>
     </div>
   );
 };

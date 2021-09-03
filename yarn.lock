@@ -1208,10 +1208,12 @@
     "@findify/analytics" "^3.5.4"
     immutable "^4.0.0-rc.12"
 
-"@findify/store-configuration@^0.1.2":
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/@findify/store-configuration/-/store-configuration-0.1.2.tgz#a87fd835287c15065c21ee2301457677436ca122"
-  integrity sha512-PEDGtaoAgR4LSUuruZjqkrOUDO6gunJvpsswRo/KLoyVbUQ2P4X1fP4+Uvf+8c85DmVKE7rSIBfA2IvxnmFnOQ==
+"@findify/store-configuration@^0.2.10":
+  version "0.2.10"
+  resolved "https://registry.yarnpkg.com/@findify/store-configuration/-/store-configuration-0.2.10.tgz#d7973bb5a12a0ad5648b5e642b751dbd1996da3d"
+  integrity sha512-j/4KvKXruA+J41i17DSH2oIHT6Jra7PyCB/grW1qErbtQBzgi0+HPRy1cEhiobycnPhFbwyZ+B4btsh6HEdguA==
+  dependencies:
+    dts-bundle "^0.7.3"
 
 "@hot-loader/react-dom@^17.0.1":
   version "17.0.1"

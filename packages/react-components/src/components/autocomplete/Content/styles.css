@@ -1,21 +1,6 @@
 .root {
-  vertical-align: top;
-  padding: 0 27px;
-  background: #fff;
-  margin-top: 20px;
-}
-
-.title{
-  margin-top: 0;
-  margin-bottom: 17px;
-  color: $color-grey-3;
-  font-size: $font-size-small;
-  line-height: $font-size-small;
-  font-weight: bold;
-  text-transform: uppercase;
-  font-family: $font-base;
 }
 
 .container{
-  margin: 0 -17px;
+  margin: 0 -10px;
 }

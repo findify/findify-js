@@ -58,7 +58,8 @@ export enum ProductTemplate {
 
 export enum ContentTemplate {
   'vertical' = 'vertical',
-  'horizontal' = 'horizontal'
+  'horizontal' = 'horizontal',
+  'bubble' = 'bubble'
 }
 
 /**

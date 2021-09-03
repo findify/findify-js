@@ -2,7 +2,6 @@
  * @module components/autocomplete/Suggestions
  */
 
-import { useCallback, useEffect } from 'react';
 import cx from 'classnames';
 import MapArray from 'components/common/MapArray';
 import SuggestionItem from 'components/autocomplete/SuggestionItem';
@@ -11,6 +10,7 @@ import styles from 'components/autocomplete/Suggestions/styles.css';
 import { useQuery, useSuggestions } from '@findify/react-connect';
 import { Immutable } from '@findify/store-configuration';
 import useTranslations from 'helpers/useTranslations';
+import Title from 'components/autocomplete/Title';
 
 export default ({
   theme = styles,
@@ -27,11 +27,11 @@ export default ({
 
   return (
     <div className={theme.root} display-if={suggestions.size}>
-      <h4 className={theme.title}>
+      <Title>
         {isTrendingSearches
           ? translate('autocomplete.trendingSearches')
           : translate('autocomplete.suggestionsTitle')}
-      </h4>
+      </Title>
       <ul
         display-if={suggestions && query}
         className={cx(theme.list, theme[config.get('template')])}
