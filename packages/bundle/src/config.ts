@@ -102,17 +102,23 @@ const config: Config = {
       renderIn: 'body',
       defaultRequestParams: {
         suggestion_limit: 10,
-        item_limit: 4,
+        item_limit: 3,
       },
       mobile: {
         layout: [['suggestions', 'categories'], ['products']],
         template: 'sidebar',
         position: 'left',
         breakpoints: {
-          grid: [
+          categories: [
             {
-              width: 400,
-              value: 8,
+              width: 0,
+              value: 6,
+            },
+          ],
+          products: [
+            {
+              width: 0,
+              value: 6,
             },
           ],
           layout: [
@@ -128,10 +134,22 @@ const config: Config = {
           display: true,
           template: 'horizontal',
         },
+        content: {
+          categories: {
+            limit: 5,
+            title: 'Categories',
+            item: {
+              template: 'bubble',
+              image: {
+                aspectRatio: 1,
+              },
+            },
+          },
+        },
         products: {
           display: true,
           item: {
-            template: 'horizontal',
+            template: 'vertical',
             price: {
               template: 'min-max',
             },
@@ -157,13 +175,13 @@ const config: Config = {
         position: 'right',
         overlay: false,
         template: 'fullscreen',
-        layout: [['suggestions', 'categories'], ['products']],
+        layout: [['suggestions'], ['categories'], ['products']],
         content: {
           categories: {
             limit: 5,
             title: 'Categories',
             item: {
-              template: 'horizontal',
+              template: 'vertical',
               image: {
                 aspectRatio: 1,
               },
@@ -177,7 +195,7 @@ const config: Config = {
         products: {
           limit: 6,
           item: {
-            template: 'horizontal',
+            template: 'vertical',
             price: {
               template: 'min-max',
             },
@@ -200,16 +218,22 @@ const config: Config = {
           },
         },
         breakpoints: {
+          categories: [
+            {
+              width: 0,
+              value: 4,
+            },
+          ],
           products: [
             {
               width: 0,
-              value: 6,
+              value: 4,
             },
           ],
           layout: [
             {
               width: 0,
-              value: '3|9',
+              value: '3|3|6',
             },
           ],
         },
@@ -217,6 +241,7 @@ const config: Config = {
     },
     search: {
       disableAutoRequest: false,
+
       facets: {
         position: 'left',
         sticky: true,

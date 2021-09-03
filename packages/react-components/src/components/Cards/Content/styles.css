@@ -9,15 +9,28 @@
   &.vertical{
     text-align: $text-align-vertical;
     flex-direction: column;
-    min-width: 200px;
-    padding-bottom: 50px;
+    min-width: 100px;
   }
   &.horizontal{
     text-align: $text-align-horizontal;
     flex-direction: row;
     border-radius: 2px;
-    padding: 10px 17px;
+    padding: 10px;
     box-sizing: border-box;
+  }
+  &.bubble{
+    padding: 8px 15px;
+    margin: 0 12px 12px 0px;
+    background: $color-grey-1;
+    display: inline-block;
+    width: auto;
+    border-radius: 17px;
+    &:hover{
+      background: $color-grey-2;
+    }
+    & .title{
+      line-height: 1;
+    }
   }
   &.highlighted, &:focus-within{
     &:after{
@@ -58,6 +71,7 @@
   $font-size: 1;
   $font-family: $font-base;
   $text-transform: none;
+  $color: $color-black;
 
   color: $color;
   font-family: $font-family;
