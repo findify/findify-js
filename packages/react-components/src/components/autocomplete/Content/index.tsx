@@ -24,7 +24,6 @@ export default ({
   });
 
   registerItems(items, config.get('limit'));
-
   return (
     <div className={theme.root} display-if={items.size}>
       <Title>{config.get('title')}</Title>
