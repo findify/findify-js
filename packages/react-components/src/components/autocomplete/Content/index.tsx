@@ -6,7 +6,7 @@ import Grid from 'components/common/Grid';
 import MapArray from 'components/common/MapArray';
 import { useContent } from '@findify/react-connect';
 import { Immutable } from '@findify/store-configuration';
-import Title from 'components/autocomplete/Title';
+import Title from 'components/autocomplete/BlockTitle';
 import styles from 'components/autocomplete/Content/styles.css';
 
 export default ({
