@@ -57,7 +57,11 @@ const defaultPropsMapper = () => undefined;
 
 const Item = ({ Component, mapProps, ...rest }) => {
   const extraProps = mapProps
-    ? useMemo(() => mapProps(rest.item, rest.index), [rest.item, rest.index])
+    ? useMemo(() => mapProps(rest.item, rest.index), [
+        rest.item,
+        rest.index,
+        mapProps,
+      ])
     : undefined;
 
   return <Component {...rest} {...extraProps} />;

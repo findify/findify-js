@@ -7,7 +7,7 @@ const navigate = (openInNewWindow, url) => {
   return (window.location.href = url);
 };
 
-export class Item extends createRecord('Item') {
+export class Content extends createRecord('Item') {
   analytics: any;
   meta: any;
 
@@ -19,11 +19,10 @@ export class Item extends createRecord('Item') {
 
   sendAnalytics = (sync = false) => {
     this.analytics.sendEvent(
-      'click-item',
+      'click-content',
       {
         rid: this.meta.get('rid'),
-        item_id: this.get('id'),
-        variant_item_id: this.get('selected_variant_id'),
+        id: this.get('id'),
       },
       sync // Save analytics in cookies if locations will be changed
     );
@@ -33,16 +32,15 @@ export class Item extends createRecord('Item') {
     preventEvents(e);
     const openInNewWindow = e && (e.ctrlKey || e.metaKey);
     this.sendAnalytics(!openInNewWindow);
-    navigate(openInNewWindow, this.get('product_url'));
+    navigate(openInNewWindow, this.get('url'));
   };
 
   historyPush = (e) => {
     preventEvents(e);
     const openInNewWindow = e && (e.ctrlKey || e.metaKey);
     this.sendAnalytics();
-    if (openInNewWindow)
-      return navigate(openInNewWindow, this.get('product_url'));
-    const url = this.get('product_url').replace(document.location.origin);
+    if (openInNewWindow) return navigate(openInNewWindow, this.get('url'));
+    const url = this.get('url').replace(document.location.origin);
     if (window && (window as any).findify)
       (window as any).findify.utils.history.push(url);
   };

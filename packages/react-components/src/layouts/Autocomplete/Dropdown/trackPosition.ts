@@ -1,4 +1,4 @@
-import React, {
+import {
   createFactory,
   useRef,
   useState,
@@ -6,7 +6,7 @@ import React, {
   MutableRefObject,
 } from 'react';
 
-let cache = {};
+const cache = {};
 
 const getPosition = (element) => {
   const { left, width } = element.getBoundingClientRect();
@@ -27,7 +27,7 @@ export const usePosition = (
     cache[config.get('widgetKey')] = p;
     setPosition(p);
   }, [element]);
-  return [position, !config.get('position') ? element : undefined];
+  return [position, config.get('position') === 'dynamic' ? element : undefined];
 };
 
 export default (BaseComponent) => {

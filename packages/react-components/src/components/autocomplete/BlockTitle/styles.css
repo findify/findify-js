@@ -1,0 +1,13 @@
+$font-size: 12px;
+
+.root{
+  margin: 0;
+  margin-bottom: 15px;
+  margin-top: 32px;
+  color: $color-black;
+  font-size: $font-size;
+  line-height: $font-size;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-family: $font-base;
+}

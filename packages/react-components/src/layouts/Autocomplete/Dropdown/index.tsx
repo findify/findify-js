@@ -2,20 +2,16 @@
  * @module layouts/Autocomplete/Dropdown
  */
 
-import Tip from 'components/autocomplete/Tip';
-import ProductMatches from 'components/autocomplete/ProductMatches';
-import SearchSuggestions from 'components/autocomplete/SearchSuggestions';
+import Layout from 'components/autocomplete/Layout';
 import { useSuggestions } from '@findify/react-connect';
 import { ThemedSFCProps, ISuggestion, MJSValue } from 'types';
 import { List } from 'immutable';
 import { usePosition } from 'layouts/Autocomplete/Dropdown/trackPosition';
 import { useAutocompleteLogic } from 'layouts/Autocomplete/withAutocompleteLogic';
-import Grid from 'components/common/Grid';
-import useTranslations from 'helpers/useTranslations';
-import styles from 'layouts/Autocomplete/Dropdown/styles.css';
 import { Immutable } from '@findify/store-configuration';
 import { useEffect } from 'react';
 
+import styles from 'layouts/Autocomplete/Dropdown/styles.css';
 export interface IAutocompletePanel extends ThemedSFCProps {
   config: Immutable.AutocompleteConfig;
   isTrendingSearches?: boolean;
@@ -70,18 +66,18 @@ export default ({
   isFullScreen,
 }: IAutocompleteDropdownProps) => {
   const { suggestions, meta } = useSuggestions();
-  const { selectedSuggestion, closeAutocomplete } = useAutocompleteLogic();
+  const { closeAutocomplete } = useAutocompleteLogic();
   const [position, register] = usePosition(config);
   const isTrendingSearches = !meta.get('q');
-  const translate = useTranslations();
 
   useEffect(() => {
     if (!isFullScreen) return;
     getContainer(config).classList.add(theme.fullscreen);
   }, []);
 
+  if (!suggestions?.size) return;
   return (
-    <div display-if={suggestions?.size > 0} className={theme.wrapper}>
+    <>
       <div
         display-if={config.get('overlay')}
         className={theme.overlay}
@@ -92,32 +88,16 @@ export default ({
         data-findify-autocomplete={true}
         tabIndex={0}
         ref={register}
-        style={{ [position]: 0 }}
+        style={{
+          [position]: 0,
+        }}
       >
-        <Tip
-          className={theme.tip}
-          title={translate('autocomplete.tipResults')}
-          zeroResultsTitle={translate('autocomplete.viewAll')}
-          widgetKey={config.get('widgetKey')}
-        />
-        <Grid
+        <Layout
           className={theme.container}
-          columns={config.getIn(['breakpoints', 'layout'], 'fit|auto')}
-        >
-          <SearchSuggestions
-            display-if={config.getIn(['suggestions', 'display'])}
-            selectedSuggestion={selectedSuggestion}
-            config={config}
-            isTrendingSearches={isTrendingSearches}
-            template={config.getIn(['suggestions', 'template'])}
-          />
-          <ProductMatches
-            display-if={config.getIn(['productMatches', 'display'])}
-            config={config}
-            isTrendingSearches={isTrendingSearches}
-          />
-        </Grid>
+          config={config}
+          isTrendingSearches={isTrendingSearches}
+        />
       </section>
-    </div>
+    </>
   );
 };

@@ -1,0 +1,17 @@
+.root{
+}
+
+.list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: block;
+  li {
+    display: block;
+  }
+}
+
+.horizontal {
+  display: flex;
+  flex-wrap: wrap;
+}

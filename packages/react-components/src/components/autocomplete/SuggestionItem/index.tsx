@@ -43,20 +43,16 @@ export default ({
   item,
   query,
   theme = styles,
-  selectedSuggestion,
-  index,
-  onClick,
+  highlighted,
   icon,
   isTrendingSearches,
   template,
 }: ISuggestionItemProps) => {
-  const highlighted = selectedSuggestion === index;
   const value = item?.get('value');
-
   return (
     <li
       display-if={value}
-      onClick={onClick}
+      onClick={item.onClick}
       role="option"
       id={`suggestion-${Math.abs(item.hashCode())}`}
       aria-selected={highlighted}
