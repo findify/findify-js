@@ -44,7 +44,6 @@ export default ({
   query,
   theme = styles,
   highlighted,
-  onClick,
   icon,
   isTrendingSearches,
   template,
@@ -53,7 +52,7 @@ export default ({
   return (
     <li
       display-if={value}
-      onClick={onClick}
+      onClick={item.onClick}
       role="option"
       id={`suggestion-${Math.abs(item.hashCode())}`}
       aria-selected={highlighted}

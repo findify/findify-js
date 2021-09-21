@@ -32,7 +32,7 @@ export class Content extends createRecord('Item') {
     preventEvents(e);
     const openInNewWindow = e && (e.ctrlKey || e.metaKey);
     this.sendAnalytics(!openInNewWindow);
-    navigate(openInNewWindow, this.get('product_url'));
+    navigate(openInNewWindow, this.get('url'));
   };
 
   historyPush = (e) => {
