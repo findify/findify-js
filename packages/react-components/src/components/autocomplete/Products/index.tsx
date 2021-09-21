@@ -9,7 +9,7 @@ import MapArray from 'components/common/MapArray';
 import { useItems, useQuery } from '@findify/react-connect';
 import { Immutable } from '@findify/store-configuration';
 import useTranslations from 'helpers/useTranslations';
-import Title from 'components/autocomplete/Title';
+import Title from 'components/autocomplete/BlockTitle';
 import { emit } from 'helpers/emmiter';
 
 const makeSearchUrl = (query, config) => {
