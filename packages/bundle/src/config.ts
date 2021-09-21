@@ -150,7 +150,7 @@ const config: Config = {
           },
         },
         position: 'left',
-        overlay: false,
+        overlay: true,
         suggestions: {
           display: true,
           limit: 8,
@@ -273,7 +273,7 @@ const config: Config = {
           },
         },
         position: 'right',
-        overlay: false,
+        overlay: true,
         suggestions: {
           display: true,
           limit: 6,
@@ -542,7 +542,7 @@ const config: Config = {
     recommendations: {},
   },
   merchantName: 'test-content-search-store.myshopify.com',
-  mjs_version: '7.0.33',
+  mjs_version: '7.1.0',
 };
 
 export default config;
