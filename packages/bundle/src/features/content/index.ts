@@ -51,6 +51,5 @@ export default (render, widget: Widget<Immutable.ContentConfig>) => {
   });
 
   /** Render */
-
   return createElement(ContentProvider, props, lazyComponent());
 };
