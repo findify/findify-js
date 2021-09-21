@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.1](https://github.com/findify/findify-js/compare/@findify/react-connect@0.8.0...@findify/react-connect@0.8.1) (2021-09-21)
+
+
+### Bug Fixes
+
+* **@findify/bundle,@findify/react-components,@findify/react-connect:** add cross-content arrow navigation ([ccde301](https://github.com/findify/findify-js/commit/ccde30122a606281166b676236b0a3048dae2cef))
+* **@findify/bundle,@findify/react-components,@findify/react-connect:** fix content url ([bdd9c9f](https://github.com/findify/findify-js/commit/bdd9c9f976149b1feeb46eeaa4d7a451901b6145))
+
+
+
+
+
 # [0.8.0](https://github.com/findify/findify-js/compare/@findify/react-connect@0.7.16...@findify/react-connect@0.8.0) (2021-09-01)
 
 

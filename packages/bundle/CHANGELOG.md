@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.1.0](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.0.34...@findify/bundle@7.1.0) (2021-09-21)
+
+
+### Bug Fixes
+
+* **@findify/bundle,@findify/react-components:** grid fix ([0c09495](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/0c09495fd25d69d4522ee39fa792e9d34a8231e6))
+* **@findify/bundle,@findify/react-components,@findify/react-connect:** add cross-content arrow navigation ([ccde301](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/ccde30122a606281166b676236b0a3048dae2cef))
+* **@findify/bundle,@findify/react-components,@findify/react-connect:** fix content url ([bdd9c9f](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/bdd9c9f976149b1feeb46eeaa4d7a451901b6145))
+* **@findify/bundle,@findify/store-configuration,@findify/react-components:** update styles ([841fcf7](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/841fcf7a52b5e5d727b87e9b6027b64c78b9a2c4))
+
+
+### Features
+
+* **@findify/bundle:** content search ([714b7bb](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/714b7bb01de13c5e8b5213ef122e65fe6385b2e4))
+
+
+
+
+
 ## [7.0.34](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.0.33...@findify/bundle@7.0.34) (2021-09-21)
 
 
