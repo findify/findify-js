@@ -218,6 +218,8 @@ module.exports = (env: WebpackEnvArgs, { mode }) => {
       }),
       new WebpackHashPlugin({
         mapping: {
+          'swiper/esm/react/swiper': 'swiper/react',
+          'swiper/esm/components/core/core-class': 'swiper',
           'immutable/dist/immutable.es': 'immutable',
           '@hot-loader/react-dom': 'react-dom',
           'recompose/dist/Recompose.esm': 'recompose',
