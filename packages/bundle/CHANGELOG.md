@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.0.34](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.0.33...@findify/bundle@7.0.34) (2021-09-21)
+
+
+### Bug Fixes
+
+* **@findify/bundle:** quickfix swiper path ([9644f02](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/9644f02954307751de9b3525eef05c981ef30d08))
+
+
+
+
+
 ## [7.0.33](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.0.32...@findify/bundle@7.0.33) (2021-09-01)
 
 **Note:** Version bump only for package @findify/bundle
