@@ -7,9 +7,13 @@ let historyChanged = false;
 export const setHistory = (h) => {
   historyChanged = true;
   history = h;
+  window.__findifyHistoryChanged = true;
+  window.__findifyHistory = h;
 };
 
-export const getHistory = () => history;
+const isHistoryChanged = () => window.__findifyHistoryChanged || historyChanged;
+
+export const getHistory = () => window.__findifyHistory || history;
 
 export const collectionPath = () =>
   window.location.pathname.replace(/^\/|\/$/g, '').toLowerCase();
@@ -87,7 +91,7 @@ export const buildQuery = (_query = {}, ignoreRest = false) => {
 };
 
 export const redirectToSearch = (q) => {
-  if (historyChanged) {
+  if (isHistoryChanged()) {
     return getHistory().push({
       pathname: __root.config
         .getIn(['location', 'searchUrl'])
@@ -111,7 +115,7 @@ export const redirectToPage = async (redirect, meta) => {
     rid: meta.get('rid'),
     suggestion: meta.get('q'),
   });
-  if (historyChanged) {
+  if (isHistoryChanged()) {
     return getHistory().push(
       redirect.get('url').replace(document.location.origin, ''),
       { type: 'FindifyUpdate' }
