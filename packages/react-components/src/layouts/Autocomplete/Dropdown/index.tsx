@@ -3,7 +3,11 @@
  */
 
 import Layout from 'components/autocomplete/Layout';
-import { useSuggestions } from '@findify/react-connect';
+import {
+  useSuggestions,
+  createConnect,
+  useItems,
+} from '@findify/react-connect';
 import { ThemedSFCProps, ISuggestion, MJSValue } from 'types';
 import { List } from 'immutable';
 import { usePosition } from 'layouts/Autocomplete/Dropdown/trackPosition';
@@ -60,12 +64,34 @@ const getContainer = (config) =>
       .join('')
   );
 
+const { hook: useAllContent } = createConnect({
+  field: 'content',
+  mapProps: (field) => ({ content: field }),
+});
+
+const hasAvailableContent = (config) => {
+  const { content } = useAllContent();
+  const { suggestions } = useSuggestions();
+  const { items } = useItems();
+
+  const contentKeys = config.get('content')
+    ? Object.keys(config.get('content').toJS())
+    : [];
+
+  return (
+    items.size ||
+    suggestions.size ||
+    contentKeys.find((k) => content.get(k).size)
+  );
+};
+
 export default ({
   theme = styles,
   config,
   isFullScreen,
 }: IAutocompleteDropdownProps) => {
   const { suggestions, meta } = useSuggestions();
+  const hasContent = hasAvailableContent(config);
   const { closeAutocomplete } = useAutocompleteLogic();
   const [position, register] = usePosition(config);
   const isTrendingSearches = !meta.get('q');
@@ -75,9 +101,10 @@ export default ({
     getContainer(config).classList.add(theme.fullscreen);
   }, []);
 
-  if (!suggestions?.size) return;
+  if (!hasContent) return null;
+
   return (
-    <>
+    <div className={theme.wrapper}>
       <div
         display-if={config.get('overlay')}
         className={theme.overlay}
@@ -98,6 +125,6 @@ export default ({
           isTrendingSearches={isTrendingSearches}
         />
       </section>
-    </>
+    </div>
   );
 };

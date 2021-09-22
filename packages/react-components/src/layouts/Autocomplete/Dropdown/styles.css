@@ -1,7 +1,5 @@
 .root {
   background: white;
-  border: 1px solid $color-grey-2;
-  box-shadow: 0 5px 10px 0 rgba(71,89,113,0.5);
   position: absolute;
   z-index: 9999;
   width: 860px;
