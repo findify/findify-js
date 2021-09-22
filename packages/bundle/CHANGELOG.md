@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.1.1](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.1.0...@findify/bundle@7.1.1) (2021-09-22)
+
+
+### Bug Fixes
+
+* **@findify/bundle,@findify/react-components:** hide autocomplete only if no content present ([e7290b2](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/e7290b27e3f3319bd41bb0aa658aa1ac729ba074))
+
+
+
+
+
 # [7.1.0](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.0.34...@findify/bundle@7.1.0) (2021-09-21)
 
 
