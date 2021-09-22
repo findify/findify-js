@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.1.2](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.1.1...@findify/bundle@7.1.2) (2021-09-22)
+
+
+### Bug Fixes
+
+* **@findify/bundle:** fix history update for SPA apps ([50eea3d](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/50eea3d86249d334eeaf904dd9aaf84a65949b8d))
+
+
+
+
+
 ## [7.1.1](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.1.0...@findify/bundle@7.1.1) (2021-09-22)
 
 
