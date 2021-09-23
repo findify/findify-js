@@ -12,7 +12,7 @@ import useTranslations from 'helpers/useTranslations';
 import { Immutable } from '@findify/store-configuration';
 import styles from 'components/search/StaticResults/styles.css';
 
-export default ({ theme = styles }) => {
+export default ({ theme = styles, itemConfig }) => {
   const { items, config } = useItems<Immutable.SearchConfig>();
   const { items: promos } = usePromos();
 
@@ -30,7 +30,7 @@ export default ({ theme = styles }) => {
         {MapArray({
           array: items,
           factory: ProductCard,
-          config: config.get('product'),
+          config: itemConfig || config.get('product'),
         })}
         {MapArray({
           array: promos,

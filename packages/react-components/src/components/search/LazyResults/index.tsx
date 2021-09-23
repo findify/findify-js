@@ -16,7 +16,7 @@ import styles from 'components/search/LazyResults/styles.css';
 import useLazy from 'helpers/useLazy';
 import { Immutable } from '@findify/store-configuration';
 
-export default ({ theme = styles, card = ProductCard }) => {
+export default ({ theme = styles, card = ProductCard, itemConfig }) => {
   const {
     container,
     onLoadNext,
@@ -58,7 +58,7 @@ export default ({ theme = styles, card = ProductCard }) => {
         gutter={12}
       >
         {MapArray({
-          config: config.get('product'),
+          config: itemConfig || config.get('product'),
           array: items as ArrayLike,
           factory: card,
         })}

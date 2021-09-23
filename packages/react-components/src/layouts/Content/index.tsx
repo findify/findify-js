@@ -4,9 +4,11 @@
 import styles from 'layouts/Content/styles.css';
 
 import LazyResults from 'components/search/LazyResults';
+import StaticResults from 'components/search/StaticResults';
 import { MJSConfiguration, MJSValue, ThemedSFCProps } from 'types';
 import ContentCard from 'components/Cards/Content';
 import { useItems } from '@findify/react-connect';
+import Branch from 'components/common/Branch';
 
 /** This is a list of props ContentSearchLayout accepts */
 export interface IContentSearchProps extends ThemedSFCProps {
@@ -21,9 +23,17 @@ export interface IContentSearchProps extends ThemedSFCProps {
 }
 
 const Content = ({ theme = styles }: IContentSearchProps) => {
-  const { items } = useItems();
+  const { items, config } = useItems();
   if (!items?.size) return null;
-  return <LazyResults card={ContentCard} />;
+  return (
+    <Branch
+      condition={config.getIn(['pagination', 'type']) !== 'lazy'}
+      left={LazyResults}
+      right={StaticResults}
+      card={ContentCard}
+      itemConfig={config.get('item')}
+    />
+  );
 };
 
 export default process.env.HOT

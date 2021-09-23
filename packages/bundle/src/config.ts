@@ -480,63 +480,46 @@ const config: Config = {
       },
     },
     content: {
-      pagination: {
-        type: 'lazy',
-        autoLoadTimes: 2,
-        step: 2,
-      },
-      scrollTop: {
-        enabled: true,
-        selector: '',
-        offset: 0,
-      },
-      disableAutoRequest: false,
-      defaultRequestParams: {
-        limit: 24,
-      },
-      product: {
-        template: 'vertical',
-        price: {
-          template: 'min-max',
+      'shopify-collection_985': {
+        defaultRequestParams: {
+          limit: 2,
         },
-        title: {
-          lines: 3,
+        title: 'Collections',
+        pagination: {
+          type: 'lazy',
+          autoLoadTimes: 2,
+          step: 2,
         },
-        description: {
-          lines: 3,
+
+        scrollTop: {
+          enabled: false,
+          selector: '',
+          offset: 10,
         },
-        variants: {
-          display: true,
-          template: 'text',
-        },
-        image: {
-          aspectRatio: 1,
-          lazy: true,
-          lazyOffset: 0,
-          multiple: false,
-        },
-      },
-      breakpoints: {
-        grid: [
-          {
-            width: 400,
-            value: 6,
+
+        item: {
+          template: 'vertical',
+          title: {
+            lines: 2,
           },
-          {
-            width: 600,
-            value: 4,
+          description: {
+            lines: 2,
           },
-          {
-            width: 1000,
-            value: 3,
+          image: {
+            aspectRatio: 1,
+            lazy: false,
+            lazyOffset: 0,
           },
-        ],
-        layout: [
-          {
-            width: 0,
-            value: 'fit|auto',
-          },
-        ],
+        },
+
+        breakpoints: {
+          grid: [
+            {
+              width: 0,
+              value: 3,
+            },
+          ],
+        },
       },
     },
     recommendations: {},
