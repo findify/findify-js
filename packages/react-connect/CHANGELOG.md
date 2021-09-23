@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.2](https://github.com/findify/findify-js/compare/@findify/react-connect@0.8.1...@findify/react-connect@0.8.2) (2021-09-23)
+
+
+### Bug Fixes
+
+* **@findify/bundle,@findify/store-configuration,@findify/react-components,@findify/react-connect:** standalone content search ([09c05ff](https://github.com/findify/findify-js/commit/09c05ffb7cd48125fdcf805df443a5c6bb5faf9a))
+
+
+
+
+
 ## [0.8.1](https://github.com/findify/findify-js/compare/@findify/react-connect@0.8.0...@findify/react-connect@0.8.1) (2021-09-21)
 
 
