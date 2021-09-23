@@ -1,9 +1,12 @@
 import createConnect from './createConnect';
 import { Item } from '../immutable/item';
+import { Content } from '../immutable/content';
 import { List } from 'immutable';
 
-const patchItems = (analytics, meta) => (item) =>
-  new Item(item, meta, analytics);
+const patchItems = (analytics, meta) => (item) => {
+  const Factory = item.get('product_url') ? Item : Content;
+  return new Factory(item, meta, analytics);
+};
 
 type Items = {
   /** List of items */

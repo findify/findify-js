@@ -52,6 +52,7 @@ export type Translations = {
   'autocomplete.trendingProducts': string // 'Trending products'
   'autocomplete.productMatches': string // 'Products'
   'autocomplete.tipResults': string // 'XXX'
-  'autocomplete.viewAll': string // 'View all'
+  'autocomplete.viewAll': string // 'View all results for'
+  'autocomplete.viewAllResults': string // 'View all'
   'autocomplete.placeholder': string // 'What are you looking for?'
 }

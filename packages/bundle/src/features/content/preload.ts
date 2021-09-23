@@ -1,4 +1,5 @@
 import { getQuery } from '../../core/location';
+import { Map } from 'immutable';
 
 const parseSortHTMLAttribute = (sort) => {
   try {
@@ -13,11 +14,18 @@ const parseSortHTMLAttribute = (sort) => {
 };
 
 export default (widget) => {
-  const { agent, node } = widget;
+  const { agent, node, config } = widget;
   const { q } = getQuery();
   const { type, sort } = node.dataset || {};
+  const _config = config.get(type);
+  const defaultRequestParams =
+    (_config && _config.get('defaultRequestParams', Map).toJS()) || {};
 
   agent
-    .defaults({ type: [type], sort: parseSortHTMLAttribute(sort) })
+    .defaults({
+      type: [type],
+      sort: parseSortHTMLAttribute(sort),
+      ...defaultRequestParams,
+    })
     .set('q', q);
 };

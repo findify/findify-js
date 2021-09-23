@@ -18,7 +18,12 @@ const lazyComponent = lazy(
 export default (render, widget: Widget<Immutable.ContentConfig>) => {
   const { agent, config, node } = widget;
   const apiKey = config.get('key');
-  const props = { agent, apiKey, config };
+  const { type } = node.dataset || {};
+  const props = {
+    agent,
+    apiKey,
+    config: config.mergeDeep(config.get(type)),
+  };
 
   /** Listen to changes */
   agent.on('change:query', (q) => {
