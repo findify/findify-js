@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.1.4](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.1.3...@findify/bundle@7.1.4) (2021-09-28)
+
+
+### Bug Fixes
+
+* **@findify/bundle:** added viewedViewed reco type to list of types that requires item ID ([86ed440](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/86ed440113fab82768ac015724cd836d81030315))
+
+
+
+
+
 ## [7.1.3](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.1.2...@findify/bundle@7.1.3) (2021-09-23)
 
 
