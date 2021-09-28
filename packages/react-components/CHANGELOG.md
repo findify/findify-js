@@ -3,6 +3,43 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.14.3](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.14.2...@findify/react-components@0.14.3) (2021-09-23)
+
+
+### Bug Fixes
+
+* **@findify/bundle,@findify/store-configuration,@findify/react-components,@findify/react-connect:** standalone content search ([09c05ff](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/09c05ffb7cd48125fdcf805df443a5c6bb5faf9a))
+
+
+
+
+
+## [0.14.2](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.14.1...@findify/react-components@0.14.2) (2021-09-22)
+
+
+### Bug Fixes
+
+* **@findify/bundle,@findify/react-components:** hide autocomplete only if no content present ([e7290b2](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/e7290b27e3f3319bd41bb0aa658aa1ac729ba074))
+
+
+
+
+
+## [0.14.1](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.14.0...@findify/react-components@0.14.1) (2021-09-21)
+
+
+### Bug Fixes
+
+* **@findify/bundle,@findify/react-components:** grid fix ([0c09495](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/0c09495fd25d69d4522ee39fa792e9d34a8231e6))
+* **@findify/bundle,@findify/react-components,@findify/react-connect:** add cross-content arrow navigation ([ccde301](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/ccde30122a606281166b676236b0a3048dae2cef))
+* **@findify/bundle,@findify/react-components,@findify/react-connect:** fix content url ([bdd9c9f](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/bdd9c9f976149b1feeb46eeaa4d7a451901b6145))
+* **@findify/bundle,@findify/store-configuration,@findify/react-components:** update styles ([841fcf7](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/841fcf7a52b5e5d727b87e9b6027b64c78b9a2c4))
+* **@findify/react-components:** fix title path ([766a0fb](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/766a0fbf3cb85f17a843fd541db55b53d63bf897))
+
+
+
+
+
 # [0.14.0](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.13.26...@findify/react-components@0.14.0) (2021-09-01)
 
 
