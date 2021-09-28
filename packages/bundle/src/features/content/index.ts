@@ -27,7 +27,6 @@ export default (render, widget: Widget<Immutable.ContentConfig>) => {
 
   /** Listen to changes */
   agent.on('change:query', (q) => {
-    setQuery(q.toJS());
     render('initial');
   });
 
