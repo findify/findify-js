@@ -106,6 +106,8 @@ export const redirectToSearch = (q) => {
 
 export const setQuery = (query) => {
   const search = buildQuery(query);
+  const oldSearch = getHistory().location.search;
+  if (oldSearch === search) return;
   return getHistory().push({ search, state: { type: 'FindifyUpdate' } });
 };
 
