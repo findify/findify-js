@@ -75,7 +75,9 @@ export type Config = {
   features: {
     autocomplete: Autocomplete,
     search: Search,
-    content: Content
+    content: {
+      [key: string]: Content
+    }
     recommendations: {
       [key: string]: Recommendation
     },
