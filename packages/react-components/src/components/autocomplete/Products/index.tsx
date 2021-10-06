@@ -58,7 +58,7 @@ export default ({
           onClick={onViewAll}
           href={makeSearchUrl(query.get('q'), baseConfig)}
         >
-          {translate('autocomplete.viewAll')}
+          {translate('autocomplete.viewAllResults')}
         </a>
       </Title>
       <Grid
