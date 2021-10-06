@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.1.7](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.1.6...@findify/bundle@7.1.7) (2021-09-29)
+
+**Note:** Version bump only for package @findify/bundle
+
+
+
+
+
+## [7.1.6](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.1.5...@findify/bundle@7.1.6) (2021-09-28)
+
+
+### Bug Fixes
+
+* **@findify/bundle:** update widget types ([76a1318](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/76a13185c78586bbb3384dd60607b51bbb99535e))
+
+
+
+
+
+## [7.1.5](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.1.4...@findify/bundle@7.1.5) (2021-09-28)
+
+
+### Bug Fixes
+
+* **@findify/bundle:** do not update search if state is equal ([66eb697](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/66eb697542120a6d0c0b890c4680fc5df200e1a9))
+
+
+
+
+
 ## [7.1.4](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.1.3...@findify/bundle@7.1.4) (2021-09-28)
 
 

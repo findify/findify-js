@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.4](https://github.com/findify/findify-js/compare/@findify/store-configuration@0.3.3...@findify/store-configuration@0.3.4) (2021-09-29)
+
+
+### Bug Fixes
+
+* **@findify/store-configuration:** fixed content search widget config type definition ([deb1949](https://github.com/findify/findify-js/commit/deb1949df8ca8310631eaf123efc716e8b6bb047))
+
+
+
+
+
 ## [0.3.3](https://github.com/findify/findify-js/compare/@findify/store-configuration@0.3.2...@findify/store-configuration@0.3.3) (2021-09-23)
 
 
