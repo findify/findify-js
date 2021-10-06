@@ -2,7 +2,7 @@ import { Config } from '@findify/store-configuration';
 
 const config: Config = {
   sentryDisabled: true,
-  key: 'c09c0768-0287-4794-9171-38f896a9f8c1',
+  key: '2043819b-d371-42d0-8f1f-757029b87407',
   merchantId: 8533,
   status: 'live',
   platform: 'shopify',
@@ -101,8 +101,8 @@ const config: Config = {
         limits: {
           suggestions: 10,
           products: 10,
-          'shopify-collection_985': 10,
-          'shopify-blog_984': 10,
+          'shopify-collection_999': 10,
+          'shopify-blog_998': 10,
         },
       },
       mobile: {
@@ -161,8 +161,8 @@ const config: Config = {
           limit: 7,
         },
         layout: [
-          ['suggestions', 'shopify-blog_984'],
-          ['shopify-collection_985'],
+          ['suggestions', 'shopify-collection_999'],
+          ['shopify-blog_998'],
         ],
         products: {
           limit: 7,
@@ -190,7 +190,7 @@ const config: Config = {
           },
         },
         content: {
-          'shopify-blog_984': {
+          'shopify-blog_998': {
             title: 'Blogs',
             limit: 5,
             item: {
@@ -208,7 +208,7 @@ const config: Config = {
               },
             },
           },
-          'shopify-collection_985': {
+          'shopify-collection_999': {
             limit: 6,
             item: {
               template: 'horizontal',
@@ -283,7 +283,7 @@ const config: Config = {
           display: true,
           limit: 4,
         },
-        layout: [['suggestions', 'shopify-collection_985'], ['products']],
+        layout: [['suggestions', 'shopify-collection_999'], ['products']],
         products: {
           limit: 4,
           item: {
@@ -310,7 +310,7 @@ const config: Config = {
           },
         },
         content: {
-          'shopify-collection_985': {
+          'shopify-collection_999': {
             limit: 6,
             item: {
               template: 'horizontal',
@@ -328,7 +328,7 @@ const config: Config = {
             },
             title: 'Collections',
           },
-          'shopify-blog_984': {
+          'shopify-blog_998': {
             title: 'Blogs',
             limit: 5,
             item: {
@@ -480,9 +480,9 @@ const config: Config = {
       },
     },
     content: {
-      'shopify-collection_985': {
+      'shopify-collection_999': {
         defaultRequestParams: {
-          limit: 2,
+          limit: 24,
         },
         title: 'Collections',
         pagination: {
