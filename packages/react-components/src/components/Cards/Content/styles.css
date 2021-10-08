@@ -10,6 +10,10 @@
     text-align: $text-align-vertical;
     flex-direction: column;
     min-width: 100px;
+    
+    &.autocomplete{
+      margin-bottom: 20px;
+    }
   }
   &.horizontal{
     text-align: $text-align-horizontal;
@@ -26,9 +30,6 @@
     display: inline-block;
     width: auto;
     border-radius: 17px;
-    &:hover{
-      background: $color-grey-2;
-    }
     & .title{
       line-height: 1;
     }
@@ -47,9 +48,6 @@
     a:focus {
       text-decoration: none;
     }
-  }
-  &:hover{
-    background: $color-grey-1;
   }
 }
 

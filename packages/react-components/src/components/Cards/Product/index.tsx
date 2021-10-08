@@ -25,6 +25,7 @@ export interface IProductCardProps extends ThemedSFCProps {
   config: Immutable.Factory<Product>;
   Container?: React.ElementType;
   highlighted: boolean;
+  isAutocomplete?: boolean;
 }
 
 const useVariants = (
@@ -49,6 +50,7 @@ export default ({
   config,
   Container = 'div',
   highlighted,
+  isAutocomplete
 }: IProductCardProps) => {
   const container = trackProductPosition(item);
   const [variant, setVariant] = useVariants(item);
@@ -61,6 +63,7 @@ export default ({
         theme.root,
         theme[config.get('template')],
         highlighted && theme.highlighted,
+        isAutocomplete && theme.autocomplete,
         className
       )}
     >
