@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.14.6](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.14.5...@findify/react-components@0.14.6) (2021-10-08)
+
+
+### Bug Fixes
+
+* **@findify/bundle,@findify/react-components:** updated content integrations styles in autocomplete ([4b625a6](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/4b625a6ba71dbce1b327b4b7ac995b7db44486fb))
+
+
+
+
+
 ## [0.14.5](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.14.4...@findify/react-components@0.14.5) (2021-10-06)
 
 
