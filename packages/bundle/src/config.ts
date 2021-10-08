@@ -3,7 +3,7 @@ import { Config } from '@findify/store-configuration';
 const config: Config = {
   sentryDisabled: true,
   key: '2043819b-d371-42d0-8f1f-757029b87407',
-  merchantId: 8533,
+  merchantId: 8330,
   status: 'live',
   platform: 'shopify',
   mobileBreakpoint: 768,
@@ -87,6 +87,7 @@ const config: Config = {
     'autocomplete.productMatches': 'Product matches',
     'autocomplete.tipResults': 'View all results for',
     'autocomplete.viewAll': 'View all results for',
+    'autocomplete.viewAllResults': 'View all',
     'autocomplete.placeholder': 'What are you looking for?',
     'range.up': '&amp; up',
     'range.under': 'Under',
@@ -229,125 +230,159 @@ const config: Config = {
         },
       },
       desktop: {
-        template: 'dropdown',
-        breakpoints: {
-          grid: [
+        "breakpoints":{
+           "grid":[
+              {
+                 "width":0,
+                 "value":3
+              }
+           ],
+           "layout":[
+              {
+                 "width":0,
+                 "value":"4|8"
+              }
+           ],
+           "products":[
+              {
+                 "width":0,
+                 "value":4
+              }
+           ],
+           "shopify-blog_998":[
             {
-              width: 0,
-              value: 12,
-            },
-          ],
-          layout: [
-            {
-              width: 0,
-              value: '3|9',
-            },
-          ],
-          products: [
-            {
-              width: 0,
-              value: 3,
-            },
-          ],
+               "width":0,
+               "value": 3
+            }
+         ]  
         },
-        product: {
-          template: 'vertical',
-          price: {
-            template: 'min-max',
-          },
-          title: {
-            lines: 2,
-          },
-          description: {
-            lines: 2,
-          },
-          variants: {
-            display: false,
-            template: 'text',
-          },
-          image: {
-            aspectRatio: 1,
-            lazy: false,
-            lazyOffset: 0,
-            multiple: false,
-          },
+        "productMatches":{
+           "display":true,
+           "limit":4
         },
-        position: 'right',
-        overlay: true,
-        suggestions: {
-          display: true,
-          limit: 6,
-          template: 'vertical',
+        "products":{
+           "limit":4,
+           "item":{
+              "template":"vertical",
+              "price":{
+                 "template":"min-max"
+              },
+              "title":{
+                 "lines":2
+              },
+              "description":{
+                 "lines":2
+              },
+              "variants":{
+                 "display":false,
+                 "template":"text"
+              },
+              "image":{
+                 "aspectRatio":1,
+                 "lazy":false,
+                 "lazyOffset":0,
+                 "multiple":false
+              }
+           }
         },
-        productMatches: {
-          display: true,
-          limit: 4,
+        "position":"right",
+        "layout":[
+           [
+              "suggestions",
+              "shopify-collection_999",
+              "shopify-page_997"
+           ],
+           [
+              "products",
+              "shopify-blog_998"
+           ],
+        ],
+        "product":{
+           "template":"vertical",
+           "price":{
+              "template":"min-max"
+           },
+           "title":{
+              "lines":2
+           },
+           "description":{
+              "lines":2
+           },
+           "variants":{
+              "display":false,
+              "template":"text"
+           },
+           "image":{
+              "aspectRatio":1,
+              "lazy":false,
+              "lazyOffset":0,
+              "multiple":false
+           }
         },
-        layout: [['suggestions', 'shopify-collection_999'], ['products']],
-        products: {
-          limit: 4,
-          item: {
-            template: 'vertical',
-            price: {
-              template: 'min-max',
-            },
-            title: {
-              lines: 2,
-            },
-            description: {
-              lines: 2,
-            },
-            variants: {
-              display: false,
-              template: 'text',
-            },
-            image: {
-              aspectRatio: 1,
-              lazy: false,
-              lazyOffset: 0,
-              multiple: false,
-            },
-          },
+        "suggestions":{
+           "display":true,
+           "limit":4,
+           "template":"vertical"
         },
-        content: {
-          'shopify-collection_999': {
-            limit: 6,
-            item: {
-              template: 'horizontal',
-              title: {
-                lines: 2,
-              },
-              description: {
-                lines: 2,
-              },
-              image: {
-                aspectRatio: 1,
-                lazy: false,
-                lazyOffset: 0,
-              },
-            },
-            title: 'Collections',
-          },
-          'shopify-blog_998': {
-            title: 'Blogs',
-            limit: 5,
-            item: {
-              template: 'horizontal',
-              title: {
-                lines: 2,
-              },
-              description: {
-                lines: 2,
-              },
-              image: {
-                aspectRatio: 1,
-                lazy: false,
-                lazyOffset: 0,
-              },
-            },
-          },
+        "overlay":false,
+        "content":{
+           "shopify-collection_999":{
+              "title":"Collections",
+              "limit":3,
+              "item":{
+                 "template":"horizontal",
+                 "title":{
+                    "lines":2
+                 },
+                 "description":{
+                    "lines":2
+                 },
+                 "image":{
+                    "aspectRatio":1,
+                    "lazy":false,
+                    "lazyOffset":0
+                 }
+              }
+           },
+           "shopify-page_997":{
+              "title":"Shopify Pages",
+              "limit":3,
+              "item":{
+                 "template":"horizontal",
+                 "title":{
+                    "lines":2
+                 },
+                 "description":{
+                    "lines":2
+                 },
+                 "image":{
+                    "aspectRatio":1,
+                    "lazy":false,
+                    "lazyOffset":0
+                 }
+              }
+           },
+           "shopify-blog_998":{
+              "title":"Blogs",
+              "limit":4,
+              "item":{
+                 "template":"vertical",
+                 "title":{
+                    "lines":2 
+                 },
+                 "description":{
+                    "lines":2
+                 },
+                 "image":{
+                    "aspectRatio":0.5,
+                    "lazy":false,
+                    "lazyOffset":0
+                 }
+              }
+           }
         },
-      },
+        "template":"dropdown"
+     },
     },
     search: {
       disableAutoRequest: false,
@@ -480,7 +515,7 @@ const config: Config = {
       },
     },
     content: {
-      'shopify-collection_999': {
+      'shopify-blog_998': {
         defaultRequestParams: {
           limit: 24,
         },
@@ -524,7 +559,7 @@ const config: Config = {
     },
     recommendations: {},
   },
-  merchantName: 'test-content-search-store.myshopify.com',
+  merchantName: 'findify-staging.myshopify.com',
   mjs_version: '7.1.0',
 };
 

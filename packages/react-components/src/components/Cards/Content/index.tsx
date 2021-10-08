@@ -30,6 +30,7 @@ export default ({
   theme = styles,
   Container = 'div',
   highlighted,
+  isAutocomplete
 }) => {
   return (
     <Container
@@ -37,7 +38,8 @@ export default ({
       className={cx(
         theme.root,
         theme[config.get('template')],
-        highlighted && theme.highlighted
+        highlighted && theme.highlighted,
+        isAutocomplete && theme.autocomplete
       )}
     >
       <div className={theme.content}>

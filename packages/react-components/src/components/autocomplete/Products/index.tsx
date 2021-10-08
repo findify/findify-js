@@ -70,6 +70,7 @@ export default ({
           array: items,
           limit: config.get('limit'),
           factory: ProductCard,
+          isAutocomplete: true,
           config: config.get('item'),
           mapProps: (item) => ({
             highlighted:

@@ -18,7 +18,6 @@ export default ({
 }) => {
   const isBubble = config.getIn(['item', 'template']) === 'bubble';
   const Container = isBubble ? 'div' : Grid;
-
   const { items } = useContent<Immutable.AutocompleteConfig>({
     field: `content:${type}`,
   });
@@ -35,6 +34,7 @@ export default ({
         {MapArray({
           array: items,
           limit: config.get('limit'),
+          isAutocomplete: true,
           factory: ContentCard,
           config: config.get('item'),
           mapProps: (item) => ({

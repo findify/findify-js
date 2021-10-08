@@ -19,6 +19,9 @@ $text-align-horizontal: left;
     flex-direction: row;
     padding-bottom: 15px;
   }
+  &.autocomplete {
+    padding-bottom: 0;
+  }
   &.highlighted, &:focus-within{
     &:after{
       content: ' ';
