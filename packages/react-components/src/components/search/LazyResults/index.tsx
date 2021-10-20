@@ -10,10 +10,10 @@ import Text from 'components/Text';
 import { ArrayLike } from 'components/common/MapArray';
 import useTranslations from 'helpers/useTranslations';
 import PromoCard from 'components/Cards/Promo';
-import { usePromos } from '@findify/react-connect';
 
 import styles from 'components/search/LazyResults/styles.css';
 import useLazy from 'helpers/useLazy';
+import useLazyPromos from 'helpers/useLazyPromos';
 import { Immutable } from '@findify/store-configuration';
 
 export default ({ theme = styles, card = ProductCard, itemConfig }) => {
@@ -23,9 +23,9 @@ export default ({ theme = styles, card = ProductCard, itemConfig }) => {
     onLoadPrev,
     displayPrevButton,
     displayNextButton,
-    items,
+    items
   } = useLazy();
-  const { items: promos } = usePromos();
+  const promos = useLazyPromos()
   const { config } = useConfig<Immutable.SearchConfig>();
   const { getPageProps, current } = usePagination();
   const translate = useTranslations();
