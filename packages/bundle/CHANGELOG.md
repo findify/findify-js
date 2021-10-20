@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.1.9](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.1.8...@findify/bundle@7.1.9) (2021-10-08)
+
+
+### Bug Fixes
+
+* **@findify/bundle,@findify/react-components:** updated content integrations styles in autocomplete ([4b625a6](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/4b625a6ba71dbce1b327b4b7ac995b7db44486fb))
+
+
+
+
+
 ## [7.1.8](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.1.7...@findify/bundle@7.1.8) (2021-10-06)
 
 **Note:** Version bump only for package @findify/bundle
