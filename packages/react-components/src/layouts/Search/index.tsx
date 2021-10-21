@@ -12,7 +12,7 @@ import Branch from 'components/common/Branch';
 import Banner from 'components/Banner';
 import { List } from 'immutable';
 import Grid, { Column } from 'components/common/Grid';
-import useMobile from 'helpers/useMobile';
+import { useMobile } from 'helpers/useMobile';
 import { useAnnouncement } from 'components/common/Announcement';
 import useScrollOnChange from 'helpers/useScrollOnChange';
 import { useItems } from '@findify/react-connect';
