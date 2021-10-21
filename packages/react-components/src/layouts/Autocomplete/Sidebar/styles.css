@@ -91,7 +91,7 @@
 .content{
   overflow: hidden;
   overflow-y: auto;
-  max-height: calc(100vh - 50px);
+  max-height: calc(100vh - 120px);
 }
 
 .products{}
