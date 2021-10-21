@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { useConfig } from '@findify/react-connect';
 
-export const useMobile = () => {
+export default () => {
   const { config } = useConfig();
   const mql = useRef(
     window.matchMedia(`(min-width: ${config.get('mobileBreakpoint')}px)`)
