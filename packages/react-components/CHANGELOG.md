@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.14.8](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.14.7...@findify/react-components@0.14.8) (2021-10-21)
+
+
+### Bug Fixes
+
+* **@findify/react-components:** rollback useMobile fix ([59c42e2](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/59c42e21d8bb766c0d2e7b508a8a12d1d056b2f5))
+
+
+
+
+
 ## [0.14.7](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.14.6...@findify/react-components@0.14.7) (2021-10-21)
 
 
