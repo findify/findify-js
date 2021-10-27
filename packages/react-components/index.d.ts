@@ -1,7 +1,41 @@
+declare module 'components/autocomplete/BlockTitle' {
+/// <reference types="react" />
+const _default: ({ children, theme }: {
+    children: any;
+    theme?: Record<string, string> | undefined;
+}) => JSX.Element;
+export default _default;
+
+}
+declare module 'components/autocomplete/Content' {
+/// <reference types="react" />
+const _default: ({ theme, config, type }: {
+    theme?: Record<string, string> | undefined;
+    config: any;
+    type: any;
+}) => JSX.Element;
+export default _default;
+
+}
+declare module 'components/autocomplete/Layout' {
+/// <reference types="react" />
+import { Immutable } from '@findify/store-configuration';
+export interface LayoutProps {
+    config: Immutable.AutocompleteConfig;
+    className?: string;
+    isTrendingSearches?: boolean;
+}
+const _default: ({ config, className, isTrendingSearches }: LayoutProps) => JSX.Element;
+export default _default;
+
+}
 declare module 'components/autocomplete/ProductMatches' {
 /// <reference types="react" />
-import React from 'react';
-const _default: React.ComponentClass<{}>;
+const _default: ({ theme, config, isTrendingSearches }: {
+    theme?: Record<string, string> | undefined;
+    config: any;
+    isTrendingSearches: any;
+}) => JSX.Element;
 export default _default;
 
 }
@@ -22,10 +56,28 @@ const ProductMatchesView: React.SFC<IProductMatchesProps>;
 export default ProductMatchesView;
 
 }
-declare module 'components/autocomplete/SearchSuggestions' {
+declare module 'components/autocomplete/Products' {
 /// <reference types="react" />
-import React from 'react';
-const _default: React.ComponentClass<{}>;
+const _default: ({ theme, config, isTrendingSearches }: {
+    theme?: Record<string, string> | undefined;
+    config: any;
+    isTrendingSearches: any;
+}) => JSX.Element;
+export default _default;
+
+}
+declare module 'components/autocomplete/SearchSuggestions' {
+/**
+ * @module components/autocomplete/SearchSuggestions
+ */
+/// <reference types="react" />
+const _default: ({ selectedSuggestion, theme, template, config, isTrendingSearches, }: {
+    selectedSuggestion?: undefined;
+    theme?: Record<string, string> | undefined;
+    template?: string | undefined;
+    config: any;
+    isTrendingSearches: any;
+}) => JSX.Element;
 export default _default;
 
 }
@@ -47,8 +99,25 @@ export default SearchSuggestionsView;
 }
 declare module 'components/autocomplete/SuggestionItem' {
 /// <reference types="react" />
-import React from 'react';
-const _default: React.ComponentClass<{}>;
+import { ISuggestion, ISuggestionProps, IQuery, ThemedSFCProps } from 'types';
+/**
+ * Props that SuggestionItem accepts
+ */
+export interface ISuggestionItemProps extends ThemedSFCProps, ISuggestionProps {
+    /** Suggestion item */
+    item: ISuggestion;
+    /** Query, used to highlight matches */
+    query: IQuery;
+    /** Flag indicating whether current suggestion is in focus over keyboard arrows */
+    selectedSuggestion: number;
+    /** Icon name to use */
+    icon: string;
+    /** Flag indicating that this suggestion is used in TrendingSearches layout of Autocomplete */
+    isTrendingSearches: boolean;
+    /** Rest of the props that may get passed down */
+    [x: string]: any;
+}
+const _default: ({ item, query, theme, selectedSuggestion, index, onClick, icon, isTrendingSearches, template, }: ISuggestionItemProps) => JSX.Element;
 export default _default;
 
 }
@@ -72,10 +141,38 @@ const SuggestionItemView: React.SFC<ISuggestionItemProps>;
 export default SuggestionItemView;
 
 }
-declare module 'components/autocomplete/Tip' {
+declare module 'components/autocomplete/Suggestions' {
+/**
+ * @module components/autocomplete/Suggestions
+ */
 /// <reference types="react" />
-import React from 'react';
-const _default: React.ComponentClass<{}>;
+const _default: ({ selectedSuggestion, theme, config, isTrendingSearches, }: {
+    selectedSuggestion?: undefined;
+    theme?: Record<string, string> | undefined;
+    config: any;
+    isTrendingSearches: any;
+}) => JSX.Element;
+export default _default;
+
+}
+declare module 'components/autocomplete/Suggestions/test' {
+export {};
+
+}
+declare module 'components/autocomplete/Tip' {
+/**
+ * @module components/autocomplete/Tip
+ */
+/// <reference types="react" />
+import { ThemedSFCProps } from 'types';
+/** List of props that Tip accepts */
+export interface ITipProps extends ThemedSFCProps {
+    /** Custom title to display in a Tip */
+    widgetKey: string;
+    title: string;
+    zeroResultsTitle: string;
+}
+const _default: ({ className, title, zeroResultsTitle, theme, widgetKey, }: ITipProps) => JSX.Element;
 export default _default;
 
 }
@@ -95,9 +192,11 @@ export default TipView;
 
 }
 declare module 'components/Banner' {
+/**
+ * @module components/Banner
+ */
 /// <reference types="react" />
-import React from 'react';
-const _default: React.ComponentClass<{}>;
+const _default: import("react").MemoExoticComponent<({ theme }: import("../../types").IThemedSFCProps<import("../../types").Theme>) => JSX.Element>;
 export default _default;
 
 }
@@ -114,30 +213,45 @@ export default BannerView;
 
 }
 declare module 'components/Breadcrumbs/createBreadcrumb' {
+/**
+ * @module components/Breadcrumbs
+ */
 /// <reference types="react" />
-import React from 'react';
 import { FilterType, ThemedSFCProps, IFacet, MJSConfiguration } from 'types';
+import { Immutable } from '@findify/store-configuration';
+/** Filter mapping type */
 export type FilterMapping = {
     [x in FilterType]: React.SFC<any>;
 };
 export interface IFilterProps {
+    /** Filter value */
     item: any;
+    /** Filter mapping */
     mapping: FilterMapping;
+    /** Filter type */
     type: FilterType;
+    /** Filter name */
     name: string;
+    config: Immutable.SearchConfig;
+    theme: any;
 }
+/** List of props that component returned by createBreadcrumb accepts */
 export interface IFilterListProps extends ThemedSFCProps {
+    /** Filter to create a component for */
     item: IFacet;
+    /** MJS configuration */
     config: MJSConfiguration;
 }
-const _default: (mapping: FilterMapping) => ({ item, children, theme, config }: IFilterListProps) => JSX.Element;
+const _default: (mapping: FilterMapping) => ({ item, theme, config, }: IFilterListProps) => JSX.Element;
 export default _default;
 
 }
 declare module 'components/Breadcrumbs' {
+/**
+ * @module components/Breadcrumbs
+ */
 /// <reference types="react" />
-import React from 'react';
-const _default: React.ComponentClass<{}>;
+const _default: import("react").MemoExoticComponent<({ theme }: import("../../types").IThemedSFCProps<import("../../types").Theme>) => JSX.Element>;
 export default _default;
 
 }
@@ -155,9 +269,32 @@ export default BreadcrumbsView;
 
 }
 declare module 'components/Button' {
+/**
+ * @module components/Button
+ */
 /// <reference types="react" />
-import React from 'react';
-const _default: React.ComponentClass<any>;
+import { ClassnamedProps, ThemedSFCProps } from 'types';
+/** Props that Button accepts */
+export interface IButtonProps extends ThemedSFCProps, ClassnamedProps {
+    /** Event handler for a button */
+    onClick?: (evt: Event) => any;
+    /** Flag to show if the button is active */
+    active?: boolean;
+    /** Flag whether to use raw style */
+    raw?: boolean;
+    /** Flag whether the component is disabled */
+    disabled?: boolean;
+    /** Rest of the props for the button */
+    [x: string]: any;
+}
+const _default: ({ theme, onClick, children, active, raw, className, disabled, href, ...rest }: IButtonProps) => import("react").ReactElement<{
+    onClick: ((evt: Event) => any) | undefined;
+    disabled: boolean | undefined;
+    children: import("react").ReactNode;
+    href: any;
+    className: any;
+    'display-if'?: boolean | undefined;
+}, string | ((props: any) => import("react").ReactElement<any, any> | null) | (new (props: any) => import("react").Component<any, any, any>)>;
 export default _default;
 
 }
@@ -177,19 +314,24 @@ export default ButtonView;
 
 }
 declare module 'components/Cards/Content' {
+/**
+ * @module components/Cards/Content
+ */
 /// <reference types="react" />
-import React from 'react';
-const _default: React.ComponentClass<{}>;
+const _default: ({ item, config, theme }: {
+    item: any;
+    config: any;
+    theme?: Record<string, string> | undefined;
+}) => JSX.Element;
 export default _default;
 
 }
 declare module 'components/Cards/Content/view' {
 /// <reference types="react" />
-const _default: ({ item, config, theme }: {
-    item: any;
-    config: any;
-    theme: any;
-}) => JSX.Element;
+import React from 'react';
+const _default: React.ComponentType<Pick<{
+    onClick: (e: any) => void;
+}, never>>;
 export default _default;
 
 }
@@ -199,15 +341,43 @@ const _default: ({ theme, onClick, selected }: any) => JSX.Element;
 export default _default;
 
 }
+declare module 'components/Cards/Product/Description' {
+/// <reference types="react" />
+const _default: ({ text, theme, ...rest }: {
+    [x: string]: any;
+    text: any;
+    theme: any;
+}) => JSX.Element;
+export default _default;
+
+}
 declare module 'components/Cards/Product' {
-const ProductCard: any;
-export default ProductCard;
+/**
+ * @module components/Cards/Product
+ */
+/// <reference types="react" />
+import { IProduct, ThemedSFCProps } from 'types';
+import { Immutable, Product } from '@findify/store-configuration';
+export interface IProductCardProps extends ThemedSFCProps {
+    item: IProduct;
+    config: Immutable.Factory<Product>;
+    Container?: React.ElementType;
+}
+const _default: ({ item, theme, className, config, Container, }: IProductCardProps) => JSX.Element;
+export default _default;
 
 }
 declare module 'components/Cards/Product/Price' {
+/**
+ * @module components/Cards/Product/Price
+ */
 /// <reference types="react" />
-import React from 'react';
-const _default: React.ComponentClass<{}>;
+import { IProduct, ThemedSFCProps } from 'types';
+/** List of props that Price component accepts */
+export interface IPriceProps extends ThemedSFCProps {
+    item: IProduct;
+}
+const _default: ({ className, theme, item }: IPriceProps) => JSX.Element;
 export default _default;
 
 }
@@ -230,8 +400,15 @@ export default PriceView;
 }
 declare module 'components/Cards/Product/Rating' {
 /// <reference types="react" />
-import React from 'react';
-const _default: React.ComponentClass<{}>;
+import { ThemedSFCProps } from 'types';
+/** List of props that Rating component accepts */
+export interface IRatingProps extends ThemedSFCProps {
+    /** Rating value */
+    value: number;
+    /** Total reviews */
+    count: number;
+}
+const _default: ({ value, count, className, theme }: IRatingProps) => JSX.Element;
 export default _default;
 
 }
@@ -253,58 +430,58 @@ export default RatingView;
 
 }
 declare module 'components/Cards/Product/Stickers' {
+/**
+ * @module components/Cards/Product/Stickers
+ */
 /// <reference types="react" />
-import React from 'react';
-export const DiscountSticker: new (props: any) => {
-    componentWillReceiveProps(nextProps: any): void;
-    render(): React.ComponentElement<{
-        theme: any;
-        children?: React.ReactNode;
-    }, React.Component<{
-        theme: any;
-        children?: React.ReactNode;
-    }, React.ComponentState, any>>;
-    setState<K extends never>(state: {} | Pick<{}, K> | ((prevState: Readonly<{}>, props: Readonly<{}>) => {} | Pick<{}, K> | null) | null, callback?: (() => void) | undefined): void;
-    forceUpdate(callBack?: (() => void) | undefined): void;
-    readonly props: Readonly<{
-        children?: React.ReactNode;
-    }> & Readonly<{}>;
-    state: Readonly<{}>;
-    context: any;
-    refs: {
-        [key: string]: React.ReactInstance;
-    };
-};
-export const OutOfStockSticker: new (props: any) => {
-    componentWillReceiveProps(nextProps: any): void;
-    render(): React.ComponentElement<{
-        theme: any;
-        children?: React.ReactNode;
-    }, React.Component<{
-        theme: any;
-        children?: React.ReactNode;
-    }, React.ComponentState, any>>;
-    setState<K extends never>(state: {} | Pick<{}, K> | ((prevState: Readonly<{}>, props: Readonly<{}>) => {} | Pick<{}, K> | null) | null, callback?: (() => void) | undefined): void;
-    forceUpdate(callBack?: (() => void) | undefined): void;
-    readonly props: Readonly<{
-        children?: React.ReactNode;
-    }> & Readonly<{}>;
-    state: Readonly<{}>;
-    context: any;
-    refs: {
-        [key: string]: React.ReactInstance;
-    };
-};
+export const DiscountSticker: ({ theme, ...props }: {
+    [x: string]: any;
+    theme?: {} | undefined;
+}) => import("react").CElement<{
+    theme: any;
+}, import("react").Component<{
+    theme: any;
+}, any, any>>;
+export const OutOfStockSticker: ({ theme, ...props }: {
+    [x: string]: any;
+    theme?: {} | undefined;
+}) => import("react").CElement<{
+    theme: any;
+}, import("react").Component<{
+    theme: any;
+}, any, any>>;
 
 }
 declare module 'components/Cards/Product/test' {
 export {};
 
 }
+declare module 'components/Cards/Product/Title' {
+/// <reference types="react" />
+const _default: ({ onClick, theme, href, text, ...rest }: {
+    [x: string]: any;
+    onClick: any;
+    theme: any;
+    href: any;
+    text: any;
+}) => JSX.Element;
+export default _default;
+
+}
+declare module 'components/Cards/Product/Variants' {
+/// <reference types="react" />
+const _default: ({ item, config, theme }: {
+    item: any;
+    config: any;
+    theme?: Record<string, string> | undefined;
+}) => JSX.Element;
+export default _default;
+
+}
 declare module 'components/Cards/Product/view' {
 /// <reference types="react" />
 import React from 'react';
-import { IProduct, MJSConfiguration, ThemedSFCProps } from 'types';
+import { IProduct, MJSConfiguration, ThemedSFCProps } from 'types/index';
 export interface IProductCardProps extends ThemedSFCProps {
     item: IProduct;
     config: MJSConfiguration;
@@ -313,7 +490,26 @@ const ProductCardView: React.SFC<IProductCardProps>;
 export default ProductCardView;
 
 }
+declare module 'components/Cards/Promo' {
+/**
+ * @module components/Cards/Promo
+ */
+/// <reference types="react" />
+const _default: ({ item, config, theme }: {
+    item: any;
+    config: any;
+    theme?: Record<string, string> | undefined;
+}) => JSX.Element;
+export default _default;
+
+}
 declare module 'components/CategoryFacet/content' {
+/**
+ * @module components/CategoryFacet
+ */
+/**
+  * Used to extract content from facet data
+  */
 const extractContent: ({ item }: {
     item: any;
 }) => any;
@@ -322,22 +518,45 @@ export default extractContent;
 }
 declare module 'components/CategoryFacet' {
 /// <reference types="react" />
-import React from 'react';
-const _default: React.ComponentClass<{}>;
+import { IFacet, ThemedSFCProps, MJSConfiguration } from 'types';
+import { List, Map } from 'immutable';
+/** CategoryFacet props */
+export interface ICategoryFacetProps extends ThemedSFCProps {
+    /** Categories facet */
+    facet: IFacet;
+    /** Facet items */
+    items: List<Map<string, string | boolean | number>>;
+    /** Total count of selected facets */
+    total: number;
+    /** MJS Configuration */
+    config: MJSConfiguration;
+    /** Flag shows whether search functionality is enabled */
+    isExpanded?: boolean;
+    /** Callback invoked on request to expand list completely */
+    onToggle: (evt: Event) => any;
+    hidden: boolean;
+    isMobile?: boolean;
+}
+const _default: ({ theme, config, facet, hidden, isMobile, }: ICategoryFacetProps) => JSX.Element;
 export default _default;
 
 }
 declare module 'components/CategoryFacet/Item' {
 /// <reference types="react" />
 import { ThemedSFCProps, MJSConfiguration } from 'types';
+/** This is a list of props that each individual child of CategoryFacet View accepts */
 export interface ICategoryFacetCategoryProps extends ThemedSFCProps {
+    /** TODO: add typings for Item here */
     item: any;
+    /** Custom inline styles for Button holding CategoryFacet Item */
     style: {
         [x: string]: string | number;
     };
+    /** MJS Configuration */
     config: MJSConfiguration;
+    isMobile?: boolean;
 }
-const Item: ({ item, theme, style, config }: ICategoryFacetCategoryProps) => JSX.Element;
+const Item: ({ item, theme, style, config, isMobile, }: ICategoryFacetCategoryProps) => JSX.Element;
 export default Item;
 
 }
@@ -358,6 +577,12 @@ export default CategoryFacetView;
 
 }
 declare module 'components/CheckboxFacet/content' {
+/**
+ * @module components/CheckboxFacet
+ */
+/**
+  * Used to extract content from facet data
+  */
 const extractContent: ({ item }: {
     item: any;
 }) => any;
@@ -365,9 +590,29 @@ export default extractContent;
 
 }
 declare module 'components/CheckboxFacet' {
-/// <reference types="react" />
-import React from 'react';
-const _default: React.ComponentClass<{}>;
+/**
+ * @module components/CheckboxFacet
+ */
+import { ChangeEvent } from 'react';
+import { ThemedSFCProps, MJSConfiguration, IFacet } from 'types';
+/** Props that CheckboxFacet accepts */
+export interface ICheckboxFacetProps extends ThemedSFCProps {
+    facet: IFacet;
+    /** MJS Configuration */
+    config: MJSConfiguration;
+    /** Search string for filtering facet values */
+    search?: string;
+    /** Flag shows whether search functionality is enabled */
+    isExpanded?: boolean;
+    /** Flag to show if facet is opened on mobile */
+    isMobile?: boolean;
+    /** Callback invoked on search input change */
+    onSearch: (evt: ChangeEvent<HTMLInputElement>) => any;
+    /** Callback invoked on request to expand list completely */
+    onToggle: (evt: Event) => any;
+    hidden: boolean;
+}
+const _default: ({ theme, config, isMobile, facet, hidden, }: ICheckboxFacetProps) => JSX.Element;
 export default _default;
 
 }
@@ -395,38 +640,59 @@ export interface ICheckboxFacetProps extends ThemedSFCProps {
     config: MJSConfiguration;
     search?: string;
     isExpanded?: boolean;
+    isMobile?: boolean;
     onSearch: (evt: ChangeEvent<HTMLInputElement>) => any;
     onToggle: (evt: Event) => any;
 }
-const CheckboxFacetView: ({ theme, items, config, search, isExpanded, onSearch, onToggle }: ICheckboxFacetProps) => JSX.Element;
+const CheckboxFacetView: ({ theme, items, config, search, isExpanded, onSearch, onToggle, isMobile }: ICheckboxFacetProps) => JSX.Element;
 export default CheckboxFacetView;
 
 }
 declare module 'components/ColorFacet/content' {
+/**
+ * @module components/ColorFacet
+ */
 /// <reference types="react" />
-const _default: ({ item, config, theme }: {
-    item: any;
-    config: any;
-    theme: any;
-}) => JSX.Element;
+const _default: import("react").NamedExoticComponent<object>;
 export default _default;
 
 }
 declare module 'components/ColorFacet' {
+/**
+ * @module components/ColorFacet
+ */
 /// <reference types="react" />
-import React from 'react';
-const _default: React.ComponentClass<{}>;
+import { ThemedSFCProps, MJSConfiguration, IFacetValue, IFacet } from 'types';
+import { List } from 'immutable';
+export interface IColorFacetProps extends ThemedSFCProps {
+    /** MJS Configuration */
+    config: MJSConfiguration;
+    /** Facet values to render */
+    items: List<IFacetValue>;
+    facet: IFacet;
+    hidden: boolean;
+    isMobile?: boolean;
+}
+const _default: ({ config, facet, hidden, theme, isMobile, }: IColorFacetProps) => JSX.Element;
 export default _default;
 
 }
 declare module 'components/ColorFacet/Item' {
+/**
+ * @module components/ColorFacet
+ */
 /// <reference types="react" />
+/** Props that ColorFacet Item accepts */
 import { IFacetValue, MJSConfiguration, ThemedSFCProps } from 'types';
 export interface IColorFacetItemProps extends ThemedSFCProps {
+    /** Facet to render */
     item: IFacetValue;
+    /** MJS Configuration */
     config: MJSConfiguration;
+    /** Is mobile breakpoint activated */
+    isMobile?: boolean;
 }
-const Item: ({ item, theme, config }: IColorFacetItemProps) => JSX.Element;
+const Item: ({ item, theme, config, isMobile }: IColorFacetItemProps) => JSX.Element;
 export default Item;
 
 }
@@ -442,24 +708,94 @@ const ColorFacetView: ({ theme, items, config, }: IColorFacetProps) => JSX.Eleme
 export default ColorFacetView;
 
 }
-declare module 'components/common/Branch' {
+declare module 'components/common/Announcement' {
 /// <reference types="react" />
-import React from 'react';
+export const Component: ({ text }: {
+    text: any;
+}) => JSX.Element;
+export const useAnnouncement: () => [JSX.Element, (text: any) => void];
+export default Component;
+
+}
+declare module 'components/common/Branch' {
+/**
+ * @module components/common/Branch
+ */
+/// <reference types="react" />
+/** Props that Branch component accepts */
 export interface IBranchProps {
+    /**
+     * Use display-if to hide a component.
+     * When property is not defined or is set to true - component is rendered,
+     * when it is false - hidden
+     */
     'display-if'?: boolean;
+    /** Component to render in case **condition** is true */
     left?: React.ComponentType;
+    /** Component to render in case **condition** is false */
     right?: React.ComponentType;
+    /** Boolean value to test against */
     condition?: boolean;
+    /** Rest props to be passed to rendered component */
     [x: string]: any;
 }
 const Branch: ({ left, right, children, condition, ...props }: IBranchProps) => JSX.Element;
 export default Branch;
 
 }
+declare module 'components/common/Checkbox' {
+/**
+ * @module components/CheckboxFacet
+ */
+/// <reference types="react" />
+import { IFacetValue, ThemedSFCProps } from 'types';
+/** Props that CheckboxFacet Item accepts */
+export interface ICheckboxFacetItemProps extends ThemedSFCProps {
+    /** Single item from facet */
+    item: IFacetValue;
+    /** CheckboxFacet Item click handler */
+    onItemClick?: (evt: Event) => any;
+    /** Custom inline style */
+    style: {
+        [x: string]: string | number;
+    };
+    content: (x: any) => string;
+    config: Map<string, any>;
+    isMobile?: boolean;
+}
+const _default: ({ item, theme, style, onItemClick, content, config, isMobile, }: ICheckboxFacetItemProps) => JSX.Element;
+export default _default;
+
+}
 declare module 'components/common/Drawer' {
 /// <reference types="react" />
-import React from 'react';
-const _default: React.ComponentClass<{}>;
+import { ThemedSFCProps } from 'types';
+/** This is a state definition for DrawerView */
+export interface IDrawerViewState {
+    /** Flag whether Drawer is open */
+    open: boolean;
+}
+/** List of props that DrawerView accepts */
+export interface IDrawerViewProps extends ThemedSFCProps {
+    /** Additional options for DrawerView */
+    options?: {
+        /** Transition from styles */
+        from: {
+            [x: string]: string | number;
+        };
+        /** Transition to styles */
+        to: {
+            [x: string]: string | number;
+        };
+        /** Easing mode */
+        easing?: string;
+        /** Custom className */
+        className?: string;
+    };
+    /** Rest of the props, passed to children */
+    [x: string]: any;
+}
+const _default: ({ hideModal, name, theme, options, children, ...rest }: IDrawerViewProps) => JSX.Element;
 export default _default;
 
 }
@@ -483,7 +819,7 @@ export interface IDrawerViewProps extends ThemedSFCProps {
     };
     [x: string]: any;
 }
-export default class DrawerView extends React.Component<IDrawerViewProps, IDrawerViewState> {
+class DrawerView extends React.Component<IDrawerViewProps, IDrawerViewState> {
     state: {
         open: boolean;
     };
@@ -505,48 +841,73 @@ export default class DrawerView extends React.Component<IDrawerViewProps, IDrawe
     handleEscapeKeypress: (evt: any) => void;
     render(): JSX.Element;
 }
+export default DrawerView;
 
 }
 declare module 'components/common/Grid/Column' {
+/**
+ * @module components/common/Grid
+ */
 /// <reference types="react" />
-import React from 'react';
+/** List of props that GridColumn accepts */
 export interface IGridColumnProps {
+    /** Custom className for column */
     className?: string;
-    columnClass?: string;
-    columnStyle?: React.CSSProperties;
+    /** Column inline style */
+    style?: React.CSSProperties;
+    /** Contents of the column */
     children?: React.ReactChild;
+    gutter?: string | number;
+    size?: string;
+    order?: number | false;
+    component?: React.ComponentType<any> | string;
 }
-const GridColumn: React.ComponentClass<{}>;
-export default GridColumn;
+export const Column: ({ className, style, children, gutter, order: _order, size: _size, component: Component, }: IGridColumnProps) => JSX.Element;
+export const Placeholder: ({ size, gutter }: {
+    size: any;
+    gutter: any;
+}) => JSX.Element;
 
 }
 declare module 'components/common/Grid' {
+/**
+ * @module components/common/Grid
+ */
 /// <reference types="react" />
-import React from 'react';
 import { ThemedSFCProps } from 'types';
+import { Breakpoints, Immutable } from '@findify/store-configuration';
 export interface IGridProps extends ThemedSFCProps {
-    columns: string;
-    style?: React.StyleHTMLAttributes<any>;
+    columns: Immutable.Factory<Breakpoints> | Breakpoints | string;
+    className?: string;
+    style?: React.CSSProperties;
+    /** eq: 12 = 12px | 1em = 1em */
+    gutter?: number | string;
+    columnClass?: string;
+    columnStyle?: React.CSSProperties;
+    wrapperComponent?: React.ComponentType<any> | string;
+    columnComponent?: React.ComponentType<any> | string;
 }
-const _default: React.ComponentClass<IGridProps>;
+export const Column: ({ className, style, children, gutter, order: _order, size: _size, component: Component, }: import("./Column").IGridColumnProps) => JSX.Element;
+const _default: import("react").MemoExoticComponent<({ children: _children, theme, columns: _columns, gutter: _gutter, className, style, wrapperComponent: WrapperComponent, columnComponent, ...rest }: IGridProps) => JSX.Element>;
 export default _default;
 
 }
 declare module 'components/common/Image' {
+/**
+ * @module components/common/Image
+ */
 /// <reference types="react" />
-import 'core-js/fn/array/includes';
-import React from 'react';
-export interface ImageProps {
-    className?: string;
-    src: string;
-    thumbnail?: string;
-    aspectRatio?: number;
-    size: {
-        width: number;
-    };
-    isFixedRatio: boolean;
-}
-const _default: React.ComponentClass<ImageProps>;
+type ImageProps = {
+    aspectRatio: number;
+    lazy?: boolean;
+    getSrc: (src: string | string[], width: number) => string | string[];
+    getThumbnail: (src: string | string[], width: number) => string | string[];
+    src: string | string[];
+    thumbnail: string;
+    alt: string;
+    multiple: boolean;
+};
+const _default: ({ aspectRatio, lazy, getSrc, getThumbnail, src, alt, thumbnail, }: ImageProps) => JSX.Element;
 export default _default;
 
 }
@@ -556,25 +917,37 @@ export {};
 }
 declare module 'components/common/MapArray' {
 /// <reference types="react" />
-import 'core-js/fn/array/from';
-import React from 'react';
+import { Immutable } from '@findify/store-configuration';
+/** MapCallback is a type signature for array.map(), immutable.List().map() callback */
 export type MapCallback = (item: any, index: number, arrayLike: ArrayLike) => any;
+/** KeyAccessor is a function of item and index, returning a React key for rendering */
 export type KeyAccessor = (item: any, index: number) => string;
+/** ArrayLike can possibly an array or an instance of immutable.List() */
 export type ArrayLike = {
     map: (callback: MapCallback) => any;
     length?: number;
     size?: number;
     slice: (from: number, to?: number) => ArrayLike;
 };
+/** ReactFactory is a type for React Factory producing components */
 export type ReactFactory = (props: object) => React.Component;
+/** List of props which MapArray component accepts */
 export type MapArrayProps = {
-    array: ArrayLike;
+    /** Array-like object which is mapped over */
+    array: ArrayLike | Immutable.Factory<any>;
+    /** Function used to extract React rendering key */
     keyAccessor?: KeyAccessor;
-    factory: ReactFactory;
-    limit?: number;
+    /** React component factory */
+    factory: React.FC<any>;
+    /** Maximum possible limit for iteration */
+    limit?: number | false;
+    mapProps?: (items: any, index: number) => void | {
+        [key: string]: any;
+    };
+    /** Rest of the props, passed down to children */
     [key: string]: any;
 };
-const _default: ({ array, keyAccessor, factory, limit, ...rest }: MapArrayProps) => any;
+const _default: ({ array, keyAccessor, mapProps, container, factory, limit, ...rest }: MapArrayProps) => any;
 export default _default;
 
 }
@@ -583,49 +956,50 @@ export {};
 
 }
 declare module 'components/common/Sticky' {
-/// <reference types="react" />
-import React from 'react';
+/**
+ * @module components/common/Sticky
+ */
+import { Component } from 'react';
+/** Props that Sticky component accepts */
 export interface IStickyProps {
+    /** Offset for sticky */
     offset?: number;
+    /** Minimal height */
     minHeight?: number;
+    stickToTop?: boolean;
 }
-const _default: new (props: any) => {
-    componentWillReceiveProps(nextProps: any): void;
-    render(): React.ComponentElement<{
-        theme: any;
-        children?: React.ReactNode;
-    }, React.Component<{
-        theme: any;
-        children?: React.ReactNode;
-    }, React.ComponentState, any>>;
-    setState<K extends never>(state: {} | Pick<{}, K> | ((prevState: Readonly<{}>, props: Readonly<{}>) => {} | Pick<{}, K> | null) | null, callback?: (() => void) | undefined): void;
-    forceUpdate(callBack?: (() => void) | undefined): void;
-    readonly props: Readonly<{
-        children?: React.ReactNode;
-    }> & Readonly<{}>;
-    state: Readonly<{}>;
-    context: any;
-    refs: {
-        [key: string]: React.ReactInstance;
-    };
-};
+const _default: ({ theme, ...props }: {
+    [x: string]: any;
+    theme?: {} | undefined;
+}) => import("react").CElement<{
+    theme: any;
+}, Component<{
+    theme: any;
+}, any, any>>;
 export default _default;
 
 }
 declare module 'components/common/Sticky/view' {
+/**
+ * @module components/common/Sticky
+ */
 /// <reference types="react" />
-const _default: ({ theme, registerRoot, registerContainer, registerSizer, children, state }: {
+const _default: ({ theme, registerRoot, registerContainer, registerSizer, children, state, title, }: {
     theme: any;
     registerRoot: any;
     registerContainer: any;
     registerSizer: any;
     children: any;
     state: any;
+    title: any;
 }) => JSX.Element;
 export default _default;
 
 }
 declare module 'components/common/Truncate' {
+/**
+ * @module components/common/Truncate
+ */
 /// <reference types="react" />
 const _default: ({ children }: {
     children: any;
@@ -634,145 +1008,106 @@ export default _default;
 
 }
 declare module 'components/common/VirtualizedList' {
-/// <reference types="react" />
-import { Component } from 'react';
-import { CellMeasurerCache } from 'react-virtualized/dist/commonjs/CellMeasurer';
-export default class List extends Component<any, any> {
-    autoSizer: any;
-    list: any;
-    cache: CellMeasurerCache;
-    static displayName: string;
-    constructor(props: any);
-    initAutoSizer: (ref: any) => void;
-    initList: (ref: any) => void;
-    handleScroll: ({ target }: {
-        target: any;
-    }) => void;
-    rowRenderer: ({ index, key, parent, style }: {
-        index: any;
-        key: any;
-        parent: any;
-        style: any;
-    }) => any;
-    render(): any;
-}
+const _default: any;
+export default _default;
 
 }
 declare module 'components/common/VirtualizedList/view' {
 /// <reference types="react" />
-const _default: ({ initAutoSizer, initList, array, cache, handleScroll, rowRenderer, className, theme, }: {
-    initAutoSizer: any;
-    initList: any;
-    array: any;
-    cache: any;
-    handleScroll: any;
-    rowRenderer: any;
-    className: any;
-    theme: any;
-}) => JSX.Element;
-export default _default;
-
-}
-declare module 'components/contentsearch/ContentCard' {
-/// <reference types="react" />
-import React from 'react';
-const _default: React.ComponentClass<{}>;
-export default _default;
-
-}
-declare module 'components/contentsearch/ContentCard/view' {
-/// <reference types="react" />
-const _default: ({ item, config, theme }: {
-    item: any;
-    config: any;
-    theme: any;
-}) => JSX.Element;
-export default _default;
-
-}
-declare module 'components/contentsearch/LazyContentSearchResults' {
-/// <reference types="react" />
-import React from 'react';
-const _default: React.ComponentClass<{}>;
-export default _default;
-
-}
-declare module 'components/contentsearch/LazyContentSearchResults/view' {
-/// <reference types="react" />
-const _default: ({ items, config, theme, columns, onLoadNext, onLoadPrev, displayNextButton, displayPrevButton, ...rest }: {
+const _default: ({ array, factory, ...rest }: {
     [x: string]: any;
-    items: any;
-    config: any;
-    theme: any;
-    columns: any;
-    onLoadNext: any;
-    onLoadPrev: any;
-    displayNextButton: any;
-    displayPrevButton: any;
-}) => JSX.Element;
-export default _default;
-
-}
-declare module 'components/contentsearch/Trends' {
-/// <reference types="react" />
-import React from 'react';
-const _default: React.ComponentClass<{}>;
-export default _default;
-
-}
-declare module 'components/contentsearch/Trends/view' {
-/// <reference types="react" />
-const _default: ({ theme, config, text }: {
-    theme: any;
-    config: any;
-    text: any;
-}) => JSX.Element;
+    array: any;
+    factory: any;
+}) => import("react").FunctionComponentElement<any>;
 export default _default;
 
 }
 declare module 'components/Dropdown' {
-/// <reference types="react" />
-import React from 'react';
-const _default: React.ComponentClass<{}>;
+const _default: any;
 export default _default;
 
 }
 declare module 'components/Dropdown/view' {
+/**
+ * @module components/Dropdown
+ */
 /// <reference types="react" />
 import { MJSValue, ThemedSFCProps, ClassnamedProps } from 'types';
 import { List, Map } from 'immutable';
+/** Props that Dropdown Item accepts */
 export interface IDropdownItemProps extends ThemedSFCProps {
+    /** Item can be basically any immutable.Map(), that has 'label' attribute */
     item: Map<string, MJSValue>;
+    /** Index is item's current index in array of elements */
     index: number;
+    /** Current highlighted index */
     highlighted: number;
+    /** getItemProps is a method passed down to receive additional props for item from Downshift */
     getItemProps: (item: {
         item: Map<string, MJSValue>;
     }) => {
         [x: string]: any;
     };
+    parentId: string;
 }
+/** Props that Dropdown accepts */
 export interface IDropdownProps extends ClassnamedProps, ThemedSFCProps {
+    /** onChange function for Downshift */
     onChange: (x: any) => any;
+    /** List of items */
     items: List<Map<string, MJSValue>>;
+    /** Currently active item */
     selectedItem: Map<string, MJSValue>;
+    itemToString?: any;
 }
-const DropdownView: ({ onChange, items, selectedItem, theme, className }: IDropdownProps) => JSX.Element;
-export default DropdownView;
+const _default: ({ onChange, selectedItem, className, items: _items, theme, itemToString, }: IDropdownProps) => JSX.Element;
+export default _default;
 
 }
 declare module 'components/Facet/Component' {
 /// <reference types="react" />
-import React from 'react';
 import { FilterType } from 'types';
-export const getComponent: (type: FilterType) => React.ComponentClass<{}>;
-const _default: React.ComponentClass<any>;
+/**
+ * Function, that takes one of filter types and returns facet component for it
+ * @param type Filter type to fetch facet component for
+ */
+export const getComponent: (type: FilterType) => (({ theme, config, isMobile, facet, hidden, }: import("../CheckboxFacet").ICheckboxFacetProps) => JSX.Element) | (({ theme, config: facetConfig, facet, hidden, isMobile, }: import("../RangeFacet").IRangeFacetProps) => JSX.Element) | (({ theme, facet, config, hidden, }: import("../RatingFacet").IRatingFacetProps) => JSX.Element) | (({ config, facet, hidden, theme, isMobile, }: import("../ColorFacet").IColorFacetProps) => JSX.Element) | (({ theme, config, facet, hidden, isMobile, }: import("../CategoryFacet").ICategoryFacetProps) => JSX.Element);
+const _default: import("react").MemoExoticComponent<(props: any) => import("react").FunctionComponentElement<any>>;
 export default _default;
 
 }
 declare module 'components/Facet' {
 /// <reference types="react" />
-import React from 'react';
-const _default: React.ComponentClass<{}>;
+import { ThemedSFCProps, IFacet } from 'types';
+import { Immutable, Types } from '@findify/store-configuration';
+/** Props that Facet view accepts */
+export interface IFacetProps extends ThemedSFCProps {
+    /** Facet component to render */
+    FacetComponent: React.Component<any>;
+    /** List of openFacets */
+    openFacets: string[];
+    /** Flag to show if facet is opened on mobile */
+    isMobile?: boolean;
+    /** Flag to show if facets orientation is mobile */
+    isHorizontal?: boolean;
+    /** Title of facet */
+    title: string;
+    /** Facet object */
+    item: IFacet;
+    /** MJS Configuration */
+    config: Immutable.Factory<{
+        label: string;
+        initiallyCollapsed: boolean;
+        type: Types.FilterType;
+    }>;
+    /** Filters selected in facet */
+    filtersSelected: number;
+    /** Function to toggle open / closed state of facet */
+    onToggle: (name: string) => void;
+    /** Amount of items to be shown in "collapsed" mode */
+    collapsedItemsCount?: number;
+}
+const _default: ({ theme, item, config, isMobile, isHorizontal, onToggle, openFacets, }: IFacetProps) => JSX.Element;
 export default _default;
 
 }
@@ -783,6 +1118,7 @@ import { ThemedSFCProps, IFacet, MJSConfiguration } from 'types';
 export interface IFacetProps extends ThemedSFCProps {
     FacetComponent: React.Component<any>;
     isOpen?: boolean;
+    isMobile?: boolean;
     title: string;
     item: IFacet;
     config: MJSConfiguration;
@@ -793,48 +1129,336 @@ const FacetView: ({ FacetComponent, isOpen, theme, title, item, config, filtersS
 export default FacetView;
 
 }
-declare module 'components/Icon' {
+declare module 'components/Icon/icons/Arrow/Back' {
 /// <reference types="react" />
-import React from 'react';
+const _default: ({ title, ...rest }: {
+    [x: string]: any;
+    title: any;
+}) => JSX.Element;
+export default _default;
+
+}
+declare module 'components/Icon/icons/Arrow/Down' {
+/// <reference types="react" />
+const _default: ({ title, ...rest }: {
+    [x: string]: any;
+    title: any;
+}) => JSX.Element;
+export default _default;
+
+}
+declare module 'components/Icon/icons/Arrow/Left-Big' {
+/// <reference types="react" />
+const _default: ({ title, ...rest }: {
+    [x: string]: any;
+    title: any;
+}) => JSX.Element;
+export default _default;
+
+}
+declare module 'components/Icon/icons/Arrow/Left' {
+/// <reference types="react" />
+const _default: ({ title, ...rest }: {
+    [x: string]: any;
+    title: any;
+}) => JSX.Element;
+export default _default;
+
+}
+declare module 'components/Icon/icons/Arrow/Right-Big' {
+/// <reference types="react" />
+const _default: ({ title, ...rest }: {
+    [x: string]: any;
+    title: any;
+}) => JSX.Element;
+export default _default;
+
+}
+declare module 'components/Icon/icons/Arrow/Right' {
+/// <reference types="react" />
+const _default: ({ title, ...rest }: {
+    [x: string]: any;
+    title: any;
+}) => JSX.Element;
+export default _default;
+
+}
+declare module 'components/Icon/icons/Arrow/Up' {
+/// <reference types="react" />
+const _default: ({ title, ...rest }: {
+    [x: string]: any;
+    title: any;
+}) => JSX.Element;
+export default _default;
+
+}
+declare module 'components/Icon/icons/Checkbox/Empty-Mobile' {
+/// <reference types="react" />
+const _default: ({ title, ...rest }: {
+    [x: string]: any;
+    title: any;
+}) => JSX.Element;
+export default _default;
+
+}
+declare module 'components/Icon/icons/Checkbox/Empty' {
+/// <reference types="react" />
+const _default: ({ title, ...rest }: {
+    [x: string]: any;
+    title: any;
+}) => JSX.Element;
+export default _default;
+
+}
+declare module 'components/Icon/icons/Checkbox/Filled-Mobile' {
+/// <reference types="react" />
+const _default: ({ title, ...rest }: {
+    [x: string]: any;
+    title: any;
+}) => JSX.Element;
+export default _default;
+
+}
+declare module 'components/Icon/icons/Checkbox/Filled' {
+/// <reference types="react" />
+const _default: ({ title, ...rest }: {
+    [x: string]: any;
+    title: any;
+}) => JSX.Element;
+export default _default;
+
+}
+declare module 'components/Icon/icons/Checkmark/Dark' {
+/// <reference types="react" />
+const _default: ({ title, ...rest }: {
+    [x: string]: any;
+    title: any;
+}) => JSX.Element;
+export default _default;
+
+}
+declare module 'components/Icon/icons/ExternalLink' {
+/// <reference types="react" />
+const _default: ({ title, ...rest }: {
+    [x: string]: any;
+    title: any;
+}) => JSX.Element;
+export default _default;
+
+}
+declare module 'components/Icon/icons/Filters' {
+/// <reference types="react" />
+const _default: ({ title, ...rest }: {
+    [x: string]: any;
+    title: any;
+}) => JSX.Element;
+export default _default;
+
+}
+declare module 'components/Icon/icons/Fire' {
+/// <reference types="react" />
+const _default: ({ title, ...rest }: {
+    [x: string]: any;
+    title: any;
+}) => JSX.Element;
+export default _default;
+
+}
+declare module 'components/Icon/icons/Minus' {
+/// <reference types="react" />
+const _default: ({ title, ...rest }: {
+    [x: string]: any;
+    title: any;
+}) => JSX.Element;
+export default _default;
+
+}
+declare module 'components/Icon/icons/Plus' {
+/// <reference types="react" />
+const _default: ({ title, ...rest }: {
+    [x: string]: any;
+    title: any;
+}) => JSX.Element;
+export default _default;
+
+}
+declare module 'components/Icon/icons/Radio/Empty' {
+/// <reference types="react" />
+const _default: ({ title, ...rest }: {
+    [x: string]: any;
+    title: any;
+}) => JSX.Element;
+export default _default;
+
+}
+declare module 'components/Icon/icons/Radio/Filled' {
+/// <reference types="react" />
+const _default: ({ title, ...rest }: {
+    [x: string]: any;
+    title: any;
+}) => JSX.Element;
+export default _default;
+
+}
+declare module 'components/Icon/icons/Search' {
+/// <reference types="react" />
+const _default: ({ title, ...rest }: {
+    [x: string]: any;
+    title: any;
+}) => JSX.Element;
+export default _default;
+
+}
+declare module 'components/Icon/icons/Sorting' {
+/// <reference types="react" />
+const _default: ({ title, ...rest }: {
+    [x: string]: any;
+    title: any;
+}) => JSX.Element;
+export default _default;
+
+}
+declare module 'components/Icon/icons/Star' {
+/// <reference types="react" />
+const _default: ({ title, ...rest }: {
+    [x: string]: any;
+    title: any;
+}) => JSX.Element;
+export default _default;
+
+}
+declare module 'components/Icon/icons/X/Dark' {
+/// <reference types="react" />
+const _default: ({ title, ...rest }: {
+    [x: string]: any;
+    title: any;
+}) => JSX.Element;
+export default _default;
+
+}
+declare module 'components/Icon/icons/X/Mobile' {
+/// <reference types="react" />
+const _default: ({ title, ...rest }: {
+    [x: string]: any;
+    title: any;
+}) => JSX.Element;
+export default _default;
+
+}
+declare module 'components/Icon' {
+/**
+ * @module components/Icon
+ */
+/// <reference types="react" />
+/** Possible icon types */
 export const icons: {
-    Filters: any;
-    Fire: any;
-    Minus: any;
-    Plus: any;
-    Search: any;
-    Sorting: any;
-    CheckmarkDark: any;
-    Star: any;
-    XDark: any;
-    XMobile: any;
-    RadioEmpty: any;
-    RadioFilled: any;
-    ArrowBack: any;
-    ArrowDown: any;
-    ArrowUp: any;
-    ArrowLeft: any;
-    ArrowRight: any;
-    ArrowLeftBig: any;
-    ArrowRightBig: any;
-    CheckboxFilled: any;
-    CheckboxEmpty: any;
+    Filters: ({ title, ...rest }: {
+        [x: string]: any;
+        title: any;
+    }) => JSX.Element;
+    Fire: ({ title, ...rest }: {
+        [x: string]: any;
+        title: any;
+    }) => JSX.Element;
+    Minus: ({ title, ...rest }: {
+        [x: string]: any;
+        title: any;
+    }) => JSX.Element;
+    Plus: ({ title, ...rest }: {
+        [x: string]: any;
+        title: any;
+    }) => JSX.Element;
+    Search: ({ title, ...rest }: {
+        [x: string]: any;
+        title: any;
+    }) => JSX.Element;
+    Sorting: ({ title, ...rest }: {
+        [x: string]: any;
+        title: any;
+    }) => JSX.Element;
+    CheckmarkDark: ({ title, ...rest }: {
+        [x: string]: any;
+        title: any;
+    }) => JSX.Element;
+    Star: ({ title, ...rest }: {
+        [x: string]: any;
+        title: any;
+    }) => JSX.Element;
+    XDark: ({ title, ...rest }: {
+        [x: string]: any;
+        title: any;
+    }) => JSX.Element;
+    XMobile: ({ title, ...rest }: {
+        [x: string]: any;
+        title: any;
+    }) => JSX.Element;
+    RadioEmpty: ({ title, ...rest }: {
+        [x: string]: any;
+        title: any;
+    }) => JSX.Element;
+    RadioFilled: ({ title, ...rest }: {
+        [x: string]: any;
+        title: any;
+    }) => JSX.Element;
+    ArrowBack: ({ title, ...rest }: {
+        [x: string]: any;
+        title: any;
+    }) => JSX.Element;
+    ArrowDown: ({ title, ...rest }: {
+        [x: string]: any;
+        title: any;
+    }) => JSX.Element;
+    ArrowUp: ({ title, ...rest }: {
+        [x: string]: any;
+        title: any;
+    }) => JSX.Element;
+    ArrowLeft: ({ title, ...rest }: {
+        [x: string]: any;
+        title: any;
+    }) => JSX.Element;
+    ArrowRight: ({ title, ...rest }: {
+        [x: string]: any;
+        title: any;
+    }) => JSX.Element;
+    ArrowLeftBig: ({ title, ...rest }: {
+        [x: string]: any;
+        title: any;
+    }) => JSX.Element;
+    ArrowRightBig: ({ title, ...rest }: {
+        [x: string]: any;
+        title: any;
+    }) => JSX.Element;
+    CheckboxFilled: ({ title, ...rest }: {
+        [x: string]: any;
+        title: any;
+    }) => JSX.Element;
+    CheckboxEmpty: ({ title, ...rest }: {
+        [x: string]: any;
+        title: any;
+    }) => JSX.Element;
+    ExternalLink: ({ title, ...rest }: {
+        [x: string]: any;
+        title: any;
+    }) => JSX.Element;
 };
+/** Props that Icon accepts */
 export type IIconProps = {
+    /** Icon name */
     name: keyof typeof icons;
+    /** Icon width in pixels */
     width?: number;
+    /** Icon height in pixels */
     height?: number;
+    /** Custom className */
     className?: string;
+    /** Accessible title for screen readers */
+    title?: string;
+    /** Accessible title for screen readers */
+    component?: React.Component;
+    /** Rest of props to pass to underlying elements */
     [x: string]: any;
 };
-const Icon: ({ name, width, height, className, ...rest }: IIconProps) => React.ComponentElement<{
-    width: number | undefined;
-    height: number | undefined;
-    className: any;
-}, React.Component<{
-    width: number | undefined;
-    height: number | undefined;
-    className: any;
-}, React.ComponentState, any>>;
+const Icon: ({ name, component, className, ...rest }: IIconProps) => import("react").DetailedReactHTMLElement<import("react").InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>;
 export default Icon;
 
 }
@@ -859,8 +1483,9 @@ export default _default;
 }
 declare module 'components/Pagination' {
 /// <reference types="react" />
-import React from 'react';
-const _default: React.ComponentClass<{}>;
+const _default: import("react").NamedExoticComponent<{
+    theme?: any;
+}>;
 export default _default;
 
 }
@@ -903,17 +1528,31 @@ export default _default;
 
 }
 declare module 'components/RangeFacet/content' {
+/**
+ * @module components/RangeFacet
+ */
 const _default: ({ item, config }: {
     item: any;
     config: any;
-}) => string;
+}) => any;
 export default _default;
 
 }
 declare module 'components/RangeFacet' {
+/**
+ * @module components/RangeFacet
+ */
 /// <reference types="react" />
-import React from 'react';
-const _default: React.ComponentClass<{}>;
+import { ThemedSFCProps, IFacet, MJSConfiguration } from 'types';
+export interface IRangeFacetProps extends ThemedSFCProps {
+    /** Facet to extract values from */
+    facet: IFacet;
+    /** Facet config */
+    config: MJSConfiguration;
+    hidden: boolean;
+    isMobile?: boolean;
+}
+const _default: ({ theme, config: facetConfig, facet, hidden, isMobile, }: IRangeFacetProps) => JSX.Element;
 export default _default;
 
 }
@@ -945,7 +1584,7 @@ export interface IRangeFacetProps extends ThemedSFCProps {
     onChangeMax: (evt?: React.ChangeEvent<any>) => any;
     onChangeMin: (evt?: React.ChangeEvent<any>) => any;
     onKeypress: (evt: any) => any;
-    onCommit: () => any;
+    onPressButton: () => any;
 }
 const RangeFacetView: React.SFC<IRangeFacetProps>;
 export default RangeFacetView;
@@ -962,23 +1601,40 @@ export default _default;
 
 }
 declare module 'components/RatingFacet' {
+/**
+ * @module components/RatingFacet
+ */
 /// <reference types="react" />
-import React from 'react';
-const _default: React.ComponentClass<{}>;
+import { IFacet, IFacetValue, MJSConfiguration, ThemedSFCProps } from 'types';
+import { List } from 'immutable';
+/** Props that RatingFacet view accepts */
+export interface IRatingFacetProps extends ThemedSFCProps {
+    /** Facet to extract values from */
+    facet: IFacet;
+    /** Facet values */
+    items: List<IFacetValue>;
+    /** MJS Configuration */
+    config: MJSConfiguration;
+    hidden: boolean;
+}
+const _default: ({ theme, facet, config, hidden, }: IRatingFacetProps) => JSX.Element;
 export default _default;
 
 }
 declare module 'components/RatingFacet/Item' {
 /// <reference types="react" />
-import React from 'react';
 import { IFacetValue, ThemedSFCProps, MJSConfiguration } from 'types';
+/** Props that RatingFacet Item view accepts */
 export interface IRatingFacetItemProps extends ThemedSFCProps {
+    /** Facet item to render */
     item: IFacetValue;
+    /** Custom inline style */
     style: React.CSSProperties;
+    /** MJS Configuration */
     config: MJSConfiguration;
 }
-const RatingFacetItem: React.SFC<IRatingFacetItemProps>;
-export default RatingFacetItem;
+const _default: ({ item, theme, style, config }: IRatingFacetItemProps) => JSX.Element;
+export default _default;
 
 }
 declare module 'components/RatingFacet/view' {
@@ -997,8 +1653,12 @@ export default RatingFacet;
 }
 declare module 'components/search/DesktopActions' {
 /// <reference types="react" />
-import React from 'react';
-const _default: React.ComponentClass<{}>;
+import { ThemedSFCProps } from 'types';
+/** Props that DesktopActions view accepts */
+export interface IDesktopActionsProps extends ThemedSFCProps {
+    isCollection: boolean;
+}
+const _default: ({ theme, isCollection }: IDesktopActionsProps) => JSX.Element;
 export default _default;
 
 }
@@ -1018,27 +1678,32 @@ export default DesktopActionsView;
 }
 declare module 'components/search/DesktopFacets' {
 /// <reference types="react" />
-import React from 'react';
-const _default: React.ComponentClass<{}>;
+const _default: import("react").NamedExoticComponent<object>;
 export default _default;
 
 }
 declare module 'components/search/DesktopFacets/Title' {
+/**
+ * @module components/search/DesktopFacets
+ */
 /// <reference types="react" />
-import React from 'react';
-import { ThemedSFCProps, MJSConfiguration, MJSValue } from 'types';
+import { ThemedSFCProps } from 'types';
 import { Map } from 'immutable';
+/** Props that hidable facet titles accept */
 export interface IHidableProps extends ITitlesProps {
+    /** Method to hide facets */
     onHide: () => any;
 }
+/** Props that facet titles accept */
 export interface ITitlesProps extends ThemedSFCProps {
-    config: MJSConfiguration;
-    meta: Map<string, MJSValue>;
-    onReset: () => any;
+    /** MJS API Response Metadata */
+    meta: Map<string, any>;
+    /** Method to reset facets */
+    onReset: (e: Event) => void;
+    hidable: boolean;
 }
-const defaultTitles: React.SFC<ITitlesProps>;
-export default defaultTitles;
-export const hidable: React.SFC<IHidableProps>;
+const _default: ({ theme, meta, onReset, onHide, hidable, }: IHidableProps) => JSX.Element;
+export default _default;
 
 }
 declare module 'components/search/DesktopFacets/view' {
@@ -1060,8 +1725,10 @@ export default DesktopFacetsView;
 }
 declare module 'components/search/LazyResults' {
 /// <reference types="react" />
-import React from 'react';
-const _default: React.ComponentClass<{}>;
+const _default: ({ theme, card }: {
+    theme?: Record<string, string> | undefined;
+    card?: (({ item, theme, className, config, Container, }: import("../../Cards/Product").IProductCardProps) => JSX.Element) | undefined;
+}) => JSX.Element;
 export default _default;
 
 }
@@ -1079,14 +1746,21 @@ export interface ILazyResultsProps extends ThemedSFCProps {
     displayPrevButton: boolean;
     [x: string]: any;
 }
-const LazyResultsView: ({ items, config, theme, columns, onLoadNext, onLoadPrev, displayNextButton, displayPrevButton, ...rest }: ILazyResultsProps) => JSX.Element;
+const LazyResultsView: ({ items, config, theme, card, columns, onLoadNext, onLoadPrev, displayNextButton, displayPrevButton, ...rest }: ILazyResultsProps) => JSX.Element;
 export default LazyResultsView;
 
 }
 declare module 'components/search/MobileActions' {
 /// <reference types="react" />
-import React from 'react';
-const _default: React.ComponentClass<{}>;
+import { ThemedSFCProps } from 'types';
+/** Props that MobileActionsView accepts */
+export interface IMobileActionsProps extends ThemedSFCProps {
+    /** Flag, showing whether smart collection or regular searches are opened */
+    isCollection?: boolean;
+    showModal: (name: string) => void;
+    hideModal: (name: string) => void;
+}
+const _default: import("react").ComponentClass<unknown, any>;
 export default _default;
 
 }
@@ -1107,29 +1781,75 @@ export default MobileActionsView;
 
 }
 declare module 'components/search/MobileFacets' {
+/**
+ * @module components/search/MobileFacets
+ */
 /// <reference types="react" />
-import React from 'react';
-const _default: React.ComponentClass<{}>;
+import { ThemedSFCProps, IFacet, MJSConfiguration, MJSValue } from 'types';
+import { List } from 'immutable';
+import { Immutable } from '@findify/store-configuration';
+import { Facet } from '@findify/react-connect/types/immutable/facets';
+/** Props that FacetContent accepts */
+export interface IFacetContentProps extends ThemedSFCProps {
+    /** Currently active facet */
+    active: Facet;
+    /** MJS Configuration */
+    config: Immutable.SearchConfig;
+}
+/** Props that MobileFacets view accepts */
+export interface IMobileFacetsProps extends ThemedSFCProps {
+    /** immutable.List() of Facets */
+    facets: List<IFacet>;
+    /** Currently active facet */
+    activeFacet?: IFacet;
+    /** Method used to select a facet */
+    selectFacet: (name?: string) => any;
+    /** Method used to reset facet */
+    onReset: () => any;
+    /** MJS Configuration */
+    config: MJSConfiguration;
+    /** MJS API Request Metadata */
+    meta: Map<string, MJSValue>;
+    /** Method used for hiding modal / drawer */
+    hideModal: (name: string) => any;
+    /** Total filters selected */
+    total: number;
+    /** Filters selected for active facet */
+    filtersSelected: number;
+}
+const _default: import("react").MemoExoticComponent<({ theme, hideModal }: IMobileFacetsProps) => JSX.Element>;
 export default _default;
 
 }
 declare module 'components/search/MobileFacets/Titles' {
+/**
+ * @module components/search/MobileFacets
+ */
 /// <reference types="react" />
-import React from 'react';
-import { ThemedSFCProps, IFacet, MJSConfiguration } from 'types';
+import { ThemedSFCProps, IFacet } from 'types';
 import { List } from 'immutable';
+import { Immutable } from '@findify/store-configuration';
+/** Props that MobileFacets FacetLabel accepts */
 export interface IMobileFacetsLabelProps extends ThemedSFCProps {
+    /** Facet */
     item: IFacet;
+    /** Count of filters enabled */
     filterCount?: number;
-    config: MJSConfiguration;
+    /** MJS Configuration */
+    config: Immutable.SearchConfig;
+    /** Click handler to open facet customization menu */
     onClick: (evt?: React.MouseEvent<any>) => any;
 }
+/** Props that MobileFacets TitlesView accepts */
 export interface IMobileFacetsTitlesProps extends ThemedSFCProps {
+    /** immutable.List of facets */
     facets: List<IFacet>;
+    /** Method to select facet by its name */
     selectFacet: (name: string) => any;
-    config: MJSConfiguration;
+    /** MJS Configuration */
+    config: Immutable.SearchConfig;
 }
-const MobileFacetsTitlesView: ({ theme, facets, selectFacet, config }: IMobileFacetsTitlesProps) => JSX.Element;
+const MobileFacetsTitlesView: ({ theme, facets, selectFacet, config, }: IMobileFacetsTitlesProps) => JSX.Element;
 export default MobileFacetsTitlesView;
 
 }
@@ -1158,8 +1878,26 @@ export default _default;
 }
 declare module 'components/search/MobileSorting' {
 /// <reference types="react" />
-import React from 'react';
-const _default: React.ComponentClass<{}>;
+import { ThemedSFCProps, ISortingItem, MJSConfiguration } from 'types';
+/** Props that MobileSorting Item accepts */
+export interface IMobileSortingItemProps extends ThemedSFCProps {
+    /** Sorting item object to display */
+    item: ISortingItem;
+    /** Sorting item index in array */
+    selected: ISortingItem;
+    /** Click handler */
+    onChange: (item?: ISortingItem) => void;
+}
+/** Props that MobileSorting view accepts */
+export interface IMobileSortingProps extends ThemedSFCProps {
+    /** Custom inline styles */
+    style: React.CSSProperties;
+    /** Method to hide modal from Drawer */
+    hideModal: (e: MouseEvent) => any;
+    /** MJS Configuration */
+    config: MJSConfiguration;
+}
+const _default: ({ theme, style, hideModal }: IMobileSortingProps) => JSX.Element;
 export default _default;
 
 }
@@ -1185,9 +1923,13 @@ export default MobileSortingView;
 
 }
 declare module 'components/search/Query' {
+/**
+ * @module components/search/Query
+ */
 /// <reference types="react" />
-import React from 'react';
-const _default: React.ComponentClass<{}>;
+const _default: import("react").MemoExoticComponent<({ theme }: {
+    theme?: Record<string, string> | undefined;
+}) => JSX.Element>;
 export default _default;
 
 }
@@ -1205,9 +1947,13 @@ export default QueryView;
 
 }
 declare module 'components/search/StaticResults' {
+/**
+ * @module components/search/StaticResults
+ */
 /// <reference types="react" />
-import React from 'react';
-const _default: React.ComponentClass<{}>;
+const _default: ({ theme }: {
+    theme?: Record<string, string> | undefined;
+}) => JSX.Element;
 export default _default;
 
 }
@@ -1224,8 +1970,7 @@ export default StaticResultsView;
 }
 declare module 'components/Sorting' {
 /// <reference types="react" />
-import React from 'react';
-const _default: React.ComponentClass<{}>;
+const _default: import("react").MemoExoticComponent<({ theme }: import("../../types").IThemedSFCProps<import("../../types").Theme>) => JSX.Element>;
 export default _default;
 
 }
@@ -1243,10 +1988,28 @@ const Sorting: ({ onChangeSort, config, theme, items, selectedItem }: ISortingPr
 export default Sorting;
 
 }
-declare module 'components/Tabs' {
+declare module 'components/Swiper' {
+const _default: any;
+export default _default;
+
+}
+declare module 'components/Swiper/view' {
 /// <reference types="react" />
-import React from 'react';
-export const Tabs: React.ComponentClass<{}>;
+const _default: ({ children, theme, slot, ...props }: {
+    [x: string]: any;
+    children: any;
+    theme?: Record<string, string> | undefined;
+    slot: any;
+}) => JSX.Element;
+export default _default;
+
+}
+declare module 'components/Tabs' {
+/**
+ * @module components/Tabs
+ */
+/// <reference types="react" />
+export const Tabs: import("react").ComponentClass<unknown, any>;
 export const Tab: () => null;
 
 }
@@ -1255,23 +2018,55 @@ export {};
 
 }
 declare module 'components/Tabs/view' {
+/**
+ * @module components/Tabs
+ */
 /// <reference types="react" />
-import React from 'react';
 import { ThemedSFCProps } from 'types';
 export interface ITabsProps extends ThemedSFCProps {
+    /** Currently selected tab. Keep it empty if you want to use Tabs in self-controlled mode */
     selectedIndex?: number;
+    /** Flag to render Tabs in mobile mode */
     isMobile?: boolean;
+    /** Tab click event handler */
     onTabClick: (evt: Event) => any;
+    /** Current tab body */
     body: React.ReactChildren;
 }
-const TabsView: ({ theme, children, onTabClick, body, selectedIndex, isMobile }: ITabsProps) => JSX.Element;
+const TabsView: ({ theme, children, onTabClick, body, selectedIndex, isMobile, }: ITabsProps) => JSX.Element;
 export default TabsView;
 
 }
 declare module 'components/Text' {
+/**
+ * @module components/Text
+ */
 /// <reference types="react" />
-import React from 'react';
-const _default: React.ComponentClass<any>;
+import { ThemedSFCProps, ClassnamedProps } from 'types';
+/** Props that Text component accepts */
+export interface ITextProps extends ThemedSFCProps, ClassnamedProps {
+    /** Either an html tag name or a React.Component */
+    component?: string | React.ElementType;
+    /** One of modes specified in styles.css */
+    mode?: string;
+    /** Flag to show text as bold */
+    bold?: boolean;
+    secondary?: boolean;
+    primary?: boolean;
+    uppercase?: boolean;
+    lowercase?: boolean;
+    /** Custom inline styles */
+    style?: {
+        [x: string]: string;
+    };
+    /** Flag to show text as inline block */
+    inlineBlock?: boolean;
+    /** One of sizes specified in styles.css */
+    size?: string;
+    /** Custom HTML */
+    html?: string;
+}
+const _default: import("react").NamedExoticComponent<ITextProps>;
 export default _default;
 
 }
@@ -1294,9 +2089,40 @@ const TextView: ({ component, className, children, mode, theme, bold, style, inl
 export default TextView;
 
 }
+declare module 'helpers/chunks' {
+const _default: {
+    /** Views */
+    views: {
+        search: () => Promise<typeof import("../layouts/Search")>;
+        autocomplete: () => Promise<typeof import("../layouts/Autocomplete")>;
+        recommendation: () => Promise<typeof import("../layouts/Recommendation")>;
+        zeroResults: () => Promise<typeof import("../layouts/ZeroResults")>;
+        custom: () => Promise<typeof import("../layouts/Custom")>;
+        content: () => Promise<typeof import("../layouts/Content")>;
+        tabs: () => Promise<typeof import("../layouts/Tabs")>;
+    };
+    /** Recommendation */
+    recommendation: {
+        grid: () => Promise<typeof import("../layouts/Recommendation/Grid/view")>;
+        slider: () => Promise<typeof import("../layouts/Recommendation/Slider/view")>;
+    };
+    /** Autocomplete */
+    autocomplete: {
+        sidebar: () => Promise<typeof import("../layouts/Autocomplete/Sidebar")>;
+        dropdown: () => Promise<typeof import("../layouts/Autocomplete/Dropdown")>;
+        fullscreenWithInput: () => Promise<typeof import("../layouts/Autocomplete/FullscreenWithInput")>;
+    };
+    components: {
+        virtualizedList: () => Promise<typeof import("../components/common/VirtualizedList/view")>;
+        drawer: () => Promise<typeof import("../components/common/Drawer")>;
+        dropdown: () => Promise<typeof import("../components/Dropdown/view")>;
+    };
+};
+export default _default;
+
+}
 declare module 'helpers/createPortal' {
-/// <reference types="react" />
-import React, { Component } from 'react';
+import { Component } from 'react';
 export class Portal extends Component<any> {
     element: any;
     static displayName: string;
@@ -1305,16 +2131,23 @@ export class Portal extends Component<any> {
     componentWillUnmount(): void;
     render(): any;
 }
-export const portal: (children: any, extraProps?: {}) => React.ComponentElement<any, Portal>;
+export const portal: (children: any, extraProps?: {}) => import("react").CElement<any, Portal>;
 
 }
 declare module 'helpers/debounce' {
 export const debounce: (fn: any, wait?: any) => () => void;
 
 }
+declare module 'helpers/deprecated' {
+/// <reference types="react" />
+const _default: (name: any) => (base: any) => (props: any) => import("react").CElement<any, import("react").Component<any, any, any>>;
+export default _default;
+
+}
 declare module 'helpers/emmiter' {
 export const emit: (...args: any[]) => any;
 export const listen: (...args: any[]) => any;
+export const useEvents: (events?: any) => void;
 
 }
 declare module 'helpers/escapeRegExp' {
@@ -1323,15 +2156,24 @@ export const escapeRegExp: (s: any) => any;
 }
 declare module 'helpers/formatCurrency' {
 export interface ICurrencyData {
-    code?: string;
     symbol?: string;
-    thousandsSeparator?: string;
-    decimalSeparator?: string;
+    thousand?: string;
+    decimal?: string;
+    precision?: number;
     symbolOnLeft?: boolean;
-    decimalDigits?: number;
-    format?: string;
+    spaceBetweenAmountAndSymbol?: boolean;
+    format?: {
+        pos: string;
+        neg: string;
+        zero: string;
+    };
 }
-const _default: (currency: ICurrencyData) => (value: string) => any;
+const _default: (currency?: ICurrencyData) => (value: string) => any;
+export default _default;
+
+}
+declare module 'helpers/getBreakpoint' {
+const _default: (breakpoints: any, width?: number) => any;
 export default _default;
 
 }
@@ -1347,12 +2189,81 @@ export default _default;
 }
 declare module 'helpers/pure' {
 import { ComponentEnhancer } from 'recompose';
-const _default: ComponentEnhancer<{}, {}>;
+const _default: ComponentEnhancer<unknown, unknown>;
 export default _default;
 
 }
 declare module 'helpers/template' {
-const _default: (template?: string, selector?: RegExp) => (...args: any[]) => string;
+const _default: (template?: string, selector?: RegExp) => (...args: any[]) => any;
+export default _default;
+
+}
+declare module 'helpers/trackProductPosition' {
+/// <reference types="react" />
+const _default: (item: any) => import("react").MutableRefObject<null>;
+export default _default;
+
+}
+declare module 'helpers/useArrowSelection' {
+const _default: () => any[];
+export default _default;
+
+}
+declare module 'helpers/useColumns' {
+import { Breakpoints, Immutable } from '@findify/store-configuration';
+const _default: (_media: Breakpoints | Immutable.Factory<Breakpoints>, defaultValue?: number) => string;
+export default _default;
+
+}
+declare module 'helpers/useLazy' {
+/// <reference types="react" />
+const _default: (offset?: number) => {
+    container: import("react").MutableRefObject<null>;
+    onLoadNext: () => import("@findify/agent/types/core/Agent").Agent;
+    onLoadPrev: () => import("@findify/agent/types/core/Agent").Agent;
+    items: any;
+    displayPrevButton: any;
+    displayNextButton: any;
+};
+export default _default;
+
+}
+declare module 'helpers/useMedia' {
+const _default: (..._breakpoints: number[]) => boolean[];
+export default _default;
+
+}
+declare module 'helpers/useMobile' {
+export const useMobile: () => boolean;
+
+}
+declare module 'helpers/useScrollOnChange' {
+const _default: (items: any) => void;
+/**
+ * Hack to emit scroll event
+ */
+export default _default;
+
+}
+declare module 'helpers/useSortingLogic' {
+const _default: () => any[];
+export default _default;
+
+}
+declare module 'helpers/useTheme' {
+const _default: (theme?: {}, styles?: {}) => {
+    [className: string]: string;
+};
+/**
+ * Merges theme objects
+ * @property theme - new object
+ * @property baseStyles - theme
+ */
+export default _default;
+
+}
+declare module 'helpers/useTranslations' {
+const _default: () => (key: "suggestions.accessibleTitle" | "product.availableInVariants" | "facets.less" | "facets.more" | "facets.allCategories" | "facets.expanded" | "facets.collapsed" | "facets.submit" | "facets.filters" | "facets.clearAll" | "facets.hide" | "facets.back" | "facets.done" | "facets.seeResults" | "facets.search" | "pagination.previous" | "pagination.goTo" | "pagination.next" | "actions.filter" | "actions.showFilters" | "actions.sorting" | "actions.back" | "actions.seeResults" | "actions.sortBy" | "search.title" | "search.loadPrev" | "search.loadMore" | "search.noQuery" | "search.showingEmpty" | "search.showing" | "search.zeroResultsFor" | "search.partialMatch" | "search.accessibleUpdate" | "zeroresults.sorryNoResults" | "zeroresults.noResultsFound" | "zeroresults.noResultEmptyQuery" | "zeroresults.tryOneOfThese" | "zeroresults.checkOutPopularProducts" | "autocomplete.trendingSearches" | "autocomplete.suggestionsTitle" | "autocomplete.trendingProducts" | "autocomplete.productMatches" | "autocomplete.tipResults" | "autocomplete.viewAll" | "autocomplete.placeholder", ...args: any[]) => string;
 export default _default;
 
 }
@@ -1452,7 +2363,7 @@ export default _default;
 declare module 'helpers/withLazy' {
 /// <reference types="react" />
 import React from 'react';
-export default function withLazy(): (BaseComponent: any) => {
+const _default: () => (BaseComponent: any) => {
     new (props: any): {
         container: any;
         autoLoadCount: number;
@@ -1483,39 +2394,27 @@ export default function withLazy(): (BaseComponent: any) => {
         };
     };
 };
+export default _default;
 
 }
 declare module 'helpers/withMinResultsToShow' {
 /// <reference types="react" />
 import React from 'react';
-export default function withMinResultsToShow(): (BaseComponent: React.Component<{}, {}, any>) => React.ComponentClass<{}>;
+const _default: () => (BaseComponent: React.Component<{}, {}, any>) => React.ComponentClass<{}>;
+export default _default;
 
 }
 declare module 'helpers/withTheme' {
 /// <reference types="react" />
-import React from 'react';
-export default function withTheme(defaultTheme: any): (Component: any) => {
-    new (props: any): {
-        componentWillReceiveProps(nextProps: any): void;
-        render(): React.ComponentElement<{
-            theme: any;
-            children?: React.ReactNode;
-        }, React.Component<{
-            theme: any;
-            children?: React.ReactNode;
-        }, React.ComponentState, any>>;
-        setState<K extends never>(state: {} | ((prevState: Readonly<{}>, props: Readonly<{}>) => {} | Pick<{}, K> | null) | Pick<{}, K> | null, callback?: (() => void) | undefined): void;
-        forceUpdate(callBack?: (() => void) | undefined): void;
-        readonly props: Readonly<{
-            children?: React.ReactNode;
-        }> & Readonly<{}>;
-        state: Readonly<{}>;
-        context: any;
-        refs: {
-            [key: string]: React.ReactInstance;
-        };
-    };
-};
+const _default: (defaultTheme: any) => (Component: any) => ({ theme, ...props }: {
+    [x: string]: any;
+    theme?: {} | undefined;
+}) => import("react").CElement<{
+    theme: any;
+}, import("react").Component<{
+    theme: any;
+}, any, any>>;
+export default _default;
 
 }
 declare module 'helpers/withTheme.test' {
@@ -1523,31 +2422,57 @@ export {};
 
 }
 declare module 'layouts/Autocomplete/Dropdown' {
+/**
+ * @module layouts/Autocomplete/Dropdown
+ */
 /// <reference types="react" />
-import React from 'react';
-const _default: React.ComponentClass<{}>;
+import { ThemedSFCProps, ISuggestion, MJSValue } from 'types';
+import { List } from 'immutable';
+import { Immutable } from '@findify/store-configuration';
+export interface IAutocompletePanel extends ThemedSFCProps {
+    config: Immutable.AutocompleteConfig;
+    isTrendingSearches?: boolean;
+    [x: string]: any;
+}
+/** Props that SearchOrZero component accepts */
+export interface ISearchOrZeroProps {
+    /** List of search suggestions */
+    suggestions: List<ISuggestion>;
+    /** MJS Configuration */
+    config: Immutable.AutocompleteConfig;
+    /** MJS API Request Meta */
+    meta: Map<string, MJSValue>;
+    /** Selected suggestion index. -1 means no suggestion is selected on keyboard */
+    selectedSuggestion: number;
+    /** Flag that shows if autocomplete is running in TrendingSearches mode */
+    isTrendingSearches: boolean;
+    /** Rest of the props passed down to panels */
+    [x: string]: any;
+}
+export interface IAutocompleteDropdownProps {
+    /** List of search suggestions */
+    suggestions: List<ISuggestion>;
+    /** MJS Configuration */
+    config: Immutable.AutocompleteConfig;
+    /** MJS API Request Meta */
+    meta: Map<string, MJSValue>;
+    /** Selected suggestion index. -1 means no suggestion is selected on keyboard */
+    selectedSuggestion: number;
+    /** Flag that shows if autocomplete is running in TrendingSearches mode */
+    isTrendingSearches: boolean;
+    /** Flag that tells if mobileBreakpoint has been triggered */
+    isMobile: boolean;
+    /** Rest of the props passed down to panels */
+    [x: string]: any;
+}
+const _default: ({ theme, config, isFullScreen, }: IAutocompleteDropdownProps) => JSX.Element;
 export default _default;
 
 }
 declare module 'layouts/Autocomplete/Dropdown/trackPosition' {
-/// <reference types="react" />
-import React from "react";
-const _default: (BaseComponent: any) => {
-    new (props: any): {
-        registerComponent: (ref: any) => void;
-        render(): any;
-        setState<K extends string>(state: any, callback?: (() => void) | undefined): void;
-        forceUpdate(callBack?: (() => void) | undefined): void;
-        readonly props: Readonly<{
-            children?: React.ReactNode;
-        }> & Readonly<any>;
-        state: Readonly<any>;
-        context: any;
-        refs: {
-            [key: string]: React.ReactInstance;
-        };
-    };
-};
+import { MutableRefObject } from 'react';
+export const usePosition: (config: any) => ['left' | 'right', MutableRefObject<any> | undefined];
+const _default: (BaseComponent: any) => (props: any) => any;
 export default _default;
 
 }
@@ -1602,22 +2527,49 @@ const _default: ({ config, theme, meta, suggestions, innerRef, position, ...rest
 export default _default;
 
 }
+declare module 'layouts/Autocomplete/FullscreenWithInput' {
+/**
+ * @module layouts/Autocomplete/FullscreenWithInput
+ */
+/// <reference types="react" />
+import { Immutable } from '@findify/store-configuration';
+export interface IAutocompleteDropdownProps {
+    /** MJS Configuration */
+    config: Immutable.AutocompleteConfig;
+    /** Selected suggestion index. -1 means no suggestion is selected on keyboard */
+    selectedSuggestion: number;
+    /** Flag that shows if autocomplete is running in TrendingSearches mode */
+    isTrendingSearches: boolean;
+    /** Flag that tells if mobileBreakpoint has been triggered */
+    isMobile: boolean;
+    /** Rest of the props passed down to panels */
+    [x: string]: any;
+}
+const _default: ({ theme, config, ...rest }: IAutocompleteDropdownProps) => JSX.Element;
+export default _default;
+
+}
 declare module 'layouts/Autocomplete' {
+/**
+ * @module layouts/Autocomplete
+ */
 const _default: any;
 export default _default;
 
 }
 declare module 'layouts/Autocomplete/Sidebar' {
 /// <reference types="react" />
-import React from 'react';
-const _default: React.ComponentClass<{}>;
+const _default: ({ theme, config }: {
+    theme?: Record<string, string> | undefined;
+    config: any;
+}) => JSX.Element;
 export default _default;
 
 }
 declare module 'layouts/Autocomplete/Sidebar/view' {
 /// <reference types="react" />
 import React from 'react';
-export default class Sidebar extends React.Component {
+class Sidebar extends React.Component {
     state: {
         isOpen: boolean;
     };
@@ -1639,15 +2591,41 @@ export default class Sidebar extends React.Component {
     handleSubmit: () => void;
     render(): JSX.Element;
 }
+export default Sidebar;
+
+}
+declare module 'layouts/Autocomplete/types' {
+/** View type to View component mapping */
+export const LayoutTypes: {
+    sidebar: () => Promise<typeof import("./Sidebar")>;
+    dropdown: () => Promise<typeof import("./Dropdown")>;
+    'fullscreen-with-input': () => Promise<typeof import("./FullscreenWithInput")>;
+};
 
 }
 declare module 'layouts/Autocomplete/withAutocompleteLogic' {
-import { ComponentEnhancer } from 'recompose';
-const _default: ComponentEnhancer<{}, {}>;
+/// <reference types="react" />
+export const useAutocompleteLogic: () => {
+    selectedSuggestion: any;
+    closeAutocomplete: () => any;
+};
+const _default: (BaseComponent: any) => (props: any) => import("react").CElement<unknown, import("react").Component<unknown, any, any>>;
 export default _default;
 
 }
 declare module 'layouts/Content' {
+import { MJSConfiguration, MJSValue, ThemedSFCProps } from 'types';
+/** This is a list of props ContentSearchLayout accepts */
+export interface IContentSearchProps extends ThemedSFCProps {
+    /** MJS configuration */
+    config: MJSConfiguration;
+    /** MJS Request meta-information, like query, offset, limits */
+    meta: Map<string, MJSValue>;
+    /** Flag that tells ContentSearchView to render in mobile mode */
+    isMobile?: boolean;
+    /** Flag to pull filters to the right on desktop */
+    filtersOnRight?: boolean;
+}
 const _default: any;
 export default _default;
 
@@ -1661,29 +2639,16 @@ export interface IContentSearchProps extends ThemedSFCProps {
     isMobile?: boolean;
     filtersOnRight?: boolean;
 }
-const _default: ({ config, theme }: IContentSearchProps) => JSX.Element;
+const _default: ({ config, theme, }: IContentSearchProps) => JSX.Element;
 export default _default;
 
 }
-declare module 'layouts/ContentSearch' {
+declare module 'layouts/Custom' {
 /// <reference types="react" />
-import React from 'react';
-const _default: React.ComponentClass<{}>;
+const _default: ({ theme }: {
+    theme?: Record<string, string> | undefined;
+}) => JSX.Element;
 export default _default;
-
-}
-declare module 'layouts/ContentSearch/view' {
-/// <reference types="react" />
-import { MJSConfiguration, MJSValue, ThemedSFCProps } from 'types';
-export interface IContentSearchProps extends ThemedSFCProps {
-    config: MJSConfiguration;
-    meta: Map<string, MJSValue>;
-    isMobile?: boolean;
-    mobileFacetsOpened?: boolean;
-    filtersOnRight?: boolean;
-}
-const ContentSearchLayout: ({ config, meta, isMobile, mobileFacetsOpened, filtersOnRight, theme }: IContentSearchProps) => JSX.Element;
-export default ContentSearchLayout;
 
 }
 declare module 'layouts/Custom/view' {
@@ -1695,25 +2660,33 @@ export default _default;
 
 }
 declare module 'layouts/Recommendation/Grid' {
-/// <reference types="react" />
-import React from 'react';
-const _default: React.ComponentClass<{}>;
+const _default: any;
 export default _default;
 
 }
 declare module 'layouts/Recommendation/Grid/view' {
+/**
+ * @module layouts/Recommendation/Grid
+ */
 /// <reference types="react" />
-import { IProduct, MJSConfiguration, ThemedSFCProps } from 'types';
+import { IProduct, MJSConfiguration, ThemedSFCProps } from 'types/index';
 import { List } from 'immutable';
+/** This is a list of props Grid layout for Recommendations accepts */
 export interface IGridProps extends ThemedSFCProps {
+    /** immutable.List of Products to display */
     items: List<IProduct>;
+    /** MJS configuration */
     config: MJSConfiguration;
+    columns: string;
 }
-const GridRecommendationLayout: ({ items, config, theme }: IGridProps) => JSX.Element;
+const GridRecommendationLayout: ({ items, config, columns }: IGridProps) => JSX.Element | null;
 export default GridRecommendationLayout;
 
 }
 declare module 'layouts/Recommendation' {
+/**
+ * @module layouts/Recommendation
+ */
 const _default: any;
 export default _default;
 
@@ -1730,74 +2703,25 @@ export const renderArrow: (dir: any, handler: any) => JSX.Element;
 
 }
 declare module 'layouts/Recommendation/Slider' {
+const _default: any;
+export default _default;
+
+}
+declare module 'layouts/Recommendation/Slider/Swiper' {
 /// <reference types="react" />
-import React from 'react';
-import './styles.global.css';
-const _default: React.ComponentClass<{}>;
+const _default: ({ children, ...props }: {
+    [x: string]: any;
+    children: any;
+}) => JSX.Element;
 export default _default;
 
 }
 declare module 'layouts/Recommendation/Slider/view' {
 /// <reference types="react" />
-import React, { ReactChildren } from 'react';
-import { IProduct, ThemedSFCProps, MJSConfiguration } from 'types';
-import { List } from 'immutable';
-export interface IReactSlickProps {
-    accessibility?: boolean;
-    adaptiveHeight?: boolean;
-    afterChange?: (index: number) => any;
-    appendDots: (dots: ReactChildren) => React.ReactElement<any>;
-    arrows?: boolean;
-    asNavFor?: (ref: React.Ref<any>) => any;
-    autoplaySpeed?: number;
-    autoplay?: boolean;
-    beforeChange?: (oldIndex: number, newIndex: number) => any;
-    centerMode?: boolean;
-    centerPadding?: string;
-    className?: string;
-    customPaging?: (index: number) => React.ReactElement<any>;
-    dotsClass?: string;
-    dots?: boolean;
-    draggable?: boolean;
-    easing?: string;
-    fade?: boolean;
-    focusOnSelect?: boolean;
-    infinite?: boolean;
-    initialSlide?: number;
-    lazyLoad?: 'ondemand' | 'progressive';
-    onEdge?: (direction: string) => any;
-    onInit?: () => void;
-    onLazyLoad?: () => any;
-    onReInit?: () => void;
-    onSwipe?: () => any;
-    pauseOnDotsHover?: boolean;
-    pauseOnFocus?: boolean;
-    pauseOnHover?: boolean;
-    responsive?: string[];
-    rows?: number;
-    rtl?: boolean;
-    slide?: string;
-    slidesPerRow?: number;
-    slidesToScroll?: number;
-    slidesToShow?: number;
-    speed?: number;
-    swipeToSlide?: boolean;
-    swipe?: boolean;
-    touchMove?: boolean;
-    touchThreshold?: number;
-    useCSS?: boolean;
-    useTransform?: boolean;
-    variableWidth?: boolean;
-    vertical?: boolean;
-}
-export interface ISliderProps extends ThemedSFCProps {
-    items: List<IProduct>;
-    config: MJSConfiguration;
-    sliderOptions: IReactSlickProps;
-    _mountSlider: React.RefObject<any>;
-}
-const SliderRecommendationLayout: ({ items, config, theme, sliderOptions, _mountSlider }: ISliderProps) => JSX.Element;
-export default SliderRecommendationLayout;
+const _default: ({ theme }: {
+    theme?: Record<string, string> | undefined;
+}) => JSX.Element;
+export default _default;
 
 }
 declare module 'layouts/Recommendation/Swiper' {
@@ -1820,9 +2744,19 @@ export default _default;
 
 }
 declare module 'layouts/Search' {
-/// <reference types="react" />
-import React from 'react';
-const _default: React.ComponentClass<{}>;
+/**
+ * @module layouts/Search
+ */
+import { List } from 'immutable';
+import styles from 'layouts/Search/styles.css';
+import { ThemedSFCProps, IProduct } from 'types';
+/** Props that search layout accepts */
+export interface ISearchProps extends ThemedSFCProps<typeof styles> {
+    isCollection?: boolean;
+    /** Items list */
+    items: List<IProduct>;
+}
+const _default: any;
 export default _default;
 
 }
@@ -1867,9 +2801,18 @@ export default _default;
 
 }
 declare module 'layouts/ZeroResults' {
+/**
+ * @module layouts/ZeroResults
+ */
 /// <reference types="react" />
-import React from "react";
-const _default: React.ComponentClass<{}>;
+import { ThemedSFCProps } from 'types';
+import styles from 'layouts/ZeroResults/styles.css';
+/** Props that ZeroResults layout accepts */
+export interface IZeroResultsProps extends ThemedSFCProps<typeof styles> {
+    /** Query for items was not found */
+    q: string;
+}
+const _default: ({ q, theme }: IZeroResultsProps) => JSX.Element;
 export default _default;
 
 }
@@ -1885,355 +2828,5 @@ export interface IZeroResultsProps extends ThemedSFCProps {
 }
 const ZeroResultsLayout: ({ items, title, theme, columns, config }: IZeroResultsProps) => JSX.Element;
 export default ZeroResultsLayout;
-
-}
-declare module 'vendor/react-spring' {
-const assignToFn: (target: any, source: any) => any;
-function _interopDefault(ex: any): any;
-var _extends: any;
-var _inheritsLoose: any;
-var React: any;
-var ReactDOM: any;
-var _objectWithoutProperties: any;
-var _assertThisInitialized: any;
-var bugfixes: undefined;
-var applyAnimatedValues: undefined;
-var colorNames: never[];
-var requestFrame: (cb: any) => any;
-var cancelFrame: (cb: any) => any;
-var interpolation: undefined;
-var injectApplyAnimatedValues: (fn: any, transform: any) => {
-    fn: any;
-    transform: any;
-};
-var injectColorNames: (names: any) => any;
-var injectBugfixes: (fn: any) => any;
-var injectInterpolation: (cls: any) => any;
-var injectFrame: (raf: any, caf: any) => any;
-var Globals: Readonly<{
-    readonly bugfixes: undefined;
-    readonly applyAnimatedValues: undefined;
-    readonly colorNames: never[];
-    readonly requestFrame: (cb: any) => any;
-    readonly cancelFrame: (cb: any) => any;
-    readonly interpolation: undefined;
-    injectApplyAnimatedValues: (fn: any, transform: any) => {
-        fn: any;
-        transform: any;
-    };
-    injectColorNames: (names: any) => any;
-    injectBugfixes: (fn: any) => any;
-    injectInterpolation: (cls: any) => any;
-    injectFrame: (raf: any, caf: any) => any;
-}>;
-var colors: {
-    transparent: number;
-    aliceblue: number;
-    antiquewhite: number;
-    aqua: number;
-    aquamarine: number;
-    azure: number;
-    beige: number;
-    bisque: number;
-    black: number;
-    blanchedalmond: number;
-    blue: number;
-    blueviolet: number;
-    brown: number;
-    burlywood: number;
-    burntsienna: number;
-    cadetblue: number;
-    chartreuse: number;
-    chocolate: number;
-    coral: number;
-    cornflowerblue: number;
-    cornsilk: number;
-    crimson: number;
-    cyan: number;
-    darkblue: number;
-    darkcyan: number;
-    darkgoldenrod: number;
-    darkgray: number;
-    darkgreen: number;
-    darkgrey: number;
-    darkkhaki: number;
-    darkmagenta: number;
-    darkolivegreen: number;
-    darkorange: number;
-    darkorchid: number;
-    darkred: number;
-    darksalmon: number;
-    darkseagreen: number;
-    darkslateblue: number;
-    darkslategray: number;
-    darkslategrey: number;
-    darkturquoise: number;
-    darkviolet: number;
-    deeppink: number;
-    deepskyblue: number;
-    dimgray: number;
-    dimgrey: number;
-    dodgerblue: number;
-    firebrick: number;
-    floralwhite: number;
-    forestgreen: number;
-    fuchsia: number;
-    gainsboro: number;
-    ghostwhite: number;
-    gold: number;
-    goldenrod: number;
-    gray: number;
-    green: number;
-    greenyellow: number;
-    grey: number;
-    honeydew: number;
-    hotpink: number;
-    indianred: number;
-    indigo: number;
-    ivory: number;
-    khaki: number;
-    lavender: number;
-    lavenderblush: number;
-    lawngreen: number;
-    lemonchiffon: number;
-    lightblue: number;
-    lightcoral: number;
-    lightcyan: number;
-    lightgoldenrodyellow: number;
-    lightgray: number;
-    lightgreen: number;
-    lightgrey: number;
-    lightpink: number;
-    lightsalmon: number;
-    lightseagreen: number;
-    lightskyblue: number;
-    lightslategray: number;
-    lightslategrey: number;
-    lightsteelblue: number;
-    lightyellow: number;
-    lime: number;
-    limegreen: number;
-    linen: number;
-    magenta: number;
-    maroon: number;
-    mediumaquamarine: number;
-    mediumblue: number;
-    mediumorchid: number;
-    mediumpurple: number;
-    mediumseagreen: number;
-    mediumslateblue: number;
-    mediumspringgreen: number;
-    mediumturquoise: number;
-    mediumvioletred: number;
-    midnightblue: number;
-    mintcream: number;
-    mistyrose: number;
-    moccasin: number;
-    navajowhite: number;
-    navy: number;
-    oldlace: number;
-    olive: number;
-    olivedrab: number;
-    orange: number;
-    orangered: number;
-    orchid: number;
-    palegoldenrod: number;
-    palegreen: number;
-    paleturquoise: number;
-    palevioletred: number;
-    papayawhip: number;
-    peachpuff: number;
-    peru: number;
-    pink: number;
-    plum: number;
-    powderblue: number;
-    purple: number;
-    rebeccapurple: number;
-    red: number;
-    rosybrown: number;
-    royalblue: number;
-    saddlebrown: number;
-    salmon: number;
-    sandybrown: number;
-    seagreen: number;
-    seashell: number;
-    sienna: number;
-    silver: number;
-    skyblue: number;
-    slateblue: number;
-    slategray: number;
-    slategrey: number;
-    snow: number;
-    springgreen: number;
-    steelblue: number;
-    tan: number;
-    teal: number;
-    thistle: number;
-    tomato: number;
-    turquoise: number;
-    violet: number;
-    wheat: number;
-    white: number;
-    whitesmoke: number;
-    yellow: number;
-    yellowgreen: number;
-};
-var linear: (t: any) => any;
-var Interpolation: () => void;
-function interpolate(input: any, inputMin: any, inputMax: any, outputMin: any, outputMax: any, easing: any, extrapolateLeft: any, extrapolateRight: any, map: any): any;
-function findRange(input: any, inputRange: any): number;
-function normalizeColor(color: any): any;
-function hue2rgb(p: any, q: any, t: any): any;
-function hslToRgb(h: any, s: any, l: any): number;
-var NUMBER: string;
-var PERCENTAGE: string;
-function toArray(arrayLike: any): any;
-function call(): string;
-var matchers: {
-    rgb: RegExp;
-    rgba: RegExp;
-    hsl: RegExp;
-    hsla: RegExp;
-    hex3: RegExp;
-    hex4: RegExp;
-    hex6: RegExp;
-    hex8: RegExp;
-};
-function parse255(str: any): number;
-function parse360(str: any): number;
-function parse1(str: any): number;
-function parsePercentage(str: any): number;
-function colorToRgba(input: any): any;
-var stringShapeRegex: RegExp;
-function createInterpolation(config: any): (input: any) => any;
-var Animated: () => void;
-var AnimatedTracking: (value: any, parent: any, animationClass: any, animationConfig: any, callback: any) => any;
-function throttle(callback: any, limit: any): () => void;
-var AnimatedWithChildren: () => any;
-var AnimatedInterpolation: (parents: any, config: any) => any;
-var interpolate$1: (parents: any, config: any) => any;
-var _uniqueId: number;
-function findAnimatedStyles(node: any, styles: any): void;
-var AnimatedValue: (value: any) => any;
-var getValues: (object: any) => any[];
-var check: (value: any) => boolean;
-var overwrite: (width: any, height: any) => (acc: any, _ref2: any) => any;
-function fixAuto(spring: any, props: any): any;
-var isUnitlessNumber: {
-    animationIterationCount: boolean;
-    borderImageOutset: boolean;
-    borderImageSlice: boolean;
-    borderImageWidth: boolean;
-    boxFlex: boolean;
-    boxFlexGroup: boolean;
-    boxOrdinalGroup: boolean;
-    columnCount: boolean;
-    columns: boolean;
-    flex: boolean;
-    flexGrow: boolean;
-    flexPositive: boolean;
-    flexShrink: boolean;
-    flexNegative: boolean;
-    flexOrder: boolean;
-    gridRow: boolean;
-    gridRowEnd: boolean;
-    gridRowSpan: boolean;
-    gridRowStart: boolean;
-    gridColumn: boolean;
-    gridColumnEnd: boolean;
-    gridColumnSpan: boolean;
-    gridColumnStart: boolean;
-    fontWeight: boolean;
-    lineClamp: boolean;
-    lineHeight: boolean;
-    opacity: boolean;
-    order: boolean;
-    orphans: boolean;
-    tabSize: boolean;
-    widows: boolean;
-    zIndex: boolean;
-    zoom: boolean;
-    fillOpacity: boolean;
-    floodOpacity: boolean;
-    stopOpacity: boolean;
-    strokeDasharray: boolean;
-    strokeDashoffset: boolean;
-    strokeMiterlimit: boolean;
-    strokeOpacity: boolean;
-    strokeWidth: boolean;
-};
-var prefixKey: (prefix: any, key: any) => any;
-var prefixes: string[];
-function dangerousStyleValue(name: any, value: any, isCustomProperty: any): string;
-var Animation: {
-    new (effect?: AnimationEffectReadOnly | undefined, timeline?: AnimationTimeline | undefined): Animation;
-    prototype: Animation;
-};
-var withDefault: (value: any, defaultValue: any) => any;
-var tensionFromOrigamiValue: (oValue: any) => number;
-var frictionFromOrigamiValue: (oValue: any) => number;
-var fromOrigamiTensionAndFriction: (tension: any, friction: any) => {
-    tension: number;
-    friction: number;
-};
-var SpringAnimation: (config: any) => any;
-var AnimatedArray: (array: any) => any;
-function maybeVectorAnim(array: any, _ref: any, anim: any, impl: any): {
-    start: (callback: any) => any;
-    stop: () => void;
-} | null;
-function parallel(animations: any, config: any): {
-    start: (callback: any) => any;
-    stop: () => void;
-};
-function controller(value: any, config: any, impl: any): {
-    start: (callback: any) => any;
-    stop: () => void;
-};
-var AnimatedStyle: (style: any) => any;
-var AnimatedProps: (props: any, callback: any) => any;
-function createAnimatedComponent(Component: any): () => any;
-function shallowDiff(a: any, b: any): boolean;
-var config: {
-    default: {
-        tension: number;
-        friction: number;
-    };
-    gentle: {
-        tension: number;
-        friction: number;
-    };
-    wobbly: {
-        tension: number;
-        friction: number;
-    };
-    stiff: {
-        tension: number;
-        friction: number;
-    };
-    slow: {
-        tension: number;
-        friction: number;
-    };
-};
-var callProp: (p: any, n: any) => any;
-var convert$1: (acc: any, _ref: any) => any;
-var Spring: () => any;
-var empty: () => null;
-var ref: (object: any, key: any) => any;
-var get: (props: any) => any;
-var Transition: (prevProps: any) => any;
-var Trail: () => any;
-var Keyframes: () => any;
-var AnimatedDiv: () => any;
-var _React$createContext: any, Provider: any, Consumer: any;
-function getScrollType(horizontal: any): "scrollLeft" | "scrollTop";
-var START_TRANSLATE_3D: string;
-var START_TRANSLATE: string;
-var ParallaxLayer: () => any;
-var Parallax: () => any;
-var domElements: string[];
-var elements: any;
-var createAnimatedComponent$1: (comp: any) => () => any;
 
 }
