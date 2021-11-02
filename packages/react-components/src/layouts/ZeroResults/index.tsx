@@ -26,13 +26,6 @@ export default ({ q, theme = styles }: IZeroResultsProps) => {
       <div className={theme.wrapper}>
         <div className={theme.sorryContainer}>
           <Text
-            className={theme.sorry}
-            primary
-            bold
-            uppercase
-            html={translate('zeroresults.sorryNoResults', escape(q))}
-          />
-          <Text
             style={{ marginTop: 20 }}
             primary
             html={translate(
