@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.14.9](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.14.8...@findify/react-components@0.14.9) (2021-11-02)
+
+
+### Bug Fixes
+
+* **@findify/react-components:** correctly pass href to the banner component ([7164910](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/7164910f97697dd3f6959baf95dd524b7e99bdf8))
+
+
+
+
+
 ## [0.14.8](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.14.7...@findify/react-components@0.14.8) (2021-10-21)
 
 
