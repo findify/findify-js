@@ -8,7 +8,7 @@ import styles from 'components/Banner/styles.css';
 import { useBanner } from '@findify/react-connect';
 
 const BannerComponent = ({ href, ...rest }) =>
-  createElement(href ? 'a' : 'div', rest);
+  createElement(href ? 'a' : 'div', { ...rest, href }); 
 
 export default memo(({ theme = styles }: ThemedSFCProps) => {
   const { banner } = useBanner();
