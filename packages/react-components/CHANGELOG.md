@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.14.10](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.14.9...@findify/react-components@0.14.10) (2021-11-02)
+
+
+### Bug Fixes
+
+* **@findify/react-components:** fixed lazy results text, updated banner code to be cleaner ([fd7a39b](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/fd7a39b647644b80cce5aaca4f2d3d1bd99a0a18))
+
+
+
+
+
 ## [0.14.9](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.14.8...@findify/react-components@0.14.9) (2021-11-02)
 
 
