@@ -112,7 +112,8 @@ export enum RecommendationTemplate {
  */
 export enum PaginationType {
   'lazy' = 'lazy',
-  'static' = 'static'
+  'static' = 'static',
+  'combined' = 'combined'
 }
 
 export enum FacetsPosition {
