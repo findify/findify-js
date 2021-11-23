@@ -21,6 +21,7 @@ import useTranslations from 'helpers/useTranslations';
 import styles from 'layouts/Search/styles.css';
 import { Immutable } from '@findify/store-configuration';
 import { ThemedSFCProps, IProduct } from 'types';
+import SearchResultsLayout from 'components/search/SearchResultsLayout';
 
 /** Props that search layout accepts */
 export interface ISearchProps extends ThemedSFCProps<typeof styles> {
@@ -67,11 +68,12 @@ const Search = ({ isCollection, theme = styles }) => {
             right={DesktopActions}
           />
           <Banner />
-          <Branch
+          {/* <Branch
             condition={config.getIn(['pagination', 'type']) === 'lazy'}
             left={LazyResults}
             right={StaticResults}
-          />
+          /> */}
+          <SearchResultsLayout condition={config.getIn(['pagination', 'type'])} />
         </>
       </Grid>
       {announcement}
