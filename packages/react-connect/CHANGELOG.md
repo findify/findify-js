@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.4](https://github.com/findify/findify-js/compare/@findify/react-connect@0.8.3...@findify/react-connect@0.8.4) (2021-11-24)
+
+
+### Bug Fixes
+
+* **@findify/react-connect:** use widget key to calculate cache key ([61f8519](https://github.com/findify/findify-js/commit/61f851926b5d3f9a6f9828d3979f68bd74b01daf))
+
+
+
+
+
 ## [0.8.3](https://github.com/findify/findify-js/compare/@findify/react-connect@0.8.2...@findify/react-connect@0.8.3) (2021-09-29)
 
 **Note:** Version bump only for package @findify/react-connect

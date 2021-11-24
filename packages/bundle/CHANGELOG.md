@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.1.14](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.1.13...@findify/bundle@7.1.14) (2021-11-24)
+
+
+### Bug Fixes
+
+* **@findify/bundle:** terminate initializer if merchant is paused or disabled ([a1de06c](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/a1de06cfa66d7472407b9b156e06250ebe309374))
+
+
+
+
+
 ## [7.1.13](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.1.12...@findify/bundle@7.1.13) (2021-11-02)
 
 **Note:** Version bump only for package @findify/bundle

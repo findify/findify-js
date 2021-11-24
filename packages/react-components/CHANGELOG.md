@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.15.0](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.14.10...@findify/react-components@0.15.0) (2021-11-24)
+
+
+### Bug Fixes
+
+* **@findify/react-components:** removed unecessary comments ([e126a8a](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/e126a8aafd155e8016993d5cfae542036222a333))
+
+
+### Features
+
+* **@findify/react-components:** added CombinedResults component to have LoadMore+Pagination in search results ([5449a1b](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/5449a1bc202b7f65264af40edf71bfe2910aa7e5))
+
+
+
+
+
 ## [0.14.10](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.14.9...@findify/react-components@0.14.10) (2021-11-02)
 
 
