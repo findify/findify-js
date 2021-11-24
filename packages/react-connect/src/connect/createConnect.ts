@@ -81,17 +81,18 @@ const getStateCreator = (agent, analytics, config, field, mapProps) =>
 const cache = (() => {
   let _cache: any = [];
   return (agent, analytics, config, field, mapProps) => {
-    const cached = _cache.find((i) => i[0] === mapProps && i[1] === agent);
-    if (cached) return cached[2];
+    const cached = _cache.find((i) => i[0] === mapProps && i[1] === agent && i[2] === config.get('widgetKey'));
+    if (cached) return cached[3];
 
     const entity = [
       mapProps,
       agent,
+      config.get('widgetKey'),
       getStateCreator(agent, analytics, config, field, mapProps),
     ];
 
     _cache = [..._cache, entity];
-    return entity[2];
+    return entity[3];
   };
 })();
 

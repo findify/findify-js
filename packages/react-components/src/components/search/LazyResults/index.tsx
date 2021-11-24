@@ -16,16 +16,23 @@ import useLazy from 'helpers/useLazy';
 import useLazyPromos from 'helpers/useLazyPromos';
 import { Immutable } from '@findify/store-configuration';
 
-export default ({ theme = styles, card = ProductCard, itemConfig }) => {
+
+interface ILazyResultsProps {
+  theme: any;
+  card: React.ComponentType;
+  itemConfig?: any;
+}
+
+const LazyResults = ({ theme = styles, card = ProductCard, itemConfig }: ILazyResultsProps) => {
   const {
     container,
     onLoadNext,
     onLoadPrev,
     displayPrevButton,
     displayNextButton,
-    items
+    items,
   } = useLazy();
-  const promos = useLazyPromos()
+  const promos = useLazyPromos();
   const { config } = useConfig<Immutable.SearchConfig>();
   const { getPageProps, current } = usePagination();
   const translate = useTranslations();
@@ -83,3 +90,5 @@ export default ({ theme = styles, card = ProductCard, itemConfig }) => {
     </div>
   );
 };
+
+export default LazyResults;

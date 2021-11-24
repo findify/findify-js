@@ -111,6 +111,7 @@ export default async (_config, sentry) => {
     resolveCallback(__root, 'findifyForceCallbacks');
     log(`findify ${__root.config.get('status')}`, 'color: #D9463F');
     showFallback(document);
+    return;
   }
 
   /**
