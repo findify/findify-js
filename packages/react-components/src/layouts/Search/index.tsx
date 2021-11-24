@@ -3,8 +3,6 @@
  */
 
 import { useEffect } from 'react';
-import StaticResults from 'components/search/StaticResults';
-import LazyResults from 'components/search/LazyResults';
 import DesktopFacets from 'components/search/DesktopFacets';
 import MobileActions from 'components/search/MobileActions';
 import DesktopActions from 'components/search/DesktopActions';
@@ -68,11 +66,6 @@ const Search = ({ isCollection, theme = styles }) => {
             right={DesktopActions}
           />
           <Banner />
-          {/* <Branch
-            condition={config.getIn(['pagination', 'type']) === 'lazy'}
-            left={LazyResults}
-            right={StaticResults}
-          /> */}
           <SearchResultsLayout condition={config.getIn(['pagination', 'type'])} />
         </>
       </Grid>
