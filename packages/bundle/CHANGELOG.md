@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.1.15](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.1.14...@findify/bundle@7.1.15) (2021-11-29)
+
+
+### Bug Fixes
+
+* **@findify/bundle:** emit autocomplete focus lost event when search is submitted ([4707fa4](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/4707fa43ad758d73c41f582ec9302cd1083abe86))
+
+
+
+
+
 ## [7.1.14](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.1.13...@findify/bundle@7.1.14) (2021-11-24)
 
 
