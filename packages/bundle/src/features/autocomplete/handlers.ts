@@ -147,6 +147,9 @@ export const registerHandlers = (
 
   /** search for the value */
   const search = (_value?) => {
+    // required for SPA integration - to close autocomplete when search is triggered
+    __root.emit(Events.autocompleteFocusLost, widget.key);
+
     const value = _value || agent.state.get('q') || '';
     const [query, redirect] = isImmutable(value)
       ? [value.get('value'), value.get('redirect')]
