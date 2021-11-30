@@ -5,12 +5,12 @@ import { List } from 'immutable';
 
 const reduceIndexCreator = (ref, cursor) => {
   const getValue = (state, action) => {
-    if (!action) return -1;
+    if (action === 0) return -1;
     if (action > 0) {
       const newState = state + 1;
       return newState > cursor.current.items.size - 1 ? 0 : newState;
     }
-    return state < 1 ? cursor.current.items.size - 1 : state - 1;
+    return state < 0 ? cursor.current.items.size - 1 : state - 1;
   };
 
   return (state, action) => (ref.current = getValue(state, action));
@@ -28,7 +28,7 @@ export default () => {
   const cursor = useRef(createCursor(query));
   const [highlightedIndex, setHighlightedIndex] = useReducer(
     reduceIndexCreator(actualIndex, cursor),
-    0
+    -1
   );
 
   const closeAutocomplete = useCallback(
@@ -55,7 +55,7 @@ export default () => {
   );
 
   const clickItem = useCallback((e) => {
-    if (actualIndex.current < 1) return;
+    if (actualIndex.current < 0) return;
     const item = cursor.current.items.get(actualIndex.current);
     e.preventDefault();
     e.stopPropagation();
