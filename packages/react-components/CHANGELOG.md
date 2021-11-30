@@ -3,6 +3,67 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.15.0](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.14.10...@findify/react-components@0.15.0) (2021-11-24)
+
+
+### Bug Fixes
+
+* **@findify/react-components:** removed unecessary comments ([e126a8a](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/e126a8aafd155e8016993d5cfae542036222a333))
+
+
+### Features
+
+* **@findify/react-components:** added CombinedResults component to have LoadMore+Pagination in search results ([5449a1b](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/5449a1bc202b7f65264af40edf71bfe2910aa7e5))
+
+
+
+
+
+## [0.14.10](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.14.9...@findify/react-components@0.14.10) (2021-11-02)
+
+
+### Bug Fixes
+
+* **@findify/react-components:** fixed lazy results text, updated banner code to be cleaner ([fd7a39b](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/fd7a39b647644b80cce5aaca4f2d3d1bd99a0a18))
+
+
+
+
+
+## [0.14.9](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.14.8...@findify/react-components@0.14.9) (2021-11-02)
+
+
+### Bug Fixes
+
+* **@findify/react-components:** correctly pass href to the banner component ([7164910](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/7164910f97697dd3f6959baf95dd524b7e99bdf8))
+
+
+
+
+
+## [0.14.8](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.14.7...@findify/react-components@0.14.8) (2021-10-21)
+
+
+### Bug Fixes
+
+* **@findify/react-components:** rollback useMobile fix ([59c42e2](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/59c42e21d8bb766c0d2e7b508a8a12d1d056b2f5))
+
+
+
+
+
+## [0.14.7](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.14.6...@findify/react-components@0.14.7) (2021-10-21)
+
+
+### Bug Fixes
+
+* **@findify/react-components:** cache promo cards to fix issue with lazy results ([2a44ae3](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/2a44ae398f436a67d028c63f8b2aead8daeb25e8))
+* **@findify/react-components:** export default useMobile helper to fix issues with chrome dev tools ([09fccac](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/09fccac983f5d836dab5301636d97a1959f84d0a))
+
+
+
+
+
 ## [0.14.6](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.14.5...@findify/react-components@0.14.6) (2021-10-08)
 
 
