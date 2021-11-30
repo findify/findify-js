@@ -71,7 +71,7 @@ export const registerHandlers = (
   /** === */
 
   /** Track input position and update container styles */
-  const handleWindowScroll = debounce(() => {
+  const updateContainerPosition = debounce(() => {
     container =
       container || document.querySelector(`.findify-widget-${widget.key}`);
     if (!container || !container.childNodes.length) return;
@@ -118,7 +118,7 @@ export const registerHandlers = (
   /** Handle input change */
   const handleInputChange = (e) => {
     const value = e.target.value || '';
-    if (config.get('renderIn') === 'body') handleWindowScroll();
+    if (config.get('renderIn') === 'body') updateContainerPosition();
     if (config.get('instant') && isSearch()) {
       return updateReferencedAgents(value, true);
     }
@@ -176,6 +176,7 @@ export const registerHandlers = (
   };
 
   const handleFocus = (e = undefined) => {
+    updateContainerPosition();
     if (config.get('instant') && isSearch()) return;
     findifyElementFocused = true;
     if (!e) return rerender('initial');
@@ -223,12 +224,12 @@ export const registerHandlers = (
           'oanimationiteration',
           'MSAnimationIteration',
         ],
-        handleWindowScroll,
+        updateContainerPosition,
         document
       )
     );
     subscribers.push(
-      addEventListeners(['scroll'], debounce(handleWindowScroll), window)
+      addEventListeners(['scroll'], debounce(updateContainerPosition), window)
     );
   }
 
@@ -267,7 +268,7 @@ export const registerHandlers = (
   });
 
   documentReady.then(() => {
-    handleWindowScroll();
+    updateContainerPosition();
 
     /** Listen for form submit */
     if (config.get('handleFormSubmit')) {
