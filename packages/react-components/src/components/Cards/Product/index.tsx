@@ -19,7 +19,7 @@ import { IProduct, ThemedSFCProps } from 'types';
 import { Immutable, Product } from '@findify/store-configuration';
 import trackProductPosition from 'helpers/trackProductPosition';
 import { useMemo, useState } from 'react';
-
+import useScrollBackToProduct from 'helpers/useScrollBackToProduct';
 export interface IProductCardProps extends ThemedSFCProps {
   item: IProduct;
   config: Immutable.Factory<Product>;
@@ -50,10 +50,11 @@ export default ({
   config,
   Container = 'div',
   highlighted,
-  isAutocomplete
+  isAutocomplete,
 }: IProductCardProps) => {
   const container = trackProductPosition(item);
   const [variant, setVariant] = useVariants(item);
+  if (!isAutocomplete) useScrollBackToProduct(container, item);
 
   return (
     <Container
