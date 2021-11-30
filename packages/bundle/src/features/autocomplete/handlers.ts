@@ -148,8 +148,17 @@ export const registerHandlers = (
     }
   }
 
-  const handleKeydown = ({ key, target }) =>
-    key === 'Enter' && search(target.value);
+  const handleSearchSubmit = ({ key, target }) => {
+    if (key === 'Enter') {
+      search(target.value);
+    }
+  }
+
+  const handleEscape = ({ key }) => {
+    if (key === 'Escape') {
+      __root.emit(Events.autocompleteFocusLost, widget.key)
+    }
+  }
 
   /** search for the value */
   const search = (_value?) => {
@@ -209,9 +218,13 @@ export const registerHandlers = (
 
   if (config.get('handleFormSubmit')) {
     subscribers.push(
-      addEventListeners(['keydown'], handleKeydown, node, false)
+      addEventListeners(['keydown'], handleSearchSubmit, node, false)
     );
   }
+
+  subscribers.push(
+    addEventListeners(['keydown'], handleEscape, window)
+  )
 
   /** Update container position  */
   if (config.get('renderIn') === 'body') {

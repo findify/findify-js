@@ -31,15 +31,6 @@ export default () => {
     -1
   );
 
-  const closeAutocomplete = useCallback(
-    () =>
-      (window as any).findify.emit(
-        'autocompleteFocusLost',
-        config.get('widgetKey')
-      ),
-    []
-  );
-
   const registerItems = useCallback(
     (_items, limit) => {
       const hash = query.hashCode();
@@ -64,7 +55,6 @@ export default () => {
 
   const handleKey = useCallback((e) => {
     if (e.target !== config.get('node')) return;
-    if (e.key === 'Escape') return closeAutocomplete();
     if (e.key === 'Enter') return clickItem(e);
     if (e.key === 'ArrowUp') return setHighlightedIndex(-1);
     if (e.key === 'ArrowDown') return setHighlightedIndex(1);
