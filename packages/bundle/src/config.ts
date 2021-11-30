@@ -97,7 +97,7 @@ const config: Config = {
       instant: false,
       handleFormSubmit: true,
       enableTrendingSearches: true,
-      renderIn: 'parent',
+      renderIn: 'body',
       defaultRequestParams: {
         limits: {
           suggestions: 10,
