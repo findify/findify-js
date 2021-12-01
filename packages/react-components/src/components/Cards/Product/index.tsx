@@ -61,7 +61,6 @@ export default ({
 
   return (
     <Container
-      id={`findify-item-${item.get('id')}`}
       ref={container}
       data-element="card"
       className={cx(
