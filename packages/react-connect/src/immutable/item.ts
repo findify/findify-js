@@ -29,11 +29,11 @@ export class Item extends createRecord('Item') {
     );
   };
 
-  onClick = (e) => {
+  onClick = (e, attachHash?: boolean) => {
     preventEvents(e);
     const openInNewWindow = e && (e.ctrlKey || e.metaKey);
     this.sendAnalytics(!openInNewWindow);
-    if (!openInNewWindow && typeof window !== 'undefined') {
+    if (attachHash && !openInNewWindow && typeof window !== 'undefined') {  
       document.location.hash = this.get('id');
     }
     navigate(openInNewWindow, this.get('product_url'));

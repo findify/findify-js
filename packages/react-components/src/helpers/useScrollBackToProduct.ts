@@ -1,19 +1,10 @@
 import { useEffect } from 'react';
 
-const removeHash = () => {
-  history.pushState(
-    '',
-    document.title,
-    window.location.pathname + window.location.search
-  );
-};
-
-export default (container, item) => {
+export default (container, item, shouldScroll) => {
   const hash = document?.location.hash.substring(1);
 
   useEffect(() => {
-    if (!hash || !container.current || item.get('id') !== hash) return;
-    removeHash();
+    if (!shouldScroll || !container.current || item.get('id') !== hash) return;
     setTimeout(() => container.current.scrollIntoView(), 500);
   }, [container]);
 };
