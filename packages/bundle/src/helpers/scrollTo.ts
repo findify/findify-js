@@ -25,11 +25,16 @@ export const scrollTo: any = debounce((selectorOrNode, offset = 0) => {
 export const maybeScrollTop = (
   config: Immutable.SearchConfig,
   force = false
-): void =>
-  (force ||
-    (config.getIn(['scrollTop', 'enabled']) &&
-      config.getIn(['pagination', 'type']) !== 'lazy')) &&
-  scrollTo(
-    config.getIn(['scrollTop', 'selector']) || config.get('node'),
-    config.getIn(['scrollTop', 'offset'])
-  );
+): void => {
+  const hash = document?.location.hash.substring(1) || '';
+  if (hash.length > 0) {
+    return
+  }
+  
+  if (force || (config.getIn(['scrollTop', 'enabled']) && config.getIn(['pagination', 'type']) !== 'lazy')) {
+    scrollTo(
+      config.getIn(['scrollTop', 'selector']) || config.get('node'),
+      config.getIn(['scrollTop', 'offset'])
+    );
+  }
+}
