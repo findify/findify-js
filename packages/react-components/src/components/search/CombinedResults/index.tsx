@@ -63,6 +63,7 @@
            config: itemConfig || config.get('product'),
            array: items as ArrayLike,
            factory: card,
+           isSearch: true
          })}
          {MapArray({
            array: promos,

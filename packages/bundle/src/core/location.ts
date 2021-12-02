@@ -117,6 +117,7 @@ export const redirectToPage = async (redirect, meta) => {
     rid: meta.get('rid'),
     suggestion: meta.get('q'),
   });
+
   if (isHistoryChanged()) {
     return getHistory().push(
       redirect.get('url').replace(document.location.origin, ''),
