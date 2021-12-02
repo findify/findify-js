@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.1.17](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.1.16...@findify/bundle@7.1.17) (2021-12-02)
+
+
+### Bug Fixes
+
+* **@findify/bundle:** don't apply scroll to top if has hin url ([de892c9](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/de892c9832db731c4a865d3dae28705c71685979))
+* **@findify/bundle:** filter new entities to add, to exclude undefined to be part of the widgets ([99c1b30](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/99c1b30bace2bc7055abb84824c6cdbdd1c8c7d3))
+
+
+
+
+
 ## [7.1.16](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.1.15...@findify/bundle@7.1.16) (2021-12-02)
 
 
