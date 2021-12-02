@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.5](https://github.com/findify/findify-js/compare/@findify/react-connect@0.8.4...@findify/react-connect@0.8.5) (2021-12-02)
+
+
+### Bug Fixes
+
+* **@findify/bundle,@findify/react-components,@findify/react-connect:** scroll back to clicked product ([c49e29e](https://github.com/findify/findify-js/commit/c49e29e06c60e53874855d47efaac4dd065228f0))
+
+
+
+
+
 ## [0.8.4](https://github.com/findify/findify-js/compare/@findify/react-connect@0.8.3...@findify/react-connect@0.8.4) (2021-11-24)
 
 

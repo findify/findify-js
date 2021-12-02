@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.1.16](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.1.15...@findify/bundle@7.1.16) (2021-12-02)
+
+
+### Bug Fixes
+
+* **@findify/bundle:** update autocomplete container position when search box is focused ([8d91cb4](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/8d91cb4b2b0c325029904ca3f4c07b7f63a94c0e))
+* **@findify/bundle,@findify/react-components:** correctly handle escape key press ([8e2fdd8](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/8e2fdd819c09142fcf5e736495e10e6c9de1cdbe))
+* **@findify/bundle,@findify/react-components:** listen dom click events to track if autocomplete should be hidden. Fixed arrow navigation ([a8cd401](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/a8cd40199eb6556ada10cf1caf8d5cc8dc5734e2))
+* **@findify/bundle,@findify/react-components,@findify/react-connect:** scroll back to clicked product ([c49e29e](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/c49e29e06c60e53874855d47efaac4dd065228f0))
+
+
+
+
+
 ## [7.1.15](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.1.14...@findify/bundle@7.1.15) (2021-11-29)
 
 

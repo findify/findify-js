@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.15.1](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.15.0...@findify/react-components@0.15.1) (2021-12-02)
+
+
+### Bug Fixes
+
+* **@findify/bundle,@findify/react-components:** correctly handle escape key press ([8e2fdd8](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/8e2fdd819c09142fcf5e736495e10e6c9de1cdbe))
+* **@findify/bundle,@findify/react-components:** listen dom click events to track if autocomplete should be hidden. Fixed arrow navigation ([a8cd401](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/a8cd40199eb6556ada10cf1caf8d5cc8dc5734e2))
+* **@findify/bundle,@findify/react-components,@findify/react-connect:** scroll back to clicked product ([c49e29e](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/c49e29e06c60e53874855d47efaac4dd065228f0))
+
+
+
+
+
 # [0.15.0](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.14.10...@findify/react-components@0.15.0) (2021-11-24)
 
 
