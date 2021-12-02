@@ -19,6 +19,7 @@ import { IProduct, ThemedSFCProps } from 'types';
 import { Immutable, Product } from '@findify/store-configuration';
 import trackProductPosition from 'helpers/trackProductPosition';
 import { useMemo, useState } from 'react';
+import useScrollBackToProduct from 'helpers/useScrollBackToProduct';
 
 export interface IProductCardProps extends ThemedSFCProps {
   item: IProduct;
@@ -26,6 +27,7 @@ export interface IProductCardProps extends ThemedSFCProps {
   Container?: React.ElementType;
   highlighted: boolean;
   isAutocomplete?: boolean;
+  isSearch?: boolean;
 }
 
 const useVariants = (
@@ -50,10 +52,12 @@ export default ({
   config,
   Container = 'div',
   highlighted,
-  isAutocomplete
+  isAutocomplete,
+  isSearch
 }: IProductCardProps) => {
   const container = trackProductPosition(item);
   const [variant, setVariant] = useVariants(item);
+  useScrollBackToProduct(container, item, isSearch);
 
   return (
     <Container
@@ -93,7 +97,7 @@ export default ({
         <Title
           display-if={!!variant.get('title')}
           theme={theme}
-          onClick={variant.onClick}
+          onClick={e => variant.onClick(e, isSearch)}
           href={variant.get('product_url')}
           text={variant.get('title')}
         />
@@ -123,7 +127,7 @@ export default ({
       We need to make image belong to content, so we move it under the title.
       - flex order set to -1
     */}
-      <div className={theme.image} onClick={item.onClick}>
+      <div className={theme.image} onClick={e => item.onClick(e, isSearch)}>
         <Image
           aspectRatio={config.getIn(['image', 'aspectRatio'])}
           thumbnail={variant.get('thumbnail_url')}

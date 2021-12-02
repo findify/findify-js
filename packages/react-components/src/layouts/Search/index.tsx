@@ -40,6 +40,15 @@ const Search = ({ isCollection, theme = styles }) => {
     items,
   ]);
 
+  useEffect(() => {
+    setTimeout(() => {
+      console.log(document.title, window.location.search)
+      window.findify.utils.history.push({
+        hash: ''
+      });
+    }, 2000);
+  }, [])
+
   if (!items.size) return null;
   return (
     <>

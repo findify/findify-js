@@ -31,6 +31,7 @@ export default ({ theme = styles, itemConfig }) => {
           array: items,
           factory: ProductCard,
           config: itemConfig || config.get('product'),
+          isSearch: true
         })}
         {MapArray({
           array: promos,

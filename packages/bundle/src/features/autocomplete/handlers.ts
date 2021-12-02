@@ -71,7 +71,7 @@ export const registerHandlers = (
   /** === */
 
   /** Track input position and update container styles */
-  const handleWindowScroll = debounce(() => {
+  const updateContainerPosition = debounce(() => {
     container =
       container || document.querySelector(`.findify-widget-${widget.key}`);
     if (!container || !container.childNodes.length) return;
@@ -118,7 +118,7 @@ export const registerHandlers = (
   /** Handle input change */
   const handleInputChange = (e) => {
     const value = e.target.value || '';
-    if (config.get('renderIn') === 'body') handleWindowScroll();
+    if (config.get('renderIn') === 'body') updateContainerPosition();
     if (config.get('instant') && isSearch()) {
       return updateReferencedAgents(value, true);
     }
@@ -132,18 +132,33 @@ export const registerHandlers = (
     return insideAutocomplete(node.parentElement);
   };
 
-  const isAutocompleteRelated = (e) =>
-    e.relatedTarget && insideAutocomplete(e.relatedTarget);
+  const isAutocompleteRelated = (e) => {
+    return e.target && insideAutocomplete(e.target);
+  }
 
-  /** Handle input blur */
-  const handleInputBlur = (e) =>
-    !findifyElementFocused &&
-    !isAutocompleteRelated(e) &&
-    e.target === node &&
-    __root.emit(Events.autocompleteFocusLost, widget.key);
+  /** Handle document click */
+  const handleDocumentClick = (e) => {
+    if (e.target === node) {
+      __root.emit(Events.autocompleteFocus, widget.key)
+      return
+    }
 
-  const handleKeydown = ({ key, target }) =>
-    key === 'Enter' && search(target.value);
+    if (!findifyElementFocused && !isAutocompleteRelated(e)) {
+      __root.emit(Events.autocompleteFocusLost, widget.key);
+    }
+  }
+
+  const handleSearchSubmit = ({ key, target }) => {
+    if (key === 'Enter') {
+      search(target.value);
+    }
+  }
+
+  const handleEscape = ({ key }) => {
+    if (key === 'Escape') {
+      __root.emit(Events.autocompleteFocusLost, widget.key)
+    }
+  }
 
   /** search for the value */
   const search = (_value?) => {
@@ -176,11 +191,11 @@ export const registerHandlers = (
   };
 
   const handleFocus = (e = undefined) => {
+    updateContainerPosition();
     if (config.get('instant') && isSearch()) return;
     findifyElementFocused = true;
-    if (!e) return rerender('initial');
-    if (!agent.state.get('q') || agent.state.get('q') !== e.target.value) {
-      agent.set('q', e.target.value);
+    if (!agent.state.get('q') || agent.state.get('q') !== node.value) {
+      agent.set('q', node.value);
     }
     rerender('initial');
   };
@@ -198,14 +213,18 @@ export const registerHandlers = (
 
   /** Listen for input blur */
   subscribers.push(
-    addEventListeners(['focusout'], handleInputBlur, document.body)
+    addEventListeners(['click'], handleDocumentClick, document.body)
   );
 
   if (config.get('handleFormSubmit')) {
     subscribers.push(
-      addEventListeners(['keydown'], handleKeydown, node, false)
+      addEventListeners(['keydown'], handleSearchSubmit, node, false)
     );
   }
+
+  subscribers.push(
+    addEventListeners(['keydown'], handleEscape, window)
+  )
 
   /** Update container position  */
   if (config.get('renderIn') === 'body') {
@@ -223,12 +242,12 @@ export const registerHandlers = (
           'oanimationiteration',
           'MSAnimationIteration',
         ],
-        handleWindowScroll,
+        updateContainerPosition,
         document
       )
     );
     subscribers.push(
-      addEventListeners(['scroll'], debounce(handleWindowScroll), window)
+      addEventListeners(['scroll'], debounce(updateContainerPosition), window)
     );
   }
 
@@ -267,7 +286,7 @@ export const registerHandlers = (
   });
 
   documentReady.then(() => {
-    handleWindowScroll();
+    updateContainerPosition();
 
     /** Listen for form submit */
     if (config.get('handleFormSubmit')) {
