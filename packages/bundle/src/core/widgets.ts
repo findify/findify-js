@@ -131,9 +131,13 @@ const widgets = {
     const config = _config && isImmutable(_config) ? _config : fromJS(_config);
     const entity = getEntity(selector, type, config);
 
-    if (!entity.filter((i) => i).length) return cache;
+    const entitiesToAdd = entity.filter(e => e);
+    
+    if (!entitiesToAdd.length) return cache;
 
-    return (cache = [...cache, ...entity]);
+    cache.push(...entitiesToAdd);
+    
+    return cache;
   },
 
   /** Remove exist widget */
