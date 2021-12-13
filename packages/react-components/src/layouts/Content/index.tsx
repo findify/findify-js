@@ -27,7 +27,7 @@ const Content = ({ theme = styles }: IContentSearchProps) => {
   if (!items?.size) return null;
   return (
     <Branch
-      condition={config.getIn(['pagination', 'type']) !== 'lazy'}
+      condition={config.getIn(['pagination', 'type']) === 'lazy'}
       left={LazyResults}
       right={StaticResults}
       card={ContentCard}

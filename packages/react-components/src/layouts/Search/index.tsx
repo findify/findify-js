@@ -42,7 +42,6 @@ const Search = ({ isCollection, theme = styles }) => {
 
   useEffect(() => {
     setTimeout(() => {
-      console.log(document.title, window.location.search)
       window.findify.utils.history.push({
         hash: ''
       });

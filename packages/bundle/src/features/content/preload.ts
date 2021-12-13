@@ -16,14 +16,13 @@ const parseSortHTMLAttribute = (sort) => {
 export default (widget) => {
   const { agent, node, config } = widget;
   const { q } = getQuery();
-  const { type, sort } = node.dataset || {};
-  const _config = config.get(type);
+  const { sort } = node.dataset || {};
   const defaultRequestParams =
-    (_config && _config.get('defaultRequestParams', Map).toJS()) || {};
+    (config && config.get('defaultRequestParams', Map).toJS()) || {};
 
   agent
     .defaults({
-      type: [type],
+      type: [config.get('source')],
       sort: parseSortHTMLAttribute(sort),
       ...defaultRequestParams,
     })
