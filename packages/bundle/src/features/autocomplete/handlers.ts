@@ -67,7 +67,7 @@ export const registerHandlers = (
   node.setAttribute('aria-owns', 'FindifyAutocompleteSuggestions');
   node.setAttribute('aria-expanded', 'false');
   node.setAttribute('aria-activedescendant', '');
-  node.setAttribute('aria-describedby', 'FindifyAutocompleteDescription');
+  node.setAttribute('aria-label', 'SearchAutoComplete');
   /** === */
 
   /** Track input position and update container styles */
