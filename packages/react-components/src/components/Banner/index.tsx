@@ -17,6 +17,7 @@ export default memo(({ theme = styles }: ThemedSFCProps) => {
       display-if={banner && !banner.isEmpty()}
       href={banner.getIn(['products', 'targetUrl'])}
       role="banner"
+      aria-label="banner"
       className={theme.root}
     >
       <img

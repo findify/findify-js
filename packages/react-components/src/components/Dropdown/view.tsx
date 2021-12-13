@@ -87,7 +87,7 @@ export default ({
       }) => (
         <div
           {...getRootProps({}, { suppressRefError: true })}
-          role="listbox"
+          role="group"
           className={cx(theme.root, className)}
         >
           <label {...getLabelProps()} className={theme.label}>

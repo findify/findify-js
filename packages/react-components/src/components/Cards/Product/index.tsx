@@ -50,7 +50,7 @@ export default ({
   theme = styles,
   className,
   config,
-  Container = 'div',
+  Container = 'a',
   highlighted,
   isAutocomplete,
   isSearch

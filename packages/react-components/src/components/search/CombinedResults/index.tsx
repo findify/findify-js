@@ -52,7 +52,7 @@
          </Button>
        </div>
        <Grid
-         role="main"
+         role="list"
          wrapperComponent="ul"
          columnComponent="li"
          aria-label={translate('search.title')}

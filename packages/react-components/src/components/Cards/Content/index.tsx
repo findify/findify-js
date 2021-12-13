@@ -28,7 +28,7 @@ export default ({
   item,
   config,
   theme = styles,
-  Container = 'div',
+  Container = 'a',
   highlighted,
   isAutocomplete
 }) => {
