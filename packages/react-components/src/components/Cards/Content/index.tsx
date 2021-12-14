@@ -28,12 +28,11 @@ export default ({
   item,
   config,
   theme = styles,
-  Container = 'a',
   highlighted,
   isAutocomplete
 }) => {
   return (
-    <Container
+    <a
       data-element="card"
       className={cx(
         theme.root,
@@ -41,6 +40,7 @@ export default ({
         highlighted && theme.highlighted,
         isAutocomplete && theme.autocomplete
       )}
+      href={item.get('url')}
     >
       <div className={theme.content}>
         <Title
@@ -64,6 +64,6 @@ export default ({
           src={item.get('image_url')}
         />
       </div>
-    </Container>
+    </a>
   );
 };
