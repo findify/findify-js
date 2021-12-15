@@ -81,7 +81,7 @@ export default ({
         />
       </div>
 
-      <section role="list">
+      <section role="group">
         <MapArray
           display-if={config.get('pullSelected')}
           array={items.filter((i) => i.get('selected'))}
