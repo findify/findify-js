@@ -44,6 +44,7 @@ const PriceInput = ({
   resetOn,
   precision,
   reference,
+  label
 }) => {
   const handleWrapperClick = useCallback(() => {
     if (reference.current) reference.current?.focus();
@@ -81,6 +82,7 @@ const PriceInput = ({
         onKeyPress={handleKeyPress}
         ref={reference}
         step={step}
+        aria-label={label}
       />
       <div className={theme.border} />
     </div>
@@ -221,6 +223,7 @@ export default ({
           onBlur={onChangeMin}
           reference={minInput}
           precision={facetConfig.get('precision', 0)}
+          label="fromprice"
         />
 
         <div className={theme.divider}>-</div>
@@ -234,6 +237,7 @@ export default ({
           onBlur={onChangeMax}
           reference={maxInput}
           precision={facetConfig.get('precision', 0)}
+          label="toprice"
         />
         <Button className={theme.submit} type="submit" onClick={onSubmit}>
           <Text primary uppercase>

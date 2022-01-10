@@ -50,7 +50,6 @@ export default ({
   theme = styles,
   className,
   config,
-  Container = 'div',
   highlighted,
   isAutocomplete,
   isSearch
@@ -60,7 +59,7 @@ export default ({
   useScrollBackToProduct(container, item, isSearch);
 
   return (
-    <Container
+    <a
       ref={container}
       data-element="card"
       className={cx(
@@ -70,6 +69,7 @@ export default ({
         isAutocomplete && theme.autocomplete,
         className
       )}
+      href={item.get('product_url')}
     >
       <div className={theme.content}>
         <Rating
@@ -151,6 +151,6 @@ export default ({
           }
         />
       </div>
-    </Container>
+    </a>
   );
 };

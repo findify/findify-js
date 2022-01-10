@@ -20,7 +20,7 @@ export default ({ theme = styles, itemConfig }) => {
   return (
     <div className={theme.root}>
       <Grid
-        role="main"
+        role="list"
         wrapperComponent="ul"
         columnComponent="li"
         aria-label={translate('search.title')}
