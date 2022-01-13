@@ -24,7 +24,7 @@ const Portal = ({ widget }) => {
 
     const parent = getParentNode(widget);
 
-    if (widget.type === 'tabs') {
+    if (widget.type === 'tabs' || widget.type === 'controlled-tabs') {
       parent.insertBefore(element, parent.firstChild);
     } else {
       parent.appendChild(element);

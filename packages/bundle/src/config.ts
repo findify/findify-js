@@ -385,6 +385,7 @@ const config: Config = {
      },
     },
     search: {
+      contentTabs: ['shopify-blog_998'],
       disableAutoRequest: false,
       facets: {
         position: 'left',
@@ -517,11 +518,11 @@ const config: Config = {
     content: {
       'shopify-blog_998': {
         defaultRequestParams: {
-          limit: 24,
+          limit: 10,
         },
-        title: 'Collections',
+        title: 'Blogs',
         pagination: {
-          type: 'lazy',
+          type: 'static',
           autoLoadTimes: 2,
           step: 2,
         },
