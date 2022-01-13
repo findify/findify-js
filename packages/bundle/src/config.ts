@@ -385,52 +385,7 @@ const config: Config = {
      },
     },
     search: {
-      contentTabs: {
-        enabled: true,
-        integrations: {
-          'shopify-blog_998': {
-            defaultRequestParams: {
-              limit: 10,
-            },
-            title: 'Blogs',
-            pagination: {
-              type: 'static',
-              autoLoadTimes: 2,
-              step: 2,
-            },
-    
-            scrollTop: {
-              enabled: false,
-              selector: '',
-              offset: 10,
-            },
-    
-            item: {
-              template: 'vertical',
-              title: {
-                lines: 2,
-              },
-              description: {
-                lines: 2,
-              },
-              image: {
-                aspectRatio: 1,
-                lazy: false,
-                lazyOffset: 0,
-              },
-            },
-    
-            breakpoints: {
-              grid: [
-                {
-                  width: 0,
-                  value: 3,
-                },
-              ],
-            },
-          }
-        }
-      },
+      contentTabs: ['shopify-blog_998'],
       disableAutoRequest: false,
       facets: {
         position: 'left',
@@ -558,6 +513,49 @@ const config: Config = {
       },
       defaultRequestParams: {
         limit: 24,
+      },
+    },
+    content: {
+      'shopify-blog_998': {
+        defaultRequestParams: {
+          limit: 10,
+        },
+        title: 'Blogs',
+        pagination: {
+          type: 'static',
+          autoLoadTimes: 2,
+          step: 2,
+        },
+
+        scrollTop: {
+          enabled: false,
+          selector: '',
+          offset: 10,
+        },
+
+        item: {
+          template: 'vertical',
+          title: {
+            lines: 2,
+          },
+          description: {
+            lines: 2,
+          },
+          image: {
+            aspectRatio: 1,
+            lazy: false,
+            lazyOffset: 0,
+          },
+        },
+
+        breakpoints: {
+          grid: [
+            {
+              width: 0,
+              value: 3,
+            },
+          ],
+        },
       },
     },
     recommendations: {},

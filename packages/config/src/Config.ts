@@ -75,9 +75,12 @@ export type Config = {
   features: {
     autocomplete: Autocomplete,
     search: Search,
+    content: {
+      [key: string]: Content
+    }
     recommendations: {
       [key: string]: Recommendation
-    }
+    },
   }
 
   /** Sticker component display options */

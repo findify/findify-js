@@ -2,7 +2,6 @@ import { BaseFeature } from './BaseFeature'
 import { Breakpoints } from './Breakpoints'
 import { Filter } from './Filter'
 import * as enums from './enums'
-import { Content } from './Content'
 
 export interface Search extends BaseFeature<'Search'> {
   /**
@@ -98,9 +97,6 @@ export interface Search extends BaseFeature<'Search'> {
       [filterName: string]: Filter
     },
   },
-  
-  contentTabs?: {
-    enabled: boolean,
-    integrations: Record<string, Content>
-  }
+
+  contentTabs: string[]
 }
