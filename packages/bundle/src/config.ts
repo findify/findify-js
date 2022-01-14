@@ -62,7 +62,7 @@ const config: Config = {
     'actions.seeResults': 'See results',
     'actions.sortBy': 'Sort by',
     'actions.filter': 'Filters',
-    'search.title': 'Search Results',
+    'search.title': 'Search Resultss',
     'search.loadPrev': 'Load previous',
     'search.loadMore': 'Load more',
     'search.noQuery':
@@ -518,7 +518,7 @@ const config: Config = {
     content: {
       'shopify-blog_998': {
         defaultRequestParams: {
-          limit: 10,
+          limit: 5,
         },
         title: 'Blogs',
         pagination: {
@@ -552,7 +552,7 @@ const config: Config = {
           grid: [
             {
               width: 0,
-              value: 3,
+              value: 4,
             },
           ],
         },
