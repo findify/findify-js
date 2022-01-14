@@ -96,5 +96,7 @@ export interface Search extends BaseFeature<'Search'> {
     filters: {
       [filterName: string]: Filter
     },
-  }
+  },
+
+  contentTabs: string[]
 }
