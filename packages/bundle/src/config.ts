@@ -385,7 +385,7 @@ const config: Config = {
      },
     },
     search: {
-      contentTabs: ['shopify-blog_998'],
+      // contentTabs: ['shopify-blog_998'],
       disableAutoRequest: false,
       facets: {
         position: 'left',

@@ -98,5 +98,5 @@ export interface Search extends BaseFeature<'Search'> {
     },
   },
 
-  contentTabs: string[]
+  contentTabs?: string[]
 }
