@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.15.3](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.15.2...@findify/react-components@0.15.3) (2022-01-14)
+
+
+### Bug Fixes
+
+* **@findify/bundle,@findify/store-configuration,@findify/react-components:** implemented controlled tabs ([dd055fe](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/dd055fe68fb7e8cd64adf0e39e0d162d07d9a276))
+
+
+
+
+
 ## [0.15.2](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.15.1...@findify/react-components@0.15.2) (2021-12-15)
 
 **Note:** Version bump only for package @findify/react-components

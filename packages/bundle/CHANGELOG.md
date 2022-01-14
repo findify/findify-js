@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.1.19](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.1.18...@findify/bundle@7.1.19) (2022-01-14)
+
+
+### Bug Fixes
+
+* **@findify/bundle,@findify/store-configuration,@findify/react-components:** implemented controlled tabs ([dd055fe](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/dd055fe68fb7e8cd64adf0e39e0d162d07d9a276))
+
+
+
+
+
 ## [7.1.18](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.1.17...@findify/bundle@7.1.18) (2021-12-15)
 
 **Note:** Version bump only for package @findify/bundle
