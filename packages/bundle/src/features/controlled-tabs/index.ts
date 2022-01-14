@@ -79,9 +79,9 @@ export default (render, widget) => {
 
   const process = () => {
     const widgets: Widget<Immutable.FeatureConfig>[] = [];
-    widgets.push(createWidget(node, 'search', 'Search Results', Map({ widgetKey: 'search-results' })))
-    if (config.getIn(['features', 'search', 'contentTabs'])?.size > 0) {
-      config.getIn(['features', 'search', 'contentTabs']).forEach((source) => {
+    widgets.push(createWidget(node, 'search', config.getIn(['translations', 'search.title']), Map({ widgetKey: 'search-results' })))
+    if (config.getIn(['features', 'content'])?.size > 0) {
+      config.getIn(['features', 'content']).forEach((ciConfig, source) => {
         widgets.push(createWidget(
           node,
           'content',
