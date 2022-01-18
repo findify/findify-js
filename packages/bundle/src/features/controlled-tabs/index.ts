@@ -79,7 +79,11 @@ export default (render, widget) => {
 
   const process = () => {
     const widgets: Widget<Immutable.FeatureConfig>[] = [];
-    widgets.push(createWidget(node, 'search', config.getIn(['translations', 'search.title']), Map({ widgetKey: 'search-results' })))
+    const searchWidget = createWidget(node, 'search', config.getIn(['translations', 'search.title']), Map({ widgetKey: 'search-results' }));
+    searchWidget.agent.on('change:items', () => {
+      hideLoader(node)
+    });
+    widgets.push(searchWidget)
     if (config.getIn(['features', 'content'])?.size > 0) {
       config.getIn(['features', 'content']).forEach((ciConfig, source) => {
         widgets.push(createWidget(
@@ -97,9 +101,6 @@ export default (render, widget) => {
           updateCount(index, getCount(agent.response.get('meta'), type));
         agent.on('change:meta', (meta) => {
           updateCount(index, getCount(meta, type));
-        });
-        agent.on('change:items', () => {
-          hideLoader(node)
         });
       });
     }
