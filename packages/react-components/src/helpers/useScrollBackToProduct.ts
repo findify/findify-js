@@ -5,6 +5,9 @@ export default (container, item, shouldScroll) => {
 
   useEffect(() => {
     if (!shouldScroll || !container.current || item.get('id') !== hash) return;
+    window.findify.utils.history.push({
+      hash: ''
+    });
     setTimeout(() => container.current.scrollIntoView(), 500);
   }, [container]);
 };

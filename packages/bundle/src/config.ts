@@ -463,7 +463,7 @@ const config: Config = {
         ],
       },
       pagination: {
-        type: 'static',
+        type: 'lazy',
         autoLoadTimes: 2,
         step: 2,
       },

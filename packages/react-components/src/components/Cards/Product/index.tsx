@@ -45,6 +45,7 @@ const useVariants = (
   );
   return [variant, setVariant];
 };
+
 export default ({
   item,
   theme = styles,
@@ -56,7 +57,7 @@ export default ({
 }: IProductCardProps) => {
   const container = trackProductPosition(item);
   const [variant, setVariant] = useVariants(item);
-  useScrollBackToProduct(container, item, isSearch);
+  useScrollBackToProduct(container, variant, isSearch);
 
   return (
     <a
@@ -70,6 +71,7 @@ export default ({
         className
       )}
       href={item.get('product_url')}
+      onClick={e => variant.onClick(e, isSearch)}
     >
       <div className={theme.content}>
         <Rating
@@ -97,8 +99,6 @@ export default ({
         <Title
           display-if={!!variant.get('title')}
           theme={theme}
-          onClick={e => variant.onClick(e, isSearch)}
-          href={variant.get('product_url')}
           text={variant.get('title')}
         />
 
@@ -127,7 +127,7 @@ export default ({
       We need to make image belong to content, so we move it under the title.
       - flex order set to -1
     */}
-      <div className={theme.image} onClick={e => item.onClick(e, isSearch)}>
+      <div className={theme.image}>
         <Image
           aspectRatio={config.getIn(['image', 'aspectRatio'])}
           thumbnail={variant.get('thumbnail_url')}
