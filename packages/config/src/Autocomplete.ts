@@ -107,6 +107,8 @@ export interface Autocomplete extends Omit<BaseFeature<'Autocomplete'>, 'product
   */
   enableTrendingSearches: boolean
 
+  disableRerenderingOnInputChange?: boolean,
+
   mobile: AutocompleteSizeType
   desktop: AutocompleteSizeType
 }

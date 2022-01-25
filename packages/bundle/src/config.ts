@@ -95,6 +95,7 @@ const config: Config = {
   features: {
     autocomplete: {
       instant: false,
+      disableRerenderingOnInputChange: false,
       handleFormSubmit: true,
       enableTrendingSearches: true,
       renderIn: 'body',
