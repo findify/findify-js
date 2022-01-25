@@ -123,7 +123,9 @@ export const registerHandlers = (
       return updateReferencedAgents(value, true);
     }
     agent.set('q', value);
-    rerender('initial');
+    if (!config.get('disableRerenderingOnInputChange')) {
+      rerender('initial');
+    }
   };
 
   const insideAutocomplete = (node: HTMLElement) => {
