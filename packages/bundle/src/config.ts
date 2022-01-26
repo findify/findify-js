@@ -95,6 +95,7 @@ const config: Config = {
   features: {
     autocomplete: {
       instant: false,
+      disableRerenderingOnInputChange: false,
       handleFormSubmit: true,
       enableTrendingSearches: true,
       renderIn: 'body',
@@ -463,7 +464,7 @@ const config: Config = {
         ],
       },
       pagination: {
-        type: 'static',
+        type: 'lazy',
         autoLoadTimes: 2,
         step: 2,
       },

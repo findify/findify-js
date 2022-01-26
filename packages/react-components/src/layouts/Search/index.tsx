@@ -45,7 +45,7 @@ const Search = ({ isCollection, theme = styles }) => {
       window.findify.utils.history.push({
         hash: ''
       });
-    }, 2000);
+    }, 5000);
   }, [])
 
   if (!items.size) return null;
