@@ -47,5 +47,5 @@ export {
 } from './connect/connectPromos';
 export {
   connect as connectContent,
-  hook as useContent,
+  hook as useContent, 
 } from './connect/connectContent';

@@ -11,3 +11,4 @@ export { Breakpoints } from './Breakpoints'
 export { RequestParams, BaseFeature } from './BaseFeature'
 export { ProductType as Product } from './ProductType'
 export { Config } from './Config'
+ 

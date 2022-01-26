@@ -23,7 +23,7 @@ const isReady = (() => {
   if (global.findify) return false;
   global.findify = {};
   __root.listen = emitter.listen;
-  __root.emit = emitter.emit;
+  __root.emit = emitter.emit; 
   __root.addListeners = emitter.addListeners;
 
   /** Remove modules cache from Webpack */
