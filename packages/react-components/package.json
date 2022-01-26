@@ -1,12 +1,12 @@
 {
   "name": "@findify/react-components",
   "description": "Findify react UI components",
-  "version": "0.15.6",
+  "version": "0.15.7",
   "author": "Findify <yourfriends@findify.io>",
   "dependencies": {
     "@findify/agent": "^1.6.2",
     "@findify/change-emitter": "^1.0.0",
-    "@findify/react-connect": "^0.8.9",
+    "@findify/react-connect": "^0.8.10",
     "accounting": "^0.4.1",
     "classnames": "^2.2.6",
     "downshift": "^6.1.0",
@@ -21,7 +21,7 @@
     "swiper": "^6.4.15"
   },
   "devDependencies": {
-    "@findify/store-configuration": "^0.3.9",
+    "@findify/store-configuration": "^0.3.10",
     "@wojtekmaj/enzyme-adapter-react-17": "0.4.1",
     "add-asset-html-webpack-plugin": "^3.1.3",
     "autoprefixer": "^8.6.3",

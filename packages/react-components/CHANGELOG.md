@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.15.7](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.15.6...@findify/react-components@0.15.7) (2022-01-26)
+
+
+### Bug Fixes
+
+* **@findify/bundle,@findify/store-configuration,@findify/react-components,@findify/react-connect:** updated product card onclick handler, added ability to prevent autocomplete rerendering ([84041f5](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/84041f5757ad3a6c96f4db71afbc7ef231206eeb))
+
+
+
+
+
 ## [0.15.6](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.15.5...@findify/react-components@0.15.6) (2022-01-26)
 
 **Note:** Version bump only for package @findify/react-components
