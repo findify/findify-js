@@ -105,9 +105,16 @@ export default (render, widget: Widget<Immutable.SearchConfig>) => {
     renderZeroResults();
   });
 
-  if (agent.response.get('items')?.size) {
-    hideFallback(node);
-    hideLoader(node);
+  const loadedItemsSize = agent.response.get('items')?.size;
+
+  if (typeof loadedItemsSize === 'number') {
+    if (loadedItemsSize > 0) {
+      hideFallback(node);
+      hideLoader(node);
+    } else {
+      console.log('rendering zero results')
+      renderZeroResults()
+    }
   }
 
   /** Unsubscribe from events on instance destroy  */
