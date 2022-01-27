@@ -112,8 +112,7 @@ export default (render, widget: Widget<Immutable.SearchConfig>) => {
       hideFallback(node);
       hideLoader(node);
     } else {
-      console.log('rendering zero results')
-      renderZeroResults()
+      setTimeout(renderZeroResults, 0)
     }
   }
 
