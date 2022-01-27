@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.1.25](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.1.24...@findify/bundle@7.1.25) (2022-01-27)
+
+
+### Bug Fixes
+
+* **@findify/bundle:** render zero results on the next tick ([dad1dbb](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/dad1dbb283b4c7d0dd22c9d4b73349b9a60b5b65))
+
+
+
+
+
 ## [7.1.24](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.1.23...@findify/bundle@7.1.24) (2022-01-26)
 
 
