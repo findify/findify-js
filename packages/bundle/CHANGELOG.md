@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.1.26](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.1.25...@findify/bundle@7.1.26) (2022-02-10)
+
+
+### Bug Fixes
+
+* **@findify/bundle:** hide loader if search response preloaded fast ([462ca7d](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/462ca7ddac83931c9ee5ecd532fa8a198d2be784))
+
+
+
+
+
 ## [7.1.25](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.1.24...@findify/bundle@7.1.25) (2022-01-27)
 
 
