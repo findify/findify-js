@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.1.27](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.1.26...@findify/bundle@7.1.27) (2022-02-10)
+
+
+### Bug Fixes
+
+* **@findify/bundle:** do not preload recommendations ([21c9a3c](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/21c9a3cc40c610560157caed7df87b4b08f84f1c))
+
+
+
+
+
 ## [7.1.26](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.1.25...@findify/bundle@7.1.26) (2022-02-10)
 
 
