@@ -121,9 +121,16 @@ export default async (_config, sentry) => {
 
   await resolveCallback(__root, 'findifyForceCallbacks'); // <- First callback
 
+  const widgetsToPreload = Object.entries(cfg.selectors)
+    .reduce((acc, [selector, widgetType]) => {
+      if (widgetType !== 'recommendation') {
+        acc[selector] = widgetType;
+      }
+      return acc;
+    }, {})
   /** Create widgets before document.ready on Search and Collection page */
   bulkAddWidgets(
-    cfg.selectors,
+    widgetsToPreload,
     location.isSearch() || location.isCollection(cfg.collections)
   );
 
