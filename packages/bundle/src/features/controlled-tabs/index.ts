@@ -83,6 +83,9 @@ export default (render, widget) => {
     searchWidget.agent.on('change:items', () => {
       hideLoader(node)
     });
+    if (searchWidget.agent.response.get('items')?.size) {
+      hideLoader(node)
+    }
     widgets.push(searchWidget)
     if (config.getIn(['features', 'content'])?.size > 0) {
       config.getIn(['features', 'content']).forEach((ciConfig, source) => {
