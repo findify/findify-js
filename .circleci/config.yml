@@ -26,8 +26,8 @@ jobs:
       - run:
           name: setup env variables
           command: |
-            [ "$CIRCLE_BRANCH" = master ] && echo 'export PUBLIC_PATH=https://cdn.jsdelivr.net/npm/@findify/bundle@__MERCHANT_VERSION_RAW__/dist/' >> $BASH_ENV || echo 'export PUBLIC_PATH=https://findify-assets-2bveeb6u8ag.netdna-ssl.com/bundle/staging/__MERCHANT_VERSION_RAW__/' >> $BASH_ENV
-            [ "$CIRCLE_BRANCH" = master ] && echo 'export FINDIFY_ENV=production' >> $BASH_ENV || echo 'export FINDIFY_ENV=staging' >> $BASH_ENV
+            echo 'export PUBLIC_PATH=https://cdn.jsdelivr.net/npm/@findify/bundle@__MERCHANT_VERSION_RAW__/dist/' >> $BASH_ENV
+            echo 'export FINDIFY_ENV=production' >> $BASH_ENV
 
       - run:
           name: install deps
