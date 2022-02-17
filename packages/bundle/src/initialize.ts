@@ -137,6 +137,7 @@ export default async (_config, sentry) => {
   /** Wait for document ready and analytics parse DOM */
   await _analyticsPromise.promise;
 
+  console.log('INITIALIZING MJS')
   /** Create rest of widgets */
   bulkAddWidgets(cfg.selectors);
 
