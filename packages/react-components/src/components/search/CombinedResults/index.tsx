@@ -19,6 +19,7 @@
  import Pagination from 'components/Pagination';
  
  export default ({ theme = styles, card = ProductCard, itemConfig }) => {
+   console.log('InsideCoombined')
    const {
      container,
      onLoadNext,
@@ -72,7 +73,7 @@
            order: (item) => item.get('position'),
          })}
        </Grid>
-       <div className={theme.buttonContainer} display-if={displayNextButton}>
+       <div className={theme.buttonContainer}>
          <Button
            className={theme.nextButton}
            onClick={onLoadNext}
