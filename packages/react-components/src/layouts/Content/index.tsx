@@ -5,6 +5,7 @@ import styles from 'layouts/Content/styles.css';
 
 import LazyResults from 'components/search/LazyResults';
 import StaticResults from 'components/search/StaticResults';
+import CombinedResults from 'components/search/CombinedResults';
 import { MJSConfiguration, MJSValue, ThemedSFCProps } from 'types';
 import ContentCard from 'components/Cards/Content';
 import { useItems } from '@findify/react-connect';
@@ -24,16 +25,21 @@ export interface IContentSearchProps extends ThemedSFCProps {
 
 const Content = ({ theme = styles }: IContentSearchProps) => {
   const { items, config } = useItems();
+  const paginationConfig = config.getIn(['pagination', 'type']);
+
   if (!items?.size) return null;
-  return (
-    <Branch
-      condition={config.getIn(['pagination', 'type']) === 'lazy'}
-      left={LazyResults}
-      right={StaticResults}
-      card={ContentCard}
-      itemConfig={config.get('item')}
-    />
-  );
+  switch (paginationConfig) {
+    case 'lazy':
+      return <LazyResults card={ContentCard} itemConfig={config.get('item')} />;
+    case 'static':
+      return <StaticResults itemConfig={config.get('item')} />;
+    case 'combined':
+      return (
+        <CombinedResults card={ContentCard} itemConfig={config.get('item')} />
+      );
+    default:
+      return <></>;
+  }
 };
 
 export default process.env.HOT
