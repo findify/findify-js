@@ -62,6 +62,10 @@ export default async (_config, sentry) => {
     ...asyncConfig,
   };
 
+  console.log('LOADING SWIPERS')
+  await import('swiper')
+  await import('swiper/react')
+
   // Register custom components
   if (cfg.components) {
     const extra = Object.keys(cfg.components).reduce(

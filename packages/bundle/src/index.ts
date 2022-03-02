@@ -55,11 +55,6 @@ const loadDependencies = () => {
     );
   }
 
-  console.log('prepushing swiper-react to bundle')
-  deps.push(import(/* webpackChunkName: "swiperreact" */ 'swiper/react'))
-  console.log('prepushing swiper to bundle')
-  deps.push(import(/* webpackChunkName: "swiperreact" */ 'swiper'))
-
   Promise.all(deps)
     .then(([initialize, __, sentry]) => {
       if (
