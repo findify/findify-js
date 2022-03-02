@@ -55,6 +55,9 @@ const loadDependencies = () => {
     );
   }
 
+  console.log('prepushing recommendations to bundle')
+  deps.push(import(/* webpackChunkName: "recommendation" */ '@findify/react-components/src/layouts/Recommendation'))
+
   Promise.all(deps)
     .then(([initialize, __, sentry]) => {
       if (
