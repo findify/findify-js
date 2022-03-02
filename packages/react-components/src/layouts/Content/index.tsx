@@ -25,8 +25,7 @@ export interface IContentSearchProps extends ThemedSFCProps {
 
 const Content = ({ theme = styles }: IContentSearchProps) => {
   const { items, config } = useItems();
-  const paginationConfig =
-    config.getIn(['pagination', 'type']).toString() ?? '';
+  const paginationConfig = config.getIn(['pagination', 'type']);
 
   if (!items?.size) return null;
   switch (paginationConfig) {
@@ -38,6 +37,8 @@ const Content = ({ theme = styles }: IContentSearchProps) => {
       return (
         <CombinedResults card={ContentCard} itemConfig={config.get('item')} />
       );
+    default:
+      return <></>;
   }
 };
 
