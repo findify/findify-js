@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.15.8](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.15.7...@findify/react-components@0.15.8) (2022-03-03)
+
+
+### Bug Fixes
+
+* **@findify/react-components:** add default case for switch ([02d09d2](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/02d09d22aa468316254a7b29d22c7c2fec584e24))
+* **@findify/react-components:** fix ([a3d9c26](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/a3d9c2620257bc0377411bf4312f946f71fadd51))
+* **@findify/react-components:** fix ([c1f2b02](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/c1f2b0227120ffb64dee76b9d034c38a7b8beacd))
+* **@findify/react-components:** fix ([d041fdf](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/d041fdf8a7cd3b68075792a28828033db48e6896))
+* **@findify/react-components:** fix LoadMore not showing in results when Content Search is enabled ([b0ef9fb](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/b0ef9fbfed8e05e6524488f07682c2f3e8696261))
+* **@findify/react-components:** fix LoadMore not showing when Combined option is configured ([8a5df33](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/8a5df332fd49487493d398dc17da5d6519ce2c8f))
+
+
+
+
+
 ## [0.15.7](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.15.6...@findify/react-components@0.15.7) (2022-01-26)
 
 
