@@ -25,7 +25,8 @@ export default {
     virtualizedList: () => import('components/common/VirtualizedList/view'),
     drawer: () => import('components/common/Drawer'),
     dropdown: () => import('components/Dropdown/view'),
-    swiper: () => import('components/Swiper/loader'),
+    swiper: () => import('components/Swiper/view'),
+    swiperRaw: () => import('components/Swiper/raw'),
     rangeSlider: () => import('react-slider'),
   },
 };
