@@ -1,12 +1,12 @@
 {
   "name": "@findify/react-components",
   "description": "Findify react UI components",
-  "version": "0.15.9",
+  "version": "0.15.10",
   "author": "Findify <yourfriends@findify.io>",
   "dependencies": {
-    "@findify/agent": "^1.6.2",
+    "@findify/agent": "^1.6.3",
     "@findify/change-emitter": "^1.0.0",
-    "@findify/react-connect": "^0.8.10",
+    "@findify/react-connect": "^0.8.11",
     "accounting": "^0.4.1",
     "classnames": "^2.2.6",
     "downshift": "^6.1.0",
