@@ -20,7 +20,7 @@ const pickConfigProps = ({ debounce, onError, immutable = false }) => ({
  * that are lost on subsequent requests, because initially state is clear and it just skips generating
  * new state via queryToState
  */
-const _initial = fromJS({ filters: {} });
+const _initial = fromJS({});
 
 /**
  * Agent is a stateful event-based interface to Findify SDK, providing it

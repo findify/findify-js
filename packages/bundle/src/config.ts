@@ -30,7 +30,7 @@ const config: Config = {
     spaceBetweenAmountAndSymbol: false,
     precision: 2,
   },
-  collections: [],
+  collections: ['collections/men'],
   stickers: {
     discount: false,
     outOfStock: false,

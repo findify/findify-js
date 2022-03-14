@@ -1,7 +1,7 @@
 import * as Types from '../types';
 import { getFacetType } from './filters';
 import { identity } from './helpers';
-import { Map } from 'immutable';
+import { Map, fromJS } from 'immutable';
 
 const _initial = Map();
 
@@ -43,8 +43,11 @@ const formatQueryField = key =>
  * @param next response metadata
  * @param defaults default values for agent
  */
+
+const initialFields = fromJS({ filters: {} });
+
 export const queryToState = (prev, next, defaults?) => {
-  const fields = prev.filter((_, key) => next.has(key));
+  const fields = initialFields.merge(prev.filter((_, key) => next.has(key)));
 
   /**
    * Walk trough old keys to prevent new fields tracking
