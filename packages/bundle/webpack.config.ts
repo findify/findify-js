@@ -105,9 +105,6 @@ module.exports = (env: WebpackEnvArgs, { mode }) => {
     module: {
       rules: [
         {
-          parser: { amd: false },
-        },
-        {
           test: /\.css$/,
           include: [path.resolve(componentsPath, 'src')],
           use: [
