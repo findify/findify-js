@@ -44,8 +44,8 @@ const createGlobals = (isDevelopment, isLocal) =>
       [name]: isDevelopment
         ? 'false'
         : isLocal
-        ? (process.env[name] && JSON.stringify(process.env[name])) || name
-        : name,
+          ? (process.env[name] && JSON.stringify(process.env[name])) || name
+          : name,
     }),
     {}
   );
