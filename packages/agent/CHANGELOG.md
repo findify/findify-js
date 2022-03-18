@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.6.4](https://github.com/findify/findify-js/compare/@findify/agent@1.6.3...@findify/agent@1.6.4) (2022-03-18)
+
+
+### Bug Fixes
+
+* **@findify/agent:** reset filters as empty object ([66ee3a8](https://github.com/findify/findify-js/commit/66ee3a83f107fd97bf5e187d764ba08ea6123da0))
+
+
+
+
+
 ## [1.6.3](https://github.com/findify/findify-js/compare/@findify/agent@1.6.2...@findify/agent@1.6.3) (2022-03-14)
 
 **Note:** Version bump only for package @findify/agent
