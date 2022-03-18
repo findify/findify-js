@@ -22,6 +22,10 @@ const pickConfigProps = ({ debounce, onError, immutable = false }) => ({
  */
 const _initial = fromJS({});
 
+const defaultValues = {
+  filters: fromJS({})
+}
+
 /**
  * Agent is a stateful event-based interface to Findify SDK, providing it
  * with features like automated request cancellation, request throttling,
@@ -111,7 +115,9 @@ export class Agent {
     if (!field) {
       this.state = _initial;
     } else {
-      this.state = this.state.delete(field);
+      this.state = defaultValues[field]
+        ? this.state.set('filters', defaultValues[field])
+        : this.state.delete(field);
     }
     this.cache.reset(field);
     return this;
