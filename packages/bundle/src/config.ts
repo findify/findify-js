@@ -2,7 +2,7 @@ import { Config } from '@findify/store-configuration';
 
 const config: Config = {
   sentryDisabled: true,
-  key: '2043819b-d371-42d0-8f1f-757029b87407',
+  key: 'd0a81ccc-62dd-42a9-be8f-b33024dbeaea',
   merchantId: 8330,
   status: 'live',
   platform: 'shopify',
@@ -30,7 +30,7 @@ const config: Config = {
     spaceBetweenAmountAndSymbol: false,
     precision: 2,
   },
-  collections: ['collections/men'],
+  collections: ['products/camping-and-hiking/hiking-clothing/hiking-jackets/c/420'],
   stickers: {
     discount: false,
     outOfStock: false,
