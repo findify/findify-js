@@ -115,7 +115,7 @@ export class Agent {
     if (!field) {
       this.state = _initial;
     } else {
-      this.state = defaultValues[field]
+      this.state = defaultValues[field] 
         ? this.state.set('filters', defaultValues[field])
         : this.state.delete(field);
     }
