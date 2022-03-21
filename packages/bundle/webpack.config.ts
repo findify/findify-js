@@ -44,8 +44,8 @@ const createGlobals = (isDevelopment, isLocal) =>
       [name]: isDevelopment
         ? 'false'
         : isLocal
-        ? (process.env[name] && JSON.stringify(process.env[name])) || name
-        : name,
+          ? (process.env[name] && JSON.stringify(process.env[name])) || name
+          : name,
     }),
     {}
   );
@@ -93,6 +93,7 @@ module.exports = (env: WebpackEnvArgs, { mode }) => {
     },
     stats: 'minimal',
     bail: true,
+    amd: false,
     resolve: {
       extensions: ['.ts', '.tsx', '.js', '.css'],
       alias: {
@@ -104,9 +105,6 @@ module.exports = (env: WebpackEnvArgs, { mode }) => {
     },
     module: {
       rules: [
-        {
-          parser: { amd: false },
-        },
         {
           test: /\.css$/,
           include: [path.resolve(componentsPath, 'src')],
