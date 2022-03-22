@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.1.32](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.1.31...@findify/bundle@7.1.32) (2022-03-22)
+
+
+### Bug Fixes
+
+* **@findify/bundle,@findify/store-configuration,@findify/react-components:** added ability to specify default path name ([d8dddd3](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/d8dddd3c840c9c26994b5380d6516b400b57f627))
+
+
+
+
+
 ## [7.1.31](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.1.30...@findify/bundle@7.1.31) (2022-03-18)
 
 **Note:** Version bump only for package @findify/bundle
