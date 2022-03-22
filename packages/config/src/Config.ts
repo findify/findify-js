@@ -49,7 +49,9 @@ export type Config = {
     /** Search query prefix eq(?findify_q) */
     prefix: string,
     /** Reserved search query keys to keep custom query like UTM tags */
-    keys?: string[]
+    keys?: string[],
+    /** Default path, e.g: /eu */
+    defaultPath?: string
   }
 
   /** Custom nodes mapping where widgets will be attached */
