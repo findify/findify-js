@@ -15,7 +15,8 @@ import { emit } from 'helpers/emmiter';
 const makeSearchUrl = (query, config) => {
   const prefix = config.getIn(['location', 'prefix']);
   const searchUrl = config.getIn(['location', 'searchUrl']);
-  return `${searchUrl}?${prefix ? prefix + '_' : ''}q=${query}`;
+  const defaultPathName = config.getIn(['location', 'defaultPath'], '');
+  return `${defaultPathName}${searchUrl}?${prefix ? prefix + '_' : ''}q=${query}`;
 };
 
 export default ({

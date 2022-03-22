@@ -21,8 +21,9 @@ export const collectionPath = () =>
 export const isCollection = (collections, slot?) =>
   collections && collections.includes(slot || collectionPath());
 
-export const isSearch = () =>
-  window.location.pathname === __root.config.getIn(['location', 'searchUrl']);
+export const buildSearchPagePathName = () => __root.config.getIn(['location', 'defaultPath'], '') + __root.config.getIn(['location', 'searchUrl']);
+
+export const isSearch = () => window.location.pathname === buildSearchPagePathName();
 
 export const listenHistory = (cb) => getHistory().listen(cb);
 
@@ -100,8 +101,7 @@ export const redirectToSearch = (q) => {
       state: { type: 'FindifyUpdate' },
     });
   }
-  window.location.href =
-    __root.config.getIn(['location', 'searchUrl']) + buildQuery({ q });
+  window.location.href = buildSearchPagePathName() + buildQuery({ q });
 };
 
 export const setQuery = (query) => {
