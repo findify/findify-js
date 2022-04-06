@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.15](https://github.com/findify/findify-js/compare/@findify/react-connect@0.8.14...@findify/react-connect@0.8.15) (2022-04-06)
+
+
+### Bug Fixes
+
+* **@findify/react-connect:** rollback changes ([264e971](https://github.com/findify/findify-js/commit/264e971f8c704bc880d9313796031b03b497afd6))
+
+
+
+
+
 ## [0.8.14](https://github.com/findify/findify-js/compare/@findify/react-connect@0.8.13...@findify/react-connect@0.8.14) (2022-04-06)
 
 
