@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.11](https://github.com/findify/findify-js/compare/@findify/store-configuration@0.3.10...@findify/store-configuration@0.3.11) (2022-03-22)
+
+
+### Bug Fixes
+
+* **@findify/bundle,@findify/store-configuration,@findify/react-components:** added ability to specify default path name ([d8dddd3](https://github.com/findify/findify-js/commit/d8dddd3c840c9c26994b5380d6516b400b57f627))
+
+
+
+
+
 ## [0.3.10](https://github.com/findify/findify-js/compare/@findify/store-configuration@0.3.9...@findify/store-configuration@0.3.10) (2022-01-26)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.15.12](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.15.11...@findify/react-components@0.15.12) (2022-03-22)
+
+
+### Bug Fixes
+
+* **@findify/bundle,@findify/store-configuration,@findify/react-components:** added ability to specify default path name ([d8dddd3](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/d8dddd3c840c9c26994b5380d6516b400b57f627))
+
+
+
+
+
 ## [0.15.11](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.15.10...@findify/react-components@0.15.11) (2022-03-18)
 
 **Note:** Version bump only for package @findify/react-components
