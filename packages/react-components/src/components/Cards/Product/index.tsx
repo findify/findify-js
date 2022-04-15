@@ -130,10 +130,8 @@ export default ({
       <div className={theme.image}>
         <Image
           aspectRatio={config.getIn(['image', 'aspectRatio'])}
-          thumbnail={variant.get('thumbnail_url')}
           alt={variant.get('title')}
-          lazy={config.getIn(['image', 'lazy'])}
-          offset={config.getIn(['image', 'lazyOffset'])}
+          lazy={!isAutocomplete && config.getIn(['image', 'lazy'])}
           src={
             config.getIn(['image', 'multiple'])
               ? [variant.get('image_url'), variant.get('image_2_url')]
