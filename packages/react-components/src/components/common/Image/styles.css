@@ -2,6 +2,7 @@
   width: 100%;
   position: relative;
   overflow: hidden;
+  display: block !important;
   img {
     display: block;
     width: 100%;
