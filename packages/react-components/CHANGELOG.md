@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.15.17](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.15.16...@findify/react-components@0.15.17) (2022-04-21)
+
+
+### Bug Fixes
+
+* **@findify/react-components:** clear hash cleaning timeout ([3638d9a](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/3638d9a84a729f72db1717b4959ac079e4c2300c))
+
+
+
+
+
 ## [0.15.16](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.15.15...@findify/react-components@0.15.16) (2022-04-15)
 
 
