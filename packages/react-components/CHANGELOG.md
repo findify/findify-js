@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.15.18](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.15.17...@findify/react-components@0.15.18) (2022-05-02)
+
+
+### Bug Fixes
+
+* **@findify/react-components:** reset only hash history prop ([3b1459c](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/3b1459c9136dea6064008a7bd90eb74e2fb83b62))
+
+
+
+
+
 ## [0.15.17](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.15.16...@findify/react-components@0.15.17) (2022-04-21)
 
 
