@@ -9,11 +9,9 @@
  * * [feedback](https://findify.readme.io/reference#feedback-api) - Provides a way to send information about
  *   user activity on the web page to power our ML and personalization algorithms.
  */
-export enum Type {
-  Autocomplete = 'autocomplete',
-  Search = 'search',
-  SmartCollection = 'smart-collection',
-  Recommendations = 'recommendations',
-  Feedback = 'feedback',
-  Content = 'content',
-}
+export type Type = 'autocomplete' |
+  'search' |
+  'smart-collection' |
+  'recommendations' |
+  'feedback' |
+  'content'

@@ -1,15 +1,11 @@
 import { Pagination } from '../common';
-import { Type as RequestType } from './Type';
+import { GenericRequest } from './GenericRequest';
 import { Base } from './params';
 
 /**
  * Recommendations request.
  */
-export interface Request {
-  type: RequestType.Recommendations;
-  /** Request parameters */
-  params: Params;
-}
+export type Request = GenericRequest<'recommendations', Params>
 
 /**
  * Recommendations request parameters.

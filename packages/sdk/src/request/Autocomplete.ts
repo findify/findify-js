@@ -1,14 +1,10 @@
-import { Type as RequestType } from './Type';
+import { GenericRequest } from './GenericRequest';
 import { Base } from './params';
 
 /**
  * Autocomplete request.
  */
-export interface Request {
-  type: RequestType.Autocomplete;
-  /** Request parameters */
-  params: Params;
-}
+export type Request = GenericRequest<'autocomplete', Params>
 
 /**
  * Autocomplete request parameters.

@@ -1,15 +1,11 @@
 import { LineItem } from '../common';
-import { Type as RequestType } from './Type';
+import { GenericRequest } from './GenericRequest';
 import { Base } from './params';
 
 /**
  * Feedback request.
  */
-export interface Request {
-  type: RequestType.Feedback;
-  /** Request parameters */
-  params: Params;
-}
+export type Request = GenericRequest<'feedback', Params>
 
 /**
  * Feedback request parameters.

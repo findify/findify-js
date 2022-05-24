@@ -57,20 +57,20 @@ export class Client {
    */
   private getEndpoint(req: Req.Request): Endpoint {
     switch (req.type) {
-      case Req.Type.Autocomplete:
+      case 'autocomplete':
         return { path: `/autocomplete` };
-      case Req.Type.Search:
+      case 'search':
         return { path: `/search` };
-      case Req.Type.Content:
+      case 'content':
         return { path: `/search/content` };
-      case Req.Type.SmartCollection:
+      case 'smart-collection':
         return {
           path: `/smart-collection/${req.params.slot}`,
           params: ['slot'],
         };
-      case Req.Type.Recommendations:
+      case 'recommendations':
         return this.getRecommendationsEndpoint(req.params);
-      case Req.Type.Feedback:
+      case 'feedback':
         return { path: `/feedback` };
       default:
         throw new Error('Invalid request type');
@@ -177,9 +177,9 @@ export class Client {
       omit(pathParams.concat(ks), req.params) as T;
 
     switch (req.type) {
-      case Req.Type.Recommendations:
+      case 'recommendations':
         return omitParams<Req.Recommendations.Params>(['type']);
-      case Req.Type.Feedback:
+      case 'feedback':
         return omitParams<Req.Feedback.Params>(['event']);
       default:
         return req.params;

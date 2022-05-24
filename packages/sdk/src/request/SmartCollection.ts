@@ -1,4 +1,4 @@
-import { Type as RequestType } from './Type';
+import { GenericRequest } from './GenericRequest';
 import { List } from './params';
 
 /**
@@ -13,7 +13,4 @@ export interface Params extends List {
 /**
  * Smart collection request.
  */
-export interface Request {
-  type: RequestType.SmartCollection;
-  params: Params;
-}
+export type Request = GenericRequest<'smart-collection', Params>

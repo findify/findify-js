@@ -1,14 +1,10 @@
-import { Type as RequestType } from './Type';
+import { GenericRequest } from './GenericRequest';
 import { List } from './params';
 
 /**
  * Search request.
  */
-export interface Request {
-  type: RequestType.Search;
-  /** Request parameters */
-  params: Params;
-}
+export type Request = GenericRequest<'search', Params>
 
 /**
  * Search request parameters.
