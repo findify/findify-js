@@ -71,7 +71,7 @@
          className
        )}
        href={item.get('product_url')}
-       onClick={e => variant.onClick(e, isSearch)}
+       onClick={e => item.onClick(e, isSearch)}
      >
        <div className={theme.content}>
          <Rating
