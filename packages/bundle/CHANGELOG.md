@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.1.41](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.1.40...@findify/bundle@7.1.41) (2022-05-25)
+
+
+### Bug Fixes
+
+* **@findify/bundle:** removed unnecessary logs ([b6fff2e](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/b6fff2ed7585ebe12c7c3e0ee2ef8ed942801b8b))
+* **@findify/bundle,@findify/react-components,@findify/react-connect:** correctly push hash to the history ([811f4ef](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/811f4efd3af3d4058697645c025bff8b4aa692df))
+
+
+
+
+
 ## [7.1.40](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.1.39...@findify/bundle@7.1.40) (2022-05-24)
 
 **Note:** Version bump only for package @findify/bundle

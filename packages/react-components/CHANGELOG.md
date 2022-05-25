@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.15.20](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.15.19...@findify/react-components@0.15.20) (2022-05-25)
+
+
+### Bug Fixes
+
+* **@findify/bundle,@findify/react-components,@findify/react-connect:** correctly push hash to the history ([811f4ef](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/811f4efd3af3d4058697645c025bff8b4aa692df))
+* **@findify/react-components,@findify/react-connect:** fixed back to product ([077424f](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/077424ff7e0295c1f8319f93c55988bc01674f73))
+
+
+
+
+
 ## [0.15.19](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.15.18...@findify/react-components@0.15.19) (2022-05-24)
 
 **Note:** Version bump only for package @findify/react-components
