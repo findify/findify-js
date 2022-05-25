@@ -126,3 +126,13 @@ export const redirectToPage = async (redirect, meta) => {
   }
   document.location.href = redirect.get('url');
 };
+
+export const updateHash = (hash: string) => {
+  if (isHistoryChanged()) {
+    return getHistory().push({
+      ...(getHistory().location || {}),
+      hash
+    })
+  }
+  document.location.hash = hash;
+}
