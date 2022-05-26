@@ -56,7 +56,6 @@ const sendJSONP = (req: Request, getLatestRequestID) => {
 const sendPOST = (req: Request) =>
   new Promise((resolve, reject) => {
     const headers = {
-      'x-key': req.body.key,
       'Content-type': 'application/json',
     };
     debug('sdk:api:post')('url: ', req.url);
