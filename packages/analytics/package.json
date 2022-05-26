@@ -1,7 +1,7 @@
 {
   "name": "@findify/analytics",
   "description": "Findify analytics",
-  "version": "3.6.1",
+  "version": "3.6.2",
   "main": "lib/index.js",
   "module": "lib/index.js",
   "unpkg": "dist/findify-analytics.js",

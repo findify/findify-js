@@ -1,6 +1,6 @@
 {
   "name": "@findify/react-connect",
-  "version": "0.8.17",
+  "version": "0.8.18",
   "author": "Findify <yourfriends@findify.io>",
   "bugs": {
     "url": "https://github.com/findify/findify-js/issues"
@@ -18,8 +18,8 @@
     "index.d.ts"
   ],
   "dependencies": {
-    "@findify/agent": "^1.6.5",
-    "@findify/analytics": "^3.6.1",
+    "@findify/agent": "^1.6.6",
+    "@findify/analytics": "^3.6.2",
     "immutable": "^4.0.0-rc.12",
     "memoize-one": "^5.1.1"
   },
@@ -29,7 +29,7 @@
     "@babel/plugin-proposal-object-rest-spread": "^7.12.13",
     "@babel/preset-env": "^7.12.16",
     "@babel/preset-typescript": "^7.12.16",
-    "@findify/store-configuration": "^0.3.12",
+    "@findify/store-configuration": "^0.3.13",
     "babel-loader": "^8.2.2",
     "del-cli": "^3.0.1",
     "dotenv": "^8.2.0",
