@@ -33,8 +33,9 @@ export class Item extends createRecord('Item') {
     preventEvents(e);
     const openInNewWindow = e && (e.ctrlKey || e.metaKey);
     this.sendAnalytics(!openInNewWindow);
-    if (attachHash && !openInNewWindow && typeof window !== 'undefined') {  
-      document.location.hash = this.get('id');
+    if (attachHash && !openInNewWindow && typeof window !== 'undefined') { 
+      // @ts-ignore
+      window.findify.utils.updateHash(this.get('id'))
     }
     navigate(openInNewWindow, this.get('product_url'));
   };

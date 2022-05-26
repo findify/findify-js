@@ -41,11 +41,13 @@ const Search = ({ isCollection, theme = styles }) => {
   ]);
 
   useEffect(() => {
-    setTimeout(() => {
-      window.findify.utils.history.push({
-        hash: ''
-      });
+    const to = setTimeout(() => {
+      window.findify.utils.updateHash('')
     }, 5000);
+
+    return () => {
+      clearTimeout(to);
+    }
   }, [])
 
   if (!items.size) return null;

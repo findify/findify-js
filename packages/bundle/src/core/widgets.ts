@@ -86,6 +86,10 @@ const getEntity = (
         (node && node.getAttribute(keySelector)) ||
         ++index;
 
+      if (cache.some(w => w.key === key)) {
+        return cache;
+      }
+
       let config = createConfig(widgetType, node, key, _config);
 
       /** Change feature type to collection if we are on collection page */

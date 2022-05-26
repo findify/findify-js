@@ -3,6 +3,48 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.15.20](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.15.19...@findify/react-components@0.15.20) (2022-05-25)
+
+
+### Bug Fixes
+
+* **@findify/bundle,@findify/react-components,@findify/react-connect:** correctly push hash to the history ([811f4ef](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/811f4efd3af3d4058697645c025bff8b4aa692df))
+* **@findify/react-components,@findify/react-connect:** fixed back to product ([077424f](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/077424ff7e0295c1f8319f93c55988bc01674f73))
+
+
+
+
+
+## [0.15.19](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.15.18...@findify/react-components@0.15.19) (2022-05-24)
+
+**Note:** Version bump only for package @findify/react-components
+
+
+
+
+
+## [0.15.18](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.15.17...@findify/react-components@0.15.18) (2022-05-02)
+
+
+### Bug Fixes
+
+* **@findify/react-components:** reset only hash history prop ([3b1459c](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/3b1459c9136dea6064008a7bd90eb74e2fb83b62))
+
+
+
+
+
+## [0.15.17](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.15.16...@findify/react-components@0.15.17) (2022-04-21)
+
+
+### Bug Fixes
+
+* **@findify/react-components:** clear hash cleaning timeout ([3638d9a](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/3638d9a84a729f72db1717b4959ac079e4c2300c))
+
+
+
+
+
 ## [0.15.16](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.15.15...@findify/react-components@0.15.16) (2022-04-15)
 
 

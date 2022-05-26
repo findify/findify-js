@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.5.3](https://github.com/findify/findify-js/compare/@findify/sdk@2.5.2...@findify/sdk@2.5.3) (2022-05-24)
+
+
+### Bug Fixes
+
+* **@findify/sdk:** expose request types as JS object in SDK ([5dd5170](https://github.com/findify/findify-js/commit/5dd5170f9e139a3ad5872832e2fbbbc6554b3617))
+
+
+
+
+
 ## [2.5.2](https://github.com/findify/findify-js/compare/@findify/sdk@2.5.1...@findify/sdk@2.5.2) (2021-09-21)
 
 **Note:** Version bump only for package @findify/sdk

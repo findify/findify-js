@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.17](https://github.com/findify/findify-js/compare/@findify/react-connect@0.8.16...@findify/react-connect@0.8.17) (2022-05-25)
+
+
+### Bug Fixes
+
+* **@findify/bundle,@findify/react-components,@findify/react-connect:** correctly push hash to the history ([811f4ef](https://github.com/findify/findify-js/commit/811f4efd3af3d4058697645c025bff8b4aa692df))
+* **@findify/react-components,@findify/react-connect:** fixed back to product ([077424f](https://github.com/findify/findify-js/commit/077424ff7e0295c1f8319f93c55988bc01674f73))
+
+
+
+
+
+## [0.8.16](https://github.com/findify/findify-js/compare/@findify/react-connect@0.8.15...@findify/react-connect@0.8.16) (2022-05-24)
+
+**Note:** Version bump only for package @findify/react-connect
+
+
+
+
+
 ## [0.8.15](https://github.com/findify/findify-js/compare/@findify/react-connect@0.8.14...@findify/react-connect@0.8.15) (2022-04-06)
 
 
