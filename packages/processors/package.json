@@ -17,7 +17,7 @@
     "cssnano-browser": "^4.0.5",
     "flat": "^4.0.0",
     "lodash": "^4.17.20",
-    "postcss": "^6.0.22",
+    "postcss": "^7.0.36",
     "postcss-custom-properties": "^7.0.0",
     "webpack-cli": "^4.5.0"
   },
