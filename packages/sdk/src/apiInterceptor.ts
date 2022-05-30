@@ -20,7 +20,7 @@ const checkBody = (body) => {
     if (body?.search) {
         bodyChanges.search = { ...body.search, ...checkSearchParam(body.search) }
     }
-    bodyChanges.lallero = 'lallero';
+
     return bodyChanges;
 }
 
