@@ -1,35 +1,29 @@
 import { Request } from './api';
 
 export const requestInterceptor = (request: Request) => {
-    return { ...request, ...checkRequest(request) };
+    return checkRequest(request);
 }
 
 const checkRequest = (request: Request) => {
-    let requestChanges: any = {};
-
-    if (request.body) {
-        requestChanges.body = { ...request.body, ...checkBody(request.body) };
+    if (request?.body) {
+        request.body = checkBody(request.body);
     }
 
-    return requestChanges;
+    return request;
 }
 
 const checkBody = (body) => {
-    let bodyChanges: any = {};
-
     if (body?.search) {
-        bodyChanges.search = { ...body.search, ...checkSearchParam(body.search) }
+        body.search = checkSearh(body.search);
     }
 
-    return bodyChanges;
+    return body;
 }
 
-const checkSearchParam = (search: any) => {
-    let changes: any = {};
-
-    if (search.from) {
-        changes.from = search.from < 1 ? 0 : search.from;
+const checkSearh = (search: any) => {
+    if (search?.from) {
+        search.from = search.from < 1 ? 0 : search.from;
     }
 
-    return changes;
+    return search;
 }
