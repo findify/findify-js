@@ -1,12 +1,12 @@
 {
   "name": "@findify/store-configuration",
-  "version": "0.3.14",
+  "version": "0.3.15",
   "description": "Default store customization types and options",
   "main": "lib/index.js",
   "types": "types/index.d.ts",
   "license": "MIT",
   "devDependencies": {
-    "@findify/sdk": "^2.5.5",
+    "@findify/sdk": "^2.5.6",
     "immutable": "^4.0.0-rc.12"
   },
   "files": [
