@@ -5,6 +5,7 @@ import jsonp from './jsonp';
 
 import { retryTimes } from './utils';
 import { Method, Body } from './request';
+import { requestInterceptor } from './apiInterceptor';
 
 /**
  * JSON API request parameters.
@@ -34,7 +35,8 @@ export interface JSONPOptions {
  */
 export type Options = AxiosOptions | JSONPOptions;
 
-const sendJSONP = (req: Request, getLatestRequestID) => {
+const sendJSONP = (request: Request, getLatestRequestID) => {
+  const req = requestInterceptor(request);
   const query = qs.stringify(req.body, { addQueryPrefix: true });
   const url = `${req.url}${query}`;
   return new Promise((resolve, reject) => {
@@ -53,8 +55,9 @@ const sendJSONP = (req: Request, getLatestRequestID) => {
   });
 };
 
-const sendPOST = (req: Request) =>
+const sendPOST = (request: Request) =>
   new Promise((resolve, reject) => {
+    const req = requestInterceptor(request);
     const headers = {
       'Content-type': 'application/json',
     };
