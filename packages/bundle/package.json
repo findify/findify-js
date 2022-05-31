@@ -1,7 +1,7 @@
 {
   "name": "@findify/bundle",
   "description": "Findify Out Of Box solution",
-  "version": "7.1.45",
+  "version": "7.1.46",
   "main": "lib/index.js",
   "tags": [
     "findify",
