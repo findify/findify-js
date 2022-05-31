@@ -129,7 +129,7 @@ export const redirectToPage = async (redirect, meta) => {
 
 export const updateHash = (hash: string) => {
   if (isHistoryChanged()) {
-    return getHistory().push({
+    return getHistory().replace({
       ...(getHistory().location || {}),
       hash
     })
