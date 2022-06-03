@@ -49,7 +49,6 @@ export default memo(({ theme = styles }) => {
   useEffect(() => {
     return window.findify.utils.listenHistory((location, action) => {
       if (action !== 'POP') return;
-      console.log(window.findify.utils.getQuery());
       const { filters, sort } = window.findify.utils.getQuery();
       !filters ? onReset() : update('filters', () => filters);
       update('sort', () => sort ? sort : [])
