@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.15.23](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.15.22...@findify/react-components@0.15.23) (2022-05-30)
+
+**Note:** Version bump only for package @findify/react-components
+
+
+
+
+
+## [0.15.22](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.15.21...@findify/react-components@0.15.22) (2022-05-26)
+
+
+### Bug Fixes
+
+* **@findify/bundle,@findify/store-configuration,@findify/react-components:** added ability to provide default pathname ([4f5d140](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/4f5d140e98716293ae1ff2e0820ea904e80213d0))
+* **@findify/react-components:** improved image lazy loading ([2a92338](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/2a92338bca3a6dbe683165b7d95a349ab3f80462))
+
+
+
+
+
 ## [0.15.21](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.15.20...@findify/react-components@0.15.21) (2022-05-26)
 
 **Note:** Version bump only for package @findify/react-components

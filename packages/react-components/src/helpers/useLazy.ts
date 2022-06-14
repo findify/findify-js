@@ -105,7 +105,7 @@ export default (offset = 300) => {
 
       /** Scroll to top on query change */
       emit('scrollTop');
-      setTimeout(() => (pending.current = false), 1000);
+      pending.current = false;
 
       state.current = update;
       return update;
