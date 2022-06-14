@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.15.24](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.15.23...@findify/react-components@0.15.24) (2022-06-14)
+
+
+### Bug Fixes
+
+* **@findify/react-components:** timeout in useLazy update function was causing state freeze ([e7cbc11](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/e7cbc11357376388ef3302d52ad5892511afa3e4))
+
+
+
+
+
 ## [0.15.23](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.15.22...@findify/react-components@0.15.23) (2022-05-30)
 
 **Note:** Version bump only for package @findify/react-components
