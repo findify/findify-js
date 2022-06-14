@@ -9,7 +9,7 @@ import Title from 'components/search/DesktopFacets/Title';
 
 import { useFacets } from '@findify/react-connect';
 import { Immutable } from '@findify/store-configuration';
-import { memo, useCallback, useMemo, useState, useEffect } from 'react';
+import { memo, useCallback, useMemo, useState } from 'react';
 import useTranslations from 'helpers/useTranslations';
 import { useEvents, emit } from 'helpers/emmiter';
 
@@ -22,7 +22,7 @@ const DefaultContent = ({ theme, children, title }) => (
 );
 
 export default memo(({ theme = styles }) => {
-  const { facets, meta, onReset, update, config } = useFacets<Immutable.SearchConfig>();
+  const { facets, meta, onReset, config } = useFacets<Immutable.SearchConfig>();
   const translate = useTranslations();
 
   const [isHorizontal, isHidable, isSticky, isAccordion] = useMemo(
@@ -45,15 +45,6 @@ export default memo(({ theme = styles }) => {
       .keySeq()
       .toArray()
   );
-
-  useEffect(() => {
-    return window.findify.utils.listenHistory((location, action) => {
-      if (action !== 'POP') return;
-      const { filters, sort } = window.findify.utils.getQuery();
-      !filters ? onReset() : update('filters', () => filters);
-      update('sort', () => sort ? sort : [])
-    })
-  })
 
   const toggleFacet = (name) =>
     setFacetsStates((facets) => {
