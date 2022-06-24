@@ -32,7 +32,7 @@ export default (render, widget: Widget<Immutable.SearchConfig>) => {
 
   /** Listen to location back/fwd */
   const stopListenLocation = listenHistory((history, action) => {
-    if (history.action !== 'POP' || action !== 'POP') return;
+    if (history.action !== 'POP' && action !== 'POP') return;
     agent.applyState(getQuery());
     render('initial');
   });
