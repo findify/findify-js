@@ -115,7 +115,7 @@ export class Agent {
     if (!field) {
       this.state = _initial;
     } else {
-      this.state = defaultValues[field] 
+      this.state = defaultValues[field]
         ? this.state.set('filters', defaultValues[field])
         : this.state.delete(field);
     }
@@ -244,7 +244,7 @@ export class Agent {
     return this.config.immutable
       ? value
       : isImmutable(value)
-      ? value.toJS()
-      : value;
+        ? value.toJS()
+        : value;
   }
 }
