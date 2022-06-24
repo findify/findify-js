@@ -130,7 +130,7 @@ export class Agent {
   public applyState(state: any) {
     this.reset();
     for (const key in state) {
-      console.log('this.state', key, state[key]);
+      console.log('Agent this.state', key, state[key]);
       this.set(key, state[key]);
     }
     if (state.offset) this.set('offset', state.offset);

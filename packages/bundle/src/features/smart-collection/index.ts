@@ -34,7 +34,7 @@ export default (render, widget: Widget<Immutable.SearchConfig>) => {
   const stopListenLocation = listenHistory(({ action }) => {
     if (action !== 'POP') return;
     const query = getQuery();
-    console.log('query', query);
+    console.log('Smartcollection query', query);
     agent.applyState(query);
     render('initial');
   });
