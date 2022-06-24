@@ -56,7 +56,7 @@ export const getQuery = (): Record<string, unknown> => {
     decoder: (value) => decodeURIComponent(value.replace(/\+/g, ' ')),
     ignoreQueryPrefix: true,
   });
-
+  console.log('elements', elements);
   return Object.keys(elements).reduce((acc, key) => {
     const _key = prefix ? key.replace(`${prefix}_`, '') : key;
     if (!keys.includes(_key)) return acc;

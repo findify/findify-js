@@ -115,7 +115,7 @@ export class Agent {
     if (!field) {
       this.state = _initial;
     } else {
-      this.state = defaultValues[field] 
+      this.state = defaultValues[field]
         ? this.state.set('filters', defaultValues[field])
         : this.state.delete(field);
     }
@@ -129,7 +129,10 @@ export class Agent {
    */
   public applyState(state: any) {
     this.reset();
-    for (const key in state) this.set(key, state[key]);
+    for (const key in state) {
+      console.log('this.state', key, state[key]);
+      this.set(key, state[key]);
+    }
     if (state.offset) this.set('offset', state.offset);
   }
 
@@ -144,6 +147,7 @@ export class Agent {
     const oldValue = this.state.get(field);
     const fx = isFunction(update) && update;
     const value = fx ? fromJS(fx(this.format(oldValue))) : fromJS(update);
+    console.log('new value', value);
     if (field !== 'offset') this.reset('offset'); // Reset offset on query change
     if (fx && !value) return this; // Skip new value setting if update doesn't returned new value
 
@@ -244,7 +248,7 @@ export class Agent {
     return this.config.immutable
       ? value
       : isImmutable(value)
-      ? value.toJS()
-      : value;
+        ? value.toJS()
+        : value;
   }
 }
