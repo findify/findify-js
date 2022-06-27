@@ -1,6 +1,7 @@
 /**
  * @module components/autocomplete/Content
  */
+import cx from 'classnames';
 import ContentCard from 'components/Cards/Content';
 import Grid from 'components/common/Grid';
 import MapArray from 'components/common/MapArray';
@@ -23,13 +24,14 @@ export default ({
   });
 
   registerItems(items, config.get('limit'));
+
   return (
     <div className={theme.root} display-if={items.size}>
       <Title>{config.get('title')}</Title>
       <Container
         gutter={!isBubble && 12}
         columns={!isBubble && config.getIn(['breakpoints', type], '12')}
-        className={theme.container}
+        className={cx(theme.container, theme[config.get('template')])}
       >
         {MapArray({
           array: items,
