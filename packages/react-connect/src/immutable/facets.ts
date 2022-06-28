@@ -10,48 +10,49 @@ const getFacetValue = (_this, type) => {
   return _this.get('value');
 }
 
-const updateFilters = (filterName: string, _value: any, isSelected:boolean, type) =>
-(f: Map<any, any> = Map()) =>
-  f.withMutations(filters => {
-    const isCategory = type === 'category';
-    const value = isCategory ? List([_value]) : _value;
-    const [key, n] = filterName.split(/(?=\d+)/);
+const updateFilters = (filterName: string, _value: any, isSelected: boolean, type) =>
+  (f: Map<any, any> = Map()) =>
+    f.withMutations(filters => {
+      const isCategory = type === 'category';
+      const value = isCategory ? List([_value]) : _value;
+      const [key, n] = filterName.split(/(?=\d+)/);
 
-    if (isSelected) {
-      const index = filters.get(filterName).indexOf(value);
-      
-      if (!isCategory) return filters.removeIn([filterName, index]);
-  
-      filters.forEach((_, _fName) => {
-        if (!_fName.includes(key) || Number(_fName.split(/(?=\d+)/)[1]) < Number(n)) return;
-        return filters.remove(_fName);
-      });
-  
-      return filters;
-    }
+      // Check isSelected state and duplications
+      if (isSelected || (filters.has(filterName) && filters.get(filterName).includes(value))) {
+        const index = filters.get(filterName).indexOf(value);
 
-    if (filters.has(filterName) || (isCategory && filters.find((_, k) => k.includes(key)))) {
-      /** Direct set value for category facet coz
-       *  just one category could be selected in the same time 
-       */
-      if (isCategory) {
+        if (!isCategory) return filters.removeIn([filterName, index]);
+
         filters.forEach((_, _fName) => {
           if (!_fName.includes(key) || Number(_fName.split(/(?=\d+)/)[1]) < Number(n)) return;
           return filters.remove(_fName);
         });
-        return filters.set(filterName, fromJS([value]));
-      };
-  
-      return filters.set(filterName, filters.get(filterName).push(value));
-    }
-  
-    return filters.set(filterName, fromJS([value]));
-  })
 
-export class Facet extends createRecord('Facet'){
+        return filters;
+      }
+
+      if (filters.has(filterName) || (isCategory && filters.find((_, k) => k.includes(key)))) {
+        /** Direct set value for category facet coz
+         *  just one category could be selected in the same time 
+         */
+        if (isCategory) {
+          filters.forEach((_, _fName) => {
+            if (!_fName.includes(key) || Number(_fName.split(/(?=\d+)/)[1]) < Number(n)) return;
+            return filters.remove(_fName);
+          });
+          return filters.set(filterName, fromJS([value]));
+        };
+
+        return filters.set(filterName, filters.get(filterName).push(value));
+      }
+
+      return filters.set(filterName, fromJS([value]));
+    })
+
+export class Facet extends createRecord('Facet') {
   updater: any;
 
-  constructor(facet, updater){
+  constructor(facet, updater) {
     super(facet.update('values', values =>
       values.map(v => new FacetValue(v, updater, facet))
     ));
@@ -76,18 +77,18 @@ export class Facet extends createRecord('Facet'){
   }
 }
 
-export class FacetValue extends createRecord('FacetValue'){
+export class FacetValue extends createRecord('FacetValue') {
   updater: any;
   index: any;
   type: any;
   cursor: any;
 
-  constructor(value, updater, facet){
+  constructor(value, updater, facet) {
     super(value.update('children', children => children &&
       /** Patch children facets in category facet */
       children.map(v => new FacetValue(v, updater, facet))
     ));
-    
+
     this.updater = updater;
     this.index = value.get('name');
     this.type = facet.get('type');
