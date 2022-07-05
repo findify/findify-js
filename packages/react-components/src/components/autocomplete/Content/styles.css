@@ -1,6 +1,11 @@
 .root {
 }
 
-.container{
+.container {
   margin: 0 -10px;
+}
+
+.horizontal {
+  display: flex;
+  flex-wrap: wrap;
 }
