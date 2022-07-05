@@ -17,7 +17,6 @@ const updateFilters = (filterName: string, _value: any, isSelected: boolean, typ
       const value = isCategory ? List([_value]) : _value;
       const [key, n] = filterName.split(/(?=\d+)/);
 
-      // Check isSelected state and duplications
       if (isSelected || (filters.has(filterName) && filters.get(filterName).includes(value))) {
         const index = filters.get(filterName).indexOf(value);
 
