@@ -80,7 +80,7 @@ export default async (_config, sentry) => {
   }
   // Register custom components
   injectComponents(cfg.components);
-  delete cfg.components;
+  if (cfg.components) delete cfg.components;
 
   const injectStyles = async (styles) => {
     if (!styles) return;
