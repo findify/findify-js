@@ -23,7 +23,7 @@ const isReady = (() => {
   if (global.findify) return false;
   global.findify = {};
   __root.listen = emitter.listen;
-  __root.emit = emitter.emit; 
+  __root.emit = emitter.emit;
   __root.addListeners = emitter.addListeners;
 
   /** Remove modules cache from Webpack */
@@ -62,21 +62,37 @@ export default async (_config, sentry) => {
     ...asyncConfig,
   };
 
+  const injectComponents = async (components) => {
+    if (components) {
+      const extra = Object.keys(components).reduce(
+        (acc, k) => ({
+          ...acc,
+          [k]: isString(components[k])
+            ? new Function('return ' + components[k])()
+            : components[k],
+        }),
+        {}
+      );
+      await __root.invalidate();
+      window.findifyJsonp.push([['extra'], extra]);
+      debug('bundle')('customizations:', extra);
+    }
+  }
   // Register custom components
-  if (cfg.components) {
-    const extra = Object.keys(cfg.components).reduce(
-      (acc, k) => ({
-        ...acc,
-        [k]: isString(cfg.components[k])
-          ? new Function('return ' + cfg.components[k])()
-          : cfg.components[k],
-      }),
-      {}
-    );
-    await __root.invalidate();
-    window.findifyJsonp.push([['extra'], extra]);
-    delete cfg.components;
-    debug('bundle')('customizations:', extra);
+  injectComponents(cfg.components);
+  if (cfg.components) delete cfg.components;
+
+  const injectStyles = async (styles) => {
+    if (!styles) return;
+    const removeStylesTag = () => {
+      const element = document.getElementById('findify-styles');
+      if (element && element.parentNode) element.parentNode.removeChild(element);;
+    };
+
+    let styleTag = document.createElement('style');
+    document.body.appendChild(styleTag);
+    removeStylesTag()
+    styleTag.innerHTML = styles;
   }
 
   __root.config = fromJS(cfg);
@@ -146,13 +162,14 @@ export default async (_config, sentry) => {
 
   await resolveCallback(__root, 'findifyCallbacks'); // <- Callback after widgets are created
 
-  /**
-   * Notify devtools about installation
-   */
+
   if (
     /Chrome/.test(navigator.userAgent) &&
     /Google Inc/.test(navigator.vendor)
   ) {
+    /**
+   * Notify devtools about installation
+   */
     window.postMessage(
       {
         type: 'init',
@@ -161,6 +178,18 @@ export default async (_config, sentry) => {
       },
       window.location.origin
     );
+    /**
+   * Listen devtools for staging components
+   */
+    window.addEventListener('message', async ({ data }) => {
+      const { type, response } = data;
+      if (type === 'components') {
+        injectComponents(response);
+      }
+      if (type === 'styles') {
+        injectStyles(response.compiled);
+      }
+    });
   }
 
   global.FindifyAnalytics = Analytics;
