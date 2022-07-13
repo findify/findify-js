@@ -38,8 +38,7 @@ const isReady = (() => {
   return true;
 })();
 
-const isString = (value) =>
-  typeof value === 'string' || value instanceof String;
+
 
 const _analyticsPromise = (() => {
   let resolve;
@@ -62,6 +61,9 @@ export default async (_config, sentry) => {
     ...asyncConfig,
   };
 
+  const isString = (value) =>
+    typeof value === 'string' || value instanceof String;
+
   const injectComponents = async (components) => {
     if (components) {
       const extra = Object.keys(components).reduce(
@@ -74,13 +76,10 @@ export default async (_config, sentry) => {
         {}
       );
       await __root.invalidate();
-      window.findifyJsonp.push([['extra'], extra]);
+      window.findifyJsonp.push([['extra'], extra, ['lallero']]);
       debug('bundle')('customizations:', extra);
     }
   }
-  // Register custom components
-  injectComponents(cfg.components);
-  if (cfg.components) delete cfg.components;
 
   const injectStyles = async (styles) => {
     if (!styles) return;
@@ -94,6 +93,10 @@ export default async (_config, sentry) => {
     removeStylesTag()
     styleTag.innerHTML = styles;
   }
+
+  // Register custom components
+  injectComponents(cfg.components);
+  if (cfg.components) delete cfg.components;
 
   __root.config = fromJS(cfg);
   __root.sentry = sentry;
@@ -162,14 +165,11 @@ export default async (_config, sentry) => {
 
   await resolveCallback(__root, 'findifyCallbacks'); // <- Callback after widgets are created
 
-
   if (
     /Chrome/.test(navigator.userAgent) &&
     /Google Inc/.test(navigator.vendor)
   ) {
-    /**
-   * Notify devtools about installation
-   */
+
     window.postMessage(
       {
         type: 'init',
@@ -178,17 +178,17 @@ export default async (_config, sentry) => {
       },
       window.location.origin
     );
-    /**
-   * Listen devtools for staging components
-   */
     window.addEventListener('message', async ({ data }) => {
       const { type, response } = data;
+      // On extension load and on component saved (onCommit), staging components are saved and sent.
       if (type === 'components') {
         injectComponents(response);
       }
+      // On extension load and on styles saved (onCommit), custom styles are saved and sent.
       if (type === 'styles') {
         injectStyles(response.compiled);
       }
+
     });
   }
 
