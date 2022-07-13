@@ -76,7 +76,7 @@ export default async (_config, sentry) => {
         {}
       );
       await __root.invalidate();
-      window.findifyJsonp.push([['extra'], extra, ['lallero']]);
+      window.findifyJsonp.push([['extra'], extra]);
       debug('bundle')('customizations:', extra);
     }
   }
