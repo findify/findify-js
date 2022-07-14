@@ -562,7 +562,7 @@ const config: Config = {
     recommendations: {},
   },
   merchantName: 'findify-staging.myshopify.com',
-  mjs_version: '7.1.51',
+  mjs_version: '7.1.0',
 };
 
 export default config;
