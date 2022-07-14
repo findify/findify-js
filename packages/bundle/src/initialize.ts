@@ -62,38 +62,23 @@ export default async (_config, sentry) => {
     ...asyncConfig,
   };
 
-  const injectComponents = async (components) => {
-    if (components) {
-      const extra = Object.keys(components).reduce(
-        (acc, k) => ({
-          ...acc,
-          [k]: isString(components[k])
-            ? new Function('return ' + components[k])()
-            : components[k],
-        }),
-        {}
-      );
-      await __root.invalidate();
-      window.findifyJsonp.push([['extra'], extra]);
-      debug('bundle')('customizations:', extra);
-    }
-  }
   // Register custom components
-  injectComponents(cfg.components);
-  if (cfg.components) delete cfg.components;
-
-  const injectStyles = async (styles) => {
-    if (!styles) return;
-    const removeStylesTag = () => {
-      const element = document.getElementById('findify-styles');
-      if (element && element.parentNode) element.parentNode.removeChild(element);;
-    };
-
-    let styleTag = document.createElement('style');
-    document.body.appendChild(styleTag);
-    removeStylesTag()
-    styleTag.innerHTML = styles;
+  if (cfg.components) {
+    const extra = Object.keys(cfg.components).reduce(
+      (acc, k) => ({
+        ...acc,
+        [k]: isString(cfg.components[k])
+          ? new Function('return ' + cfg.components[k])()
+          : cfg.components[k],
+      }),
+      {}
+    );
+    await __root.invalidate();
+    window.findifyJsonp.push([['extra'], extra]);
+    delete cfg.components;
+    debug('bundle')('customizations:', extra);
   }
+
 
   __root.config = fromJS(cfg);
   __root.sentry = sentry;
@@ -162,14 +147,11 @@ export default async (_config, sentry) => {
 
   await resolveCallback(__root, 'findifyCallbacks'); // <- Callback after widgets are created
 
-
   if (
     /Chrome/.test(navigator.userAgent) &&
     /Google Inc/.test(navigator.vendor)
   ) {
-    /**
-   * Notify devtools about installation
-   */
+
     window.postMessage(
       {
         type: 'init',
@@ -178,17 +160,38 @@ export default async (_config, sentry) => {
       },
       window.location.origin
     );
-    /**
-   * Listen devtools for staging components
-   */
     window.addEventListener('message', async ({ data }) => {
       const { type, response } = data;
+      // On extension load and on component saved (onCommit), staging components are saved and sent.
       if (type === 'components') {
-        injectComponents(response);
+        console.log('[MJS]: inject updated components');
+        const content = Object.keys(response).reduce((acc, c) =>
+          [...acc, `"${response[c].hash}": ${response[c].code.substring(0, response[c].code.length - 1)}`], []
+        ).join(',');
+        const script = document.createElement('script');
+        script.textContent = `
+          window.findifyJsonp.push([['extra'], {${content}}]);
+          window.findify.invalidate();
+        `;
+        (document.head || document.documentElement).appendChild(script);
+        script.remove();
       }
+      // On extension load and on styles saved (onCommit), custom styles are saved and sent.
       if (type === 'styles') {
-        injectStyles(response.compiled);
+        const { compiled } = response;
+        if (compiled) {
+          console.log('[MJS]: inject new styles');
+          let styleTag = document.createElement('style');
+          document.body.appendChild(styleTag);
+
+          //Remove previous styleTag
+          const element = document.getElementById('findify-styles');
+          if (element && element.parentNode) element.parentNode.removeChild(element);
+
+          styleTag.innerHTML = compiled;
+        }
       }
+
     });
   }
 
