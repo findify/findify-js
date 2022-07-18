@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.15.27](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.15.26...@findify/react-components@0.15.27) (2022-07-18)
+
+
+### Bug Fixes
+
+* **@findify/react-components:** increased input element focus timeout in autocomplete sidebar component ([151667a](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/151667a5c049293682d9dfc7771922bd98ce1748))
+
+
+
+
+
 ## [0.15.26](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.15.25...@findify/react-components@0.15.26) (2022-07-08)
 
 **Note:** Version bump only for package @findify/react-components
