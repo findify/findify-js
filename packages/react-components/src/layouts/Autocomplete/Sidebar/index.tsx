@@ -41,7 +41,7 @@ export default ({ theme = styles, config }) => {
 
   useEffect(() => {
     if (input.current) {
-      setTimeout(() => input.current?.focus(), 100);
+      setTimeout(() => input.current?.focus(), 500);
     }
     document.addEventListener('focusout', onFocusOut, true);
     return () => {
