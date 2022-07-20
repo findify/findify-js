@@ -136,7 +136,7 @@ export class Client {
     // - we can't safely rely on URL spec: https://url.spec.whatwg.org/
     // - we need to support old browsers: https://caniuse.com/#search=URL
     // - 45 kb just to concat url segments: https://github.com/medialize/URI.js/issues/172#issuecomment-273685906
-    return `${this.config.url}${endpoint.path}`;
+    return `${this.config.url}/${this.config.key}${endpoint.path}`;
   }
 
   /**

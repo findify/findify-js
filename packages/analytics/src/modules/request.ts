@@ -8,8 +8,8 @@ declare module global {
   const window: any;
 }
 
-const getEndpoint = (endpoint?: string): string =>
-  !endpoint ? settings.searchApiUrl + '/feedback' : endpoint;
+const getEndpoint = (endpoint?: string, key = ''): string =>
+  !endpoint ? settings.searchApiUrl + `/${key}` + '/feedback' : endpoint;
 
 const makeQuery = (query) => stringify({ ...query, t_client: Date.now() });
 
@@ -27,7 +27,7 @@ const BeaconRequest = (data: any, endpoint?: string) =>
   new Promise((resolve) => {
     const { key, ...rest } = data;
     global.navigator.sendBeacon(
-      `${getEndpoint(endpoint)}?key=${key}`,
+      getEndpoint(endpoint, key),
       JSON.stringify({ ...rest, t_client: Date.now() })
     );
     resolve(true);
