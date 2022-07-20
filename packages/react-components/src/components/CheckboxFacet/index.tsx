@@ -13,8 +13,7 @@ import { ThemedSFCProps, MJSConfiguration, IFacet } from 'types';
 import content from 'components/CheckboxFacet/content';
 import useTranslations from 'helpers/useTranslations';
 import VirtualizedList from 'components/common/VirtualizedList';
-import escapeRegExp from 'lodash/escapeRegExp';
-import styles from 'components/CheckboxFacet/styles.css';
+import styles from 'components/CheckboxFacet/styles.css';;
 
 /** Props that CheckboxFacet accepts */
 export interface ICheckboxFacetProps extends ThemedSFCProps {
@@ -54,8 +53,7 @@ export default ({
 
   const items = useMemo(() => {
     if (isExpanded && search) {
-      const regexp = new RegExp(escapeRegExp(search), 'gi');
-      return facet.get('values').filter((i) => regexp.test(i.get('value')));
+      return facet.get('values').filter((i) => i.get('value').toLowerCase().includes(search.toLowerCase()));
     }
     return facet.get('values');
   }, [search, isExpanded, facet]);
