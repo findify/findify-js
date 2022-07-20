@@ -6,7 +6,7 @@ export const env = {
 
   production: {
     searchApiUrl: 'https://api.findify.io/v4',
-    bigcommerceTrackingUrl: 'https://order.findify.io/bigcommerce',
+    bigcommerceTrackingUrl: 'https://order.findify.io/bigcommerce', 
   }
 }
 
