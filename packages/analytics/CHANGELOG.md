@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.6.3](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/analytics@3.6.2...@findify/analytics@3.6.3) (2022-07-20)
+
+
+### Bug Fixes
+
+* **@findify/analytics,@findify/sdk:** updated search api domain ([36d0272](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/36d0272977105bd818a9ce199b3c4e4d71e3e7d6))
+
+
+
+
+
 ## [3.6.2](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/analytics@3.6.1...@findify/analytics@3.6.2) (2022-05-26)
 
 

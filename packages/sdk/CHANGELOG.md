@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.5.7](https://github.com/findify/findify-js/compare/@findify/sdk@2.5.6...@findify/sdk@2.5.7) (2022-07-20)
+
+
+### Bug Fixes
+
+* **@findify/analytics,@findify/sdk:** updated search api domain ([36d0272](https://github.com/findify/findify-js/commit/36d0272977105bd818a9ce199b3c4e4d71e3e7d6))
+
+
+
+
+
 ## [2.5.6](https://github.com/findify/findify-js/compare/@findify/sdk@2.5.5...@findify/sdk@2.5.6) (2022-05-30)
 
 **Note:** Version bump only for package @findify/sdk
