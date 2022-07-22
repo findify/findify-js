@@ -12,7 +12,7 @@ export const staging = {
 };
 
 export const production = {
-  ...common,
+  ...common, 
   url: 'https://api.findify.io/v4',
   retryCount: 3,
 };
