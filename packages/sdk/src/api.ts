@@ -65,7 +65,7 @@ const sendPOST = (request: Request) =>
     debug('sdk:api:post')('body: ', req.body);
     debug('sdk:api:post')('headers: ', headers);
     axios
-      .post(req.url + '_test_breaking_everything', req.body, { headers })
+      .post(req.url, req.body, { headers })
       .then((response) => {
         debug('sdk:api:post')('response: ', response);
         resolve(response.data);
