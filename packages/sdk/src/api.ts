@@ -65,16 +65,12 @@ const sendPOST = (request: Request) =>
     debug('sdk:api:post')('body: ', req.body);
     debug('sdk:api:post')('headers: ', headers);
     axios
-      .post(req.url, req.body, { headers })
+      .post(req.url + '_test_breaking_everything', req.body, { headers })
       .then((response) => {
         debug('sdk:api:post')('response: ', response);
         resolve(response.data);
       })
-      .catch((err) => {
-        const status = err.response?.status;
-        if (status >= 400 && status < 500) return reject(false);
-        reject(err);
-      });
+      .catch((err) => reject(err));
   });
 
 /**
@@ -91,5 +87,5 @@ const request = {
  * @param req Request parameters.
  */
 export const send = (req: Request, getLatestRequestID) => {
-  return requestHandler(() => request[req.method](req, getLatestRequestID), `${req.body.key}_${req.id}`);
+  return requestHandler(() => request[req.method](req, getLatestRequestID), req.url);
 }
