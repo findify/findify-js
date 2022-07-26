@@ -118,9 +118,16 @@ export const redirectToPage = async (redirect, meta) => {
     suggestion: meta.get('q'),
   });
 
+  if (redirect.get('url').startsWith('https')) {
+    document.location.href = redirect.get('url');
+  }
+
+  const defaultPath = __root.config.getIn(['location', 'defaultPath'], '') ? __root.config.getIn(['location', 'defaultPath'], '') : '';
+  const computedOrigin = document.location.origin + defaultPath;
   if (isHistoryChanged()) {
     return getHistory().push(
-      redirect.get('url').replace(document.location.origin, ''),
+      redirect.get('url')
+        .replace(computedOrigin, ''),
       { type: 'FindifyUpdate' }
     );
   }
