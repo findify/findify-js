@@ -122,12 +122,11 @@ export const redirectToPage = async (redirect, meta) => {
     document.location.href = redirect.get('url');
   }
 
-  const defaultPath = __root.config.getIn(['location', 'defaultPath'], '') ? __root.config.getIn(['location', 'defaultPath'], '') : '';
-  const computedOrigin = document.location.origin + defaultPath;
+  const origin = document.location.origin + __root.config.getIn(['location', 'defaultPath'], '');
   if (isHistoryChanged()) {
     return getHistory().push(
       redirect.get('url')
-        .replace(computedOrigin, ''),
+        .replace(origin, ''),
       { type: 'FindifyUpdate' }
     );
   }
