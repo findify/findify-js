@@ -36,10 +36,10 @@ const getCircuitBreakerStatus = (key: string): { failureCount: number; lastFailu
   return findifyCircuitBreaker ? JSON.parse(findifyCircuitBreaker) : { failureCount: null, lastFailureDate: null };
 }
 
-const tryAgainCheck = (lastFailure) => {
+const tryAgainCheck = (lastFailure: Date) => {
   const lastAttempt = new Date(lastFailure);
   const now = new Date();
-  return now.getTime() - lastAttempt.getTime() >= retryTime
+  return now.getTime() - lastAttempt?.getTime() >= retryTime
 }
 
 const blockRequest = (failureCount: number, lastFailureDate: Date) =>
@@ -58,7 +58,7 @@ const clearCircuitBreakerStatus = (key) => {
 export const requestHandler = (fn: RetryCallback, key) =>
   new Promise((resolve, reject) => {
     const { failureCount, lastFailureDate } = getCircuitBreakerStatus(key);
-    if (blockRequest(failureCount, lastFailureDate)) return reject('Too many attemps, please try again');
+    if (blockRequest(failureCount, lastFailureDate)) return reject('Too many attemps, please retry after a few minutes.');
     doRequest(failureCount, fn, key)
       .then((result) => {
         clearCircuitBreakerStatus(key);
