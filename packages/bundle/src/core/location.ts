@@ -118,10 +118,6 @@ export const redirectToPage = async (redirect, meta) => {
     suggestion: meta.get('q'),
   });
 
-  if (redirect.get('url').startsWith('https')) {
-    document.location.href = redirect.get('url');
-  }
-
   const origin = document.location.origin + __root.config.getIn(['location', 'defaultPath'], '');
   if (isHistoryChanged()) {
     return getHistory().push(
@@ -130,6 +126,7 @@ export const redirectToPage = async (redirect, meta) => {
       { type: 'FindifyUpdate' }
     );
   }
+
   document.location.href = redirect.get('url');
 };
 
