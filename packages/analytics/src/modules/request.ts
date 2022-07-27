@@ -29,7 +29,7 @@ const BeaconRequest = (data: any, endpoint?: string) =>
   new Promise((resolve, reject) => {
     const { key, ...rest } = data;
     global.navigator.sendBeacon(
-      getEndpoint(endpoint),
+      getEndpoint(endpoint, key),
       JSON.stringify({ ...rest, t_client: Date.now() })
     );
     resolve();
