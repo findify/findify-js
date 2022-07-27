@@ -11,7 +11,7 @@ declare module global {
 }
 
 const getEndpoint = (endpoint?: string, key = ''): string =>
-  !endpoint ? (settings.searchApiUrl + '/feedback') : endpoint;
+  !endpoint ? (settings.searchApiUrl + `/${key}` + '/feedback') : endpoint;
 
 const makeQuery = (query) => stringify({ ...query, t_client: Date.now() });
 
