@@ -40,9 +40,15 @@ export const getPayload = (
     payload.rules = rulesToApply;
   }
 
-  if (['viewedBought', 'viewedViewed', 'purchasedTogether'].includes(type)) {
-    payload.item_ids = multipleIds ? item_ids : [item_id];
+  let itemIDs;
+
+  if (multipleIds) {
+    itemIDs = item_ids
+  } else if (item_id) {
+    itemIDs = [item_id]
   }
+
+  payload.item_ids = itemIDs;
 
   return payload;
 };
