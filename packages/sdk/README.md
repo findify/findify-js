@@ -43,7 +43,7 @@ $ npm install --save @findify/sdk
 or [yarn](https://yarnpkg.com/lang/en/)
 
 ```console
-$ yard add @findify/sdk
+$ yarn add @findify/sdk
 ```
 
 The Findify SDK for JavaScript bundles TypeScript definition files for use in TypeScript projects and to support tools that can read `.d.ts` files.
