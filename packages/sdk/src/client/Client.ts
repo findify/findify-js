@@ -97,7 +97,7 @@ export class Client {
       case Req.Recommendations.Type.AlsoViewed:
         return `/recommend/items/${params.item_id}/viewed/viewed`;
       case Req.Recommendations.Type.AlsoBought:
-        return  `/recommend/items/${params.item_id}/viewed/bought`;
+        return `/recommend/items/${params.item_id}/viewed/bought`;
       case Req.Recommendations.Type.FrequentlyPurchasedTogether:
         const ids = params.item_ids.join(',');
         return `/recommend/items/${ids}/bought/bought`;

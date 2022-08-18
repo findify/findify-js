@@ -3,7 +3,7 @@ import axios, { AxiosRequestConfig as AxiosOptions } from 'axios';
 import * as qs from 'qs';
 import jsonp from './jsonp';
 
-import { retryTimes } from './utils';
+import { requestHandler } from './utils';
 import { Method, Body } from './request';
 import { requestInterceptor } from './apiInterceptor';
 
@@ -70,11 +70,7 @@ const sendPOST = (request: Request) =>
         debug('sdk:api:post')('response: ', response);
         resolve(response.data);
       })
-      .catch((err) => {
-        const status = err.response?.status;
-        if (status >= 400 && status < 500) return reject(false);
-        reject(err);
-      });
+      .catch((err) => reject(err));
   });
 
 /**
@@ -90,7 +86,6 @@ const request = {
  * Send a request to Findify JSON API.
  * @param req Request parameters.
  */
-export const send = (req: Request, getLatestRequestID) =>
-  retryTimes(req.retryCount, () =>
-    request[req.method](req, getLatestRequestID)
-  );
+export const send = (req: Request, getLatestRequestID) => {
+  return requestHandler(() => request[req.method](req, getLatestRequestID), req.url);
+}
