@@ -43,10 +43,10 @@ const sendEventCreator = ({ events, key }: Config) => (
     event === EventName.viewPage
       ? {
           ...request,
-          url: window.location.href,
-          ref: window.document.referrer,
-          width: window.screen.width,
-          height: window.screen.height,
+          url: request.url ?? window.location.href,
+          ref: request.ref ?? window.document.referrer,
+          width: request.width ?? window.screen.width,
+          height: request.height ?? window.screen.height,
         }
       : request;
 
