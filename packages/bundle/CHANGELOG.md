@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.1.56](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.1.55...@findify/bundle@7.1.56) (2022-08-05)
+
+
+### Bug Fixes
+
+* **@findify/bundle:** always attach itemds to recommend request payload ([bfa3b86](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/bfa3b8682de5c9e68406ebe548b2b00e7a59e3df))
+
+
+
+
+
 ## [7.1.55](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.1.54...@findify/bundle@7.1.55) (2022-07-20)
 
 **Note:** Version bump only for package @findify/bundle
