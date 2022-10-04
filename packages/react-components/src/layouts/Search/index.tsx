@@ -42,7 +42,10 @@ const Search = ({ isCollection, theme = styles }) => {
 
   useEffect(() => {
     const to = setTimeout(() => {
-      window.findify.utils.updateHash('')
+      const hash = document?.location.hash.substring(1);
+      if (hash) {
+        window.findify.utils.updateHash('');
+      }
     }, 5000);
 
     return () => {
