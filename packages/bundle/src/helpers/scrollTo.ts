@@ -30,8 +30,8 @@ export const maybeScrollTop = (
   if (hash.length > 0) {
     return
   }
-  
-  if (force || (config.getIn(['scrollTop', 'enabled']) && config.getIn(['pagination', 'type']) !== 'lazy')) {
+
+  if (force || (config.getIn(['scrollTop', 'enabled']) && config.getIn(['pagination', 'type']) !== 'lazy' && config.getIn(['pagination', 'type']) !== 'combined')) {
     scrollTo(
       config.getIn(['scrollTop', 'selector']) || config.get('node'),
       config.getIn(['scrollTop', 'offset'])
