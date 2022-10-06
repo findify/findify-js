@@ -31,6 +31,11 @@ export const maybeScrollTop = (
     return
   }
 
+  const navigatedProductId = window.localStorage.getItem('findify-navigated-product-id')
+  if (navigatedProductId) {
+    return
+  }
+
   if (force || (config.getIn(['scrollTop', 'enabled']) && config.getIn(['pagination', 'type']) !== 'lazy' && config.getIn(['pagination', 'type']) !== 'combined')) {
     scrollTo(
       config.getIn(['scrollTop', 'selector']) || config.get('node'),
