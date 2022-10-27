@@ -55,6 +55,13 @@ const sendJSONP = (request: Request, getLatestRequestID) => {
   });
 };
 
+const CancelToken = axios.CancelToken;
+const cancelTokensMap = {};
+const handleRequestTokens = (currentRequestUrl, currentSource) => {
+  if (cancelTokensMap[currentRequestUrl]) cancelTokensMap[currentRequestUrl].cancel();
+  cancelTokensMap[currentRequestUrl] = currentSource;
+}
+
 const sendPOST = (request: Request) =>
   new Promise((resolve, reject) => {
     const req = requestInterceptor(request);
@@ -64,13 +71,19 @@ const sendPOST = (request: Request) =>
     debug('sdk:api:post')('url: ', req.url);
     debug('sdk:api:post')('body: ', req.body);
     debug('sdk:api:post')('headers: ', headers);
+
+    const source = CancelToken.source();
+    handleRequestTokens(req.url, source);
+
     axios
-      .post(req.url, req.body, { headers })
+      .post(req.url, req.body, { headers, cancelToken: source.token })
       .then((response) => {
         debug('sdk:api:post')('response: ', response);
         resolve(response.data);
       })
-      .catch((err) => reject(err));
+      .catch((err) => {
+        if (!axios.isCancel(err)) reject(err)
+      });
   });
 
 /**
