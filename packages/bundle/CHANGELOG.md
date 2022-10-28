@@ -3,6 +3,54 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.1.62](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.1.61...@findify/bundle@7.1.62) (2022-10-06)
+
+**Note:** Version bump only for package @findify/bundle
+
+
+
+
+
+## [7.1.61](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.1.60...@findify/bundle@7.1.61) (2022-10-05)
+
+**Note:** Version bump only for package @findify/bundle
+
+
+
+
+
+## [7.1.60](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.1.59...@findify/bundle@7.1.60) (2022-10-05)
+
+**Note:** Version bump only for package @findify/bundle
+
+
+
+
+
+## [7.1.59](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.1.58...@findify/bundle@7.1.59) (2022-09-26)
+
+**Note:** Version bump only for package @findify/bundle
+
+
+
+
+
+## [7.1.58](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.1.57...@findify/bundle@7.1.58) (2022-09-21)
+
+**Note:** Version bump only for package @findify/bundle
+
+
+
+
+
+## [7.1.57](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.1.56...@findify/bundle@7.1.57) (2022-08-18)
+
+**Note:** Version bump only for package @findify/bundle
+
+
+
+
+
 ## [7.1.56](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.1.55...@findify/bundle@7.1.56) (2022-08-05)
 
 
