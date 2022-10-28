@@ -57,8 +57,10 @@ const clearCircuitBreakerStatus = (key) => {
  */
 export const requestHandler = (fn: RetryCallback, key) =>
   new Promise((resolve, reject) => {
+
     const { failureCount, lastFailureDate } = getCircuitBreakerStatus(key);
     if (blockRequest(failureCount, lastFailureDate)) return reject('Too many attemps, please retry after a few minutes.');
+
     doRequest(failureCount, fn, key)
       .then((result) => {
         clearCircuitBreakerStatus(key);
