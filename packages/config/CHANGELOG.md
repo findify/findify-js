@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.18](https://github.com/findify/findify-js/compare/@findify/store-configuration@0.3.17...@findify/store-configuration@0.3.18) (2022-10-28)
+
+**Note:** Version bump only for package @findify/store-configuration
+
+
+
+
+
 ## [0.3.17](https://github.com/findify/findify-js/compare/@findify/store-configuration@0.3.16...@findify/store-configuration@0.3.17) (2022-08-18)
 
 **Note:** Version bump only for package @findify/store-configuration
