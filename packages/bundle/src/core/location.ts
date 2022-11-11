@@ -15,24 +15,13 @@ const isHistoryChanged = () => window.__findifyHistoryChanged || historyChanged;
 
 export const getHistory = () => window.__findifyHistory || history;
 
-// Get basepath -> Returns what is between origin and pages related path eg. /country-code/ or other route structuring.
-export const getBasepath = () => {
-  // For shopify merchants with multi market enabled basepath must include /country-code/. eg. en-US, en-AU ...
-  if (__root.config.getIn(['platform']) === 'shopify' && __root.config.getIn(['platform_settings', 'multi_market'])) {
-    const regex = new RegExp(/[a-zA-Z]{2}-[a-zA-Z]{2}/, 'gi');
-    const hasCountryCode = regex.test(window.location.pathname);
-    return hasCountryCode && !!window.location.pathname.match(regex) ? `/${window.location.pathname.match(regex)![0]}` : __root.config.getIn(['location', 'defaultPath'], '');
-  }
-  return __root.config.getIn(['location', 'defaultPath'], '');
-}
-
 export const collectionPath = () =>
   window.location.pathname.replace(/^\/|\/$/g, '').toLowerCase();
 
 export const isCollection = (collections, slot?) =>
   collections && collections.includes(slot || collectionPath());
 
-export const buildSearchPagePathName = () => getBasepath() + __root.config.getIn(['location', 'searchUrl']);
+export const buildSearchPagePathName = () => __root.config.getIn(['location', 'defaultPath'], '') + __root.config.getIn(['location', 'searchUrl']);
 
 export const isSearch = () => window.location.pathname === buildSearchPagePathName();
 
@@ -139,7 +128,7 @@ export const redirectToPage = async (redirect, meta) => {
     );
   }
   // Other websites - Redirection replaces the whole location
-  document.location.href = getBasepath() + redirect.get('url');
+  document.location.href = redirect.get('url');
 };
 
 export const updateHash = (hash: string) => {
