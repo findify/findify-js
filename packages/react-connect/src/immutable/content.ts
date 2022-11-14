@@ -1,5 +1,6 @@
 import createRecord from './createRecord';
 import { preventEvents } from '../utils/preventEvents';
+import { addBasepath } from '../utils/addBasepath';
 
 const navigate = (openInNewWindow, url) => {
   if (!window) return;
@@ -32,16 +33,16 @@ export class Content extends createRecord('Item') {
     preventEvents(e);
     const openInNewWindow = e && (e.ctrlKey || e.metaKey);
     this.sendAnalytics(!openInNewWindow);
-    navigate(openInNewWindow, this.get('url'));
+    navigate(openInNewWindow, addBasepath(this.get('url')));
   };
 
   historyPush = (e) => {
     preventEvents(e);
     const openInNewWindow = e && (e.ctrlKey || e.metaKey);
     this.sendAnalytics();
-    if (openInNewWindow) return navigate(openInNewWindow, this.get('url'));
+    if (openInNewWindow) return navigate(openInNewWindow, addBasepath(this.get('url')));
     const url = this.get('url').replace(document.location.origin);
     if (window && (window as any).findify)
-      (window as any).findify.utils.history.push(url);
+      (window as any).findify.utils.history.push(addBasepath(url));
   };
 }
