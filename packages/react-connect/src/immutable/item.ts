@@ -1,5 +1,6 @@
 import createRecord from './createRecord';
 import { preventEvents } from '../utils/preventEvents';
+import { addBasepath } from '../utils/addBasepath';
 
 const navigate = (openInNewWindow, url) => {
   if (!window) return;
@@ -37,7 +38,7 @@ export class Item extends createRecord('Item') {
       // @ts-ignore
       window.findify.utils.updateHash(this.get('id'))
     }
-    navigate(openInNewWindow, this.get('product_url'));
+    navigate(openInNewWindow, addBasepath(this.get('product_url')));
   };
 
   historyPush = (e) => {
@@ -45,9 +46,9 @@ export class Item extends createRecord('Item') {
     const openInNewWindow = e && (e.ctrlKey || e.metaKey);
     this.sendAnalytics();
     if (openInNewWindow)
-      return navigate(openInNewWindow, this.get('product_url'));
+      return navigate(openInNewWindow, addBasepath(this.get('product_url')));
     const url = this.get('product_url').replace(document.location.origin);
     if (window && (window as any).findify)
-      (window as any).findify.utils.history.push(url);
+      (window as any).findify.utils.history.push(addBasepath(url));
   };
 }
