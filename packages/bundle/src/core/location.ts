@@ -131,7 +131,7 @@ export const redirectToPage = async (redirect, meta) => {
 
   // SPA - Redirection has to remove from redirect.url hostname eh. finntack.com + defaultPath eg. /no /pl
   if (isHistoryChanged()) {
-    const origin = document.location.origin + __root.config.getIn(['location', 'defaultPath'], '');
+    const origin = document.location.origin + getBasepath();
     return getHistory().push(
       redirect.get('url')
         .replace(origin, ''),
