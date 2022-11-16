@@ -26,11 +26,20 @@ export const getBasepath = () => {
   return __root.config.getIn(['location', 'defaultPath'], '');
 }
 
-export const collectionPath = () =>
-  window.location.pathname.replace(/^\/|\/$/g, '').toLowerCase();
+export const collectionPath = () => {
+  const match = window.location.pathname.match(/(?=collections).*/);
+  return match && match[0];
+}
 
-export const isCollection = (collections, slot?) =>
-  collections && collections.includes(slot || collectionPath());
+export const isCollection = (collections, slot?) => {
+  if (!collections) return;
+  if (slot) {
+    return collections.include(slot)
+  } else {
+    const collPath = collectionPath();
+    return collPath && collections.include(collPath);
+  }
+}
 
 export const buildSearchPagePathName = () => getBasepath() + __root.config.getIn(['location', 'searchUrl']);
 
