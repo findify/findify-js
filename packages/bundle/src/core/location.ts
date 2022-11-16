@@ -26,8 +26,13 @@ export const getBasepath = () => {
   return __root.config.getIn(['location', 'defaultPath'], '');
 }
 
-export const collectionPath = () =>
-  window.location.pathname.replace(/^\/|\/$/g, '').toLowerCase();
+export const collectionPath = () => {
+  let path = window.location.pathname;
+  if (__root.config.getIn(['platform']) === 'shopify' && !!__root.config.getIn(['platform_settings', 'multi_market'])) {
+    path = path.replace(/^\/[a-zA-Z]{2}-[a-zA-Z]{2}/, '').toLowerCase();
+  }
+  return path.replace(/^\/|\/$/g, '').toLowerCase();
+}
 
 export const isCollection = (collections, slot?) =>
   collections && collections.includes(slot || collectionPath());
