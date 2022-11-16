@@ -27,19 +27,15 @@ export const getBasepath = () => {
 }
 
 export const collectionPath = () => {
-  const match = window.location.pathname.match(/(?=collections).*/);
-  return match && match[0];
+  let path = window.location.pathname;
+  if (__root.config.getIn(['platform']) === 'shopify' && !!__root.config.getIn(['platform_settings', 'multi_market'])) {
+    path = path.replace(/^\/[a-zA-Z]{2}-[a-zA-Z]{2}/, '').toLowerCase();
+  }
+  return path.replace(/^\/|\/$/g, '').toLowerCase();
 }
 
-export const isCollection = (collections, slot?) => {
-  if (!collections) return;
-  if (slot) {
-    return collections.include(slot)
-  } else {
-    const collPath = collectionPath();
-    return collPath && collections.include(collPath);
-  }
-}
+export const isCollection = (collections, slot?) =>
+  collections && collections.includes(slot || collectionPath());
 
 export const buildSearchPagePathName = () => getBasepath() + __root.config.getIn(['location', 'searchUrl']);
 
