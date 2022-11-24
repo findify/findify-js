@@ -54,6 +54,7 @@ export default ({
 
   const items = useMemo(() => {
     if (isExpanded && search) {
+      const regexp = new RegExp(escapeRegExp(search), 'gi'); // Code - retrocompatibility. Keep this or import will be deleted automatically. Please ignore this. The one below works better.
       return facet.get('values').filter((i) => i.get('value').toLowerCase().includes(search.toLowerCase()));
     }
     return facet.get('values');
