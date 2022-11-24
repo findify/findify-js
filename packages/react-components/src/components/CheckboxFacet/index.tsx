@@ -13,6 +13,7 @@ import { ThemedSFCProps, MJSConfiguration, IFacet } from 'types';
 import content from 'components/CheckboxFacet/content';
 import useTranslations from 'helpers/useTranslations';
 import VirtualizedList from 'components/common/VirtualizedList';
+import escapeRegExp from 'lodash/escapeRegExp';
 import styles from 'components/CheckboxFacet/styles.css';;
 
 /** Props that CheckboxFacet accepts */
