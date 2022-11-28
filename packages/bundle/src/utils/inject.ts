@@ -8,10 +8,10 @@ export const injectComponents = async (components) => {
         let component;
         if (!components[k]) {
             return acc;
-        } else if (typeof components[k] === 'string') {
-            component = new Function('return ' + components[k]);
         } else if (typeof components[k] === 'object') {
             component = typeof components[k].code === 'string' ? new Function('return ' + components[k].code) : components[k].code;
+        } else {
+            component = typeof components[k] === 'string' ? new Function('return ' + components[k]) : components[k];
         }
         acc[key] = component;
         return acc;
