@@ -5,7 +5,14 @@ export const injectComponents = async (components) => {
     console.log('[MJS]: inject updated components', components);
     const newComponents = Object.keys(components).reduce((acc: any[], k) => {
         const key = components[k].hash ? components[k].hash : k;
-        const component = components[k].code ? components[k].code : (typeof components[k] === 'string' ? new Function('return ' + components[k]) : components[k]);
+        let component;
+        if (!components[k]) {
+            return acc;
+        } else if (typeof components[k] === 'object') {
+            component = typeof components[k].code === 'string' ? new Function('return ' + components[k].code) : components[k].code;
+        } else {
+            component = typeof components[k] === 'string' ? new Function('return ' + components[k]) : components[k];
+        }
         acc[key] = component;
         return acc;
     }, [])
