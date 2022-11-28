@@ -21,7 +21,7 @@ const doRequest = (attempt: number = 0, fn: RetryCallback, key: string) => {
   return fn().catch((err) => {
     const failureCount = attempt + 1
     updateCircuitBreakerStatus(failureCount, key);
-    if (err.response?.status < 500 || failureCount >= failureTreshold) throw err;
+    if (!err.response || err.response?.status < 500 || failureCount >= failureTreshold) throw err;
     return doRequest(failureCount, fn, key);
   })
 }
