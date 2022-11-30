@@ -79,11 +79,20 @@ export default (render, widget: Widget<Immutable.SearchConfig>) => {
 
   /** Listen to changes */
   agent.on('change:query', (q, meta) => {
-    setQuery(q.toJS());
+    const query = q.toJS();
+    setQuery(query);
+
+    // Redirection from query loaded checking FE config
+    const feConfigRedirectionMatch = config.getIn(['redirections', query?.q?.toLowerCase()]);
+    if (!!feConfigRedirectionMatch) {
+      return redirectToPage({ name: feConfigRedirectionMatch, url: feConfigRedirectionMatch }, meta);
+    }
+
     if (!meta.get('total')) return renderZeroResults();
     render('initial');
   });
 
+  // Redirection from event
   agent.on('change:redirect', redirectToPage);
 
   /** Listen to location back/fwd */

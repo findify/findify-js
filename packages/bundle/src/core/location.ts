@@ -1,5 +1,6 @@
 import { createBrowserHistory } from 'history';
 import { parse, stringify } from 'qs';
+import { isImmutable } from 'immutable';
 
 let history = createBrowserHistory();
 let historyChanged = false;
@@ -128,8 +129,9 @@ export const setQuery = (query) => {
 };
 
 export const redirectToPage = async (redirect, meta) => {
+  const redirection = isImmutable(redirect) ? redirect.toJS() : redirect;
   await __root.analytics.sendEvent('redirect', {
-    ...redirect.toJS(),
+    ...redirection,
     rid: meta.get('rid'),
     suggestion: meta.get('q'),
   });
@@ -138,13 +140,13 @@ export const redirectToPage = async (redirect, meta) => {
   if (isHistoryChanged()) {
     const origin = document.location.origin + getBasepath();
     return getHistory().push(
-      redirect.get('url')
+      redirection.url
         .replace(origin, ''),
       { type: 'FindifyUpdate' }
     );
   }
   // Other websites - Redirection replaces the whole location
-  document.location.href = getBasepath() + redirect.get('url');
+  document.location.href = getBasepath() + redirection.url;
 };
 
 export const updateHash = (hash: string) => {
