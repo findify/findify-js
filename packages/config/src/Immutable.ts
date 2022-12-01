@@ -58,6 +58,7 @@ type FEConfig = {
   widgetType: enums.Feature,
   cssSelector?: string
   slot?: string
+  redirections?: { [key: string]: string }[];
 }
 
 export type BaseConfig = Factory<Config & FEConfig>

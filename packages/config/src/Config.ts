@@ -36,7 +36,7 @@ export type Config = {
    * Should observe dom change to dynamically attach/detach widgets
    * @warn this change may slow down website
    */
-	observeDomChanges: boolean
+  observeDomChanges: boolean
 
   /** URL management configuration */
   location: {
@@ -61,7 +61,7 @@ export type Config = {
 
   /** Currency display setup */
   currency: {
-    code: string, 
+    code: string,
     symbol: string,
     thousand: string,
     decimal: string,
@@ -103,4 +103,14 @@ export type Config = {
   components: {
     [key: string]: () => void
   }
+
+  /** Map redirection url set within MD  */
+  redirections?: {
+    [key: string]: string
+  }
+
+  platform_settings?: {
+    multi_market?: boolean
+  }
+
 }
