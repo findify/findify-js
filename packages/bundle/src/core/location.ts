@@ -128,6 +128,12 @@ export const setQuery = (query) => {
   return getHistory().push({ search, state: { type: 'FindifyUpdate' } });
 };
 
+/**
+ * 
+ * @param redirect redirection are configured in MD and forwarded to MerchantConfig.
+ * @param meta request body information.
+ * @returns will redirect to such URL.
+ */
 export const redirectToPage = async (redirect, meta) => {
   const redirection = isImmutable(redirect) ? redirect.toJS() : redirect;
   await __root.analytics.sendEvent('redirect', {

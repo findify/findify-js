@@ -168,19 +168,12 @@ export const registerHandlers = (
     __root.emit(Events.autocompleteFocusLost, widget.key);
 
     const value = _value || agent.state.get('q') || '';
-    const [query, redirect] = isImmutable(value)
-      ? [value.get('value'), value.get('redirect')]
-      : [value, agent.response.get('redirect')];
+    const query = isImmutable(value) ? value.get('value') : value;
 
     // Redirection from query submitted checking FE config
     const feConfigRedirectionMatch = config.getIn(['redirections', query?.toLowerCase()]);
     if (!!feConfigRedirectionMatch) {
       return redirectToPage({ name: feConfigRedirectionMatch, url: feConfigRedirectionMatch }, agent.response.get('meta'));
-    }
-
-    // Redirection from autocomplete responde
-    if (redirect) {
-      return redirectToPage(redirect, agent.response.get('meta'));
     }
 
     if (!isSearch()) return redirectToSearch(query);
