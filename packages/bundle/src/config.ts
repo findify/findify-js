@@ -561,6 +561,9 @@ const config: Config = {
     },
     recommendations: {},
   },
+  redirections: {
+    test: 'https://liverpoolstyle.com/collections/liverpool-x-caitlin-covington'
+  },
   merchantName: 'findify-staging.myshopify.com',
   mjs_version: '7.1.0',
 };
