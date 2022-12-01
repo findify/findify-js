@@ -163,7 +163,7 @@ export const registerHandlers = (
   }
 
   /** search for the value */
-  const search = (_value?) => {
+  const search = async (_value?) => {
     // required for SPA integration - to close autocomplete when search is triggered
     __root.emit(Events.autocompleteFocusLost, widget.key);
 
@@ -174,9 +174,11 @@ export const registerHandlers = (
     const feConfigRedirectionMatch = config.getIn(['redirections', query?.toLowerCase()]);
     if (!!feConfigRedirectionMatch) {
       return redirectToPage({ name: feConfigRedirectionMatch, url: feConfigRedirectionMatch }, agent.response.get('meta'));
+    } else {
+      if (!isSearch()) {
+        return redirectToSearch(query);
+      }
     }
-
-    if (!isSearch()) return redirectToSearch(query);
 
     updateReferencedAgents(query);
 
