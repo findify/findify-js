@@ -3,6 +3,7 @@ import { List, Map } from 'immutable';
 import { useItems } from '@findify/react-connect';
 import { Immutable } from '@findify/store-configuration';
 import { emit } from './emmiter';
+import { isActive } from 'nock';
 
 const hasRange = (ranges, offset) =>
   !!ranges.find((r) => r.get('from') === offset);
@@ -68,7 +69,7 @@ export default (offset = 300) => {
       return;
 
     Promise.resolve().then(() => {
-      if (!container.current) return;
+      if (!container.current || container.current?.clientHeight === 0) return;
       const { bottom } = container.current.getBoundingClientRect();
       const height =
         window.innerHeight || document.documentElement.clientHeight;
