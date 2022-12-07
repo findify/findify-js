@@ -80,7 +80,7 @@ export default (offset = 300) => {
 
       autoLoad.current -= 1;
       pending.current = true;
-      console.log('USE LAZY USED', container);
+
       update('offset', (state.current.ranges.last() as any).get('to'));
     });
   };
