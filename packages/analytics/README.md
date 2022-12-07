@@ -61,13 +61,13 @@ If you're using version from CDN, then just update the bundle version from `1.1.
 For example, if the current version that you are using is `1.4.43` then you'll need to change the URL in the corresponding `<script>` tag in your HTML pages (you can search by `analytics-js`) from:
 
 ```
-https://findify-assets-2bveeb6u8ag.netdna-ssl.com/analytics-js/prod/findify-analytics.1.1.43.min.js
+https://d3nhg2i1zayjpd.cloudfront.net/analytics-js/prod/findify-analytics.1.1.43.min.js
 ```
 
 to:
 
 ```
-https://findify-assets-2bveeb6u8ag.netdna-ssl.com/analytics-js/prod/findify-analytics.2.0.14.min.js
+https://d3nhg2i1zayjpd.cloudfront.net/analytics-js/prod/findify-analytics.2.0.14.min.js
 ```
 
 If you're using [npm](https://docs.npmjs.com/getting-started/what-is-npm) or
@@ -111,13 +111,13 @@ If you're using [npm](https://docs.npmjs.com/getting-started/what-is-npm) or
 Otherwhise, if you're using it from CDN (as UMD) then you'll need to change the URL in the corresponding `<script>` tag in your HTML pages (you can search by `analytics-js`) from:
 
 ```
-https://findify-assets-2bveeb6u8ag.netdna-ssl.com/analytics-js/prod/findify-analytics.x.x.x.min.js
+https://d3nhg2i1zayjpd.cloudfront.net/analytics-js/prod/findify-analytics.x.x.x.min.js
 ```
 
 to:
 
 ```
-https://findify-assets-2bveeb6u8ag.netdna-ssl.com/analytics-js/prod/3.0.2/findify-analytics.min.js
+https://d3nhg2i1zayjpd.cloudfront.net/analytics-js/prod/3.0.2/findify-analytics.min.js
 ```
 
 where `x.x.x` is your current version.

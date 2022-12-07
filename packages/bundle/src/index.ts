@@ -51,8 +51,8 @@ const loadDependencies = () => {
   if (process.env.NODE_ENV !== 'development') {
     ((path) =>
       !path ? loadCss(__webpack_require__.p + 'styles.css') : loadCss(path))(
-      __MERCHANT_CSS__
-    );
+        __MERCHANT_CSS__
+      );
   }
 
   Promise.all(deps)
@@ -69,7 +69,7 @@ const loadDependencies = () => {
           environment: __ENVIRONMENT__,
           whitelistUrls: [
             __webpack_require__.p,
-            'https://findify-assets-2bveeb6u8ag.netdna-ssl.com',
+            'https://d3nhg2i1zayjpd.cloudfront.net/',
           ],
           defaultIntegrations: false,
         });
@@ -109,8 +109,8 @@ const loadDependencies = () => {
 const init = () => {
   window && /MSIE|Trident/.test(window.navigator.userAgent)
     ? Promise.all(__webpack_require__.chunks.map(__webpack_require__.e)).then(
-        loadDependencies
-      )
+      loadDependencies
+    )
     : loadDependencies();
 };
 
