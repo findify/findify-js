@@ -3,7 +3,6 @@ import { List, Map } from 'immutable';
 import { useItems } from '@findify/react-connect';
 import { Immutable } from '@findify/store-configuration';
 import { emit } from './emmiter';
-import { isActive } from 'nock';
 
 const hasRange = (ranges, offset) =>
   !!ranges.find((r) => r.get('from') === offset);
