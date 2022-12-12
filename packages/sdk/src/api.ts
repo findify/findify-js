@@ -57,9 +57,11 @@ const sendJSONP = (request: Request, getLatestRequestID) => {
 
 const CancelToken = axios.CancelToken;
 const cancelTokensMap = {};
-const handleRequestTokens = (currentRequestUrl, currentSource) => {
-  if (cancelTokensMap[currentRequestUrl]) cancelTokensMap[currentRequestUrl].cancel();
-  cancelTokensMap[currentRequestUrl] = currentSource;
+const handleRequestTokens = (currentRequestUrl, body, currentSource) => {
+  const { t_client, user, log, key, ...params } = body;
+  const keyMap = `${currentRequestUrl} ${JSON.stringify(params)}`;
+  if (cancelTokensMap[keyMap]) cancelTokensMap[keyMap].cancel();
+  cancelTokensMap[keyMap] = currentSource;
 }
 
 const sendPOST = (request: Request) =>
@@ -73,7 +75,7 @@ const sendPOST = (request: Request) =>
     debug('sdk:api:post')('headers: ', headers);
 
     const source = CancelToken.source();
-    handleRequestTokens(req.url, source);
+    handleRequestTokens(req.url, req.body, source);
 
     axios
       .post(req.url, req.body, { headers, cancelToken: source.token })

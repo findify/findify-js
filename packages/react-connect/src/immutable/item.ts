@@ -30,13 +30,12 @@ export class Item extends createRecord('Item') {
     );
   };
 
-  onClick = (e, attachHash?: boolean) => {
+  onClick = (e, storeItemId?: boolean) => {
     preventEvents(e);
     const openInNewWindow = e && (e.ctrlKey || e.metaKey);
     this.sendAnalytics(!openInNewWindow);
-    if (attachHash && !openInNewWindow && typeof window !== 'undefined') {
-      // @ts-ignore
-      window.findify.utils.updateHash(this.get('id'))
+    if (storeItemId && !openInNewWindow && typeof window !== 'undefined') {
+      window.localStorage.setItem('findify-navigated-product-id', this.get('id'));
     }
     navigate(openInNewWindow, addBasepath(this.get('product_url')));
   };
