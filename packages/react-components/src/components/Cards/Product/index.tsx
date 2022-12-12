@@ -59,11 +59,6 @@ export default ({
   const [variant, setVariant] = useVariants(item);
   useScrollBackToProduct(container, variant, isSearch);
 
-  const onClickHandler = (e) => {
-    window.localStorage.setItem('findify-navigated-product-id', item.get('id'));
-    item.onClick(e);
-  }
-
   return (
     <a
       ref={container}
@@ -76,7 +71,7 @@ export default ({
         className
       )}
       href={item.get('product_url')}
-      onClick={e => onClickHandler(e)}
+      onClick={e => item.onClick(e, isSearch)}
     >
       <div className={theme.content}>
         <Rating
