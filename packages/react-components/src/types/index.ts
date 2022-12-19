@@ -88,7 +88,7 @@ export type MJSValue = Map<string, string>;
 
 /** This class is basically just a superset of immutable.Map() */
 export interface MJSConfiguration<K = string, V = MJSValue & undefined>
-  extends Map<K, V> {}
+  extends Map<K, V> { }
 
 /**
  * React props for a specific suggestion
@@ -112,7 +112,7 @@ export type GetSuggestionPropsFunction = (
 /** Suggestion is an instance of immutable.Map(), containing following keys:
  * @prop *value* - string value of the suggestion
  */
-export interface ISuggestion extends Map<string, MJSValue> {}
+export interface ISuggestion extends Map<string, MJSValue> { }
 
 export interface IProductProps {
   /** @prop *product_url* - url of the actual product */
@@ -178,7 +178,7 @@ export interface IProductProps {
 
 export interface IProduct extends Immutable.Factory<IProductProps> {
   /** onClick product action, opens product page and sends analytics request by default */
-  onClick: (evt: React.MouseEvent<any>) => any;
+  onClick: (evt: React.MouseEvent<any>, storeItemId?: boolean) => any;
   meta: any;
 }
 
@@ -188,7 +188,7 @@ export interface IProduct extends Immutable.Factory<IProductProps> {
  * @prop *order* - order, ascending or descending
  * @prop *label* - label to display for sorting
  */
-export interface ISortingItem extends Map<string, MJSConfiguration> {}
+export interface ISortingItem extends Map<string, MJSConfiguration> { }
 
 /**
  * Banner is an instance of immutable.Map(), containing following keys:
@@ -197,7 +197,7 @@ export interface ISortingItem extends Map<string, MJSConfiguration> {}
  * @prop *products.title* - title
  * @prop *products.imageUrl* - image URL to show in a banner
  */
-export interface IBanner extends Map<string, MJSValue> {}
+export interface IBanner extends Map<string, MJSValue> { }
 
 /**
  * Query is an instance of immutable.Map(), containing following keys:
@@ -206,7 +206,7 @@ export interface IBanner extends Map<string, MJSValue> {}
  * @prop *filters* - immutable.List(), filters used for queries
  * @prop *corrected_q* - corrected query (Google-like "did you mean?")
  */
-export interface IQuery extends Map<string, MJSValue> {}
+export interface IQuery extends Map<string, MJSValue> { }
 
 export type Facet = {
   name: string;
