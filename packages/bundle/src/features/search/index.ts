@@ -82,9 +82,12 @@ export default (render, widget: Widget<Immutable.SearchConfig>) => {
     const query = q.toJS();
     setQuery(query);
 
-    // Redirection from query loaded checking FE config
-    const feConfigRedirectionMatch = config.getIn(['redirections', query?.q?.toLowerCase()]);
-    if (!!feConfigRedirectionMatch) {
+    // Redirection from query submitted checking FE config
+    const feConfigRedirections = config.get('redirections')?.toJS();
+    const feConfigRedirectionKeyMatch = feConfigRedirections && Object.keys(feConfigRedirections).find(key => key.toLowerCase() === query?.q?.toLowerCase());
+    console.log(feConfigRedirectionKeyMatch);
+    if (!!feConfigRedirectionKeyMatch) {
+      const feConfigRedirectionMatch = config.getIn(['redirections', feConfigRedirectionKeyMatch])
       return redirectToPage({ name: feConfigRedirectionMatch, url: feConfigRedirectionMatch }, meta);
     }
 

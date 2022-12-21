@@ -171,8 +171,10 @@ export const registerHandlers = (
     const query = isImmutable(value) ? value.get('value') : value;
 
     // Redirection from query submitted checking FE config
-    const feConfigRedirectionMatch = config.getIn(['redirections', query?.toLowerCase()]);
-    if (!!feConfigRedirectionMatch) {
+    const feConfigRedirections = config.get('redirections')?.toJS();
+    const feConfigRedirectionKeyMatch = feConfigRedirections && Object.keys(feConfigRedirections).find(key => key.toLowerCase() === query.toLowerCase());
+    if (!!feConfigRedirectionKeyMatch) {
+      const feConfigRedirectionMatch = config.getIn(['redirections', feConfigRedirectionKeyMatch])
       return redirectToPage({ name: feConfigRedirectionMatch, url: feConfigRedirectionMatch }, agent.response.get('meta'));
     } else {
       if (!isSearch()) {
