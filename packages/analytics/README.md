@@ -83,7 +83,7 @@ from:
 
 ```javascript
 var FindifyAnalytics = require('findify-analytics');
-var client = FindifyAnalytics.init({ key: 'your_api_key' });
+var client = FindifyAnalytics.init({ key: 'your_api_key', events: {}, platform: 'your_platform' });
 ```
 
 to:

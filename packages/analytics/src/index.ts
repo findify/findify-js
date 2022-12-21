@@ -34,7 +34,7 @@ const sendEventCreator = ({ events, key }: Config) => (
   endpoint?: string
 ) => {
   const { force, ...request } = _request;
-  if (!force && typeof events[event] !== 'undefined' && events[event] === false)
+  if (!force && (!events || typeof events[event] !== 'undefined' && events[event] === false))
     return;
 
   if (useCookie) return storage.memoize(event, request);
@@ -42,12 +42,12 @@ const sendEventCreator = ({ events, key }: Config) => (
   const properties =
     event === EventName.viewPage
       ? {
-          ...request,
-          url: request.url ?? window.location.href,
-          ref: request.ref ?? window.document.referrer,
-          width: request.width ?? window.screen.width,
-          height: request.height ?? window.screen.height,
-        }
+        ...request,
+        url: request.url ?? window.location.href,
+        ref: request.ref ?? window.document.referrer,
+        width: request.width ?? window.screen.width,
+        height: request.height ?? window.screen.height,
+      }
       : request;
 
   emitter.emit(event, properties);
@@ -72,7 +72,7 @@ const createInvalidator = (sendEvent, { platform, events }: Config) => (
 
   return Object.keys(eventsToFire).forEach((key: string) => {
     let endpoint;
-    if (events[key] === false) return;
+    if (!events || events[key] === false) return;
 
     if (key === EventName.updateCart) {
       if (shallowEqual(eventsToFire[key], storage.cart)) return;

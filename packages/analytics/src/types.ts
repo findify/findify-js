@@ -7,7 +7,7 @@ export type User = {
 
 export type Config = {
   key: string;
-  events: {};
+  events?: {};
   user?: Partial<User>;
   platform: 'bigcommerce' | 'shopify' | 'generic' | string;
 };
