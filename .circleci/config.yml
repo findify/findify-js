@@ -26,7 +26,7 @@ jobs:
       - run:
           name: setup env variables
           command: |
-            [ "$CIRCLE_BRANCH" = master ] && echo 'export PUBLIC_PATH=https://cdn.jsdelivr.net/npm/@findify/bundle@__MERCHANT_VERSION_RAW__/dist/' >> $BASH_ENV || echo 'export PUBLIC_PATH=https://findify-assets-2bveeb6u8ag.netdna-ssl.com/bundle/staging/__MERCHANT_VERSION_RAW__/' >> $BASH_ENV
+            [ "$CIRCLE_BRANCH" = master ] && echo 'export PUBLIC_PATH=https://cdn.jsdelivr.net/npm/@findify/bundle@__MERCHANT_VERSION_RAW__/dist/' >> $BASH_ENV || echo 'export PUBLIC_PATH=https://d3nhg2i1zayjpd.cloudfront.net/bundle/staging/__MERCHANT_VERSION_RAW__/' >> $BASH_ENV
             echo 'export FINDIFY_ENV=production' >> $BASH_ENV
 
       - run:
@@ -79,7 +79,7 @@ jobs:
 
       - add_ssh_keys:
           fingerprints:
-            - "b4:60:fd:de:5e:8a:73:db:d7:33:6d:1f:18:e3:1b:a3"
+            - "5d:32:21:b6:1c:cd:94:d2:ee:01:38:3f:8f:14:90:48"
 
       - run:
           name: add github to ssh known hosts
