@@ -3,6 +3,94 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.15.44](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.15.43...@findify/react-components@0.15.44) (2022-12-21)
+
+**Note:** Version bump only for package @findify/react-components
+
+
+
+
+
+## [0.15.43](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.15.42...@findify/react-components@0.15.43) (2022-12-21)
+
+**Note:** Version bump only for package @findify/react-components
+
+
+
+
+
+## [0.15.42](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.15.41...@findify/react-components@0.15.42) (2022-12-12)
+
+**Note:** Version bump only for package @findify/react-components
+
+
+
+
+
+## [0.15.41](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.15.40...@findify/react-components@0.15.41) (2022-12-07)
+
+**Note:** Version bump only for package @findify/react-components
+
+
+
+
+
+## [0.15.40](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.15.39...@findify/react-components@0.15.40) (2022-12-07)
+
+**Note:** Version bump only for package @findify/react-components
+
+
+
+
+
+## [0.15.39](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.15.38...@findify/react-components@0.15.39) (2022-12-01)
+
+**Note:** Version bump only for package @findify/react-components
+
+
+
+
+
+## [0.15.38](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.15.37...@findify/react-components@0.15.38) (2022-11-24)
+
+**Note:** Version bump only for package @findify/react-components
+
+
+
+
+
+## [0.15.37](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.15.36...@findify/react-components@0.15.37) (2022-11-24)
+
+**Note:** Version bump only for package @findify/react-components
+
+
+
+
+
+## [0.15.36](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.15.35...@findify/react-components@0.15.36) (2022-11-14)
+
+**Note:** Version bump only for package @findify/react-components
+
+
+
+
+
+## [0.15.35](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.15.34...@findify/react-components@0.15.35) (2022-11-14)
+
+**Note:** Version bump only for package @findify/react-components
+
+
+
+
+
+## [0.15.34](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.15.33...@findify/react-components@0.15.34) (2022-10-28)
+
+**Note:** Version bump only for package @findify/react-components
+
+
+
+
+
 ## [0.15.33](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.15.32...@findify/react-components@0.15.33) (2022-10-05)
 
 **Note:** Version bump only for package @findify/react-components

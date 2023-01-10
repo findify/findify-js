@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.6.14](https://github.com/findify/findify-js/compare/@findify/agent@1.6.13...@findify/agent@1.6.14) (2022-12-12)
+
+**Note:** Version bump only for package @findify/agent
+
+
+
+
+
+## [1.6.13](https://github.com/findify/findify-js/compare/@findify/agent@1.6.12...@findify/agent@1.6.13) (2022-12-01)
+
+**Note:** Version bump only for package @findify/agent
+
+
+
+
+
+## [1.6.12](https://github.com/findify/findify-js/compare/@findify/agent@1.6.11...@findify/agent@1.6.12) (2022-10-28)
+
+**Note:** Version bump only for package @findify/agent
+
+
+
+
+
 ## [1.6.11](https://github.com/findify/findify-js/compare/@findify/agent@1.6.10...@findify/agent@1.6.11) (2022-08-18)
 
 **Note:** Version bump only for package @findify/agent

@@ -79,7 +79,7 @@ jobs:
 
       - add_ssh_keys:
           fingerprints:
-            - "b4:60:fd:de:5e:8a:73:db:d7:33:6d:1f:18:e3:1b:a3"
+            - "5d:32:21:b6:1c:cd:94:d2:ee:01:38:3f:8f:14:90:48"
 
       - run:
           name: add github to ssh known hosts
