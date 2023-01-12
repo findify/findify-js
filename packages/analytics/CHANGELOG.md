@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.6.7](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/analytics@3.6.6...@findify/analytics@3.6.7) (2023-01-12)
+
+
+### Bug Fixes
+
+* **@findify/analytics:** fix url fetching for analytics ([855c028](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/855c0288575fc2498bdbf9cf3a3e1af463746ee8))
+* **@findify/analytics:** re-added the key in the analytics api sending ([fb4177a](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/fb4177a63e04d0c3c6e5fbd832d80889ae5ec96b))
+
+
+
+
+
 ## [3.6.6](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/analytics@3.6.5...@findify/analytics@3.6.6) (2022-12-21)
 
 **Note:** Version bump only for package @findify/analytics

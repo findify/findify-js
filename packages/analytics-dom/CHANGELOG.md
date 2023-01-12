@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.7](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/analytics-dom@0.4.6...@findify/analytics-dom@0.4.7) (2023-01-12)
+
+**Note:** Version bump only for package @findify/analytics-dom
+
+
+
+
+
 ## [0.4.6](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/analytics-dom@0.4.5...@findify/analytics-dom@0.4.6) (2022-12-21)
 
 **Note:** Version bump only for package @findify/analytics-dom
