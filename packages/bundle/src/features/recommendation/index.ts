@@ -19,9 +19,9 @@ export default (_, widget: Widget<Immutable.RecommendationConfig>) => {
   const props = { agent, config, apiKey: config.get('key') };
   /** Remove entity and instance if nothing was found */
   agent.on('change:items', (items) => {
+    hideLoader(node);
     if (items.isEmpty()) return __root.widgets.detach(widget.key);
     hideFallback(node);
-    hideLoader(node);
   });
 
   /** Render */
