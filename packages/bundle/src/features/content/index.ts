@@ -40,9 +40,9 @@ export default (render, widget: Widget<Immutable.ContentConfig>) => {
 
   /** Switch to recommendation if query not present */
   agent.on('change:items', (items) => {
+    hideLoader(node);
     if (items.isEmpty()) return;
     hideFallback(node);
-    hideLoader(node);
     maybeScrollTop(config as any);
     return render('initial');
   });

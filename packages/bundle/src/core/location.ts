@@ -20,8 +20,8 @@ export const getHistory = () => window.__findifyHistory || history;
 export const getBasepath = () => {
   // For shopify merchants with multi market enabled basepath must include /country-code/. eg. en-US, en-AU ...
   if (__root.config.getIn(['platform']) === 'shopify' && !!__root.config.getIn(['platform_settings', 'multi_market'])) {
-    const regex = new RegExp(/^[a-zA-Z]{2}-[a-zA-Z]{2}/, 'gi');
-    const countryPath = window.location.pathname.split('/').find(p => regex.test(p));
+    const regex = new RegExp(/^\/[a-zA-Z]{2}-[a-zA-Z]{2}\//, 'gi'); // Match -> /en-ca/
+    const countryPath = window.location.pathname.split('/').find(p => regex.test(`/${p}/`));
     return countryPath ? `/${countryPath}` : __root.config.getIn(['location', 'defaultPath'], '');
   }
   return __root.config.getIn(['location', 'defaultPath'], '');
