@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.1.84](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.1.83...@findify/bundle@7.1.84) (2023-02-20)
+
+**Note:** Version bump only for package @findify/bundle
+
+
+
+
+
 ## [7.1.83](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.1.82...@findify/bundle@7.1.83) (2023-01-31)
 
 **Note:** Version bump only for package @findify/bundle
