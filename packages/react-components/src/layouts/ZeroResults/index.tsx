@@ -1,7 +1,7 @@
 /**
  * @module layouts/ZeroResults
  */
-
+import { useEffect } from 'react';
 import Grid from 'components/common/Grid';
 import Text from 'components/Text';
 import MapArray from 'components/common/MapArray';
@@ -21,6 +21,12 @@ export interface IZeroResultsProps extends ThemedSFCProps<typeof styles> {
 export default ({ q, theme = styles }: IZeroResultsProps) => {
   const { items, config } = useItems<Immutable.SearchConfig>();
   const translate = useTranslations();
+  useEffect(() => {
+    const spinner = document.querySelector<HTMLElement>('.findify-component-spinner');
+    if (spinner && !spinner.hidden) {
+      spinner.hidden = true;
+    }
+  }, []);
   return (
     <div className={theme.container}>
       <div className={theme.wrapper}>
