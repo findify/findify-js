@@ -5,7 +5,7 @@ const common = {
 
 export const staging = {
   ...common,
-  url: 'https://search-staging.findify.io/v4',
+  url: 'https://api.staging.findify.io/v4',
   // usually you don't want to
   // retry failed requests on staging
   retryCount: 1,
