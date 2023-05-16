@@ -16,7 +16,11 @@ import { Widget } from '../../core/widgets';
 const findClosestForm = findClosestElement('form');
 
 const isAutocompleteNode = (node) =>
-  node.hasAttribute && node.hasAttribute('data-findify-autocomplete');
+  node.hasAttribute && (node.hasAttribute('data-findify-autocomplete') || node.hasAttribute('data-findify'));
+
+const isAutocompleteContainer = (node) =>
+  node.hasAttribute && (node.hasAttribute('data-findify-autocomplete') || node.hasAttribute('data-findify-autocomplete-wrapper'));
+
 
 const stylesUpdater = (ghost, styles: any) => {
   let cache: any = {};
@@ -131,23 +135,14 @@ export const registerHandlers = (
   const insideAutocomplete = (node: HTMLElement) => {
     if (!node || !node.parentElement) return false;
     if (isAutocompleteNode(node)) return true;
+    if (isAutocompleteContainer(node)) {
+      return true;
+    }
     return insideAutocomplete(node.parentElement);
   };
 
-  const isAutocompleteRelated = (e) => {
-    return e.target && insideAutocomplete(e.target);
-  }
-
-  /** Handle document click */
-  const handleDocumentClick = (e) => {
-    if (e.target === node) {
-      __root.emit(Events.autocompleteFocus, widget.key)
-      return
-    }
-
-    if (!findifyElementFocused && !isAutocompleteRelated(e)) {
-      __root.emit(Events.autocompleteFocusLost, widget.key);
-    }
+  const isAutocompleteRelated = (target) => {
+    return target && insideAutocomplete(target);
   }
 
   const handleSearchSubmit = ({ key, target }) => {
@@ -206,6 +201,18 @@ export const registerHandlers = (
     rerender('initial');
   };
 
+  const handleAutocomplete = (event) => {
+    const { target } = event;
+    const path = getEventPath(event);
+    findifyElementFocused = !!path.find(isAutocompleteNode);
+
+    if (target === node) {
+      __root.emit(Events.autocompleteFocus, widget.key)
+    } else if (!findifyElementFocused && !isAutocompleteRelated(document.activeElement)) {
+      __root.emit(Events.autocompleteFocusLost, widget.key);
+    }
+  }
+
   /** Listen for input change */
   subscribers.push(
     addEventListeners(
@@ -219,7 +226,7 @@ export const registerHandlers = (
 
   /** Listen for input blur */
   subscribers.push(
-    addEventListeners(['click'], handleDocumentClick, document.body)
+    addEventListeners(['click', 'touchmove', 'focus', 'focusout'], handleAutocomplete, document.body)
   );
 
   if (config.get('handleFormSubmit')) {
@@ -256,28 +263,6 @@ export const registerHandlers = (
       addEventListeners(['scroll'], debounce(updateContainerPosition), window)
     );
   }
-
-  const handleActiveElementChange = (evt) => {
-    const path = getEventPath(evt);
-    const _focused = findifyElementFocused;
-    if (!path || !path.find) return;
-    findifyElementFocused = !!path.find(isAutocompleteNode);
-    if (
-      evt.type === 'focus' &&
-      _focused &&
-      !(evt.target === node || findifyElementFocused)
-    ) {
-      __root.emit(Events.autocompleteFocusLost, widget.key);
-    }
-  };
-
-  subscribers.push(
-    addEventListeners(
-      ['mousemove', 'touchmove', 'focus'],
-      debounce(handleActiveElementChange),
-      document
-    )
-  );
 
   /** Unsubscribe from events on instance destroy  */
   const unsubscribe = __root.listen((event, prop, ...args) => {
