@@ -72,6 +72,7 @@ export const registerHandlers = (
   node.setAttribute('aria-expanded', 'false');
   node.setAttribute('aria-activedescendant', '');
   node.setAttribute('aria-label', config.getIn(['translations', 'suggestions.accessibleTitle']));
+  node.setAttribute('data-findify-autocomplete', 'true');
   /** === */
 
   /** Track input position and update container styles */
