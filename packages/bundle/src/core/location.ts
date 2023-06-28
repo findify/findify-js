@@ -152,7 +152,7 @@ export const redirectToPage = async (redirect, meta) => {
     );
   }
   // Other websites - Redirection replaces the whole location
-  document.location.href = getBasepath() + redirection.url;
+  document.location.href = getBasepath() + redirection.url.replace(origin, '');
 };
 
 export const updateHash = (hash: string) => {
