@@ -1,8 +1,8 @@
 import { Children } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import SwiperCore, { Navigation, Pagination, Autoplay } from 'swiper';
+import SwiperCore, { Navigation, Pagination, Autoplay, Scrollbar } from 'swiper';
 
-SwiperCore.use([Navigation, Pagination, Autoplay]);
+SwiperCore.use([Navigation, Pagination, Autoplay, Scrollbar]);
 
 export default ({ children, ...props }) => {
   return (
