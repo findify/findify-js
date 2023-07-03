@@ -154,6 +154,8 @@ export const registerHandlers = (
 
   const handleEscape = ({ key }) => {
     if (key === 'Escape') {
+      // @ts-ignore
+      document.activeElement?.blur();
       __root.emit(Events.autocompleteFocusLost, widget.key)
     }
   }
