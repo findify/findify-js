@@ -43,7 +43,7 @@ export default (render, widget: Widget<Immutable.SearchConfig>) => {
       hideFallback(node);
       hideLoader(node);
       maybeScrollTop(config);
-      return render('initial');
+      render('initial');
     } else {
       if (config.get('fallbackEnabled')) {
         showFallback(node);
@@ -54,13 +54,10 @@ export default (render, widget: Widget<Immutable.SearchConfig>) => {
     }
   });
 
-  const loadedItemsSize = agent.response.get('items')?.size;
-
-  if (!!loadedItemsSize && typeof loadedItemsSize === 'number' && loadedItemsSize > 0) {
+  if (agent.response.get('items')?.size) {
     hideFallback(node);
     hideLoader(node);
   }
-
 
   agent.on('change:redirect', redirectToPage);
 
