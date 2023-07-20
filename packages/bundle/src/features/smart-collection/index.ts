@@ -56,7 +56,7 @@ export default (render, widget: Widget<Immutable.SearchConfig>) => {
 
   const loadedItemsSize = agent.response.get('items')?.size;
 
-  if (typeof loadedItemsSize === 'number' && loadedItemsSize > 0) {
+  if (!!loadedItemsSize && typeof loadedItemsSize === 'number' && loadedItemsSize > 0) {
     hideFallback(node);
     hideLoader(node);
   }
