@@ -43,7 +43,7 @@ export default (render, widget: Widget<Immutable.SearchConfig>) => {
       hideFallback(node);
       hideLoader(node);
       maybeScrollTop(config);
-      render('initial');
+      return render('initial');
     } else {
       if (config.get('fallbackEnabled')) {
         showFallback(node);
@@ -54,7 +54,8 @@ export default (render, widget: Widget<Immutable.SearchConfig>) => {
     }
   });
 
-  if (agent.response.get('items')?.size) {
+  const loadedItemsSize = agent.response.get('items')?.size;
+  if (loadedItemsSize > 0 && typeof loadedItemsSize === 'number') {
     hideFallback(node);
     hideLoader(node);
   }
