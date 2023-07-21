@@ -43,7 +43,7 @@ export default (render, widget: Widget<Immutable.SearchConfig>) => {
       hideFallback(node);
       hideLoader(node);
       maybeScrollTop(config);
-      render('initial');
+      return render('initial');
     } else {
       if (config.get('fallbackEnabled')) {
         showFallback(node);
