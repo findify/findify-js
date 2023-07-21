@@ -1,7 +1,7 @@
 {
   "name": "@findify/bundle",
   "description": "Findify Out Of Box solution",
-  "version": "7.1.80",
+  "version": "7.1.92",
   "main": "lib/index.js",
   "tags": [
     "findify",
@@ -37,11 +37,11 @@
     "access": "public"
   },
   "dependencies": {
-    "@findify/agent": "^1.6.14",
-    "@findify/analytics-dom": "^0.4.6",
+    "@findify/agent": "^1.6.15",
+    "@findify/analytics-dom": "^0.4.8",
     "@findify/change-emitter": "^1.0.0",
-    "@findify/react-components": "^0.15.44",
-    "@findify/react-connect": "^0.8.32",
+    "@findify/react-components": "^0.15.50",
+    "@findify/react-connect": "^0.8.35",
     "@sentry/browser": "^6.1.0",
     "jump.js": "^1.0.2",
     "react": "^17.0.1",
@@ -54,7 +54,7 @@
     "@babel/core": "^7.12.16",
     "@babel/preset-env": "^7.12.16",
     "@babel/preset-typescript": "^7.12.16",
-    "@findify/store-configuration": "^0.3.20",
+    "@findify/store-configuration": "^0.3.21",
     "@hot-loader/react-dom": "^17.0.1",
     "babel-loader": "^8.2.2",
     "babel-plugin-jsx-display-if": "^3.0.0",
