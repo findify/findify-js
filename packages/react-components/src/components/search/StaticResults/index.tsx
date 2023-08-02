@@ -16,6 +16,11 @@ export default ({ theme = styles, itemConfig }) => {
   const { items, config } = useItems<Immutable.SearchConfig>();
   const { items: promos } = usePromos();
 
+  const promosIndexes = promos.map(promo => promo.get('position')).toJS().sort()
+  const productsIndexes = items.map((_, idx) => idx + 1).toJS().filter(i => !promosIndexes.includes(i))
+  const lastProductIndex = productsIndexes.at(-1)
+  promosIndexes.forEach((_, idx) => productsIndexes.push(lastProductIndex + idx + 1))
+
   const translate = useTranslations();
   return (
     <div className={theme.root}>
@@ -28,16 +33,17 @@ export default ({ theme = styles, itemConfig }) => {
         columns={config.getIn(['breakpoints', 'grid'])}
       >
         {MapArray({
-          array: items,
-          factory: ProductCard,
-          config: itemConfig || config.get('product'),
-          isSearch: true
-        })}
-        {MapArray({
           array: promos,
           factory: PromoCard,
           config: config.get('promo'),
           order: (item) => item.get('position'),
+        })}
+        {MapArray({
+          array: items,
+          factory: ProductCard,
+          config: itemConfig || config.get('product'),
+          order: (_, index) => productsIndexes[index],
+          isSearch: true
         })}
       </Grid>
       <Pagination />

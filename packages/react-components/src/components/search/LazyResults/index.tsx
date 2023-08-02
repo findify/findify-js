@@ -36,6 +36,12 @@ const LazyResults = ({ theme = styles, card = ProductCard, itemConfig }: ILazyRe
   const { config } = useConfig<Immutable.SearchConfig>();
   const { getPageProps, current } = usePagination();
   const translate = useTranslations();
+
+  const promosIndexes = promos.map(promo => promo.get('position')).toJS().sort()
+  const productsIndexes = items.map((_, idx) => idx + 1).toJS().filter(i => !promosIndexes.includes(i))
+  const lastProductIndex = productsIndexes.at(-1)
+  promosIndexes.forEach((_, idx) => productsIndexes.push(lastProductIndex + idx + 1))
+
   return (
     <div
       ref={container}
@@ -65,16 +71,17 @@ const LazyResults = ({ theme = styles, card = ProductCard, itemConfig }: ILazyRe
         gutter={12}
       >
         {MapArray({
-          config: itemConfig || config.get('product'),
-          array: items as ArrayLike,
-          factory: card,
-          isSearch: true
-        })}
-        {MapArray({
           array: promos,
           factory: PromoCard,
           config: config.get('promo'),
           order: (item) => item.get('position'),
+        })}
+        {MapArray({
+          config: itemConfig || config.get('product'),
+          array: items as ArrayLike,
+          factory: card,
+          order: (_, index) => productsIndexes[index],
+          isSearch: true
         })}
       </Grid>
       <div className={theme.buttonContainer} display-if={displayNextButton}>
