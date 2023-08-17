@@ -1,12 +1,14 @@
 import { createChangeEmitter } from '@findify/change-emitter';
-import storage from './modules/storage';
 import { request as api } from './modules/request';
-import { isFunction, shallowEqual } from './utils/helpers';
+import storage from './modules/storage';
 import settings from './settings';
+import { isFunction, shallowEqual } from './utils/helpers';
+import { isCollection, isSearch } from './utils/location';
 import { onLeavePage } from './utils/onLeavePage';
+
 export * from './types';
 
-import { Config, Client, User, EventName } from './types';
+import { Client, Config, EventName, User } from './types';
 
 const emitter = createChangeEmitter();
 
@@ -21,6 +23,37 @@ const getUser = () => ({
   persist: storage.persist,
   exist: storage.exist,
 });
+
+const getPageType = (request) => {
+  if (request.item_id || request.variant_item_id) {
+    return 'product-details';
+  } else if (isCollection(request.url)) {
+    return 'smart-collection';
+  } else if (isSearch(request.url)) {
+    return 'search-results';
+  } else {
+    return null;
+  }
+}
+
+/**
+ * Get events properties.
+ */
+const getEventProperties = (event, request) => {
+  switch (event) {
+    case EventName.viewPage:
+      return {
+        ...request,
+        url: request.url ?? window.location.href,
+        ref: request.ref ?? window.document.referrer,
+        width: request.width ?? window.screen.width,
+        height: request.height ?? window.screen.height,
+        ...(getPageType(request) ? { pageType: getPageType(request) } : {}),
+      }
+    default:
+      return request;
+  }
+}
 
 /**
  * Create events creator.
@@ -39,16 +72,16 @@ const sendEventCreator = ({ events, key }: Config) => (
 
   if (useCookie) return storage.memoize(event, request);
 
-  const properties =
-    event === EventName.viewPage
-      ? {
-        ...request,
-        url: request.url ?? window.location.href,
-        ref: request.ref ?? window.document.referrer,
-        width: request.width ?? window.screen.width,
-        height: request.height ?? window.screen.height,
-      }
-      : request;
+  const properties = getEventProperties(event, request);
+  event === EventName.viewPage
+    ? {
+      ...request,
+      url: request.url ?? window.location.href,
+      ref: request.ref ?? window.document.referrer,
+      width: request.width ?? window.screen.width,
+      height: request.height ?? window.screen.height,
+    }
+    : request;
 
   emitter.emit(event, properties);
 
