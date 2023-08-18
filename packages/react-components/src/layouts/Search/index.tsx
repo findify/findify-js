@@ -2,24 +2,25 @@
  * @module layouts/Search
  */
 
-import { useEffect } from 'react';
+import { useItems } from '@findify/react-connect';
+import Banner from 'components/Banner';
+import { useAnnouncement } from 'components/common/Announcement';
+import Branch from 'components/common/Branch';
+import Grid, { Column } from 'components/common/Grid';
+import DesktopActions from 'components/search/DesktopActions';
 import DesktopFacets from 'components/search/DesktopFacets';
 import MobileActions from 'components/search/MobileActions';
-import DesktopActions from 'components/search/DesktopActions';
-import Branch from 'components/common/Branch';
-import Banner from 'components/Banner';
-import { List } from 'immutable';
-import Grid, { Column } from 'components/common/Grid';
 import { useMobile } from 'helpers/useMobile';
-import { useAnnouncement } from 'components/common/Announcement';
 import useScrollOnChange from 'helpers/useScrollOnChange';
-import { useItems } from '@findify/react-connect';
 import useTranslations from 'helpers/useTranslations';
+import { List } from 'immutable';
+import { useEffect } from 'react';
 
-import styles from 'layouts/Search/styles.css';
 import { Immutable } from '@findify/store-configuration';
-import { ThemedSFCProps, IProduct } from 'types';
 import SearchResultsLayout from 'components/search/SearchResultsLayout';
+import { hideLoader } from 'helpers/loader';
+import styles from 'layouts/Search/styles.css';
+import { IProduct, ThemedSFCProps } from 'types';
 
 /** Props that search layout accepts */
 export interface ISearchProps extends ThemedSFCProps<typeof styles> {
@@ -41,6 +42,7 @@ const Search = ({ isCollection, theme = styles }) => {
   ]);
 
   if (!items.size) return null;
+  hideLoader();
   return (
     <>
       <Grid

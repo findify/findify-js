@@ -1,21 +1,20 @@
-import { createElement } from 'react';
 import { SmartCollectionProvider } from '@findify/react-connect';
+import { Immutable } from '@findify/store-configuration';
+import { createElement } from 'react';
+import { Events } from '../../core/events';
 import {
   getQuery,
-  setQuery,
   listenHistory,
   redirectToPage,
+  setQuery,
 } from '../../core/location';
-import { Events } from '../../core/events';
-import { maybeScrollTop } from '../../helpers/scrollTo';
+import { Widget } from '../../core/widgets';
 import {
   hideFallback,
-  showFallback,
-  hideLoader,
+  showFallback
 } from '../../helpers/fallbackNode';
 import lazy from '../../helpers/renderLazyComponent';
-import { Widget } from '../../core/widgets';
-import { Immutable } from '@findify/store-configuration';
+import { maybeScrollTop } from '../../helpers/scrollTo';
 
 const lazySearch = lazy(
   () =>
@@ -41,13 +40,11 @@ export default (render, widget: Widget<Immutable.SearchConfig>) => {
   agent.on('change:items', (items) => {
     if (!items.isEmpty()) {
       hideFallback(node);
-      hideLoader(node);
       maybeScrollTop(config);
       return render('initial');
     } else {
       if (config.get('fallbackEnabled')) {
         showFallback(node);
-        hideLoader(node);
         __root.emit(Events.collectionNotFound, widget);
         render();
       }
@@ -57,7 +54,6 @@ export default (render, widget: Widget<Immutable.SearchConfig>) => {
   const loadedItemsSize = agent.response.get('items')?.size;
   if (loadedItemsSize > 0 && typeof loadedItemsSize === 'number') {
     hideFallback(node);
-    hideLoader(node);
   }
 
   agent.on('change:redirect', redirectToPage);
@@ -65,7 +61,6 @@ export default (render, widget: Widget<Immutable.SearchConfig>) => {
   agent.on('error', () => {
     if (config.get('fallbackEnabled')) {
       showFallback(node);
-      hideLoader(node);
       render();
     }
   });

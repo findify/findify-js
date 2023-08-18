@@ -3,13 +3,13 @@
  */
 import styles from 'layouts/Content/styles.css';
 
+import { useItems } from '@findify/react-connect';
+import ContentCard from 'components/Cards/Content';
+import CombinedResults from 'components/search/CombinedResults';
 import LazyResults from 'components/search/LazyResults';
 import StaticResults from 'components/search/StaticResults';
-import CombinedResults from 'components/search/CombinedResults';
+import { hideLoader } from 'helpers/loader';
 import { MJSConfiguration, MJSValue, ThemedSFCProps } from 'types';
-import ContentCard from 'components/Cards/Content';
-import { useItems } from '@findify/react-connect';
-import Branch from 'components/common/Branch';
 
 /** This is a list of props ContentSearchLayout accepts */
 export interface IContentSearchProps extends ThemedSFCProps {
@@ -28,6 +28,7 @@ const Content = ({ theme = styles }: IContentSearchProps) => {
   const paginationConfig = config.getIn(['pagination', 'type']);
 
   if (!items?.size) return null;
+  hideLoader()
   switch (paginationConfig) {
     case 'lazy':
       return <LazyResults card={ContentCard} itemConfig={config.get('item')} />;

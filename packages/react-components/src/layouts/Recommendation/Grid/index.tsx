@@ -2,15 +2,16 @@
  * @module layouts/Recommendation/Grid
  */
 
-import Grid from 'components/common/Grid';
-import Text from 'components/Text';
-import { IProduct, MJSConfiguration, ThemedSFCProps } from 'types/index';
-import { List } from 'immutable';
-import Product from 'components/Cards/Product';
-import MapArray from 'components/common/MapArray';
-import styles from 'layouts/Recommendation/Grid/styles.css';
 import { useItems } from '@findify/react-connect';
 import { Immutable } from '@findify/store-configuration';
+import Product from 'components/Cards/Product';
+import Text from 'components/Text';
+import Grid from 'components/common/Grid';
+import MapArray from 'components/common/MapArray';
+import { hideLoader } from 'helpers/loader';
+import { List } from 'immutable';
+import styles from 'layouts/Recommendation/Grid/styles.css';
+import { IProduct, MJSConfiguration, ThemedSFCProps } from 'types/index';
 
 /** This is a list of props Grid layout for Recommendations accepts */
 export interface IGridProps extends ThemedSFCProps {
@@ -25,6 +26,7 @@ export interface IGridProps extends ThemedSFCProps {
 export default ({ theme = styles }: IGridProps) => {
   const { items, config } = useItems<Immutable.RecommendationConfig>();
   if (!items?.size) return null;
+  hideLoader();
   return (
     <>
       <Text title component="p" className={theme.title}>

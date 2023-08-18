@@ -1,12 +1,13 @@
 /**
  * @module components/Dropdown
  */
-import Swiper from 'components/Swiper';
-import ProductCard from 'components/Cards/Product';
-import Text from 'components/Text';
-import useColumns from 'helpers/useColumns';
 import { useItems } from '@findify/react-connect';
 import { Immutable } from '@findify/store-configuration';
+import ProductCard from 'components/Cards/Product';
+import Swiper from 'components/Swiper';
+import Text from 'components/Text';
+import { hideLoader } from 'helpers/loader';
+import useColumns from 'helpers/useColumns';
 import useScrollOnChange from 'helpers/useScrollOnChange';
 import styles from 'layouts/Recommendation/Slider/styles.css';
 
@@ -26,6 +27,7 @@ export default ({ theme = styles }) => {
   useScrollOnChange(items);
 
   if (!items?.size) return null;
+  hideLoader();
   return (
     <>
       <Text title component="p" className={theme.title}>
