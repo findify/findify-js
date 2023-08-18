@@ -7,6 +7,7 @@ import ProductCard from 'components/Cards/Product';
 import Text from 'components/Text';
 import Grid from 'components/common/Grid';
 import MapArray from 'components/common/MapArray';
+import { hideLoader } from 'helpers/loader';
 import useTranslations from 'helpers/useTranslations';
 import styles from 'layouts/ZeroResults/styles.css';
 import { useEffect } from 'react';
@@ -21,12 +22,7 @@ export interface IZeroResultsProps extends ThemedSFCProps<typeof styles> {
 export default ({ q, theme = styles }: IZeroResultsProps) => {
   const { items, config } = useItems<Immutable.SearchConfig>();
   const translate = useTranslations();
-  useEffect(() => {
-    const spinner = document.querySelector<HTMLElement>('.findify-component-spinner');
-    if (spinner && !spinner.hidden) {
-      spinner.hidden = true;
-    }
-  }, []);
+  useEffect(() => hideLoader(), []);
   return (
     <div className={theme.container}>
       <div className={theme.wrapper}>
