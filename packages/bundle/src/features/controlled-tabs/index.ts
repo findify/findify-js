@@ -1,10 +1,9 @@
 import { Immutable } from '@findify/store-configuration';
-import { Widget } from '../../core/widgets';
 import { Map } from 'immutable';
 import { Events } from '../../core/events';
+import { Widget } from '../../core/widgets';
 import { documentReady } from '../../helpers/documentReady';
 import lazy from '../../helpers/renderLazyComponent';
-import { hideLoader } from '../../helpers/fallbackNode';
 
 const lazyTabs = lazy(
   () => import('@findify/react-components/src/layouts/Tabs')
@@ -56,7 +55,7 @@ const createState = (_widgets, render) => {
 
 const getCount = (data, type) =>
   type === 'recommendation' ? data.get('limit') : data.get('total');
-  
+
 
 export const createWidget = (
   parentNode: HTMLElement,
@@ -80,12 +79,6 @@ export default (render, widget) => {
   const process = () => {
     const widgets: Widget<Immutable.FeatureConfig>[] = [];
     const searchWidget = createWidget(node, 'search', config.getIn(['translations', 'search.title']), Map({ widgetKey: 'search-results' }));
-    searchWidget.agent.on('change:items', () => {
-      hideLoader(node)
-    });
-    if (searchWidget.agent.response.get('items')?.size) {
-      hideLoader(node)
-    }
     widgets.push(searchWidget)
     if (config.getIn(['features', 'content'])?.size > 0) {
       config.getIn(['features', 'content']).forEach((ciConfig, source) => {
