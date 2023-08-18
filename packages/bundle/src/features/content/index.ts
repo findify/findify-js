@@ -1,15 +1,13 @@
-import { createElement } from 'react';
 import { ContentProvider } from '@findify/react-connect';
-import { getQuery, setQuery, listenHistory } from '../../core/location';
-import { hideFallback, hideLoader } from '../../helpers/fallbackNode';
+import { createElement } from 'react';
 import { Events } from '../../core/events';
-import { maybeScrollTop, scrollTo } from '../../helpers/scrollTo';
-import isNumeric from '../../helpers/isNumeric';
+import { getQuery, listenHistory } from '../../core/location';
+import { hideFallback } from '../../helpers/fallbackNode';
+import { maybeScrollTop } from '../../helpers/scrollTo';
 
-import lazy from '../../helpers/renderLazyComponent';
 import { Immutable } from '@findify/store-configuration';
-import { Agent } from '@findify/agent/types/core/Agent';
 import { Widget } from '../../core/widgets';
+import lazy from '../../helpers/renderLazyComponent';
 
 const lazyComponent = lazy(
   () => import('@findify/react-components/src/layouts/Content')
@@ -40,12 +38,8 @@ export default (render, widget: Widget<Immutable.ContentConfig>) => {
 
   /** Switch to recommendation if query not present */
   agent.on('change:items', (items) => {
-    if (items.isEmpty()) {
-      hideLoader(node);
-      return;
-    }
+    if (items.isEmpty()) return;
     hideFallback(node);
-    hideLoader(node);
     maybeScrollTop(config as any);
     return render('initial');
   });

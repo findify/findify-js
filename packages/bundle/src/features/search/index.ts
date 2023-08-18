@@ -1,23 +1,22 @@
-import { createElement } from 'react';
-import { SearchProvider, RecommendationProvider } from '@findify/react-connect';
 import { Recommendation as RecommendationAgent } from '@findify/agent';
+import { RecommendationProvider, SearchProvider } from '@findify/react-connect';
+import { Immutable } from '@findify/store-configuration';
+import { createElement } from 'react';
+import { Events } from '../../core/events';
 import {
   getQuery,
-  setQuery,
   isSearch,
   listenHistory,
   redirectToPage,
+  setQuery,
 } from '../../core/location';
+import { Widget } from '../../core/widgets';
 import {
   hideFallback,
-  showFallback,
-  hideLoader,
+  showFallback
 } from '../../helpers/fallbackNode';
-import { Events } from '../../core/events';
-import { maybeScrollTop } from '../../helpers/scrollTo';
 import lazy from '../../helpers/renderLazyComponent';
-import { Widget } from '../../core/widgets';
-import { Immutable } from '@findify/store-configuration';
+import { maybeScrollTop } from '../../helpers/scrollTo';
 
 const createFallbackAgent = ({
   config,
@@ -34,7 +33,6 @@ const createFallbackAgent = ({
     })
     .on('change:items', () => {
       hideFallback(node);
-      hideLoader(node);
     });
 
 const lazySearchZeroResults = lazy(
@@ -72,7 +70,6 @@ export default (render, widget: Widget<Immutable.SearchConfig>) => {
 
   if (!isSearch()) {
     showFallback(node);
-    hideLoader(node);
     __root.emit(Events.collectionNotFound, widget);
     return null;
   }
@@ -106,11 +103,9 @@ export default (render, widget: Widget<Immutable.SearchConfig>) => {
   agent.on('change:items', (items) => {
     if (!items.isEmpty()) {
       hideFallback(node);
-      hideLoader(node);
       maybeScrollTop(config);
       return render('initial');
     }
-    hideLoader(node);
     renderZeroResults();
   });
 
@@ -119,7 +114,6 @@ export default (render, widget: Widget<Immutable.SearchConfig>) => {
   if (typeof loadedItemsSize === 'number') {
     if (loadedItemsSize > 0) {
       hideFallback(node);
-      hideLoader(node);
     } else {
       setTimeout(renderZeroResults, 0)
     }
