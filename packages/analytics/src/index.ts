@@ -48,7 +48,7 @@ const getEventProperties = (event, request) => {
         ref: request.ref ?? window.document.referrer,
         width: request.width ?? window.screen.width,
         height: request.height ?? window.screen.height,
-        ...(getPageType(request) ? { pageType: request.pageType ?? getPageType(request) } : {}),
+        ...(getPageType(request) || request.pageType ? { pageType: request.pageType ?? getPageType(request) } : {}),
       }
     default:
       return request;
@@ -73,15 +73,6 @@ const sendEventCreator = ({ events, key }: Config) => (
   if (useCookie) return storage.memoize(event, request);
 
   const properties = getEventProperties(event, request);
-  event === EventName.viewPage
-    ? {
-      ...request,
-      url: request.url ?? window.location.href,
-      ref: request.ref ?? window.document.referrer,
-      width: request.width ?? window.screen.width,
-      height: request.height ?? window.screen.height,
-    }
-    : request;
 
   emitter.emit(event, properties);
 

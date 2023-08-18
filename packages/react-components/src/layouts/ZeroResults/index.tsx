@@ -1,16 +1,16 @@
 /**
  * @module layouts/ZeroResults
  */
-import { useEffect } from 'react';
-import Grid from 'components/common/Grid';
-import Text from 'components/Text';
-import MapArray from 'components/common/MapArray';
-import ProductCard from 'components/Cards/Product';
-import { ThemedSFCProps } from 'types';
-import useTranslations from 'helpers/useTranslations';
 import { useItems } from '@findify/react-connect';
-import styles from 'layouts/ZeroResults/styles.css';
 import { Immutable } from '@findify/store-configuration';
+import ProductCard from 'components/Cards/Product';
+import Text from 'components/Text';
+import Grid from 'components/common/Grid';
+import MapArray from 'components/common/MapArray';
+import useTranslations from 'helpers/useTranslations';
+import styles from 'layouts/ZeroResults/styles.css';
+import { useEffect } from 'react';
+import { ThemedSFCProps } from 'types';
 
 /** Props that ZeroResults layout accepts */
 export interface IZeroResultsProps extends ThemedSFCProps<typeof styles> {
