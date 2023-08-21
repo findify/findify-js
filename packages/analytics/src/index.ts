@@ -48,7 +48,7 @@ const getEventProperties = (event, request) => {
         ref: request.ref ?? window.document.referrer,
         width: request.width ?? window.screen.width,
         height: request.height ?? window.screen.height,
-        ...(getPageType(request) || request.pageType ? { pageType: request.pageType ?? getPageType(request) } : {}),
+        ...(getPageType(request) || request.page_type ? { page_type: request.page_type ?? getPageType(request) } : {}),
       }
     default:
       return request;
