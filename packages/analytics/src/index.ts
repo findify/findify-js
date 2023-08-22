@@ -27,10 +27,10 @@ const getUser = () => ({
 const getPageType = (request) => {
   if (request.item_id || request.variant_item_id) {
     return 'product-details';
-  } else if (isCollection(request.url)) {
-    return 'smart-collection';
   } else if (isSearch(request.url)) {
     return 'search-results';
+  } else if (isCollection(request.url)) {
+    return 'smart-collection';
   } else {
     return null;
   }
