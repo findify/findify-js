@@ -11,7 +11,8 @@ import {
 import { Widget } from '../../core/widgets';
 import {
   hideFallback,
-  showFallback
+  showFallback,
+  hideLoader,
 } from '../../helpers/fallbackNode';
 import lazy from '../../helpers/renderLazyComponent';
 import { maybeScrollTop } from '../../helpers/scrollTo';
@@ -40,11 +41,13 @@ export default (render, widget: Widget<Immutable.SearchConfig>) => {
   agent.on('change:items', (items) => {
     if (!items.isEmpty()) {
       hideFallback(node);
+      hideLoader(node);
       maybeScrollTop(config);
       return render('initial');
     } else {
       if (config.get('fallbackEnabled')) {
         showFallback(node);
+        hideLoader(node);
         __root.emit(Events.collectionNotFound, widget);
         render();
       }
@@ -54,6 +57,7 @@ export default (render, widget: Widget<Immutable.SearchConfig>) => {
   const loadedItemsSize = agent.response.get('items')?.size;
   if (loadedItemsSize > 0 && typeof loadedItemsSize === 'number') {
     hideFallback(node);
+    hideLoader(node);
   }
 
   agent.on('change:redirect', redirectToPage);
@@ -61,6 +65,7 @@ export default (render, widget: Widget<Immutable.SearchConfig>) => {
   agent.on('error', () => {
     if (config.get('fallbackEnabled')) {
       showFallback(node);
+      hideLoader(node);
       render();
     }
   });
