@@ -6,7 +6,7 @@ export const hideFallback = (node) => {
     element.style.display = 'none';
     element.style.visibility = 'hidden';
   }
-}
+};
 
 export const showFallback = (node) => {
   if (!node) return;
@@ -16,4 +16,16 @@ export const showFallback = (node) => {
     element.style.display = '';
     element.style.visibility = '';
   }
-}
+};
+
+export const hideLoader = (node) => {
+  if (!node) return;
+  const loaders = [].slice.call(
+    document.querySelectorAll('.findify-component-spinner')
+  );
+  for (let index = 0; index < loaders.length; index++) {
+    const element = loaders[index];
+    element.style.display = 'none';
+    element.style.visibility = 'hidden';
+  }
+};

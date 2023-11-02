@@ -7,8 +7,11 @@ export default (container, item, shouldScroll) => {
   useEffect(() => {
     try {
       if (!shouldScroll || !container.current || navigatedProductId !== productId) return;
-      window.localStorage.removeItem('findify-navigated-product-id');
-      setTimeout(() => container.current.scrollIntoView(), 500);
+
+      setTimeout(() => {
+        container.current.scrollIntoView();
+        window.localStorage.removeItem('findify-navigated-product-id');
+      }, 500);
     } catch (err) {
       console.log(err);
     }
