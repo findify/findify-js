@@ -25,8 +25,8 @@ export interface IGridProps extends ThemedSFCProps {
 
 export default ({ theme = styles }: IGridProps) => {
   const { items, config } = useItems<Immutable.RecommendationConfig>();
-  if (!items?.size) return null;
   hideLoader();
+  if (!items?.size) return null;
   return (
     <>
       <Text title component="p" className={theme.title}>

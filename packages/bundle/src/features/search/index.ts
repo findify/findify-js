@@ -13,7 +13,8 @@ import {
 import { Widget } from '../../core/widgets';
 import {
   hideFallback,
-  showFallback
+  hideLoader,
+  showFallback,
 } from '../../helpers/fallbackNode';
 import lazy from '../../helpers/renderLazyComponent';
 import { maybeScrollTop } from '../../helpers/scrollTo';
@@ -81,10 +82,20 @@ export default (render, widget: Widget<Immutable.SearchConfig>) => {
 
     // Redirection from query submitted checking FE config
     const feConfigRedirections = config.get('redirections')?.toJS();
-    const feConfigRedirectionKeyMatch = feConfigRedirections && Object.keys(feConfigRedirections).find(key => key.toLowerCase() === query?.q?.toLowerCase());
+    const feConfigRedirectionKeyMatch =
+      feConfigRedirections &&
+      Object.keys(feConfigRedirections).find(
+        (key) => key.toLowerCase() === query?.q?.toLowerCase()
+      );
     if (!!feConfigRedirectionKeyMatch) {
-      const feConfigRedirectionMatch = config.getIn(['redirections', feConfigRedirectionKeyMatch])
-      return redirectToPage({ name: feConfigRedirectionMatch, url: feConfigRedirectionMatch }, meta);
+      const feConfigRedirectionMatch = config.getIn([
+        'redirections',
+        feConfigRedirectionKeyMatch,
+      ]);
+      return redirectToPage(
+        { name: feConfigRedirectionMatch, url: feConfigRedirectionMatch },
+        meta
+      );
     }
 
     if (!meta.get('total')) return renderZeroResults();
@@ -114,7 +125,8 @@ export default (render, widget: Widget<Immutable.SearchConfig>) => {
     if (loadedItemsSize > 0) {
       hideFallback(node);
     } else {
-      setTimeout(renderZeroResults, 0)
+      hideLoader(node);
+      setTimeout(renderZeroResults, 0);
     }
   }
 
