@@ -4,6 +4,7 @@ import { Events } from '../../core/events';
 import { Widget } from '../../core/widgets';
 import { documentReady } from '../../helpers/documentReady';
 import lazy from '../../helpers/renderLazyComponent';
+import { hideLoader } from '../../helpers/fallbackNode';
 
 const lazyTabs = lazy(
   () => import('@findify/react-components/src/layouts/Tabs')
@@ -56,41 +57,48 @@ const createState = (_widgets, render) => {
 const getCount = (data, type) =>
   type === 'recommendation' ? data.get('limit') : data.get('total');
 
-
 export const createWidget = (
   parentNode: HTMLElement,
   type: 'search' | 'content',
   title: string,
   config: Map<string, unknown>
 ): Widget<Immutable.FeatureConfig> => {
-  const node = document.createElement('div')
-  node.setAttribute('data-title', title)
+  const node = document.createElement('div');
+  node.setAttribute('data-title', title);
   if (type === 'content') {
-    node.setAttribute('data-type', config.get('source') as string)
+    node.setAttribute('data-type', config.get('source') as string);
   }
-  parentNode.appendChild(node)
-  window.findify.widgets.attach(node, type, config)
-  return window.findify.widgets.get(config.get('widgetKey'))
-}
+  parentNode.appendChild(node);
+  window.findify.widgets.attach(node, type, config);
+  return window.findify.widgets.get(config.get('widgetKey'));
+};
 
 export default (render, widget) => {
   const { node, config } = widget;
 
   const process = () => {
     const widgets: Widget<Immutable.FeatureConfig>[] = [];
-    const searchWidget = createWidget(node, 'search', config.getIn(['translations', 'search.title']), Map({ widgetKey: 'search-results' }));
-    widgets.push(searchWidget)
+    const searchWidget = createWidget(
+      node,
+      'search',
+      config.getIn(['translations', 'search.title']),
+      Map({ widgetKey: 'search-results' })
+    );
+    if (searchWidget.agent.response.get('items')?.size) {
+      hideLoader(node);
+    }
+    widgets.push(searchWidget);
     if (config.getIn(['features', 'content'])?.size > 0) {
       config.getIn(['features', 'content']).forEach((ciConfig, source) => {
-        widgets.push(createWidget(
-          node,
-          'content',
-          config.getIn(['features', 'content', source, 'title']),
-          config
-            .set('source', source)
-            .set('widgetKey', `content-${source}`)
-        ))
-      })
+        widgets.push(
+          createWidget(
+            node,
+            'content',
+            config.getIn(['features', 'content', source, 'title']),
+            config.set('source', source).set('widgetKey', `content-${source}`)
+          )
+        );
+      });
       const { updateCount } = createState(widgets, render);
       widgets.forEach(({ type, agent }, index) => {
         if (agent.response.get('meta'))

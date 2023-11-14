@@ -41,8 +41,8 @@ const Search = ({ isCollection, theme = styles }) => {
     items,
   ]);
 
-  if (!items.size) return null;
   hideLoader();
+  if (!items.size) return null;
   return (
     <>
       <Grid
@@ -68,7 +68,9 @@ const Search = ({ isCollection, theme = styles }) => {
             right={DesktopActions}
           />
           <Banner />
-          <SearchResultsLayout condition={config.getIn(['pagination', 'type'])} />
+          <SearchResultsLayout
+            condition={config.getIn(['pagination', 'type'])}
+          />
         </>
       </Grid>
       {announcement}

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.1.98](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.1.97...@findify/bundle@7.1.98) (2023-11-02)
+
+
+### Bug Fixes
+
+* **@findify/bundle:** hideLoader function has been returned ([1b983b3](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/1b983b318247762e78fc96134b3357d28cb1af08))
+
+
+
+
+
 ## [7.1.97](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.1.96...@findify/bundle@7.1.97) (2023-08-22)
 
 **Note:** Version bump only for package @findify/bundle

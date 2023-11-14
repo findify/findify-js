@@ -2,7 +2,7 @@ import { ContentProvider } from '@findify/react-connect';
 import { createElement } from 'react';
 import { Events } from '../../core/events';
 import { getQuery, listenHistory } from '../../core/location';
-import { hideFallback } from '../../helpers/fallbackNode';
+import { hideFallback, hideLoader } from '../../helpers/fallbackNode';
 import { maybeScrollTop } from '../../helpers/scrollTo';
 
 import { Immutable } from '@findify/store-configuration';
@@ -38,7 +38,10 @@ export default (render, widget: Widget<Immutable.ContentConfig>) => {
 
   /** Switch to recommendation if query not present */
   agent.on('change:items', (items) => {
-    if (items.isEmpty()) return;
+    if (items.isEmpty()) {
+      hideLoader(node);
+      return;
+    }
     hideFallback(node);
     maybeScrollTop(config as any);
     return render('initial');
