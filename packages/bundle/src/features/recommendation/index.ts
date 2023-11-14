@@ -2,7 +2,7 @@ import { RecommendationProvider } from '@findify/react-connect';
 import { Immutable } from '@findify/store-configuration';
 import { createElement } from 'react';
 import { Widget } from '../../core/widgets';
-import { hideFallback } from '../../helpers/fallbackNode';
+import { hideFallback, hideLoader } from '../../helpers/fallbackNode';
 import lazy from '../../helpers/renderLazyComponent';
 
 const lazyRecommendation = lazy(
@@ -20,6 +20,7 @@ export default (_, widget: Widget<Immutable.RecommendationConfig>) => {
   agent.on('change:items', (items) => {
     if (items.isEmpty()) {
       __root.widgets.detach(widget.key);
+      hideLoader(node);
       return;
     }
     hideFallback(node);

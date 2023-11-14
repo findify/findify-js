@@ -27,8 +27,8 @@ const Content = ({ theme = styles }: IContentSearchProps) => {
   const { items, config } = useItems();
   const paginationConfig = config.getIn(['pagination', 'type']);
 
+  hideLoader();
   if (!items?.size) return null;
-  hideLoader()
   switch (paginationConfig) {
     case 'lazy':
       return <LazyResults card={ContentCard} itemConfig={config.get('item')} />;

@@ -26,8 +26,8 @@ export default ({ theme = styles }) => {
 
   useScrollOnChange(items);
 
-  if (!items?.size) return null;
   hideLoader();
+  if (!items?.size) return null;
   return (
     <>
       <Text title component="p" className={theme.title}>
