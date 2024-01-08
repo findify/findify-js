@@ -1,8 +1,8 @@
 import debug from 'debug';
-import { Config, Client } from './client';
+import { Client, Config } from './client';
 import * as R from './request';
-import { validateConfig } from './validation';
 import * as settings from './settings';
+import { validateConfig } from './validation';
 export { Type as RequestType } from './request/Type';
 
 const knownEnvs = ['development', 'staging', 'production'];
