@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.15.56](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.15.55...@findify/react-components@0.15.56) (2023-11-14)
+
+
+### Bug Fixes
+
+* **@findify/bundle,@findify/react-components:** restore hideLoader functionality, position of loader hook ([c32105b](https://github.com/findify/findify-js/tree/master/packages/ui-components/commit/c32105b6e80598705672e7503d085685610b06f6))
+
+
+
+
+
 ## [0.15.55](https://github.com/findify/findify-js/tree/master/packages/ui-components/compare/@findify/react-components@0.15.54...@findify/react-components@0.15.55) (2023-11-02)
 
 **Note:** Version bump only for package @findify/react-components

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.1.99](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.1.98...@findify/bundle@7.1.99) (2023-11-14)
+
+
+### Bug Fixes
+
+* **@findify/bundle,@findify/react-components:** restore hideLoader functionality, position of loader hook ([c32105b](https://github.com/findify/findify-js/tree/master/packages/analytics/commit/c32105b6e80598705672e7503d085685610b06f6))
+
+
+
+
+
 ## [7.1.98](https://github.com/findify/findify-js/tree/master/packages/analytics/compare/@findify/bundle@7.1.97...@findify/bundle@7.1.98) (2023-11-02)
 
 
