@@ -1,10 +1,10 @@
 import { User } from '../common';
 import * as Autocomplete from './Autocomplete';
+import * as Content from './Content';
+import * as Feedback from './Feedback';
+import * as Recommendations from './Recommendations';
 import * as Search from './Search';
 import * as SmartCollection from './SmartCollection';
-import * as Recommendations from './Recommendations';
-import * as Feedback from './Feedback';
-import * as Content from './Content';
 import * as Params from './params';
 
 /**
@@ -29,6 +29,14 @@ export type Request =
   | Feedback.Request
   | Content.Request;
 
+/**
+ * MarketContext for MultiMarket
+ */
+export type MarketContext = undefined | {
+  language?: string;
+  region?: string;
+  currency?: string;
+}
 
 /**
  * Common request body parameters.
@@ -39,6 +47,7 @@ export interface CommonParams {
   user: User;
   key: string;
   log?: boolean;
+  context?: MarketContext
 }
 
 /**
@@ -54,11 +63,8 @@ export type SpecificParams =
 
 export { Type } from './Type';
 export {
-  Params,
-  Autocomplete,
-  Search,
-  SmartCollection,
-  Recommendations,
-  Content,
-  Feedback,
+  Autocomplete, Content,
+  Feedback, Params, Recommendations, Search,
+  SmartCollection
 };
+

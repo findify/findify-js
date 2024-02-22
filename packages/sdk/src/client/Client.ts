@@ -1,10 +1,9 @@
 import debug from 'debug';
-import { User } from '../common';
-import { omit, generateRID } from '../utils';
 import * as API from '../api';
-import { validateUser } from '../validation';
 import * as Req from '../request';
 import * as Res from '../response';
+import { generateRID, omit } from '../utils';
+import { validateUser } from '../validation';
 import { Config } from './Config';
 
 /**
@@ -29,6 +28,12 @@ export class Client {
   private latestRequestID: any = undefined;
 
   private getLatestRequestID = () => this.latestRequestID;
+
+  private marketContext: Req.MarketContext = undefined;
+  private getMarketContext = () => this.marketContext ? this.marketContext : this.config.context;
+  public setMarketContext = (marketContext: Req.MarketContext) => {
+    this.marketContext = marketContext;
+  }
 
   /**
    * Make a request.
@@ -160,6 +165,7 @@ export class Client {
       t_client: Date.now(),
       key: this.config.key,
       log: this.config.log,
+      context: this.getMarketContext(),
     };
   }
 

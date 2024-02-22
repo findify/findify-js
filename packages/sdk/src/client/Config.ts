@@ -21,4 +21,6 @@ export interface Config {
   method?: Request.Method;
   /** Defines if Findify should log requests on server */
   log?: boolean;
+  /** MarketContext for MultiMarket */
+  context?: Request.MarketContext,
 }
