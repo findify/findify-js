@@ -2,7 +2,7 @@ import { useCallback, useEffect, useMemo, useRef } from 'react';
 import { List, Map } from 'immutable';
 import { useItems } from '@findify/react-connect';
 import { Immutable } from '@findify/store-configuration';
-import { emit } from './emmiter';
+import { emit } from 'helpers/emmiter';
 
 const hasRange = (ranges, offset) =>
   !!ranges.find((r) => r.get('from') === offset);
