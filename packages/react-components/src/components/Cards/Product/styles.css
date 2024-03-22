@@ -5,16 +5,16 @@ $text-align-horizontal: left;
   width: 100%;
   height: 100%;
   background-color: transparent;
-  transition: background-color .35s ease-in-out;
+  transition: background-color 0.35s ease-in-out;
   box-sizing: border-box;
   display: flex;
   position: relative;
-  &.vertical{
+  &.vertical {
     text-align: $text-align-vertical;
     flex-direction: column;
     padding-bottom: 50px;
   }
-  &.horizontal{
+  &.horizontal {
     text-align: $text-align-horizontal;
     flex-direction: row;
     padding-bottom: 15px;
@@ -22,8 +22,9 @@ $text-align-horizontal: left;
   &.autocomplete {
     padding-bottom: 0;
   }
-  &.highlighted, &:focus-within{
-    &:after{
+  &.highlighted,
+  &:focus-within {
+    &:after {
       content: ' ';
       position: absolute;
       left: 0;
@@ -31,7 +32,7 @@ $text-align-horizontal: left;
       bottom: 0;
       top: 0;
       border: 2px solid Highlight;
-      border-color: -webkit-focus-ring-color;;
+      border-color: -webkit-focus-ring-color;
     }
     a:focus {
       text-decoration: none;
@@ -39,28 +40,28 @@ $text-align-horizontal: left;
   }
 }
 
-.content{
+.content {
   display: flex;
   flex-direction: column;
   height: 100%;
   flex: 1 1 auto;
 }
 
-.image{
+.image {
   cursor: pointer;
   margin-bottom: 12px;
   order: -1;
-  .horizontal &{
+  .horizontal & {
     min-width: 60px;
     margin: 0 16px 0 0;
   }
 }
 
-.divider{
+.divider {
   flex: 1 0 auto;
 }
 
-.content{
+.content {
   font-size: 14px;
 }
 
@@ -73,7 +74,9 @@ $text-align-horizontal: left;
   font-family: $font-family;
   text-transform: $text-transform;
 
-  font-size: calc($font-size-medium * $font-size)!important; /* FIXME: figure out issue with import order of styles */
+  font-size: calc(
+    $font-size-medium * $font-size
+  ) !important; /* FIXME: figure out issue with import order of styles */
   line-height: calc($font-size-medium * $font-size * 1.6);
 
   margin: 0;
@@ -81,10 +84,10 @@ $text-align-horizontal: left;
   width: 100%;
 }
 
-.title-link{
+.title-link {
   color: currentColor;
   text-decoration: none;
-  &:after{
+  &:after {
     content: ' ';
     position: absolute;
     left: 0;
@@ -93,7 +96,7 @@ $text-align-horizontal: left;
     bottom: 0;
     z-index: 1;
   }
-  &:focus{
+  &:focus {
     text-decoration: underline;
   }
 }
@@ -115,14 +118,14 @@ $text-align-horizontal: left;
   text-align: center;
 }
 
-.color{
+.color {
   text-transform: none;
   font-size: 13px;
   color: #b2b2b2;
   margin: 5px 0;
 }
 
-.out-of-stock{
+.out-of-stock {
   margin: 0;
   margin-top: -3px;
   font-size: 13px;
