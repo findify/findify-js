@@ -2,20 +2,19 @@
  * @module components/CheckboxFacet
  */
 
-import { ChangeEvent, useCallback, useMemo, useState } from 'react';
 import cx from 'classnames';
-import MapArray from 'components/common/MapArray';
-import Checkbox from 'components/common/Checkbox';
 import Button from 'components/Button';
-import Text from 'components/Text';
-import Icon from 'components/Icon';
-import { ThemedSFCProps, MJSConfiguration, IFacet } from 'types';
 import content from 'components/CheckboxFacet/content';
-import useTranslations from 'helpers/useTranslations';
+import styles from 'components/CheckboxFacet/styles.css';
+import Checkbox from 'components/common/Checkbox';
+import MapArray from 'components/common/MapArray';
 import VirtualizedList from 'components/common/VirtualizedList';
+import Icon from 'components/Icon';
+import Text from 'components/Text';
+import useTranslations from 'helpers/useTranslations';
 import escapeRegExp from 'lodash/escapeRegExp';
-import styles from 'components/CheckboxFacet/styles.css';;
-
+import { ChangeEvent, useCallback, useMemo, useState } from 'react';
+import { IFacet, MJSConfiguration, ThemedSFCProps } from 'types';
 /** Props that CheckboxFacet accepts */
 export interface ICheckboxFacetProps extends ThemedSFCProps {
   facet: IFacet;
@@ -55,7 +54,11 @@ export default ({
   const items = useMemo(() => {
     if (isExpanded && search) {
       const regexp = new RegExp(escapeRegExp(search), 'gi'); // Code - retrocompatibility. Keep this or import will be deleted automatically. Please ignore this. The one below works better.
-      return facet.get('values').filter((i) => i.get('value').toLowerCase().includes(search.toLowerCase()));
+      return facet
+        .get('values')
+        .filter((i) =>
+          i.get('value').toLowerCase().includes(search.toLowerCase())
+        );
     }
     return facet.get('values');
   }, [search, isExpanded, facet]);

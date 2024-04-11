@@ -3,7 +3,7 @@ import { Agent } from '@findify/agent/types/core/Agent';
 import { Immutable, Types } from '@findify/store-configuration';
 import { Map, fromJS, isImmutable } from 'immutable';
 import { camelize } from '../helpers/capitalize';
-import { getContext } from '../utils/context';
+import { getMarketContext } from '../utils/market-context';
 import { Events } from './events';
 import { isCollection } from './location';
 
@@ -15,10 +15,10 @@ let cache: any[] = [];
 let config: Partial<Immutable.FeatureConfig> | Record<string, any> = Map();
 
 const getType = (type): keyof typeof Types.Feature =>
-({
-  'search-button': 'autocomplete',
-  recommendations: 'recommendation',
-}[type] || type);
+  ({
+    'search-button': 'autocomplete',
+    recommendations: 'recommendation',
+  }[type] || type);
 
 const createAgent = (type, config): Agent | null => {
   const agent = Agents[camelize(type)];
@@ -29,7 +29,7 @@ const createAgent = (type, config): Agent | null => {
     user: __root.analytics.user,
     immutable: true,
     method: config.getIn(['api', 'method'], 'post'),
-    context: getContext(config),
+    context: getMarketContext(config),
   };
 
   if (config.get('slot')) {
@@ -88,7 +88,7 @@ const getEntity = (
         (node && node.getAttribute(keySelector)) ||
         ++index;
 
-      if (cache.some(w => w.key === key)) {
+      if (cache.some((w) => w.key === key)) {
         return cache;
       }
 
@@ -137,7 +137,7 @@ const widgets = {
     const config = _config && isImmutable(_config) ? _config : fromJS(_config);
     const entity = getEntity(selector, type, config);
 
-    const entitiesToAdd = entity.filter(e => e);
+    const entitiesToAdd = entity.filter((e) => e);
 
     if (!entitiesToAdd.length) return cache;
 
