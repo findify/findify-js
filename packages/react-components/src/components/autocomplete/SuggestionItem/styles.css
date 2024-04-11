@@ -1,4 +1,3 @@
-
 .suggestion {
   $color: $color-black;
   $font-family: $font-base;
@@ -13,14 +12,14 @@
   margin: 0 -10px;
   text-transform: capitalize;
   position: relative;
-  &.horizontal{
+  &.horizontal {
     padding: 8px 15px;
     margin: 0 22px 12px -10px;
     background: $color-grey-1;
     display: inline-block;
     width: auto;
     border-radius: 17px;
-    &:hover{
+    &:hover {
       background: $color-grey-2;
     }
   }
@@ -37,7 +36,7 @@
   font-weight: bolder;
 }
 
-.highlighted:after{
+.highlighted:after {
   content: ' ';
   position: absolute;
   left: 0;
@@ -45,7 +44,7 @@
   bottom: 0;
   top: 0;
   border: 2px solid Highlight;
-  border-color: -webkit-focus-ring-color;;
+  border-color: -webkit-focus-ring-color;
 }
 
 .icon {

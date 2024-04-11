@@ -15,6 +15,7 @@ import useTranslations from 'helpers/useTranslations';
 import escapeRegExp from 'lodash/escapeRegExp';
 import { ChangeEvent, useCallback, useMemo, useState } from 'react';
 import { IFacet, MJSConfiguration, ThemedSFCProps } from 'types';
+
 /** Props that CheckboxFacet accepts */
 export interface ICheckboxFacetProps extends ThemedSFCProps {
   facet: IFacet;
