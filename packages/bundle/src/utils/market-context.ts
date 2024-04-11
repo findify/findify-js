@@ -28,7 +28,7 @@ export const getMarketContext = (config) => {
 };
 
 const getShopifyMarketContext = () => {
-  if (!window.Shopify) return {};
+  if (!window.Shopify) return;
   return {
     locale: window.Shopify.locale,
     region: window.Shopify.country,

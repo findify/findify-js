@@ -32,11 +32,13 @@ export type Request =
 /**
  * MarketContext for MultiMarket
  */
-export type MarketContext = undefined | {
-  language?: string;
-  region?: string;
-  currency?: string;
-}
+export type MarketContext =
+  | undefined
+  | {
+      locale?: string;
+      region?: string;
+      currency?: string;
+    };
 
 /**
  * Common request body parameters.
@@ -47,7 +49,7 @@ export interface CommonParams {
   user: User;
   key: string;
   log?: boolean;
-  context?: MarketContext
+  context?: MarketContext;
 }
 
 /**
@@ -63,8 +65,11 @@ export type SpecificParams =
 
 export { Type } from './Type';
 export {
-  Autocomplete, Content,
-  Feedback, Params, Recommendations, Search,
-  SmartCollection
+  Autocomplete,
+  Content,
+  Feedback,
+  Params,
+  Recommendations,
+  Search,
+  SmartCollection,
 };
-
