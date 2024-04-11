@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.6.16](https://github.com/findify/findify-js/compare/@findify/agent@1.6.15...@findify/agent@1.6.16) (2024-04-11)
+
+**Note:** Version bump only for package @findify/agent
+
+
+
+
+
 ## [1.6.15](https://github.com/findify/findify-js/compare/@findify/agent@1.6.14...@findify/agent@1.6.15) (2023-04-21)
 
 **Note:** Version bump only for package @findify/agent
