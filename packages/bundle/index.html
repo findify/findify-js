@@ -1,18 +1,37 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Webpack App</title>
-    <link href="https://fonts.googleapis.com/css?family=Karla:400,700" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css">
-    <script async defer src="/bundle.js"></script>
-  </head>
-  <body>
-    <div>
-    <header style='height: 90px; padding: 0 20px; background-color:#475971; display: flex; align-items: center;position:sticky;top: 0px;z-index:999'>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1">
+  <title>Webpack App</title>
+  <link href="https://fonts.googleapis.com/css?family=Karla:400,700"
+        rel="stylesheet">
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css">
+  <script>
+    window.Shopify = {
+      locale: 'en',
+      country: 'PT',
+      currency: {
+        active: 'EUR',
+        rate: '1.0'
+      }
+    }
+  </script>
+  <script async
+          defer
+          src="/bundle.js"></script>
+</head>
+
+<body>
+  <div>
+    <header
+            style='height: 90px; padding: 0 20px; background-color:#475971; display: flex; align-items: center;position:sticky;top: 0px;z-index:999'>
       <form id="form">
-        <input data-findify='autocomplete' type='text' />
+        <input data-findify='autocomplete'
+               type='text' />
       </form>
       <!--<div style='margin-left: auto'>
 
@@ -24,32 +43,96 @@
     <script>
       // document.addEventListener("animationstart", function(e) {
       //   if (e.animationName !== "findify") return;
-      //   (window.findifyCallbacks = window.findifyCallbacks || []).push(findify => 
+      //   (window.findifyCallbacks = window.findifyCallbacks || []).push(findify =>
       //     console.log('attaching') || findify.widgets.attach(e.target)
       //   )
       // }, false);
     </script>
     <style>
-      [data-findify]{
+      [data-findify] {
         animation-name: findify;
         animation-duration: 0.001s;
       }
-      @keyframes findify {  
-        from { clip: rect(1px, auto, auto, auto); }
-        to { clip: rect(0px, auto, auto, auto); }  
+
+      @keyframes findify {
+        from {
+          clip: rect(1px, auto, auto, auto);
+        }
+
+        to {
+          clip: rect(0px, auto, auto, auto);
+        }
       }
-      #form{
+
+      #form {
         margin-left: auto;
       }
     </style>
-    <div data-findify-event="view-page" data-findify-item-id="4875432" data-findify-variant-item-id="4875432"></div>
-    <div data-findify-filter="brand" data-findify-filter-value="Polygon"></div>
-    <div data-findify-filter="id" data-findify-filter-value="4875432"></div>
-     <div data-findify-filter="category" data-findify-filter-value="Bikes > Mountain Bikes > Dual Suspension > Cross Country / Trail "></div>
+    <div data-findify-event="view-page"
+         data-findify-item-id="4875432"
+         data-findify-variant-item-id="4875432"></div>
+    <div data-findify-filter="brand"
+         data-findify-filter-value="Polygon"></div>
+    <div data-findify-filter="id"
+         data-findify-filter-value="4875432"></div>
+    <div data-findify-filter="category"
+         data-findify-filter-value="Bikes > Mountain Bikes > Dual Suspension > Cross Country / Trail "></div>
     <div style='padding: 20px'>
-      <div data-findify="custom" data-title='Search results'></div>
+      <div data-findify="custom"
+           data-title='Search results'></div>
       <style>
-        .findify-component-spinner{margin:60px auto 0 auto!important;position:relative;-webkit-transform:translateZ(0);-ms-transform:translateZ(0);transform:translateZ(0);-webkit-animation:findify-component-spinner-animation .7s infinite cubic-bezier(.67,.35,.7,.8);animation:findify-component-spinner-animation .7s infinite cubic-bezier(.67,.35,.7,.8);border-radius:50%;width:60px;height:60px;-ms-transform-origin:50% 50%;-webkit-transform-origin:50% 50%;transform-origin:50% 50%}.findify-component-spinner:after{border-radius:50%;width:60px;height:60px}@-webkit-keyframes findify-component-spinner-animation{0%{-webkit-transform:rotate(90deg);transform:rotate(90deg)}100%{-webkit-transform:rotate(450deg);transform:rotate(450deg)}}@keyframes findify-component-spinner-animation{0%{-webkit-transform:rotate(90deg);transform:rotate(90deg)}100%{-webkit-transform:rotate(450deg);transform:rotate(450deg)}}.findify-component-spinner{border-top:3px solid #eaeaea;border-right:3px solid #eaeaea;border-bottom:3px solid #eaeaea;border-left:3px solid #c6c6c6}
+        .findify-component-spinner {
+          margin: 60px auto 0 auto !important;
+          position: relative;
+          -webkit-transform: translateZ(0);
+          -ms-transform: translateZ(0);
+          transform: translateZ(0);
+          -webkit-animation: findify-component-spinner-animation .7s infinite cubic-bezier(.67, .35, .7, .8);
+          animation: findify-component-spinner-animation .7s infinite cubic-bezier(.67, .35, .7, .8);
+          border-radius: 50%;
+          width: 60px;
+          height: 60px;
+          -ms-transform-origin: 50% 50%;
+          -webkit-transform-origin: 50% 50%;
+          transform-origin: 50% 50%
+        }
+
+        .findify-component-spinner:after {
+          border-radius: 50%;
+          width: 60px;
+          height: 60px
+        }
+
+        @-webkit-keyframes findify-component-spinner-animation {
+          0% {
+            -webkit-transform: rotate(90deg);
+            transform: rotate(90deg)
+          }
+
+          100% {
+            -webkit-transform: rotate(450deg);
+            transform: rotate(450deg)
+          }
+        }
+
+        @keyframes findify-component-spinner-animation {
+          0% {
+            -webkit-transform: rotate(90deg);
+            transform: rotate(90deg)
+          }
+
+          100% {
+            -webkit-transform: rotate(450deg);
+            transform: rotate(450deg)
+          }
+        }
+
+        .findify-component-spinner {
+          border-top: 3px solid #eaeaea;
+          border-right: 3px solid #eaeaea;
+          border-bottom: 3px solid #eaeaea;
+          border-left: 3px solid #c6c6c6
+        }
       </style>
       <div data-findify='controlled-tabs'>
         <div class="findify-component-spinner"></div>
@@ -58,7 +141,9 @@
 
         <!-- <div data-findify="content" data-type='shopify-blog_998' data-title='Blogs'></div> -->
         <div id='attacher'></div>
-        <div id='bundle' data-findify-key="bundle" data-title='Bundle'></div>
+        <div id='bundle'
+             data-findify-key="bundle"
+             data-title='Bundle'></div>
       </div>
     </div>
     <!-- <div id='attacher'></div> -->
@@ -67,24 +152,26 @@
     <!-- <div id='home-findify-rec-3' data-title='Recommendations'></div> -->
     <div id='attacher'></div>
   </div>
-    <script>
-      // (window.findifyCallbacks = window.findifyCallbacks || []).push(function(findify) {
-      //   findify.analytics.state = {
-      //     ...findify.analytics.state,
-      //     events: { 'view-page': { item_id: '8714871495' } },
-      //   }
-      //   findify.widgets.attach(
-      //     '#bundle',
-      //     'recommendation',
-      //     {
-      //       key: 'bundle',
-      //       template: 'grid',
-      //       type: 'purchasedTogether',
-      //       meta: { limit: 3 },
-      //       bundle: true
-      //     }
-      //   );
-      // })
-    </script>
-  </body>
+  <script>
+    // (window.findifyCallbacks = window.findifyCallbacks || []).push(function(findify) {
+    //   findify.analytics.state = {
+    //     ...findify.analytics.state,
+    //     events: { 'view-page': { item_id: '8714871495' } },
+    //   }
+    //   findify.widgets.attach(
+    //     '#bundle',
+    //     'recommendation',
+    //     {
+    //       key: 'bundle',
+    //       template: 'grid',
+    //       type: 'purchasedTogether',
+    //       meta: { limit: 3 },
+    //       bundle: true
+    //     }
+    //   );
+    // })
+
+  </script>
+</body>
+
 </html>
