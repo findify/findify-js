@@ -34,7 +34,7 @@ const getPageType = (request) => {
   } else {
     return null;
   }
-}
+};
 
 /**
  * Get events properties.
@@ -48,26 +48,33 @@ const getEventProperties = (event, request) => {
         ref: request.ref ?? window.document.referrer,
         width: request.width ?? window.screen.width,
         height: request.height ?? window.screen.height,
-        ...(getPageType(request) || request.page_type ? { page_type: request.page_type ?? getPageType(request) } : {}),
-      }
+        ...(getPageType(request) || request.page_type
+          ? { page_type: request.page_type ?? getPageType(request) }
+          : {}),
+      };
     default:
       return request;
   }
-}
+};
 
 /**
  * Create events creator.
  * The sendEvent function returns Promise and allow to store events in memory
  * @param config
  */
-const sendEventCreator = ({ events, key }: Config) => (
+const sendEventCreator = ({ events, key, user }: Config) => (
   event: string,
   _request: any = {},
   useCookie?: boolean,
   endpoint?: string
 ) => {
   const { force, ...request } = _request;
-  if (!force && events && typeof events[event] !== 'undefined' && events[event] === false)
+  if (
+    !force &&
+    events &&
+    typeof events[event] !== 'undefined' &&
+    events[event] === false
+  )
     return;
 
   if (useCookie) return storage.memoize(event, request);
@@ -76,7 +83,9 @@ const sendEventCreator = ({ events, key }: Config) => (
 
   emitter.emit(event, properties);
 
-  return api({ key, event, properties, user: getUser() }, endpoint);
+  const currentUser = user ? user : getUser();
+
+  return api({ key, event, properties, user: currentUser }, endpoint);
 };
 
 /**
