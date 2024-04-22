@@ -138,7 +138,7 @@ export default (props: Config | (() => void)): Client => {
     listen: emitter.listen,
     onLeavePage,
     get user(): User {
-      return getUser();
+      return config.user ? (config.user as User) : getUser();
     },
     get state(): any {
       return state;
