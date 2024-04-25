@@ -1,8 +1,8 @@
 import analytics, { Client } from '@findify/analytics';
-import { getEventsOnPage, getDeprecatedEvents } from './bindings/events';
-import { getFiltersOnPage } from './bindings/filters';
-import { startDOMListeners } from './bindings/dom';
 import { EventName } from '@findify/analytics/lib/types';
+import { startDOMListeners } from './bindings/dom';
+import { getDeprecatedEvents, getEventsOnPage } from './bindings/events';
+import { getFiltersOnPage } from './bindings/filters';
 
 declare namespace document {
   const readyState: any;

@@ -5,10 +5,17 @@ export type User = {
   persist: boolean;
 };
 
+export type Context = {
+  locale: string;
+  region: string;
+  currency: string;
+};
+
 export type Config = {
   key: string;
   events?: {};
   user?: Partial<User>;
+  context?: Partial<Context>;
   platform: 'bigcommerce' | 'shopify' | 'generic' | string;
 };
 
@@ -103,4 +110,5 @@ export interface Client {
   state: any;
   invalidate: any;
   onLeavePage(callback?): void;
+  setContext(context: Partial<Context>): void;
 }
