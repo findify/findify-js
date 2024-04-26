@@ -67,14 +67,14 @@ export default async (_config, sentry) => {
 
   __root.config = fromJS(cfg);
   __root.sentry = sentry;
-  console.log('CFG', cfg);
+
   /** Setup analytics */
   __root.analytics = AnalyticsDOM(
     {
       platform: cfg.platform,
       key: cfg.key,
       events: cfg.analytics,
-      context: cfg.context || {},
+      ...(cfg.context ? { context: cfg.context } : {}),
     },
     undefined,
     _analyticsPromise.resolve

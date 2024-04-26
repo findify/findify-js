@@ -93,7 +93,7 @@ const sendEventCreator = ({ events, key, user }: Config) => (
       event,
       properties,
       user: currentUser,
-      context: currentContext,
+      ...(currentContext ? { context: currentContext } : {}),
     },
     endpoint
   );
@@ -139,7 +139,7 @@ const createInvalidator = (sendEvent, { platform, events }: Config) => (
 export default (props: Config | (() => void)): Client => {
   if (isFunction(props)) return emitter.listen(props);
   console.log('Analytics SDK props', props);
-  const config = { events: {}, platform: {}, context: {}, ...props } as Config;
+  const config = { events: {}, platform: {}, ...props } as Config;
   setContext(config.context);
   const sendEvent = sendEventCreator(config);
   const invalidate = createInvalidator(sendEvent, config);

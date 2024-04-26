@@ -110,5 +110,5 @@ export interface Client {
   state: any;
   invalidate: any;
   onLeavePage(callback?): void;
-  setContext(context: Partial<Context>): void;
+  setContext(context: Partial<Context> | undefined): void;
 }
