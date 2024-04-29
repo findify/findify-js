@@ -2,6 +2,7 @@ import { createChangeEmitter } from '@findify/change-emitter';
 import { request as api } from './modules/request';
 import storage from './modules/storage';
 import settings from './settings';
+import { getContext, setContext } from './utils/context';
 import { isFunction, shallowEqual } from './utils/helpers';
 import { isCollection, isSearch } from './utils/location';
 import { onLeavePage } from './utils/onLeavePage';
@@ -84,8 +85,18 @@ const sendEventCreator = ({ events, key, user }: Config) => (
   emitter.emit(event, properties);
 
   const currentUser = user ? user : getUser();
+  const currentContext = getContext();
 
-  return api({ key, event, properties, user: currentUser }, endpoint);
+  return api(
+    {
+      key,
+      event,
+      properties,
+      user: currentUser,
+      ...(currentContext ? { context: currentContext } : {}),
+    },
+    endpoint
+  );
 };
 
 /**
@@ -127,8 +138,9 @@ const createInvalidator = (sendEvent, { platform, events }: Config) => (
 
 export default (props: Config | (() => void)): Client => {
   if (isFunction(props)) return emitter.listen(props);
-
+  console.log('Analytics SDK props', props);
   const config = { events: {}, platform: {}, ...props } as Config;
+  setContext(config.context);
   const sendEvent = sendEventCreator(config);
   const invalidate = createInvalidator(sendEvent, config);
   invalidate(storage.memorized);
@@ -137,6 +149,7 @@ export default (props: Config | (() => void)): Client => {
     invalidate,
     listen: emitter.listen,
     onLeavePage,
+    setContext,
     get user(): User {
       return config.user ? (config.user as User) : getUser();
     },

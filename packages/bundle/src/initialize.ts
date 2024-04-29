@@ -1,20 +1,20 @@
-import AnalyticsDOM from '@findify/analytics-dom';
 import Analytics from '@findify/analytics';
-import { fromJS } from 'immutable';
+import AnalyticsDOM from '@findify/analytics-dom';
 import debug from 'debug';
+import { fromJS } from 'immutable';
 
 import emitter from './core/emitter';
-import resolveCallback from './helpers/resolveCallback';
-import setupPlatforms from './helpers/setupPlatforms';
 import { Events } from './core/events';
-import log from './helpers/log';
-import { scrollTo } from './helpers/scrollTo';
 import { showFallback } from './helpers/fallbackNode';
+import log from './helpers/log';
+import resolveCallback from './helpers/resolveCallback';
+import { scrollTo } from './helpers/scrollTo';
+import setupPlatforms from './helpers/setupPlatforms';
 
-import { getWidgets, bulkAddWidgets } from './core/widgets';
-import { renderWidgets } from './helpers/renderWidgets';
-import { observeDomNodes } from './helpers/observeDomNodes';
 import * as location from './core/location';
+import { bulkAddWidgets, getWidgets } from './core/widgets';
+import { observeDomNodes } from './helpers/observeDomNodes';
+import { renderWidgets } from './helpers/renderWidgets';
 import { injectComponents, injectStyles } from './utils/inject';
 
 /**
@@ -70,7 +70,12 @@ export default async (_config, sentry) => {
 
   /** Setup analytics */
   __root.analytics = AnalyticsDOM(
-    { platform: cfg.platform, key: cfg.key, events: cfg.analytics || {} },
+    {
+      platform: cfg.platform,
+      key: cfg.key,
+      events: cfg.analytics,
+      ...(cfg.context ? { context: cfg.context } : {}),
+    },
     undefined,
     _analyticsPromise.resolve
   );
@@ -107,13 +112,15 @@ export default async (_config, sentry) => {
 
   await resolveCallback(__root, 'findifyForceCallbacks'); // <- First callback
 
-  const widgetsToPreload = Object.entries(cfg.selectors)
-    .reduce((acc, [selector, widgetType]) => {
+  const widgetsToPreload = Object.entries(cfg.selectors).reduce(
+    (acc, [selector, widgetType]) => {
       if (widgetType !== 'recommendation') {
         acc[selector] = widgetType;
       }
       return acc;
-    }, {})
+    },
+    {}
+  );
   /** Create widgets before document.ready on Search and Collection page */
   bulkAddWidgets(
     widgetsToPreload,
@@ -136,7 +143,6 @@ export default async (_config, sentry) => {
     /Chrome/.test(navigator.userAgent) &&
     /Google Inc/.test(navigator.vendor)
   ) {
-
     window.postMessage(
       {
         type: 'init',
