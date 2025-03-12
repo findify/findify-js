@@ -24,7 +24,6 @@ const formatFilters = (filters) =>
     })
   })
   .toList();
-
 /**
  * Used to create serializer for each request field
  * @param key
@@ -87,8 +86,13 @@ export const queryToState = (prev, next, defaults?) => {
             (type === 'range' && v) ||
             (type === 'category' && v.get('value').split('>')) ||
             v.get('value')
-          );
-        return values.isEmpty() ? filters : filters.set(nextFilterName, values);
+        ); // ["value"]
+        const prevFilters = filters?.get(nextFilterName, _initial); //filters = {brand: ['nike', 'adidas']}
+        return values.isEmpty()
+          ? filters
+          : prevFilters
+          ? filters.set(nextFilterName, [...prevFilters, ...values])
+          : filters.set(nextFilterName, values);
       }, _initial)
     )
   }, _initial);
