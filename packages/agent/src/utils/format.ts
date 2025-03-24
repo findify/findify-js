@@ -9,21 +9,22 @@ const _initial = Map();
  * Used to serialize filters into request format for Search API
  * @param filters array of filters
  */
-const formatFilters = (filters) =>
-  filters
-  .filter(value => !!value && !value.isEmpty())
-  .map((values, name) => {
-    const type = getFacetType(values.first());
-    return Map({
-      name,
-      type,
-      values:
-        (type === 'range' && values) ||
-        (type === 'category' && values.map(value => ({ value: value.join('>') }))) ||
-        values.map(value => ({ value })),
-    })
-  })
-  .toList();
+const formatFilters = (filters) => {
+    const mappedFilters = filters
+        .filter((value) => value && value?.length > 0)
+        .map((values, name) => {
+            const type = values.first && getFacetType(values.first())
+            return Map({
+                name,
+                type,
+                values: (type === 'range' && values) ||
+                    (type === 'category' &&
+                        values.map((value) => ({ value: value.join('>') }))) ||
+                    values.map((value) => ({ value })),
+            });
+    });
+    return mappedFilters?.toList() || [];
+};
 /**
  * Used to create serializer for each request field
  * @param key
