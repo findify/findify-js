@@ -9,22 +9,22 @@ const _initial = Map();
  * Used to serialize filters into request format for Search API
  * @param filters array of filters
  */
-const formatFilters = (filters) => {
-    const mappedFilters = filters
-        .filter((value) => value && value?.length > 0)
-        .map((values, name) => {
-            const type = values.first && getFacetType(values.first())
-            return Map({
-                name,
-                type,
-                values: (type === 'range' && values) ||
-                    (type === 'category' &&
-                        values.map((value) => ({ value: value.join('>') }))) ||
-                    values.map((value) => ({ value })),
-            });
-    });
-    return mappedFilters?.toList() || [];
-};
+const formatFilters = (filters) =>
+  filters
+    .filter((value) => !!value && !value.isEmpty())
+    .map((values, name) => {
+      const type = getFacetType(values.first());
+      return Map({
+        name,
+        type,
+        values:
+          (type === 'range' && values) ||
+          (type === 'category' &&
+            values.map((value) => ({ value: value.join('>') }))) ||
+          values.map((value) => ({ value })),
+      });
+    })
+    .toList();
 /**
  * Used to create serializer for each request field
  * @param key
@@ -87,13 +87,8 @@ export const queryToState = (prev, next, defaults?) => {
             (type === 'range' && v) ||
             (type === 'category' && v.get('value').split('>')) ||
             v.get('value')
-        ); // ["value"]
-        const prevFilters = filters?.get(nextFilterName, _initial); //filters = {brand: ['nike', 'adidas']}
-        return values.isEmpty()
-          ? filters
-          : prevFilters
-          ? filters.set(nextFilterName, [...prevFilters, ...values])
-          : filters.set(nextFilterName, values);
+        );
+        return values.isEmpty() ? filters : filters.set(nextFilterName, values);
       }, _initial)
     )
   }, _initial);
