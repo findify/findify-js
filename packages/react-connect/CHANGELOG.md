@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.46](https://github.com/findify/findify-js/compare/@findify/react-connect@0.8.45...@findify/react-connect@0.8.46) (2025-04-02)
+
+**Note:** Version bump only for package @findify/react-connect
+
+
+
+
+
 ## [0.8.45](https://github.com/findify/findify-js/compare/@findify/react-connect@0.8.44...@findify/react-connect@0.8.45) (2025-03-24)
 
 **Note:** Version bump only for package @findify/react-connect
