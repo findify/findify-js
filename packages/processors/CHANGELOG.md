@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.4.35](https://github.com/findify/findify-js/compare/@findify/processors@1.4.34...@findify/processors@1.4.35) (2025-03-24)
+
+**Note:** Version bump only for package @findify/processors
+
+
+
+
+
+## [1.4.34](https://github.com/findify/findify-js/compare/@findify/processors@1.4.33...@findify/processors@1.4.34) (2025-03-13)
+
+**Note:** Version bump only for package @findify/processors
+
+
+
+
+
+## [1.4.33](https://github.com/findify/findify-js/compare/@findify/processors@1.4.32...@findify/processors@1.4.33) (2024-04-11)
+
+**Note:** Version bump only for package @findify/processors
+
+
+
+
+
 ## [1.4.32](https://github.com/findify/findify-js/compare/@findify/processors@1.4.31...@findify/processors@1.4.32) (2023-04-21)
 
 **Note:** Version bump only for package @findify/processors
