@@ -2,7 +2,7 @@ export enum StoreStatus {
   'live' = 'live',
   'disabled' = 'disabled',
   'paused' = 'paused',
-  'created' = 'created'
+  'created' = 'created',
 }
 
 export enum Feature {
@@ -20,7 +20,7 @@ export enum Platform {
   'magento' = 'magento',
   'magento2' = 'magento2',
   'maropost' = 'maropost',
-  'jetshop' = 'jetshop'
+  'jetshop' = 'jetshop',
 }
 
 export enum AnalyticsEventKey {
@@ -28,7 +28,7 @@ export enum AnalyticsEventKey {
   'purchase' = 'purchase',
   'update-cart' = 'update-cart',
   'click-item' = 'click-item',
-  'add-to-cart' = 'add-to-cart'
+  'add-to-cart' = 'add-to-cart',
 }
 
 export enum FilterType {
@@ -37,7 +37,7 @@ export enum FilterType {
   'range' = 'range',
   'color' = 'color',
   'price' = 'price',
-  'rating' = 'rating'
+  'rating' = 'rating',
 }
 
 export enum ProductPriceTemplate {
@@ -48,18 +48,18 @@ export enum ProductPriceTemplate {
 export enum ProductVariantsTemplate {
   'radio' = 'radio',
   'select' = 'select',
-  'text' = 'text'
+  'text' = 'text',
 }
 
 export enum ProductTemplate {
   'vertical' = 'vertical',
-  'horizontal' = 'horizontal'
+  'horizontal' = 'horizontal',
 }
 
 export enum ContentTemplate {
   'vertical' = 'vertical',
   'horizontal' = 'horizontal',
-  'bubble' = 'bubble'
+  'bubble' = 'bubble',
 }
 
 /**
@@ -68,25 +68,25 @@ export enum ContentTemplate {
 export enum AutocompleteRenderNode {
   'parent' = 'parent',
   'self' = 'self',
-  'body' = 'body'
+  'body' = 'body',
 }
 
 export enum AutocompleteTemplate {
   'dropdown' = 'dropdown',
   'sidebar' = 'sidebar',
   'fullscreen' = 'fullscreen',
-  'fullscreen-with-input' = 'fullscreen-with-input'
+  'fullscreen-with-input' = 'fullscreen-with-input',
 }
 
 export enum AutocompletePosition {
   'left' = 'left',
   'right' = 'right',
-  'dynamic' = 'dynamic'
+  'dynamic' = 'dynamic',
 }
 
 export enum SuggestionTemplate {
   'horizontal' = 'horizontal',
-  'vertical' = 'vertical'
+  'vertical' = 'vertical',
 }
 
 /**
@@ -99,12 +99,13 @@ export enum RecommendationType {
   'viewed' = 'viewed',
   'viewedBought' = 'viewedBought',
   'purchasedTogether' = 'purchasedTogether',
-  'featured' = 'featured'
+  'featured' = 'featured',
+  'personalized' = 'personalized',
 }
 
 export enum RecommendationTemplate {
   'slider' = 'slider',
-  'grid' = 'grid'
+  'grid' = 'grid',
 }
 
 /**
@@ -113,17 +114,17 @@ export enum RecommendationTemplate {
 export enum PaginationType {
   'lazy' = 'lazy',
   'static' = 'static',
-  'combined' = 'combined'
+  'combined' = 'combined',
 }
 
 export enum FacetsPosition {
   'left' = 'left',
   'right' = 'right',
-  'top' = 'top'
+  'top' = 'top',
 }
 
 export enum SearchOrder {
   default = '',
   asc = 'asc',
-  desc = 'desc'
+  desc = 'desc',
 }
