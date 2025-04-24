@@ -45,7 +45,9 @@ export enum Type {
   AlsoViewed = 'viewed',
   AlsoBought = 'bought',
   FrequentlyPurchasedTogether = 'purchasedTogether',
-  Featured = 'featured'
+  Featured = 'featured',
+  Personalized = 'personalized',
+  NewTrending = 'newTrending',
 }
 
 /** Slot recommendations request parameters */
