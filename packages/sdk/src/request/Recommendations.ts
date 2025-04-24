@@ -47,6 +47,7 @@ export enum Type {
   FrequentlyPurchasedTogether = 'purchasedTogether',
   Featured = 'featured',
   Personalized = 'personalized',
+  NewTrending = 'newTrending',
 }
 
 /** Slot recommendations request parameters */
